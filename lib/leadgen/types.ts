@@ -1,5 +1,12 @@
 export type LeadStatus = "new" | "approved" | "rejected" | "paused";
 
+export type CampaignStatus = "completed";
+
+export type LeadgenEventType =
+  | "campaign_started"
+  | "lead_generated"
+  | "lead_status_changed";
+
 export type ContactChannel =
   | "decision-maker"
   | "department-head"
@@ -35,14 +42,47 @@ export type MockCompany = {
   signal: Signal;
 };
 
-export type Lead = {
+export type LeadgenCampaign = {
   id: string;
-  campaignName: string;
-  company: Pick<MockCompany, "name" | "domain" | "segment">;
-  contact: Contact | null;
-  signal: Signal;
+  name: string;
+  requested_by: string;
+  status: CampaignStatus;
+  icp_label: string;
+  offer_label: string;
+  created_at: string;
+};
+
+export type LeadgenLead = {
+  id: string;
+  campaign_id: string;
+  company_name: string;
+  company_domain: string;
+  company_segment: string;
+  contact_channel: ContactChannel | null;
+  contact_label: string | null;
+  contact_value: string | null;
+  signal_title: string;
+  signal_detail: string;
+  signal_source_label: string;
   hook: string;
   message: string;
-  followUp: string;
+  follow_up: string;
   status: LeadStatus;
+  created_at: string;
+  updated_at: string;
+};
+
+export type LeadgenEvent = {
+  id: string;
+  campaign_id: string;
+  lead_id: string | null;
+  event_type: LeadgenEventType;
+  payload: Record<string, string>;
+  created_at: string;
+};
+
+export type MockPipelineResult = {
+  campaign: LeadgenCampaign;
+  leads: LeadgenLead[];
+  events: LeadgenEvent[];
 };

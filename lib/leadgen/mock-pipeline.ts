@@ -4,8 +4,11 @@ import type {
   CampaignInput,
   Contact,
   ContactChannel,
-  Lead,
+  LeadgenCampaign,
+  LeadgenEvent,
+  LeadgenLead,
   MockCompany,
+  MockPipelineResult,
   Signal,
 } from "@/lib/leadgen/types";
 
@@ -51,26 +54,99 @@ function writeFollowUp(company: MockCompany): string {
   return `Following up on the note about ${company.name}. Would a short outline of the audit be useful?`;
 }
 
-function buildLead(campaign: CampaignInput, company: MockCompany): Lead {
-  const signal = detectSignal(company);
+function createRecordId(...parts: string[]): string {
+  return parts
+    .join("-")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
 
+function buildCampaign(
+  campaign: CampaignInput,
+  createdAt: string,
+): LeadgenCampaign {
   return {
-    id: `${campaign.name}-${company.id}`,
-    campaignName: campaign.name,
-    company: {
-      name: company.name,
-      domain: company.domain,
-      segment: company.segment,
-    },
-    contact: findBestContact(company.contacts),
-    signal,
-    hook: createHook(company, signal),
-    message: writeMessage(company, signal),
-    followUp: writeFollowUp(company),
-    status: "new",
+    id: createRecordId("campaign", campaign.name, createdAt),
+    name: campaign.name,
+    requested_by: campaign.requestedBy,
+    status: "completed",
+    icp_label: leadgenConfig.icp.label,
+    offer_label: leadgenConfig.offer.label,
+    created_at: createdAt,
   };
 }
 
-export function runMockPipeline(campaign: CampaignInput): Lead[] {
-  return findCompanies().map((company) => buildLead(campaign, company));
+function buildLead(
+  campaign: LeadgenCampaign,
+  company: MockCompany,
+  createdAt: string,
+): LeadgenLead {
+  const signal = detectSignal(company);
+  const contact = findBestContact(company.contacts);
+
+  return {
+    id: createRecordId("lead", campaign.id, company.id),
+    campaign_id: campaign.id,
+    company_name: company.name,
+    company_domain: company.domain,
+    company_segment: company.segment,
+    contact_channel: contact?.channel ?? null,
+    contact_label: contact?.label ?? null,
+    contact_value: contact?.value ?? null,
+    signal_title: signal.title,
+    signal_detail: signal.detail,
+    signal_source_label: signal.sourceLabel,
+    hook: createHook(company, signal),
+    message: writeMessage(company, signal),
+    follow_up: writeFollowUp(company),
+    status: "new",
+    created_at: createdAt,
+    updated_at: createdAt,
+  };
+}
+
+function buildEvent(
+  campaignId: string,
+  leadId: string | null,
+  eventType: LeadgenEvent["event_type"],
+  payload: LeadgenEvent["payload"],
+  createdAt: string,
+): LeadgenEvent {
+  return {
+    id: createRecordId("event", campaignId, leadId ?? "campaign", eventType),
+    campaign_id: campaignId,
+    lead_id: leadId,
+    event_type: eventType,
+    payload,
+    created_at: createdAt,
+  };
+}
+
+export function runMockPipeline(campaignInput: CampaignInput): MockPipelineResult {
+  const createdAt = new Date().toISOString();
+  const campaign = buildCampaign(campaignInput, createdAt);
+  const leads = findCompanies().map((company) =>
+    buildLead(campaign, company, createdAt),
+  );
+  const events = [
+    buildEvent(
+      campaign.id,
+      null,
+      "campaign_started",
+      { campaign_name: campaign.name },
+      createdAt,
+    ),
+    ...leads.map((lead) =>
+      buildEvent(
+        campaign.id,
+        lead.id,
+        "lead_generated",
+        { company_name: lead.company_name },
+        createdAt,
+      ),
+    ),
+  ];
+
+  return { campaign, leads, events };
 }

@@ -1,9 +1,9 @@
 "use client";
 
-import type { Lead } from "@/lib/leadgen/types";
+import type { LeadgenLead } from "@/lib/leadgen/types";
 
 type LeadsTableProps = {
-  leads: Lead[];
+  leads: LeadgenLead[];
   selectedLeadId: string | null;
   onSelectLead: (leadId: string) => void;
 };
@@ -44,25 +44,25 @@ export function LeadsTable({
               <td>
                 <div className="lead-company">
                   <div>
-                    <strong>{lead.company.name}</strong>
-                    <div className="company-domain">{lead.company.domain}</div>
+                    <strong>{lead.company_name}</strong>
+                    <div className="company-domain">{lead.company_domain}</div>
                   </div>
                   <span className="mock-pill">mock</span>
                 </div>
               </td>
               <td>
-                {lead.contact ? (
+                {lead.contact_label ? (
                   <>
-                    <strong>{lead.contact.label}</strong>
-                    <div className="company-domain">{lead.contact.value}</div>
+                    <strong>{lead.contact_label}</strong>
+                    <div className="company-domain">{lead.contact_value}</div>
                   </>
                 ) : (
                   "No verified entry"
                 )}
               </td>
               <td>
-                <strong>{lead.signal.title}</strong>
-                <div className="company-domain">{lead.signal.sourceLabel}</div>
+                <strong>{lead.signal_title}</strong>
+                <div className="company-domain">{lead.signal_source_label}</div>
               </td>
               <td>{lead.hook}</td>
               <td>

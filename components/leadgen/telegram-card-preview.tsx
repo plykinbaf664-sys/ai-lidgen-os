@@ -1,12 +1,12 @@
 "use client";
 
 import { formatTelegramCard } from "@/lib/leadgen/telegram-card";
-import type { Lead, LeadStatus } from "@/lib/leadgen/types";
+import type { LeadgenLead, LeadStatus } from "@/lib/leadgen/types";
 
 const statuses: LeadStatus[] = ["approved", "rejected", "paused", "new"];
 
 type TelegramCardPreviewProps = {
-  lead: Lead | null;
+  lead: LeadgenLead | null;
   onStatusChange: (leadId: string, status: LeadStatus) => void;
 };
 

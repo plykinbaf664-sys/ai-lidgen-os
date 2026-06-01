@@ -1,26 +1,26 @@
-import type { Lead } from "@/lib/leadgen/types";
+import type { LeadgenLead } from "@/lib/leadgen/types";
 
-export function formatTelegramCard(lead: Lead): string {
-  const contact = lead.contact
-    ? `${lead.contact.label}: ${lead.contact.value}`
+export function formatTelegramCard(lead: LeadgenLead): string {
+  const contact = lead.contact_label
+    ? `${lead.contact_label}: ${lead.contact_value}`
     : "No verified contact found";
 
   return [
-    `NEW LEAD: ${lead.company.name}`,
+    `NEW LEAD: ${lead.company_name}`,
     "",
-    `Segment: ${lead.company.segment}`,
-    `Website: ${lead.company.domain}`,
+    `Segment: ${lead.company_segment}`,
+    `Website: ${lead.company_domain}`,
     `Best available entry: ${contact}`,
     "",
-    `Signal: ${lead.signal.title}`,
-    `${lead.signal.detail}`,
-    `Source: ${lead.signal.sourceLabel}`,
+    `Signal: ${lead.signal_title}`,
+    `${lead.signal_detail}`,
+    `Source: ${lead.signal_source_label}`,
     "",
     `Hook: ${lead.hook}`,
     "",
     `Message: ${lead.message}`,
     "",
-    `Follow-up: ${lead.followUp}`,
+    `Follow-up: ${lead.follow_up}`,
     "",
     `Status: ${lead.status}`,
   ].join("\n");

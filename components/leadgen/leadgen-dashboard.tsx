@@ -5,12 +5,19 @@ import { CampaignForm } from "@/components/leadgen/campaign-form";
 import { LeadsTable } from "@/components/leadgen/leads-table";
 import { TelegramCardPreview } from "@/components/leadgen/telegram-card-preview";
 import { runMockPipeline } from "@/lib/leadgen/mock-pipeline";
-import type { CampaignInput, Lead, LeadStatus } from "@/lib/leadgen/types";
+import type {
+  CampaignInput,
+  LeadgenCampaign,
+  LeadgenEvent,
+  LeadgenLead,
+  LeadStatus,
+} from "@/lib/leadgen/types";
 
 export function LeadgenDashboard() {
-  const [leads, setLeads] = useState<Lead[]>([]);
+  const [campaign, setCampaign] = useState<LeadgenCampaign | null>(null);
+  const [leads, setLeads] = useState<LeadgenLead[]>([]);
+  const [events, setEvents] = useState<LeadgenEvent[]>([]);
   const [selectedLeadId, setSelectedLeadId] = useState<string | null>(null);
-  const [lastCampaign, setLastCampaign] = useState<CampaignInput | null>(null);
 
   const selectedLead = useMemo(
     () => leads.find((lead) => lead.id === selectedLeadId) ?? null,
@@ -18,16 +25,37 @@ export function LeadgenDashboard() {
   );
 
   function handleRun(campaign: CampaignInput) {
-    const generatedLeads = runMockPipeline(campaign);
-    setLeads(generatedLeads);
-    setSelectedLeadId(generatedLeads[0]?.id ?? null);
-    setLastCampaign(campaign);
+    const result = runMockPipeline(campaign);
+    setCampaign(result.campaign);
+    setLeads(result.leads);
+    setEvents(result.events);
+    setSelectedLeadId(result.leads[0]?.id ?? null);
   }
 
   function handleStatusChange(leadId: string, status: LeadStatus) {
+    const createdAt = new Date().toISOString();
+
     setLeads((currentLeads) =>
-      currentLeads.map((lead) => (lead.id === leadId ? { ...lead, status } : lead)),
+      currentLeads.map((lead) =>
+        lead.id === leadId ? { ...lead, status, updated_at: createdAt } : lead,
+      ),
     );
+
+    if (!campaign) {
+      return;
+    }
+
+    setEvents((currentEvents) => [
+      ...currentEvents,
+      {
+        id: `event-${campaign.id}-${leadId}-lead-status-changed-${createdAt}`,
+        campaign_id: campaign.id,
+        lead_id: leadId,
+        event_type: "lead_status_changed",
+        payload: { status },
+        created_at: createdAt,
+      },
+    ]);
   }
 
   return (
@@ -54,8 +82,8 @@ export function LeadgenDashboard() {
               <h2>Lead queue</h2>
             </div>
             <span className="table-meta">
-              {lastCampaign
-                ? `${leads.length} leads · ${lastCampaign.name}`
+              {campaign
+                ? `${leads.length} leads · ${campaign.name} · ${events.length} events`
                 : "Waiting for a campaign"}
             </span>
           </div>
