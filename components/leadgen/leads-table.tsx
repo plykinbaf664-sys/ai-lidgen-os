@@ -2,6 +2,13 @@
 
 import type { LeadgenLead } from "@/lib/leadgen/types";
 
+const statusLabels = {
+  new: "Новый",
+  approved: "Одобрен",
+  rejected: "Отклонен",
+  paused: "На паузе",
+} as const;
+
 type LeadsTableProps = {
   leads: LeadgenLead[];
   selectedLeadId: string | null;
@@ -16,10 +23,10 @@ export function LeadsTable({
   if (leads.length === 0) {
     return (
       <div className="empty-state">
-        <h3>No leads yet</h3>
+        <h3>Лидов пока нет</h3>
         <p>
-          Run the mock campaign to generate three fictional records and inspect
-          the first pipeline result.
+          Запустите тестовую кампанию, чтобы создать три фиктивных записи и
+          проверить результат процесса.
         </p>
       </div>
     );
@@ -30,11 +37,11 @@ export function LeadsTable({
       <table>
         <thead>
           <tr>
-            <th>Company</th>
-            <th>Best entry</th>
-            <th>Signal</th>
-            <th>Hook</th>
-            <th>Status</th>
+            <th>Компания</th>
+            <th>Лучший вход</th>
+            <th>Сигнал</th>
+            <th>Зацепка</th>
+            <th>Статус</th>
             <th>Telegram</th>
           </tr>
         </thead>
@@ -47,7 +54,7 @@ export function LeadsTable({
                     <strong>{lead.company_name}</strong>
                     <div className="company-domain">{lead.company_domain}</div>
                   </div>
-                  <span className="mock-pill">mock</span>
+                  <span className="mock-pill">тест</span>
                 </div>
               </td>
               <td>
@@ -57,7 +64,7 @@ export function LeadsTable({
                     <div className="company-domain">{lead.contact_value}</div>
                   </>
                 ) : (
-                  "No verified entry"
+                  "Нет подтвержденного входа"
                 )}
               </td>
               <td>
@@ -67,7 +74,7 @@ export function LeadsTable({
               <td>{lead.hook}</td>
               <td>
                 <span className={`status-pill status-${lead.status}`}>
-                  {lead.status}
+                  {statusLabels[lead.status]}
                 </span>
               </td>
               <td>
@@ -76,7 +83,7 @@ export function LeadsTable({
                   type="button"
                   onClick={() => onSelectLead(lead.id)}
                 >
-                  {selectedLeadId === lead.id ? "Selected" : "Preview"}
+                  {selectedLeadId === lead.id ? "Выбрано" : "Открыть"}
                 </button>
               </td>
             </tr>

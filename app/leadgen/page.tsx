@@ -6,18 +6,18 @@ export default function LeadgenPage() {
     <main className="shell">
       <header className="topbar">
         <div>
-          <p className="eyebrow">Internal operations panel</p>
+          <p className="eyebrow">Внутренняя панель управления</p>
           <h1>Leadgen OS</h1>
           <p className="muted">
-            Mock pipeline: company → best entry → signal → hook → message →
-            follow-up → Telegram preview.
+            Тестовый процесс: компания → лучший вход → сигнал → зацепка →
+            сообщение → повторное сообщение → предпросмотр Telegram-карточки.
           </p>
         </div>
-        <span className="system-badge">Telegram-first mock</span>
+        <span className="system-badge">Telegram-прототип</span>
       </header>
 
       <section className="panel campaign-panel">
-        <p className="eyebrow">Temporary fixed configuration</p>
+        <p className="eyebrow">Временная фиксированная конфигурация</p>
         <h2>{leadgenConfig.icp.label}</h2>
         <p className="muted">{leadgenConfig.offer.label}</p>
       </section>

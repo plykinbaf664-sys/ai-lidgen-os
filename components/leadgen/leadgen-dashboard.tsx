@@ -4,19 +4,23 @@ import { useMemo, useState } from "react";
 import { CampaignForm } from "@/components/leadgen/campaign-form";
 import { LeadsTable } from "@/components/leadgen/leads-table";
 import { TelegramCardPreview } from "@/components/leadgen/telegram-card-preview";
+import { TelegramNotifications } from "@/components/leadgen/telegram-notifications";
 import { runMockPipeline } from "@/lib/leadgen/mock-pipeline";
+import { prepareTelegramNotification } from "@/lib/leadgen/telegram-notification";
 import type {
   CampaignInput,
   LeadgenCampaign,
   LeadgenEvent,
   LeadgenLead,
   LeadStatus,
+  TelegramNotification,
 } from "@/lib/leadgen/types";
 
 export function LeadgenDashboard() {
   const [campaign, setCampaign] = useState<LeadgenCampaign | null>(null);
   const [leads, setLeads] = useState<LeadgenLead[]>([]);
   const [events, setEvents] = useState<LeadgenEvent[]>([]);
+  const [notifications, setNotifications] = useState<TelegramNotification[]>([]);
   const [selectedLeadId, setSelectedLeadId] = useState<string | null>(null);
 
   const selectedLead = useMemo(
@@ -29,6 +33,7 @@ export function LeadgenDashboard() {
     setCampaign(result.campaign);
     setLeads(result.leads);
     setEvents(result.events);
+    setNotifications(result.leads.map(prepareTelegramNotification));
     setSelectedLeadId(result.leads[0]?.id ?? null);
   }
 
@@ -63,11 +68,11 @@ export function LeadgenDashboard() {
       <section className="panel campaign-panel">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Campaign control</p>
-            <h2>Generate a mock lead batch</h2>
+            <p className="eyebrow">Управление кампанией</p>
+            <h2>Создать тестовую выборку лидов</h2>
             <p className="muted">
-              This local-only flow creates three fictional leads. No external
-              services are called.
+              Локальный сценарий создаст три фиктивных лида. Внешние сервисы
+              не используются.
             </p>
           </div>
         </div>
@@ -78,13 +83,13 @@ export function LeadgenDashboard() {
         <section className="panel table-panel">
           <div className="table-toolbar">
             <div>
-              <p className="eyebrow">Pipeline output</p>
-              <h2>Lead queue</h2>
+              <p className="eyebrow">Результат процесса</p>
+              <h2>Очередь лидов</h2>
             </div>
             <span className="table-meta">
               {campaign
-                ? `${leads.length} leads · ${campaign.name} · ${events.length} events`
-                : "Waiting for a campaign"}
+                ? `${leads.length} лидов · ${campaign.name} · ${events.length} событий`
+                : "Ожидание запуска кампании"}
             </span>
           </div>
           <LeadsTable
@@ -99,6 +104,9 @@ export function LeadgenDashboard() {
           onStatusChange={handleStatusChange}
         />
       </div>
+
+      <div style={{ height: 20 }} />
+      <TelegramNotifications leads={leads} notifications={notifications} />
     </>
   );
 }

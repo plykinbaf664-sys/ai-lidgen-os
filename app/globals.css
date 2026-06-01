@@ -331,6 +331,52 @@ tr:last-child td {
   line-height: 1.55;
 }
 
+.notification-list {
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+}
+
+.notification-item {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  background: var(--surface-muted);
+}
+
+.notification-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.notification-meta > div {
+  margin-right: auto;
+}
+
+.notification-meta h3,
+.notification-meta p {
+  margin-bottom: 0;
+}
+
+.notification-details {
+  margin-top: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+
+.notification-details p {
+  margin-bottom: 7px;
+  color: var(--text-muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.notification-details .telegram-card {
+  margin-top: 12px;
+}
+
 @media (max-width: 1080px) {
   .workspace-grid {
     grid-template-columns: 1fr;

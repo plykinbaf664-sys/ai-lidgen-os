@@ -8,8 +8,8 @@ type CampaignFormProps = {
 };
 
 export function CampaignForm({ onRun }: CampaignFormProps) {
-  const [name, setName] = useState("First mock campaign");
-  const [requestedBy, setRequestedBy] = useState("Leadgen operator");
+  const [name, setName] = useState("Первая тестовая кампания");
+  const [requestedBy, setRequestedBy] = useState("Оператор Leadgen OS");
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -19,7 +19,7 @@ export function CampaignForm({ onRun }: CampaignFormProps) {
   return (
     <form className="campaign-form" onSubmit={handleSubmit}>
       <label className="form-field">
-        <span>Campaign name</span>
+        <span>Название кампании</span>
         <input
           required
           value={name}
@@ -28,7 +28,7 @@ export function CampaignForm({ onRun }: CampaignFormProps) {
       </label>
 
       <label className="form-field">
-        <span>Requested by</span>
+        <span>Инициатор запуска</span>
         <input
           required
           value={requestedBy}
@@ -37,7 +37,7 @@ export function CampaignForm({ onRun }: CampaignFormProps) {
       </label>
 
       <button className="primary-button" type="submit">
-        Run mock pipeline
+        Запустить тестовый процесс
       </button>
     </form>
   );

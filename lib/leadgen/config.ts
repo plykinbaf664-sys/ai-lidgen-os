@@ -1,10 +1,10 @@
 export const leadgenConfig = {
   icp: {
-    label: "Mock ICP: B2B tech companies with a visible growth signal",
-    note: "Temporary hardcoded ICP for the first Leadgen OS pipeline iteration.",
+    label: "Тестовый ICP: B2B-технологические компании с заметным сигналом роста",
+    note: "Временный зашитый ICP для первой итерации процесса Leadgen OS.",
   },
   offer: {
-    label: "Mock offer: targeted outbound growth audit",
-    note: "Temporary hardcoded offer. Replace after ICP and offer validation.",
+    label: "Разбор точек роста в исходящих коммуникациях",
+    note: "Временная клиентская формулировка. Заменить после проверки ICP и оффера.",
   },
 } as const;

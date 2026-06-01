@@ -7,6 +7,12 @@ export type LeadgenEventType =
   | "lead_generated"
   | "lead_status_changed";
 
+export type TelegramNotificationStatus =
+  | "pending"
+  | "prepared"
+  | "sent"
+  | "failed";
+
 export type ContactChannel =
   | "decision-maker"
   | "department-head"
@@ -78,6 +84,15 @@ export type LeadgenEvent = {
   lead_id: string | null;
   event_type: LeadgenEventType;
   payload: Record<string, string>;
+  created_at: string;
+};
+
+export type TelegramNotification = {
+  id: string;
+  lead_id: string;
+  campaign_id: string;
+  telegram_card_text: string;
+  status: TelegramNotificationStatus;
   created_at: string;
 };
 

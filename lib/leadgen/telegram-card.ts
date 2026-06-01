@@ -1,27 +1,34 @@
 import type { LeadgenLead } from "@/lib/leadgen/types";
 
+const statusLabels: Record<LeadgenLead["status"], string> = {
+  new: "Новый",
+  approved: "Одобрен",
+  rejected: "Отклонен",
+  paused: "На паузе",
+};
+
 export function formatTelegramCard(lead: LeadgenLead): string {
   const contact = lead.contact_label
     ? `${lead.contact_label}: ${lead.contact_value}`
-    : "No verified contact found";
+    : "Подтвержденный контакт не найден";
 
   return [
-    `NEW LEAD: ${lead.company_name}`,
+    `НОВЫЙ ЛИД: ${lead.company_name}`,
     "",
-    `Segment: ${lead.company_segment}`,
-    `Website: ${lead.company_domain}`,
-    `Best available entry: ${contact}`,
+    `Сегмент: ${lead.company_segment}`,
+    `Сайт: ${lead.company_domain}`,
+    `Лучший доступный вход: ${contact}`,
     "",
-    `Signal: ${lead.signal_title}`,
+    `Сигнал: ${lead.signal_title}`,
     `${lead.signal_detail}`,
-    `Source: ${lead.signal_source_label}`,
+    `Источник: ${lead.signal_source_label}`,
     "",
-    `Hook: ${lead.hook}`,
+    `Зацепка: ${lead.hook}`,
     "",
-    `Message: ${lead.message}`,
+    `Сообщение: ${lead.message}`,
     "",
-    `Follow-up: ${lead.follow_up}`,
+    `Повторное сообщение: ${lead.follow_up}`,
     "",
-    `Status: ${lead.status}`,
+    `Статус: ${statusLabels[lead.status]}`,
   ].join("\n");
 }

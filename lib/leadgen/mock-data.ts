@@ -1,6 +1,6 @@
 import type { MockCompany } from "@/lib/leadgen/types";
 
-// These records are intentionally fictional and exist only to test the pipeline.
+// Эти записи намеренно фиктивны и нужны только для проверки процесса.
 export const mockCompanies: MockCompany[] = [
   {
     id: "northstar-cloud",
@@ -10,65 +10,65 @@ export const mockCompanies: MockCompany[] = [
     contacts: [
       {
         channel: "department-head",
-        label: "Head of Growth",
+        label: "Руководитель направления роста",
         value: "growth@northstar-cloud.example",
       },
       {
         channel: "general-email",
-        label: "General email",
+        label: "Общая электронная почта",
         value: "hello@northstar-cloud.example",
       },
     ],
     signal: {
-      title: "Hiring growth roles",
-      detail: "Three mock growth and sales vacancies are active.",
-      sourceLabel: "Mock careers page",
+      title: "Найм специалистов по росту",
+      detail: "Компания открыла три вакансии в направлениях роста и продаж.",
+      sourceLabel: "Тестовая страница вакансий",
     },
   },
   {
     id: "orbit-analytics",
     name: "Orbit Analytics",
     domain: "orbit-analytics.example",
-    segment: "Data platform",
+    segment: "Платформа данных",
     contacts: [
       {
         channel: "founder",
-        label: "Founder",
+        label: "Основатель",
         value: "founder@orbit-analytics.example",
       },
       {
         channel: "linkedin",
-        label: "Company LinkedIn",
+        label: "LinkedIn компании",
         value: "linkedin.com/company/orbit-analytics-example",
       },
     ],
     signal: {
-      title: "Product launch",
-      detail: "A mock launch announcement introduces a new analytics workspace.",
-      sourceLabel: "Mock company newsroom",
+      title: "Запуск продукта",
+      detail: "Компания представила новое аналитическое рабочее пространство.",
+      sourceLabel: "Тестовый раздел новостей компании",
     },
   },
   {
     id: "vector-ops",
     name: "Vector Ops",
     domain: "vector-ops.example",
-    segment: "Operations software",
+    segment: "ПО для управления операциями",
     contacts: [
       {
         channel: "general-email",
-        label: "General email",
+        label: "Общая электронная почта",
         value: "team@vector-ops.example",
       },
       {
         channel: "website-form",
-        label: "Website form",
+        label: "Форма на сайте",
         value: "vector-ops.example/contact",
       },
     ],
     signal: {
-      title: "High content cadence",
-      detail: "Five mock product education posts were published this month.",
-      sourceLabel: "Mock company blog",
+      title: "Высокий темп публикаций",
+      detail: "За месяц компания опубликовала пять обучающих материалов о продукте.",
+      sourceLabel: "Тестовый блог компании",
     },
   },
 ];

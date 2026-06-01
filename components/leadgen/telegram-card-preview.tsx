@@ -5,6 +5,13 @@ import type { LeadgenLead, LeadStatus } from "@/lib/leadgen/types";
 
 const statuses: LeadStatus[] = ["approved", "rejected", "paused", "new"];
 
+const statusLabels: Record<LeadStatus, string> = {
+  approved: "Одобрить",
+  rejected: "Отклонить",
+  paused: "Поставить на паузу",
+  new: "Вернуть в новые",
+};
+
 type TelegramCardPreviewProps = {
   lead: LeadgenLead | null;
   onStatusChange: (leadId: string, status: LeadStatus) => void;
@@ -18,10 +25,10 @@ export function TelegramCardPreview({
     <section className="panel preview-panel">
       <div className="preview-heading">
         <div>
-          <p className="eyebrow">Telegram-ready</p>
-          <h2>Card preview</h2>
+          <p className="eyebrow">Готово для Telegram</p>
+          <h2>Предпросмотр карточки</h2>
         </div>
-        <span className="mock-pill">no sending</span>
+        <span className="mock-pill">без отправки</span>
       </div>
 
       {lead ? (
@@ -37,15 +44,17 @@ export function TelegramCardPreview({
                 type="button"
                 onClick={() => onStatusChange(lead.id, status)}
               >
-                {status}
+                {statusLabels[status]}
               </button>
             ))}
           </div>
         </div>
       ) : (
         <div className="empty-state">
-          <h3>No card selected</h3>
-          <p>Generate leads, then open one record to inspect its Telegram card.</p>
+          <h3>Карточка не выбрана</h3>
+          <p>
+            Создайте лиды, затем откройте запись для проверки Telegram-карточки.
+          </p>
         </div>
       )}
     </section>

@@ -43,15 +43,15 @@ function detectSignal(company: MockCompany): Signal {
 }
 
 function createHook(company: MockCompany, signal: Signal): string {
-  return `${company.name}: noticed the ${signal.title.toLowerCase()} signal.`;
+  return `${company.name}: ${signal.detail}`;
 }
 
 function writeMessage(company: MockCompany, signal: Signal): string {
-  return `I saw that ${company.name} has a ${signal.title.toLowerCase()} signal. ${signal.detail} We are testing a focused ${leadgenConfig.offer.label.toLowerCase()} and this looks like a relevant moment to compare notes.`;
+  return `${signal.detail} В такие моменты исходящие коммуникации часто не успевают за изменениями: команда теряет часть подходящих компаний или выходит к ним с общим сообщением без убедительного повода ответить. Мы делаем ${leadgenConfig.offer.label.toLowerCase()}: находим приоритетные сегменты, реальные сигналы и точки входа, чтобы повысить долю содержательных ответов без массового спама. Могу прислать 3 гипотезы для ${company.name}?`;
 }
 
 function writeFollowUp(company: MockCompany): string {
-  return `Following up on the note about ${company.name}. Would a short outline of the audit be useful?`;
+  return `Коротко напомню о сообщении выше. Могу прислать 3 гипотезы для ${company.name}: без презентации и созвона на первом шаге. Посмотреть будет полезно?`;
 }
 
 function createRecordId(...parts: string[]): string {

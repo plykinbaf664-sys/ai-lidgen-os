@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Leadgen OS",
-  description: "Telegram-first lead generation operations panel",
+  description: "Telegram-first панель управления лидогенерацией",
 };
 
 export default function RootLayout({
