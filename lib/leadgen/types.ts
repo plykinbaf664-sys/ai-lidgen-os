@@ -50,6 +50,7 @@ export type MockCompany = {
 
 export type LeadgenCampaign = {
   id: string;
+  pipeline_run_id: string;
   name: string;
   requested_by: string;
   status: CampaignStatus;
@@ -60,6 +61,7 @@ export type LeadgenCampaign = {
 
 export type LeadgenLead = {
   id: string;
+  pipeline_run_id: string;
   campaign_id: string;
   company_name: string;
   company_domain: string;
@@ -80,6 +82,7 @@ export type LeadgenLead = {
 
 export type LeadgenEvent = {
   id: string;
+  pipeline_run_id: string;
   campaign_id: string;
   lead_id: string | null;
   event_type: LeadgenEventType;
@@ -89,11 +92,37 @@ export type LeadgenEvent = {
 
 export type TelegramNotification = {
   id: string;
+  pipeline_run_id: string;
   lead_id: string;
   campaign_id: string;
   telegram_card_text: string;
   status: TelegramNotificationStatus;
   created_at: string;
+};
+
+export type LeadgenCampaignSummary = {
+  id: string;
+  pipeline_run_id: string;
+  name: string;
+  status: CampaignStatus;
+  created_at: string;
+  companies_count: number;
+  contacts_count: number;
+};
+
+export type LeadgenCampaignDetailsStats = {
+  companies_count: number;
+  contacts_count: number;
+  notifications_count: number;
+  events_count: number;
+};
+
+export type LeadgenCampaignDetails = {
+  campaign: LeadgenCampaign;
+  leads: LeadgenLead[];
+  events: LeadgenEvent[];
+  notifications: TelegramNotification[];
+  stats: LeadgenCampaignDetailsStats;
 };
 
 export type MockPipelineResult = {

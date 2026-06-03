@@ -1,5 +1,6 @@
 create table if not exists public.leadgen_campaigns (
   id text primary key,
+  pipeline_run_id text not null,
   name text not null,
   requested_by text not null,
   status text not null
@@ -11,6 +12,7 @@ create table if not exists public.leadgen_campaigns (
 
 create table if not exists public.leadgen_leads (
   id text primary key,
+  pipeline_run_id text not null,
   campaign_id text not null
     references public.leadgen_campaigns (id)
     on delete cascade,
@@ -46,6 +48,7 @@ create table if not exists public.leadgen_leads (
 
 create table if not exists public.leadgen_events (
   id text primary key,
+  pipeline_run_id text not null,
   campaign_id text not null
     references public.leadgen_campaigns (id)
     on delete cascade,
@@ -66,6 +69,7 @@ create table if not exists public.leadgen_events (
 
 create table if not exists public.leadgen_telegram_notifications (
   id text primary key,
+  pipeline_run_id text not null,
   lead_id text not null
     references public.leadgen_leads (id)
     on delete cascade,
@@ -78,11 +82,20 @@ create table if not exists public.leadgen_telegram_notifications (
   created_at timestamptz not null default now()
 );
 
+create index if not exists leadgen_campaigns_pipeline_run_id_idx
+  on public.leadgen_campaigns (pipeline_run_id);
+
+create index if not exists leadgen_leads_pipeline_run_id_idx
+  on public.leadgen_leads (pipeline_run_id);
+
 create index if not exists leadgen_leads_campaign_id_idx
   on public.leadgen_leads (campaign_id);
 
 create index if not exists leadgen_leads_status_idx
   on public.leadgen_leads (status);
+
+create index if not exists leadgen_events_pipeline_run_id_idx
+  on public.leadgen_events (pipeline_run_id);
 
 create index if not exists leadgen_events_campaign_id_idx
   on public.leadgen_events (campaign_id);
@@ -92,6 +105,9 @@ create index if not exists leadgen_events_lead_id_idx
 
 create index if not exists leadgen_events_event_type_idx
   on public.leadgen_events (event_type);
+
+create index if not exists leadgen_telegram_notifications_pipeline_run_id_idx
+  on public.leadgen_telegram_notifications (pipeline_run_id);
 
 create index if not exists leadgen_telegram_notifications_campaign_id_idx
   on public.leadgen_telegram_notifications (campaign_id);

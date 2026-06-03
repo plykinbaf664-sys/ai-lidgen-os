@@ -64,10 +64,12 @@ function createRecordId(...parts: string[]): string {
 
 function buildCampaign(
   campaign: CampaignInput,
+  pipelineRunId: string,
   createdAt: string,
 ): LeadgenCampaign {
   return {
     id: createRecordId("campaign", campaign.name, createdAt),
+    pipeline_run_id: pipelineRunId,
     name: campaign.name,
     requested_by: campaign.requestedBy,
     status: "completed",
@@ -87,6 +89,7 @@ function buildLead(
 
   return {
     id: createRecordId("lead", campaign.id, company.id),
+    pipeline_run_id: campaign.pipeline_run_id,
     campaign_id: campaign.id,
     company_name: company.name,
     company_domain: company.domain,
@@ -107,6 +110,7 @@ function buildLead(
 }
 
 function buildEvent(
+  pipelineRunId: string,
   campaignId: string,
   leadId: string | null,
   eventType: LeadgenEvent["event_type"],
@@ -115,6 +119,7 @@ function buildEvent(
 ): LeadgenEvent {
   return {
     id: createRecordId("event", campaignId, leadId ?? "campaign", eventType),
+    pipeline_run_id: pipelineRunId,
     campaign_id: campaignId,
     lead_id: leadId,
     event_type: eventType,
@@ -125,12 +130,14 @@ function buildEvent(
 
 export function runMockPipeline(campaignInput: CampaignInput): MockPipelineResult {
   const createdAt = new Date().toISOString();
-  const campaign = buildCampaign(campaignInput, createdAt);
+  const pipelineRunId = createRecordId("pipeline-run", campaignInput.name, createdAt);
+  const campaign = buildCampaign(campaignInput, pipelineRunId, createdAt);
   const leads = findCompanies().map((company) =>
     buildLead(campaign, company, createdAt),
   );
   const events = [
     buildEvent(
+      pipelineRunId,
       campaign.id,
       null,
       "campaign_started",
@@ -139,6 +146,7 @@ export function runMockPipeline(campaignInput: CampaignInput): MockPipelineResul
     ),
     ...leads.map((lead) =>
       buildEvent(
+        pipelineRunId,
         campaign.id,
         lead.id,
         "lead_generated",

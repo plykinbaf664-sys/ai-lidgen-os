@@ -15,6 +15,7 @@ export function prepareTelegramNotification(
 
   return {
     id: createNotificationId(lead, createdAt),
+    pipeline_run_id: lead.pipeline_run_id,
     lead_id: lead.id,
     campaign_id: lead.campaign_id,
     telegram_card_text: formatTelegramCard(lead),
