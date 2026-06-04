@@ -4,6 +4,7 @@ import type {
   LeadgenCampaign,
   LeadgenEvent,
   LeadgenLead,
+  LeadgenSignal,
   MockPipelineResult,
   TelegramNotification,
 } from "@/lib/leadgen/types";
@@ -38,6 +39,7 @@ export async function GET() {
     const pipelineRunId = `test-storage-${Date.now()}`;
     const campaignId = `campaign-${pipelineRunId}`;
     const leadId = `lead-${pipelineRunId}`;
+    const signalId = `signal-${pipelineRunId}`;
     const eventId = `event-${pipelineRunId}`;
     const notificationId = `telegram-notification-${pipelineRunId}`;
 
@@ -62,6 +64,8 @@ export async function GET() {
       contact_channel: "general-email",
       contact_label: "Общая электронная почта",
       contact_value: "hello@storage-test.example",
+      company_source_url: "https://storage-test.example",
+      lead_score: 80,
       signal_title: "Тестовый сигнал",
       signal_detail: "Создана тестовая запись для проверки storage layer.",
       signal_source_label: "test-storage route",
@@ -71,6 +75,21 @@ export async function GET() {
       status: "new",
       created_at: createdAt,
       updated_at: createdAt,
+    };
+
+    const signal: LeadgenSignal = {
+      id: signalId,
+      pipeline_run_id: pipelineRunId,
+      campaign_id: campaignId,
+      lead_id: leadId,
+      signal_type: "TECH_SIGNAL",
+      signal_title: "Тестовый сигнал",
+      signal_detail: "Создана тестовая запись для проверки storage layer.",
+      signal_source_label: "test-storage route",
+      source_url: "https://storage-test.example/signal",
+      confidence_score: 80,
+      found_at: createdAt,
+      created_at: createdAt,
     };
 
     const event: LeadgenEvent = {
@@ -96,6 +115,7 @@ export async function GET() {
     const result: MockPipelineResult = {
       campaign,
       leads: [lead],
+      signals: [signal],
       events: [event],
     };
 

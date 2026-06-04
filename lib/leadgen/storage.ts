@@ -7,6 +7,7 @@ import type {
   LeadgenCampaignSummary,
   LeadgenEvent,
   LeadgenLead,
+  LeadgenSignal,
   MockPipelineResult,
   TelegramNotification,
 } from "@/lib/leadgen/types";
@@ -22,6 +23,7 @@ type SavePipelineResult = {
   pipeline_run_id: string;
   campaign_id: string;
   leads_count: number;
+  signals_count: number;
   events_count: number;
   notifications_count: number;
 };
@@ -74,6 +76,21 @@ async function saveEvents(
   }
 }
 
+async function saveSignals(
+  supabase: SupabaseServerClient,
+  signals: LeadgenSignal[],
+) {
+  if (signals.length === 0) {
+    return;
+  }
+
+  const { error } = await supabase.from("leadgen_signals").insert(signals);
+
+  if (error) {
+    throw error;
+  }
+}
+
 async function saveTelegramNotifications(
   supabase: SupabaseServerClient,
   notifications: TelegramNotification[],
@@ -116,6 +133,7 @@ export async function savePipelineResult({
   try {
     await saveCampaign(supabase, result.campaign);
     await saveLeads(supabase, result.leads);
+    await saveSignals(supabase, result.signals);
     await saveEvents(supabase, result.events);
     await saveTelegramNotifications(supabase, notifications);
   } catch (error) {
@@ -138,6 +156,7 @@ export async function savePipelineResult({
     pipeline_run_id: result.campaign.pipeline_run_id,
     campaign_id: result.campaign.id,
     leads_count: result.leads.length,
+    signals_count: result.signals.length,
     events_count: result.events.length,
     notifications_count: notifications.length,
   };
@@ -218,6 +237,7 @@ export async function getCampaignDetails(
 
   const [
     { data: leads, error: leadsError },
+    { data: signals, error: signalsError },
     { data: events, error: eventsError },
     { data: notifications, error: notificationsError },
   ] = await Promise.all([
@@ -227,6 +247,12 @@ export async function getCampaignDetails(
       .eq("campaign_id", campaignId)
       .order("created_at", { ascending: true })
       .returns<LeadgenLead[]>(),
+    supabase
+      .from("leadgen_signals")
+      .select("*")
+      .eq("campaign_id", campaignId)
+      .order("confidence_score", { ascending: false })
+      .returns<LeadgenSignal[]>(),
     supabase
       .from("leadgen_events")
       .select("*")
@@ -245,6 +271,10 @@ export async function getCampaignDetails(
     throw leadsError;
   }
 
+  if (signalsError) {
+    throw signalsError;
+  }
+
   if (eventsError) {
     throw eventsError;
   }
@@ -254,17 +284,20 @@ export async function getCampaignDetails(
   }
 
   const storedLeads = leads ?? [];
+  const storedSignals = signals ?? [];
   const storedEvents = events ?? [];
   const storedNotifications = notifications ?? [];
 
   return {
     campaign,
     leads: storedLeads,
+    signals: storedSignals,
     events: storedEvents,
     notifications: storedNotifications,
     stats: {
       companies_count: storedLeads.length,
       contacts_count: storedLeads.filter((lead) => lead.contact_value).length,
+      signals_count: storedSignals.length,
       notifications_count: storedNotifications.length,
       events_count: storedEvents.length,
     },

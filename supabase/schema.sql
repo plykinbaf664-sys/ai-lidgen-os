@@ -34,6 +34,8 @@ create table if not exists public.leadgen_leads (
     ),
   contact_label text,
   contact_value text,
+  company_source_url text,
+  lead_score numeric not null default 0,
   signal_title text not null,
   signal_detail text not null,
   signal_source_label text not null,
@@ -44,6 +46,36 @@ create table if not exists public.leadgen_leads (
     check (status in ('new', 'approved', 'rejected', 'paused')),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
+);
+
+create table if not exists public.leadgen_signals (
+  id text primary key,
+  pipeline_run_id text not null,
+  campaign_id text not null
+    references public.leadgen_campaigns (id)
+    on delete cascade,
+  lead_id text not null
+    references public.leadgen_leads (id)
+    on delete cascade,
+  signal_type text not null
+    check (
+      signal_type in (
+        'HIRING_SIGNAL',
+        'GO_TO_MARKET_SIGNAL',
+        'GROWTH_SIGNAL',
+        'CONTENT_SIGNAL',
+        'TRAFFIC_SIGNAL',
+        'TECH_SIGNAL'
+      )
+    ),
+  signal_title text not null,
+  signal_detail text not null,
+  signal_source_label text not null,
+  source_url text not null,
+  confidence_score numeric not null
+    check (confidence_score >= 0 and confidence_score <= 100),
+  found_at timestamptz not null,
+  created_at timestamptz not null default now()
 );
 
 create table if not exists public.leadgen_events (
@@ -93,6 +125,24 @@ create index if not exists leadgen_leads_campaign_id_idx
 
 create index if not exists leadgen_leads_status_idx
   on public.leadgen_leads (status);
+
+create index if not exists leadgen_leads_lead_score_idx
+  on public.leadgen_leads (lead_score);
+
+create index if not exists leadgen_signals_pipeline_run_id_idx
+  on public.leadgen_signals (pipeline_run_id);
+
+create index if not exists leadgen_signals_campaign_id_idx
+  on public.leadgen_signals (campaign_id);
+
+create index if not exists leadgen_signals_lead_id_idx
+  on public.leadgen_signals (lead_id);
+
+create index if not exists leadgen_signals_signal_type_idx
+  on public.leadgen_signals (signal_type);
+
+create index if not exists leadgen_signals_confidence_score_idx
+  on public.leadgen_signals (confidence_score);
 
 create index if not exists leadgen_events_pipeline_run_id_idx
   on public.leadgen_events (pipeline_run_id);

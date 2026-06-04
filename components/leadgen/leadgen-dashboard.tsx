@@ -14,6 +14,7 @@ import type {
   LeadgenCampaign,
   LeadgenEvent,
   LeadgenLead,
+  LeadgenSignal,
   LeadStatus,
   TelegramNotification,
 } from "@/lib/leadgen/types";
@@ -23,6 +24,7 @@ type RunLeadgenResponse =
       success: true;
       campaign: LeadgenCampaign;
       leads: LeadgenLead[];
+      signals: LeadgenSignal[];
       events: LeadgenEvent[];
       notifications: TelegramNotification[];
     }

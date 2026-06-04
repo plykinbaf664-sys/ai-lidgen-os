@@ -175,6 +175,24 @@ input:focus {
   box-shadow: 0 0 0 3px var(--brand-soft);
 }
 
+a {
+  color: var(--brand);
+}
+
+.source-link {
+  display: inline-flex;
+  margin-top: 7px;
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.source-link:hover {
+  color: var(--brand-dark);
+  text-decoration: underline;
+}
+
 .primary-button {
   align-self: end;
   min-height: 46px;
@@ -459,7 +477,7 @@ tr:last-child td {
 
 .campaign-details-stats {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 12px;
 }
 
@@ -491,7 +509,7 @@ tr:last-child td {
 
 .campaign-details-lead-main {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(180px, 0.7fr) auto;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 0.7fr) auto auto;
   align-items: center;
   gap: 14px;
 }
@@ -510,6 +528,26 @@ tr:last-child td {
 
 .campaign-details-signal h4 {
   margin: 6px 0;
+}
+
+.campaign-details-signal-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.campaign-details-signal-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+}
+
+.campaign-details-signal-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .campaign-details-signal p,

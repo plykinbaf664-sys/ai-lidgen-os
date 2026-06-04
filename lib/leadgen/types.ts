@@ -13,6 +13,14 @@ export type TelegramNotificationStatus =
   | "sent"
   | "failed";
 
+export type SignalType =
+  | "HIRING_SIGNAL"
+  | "GO_TO_MARKET_SIGNAL"
+  | "GROWTH_SIGNAL"
+  | "CONTENT_SIGNAL"
+  | "TRAFFIC_SIGNAL"
+  | "TECH_SIGNAL";
+
 export type ContactChannel =
   | "decision-maker"
   | "department-head"
@@ -34,9 +42,13 @@ export type Contact = {
 };
 
 export type Signal = {
+  type: SignalType;
   title: string;
   detail: string;
   sourceLabel: string;
+  sourceUrl: string;
+  confidenceScore: number;
+  foundAt: string;
 };
 
 export type MockCompany = {
@@ -46,6 +58,7 @@ export type MockCompany = {
   segment: string;
   contacts: Contact[];
   signal: Signal;
+  signals: Signal[];
 };
 
 export type LeadgenCampaign = {
@@ -69,6 +82,8 @@ export type LeadgenLead = {
   contact_channel: ContactChannel | null;
   contact_label: string | null;
   contact_value: string | null;
+  company_source_url: string | null;
+  lead_score: number;
   signal_title: string;
   signal_detail: string;
   signal_source_label: string;
@@ -78,6 +93,30 @@ export type LeadgenLead = {
   status: LeadStatus;
   created_at: string;
   updated_at: string;
+};
+
+export type LeadgenSignal = {
+  id: string;
+  pipeline_run_id: string;
+  campaign_id: string;
+  lead_id: string;
+  signal_type: SignalType;
+  signal_title: string;
+  signal_detail: string;
+  signal_source_label: string;
+  source_url: string;
+  confidence_score: number;
+  found_at: string;
+  created_at: string;
+};
+
+export type LeadCandidate = {
+  company_name: string;
+  company_domain: string;
+  company_segment: string;
+  company_source_url: string;
+  signals: LeadgenSignal[];
+  lead_score: number;
 };
 
 export type LeadgenEvent = {
@@ -113,6 +152,7 @@ export type LeadgenCampaignSummary = {
 export type LeadgenCampaignDetailsStats = {
   companies_count: number;
   contacts_count: number;
+  signals_count: number;
   notifications_count: number;
   events_count: number;
 };
@@ -120,6 +160,7 @@ export type LeadgenCampaignDetailsStats = {
 export type LeadgenCampaignDetails = {
   campaign: LeadgenCampaign;
   leads: LeadgenLead[];
+  signals: LeadgenSignal[];
   events: LeadgenEvent[];
   notifications: TelegramNotification[];
   stats: LeadgenCampaignDetailsStats;
@@ -128,5 +169,6 @@ export type LeadgenCampaignDetails = {
 export type MockPipelineResult = {
   campaign: LeadgenCampaign;
   leads: LeadgenLead[];
+  signals: LeadgenSignal[];
   events: LeadgenEvent[];
 };

@@ -51,6 +51,7 @@ export async function POST(request: Request) {
       pipeline_run_id: result.campaign.pipeline_run_id,
       campaign: result.campaign,
       leads: result.leads,
+      signals: result.signals,
       events: result.events,
       notifications,
       saved,
