@@ -2,7 +2,9 @@ import type { SearchResult } from "@/lib/leadgen/search/search-provider";
 import type { SourceClassificationResult } from "@/lib/leadgen/signals/source-classifier";
 
 export type CompanyExtractionSource =
-  | "domain"
+  | "explicit_pattern"
+  | "structured_job_text"
+  | "company_domain"
   | "title"
   | "snippet"
   | "unknown";
@@ -10,8 +12,12 @@ export type CompanyExtractionSource =
 export type CompanyExtractionResult = {
   company_name: string | null;
   company_domain: string | null;
+  source_platform: string | null;
+  source_domain: string | null;
   extraction_confidence: number;
   extraction_source: CompanyExtractionSource;
+  is_candidate_company_valid: boolean;
+  validation_reason: string;
   extraction_reason: string;
 };
 
@@ -24,6 +30,12 @@ const platformDomains = [
   "lever.co",
   "ashbyhq.com",
   "workable.com",
+  "workdayjobs.com",
+  "myworkdayjobs.com",
+  "successfactors.com",
+  "smartrecruiters.com",
+  "recruitee.com",
+  "paycor.com",
   "ziprecruiter.",
   "youtube.com",
   "t.me",
@@ -44,11 +56,17 @@ const platformDomains = [
 ];
 
 const companyTitlePatterns = [
+  /\bcareers\s+at\s+([A-Z][A-Za-z0-9&.,' -]{2,60})\b/i,
+  /\bjoin\s+([A-Z][A-Za-z0-9&.,' -]{2,60})\b/,
+  /\b([A-Z][A-Za-z0-9&.,' -]{2,60})\s+is\s+hiring\b/,
   /\bat\s+([A-Z][A-Za-z0-9&.,' -]{2,60})\b/,
   /\bwith\s+([A-Z][A-Za-z0-9&.,' -]{2,60})\b/,
   /-\s*([A-Z][A-Za-z0-9&.,' -]{2,60})$/,
   /\|\s*([A-Z][A-Za-z0-9&.,' -]{2,60})$/,
-  /\bв\s+([А-ЯЁA-Z][А-ЯЁа-яёA-Za-z0-9&.,' -]{2,60})\b/,
+  /\bв\s+компании\s+([А-ЯЁA-Z][А-ЯЁа-яёA-Za-z0-9&.,' -]{2,60})\b/i,
+  /\bкомпания\s+([А-ЯЁA-Z][А-ЯЁа-яёA-Za-z0-9&.,' -]{2,60})\s+ищет\b/i,
+  /\b([А-ЯЁA-Z][А-ЯЁа-яёA-Za-z0-9&.,' -]{2,60})\s+открыла\s+вакансию\b/i,
+  /\bработа\s+в\s+компании\s+([А-ЯЁA-Z][А-ЯЁа-яёA-Za-z0-9&.,' -]{2,60})\b/i,
 ];
 
 const aggregateTitlePatterns = [
@@ -61,12 +79,50 @@ const aggregateTitlePatterns = [
   /\bработа\b/i,
 ];
 
+const invalidCompanyNamePatterns = [
+  /^indeed$/i,
+  /^linkedin$/i,
+  /^hh(\.ru)?$/i,
+  /^ziprecruiter$/i,
+  /^glassdoor$/i,
+  /^greenhouse$/i,
+  /^lever$/i,
+  /^ashby$/i,
+  /^workday$/i,
+  /^successfactors$/i,
+  /^smartrecruiters$/i,
+  /^recruitee$/i,
+  /^workable$/i,
+  /^paycor$/i,
+  /^jobs?$/i,
+  /^careers?$/i,
+  /^vacancies$/i,
+  /^работа$/i,
+  /^вакансии$/i,
+  /\bjobs\b/i,
+  /\bcareers\b/i,
+  /\bvacancies\b/i,
+  /\bвакансии\b/i,
+];
+
 function getDomain(url: string): string | null {
   try {
     return new URL(url).hostname.replace(/^www\./, "");
   } catch {
     return null;
   }
+}
+
+function getSourcePlatform(domain: string | null): string | null {
+  if (!domain) {
+    return null;
+  }
+
+  if (isPlatformDomain(domain)) {
+    return domain;
+  }
+
+  return null;
 }
 
 function isPlatformDomain(domain: string | null): boolean {
@@ -91,10 +147,59 @@ function humanizeDomain(domain: string): string {
 
 function cleanCompanyName(value: string): string {
   return value
+    .replace(/^career(s)?\s+at\s+/i, "")
+    .replace(/^job(s)?\s+at\s+/i, "")
     .replace(/\s+\((now hiring|hiring|jobs).*$/i, "")
     .replace(/\s+(jobs|careers|vacancies).*$/i, "")
     .replace(/[|,-]\s*(careers|jobs|vacancies).*$/i, "")
     .trim();
+}
+
+function validateCompanyName(
+  companyName: string | null,
+  sourceDomain: string | null,
+): Pick<
+  CompanyExtractionResult,
+  "is_candidate_company_valid" | "validation_reason"
+> {
+  if (!companyName) {
+    return {
+      is_candidate_company_valid: false,
+      validation_reason: "No candidate company extracted",
+    };
+  }
+
+  const normalizedCompanyName = companyName.toLowerCase();
+  const normalizedSourceDomain = sourceDomain?.toLowerCase() ?? "";
+
+  if (companyName.length < 2) {
+    return {
+      is_candidate_company_valid: false,
+      validation_reason: "Candidate company name is too short",
+    };
+  }
+
+  if (
+    normalizedSourceDomain &&
+    normalizedCompanyName === normalizedSourceDomain.replace(/\..*$/, "")
+  ) {
+    return {
+      is_candidate_company_valid: false,
+      validation_reason: "Candidate company equals source platform/domain",
+    };
+  }
+
+  if (invalidCompanyNamePatterns.some((pattern) => pattern.test(companyName))) {
+    return {
+      is_candidate_company_valid: false,
+      validation_reason: "Candidate company looks like a platform or generic category",
+    };
+  }
+
+  return {
+    is_candidate_company_valid: true,
+    validation_reason: "Candidate company passed validation",
+  };
 }
 
 function extractFromText(text: string): string | null {
@@ -110,58 +215,112 @@ function extractFromText(text: string): string | null {
   return null;
 }
 
+function buildExtractionResult({
+  companyName,
+  companyDomain,
+  sourcePlatform,
+  sourceDomain,
+  extractionConfidence,
+  extractionSource,
+  extractionReason,
+}: {
+  companyName: string | null;
+  companyDomain: string | null;
+  sourcePlatform: string | null;
+  sourceDomain: string | null;
+  extractionConfidence: number;
+  extractionSource: CompanyExtractionSource;
+  extractionReason: string;
+}): CompanyExtractionResult {
+  const validation = validateCompanyName(companyName, sourceDomain);
+
+  return {
+    company_name: companyName,
+    company_domain: validation.is_candidate_company_valid ? companyDomain : null,
+    source_platform: sourcePlatform,
+    source_domain: sourceDomain,
+    extraction_confidence: validation.is_candidate_company_valid
+      ? extractionConfidence
+      : 0,
+    extraction_source: extractionSource,
+    ...validation,
+    extraction_reason: extractionReason,
+  };
+}
+
 export function extractCompanyFromSearchResult(
   result: SearchResult,
   source: SourceClassificationResult,
 ): CompanyExtractionResult {
   const domain = getDomain(result.url);
-
-  if (
+  const sourcePlatform = getSourcePlatform(domain);
+  const isCompanyOwnedSource =
     domain &&
     !isPlatformDomain(domain) &&
     (source.source_type === "company_site" ||
       source.source_type === "company_careers" ||
       source.source_type === "blog" ||
-      source.source_type === "press_release")
-  ) {
-    return {
-      company_name: humanizeDomain(domain),
-      company_domain: domain,
-      extraction_confidence: 82,
-      extraction_source: "domain",
-      extraction_reason: "Company-like domain extracted from source URL",
-    };
+      source.source_type === "press_release");
+
+  if (isCompanyOwnedSource) {
+    return buildExtractionResult({
+      companyName: humanizeDomain(domain),
+      companyDomain: domain,
+      sourcePlatform,
+      sourceDomain: domain,
+      extractionConfidence: 82,
+      extractionSource: "company_domain",
+      extractionReason: "Company-like domain extracted from source URL",
+    });
   }
 
   const titleCompany = extractFromText(result.title);
 
   if (titleCompany) {
-    return {
-      company_name: titleCompany,
-      company_domain: null,
-      extraction_confidence: 70,
-      extraction_source: "title",
-      extraction_reason: "Company name pattern extracted from result title",
-    };
+    return buildExtractionResult({
+      companyName: titleCompany,
+      companyDomain: null,
+      sourcePlatform,
+      sourceDomain: domain,
+      extractionConfidence:
+        source.source_type === "job_board" || source.source_type === "aggregator"
+          ? 74
+          : 70,
+      extractionSource:
+        source.source_type === "job_board" || source.source_type === "aggregator"
+          ? "structured_job_text"
+          : "explicit_pattern",
+      extractionReason: "Company name pattern extracted from result title",
+    });
   }
 
   const snippetCompany = extractFromText(result.snippet);
 
   if (snippetCompany) {
-    return {
-      company_name: snippetCompany,
-      company_domain: null,
-      extraction_confidence: 56,
-      extraction_source: "snippet",
-      extraction_reason: "Company name pattern extracted from result snippet",
-    };
+    return buildExtractionResult({
+      companyName: snippetCompany,
+      companyDomain: null,
+      sourcePlatform,
+      sourceDomain: domain,
+      extractionConfidence:
+        source.source_type === "job_board" || source.source_type === "aggregator"
+          ? 64
+          : 56,
+      extractionSource:
+        source.source_type === "job_board" || source.source_type === "aggregator"
+          ? "structured_job_text"
+          : "snippet",
+      extractionReason: "Company name pattern extracted from result snippet",
+    });
   }
 
-  return {
-    company_name: null,
-    company_domain: domain && !isPlatformDomain(domain) ? domain : null,
-    extraction_confidence: 0,
-    extraction_source: "unknown",
-    extraction_reason: "No specific company could be extracted",
-  };
+  return buildExtractionResult({
+    companyName: null,
+    companyDomain: null,
+    sourcePlatform,
+    sourceDomain: domain,
+    extractionConfidence: 0,
+    extractionSource: "unknown",
+    extractionReason: "No specific company could be extracted",
+  });
 }

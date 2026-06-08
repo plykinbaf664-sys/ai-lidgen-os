@@ -14,7 +14,8 @@ export type EvidenceRejectionReason =
   | "insufficient_evidence"
   | "irrelevant_intent"
   | "aggregator_without_company"
-  | "company_not_extracted";
+  | "company_not_extracted"
+  | "invalid_company_candidate";
 
 export type EvidenceResult = {
   is_valid_signal: boolean;
@@ -439,6 +440,12 @@ function getRejectionReason({
     return "aggregator_without_company";
   }
 
+  if (!companyExtraction.is_candidate_company_valid) {
+    return companyExtraction.company_name
+      ? "invalid_company_candidate"
+      : "company_not_extracted";
+  }
+
   if (sourceType === "job_board" && !companyExtraction.company_name) {
     return "company_not_extracted";
   }
@@ -559,7 +566,10 @@ export function collectSignalEvidence({
   const isAggregatorWithoutCompany =
     sourceClassification.source_type === "aggregator" &&
     !companyExtraction.company_name;
-  const decision = isAggregatorWithoutCompany
+  const hasInvalidCompanyCandidate =
+    Boolean(companyExtraction.company_name) &&
+    !companyExtraction.is_candidate_company_valid;
+  const decision = isAggregatorWithoutCompany || hasInvalidCompanyCandidate
     ? "rejected"
     : decideEvidence(confidenceScore);
   const rejectionReason =

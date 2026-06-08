@@ -147,7 +147,11 @@ export function buildLeadCandidates(
     const companyName = evidence.company_extraction.company_name;
     const candidateKey = getCandidateKey(evidence);
 
-    if (!companyName || !candidateKey) {
+    if (
+      !companyName ||
+      !evidence.company_extraction.is_candidate_company_valid ||
+      !candidateKey
+    ) {
       skippedEvidence.push(evidence);
       continue;
     }
