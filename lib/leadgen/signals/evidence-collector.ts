@@ -77,6 +77,9 @@ const signalEvidenceProfiles: Record<SignalType, SignalEvidenceProfile> = {
       en: [
         "we are hiring",
         "join our team",
+        "join the team",
+        "when you join",
+        "members of our team",
         "open roles",
         "open positions",
         "hiring sales",
@@ -303,6 +306,22 @@ function findLocalizedMatches(
     ...findMatches(text, localizedTerms.en),
     ...findMatches(text, localizedTerms.ru),
   ];
+}
+
+function findSupplementalIcpMatches(text: string): string[] {
+  const supplementalPatterns: Array<[string, RegExp]> = [
+    ["software", /\bsoftware\b/i],
+    ["technology", /\btechnolog(?:y|ies)\b/i],
+    ["platform", /\bplatform\b/i],
+    ["cloud", /\bcloud\b/i],
+    ["automation", /\bautomation\b/i],
+    ["CRM", /\bcrm\b/i],
+    ["AI", /\bai\b/i],
+  ];
+
+  return supplementalPatterns
+    .filter(([, pattern]) => pattern.test(text))
+    .map(([term]) => term);
 }
 
 function unique(values: string[]): string[] {
@@ -540,6 +559,7 @@ export function collectSignalEvidence({
     ...findLocalizedMatches(searchText, icp.industries),
     ...findLocalizedMatches(searchText, icp.companyTypes),
     ...findLocalizedMatches(searchText, icp.keywords),
+    ...findSupplementalIcpMatches(searchText),
   ]);
   const matchedSourceHints = unique(
     findLocalizedMatches(searchText, icp.signalSourceHints[signalType]),

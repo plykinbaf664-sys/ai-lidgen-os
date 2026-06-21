@@ -15,7 +15,7 @@ type BuildLeadCandidatesResult = {
 };
 
 function normalizeCompanyName(companyName: string): string {
-  return companyName.toLowerCase().replace(/[^a-zа-яё0-9]+/gi, "-");
+  return companyName.toLowerCase().replace(/[^a-z\u0430-\u044f\u04510-9]+/gi, "-");
 }
 
 function getCandidateKey(evidence: EvidenceResult): string | null {

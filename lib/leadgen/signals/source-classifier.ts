@@ -20,15 +20,23 @@ export type SourceClassificationResult = {
 };
 
 const jobBoardDomains = [
-  "indeed.",
-  "glassdoor.",
-  "linkedin.",
   "hh.ru",
+  "linkedin.com",
+  "indeed.com",
+  "ziprecruiter.com",
+  "glassdoor.com",
   "greenhouse.io",
   "lever.co",
   "ashbyhq.com",
   "workable.com",
-  "ziprecruiter.",
+  "workdayjobs.com",
+  "myworkdayjobs.com",
+  "successfactors.com",
+  "successfactors.eu",
+  "smartrecruiters.com",
+  "recruitee.com",
+  "paycor.com",
+  "welcometothejungle.com",
 ];
 
 const socialDomains = [
@@ -53,12 +61,15 @@ const newsDomains = [
 ];
 
 const directoryDomains = [
+  "builtin.com",
   "g2.com",
   "capterra.com",
   "crunchbase.com",
   "clutch.co",
   "tracxn.com",
   "getapp.com",
+  "repvue.com",
+  "topstartups.io",
 ];
 
 const careerPathHints = [
@@ -79,9 +90,10 @@ const aggregatorPhrases = [
   "1000+",
   "100+",
   "now hiring",
-  "вакансии по всей",
-  "все вакансии",
-  "работа в ",
+  "built in ",
+  "\u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438 \u043f\u043e \u0432\u0441\u0435\u0439",
+  "\u0432\u0441\u0435 \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438",
+  "\u0440\u0430\u0431\u043e\u0442\u0430 \u0432 ",
 ];
 
 function normalizeText(value: string): string {
@@ -108,7 +120,7 @@ function domainIncludesAny(
     return false;
   }
 
-  return domains.some((item) => domain.includes(item));
+  return domains.some((item) => domain === item || domain.endsWith(`.${item}`));
 }
 
 export function classifySearchResultSource(
@@ -126,6 +138,15 @@ export function classifySearchResultSource(
     }
   })();
 
+  if (domainIncludesAny(domain, jobBoardDomains)) {
+    return {
+      source_type: "job_board",
+      source_domain: domain,
+      classification_confidence: 84,
+      classification_reason: "Known job platform or hosted applicant tracking system",
+    };
+  }
+
   if (includesAny(text, aggregatorPhrases)) {
     return {
       source_type: "aggregator",
@@ -135,12 +156,12 @@ export function classifySearchResultSource(
     };
   }
 
-  if (domainIncludesAny(domain, jobBoardDomains)) {
+  if (domainIncludesAny(domain, directoryDomains)) {
     return {
-      source_type: "job_board",
+      source_type: "directory",
       source_domain: domain,
-      classification_confidence: 78,
-      classification_reason: "Known job board or hosted applicant tracking system",
+      classification_confidence: 76,
+      classification_reason: "Known directory or regional jobs listing source",
     };
   }
 
@@ -148,7 +169,7 @@ export function classifySearchResultSource(
     includesAny(path, careerPathHints) ||
     text.includes("careers") ||
     text.includes("open positions") ||
-    text.includes("вакансии")
+    text.includes("\u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438")
   ) {
     return {
       source_type: "company_careers",
@@ -160,7 +181,7 @@ export function classifySearchResultSource(
 
   if (
     text.includes("press release") ||
-    text.includes("пресс-релиз") ||
+    text.includes("\u043f\u0440\u0435\u0441\u0441-\u0440\u0435\u043b\u0438\u0437") ||
     text.includes("announces")
   ) {
     return {
@@ -180,7 +201,11 @@ export function classifySearchResultSource(
     };
   }
 
-  if (text.includes("blog") || text.includes("resources") || text.includes("блог")) {
+  if (
+    text.includes("blog") ||
+    text.includes("resources") ||
+    text.includes("\u0431\u043b\u043e\u0433")
+  ) {
     return {
       source_type: "blog",
       source_domain: domain,
@@ -195,15 +220,6 @@ export function classifySearchResultSource(
       source_domain: domain,
       classification_confidence: 66,
       classification_reason: "Public social platform detected",
-    };
-  }
-
-  if (domainIncludesAny(domain, directoryDomains)) {
-    return {
-      source_type: "directory",
-      source_domain: domain,
-      classification_confidence: 70,
-      classification_reason: "Company directory or software listing detected",
     };
   }
 
