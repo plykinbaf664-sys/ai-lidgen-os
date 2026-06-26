@@ -16,7 +16,7 @@ export function formatTelegramCard(lead: LeadgenLead): string {
     `НОВЫЙ ЛИД: ${lead.company_name}`,
     "",
     `Сегмент: ${lead.company_segment}`,
-    `Сайт: ${lead.company_domain}`,
+    `Сайт: ${lead.company_domain ?? "не найден"}`,
     `Лучший доступный вход: ${contact}`,
     "",
     `Сигнал: ${lead.signal_title}`,

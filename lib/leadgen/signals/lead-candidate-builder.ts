@@ -1,4 +1,5 @@
 import type { EvidenceResult } from "@/lib/leadgen/signals/evidence-collector";
+import { scoreIcpFit } from "@/lib/leadgen/signals/icp-fit-scorer";
 import type { LeadCandidate, LeadgenSignal } from "@/lib/leadgen/types";
 
 type CandidateGroup = {
@@ -51,6 +52,7 @@ function toLeadgenSignal(
     pipeline_run_id: "candidate-test",
     campaign_id: "candidate-test",
     lead_id: "candidate-test",
+    company_id: null,
     signal_type: evidence.signal_type,
     signal_title: evidence.signal_title,
     signal_detail: evidence.signal_detail,
@@ -102,11 +104,13 @@ function calculateLeadScore(evidence: EvidenceResult[]): number {
     evidence.flatMap((item) => item.matched_icp_terms),
   );
   const icpMatchBonus = Math.min(uniqueIcpTerms.size * 2, 10);
+  const { icp_fit_score: icpFitScore } = scoreIcpFit(evidence);
 
   return Math.min(
     Math.round(
-      maxConfidence * 0.4 +
-        averageConfidence * 0.25 +
+      maxConfidence * 0.28 +
+        averageConfidence * 0.2 +
+        icpFitScore * 0.28 +
         signalCountBonus +
         sourceQualityBonus +
         icpMatchBonus,
@@ -121,14 +125,49 @@ function getCompanySegment(evidence: EvidenceResult[]): string {
   return icpTerms[0] ?? "ICP-matched company";
 }
 
+function getGtmSignalType(
+  evidence: EvidenceResult[],
+): LeadCandidate["gtm_signal_type"] {
+  const gtmEvidence = evidence
+    .filter((item) => item.signal_type === "GO_TO_MARKET_SIGNAL")
+    .sort(
+      (left, right) =>
+        right.event_strength_breakdown.event_evidence_score -
+        left.event_strength_breakdown.event_evidence_score,
+    )[0];
+
+  return gtmEvidence?.event_strength_breakdown.gtm_signal_type;
+}
+
+function getEvidenceLanguage(
+  evidence: EvidenceResult[],
+): LeadCandidate["evidence_language"] {
+  const languages = evidence.map((item) => item.evidence_language);
+
+  if (languages.includes("mixed")) {
+    return "mixed";
+  }
+
+  const ruCount = languages.filter((language) => language === "ru").length;
+  const enCount = languages.filter((language) => language === "en").length;
+
+  return ruCount > enCount ? "ru" : "en";
+}
+
 function createLeadCandidate(group: CandidateGroup): LeadCandidate {
+  const icpFit = scoreIcpFit(group.evidence);
+
   return {
     company_name: group.companyName,
-    company_domain: group.companyDomain ?? "",
+    company_domain: group.companyDomain,
     company_segment: getCompanySegment(group.evidence),
     company_source_url: group.companySourceUrl,
     signals: group.signals,
     lead_score: calculateLeadScore(group.evidence),
+    icp_fit_score: icpFit.icp_fit_score,
+    icp_fit_breakdown: icpFit.breakdown,
+    gtm_signal_type: getGtmSignalType(group.evidence),
+    evidence_language: getEvidenceLanguage(group.evidence),
   };
 }
 

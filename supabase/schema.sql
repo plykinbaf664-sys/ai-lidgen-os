@@ -10,14 +10,57 @@ create table if not exists public.leadgen_campaigns (
   created_at timestamptz not null default now()
 );
 
-create table if not exists public.leadgen_leads (
+create table if not exists public.leadgen_companies (
   id text primary key,
   pipeline_run_id text not null,
   campaign_id text not null
     references public.leadgen_campaigns (id)
     on delete cascade,
   company_name text not null,
-  company_domain text not null,
+  company_domain text,
+  company_segment text not null,
+  source text not null default 'signal_pipeline',
+  source_url text,
+  source_label text,
+  signal_type text not null
+    check (
+      signal_type in (
+        'HIRING_SIGNAL',
+        'GO_TO_MARKET_SIGNAL',
+        'GROWTH_SIGNAL',
+        'CONTENT_SIGNAL',
+        'TRAFFIC_SIGNAL',
+        'TECH_SIGNAL'
+      )
+    ),
+  discovery_query text,
+  matched_signal_count integer not null default 0
+    check (matched_signal_count >= 0),
+  lead_score numeric not null default 0,
+  icp_fit_score numeric not null default 0
+    check (icp_fit_score >= 0 and icp_fit_score <= 100),
+  confidence_score numeric not null default 0
+    check (confidence_score >= 0 and confidence_score <= 100),
+  country text,
+  industry text,
+  company_size text,
+  linkedin_url text,
+  metadata jsonb not null default '{}'::jsonb,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.leadgen_leads (
+  id text primary key,
+  pipeline_run_id text not null,
+  campaign_id text not null
+    references public.leadgen_campaigns (id)
+    on delete cascade,
+  company_id text
+    references public.leadgen_companies (id)
+    on delete cascade,
+  company_name text not null,
+  company_domain text,
   company_segment text not null,
   contact_channel text
     check (
@@ -36,6 +79,8 @@ create table if not exists public.leadgen_leads (
   contact_value text,
   company_source_url text,
   lead_score numeric not null default 0,
+  icp_fit_score numeric not null default 0
+    check (icp_fit_score >= 0 and icp_fit_score <= 100),
   signal_title text not null,
   signal_detail text not null,
   signal_source_label text not null,
@@ -56,6 +101,9 @@ create table if not exists public.leadgen_signals (
     on delete cascade,
   lead_id text not null
     references public.leadgen_leads (id)
+    on delete cascade,
+  company_id text
+    references public.leadgen_companies (id)
     on delete cascade,
   signal_type text not null
     check (
@@ -123,11 +171,35 @@ create index if not exists leadgen_leads_pipeline_run_id_idx
 create index if not exists leadgen_leads_campaign_id_idx
   on public.leadgen_leads (campaign_id);
 
+create index if not exists leadgen_leads_company_id_idx
+  on public.leadgen_leads (company_id);
+
 create index if not exists leadgen_leads_status_idx
   on public.leadgen_leads (status);
 
 create index if not exists leadgen_leads_lead_score_idx
   on public.leadgen_leads (lead_score);
+
+create index if not exists leadgen_companies_pipeline_run_id_idx
+  on public.leadgen_companies (pipeline_run_id);
+
+create index if not exists leadgen_companies_campaign_id_idx
+  on public.leadgen_companies (campaign_id);
+
+create index if not exists leadgen_companies_company_domain_idx
+  on public.leadgen_companies (company_domain);
+
+create index if not exists leadgen_companies_signal_type_idx
+  on public.leadgen_companies (signal_type);
+
+create index if not exists leadgen_companies_lead_score_idx
+  on public.leadgen_companies (lead_score);
+
+create index if not exists leadgen_companies_icp_fit_score_idx
+  on public.leadgen_companies (icp_fit_score);
+
+create index if not exists leadgen_companies_confidence_score_idx
+  on public.leadgen_companies (confidence_score);
 
 create index if not exists leadgen_signals_pipeline_run_id_idx
   on public.leadgen_signals (pipeline_run_id);
@@ -137,6 +209,9 @@ create index if not exists leadgen_signals_campaign_id_idx
 
 create index if not exists leadgen_signals_lead_id_idx
   on public.leadgen_signals (lead_id);
+
+create index if not exists leadgen_signals_company_id_idx
+  on public.leadgen_signals (company_id);
 
 create index if not exists leadgen_signals_signal_type_idx
   on public.leadgen_signals (signal_type);

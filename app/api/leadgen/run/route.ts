@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { runMockPipeline } from "@/lib/leadgen/mock-pipeline";
+import { runLeadDiscoveryEngine } from "@/lib/leadgen/lead-discovery-engine";
+import { TavilySearchProvider } from "@/lib/leadgen/search/tavily-provider";
 import { savePipelineResult } from "@/lib/leadgen/storage";
 import { prepareTelegramNotification } from "@/lib/leadgen/telegram-notification";
 import type { CampaignInput } from "@/lib/leadgen/types";
@@ -42,7 +43,22 @@ async function readCampaignInput(request: Request): Promise<CampaignInput> {
 export async function POST(request: Request) {
   try {
     const campaignInput = await readCampaignInput(request);
-    const result = runMockPipeline(campaignInput);
+
+    if (!process.env.TAVILY_API_KEY) {
+      return NextResponse.json(
+        {
+          success: false,
+          error:
+            "TAVILY_API_KEY is not configured. Real lead discovery was not started and no mock campaign was created.",
+        },
+        { status: 500 },
+      );
+    }
+
+    const result = await runLeadDiscoveryEngine({
+      campaignInput,
+      searchProvider: new TavilySearchProvider(),
+    });
     const notifications = result.leads.map(prepareTelegramNotification);
     const saved = await savePipelineResult({ result, notifications });
 
@@ -50,6 +66,7 @@ export async function POST(request: Request) {
       success: true,
       pipeline_run_id: result.campaign.pipeline_run_id,
       campaign: result.campaign,
+      companies: result.companies,
       leads: result.leads,
       signals: result.signals,
       events: result.events,

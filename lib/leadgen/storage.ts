@@ -5,9 +5,11 @@ import type {
   LeadgenCampaign,
   LeadgenCampaignDetails,
   LeadgenCampaignSummary,
+  LeadgenCompany,
   LeadgenEvent,
   LeadgenLead,
   LeadgenSignal,
+  LeadDiscoveryResult,
   MockPipelineResult,
   TelegramNotification,
 } from "@/lib/leadgen/types";
@@ -15,13 +17,14 @@ import type {
 type SupabaseServerClient = ReturnType<typeof createSupabaseServerClient>;
 
 type SavePipelineInput = {
-  result: MockPipelineResult;
+  result: LeadDiscoveryResult | MockPipelineResult;
   notifications: TelegramNotification[];
 };
 
 type SavePipelineResult = {
   pipeline_run_id: string;
   campaign_id: string;
+  companies_count: number;
   leads_count: number;
   signals_count: number;
   events_count: number;
@@ -37,6 +40,30 @@ type StoredLeadCampaignRef = Pick<
   LeadgenLead,
   "campaign_id" | "contact_value"
 >;
+
+type StoredCompanyCampaignRef = Pick<LeadgenCompany, "campaign_id">;
+
+function isMissingRelationError(error: unknown): boolean {
+  if (typeof error !== "object" || error === null) {
+    return false;
+  }
+
+  const maybeError = error as {
+    code?: unknown;
+    message?: unknown;
+  };
+  const code = typeof maybeError.code === "string" ? maybeError.code : "";
+  const message =
+    typeof maybeError.message === "string"
+      ? maybeError.message.toLowerCase()
+      : "";
+
+  return (
+    code === "42P01" ||
+    code === "PGRST205" ||
+    message.includes("leadgen_companies") && message.includes("not")
+  );
+}
 
 async function saveCampaign(
   supabase: SupabaseServerClient,
@@ -55,6 +82,21 @@ async function saveLeads(supabase: SupabaseServerClient, leads: LeadgenLead[]) {
   }
 
   const { error } = await supabase.from("leadgen_leads").insert(leads);
+
+  if (error) {
+    throw error;
+  }
+}
+
+async function saveCompanies(
+  supabase: SupabaseServerClient,
+  companies: LeadgenCompany[],
+) {
+  if (companies.length === 0) {
+    return;
+  }
+
+  const { error } = await supabase.from("leadgen_companies").insert(companies);
 
   if (error) {
     throw error;
@@ -132,6 +174,7 @@ export async function savePipelineResult({
 
   try {
     await saveCampaign(supabase, result.campaign);
+    await saveCompanies(supabase, result.companies ?? []);
     await saveLeads(supabase, result.leads);
     await saveSignals(supabase, result.signals);
     await saveEvents(supabase, result.events);
@@ -155,6 +198,7 @@ export async function savePipelineResult({
   return {
     pipeline_run_id: result.campaign.pipeline_run_id,
     campaign_id: result.campaign.id,
+    companies_count: result.companies?.length ?? result.leads.length,
     leads_count: result.leads.length,
     signals_count: result.signals.length,
     events_count: result.events.length,
@@ -182,23 +226,45 @@ export async function getRecentCampaigns(
   }
 
   const campaignIds = campaigns.map((campaign) => campaign.id);
-  const { data: leads, error: leadsError } = await supabase
-    .from("leadgen_leads")
-    .select("campaign_id,contact_value")
-    .in("campaign_id", campaignIds)
-    .returns<StoredLeadCampaignRef[]>();
+  const [
+    { data: companies, error: companiesError },
+    { data: leads, error: leadsError },
+  ] = await Promise.all([
+    supabase
+      .from("leadgen_companies")
+      .select("campaign_id")
+      .in("campaign_id", campaignIds)
+      .returns<StoredCompanyCampaignRef[]>(),
+    supabase
+      .from("leadgen_leads")
+      .select("campaign_id,contact_value")
+      .in("campaign_id", campaignIds)
+      .returns<StoredLeadCampaignRef[]>(),
+  ]);
+
+  if (companiesError && !isMissingRelationError(companiesError)) {
+    throw companiesError;
+  }
 
   if (leadsError) {
     throw leadsError;
   }
 
   const companyCounts = new Map<string, number>();
+  const legacyLeadCounts = new Map<string, number>();
   const contactCounts = new Map<string, number>();
 
-  for (const lead of leads ?? []) {
+  for (const company of companiesError ? [] : companies ?? []) {
     companyCounts.set(
+      company.campaign_id,
+      (companyCounts.get(company.campaign_id) ?? 0) + 1,
+    );
+  }
+
+  for (const lead of leads ?? []) {
+    legacyLeadCounts.set(
       lead.campaign_id,
-      (companyCounts.get(lead.campaign_id) ?? 0) + 1,
+      (legacyLeadCounts.get(lead.campaign_id) ?? 0) + 1,
     );
 
     if (lead.contact_value) {
@@ -211,7 +277,8 @@ export async function getRecentCampaigns(
 
   return campaigns.map((campaign) => ({
     ...campaign,
-    companies_count: companyCounts.get(campaign.id) ?? 0,
+    companies_count:
+      companyCounts.get(campaign.id) ?? legacyLeadCounts.get(campaign.id) ?? 0,
     contacts_count: contactCounts.get(campaign.id) ?? 0,
   }));
 }
@@ -236,11 +303,18 @@ export async function getCampaignDetails(
   }
 
   const [
+    { data: companies, error: companiesError },
     { data: leads, error: leadsError },
     { data: signals, error: signalsError },
     { data: events, error: eventsError },
     { data: notifications, error: notificationsError },
   ] = await Promise.all([
+    supabase
+      .from("leadgen_companies")
+      .select("*")
+      .eq("campaign_id", campaignId)
+      .order("lead_score", { ascending: false })
+      .returns<LeadgenCompany[]>(),
     supabase
       .from("leadgen_leads")
       .select("*")
@@ -267,6 +341,10 @@ export async function getCampaignDetails(
       .returns<TelegramNotification[]>(),
   ]);
 
+  if (companiesError && !isMissingRelationError(companiesError)) {
+    throw companiesError;
+  }
+
   if (leadsError) {
     throw leadsError;
   }
@@ -283,6 +361,7 @@ export async function getCampaignDetails(
     throw notificationsError;
   }
 
+  const storedCompanies = companiesError ? [] : companies ?? [];
   const storedLeads = leads ?? [];
   const storedSignals = signals ?? [];
   const storedEvents = events ?? [];
@@ -290,12 +369,14 @@ export async function getCampaignDetails(
 
   return {
     campaign,
+    companies: storedCompanies,
     leads: storedLeads,
     signals: storedSignals,
     events: storedEvents,
     notifications: storedNotifications,
     stats: {
-      companies_count: storedLeads.length,
+      companies_count:
+        storedCompanies.length > 0 ? storedCompanies.length : storedLeads.length,
       contacts_count: storedLeads.filter((lead) => lead.contact_value).length,
       signals_count: storedSignals.length,
       notifications_count: storedNotifications.length,

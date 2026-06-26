@@ -10,6 +10,8 @@ export type EvidenceDecision = "valid_signal" | "weak_signal" | "rejected";
 export type EvidenceRejectionReason =
   | "no_signal_context"
   | "no_icp_context"
+  | "weak_event_strength"
+  | "educational_event_content"
   | "too_generic"
   | "insufficient_evidence"
   | "irrelevant_intent"
@@ -27,8 +29,11 @@ export type EvidenceResult = {
   source_url: string;
   confidence_score: number;
   found_at: string;
+  evidence_language: SignalLanguage | "mixed";
   source_type: SourceType;
   company_extraction: CompanyExtractionResult;
+  event_strength_score: number;
+  event_strength_breakdown: EventStrengthBreakdown;
   matched_signal_phrases: string[];
   matched_icp_terms: string[];
   matched_source_hints: string[];
@@ -65,6 +70,24 @@ type ScoreBreakdown = {
   icpScore: number;
   sourceScore: number;
   qualityScore: number;
+};
+
+export type EventStrengthBreakdown = {
+  topic_match_score: number;
+  event_evidence_score: number;
+  educational_intent_score: number;
+  gtm_signal_type: "topic_only" | "confirmed_event" | "mixed";
+  topic_matches: string[];
+  announcement_matches: string[];
+  specificity_matches: string[];
+  educational_matches: string[];
+  source_bonus: number;
+  educational_penalty: number;
+};
+
+type EventStrengthResult = {
+  event_strength_score: number;
+  breakdown: EventStrengthBreakdown;
 };
 
 const signalEvidenceProfiles: Record<SignalType, SignalEvidenceProfile> = {
@@ -332,6 +355,157 @@ function clampScore(score: number): number {
   return Math.min(Math.max(Math.round(score), 0), 100);
 }
 
+const gtmAnnouncementTerms = [
+  "announcing",
+  "announces",
+  "announced",
+  "introducing",
+  "introduced",
+  "launched",
+  "launches",
+  "launching",
+  "released",
+  "releases",
+  "now available",
+  "general availability",
+  "generally available",
+  "product update",
+  "new product",
+  "new feature",
+  "new integration",
+  "beta",
+  "expansion",
+  "new market",
+  "rollout",
+  "анонсирует",
+  "анонсировала",
+  "анонсировал",
+  "объявила",
+  "объявил",
+  "представила",
+  "представил",
+  "запустила",
+  "запустил",
+  "запускает",
+  "выпустила",
+  "выпустил",
+  "релиз",
+  "стал доступен",
+  "стала доступна",
+  "теперь доступен",
+  "теперь доступна",
+  "новый продукт",
+  "новая функция",
+  "новая интеграция",
+  "бета",
+  "выход на новый рынок",
+];
+
+const gtmTopicTerms = [
+  "product launch",
+  "go-to-market",
+  "gtm",
+  "release strategy",
+  "product release",
+  "customer success",
+  "product marketing",
+  "launch strategy",
+  "launch checklist",
+  "product launches",
+  "запуск продукта",
+  "go-to-market",
+  "вывод продукта на рынок",
+  "стратегия запуска",
+  "релиз продукта",
+  "клиентский успех",
+  "customer success",
+  "продуктовый маркетинг",
+  "чеклист запуска",
+];
+
+const gtmSpecificityTerms = [
+  "version",
+  "release",
+  "announcement",
+  "available today",
+  "available now",
+  "customers can",
+  "users can",
+  "integration",
+  "feature",
+  "product",
+  "platform",
+  "market",
+  "2024",
+  "2025",
+  "2026",
+  "версия",
+  "релиз",
+  "анонс",
+  "доступен сегодня",
+  "доступна сегодня",
+  "доступен сейчас",
+  "доступна сейчас",
+  "клиенты могут",
+  "пользователи могут",
+  "интеграция",
+  "функция",
+  "продукт",
+  "платформа",
+  "рынок",
+];
+
+const gtmEducationalTerms = [
+  "how to",
+  "guide",
+  "strategy",
+  "checklist",
+  "tips",
+  "best practices",
+  "playbook",
+  "template",
+  "what is",
+  "learn how",
+  "educational",
+  "reasons",
+  "secret sauce",
+  "framework",
+  "what goes into",
+  "why customer success matters",
+  "lessons learned",
+  "как запустить",
+  "как вывести",
+  "руководство",
+  "гайд",
+  "стратегия",
+  "чеклист",
+  "советы",
+  "лучшие практики",
+  "плейбук",
+  "шаблон",
+  "что такое",
+  "как работает",
+  "причины",
+  "секрет",
+  "фреймворк",
+  "уроки",
+];
+
+function detectEvidenceLanguage(text: string): SignalLanguage | "mixed" {
+  const cyrillicMatches = text.match(/[а-яё]/gi)?.length ?? 0;
+  const latinMatches = text.match(/[a-z]/gi)?.length ?? 0;
+
+  if (cyrillicMatches > 20 && latinMatches > 20) {
+    return "mixed";
+  }
+
+  if (cyrillicMatches > latinMatches) {
+    return "ru";
+  }
+
+  return "en";
+}
+
 function scoreEvidence({
   directSignalMatches,
   contextSignalMatches,
@@ -371,6 +545,80 @@ function scoreEvidence({
         (result.snippet.length > 80 ? 5 : 0),
       20,
     ),
+  };
+}
+
+function scoreEventStrength({
+  signalType,
+  result,
+  sourceType,
+}: {
+  signalType: SignalType;
+  result: SearchResult;
+  sourceType: SourceType;
+}): EventStrengthResult {
+  if (signalType !== "GO_TO_MARKET_SIGNAL") {
+    return {
+      event_strength_score: 0,
+      breakdown: {
+        topic_match_score: 0,
+        event_evidence_score: 0,
+        educational_intent_score: 0,
+        gtm_signal_type: "topic_only",
+        topic_matches: [],
+        announcement_matches: [],
+        specificity_matches: [],
+        educational_matches: [],
+        source_bonus: 0,
+        educational_penalty: 0,
+      },
+    };
+  }
+
+  const text = getSearchText(result);
+  const topicMatches = unique(findMatches(text, gtmTopicTerms));
+  const announcementMatches = unique(findMatches(text, gtmAnnouncementTerms));
+  const specificityMatches = unique(findMatches(text, gtmSpecificityTerms));
+  const educationalMatches = unique(findMatches(text, gtmEducationalTerms));
+  const sourceBonus =
+    sourceType === "press_release" || sourceType === "news"
+      ? 12
+      : sourceType === "company_site"
+        ? 10
+        : sourceType === "blog"
+          ? 4
+          : 0;
+  const topicMatchScore = clampScore(topicMatches.length * 12);
+  const eventEvidenceScore = clampScore(
+    announcementMatches.length * 22 +
+      specificityMatches.length * 8 +
+      sourceBonus,
+  );
+  const educationalIntentScore = clampScore(educationalMatches.length * 18);
+  const educationalPenalty = Math.min(educationalIntentScore, 45);
+  const gtmSignalType =
+    eventEvidenceScore >= 55
+      ? "confirmed_event"
+      : topicMatchScore > 0 && eventEvidenceScore > 0
+        ? "mixed"
+        : "topic_only";
+
+  return {
+    event_strength_score: clampScore(
+      eventEvidenceScore + Math.min(topicMatchScore, 12) - educationalPenalty,
+    ),
+    breakdown: {
+      topic_match_score: topicMatchScore,
+      event_evidence_score: eventEvidenceScore,
+      educational_intent_score: educationalIntentScore,
+      gtm_signal_type: gtmSignalType,
+      topic_matches: topicMatches,
+      announcement_matches: announcementMatches,
+      specificity_matches: specificityMatches,
+      educational_matches: educationalMatches,
+      source_bonus: sourceBonus,
+      educational_penalty: educationalPenalty,
+    },
   };
 }
 
@@ -445,6 +693,8 @@ function getRejectionReason({
   contextSignalMatches,
   icpMatches,
   score,
+  signalType,
+  eventStrengthBreakdown,
   sourceType,
   companyExtraction,
 }: {
@@ -452,6 +702,8 @@ function getRejectionReason({
   contextSignalMatches: string[];
   icpMatches: string[];
   score: number;
+  signalType: SignalType;
+  eventStrengthBreakdown: EventStrengthBreakdown;
   sourceType: SourceType;
   companyExtraction: CompanyExtractionResult;
 }): EvidenceRejectionReason {
@@ -471,6 +723,21 @@ function getRejectionReason({
 
   if (directSignalMatches.length === 0 && contextSignalMatches.length === 0) {
     return "no_signal_context";
+  }
+
+  if (
+    signalType === "GO_TO_MARKET_SIGNAL" &&
+    eventStrengthBreakdown.educational_intent_score >
+      eventStrengthBreakdown.event_evidence_score
+  ) {
+    return "educational_event_content";
+  }
+
+  if (
+    signalType === "GO_TO_MARKET_SIGNAL" &&
+    eventStrengthBreakdown.event_evidence_score < 35
+  ) {
+    return "weak_event_strength";
   }
 
   if (icpMatches.length === 0) {
@@ -494,6 +761,8 @@ function buildDecisionReason({
   contextSignalMatches,
   icpMatches,
   sourceHintMatches,
+  eventStrengthScore,
+  eventStrengthBreakdown,
   sourceType,
   companyExtraction,
 }: {
@@ -502,6 +771,8 @@ function buildDecisionReason({
   contextSignalMatches: string[];
   icpMatches: string[];
   sourceHintMatches: string[];
+  eventStrengthScore: number;
+  eventStrengthBreakdown: EventStrengthBreakdown;
   sourceType: SourceType;
   companyExtraction: CompanyExtractionResult;
 }): string {
@@ -509,11 +780,22 @@ function buildDecisionReason({
     `${directSignalMatches.length + contextSignalMatches.length} signal context matches`,
     `${icpMatches.length} ICP matches`,
     `${sourceHintMatches.length} source/context matches`,
+    `event strength: ${eventStrengthScore}`,
+    `topic match: ${eventStrengthBreakdown.topic_match_score}`,
+    `event evidence: ${eventStrengthBreakdown.event_evidence_score}`,
+    `educational intent: ${eventStrengthBreakdown.educational_intent_score}`,
+    `gtm signal type: ${eventStrengthBreakdown.gtm_signal_type}`,
     `source type: ${sourceType}`,
     companyExtraction.company_name
       ? `company extracted: ${companyExtraction.company_name}`
       : "company not extracted",
   ];
+
+  if (eventStrengthBreakdown.educational_matches.length > 0) {
+    parts.push(
+      `educational context: ${eventStrengthBreakdown.educational_matches.join(", ")}`,
+    );
+  }
 
   if (decision === "valid_signal") {
     return `Valid signal: ${parts.join(", ")}.`;
@@ -538,6 +820,7 @@ export function collectSignalEvidence({
     sourceClassification,
   );
   const searchText = getSearchText(result);
+  const evidenceLanguage = detectEvidenceLanguage(searchText);
   const directSignalMatches = findLocalizedMatches(
     searchText,
     profile.directPhrases,
@@ -564,6 +847,11 @@ export function collectSignalEvidence({
   const matchedSourceHints = unique(
     findLocalizedMatches(searchText, icp.signalSourceHints[signalType]),
   );
+  const eventStrength = scoreEventStrength({
+    signalType,
+    result,
+    sourceType: sourceClassification.source_type,
+  });
   const scoreBreakdown = scoreEvidence({
     directSignalMatches,
     contextSignalMatches,
@@ -589,9 +877,33 @@ export function collectSignalEvidence({
   const hasInvalidCompanyCandidate =
     Boolean(companyExtraction.company_name) &&
     !companyExtraction.is_candidate_company_valid;
-  const decision = isAggregatorWithoutCompany || hasInvalidCompanyCandidate
-    ? "rejected"
-    : decideEvidence(confidenceScore);
+  const baseDecision = decideEvidence(confidenceScore);
+  const isGtmSignal = signalType === "GO_TO_MARKET_SIGNAL";
+  const hasWeakGtmEventEvidence =
+    signalType === "GO_TO_MARKET_SIGNAL" &&
+    eventStrength.breakdown.event_evidence_score < 55;
+  const hasEducationalGtmIntent =
+    signalType === "GO_TO_MARKET_SIGNAL" &&
+    eventStrength.breakdown.educational_intent_score >
+      eventStrength.breakdown.event_evidence_score;
+  const hasConfirmedGtmEvent =
+    signalType === "GO_TO_MARKET_SIGNAL" &&
+    eventStrength.breakdown.gtm_signal_type === "confirmed_event";
+  const decision =
+    isAggregatorWithoutCompany || hasInvalidCompanyCandidate
+      ? "rejected"
+      : isGtmSignal && !hasConfirmedGtmEvent
+        ? confidenceScore >= 45 &&
+          eventStrength.breakdown.topic_match_score > 0 &&
+          !hasEducationalGtmIntent
+          ? "weak_signal"
+          : "rejected"
+        : hasEducationalGtmIntent || hasWeakGtmEventEvidence
+          ? confidenceScore >= 45 &&
+            eventStrength.breakdown.event_evidence_score >= 35
+          ? "weak_signal"
+          : "rejected"
+        : baseDecision;
   const rejectionReason =
     decision === "rejected"
       ? getRejectionReason({
@@ -599,6 +911,8 @@ export function collectSignalEvidence({
           contextSignalMatches,
           icpMatches: matchedIcpTerms,
           score: confidenceScore,
+          signalType,
+          eventStrengthBreakdown: eventStrength.breakdown,
           sourceType: sourceClassification.source_type,
           companyExtraction,
         })
@@ -614,8 +928,11 @@ export function collectSignalEvidence({
     source_url: result.url,
     confidence_score: confidenceScore,
     found_at: result.published_at ?? new Date().toISOString(),
+    evidence_language: evidenceLanguage,
     source_type: sourceClassification.source_type,
     company_extraction: companyExtraction,
+    event_strength_score: eventStrength.event_strength_score,
+    event_strength_breakdown: eventStrength.breakdown,
     matched_signal_phrases: matchedSignalPhrases,
     matched_icp_terms: matchedIcpTerms,
     matched_source_hints: matchedSourceHints,
@@ -625,6 +942,8 @@ export function collectSignalEvidence({
       contextSignalMatches,
       icpMatches: matchedIcpTerms,
       sourceHintMatches: matchedSourceHints,
+      eventStrengthScore: eventStrength.event_strength_score,
+      eventStrengthBreakdown: eventStrength.breakdown,
       sourceType: sourceClassification.source_type,
       companyExtraction,
     }),

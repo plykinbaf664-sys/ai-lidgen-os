@@ -39,6 +39,74 @@ type SignalView = Pick<
   | "found_at"
 >;
 
+type SignalInterpretationView = {
+  confirmed_facts?: string[];
+  inferred_insights?: string[];
+  confidence_level?: string;
+  why_it_matters?: string;
+  why_now?: string;
+  outreach_hypothesis?: string;
+  evidence_quality?: string;
+};
+
+function getStringValue(
+  record: Record<string, unknown>,
+  key: string,
+): string | undefined {
+  const value = record[key];
+
+  return typeof value === "string" && value.trim() ? value : undefined;
+}
+
+function getStringListValue(
+  record: Record<string, unknown>,
+  key: string,
+): string[] | undefined {
+  const value = record[key];
+
+  if (!Array.isArray(value)) {
+    return undefined;
+  }
+
+  const values = value.filter(
+    (item): item is string => typeof item === "string" && item.trim().length > 0,
+  );
+
+  return values.length > 0 ? values : undefined;
+}
+
+function getLeadInterpretation(
+  lead: LeadgenLead,
+  companiesById: Map<string, LeadgenCampaignDetails["companies"][number]>,
+): SignalInterpretationView {
+  if (!lead.company_id) {
+    return {};
+  }
+
+  const company = companiesById.get(lead.company_id);
+  const rawInterpretation = company?.metadata.signal_interpretation;
+
+  if (
+    typeof rawInterpretation !== "object" ||
+    rawInterpretation === null ||
+    Array.isArray(rawInterpretation)
+  ) {
+    return {};
+  }
+
+  const interpretation = rawInterpretation as Record<string, unknown>;
+
+  return {
+    confirmed_facts: getStringListValue(interpretation, "confirmed_facts"),
+    inferred_insights: getStringListValue(interpretation, "inferred_insights"),
+    confidence_level: getStringValue(interpretation, "confidence_level"),
+    why_it_matters: getStringValue(interpretation, "why_it_matters"),
+    why_now: getStringValue(interpretation, "why_now"),
+    outreach_hypothesis: getStringValue(interpretation, "outreach_hypothesis"),
+    evidence_quality: getStringValue(interpretation, "evidence_quality"),
+  };
+}
+
 function getSignalsForLead(
   lead: LeadgenLead,
   signalsByLeadId: Map<string, LeadgenSignal[]>,
@@ -100,6 +168,9 @@ export function CampaignDetails({
   }
 
   const signalsByLeadId = new Map<string, LeadgenSignal[]>();
+  const companiesById = new Map(
+    details.companies.map((company) => [company.id, company]),
+  );
 
   for (const signal of details.signals) {
     const currentSignals = signalsByLeadId.get(signal.lead_id) ?? [];
@@ -148,13 +219,16 @@ export function CampaignDetails({
         <div className="campaign-details-leads">
           {details.leads.map((lead) => {
             const leadSignals = getSignalsForLead(lead, signalsByLeadId);
+            const interpretation = getLeadInterpretation(lead, companiesById);
 
             return (
               <article className="campaign-details-lead" key={lead.id}>
                 <div className="campaign-details-lead-main">
                   <div>
                     <h3>{lead.company_name}</h3>
-                    <p className="company-domain">{lead.company_domain}</p>
+                    <p className="company-domain">
+                      {lead.company_domain ?? "Р”РѕРјРµРЅ РЅРµ РЅР°Р№РґРµРЅ"}
+                    </p>
                     {lead.company_source_url ? (
                       <a
                         className="source-link"
@@ -174,6 +248,10 @@ export function CampaignDetails({
                     <span className="field-label">Lead score</span>
                     <p>{lead.lead_score}</p>
                   </div>
+                  <div>
+                    <span className="field-label">ICP fit</span>
+                    <p>{lead.icp_fit_score}</p>
+                  </div>
                   <button
                     className="detail-button"
                     type="button"
@@ -185,6 +263,55 @@ export function CampaignDetails({
 
                 <div className="campaign-details-signal">
                   <span className="field-label">Сигналы</span>
+                  <div className="campaign-details-copy">
+                    <div>
+                      <span className="field-label">Signal summary</span>
+                      <p>{lead.signal_detail}</p>
+                    </div>
+                    {interpretation.confirmed_facts ? (
+                      <div>
+                        <span className="field-label">Confirmed facts</span>
+                        <p>{interpretation.confirmed_facts.join(" ")}</p>
+                      </div>
+                    ) : null}
+                    {interpretation.inferred_insights ? (
+                      <div>
+                        <span className="field-label">Inferred insights</span>
+                        <p>{interpretation.inferred_insights.join(" ")}</p>
+                      </div>
+                    ) : null}
+                    {interpretation.confidence_level ? (
+                      <div>
+                        <span className="field-label">Confidence</span>
+                        <p>{interpretation.confidence_level}</p>
+                      </div>
+                    ) : null}
+                    {interpretation.why_it_matters ? (
+                      <div>
+                        <span className="field-label">Why it matters</span>
+                        <p>{interpretation.why_it_matters}</p>
+                      </div>
+                    ) : null}
+                    {interpretation.why_now ? (
+                      <div>
+                        <span className="field-label">Why now</span>
+                        <p>{interpretation.why_now}</p>
+                      </div>
+                    ) : null}
+                    {interpretation.outreach_hypothesis ? (
+                      <div>
+                        <span className="field-label">Outreach hypothesis</span>
+                        <p>{interpretation.outreach_hypothesis}</p>
+                      </div>
+                    ) : null}
+                    {interpretation.evidence_quality ? (
+                      <div>
+                        <span className="field-label">Evidence quality</span>
+                        <p>{interpretation.evidence_quality}</p>
+                      </div>
+                    ) : null}
+                  </div>
+                  <span className="field-label">Sources</span>
                   <div className="campaign-details-signal-list">
                     {leadSignals.map((signal) => (
                       <article

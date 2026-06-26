@@ -38,6 +38,8 @@ function toEvidenceResponse(evidence: EvidenceResult) {
     source_type: evidence.source_type,
     company_extraction: evidence.company_extraction,
     matched_signal_phrases: evidence.matched_signal_phrases,
+    event_strength_score: evidence.event_strength_score,
+    event_strength_breakdown: evidence.event_strength_breakdown,
     matched_icp_terms: evidence.matched_icp_terms,
     matched_source_hints: evidence.matched_source_hints,
     decision_reason: evidence.decision_reason,
