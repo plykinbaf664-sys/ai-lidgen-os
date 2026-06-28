@@ -1,4 +1,7 @@
-import { formatTelegramCard } from "@/lib/leadgen/telegram-card";
+import {
+  formatTelegramCard,
+  type TelegramCardContext,
+} from "@/lib/leadgen/telegram-card";
 import type {
   LeadgenLead,
   TelegramNotification,
@@ -10,6 +13,7 @@ function createNotificationId(lead: LeadgenLead, createdAt: string): string {
 
 export function prepareTelegramNotification(
   lead: LeadgenLead,
+  context: TelegramCardContext = {},
 ): TelegramNotification {
   const createdAt = new Date().toISOString();
 
@@ -18,7 +22,7 @@ export function prepareTelegramNotification(
     pipeline_run_id: lead.pipeline_run_id,
     lead_id: lead.id,
     campaign_id: lead.campaign_id,
-    telegram_card_text: formatTelegramCard(lead),
+    telegram_card_text: formatTelegramCard(lead, context),
     status: "prepared",
     created_at: createdAt,
   };

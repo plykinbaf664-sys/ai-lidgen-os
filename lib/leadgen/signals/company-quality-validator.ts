@@ -37,27 +37,35 @@ export type CompanyQualityValidationResult = {
 };
 
 const platformNamePattern =
-  /^(indeed|linkedin|hh(\.ru)?|ziprecruiter|glassdoor|greenhouse|lever|workday|successfactors|smartrecruiters|recruitee|workable|paycor)$/i;
+  /^(indeed|linkedin|hh(\.(ru|kz|uz))?|headhunter(?:\s+(?:in|\u0432)\s+.+)?|vc(\.ru)?|habr|habr career|cnews|rb(\.ru)?|rusbase|rabota(\.ru)?|superjob|zarplata(\.ru)?|jobfilter|remote-job|ziprecruiter|glassdoor|greenhouse|lever|workday|successfactors|smartrecruiters|recruitee|workable|paycor)$/i;
 
 const broadJobBoardPlatforms = new Set([
   "hh.ru",
+  "hh.kz",
+  "hh.uz",
   "linkedin.com",
   "indeed.com",
   "ziprecruiter.com",
   "glassdoor.com",
+  "career.habr.com",
+  "rabota.ru",
+  "superjob.ru",
+  "zarplata.ru",
+  "jobfilter.ru",
+  "remote-job.ru",
 ]);
 
 const genericJobCategoryPattern =
-  /\b(jobs?|careers?|vacanc(?:y|ies)|positions?|roles?|openings?|hiring|recruit(?:ing|ment)|talent|sales|customer success|account executive|account manager|sales manager|crm manager|product manager|software engineer|engineer|developer|specialist|consultant|analyst|administrator|architect|director|head of|lead|senior|junior|saas sales|b2b saas|\u0440\u0430\u0431\u043e\u0442\u0430|\u0432\u0430\u043a\u0430\u043d\u0441\u0438[\u044f\u0438]|\u043d\u0430\u0439\u043c|\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440|\u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a|\u0438\u043d\u0436\u0435\u043d\u0435\u0440|\u0441\u043f\u0435\u0446\u0438\u0430\u043b\u0438\u0441\u0442|\u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a|\u043f\u0440\u043e\u0434\u0430\u0436[\u0430\u0438]?|\u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044c)\b/i;
+  /\b(jobs?|careers?|vacanc(?:y|ies)|positions?|roles?|openings?|hiring|recruit(?:ing|ment)|talent|sales|customer success|account executive|account manager|sales manager|crm manager|product manager|software engineer|engineer|developer|specialist|consultant|analyst|administrator|architect|director|head of|lead|senior|junior|saas sales|b2b saas|\u0440\u0430\u0431\u043e\u0442\u0430|\u0432\u0430\u043a\u0430\u043d\u0441\u0438[\u044f\u0438]|\u043d\u0430\u0439\u043c|\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440|\u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a|\u0438\u043d\u0436\u0435\u043d\u0435\u0440|\u0441\u043f\u0435\u0446\u0438\u0430\u043b\u0438\u0441\u0442|\u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a|\u043e\u043f\u0435\u0440\u0430\u0442\u043e\u0440|\u0440\u043e\u043f|\u043f\u0440\u043e\u0434\u0430\u0436[\u0430\u0438]?|\u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044c)\b/i;
 
 const genericBusinessPhrasePattern =
-  /^(ai|b2b|saas|crm|gtm|recruitment|hiring|customer success|business software|crm software|sales software|marketing software|automation software|revenue teams?|growth teams?|technical skills?|sales talent|top talent|every level|open saas|cloud and ai|recruitment automation|\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043d\u0430\u0439\u043c\u0430)$/i;
+  /^(ai|b2b|saas|crm|gtm|recruitment|hiring|customer success|business software|crm software|sales software|marketing software|automation software|revenue teams?|growth teams?|technical skills?|sales talent|top talent|every level|open saas|cloud and ai|recruitment automation|bitrix24|amoCRM|\u0431\u0438\u0442\u0440\u0438\u043a\u044124|\u0431\u0438\u0442\u0440\u0438\u043a\u0441\s*24|\u0430\u043c\u043e\s*crm|\u0430\u043c\u043eCRM|\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 \u043f\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c|\u0440\u043e\u043f|\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043d\u0430\u0439\u043c\u0430)$/i;
 
 const genericBusinessWordPattern =
-  /\b(ai|b2b|saas|crm|gtm|recruitment|hiring|talent|customer success|revenue|growth|technical skills|sales talent|top talent|\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f|\u043d\u0430\u0439\u043c)\b/i;
+  /\b(ai|b2b|saas|crm|gtm|recruitment|hiring|talent|customer success|revenue|growth|technical skills|sales talent|top talent|bitrix24|amocrm|\u0431\u0438\u0442\u0440\u0438\u043a\u044124|\u0431\u0438\u0442\u0440\u0438\u043a\u0441\s*24|\u0430\u043c\u043e\s*crm|\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f|\u043d\u0430\u0439\u043c)\b/i;
 
 const locationPattern =
-  /^(?:[a-z .'-]+,\s*[a-z]{2}|bay area|remote|united states|usa|us|uk|canada|germany|france|spain|italy|india|europe|emea|apac|latam|california|colorado|texas|florida|new york|los angeles|san francisco|boston|chicago|seattle|austin|denver|london|berlin|paris|toronto|moscow|saint petersburg|\u043c\u043e\u0441\u043a\u0432\u0430|\u0441\u0430\u043d\u043a\u0442-\u043f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433|\u0440\u043e\u0441\u0441\u0438\u044f|\u043a\u0430\u0437\u0430\u0445\u0441\u0442\u0430\u043d|\u0431\u0435\u043b\u0430\u0440\u0443\u0441\u044c)$/i;
+  /^(?:[a-z .'-]+,\s*[a-z]{2}|bay area|remote|krym|united states|usa|us|uk|canada|germany|france|spain|italy|india|europe|emea|apac|latam|california|colorado|texas|florida|new york|los angeles|san francisco|boston|chicago|seattle|austin|denver|london|berlin|paris|toronto|moscow|saint petersburg|\u0443\u0434\u0430\u043b\u0435\u043d\u043d\u043e|\u0443\u0434\u0430\u043b\u0451\u043d\u043d\u043e|\u043a\u0440\u044b\u043c|\u0441\u043f\u0431|\u043c\u043e\u0441\u043a\u0432\u0430|\u0441\u0430\u043d\u043a\u0442-\u043f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433|\u0440\u043e\u0441\u0441\u0438\u044f|\u043a\u0430\u0437\u0430\u0445\u0441\u0442\u0430\u043d|\u0431\u0435\u043b\u0430\u0440\u0443\u0441\u044c)$/i;
 
 const locationContextPattern =
   /\b(location|remote|hybrid|onsite|salary|experience|years?|city|state|region|area|metro|relocation|\u043c\u0435\u0441\u0442\u043e|\u0433\u043e\u0440\u043e\u0434|\u0440\u0435\u0433\u0438\u043e\u043d|\u0437\u0430\u0440\u043f\u043b\u0430\u0442\u0430|\u0433\u0440\u0430\u0444\u0438\u043a|\u043e\u043f\u044b\u0442|\u0443\u0434\u0430\u043b\u0435\u043d)/i;

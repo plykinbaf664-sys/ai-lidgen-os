@@ -1,6 +1,7 @@
 import type { SignalType } from "@/lib/leadgen/types";
 
 export type SignalQueryLanguage = "en" | "ru";
+export type SignalSearchMarket = "global" | "ru" | "mixed";
 
 export type SignalQueryAngle =
   | "company_careers"
@@ -15,8 +16,13 @@ export type SignalQuery = {
   query: string;
   intent: string;
   priority: number;
+  market: Exclude<SignalSearchMarket, "mixed">;
   language: SignalQueryLanguage;
+  query_language: SignalQueryLanguage;
   angle: SignalQueryAngle;
+  query_angle: SignalQueryAngle;
+  source_country_hint: string | null;
+  why_market_selected: string;
 };
 
 type LocalizedTerms = Record<SignalQueryLanguage, readonly string[]>;
@@ -33,6 +39,7 @@ type BuildSignalQueriesInput = {
   icp: SignalQueryIcp;
   signalType: SignalType;
   maxQueries?: number;
+  market?: SignalSearchMarket;
 };
 
 type SignalSemanticProfile = {
@@ -87,11 +94,54 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
     angle: "ru_job_board",
     language: "ru",
     intent: "Find Russian-language job postings with an explicit employer",
-    eventPhrase: "РёС‰РµРј РІ РєРѕРјР°РЅРґСѓ",
-    contextPhrase: "СЂР°Р±РѕС‚Р° РІ РєРѕРјРїР°РЅРёРё",
-    sourceHint: "HH РІР°РєР°РЅСЃРёСЏ РєРѕРјРїР°РЅРёСЏ",
-    priorityOffset: 3,
+    eventPhrase: "\u0438\u0449\u0435\u043c \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0443",
+    contextPhrase:
+      "\u0440\u0430\u0431\u043e\u0442\u0430 \u0432 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+    sourceHint:
+      "HH \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u044f \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f",
+    priorityOffset: 2,
     termIndex: 0,
+  },
+  {
+    angle: "ru_job_board",
+    language: "ru",
+    intent:
+      "Find Russian-language sales hiring and ROP openings with explicit company names",
+    eventPhrase:
+      "\u043e\u0442\u043a\u0440\u044b\u0442\u0430 \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u044f \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044c \u043f\u0440\u043e\u0434\u0430\u0436",
+    contextPhrase:
+      "\u043e\u0442\u0434\u0435\u043b \u043f\u0440\u043e\u0434\u0430\u0436",
+    sourceHint:
+      "hh \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f \u0420\u041e\u041f",
+    priorityOffset: 2,
+    termIndex: 1,
+  },
+  {
+    angle: "ru_job_board",
+    language: "ru",
+    intent:
+      "Find Russian-language customer support or client service team expansion",
+    eventPhrase:
+      "\u0438\u0449\u0435\u043c \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0443 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0438 \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432",
+    contextPhrase:
+      "\u043a\u043b\u0438\u0435\u043d\u0442\u0441\u043a\u0438\u0439 \u0441\u0435\u0440\u0432\u0438\u0441",
+    sourceHint:
+      "\u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0430 \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f",
+    priorityOffset: 3,
+    termIndex: 2,
+  },
+  {
+    angle: "ru_job_board",
+    language: "ru",
+    intent: "Find Russian-language CRM or sales automation hiring context",
+    eventPhrase:
+      "\u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 \u043f\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c",
+    contextPhrase:
+      "\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043f\u0440\u043e\u0434\u0430\u0436 CRM",
+    sourceHint:
+      "\u0440\u0430\u0431\u043e\u0442\u0430 \u0432 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438 \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438 CRM",
+    priorityOffset: 4,
+    termIndex: 3,
   },
   {
     angle: "company_blog",
@@ -115,11 +165,56 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
   },
 ];
 
+const ruMarketHints: Record<SignalType, readonly string[]> = {
+  HIRING_SIGNAL: [
+    "hh \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f",
+    "\u043a\u0430\u0440\u044c\u0435\u0440\u043d\u0430\u044f \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430 \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438",
+    "\u043e\u0442\u043a\u0440\u044b\u0442\u0430 \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u044f \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044c \u043f\u0440\u043e\u0434\u0430\u0436",
+    "\u0438\u0449\u0435\u043c \u0420\u041e\u041f \u043e\u0442\u0434\u0435\u043b \u043f\u0440\u043e\u0434\u0430\u0436",
+    "\u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0430 \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432 \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u044f",
+  ],
+  GO_TO_MARKET_SIGNAL: [
+    "\u0437\u0430\u043f\u0443\u0441\u043a \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0430",
+    "\u0432\u044b\u0448\u043b\u0438 \u043d\u0430 \u0440\u044b\u043d\u043e\u043a",
+    "\u0437\u0430\u043f\u0443\u0441\u0442\u0438\u043b\u0438 \u043d\u043e\u0432\u043e\u0435 \u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435",
+    "\u043d\u043e\u0432\u043e\u0441\u0442\u0438 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+    "\u043f\u0440\u0435\u0441\u0441-\u0440\u0435\u043b\u0438\u0437",
+  ],
+  GROWTH_SIGNAL: [
+    "\u0440\u0430\u0441\u0448\u0438\u0440\u044f\u0435\u043c\u0441\u044f",
+    "\u043e\u0442\u043a\u0440\u044b\u043b\u0438 \u0444\u0438\u043b\u0438\u0430\u043b",
+    "\u043c\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u0443\u0435\u043c \u043f\u0440\u043e\u0434\u0430\u0436\u0438",
+    "\u0440\u043e\u0441\u0442 \u043a\u043b\u0438\u0435\u043d\u0442\u0441\u043a\u043e\u0439 \u0431\u0430\u0437\u044b",
+    "\u0440\u0430\u0437\u0432\u0438\u0442\u0438\u0435 \u0431\u0438\u0437\u043d\u0435\u0441\u0430",
+  ],
+  CONTENT_SIGNAL: [
+    "\u0431\u043b\u043e\u0433 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+    "\u043a\u0435\u0439\u0441 \u043a\u043b\u0438\u0435\u043d\u0442\u0430",
+    "\u0432\u0435\u0431\u0438\u043d\u0430\u0440 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f",
+    "vc \u0441\u0442\u0430\u0442\u044c\u044f \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f",
+    "habr \u0431\u043b\u043e\u0433 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+  ],
+  TRAFFIC_SIGNAL: [
+    "\u043e\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u0437\u0430\u044f\u0432\u043a\u0443",
+    "\u0437\u0430\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f \u043d\u0430 \u0434\u0435\u043c\u043e",
+    "\u043f\u0440\u0438\u0432\u043b\u0435\u043a\u0430\u0435\u043c \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432",
+    "\u043b\u0435\u043d\u0434\u0438\u043d\u0433",
+    "\u043f\u0440\u043e\u0431\u043d\u044b\u0439 \u043f\u0435\u0440\u0438\u043e\u0434",
+  ],
+  TECH_SIGNAL: [
+    "\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432",
+    "\u0432\u043d\u0435\u0434\u0440\u0435\u043d\u0438\u0435 \u0418\u0418",
+    "\u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438 CRM",
+    "amoCRM Bitrix24",
+    "\u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u043e\u0431\u0440\u0430\u0449\u0435\u043d\u0438\u0439",
+  ],
+};
+
 const signalSemanticProfiles: Record<SignalType, SignalSemanticProfile> = {
   HIRING_SIGNAL: {
     intent: {
       en: "Find hiring activity as evidence of team growth",
-      ru: "Найти найм как доказательство расширения команды",
+      ru: "\u041d\u0430\u0439\u0442\u0438 \u043d\u0430\u0439\u043c \u043a\u0430\u043a \u0434\u043e\u043a\u0430\u0437\u0430\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e \u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043d\u0438\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u044b",
     },
     eventPhrases: {
       en: [
@@ -131,23 +226,28 @@ const signalSemanticProfiles: Record<SignalType, SignalSemanticProfile> = {
         "customer success hiring",
       ],
       ru: [
-        "ищем в команду",
-        "открыта вакансия",
-        "расширяем команду",
-        "набор сотрудников",
-        "отдел продаж вакансии",
-        "требуется менеджер по продажам",
+        "\u0438\u0449\u0435\u043c \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0443",
+        "\u043e\u0442\u043a\u0440\u044b\u0442\u0430 \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u044f",
+        "\u0440\u0430\u0441\u0448\u0438\u0440\u044f\u0435\u043c \u043a\u043e\u043c\u0430\u043d\u0434\u0443",
+        "\u043d\u0430\u0431\u043e\u0440 \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a\u043e\u0432",
+        "\u043e\u0442\u0434\u0435\u043b \u043f\u0440\u043e\u0434\u0430\u0436 \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438",
+        "\u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 \u043f\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c",
       ],
     },
     contextPhrases: {
       en: ["careers", "recruitment", "sales hiring", "growth team"],
-      ru: ["вакансии", "работа в компании", "найм", "рост команды"],
+      ru: [
+        "\u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438",
+        "\u0440\u0430\u0431\u043e\u0442\u0430 \u0432 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+        "\u043d\u0430\u0439\u043c",
+        "\u0440\u043e\u0441\u0442 \u043a\u043e\u043c\u0430\u043d\u0434\u044b",
+      ],
     },
   },
   GO_TO_MARKET_SIGNAL: {
     intent: {
       en: "Find launches of new commercial assets",
-      ru: "Найти запуск нового коммерческого актива",
+      ru: "\u041d\u0430\u0439\u0442\u0438 \u0437\u0430\u043f\u0443\u0441\u043a \u043d\u043e\u0432\u043e\u0433\u043e \u043a\u043e\u043c\u043c\u0435\u0440\u0447\u0435\u0441\u043a\u043e\u0433\u043e \u0430\u043a\u0442\u0438\u0432\u0430",
     },
     eventPhrases: {
       en: [
@@ -159,23 +259,28 @@ const signalSemanticProfiles: Record<SignalType, SignalSemanticProfile> = {
         "platform release",
       ],
       ru: [
-        "новый продукт",
-        "запуск продукта",
-        "новая услуга",
-        "новое решение",
-        "новый тариф",
-        "запустили интеграцию",
+        "\u043d\u043e\u0432\u044b\u0439 \u043f\u0440\u043e\u0434\u0443\u043a\u0442",
+        "\u0437\u0430\u043f\u0443\u0441\u043a \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0430",
+        "\u043d\u043e\u0432\u0430\u044f \u0443\u0441\u043b\u0443\u0433\u0430",
+        "\u043d\u043e\u0432\u043e\u0435 \u0440\u0435\u0448\u0435\u043d\u0438\u0435",
+        "\u043d\u043e\u0432\u044b\u0439 \u0442\u0430\u0440\u0438\u0444",
+        "\u0437\u0430\u043f\u0443\u0441\u0442\u0438\u043b\u0438 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044e",
       ],
     },
     contextPhrases: {
       en: ["launch", "rollout", "release", "go to market"],
-      ru: ["запуск", "релиз", "выход на рынок", "новое направление"],
+      ru: [
+        "\u0437\u0430\u043f\u0443\u0441\u043a",
+        "\u0440\u0435\u043b\u0438\u0437",
+        "\u0432\u044b\u0445\u043e\u0434 \u043d\u0430 \u0440\u044b\u043d\u043e\u043a",
+        "\u043d\u043e\u0432\u043e\u0435 \u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435",
+      ],
     },
   },
   GROWTH_SIGNAL: {
     intent: {
       en: "Find growth and expansion events",
-      ru: "Найти события роста и масштабирования компании",
+      ru: "\u041d\u0430\u0439\u0442\u0438 \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u0440\u043e\u0441\u0442\u0430 \u0438 \u043c\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
     },
     eventPhrases: {
       en: [
@@ -187,23 +292,28 @@ const signalSemanticProfiles: Record<SignalType, SignalSemanticProfile> = {
         "growing customer success team",
       ],
       ru: [
-        "расширение команды",
-        "новый офис",
-        "привлекли инвестиции",
-        "масштабирование компании",
-        "открытие филиала",
-        "рост отдела продаж",
+        "\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043d\u0438\u0435 \u043a\u043e\u043c\u0430\u043d\u0434\u044b",
+        "\u043d\u043e\u0432\u044b\u0439 \u043e\u0444\u0438\u0441",
+        "\u043f\u0440\u0438\u0432\u043b\u0435\u043a\u043b\u0438 \u0438\u043d\u0432\u0435\u0441\u0442\u0438\u0446\u0438\u0438",
+        "\u043c\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+        "\u043e\u0442\u043a\u0440\u044b\u0442\u0438\u0435 \u0444\u0438\u043b\u0438\u0430\u043b\u0430",
+        "\u0440\u043e\u0441\u0442 \u043e\u0442\u0434\u0435\u043b\u0430 \u043f\u0440\u043e\u0434\u0430\u0436",
       ],
     },
     contextPhrases: {
       en: ["growth", "expansion", "funding", "new market"],
-      ru: ["рост", "расширение", "инвестиции", "новый рынок"],
+      ru: [
+        "\u0440\u043e\u0441\u0442",
+        "\u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043d\u0438\u0435",
+        "\u0438\u043d\u0432\u0435\u0441\u0442\u0438\u0446\u0438\u0438",
+        "\u043d\u043e\u0432\u044b\u0439 \u0440\u044b\u043d\u043e\u043a",
+      ],
     },
   },
   CONTENT_SIGNAL: {
     intent: {
       en: "Find investment in content and marketing activity",
-      ru: "Найти инвестиции компании в контент и маркетинг",
+      ru: "\u041d\u0430\u0439\u0442\u0438 \u0438\u043d\u0432\u0435\u0441\u0442\u0438\u0446\u0438\u0438 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438 \u0432 \u043a\u043e\u043d\u0442\u0435\u043d\u0442 \u0438 \u043c\u0430\u0440\u043a\u0435\u0442\u0438\u043d\u0433",
     },
     eventPhrases: {
       en: [
@@ -215,23 +325,28 @@ const signalSemanticProfiles: Record<SignalType, SignalSemanticProfile> = {
         "YouTube channel",
       ],
       ru: [
-        "блог компании",
-        "серия вебинаров",
-        "кейсы клиентов",
-        "подкаст",
-        "статьи компании",
-        "YouTube канал",
+        "\u0431\u043b\u043e\u0433 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+        "\u0441\u0435\u0440\u0438\u044f \u0432\u0435\u0431\u0438\u043d\u0430\u0440\u043e\u0432",
+        "\u043a\u0435\u0439\u0441\u044b \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432",
+        "\u043f\u043e\u0434\u043a\u0430\u0441\u0442",
+        "\u0441\u0442\u0430\u0442\u044c\u0438 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+        "YouTube \u043a\u0430\u043d\u0430\u043b",
       ],
     },
     contextPhrases: {
       en: ["content marketing", "resources", "webinars", "newsletter"],
-      ru: ["контент", "медиа", "вебинары", "рассылка"],
+      ru: [
+        "\u043a\u043e\u043d\u0442\u0435\u043d\u0442",
+        "\u043c\u0435\u0434\u0438\u0430",
+        "\u0432\u0435\u0431\u0438\u043d\u0430\u0440\u044b",
+        "\u0440\u0430\u0441\u0441\u044b\u043b\u043a\u0430",
+      ],
     },
   },
   TRAFFIC_SIGNAL: {
     intent: {
       en: "Find active demand capture and traffic conversion assets",
-      ru: "Найти активы для привлечения и конверсии входящего спроса",
+      ru: "\u041d\u0430\u0439\u0442\u0438 \u0430\u043a\u0442\u0438\u0432\u044b \u0434\u043b\u044f \u043f\u0440\u0438\u0432\u043b\u0435\u0447\u0435\u043d\u0438\u044f \u0438 \u043a\u043e\u043d\u0432\u0435\u0440\u0441\u0438\u0438 \u0432\u0445\u043e\u0434\u044f\u0449\u0435\u0433\u043e \u0441\u043f\u0440\u043e\u0441\u0430",
     },
     eventPhrases: {
       en: [
@@ -243,23 +358,28 @@ const signalSemanticProfiles: Record<SignalType, SignalSemanticProfile> = {
         "request a consultation",
       ],
       ru: [
-        "оставить заявку",
-        "записаться на демо",
-        "бесплатный доступ",
-        "регистрация на вебинар",
-        "лид-магнит",
-        "пробный период",
+        "\u043e\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u0437\u0430\u044f\u0432\u043a\u0443",
+        "\u0437\u0430\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f \u043d\u0430 \u0434\u0435\u043c\u043e",
+        "\u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u044b\u0439 \u0434\u043e\u0441\u0442\u0443\u043f",
+        "\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f \u043d\u0430 \u0432\u0435\u0431\u0438\u043d\u0430\u0440",
+        "\u043b\u0438\u0434-\u043c\u0430\u0433\u043d\u0438\u0442",
+        "\u043f\u0440\u043e\u0431\u043d\u044b\u0439 \u043f\u0435\u0440\u0438\u043e\u0434",
       ],
     },
     contextPhrases: {
       en: ["landing page", "demo page", "trial", "conversion"],
-      ru: ["лендинг", "демо", "заявка", "конверсия"],
+      ru: [
+        "\u043b\u0435\u043d\u0434\u0438\u043d\u0433",
+        "\u0434\u0435\u043c\u043e",
+        "\u0437\u0430\u044f\u0432\u043a\u0430",
+        "\u043a\u043e\u043d\u0432\u0435\u0440\u0441\u0438\u044f",
+      ],
     },
   },
   TECH_SIGNAL: {
     intent: {
       en: "Find technology adoption and automation signals",
-      ru: "Найти признаки внедрения технологий и автоматизации",
+      ru: "\u041d\u0430\u0439\u0442\u0438 \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0438 \u0432\u043d\u0435\u0434\u0440\u0435\u043d\u0438\u044f \u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0439 \u0438 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0438",
     },
     eventPhrases: {
       en: [
@@ -271,17 +391,22 @@ const signalSemanticProfiles: Record<SignalType, SignalSemanticProfile> = {
         "AI feature",
       ],
       ru: [
-        "автоматизация процессов",
-        "интеграция с CRM",
-        "новый API",
-        "искусственный интеллект",
-        "цифровизация",
-        "обновления продукта",
+        "\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432",
+        "\u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f \u0441 CRM",
+        "\u043d\u043e\u0432\u044b\u0439 API",
+        "\u0438\u0441\u043a\u0443\u0441\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0439 \u0438\u043d\u0442\u0435\u043b\u043b\u0435\u043a\u0442",
+        "\u0446\u0438\u0444\u0440\u043e\u0432\u0438\u0437\u0430\u0446\u0438\u044f",
+        "\u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0430",
       ],
     },
     contextPhrases: {
       en: ["integration", "API", "automation", "AI"],
-      ru: ["интеграция", "API", "автоматизация", "ИИ"],
+      ru: [
+        "\u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f",
+        "API",
+        "\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f",
+        "\u0418\u0418",
+      ],
     },
   },
 };
@@ -292,6 +417,26 @@ function quote(term: string): string {
 
 function pickByIndex(terms: readonly string[], index: number): string {
   return terms[index % terms.length];
+}
+
+function getQueryMarket(
+  language: SignalQueryLanguage,
+): Exclude<SignalSearchMarket, "mixed"> {
+  return language === "ru" ? "ru" : "global";
+}
+
+function getSourceCountryHint(
+  market: Exclude<SignalSearchMarket, "mixed">,
+): string | null {
+  return market === "ru" ? "ru_cis" : "global";
+}
+
+function getWhyMarketSelected(
+  market: Exclude<SignalSearchMarket, "mixed">,
+): string {
+  return market === "ru"
+    ? "RU/CIS market query generated from Russian business lexicon and source hints"
+    : "Global market query generated from English ICP and signal vocabulary";
 }
 
 function buildQueryParts(
@@ -313,6 +458,8 @@ function buildQueryParts(
   const sourceHint =
     angleProfile?.sourceHint ??
     pickByIndex(icp.signalSourceHints[signalType][language], index);
+  const marketHint =
+    language === "ru" ? pickByIndex(ruMarketHints[signalType], index) : null;
 
   return [
     quote(eventPhrase),
@@ -321,24 +468,92 @@ function buildQueryParts(
     quote(companyType),
     quote(keyword),
     quote(sourceHint),
-  ];
+    marketHint ? quote(marketHint) : null,
+  ].filter((part): part is string => Boolean(part));
+}
+
+function createSignalQuery({
+  signalType,
+  query,
+  intent,
+  priority,
+  language,
+  angle,
+}: {
+  signalType: SignalType;
+  query: string;
+  intent: string;
+  priority: number;
+  language: SignalQueryLanguage;
+  angle: SignalQueryAngle;
+}): SignalQuery {
+  const market = getQueryMarket(language);
+
+  return {
+    signal_type: signalType,
+    query,
+    intent,
+    priority,
+    market,
+    language,
+    query_language: language,
+    angle,
+    query_angle: angle,
+    source_country_hint: getSourceCountryHint(market),
+    why_market_selected: getWhyMarketSelected(market),
+  };
+}
+
+function applyMarketMode(
+  queries: SignalQuery[],
+  market: SignalSearchMarket,
+  maxQueries: number,
+): SignalQuery[] {
+  if (market !== "mixed") {
+    return queries
+      .filter((query) => query.market === market)
+      .sort((left, right) => right.priority - left.priority)
+      .slice(0, maxQueries);
+  }
+
+  const globalQueries = queries
+    .filter((query) => query.market === "global")
+    .sort((left, right) => right.priority - left.priority);
+  const ruQueries = queries
+    .filter((query) => query.market === "ru")
+    .sort((left, right) => right.priority - left.priority);
+  const mixedQueries: SignalQuery[] = [];
+  const maxLength = Math.max(globalQueries.length, ruQueries.length);
+
+  for (let index = 0; index < maxLength; index += 1) {
+    if (globalQueries[index]) {
+      mixedQueries.push(globalQueries[index]);
+    }
+
+    if (ruQueries[index]) {
+      mixedQueries.push(ruQueries[index]);
+    }
+  }
+
+  return mixedQueries.slice(0, maxQueries);
 }
 
 function buildHiringSignalQueries({
   icp,
   signalType,
   maxQueries,
+  market,
 }: {
   icp: SignalQueryIcp;
   signalType: SignalType;
   maxQueries: number;
+  market: SignalSearchMarket;
 }): SignalQuery[] {
   const profile = signalSemanticProfiles[signalType];
   const basePriority = icp.signalPriorities[signalType];
-
-  return hiringQueryAngles
-    .map((angleProfile) => ({
-      signal_type: signalType,
+  const queries = hiringQueryAngles.map((angleProfile) =>
+    createSignalQuery({
+      signalType,
       query: buildQueryParts(
         profile,
         icp,
@@ -351,14 +566,17 @@ function buildHiringSignalQueries({
       priority: Math.max(basePriority - angleProfile.priorityOffset, 1),
       language: angleProfile.language,
       angle: angleProfile.angle,
-    }))
-    .slice(0, maxQueries);
+    }),
+  );
+
+  return applyMarketMode(queries, market, maxQueries);
 }
 
 export function buildSignalQueries({
   icp,
   signalType,
   maxQueries = 8,
+  market = "mixed",
 }: BuildSignalQueriesInput): SignalQuery[] {
   const profile = signalSemanticProfiles[signalType];
   const basePriority = icp.signalPriorities[signalType];
@@ -369,6 +587,7 @@ export function buildSignalQueries({
       icp,
       signalType,
       maxQueries,
+      market,
     });
   }
 
@@ -376,24 +595,24 @@ export function buildSignalQueries({
     const perLanguageLimit = Math.ceil(maxQueries / 2);
 
     for (let index = 0; index < perLanguageLimit; index += 1) {
-      queries.push({
-        signal_type: signalType,
-        query: buildQueryParts(
-          profile,
-          icp,
+      queries.push(
+        createSignalQuery({
           signalType,
+          query: buildQueryParts(
+            profile,
+            icp,
+            signalType,
+            language,
+            index,
+          ).join(" "),
+          intent: profile.intent[language],
+          priority: Math.max(basePriority - index, 1),
           language,
-          index,
-        ).join(" "),
-        intent: profile.intent[language],
-        priority: Math.max(basePriority - index, 1),
-        language,
-        angle: language === "ru" ? "ru_job_board" : "market_news",
-      });
+          angle: language === "ru" ? "ru_job_board" : "market_news",
+        }),
+      );
     }
   }
 
-  return queries
-    .sort((left, right) => right.priority - left.priority)
-    .slice(0, maxQueries);
+  return applyMarketMode(queries, market, maxQueries);
 }

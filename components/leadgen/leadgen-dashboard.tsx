@@ -9,13 +9,17 @@ import { TelegramCardPreview } from "@/components/leadgen/telegram-card-preview"
 import { TelegramNotifications } from "@/components/leadgen/telegram-notifications";
 import type {
   CampaignInput,
+  DecisionMakerProfile,
   LeadgenCampaignDetails,
   LeadgenCampaignSummary,
   LeadgenCampaign,
+  LeadgenCompany,
+  LeadgenContact,
   LeadgenEvent,
   LeadgenLead,
   LeadgenSignal,
   LeadStatus,
+  PeopleDiscoveryResult,
   TelegramNotification,
 } from "@/lib/leadgen/types";
 
@@ -23,6 +27,8 @@ type RunLeadgenResponse =
   | {
       success: true;
       campaign: LeadgenCampaign;
+      companies: LeadgenCompany[];
+      contacts: LeadgenContact[];
       leads: LeadgenLead[];
       signals: LeadgenSignal[];
       events: LeadgenEvent[];
@@ -56,6 +62,8 @@ type CampaignDetailsResponse =
 export function LeadgenDashboard() {
   const [campaign, setCampaign] = useState<LeadgenCampaign | null>(null);
   const [leads, setLeads] = useState<LeadgenLead[]>([]);
+  const [companies, setCompanies] = useState<LeadgenCompany[]>([]);
+  const [contacts, setContacts] = useState<LeadgenContact[]>([]);
   const [events, setEvents] = useState<LeadgenEvent[]>([]);
   const [notifications, setNotifications] = useState<TelegramNotification[]>([]);
   const [selectedLeadId, setSelectedLeadId] = useState<string | null>(null);
@@ -82,6 +90,99 @@ export function LeadgenDashboard() {
     () => leads.find((lead) => lead.id === selectedLeadId) ?? null,
     [leads, selectedLeadId],
   );
+  const selectedCompany = useMemo(
+    () =>
+      selectedLead?.company_id
+        ? companies.find((company) => company.id === selectedLead.company_id) ??
+          null
+        : null,
+    [companies, selectedLead],
+  );
+  const selectedBestContact = useMemo(() => {
+    if (!selectedLead) {
+      return null;
+    }
+
+    const leadContacts = contacts.filter(
+      (contact) => contact.lead_id === selectedLead.id,
+    );
+
+    return (
+      leadContacts.find((contact) => contact.is_primary) ??
+      leadContacts[0] ??
+      null
+    );
+  }, [contacts, selectedLead]);
+  const selectedBestOutreachEntry = useMemo(() => {
+    if (!selectedLead) {
+      return null;
+    }
+
+    const leadContacts = contacts.filter(
+      (contact) => contact.lead_id === selectedLead.id,
+    );
+
+    return (
+      leadContacts.find(
+        (contact) => contact.metadata.entry_role === "best_outreach_entry",
+      ) ??
+      leadContacts.find(
+        (contact) =>
+          contact.contact_type !== "company_website" &&
+          contact.contact_type !== "no_contact_found" &&
+          contact.is_primary,
+      ) ??
+      leadContacts.find(
+        (contact) =>
+          contact.contact_type !== "company_website" &&
+          contact.contact_type !== "no_contact_found",
+      ) ??
+      null
+    );
+  }, [contacts, selectedLead]);
+  const selectedFallbackEntry = useMemo(() => {
+    if (!selectedLead) {
+      return null;
+    }
+
+    const leadContacts = contacts.filter(
+      (contact) => contact.lead_id === selectedLead.id,
+    );
+
+    return (
+      leadContacts.find(
+        (contact) => contact.metadata.entry_role === "fallback_entry",
+      ) ??
+      leadContacts.find((contact) => contact.contact_type === "company_website") ??
+      null
+    );
+  }, [contacts, selectedLead]);
+  const selectedDecisionMaker = useMemo(() => {
+    const rawDecisionMaker = selectedCompany?.metadata.decision_maker;
+
+    if (
+      typeof rawDecisionMaker !== "object" ||
+      rawDecisionMaker === null ||
+      Array.isArray(rawDecisionMaker)
+    ) {
+      return null;
+    }
+
+    return rawDecisionMaker as DecisionMakerProfile;
+  }, [selectedCompany]);
+  const selectedPeopleDiscovery = useMemo(() => {
+    const rawPeopleDiscovery = selectedCompany?.metadata.people_discovery;
+
+    if (
+      typeof rawPeopleDiscovery !== "object" ||
+      rawPeopleDiscovery === null ||
+      Array.isArray(rawPeopleDiscovery)
+    ) {
+      return null;
+    }
+
+    return rawPeopleDiscovery as PeopleDiscoveryResult;
+  }, [selectedCompany]);
 
   async function loadCampaignHistory() {
     setIsHistoryLoading(true);
@@ -162,6 +263,8 @@ export function LeadgenDashboard() {
       }
 
       setCampaign(data.campaign);
+      setCompanies(data.companies);
+      setContacts(data.contacts);
       setLeads(data.leads);
       setEvents(data.events);
       setNotifications(data.notifications);
@@ -278,6 +381,11 @@ export function LeadgenDashboard() {
 
         <TelegramCardPreview
           lead={selectedLead}
+          decisionMaker={selectedDecisionMaker}
+          peopleDiscovery={selectedPeopleDiscovery}
+          bestAvailableEntry={selectedBestContact}
+          bestOutreachEntry={selectedBestOutreachEntry}
+          fallbackEntry={selectedFallbackEntry}
           onStatusChange={handleStatusChange}
         />
       </div>

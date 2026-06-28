@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { leadgenConfig } from "@/lib/leadgen/config";
 import { buildSignalQueries } from "@/lib/leadgen/signals/query-builder";
+import type { SignalSearchMarket } from "@/lib/leadgen/signals/query-builder";
 import type { SignalType } from "@/lib/leadgen/types";
 
 const signalTypes: SignalType[] = [
@@ -11,6 +12,7 @@ const signalTypes: SignalType[] = [
   "TRAFFIC_SIGNAL",
   "TECH_SIGNAL",
 ];
+const searchMarkets: SignalSearchMarket[] = ["global", "ru", "mixed"];
 
 function isSignalType(value: string | null): value is SignalType {
   return signalTypes.includes(value as SignalType);
@@ -24,6 +26,12 @@ function readMaxQueries(value: string | null): number {
   }
 
   return Math.min(parsedValue, 20);
+}
+
+function readMarket(value: string | null): SignalSearchMarket {
+  return searchMarkets.includes(value as SignalSearchMarket)
+    ? (value as SignalSearchMarket)
+    : "mixed";
 }
 
 export async function GET(request: Request) {
@@ -42,15 +50,18 @@ export async function GET(request: Request) {
   }
 
   const maxQueries = readMaxQueries(url.searchParams.get("maxQueries"));
+  const market = readMarket(url.searchParams.get("market"));
   const queries = buildSignalQueries({
     icp: leadgenConfig.icp,
     signalType: signal,
     maxQueries,
+    market,
   });
 
   return NextResponse.json({
     success: true,
     signal,
+    market,
     max_queries: maxQueries,
     queries,
   });

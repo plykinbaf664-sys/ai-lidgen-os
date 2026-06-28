@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { TavilySearchProvider } from "@/lib/leadgen/search/tavily-provider";
 import { runSignalPipelineTest } from "@/lib/leadgen/signals/signal-pipeline-test";
+import type { SignalSearchMarket } from "@/lib/leadgen/signals/query-builder";
 import type { SignalType } from "@/lib/leadgen/types";
 
 const signalTypes: SignalType[] = [
@@ -11,6 +12,7 @@ const signalTypes: SignalType[] = [
   "TRAFFIC_SIGNAL",
   "TECH_SIGNAL",
 ];
+const searchMarkets: SignalSearchMarket[] = ["global", "ru", "mixed"];
 
 function isSignalType(value: string | null): value is SignalType {
   return signalTypes.includes(value as SignalType);
@@ -28,6 +30,16 @@ function readNumberParam(value: string | null): number | undefined {
   }
 
   return parsedValue;
+}
+
+function readMarketParam(value: string | null): SignalSearchMarket | undefined {
+  if (!value) {
+    return undefined;
+  }
+
+  return searchMarkets.includes(value as SignalSearchMarket)
+    ? (value as SignalSearchMarket)
+    : undefined;
 }
 
 function formatRouteError(error: unknown): string {
@@ -65,6 +77,7 @@ export async function GET(request: Request) {
       maxResultsPerQuery: readNumberParam(
         url.searchParams.get("maxResultsPerQuery"),
       ),
+      market: readMarketParam(url.searchParams.get("market")),
     });
 
     return NextResponse.json({

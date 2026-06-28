@@ -30,6 +30,93 @@ export type ContactChannel =
   | "linkedin"
   | "social";
 
+export type LeadgenContactType =
+  | "confirmed_person"
+  | "role_based_person"
+  | "generic_email"
+  | "contact_form"
+  | "social_profile"
+  | "company_website"
+  | "no_contact_found";
+
+export type DecisionMakerPriority = "high" | "medium" | "low";
+
+export type PersonaSearchStatus =
+  | "target_persona_found"
+  | "alternative_persona_found"
+  | "department_entry_found"
+  | "generic_entry_found"
+  | "fallback_only"
+  | "no_entry_found";
+
+export type ContactEntryRole =
+  | "best_outreach_entry"
+  | "fallback_entry"
+  | "other_entry";
+
+export type PeopleDiscoverySearchStatus =
+  | "person_found"
+  | "no_person_found"
+  | "provider_unavailable";
+
+export type PersonCandidate = {
+  full_name: string;
+  role_title: string | null;
+  department: string | null;
+  linkedin_url: string | null;
+  work_email: string | null;
+  phone: string | null;
+  source: string;
+  confidence_score: number;
+  evidence: string[];
+  metadata: Record<string, unknown>;
+};
+
+export type PeopleDiscoveryResult = {
+  primary_person: PersonCandidate | null;
+  alternative_people: PersonCandidate[];
+  all_candidates: PersonCandidate[];
+  search_status: PeopleDiscoverySearchStatus;
+  providers_used: string[];
+};
+
+export type BuyingRole =
+  | "economic_buyer"
+  | "technical_buyer"
+  | "champion"
+  | "influencer"
+  | "operator";
+
+export type DecisionMakerProfile = {
+  primary_persona: string;
+  alternative_personas: string[];
+  department: string;
+  buying_role: BuyingRole;
+  influence_level: DecisionMakerPriority;
+  decision_authority: DecisionMakerPriority;
+  business_problem_owner: string;
+  expected_pain: string;
+  expected_goal: string;
+  search_keywords: string[];
+  priority: DecisionMakerPriority;
+  reasoning: string;
+  confidence_score: number;
+  source_reasoning: {
+    signal_type: SignalType;
+    company_segment?: string;
+    card_signal_title?: string;
+    signal_summary?: string;
+    why_it_matters?: string;
+    why_now?: string;
+    icp_fit_score?: number;
+    matched_context_terms?: string[];
+    confidence_reason?: string;
+    competing_departments?: string[];
+  };
+};
+
+export type DecisionMakerRecommendation = DecisionMakerProfile;
+
 export type CampaignInput = {
   name: string;
   requestedBy: string;
@@ -97,6 +184,28 @@ export type LeadgenLead = {
   updated_at: string;
 };
 
+export type LeadgenContact = {
+  id: string;
+  pipeline_run_id: string;
+  campaign_id: string;
+  company_id: string;
+  lead_id: string;
+  contact_type: LeadgenContactType;
+  full_name: string | null;
+  role_title: string | null;
+  department: string | null;
+  email: string | null;
+  linkedin_url: string | null;
+  telegram_url: string | null;
+  contact_url: string | null;
+  source_url: string | null;
+  source_label: string | null;
+  confidence_score: number;
+  is_primary: boolean;
+  metadata: Record<string, unknown>;
+  created_at: string;
+};
+
 export type LeadgenSignal = {
   id: string;
   pipeline_run_id: string;
@@ -144,6 +253,10 @@ export type LeadCandidate = {
   evidence_language?: "en" | "ru" | "mixed";
   signal_type?: SignalType;
   discovery_query?: string | null;
+  discovery_market?: "global" | "ru" | null;
+  discovery_query_language?: "en" | "ru" | null;
+  discovery_query_angle?: string | null;
+  source_country_hint?: string | null;
   matched_signal_count?: number;
 };
 
@@ -214,6 +327,7 @@ export type LeadgenCampaignDetails = {
   campaign: LeadgenCampaign;
   companies: LeadgenCompany[];
   leads: LeadgenLead[];
+  contacts: LeadgenContact[];
   signals: LeadgenSignal[];
   events: LeadgenEvent[];
   notifications: TelegramNotification[];
@@ -223,6 +337,7 @@ export type LeadgenCampaignDetails = {
 export type MockPipelineResult = {
   campaign: LeadgenCampaign;
   companies?: LeadgenCompany[];
+  contacts?: LeadgenContact[];
   leads: LeadgenLead[];
   signals: LeadgenSignal[];
   events: LeadgenEvent[];
@@ -231,6 +346,7 @@ export type MockPipelineResult = {
 export type LeadDiscoveryResult = {
   campaign: LeadgenCampaign;
   companies: LeadgenCompany[];
+  contacts: LeadgenContact[];
   leads: LeadgenLead[];
   signals: LeadgenSignal[];
   events: LeadgenEvent[];

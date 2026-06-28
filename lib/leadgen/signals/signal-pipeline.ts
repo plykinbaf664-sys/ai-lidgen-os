@@ -5,6 +5,7 @@ import { collectSignalEvidence } from "@/lib/leadgen/signals/evidence-collector"
 import type {
   SignalQuery,
   SignalQueryAngle,
+  SignalSearchMarket,
 } from "@/lib/leadgen/signals/query-builder";
 import { buildSignalQueries } from "@/lib/leadgen/signals/query-builder";
 import { buildLeadCandidates } from "@/lib/leadgen/signals/lead-candidate-builder";
@@ -20,12 +21,21 @@ export type SignalPipelineQueryUsed = SignalQuery & {
   candidates_found_after_query: number;
 };
 
+export type SignalPipelineEvidenceResult = EvidenceResult & {
+  market: Exclude<SignalSearchMarket, "mixed">;
+  query_language: SignalQuery["query_language"];
+  query_angle: SignalQuery["query_angle"];
+  source_country_hint: string | null;
+  why_market_selected: string;
+};
+
 export type RunSignalPipelineInput = {
   signalType: SignalType;
   searchProvider: SearchProvider;
   targetCandidates?: number;
   maxQueries?: number;
   maxResultsPerQuery?: number;
+  market?: SignalSearchMarket;
 };
 
 export type SignalPipelineResult = {
@@ -34,11 +44,12 @@ export type SignalPipelineResult = {
   candidates_found: number;
   queries_used: SignalPipelineQueryUsed[];
   candidates_by_angle: Record<SignalQueryAngle, number>;
+  candidates_by_market: Record<Exclude<SignalSearchMarket, "mixed">, number>;
   candidates: LeadCandidate[];
-  valid_evidence: EvidenceResult[];
-  weak_evidence: EvidenceResult[];
-  rejected_results: EvidenceResult[];
-  all_evidence: EvidenceResult[];
+  valid_evidence: SignalPipelineEvidenceResult[];
+  weak_evidence: SignalPipelineEvidenceResult[];
+  rejected_results: SignalPipelineEvidenceResult[];
+  all_evidence: SignalPipelineEvidenceResult[];
   stopped_reason: SignalPipelineStoppedReason;
 };
 
@@ -50,6 +61,7 @@ const TARGET_CANDIDATES_CAP = 10;
 const MAX_QUERIES_CAP = 8;
 const MAX_RESULTS_PER_QUERY_CAP = 10;
 const MAX_CANDIDATES_PER_ANGLE = 2;
+const MAX_SOFT_MARKET_SHARE = 0.7;
 
 const signalQueryAngles: SignalQueryAngle[] = [
   "company_careers",
@@ -114,6 +126,16 @@ function createEmptyCandidatesByAngle(): Record<SignalQueryAngle, number> {
   );
 }
 
+function createEmptyCandidatesByMarket(): Record<
+  Exclude<SignalSearchMarket, "mixed">,
+  number
+> {
+  return {
+    global: 0,
+    ru: 0,
+  };
+}
+
 function countCandidatesByAngle(
   candidates: LeadCandidate[],
   candidateAngleByKey: Map<string, SignalQueryAngle>,
@@ -131,32 +153,68 @@ function countCandidatesByAngle(
   return counts;
 }
 
+function countCandidatesByMarket(
+  candidates: LeadCandidate[],
+  candidateMarketByKey: Map<string, Exclude<SignalSearchMarket, "mixed">>,
+): Record<Exclude<SignalSearchMarket, "mixed">, number> {
+  const counts = createEmptyCandidatesByMarket();
+
+  for (const candidate of candidates) {
+    const market = candidateMarketByKey.get(getLeadCandidateKey(candidate));
+
+    if (market) {
+      counts[market] += 1;
+    }
+  }
+
+  return counts;
+}
+
 function selectCandidatesWithDiversity({
   candidates,
   candidateAngleByKey,
+  candidateMarketByKey,
   targetCandidates,
   allowOverflow,
 }: {
   candidates: LeadCandidate[];
   candidateAngleByKey: Map<string, SignalQueryAngle>;
+  candidateMarketByKey: Map<string, Exclude<SignalSearchMarket, "mixed">>;
   targetCandidates: number;
   allowOverflow: boolean;
 }): LeadCandidate[] {
   const selected: LeadCandidate[] = [];
   const selectedKeys = new Set<string>();
   const countsByAngle = createEmptyCandidatesByAngle();
+  const countsByMarket = createEmptyCandidatesByMarket();
+  const softMarketCap = Math.max(
+    1,
+    Math.ceil(targetCandidates * MAX_SOFT_MARKET_SHARE),
+  );
 
   for (const candidate of candidates) {
     const key = getLeadCandidateKey(candidate);
     const angle = candidateAngleByKey.get(key);
+    const market = candidateMarketByKey.get(key);
 
     if (!angle || countsByAngle[angle] >= MAX_CANDIDATES_PER_ANGLE) {
+      continue;
+    }
+
+    if (
+      !allowOverflow &&
+      market &&
+      countsByMarket[market] >= softMarketCap
+    ) {
       continue;
     }
 
     selected.push(candidate);
     selectedKeys.add(key);
     countsByAngle[angle] += 1;
+    if (market) {
+      countsByMarket[market] += 1;
+    }
 
     if (selected.length >= targetCandidates) {
       return selected;
@@ -189,12 +247,20 @@ function rememberCandidateMetadata({
   queryEvidence,
   query,
   candidateAngleByKey,
+  candidateMarketByKey,
   candidateQueryByKey,
+  candidateQueryLanguageByKey,
+  candidateQueryAngleByKey,
+  candidateSourceCountryHintByKey,
 }: {
-  queryEvidence: EvidenceResult[];
+  queryEvidence: SignalPipelineEvidenceResult[];
   query: SignalQuery;
   candidateAngleByKey: Map<string, SignalQueryAngle>;
+  candidateMarketByKey: Map<string, Exclude<SignalSearchMarket, "mixed">>;
   candidateQueryByKey: Map<string, string>;
+  candidateQueryLanguageByKey: Map<string, SignalQuery["query_language"]>;
+  candidateQueryAngleByKey: Map<string, SignalQuery["query_angle"]>;
+  candidateSourceCountryHintByKey: Map<string, string | null>;
 }) {
   const queryCandidates = buildLeadCandidates(queryEvidence).candidates;
 
@@ -205,8 +271,24 @@ function rememberCandidateMetadata({
       candidateAngleByKey.set(key, query.angle);
     }
 
+    if (!candidateMarketByKey.has(key)) {
+      candidateMarketByKey.set(key, query.market);
+    }
+
     if (!candidateQueryByKey.has(key)) {
       candidateQueryByKey.set(key, query.query);
+    }
+
+    if (!candidateQueryLanguageByKey.has(key)) {
+      candidateQueryLanguageByKey.set(key, query.query_language);
+    }
+
+    if (!candidateQueryAngleByKey.has(key)) {
+      candidateQueryAngleByKey.set(key, query.query_angle);
+    }
+
+    if (!candidateSourceCountryHintByKey.has(key)) {
+      candidateSourceCountryHintByKey.set(key, query.source_country_hint);
     }
   }
 }
@@ -215,11 +297,24 @@ function enrichCandidates(
   candidates: LeadCandidate[],
   signalType: SignalType,
   candidateQueryByKey: Map<string, string>,
+  candidateMarketByKey: Map<string, Exclude<SignalSearchMarket, "mixed">>,
+  candidateQueryLanguageByKey: Map<string, SignalQuery["query_language"]>,
+  candidateQueryAngleByKey: Map<string, SignalQuery["query_angle"]>,
+  candidateSourceCountryHintByKey: Map<string, string | null>,
 ): LeadCandidate[] {
   return candidates.map((candidate) => ({
     ...candidate,
     signal_type: signalType,
     discovery_query: candidateQueryByKey.get(getLeadCandidateKey(candidate)) ?? null,
+    discovery_market:
+      candidateMarketByKey.get(getLeadCandidateKey(candidate)) ?? null,
+    discovery_query_language:
+      candidateQueryLanguageByKey.get(getLeadCandidateKey(candidate)) ?? null,
+    discovery_query_angle:
+      candidateQueryAngleByKey.get(getLeadCandidateKey(candidate)) ?? null,
+    source_country_hint:
+      candidateSourceCountryHintByKey.get(getLeadCandidateKey(candidate)) ??
+      null,
     matched_signal_count: candidate.signals.length,
   }));
 }
@@ -230,6 +325,7 @@ export async function runSignalPipeline({
   targetCandidates,
   maxQueries,
   maxResultsPerQuery,
+  market = "mixed",
 }: RunSignalPipelineInput): Promise<SignalPipelineResult> {
   const safeTargetCandidates = applyLimit(
     targetCandidates,
@@ -250,11 +346,22 @@ export async function runSignalPipeline({
     icp: leadgenConfig.icp,
     signalType,
     maxQueries: safeMaxQueries,
+    market,
   });
   const queriesUsed: SignalPipelineQueryUsed[] = [];
-  const evidenceResults: EvidenceResult[] = [];
+  const evidenceResults: SignalPipelineEvidenceResult[] = [];
   const candidateAngleByKey = new Map<string, SignalQueryAngle>();
+  const candidateMarketByKey = new Map<
+    string,
+    Exclude<SignalSearchMarket, "mixed">
+  >();
   const candidateQueryByKey = new Map<string, string>();
+  const candidateQueryLanguageByKey = new Map<
+    string,
+    SignalQuery["query_language"]
+  >();
+  const candidateQueryAngleByKey = new Map<string, SignalQuery["query_angle"]>();
+  const candidateSourceCountryHintByKey = new Map<string, string | null>();
   let candidates: LeadCandidate[] = [];
 
   for (let queryIndex = 0; queryIndex < queries.length; queryIndex += 1) {
@@ -263,20 +370,29 @@ export async function runSignalPipeline({
       query: query.query,
       maxResults: safeMaxResultsPerQuery,
     });
-    const queryEvidence = searchResults.map((result) =>
-      collectSignalEvidence({
+    const queryEvidence = searchResults.map((result) => ({
+      ...collectSignalEvidence({
         result,
         signalType,
         icp: leadgenConfig.icp,
       }),
-    );
+      market: query.market,
+      query_language: query.query_language,
+      query_angle: query.query_angle,
+      source_country_hint: query.source_country_hint,
+      why_market_selected: query.why_market_selected,
+    }));
 
     evidenceResults.push(...queryEvidence);
     rememberCandidateMetadata({
       queryEvidence,
       query,
       candidateAngleByKey,
+      candidateMarketByKey,
       candidateQueryByKey,
+      candidateQueryLanguageByKey,
+      candidateQueryAngleByKey,
+      candidateSourceCountryHintByKey,
     });
 
     const allCandidates = buildLeadCandidates(evidenceResults).candidates;
@@ -285,6 +401,7 @@ export async function runSignalPipeline({
     candidates = selectCandidatesWithDiversity({
       candidates: allCandidates,
       candidateAngleByKey,
+      candidateMarketByKey,
       targetCandidates: safeTargetCandidates,
       allowOverflow: isLastQuery,
     });
@@ -305,6 +422,7 @@ export async function runSignalPipeline({
     candidates = selectCandidatesWithDiversity({
       candidates: buildLeadCandidates(evidenceResults).candidates,
       candidateAngleByKey,
+      candidateMarketByKey,
       targetCandidates: safeTargetCandidates,
       allowOverflow: true,
     });
@@ -314,6 +432,10 @@ export async function runSignalPipeline({
     candidates,
     signalType,
     candidateQueryByKey,
+    candidateMarketByKey,
+    candidateQueryLanguageByKey,
+    candidateQueryAngleByKey,
+    candidateSourceCountryHintByKey,
   );
 
   return {
@@ -324,6 +446,10 @@ export async function runSignalPipeline({
     candidates_by_angle: countCandidatesByAngle(
       enrichedCandidates,
       candidateAngleByKey,
+    ),
+    candidates_by_market: countCandidatesByMarket(
+      enrichedCandidates,
+      candidateMarketByKey,
     ),
     candidates: enrichedCandidates,
     valid_evidence: evidenceResults.filter(

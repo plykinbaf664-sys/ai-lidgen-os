@@ -1,7 +1,14 @@
 "use client";
 
 import { formatTelegramCard } from "@/lib/leadgen/telegram-card";
-import type { LeadgenLead, LeadStatus } from "@/lib/leadgen/types";
+import type {
+  DecisionMakerProfile,
+  LeadgenContact,
+  LeadgenLead,
+  LeadStatus,
+  PeopleDiscoveryResult,
+  PersonaSearchStatus,
+} from "@/lib/leadgen/types";
 
 const statuses: LeadStatus[] = ["approved", "rejected", "paused", "new"];
 
@@ -14,11 +21,31 @@ const statusLabels: Record<LeadStatus, string> = {
 
 type TelegramCardPreviewProps = {
   lead: LeadgenLead | null;
+  decisionMaker?: DecisionMakerProfile | null;
+  peopleDiscovery?: PeopleDiscoveryResult | null;
+  bestAvailableEntry?: LeadgenContact | null;
+  bestOutreachEntry?: LeadgenContact | null;
+  fallbackEntry?: LeadgenContact | null;
   onStatusChange: (leadId: string, status: LeadStatus) => void;
 };
 
+function getPersonaSearchStatus(
+  contact?: LeadgenContact | null,
+): PersonaSearchStatus | undefined {
+  const rawStatus = contact?.metadata.persona_search_status;
+
+  return typeof rawStatus === "string"
+    ? (rawStatus as PersonaSearchStatus)
+    : undefined;
+}
+
 export function TelegramCardPreview({
   lead,
+  decisionMaker,
+  peopleDiscovery,
+  bestAvailableEntry,
+  bestOutreachEntry,
+  fallbackEntry,
   onStatusChange,
 }: TelegramCardPreviewProps) {
   return (
@@ -33,7 +60,18 @@ export function TelegramCardPreview({
 
       {lead ? (
         <div className="preview-content">
-          <div className="telegram-card">{formatTelegramCard(lead)}</div>
+          <div className="telegram-card">
+            {formatTelegramCard(lead, {
+              decisionMaker,
+              peopleDiscovery,
+              bestAvailableEntry,
+              bestOutreachEntry,
+              fallbackEntry,
+              personaSearchStatus: getPersonaSearchStatus(
+                bestOutreachEntry ?? fallbackEntry ?? bestAvailableEntry,
+              ),
+            })}
+          </div>
           <div className="status-actions">
             {statuses.map((status) => (
               <button

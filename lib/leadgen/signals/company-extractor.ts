@@ -15,6 +15,7 @@ export type CompanyCandidateOption = {
   company_name: string;
   company_domain: string | null;
   extraction_source: CompanyExtractionSource;
+  matched_ru_pattern: string | null;
   selection_score: number;
   selection_reason: string;
   is_valid: boolean;
@@ -32,6 +33,7 @@ export type CompanyExtractionResult = {
   extraction_strategy_used: CompanyExtractionSource;
   extraction_confidence: number;
   extraction_source: CompanyExtractionSource;
+  matched_ru_pattern: string | null;
   is_candidate_company_valid: boolean;
   invalid_reason: CompanyInvalidReason | null;
   validation_reason: string;
@@ -57,6 +59,7 @@ type CandidateDraft = {
   role: CandidateRole;
   baseScore: number;
   extractionReason: string;
+  matchedRuPattern?: string;
 };
 
 type CandidatePattern = {
@@ -65,6 +68,7 @@ type CandidatePattern = {
   source: CompanyExtractionSource;
   baseScore: number;
   reason: string;
+  matchedRuPattern?: string;
 };
 
 type TextCandidateSource = {
@@ -76,6 +80,8 @@ type TextCandidateSource = {
 
 const platformLikeDomains = [
   "hh.ru",
+  "hh.kz",
+  "hh.uz",
   "linkedin.com",
   "indeed.com",
   "ziprecruiter.com",
@@ -92,6 +98,12 @@ const platformLikeDomains = [
   "workable.com",
   "paycor.com",
   "welcometothejungle.com",
+  "career.habr.com",
+  "rabota.ru",
+  "superjob.ru",
+  "zarplata.ru",
+  "jobfilter.ru",
+  "remote-job.ru",
 ];
 
 const companyOwnedSourceTypes = new Set([
@@ -120,16 +132,29 @@ const ignoredSlugParts = new Set([
   "openings",
   "positions",
   "roles",
+  "rabota",
+  "vakansii",
+  "remote",
+  "udalennaya",
+  "search",
   "en",
   "ru",
 ]);
 
 const broadJobBoardDomains = new Set([
   "hh.ru",
+  "hh.kz",
+  "hh.uz",
   "linkedin.com",
   "indeed.com",
   "ziprecruiter.com",
   "glassdoor.com",
+  "career.habr.com",
+  "rabota.ru",
+  "superjob.ru",
+  "zarplata.ru",
+  "jobfilter.ru",
+  "remote-job.ru",
 ]);
 
 const companyNamePattern =
@@ -144,6 +169,50 @@ const organizationMarkerPattern =
 const explicitCandidatePatterns: CandidatePattern[] = [
   {
     pattern: new RegExp(
+      `\\u0440\\u0430\\u0431\\u043e\\u0442\\u043e\\u0434\\u0430\\u0442\\u0435\\u043b\\u044c\\s*[:\\-]\\s*${companyNamePattern}`,
+      "gi",
+    ),
+    role: "employer_subject",
+    source: "explicit_pattern",
+    baseScore: 96,
+    reason: "Explicit Russian employer field",
+    matchedRuPattern: "employer_field",
+  },
+  {
+    pattern: new RegExp(
+      `\\b(?:\\u041e\\u041e\\u041e|\\u0410\\u041e|\\u041f\\u0410\\u041e|\\u0417\\u0410\\u041e|\\u0418\\u041f|\\u0413\\u041a|\\u0421\\u041a)\\s+${companyNamePattern}`,
+      "gi",
+    ),
+    role: "employer_subject",
+    source: "explicit_pattern",
+    baseScore: 95,
+    reason: "Russian legal entity marker",
+    matchedRuPattern: "legal_entity_marker",
+  },
+  {
+    pattern: new RegExp(
+      `\\u043a\\u043e\\u043c\\u043f\\u0430\\u043d\\u0438\\u044f\\s+${companyNamePattern}\\s+(?:\\u0438\\u0449\\u0435\\u0442|\\u043d\\u0430\\u043d\\u0438\\u043c\\u0430\\u0435\\u0442|\\u043e\\u0442\\u043a\\u0440\\u044b\\u043b[\\u0430]?|\\u043e\\u0442\\u043a\\u0440\\u044b\\u0432\\u0430\\u0435\\u0442|\\u0440\\u0430\\u0441\\u0448\\u0438\\u0440\\u044f\\u0435\\u0442)`,
+      "gi",
+    ),
+    role: "employer_subject",
+    source: "explicit_pattern",
+    baseScore: 94,
+    reason: "Russian company as hiring or growth subject",
+    matchedRuPattern: "company_subject_action",
+  },
+  {
+    pattern: new RegExp(
+      `${companyNamePattern}\\s+(?:\\u0438\\u0449\\u0435\\u0442|\\u043d\\u0430\\u043d\\u0438\\u043c\\u0430\\u0435\\u0442|\\u043e\\u0442\\u043a\\u0440\\u044b\\u043b[\\u0430]?\\s+\\u0432\\u0430\\u043a\\u0430\\u043d\\u0441\\u0438\\u044e|\\u043e\\u0442\\u043a\\u0440\\u044b\\u0432\\u0430\\u0435\\u0442\\s+\\u0432\\u0430\\u043a\\u0430\\u043d\\u0441\\u0438\\u044e|\\u0440\\u0430\\u0441\\u0448\\u0438\\u0440\\u044f\\u0435\\u0442\\s+\\u043e\\u0442\\u0434\\u0435\\u043b\\s+\\u043f\\u0440\\u043e\\u0434\\u0430\\u0436)`,
+      "gi",
+    ),
+    role: "employer_subject",
+    source: "explicit_pattern",
+    baseScore: 93,
+    reason: "Russian employer subject before action",
+    matchedRuPattern: "subject_before_action",
+  },
+  {
+    pattern: new RegExp(
       `\\b(?:\\u043c\\u044b|\\u0443\\s+\\u043d\\u0430\\u0441|\\u043a\\u043e\\u043c\\u0430\\u043d\\u0434\\u0430)\\s+\\u0432\\s+${companyNamePattern}`,
       "gi",
     ),
@@ -151,6 +220,7 @@ const explicitCandidatePatterns: CandidatePattern[] = [
     source: "explicit_pattern",
     baseScore: 94,
     reason: "Russian we-at-company employer phrase",
+    matchedRuPattern: "we_at_company",
   },
   {
     pattern: new RegExp(`\\bwe\\s+at\\s+${companyNamePattern}\\b`, "gi"),
@@ -168,16 +238,18 @@ const explicitCandidatePatterns: CandidatePattern[] = [
     source: "explicit_pattern",
     baseScore: 92,
     reason: "Employer phrase in Russian vacancy context",
+    matchedRuPattern: "vacancy_in_company",
   },
   {
     pattern: new RegExp(
-      `\\u0440\\u0430\\u0431\\u043e\\u0442\\u0430\\s+\\u0432\\s+\\u043a\\u043e\\u043c\\u043f\\u0430\\u043d\\u0438\\u0438\\s+${companyNamePattern}`,
+      `\\u0440\\u0430\\u0431\\u043e\\u0442\\u0430\\s+\\u0432\\s+(?:\\u043a\\u043e\\u043c\\u043f\\u0430\\u043d\\u0438\\u0438\\s+)?${companyNamePattern}`,
       "gi",
     ),
     role: "employer_subject",
     source: "explicit_pattern",
     baseScore: 92,
     reason: "Employer phrase in Russian work context",
+    matchedRuPattern: "work_in_company",
   },
   {
     pattern: new RegExp(
@@ -188,6 +260,7 @@ const explicitCandidatePatterns: CandidatePattern[] = [
     source: "explicit_pattern",
     baseScore: 88,
     reason: "Explicit Russian company phrase",
+    matchedRuPattern: "in_company",
   },
   {
     pattern: new RegExp(`\\bcareers\\s+at\\s+${companyNamePattern}\\b`, "gi"),
@@ -379,7 +452,7 @@ function cleanCompanyName(value: string): string {
     .replace(/^at\s+/i, "")
     .replace(/\s*,\s*(?:you|we|which|that|who|where|when)\b[\s\S]*$/i, "")
     .replace(
-      /\s*\.\s*(?=(?:salary|compensation|pay|posted|date|archived|archive|location|remote|hybrid|onsite|experience|schedule|conditions|description|\u0437\u0430\u0440\u043f\u043b\u0430\u0442\u0430|\u043e\u043f\u043b\u0430\u0442\u0430|\u0434\u043e\u0445\u043e\u0434|\u0434\u0430\u0442\u0430|\u0430\u0440\u0445\u0438\u0432|\u0433\u043e\u0440\u043e\u0434|Ð|Р))[\s\S]*$/i,
+      /\s*\.\s*(?=(?:salary|compensation|pay|posted|date|archived|archive|location|remote|hybrid|onsite|experience|schedule|conditions|description|\u0437\u0430\u0440\u043f\u043b\u0430\u0442\u0430|\u043e\u043f\u043b\u0430\u0442\u0430|\u0434\u043e\u0445\u043e\u0434|\u0434\u0430\u0442\u0430|\u0430\u0440\u0445\u0438\u0432|\u0433\u043e\u0440\u043e\u0434))[\s\S]*$/i,
       "",
     )
     .replace(/^inside\s+/i, "")
@@ -625,6 +698,7 @@ function collectPatternDrafts(
           role: candidatePattern.role,
           baseScore: candidatePattern.baseScore,
           extractionReason: candidatePattern.reason,
+          matchedRuPattern: candidatePattern.matchedRuPattern,
         });
       }
     }
@@ -803,6 +877,7 @@ function buildFallbackResult({
     extraction_strategy_used: "unknown",
     extraction_confidence: 0,
     extraction_source: "unknown",
+    matched_ru_pattern: null,
     is_candidate_company_valid: false,
     invalid_reason: validation.invalid_reason,
     validation_reason: validation.validation_reason,
@@ -935,6 +1010,7 @@ export function extractCompanyFromSearchResult(
       company_name: draft.companyName,
       company_domain: validation.is_valid ? draft.companyDomain : null,
       extraction_source: draft.extractionSource,
+      matched_ru_pattern: draft.matchedRuPattern ?? null,
       selection_score: selection.score,
       selection_reason: selection.reason,
       is_valid: validation.is_valid,
@@ -972,6 +1048,7 @@ export function extractCompanyFromSearchResult(
       ? Math.min(Math.round(selected.selection.score), 100)
       : 0,
     extraction_source: selected.draft.extractionSource,
+    matched_ru_pattern: selected.draft.matchedRuPattern ?? null,
     is_candidate_company_valid: selected.validation.is_valid,
     invalid_reason: selected.validation.invalid_reason,
     validation_reason: selected.validation.validation_reason,

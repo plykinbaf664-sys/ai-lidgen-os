@@ -6,6 +6,7 @@ import type {
   LeadgenCampaignDetails,
   LeadgenCampaignSummary,
   LeadgenCompany,
+  LeadgenContact,
   LeadgenEvent,
   LeadgenLead,
   LeadgenSignal,
@@ -25,6 +26,7 @@ type SavePipelineResult = {
   pipeline_run_id: string;
   campaign_id: string;
   companies_count: number;
+  contacts_count: number;
   leads_count: number;
   signals_count: number;
   events_count: number;
@@ -42,6 +44,7 @@ type StoredLeadCampaignRef = Pick<
 >;
 
 type StoredCompanyCampaignRef = Pick<LeadgenCompany, "campaign_id">;
+type StoredContactCampaignRef = Pick<LeadgenContact, "campaign_id">;
 
 function isMissingRelationError(error: unknown): boolean {
   if (typeof error !== "object" || error === null) {
@@ -61,7 +64,8 @@ function isMissingRelationError(error: unknown): boolean {
   return (
     code === "42P01" ||
     code === "PGRST205" ||
-    message.includes("leadgen_companies") && message.includes("not")
+    message.includes("leadgen_companies") && message.includes("not") ||
+    message.includes("leadgen_contacts") && message.includes("not")
   );
 }
 
@@ -97,6 +101,21 @@ async function saveCompanies(
   }
 
   const { error } = await supabase.from("leadgen_companies").insert(companies);
+
+  if (error) {
+    throw error;
+  }
+}
+
+async function saveContacts(
+  supabase: SupabaseServerClient,
+  contacts: LeadgenContact[],
+) {
+  if (contacts.length === 0) {
+    return;
+  }
+
+  const { error } = await supabase.from("leadgen_contacts").insert(contacts);
 
   if (error) {
     throw error;
@@ -177,6 +196,7 @@ export async function savePipelineResult({
     await saveCompanies(supabase, result.companies ?? []);
     await saveLeads(supabase, result.leads);
     await saveSignals(supabase, result.signals);
+    await saveContacts(supabase, result.contacts ?? []);
     await saveEvents(supabase, result.events);
     await saveTelegramNotifications(supabase, notifications);
   } catch (error) {
@@ -199,6 +219,7 @@ export async function savePipelineResult({
     pipeline_run_id: result.campaign.pipeline_run_id,
     campaign_id: result.campaign.id,
     companies_count: result.companies?.length ?? result.leads.length,
+    contacts_count: result.contacts?.length ?? 0,
     leads_count: result.leads.length,
     signals_count: result.signals.length,
     events_count: result.events.length,
@@ -228,6 +249,7 @@ export async function getRecentCampaigns(
   const campaignIds = campaigns.map((campaign) => campaign.id);
   const [
     { data: companies, error: companiesError },
+    { data: contacts, error: contactsError },
     { data: leads, error: leadsError },
   ] = await Promise.all([
     supabase
@@ -235,6 +257,11 @@ export async function getRecentCampaigns(
       .select("campaign_id")
       .in("campaign_id", campaignIds)
       .returns<StoredCompanyCampaignRef[]>(),
+    supabase
+      .from("leadgen_contacts")
+      .select("campaign_id")
+      .in("campaign_id", campaignIds)
+      .returns<StoredContactCampaignRef[]>(),
     supabase
       .from("leadgen_leads")
       .select("campaign_id,contact_value")
@@ -250,9 +277,20 @@ export async function getRecentCampaigns(
     throw leadsError;
   }
 
+  if (contactsError && !isMissingRelationError(contactsError)) {
+    throw contactsError;
+  }
+
   const companyCounts = new Map<string, number>();
   const legacyLeadCounts = new Map<string, number>();
   const contactCounts = new Map<string, number>();
+
+  for (const contact of contactsError ? [] : contacts ?? []) {
+    contactCounts.set(
+      contact.campaign_id,
+      (contactCounts.get(contact.campaign_id) ?? 0) + 1,
+    );
+  }
 
   for (const company of companiesError ? [] : companies ?? []) {
     companyCounts.set(
@@ -267,7 +305,7 @@ export async function getRecentCampaigns(
       (legacyLeadCounts.get(lead.campaign_id) ?? 0) + 1,
     );
 
-    if (lead.contact_value) {
+    if (!contactCounts.has(lead.campaign_id) && lead.contact_value) {
       contactCounts.set(
         lead.campaign_id,
         (contactCounts.get(lead.campaign_id) ?? 0) + 1,
@@ -304,6 +342,7 @@ export async function getCampaignDetails(
 
   const [
     { data: companies, error: companiesError },
+    { data: contacts, error: contactsError },
     { data: leads, error: leadsError },
     { data: signals, error: signalsError },
     { data: events, error: eventsError },
@@ -315,6 +354,13 @@ export async function getCampaignDetails(
       .eq("campaign_id", campaignId)
       .order("lead_score", { ascending: false })
       .returns<LeadgenCompany[]>(),
+    supabase
+      .from("leadgen_contacts")
+      .select("*")
+      .eq("campaign_id", campaignId)
+      .order("is_primary", { ascending: false })
+      .order("confidence_score", { ascending: false })
+      .returns<LeadgenContact[]>(),
     supabase
       .from("leadgen_leads")
       .select("*")
@@ -349,6 +395,10 @@ export async function getCampaignDetails(
     throw leadsError;
   }
 
+  if (contactsError && !isMissingRelationError(contactsError)) {
+    throw contactsError;
+  }
+
   if (signalsError) {
     throw signalsError;
   }
@@ -362,6 +412,7 @@ export async function getCampaignDetails(
   }
 
   const storedCompanies = companiesError ? [] : companies ?? [];
+  const storedContacts = contactsError ? [] : contacts ?? [];
   const storedLeads = leads ?? [];
   const storedSignals = signals ?? [];
   const storedEvents = events ?? [];
@@ -370,6 +421,7 @@ export async function getCampaignDetails(
   return {
     campaign,
     companies: storedCompanies,
+    contacts: storedContacts,
     leads: storedLeads,
     signals: storedSignals,
     events: storedEvents,
@@ -377,7 +429,10 @@ export async function getCampaignDetails(
     stats: {
       companies_count:
         storedCompanies.length > 0 ? storedCompanies.length : storedLeads.length,
-      contacts_count: storedLeads.filter((lead) => lead.contact_value).length,
+      contacts_count:
+        storedContacts.length > 0
+          ? storedContacts.length
+          : storedLeads.filter((lead) => lead.contact_value).length,
       signals_count: storedSignals.length,
       notifications_count: storedNotifications.length,
       events_count: storedEvents.length,

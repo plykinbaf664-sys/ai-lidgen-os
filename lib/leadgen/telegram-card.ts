@@ -1,34 +1,160 @@
-import type { LeadgenLead } from "@/lib/leadgen/types";
+import type {
+  DecisionMakerProfile,
+  LeadgenContact,
+  LeadgenLead,
+  PeopleDiscoveryResult,
+  PersonaSearchStatus,
+} from "@/lib/leadgen/types";
 
 const statusLabels: Record<LeadgenLead["status"], string> = {
-  new: "Новый",
-  approved: "Одобрен",
-  rejected: "Отклонен",
-  paused: "На паузе",
+  new: "New",
+  approved: "Approved",
+  rejected: "Rejected",
+  paused: "Paused",
 };
 
-export function formatTelegramCard(lead: LeadgenLead): string {
-  const contact = lead.contact_label
-    ? `${lead.contact_label}: ${lead.contact_value}`
-    : "Подтвержденный контакт не найден";
+export type TelegramCardContext = {
+  decisionMaker?: DecisionMakerProfile | null;
+  bestAvailableEntry?: LeadgenContact | null;
+  bestOutreachEntry?: LeadgenContact | null;
+  fallbackEntry?: LeadgenContact | null;
+  peopleDiscovery?: PeopleDiscoveryResult | null;
+  personaSearchStatus?: PersonaSearchStatus;
+};
+
+function getContactValue(contact: LeadgenContact): string | null {
+  return (
+    contact.email ??
+    contact.linkedin_url ??
+    contact.telegram_url ??
+    contact.contact_url
+  );
+}
+
+function getContactLabel(contact: LeadgenContact): string {
+  if (contact.full_name && contact.role_title) {
+    return `${contact.full_name}, ${contact.role_title}`;
+  }
+
+  if (contact.full_name) {
+    return contact.full_name;
+  }
+
+  if (contact.role_title) {
+    return contact.role_title;
+  }
+
+  const labels: Record<LeadgenContact["contact_type"], string> = {
+    confirmed_person: "Confirmed person",
+    role_based_person: "Relevant role",
+    generic_email: "Generic email",
+    contact_form: "Contact form",
+    social_profile: "Social profile",
+    company_website: "Company website",
+    no_contact_found: "No contact found",
+  };
+
+  return labels[contact.contact_type];
+}
+
+function getPersonaSearchStatusLabel(status?: PersonaSearchStatus): string {
+  const labels: Record<PersonaSearchStatus, string> = {
+    target_persona_found: "Target persona found",
+    alternative_persona_found: "Alternative persona found",
+    department_entry_found: "Department-level entry found",
+    generic_entry_found: "Generic business entry found",
+    fallback_only:
+      "Fallback only - target persona not found in available public data",
+    no_entry_found: "No public entry point found",
+  };
+
+  return status ? labels[status] : "Persona search context unavailable";
+}
+
+export function formatTelegramCard(
+  lead: LeadgenLead,
+  context: TelegramCardContext = {},
+): string {
+  const bestOutreachEntry = context.bestOutreachEntry ?? context.bestAvailableEntry;
+  const fallbackEntry = context.fallbackEntry;
+  const bestOutreachEntryValue = bestOutreachEntry
+    ? getContactValue(bestOutreachEntry)
+    : null;
+  const bestOutreachEntryLabel =
+    bestOutreachEntry &&
+    bestOutreachEntry.contact_type !== "company_website" &&
+    bestOutreachEntry.contact_type !== "no_contact_found"
+      ? `${getContactLabel(bestOutreachEntry)}: ${
+          bestOutreachEntryValue ?? "No direct value"
+        }`
+      : "Not found yet";
+  const fallbackEntryValue = fallbackEntry ? getContactValue(fallbackEntry) : null;
+  const fallbackEntryLabel = fallbackEntry
+    ? `${getContactLabel(fallbackEntry)}: ${
+        fallbackEntryValue ?? "No direct value"
+      }`
+    : "No fallback entry found";
+  const decisionMaker = context.decisionMaker;
+  const foundPerson = context.peopleDiscovery?.primary_person;
+  const personaLines = decisionMaker
+    ? [
+        `Target persona: ${decisionMaker.primary_persona}`,
+        `Why this person: ${decisionMaker.reasoning}`,
+        `Expected pain: ${decisionMaker.expected_pain}`,
+        `Expected goal: ${decisionMaker.expected_goal}`,
+        `Alternative personas: ${decisionMaker.alternative_personas.join(", ")}`,
+        `Persona search status: ${getPersonaSearchStatusLabel(
+          context.personaSearchStatus,
+        )}`,
+      ]
+    : [
+        "Target persona: not available in this card context",
+        `Persona search status: ${getPersonaSearchStatusLabel(
+          context.personaSearchStatus,
+        )}`,
+      ];
+  const confidenceLines = decisionMaker
+    ? [
+        `Decision confidence: ${decisionMaker.confidence_score}/100`,
+        `Business problem owner: ${decisionMaker.business_problem_owner}`,
+      ]
+    : [];
 
   return [
-    `НОВЫЙ ЛИД: ${lead.company_name}`,
+    `NEW LEAD: ${lead.company_name}`,
     "",
-    `Сегмент: ${lead.company_segment}`,
-    `Сайт: ${lead.company_domain ?? "не найден"}`,
-    `Лучший доступный вход: ${contact}`,
+    `Segment: ${lead.company_segment}`,
+    `Website: ${lead.company_domain ?? "not found"}`,
+    `Why this company: ${lead.signal_detail}`,
+    ...personaLines,
+    ...confidenceLines,
+    `Found person: ${foundPerson?.full_name ?? "Not found"}`,
+    ...(foundPerson
+      ? [
+          `Found role: ${foundPerson.role_title ?? "unknown"}`,
+          `Found LinkedIn: ${foundPerson.linkedin_url ?? "not found"}`,
+          `Found email: ${foundPerson.work_email ?? "not found"}`,
+          `People source: ${foundPerson.source}`,
+          `People confidence: ${foundPerson.confidence_score}/100`,
+        ]
+      : [
+          `People discovery status: ${
+            context.peopleDiscovery?.search_status ?? "not_run"
+          }`,
+        ]),
+    `Best outreach entry: ${bestOutreachEntryLabel}`,
+    `Fallback entry: ${fallbackEntryLabel}`,
     "",
-    `Сигнал: ${lead.signal_title}`,
+    `Signal: ${lead.signal_title}`,
     `${lead.signal_detail}`,
-    `Источник: ${lead.signal_source_label}`,
+    `Source: ${lead.signal_source_label}`,
     "",
-    `Зацепка: ${lead.hook}`,
+    `Hook: ${lead.hook}`,
     "",
-    `Сообщение: ${lead.message}`,
+    `Message: ${lead.message}`,
     "",
-    `Повторное сообщение: ${lead.follow_up}`,
+    `Follow-up: ${lead.follow_up}`,
     "",
-    `Статус: ${statusLabels[lead.status]}`,
+    `Status: ${statusLabels[lead.status]}`,
   ].join("\n");
 }

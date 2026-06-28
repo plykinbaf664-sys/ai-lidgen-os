@@ -1,16 +1,22 @@
 import { leadgenConfig } from "@/lib/leadgen/config";
+import { ContactDiscoveryService } from "@/lib/leadgen/contact-discovery-service";
+import { discoverDecisionMaker } from "@/lib/leadgen/decision-maker-discovery";
+import { PeopleDiscoveryEngine } from "@/lib/leadgen/people-discovery-engine";
 import type { SearchProvider } from "@/lib/leadgen/search/search-provider";
 import { interpretSignal } from "@/lib/leadgen/signals/signal-interpreter";
 import { runSignalPipeline } from "@/lib/leadgen/signals/signal-pipeline";
 import type {
   CampaignInput,
+  DecisionMakerProfile,
   LeadCandidate,
   LeadDiscoveryResult,
   LeadgenCampaign,
   LeadgenCompany,
+  LeadgenContact,
   LeadgenEvent,
   LeadgenLead,
   LeadgenSignal,
+  PeopleDiscoveryResult,
   SignalType,
 } from "@/lib/leadgen/types";
 
@@ -114,12 +120,14 @@ function buildCompany({
   campaign,
   candidate,
   signalType,
+  decisionMaker,
   createdAt,
   index,
 }: {
   campaign: LeadgenCampaign;
   candidate: LeadCandidate;
   signalType: SignalType;
+  decisionMaker: DecisionMakerProfile;
   createdAt: string;
   index: number;
 }): LeadgenCompany {
@@ -157,6 +165,10 @@ function buildCompany({
         ...new Set(candidate.signals.map((signal) => signal.signal_type)),
       ],
       icp_fit_breakdown: candidate.icp_fit_breakdown,
+      discovery_market: candidate.discovery_market,
+      discovery_query_language: candidate.discovery_query_language,
+      discovery_query_angle: candidate.discovery_query_angle,
+      source_country_hint: candidate.source_country_hint,
       signal_interpretation: {
         evidence_language: candidate.evidence_language,
         confirmed_facts: candidate.confirmed_facts,
@@ -170,26 +182,79 @@ function buildCompany({
         card_signal_title: candidate.card_signal_title,
         should_create_lead: candidate.should_create_lead,
       },
+      decision_maker: {
+        primary_persona: decisionMaker.primary_persona,
+        alternative_personas: decisionMaker.alternative_personas,
+        department: decisionMaker.department,
+        buying_role: decisionMaker.buying_role,
+        influence_level: decisionMaker.influence_level,
+        decision_authority: decisionMaker.decision_authority,
+        business_problem_owner: decisionMaker.business_problem_owner,
+        expected_pain: decisionMaker.expected_pain,
+        expected_goal: decisionMaker.expected_goal,
+        search_keywords: decisionMaker.search_keywords,
+        priority: decisionMaker.priority,
+        reasoning: decisionMaker.reasoning,
+        confidence_score: decisionMaker.confidence_score,
+      },
+      source_reasoning: decisionMaker.source_reasoning,
     },
     created_at: createdAt,
     updated_at: createdAt,
   };
 }
 
-function createHook(company: LeadgenCompany, candidate: LeadCandidate): string {
-  return `${company.company_name}: ${candidate.why_now ?? candidate.signal_summary}`;
+function attachPeopleDiscoveryToCompany(
+  company: LeadgenCompany,
+  peopleDiscovery: PeopleDiscoveryResult,
+): LeadgenCompany {
+  return {
+    ...company,
+    metadata: {
+      ...company.metadata,
+      people_discovery: peopleDiscovery,
+    },
+  };
 }
 
-function writeMessage(company: LeadgenCompany, candidate: LeadCandidate): string {
+function createHook(
+  company: LeadgenCompany,
+  candidate: LeadCandidate,
+  decisionMaker: DecisionMakerProfile,
+): string {
+  return `${company.company_name}: ${candidate.why_now ?? candidate.signal_summary} Target persona: ${decisionMaker.primary_persona}.`;
+}
+
+function writeMessage(
+  company: LeadgenCompany,
+  candidate: LeadCandidate,
+  decisionMaker: DecisionMakerProfile,
+): string {
+  const signalSummary =
+    candidate.signal_summary ??
+    "I found a business signal that may point to current workflow pressure";
+  const whyNow =
+    candidate.why_now ??
+    "the timing looks relevant based on the available public evidence";
+  const confidenceNote =
+    candidate.confidence_level === "weak_evidence"
+      ? "I would treat this as a working hypothesis rather than a confirmed internal priority."
+      : "This looks like a reasonable moment to check whether the team is feeling related process load.";
+
   return [
-    `Noticed ${candidate.signal_summary}`,
-    `${candidate.why_it_matters}`,
-    `${candidate.outreach_hypothesis} Would it be useful if I sent 2-3 concrete workflow hypotheses for ${company.company_name}?`,
+    `I noticed ${signalSummary}`,
+    `The reason for reaching out now is that ${whyNow}`,
+    `For a ${decisionMaker.primary_persona}, the likely pain is: ${decisionMaker.expected_pain}`,
+    `${confidenceNote} I can send a short, concrete hypothesis map for where AI agents or workflow automation may help ${company.company_name}.`,
   ].join(" ");
 }
 
-function writeFollowUp(company: LeadgenCompany, candidate: LeadCandidate): string {
-  return `Quick follow-up on ${company.company_name}. The reason I reached out now: ${candidate.why_now} I can send a short hypothesis map without a pitch or call as the first step.`;
+function writeFollowUp(
+  company: LeadgenCompany,
+  candidate: LeadCandidate,
+  decisionMaker: DecisionMakerProfile,
+): string {
+  return `Quick follow-up on ${company.company_name}. I reached out because ${candidate.why_now ?? "the public signal suggested a possible current workflow window"}. The relevant owner looks like ${decisionMaker.primary_persona}; the hypothesis is ${decisionMaker.expected_goal}`;
 }
 
 function buildLead({
@@ -197,12 +262,14 @@ function buildLead({
   company,
   primarySignal,
   candidate,
+  decisionMaker,
   createdAt,
 }: {
   campaign: LeadgenCampaign;
   company: LeadgenCompany;
   primarySignal: LeadgenSignal;
   candidate: LeadCandidate;
+  decisionMaker: DecisionMakerProfile;
   createdAt: string;
 }): LeadgenLead {
   return {
@@ -222,12 +289,101 @@ function buildLead({
     signal_title: candidate.card_signal_title ?? primarySignal.signal_title,
     signal_detail: candidate.signal_summary ?? primarySignal.signal_detail,
     signal_source_label: primarySignal.signal_source_label,
-    hook: createHook(company, candidate),
-    message: writeMessage(company, candidate),
-    follow_up: writeFollowUp(company, candidate),
+    hook: createHook(company, candidate, decisionMaker),
+    message: writeMessage(company, candidate, decisionMaker),
+    follow_up: writeFollowUp(company, candidate, decisionMaker),
     status: "new",
     created_at: createdAt,
     updated_at: createdAt,
+  };
+}
+
+function getContactValue(contact: LeadgenContact): string | null {
+  return (
+    contact.email ??
+    contact.linkedin_url ??
+    contact.telegram_url ??
+    contact.contact_url
+  );
+}
+
+function getContactLabel(contact: LeadgenContact): string {
+  if (contact.full_name && contact.role_title) {
+    return `${contact.full_name}, ${contact.role_title}`;
+  }
+
+  if (contact.full_name) {
+    return contact.full_name;
+  }
+
+  if (contact.role_title) {
+    return contact.role_title;
+  }
+
+  const labels: Record<LeadgenContact["contact_type"], string> = {
+    confirmed_person: "Confirmed person",
+    role_based_person: "Relevant role",
+    generic_email: "Generic email",
+    contact_form: "Contact form",
+    social_profile: "Social profile",
+    company_website: "Fallback: Company website",
+    no_contact_found: "No contact found",
+  };
+
+  return labels[contact.contact_type];
+}
+
+function getContactChannel(
+  contact: LeadgenContact,
+): LeadgenLead["contact_channel"] {
+  if (contact.contact_type === "confirmed_person") {
+    return "decision-maker";
+  }
+
+  if (contact.contact_type === "role_based_person") {
+    return "department-head";
+  }
+
+  if (contact.contact_type === "generic_email") {
+    return "general-email";
+  }
+
+  if (
+    contact.contact_type === "contact_form" ||
+    contact.contact_type === "company_website"
+  ) {
+    return "website-form";
+  }
+
+  if (contact.linkedin_url) {
+    return "linkedin";
+  }
+
+  if (contact.contact_type === "social_profile") {
+    return "social";
+  }
+
+  return null;
+}
+
+function applyBestAvailableEntryToLead(
+  lead: LeadgenLead,
+  bestAvailableEntry: LeadgenContact,
+): LeadgenLead {
+  if (bestAvailableEntry.contact_type === "no_contact_found") {
+    return {
+      ...lead,
+      contact_channel: null,
+      contact_label: "No contact found",
+      contact_value: null,
+    };
+  }
+
+  return {
+    ...lead,
+    contact_channel: getContactChannel(bestAvailableEntry),
+    contact_label: getContactLabel(bestAvailableEntry),
+    contact_value: getContactValue(bestAvailableEntry),
   };
 }
 
@@ -338,14 +494,34 @@ export async function runLeadDiscoveryEngine({
     searchProvider,
     targetCompanies,
   });
-  const companies = candidateRecords.map(({ candidate, signalType }, index) =>
+  const decisionMakerRecommendations = candidateRecords.map(
+    ({ candidate, signalType }) =>
+      discoverDecisionMaker({
+        candidate,
+        signalType,
+      }),
+  );
+  const baseCompanies = candidateRecords.map(({ candidate, signalType }, index) =>
     buildCompany({
       campaign,
       candidate,
       signalType,
+      decisionMaker: decisionMakerRecommendations[index],
       createdAt,
       index,
     }),
+  );
+  const peopleDiscoveryEngine = new PeopleDiscoveryEngine();
+  const peopleDiscoveryResults = await Promise.all(
+    baseCompanies.map((company, index) =>
+      peopleDiscoveryEngine.discoverPeople({
+        company,
+        decisionMaker: decisionMakerRecommendations[index],
+      }),
+    ),
+  );
+  const companies = baseCompanies.map((company, index) =>
+    attachPeopleDiscoveryToCompany(company, peopleDiscoveryResults[index]),
   );
   const leadRecords = companies
     .map((company, index) => {
@@ -361,11 +537,16 @@ export async function runLeadDiscoveryEngine({
         company,
         primarySignal,
         candidate,
+        decisionMaker: decisionMakerRecommendations[index],
         createdAt,
       });
 
       return {
         lead,
+        company,
+        candidate,
+        decisionMaker: decisionMakerRecommendations[index],
+        peopleDiscovery: peopleDiscoveryResults[index],
         signals: buildSignals({
           campaign,
           company,
@@ -375,11 +556,40 @@ export async function runLeadDiscoveryEngine({
         }),
       };
     })
-    .filter((record): record is { lead: LeadgenLead; signals: LeadgenSignal[] } =>
-      Boolean(record),
+    .filter(
+      (
+        record,
+      ): record is {
+        lead: LeadgenLead;
+        company: LeadgenCompany;
+        candidate: LeadCandidate;
+        decisionMaker: DecisionMakerProfile;
+        signals: LeadgenSignal[];
+        peopleDiscovery: PeopleDiscoveryResult;
+      } => Boolean(record),
     );
-  const leads = leadRecords.map((record) => record.lead);
+  const contactDiscoveryService = new ContactDiscoveryService();
+  const contactDiscoveryResults = await Promise.all(
+    leadRecords.map((record) =>
+      contactDiscoveryService.discoverContacts({
+        campaign,
+        company: record.company,
+        lead: record.lead,
+        signals: record.signals,
+        decisionMaker: record.decisionMaker,
+        peopleDiscovery: record.peopleDiscovery,
+        createdAt,
+      }),
+    ),
+  );
+  const leads = leadRecords.map((record, index) =>
+    applyBestAvailableEntryToLead(
+      record.lead,
+      contactDiscoveryResults[index].best_available_entry,
+    ),
+  );
   const signals = leadRecords.flatMap((record) => record.signals);
+  const contacts = contactDiscoveryResults.flatMap((result) => result.contacts);
   const events = [
     buildEvent(
       pipelineRunId,
@@ -404,6 +614,7 @@ export async function runLeadDiscoveryEngine({
   return {
     campaign,
     companies,
+    contacts,
     leads,
     signals,
     events,

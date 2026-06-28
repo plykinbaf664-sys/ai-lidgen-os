@@ -1,8 +1,12 @@
 import type { SearchProvider } from "@/lib/leadgen/search/search-provider";
 import type { EvidenceResult } from "@/lib/leadgen/signals/evidence-collector";
-import type { SignalQueryAngle } from "@/lib/leadgen/signals/query-builder";
+import type {
+  SignalQueryAngle,
+  SignalSearchMarket,
+} from "@/lib/leadgen/signals/query-builder";
 import {
   runSignalPipeline,
+  type SignalPipelineEvidenceResult,
   type SignalPipelineQueryUsed,
   type SignalPipelineStoppedReason,
 } from "@/lib/leadgen/signals/signal-pipeline";
@@ -18,11 +22,16 @@ export type SignalPipelineEvidenceDiagnostic = {
   decision: EvidenceResult["decision"];
   rejection_reason?: EvidenceResult["rejection_reason"];
   source_type: EvidenceResult["source_type"];
+  market: SignalPipelineEvidenceResult["market"];
+  query_language: SignalPipelineEvidenceResult["query_language"];
+  query_angle: SignalPipelineEvidenceResult["query_angle"];
+  source_country_hint: string | null;
   source_domain: string | null;
   source_platform: string | null;
   is_platform_like_source: boolean;
   is_company_owned_domain: boolean;
   extraction_strategy_used: EvidenceResult["company_extraction"]["extraction_strategy_used"];
+  matched_ru_pattern: string | null;
   candidate_company: string | null;
   is_candidate_company_valid: boolean;
   invalid_reason: EvidenceResult["company_extraction"]["invalid_reason"];
@@ -41,6 +50,7 @@ export type RunSignalPipelineTestInput = {
   targetCandidates?: number;
   maxQueries?: number;
   maxResultsPerQuery?: number;
+  market?: SignalSearchMarket;
 };
 
 export type SignalPipelineTestResult = {
@@ -49,15 +59,16 @@ export type SignalPipelineTestResult = {
   candidates_found: number;
   queries_used: SignalPipelineQueryUsed[];
   candidates_by_angle: Record<SignalQueryAngle, number>;
+  candidates_by_market: Record<Exclude<SignalSearchMarket, "mixed">, number>;
   candidates: LeadCandidate[];
-  weak_evidence: EvidenceResult[];
-  rejected_results: EvidenceResult[];
+  weak_evidence: SignalPipelineEvidenceResult[];
+  rejected_results: SignalPipelineEvidenceResult[];
   evidence_diagnostics: SignalPipelineEvidenceDiagnostic[];
   stopped_reason: SignalPipelineTestStoppedReason;
 };
 
 function toEvidenceDiagnostic(
-  evidence: EvidenceResult,
+  evidence: SignalPipelineEvidenceResult,
 ): SignalPipelineEvidenceDiagnostic {
   return {
     title: evidence.signal_detail,
@@ -65,6 +76,10 @@ function toEvidenceDiagnostic(
     decision: evidence.decision,
     rejection_reason: evidence.rejection_reason,
     source_type: evidence.source_type,
+    market: evidence.market,
+    query_language: evidence.query_language,
+    query_angle: evidence.query_angle,
+    source_country_hint: evidence.source_country_hint,
     source_domain: evidence.company_extraction.source_domain,
     source_platform: evidence.company_extraction.source_platform,
     is_platform_like_source:
@@ -73,6 +88,7 @@ function toEvidenceDiagnostic(
       evidence.company_extraction.is_company_owned_domain,
     extraction_strategy_used:
       evidence.company_extraction.extraction_strategy_used,
+    matched_ru_pattern: evidence.company_extraction.matched_ru_pattern,
     candidate_company: evidence.company_extraction.company_name,
     is_candidate_company_valid:
       evidence.company_extraction.is_candidate_company_valid,
@@ -95,6 +111,7 @@ export async function runSignalPipelineTest({
   targetCandidates,
   maxQueries,
   maxResultsPerQuery,
+  market,
 }: RunSignalPipelineTestInput): Promise<SignalPipelineTestResult> {
   const result = await runSignalPipeline({
     signalType,
@@ -102,6 +119,7 @@ export async function runSignalPipelineTest({
     targetCandidates,
     maxQueries,
     maxResultsPerQuery,
+    market,
   });
 
   return {
@@ -110,6 +128,7 @@ export async function runSignalPipelineTest({
     candidates_found: result.candidates_found,
     queries_used: result.queries_used,
     candidates_by_angle: result.candidates_by_angle,
+    candidates_by_market: result.candidates_by_market,
     candidates: result.candidates,
     weak_evidence: result.weak_evidence,
     rejected_results: result.rejected_results,
