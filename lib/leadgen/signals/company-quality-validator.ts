@@ -13,6 +13,7 @@ export type CompanyInvalidReason =
   | "sentence_fragment"
   | "non_employer_context"
   | "aggregator_or_directory_page"
+  | "random_or_tokenized_name"
   | "too_short"
   | "too_long"
   | "insufficient_company_evidence";
@@ -122,8 +123,26 @@ function getSearchText(input: CompanyQualityValidationInput): string {
   ].join(" ");
 }
 
+function getNonUrlSearchFields(input: CompanyQualityValidationInput): string[] {
+  return [
+    input.result.title,
+    input.result.snippet,
+    input.result.source_label,
+    input.result.raw_content ?? "",
+  ];
+}
+
 function includesCompany(text: string, companyName: string): boolean {
   return normalize(text).includes(normalize(companyName));
+}
+
+function countNonUrlMentions(
+  input: CompanyQualityValidationInput,
+  companyName: string,
+): number {
+  return getNonUrlSearchFields(input).filter((field) =>
+    includesCompany(field, companyName),
+  ).length;
 }
 
 function slugify(value: string): string {
@@ -143,6 +162,10 @@ function hasCompanyOwnedEvidence(input: CompanyQualityValidationInput): boolean 
     domainPart.includes(company) ||
     company.includes(domainPart)
   );
+}
+
+function hasExplicitOrSubjectEvidence(input: CompanyQualityValidationInput): boolean {
+  return hasEmployerSubjectEvidence(input) || hasExplicitCompanyEvidence(input);
 }
 
 function hasAtsSlugEvidence(input: CompanyQualityValidationInput): boolean {
@@ -230,6 +253,62 @@ function isBrandStyledName(companyName: string): boolean {
     /^[a-z0-9-]+\.[a-z]{2,}$/i.test(companyName) ||
     organizationMarkerPattern.test(companyName)
   );
+}
+
+function looksLikeRandomOrTokenizedName(companyName: string): boolean {
+  const normalizedName = companyName.trim();
+  const compact = normalizedName.replace(/[\s._-]/g, "");
+  const words = countWords(normalizedName);
+
+  if (!compact) {
+    return true;
+  }
+
+  if (words > 1 || organizationMarkerPattern.test(normalizedName)) {
+    return false;
+  }
+
+  if (/^(?=.*[a-z])(?=.*\d)[a-z0-9]{6,}$/i.test(compact)) {
+    return true;
+  }
+
+  if (/^[a-f0-9]{8,}$/i.test(compact)) {
+    return true;
+  }
+
+  if (/^[a-z]{6,}$/i.test(compact)) {
+    const vowels = compact.match(/[aeiouy]/gi)?.length ?? 0;
+    const vowelRatio = vowels / compact.length;
+
+    return vowelRatio < 0.18;
+  }
+
+  return false;
+}
+
+function looksLikeWeakSlugCandidate(
+  companyName: string,
+  input: CompanyQualityValidationInput,
+): boolean {
+  if (
+    input.extractionStrategy !== "structured_job_text" ||
+    !input.isPlatformLikeSource
+  ) {
+    return false;
+  }
+
+  if (
+    hasCompanyOwnedEvidence(input) ||
+    hasExplicitOrSubjectEvidence(input) ||
+    organizationMarkerPattern.test(companyName)
+  ) {
+    return false;
+  }
+
+  const words = countWords(companyName);
+  const nonUrlMentions = countNonUrlMentions(input, companyName);
+
+  return words === 1 && companyName.length <= 6 && nonUrlMentions < 2;
 }
 
 function startsWithLowercasePhrase(companyName: string): boolean {
@@ -494,6 +573,14 @@ function calculateQualityScore(
     score -= 25;
   }
 
+  if (looksLikeRandomOrTokenizedName(companyName)) {
+    score -= 45;
+  }
+
+  if (looksLikeWeakSlugCandidate(companyName, input)) {
+    score -= 35;
+  }
+
   if (startsWithLowercasePhrase(companyName)) {
     score -= 20;
   }
@@ -533,6 +620,20 @@ export function validateCompanyQuality(
       is_valid: false,
       invalid_reason: "too_long",
       validation_reason: "Candidate company name is too long to be a reliable company name",
+      company_quality_score: qualityScore,
+    };
+  }
+
+  if (
+    (looksLikeRandomOrTokenizedName(companyName) ||
+      looksLikeWeakSlugCandidate(companyName, input)) &&
+    !companyOwnedOverride
+  ) {
+    return {
+      is_valid: false,
+      invalid_reason: "random_or_tokenized_name",
+      validation_reason:
+        "Candidate company looks like a random URL slug, token, or weak platform-derived name without enough company evidence",
       company_quality_score: qualityScore,
     };
   }

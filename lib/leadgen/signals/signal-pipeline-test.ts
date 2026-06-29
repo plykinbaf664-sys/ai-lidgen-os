@@ -1,5 +1,7 @@
 import type { SearchProvider } from "@/lib/leadgen/search/search-provider";
+import { assessOpportunity } from "@/lib/leadgen/opportunity-intelligence";
 import type { EvidenceResult } from "@/lib/leadgen/signals/evidence-collector";
+import { interpretSignal } from "@/lib/leadgen/signals/signal-interpreter";
 import type {
   SignalQueryAngle,
   SignalSearchMarket,
@@ -10,7 +12,11 @@ import {
   type SignalPipelineQueryUsed,
   type SignalPipelineStoppedReason,
 } from "@/lib/leadgen/signals/signal-pipeline";
-import type { LeadCandidate, SignalType } from "@/lib/leadgen/types";
+import type {
+  LeadCandidate,
+  OpportunityAssessment,
+  SignalType,
+} from "@/lib/leadgen/types";
 
 export type SignalPipelineTestStoppedReason = SignalPipelineStoppedReason;
 
@@ -61,11 +67,45 @@ export type SignalPipelineTestResult = {
   candidates_by_angle: Record<SignalQueryAngle, number>;
   candidates_by_market: Record<Exclude<SignalSearchMarket, "mixed">, number>;
   candidates: LeadCandidate[];
+  opportunity_diagnostics: Array<{
+    company_name: string;
+    signal_type: SignalType | null;
+    opportunity: OpportunityAssessment;
+  }>;
   weak_evidence: SignalPipelineEvidenceResult[];
   rejected_results: SignalPipelineEvidenceResult[];
   evidence_diagnostics: SignalPipelineEvidenceDiagnostic[];
   stopped_reason: SignalPipelineTestStoppedReason;
 };
+
+function getPrimarySignal(candidate: LeadCandidate) {
+  return [...candidate.signals].sort(
+    (left, right) => right.confidence_score - left.confidence_score,
+  )[0] ?? null;
+}
+
+function assessCandidateOpportunity(candidate: LeadCandidate): {
+  company_name: string;
+  signal_type: SignalType | null;
+  opportunity: OpportunityAssessment;
+} | null {
+  const primarySignal = getPrimarySignal(candidate);
+
+  if (!primarySignal) {
+    return null;
+  }
+
+  const interpretedCandidate = {
+    ...candidate,
+    ...interpretSignal({ candidate, primarySignal }),
+  };
+
+  return {
+    company_name: candidate.company_name,
+    signal_type: interpretedCandidate.signal_type ?? primarySignal.signal_type,
+    opportunity: assessOpportunity({ candidate: interpretedCandidate }),
+  };
+}
 
 function toEvidenceDiagnostic(
   evidence: SignalPipelineEvidenceResult,
@@ -130,6 +170,17 @@ export async function runSignalPipelineTest({
     candidates_by_angle: result.candidates_by_angle,
     candidates_by_market: result.candidates_by_market,
     candidates: result.candidates,
+    opportunity_diagnostics: result.candidates
+      .map(assessCandidateOpportunity)
+      .filter(
+        (
+          diagnostic,
+        ): diagnostic is {
+          company_name: string;
+          signal_type: SignalType | null;
+          opportunity: OpportunityAssessment;
+        } => Boolean(diagnostic),
+      ),
     weak_evidence: result.weak_evidence,
     rejected_results: result.rejected_results,
     evidence_diagnostics: result.all_evidence.map(toEvidenceDiagnostic),

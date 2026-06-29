@@ -53,7 +53,7 @@ export function LeadsTable({
                   <div>
                     <strong>{lead.company_name}</strong>
                     <div className="company-domain">
-                      {lead.company_domain ?? "Р”РѕРјРµРЅ РЅРµ РЅР°Р№РґРµРЅ"}
+                      {lead.company_domain ?? "Домен не найден"}
                     </div>
                   </div>
                   <span className="mock-pill">тест</span>

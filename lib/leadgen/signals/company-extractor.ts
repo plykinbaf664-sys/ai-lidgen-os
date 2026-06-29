@@ -137,6 +137,16 @@ const ignoredSlugParts = new Set([
   "remote",
   "udalennaya",
   "search",
+  "id",
+  "ids",
+  "uuid",
+  "guid",
+  "token",
+  "ref",
+  "redirect",
+  "jobdetail",
+  "jobdetails",
+  "vacancy",
   "en",
   "ru",
 ]);
@@ -417,6 +427,36 @@ function countWords(value: string): number {
 
 function slugify(value: string): string {
   return normalize(value).replace(/[^a-z0-9\u0430-\u044f\u0451]+/g, "-");
+}
+
+function looksLikeRandomSlugSegment(value: string): boolean {
+  const segment = value.trim().toLowerCase();
+
+  if (!segment) {
+    return true;
+  }
+
+  const compact = segment.replace(/[-_]/g, "");
+
+  if (compact.length < 3) {
+    return true;
+  }
+
+  if (/^(?=.*[a-z])(?=.*\d)[a-z0-9]{6,}$/i.test(compact)) {
+    return true;
+  }
+
+  if (/^[a-f0-9]{8,}$/i.test(compact)) {
+    return true;
+  }
+
+  if (/^[a-z]{5,}$/i.test(compact)) {
+    const vowels = compact.match(/[aeiouy]/gi)?.length ?? 0;
+
+    return vowels / compact.length < 0.18;
+  }
+
+  return false;
 }
 
 function isBroadJobBoardPlatform(sourcePlatform: string | null): boolean {
@@ -758,7 +798,10 @@ function collectAtsSlugDraft(result: SearchResult): CandidateDraft | null {
 
     const slug = pathParts.find(
       (part) =>
-        part.length >= 3 && !ignoredSlugParts.has(part) && !/^\d+$/.test(part),
+        part.length >= 3 &&
+        !ignoredSlugParts.has(part) &&
+        !/^\d+$/.test(part) &&
+        !looksLikeRandomSlugSegment(part),
     );
 
     if (!slug) {

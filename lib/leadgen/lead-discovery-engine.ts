@@ -2,6 +2,7 @@ import { leadgenConfig } from "@/lib/leadgen/config";
 import { ContactDiscoveryService } from "@/lib/leadgen/contact-discovery-service";
 import { discoverDecisionMaker } from "@/lib/leadgen/decision-maker-discovery";
 import { prioritizeLead } from "@/lib/leadgen/lead-prioritization-engine";
+import { assessOpportunity } from "@/lib/leadgen/opportunity-intelligence";
 import { PeopleDiscoveryEngine } from "@/lib/leadgen/people-discovery-engine";
 import type { SearchProvider } from "@/lib/leadgen/search/search-provider";
 import { interpretSignal } from "@/lib/leadgen/signals/signal-interpreter";
@@ -18,6 +19,7 @@ import type {
   LeadgenLead,
   LeadgenSignal,
   LeadPriority,
+  OpportunityAssessment,
   PeopleDiscoveryResult,
   SignalType,
 } from "@/lib/leadgen/types";
@@ -31,6 +33,7 @@ type RunLeadDiscoveryInput = {
 type CandidateRecord = {
   candidate: LeadCandidate;
   signalType: SignalType;
+  opportunity: OpportunityAssessment;
 };
 
 const DEFAULT_TARGET_COMPANIES = 5;
@@ -123,13 +126,15 @@ function buildCompany({
   candidate,
   signalType,
   decisionMaker,
+  opportunity,
   createdAt,
   index,
 }: {
   campaign: LeadgenCampaign;
   candidate: LeadCandidate;
   signalType: SignalType;
-  decisionMaker: DecisionMakerProfile;
+  decisionMaker?: DecisionMakerProfile;
+  opportunity: OpportunityAssessment;
   createdAt: string;
   index: number;
 }): LeadgenCompany {
@@ -184,22 +189,27 @@ function buildCompany({
         card_signal_title: candidate.card_signal_title,
         should_create_lead: candidate.should_create_lead,
       },
-      decision_maker: {
-        primary_persona: decisionMaker.primary_persona,
-        alternative_personas: decisionMaker.alternative_personas,
-        department: decisionMaker.department,
-        buying_role: decisionMaker.buying_role,
-        influence_level: decisionMaker.influence_level,
-        decision_authority: decisionMaker.decision_authority,
-        business_problem_owner: decisionMaker.business_problem_owner,
-        expected_pain: decisionMaker.expected_pain,
-        expected_goal: decisionMaker.expected_goal,
-        search_keywords: decisionMaker.search_keywords,
-        priority: decisionMaker.priority,
-        reasoning: decisionMaker.reasoning,
-        confidence_score: decisionMaker.confidence_score,
-      },
-      source_reasoning: decisionMaker.source_reasoning,
+      opportunity,
+      ...(decisionMaker
+        ? {
+            decision_maker: {
+              primary_persona: decisionMaker.primary_persona,
+              alternative_personas: decisionMaker.alternative_personas,
+              department: decisionMaker.department,
+              buying_role: decisionMaker.buying_role,
+              influence_level: decisionMaker.influence_level,
+              decision_authority: decisionMaker.decision_authority,
+              business_problem_owner: decisionMaker.business_problem_owner,
+              expected_pain: decisionMaker.expected_pain,
+              expected_goal: decisionMaker.expected_goal,
+              search_keywords: decisionMaker.search_keywords,
+              priority: decisionMaker.priority,
+              reasoning: decisionMaker.reasoning,
+              confidence_score: decisionMaker.confidence_score,
+            },
+            source_reasoning: decisionMaker.source_reasoning,
+          }
+        : {}),
     },
     created_at: createdAt,
     updated_at: createdAt,
@@ -458,6 +468,7 @@ async function discoverCandidates({
   targetCompanies: number;
 }): Promise<CandidateRecord[]> {
   const candidateRecords = new Map<string, CandidateRecord>();
+  let acceptedOpportunityCount = 0;
 
   for (const signalType of getSignalOrder()) {
     const result = await runSignalPipeline({
@@ -471,20 +482,48 @@ async function discoverCandidates({
     for (const candidate of result.candidates) {
       const interpretedCandidate = interpretCandidate(candidate);
 
-      if (!interpretedCandidate?.should_create_lead) {
+      if (!interpretedCandidate) {
         continue;
       }
 
       const candidateKey = getCandidateKey(candidate);
+      const opportunity = assessOpportunity({
+        candidate: interpretedCandidate,
+      });
 
       if (!candidateRecords.has(candidateKey)) {
         candidateRecords.set(candidateKey, {
           candidate: interpretedCandidate,
           signalType,
+          opportunity,
         });
+        if (opportunity.should_create_lead) {
+          acceptedOpportunityCount += 1;
+        }
+      } else {
+        const existingRecord = candidateRecords.get(candidateKey);
+
+        if (
+          existingRecord &&
+          opportunity.opportunity_score >
+            existingRecord.opportunity.opportunity_score
+        ) {
+          if (
+            !existingRecord.opportunity.should_create_lead &&
+            opportunity.should_create_lead
+          ) {
+            acceptedOpportunityCount += 1;
+          }
+
+          candidateRecords.set(candidateKey, {
+            candidate: interpretedCandidate,
+            signalType,
+            opportunity,
+          });
+        }
       }
 
-      if (candidateRecords.size >= targetCompanies) {
+      if (acceptedOpportunityCount >= targetCompanies) {
         return [...candidateRecords.values()];
       }
     }
@@ -509,47 +548,81 @@ export async function runLeadDiscoveryEngine({
     searchProvider,
     targetCompanies,
   });
-  const decisionMakerRecommendations = candidateRecords.map(
+  const acceptedCandidateRecords = candidateRecords.filter(
+    (record) => record.opportunity.should_create_lead,
+  );
+  const decisionMakerRecommendations = acceptedCandidateRecords.map(
     ({ candidate, signalType }) =>
       discoverDecisionMaker({
         candidate,
         signalType,
       }),
   );
-  const baseCompanies = candidateRecords.map(({ candidate, signalType }, index) =>
+  const acceptedDecisionMakerByKey = new Map(
+    acceptedCandidateRecords.map((record, index) => [
+      getCandidateKey(record.candidate),
+      decisionMakerRecommendations[index],
+    ]),
+  );
+  const baseCompanies = candidateRecords.map((record, index) =>
     buildCompany({
       campaign,
-      candidate,
-      signalType,
-      decisionMaker: decisionMakerRecommendations[index],
+      candidate: record.candidate,
+      signalType: record.signalType,
+      decisionMaker: acceptedDecisionMakerByKey.get(
+        getCandidateKey(record.candidate),
+      ),
+      opportunity: record.opportunity,
       createdAt,
       index,
     }),
   );
+  const companiesByCandidateKey = new Map(
+    candidateRecords.map((record, index) => [
+      getCandidateKey(record.candidate),
+      baseCompanies[index],
+    ]),
+  );
   const peopleDiscoveryEngine = new PeopleDiscoveryEngine();
   const peopleDiscoveryResults = await Promise.all(
-    baseCompanies.map((company, index) =>
+    acceptedCandidateRecords.map((record, index) =>
       peopleDiscoveryEngine.discoverPeople({
-        company,
+        company:
+          companiesByCandidateKey.get(getCandidateKey(record.candidate)) ??
+          baseCompanies[index],
         decisionMaker: decisionMakerRecommendations[index],
       }),
     ),
   );
-  const companies = baseCompanies.map((company, index) =>
-    attachPeopleDiscoveryToCompany(company, peopleDiscoveryResults[index]),
-  );
-  const leadRecords = companies
-    .map((company, index) => {
-      const candidate = candidateRecords[index].candidate;
-      const primarySignal = getPrimarySignal(candidate);
+  const peopleDiscoveryByCompanyId = new Map(
+    acceptedCandidateRecords.map((record, index) => {
+      const company = companiesByCandidateKey.get(getCandidateKey(record.candidate));
 
-      if (!primarySignal) {
+      return [company?.id ?? "", peopleDiscoveryResults[index]] as const;
+    }),
+  );
+  const companies = baseCompanies.map((company) => {
+    const peopleDiscovery = peopleDiscoveryByCompanyId.get(company.id);
+
+    return peopleDiscovery
+      ? attachPeopleDiscoveryToCompany(company, peopleDiscovery)
+      : company;
+  });
+  const companiesById = new Map(companies.map((company) => [company.id, company]));
+  const leadRecords = acceptedCandidateRecords
+    .map((record, index) => {
+      const candidate = record.candidate;
+      const company = companiesByCandidateKey.get(getCandidateKey(candidate));
+      const primarySignal = getPrimarySignal(candidate);
+      const companyWithMetadata = company ? companiesById.get(company.id) : null;
+
+      if (!primarySignal || !companyWithMetadata) {
         return null;
       }
 
       const lead = buildLead({
         campaign,
-        company,
+        company: companyWithMetadata,
         primarySignal,
         candidate,
         decisionMaker: decisionMakerRecommendations[index],
@@ -558,13 +631,13 @@ export async function runLeadDiscoveryEngine({
 
       return {
         lead,
-        company,
+        company: companyWithMetadata,
         candidate,
         decisionMaker: decisionMakerRecommendations[index],
         peopleDiscovery: peopleDiscoveryResults[index],
         signals: buildSignals({
           campaign,
-          company,
+          company: companyWithMetadata,
           lead,
           candidate,
           createdAt,

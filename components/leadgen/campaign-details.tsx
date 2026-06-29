@@ -7,6 +7,7 @@ import type {
   LeadgenLead,
   LeadPriority,
   LeadgenSignal,
+  OpportunityAssessment,
   SignalType,
 } from "@/lib/leadgen/types";
 
@@ -103,6 +104,8 @@ type PeopleDiscoveryView = {
 };
 
 type LeadPriorityView = Partial<LeadPriority>;
+
+type OpportunityView = Partial<OpportunityAssessment>;
 
 function getStringValue(
   record: Record<string, unknown>,
@@ -326,6 +329,28 @@ function getLeadPriority(
   return rawLeadPriority as LeadPriorityView;
 }
 
+function getLeadOpportunity(
+  lead: LeadgenLead,
+  companiesById: Map<string, LeadgenCampaignDetails["companies"][number]>,
+): OpportunityView {
+  if (!lead.company_id) {
+    return {};
+  }
+
+  const company = companiesById.get(lead.company_id);
+  const rawOpportunity = company?.metadata.opportunity;
+
+  if (
+    typeof rawOpportunity !== "object" ||
+    rawOpportunity === null ||
+    Array.isArray(rawOpportunity)
+  ) {
+    return {};
+  }
+
+  return rawOpportunity as OpportunityView;
+}
+
 function getRecommendedNextActionLabel(action?: string): string {
   const labels: Record<string, string> = {
     send_outreach: "Send outreach",
@@ -541,6 +566,7 @@ export function CampaignDetails({
             const decisionMaker = getLeadDecisionMaker(lead, companiesById);
             const peopleDiscovery = getLeadPeopleDiscovery(lead, companiesById);
             const leadPriority = getLeadPriority(lead, companiesById);
+            const opportunity = getLeadOpportunity(lead, companiesById);
             const bestContact = getBestContactForLead(lead, contactsByLeadId);
             const bestOutreachEntry = getBestOutreachEntryForLead(
               lead,
@@ -563,7 +589,7 @@ export function CampaignDetails({
                   <div>
                     <h3>{lead.company_name}</h3>
                     <p className="company-domain">
-                      {lead.company_domain ?? "Р”РѕРјРµРЅ РЅРµ РЅР°Р№РґРµРЅ"}
+                      {lead.company_domain ?? "Домен не найден"}
                     </p>
                     {lead.company_source_url ? (
                       <a
@@ -653,6 +679,19 @@ export function CampaignDetails({
                     <p>{lead.lead_score}</p>
                   </div>
                   <div>
+                    <span className="field-label">Opportunity</span>
+                    <p>
+                      {typeof opportunity.opportunity_score === "number"
+                        ? `${opportunity.opportunity_type ?? "opportunity"} (${opportunity.opportunity_score}/100)`
+                        : "Not assessed"}
+                    </p>
+                    <p className="company-domain">
+                      {opportunity.urgency
+                        ? `Urgency: ${opportunity.urgency}`
+                        : "Opportunity gate result is not available"}
+                    </p>
+                  </div>
+                  <div>
                     <span className="field-label">Lead Priority</span>
                     <p>
                       {leadPriority.priority
@@ -688,17 +727,53 @@ export function CampaignDetails({
                     <div>
                       <span className="field-label">Why this company</span>
                       <p>
-                        {interpretation.why_it_matters ??
+                        {opportunity.why_this_company ??
+                          interpretation.why_it_matters ??
                           "This company entered the lead queue because the signal passed production quality checks and matched the ICP scoring layer."}
                       </p>
                     </div>
                     <div>
                       <span className="field-label">Why now</span>
                       <p>
-                        {interpretation.why_now ??
+                        {opportunity.why_now ??
+                          interpretation.why_now ??
                           "The current public evidence is not strong enough to state a precise timing reason; treat this as a lower-confidence outreach window."}
                       </p>
                     </div>
+                    {opportunity.business_reasoning ? (
+                      <div>
+                        <span className="field-label">Opportunity reasoning</span>
+                        <p>{opportunity.business_reasoning}</p>
+                      </div>
+                    ) : null}
+                    {typeof opportunity.evidence_strength === "number" ? (
+                      <div>
+                        <span className="field-label">Opportunity evidence</span>
+                        <p>
+                          Strength {opportunity.evidence_strength}/100 ·
+                          Confidence {opportunity.confidence ?? 0}/100 · Action{" "}
+                          {opportunity.recommended_action ?? "not_available"}
+                        </p>
+                      </div>
+                    ) : null}
+                    {opportunity.positive_factors?.length ? (
+                      <div>
+                        <span className="field-label">Opportunity positives</span>
+                        <p>{opportunity.positive_factors.join(" ")}</p>
+                      </div>
+                    ) : null}
+                    {opportunity.negative_factors?.length ? (
+                      <div>
+                        <span className="field-label">Opportunity risks</span>
+                        <p>{opportunity.negative_factors.join(" ")}</p>
+                      </div>
+                    ) : null}
+                    {opportunity.missing_information?.length ? (
+                      <div>
+                        <span className="field-label">Missing information</span>
+                        <p>{opportunity.missing_information.join(" ")}</p>
+                      </div>
+                    ) : null}
                     {interpretation.confirmed_facts ? (
                       <div>
                         <span className="field-label">Confirmed facts</span>

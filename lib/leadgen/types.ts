@@ -43,6 +43,41 @@ export type DecisionMakerPriority = "high" | "medium" | "low";
 
 export type LeadPriorityLevel = "critical" | "high" | "medium" | "low";
 
+export type OpportunityType =
+  | "confirmed_business_event"
+  | "strong_buying_window"
+  | "expansion"
+  | "hiring"
+  | "product_launch"
+  | "operational_pressure"
+  | "weak_context"
+  | "evergreen_content"
+  | "no_actionable_opportunity";
+
+export type OpportunityUrgency = "immediate" | "high" | "medium" | "low";
+
+export type OpportunityRecommendedAction =
+  | "create_lead"
+  | "run_enrichment"
+  | "monitor"
+  | "discard";
+
+export type OpportunityAssessment = {
+  should_create_lead: boolean;
+  opportunity_score: number;
+  opportunity_type: OpportunityType;
+  urgency: OpportunityUrgency;
+  business_reasoning: string;
+  why_now: string;
+  why_this_company: string;
+  evidence_strength: number;
+  confidence: number;
+  positive_factors: string[];
+  negative_factors: string[];
+  missing_information: string[];
+  recommended_action: OpportunityRecommendedAction;
+};
+
 export type RecommendedNextAction =
   | "send_outreach"
   | "run_enrichment"

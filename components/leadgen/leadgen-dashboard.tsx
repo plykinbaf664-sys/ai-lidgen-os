@@ -59,6 +59,21 @@ type CampaignDetailsResponse =
       error?: string;
     };
 
+async function readApiJson<T>(response: Response): Promise<T> {
+  const contentType = response.headers.get("content-type") ?? "";
+
+  if (contentType.includes("application/json")) {
+    return (await response.json()) as T;
+  }
+
+  const body = await response.text();
+  const preview = body.replace(/\s+/g, " ").trim().slice(0, 160);
+
+  throw new Error(
+    `API returned ${contentType || "non-JSON response"} instead of JSON (HTTP ${response.status}). ${preview}`,
+  );
+}
+
 export function LeadgenDashboard() {
   const [campaign, setCampaign] = useState<LeadgenCampaign | null>(null);
   const [leads, setLeads] = useState<LeadgenLead[]>([]);
@@ -190,7 +205,7 @@ export function LeadgenDashboard() {
 
     try {
       const response = await fetch("/api/leadgen/campaigns");
-      const data = (await response.json()) as CampaignsResponse;
+      const data = await readApiJson<CampaignsResponse>(response);
 
       if (!response.ok || !data.success) {
         throw new Error(data.success ? undefined : data.error);
@@ -213,7 +228,7 @@ export function LeadgenDashboard() {
 
     fetch("/api/leadgen/campaigns")
       .then(async (response) => {
-        const data = (await response.json()) as CampaignsResponse;
+        const data = await readApiJson<CampaignsResponse>(response);
 
         if (!response.ok || !data.success) {
           throw new Error(data.success ? undefined : data.error);
@@ -256,7 +271,7 @@ export function LeadgenDashboard() {
         },
         body: JSON.stringify(campaignInput),
       });
-      const data = (await response.json()) as RunLeadgenResponse;
+      const data = await readApiJson<RunLeadgenResponse>(response);
 
       if (!response.ok || !data.success) {
         throw new Error(data.success ? undefined : data.error);
@@ -292,7 +307,7 @@ export function LeadgenDashboard() {
       const response = await fetch(
         `/api/leadgen/campaigns/${campaignSummary.id}`,
       );
-      const data = (await response.json()) as CampaignDetailsResponse;
+      const data = await readApiJson<CampaignDetailsResponse>(response);
 
       if (!response.ok || !data.success) {
         throw new Error(data.success ? undefined : data.error);
