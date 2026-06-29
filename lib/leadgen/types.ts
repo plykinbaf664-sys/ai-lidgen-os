@@ -41,6 +41,33 @@ export type LeadgenContactType =
 
 export type DecisionMakerPriority = "high" | "medium" | "low";
 
+export type LeadPriorityLevel = "critical" | "high" | "medium" | "low";
+
+export type RecommendedNextAction =
+  | "send_outreach"
+  | "run_enrichment"
+  | "find_target_persona"
+  | "monitor_for_new_signal"
+  | "defer"
+  | "review_manually";
+
+export type LeadPriority = {
+  priority: LeadPriorityLevel;
+  priority_score: number;
+  components: {
+    icp_score: number;
+    signal_strength: number;
+    buying_intent: number;
+    timing_score: number;
+    contact_readiness: number;
+    confidence: number;
+  };
+  reasoning: string;
+  strengths: string[];
+  risks: string[];
+  recommended_next_action: RecommendedNextAction;
+};
+
 export type PersonaSearchStatus =
   | "target_persona_found"
   | "alternative_persona_found"

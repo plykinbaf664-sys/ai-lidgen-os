@@ -361,18 +361,11 @@ const gtmAnnouncementTerms = [
   "announced",
   "introducing",
   "introduced",
-  "launched",
-  "launches",
-  "launching",
   "released",
-  "releases",
   "now available",
   "general availability",
   "generally available",
-  "product update",
-  "new product",
-  "new feature",
-  "new integration",
+  "beta launch",
   "beta",
   "expansion",
   "new market",
@@ -399,6 +392,16 @@ const gtmAnnouncementTerms = [
   "новая интеграция",
   "бета",
   "выход на новый рынок",
+];
+
+const gtmConfirmedEventPatterns = [
+  /\b(?:announces?|announced|introduc(?:es|ed|ing)|released|now available|general availability|generally available|beta launch|rollout)\b/i,
+  /\b(?:launches|launched)\s+(?:a\s+|an\s+|the\s+)?(?:new\s+)?(?:product|platform|feature|integration|service|solution|market|offering)\b/i,
+  /\b(?:new product|new feature|new integration|new platform|new service|new solution)\s+(?:is\s+)?(?:now\s+)?available\b/i,
+  /\b(?:expands?|expanded|expansion)\s+(?:into|to|across)\s+(?:a\s+|the\s+)?(?:new\s+)?(?:market|region|country|segment|vertical)\b/i,
+  /\b(?:\u0430\u043d\u043e\u043d\u0441\u0438\u0440\u0443\u0435\u0442|\u0430\u043d\u043e\u043d\u0441\u0438\u0440\u043e\u0432\u0430\u043b[au]?|\u043e\u0431\u044a\u044f\u0432\u0438\u043b[au]?|\u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u0438\u043b[au]?|\u0432\u044b\u043f\u0443\u0441\u0442\u0438\u043b[au]?|\u0440\u0435\u043b\u0438\u0437|general availability)\b/i,
+  /\b(?:\u0437\u0430\u043f\u0443\u0441\u0442\u0438\u043b[au]?|\u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0435\u0442)\s+(?:\u043d\u043e\u0432(?:\u044b\u0439|\u0443\u044e|oe)\s+)?(?:\u043f\u0440\u043e\u0434\u0443\u043a\u0442|\u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0443|\u0444\u0443\u043d\u043a\u0446\u0438\u044e|\u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044e|\u0443\u0441\u043b\u0443\u0433\u0443|\u0440\u0435\u0448\u0435\u043d\u0438\u0435)\b/i,
+  /\b(?:\u043d\u043e\u0432(?:\u044b\u0439|\u0430\u044f|\u043e\u0435)\s+(?:\u043f\u0440\u043e\u0434\u0443\u043a\u0442|\u0444\u0443\u043d\u043a\u0446\u0438\u044f|\u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f|\u0441\u0435\u0440\u0432\u0438\u0441|\u0440\u0435\u0448\u0435\u043d\u0438\u0435))\s+(?:\u0442\u0435\u043f\u0435\u0440\u044c\s+)?\u0434\u043e\u0441\u0442\u0443\u043f/i,
 ];
 
 const gtmTopicTerms = [
@@ -580,6 +583,9 @@ function scoreEventStrength({
   const announcementMatches = unique(findMatches(text, gtmAnnouncementTerms));
   const specificityMatches = unique(findMatches(text, gtmSpecificityTerms));
   const educationalMatches = unique(findMatches(text, gtmEducationalTerms));
+  const hasConfirmedEventPattern = gtmConfirmedEventPatterns.some((pattern) =>
+    pattern.test(text),
+  );
   const sourceBonus =
     sourceType === "press_release" || sourceType === "news"
       ? 12
@@ -590,26 +596,39 @@ function scoreEventStrength({
           : 0;
   const topicMatchScore = clampScore(topicMatches.length * 12);
   const eventEvidenceScore = clampScore(
-    announcementMatches.length * 22 +
+    (hasConfirmedEventPattern ? 28 : 0) +
+      announcementMatches.length * 14 +
       specificityMatches.length * 8 +
-      sourceBonus,
+      (hasConfirmedEventPattern ? sourceBonus : Math.min(sourceBonus, 4)),
   );
   const educationalIntentScore = clampScore(educationalMatches.length * 18);
-  const educationalPenalty = Math.min(educationalIntentScore, 45);
+  const hasEducationalDominance =
+    educationalIntentScore > eventEvidenceScore ||
+    (educationalIntentScore > 0 && !hasConfirmedEventPattern);
+  const educationalPenalty = hasConfirmedEventPattern
+    ? Math.min(educationalIntentScore, 35)
+    : Math.min(educationalIntentScore, 65);
+  const adjustedEventEvidenceScore = hasEducationalDominance
+    ? Math.min(eventEvidenceScore, 34)
+    : eventEvidenceScore;
   const gtmSignalType =
-    eventEvidenceScore >= 55
+    hasConfirmedEventPattern &&
+    adjustedEventEvidenceScore >= 55 &&
+    !hasEducationalDominance
       ? "confirmed_event"
-      : topicMatchScore > 0 && eventEvidenceScore > 0
+      : topicMatchScore > 0 && adjustedEventEvidenceScore >= 25
         ? "mixed"
         : "topic_only";
 
   return {
     event_strength_score: clampScore(
-      eventEvidenceScore + Math.min(topicMatchScore, 12) - educationalPenalty,
+      adjustedEventEvidenceScore +
+        Math.min(topicMatchScore, 12) -
+        educationalPenalty,
     ),
     breakdown: {
       topic_match_score: topicMatchScore,
-      event_evidence_score: eventEvidenceScore,
+      event_evidence_score: adjustedEventEvidenceScore,
       educational_intent_score: educationalIntentScore,
       gtm_signal_type: gtmSignalType,
       topic_matches: topicMatches,

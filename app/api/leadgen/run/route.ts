@@ -9,6 +9,7 @@ import type {
   LeadgenCompany,
   LeadgenContact,
   LeadgenLead,
+  LeadPriority,
   PeopleDiscoveryResult,
   PersonaSearchStatus,
 } from "@/lib/leadgen/types";
@@ -45,6 +46,20 @@ function getPeopleDiscoveryResult(
   }
 
   return rawPeopleDiscovery as PeopleDiscoveryResult;
+}
+
+function getLeadPriority(company: LeadgenCompany | undefined): LeadPriority | null {
+  const rawLeadPriority = company?.metadata.lead_priority;
+
+  if (
+    typeof rawLeadPriority !== "object" ||
+    rawLeadPriority === null ||
+    Array.isArray(rawLeadPriority)
+  ) {
+    return null;
+  }
+
+  return rawLeadPriority as LeadPriority;
 }
 
 function getPrimaryContact(
@@ -180,6 +195,7 @@ export async function POST(request: Request) {
         personaSearchStatus: getPersonaSearchStatus(
           bestOutreachEntry ?? fallbackEntry ?? bestAvailableEntry,
         ),
+        leadPriority: getLeadPriority(company),
       });
     });
     const saved = await savePipelineResult({ result, notifications });

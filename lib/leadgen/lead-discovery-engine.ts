@@ -1,6 +1,7 @@
 import { leadgenConfig } from "@/lib/leadgen/config";
 import { ContactDiscoveryService } from "@/lib/leadgen/contact-discovery-service";
 import { discoverDecisionMaker } from "@/lib/leadgen/decision-maker-discovery";
+import { prioritizeLead } from "@/lib/leadgen/lead-prioritization-engine";
 import { PeopleDiscoveryEngine } from "@/lib/leadgen/people-discovery-engine";
 import type { SearchProvider } from "@/lib/leadgen/search/search-provider";
 import { interpretSignal } from "@/lib/leadgen/signals/signal-interpreter";
@@ -16,6 +17,7 @@ import type {
   LeadgenEvent,
   LeadgenLead,
   LeadgenSignal,
+  LeadPriority,
   PeopleDiscoveryResult,
   SignalType,
 } from "@/lib/leadgen/types";
@@ -213,6 +215,19 @@ function attachPeopleDiscoveryToCompany(
     metadata: {
       ...company.metadata,
       people_discovery: peopleDiscovery,
+    },
+  };
+}
+
+function attachLeadPriorityToCompany(
+  company: LeadgenCompany,
+  leadPriority: LeadPriority,
+): LeadgenCompany {
+  return {
+    ...company,
+    metadata: {
+      ...company.metadata,
+      lead_priority: leadPriority,
     },
   };
 }
@@ -590,6 +605,26 @@ export async function runLeadDiscoveryEngine({
   );
   const signals = leadRecords.flatMap((record) => record.signals);
   const contacts = contactDiscoveryResults.flatMap((result) => result.contacts);
+  const prioritizedCompaniesById = new Map(
+    leadRecords.map((record, index) => [
+      record.company.id,
+      attachLeadPriorityToCompany(
+        record.company,
+        prioritizeLead({
+          candidate: record.candidate,
+          company: record.company,
+          decisionMaker: record.decisionMaker,
+          bestOutreachEntry: contactDiscoveryResults[index].best_outreach_entry,
+          fallbackEntry: contactDiscoveryResults[index].fallback_entry,
+          personaSearchStatus:
+            contactDiscoveryResults[index].persona_search_status,
+        }),
+      ),
+    ]),
+  );
+  const prioritizedCompanies = companies.map(
+    (company) => prioritizedCompaniesById.get(company.id) ?? company,
+  );
   const events = [
     buildEvent(
       pipelineRunId,
@@ -613,7 +648,7 @@ export async function runLeadDiscoveryEngine({
 
   return {
     campaign,
-    companies,
+    companies: prioritizedCompanies,
     contacts,
     leads,
     signals,

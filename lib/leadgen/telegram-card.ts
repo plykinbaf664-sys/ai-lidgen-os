@@ -2,6 +2,7 @@ import type {
   DecisionMakerProfile,
   LeadgenContact,
   LeadgenLead,
+  LeadPriority,
   PeopleDiscoveryResult,
   PersonaSearchStatus,
 } from "@/lib/leadgen/types";
@@ -20,6 +21,7 @@ export type TelegramCardContext = {
   fallbackEntry?: LeadgenContact | null;
   peopleDiscovery?: PeopleDiscoveryResult | null;
   personaSearchStatus?: PersonaSearchStatus;
+  leadPriority?: LeadPriority | null;
 };
 
 function getContactValue(contact: LeadgenContact): string | null {
@@ -95,6 +97,7 @@ export function formatTelegramCard(
       }`
     : "No fallback entry found";
   const decisionMaker = context.decisionMaker;
+  const leadPriority = context.leadPriority;
   const foundPerson = context.peopleDiscovery?.primary_person;
   const personaLines = decisionMaker
     ? [
@@ -144,6 +147,13 @@ export function formatTelegramCard(
         ]),
     `Best outreach entry: ${bestOutreachEntryLabel}`,
     `Fallback entry: ${fallbackEntryLabel}`,
+    ...(leadPriority
+      ? [
+          `Lead priority: ${leadPriority.priority} (${leadPriority.priority_score}/100)`,
+          `Priority reason: ${leadPriority.reasoning}`,
+          `Recommended next action: ${leadPriority.recommended_next_action}`,
+        ]
+      : []),
     "",
     `Signal: ${lead.signal_title}`,
     `${lead.signal_detail}`,

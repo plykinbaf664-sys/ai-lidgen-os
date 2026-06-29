@@ -5,6 +5,7 @@ import type {
   LeadgenCampaignDetails,
   LeadgenContact,
   LeadgenLead,
+  LeadPriority,
   LeadgenSignal,
   SignalType,
 } from "@/lib/leadgen/types";
@@ -100,6 +101,8 @@ type PeopleDiscoveryView = {
   search_status?: string;
   providers_used?: string[];
 };
+
+type LeadPriorityView = Partial<LeadPriority>;
 
 function getStringValue(
   record: Record<string, unknown>,
@@ -299,6 +302,41 @@ function getLeadPeopleDiscovery(
     search_status: getStringValue(peopleDiscovery, "search_status"),
     providers_used: getStringListValue(peopleDiscovery, "providers_used"),
   };
+}
+
+function getLeadPriority(
+  lead: LeadgenLead,
+  companiesById: Map<string, LeadgenCampaignDetails["companies"][number]>,
+): LeadPriorityView {
+  if (!lead.company_id) {
+    return {};
+  }
+
+  const company = companiesById.get(lead.company_id);
+  const rawLeadPriority = company?.metadata.lead_priority;
+
+  if (
+    typeof rawLeadPriority !== "object" ||
+    rawLeadPriority === null ||
+    Array.isArray(rawLeadPriority)
+  ) {
+    return {};
+  }
+
+  return rawLeadPriority as LeadPriorityView;
+}
+
+function getRecommendedNextActionLabel(action?: string): string {
+  const labels: Record<string, string> = {
+    send_outreach: "Send outreach",
+    run_enrichment: "Run enrichment",
+    find_target_persona: "Find target persona",
+    monitor_for_new_signal: "Monitor for a stronger signal",
+    defer: "Defer",
+    review_manually: "Review manually",
+  };
+
+  return action ? labels[action] ?? action : "Not calculated";
 }
 
 function getPersonaSearchStatus(contact: LeadgenContact | null): string {
@@ -502,6 +540,7 @@ export function CampaignDetails({
             const interpretation = getLeadInterpretation(lead, companiesById);
             const decisionMaker = getLeadDecisionMaker(lead, companiesById);
             const peopleDiscovery = getLeadPeopleDiscovery(lead, companiesById);
+            const leadPriority = getLeadPriority(lead, companiesById);
             const bestContact = getBestContactForLead(lead, contactsByLeadId);
             const bestOutreachEntry = getBestOutreachEntryForLead(
               lead,
@@ -612,6 +651,19 @@ export function CampaignDetails({
                   <div>
                     <span className="field-label">Lead score</span>
                     <p>{lead.lead_score}</p>
+                  </div>
+                  <div>
+                    <span className="field-label">Lead Priority</span>
+                    <p>
+                      {leadPriority.priority
+                        ? `${leadPriority.priority} (${leadPriority.priority_score ?? 0}/100)`
+                        : "Not calculated"}
+                    </p>
+                    <p className="company-domain">
+                      {getRecommendedNextActionLabel(
+                        leadPriority.recommended_next_action,
+                      )}
+                    </p>
                   </div>
                   <div>
                     <span className="field-label">ICP fit</span>
@@ -790,6 +842,53 @@ export function CampaignDetails({
                         </p>
                       </div>
                     ) : null}
+                    <div>
+                      <span className="field-label">Lead Priority</span>
+                      <p>
+                        {leadPriority.priority
+                          ? `${leadPriority.priority} (${leadPriority.priority_score ?? 0}/100)`
+                          : "Not calculated"}
+                      </p>
+                    </div>
+                    {leadPriority.reasoning ? (
+                      <div>
+                        <span className="field-label">Priority reasoning</span>
+                        <p>{leadPriority.reasoning}</p>
+                      </div>
+                    ) : null}
+                    {leadPriority.components ? (
+                      <div>
+                        <span className="field-label">Priority components</span>
+                        <p>
+                          ICP {leadPriority.components.icp_score}/100 · Signal{" "}
+                          {leadPriority.components.signal_strength}/100 · Intent{" "}
+                          {leadPriority.components.buying_intent}/100 · Timing{" "}
+                          {leadPriority.components.timing_score}/100 · Contact{" "}
+                          {leadPriority.components.contact_readiness}/100 ·
+                          Confidence {leadPriority.components.confidence}/100
+                        </p>
+                      </div>
+                    ) : null}
+                    {leadPriority.strengths?.length ? (
+                      <div>
+                        <span className="field-label">Strengths</span>
+                        <p>{leadPriority.strengths.join(" ")}</p>
+                      </div>
+                    ) : null}
+                    {leadPriority.risks?.length ? (
+                      <div>
+                        <span className="field-label">Risks</span>
+                        <p>{leadPriority.risks.join(" ")}</p>
+                      </div>
+                    ) : null}
+                    <div>
+                      <span className="field-label">Recommended next action</span>
+                      <p>
+                        {getRecommendedNextActionLabel(
+                          leadPriority.recommended_next_action,
+                        )}
+                      </p>
+                    </div>
                   </div>
                   <span className="field-label">Sources</span>
                   <div className="campaign-details-signal-list">
