@@ -6,6 +6,7 @@ import type {
   LeadgenContact,
   LeadgenLead,
   LeadStatus,
+  OpportunityAssessment,
   PeopleDiscoveryResult,
   PersonaSearchStatus,
 } from "@/lib/leadgen/types";
@@ -26,6 +27,7 @@ type TelegramCardPreviewProps = {
   bestAvailableEntry?: LeadgenContact | null;
   bestOutreachEntry?: LeadgenContact | null;
   fallbackEntry?: LeadgenContact | null;
+  opportunity?: OpportunityAssessment | null;
   onStatusChange: (leadId: string, status: LeadStatus) => void;
 };
 
@@ -46,6 +48,7 @@ export function TelegramCardPreview({
   bestAvailableEntry,
   bestOutreachEntry,
   fallbackEntry,
+  opportunity,
   onStatusChange,
 }: TelegramCardPreviewProps) {
   return (
@@ -71,6 +74,32 @@ export function TelegramCardPreview({
                 bestOutreachEntry ?? fallbackEntry ?? bestAvailableEntry,
               ),
             })}
+            {opportunity ? (
+              <>
+                {"\n\nOpportunity explanation:"}
+                {`\nOpportunity score: ${opportunity.opportunity_score}/100`}
+                {`\nOpportunity type: ${opportunity.opportunity_type}`}
+                {`\nBusiness reasoning: ${opportunity.business_reasoning}`}
+                {`\nWhy this company: ${opportunity.why_this_company}`}
+                {`\nWhy now: ${opportunity.why_now}`}
+                {`\nPositive factors: ${
+                  opportunity.positive_factors.length
+                    ? opportunity.positive_factors.join(" ")
+                    : "None recorded"
+                }`}
+                {`\nNegative factors: ${
+                  opportunity.negative_factors.length
+                    ? opportunity.negative_factors.join(" ")
+                    : "None recorded"
+                }`}
+                {`\nMissing information: ${
+                  opportunity.missing_information.length
+                    ? opportunity.missing_information.join(" ")
+                    : "None recorded"
+                }`}
+                {`\nRecommended action: ${opportunity.recommended_action}`}
+              </>
+            ) : null}
           </div>
           <div className="status-actions">
             {statuses.map((status) => (

@@ -16,7 +16,7 @@ type AssessOpportunityInput = {
 };
 
 const evergreenContextPattern =
-  /\b(about us|pricing|blog|company news|resources|features?|platform|product page|solutions?|ai|automation|workflow|crm|technology|guide|how to|checklist|tips|best practices|playbook|framework|\u043e \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438|\u0446\u0435\u043d\u044b|\u0431\u043b\u043e\u0433|\u043d\u043e\u0432\u043e\u0441\u0442\u0438|\u0444\u0443\u043d\u043a\u0446\u0438\u0438|\u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0430|\u043f\u0440\u043e\u0434\u0443\u043a\u0442|\u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e|\u043a\u0430\u043a |\u0447\u0435\u043a\u043b\u0438\u0441\u0442|\u0441\u043e\u0432\u0435\u0442\u044b)\b/i;
+  /\b(about us|company overview|pricing|blog|company news|resources|product page|technology page|ai page|automation page|crm page|guide|how to|checklist|tips|best practices|playbook|framework|\u043e \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438|\u0446\u0435\u043d\u044b|\u0431\u043b\u043e\u0433|\u043d\u043e\u0432\u043e\u0441\u0442\u0438|\u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e|\u043a\u0430\u043a |\u0447\u0435\u043a\u043b\u0438\u0441\u0442|\u0441\u043e\u0432\u0435\u0442\u044b)\b/i;
 
 function clampScore(value: number): number {
   return Math.min(Math.max(Math.round(value), 0), 100);
@@ -210,12 +210,11 @@ function getRecommendedAction({
 
 function hasEvergreenDominance(candidate: LeadCandidate): boolean {
   const text = [
-    candidate.signal_summary,
-    candidate.why_it_matters,
-    candidate.why_now,
-    candidate.outreach_hypothesis,
-    candidate.card_signal_title,
+    candidate.company_source_url,
     ...candidate.signals.map((signal) => signal.signal_detail),
+    ...candidate.signals.map((signal) => signal.signal_title),
+    ...candidate.signals.map((signal) => signal.signal_source_label),
+    ...candidate.signals.map((signal) => signal.source_url),
   ]
     .filter(Boolean)
     .join(" ");
@@ -341,10 +340,6 @@ export function assessOpportunity({
   if (hasEvergreenDominance(candidate)) {
     opportunityType = "evergreen_content";
     score = Math.min(score, 45);
-  }
-
-  if (!candidate.should_create_lead) {
-    score = Math.min(score, 55);
   }
 
   const hasActionableReasoning =

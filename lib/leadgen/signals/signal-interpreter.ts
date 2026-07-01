@@ -45,6 +45,18 @@ function hasUsefulList(values: string[]): boolean {
   return values.some((value) => value.trim().length >= 20);
 }
 
+const nonOpportunityPagePattern =
+  /\b(about(?:[-_\s]+us)?|company[-_\s]+overview|overview|careers?|jobs?|pricing|blog|resources?|company[-_\s]+news|features?|solutions?|product(?:[-_\s]+page)?|platform|technology(?:[-_\s]+page)?|ai(?:[-_\s]+page)?|workflow(?:[-_\s]+page)?|automation(?:[-_\s]+page)?|crm(?:[-_\s]+page)?)\b/i;
+
+const activeHiringPattern =
+  /\b(we'?re hiring|now hiring|actively hiring|open roles?|open positions?|job openings?|vacanc(?:y|ies)|hiring for|join our team as|apply now|recruiting|headcount|talent acquisition)\b/i;
+
+const explicitOpportunityEventPattern =
+  /\b(we'?re hiring|now hiring|actively hiring|open roles?|open positions?|job openings?|hiring for|launch(?:ed|es|ing)?|released?|announc(?:ed|es|ing)|roll(?:ed)? out|go[-\s]?to[-\s]?market|gtm|new product|new feature|integration|integrates? with|partnership|funding|funded|raised|series [a-f]|seed round|expansion|expands?|expanded|new market|market expansion|opens? (?:a )?(?:new )?(?:office|branch|location)|new office|new branch|scal(?:e|es|ed|ing) sales|sales team growth|operational pressure|capacity pressure|rapid growth|revenue growth)\b/i;
+
+const activeTechEventPattern =
+  /\b(integration|integrates? with|implemented|implements?|migrat(?:ed|ing|ion)|roll(?:ed)? out|adopt(?:ed|ing|ion)|connected|api integration|partnership|new stack|replatform)\b/i;
+
 function canCreateLead(interpretation: Omit<SignalInterpretation, "should_create_lead">) {
   return (
     interpretation.confidence_level !== "weak_evidence" &&
@@ -58,6 +70,63 @@ function canCreateLead(interpretation: Omit<SignalInterpretation, "should_create
       interpretation.outreach_hypothesis,
     )
   );
+}
+
+function getSourceContext(candidate: LeadCandidate, primarySignal: LeadgenSignal): string {
+  return [
+    candidate.company_source_url,
+    primarySignal.signal_title,
+    primarySignal.signal_detail,
+    primarySignal.signal_source_label,
+    primarySignal.source_url,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+}
+
+function canCreateLeadFromSignal({
+  candidate,
+  primarySignal,
+  interpretation,
+}: {
+  candidate: LeadCandidate;
+  primarySignal: LeadgenSignal;
+  interpretation: Omit<SignalInterpretation, "should_create_lead">;
+}): boolean {
+  if (!canCreateLead(interpretation)) {
+    return false;
+  }
+
+  const sourceContext = getSourceContext(candidate, primarySignal);
+  const hasExplicitOpportunityEvent =
+    explicitOpportunityEventPattern.test(sourceContext);
+  const hasNonOpportunityPage = nonOpportunityPagePattern.test(sourceContext);
+
+  if (hasNonOpportunityPage && !hasExplicitOpportunityEvent) {
+    return false;
+  }
+
+  if (primarySignal.signal_type === "HIRING_SIGNAL") {
+    return activeHiringPattern.test(sourceContext);
+  }
+
+  if (primarySignal.signal_type === "TECH_SIGNAL") {
+    return activeTechEventPattern.test(sourceContext);
+  }
+
+  if (primarySignal.signal_type === "GO_TO_MARKET_SIGNAL") {
+    return (
+      candidate.gtm_signal_type === "confirmed_event" &&
+      hasExplicitOpportunityEvent
+    );
+  }
+
+  if (primarySignal.signal_type === "GROWTH_SIGNAL") {
+    return hasExplicitOpportunityEvent;
+  }
+
+  return hasExplicitOpportunityEvent;
 }
 
 function isRussianCandidate(candidate: LeadCandidate): boolean {
@@ -84,6 +153,7 @@ function getGtmQuality(candidate: LeadCandidate): EvidenceQuality {
 
 function interpretGoToMarket({
   candidate,
+  primarySignal,
 }: InterpretSignalInput): SignalInterpretation {
   const isRu = isRussianCandidate(candidate);
   const evidenceQuality = getGtmQuality(candidate);
@@ -159,7 +229,11 @@ function interpretGoToMarket({
 
   return {
     ...interpretation,
-    should_create_lead: canCreateLead(interpretation),
+    should_create_lead: canCreateLeadFromSignal({
+      candidate,
+      primarySignal,
+      interpretation,
+    }),
   };
 }
 
@@ -208,7 +282,11 @@ function interpretHiring({
 
   return {
     ...interpretation,
-    should_create_lead: canCreateLead(interpretation),
+    should_create_lead: canCreateLeadFromSignal({
+      candidate,
+      primarySignal,
+      interpretation,
+    }),
   };
 }
 
@@ -258,7 +336,11 @@ function interpretGrowth({
 
   return {
     ...interpretation,
-    should_create_lead: canCreateLead(interpretation),
+    should_create_lead: canCreateLeadFromSignal({
+      candidate,
+      primarySignal,
+      interpretation,
+    }),
   };
 }
 
@@ -308,7 +390,11 @@ function interpretTech({
 
   return {
     ...interpretation,
-    should_create_lead: canCreateLead(interpretation),
+    should_create_lead: canCreateLeadFromSignal({
+      candidate,
+      primarySignal,
+      interpretation,
+    }),
   };
 }
 
@@ -358,7 +444,11 @@ function interpretDefault({
 
   return {
     ...interpretation,
-    should_create_lead: canCreateLead(interpretation),
+    should_create_lead: canCreateLeadFromSignal({
+      candidate,
+      primarySignal,
+      interpretation,
+    }),
   };
 }
 

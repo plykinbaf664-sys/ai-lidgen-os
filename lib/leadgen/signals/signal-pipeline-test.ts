@@ -70,6 +70,16 @@ export type SignalPipelineTestResult = {
   opportunity_diagnostics: Array<{
     company_name: string;
     signal_type: SignalType | null;
+    opportunity_score: number;
+    opportunity_type: OpportunityAssessment["opportunity_type"];
+    business_reasoning: string;
+    why_now: string;
+    why_this_company: string;
+    positive_factors: string[];
+    negative_factors: string[];
+    missing_information: string[];
+    recommended_action: OpportunityAssessment["recommended_action"];
+    should_create_lead: boolean;
     opportunity: OpportunityAssessment;
   }>;
   weak_evidence: SignalPipelineEvidenceResult[];
@@ -87,6 +97,16 @@ function getPrimarySignal(candidate: LeadCandidate) {
 function assessCandidateOpportunity(candidate: LeadCandidate): {
   company_name: string;
   signal_type: SignalType | null;
+  opportunity_score: number;
+  opportunity_type: OpportunityAssessment["opportunity_type"];
+  business_reasoning: string;
+  why_now: string;
+  why_this_company: string;
+  positive_factors: string[];
+  negative_factors: string[];
+  missing_information: string[];
+  recommended_action: OpportunityAssessment["recommended_action"];
+  should_create_lead: boolean;
   opportunity: OpportunityAssessment;
 } | null {
   const primarySignal = getPrimarySignal(candidate);
@@ -100,10 +120,22 @@ function assessCandidateOpportunity(candidate: LeadCandidate): {
     ...interpretSignal({ candidate, primarySignal }),
   };
 
+  const opportunity = assessOpportunity({ candidate: interpretedCandidate });
+
   return {
     company_name: candidate.company_name,
     signal_type: interpretedCandidate.signal_type ?? primarySignal.signal_type,
-    opportunity: assessOpportunity({ candidate: interpretedCandidate }),
+    opportunity_score: opportunity.opportunity_score,
+    opportunity_type: opportunity.opportunity_type,
+    business_reasoning: opportunity.business_reasoning,
+    why_now: opportunity.why_now,
+    why_this_company: opportunity.why_this_company,
+    positive_factors: opportunity.positive_factors,
+    negative_factors: opportunity.negative_factors,
+    missing_information: opportunity.missing_information,
+    recommended_action: opportunity.recommended_action,
+    should_create_lead: opportunity.should_create_lead,
+    opportunity,
   };
 }
 
@@ -178,6 +210,16 @@ export async function runSignalPipelineTest({
         ): diagnostic is {
           company_name: string;
           signal_type: SignalType | null;
+          opportunity_score: number;
+          opportunity_type: OpportunityAssessment["opportunity_type"];
+          business_reasoning: string;
+          why_now: string;
+          why_this_company: string;
+          positive_factors: string[];
+          negative_factors: string[];
+          missing_information: string[];
+          recommended_action: OpportunityAssessment["recommended_action"];
+          should_create_lead: boolean;
           opportunity: OpportunityAssessment;
         } => Boolean(diagnostic),
       ),

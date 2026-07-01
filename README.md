@@ -1001,3 +1001,475 @@ Campaign Details
 * форма обратной связи.
 
 После этого система сможет перейти к полностью автоматизированному персонализированному outbound.
+
+____________________________________________
+
+29.06.2026
+# Leadgen OS — Обновление этапа Discovery Engine
+
+## Статус
+
+Этап **Discovery Engine** практически завершён.
+
+За последние итерации система перестала быть обычным поиском компаний и превратилась в полноценный конвейер анализа потенциальных клиентов.
+
+Текущий pipeline:
+
+```
+Search
+↓
+Query Builder
+↓
+Market-Aware Search
+↓
+Evidence Collector
+↓
+Signal Interpretation
+↓
+Company Extraction
+↓
+Company Validation
+↓
+ICP Fit
+↓
+Decision Maker Discovery
+↓
+Contact Discovery
+↓
+Lead Prioritization
+↓
+Campaign Details
+↓
+Telegram Card
+```
+
+---
+
+# Что реализовано
+
+## 1. Market-Aware Search
+
+Добавлен полноценный слой поиска по рынкам.
+
+Поддерживаются:
+
+- Global
+- RU
+- Mixed
+
+Pipeline умеет:
+
+- строить запросы отдельно для разных рынков;
+- использовать разные search angles;
+- считать `candidates_by_market`;
+- балансировать выдачу между рынками;
+- возвращать diagnostics по каждому запросу.
+
+---
+
+## 2. Query Builder
+
+Полностью переработан.
+
+Теперь запросы строятся не одним шаблоном, а через разные поисковые углы.
+
+Примеры:
+
+- Hiring
+- GTM
+- Product Launch
+- Customer Success
+- Operations
+- CRM
+- Automation
+
+Для RU и Global используются разные наборы запросов.
+
+---
+
+## 3. Company Extraction
+
+Extractor значительно усилен.
+
+Добавлена поддержка:
+
+- employer patterns;
+- ATS;
+- company-owned domains;
+- hiring snippets;
+- GTM pages;
+- company announcements.
+
+Система больше не считает:
+
+- LinkedIn;
+- Indeed;
+- HH;
+- агрегаторы;
+- job boards;
+
+названиями компаний.
+
+---
+
+## 4. Company Quality Validation
+
+Добавлена полноценная очистка мусора.
+
+Отсекаются:
+
+- города;
+- страны;
+- должности;
+- категории;
+- агрегаторы;
+- платформы;
+- случайные токены;
+- UI-текст;
+- cookie-текст.
+
+---
+
+## 5. Evidence Collector
+
+Полностью переработана логика GTM.
+
+Теперь:
+
+topic ≠ событие.
+
+Educational-контент больше не становится подтверждённым событием.
+
+Confirmed Event требует явного действия компании:
+
+- announced;
+- released;
+- introduced;
+- launched;
+- new product;
+- new feature;
+- integration;
+- expansion;
+- GA;
+- beta.
+
+Источник истины по GTM находится именно здесь.
+
+---
+
+## 6. Signal Interpretation
+
+Добавлены:
+
+- signal_summary;
+- why_now;
+- evidence_quality;
+- confidence_level;
+- should_create_lead.
+
+Signal Interpretation больше не определяет событие самостоятельно, а интерпретирует вывод Evidence Collector.
+
+---
+
+## 7. ICP Fit
+
+Появился отдельный слой оценки соответствия ICP.
+
+Учитываются:
+
+- business fit;
+- commercial fit;
+- pain fit;
+- exclusion risk.
+
+Добавлен:
+
+```
+icp_fit_score
+```
+
+---
+
+## 8. Decision Maker Discovery
+
+Добавлен отдельный модуль определения ЛПР.
+
+Система теперь определяет:
+
+- Primary Persona;
+- Alternative Personas;
+- Department;
+- Business Problem Owner;
+- Expected Pain;
+- Expected Goal;
+- Search Keywords;
+- Confidence.
+
+Decision Maker хранится в metadata компании.
+
+---
+
+## 9. Contact Discovery
+
+Создан отдельный модуль Contact Discovery.
+
+Поддерживаются:
+
+- confirmed_person;
+- role_based_person;
+- generic_email;
+- contact_form;
+- social_profile;
+- company_website;
+- no_contact_found.
+
+Добавлен Provider Layer.
+
+Контакты не выдумываются.
+
+При отсутствии человека система честно показывает fallback.
+
+---
+
+## 10. People Discovery Status
+
+Карточка теперь показывает:
+
+- Found Person;
+- Persona Search Status;
+- Best Outreach Entry;
+- Fallback Entry.
+
+Это подготавливает систему к будущему подключению Apollo / Clay / PDL.
+
+---
+
+## 11. Lead Prioritization Engine
+
+Добавлен новый слой принятия решений.
+
+Pipeline теперь отвечает не только:
+
+"Подходит ли компания?"
+
+но и
+
+"Стоит ли сейчас заниматься этим лидом?"
+
+Используются независимые компоненты:
+
+- ICP Score;
+- Signal Strength;
+- Buying Intent;
+- Timing Score;
+- Contact Readiness;
+- Confidence.
+
+Возвращается:
+
+- Priority;
+- Priority Score;
+- Strengths;
+- Risks;
+- Recommended Next Action.
+
+Приоритет хранится отдельно от Lead Score.
+
+---
+
+## 12. Campaign Details
+
+Карточка лида значительно расширена.
+
+Теперь отображаются:
+
+- Why this company;
+- Target Persona;
+- Why this person;
+- Expected pain;
+- Expected goal;
+- Alternative personas;
+- Persona Search Status;
+- Found Person;
+- Best Outreach Entry;
+- Lead Priority;
+- Recommended Next Action.
+
+---
+
+## 13. Telegram Card
+
+Telegram теперь получает:
+
+- Target Persona;
+- People Discovery Status;
+- Lead Priority;
+- Recommended Next Action.
+
+При отсутствии новых полей обратная совместимость сохранена.
+
+---
+
+# Архитектурные улучшения
+
+Важное изменение:
+
+Lead Prioritization больше не определяет GTM Event самостоятельно.
+
+Ответственность разделена правильно.
+
+```
+Evidence Collector
+↓
+
+Signal Interpretation
+↓
+
+Lead Prioritization
+```
+
+Каждый слой отвечает только за свою область.
+
+---
+
+# Что осталось исправить
+
+Несмотря на большой прогресс, Discovery ещё не закрыт окончательно.
+
+Есть две фундаментальные проблемы.
+
+## 1. Company Discovery всё ещё создаёт слишком много "интересных компаний"
+
+Сейчас система иногда создаёт лиды по причинам вроде:
+
+- About Us;
+- Careers;
+- Company News;
+- Technology;
+- AI;
+- Automation.
+
+Это не является реальной причиной для начала продаж.
+
+Компания должна становиться лидом только тогда, когда найдена объективная коммерческая возможность.
+
+---
+
+## 2. Discovery пока ищет компании, а не возможности
+
+Сейчас система отвечает:
+
+"Какие компании подходят?"
+
+Но должна отвечать:
+
+"Каким компаниям есть смысл писать именно сейчас?"
+
+Это принципиально другой уровень.
+
+---
+
+# Следующий этап
+
+## Opportunity Intelligence Engine
+
+Следующий большой модуль Discovery.
+
+Pipeline станет:
+
+```
+Search
+↓
+
+Evidence Collector
+↓
+
+Signal Interpretation
+↓
+
+Opportunity Intelligence
+↓
+
+Decision Maker
+↓
+
+People Discovery
+↓
+
+Lead Prioritization
+```
+
+---
+
+## Главная задача
+
+Компания перестаёт автоматически становиться лидом.
+
+Перед созданием лида система должна ответить:
+
+```
+Есть ли объективная коммерческая причина
+начать диалог именно сейчас?
+```
+
+---
+
+## Opportunity Engine будет рассчитывать
+
+- Opportunity Score;
+- Opportunity Type;
+- Urgency;
+- Business Reasoning;
+- Why Now;
+- Positive Factors;
+- Negative Factors;
+- Missing Information;
+- Recommended Action.
+
+---
+
+## Новое правило
+
+```
+Компания ≠ Лид
+```
+
+Лид создаётся только если Opportunity Engine подтверждает наличие реального окна продаж.
+
+---
+
+## Цель следующего этапа
+
+Перевести Leadgen OS из:
+
+```
+Company Discovery
+```
+
+в
+
+```
+Business Opportunity Discovery
+```
+
+Именно после этого Discovery Engine можно будет считать полностью завершённым и переходить к следующему большому модулю:
+
+```
+People Discovery + Enrichment Providers
+
+Apollo
+↓
+
+People Data Labs
+↓
+
+Hunter
+↓
+
+Clay
+↓
+
+Dropcontact
+```
+
+После этого Leadgen OS сможет искать уже не просто компании, а конкретных ЛПР и готовить полностью персонализированный Outreach.

@@ -364,6 +364,17 @@ function getRecommendedNextActionLabel(action?: string): string {
   return action ? labels[action] ?? action : "Not calculated";
 }
 
+function getOpportunityActionLabel(action?: string): string {
+  const labels: Record<string, string> = {
+    create_lead: "Create lead",
+    run_enrichment: "Run enrichment",
+    monitor: "Monitor for a stronger signal",
+    discard: "Discard",
+  };
+
+  return action ? labels[action] ?? action : "Not calculated";
+}
+
 function getPersonaSearchStatus(contact: LeadgenContact | null): string {
   const rawStatus = contact?.metadata.persona_search_status;
 
@@ -690,6 +701,14 @@ export function CampaignDetails({
                         ? `Urgency: ${opportunity.urgency}`
                         : "Opportunity gate result is not available"}
                     </p>
+                    <p className="company-domain">
+                      Should create lead:{" "}
+                      {typeof opportunity.should_create_lead === "boolean"
+                        ? opportunity.should_create_lead
+                          ? "yes"
+                          : "no"
+                        : "not available"}
+                    </p>
                   </div>
                   <div>
                     <span className="field-label">Lead Priority</span>
@@ -756,6 +775,14 @@ export function CampaignDetails({
                         </p>
                       </div>
                     ) : null}
+                    <div>
+                      <span className="field-label">Opportunity recommended action</span>
+                      <p>
+                        {getOpportunityActionLabel(
+                          opportunity.recommended_action,
+                        )}
+                      </p>
+                    </div>
                     {opportunity.positive_factors?.length ? (
                       <div>
                         <span className="field-label">Opportunity positives</span>

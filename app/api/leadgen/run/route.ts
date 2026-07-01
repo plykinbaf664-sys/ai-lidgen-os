@@ -10,6 +10,7 @@ import type {
   LeadgenContact,
   LeadgenLead,
   LeadPriority,
+  OpportunityAssessment,
   PeopleDiscoveryResult,
   PersonaSearchStatus,
 } from "@/lib/leadgen/types";
@@ -60,6 +61,56 @@ function getLeadPriority(company: LeadgenCompany | undefined): LeadPriority | nu
   }
 
   return rawLeadPriority as LeadPriority;
+}
+
+function getOpportunityAssessment(
+  company: LeadgenCompany | undefined,
+): OpportunityAssessment | null {
+  const rawOpportunity = company?.metadata.opportunity;
+
+  if (
+    typeof rawOpportunity !== "object" ||
+    rawOpportunity === null ||
+    Array.isArray(rawOpportunity)
+  ) {
+    return null;
+  }
+
+  return rawOpportunity as OpportunityAssessment;
+}
+
+function formatOpportunityExplanation(
+  opportunity: OpportunityAssessment | null,
+): string {
+  if (!opportunity) {
+    return "";
+  }
+
+  return [
+    "",
+    "Opportunity explanation:",
+    `Opportunity score: ${opportunity.opportunity_score}/100`,
+    `Opportunity type: ${opportunity.opportunity_type}`,
+    `Business reasoning: ${opportunity.business_reasoning}`,
+    `Why this company: ${opportunity.why_this_company}`,
+    `Why now: ${opportunity.why_now}`,
+    `Positive factors: ${
+      opportunity.positive_factors.length
+        ? opportunity.positive_factors.join(" ")
+        : "None recorded"
+    }`,
+    `Negative factors: ${
+      opportunity.negative_factors.length
+        ? opportunity.negative_factors.join(" ")
+        : "None recorded"
+    }`,
+    `Missing information: ${
+      opportunity.missing_information.length
+        ? opportunity.missing_information.join(" ")
+        : "None recorded"
+    }`,
+    `Recommended action: ${opportunity.recommended_action}`,
+  ].join("\n");
 }
 
 function getPrimaryContact(
@@ -185,8 +236,8 @@ export async function POST(request: Request) {
       const bestAvailableEntry = getPrimaryContact(lead, result.contacts);
       const bestOutreachEntry = getBestOutreachEntry(lead, result.contacts);
       const fallbackEntry = getFallbackEntry(lead, result.contacts);
-
-      return prepareTelegramNotification(lead, {
+      const opportunity = getOpportunityAssessment(company);
+      const notification = prepareTelegramNotification(lead, {
         decisionMaker: getDecisionMakerProfile(company),
         peopleDiscovery: getPeopleDiscoveryResult(company),
         bestAvailableEntry,
@@ -197,6 +248,13 @@ export async function POST(request: Request) {
         ),
         leadPriority: getLeadPriority(company),
       });
+
+      return {
+        ...notification,
+        telegram_card_text:
+          notification.telegram_card_text +
+          formatOpportunityExplanation(opportunity),
+      };
     });
     const saved = await savePipelineResult({ result, notifications });
 

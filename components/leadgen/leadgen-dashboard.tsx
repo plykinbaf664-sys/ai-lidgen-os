@@ -19,6 +19,7 @@ import type {
   LeadgenLead,
   LeadgenSignal,
   LeadStatus,
+  OpportunityAssessment,
   PeopleDiscoveryResult,
   TelegramNotification,
 } from "@/lib/leadgen/types";
@@ -197,6 +198,19 @@ export function LeadgenDashboard() {
     }
 
     return rawPeopleDiscovery as PeopleDiscoveryResult;
+  }, [selectedCompany]);
+  const selectedOpportunity = useMemo(() => {
+    const rawOpportunity = selectedCompany?.metadata.opportunity;
+
+    if (
+      typeof rawOpportunity !== "object" ||
+      rawOpportunity === null ||
+      Array.isArray(rawOpportunity)
+    ) {
+      return null;
+    }
+
+    return rawOpportunity as OpportunityAssessment;
   }, [selectedCompany]);
 
   async function loadCampaignHistory() {
@@ -401,6 +415,7 @@ export function LeadgenDashboard() {
           bestAvailableEntry={selectedBestContact}
           bestOutreachEntry={selectedBestOutreachEntry}
           fallbackEntry={selectedFallbackEntry}
+          opportunity={selectedOpportunity}
           onStatusChange={handleStatusChange}
         />
       </div>

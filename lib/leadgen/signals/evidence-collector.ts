@@ -14,6 +14,7 @@ export type EvidenceRejectionReason =
   | "educational_event_content"
   | "too_generic"
   | "insufficient_evidence"
+  | "non_opportunity_page"
   | "irrelevant_intent"
   | "aggregator_without_company"
   | "company_not_extracted"
@@ -494,6 +495,43 @@ const gtmEducationalTerms = [
   "уроки",
 ];
 
+const nonOpportunityPageTerms = [
+  "about us",
+  "careers",
+  "pricing",
+  "blog",
+  "company news",
+  "product page",
+  "features",
+  "solutions",
+  "technology",
+  "crm",
+  "workflow",
+  "automation",
+  "\u043e \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+  "\u0446\u0435\u043d\u044b",
+  "\u0431\u043b\u043e\u0433",
+  "\u043d\u043e\u0432\u043e\u0441\u0442\u0438",
+  "\u043f\u0440\u043e\u0434\u0443\u043a\u0442",
+  "\u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0438",
+  "\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f",
+];
+
+const hiringEventPatterns = [
+  /\b(?:we are hiring|now hiring|join our team|join the team|open roles|open positions|job opening|hiring sales|hiring for|account executive|business development|customer success|revenue operations)\b/i,
+  /\b(?:\u0438\u0449\u0435\u043c \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0443|\u043e\u0442\u043a\u0440\u044b\u0442(?:\u0430|\u044b|\u044b\u0435) \u0432\u0430\u043a\u0430\u043d\u0441|\u043d\u0430\u0431\u043e\u0440 \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a\u043e\u0432|\u0440\u0430\u0441\u0448\u0438\u0440\u044f\u0435\u043c \u043a\u043e\u043c\u0430\u043d\u0434\u0443)\b/i,
+];
+
+const growthEventPatterns = [
+  /\b(?:expanding|expanded|expansion|growth|scaling|raises funding|raised funding|funding round|series [a-z]|opens new office|new office|new branch|market expansion|new market|new region|new country)\b/i,
+  /\b(?:\u0440\u0430\u0441\u0448\u0438\u0440|\u0440\u043e\u0441\u0442|\u043c\u0430\u0441\u0448\u0442\u0430\u0431|\u0438\u043d\u0432\u0435\u0441\u0442\u0438\u0446|\u0440\u0430\u0443\u043d\u0434|\u043d\u043e\u0432(?:\u044b\u0439|\u0430\u044f) (?:\u0440\u044b\u043d\u043e\u043a|\u0440\u0435\u0433\u0438\u043e\u043d|\u043e\u0444\u0438\u0441|\u0444\u0438\u043b\u0438\u0430\u043b))\b/i,
+];
+
+const operationalEventPatterns = [
+  /\b(?:operational pressure|capacity pressure|manual handoffs|migration|migrating|implementation|implemented|new api|api rollout|integration rollout|integrates with|integrated with|platform migration)\b/i,
+  /\b(?:\u043e\u043f\u0435\u0440\u0430\u0446\u0438\u043e\u043d\u043d|\u043d\u0430\u0433\u0440\u0443\u0437\u043a|\u0432\u043d\u0435\u0434\u0440|\u043c\u0438\u0433\u0440\u0430\u0446|\u0438\u043d\u0442\u0435\u0433\u0440\u0438\u0440)\b/i,
+];
+
 function detectEvidenceLanguage(text: string): SignalLanguage | "mixed" {
   const cyrillicMatches = text.match(/[а-яё]/gi)?.length ?? 0;
   const latinMatches = text.match(/[a-z]/gi)?.length ?? 0;
@@ -507,6 +545,45 @@ function detectEvidenceLanguage(text: string): SignalLanguage | "mixed" {
   }
 
   return "en";
+}
+
+function hasAnyPattern(text: string, patterns: readonly RegExp[]): boolean {
+  return patterns.some((pattern) => pattern.test(text));
+}
+
+function hasConcreteCommercialEvent({
+  signalType,
+  text,
+  eventStrengthBreakdown,
+}: {
+  signalType: SignalType;
+  text: string;
+  eventStrengthBreakdown: EventStrengthBreakdown;
+}): boolean {
+  if (signalType === "HIRING_SIGNAL") {
+    return hasAnyPattern(text, hiringEventPatterns);
+  }
+
+  if (signalType === "GO_TO_MARKET_SIGNAL") {
+    return eventStrengthBreakdown.gtm_signal_type === "confirmed_event";
+  }
+
+  if (signalType === "GROWTH_SIGNAL") {
+    return hasAnyPattern(text, growthEventPatterns);
+  }
+
+  if (signalType === "TECH_SIGNAL") {
+    return (
+      hasAnyPattern(text, operationalEventPatterns) ||
+      eventStrengthBreakdown.gtm_signal_type === "confirmed_event"
+    );
+  }
+
+  return false;
+}
+
+function hasNonOpportunityPageContext(text: string): boolean {
+  return findMatches(text, nonOpportunityPageTerms).length > 0;
 }
 
 function scoreEvidence({
@@ -716,6 +793,7 @@ function getRejectionReason({
   eventStrengthBreakdown,
   sourceType,
   companyExtraction,
+  hasNonOpportunityInfo,
 }: {
   directSignalMatches: string[];
   contextSignalMatches: string[];
@@ -725,6 +803,7 @@ function getRejectionReason({
   eventStrengthBreakdown: EventStrengthBreakdown;
   sourceType: SourceType;
   companyExtraction: CompanyExtractionResult;
+  hasNonOpportunityInfo: boolean;
 }): EvidenceRejectionReason {
   if (sourceType === "aggregator" && !companyExtraction.company_name) {
     return "aggregator_without_company";
@@ -742,6 +821,10 @@ function getRejectionReason({
 
   if (directSignalMatches.length === 0 && contextSignalMatches.length === 0) {
     return "no_signal_context";
+  }
+
+  if (hasNonOpportunityInfo) {
+    return "non_opportunity_page";
   }
 
   if (
@@ -871,6 +954,13 @@ export function collectSignalEvidence({
     result,
     sourceType: sourceClassification.source_type,
   });
+  const hasConcreteEvent = hasConcreteCommercialEvent({
+    signalType,
+    text: searchText,
+    eventStrengthBreakdown: eventStrength.breakdown,
+  });
+  const hasNonOpportunityInfo =
+    hasNonOpportunityPageContext(searchText) && !hasConcreteEvent;
   const scoreBreakdown = scoreEvidence({
     directSignalMatches,
     contextSignalMatches,
@@ -911,6 +1001,8 @@ export function collectSignalEvidence({
   const decision =
     isAggregatorWithoutCompany || hasInvalidCompanyCandidate
       ? "rejected"
+      : hasNonOpportunityInfo
+        ? "rejected"
       : isGtmSignal && !hasConfirmedGtmEvent
         ? confidenceScore >= 45 &&
           eventStrength.breakdown.topic_match_score > 0 &&
@@ -934,6 +1026,7 @@ export function collectSignalEvidence({
           eventStrengthBreakdown: eventStrength.breakdown,
           sourceType: sourceClassification.source_type,
           companyExtraction,
+          hasNonOpportunityInfo,
         })
       : undefined;
 
