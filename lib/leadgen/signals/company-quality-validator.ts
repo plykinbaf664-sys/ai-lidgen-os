@@ -14,6 +14,7 @@ export type CompanyInvalidReason =
   | "non_employer_context"
   | "aggregator_or_directory_page"
   | "random_or_tokenized_name"
+  | "non_buyer_service_provider"
   | "too_short"
   | "too_long"
   | "insufficient_company_evidence";
@@ -38,7 +39,7 @@ export type CompanyQualityValidationResult = {
 };
 
 const platformNamePattern =
-  /^(indeed|linkedin|hh(\.(ru|kz|uz))?|headhunter(?:\s+(?:in|\u0432)\s+.+)?|vc(\.ru)?|habr|habr career|cnews|rb(\.ru)?|rusbase|rabota(\.ru)?|superjob|zarplata(\.ru)?|jobfilter|remote-job|ziprecruiter|glassdoor|greenhouse|lever|workday|successfactors|smartrecruiters|recruitee|workable|paycor)$/i;
+  /^(indeed|linkedin|hh(\.(ru|kz|uz))?|headhunter(?:\s+(?:in|\u0432)\s+.+)?|vc(\.ru)?|habr|habr career|cnews|rb(\.ru)?|rusbase|rabota(\.ru)?|superjob|zarplata(\.ru)?|jobfilter|remote-job|remote rocketship|remoterocketship|remote job assistant|remotejobassistant|remoteok|we work remotely|weworkremotely|ziprecruiter|glassdoor|greenhouse|lever|workday|successfactors|smartrecruiters|recruitee|workable|paycor)$/i;
 
 const broadJobBoardPlatforms = new Set([
   "hh.ru",
@@ -54,16 +55,26 @@ const broadJobBoardPlatforms = new Set([
   "zarplata.ru",
   "jobfilter.ru",
   "remote-job.ru",
+  "zohorecruit.com",
+  "remote.co",
+  "remoteok.com",
+  "remoterocketship.com",
+  "remotejobassistant.com",
+  "weworkremotely.com",
+  "flexjobs.com",
+  "otta.com",
+  "wellfound.com",
+  "startup.jobs",
 ]);
 
 const genericJobCategoryPattern =
   /\b(jobs?|careers?|vacanc(?:y|ies)|positions?|roles?|openings?|hiring|recruit(?:ing|ment)|talent|sales|customer success|account executive|account manager|sales manager|crm manager|product manager|software engineer|engineer|developer|specialist|consultant|analyst|administrator|architect|director|head of|lead|senior|junior|saas sales|b2b saas|\u0440\u0430\u0431\u043e\u0442\u0430|\u0432\u0430\u043a\u0430\u043d\u0441\u0438[\u044f\u0438]|\u043d\u0430\u0439\u043c|\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440|\u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a|\u0438\u043d\u0436\u0435\u043d\u0435\u0440|\u0441\u043f\u0435\u0446\u0438\u0430\u043b\u0438\u0441\u0442|\u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a|\u043e\u043f\u0435\u0440\u0430\u0442\u043e\u0440|\u0440\u043e\u043f|\u043f\u0440\u043e\u0434\u0430\u0436[\u0430\u0438]?|\u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044c)\b/i;
 
 const genericBusinessPhrasePattern =
-  /^(ai|b2b|saas|crm|gtm|recruitment|hiring|customer success|business software|crm software|sales software|marketing software|automation software|revenue teams?|growth teams?|technical skills?|sales talent|top talent|every level|open saas|cloud and ai|recruitment automation|bitrix24|amoCRM|\u0431\u0438\u0442\u0440\u0438\u043a\u044124|\u0431\u0438\u0442\u0440\u0438\u043a\u0441\s*24|\u0430\u043c\u043e\s*crm|\u0430\u043c\u043eCRM|\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 \u043f\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c|\u0440\u043e\u043f|\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043d\u0430\u0439\u043c\u0430)$/i;
+  /^(ai|b2b|saas|crm|gtm|recruitment|hiring|customer success|email service|business software|crm software|sales software|marketing software|automation software|revenue teams?|growth teams?|technical skills?|sales talent|top talent|every level|open saas|cloud and ai|recruitment automation|bitrix24|amoCRM|\u0431\u0438\u0442\u0440\u0438\u043a\u044124|\u0431\u0438\u0442\u0440\u0438\u043a\u0441\s*24|\u0430\u043c\u043e\s*crm|\u0430\u043c\u043eCRM|\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 \u043f\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c|\u0440\u043e\u043f|\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043d\u0430\u0439\u043c\u0430)$/i;
 
 const genericBusinessWordPattern =
-  /\b(ai|b2b|saas|crm|gtm|recruitment|hiring|talent|customer success|revenue|growth|technical skills|sales talent|top talent|bitrix24|amocrm|\u0431\u0438\u0442\u0440\u0438\u043a\u044124|\u0431\u0438\u0442\u0440\u0438\u043a\u0441\s*24|\u0430\u043c\u043e\s*crm|\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f|\u043d\u0430\u0439\u043c)\b/i;
+  /\b(ai|b2b|saas|crm|gtm|recruitment|hiring|talent|customer success|email service|revenue|growth|technical skills|sales talent|top talent|bitrix24|amocrm|\u0431\u0438\u0442\u0440\u0438\u043a\u044124|\u0431\u0438\u0442\u0440\u0438\u043a\u0441\s*24|\u0430\u043c\u043e\s*crm|\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f|\u043d\u0430\u0439\u043c)\b/i;
 
 const locationPattern =
   /^(?:[a-z .'-]+,\s*[a-z]{2}|bay area|remote|krym|united states|usa|us|uk|canada|germany|france|spain|italy|india|europe|emea|apac|latam|california|colorado|texas|florida|new york|los angeles|san francisco|boston|chicago|seattle|austin|denver|london|berlin|paris|toronto|moscow|saint petersburg|\u0443\u0434\u0430\u043b\u0435\u043d\u043d\u043e|\u0443\u0434\u0430\u043b\u0451\u043d\u043d\u043e|\u043a\u0440\u044b\u043c|\u0441\u043f\u0431|\u043c\u043e\u0441\u043a\u0432\u0430|\u0441\u0430\u043d\u043a\u0442-\u043f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433|\u0440\u043e\u0441\u0441\u0438\u044f|\u043a\u0430\u0437\u0430\u0445\u0441\u0442\u0430\u043d|\u0431\u0435\u043b\u0430\u0440\u0443\u0441\u044c)$/i;
@@ -82,6 +93,12 @@ const directoryPagePattern =
 
 const nonEmployerEntityPattern =
   /\b(the\s+.+\s+network|network|ecosystem|community|portfolio|investors?|venture capital|vc firm|accelerator|marketplace|job board|talent network|\u0441\u0435\u0442\u044c|\u044d\u043a\u043e\u0441\u0438\u0441\u0442\u0435\u043c\u0430|\u0441\u043e\u043e\u0431\u0449\u0435\u0441\u0442\u0432\u043e|\u043f\u043e\u0440\u0442\u0444\u0435\u043b\u044c|\u0438\u043d\u0432\u0435\u0441\u0442\u043e\u0440)\b/i;
+
+const recruitingProviderPattern =
+  /\b(executive recruiting|recruiting firm|recruitment agency|staffing agency|talent agency|sales recruiting|revenue recruiting|recruiting services|recruitment services|headhunt(?:er|ing)|hire top sales talent|support your revenue teams|talent acquisition partner|one of our clients|our client is hiring)\b/i;
+
+const jobWrapperDomainPattern =
+  /\b(remote(?:rocketship|jobassistant|ok)|weworkremotely|remote\.co|flexjobs|otta|wellfound|startup\.jobs)\b/i;
 
 const departmentOrTeamPattern =
   /\b(experience|technology|operations|platform|product|engineering|investment|growth|revenue|business unit|department|division|practice|function|team|\u043e\u0442\u0434\u0435\u043b|\u043a\u043e\u043c\u0430\u043d\u0434\u0430|\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435|\u0434\u0435\u043f\u0430\u0440\u0442\u0430\u043c\u0435\u043d\u0442)\b/i;
@@ -348,9 +365,36 @@ function looksLikeSentenceFragment(companyName: string): boolean {
 
   return (
     words >= 6 ||
+    /\.\s+\w+/.test(companyName) ||
+    /^(your|our|this|that|these|those)\s+/i.test(companyName) ||
+    /\b(we|you|your|our|they|their|this|that)\b/i.test(companyName) ||
     sentenceVerbPattern.test(companyName) ||
     /\b(with|that|which|for|from|into|across|in cloud|and ai|high-performing)\b/i.test(
       companyName,
+    )
+  );
+}
+
+function looksLikeNonBuyerServiceProvider(
+  companyName: string,
+  input: CompanyQualityValidationInput,
+): boolean {
+  const sourceText = getSearchText(input);
+  const sourceDomain = input.sourceDomain ?? "";
+  const combined = [companyName, sourceText, sourceDomain].join(" ");
+
+  if (jobWrapperDomainPattern.test(companyName) || jobWrapperDomainPattern.test(sourceDomain)) {
+    return true;
+  }
+
+  if (recruitingProviderPattern.test(combined)) {
+    return true;
+  }
+
+  return (
+    /\btalent\b/i.test(companyName) &&
+    /\b(recruiting|recruitment|staffing|headhunt|hire top|revenue teams)\b/i.test(
+      sourceText,
     )
   );
 }
@@ -581,6 +625,10 @@ function calculateQualityScore(
     score -= 35;
   }
 
+  if (looksLikeNonBuyerServiceProvider(companyName, input)) {
+    score -= 45;
+  }
+
   if (startsWithLowercasePhrase(companyName)) {
     score -= 20;
   }
@@ -643,6 +691,16 @@ export function validateCompanyQuality(
       is_valid: false,
       invalid_reason: "source_platform_name",
       validation_reason: "Candidate company looks like a source platform",
+      company_quality_score: qualityScore,
+    };
+  }
+
+  if (looksLikeNonBuyerServiceProvider(companyName, input)) {
+    return {
+      is_valid: false,
+      invalid_reason: "non_buyer_service_provider",
+      validation_reason:
+        "Candidate company looks like a job wrapper, recruiting provider, or staffing service rather than a buyer company",
       company_quality_score: qualityScore,
     };
   }

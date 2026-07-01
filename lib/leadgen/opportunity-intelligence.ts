@@ -9,6 +9,7 @@ import type {
 } from "@/lib/leadgen/types";
 
 export const DEFAULT_OPPORTUNITY_THRESHOLD = 60;
+const MIN_READY_ICP_FIT_SCORE = 45;
 
 type AssessOpportunityInput = {
   candidate: LeadCandidate;
@@ -287,6 +288,12 @@ function buildNegativeFactors(candidate: LeadCandidate): string[] {
     factors.push("Signal confidence level is weak.");
   }
 
+  if ((candidate.icp_fit_score ?? 0) < MIN_READY_ICP_FIT_SCORE) {
+    factors.push(
+      `ICP fit is below the ready-lead threshold at ${candidate.icp_fit_score}/100.`,
+    );
+  }
+
   if (hasEvergreenDominance(candidate)) {
     factors.push("The source context looks evergreen or page-level rather than event-driven.");
   }
@@ -348,6 +355,7 @@ export function assessOpportunity({
     hasUsefulText(candidate.signal_summary);
   const shouldCreateLead =
     score >= threshold &&
+    (candidate.icp_fit_score ?? 0) >= MIN_READY_ICP_FIT_SCORE &&
     hasActionableReasoning &&
     opportunityType !== "evergreen_content" &&
     opportunityType !== "weak_context" &&

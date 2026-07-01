@@ -36,7 +36,17 @@ const jobBoardDomains = [
   "smartrecruiters.com",
   "recruitee.com",
   "paycor.com",
+  "zohorecruit.com",
   "welcometothejungle.com",
+  "remote.co",
+  "remoteok.com",
+  "remoterocketship.com",
+  "remotejobassistant.com",
+  "weworkremotely.com",
+  "flexjobs.com",
+  "otta.com",
+  "wellfound.com",
+  "startup.jobs",
 ];
 
 const socialDomains = [
@@ -96,6 +106,23 @@ const aggregatorPhrases = [
   "\u0440\u0430\u0431\u043e\u0442\u0430 \u0432 ",
 ];
 
+const recruitingProviderPhrases = [
+  "executive recruiting",
+  "recruiting firm",
+  "recruitment agency",
+  "staffing agency",
+  "talent agency",
+  "sales recruiting",
+  "revenue recruiting",
+  "hire top sales talent",
+  "support your revenue teams",
+  "talent acquisition partner",
+  "recruiting services",
+  "recruitment services",
+  "one of our clients",
+  "our client is hiring",
+];
+
 function normalizeText(value: string): string {
   return value.toLowerCase();
 }
@@ -153,6 +180,19 @@ export function classifySearchResultSource(
       source_domain: domain,
       classification_confidence: 82,
       classification_reason: "Broad listing or aggregate jobs page detected",
+    };
+  }
+
+  if (
+    includesAny(text, recruitingProviderPhrases) ||
+    (domain?.includes("talent") && text.includes("recruiting"))
+  ) {
+    return {
+      source_type: "aggregator",
+      source_domain: domain,
+      classification_confidence: 80,
+      classification_reason:
+        "Recruiting, staffing, or talent provider context detected",
     };
   }
 

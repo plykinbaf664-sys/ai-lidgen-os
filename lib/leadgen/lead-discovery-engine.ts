@@ -38,8 +38,8 @@ type CandidateRecord = {
 
 const DEFAULT_TARGET_COMPANIES = 5;
 const MAX_SIGNALS_PER_RUN = 3;
-const TARGET_PER_SIGNAL = 3;
-const MAX_QUERIES_PER_SIGNAL = 3;
+const TARGET_PER_SIGNAL = 6;
+const MAX_QUERIES_PER_SIGNAL = 6;
 const MAX_RESULTS_PER_QUERY = 5;
 
 function createRecordId(...parts: string[]): string {
