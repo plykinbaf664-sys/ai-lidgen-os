@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 set -u
 
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+if command -v chcp.com >/dev/null 2>&1; then
+  chcp.com 65001 >/dev/null 2>&1 || true
+fi
+
 ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 cd "$ROOT" || exit 1
 

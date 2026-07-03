@@ -19,3 +19,21 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# AI supervisor runtime artifacts
+.ai/stage-plan.md
+.ai/current-diff.patch
+.ai/check-result.md
+.ai/smoke-result.md
+.ai/dev-server.log
+.ai/supervisor-report.md
+.ai/repair-result.md
+.ai/final-report.md
+.ai/write-test.tmp
+.ai/task-generation-report.md
+.ai/task-validation-report.md
+.ai/current-task.backup.md
+.ai/generate-current-task.prompt.tmp
+.ai/current-task.md.template
+.ai/codex-prompt-*.tmp
+.ai/codex-trace-*.tmp

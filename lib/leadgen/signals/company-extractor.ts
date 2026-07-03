@@ -496,7 +496,10 @@ function cleanCompanyName(value: string): string {
       "",
     )
     .replace(/^inside\s+/i, "")
-    .replace(/\s+(?:logo|careers home|about us|our team)$/i, "")
+    .replace(
+      /\s+(?:press releases?|newsroom|company news|latest news|media center|logo|careers home|about us|our team)$/i,
+      "",
+    )
     .replace(
       /\s*[.。]\s*(?:salary|compensation|pay|posted|date|archived|archive|location|remote|hybrid|onsite|experience|schedule|conditions|description|about the role|job description|\u0437\u0430\u0440\u043f\u043b\u0430\u0442\u0430|\u043e\u043f\u043b\u0430\u0442\u0430|\u0434\u043e\u0445\u043e\u0434|\u0434\u0430\u0442\u0430|\u0430\u0440\u0445\u0438\u0432|\u0430\u0440\u0445\u0438\u0432\u043d\u0430\u044f|\u0433\u0440\u0430\u0444\u0438\u043a|\u043e\u043f\u044b\u0442|\u0433\u043e\u0440\u043e\u0434|\u043b\u043e\u043a\u0430\u0446\u0438\u044f|\u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435|\u0443\u0441\u043b\u043e\u0432\u0438\u044f|\u0432\u0430\u043a\u0430\u043d\u0441\u0438\u044f|\u0440\u0430\u0431\u043e\u0442\u0430)\b[\s\S]*$/i,
       "",

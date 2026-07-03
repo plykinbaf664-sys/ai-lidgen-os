@@ -28,9 +28,17 @@ export type ContactChannel =
   | "general-email"
   | "website-form"
   | "linkedin"
+  | "telegram"
+  | "phone"
   | "social";
 
 export type LeadgenContactType =
+  | "work_email"
+  | "linkedin"
+  | "telegram"
+  | "phone"
+  | "website_form"
+  | "company_social"
   | "confirmed_person"
   | "role_based_person"
   | "generic_email"
@@ -141,6 +149,24 @@ export type PeopleDiscoveryResult = {
   search_status: PeopleDiscoverySearchStatus;
   providers_used: string[];
 };
+
+export type PeopleProviderInput = {
+  company: LeadgenCompany;
+  decisionMaker: DecisionMakerProfile;
+  searchKeywords: string[];
+};
+
+export type PeopleProviderResult = {
+  provider_id: string;
+  provider_label: string;
+  candidates: PersonCandidate[];
+  unavailable?: boolean;
+};
+
+export type ContactDiscoveryStatus =
+  | "entry_found"
+  | "fallback_only"
+  | "no_entry_found";
 
 export type BuyingRole =
   | "economic_buyer"
@@ -395,6 +421,41 @@ export type LeadgenCampaignDetails = {
   notifications: TelegramNotification[];
   stats: LeadgenCampaignDetailsStats;
 };
+
+export type ContactDiscoveryInput = {
+  campaign: LeadgenCampaign;
+  company: LeadgenCompany;
+  lead: LeadgenLead;
+  signals: LeadgenSignal[];
+  decisionMaker?: DecisionMakerProfile;
+  peopleDiscovery: PeopleDiscoveryResult;
+  createdAt: string;
+};
+
+export type ContactProviderInput = ContactDiscoveryInput;
+
+export type ContactProviderResult = {
+  contacts: LeadgenContact[];
+  provider_id?: string;
+  provider_label?: string;
+  warnings?: string[];
+};
+
+export type ContactDiscoveryResult = {
+  contacts: LeadgenContact[];
+  best_available_entry: LeadgenContact;
+  best_outreach_entry: LeadgenContact | null;
+  fallback_entry: LeadgenContact | null;
+  alternative_channels: LeadgenContact[];
+  persona_search_status: PersonaSearchStatus;
+  discovery_status: ContactDiscoveryStatus;
+  providers_used: string[];
+  warnings: string[];
+};
+
+export type ContactEnrichmentInput = ContactDiscoveryInput;
+
+export type ContactEnrichmentResult = ContactDiscoveryResult;
 
 export type MockPipelineResult = {
   campaign: LeadgenCampaign;

@@ -1,4 +1,4 @@
-import type {
+﻿import type {
   BuyingRole,
   DecisionMakerPriority,
   DecisionMakerProfile,
@@ -314,6 +314,89 @@ const signalBaseScores: Record<SignalType, Partial<Record<DepartmentKey, number>
   TECH_SIGNAL: { operations: 20, product: 12, executive: 8 },
 };
 
+const roleIntentPatterns: Record<
+  DepartmentKey,
+  Array<{ label: string; pattern: RegExp; score: number }>
+> = {
+  customer_success: [
+    {
+      label: "customer_success_role",
+      pattern:
+        /\b(customer success manager|manager of .*customer success|head of customer success|vp customer success|customer support manager|head of support|client success)\b/i,
+      score: 34,
+    },
+    {
+      label: "ru_customer_success_role",
+      pattern:
+        /(руководитель клиентского успеха|директор клиентского сервиса|руководитель поддержки|поддержка клиентов|клиентский сервис)/i,
+      score: 34,
+    },
+  ],
+  marketing: [
+    {
+      label: "marketing_role",
+      pattern:
+        /\b(cmo|head of marketing|vp marketing|product marketing|demand generation|growth marketing|marketing manager)\b/i,
+      score: 30,
+    },
+    {
+      label: "ru_marketing_role",
+      pattern:
+        /(директор по маркетингу|руководитель маркетинга|продуктовый маркетинг|директор по развитию|маркетолог)/i,
+      score: 30,
+    },
+  ],
+  sales: [
+    {
+      label: "sales_role",
+      pattern:
+        /\b(cro|vp sales|head of sales|sales director|account executive|sdr|bdr|sales development|sales manager|revenue director)\b/i,
+      score: 36,
+    },
+    {
+      label: "ru_sales_role",
+      pattern:
+        /(роп|руководитель продаж|коммерческий директор|директор по продажам|менеджер по продажам|отдел продаж)/i,
+      score: 36,
+    },
+  ],
+  operations: [
+    {
+      label: "operations_role",
+      pattern:
+        /\b(coo|head of operations|operations director|business operations|revenue operations|revops|operations manager)\b/i,
+      score: 28,
+    },
+    {
+      label: "ru_operations_role",
+      pattern:
+        /(операционный директор|руководитель операций|директор по операционной деятельности|бизнес-операции)/i,
+      score: 28,
+    },
+  ],
+  product: [
+    {
+      label: "product_role",
+      pattern:
+        /\b(head of product|vp product|product director|product manager|product marketing director)\b/i,
+      score: 26,
+    },
+    {
+      label: "ru_product_role",
+      pattern: /(руководитель продукта|директор по продукту|продакт-менеджер)/i,
+      score: 26,
+    },
+  ],
+  executive: [
+    {
+      label: "executive_role",
+      pattern:
+        /\b(founder|co-founder|ceo|owner|managing director|генеральный директор|основатель|владелец)\b/i,
+      score: 22,
+    },
+  ],
+};
+
 function normalizeText(...values: Array<string | null | undefined>): string {
   return values.filter(Boolean).join(" ").toLowerCase();
 }
@@ -352,6 +435,24 @@ function applyContextScores(scores: DepartmentScore[], contextText: string) {
     score.score += 16 + matchedTerms.length * 5;
     score.matchedTerms.push(...matchedTerms);
     score.reasons.push(`${score.key}_context`);
+  }
+}
+
+function applyRoleIntentScores(scores: DepartmentScore[], contextText: string) {
+  for (const score of scores) {
+    const roleMatches = roleIntentPatterns[score.key].filter(({ pattern }) =>
+      pattern.test(contextText),
+    );
+
+    if (roleMatches.length === 0) {
+      continue;
+    }
+
+    const roleScore = Math.max(...roleMatches.map((match) => match.score));
+
+    score.score += roleScore;
+    score.matchedTerms.push(...roleMatches.map((match) => match.label));
+    score.reasons.push(`${score.key}_role_intent`);
   }
 }
 
@@ -437,6 +538,7 @@ export function discoverDecisionMaker({
   const scores = createInitialScores(signalType);
 
   applyContextScores(scores, contextText);
+  applyRoleIntentScores(scores, contextText);
 
   const sortedScores = scores.sort((left, right) => right.score - left.score);
   const primaryScore = sortedScores[0];
@@ -484,3 +586,4 @@ export function discoverDecisionMaker({
     },
   };
 }
+

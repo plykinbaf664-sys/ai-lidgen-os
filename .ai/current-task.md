@@ -2,434 +2,324 @@
 
 ## Goal
 
-Полностью завершить Discovery Layer, превратив его из системы поиска компаний в систему поиска реальных коммерческих возможностей.
+Stage 6 — Contact Discovery & Enrichment Layer
 
-После завершения этапа компания должна становиться лидом **только при наличии объективной причины для начала продаж именно сейчас**.
+Построить полноценный слой Contact Discovery & Enrichment, который использует результаты People Discovery и определяет лучший реальный способ связаться с найденным ЛПР.
 
-Discovery Engine должен отвечать не на вопрос:
+После завершения этапа Leadgen OS должна отвечать не только на вопросы:
 
-> "Какая компания подходит под ICP?"
+> "Почему именно этой компании стоит написать?"
 
-а на вопрос:
+> "Кому именно нужно писать?"
 
-> "Почему именно сейчас этой компании имеет смысл писать?"
+но и на вопрос:
 
----
+> "Как именно с этим человеком лучше связаться?"
+
+Contact Discovery должен находить доступные каналы связи, оценивать их качество, определять лучший канал outreach и честно фиксировать отсутствие контактов, если данных нет.
 
 ## Business Meaning
 
-Это самый важный слой всей Leadgen OS.
-
-Именно Discovery определяет качество всех последующих этапов:
-
-- Decision Maker Discovery;
-- People Discovery;
-- Contact Discovery;
-- Enrichment;
-- Outreach Generation;
-- Follow-up Sequences;
-- AI SDR.
-
-Если Discovery создаёт слабые лиды, вся дальнейшая цепочка становится бессмысленной.
-
-Цель этапа — добиться того, чтобы каждый созданный лид имел реальное коммерческое основание.
-
----
+Reduce manual duplication in the autonomous development workflow and execute the source stage through a validated five-stage task plan.
 
 ## Global Acceptance Criteria
 
-- Компания перестаёт автоматически становиться лидом только потому, что подходит под ICP.
-- Каждый лид имеет понятную бизнес-причину ("Почему сейчас?").
-- Каждый лид имеет Opportunity Score и прозрачное объяснение принятого решения.
-- Discovery умеет отклонять "интересные компании", если отсутствует коммерческая возможность.
-- Opportunity Engine становится обязательным этапом перед созданием production lead.
-- Decision Maker, Contact Discovery и Lead Prioritization запускаются только после подтверждения Opportunity.
-- Все решения системы объяснимы через diagnostics.
-- Discovery Engine становится финальным source of truth для создания лидов.
+- Contact Discovery использует результат People Discovery как главный источник целевого человека.
+- Система определяет лучший доступный канал связи для primary person.
+- Для каждого найденного контакта есть confidence score.
+- Для каждого контакта есть source / источник данных.
+- Для каждого контакта есть contact type:
+  - work_email
+  - linkedin
+  - telegram
+  - phone
+  - website_form
+  - generic_email
+  - company_social
+  - no_contact_found
+- Система умеет выбирать:
+  - best outreach channel
+  - fallback channel
+  - alternative channels
+- Если прямой контакт человека не найден, система не выдумывает email, LinkedIn, Telegram или телефон.
+- Если контакта нет, система честно фиксирует `no_contact_found`.
+- Если нет персонального контакта, система предлагает лучший fallback:
+  - общий email
+  - форма сайта
+  - LinkedIn компании
+  - сайт компании
+- Contact Discovery не должен работать раньше People Discovery.
+- Contact Discovery не должен подменять People Discovery.
+- Contact Discovery должен быть готов к будущему подключению Apollo, Hunter, Clay, People Data Labs, Dropcontact.
+- Архитектура не должна быть жёстко привязана к одному enrichment-провайдеру.
+- Campaign Details показывает найденного человека и лучший способ связаться.
+- Telegram Card показывает лучший контактный канал и confidence.
 
----
+## Stages
 
-# Stages
+### Stage 1  Architecture / Core Contract
 
----
+#### Goal
 
-### Stage 1 — Opportunity Intelligence Engine
+Define the minimal contract and file boundaries required by the source stage.
 
-## Goal
-
-Добавить новый слой Opportunity Intelligence, который будет принимать решение:
-
-> создавать лид или нет.
-
-Компания больше не должна автоматически становиться лидом после успешного поиска.
-
----
-
-## Scope
-
-Можно изменять:
-
-- lib/leadgen/opportunity/
-или
-- lib/leadgen/opportunity-intelligence-engine.ts
-
-- lib/leadgen/lead-discovery-engine.ts
-
-- lib/leadgen/types.ts
-
-- test diagnostics
-
----
-
-## Acceptance Criteria
-
-- Добавлен Opportunity Engine.
-- Рассчитывается Opportunity Score.
-- Рассчитывается Opportunity Type.
-- Появляется should_create_lead.
-- Появляется business_reasoning.
-- Появляется why_now.
-- Появляется why_this_company.
-- Opportunity работает до создания лида.
-
----
-
-## Routes To Check
-
-```
-/leadgen
-```
-
----
-
-## API To Check
-
-```
-GET /api/leadgen/signal-pipeline-test
-```
-
----
-
-## Expected UI / Behavior
-
-Diagnostics показывают:
-
-- Opportunity Score
-- Opportunity Type
-- Business Reasoning
-- Why Now
-- Should Create Lead
-
----
-
-### Stage 2 — Opportunity Validation Rules
-
-## Goal
-
-Научить систему отличать настоящие коммерческие события от обычной информации о компании.
-
----
-
-## Scope
+#### Scope
 
 Можно изменять:
 
-- Evidence Collector
-- Opportunity Engine
-- Diagnostics
+- `lib/leadgen/contact-discovery-service.ts`
+- `lib/leadgen/contact-provider.ts`
+- `lib/leadgen/public-contact-provider.ts`
+- `lib/leadgen/people-provider.ts`
+- `lib/leadgen/people-provider-manager.ts`
+- `lib/leadgen/types.ts`
+- `lib/leadgen/lead-discovery-engine.ts`
+- `lib/leadgen/telegram-card.ts`
+- `components/leadgen/campaign-details.tsx`
+- `components/leadgen/telegram-card-preview.tsx`
 
-Не трогать Query Builder без необходимости.
+Можно создавать при необходимости:
 
----
+- `lib/leadgen/contact-enrichment/`
+- `lib/leadgen/contact-enrichment-engine.ts`
+- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/contact-intelligence.ts`
 
-## Acceptance Criteria
+#### Acceptance Criteria
 
-Высокий Opportunity получают:
+- The implementation approach follows the source stage goal.
+- Scope is not expanded beyond the source stage.
+- Existing workflow compatibility is preserved.
 
-- hiring;
-- expansion;
-- funding;
-- GTM launch;
-- integration;
-- new product;
-- operational pressure;
-- growth;
-- market expansion.
+#### Routes To Check
 
-Не создают Opportunity:
+- none
 
-- About Us;
-- Careers;
-- Pricing;
-- Blog;
-- Company News;
-- generic AI;
-- automation;
-- workflow;
-- technology;
-- CRM;
-- product page.
+#### API To Check
 
----
+- none
 
-## Routes To Check
+#### Expected UI / Behavior
 
-```
-/leadgen
-```
+No UI behavior changes unless explicitly required by the source stage.
 
----
+### Stage 2  Ranking / Scoring / Confidence
 
-## API To Check
+#### Goal
 
-```
-GET /api/leadgen/signal-pipeline-test
-```
+Implement or adjust the ranking, scoring, confidence, or decision logic required by the source stage.
 
----
-
-## Expected UI / Behavior
-
-DealHub-подобные компании больше не становятся production leads.
-
----
-
-### Stage 3 — Opportunity Gate
-
-## Goal
-
-Встроить Opportunity Engine как обязательный шлюз перед созданием лида.
-
----
-
-## Scope
+#### Scope
 
 Можно изменять:
 
-- lead-discovery-engine.ts
+- `lib/leadgen/contact-discovery-service.ts`
+- `lib/leadgen/contact-provider.ts`
+- `lib/leadgen/public-contact-provider.ts`
+- `lib/leadgen/people-provider.ts`
+- `lib/leadgen/people-provider-manager.ts`
+- `lib/leadgen/types.ts`
+- `lib/leadgen/lead-discovery-engine.ts`
+- `lib/leadgen/telegram-card.ts`
+- `components/leadgen/campaign-details.tsx`
+- `components/leadgen/telegram-card-preview.tsx`
 
-- Opportunity Engine
+Можно создавать при необходимости:
 
----
+- `lib/leadgen/contact-enrichment/`
+- `lib/leadgen/contact-enrichment-engine.ts`
+- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/contact-intelligence.ts`
 
-## Acceptance Criteria
+#### Acceptance Criteria
 
-Если:
+- Contact Discovery использует результат People Discovery как главный источник целевого человека.
+- Система определяет лучший доступный канал связи для primary person.
+- Для каждого найденного контакта есть confidence score.
+- Для каждого контакта есть source / источник данных.
+- Для каждого контакта есть contact type:
+  - work_email
+  - linkedin
+  - telegram
+  - phone
+  - website_form
+  - generic_email
+  - company_social
+  - no_contact_found
+- Система умеет выбирать:
+  - best outreach channel
+  - fallback channel
+  - alternative channels
+- Если прямой контакт человека не найден, система не выдумывает email, LinkedIn, Telegram или телефон.
+- Если контакта нет, система честно фиксирует `no_contact_found`.
+- Если нет персонального контакта, система предлагает лучший fallback:
+  - общий email
+  - форма сайта
+  - LinkedIn компании
+  - сайт компании
+- Contact Discovery не должен работать раньше People Discovery.
+- Contact Discovery не должен подменять People Discovery.
+- Contact Discovery должен быть готов к будущему подключению Apollo, Hunter, Clay, People Data Labs, Dropcontact.
+- Архитектура не должна быть жёстко привязана к одному enrichment-провайдеру.
+- Campaign Details показывает найденного человека и лучший способ связаться.
+- Telegram Card показывает лучший контактный канал и confidence.
 
-```
-should_create_lead=false
-```
+#### Routes To Check
 
-то:
+- none
 
-- не запускается Decision Maker;
-- не запускается People Discovery;
-- не запускается Contact Discovery;
-- не запускается Lead Prioritization;
-- лид не сохраняется;
-- компания остаётся только в diagnostics/skipped.
+#### API To Check
 
-Если:
+- none
 
-```
-should_create_lead=true
-```
+#### Expected UI / Behavior
 
-pipeline работает как сейчас.
+Behavior reflects the source stage acceptance criteria without unrelated changes.
 
----
+### Stage 3  Provider / Integration Layer
 
-## Routes To Check
+#### Goal
 
-```
-/leadgen
-```
+Connect the core logic to existing provider or integration boundaries allowed by the source stage.
 
----
-
-## API To Check
-
-```
-POST /api/leadgen/run
-```
-
-```
-GET /api/leadgen/signal-pipeline-test
-```
-
----
-
-## Expected UI / Behavior
-
-Количество лидов становится меньше,
-но качество значительно выше.
-
----
-
-### Stage 4 — Explainable Opportunity
-
-## Goal
-
-Сделать каждое решение системы полностью объяснимым.
-
-Менеджер должен понимать:
-
-Почему именно этот лид появился.
-
----
-
-## Scope
+#### Scope
 
 Можно изменять:
 
-- Opportunity Engine
-- Campaign Details
-- Diagnostics
-- Telegram Card
+- `lib/leadgen/contact-discovery-service.ts`
+- `lib/leadgen/contact-provider.ts`
+- `lib/leadgen/public-contact-provider.ts`
+- `lib/leadgen/people-provider.ts`
+- `lib/leadgen/people-provider-manager.ts`
+- `lib/leadgen/types.ts`
+- `lib/leadgen/lead-discovery-engine.ts`
+- `lib/leadgen/telegram-card.ts`
+- `components/leadgen/campaign-details.tsx`
+- `components/leadgen/telegram-card-preview.tsx`
 
----
+Можно создавать при необходимости:
 
-## Acceptance Criteria
+- `lib/leadgen/contact-enrichment/`
+- `lib/leadgen/contact-enrichment-engine.ts`
+- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/contact-intelligence.ts`
 
-Каждый лид содержит:
+#### Acceptance Criteria
 
-- Opportunity Score;
-- Opportunity Type;
-- Business Reasoning;
-- Why This Company;
-- Why Now;
-- Positive Factors;
-- Negative Factors;
-- Missing Information;
-- Recommended Action.
+- Existing provider abstractions remain compatible.
+- No real external service is added unless explicitly required by the source stage.
+- No fake people, fake contacts, fake emails, or invented data are introduced.
 
----
+#### Routes To Check
 
-## Routes To Check
+- none
 
-```
-/leadgen
-```
+#### API To Check
 
----
+- none
 
-## API To Check
+#### Expected UI / Behavior
 
-```
-GET /api/leadgen/campaigns/:id
-```
+Provider behavior remains deterministic and explainable.
 
----
+### Stage 4  Pipeline + UI Integration
 
-## Expected UI / Behavior
+#### Goal
 
-Карточка лида объясняет решение системы человеческим языком.
+Wire the stage result into the existing pipeline and UI surfaces allowed by the source stage.
 
----
+#### Scope
 
-### Stage 5 — Discovery Quality Audit
+Можно изменять:
 
-## Goal
+- `lib/leadgen/contact-discovery-service.ts`
+- `lib/leadgen/contact-provider.ts`
+- `lib/leadgen/public-contact-provider.ts`
+- `lib/leadgen/people-provider.ts`
+- `lib/leadgen/people-provider-manager.ts`
+- `lib/leadgen/types.ts`
+- `lib/leadgen/lead-discovery-engine.ts`
+- `lib/leadgen/telegram-card.ts`
+- `components/leadgen/campaign-details.tsx`
+- `components/leadgen/telegram-card-preview.tsx`
 
-Провести финальную валидацию Discovery Engine.
+Можно создавать при необходимости:
 
-Это этап без новых функций.
+- `lib/leadgen/contact-enrichment/`
+- `lib/leadgen/contact-enrichment-engine.ts`
+- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/contact-intelligence.ts`
 
-Только проверка качества.
+#### Acceptance Criteria
 
----
+- Pipeline behavior remains backward compatible.
+- UI changes are limited to the source stage requirements.
+- Existing routes and legacy outputs are not broken.
 
-## Scope
+#### Routes To Check
 
-Можно изменять только:
+- /leadgen
 
-- веса;
-- пороги;
-- правила Opportunity;
-- diagnostics.
+#### API To Check
 
-Без новой архитектуры.
+- none
 
----
+#### Expected UI / Behavior
 
-## Acceptance Criteria
+The user can see or use the completed stage behavior where the source stage requires it.
 
-Проверить минимум:
+### Stage 5  Quality Audit / Diagnostics
 
-### Должны стать лидами
+#### Goal
 
-- активный hiring;
-- запуск продукта;
-- интеграция;
-- expansion;
-- funding;
-- новый рынок;
-- открытие филиалов;
-- масштабирование продаж.
+Verify the stage behavior with deterministic checks, diagnostics, and final quality review.
 
-### Не должны стать лидами
+#### Scope
 
-- About Us;
-- Careers;
-- generic blog;
-- pricing;
-- technology page;
-- AI page;
-- workflow page;
-- automation page;
-- company overview.
+Можно изменять:
 
----
+- `lib/leadgen/contact-discovery-service.ts`
+- `lib/leadgen/contact-provider.ts`
+- `lib/leadgen/public-contact-provider.ts`
+- `lib/leadgen/people-provider.ts`
+- `lib/leadgen/people-provider-manager.ts`
+- `lib/leadgen/types.ts`
+- `lib/leadgen/lead-discovery-engine.ts`
+- `lib/leadgen/telegram-card.ts`
+- `components/leadgen/campaign-details.tsx`
+- `components/leadgen/telegram-card-preview.tsx`
 
-## Routes To Check
+Можно создавать при необходимости:
 
-```
-/leadgen
-```
+- `lib/leadgen/contact-enrichment/`
+- `lib/leadgen/contact-enrichment-engine.ts`
+- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/contact-intelligence.ts`
 
----
+#### Acceptance Criteria
 
-## API To Check
+- The source stage acceptance criteria pass.
+- Diagnostics explain failures clearly.
+- TypeScript, lint, and build checks pass when required by the supervisor config.
 
-```
-POST /api/leadgen/run
-```
+#### Routes To Check
 
-```
-GET /api/leadgen/signal-pipeline-test
-```
+- /leadgen
 
----
+#### API To Check
 
-## Expected UI / Behavior
+- none
 
-На выходе остаются только лиды,
-имеющие реальную коммерческую возможность.
+#### Expected UI / Behavior
 
-Количество лидов может уменьшиться,
-но качество должно заметно вырасти.
-
-Каждый лид должен отвечать на вопрос:
-
-> **Почему именно сейчас этой компании стоит написать?**
-
----
+No regressions are visible in the checked surfaces.
 
 ## What Must Not Change
 
-- Не трогать env-файлы.
-- Не трогать node_modules.
-- Не трогать .next.
-- Не менять package.json без необходимости.
-- Не лезть в соседние проекты.
-- Не подключать Apollo, Clay, Hunter, People Data Labs.
-- Не использовать LLM для принятия решений.
-- Не переписывать Query Builder без необходимости.
-- Не ломать Company Extraction.
-- Не ломать ICP Fit.
-- Не ломать Decision Maker.
-- Не ломать Contact Discovery.
-- Не менять схему Supabase без необходимости.
-- Не ломать Campaign History.
-- Не ломать Telegram notifications.
-- Не ухудшить качество уже работающего Global Search.
+- Do not touch env files, node_modules, .next, package.json, commits, pushes, deploys, or unrelated business logic.
+- Do not change files outside the source stage Scope.
+- Do not touch .env files.
+- Do not touch node_modules.
+- Do not touch .next.
+- Do not change package.json unless explicitly required.
+- Do not commit, push, or deploy.

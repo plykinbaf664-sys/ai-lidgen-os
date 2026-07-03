@@ -2,6 +2,7 @@ import type {
   LeadgenCompany,
   LeadgenContact,
   LeadgenContactType,
+  PersonCandidate,
 } from "@/lib/leadgen/types";
 import type {
   ContactProvider,
@@ -102,6 +103,20 @@ function isSocialUrl(url: string): boolean {
   );
 }
 
+function isCompanyLinkedInUrl(url: string): boolean {
+  return url.toLowerCase().includes("linkedin.com/company");
+}
+
+function isTelegramUrl(url: string): boolean {
+  const normalizedUrl = url.toLowerCase();
+
+  return normalizedUrl.includes("t.me/") || normalizedUrl.includes("telegram.me/");
+}
+
+function getPersonSourceUrl(person: PersonCandidate): string | null {
+  return person.linkedin_url;
+}
+
 function createContact({
   input,
   type,
@@ -169,39 +184,93 @@ function createContact({
 }
 
 export class PublicContactProvider implements ContactProvider {
+  id = "public-contact-provider";
+  label = "Public contact provider";
+
   async findContacts(input: ContactProviderInput): Promise<ContactProviderResult> {
     const contacts: LeadgenContact[] = [];
     const knownUrls = getKnownUrls(input);
     const knownText = getKnownText(input);
     const emails = [...new Set(knownText.match(genericEmailPattern) ?? [])];
-    const people = input.peopleDiscovery?.all_candidates ?? [];
+    const primaryPerson = input.peopleDiscovery?.primary_person ?? null;
+    const alternativePeople = input.peopleDiscovery?.alternative_people ?? [];
+    const people = [
+      ...(primaryPerson ? [primaryPerson] : []),
+      ...alternativePeople.filter(
+        (person) => person.full_name !== primaryPerson?.full_name,
+      ),
+    ];
 
     for (const person of people) {
-      contacts.push(
-        createContact({
-          input,
-          type: person.work_email ? "confirmed_person" : "role_based_person",
-          index: contacts.length,
-          email: person.work_email,
-          contactUrl: person.linkedin_url,
-          linkedinUrl: person.linkedin_url,
-          fullName: person.full_name,
-          roleTitle: person.role_title,
-          department: person.department,
-          sourceUrl: person.linkedin_url,
-          sourceLabel: person.source,
-          confidenceScore: person.confidence_score,
-          metadata: {
-            extraction: "people_discovery_candidate",
-            full_name: person.full_name,
-            role_title: person.role_title,
+      const personMetadata = {
+        extraction: "people_discovery_candidate",
+        people_discovery_role:
+          person.full_name === primaryPerson?.full_name ? "primary" : "alternative",
+        full_name: person.full_name,
+        role_title: person.role_title,
+        department: person.department,
+        evidence: person.evidence,
+        people_metadata: person.metadata,
+      };
+      const sourceUrl = getPersonSourceUrl(person);
+
+      if (person.work_email) {
+        contacts.push(
+          createContact({
+            input,
+            type: "work_email",
+            index: contacts.length,
+            email: person.work_email,
+            fullName: person.full_name,
+            roleTitle: person.role_title,
             department: person.department,
-            phone: person.phone,
-            evidence: person.evidence,
-            people_metadata: person.metadata,
-          },
-        }),
-      );
+            sourceUrl,
+            sourceLabel: person.source,
+            confidenceScore: person.confidence_score,
+            metadata: personMetadata,
+          }),
+        );
+      }
+
+      if (person.linkedin_url) {
+        contacts.push(
+          createContact({
+            input,
+            type: "linkedin",
+            index: contacts.length,
+            contactUrl: person.linkedin_url,
+            linkedinUrl: person.linkedin_url,
+            fullName: person.full_name,
+            roleTitle: person.role_title,
+            department: person.department,
+            sourceUrl: person.linkedin_url,
+            sourceLabel: person.source,
+            confidenceScore: person.confidence_score,
+            metadata: personMetadata,
+          }),
+        );
+      }
+
+      if (person.phone) {
+        contacts.push(
+          createContact({
+            input,
+            type: "phone",
+            index: contacts.length,
+            contactUrl: `tel:${person.phone}`,
+            fullName: person.full_name,
+            roleTitle: person.role_title,
+            department: person.department,
+            sourceUrl,
+            sourceLabel: person.source,
+            confidenceScore: Math.max(person.confidence_score - 5, 0),
+            metadata: {
+              ...personMetadata,
+              phone: person.phone,
+            },
+          }),
+        );
+      }
     }
 
     for (const email of emails) {
@@ -223,7 +292,7 @@ export class PublicContactProvider implements ContactProvider {
       contacts.push(
         createContact({
           input,
-          type: "contact_form",
+          type: "website_form",
           index: contacts.length,
           contactUrl: url,
           sourceUrl: url,
@@ -238,16 +307,24 @@ export class PublicContactProvider implements ContactProvider {
       contacts.push(
         createContact({
           input,
-          type: "social_profile",
+          type: "company_social",
           index: contacts.length,
           contactUrl: url,
-          linkedinUrl: url.includes("linkedin.com") ? url : null,
-          telegramUrl:
-            url.includes("t.me/") || url.includes("telegram.me/") ? url : null,
+          linkedinUrl: isCompanyLinkedInUrl(url) ? url : null,
+          telegramUrl: null,
           sourceUrl: url,
           sourceLabel: "available social URL",
           confidenceScore: 45,
-          metadata: { extraction: "social_url_from_available_context" },
+          metadata: {
+            extraction: "company_social_url_from_available_context",
+            social_url_kind: isTelegramUrl(url)
+              ? "telegram"
+              : isCompanyLinkedInUrl(url)
+                ? "company_linkedin"
+                : "company_social",
+            note:
+              "Untied public social URLs are treated as company fallback channels, not direct personal contacts.",
+          },
         }),
       );
     }
@@ -258,13 +335,18 @@ export class PublicContactProvider implements ContactProvider {
       contacts.push(
         createContact({
           input,
-          type: "company_website",
+          type: "website_form",
           index: contacts.length,
           contactUrl: companyWebsite,
           sourceUrl: input.company.source_url ?? companyWebsite,
           sourceLabel: "company domain",
           confidenceScore: 35,
-          metadata: { extraction: "company_domain_fallback" },
+          metadata: {
+            extraction: "company_domain_fallback",
+            fallback_kind: "company_website",
+            note:
+              "Company website is a fallback entry point only; no personal contact is inferred from the domain.",
+          },
         }),
       );
     }
@@ -285,6 +367,10 @@ export class PublicContactProvider implements ContactProvider {
       );
     }
 
-    return { contacts };
+    return {
+      contacts,
+      provider_id: this.id,
+      provider_label: this.label,
+    };
   }
 }

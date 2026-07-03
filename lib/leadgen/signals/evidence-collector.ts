@@ -322,6 +322,42 @@ function findMatches(text: string, terms: readonly string[]): string[] {
   return terms.filter((term) => text.includes(normalizeText(term)));
 }
 
+function extractYears(text: string): number[] {
+  return [...text.matchAll(/\b20\d{2}\b/g)]
+    .map((match) => Number(match[0]))
+    .filter((year) => Number.isFinite(year));
+}
+
+function getStaleEventPenalty(text: string): number {
+  const years = extractYears(text);
+
+  if (years.length === 0) {
+    return 0;
+  }
+
+  const newestYear = Math.max(...years);
+  const currentYear = new Date().getUTCFullYear();
+
+  return newestYear < currentYear - 1 ? 35 : 0;
+}
+
+function isPressReleaseArchivePage(result: SearchResult): boolean {
+  try {
+    const url = new URL(result.url);
+    const path = url.pathname.replace(/\/+$/g, "").toLowerCase();
+    const title = result.title.toLowerCase();
+
+    return (
+      path.endsWith("/press-releases") ||
+      path.endsWith("/newsroom/press-releases") ||
+      title === "press releases" ||
+      title.endsWith(" press releases")
+    );
+  } catch {
+    return false;
+  }
+}
+
 function findLocalizedMatches(
   text: string,
   localizedTerms: LocalizedTerms,
@@ -663,6 +699,8 @@ function scoreEventStrength({
   const hasConfirmedEventPattern = gtmConfirmedEventPatterns.some((pattern) =>
     pattern.test(text),
   );
+  const archivePenalty = isPressReleaseArchivePage(result) ? 35 : 0;
+  const staleEventPenalty = getStaleEventPenalty(text);
   const sourceBonus =
     sourceType === "press_release" || sourceType === "news"
       ? 12
@@ -676,7 +714,9 @@ function scoreEventStrength({
     (hasConfirmedEventPattern ? 28 : 0) +
       announcementMatches.length * 14 +
       specificityMatches.length * 8 +
-      (hasConfirmedEventPattern ? sourceBonus : Math.min(sourceBonus, 4)),
+      (hasConfirmedEventPattern ? sourceBonus : Math.min(sourceBonus, 4)) -
+      archivePenalty -
+      staleEventPenalty,
   );
   const educationalIntentScore = clampScore(educationalMatches.length * 18);
   const hasEducationalDominance =

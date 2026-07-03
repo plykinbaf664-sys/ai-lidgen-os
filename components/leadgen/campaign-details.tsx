@@ -1,6 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import {
+  getContactIntelligence,
+  getContactValue,
+  type ContactMethod,
+} from "@/lib/leadgen/contact-intelligence";
 import type {
   LeadgenCampaignDetails,
   LeadgenContact,
@@ -24,8 +29,13 @@ const signalTypeLabels: Record<SignalType, string> = {
   TRAFFIC_SIGNAL: "Трафик",
   TECH_SIGNAL: "Технологии",
 };
-
 const contactTypeLabels: Record<LeadgenContact["contact_type"], string> = {
+  work_email: "Work email",
+  linkedin: "LinkedIn",
+  telegram: "Telegram",
+  phone: "Phone",
+  website_form: "Website/contact page",
+  company_social: "Company social",
   confirmed_person: "Confirmed person",
   role_based_person: "Relevant role",
   generic_email: "Generic email",
@@ -394,13 +404,14 @@ function getPersonaSearchStatusLabel(status: string): string {
   return labels[status] ?? status;
 }
 
-function getContactValue(contact: LeadgenContact): string | null {
-  return (
-    contact.email ??
-    contact.linkedin_url ??
-    contact.telegram_url ??
-    contact.contact_url
-  );
+function formatContactMethod(method: ContactMethod | null): string {
+  if (!method) {
+    return "Not found";
+  }
+
+  const source = method.source_label ? ` Source: ${method.source_label}.` : "";
+
+  return `${method.value} Confidence: ${method.confidence_score}/100.${source}`;
 }
 
 function getBestContactForLead(
@@ -413,13 +424,24 @@ function getBestContactForLead(
   return primaryContact ?? contacts[0] ?? null;
 }
 
+function isDirectOutreachEntry(contact: LeadgenContact): boolean {
+  return (
+    contact.contact_type === "work_email" ||
+    contact.contact_type === "linkedin" ||
+    contact.contact_type === "telegram" ||
+    contact.contact_type === "phone"
+  );
+}
+
 function getBestOutreachEntryForLead(
   lead: LeadgenLead,
   contactsByLeadId: Map<string, LeadgenContact[]>,
 ): LeadgenContact | null {
   const contacts = contactsByLeadId.get(lead.id) ?? [];
   const bestOutreachEntry = contacts.find(
-    (contact) => contact.metadata.entry_role === "best_outreach_entry",
+    (contact) =>
+      contact.metadata.entry_role === "best_outreach_entry" &&
+      isDirectOutreachEntry(contact),
   );
 
   if (bestOutreachEntry) {
@@ -428,16 +450,9 @@ function getBestOutreachEntryForLead(
 
   return (
     contacts.find(
-      (contact) =>
-        contact.contact_type !== "company_website" &&
-        contact.contact_type !== "no_contact_found" &&
-        contact.is_primary,
+      (contact) => isDirectOutreachEntry(contact) && contact.is_primary,
     ) ??
-    contacts.find(
-      (contact) =>
-        contact.contact_type !== "company_website" &&
-        contact.contact_type !== "no_contact_found",
-    ) ??
+    contacts.find((contact) => isDirectOutreachEntry(contact)) ??
     null
   );
 }
@@ -450,6 +465,9 @@ function getFallbackEntryForLead(
 
   return (
     contacts.find((contact) => contact.metadata.entry_role === "fallback_entry") ??
+    contacts.find((contact) => contact.contact_type === "generic_email") ??
+    contacts.find((contact) => contact.contact_type === "website_form") ??
+    contacts.find((contact) => contact.contact_type === "company_social") ??
     contacts.find((contact) => contact.contact_type === "company_website") ??
     null
   );
@@ -578,12 +596,19 @@ export function CampaignDetails({
             const peopleDiscovery = getLeadPeopleDiscovery(lead, companiesById);
             const leadPriority = getLeadPriority(lead, companiesById);
             const opportunity = getLeadOpportunity(lead, companiesById);
+            const leadContacts = contactsByLeadId.get(lead.id) ?? [];
             const bestContact = getBestContactForLead(lead, contactsByLeadId);
             const bestOutreachEntry = getBestOutreachEntryForLead(
               lead,
               contactsByLeadId,
             );
             const fallbackEntry = getFallbackEntryForLead(lead, contactsByLeadId);
+            const contactIntelligence = getContactIntelligence({
+              peopleDiscovery,
+              contacts: leadContacts,
+              bestOutreachEntry,
+              fallbackEntry,
+            });
             const bestOutreachValue = bestOutreachEntry
               ? getContactValue(bestOutreachEntry)
               : null;
@@ -608,9 +633,7 @@ export function CampaignDetails({
                         href={lead.company_source_url}
                         rel="noreferrer"
                         target="_blank"
-                      >
-                        Источник компании
-                      </a>
+                      >Источник компании</a>
                     ) : null}
                   </div>
                   <div>
@@ -671,6 +694,29 @@ export function CampaignDetails({
                     ) : null}
                   </div>
                   <div>
+                    <span className="field-label">Best contact method</span>
+                    <p>
+                      {contactIntelligence.best_method
+                        ? contactIntelligence.best_method.label
+                        : "Not found yet"}
+                    </p>
+                    <p className="company-domain">
+                      {contactIntelligence.best_method?.value ??
+                        "No direct channel found; use fallback/enrichment"}
+                    </p>
+                    {contactIntelligence.best_method ? (
+                      <p className="company-domain">
+                        Confidence:{" "}
+                        {contactIntelligence.best_method.confidence_score}/100
+                      </p>
+                    ) : null}
+                    {contactIntelligence.best_method?.source_label ? (
+                      <p className="company-domain">
+                        Source: {contactIntelligence.best_method.source_label}
+                      </p>
+                    ) : null}
+                  </div>
+                  <div>
                     <span className="field-label">Fallback entry</span>
                     <p>
                       {fallbackEntry
@@ -680,6 +726,16 @@ export function CampaignDetails({
                     <p className="company-domain">
                       {fallbackValue ?? "No fallback entry point found"}
                     </p>
+                    {fallbackEntry ? (
+                      <p className="company-domain">
+                        Confidence: {fallbackEntry.confidence_score}/100
+                      </p>
+                    ) : null}
+                    {fallbackEntry?.source_label ? (
+                      <p className="company-domain">
+                        Source: {fallbackEntry.source_label}
+                      </p>
+                    ) : null}
                   </div>
                   <div>
                     <span className="field-label">Persona search status</span>
@@ -909,6 +965,47 @@ export function CampaignDetails({
                         <p>{peopleDiscovery.primary_person.work_email}</p>
                       </div>
                     ) : null}
+                    <div>
+                      <span className="field-label">Contact intelligence</span>
+                      <p>
+                        Best method:{" "}
+                        {contactIntelligence.best_method
+                          ? `${contactIntelligence.best_method.label} - ${formatContactMethod(
+                              contactIntelligence.best_method,
+                            )}`
+                          : "Not found"}
+                      </p>
+                    </div>
+                    <div>
+                      <span className="field-label">Best email</span>
+                      <p>{formatContactMethod(contactIntelligence.best_email)}</p>
+                    </div>
+                    <div>
+                      <span className="field-label">Best LinkedIn</span>
+                      <p>
+                        {formatContactMethod(contactIntelligence.best_linkedin)}
+                      </p>
+                    </div>
+                    <div>
+                      <span className="field-label">Best Telegram</span>
+                      <p>
+                        {formatContactMethod(contactIntelligence.best_telegram)}
+                      </p>
+                    </div>
+                    <div>
+                      <span className="field-label">Best alternative channel</span>
+                      <p>
+                        {formatContactMethod(
+                          contactIntelligence.best_alternative,
+                        )}
+                      </p>
+                    </div>
+                    <div>
+                      <span className="field-label">Best fallback</span>
+                      <p>
+                        {formatContactMethod(contactIntelligence.fallback_method)}
+                      </p>
+                    </div>
                     {typeof peopleDiscovery.primary_person?.confidence_score ===
                     "number" ? (
                       <div>

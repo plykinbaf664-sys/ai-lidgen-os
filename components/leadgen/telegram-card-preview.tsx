@@ -1,6 +1,9 @@
 "use client";
 
 import { formatTelegramCard } from "@/lib/leadgen/telegram-card";
+import {
+  getContactIntelligence,
+} from "@/lib/leadgen/contact-intelligence";
 import type {
   DecisionMakerProfile,
   LeadgenContact,
@@ -41,6 +44,48 @@ function getPersonaSearchStatus(
     : undefined;
 }
 
+function getBestContactMethod({
+  peopleDiscovery,
+  bestOutreachEntry,
+  fallbackEntry,
+}: {
+  peopleDiscovery?: PeopleDiscoveryResult | null;
+  bestOutreachEntry?: LeadgenContact | null;
+  fallbackEntry?: LeadgenContact | null;
+}): {
+  label: string;
+  value: string | null;
+  confidenceScore: number;
+  source: string;
+} {
+  const intelligence = getContactIntelligence({
+    peopleDiscovery,
+    bestOutreachEntry,
+    fallbackEntry,
+  });
+
+  if (intelligence.best_method) {
+    const label =
+      intelligence.best_method === intelligence.best_alternative
+        ? "Alternative"
+        : intelligence.best_method.label;
+
+    return {
+      label,
+      value: intelligence.best_method.value,
+      confidenceScore: intelligence.best_method.confidence_score,
+      source: intelligence.best_method.source_label ?? "source not available",
+    };
+  }
+
+  return {
+    label: "Not found",
+    value: null,
+    confidenceScore: 0,
+    source: "available public data",
+  };
+}
+
 export function TelegramCardPreview({
   lead,
   decisionMaker,
@@ -51,6 +96,12 @@ export function TelegramCardPreview({
   opportunity,
   onStatusChange,
 }: TelegramCardPreviewProps) {
+  const bestContactMethod = getBestContactMethod({
+    peopleDiscovery,
+    bestOutreachEntry,
+    fallbackEntry,
+  });
+
   return (
     <section className="panel preview-panel">
       <div className="preview-heading">
@@ -70,10 +121,16 @@ export function TelegramCardPreview({
               bestAvailableEntry,
               bestOutreachEntry,
               fallbackEntry,
+              opportunity,
               personaSearchStatus: getPersonaSearchStatus(
                 bestOutreachEntry ?? fallbackEntry ?? bestAvailableEntry,
               ),
             })}
+            {"\n\nContact intelligence:"}
+            {`\nBest method: ${bestContactMethod.label}`}
+            {`\nValue: ${bestContactMethod.value ?? "not found"}`}
+            {`\nConfidence: ${bestContactMethod.confidenceScore}/100`}
+            {`\nSource: ${bestContactMethod.source}`}
             {opportunity ? (
               <>
                 {"\n\nOpportunity explanation:"}
@@ -119,9 +176,7 @@ export function TelegramCardPreview({
       ) : (
         <div className="empty-state">
           <h3>Карточка не выбрана</h3>
-          <p>
-            Создайте лиды, затем откройте запись для проверки Telegram-карточки.
-          </p>
+          <p>Создайте лиды, затем откройте запись для проверки Telegram-карточки.</p>
         </div>
       )}
     </section>

@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 set -u
 
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+if command -v chcp.com >/dev/null 2>&1; then
+  chcp.com 65001 >/dev/null 2>&1 || true
+fi
+
 ROOT="$(git rev-parse --show-toplevel 2>/dev/null)"
 if [[ -z "$ROOT" ]]; then
   echo "Not inside a git repository."
@@ -8,76 +14,55 @@ if [[ -z "$ROOT" ]]; then
 fi
 cd "$ROOT" || exit 1
 
-CONFIG=".ai/supervisor-config.md"
 TASK=".ai/current-task.md"
-PLAN=".ai/stage-plan.md"
 FINAL=".ai/final-report.md"
+STAGE=".ai/current-stage.md"
 
-read_config() {
-  local key="$1"
-  local default="$2"
-  local value
-  value="$(grep -E "^${key}=" "$CONFIG" 2>/dev/null | tail -n 1 | cut -d= -f2- || true)"
-  [[ -n "$value" ]] && printf '%s' "$value" || printf '%s' "$default"
-}
+mkdir -p .ai
 
-run_codex() {
-  local prompt="$1"
-  if [[ -n "${CODEX_CMD:-}" ]]; then
-    $CODEX_CMD exec "$prompt"
-  elif command -v codex >/dev/null 2>&1; then
-    codex exec "$prompt"
-  else
-    return 127
-  fi
+write_final() {
+  local verdict="$1"
+  local failed_stage="$2"
+  local reason="$3"
+  local repair_skipped="$4"
+  local token_reason="$5"
+  local next_action="$6"
+  shift 6
+  local completed=("$@")
+
+  {
+    echo "FINAL_VERDICT: $verdict"
+    echo "COMPLETED_STAGES:"
+    if [[ "${#completed[@]}" -eq 0 ]]; then
+      echo "- none"
+    else
+      printf -- "- %s\n" "${completed[@]}"
+    fi
+    echo "FAILED_STAGE: ${failed_stage:-none}"
+    echo "REASON: ${reason:-none}"
+    echo "AI_REPAIR_SKIPPED: $repair_skipped"
+    echo "TOKEN_SAVING_REASON: ${token_reason:-none}"
+    echo "NEXT_ACTION: ${next_action:-none}"
+    echo "FILES_CHANGED:"
+    git diff --name-only | sed 's/^/- /'
+    echo "HOW_TO_VERIFY:"
+    echo "- ./scripts/check-project.sh"
+    echo "- ./scripts/smoke-check.sh"
+    echo "- ./scripts/stage-quality-check.sh"
+  } > "$FINAL"
 }
 
 if [[ ! -f "$TASK" ]]; then
-  echo "Missing .ai/current-task.md"
-  exit 1
-fi
-
-if grep -q "Опиши итоговую цель задачи" "$TASK"; then
-  {
-    echo "# FINAL_VERDICT"
-    echo "NEEDS_MANUAL_ATTENTION"
-    echo
-    echo "# COMPLETED_STAGES"
-    echo "None."
-    echo
-    echo "# FAILED_OR_RISKY_ITEMS"
-    echo "- .ai/current-task.md is still a template."
-    echo
-    echo "# WHAT_TO_COMMIT"
-    echo "Nothing."
-    echo
-    echo "# NEXT_STEP"
-    echo "Fill .ai/current-task.md with a real task before running autonomous development."
-  } > "$FINAL"
+  write_final "NEEDS_MANUAL_ATTENTION" "none" "Missing .ai/current-task.md" "true" "task file missing" "Create .ai/current-task.md" 
   cat "$FINAL"
-  exit 0
-fi
-
-MAX_STAGE_REPAIR_CYCLES="$(read_config MAX_STAGE_REPAIR_CYCLES 3)"
-MAX_TOTAL_REPAIR_CYCLES="$(read_config MAX_TOTAL_REPAIR_CYCLES 8)"
-STOP_IF_SAME_ERROR_REPEATS="$(read_config STOP_IF_SAME_ERROR_REPEATS 2)"
-
-mapfile -t stages < <(grep -n "^### Stage" "$TASK" | cut -d: -f1)
-if [[ "${#stages[@]}" -eq 0 ]]; then
-  echo "No stages found in .ai/current-task.md"
   exit 1
 fi
 
-if [[ ! -s "$PLAN" ]]; then
-  PLAN_PROMPT="Create a concise stage plan from this task. Return only stage titles and acceptance summary.
-
-$(cat "$TASK")"
-  if ! run_codex "$PLAN_PROMPT" > "$PLAN" 2>/dev/null; then
-    {
-      echo "# Stage Plan"
-      grep "^### Stage" "$TASK"
-    } > "$PLAN"
-  fi
+mapfile -t stage_lines < <(grep -nE "^### Stage[[:space:]]+[0-9]+" "$TASK" | cut -d: -f1)
+if [[ "${#stage_lines[@]}" -eq 0 ]]; then
+  write_final "NEEDS_MANUAL_ATTENTION" "none" "No stages found in .ai/current-task.md" "true" "no stage loop possible" "Add headings like ### Stage 1 Name"
+  cat "$FINAL"
+  exit 1
 fi
 
 extract_stage() {
@@ -90,87 +75,60 @@ extract_stage() {
   fi
 }
 
-total_repairs=0
 completed=()
-last_error=""
-same_error_count=0
 
-for idx in "${!stages[@]}"; do
-  start="${stages[$idx]}"
+for idx in "${!stage_lines[@]}"; do
+  start="${stage_lines[$idx]}"
   next=""
-  if [[ "$idx" -lt $((${#stages[@]} - 1)) ]]; then
-    next="${stages[$((idx + 1))]}"
+  if [[ "$idx" -lt $((${#stage_lines[@]} - 1)) ]]; then
+    next="${stage_lines[$((idx + 1))]}"
   fi
 
-  extract_stage "$start" "$next" > .ai/current-stage.md
-  stage_title="$(head -n 1 .ai/current-stage.md)"
+  extract_stage "$start" "$next" > "$STAGE"
+  stage_title="$(head -n 1 "$STAGE" | tr -d '\r')"
   echo "Running $stage_title"
 
   scripts/ai-run-stage.sh
+  code=$?
 
-  stage_repairs=0
-  while true; do
-    scripts/ai-supervisor-check.sh
-    check_code=$?
+  if [[ "$code" -eq 0 ]]; then
+    completed+=("$stage_title")
+    continue
+  fi
 
-    if [[ "$check_code" -eq 0 ]] && grep -A1 "^# VERDICT" .ai/supervisor-report.md | grep -q "OK"; then
-      completed+=("$stage_title")
-      break
-    fi
+  if grep -Eiq "^(VERDICT: STOP_PERMISSION_REQUIRED|VERDICT: NEEDS_MANUAL_PERMISSION_FIX|PERMISSION_CHECK: FAIL|AI_REPAIR_SKIPPED: true)|((error|fatal|failed).*(EACCES|EPERM|Access denied|Permission denied))" .ai/supervisor-report.md .ai/repair-result.md 2>/dev/null; then
+    write_final \
+      "NEEDS_MANUAL_PERMISSION_FIX" \
+      "$stage_title" \
+      "Permission error detected before or during repair." \
+      "true" \
+      "permission error detected before repair loop" \
+      "Fix filesystem permissions for files in current stage Scope, then rerun ./scripts/ai-run-task.sh" \
+      "${completed[@]}"
+    cat "$FINAL"
+    exit 2
+  fi
 
-    current_error="$(grep -A8 "^# PROBLEMS" .ai/supervisor-report.md 2>/dev/null | tr -d '\r' | head -n 8)"
-    if [[ "$current_error" == "$last_error" ]]; then
-      same_error_count=$((same_error_count + 1))
-    else
-      same_error_count=1
-      last_error="$current_error"
-    fi
-
-    if [[ "$same_error_count" -ge "$STOP_IF_SAME_ERROR_REPEATS" ]]; then
-      echo "Stopping: same error repeated $same_error_count times."
-      break 2
-    fi
-
-    if [[ "$stage_repairs" -ge "$MAX_STAGE_REPAIR_CYCLES" || "$total_repairs" -ge "$MAX_TOTAL_REPAIR_CYCLES" ]]; then
-      echo "Stopping: repair limit reached."
-      break 2
-    fi
-
-    scripts/ai-repair-stage.sh
-    stage_repairs=$((stage_repairs + 1))
-    total_repairs=$((total_repairs + 1))
-  done
+  write_final \
+    "NEEDS_MANUAL_ATTENTION" \
+    "$stage_title" \
+    "Stage failed. See .ai/supervisor-report.md, .ai/check-result.md, and .ai/smoke-result.md." \
+    "false" \
+    "stage failed after bounded implementation/repair loop" \
+    "Inspect reports and rerun ./scripts/ai-run-task.sh after fixing issues." \
+    "${completed[@]}"
+  cat "$FINAL"
+  exit "$code"
 done
 
-FINAL_CHECK=true scripts/check-project.sh >/dev/null 2>&1 || true
+FINAL_CHECK=true scripts/check-project.sh >/dev/null 2>&1
+final_check_code=$?
 
-{
-  echo "# FINAL_VERDICT"
-  if [[ "${#completed[@]}" -eq "${#stages[@]}" ]] && grep -q "CHECK_STATUS=OK" .ai/check-result.md; then
-    echo "OK"
-  else
-    echo "NEEDS_MANUAL_ATTENTION"
-  fi
-  echo
-  echo "# COMPLETED_STAGES"
-  if [[ "${#completed[@]}" -eq 0 ]]; then
-    echo "None."
-  else
-    printf -- "- %s\n" "${completed[@]}"
-  fi
-  echo
-  echo "# FAILED_OR_RISKY_ITEMS"
-  if [[ "${#completed[@]}" -eq "${#stages[@]}" ]]; then
-    echo "None detected by stage loop."
-  else
-    echo "- Stage loop stopped before all stages completed."
-  fi
-  echo
-  echo "# WHAT_TO_COMMIT"
-  echo "Review git diff and commit only after manual approval."
-  echo
-  echo "# NEXT_STEP"
-  echo "Inspect .ai/supervisor-report.md, .ai/check-result.md, and .ai/smoke-result.md."
-} > "$FINAL"
+if [[ "$final_check_code" -eq 0 ]]; then
+  write_final "OK" "none" "none" "false" "none" "Ready for manual review/commit." "${completed[@]}"
+else
+  write_final "NEEDS_MANUAL_ATTENTION" "final_check" "Final project check failed." "false" "final deterministic check failed" "Inspect .ai/check-result.md." "${completed[@]}"
+fi
 
 cat "$FINAL"
+exit "$final_check_code"

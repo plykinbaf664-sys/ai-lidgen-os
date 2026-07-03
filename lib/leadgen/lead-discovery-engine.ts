@@ -1,5 +1,5 @@
 import { leadgenConfig } from "@/lib/leadgen/config";
-import { ContactDiscoveryService } from "@/lib/leadgen/contact-discovery-service";
+import { ContactEnrichmentEngine } from "@/lib/leadgen/contact-enrichment-engine";
 import { discoverDecisionMaker } from "@/lib/leadgen/decision-maker-discovery";
 import { prioritizeLead } from "@/lib/leadgen/lead-prioritization-engine";
 import { assessOpportunity } from "@/lib/leadgen/opportunity-intelligence";
@@ -328,6 +328,7 @@ function getContactValue(contact: LeadgenContact): string | null {
     contact.email ??
     contact.linkedin_url ??
     contact.telegram_url ??
+    (typeof contact.metadata.phone === "string" ? contact.metadata.phone : null) ??
     contact.contact_url
   );
 }
@@ -346,6 +347,12 @@ function getContactLabel(contact: LeadgenContact): string {
   }
 
   const labels: Record<LeadgenContact["contact_type"], string> = {
+    work_email: "Work email",
+    linkedin: "LinkedIn",
+    telegram: "Telegram",
+    phone: "Phone",
+    website_form: "Website/contact page",
+    company_social: "Company social",
     confirmed_person: "Confirmed person",
     role_based_person: "Relevant role",
     generic_email: "Generic email",
@@ -373,18 +380,34 @@ function getContactChannel(
     return "general-email";
   }
 
+  if (contact.contact_type === "work_email") {
+    return "decision-maker";
+  }
+
+  if (contact.contact_type === "telegram") {
+    return "telegram";
+  }
+
+  if (contact.contact_type === "phone") {
+    return "phone";
+  }
+
   if (
+    contact.contact_type === "website_form" ||
     contact.contact_type === "contact_form" ||
     contact.contact_type === "company_website"
   ) {
     return "website-form";
   }
 
-  if (contact.linkedin_url) {
+  if (contact.contact_type === "linkedin" || contact.linkedin_url) {
     return "linkedin";
   }
 
-  if (contact.contact_type === "social_profile") {
+  if (
+    contact.contact_type === "company_social" ||
+    contact.contact_type === "social_profile"
+  ) {
     return "social";
   }
 
@@ -656,10 +679,10 @@ export async function runLeadDiscoveryEngine({
         peopleDiscovery: PeopleDiscoveryResult;
       } => Boolean(record),
     );
-  const contactDiscoveryService = new ContactDiscoveryService();
+  const contactEnrichmentEngine = new ContactEnrichmentEngine();
   const contactDiscoveryResults = await Promise.all(
     leadRecords.map((record) =>
-      contactDiscoveryService.discoverContacts({
+      contactEnrichmentEngine.enrichContacts({
         campaign,
         company: record.company,
         lead: record.lead,

@@ -3,6 +3,7 @@ import type {
   LeadgenContact,
   LeadgenLead,
   LeadPriority,
+  OpportunityAssessment,
   PeopleDiscoveryResult,
   PersonaSearchStatus,
 } from "@/lib/leadgen/types";
@@ -22,6 +23,7 @@ export type TelegramCardContext = {
   peopleDiscovery?: PeopleDiscoveryResult | null;
   personaSearchStatus?: PersonaSearchStatus;
   leadPriority?: LeadPriority | null;
+  opportunity?: OpportunityAssessment | null;
 };
 
 function getContactValue(contact: LeadgenContact): string | null {
@@ -29,6 +31,7 @@ function getContactValue(contact: LeadgenContact): string | null {
     contact.email ??
     contact.linkedin_url ??
     contact.telegram_url ??
+    (typeof contact.metadata.phone === "string" ? contact.metadata.phone : null) ??
     contact.contact_url
   );
 }
@@ -47,6 +50,12 @@ function getContactLabel(contact: LeadgenContact): string {
   }
 
   const labels: Record<LeadgenContact["contact_type"], string> = {
+    work_email: "Work email",
+    linkedin: "LinkedIn",
+    telegram: "Telegram",
+    phone: "Phone",
+    website_form: "Website/contact page",
+    company_social: "Company social",
     confirmed_person: "Confirmed person",
     role_based_person: "Relevant role",
     generic_email: "Generic email",
@@ -73,32 +82,68 @@ function getPersonaSearchStatusLabel(status?: PersonaSearchStatus): string {
   return status ? labels[status] : "Persona search context unavailable";
 }
 
+function isDirectOutreachEntry(contact?: LeadgenContact | null): boolean {
+  return (
+    contact?.contact_type === "work_email" ||
+    contact?.contact_type === "linkedin" ||
+    contact?.contact_type === "telegram" ||
+    contact?.contact_type === "phone" ||
+    contact?.contact_type === "confirmed_person" ||
+    contact?.contact_type === "role_based_person"
+  );
+}
+
 export function formatTelegramCard(
   lead: LeadgenLead,
   context: TelegramCardContext = {},
 ): string {
-  const bestOutreachEntry = context.bestOutreachEntry ?? context.bestAvailableEntry;
+  const bestOutreachEntry =
+    context.bestOutreachEntry ??
+    (isDirectOutreachEntry(context.bestAvailableEntry)
+      ? context.bestAvailableEntry
+      : null);
   const fallbackEntry = context.fallbackEntry;
+  const bestContactChannel = bestOutreachEntry ?? fallbackEntry;
+  const bestContactChannelValue = bestContactChannel
+    ? getContactValue(bestContactChannel)
+    : null;
+  const bestContactChannelLabel = bestContactChannel
+    ? `${getContactLabel(bestContactChannel)}: ${
+        bestContactChannelValue ?? "No direct value"
+      } Confidence: ${bestContactChannel.confidence_score}/100 Source: ${
+        bestContactChannel.source_label ?? "source not available"
+      }`
+    : "No contact channel found";
   const bestOutreachEntryValue = bestOutreachEntry
     ? getContactValue(bestOutreachEntry)
     : null;
   const bestOutreachEntryLabel =
-    bestOutreachEntry &&
-    bestOutreachEntry.contact_type !== "company_website" &&
-    bestOutreachEntry.contact_type !== "no_contact_found"
+    bestOutreachEntry && isDirectOutreachEntry(bestOutreachEntry)
       ? `${getContactLabel(bestOutreachEntry)}: ${
           bestOutreachEntryValue ?? "No direct value"
-        }`
+        } Confidence: ${bestOutreachEntry.confidence_score}/100`
       : "Not found yet";
   const fallbackEntryValue = fallbackEntry ? getContactValue(fallbackEntry) : null;
   const fallbackEntryLabel = fallbackEntry
     ? `${getContactLabel(fallbackEntry)}: ${
         fallbackEntryValue ?? "No direct value"
-      }`
+      } Confidence: ${fallbackEntry.confidence_score}/100`
     : "No fallback entry found";
   const decisionMaker = context.decisionMaker;
   const leadPriority = context.leadPriority;
+  const opportunity = context.opportunity;
   const foundPerson = context.peopleDiscovery?.primary_person;
+  const whyThisCompany =
+    opportunity?.why_this_company ??
+    lead.signal_detail ??
+    "The company matched the discovery pipeline, but the specific business reason is not available.";
+  const whyNow =
+    opportunity?.why_now ??
+    "No precise timing reason is available; treat this as a lower-confidence outreach window.";
+  const businessReasoning =
+    opportunity?.business_reasoning ??
+    decisionMaker?.expected_pain ??
+    "Commercial reasoning is not available in this card context.";
   const personaLines = decisionMaker
     ? [
         `Target persona: ${decisionMaker.primary_persona}`,
@@ -128,7 +173,9 @@ export function formatTelegramCard(
     "",
     `Segment: ${lead.company_segment}`,
     `Website: ${lead.company_domain ?? "not found"}`,
-    `Why this company: ${lead.signal_detail}`,
+    `Why this company: ${whyThisCompany}`,
+    `Why now: ${whyNow}`,
+    `Business reasoning: ${businessReasoning}`,
     ...personaLines,
     ...confidenceLines,
     `Found person: ${foundPerson?.full_name ?? "Not found"}`,
@@ -145,6 +192,7 @@ export function formatTelegramCard(
             context.peopleDiscovery?.search_status ?? "not_run"
           }`,
         ]),
+    `Best contact channel: ${bestContactChannelLabel}`,
     `Best outreach entry: ${bestOutreachEntryLabel}`,
     `Fallback entry: ${fallbackEntryLabel}`,
     ...(leadPriority
@@ -152,6 +200,12 @@ export function formatTelegramCard(
           `Lead priority: ${leadPriority.priority} (${leadPriority.priority_score}/100)`,
           `Priority reason: ${leadPriority.reasoning}`,
           `Recommended next action: ${leadPriority.recommended_next_action}`,
+        ]
+      : []),
+    ...(opportunity
+      ? [
+          `Opportunity: ${opportunity.opportunity_type} (${opportunity.opportunity_score}/100)`,
+          `Opportunity action: ${opportunity.recommended_action}`,
         ]
       : []),
     "",

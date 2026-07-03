@@ -1,21 +1,9 @@
 import type {
-  DecisionMakerProfile,
-  LeadgenCompany,
-  PersonCandidate,
+  PeopleProviderInput,
+  PeopleProviderResult,
 } from "@/lib/leadgen/types";
 
-export type PeopleProviderInput = {
-  company: LeadgenCompany;
-  decisionMaker: DecisionMakerProfile;
-  searchKeywords: string[];
-};
-
-export type PeopleProviderResult = {
-  provider_id: string;
-  provider_label: string;
-  candidates: PersonCandidate[];
-  unavailable?: boolean;
-};
+export type { PeopleProviderInput, PeopleProviderResult };
 
 export interface PeopleEnrichmentProvider {
   id: string;

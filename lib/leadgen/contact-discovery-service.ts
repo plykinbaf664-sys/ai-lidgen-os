@@ -1,55 +1,27 @@
 import { PublicContactProvider } from "@/lib/leadgen/public-contact-provider";
+import {
+  getContactEntryRole,
+  rankContactEntries,
+} from "@/lib/leadgen/contact-channel-ranking";
 import type { ContactProvider } from "@/lib/leadgen/contact-provider";
 import type {
-  ContactEntryRole,
+  ContactDiscoveryInput,
+  ContactDiscoveryResult,
+  ContactDiscoveryStatus,
   DecisionMakerProfile,
-  LeadgenCampaign,
-  LeadgenCompany,
   LeadgenContact,
-  LeadgenLead,
-  LeadgenSignal,
-  PeopleDiscoveryResult,
+  LeadgenContactType,
   PersonaSearchStatus,
 } from "@/lib/leadgen/types";
 
-export type ContactDiscoveryInput = {
-  campaign: LeadgenCampaign;
-  company: LeadgenCompany;
-  lead: LeadgenLead;
-  signals: LeadgenSignal[];
-  decisionMaker?: DecisionMakerProfile;
-  peopleDiscovery?: PeopleDiscoveryResult;
-  createdAt: string;
-};
-
-export type ContactDiscoveryResult = {
-  contacts: LeadgenContact[];
-  best_available_entry: LeadgenContact;
-  best_outreach_entry: LeadgenContact | null;
-  fallback_entry: LeadgenContact | null;
-  persona_search_status: PersonaSearchStatus;
-};
-
-const contactTypePriority: Record<LeadgenContact["contact_type"], number> = {
-  confirmed_person: 100,
-  role_based_person: 90,
-  contact_form: 75,
-  generic_email: 65,
-  social_profile: 55,
-  company_website: 35,
-  no_contact_found: 0,
-};
-
-const outreachContactTypes = new Set<LeadgenContact["contact_type"]>([
-  "confirmed_person",
-  "role_based_person",
-  "contact_form",
+const allowedContactTypes = new Set<LeadgenContactType>([
+  "work_email",
+  "linkedin",
+  "telegram",
+  "phone",
+  "website_form",
   "generic_email",
-  "social_profile",
-]);
-
-const fallbackContactTypes = new Set<LeadgenContact["contact_type"]>([
-  "company_website",
+  "company_social",
   "no_contact_found",
 ]);
 
@@ -82,56 +54,112 @@ function dedupeContacts(contacts: LeadgenContact[]): LeadgenContact[] {
   return dedupedContacts;
 }
 
-function chooseBestAvailableEntry(contacts: LeadgenContact[]): LeadgenContact {
-  return [...contacts].sort((left, right) => {
-    const priorityDiff =
-      contactTypePriority[right.contact_type] -
-      contactTypePriority[left.contact_type];
-
-    if (priorityDiff !== 0) {
-      return priorityDiff;
-    }
-
-    return right.confidence_score - left.confidence_score;
-  })[0];
+function createRecordId(...parts: string[]): string {
+  return parts
+    .join("-")
+    .toLowerCase()
+    .replace(/[^a-z0-9\u0430-\u044f\u0451]+/gi, "-")
+    .replace(/(^-|-$)/g, "");
 }
 
-function chooseBestOutreachEntry(
-  contacts: LeadgenContact[],
-): LeadgenContact | null {
-  return (
-    [...contacts]
-      .filter((contact) => outreachContactTypes.has(contact.contact_type))
-      .sort((left, right) => {
-        const priorityDiff =
-          contactTypePriority[right.contact_type] -
-          contactTypePriority[left.contact_type];
-
-        if (priorityDiff !== 0) {
-          return priorityDiff;
-        }
-
-        return right.confidence_score - left.confidence_score;
-      })[0] ?? null
-  );
+function createNoContactFoundEntry(input: ContactDiscoveryInput): LeadgenContact {
+  return {
+    id: createRecordId("contact", input.lead.id, "no-contact-found", "1"),
+    pipeline_run_id: input.campaign.pipeline_run_id,
+    campaign_id: input.campaign.id,
+    company_id: input.company.id,
+    lead_id: input.lead.id,
+    contact_type: "no_contact_found",
+    full_name: null,
+    role_title: null,
+    department: null,
+    email: null,
+    linkedin_url: null,
+    telegram_url: null,
+    contact_url: null,
+    source_url: input.company.source_url,
+    source_label: "available company context",
+    confidence_score: 0,
+    is_primary: false,
+    metadata: {
+      reason: "No contact provider returned a public entry point",
+    },
+    created_at: input.createdAt,
+  };
 }
 
-function chooseFallbackEntry(contacts: LeadgenContact[]): LeadgenContact | null {
-  return (
-    [...contacts]
-      .filter((contact) => fallbackContactTypes.has(contact.contact_type))
-      .sort((left, right) => {
-        const priorityDiff =
-          contactTypePriority[right.contact_type] -
-          contactTypePriority[left.contact_type];
+function clampConfidenceScore(score: number): number {
+  if (!Number.isFinite(score)) {
+    return 0;
+  }
 
-        if (priorityDiff !== 0) {
-          return priorityDiff;
-        }
+  return Math.min(Math.max(Math.round(score), 0), 100);
+}
 
-        return right.confidence_score - left.confidence_score;
-      })[0] ?? null
-  );
+function normalizeContactType(contact: LeadgenContact): LeadgenContactType {
+  if (allowedContactTypes.has(contact.contact_type)) {
+    return contact.contact_type;
+  }
+
+  if (contact.email) {
+    return "work_email";
+  }
+
+  if (contact.linkedin_url) {
+    return "linkedin";
+  }
+
+  if (contact.telegram_url) {
+    return "telegram";
+  }
+
+  if (typeof contact.metadata.phone === "string") {
+    return "phone";
+  }
+
+  if (
+    contact.contact_type === "contact_form" ||
+    contact.contact_type === "company_website"
+  ) {
+    return "website_form";
+  }
+
+  if (contact.contact_type === "social_profile") {
+    return "company_social";
+  }
+
+  return contact.contact_url ? "company_social" : "no_contact_found";
+}
+
+function normalizeProviderContact({
+  contact,
+  providerLabel,
+}: {
+  contact: LeadgenContact;
+  providerLabel: string;
+}): LeadgenContact {
+  const sourceLabel = contact.source_label ?? providerLabel;
+  const hasSource = Boolean(sourceLabel || contact.source_url);
+  const normalizedContactType = normalizeContactType(contact);
+
+  return {
+    ...contact,
+    contact_type: normalizedContactType,
+    source_label: sourceLabel,
+    confidence_score: hasSource
+      ? clampConfidenceScore(contact.confidence_score)
+      : 0,
+    metadata: {
+      ...contact.metadata,
+      original_contact_type:
+        contact.contact_type === normalizedContactType
+          ? undefined
+          : contact.contact_type,
+      contact_type_normalized:
+        contact.contact_type === normalizedContactType ? false : true,
+      missing_source: !hasSource,
+    },
+  };
 }
 
 function markPrimaryContact(
@@ -153,20 +181,41 @@ function applyEntryRoles({
   bestOutreachEntry: LeadgenContact | null;
   fallbackEntry: LeadgenContact | null;
 }): LeadgenContact[] {
+  const alternativeContactIds = contacts
+    .filter(
+      (contact) =>
+        contact.id !== bestOutreachEntry?.id &&
+        contact.id !== fallbackEntry?.id &&
+        contact.contact_type !== "no_contact_found",
+    )
+    .map((contact) => contact.id);
+  const alternativeChannels = contacts
+    .filter((contact) => alternativeContactIds.includes(contact.id))
+    .map((contact) => ({
+      id: contact.id,
+      contact_type: contact.contact_type,
+      confidence_score: contact.confidence_score,
+      source_label: contact.source_label,
+    }));
+
   return contacts.map((contact) => {
-    let entryRole: ContactEntryRole = "other_entry";
-
-    if (bestOutreachEntry?.id === contact.id) {
-      entryRole = "best_outreach_entry";
-    } else if (fallbackEntry?.id === contact.id) {
-      entryRole = "fallback_entry";
-    }
-
     return {
       ...contact,
       metadata: {
         ...contact.metadata,
-        entry_role: entryRole,
+        entry_role: getContactEntryRole({
+          contact,
+          bestOutreachEntry,
+          fallbackEntry,
+        }),
+        best_outreach_channel: bestOutreachEntry?.contact_type ?? null,
+        best_outreach_contact_id: bestOutreachEntry?.id ?? null,
+        best_outreach_confidence: bestOutreachEntry?.confidence_score ?? null,
+        fallback_channel: fallbackEntry?.contact_type ?? null,
+        fallback_contact_id: fallbackEntry?.id ?? null,
+        fallback_confidence: fallbackEntry?.confidence_score ?? null,
+        alternative_channel_ids: alternativeContactIds,
+        alternative_channels: alternativeChannels,
       },
     };
   });
@@ -208,7 +257,10 @@ function getPersonaSearchStatus({
     return "no_entry_found";
   }
 
-  if (bestAvailableEntry.contact_type === "company_website") {
+  if (
+    bestAvailableEntry.contact_type === "website_form" ||
+    bestAvailableEntry.contact_type === "company_website"
+  ) {
     return "fallback_only";
   }
 
@@ -220,8 +272,10 @@ function getPersonaSearchStatus({
 
   const personContacts = contacts.filter(
     (contact) =>
-      contact.contact_type === "confirmed_person" ||
-      contact.contact_type === "role_based_person",
+      contact.contact_type === "work_email" ||
+      contact.contact_type === "linkedin" ||
+      contact.contact_type === "telegram" ||
+      contact.contact_type === "phone",
   );
   const primaryKeywords = [
     decisionMaker.primary_persona,
@@ -270,6 +324,34 @@ function applyPersonaSearchStatus(
   }));
 }
 
+function getAlternativeChannels(contacts: LeadgenContact[]): LeadgenContact[] {
+  return contacts.filter(
+    (contact) =>
+      contact.metadata.entry_role === "other_entry" &&
+      contact.contact_type !== "no_contact_found",
+  );
+}
+
+function getContactDiscoveryStatus({
+  bestOutreachEntry,
+  fallbackEntry,
+  personaSearchStatus,
+}: {
+  bestOutreachEntry: LeadgenContact | null;
+  fallbackEntry: LeadgenContact | null;
+  personaSearchStatus: PersonaSearchStatus;
+}): ContactDiscoveryStatus {
+  if (personaSearchStatus === "no_entry_found") {
+    return "no_entry_found";
+  }
+
+  if (bestOutreachEntry) {
+    return "entry_found";
+  }
+
+  return fallbackEntry ? "fallback_only" : "no_entry_found";
+}
+
 export class ContactDiscoveryService {
   constructor(
     private readonly providers: ContactProvider[] = [
@@ -280,18 +362,45 @@ export class ContactDiscoveryService {
   async discoverContacts(
     input: ContactDiscoveryInput,
   ): Promise<ContactDiscoveryResult> {
+    if (!input.peopleDiscovery?.search_status) {
+      throw new Error(
+        "Contact Discovery requires People Discovery result and must run after People Discovery.",
+      );
+    }
+
     const providerResults = await Promise.all(
       this.providers.map((provider) => provider.findContacts(input)),
     );
+    const providersUsed = providerResults
+      .map((result, index) => {
+        const provider = this.providers[index];
+
+        return result.provider_id ?? provider?.id ?? provider?.constructor.name;
+      })
+      .filter((providerId): providerId is string => Boolean(providerId));
+    const warnings = providerResults.flatMap((result) => result.warnings ?? []);
     const contacts = dedupeContacts(
-      providerResults.flatMap((result) => result.contacts),
+      providerResults.flatMap((result, index) =>
+        result.contacts.map((contact) =>
+          normalizeProviderContact({
+            contact,
+            providerLabel:
+              result.provider_label ??
+              this.providers[index]?.label ??
+              "contact provider",
+          }),
+        ),
+      ),
     );
-    const bestOutreachEntry = chooseBestOutreachEntry(contacts);
-    const fallbackEntry = chooseFallbackEntry(contacts);
-    const bestAvailableEntry =
-      bestOutreachEntry ?? fallbackEntry ?? chooseBestAvailableEntry(contacts);
+    const discoverableContacts =
+      contacts.length > 0 ? contacts : [createNoContactFoundEntry(input)];
+    const {
+      best_available_entry: bestAvailableEntry,
+      best_outreach_entry: bestOutreachEntry,
+      fallback_entry: fallbackEntry,
+    } = rankContactEntries(discoverableContacts);
     const contactsWithRoles = applyEntryRoles({
-      contacts,
+      contacts: discoverableContacts,
       bestOutreachEntry,
       fallbackEntry,
     });
@@ -310,6 +419,12 @@ export class ContactDiscoveryService {
       contactsWithPrimary,
       personaSearchStatus,
     );
+    const discoveryStatus = getContactDiscoveryStatus({
+      bestOutreachEntry,
+      fallbackEntry,
+      personaSearchStatus,
+    });
+    const alternativeChannels = getAlternativeChannels(contactsWithStatus);
 
     return {
       contacts: contactsWithStatus,
@@ -323,8 +438,16 @@ export class ContactDiscoveryService {
       fallback_entry:
         contactsWithStatus.find(
           (contact) => contact.metadata.entry_role === "fallback_entry",
-        ) ?? null,
+        ) ??
+        (fallbackEntry
+          ? contactsWithStatus.find((contact) => contact.id === fallbackEntry.id) ??
+            fallbackEntry
+          : null),
+      alternative_channels: alternativeChannels,
       persona_search_status: personaSearchStatus,
+      discovery_status: discoveryStatus,
+      providers_used: providersUsed,
+      warnings,
     };
   }
 }

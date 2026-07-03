@@ -1,27 +1,12 @@
 import type {
-  DecisionMakerProfile,
-  LeadgenCampaign,
-  LeadgenCompany,
-  LeadgenContact,
-  LeadgenLead,
-  LeadgenSignal,
-  PeopleDiscoveryResult,
+  ContactProviderInput,
+  ContactProviderResult,
 } from "@/lib/leadgen/types";
 
-export type ContactProviderInput = {
-  campaign: LeadgenCampaign;
-  company: LeadgenCompany;
-  lead: LeadgenLead;
-  signals: LeadgenSignal[];
-  decisionMaker?: DecisionMakerProfile;
-  peopleDiscovery?: PeopleDiscoveryResult;
-  createdAt: string;
-};
-
-export type ContactProviderResult = {
-  contacts: LeadgenContact[];
-};
+export type { ContactProviderInput, ContactProviderResult };
 
 export interface ContactProvider {
+  id: string;
+  label: string;
   findContacts(input: ContactProviderInput): Promise<ContactProviderResult>;
 }

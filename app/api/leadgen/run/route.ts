@@ -79,40 +79,6 @@ function getOpportunityAssessment(
   return rawOpportunity as OpportunityAssessment;
 }
 
-function formatOpportunityExplanation(
-  opportunity: OpportunityAssessment | null,
-): string {
-  if (!opportunity) {
-    return "";
-  }
-
-  return [
-    "",
-    "Opportunity explanation:",
-    `Opportunity score: ${opportunity.opportunity_score}/100`,
-    `Opportunity type: ${opportunity.opportunity_type}`,
-    `Business reasoning: ${opportunity.business_reasoning}`,
-    `Why this company: ${opportunity.why_this_company}`,
-    `Why now: ${opportunity.why_now}`,
-    `Positive factors: ${
-      opportunity.positive_factors.length
-        ? opportunity.positive_factors.join(" ")
-        : "None recorded"
-    }`,
-    `Negative factors: ${
-      opportunity.negative_factors.length
-        ? opportunity.negative_factors.join(" ")
-        : "None recorded"
-    }`,
-    `Missing information: ${
-      opportunity.missing_information.length
-        ? opportunity.missing_information.join(" ")
-        : "None recorded"
-    }`,
-    `Recommended action: ${opportunity.recommended_action}`,
-  ].join("\n");
-}
-
 function getPrimaryContact(
   lead: LeadgenLead,
   contacts: LeadgenContact[],
@@ -243,18 +209,14 @@ export async function POST(request: Request) {
         bestAvailableEntry,
         bestOutreachEntry,
         fallbackEntry,
+        opportunity,
         personaSearchStatus: getPersonaSearchStatus(
           bestOutreachEntry ?? fallbackEntry ?? bestAvailableEntry,
         ),
         leadPriority: getLeadPriority(company),
       });
 
-      return {
-        ...notification,
-        telegram_card_text:
-          notification.telegram_card_text +
-          formatOpportunityExplanation(opportunity),
-      };
+      return notification;
     });
     const saved = await savePipelineResult({ result, notifications });
 
