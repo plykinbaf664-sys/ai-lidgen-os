@@ -4,6 +4,7 @@ import type {
   LeadgenLead,
   LeadPriority,
   OpportunityAssessment,
+  IdentityProfile,
   PeopleDiscoveryResult,
   PersonaSearchStatus,
 } from "@/lib/leadgen/types";
@@ -24,6 +25,7 @@ export type TelegramCardContext = {
   personaSearchStatus?: PersonaSearchStatus;
   leadPriority?: LeadPriority | null;
   opportunity?: OpportunityAssessment | null;
+  identityProfile?: IdentityProfile | null;
 };
 
 function getContactValue(contact: LeadgenContact): string | null {
@@ -82,6 +84,21 @@ function getPersonaSearchStatusLabel(status?: PersonaSearchStatus): string {
   return status ? labels[status] : "Persona search context unavailable";
 }
 
+function getRecommendedNextActionLabel(action?: unknown): string {
+  const labels: Record<string, string> = {
+    send_outreach: "Send outreach",
+    run_enrichment: "Run enrichment",
+    use_fallback_channel: "Use fallback channel",
+    manual_review: "Review manually",
+    skip_until_contact_found: "Skip until contact is found",
+    contact_primary_person: "Contact primary person",
+    contact_alternative_person: "Contact alternative person",
+    monitor_changes: "Monitor changes",
+  };
+
+  return typeof action === "string" ? labels[action] ?? action : "Not calculated";
+}
+
 function isDirectOutreachEntry(contact?: LeadgenContact | null): boolean {
   return (
     contact?.contact_type === "work_email" ||
@@ -103,7 +120,19 @@ export function formatTelegramCard(
       ? context.bestAvailableEntry
       : null);
   const fallbackEntry = context.fallbackEntry;
+  const identityProfile =
+    context.identityProfile ??
+    ((context.bestAvailableEntry?.metadata.identity_profile ??
+      context.bestOutreachEntry?.metadata.identity_profile ??
+      context.fallbackEntry?.metadata.identity_profile) as
+      | IdentityProfile
+      | undefined) ??
+    null;
+  const identityPrimaryChannel = identityProfile?.primary_contact_channel ?? null;
+  const identityFallbackChannel = identityProfile?.fallback_channel ?? null;
   const bestContactChannel = bestOutreachEntry ?? fallbackEntry;
+  const contactRecommendedNextAction =
+    bestContactChannel?.metadata.recommended_next_action;
   const bestContactChannelValue = bestContactChannel
     ? getContactValue(bestContactChannel)
     : null;
@@ -133,6 +162,11 @@ export function formatTelegramCard(
   const leadPriority = context.leadPriority;
   const opportunity = context.opportunity;
   const foundPerson = context.peopleDiscovery?.primary_person;
+  const foundPersonIntelligence =
+    context.peopleDiscovery?.primary_person_intelligence;
+  const personSelectionReason =
+    context.peopleDiscovery?.selection_reasoning ??
+    foundPersonIntelligence?.selection_reason;
   const whyThisCompany =
     opportunity?.why_this_company ??
     lead.signal_detail ??
@@ -182,6 +216,47 @@ export function formatTelegramCard(
     ...(foundPerson
       ? [
           `Found role: ${foundPerson.role_title ?? "unknown"}`,
+          `Primary decision maker reason: ${
+            personSelectionReason ?? "Selection reason not available"
+          }`,
+          `Person score: ${
+            foundPersonIntelligence?.person_score ?? foundPerson.confidence_score
+          }/100`,
+          `Persona match score: ${
+            foundPersonIntelligence?.persona_match_score ?? "not calculated"
+          }`,
+          `Business problem ownership: ${
+            foundPersonIntelligence?.business_problem_ownership ??
+            "not calculated"
+          }`,
+          `Decision authority: ${
+            foundPersonIntelligence?.decision_authority ?? "not calculated"
+          }`,
+          `Influence level: ${
+            foundPersonIntelligence?.influence_level ?? "not calculated"
+          }`,
+          `Person confidence: ${
+            foundPersonIntelligence?.confidence_score ??
+            foundPerson.confidence_score
+          }/100`,
+          `Person next action: ${getRecommendedNextActionLabel(
+            foundPersonIntelligence?.recommended_next_action,
+          )}`,
+          `Person strengths: ${
+            foundPersonIntelligence?.strengths.length
+              ? foundPersonIntelligence.strengths.join(" ")
+              : "not recorded"
+          }`,
+          `Person risks: ${
+            foundPersonIntelligence?.weaknesses.length
+              ? foundPersonIntelligence.weaknesses.join(" ")
+              : "not recorded"
+          }`,
+          `Why not alternatives: ${
+            foundPersonIntelligence?.why_not_other_candidates.length
+              ? foundPersonIntelligence.why_not_other_candidates.join(" ")
+              : "not recorded"
+          }`,
           `Found LinkedIn: ${foundPerson.linkedin_url ?? "not found"}`,
           `Found email: ${foundPerson.work_email ?? "not found"}`,
           `People source: ${foundPerson.source}`,
@@ -193,8 +268,33 @@ export function formatTelegramCard(
           }`,
         ]),
     `Best contact channel: ${bestContactChannelLabel}`,
+    `Identity summary: ${
+      identityProfile?.identity_summary ??
+      "No confirmed personal contact found. Identity profile unavailable."
+    }`,
+    `Identity confidence: ${
+      typeof identityProfile?.identity_confidence === "number"
+        ? `${identityProfile.identity_confidence}/100`
+        : "not calculated"
+    }`,
+    `Best identity channel: ${
+      identityPrimaryChannel
+        ? `${identityPrimaryChannel.label}: ${identityPrimaryChannel.value ?? "No direct value"}`
+        : "Not found yet"
+    }`,
+    `Identity fallback: ${
+      identityFallbackChannel
+        ? `${identityFallbackChannel.label}: ${identityFallbackChannel.value ?? "No direct value"}`
+        : "Not found"
+    }`,
+    `Identity next action: ${getRecommendedNextActionLabel(
+      identityProfile?.recommended_next_action,
+    )}`,
     `Best outreach entry: ${bestOutreachEntryLabel}`,
     `Fallback entry: ${fallbackEntryLabel}`,
+    `Contact next action: ${getRecommendedNextActionLabel(
+      contactRecommendedNextAction,
+    )}`,
     ...(leadPriority
       ? [
           `Lead priority: ${leadPriority.priority} (${leadPriority.priority_score}/100)`,

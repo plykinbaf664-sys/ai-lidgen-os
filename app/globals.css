@@ -316,6 +316,22 @@ tr:last-child td {
   color: var(--warning);
 }
 
+.readiness-ready {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.readiness-needs_enrichment,
+.readiness-manual_review {
+  background: var(--warning-soft);
+  color: var(--warning);
+}
+
+.readiness-not_ready {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
 .preview-content {
   padding: 22px;
 }

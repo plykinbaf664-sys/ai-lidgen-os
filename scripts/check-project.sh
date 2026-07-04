@@ -35,6 +35,20 @@ detect_pm() {
   fi
 }
 
+resolve_cmd() {
+  local base="$1"
+  if command -v "${base}.cmd" >/dev/null 2>&1; then
+    command -v "${base}.cmd"
+  else
+    command -v "$base"
+  fi
+}
+
+NPM_CMD="$(resolve_cmd npm)"
+NPX_CMD="$(resolve_cmd npx)"
+PNPM_CMD="$(resolve_cmd pnpm || true)"
+YARN_CMD="$(resolve_cmd yarn || true)"
+
 has_script() {
   local script="$1"
   node -e "const p=require('./package.json'); process.exit(p.scripts && p.scripts['$script'] ? 0 : 1)" >/dev/null 2>&1
@@ -68,11 +82,11 @@ status=0
 
 if [[ -f tsconfig.json ]]; then
   if [[ "$PM" == "pnpm" ]]; then
-    run_step "TypeScript" pnpm exec tsc --noEmit || status=1
+    run_step "TypeScript" "$PNPM_CMD" exec tsc --noEmit || status=1
   elif [[ "$PM" == "yarn" ]]; then
-    run_step "TypeScript" yarn tsc --noEmit || status=1
+    run_step "TypeScript" "$YARN_CMD" tsc --noEmit || status=1
   else
-    run_step "TypeScript" npx tsc --noEmit || status=1
+    run_step "TypeScript" "$NPX_CMD" tsc --noEmit || status=1
   fi
 else
   echo "## TypeScript" >> "$OUT"
@@ -81,11 +95,11 @@ fi
 
 if has_script lint; then
   if [[ "$PM" == "pnpm" ]]; then
-    run_step "Lint" pnpm run lint || status=1
+    run_step "Lint" "$PNPM_CMD" run lint || status=1
   elif [[ "$PM" == "yarn" ]]; then
-    run_step "Lint" yarn lint || status=1
+    run_step "Lint" "$YARN_CMD" lint || status=1
   else
-    run_step "Lint" npm run lint || status=1
+    run_step "Lint" "$NPM_CMD" run lint || status=1
   fi
 else
   echo "## Lint" >> "$OUT"
@@ -95,11 +109,11 @@ fi
 if [[ "$BUILD_ON_EVERY_STAGE" == "true" || "$FINAL_CHECK" == "true" ]]; then
   if has_script build; then
     if [[ "$PM" == "pnpm" ]]; then
-      run_step "Build" pnpm run build || status=1
+      run_step "Build" "$PNPM_CMD" run build || status=1
     elif [[ "$PM" == "yarn" ]]; then
-      run_step "Build" yarn build || status=1
+      run_step "Build" "$YARN_CMD" build || status=1
     else
-      run_step "Build" npm run build || status=1
+      run_step "Build" "$NPM_CMD" run build || status=1
     fi
   else
     echo "## Build" >> "$OUT"

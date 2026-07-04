@@ -1,6 +1,7 @@
 import { MockPeopleProvider } from "@/lib/leadgen/mock-people-provider";
 import { PeopleProviderManager } from "@/lib/leadgen/people-provider-manager";
 import type { PeopleEnrichmentProvider } from "@/lib/leadgen/people-provider";
+import { rankPersonCandidates } from "@/lib/leadgen/person-ranking-engine";
 import type {
   DecisionMakerProfile,
   LeadgenCompany,
@@ -46,39 +47,6 @@ function dedupeCandidates(candidates: PersonCandidate[]): PersonCandidate[] {
   return [...byKey.values()];
 }
 
-function getCandidateRankScore(
-  candidate: PersonCandidate,
-  decisionMaker: DecisionMakerProfile,
-): number {
-  const roleText = normalizeText(candidate.role_title);
-  const departmentText = normalizeText(candidate.department);
-  const primaryPersona = decisionMaker.primary_persona.toLowerCase();
-  const keywordMatches = decisionMaker.search_keywords.filter((keyword) =>
-    roleText.includes(keyword.toLowerCase()),
-  ).length;
-  let score = candidate.confidence_score;
-
-  if (roleText.includes(primaryPersona)) {
-    score += 35;
-  }
-
-  score += keywordMatches * 8;
-
-  if (departmentText.includes(decisionMaker.department.toLowerCase())) {
-    score += 12;
-  }
-
-  if (candidate.linkedin_url) {
-    score += 8;
-  }
-
-  if (candidate.work_email) {
-    score += 10;
-  }
-
-  return score;
-}
-
 export class PeopleDiscoveryEngine {
   private readonly providerManager: PeopleProviderManager;
 
@@ -100,14 +68,14 @@ export class PeopleDiscoveryEngine {
     const providersUsed = providerResults.map((result) => result.provider_label);
     const candidates = dedupeCandidates(
       providerResults.flatMap((result) => result.candidates),
-    ).sort(
-      (left, right) =>
-        getCandidateRankScore(right, decisionMaker) -
-        getCandidateRankScore(left, decisionMaker),
     );
     const unavailableProviders = providerResults.filter(
       (result) => result.unavailable,
     );
+    const ranking = rankPersonCandidates({
+      candidates,
+      decisionMaker,
+    });
 
     if (candidates.length === 0) {
       return {
@@ -124,9 +92,15 @@ export class PeopleDiscoveryEngine {
     }
 
     return {
-      primary_person: candidates[0],
-      alternative_people: candidates.slice(1, 4),
-      all_candidates: candidates,
+      primary_person: ranking.primary_person?.candidate ?? null,
+      alternative_people: ranking.alternative_people.map(
+        (person) => person.candidate,
+      ),
+      all_candidates: ranking.ranked_people.map((person) => person.candidate),
+      primary_person_intelligence: ranking.primary_person,
+      alternative_people_intelligence: ranking.alternative_people,
+      ranked_people: ranking.ranked_people,
+      selection_reasoning: ranking.primary_person?.selection_reason ?? null,
       search_status: "person_found",
       providers_used: providersUsed,
     };

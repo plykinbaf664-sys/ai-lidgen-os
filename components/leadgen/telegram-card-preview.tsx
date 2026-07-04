@@ -10,6 +10,7 @@ import type {
   LeadgenLead,
   LeadStatus,
   OpportunityAssessment,
+  IdentityProfile,
   PeopleDiscoveryResult,
   PersonaSearchStatus,
 } from "@/lib/leadgen/types";
@@ -31,6 +32,7 @@ type TelegramCardPreviewProps = {
   bestOutreachEntry?: LeadgenContact | null;
   fallbackEntry?: LeadgenContact | null;
   opportunity?: OpportunityAssessment | null;
+  identityProfile?: IdentityProfile | null;
   onStatusChange: (leadId: string, status: LeadStatus) => void;
 };
 
@@ -86,6 +88,74 @@ function getBestContactMethod({
   };
 }
 
+function getContactNextActionLabel(contact?: LeadgenContact | null): string {
+  const rawAction = contact?.metadata.recommended_next_action;
+  const labels: Record<string, string> = {
+    send_outreach: "Send outreach",
+    run_enrichment: "Run enrichment",
+    use_fallback_channel: "Use fallback channel",
+    manual_review: "Review manually",
+    skip_until_contact_found: "Skip until contact is found",
+    contact_primary_person: "Contact primary person",
+    contact_alternative_person: "Contact alternative person",
+    monitor_changes: "Monitor changes",
+  };
+
+  return typeof rawAction === "string"
+    ? labels[rawAction] ?? rawAction
+    : "Not calculated";
+}
+
+function getPrimaryDecisionMakerLines(
+  peopleDiscovery?: PeopleDiscoveryResult | null,
+): string[] {
+  const primaryPerson = peopleDiscovery?.primary_person;
+  const intelligence = peopleDiscovery?.primary_person_intelligence;
+
+  if (!primaryPerson) {
+    return ["Primary decision maker: not found"];
+  }
+
+  return [
+    `Primary decision maker: ${primaryPerson.full_name}`,
+    `Role: ${primaryPerson.role_title ?? "unknown"}`,
+    `Selection reason: ${
+      peopleDiscovery?.selection_reasoning ??
+      intelligence?.selection_reason ??
+      "Selection reason not available"
+    }`,
+    `Person score: ${
+      intelligence?.person_score ?? primaryPerson.confidence_score
+    }/100`,
+    `Persona match score: ${
+      intelligence?.persona_match_score ?? "not calculated"
+    }`,
+    `Business problem ownership: ${
+      intelligence?.business_problem_ownership ?? "not calculated"
+    }`,
+    `Decision authority: ${
+      intelligence?.decision_authority ?? "not calculated"
+    }`,
+    `Influence level: ${intelligence?.influence_level ?? "not calculated"}`,
+    `Confidence score: ${
+      intelligence?.confidence_score ?? primaryPerson.confidence_score
+    }/100`,
+    `Person next action: ${
+      intelligence?.recommended_next_action ?? "not calculated"
+    }`,
+    `Strengths: ${
+      intelligence?.strengths?.length
+        ? intelligence.strengths.join(" ")
+        : "not recorded"
+    }`,
+    `Risks: ${
+      intelligence?.weaknesses?.length
+        ? intelligence.weaknesses.join(" ")
+        : "not recorded"
+    }`,
+  ];
+}
+
 export function TelegramCardPreview({
   lead,
   decisionMaker,
@@ -94,6 +164,7 @@ export function TelegramCardPreview({
   bestOutreachEntry,
   fallbackEntry,
   opportunity,
+  identityProfile,
   onStatusChange,
 }: TelegramCardPreviewProps) {
   const bestContactMethod = getBestContactMethod({
@@ -122,15 +193,42 @@ export function TelegramCardPreview({
               bestOutreachEntry,
               fallbackEntry,
               opportunity,
+              identityProfile,
               personaSearchStatus: getPersonaSearchStatus(
                 bestOutreachEntry ?? fallbackEntry ?? bestAvailableEntry,
               ),
             })}
-            {"\n\nContact intelligence:"}
-            {`\nBest method: ${bestContactMethod.label}`}
+            {"\n\nIdentity profile:"}
+            {`\nSummary: ${
+              identityProfile?.identity_summary ??
+              "No confirmed personal contact found. Identity profile unavailable."
+            }`}
+            {`\nConfidence: ${
+              typeof identityProfile?.identity_confidence === "number"
+                ? `${identityProfile.identity_confidence}/100`
+                : "not calculated"
+            }`}
+            {`\nBest identity channel: ${
+              identityProfile?.primary_contact_channel?.label ?? "Not found yet"
+            }`}
+            {`\nFallback identity channel: ${
+              identityProfile?.fallback_channel?.label ?? "Not found"
+            }`}
+            {`\nIdentity next action: ${
+              identityProfile?.recommended_next_action ?? "run_enrichment"
+            }`}
+            {"\n\nPrimary decision maker:"}
+            {getPrimaryDecisionMakerLines(peopleDiscovery).map((line) => (
+              <span key={line}>{`\n${line}`}</span>
+            ))}
+            {"\n\nBest contact channel:"}
+            {`\nChannel: ${bestContactMethod.label}`}
             {`\nValue: ${bestContactMethod.value ?? "not found"}`}
             {`\nConfidence: ${bestContactMethod.confidenceScore}/100`}
             {`\nSource: ${bestContactMethod.source}`}
+            {`\nContact next action: ${getContactNextActionLabel(
+              bestOutreachEntry ?? fallbackEntry ?? bestAvailableEntry,
+            )}`}
             {opportunity ? (
               <>
                 {"\n\nOpportunity explanation:"}

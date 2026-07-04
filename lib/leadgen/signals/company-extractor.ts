@@ -241,6 +241,16 @@ const explicitCandidatePatterns: CandidatePattern[] = [
   },
   {
     pattern: new RegExp(
+      `\\bAt\\s+${companyNamePattern}\\s*,?\\s+(?:we|our|is|are|helps?|builds?|creates?|provides?)\\b`,
+      "g",
+    ),
+    role: "employer_subject",
+    source: "explicit_pattern",
+    baseScore: 92,
+    reason: "At-company employer phrase",
+  },
+  {
+    pattern: new RegExp(
       `\\u0432\\u0430\\u043a\\u0430\\u043d\\u0441\\u0438\\u044f[\\s\\S]{0,120}\\s+\\u0432\\s+\\u043a\\u043e\\u043c\\u043f\\u0430\\u043d\\u0438\\u0438\\s+${companyNamePattern}`,
       "gi",
     ),

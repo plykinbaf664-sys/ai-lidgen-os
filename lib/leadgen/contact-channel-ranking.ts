@@ -6,6 +6,7 @@ export const contactTypePriority: Record<LeadgenContact["contact_type"], number>
     linkedin: 95,
     telegram: 90,
     phone: 85,
+    social_profile: 82,
     generic_email: 80,
     website_form: 70,
     company_social: 50,
@@ -15,7 +16,6 @@ export const contactTypePriority: Record<LeadgenContact["contact_type"], number>
     confirmed_person: 100,
     role_based_person: 90,
     contact_form: 75,
-    social_profile: 55,
     company_website: 35,
   };
 
@@ -24,12 +24,13 @@ const outreachContactTypes = new Set<LeadgenContact["contact_type"]>([
   "linkedin",
   "telegram",
   "phone",
-]);
-
-const fallbackContactTypes = new Set<LeadgenContact["contact_type"]>([
+  "social_profile",
   "generic_email",
   "website_form",
   "company_social",
+]);
+
+const fallbackContactTypes = new Set<LeadgenContact["contact_type"]>([
   "company_website",
   "no_contact_found",
 ]);
@@ -63,10 +64,22 @@ function isAlternativePersonContact(contact: LeadgenContact): boolean {
   return getPeopleDiscoveryRole(contact) === "alternative";
 }
 
+function isOutreachContact(contact: LeadgenContact): boolean {
+  return (
+    outreachContactTypes.has(contact.contact_type) &&
+    hasReachableValue(contact) &&
+    hasSource(contact)
+  );
+}
+
 export type RankedContactEntries = {
   best_available_entry: LeadgenContact;
   best_outreach_entry: LeadgenContact | null;
   fallback_entry: LeadgenContact | null;
+};
+
+export type RankContactEntriesOptions = {
+  requirePrimaryPersonForOutreach?: boolean;
 };
 
 function sortByContactPriority(
@@ -107,16 +120,20 @@ export function chooseBestAvailableEntry(
 
 export function chooseBestOutreachEntry(
   contacts: LeadgenContact[],
+  options: RankContactEntriesOptions = {},
 ): LeadgenContact | null {
+  const outreachContacts = contacts.filter(isOutreachContact);
+  const primaryPersonOutreachContacts = outreachContacts.filter(
+    isPrimaryPersonContact,
+  );
+
   return (
-    [...contacts]
-      .filter(
-        (contact) =>
-          outreachContactTypes.has(contact.contact_type) &&
-          hasReachableValue(contact) &&
-          hasSource(contact),
-      )
-      .sort(sortByContactPriority)[0] ?? null
+    [
+      ...(options.requirePrimaryPersonForOutreach &&
+      primaryPersonOutreachContacts.length > 0
+        ? primaryPersonOutreachContacts
+        : outreachContacts),
+    ].sort(sortByContactPriority)[0] ?? null
   );
 }
 
@@ -137,8 +154,9 @@ export function chooseFallbackEntry(
 
 export function rankContactEntries(
   contacts: LeadgenContact[],
+  options: RankContactEntriesOptions = {},
 ): RankedContactEntries {
-  const bestOutreachEntry = chooseBestOutreachEntry(contacts);
+  const bestOutreachEntry = chooseBestOutreachEntry(contacts, options);
   const fallbackEntry = chooseFallbackEntry(contacts);
 
   return {

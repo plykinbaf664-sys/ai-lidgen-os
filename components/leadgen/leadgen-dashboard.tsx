@@ -19,6 +19,7 @@ import type {
   LeadgenLead,
   LeadgenSignal,
   LeadStatus,
+  IdentityProfile,
   OpportunityAssessment,
   PeopleDiscoveryResult,
   TelegramNotification,
@@ -212,6 +213,28 @@ export function LeadgenDashboard() {
 
     return rawOpportunity as OpportunityAssessment;
   }, [selectedCompany]);
+  const selectedIdentityProfile = useMemo(() => {
+    const rawIdentityProfile =
+      selectedCompany?.metadata.identity_profile ??
+      selectedBestContact?.metadata.identity_profile ??
+      selectedBestOutreachEntry?.metadata.identity_profile ??
+      selectedFallbackEntry?.metadata.identity_profile;
+
+    if (
+      typeof rawIdentityProfile !== "object" ||
+      rawIdentityProfile === null ||
+      Array.isArray(rawIdentityProfile)
+    ) {
+      return null;
+    }
+
+    return rawIdentityProfile as IdentityProfile;
+  }, [
+    selectedBestContact,
+    selectedBestOutreachEntry,
+    selectedCompany,
+    selectedFallbackEntry,
+  ]);
 
   async function loadCampaignHistory() {
     setIsHistoryLoading(true);
@@ -402,6 +425,8 @@ export function LeadgenDashboard() {
             </span>
           </div>
           <LeadsTable
+            companies={companies}
+            contacts={contacts}
             leads={leads}
             selectedLeadId={selectedLeadId}
             onSelectLead={setSelectedLeadId}
@@ -416,6 +441,7 @@ export function LeadgenDashboard() {
           bestOutreachEntry={selectedBestOutreachEntry}
           fallbackEntry={selectedFallbackEntry}
           opportunity={selectedOpportunity}
+          identityProfile={selectedIdentityProfile}
           onStatusChange={handleStatusChange}
         />
       </div>

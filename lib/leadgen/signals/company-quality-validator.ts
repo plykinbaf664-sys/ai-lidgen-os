@@ -11,6 +11,7 @@ export type CompanyInvalidReason =
   | "person_name"
   | "action_or_verb"
   | "sentence_fragment"
+  | "job_title_or_location_shell"
   | "non_employer_context"
   | "aggregator_or_directory_page"
   | "random_or_tokenized_name"
@@ -81,6 +82,12 @@ const locationPattern =
 
 const locationContextPattern =
   /\b(location|remote|hybrid|onsite|salary|experience|years?|city|state|region|area|metro|relocation|\u043c\u0435\u0441\u0442\u043e|\u0433\u043e\u0440\u043e\u0434|\u0440\u0435\u0433\u0438\u043e\u043d|\u0437\u0430\u0440\u043f\u043b\u0430\u0442\u0430|\u0433\u0440\u0430\u0444\u0438\u043a|\u043e\u043f\u044b\u0442|\u0443\u0434\u0430\u043b\u0435\u043d)/i;
+
+const jobLocationTokenPattern =
+  /^(?:remote|hybrid|onsite|on-site|us|usa|united states|uk|eu|emea|apac|latam|canada|australia|germany|france|spain|india|contract|full[- ]?time|part[- ]?time|\u0443\u0434\u0430\u043b\u0435\u043d\u043d\u043e|\u0443\u0434\u0430\u043b\u0451\u043d\u043d\u043e|\u0433\u0438\u0431\u0440\u0438\u0434|\u043e\u0444\u0438\u0441|\u043f\u043e\u043b\u043d\u044b\u0439 \u0434\u0435\u043d\u044c)$/i;
+
+const jobUiActionTokenPattern =
+  /^(?:select|apply|view|open|choose|filter|search|job|jobs|role|roles|position|positions|\u0432\u044b\u0431\u0440\u0430\u0442\u044c|\u043e\u0442\u043a\u043b\u0438\u043a\u043d\u0443\u0442\u044c\u0441\u044f|\u043f\u043e\u0438\u0441\u043a|\u0432\u0430\u043a\u0430\u043d\u0441\u0438\u044f|\u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438)$/i;
 
 const sentenceVerbPattern =
   /\b(is|are|was|were|be|being|been|has|have|had|leads?|supports?|supporting|builds?|building|helps?|helping|works?|working|hires?|hiring|looking|seeking|offers?|provides?|companies?|teams?|\u043a\u043e\u0442\u043e\u0440|\u0438\u0449\u0435\u0442|\u043d\u0430\u043d\u0438\u043c\u0430\u0435\u0442|\u043f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u0435\u0442|\u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442|\u043f\u043e\u043c\u043e\u0433\u0430\u0435\u0442|\u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442)\b/i;
@@ -375,6 +382,45 @@ function looksLikeSentenceFragment(companyName: string): boolean {
   );
 }
 
+export function looksLikeJobTitleOrLocationShell(companyName: string): boolean {
+  const normalizedName = companyName.trim();
+
+  if (!normalizedName) {
+    return true;
+  }
+
+  const parts = normalizedName
+    .split(/\s+(?:[-–—|])\s+|\s*[|]\s*/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+
+  if (parts.length >= 2) {
+    const locationParts = parts.filter((part) => jobLocationTokenPattern.test(part));
+    const uiParts = parts.filter((part) => jobUiActionTokenPattern.test(part));
+
+    if (locationParts.length >= 1 && (uiParts.length >= 1 || locationParts.length >= 2)) {
+      return true;
+    }
+
+    if (
+      locationParts.length >= 1 &&
+      genericJobCategoryPattern.test(normalizedName)
+    ) {
+      return true;
+    }
+  }
+
+  if (jobUiActionTokenPattern.test(normalizedName)) {
+    return true;
+  }
+
+  if (jobLocationTokenPattern.test(normalizedName)) {
+    return true;
+  }
+
+  return false;
+}
+
 function looksLikeNonBuyerServiceProvider(
   companyName: string,
   input: CompanyQualityValidationInput,
@@ -605,6 +651,10 @@ function calculateQualityScore(
     score -= 35;
   }
 
+  if (looksLikeJobTitleOrLocationShell(companyName)) {
+    score -= 45;
+  }
+
   if (looksLikeGenericJobCategory(companyName)) {
     score -= 30;
   }
@@ -737,6 +787,16 @@ export function validateCompanyQuality(
       is_valid: false,
       invalid_reason: "sentence_fragment",
       validation_reason: "Candidate company looks like a sentence fragment",
+      company_quality_score: qualityScore,
+    };
+  }
+
+  if (looksLikeJobTitleOrLocationShell(companyName) && !companyOwnedOverride) {
+    return {
+      is_valid: false,
+      invalid_reason: "job_title_or_location_shell",
+      validation_reason:
+        "Candidate company looks like a job UI title or location shell rather than an employer",
       company_quality_score: qualityScore,
     };
   }

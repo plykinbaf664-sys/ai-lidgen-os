@@ -7,6 +7,7 @@ import type {
   OpportunityUrgency,
   SignalType,
 } from "@/lib/leadgen/types";
+import { looksLikeJobTitleOrLocationShell } from "@/lib/leadgen/signals/company-quality-validator";
 
 export const DEFAULT_OPPORTUNITY_THRESHOLD = 60;
 const MIN_READY_ICP_FIT_SCORE = 45;
@@ -272,6 +273,12 @@ function buildPositiveFactors(candidate: LeadCandidate): string[] {
 function buildNegativeFactors(candidate: LeadCandidate): string[] {
   const factors: string[] = [];
 
+  if (looksLikeJobTitleOrLocationShell(candidate.company_name)) {
+    factors.push(
+      "Company identity looks like a job title, UI text, or location shell rather than a buyer company.",
+    );
+  }
+
   if (candidate.evidence_quality === "topic_only") {
     factors.push("Evidence is topic-only and does not prove a business change.");
   }
@@ -303,6 +310,10 @@ function buildNegativeFactors(candidate: LeadCandidate): string[] {
 
 function buildMissingInformation(candidate: LeadCandidate): string[] {
   const missing: string[] = [];
+
+  if (looksLikeJobTitleOrLocationShell(candidate.company_name)) {
+    missing.push("A verified buyer company name.");
+  }
 
   if (!hasUsefulText(candidate.why_now)) {
     missing.push("A specific timing reason for outreach.");
@@ -349,12 +360,22 @@ export function assessOpportunity({
     score = Math.min(score, 45);
   }
 
+  const hasValidBuyerCompanyIdentity = !looksLikeJobTitleOrLocationShell(
+    candidate.company_name,
+  );
+
+  if (!hasValidBuyerCompanyIdentity) {
+    opportunityType = "no_actionable_opportunity";
+    score = Math.min(score, 35);
+  }
+
   const hasActionableReasoning =
     hasUsefulText(candidate.why_now) &&
     hasUsefulText(candidate.why_it_matters) &&
     hasUsefulText(candidate.signal_summary);
   const shouldCreateLead =
     score >= threshold &&
+    hasValidBuyerCompanyIdentity &&
     (candidate.icp_fit_score ?? 0) >= MIN_READY_ICP_FIT_SCORE &&
     hasActionableReasoning &&
     opportunityType !== "evergreen_content" &&

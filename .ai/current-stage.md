@@ -1,8 +1,8 @@
-### Stage 6 — Contact Discovery & Enrichment Layer
+### Stage 8 - Identity Discovery & Contact Intelligence Layer
 
 #### Goal
 
-Построить полноценный слой Contact Discovery & Enrichment, который использует результаты People Discovery и определяет лучший реальный способ связаться с найденным ЛПР.
+Построить полноценный слой Identity Discovery & Contact Intelligence, который использует результаты Person Intelligence и определяет полный цифровой профиль найденного ЛПР.
 
 После завершения этапа Leadgen OS должна отвечать не только на вопросы:
 
@@ -12,9 +12,15 @@
 
 но и на вопрос:
 
-> "Как именно с этим человеком лучше связаться?"
+> "Где находится этот человек и через какой канал лучше всего начать коммуникацию?"
 
-Contact Discovery должен находить доступные каналы связи, оценивать их качество, определять лучший канал outreach и честно фиксировать отсутствие контактов, если данных нет.
+Identity Discovery должен строить цифровую карту присутствия человека, находить доступные каналы связи, оценивать их качество и выбирать лучший способ первого контакта.
+
+Система не должна ограничиваться поиском email.
+
+Она должна искать любую подтверждённую цифровую идентичность человека.
+
+---
 
 #### Scope
 
@@ -25,6 +31,7 @@ Contact Discovery должен находить доступные каналы 
 - `lib/leadgen/public-contact-provider.ts`
 - `lib/leadgen/people-provider.ts`
 - `lib/leadgen/people-provider-manager.ts`
+- `lib/leadgen/person-intelligence.ts`
 - `lib/leadgen/types.ts`
 - `lib/leadgen/lead-discovery-engine.ts`
 - `lib/leadgen/telegram-card.ts`
@@ -33,130 +40,170 @@ Contact Discovery должен находить доступные каналы 
 
 Можно создавать при необходимости:
 
-- `lib/leadgen/contact-enrichment/`
-- `lib/leadgen/contact-enrichment-engine.ts`
-- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/identity-discovery/`
+- `lib/leadgen/identity-discovery-engine.ts`
 - `lib/leadgen/contact-intelligence.ts`
+- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/identity-confidence.ts`
+
+---
 
 #### Acceptance Criteria
 
-- Contact Discovery использует результат People Discovery как главный источник целевого человека.
-- Система определяет лучший доступный канал связи для primary person.
-- Для каждого найденного контакта есть confidence score.
-- Для каждого контакта есть source / источник данных.
-- Для каждого контакта есть contact type:
-  - work_email
-  - linkedin
-  - telegram
-  - phone
-  - website_form
-  - generic_email
-  - company_social
-  - no_contact_found
-- Система умеет выбирать:
-  - best outreach channel
-  - fallback channel
-  - alternative channels
-- Если прямой контакт человека не найден, система не выдумывает email, LinkedIn, Telegram или телефон.
-- Если контакта нет, система честно фиксирует `no_contact_found`.
-- Если нет персонального контакта, система предлагает лучший fallback:
-  - общий email
-  - форма сайта
-  - LinkedIn компании
-  - сайт компании
-- Contact Discovery не должен работать раньше People Discovery.
-- Contact Discovery не должен подменять People Discovery.
-- Contact Discovery должен быть готов к будущему подключению Apollo, Hunter, Clay, People Data Labs, Dropcontact.
-- Архитектура не должна быть жёстко привязана к одному enrichment-провайдеру.
-- Campaign Details показывает найденного человека и лучший способ связаться.
-- Telegram Card показывает лучший контактный канал и confidence.
+- Identity Discovery использует результаты Person Intelligence как главный источник.
+- Для каждого найденного человека строится Identity Profile.
+- Система ищет все доступные каналы коммуникации.
+- Каждый найденный канал получает Confidence Score.
+- Каждый канал содержит источник происхождения.
+- Для каждого канала определяется Contact Type.
+- Система определяет:
+  - Primary Contact Channel;
+  - Fallback Channel;
+  - Alternative Channels.
+- Система никогда не генерирует вымышленные контакты.
+- Если контакт отсутствует - честно фиксирует это.
+- Если персональный контакт отсутствует - предлагает лучший подтверждённый fallback.
+- Identity Discovery полностью независим от конкретного enrichment-provider.
+- Архитектура готова к Apollo, Clay, Hunter, People Data Labs, Dropcontact и другим provider'ам.
+- Campaign Details показывает Identity Profile человека.
+- Telegram Card показывает лучший канал первого контакта.
+
+---
+
+#### Identity Discovery Rules
+
+Для каждого найденного человека система должна искать:
+
+##### Tier 1
+
+- подтверждённый рабочий email;
+- LinkedIn Profile;
+- Telegram;
+- рабочий телефон.
+
+##### Tier 2
+
+- Personal Website;
+- X (Twitter);
+- GitHub;
+- Instagram;
+- Facebook;
+- YouTube;
+- Medium;
+- Substack.
+
+##### Tier 3
+
+- Department Email;
+- Company Contact Form;
+- Company LinkedIn;
+- Company Telegram;
+- Company Website.
+
+##### Tier 4
+
+- Generic Email;
+- Generic Contact Form.
+
+Каждый найденный канал должен быть подтверждён источником.
+
+---
 
 #### Contact Channel Ranking Rules
 
 Приоритет каналов:
 
-1. подтверждённый work email человека
-2. LinkedIn человека
-3. Telegram человека
-4. телефон человека
-5. общий email отдела
-6. общий email компании
-7. форма сайта
-8. LinkedIn компании
-9. сайт компании
-10. no contact found
+1. подтверждённый рабочий email;
+2. LinkedIn найденного человека;
+3. Telegram найденного человека;
+4. рабочий телефон;
+5. персональный сайт;
+6. X (Twitter);
+7. GitHub;
+8. Instagram;
+9. общий email отдела;
+10. общий email компании;
+11. форма сайта;
+12. LinkedIn компании;
+13. сайт компании;
+14. no contact found.
 
-Ранжирование должно учитывать:
+При ранжировании учитывать:
 
-- принадлежит ли контакт конкретному найденному человеку;
-- является ли контакт персональным или общим;
-- есть ли источник данных;
-- насколько источник надёжен;
-- есть ли совпадение с primary person;
-- есть ли связь с нужным department;
-- можно ли реально использовать канал для outreach.
+- принадлежит ли канал найденному человеку;
+- совпадает ли канал с Primary Person;
+- подтверждён ли источник;
+- относится ли канал к нужному department;
+- можно ли использовать канал для первого outreach;
+- confidence канала.
 
-#### Contact Confidence Rules
+---
+
+#### Identity Confidence Rules
 
 Высокий confidence:
 
-- персональный work email с источником;
-- LinkedIn profile найденного primary person;
-- контакт явно связан с именем / ролью человека;
-- источник подтверждает связь с компанией.
+- канал принадлежит найденному человеку;
+- подтверждён несколькими источниками;
+- совпадает компания;
+- совпадает должность.
 
 Средний confidence:
 
-- общий department email;
-- LinkedIn компании;
-- форма сайта с релевантным routing;
-- контактная страница компании.
+- подтверждён один источник;
+- связь с человеком вероятна;
+- совпадает компания.
 
 Низкий confidence:
 
-- общий info@ email;
-- generic contact page;
-- social profile компании без персонального человека;
-- слабый или косвенный источник.
+- канал принадлежит компании;
+- человек не подтверждён;
+- связь косвенная.
 
 Нулевой confidence:
 
-- контакт выдуман;
-- email сгенерирован без подтверждения;
-- LinkedIn не связан с найденным человеком;
-- нет источника;
-- данные не относятся к компании.
+- канал выдуман;
+- источник отсутствует;
+- невозможно подтвердить принадлежность.
+
+---
 
 #### Provider Layer Requirements
 
-Contact Discovery должен быть независим от конкретного провайдера.
+Identity Discovery не должен зависеть от конкретного сервиса.
 
-Нужно подготовить контракт для будущих провайдеров:
+Архитектура должна поддерживать:
 
-- Apollo
-- Hunter
-- Clay
-- People Data Labs
-- Dropcontact
-- Public website scraping
-- Manual upload / CSV
+- Apollo;
+- Clay;
+- Hunter;
+- People Data Labs;
+- Dropcontact;
+- LinkedIn;
+- Public Website;
+- Company Website;
+- Manual Import.
 
-Добавление нового contact provider не должно требовать переписывания основной логики Contact Discovery.
+Добавление нового provider не должно требовать переписывания Identity Discovery.
+
+---
 
 #### Diagnostics Requirements
 
 В diagnostics / metadata должны быть видны:
 
-- primary person
-- selected contact channel
-- selected contact value
-- contact confidence score
-- contact source
-- fallback channel
-- alternative channels
-- reason why this channel was selected
-- missing contact information
-- recommended next action
+- primary person;
+- identity profile;
+- available channels;
+- selected contact channel;
+- channel confidence;
+- source;
+- fallback channel;
+- alternative channels;
+- missing channels;
+- identity confidence;
+- why this channel was selected;
+- recommended next action.
 
 Recommended next action:
 
@@ -166,9 +213,13 @@ Recommended next action:
 - `manual_review`
 - `skip_until_contact_found`
 
+---
+
 #### Routes To Check
 
 - `/leadgen`
+
+---
 
 #### API To Check
 
@@ -176,31 +227,47 @@ Recommended next action:
 - `GET /api/leadgen/campaigns/:id`
 - `GET /api/leadgen/signal-pipeline-test`
 
+---
+
 #### Expected UI / Behavior
 
 Campaign Details показывает:
 
-- Primary Person
-- должность
-- department
-- Best Contact Method
-- contact value
-- confidence
-- source
-- fallback channel
-- alternative channels
-- recommended next action
+- Primary Person;
+- должность;
+- department;
+- Identity Profile;
+- Best Contact Method;
+- Contact Value;
+- Confidence;
+- Source;
+- Fallback Channel;
+- Alternative Channels;
+- Recommended Next Action.
 
 Telegram Card показывает:
 
-- компанию
-- причину обращения
-- primary person
-- лучший канал связи
-- confidence контакта
-- fallback, если прямой контакт не найден
+- компанию;
+- причину обращения;
+- Primary Person;
+- лучший канал связи;
+- confidence;
+- fallback;
+- identity summary.
 
-Если подходящий контакт не найден, система честно пишет:
+Если подтверждённый контакт отсутствует, система честно пишет:
 
 ```text
-No confirmed contact found. Recommended next action: run enrichment.
+No confirmed personal contact found.
+
+Identity profile created successfully.
+
+Recommended next action: run enrichment.
+```
+
+При этом пользователь понимает:
+
+- кого система хочет найти;
+- какие каналы уже проверены;
+- каких данных ещё не хватает;
+- какой следующий шаг необходимо выполнить.

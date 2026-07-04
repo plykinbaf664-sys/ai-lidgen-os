@@ -117,6 +117,45 @@ function getPersonSourceUrl(person: PersonCandidate): string | null {
   return person.linkedin_url;
 }
 
+function getPersonMetadataUrl(
+  person: PersonCandidate,
+  key: string,
+): string | null {
+  const value = person.metadata[key];
+
+  return typeof value === "string" ? normalizeUrl(value) : null;
+}
+
+function getPersonSocialProfiles(
+  person: PersonCandidate,
+): Array<{ kind: string; url: string }> {
+  const metadataUrlKeys = [
+    ["personal_website_url", "personal_website"],
+    ["website_url", "personal_website"],
+    ["x_url", "x"],
+    ["twitter_url", "x"],
+    ["github_url", "github"],
+    ["instagram_url", "instagram"],
+    ["facebook_url", "facebook"],
+    ["youtube_url", "youtube"],
+    ["medium_url", "medium"],
+    ["substack_url", "substack"],
+  ] as const;
+
+  return metadataUrlKeys.reduce<Array<{ kind: string; url: string }>>(
+    (profiles, [key, kind]) => {
+      const url = getPersonMetadataUrl(person, key);
+
+      if (url) {
+        profiles.push({ kind, url });
+      }
+
+      return profiles;
+    },
+    [],
+  );
+}
+
 function createContact({
   input,
   type,
@@ -271,6 +310,29 @@ export class PublicContactProvider implements ContactProvider {
           }),
         );
       }
+
+      for (const profile of getPersonSocialProfiles(person)) {
+        contacts.push(
+          createContact({
+            input,
+            type: "social_profile",
+            index: contacts.length,
+            contactUrl: profile.url,
+            fullName: person.full_name,
+            roleTitle: person.role_title,
+            department: person.department,
+            sourceUrl: profile.url,
+            sourceLabel: person.source,
+            confidenceScore: Math.max(person.confidence_score - 12, 0),
+            metadata: {
+              ...personMetadata,
+              social_profile_kind: profile.kind,
+              note:
+                "Personal social profile supplied by people discovery metadata; no profile was generated.",
+            },
+          }),
+        );
+      }
     }
 
     for (const email of emails) {
@@ -335,7 +397,7 @@ export class PublicContactProvider implements ContactProvider {
       contacts.push(
         createContact({
           input,
-          type: "website_form",
+          type: "company_website",
           index: contacts.length,
           contactUrl: companyWebsite,
           sourceUrl: input.company.source_url ?? companyWebsite,

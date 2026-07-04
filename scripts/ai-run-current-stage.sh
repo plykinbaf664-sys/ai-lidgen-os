@@ -16,6 +16,7 @@ cd "$ROOT" || exit 1
 
 SOURCE=".ai/current-stage.md"
 FINAL=".ai/final-report.md"
+SOURCE_BACKUP=".ai/current-stage.runtime-backup.md"
 
 mkdir -p .ai
 
@@ -51,10 +52,12 @@ if [[ ! -s "$SOURCE" ]]; then
   exit 1
 fi
 
-SOURCE_STAGE_CONTENT="$(cat "$SOURCE")"
 restore_source_stage() {
-  printf '%s\n' "$SOURCE_STAGE_CONTENT" > "$SOURCE"
+  if [[ -s "$SOURCE_BACKUP" ]]; then
+    cp "$SOURCE_BACKUP" "$SOURCE"
+  fi
 }
+cp "$SOURCE" "$SOURCE_BACKUP"
 trap restore_source_stage EXIT
 
 scripts/ai-generate-current-task.sh

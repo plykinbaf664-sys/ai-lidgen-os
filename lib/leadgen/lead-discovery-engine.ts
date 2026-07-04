@@ -20,6 +20,7 @@ import type {
   LeadgenSignal,
   LeadPriority,
   OpportunityAssessment,
+  ContactDiscoveryResult,
   PeopleDiscoveryResult,
   SignalType,
 } from "@/lib/leadgen/types";
@@ -238,6 +239,31 @@ function attachLeadPriorityToCompany(
     metadata: {
       ...company.metadata,
       lead_priority: leadPriority,
+    },
+  };
+}
+
+function attachContactDiscoveryToCompany(
+  company: LeadgenCompany,
+  contactDiscovery: ContactDiscoveryResult,
+): LeadgenCompany {
+  return {
+    ...company,
+    metadata: {
+      ...company.metadata,
+      contact_discovery: {
+        discovery_status: contactDiscovery.discovery_status,
+        persona_search_status: contactDiscovery.persona_search_status,
+        recommended_next_action: contactDiscovery.recommended_next_action,
+        providers_used: contactDiscovery.providers_used,
+        warnings: contactDiscovery.warnings,
+        best_outreach_entry_id: contactDiscovery.best_outreach_entry?.id ?? null,
+        fallback_entry_id: contactDiscovery.fallback_entry?.id ?? null,
+        alternative_channel_ids: contactDiscovery.alternative_channels.map(
+          (contact) => contact.id,
+        ),
+      },
+      identity_profile: contactDiscovery.identity_profile,
     },
   };
 }
@@ -705,7 +731,10 @@ export async function runLeadDiscoveryEngine({
     leadRecords.map((record, index) => [
       record.company.id,
       attachLeadPriorityToCompany(
-        record.company,
+        attachContactDiscoveryToCompany(
+          record.company,
+          contactDiscoveryResults[index],
+        ),
         prioritizeLead({
           candidate: record.candidate,
           company: record.company,

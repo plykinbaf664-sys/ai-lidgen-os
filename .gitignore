@@ -33,6 +33,7 @@ yarn-error.log*
 .ai/task-generation-report.md
 .ai/task-validation-report.md
 .ai/current-task.backup.md
+.ai/current-stage.runtime-backup.md
 .ai/generate-current-task.prompt.tmp
 .ai/current-task.md.template
 .ai/codex-prompt-*.tmp

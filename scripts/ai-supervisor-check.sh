@@ -16,6 +16,15 @@ DEV_LOG=".ai/dev-server.log"
 PORT="${PORT:-3000}"
 BASE_URL="${BASE_URL:-http://localhost:$PORT}"
 
+resolve_cmd() {
+  local base="$1"
+  if command -v "${base}.cmd" >/dev/null 2>&1; then
+    command -v "${base}.cmd"
+  else
+    command -v "$base"
+  fi
+}
+
 read_config() {
   local key="$1"
   local default="$2"
@@ -99,7 +108,8 @@ DEV_SERVER_TIMEOUT_SECONDS="$(read_config DEV_SERVER_TIMEOUT_SECONDS 60)"
 SMOKE_TIMEOUT_SECONDS="$(read_config SMOKE_TIMEOUT_SECONDS 30)"
 export PORT BASE_URL SMOKE_TIMEOUT_SECONDS
 
-npm run dev -- --port "$PORT" > "$DEV_LOG" 2>&1 &
+NPM_CMD="$(resolve_cmd npm)"
+"$NPM_CMD" run dev -- --port "$PORT" > "$DEV_LOG" 2>&1 &
 SERVER_PID=$!
 
 server_ready=false

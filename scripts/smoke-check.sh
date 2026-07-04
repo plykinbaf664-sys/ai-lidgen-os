@@ -21,14 +21,15 @@ mkdir -p .ai
 extract_section() {
   local header="$1"
   awk -v header="$header" '
+    $0 ~ "^#+[[:space:]]+" header "$" {capture=1; next}
     $0 ~ "^" header ":" {capture=1; next}
     capture && $0 ~ "^[A-Za-z /]+:" {capture=0}
-    capture && $0 ~ "^### " {capture=0}
+    capture && $0 ~ "^#+[[:space:]]+" {capture=0}
     capture {print}
   ' "$STAGE_FILE" |
     sed -E 's/^[[:space:]]*-[[:space:]]*//' |
     sed -E 's/^[[:space:]]+|[[:space:]]+$//g' |
-    grep -Ev '^(|\\.\\.\\.)$' || true
+    grep -Eiv '^(|\\.\\.\\.|none|n/a)$' || true
 }
 
 check_url() {

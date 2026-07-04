@@ -2,9 +2,9 @@
 
 ## Goal
 
-Stage 6 — Contact Discovery & Enrichment Layer
+Stage 8 - Identity Discovery & Contact Intelligence Layer
 
-Построить полноценный слой Contact Discovery & Enrichment, который использует результаты People Discovery и определяет лучший реальный способ связаться с найденным ЛПР.
+Построить полноценный слой Identity Discovery & Contact Intelligence, который использует результаты Person Intelligence и определяет полный цифровой профиль найденного ЛПР.
 
 После завершения этапа Leadgen OS должна отвечать не только на вопросы:
 
@@ -14,9 +14,15 @@ Stage 6 — Contact Discovery & Enrichment Layer
 
 но и на вопрос:
 
-> "Как именно с этим человеком лучше связаться?"
+> "Где находится этот человек и через какой канал лучше всего начать коммуникацию?"
 
-Contact Discovery должен находить доступные каналы связи, оценивать их качество, определять лучший канал outreach и честно фиксировать отсутствие контактов, если данных нет.
+Identity Discovery должен строить цифровую карту присутствия человека, находить доступные каналы связи, оценивать их качество и выбирать лучший способ первого контакта.
+
+Система не должна ограничиваться поиском email.
+
+Она должна искать любую подтверждённую цифровую идентичность человека.
+
+---
 
 ## Business Meaning
 
@@ -24,36 +30,25 @@ Reduce manual duplication in the autonomous development workflow and execute the
 
 ## Global Acceptance Criteria
 
-- Contact Discovery использует результат People Discovery как главный источник целевого человека.
-- Система определяет лучший доступный канал связи для primary person.
-- Для каждого найденного контакта есть confidence score.
-- Для каждого контакта есть source / источник данных.
-- Для каждого контакта есть contact type:
-  - work_email
-  - linkedin
-  - telegram
-  - phone
-  - website_form
-  - generic_email
-  - company_social
-  - no_contact_found
-- Система умеет выбирать:
-  - best outreach channel
-  - fallback channel
-  - alternative channels
-- Если прямой контакт человека не найден, система не выдумывает email, LinkedIn, Telegram или телефон.
-- Если контакта нет, система честно фиксирует `no_contact_found`.
-- Если нет персонального контакта, система предлагает лучший fallback:
-  - общий email
-  - форма сайта
-  - LinkedIn компании
-  - сайт компании
-- Contact Discovery не должен работать раньше People Discovery.
-- Contact Discovery не должен подменять People Discovery.
-- Contact Discovery должен быть готов к будущему подключению Apollo, Hunter, Clay, People Data Labs, Dropcontact.
-- Архитектура не должна быть жёстко привязана к одному enrichment-провайдеру.
-- Campaign Details показывает найденного человека и лучший способ связаться.
-- Telegram Card показывает лучший контактный канал и confidence.
+- Identity Discovery использует результаты Person Intelligence как главный источник.
+- Для каждого найденного человека строится Identity Profile.
+- Система ищет все доступные каналы коммуникации.
+- Каждый найденный канал получает Confidence Score.
+- Каждый канал содержит источник происхождения.
+- Для каждого канала определяется Contact Type.
+- Система определяет:
+  - Primary Contact Channel;
+  - Fallback Channel;
+  - Alternative Channels.
+- Система никогда не генерирует вымышленные контакты.
+- Если контакт отсутствует - честно фиксирует это.
+- Если персональный контакт отсутствует - предлагает лучший подтверждённый fallback.
+- Identity Discovery полностью независим от конкретного enrichment-provider.
+- Архитектура готова к Apollo, Clay, Hunter, People Data Labs, Dropcontact и другим provider'ам.
+- Campaign Details показывает Identity Profile человека.
+- Telegram Card показывает лучший канал первого контакта.
+
+---
 
 ## Stages
 
@@ -72,6 +67,7 @@ Define the minimal contract and file boundaries required by the source stage.
 - `lib/leadgen/public-contact-provider.ts`
 - `lib/leadgen/people-provider.ts`
 - `lib/leadgen/people-provider-manager.ts`
+- `lib/leadgen/person-intelligence.ts`
 - `lib/leadgen/types.ts`
 - `lib/leadgen/lead-discovery-engine.ts`
 - `lib/leadgen/telegram-card.ts`
@@ -80,10 +76,13 @@ Define the minimal contract and file boundaries required by the source stage.
 
 Можно создавать при необходимости:
 
-- `lib/leadgen/contact-enrichment/`
-- `lib/leadgen/contact-enrichment-engine.ts`
-- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/identity-discovery/`
+- `lib/leadgen/identity-discovery-engine.ts`
 - `lib/leadgen/contact-intelligence.ts`
+- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/identity-confidence.ts`
+
+---
 
 #### Acceptance Criteria
 
@@ -118,6 +117,7 @@ Implement or adjust the ranking, scoring, confidence, or decision logic required
 - `lib/leadgen/public-contact-provider.ts`
 - `lib/leadgen/people-provider.ts`
 - `lib/leadgen/people-provider-manager.ts`
+- `lib/leadgen/person-intelligence.ts`
 - `lib/leadgen/types.ts`
 - `lib/leadgen/lead-discovery-engine.ts`
 - `lib/leadgen/telegram-card.ts`
@@ -126,43 +126,35 @@ Implement or adjust the ranking, scoring, confidence, or decision logic required
 
 Можно создавать при необходимости:
 
-- `lib/leadgen/contact-enrichment/`
-- `lib/leadgen/contact-enrichment-engine.ts`
-- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/identity-discovery/`
+- `lib/leadgen/identity-discovery-engine.ts`
 - `lib/leadgen/contact-intelligence.ts`
+- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/identity-confidence.ts`
+
+---
 
 #### Acceptance Criteria
 
-- Contact Discovery использует результат People Discovery как главный источник целевого человека.
-- Система определяет лучший доступный канал связи для primary person.
-- Для каждого найденного контакта есть confidence score.
-- Для каждого контакта есть source / источник данных.
-- Для каждого контакта есть contact type:
-  - work_email
-  - linkedin
-  - telegram
-  - phone
-  - website_form
-  - generic_email
-  - company_social
-  - no_contact_found
-- Система умеет выбирать:
-  - best outreach channel
-  - fallback channel
-  - alternative channels
-- Если прямой контакт человека не найден, система не выдумывает email, LinkedIn, Telegram или телефон.
-- Если контакта нет, система честно фиксирует `no_contact_found`.
-- Если нет персонального контакта, система предлагает лучший fallback:
-  - общий email
-  - форма сайта
-  - LinkedIn компании
-  - сайт компании
-- Contact Discovery не должен работать раньше People Discovery.
-- Contact Discovery не должен подменять People Discovery.
-- Contact Discovery должен быть готов к будущему подключению Apollo, Hunter, Clay, People Data Labs, Dropcontact.
-- Архитектура не должна быть жёстко привязана к одному enrichment-провайдеру.
-- Campaign Details показывает найденного человека и лучший способ связаться.
-- Telegram Card показывает лучший контактный канал и confidence.
+- Identity Discovery использует результаты Person Intelligence как главный источник.
+- Для каждого найденного человека строится Identity Profile.
+- Система ищет все доступные каналы коммуникации.
+- Каждый найденный канал получает Confidence Score.
+- Каждый канал содержит источник происхождения.
+- Для каждого канала определяется Contact Type.
+- Система определяет:
+  - Primary Contact Channel;
+  - Fallback Channel;
+  - Alternative Channels.
+- Система никогда не генерирует вымышленные контакты.
+- Если контакт отсутствует - честно фиксирует это.
+- Если персональный контакт отсутствует - предлагает лучший подтверждённый fallback.
+- Identity Discovery полностью независим от конкретного enrichment-provider.
+- Архитектура готова к Apollo, Clay, Hunter, People Data Labs, Dropcontact и другим provider'ам.
+- Campaign Details показывает Identity Profile человека.
+- Telegram Card показывает лучший канал первого контакта.
+
+---
 
 #### Routes To Check
 
@@ -191,6 +183,7 @@ Connect the core logic to existing provider or integration boundaries allowed by
 - `lib/leadgen/public-contact-provider.ts`
 - `lib/leadgen/people-provider.ts`
 - `lib/leadgen/people-provider-manager.ts`
+- `lib/leadgen/person-intelligence.ts`
 - `lib/leadgen/types.ts`
 - `lib/leadgen/lead-discovery-engine.ts`
 - `lib/leadgen/telegram-card.ts`
@@ -199,10 +192,13 @@ Connect the core logic to existing provider or integration boundaries allowed by
 
 Можно создавать при необходимости:
 
-- `lib/leadgen/contact-enrichment/`
-- `lib/leadgen/contact-enrichment-engine.ts`
-- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/identity-discovery/`
+- `lib/leadgen/identity-discovery-engine.ts`
 - `lib/leadgen/contact-intelligence.ts`
+- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/identity-confidence.ts`
+
+---
 
 #### Acceptance Criteria
 
@@ -237,6 +233,7 @@ Wire the stage result into the existing pipeline and UI surfaces allowed by the 
 - `lib/leadgen/public-contact-provider.ts`
 - `lib/leadgen/people-provider.ts`
 - `lib/leadgen/people-provider-manager.ts`
+- `lib/leadgen/person-intelligence.ts`
 - `lib/leadgen/types.ts`
 - `lib/leadgen/lead-discovery-engine.ts`
 - `lib/leadgen/telegram-card.ts`
@@ -245,10 +242,13 @@ Wire the stage result into the existing pipeline and UI surfaces allowed by the 
 
 Можно создавать при необходимости:
 
-- `lib/leadgen/contact-enrichment/`
-- `lib/leadgen/contact-enrichment-engine.ts`
-- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/identity-discovery/`
+- `lib/leadgen/identity-discovery-engine.ts`
 - `lib/leadgen/contact-intelligence.ts`
+- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/identity-confidence.ts`
+
+---
 
 #### Acceptance Criteria
 
@@ -283,6 +283,7 @@ Verify the stage behavior with deterministic checks, diagnostics, and final qual
 - `lib/leadgen/public-contact-provider.ts`
 - `lib/leadgen/people-provider.ts`
 - `lib/leadgen/people-provider-manager.ts`
+- `lib/leadgen/person-intelligence.ts`
 - `lib/leadgen/types.ts`
 - `lib/leadgen/lead-discovery-engine.ts`
 - `lib/leadgen/telegram-card.ts`
@@ -291,10 +292,13 @@ Verify the stage behavior with deterministic checks, diagnostics, and final qual
 
 Можно создавать при необходимости:
 
-- `lib/leadgen/contact-enrichment/`
-- `lib/leadgen/contact-enrichment-engine.ts`
-- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/identity-discovery/`
+- `lib/leadgen/identity-discovery-engine.ts`
 - `lib/leadgen/contact-intelligence.ts`
+- `lib/leadgen/contact-channel-ranking.ts`
+- `lib/leadgen/identity-confidence.ts`
+
+---
 
 #### Acceptance Criteria
 

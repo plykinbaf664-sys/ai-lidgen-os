@@ -124,10 +124,131 @@ export type ContactEntryRole =
   | "fallback_entry"
   | "other_entry";
 
+export type ContactRecommendedNextAction =
+  | "send_outreach"
+  | "run_enrichment"
+  | "use_fallback_channel"
+  | "manual_review"
+  | "skip_until_contact_found";
+
+export type IdentityChannelTier = 1 | 2 | 3 | 4;
+
+export type IdentityChannelOwnership =
+  | "primary_person"
+  | "alternative_person"
+  | "department"
+  | "company"
+  | "unknown";
+
+export type IdentityChannel = {
+  id: string;
+  contact_type: LeadgenContactType;
+  label: string;
+  value: string | null;
+  url: string | null;
+  tier: IdentityChannelTier;
+  ownership: IdentityChannelOwnership;
+  confidence_score: number;
+  source_label: string | null;
+  source_url: string | null;
+  can_use_for_outreach: boolean;
+  why_selected?: string;
+};
+
+export type IdentityProfile = {
+  person: PersonCandidate | null;
+  person_intelligence?: PersonIntelligence | null;
+  identity_confidence: number;
+  identity_summary: string;
+  available_channels: IdentityChannel[];
+  primary_contact_channel: IdentityChannel | null;
+  fallback_channel: IdentityChannel | null;
+  alternative_channels: IdentityChannel[];
+  missing_channels: string[];
+  recommended_next_action: ContactRecommendedNextAction;
+  why_channel_selected: string;
+};
+
+export type LeadgenContactMetadata = {
+  entry_role?: ContactEntryRole;
+  persona_search_status?: PersonaSearchStatus;
+  recommended_next_action?: ContactRecommendedNextAction;
+  best_outreach_channel?: LeadgenContactType | null;
+  best_outreach_contact_id?: string | null;
+  best_outreach_confidence?: number | null;
+  fallback_channel?: LeadgenContactType | null;
+  fallback_contact_id?: string | null;
+  fallback_confidence?: number | null;
+  alternative_channel_ids?: string[];
+  alternative_channels?: Array<{
+    id: string;
+    contact_type: LeadgenContactType;
+    confidence_score: number;
+    source_label: string | null;
+  }>;
+  people_discovery_role?: "primary" | "alternative";
+  extraction?: string;
+  phone?: string;
+  reason?: string;
+  [key: string]: unknown;
+};
+
 export type PeopleDiscoverySearchStatus =
   | "person_found"
   | "no_person_found"
   | "provider_unavailable";
+
+export type PersonConfidenceLevel =
+  | "confirmed"
+  | "high_confidence"
+  | "medium_confidence"
+  | "low_confidence"
+  | "unknown";
+
+export type PersonContactAvailability = {
+  has_work_email: boolean;
+  has_linkedin: boolean;
+  has_phone: boolean;
+  has_telegram: boolean;
+};
+
+export type PersonRecommendedNextAction =
+  | "contact_primary_person"
+  | "contact_alternative_person"
+  | "run_enrichment"
+  | "manual_review"
+  | "monitor_changes";
+
+export type PersonIntelligence = {
+  candidate: PersonCandidate;
+  rank_score: number;
+  person_score: number;
+  persona_match_score: number;
+  business_problem_ownership: DecisionMakerPriority;
+  decision_authority: DecisionMakerPriority;
+  influence_level: DecisionMakerPriority;
+  confidence_score: number;
+  confidence_level: PersonConfidenceLevel;
+  contact_availability: PersonContactAvailability;
+  matched_keywords: string[];
+  reasoning: string;
+  selection_reason: string;
+  strengths: string[];
+  weaknesses: string[];
+  why_not_other_candidates: string[];
+  recommended_next_action: PersonRecommendedNextAction;
+};
+
+export type PersonRankingInput = {
+  candidates: PersonCandidate[];
+  decisionMaker: DecisionMakerProfile;
+};
+
+export type PersonRankingResult = {
+  primary_person: PersonIntelligence | null;
+  alternative_people: PersonIntelligence[];
+  ranked_people: PersonIntelligence[];
+};
 
 export type PersonCandidate = {
   full_name: string;
@@ -146,6 +267,10 @@ export type PeopleDiscoveryResult = {
   primary_person: PersonCandidate | null;
   alternative_people: PersonCandidate[];
   all_candidates: PersonCandidate[];
+  primary_person_intelligence?: PersonIntelligence | null;
+  alternative_people_intelligence?: PersonIntelligence[];
+  ranked_people?: PersonIntelligence[];
+  selection_reasoning?: string | null;
   search_status: PeopleDiscoverySearchStatus;
   providers_used: string[];
 };
@@ -290,7 +415,7 @@ export type LeadgenContact = {
   source_label: string | null;
   confidence_score: number;
   is_primary: boolean;
-  metadata: Record<string, unknown>;
+  metadata: LeadgenContactMetadata;
   created_at: string;
 };
 
@@ -447,8 +572,10 @@ export type ContactDiscoveryResult = {
   best_outreach_entry: LeadgenContact | null;
   fallback_entry: LeadgenContact | null;
   alternative_channels: LeadgenContact[];
+  identity_profile: IdentityProfile;
   persona_search_status: PersonaSearchStatus;
   discovery_status: ContactDiscoveryStatus;
+  recommended_next_action: ContactRecommendedNextAction;
   providers_used: string[];
   warnings: string[];
 };

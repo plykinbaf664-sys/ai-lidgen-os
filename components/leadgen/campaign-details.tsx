@@ -13,6 +13,8 @@ import type {
   LeadPriority,
   LeadgenSignal,
   OpportunityAssessment,
+  IdentityProfile,
+  IdentityChannel,
   SignalType,
 } from "@/lib/leadgen/types";
 
@@ -106,11 +108,48 @@ type PersonCandidateView = {
   confidence_score?: number;
 };
 
+type PersonIntelligenceView = {
+  candidate: PersonCandidateView;
+  person_score?: number;
+  persona_match_score?: number;
+  business_problem_ownership?: string;
+  decision_authority?: string;
+  influence_level?: string;
+  confidence_score?: number;
+  recommended_next_action?: string;
+  selection_reason?: string;
+  reasoning?: string;
+  matched_keywords?: string[];
+  strengths?: string[];
+  weaknesses?: string[];
+  why_not_other_candidates?: string[];
+};
+
 type PeopleDiscoveryView = {
   primary_person?: PersonCandidateView;
   alternative_people?: PersonCandidateView[];
+  primary_person_intelligence?: PersonIntelligenceView;
+  alternative_people_intelligence?: PersonIntelligenceView[];
+  selection_reasoning?: string;
   search_status?: string;
   providers_used?: string[];
+};
+
+type IdentityChannelView = Partial<IdentityChannel>;
+
+type IdentityProfileView = Partial<
+  Omit<
+    IdentityProfile,
+    | "available_channels"
+    | "primary_contact_channel"
+    | "fallback_channel"
+    | "alternative_channels"
+  >
+> & {
+  available_channels?: IdentityChannelView[];
+  primary_contact_channel?: IdentityChannelView | null;
+  fallback_channel?: IdentityChannelView | null;
+  alternative_channels?: IdentityChannelView[];
 };
 
 type LeadPriorityView = Partial<LeadPriority>;
@@ -283,6 +322,60 @@ function getPeopleCandidatesValue(value: unknown): PersonCandidateView[] | undef
   return candidates.length > 0 ? candidates : undefined;
 }
 
+function getPersonIntelligenceValue(
+  value: unknown,
+): PersonIntelligenceView | undefined {
+  if (typeof value !== "object" || value === null || Array.isArray(value)) {
+    return undefined;
+  }
+
+  const intelligence = value as Record<string, unknown>;
+  const candidate = getPersonCandidateValue(intelligence.candidate) ?? {};
+
+  return {
+    candidate,
+    person_score: getNumberValue(intelligence, "person_score"),
+    persona_match_score: getNumberValue(intelligence, "persona_match_score"),
+    business_problem_ownership: getStringValue(
+      intelligence,
+      "business_problem_ownership",
+    ),
+    decision_authority: getStringValue(intelligence, "decision_authority"),
+    influence_level: getStringValue(intelligence, "influence_level"),
+    confidence_score: getNumberValue(intelligence, "confidence_score"),
+    recommended_next_action: getStringValue(
+      intelligence,
+      "recommended_next_action",
+    ),
+    selection_reason: getStringValue(intelligence, "selection_reason"),
+    reasoning: getStringValue(intelligence, "reasoning"),
+    matched_keywords: getStringListValue(intelligence, "matched_keywords"),
+    strengths: getStringListValue(intelligence, "strengths"),
+    weaknesses: getStringListValue(intelligence, "weaknesses"),
+    why_not_other_candidates: getStringListValue(
+      intelligence,
+      "why_not_other_candidates",
+    ),
+  };
+}
+
+function getPersonIntelligenceListValue(
+  value: unknown,
+): PersonIntelligenceView[] | undefined {
+  if (!Array.isArray(value)) {
+    return undefined;
+  }
+
+  const values = value
+    .map(getPersonIntelligenceValue)
+    .filter(
+      (intelligence): intelligence is PersonIntelligenceView =>
+        Boolean(intelligence),
+    );
+
+  return values.length > 0 ? values : undefined;
+}
+
 function getLeadPeopleDiscovery(
   lead: LeadgenLead,
   companiesById: Map<string, LeadgenCampaignDetails["companies"][number]>,
@@ -312,6 +405,13 @@ function getLeadPeopleDiscovery(
     alternative_people: getPeopleCandidatesValue(
       peopleDiscovery.alternative_people,
     ),
+    primary_person_intelligence: getPersonIntelligenceValue(
+      peopleDiscovery.primary_person_intelligence,
+    ),
+    alternative_people_intelligence: getPersonIntelligenceListValue(
+      peopleDiscovery.alternative_people_intelligence,
+    ),
+    selection_reasoning: getStringValue(peopleDiscovery, "selection_reasoning"),
     search_status: getStringValue(peopleDiscovery, "search_status"),
     providers_used: getStringListValue(peopleDiscovery, "providers_used"),
   };
@@ -361,10 +461,45 @@ function getLeadOpportunity(
   return rawOpportunity as OpportunityView;
 }
 
+function getLeadIdentityProfile({
+  lead,
+  companiesById,
+  contacts,
+}: {
+  lead: LeadgenLead;
+  companiesById: Map<string, LeadgenCampaignDetails["companies"][number]>;
+  contacts: LeadgenContact[];
+}): IdentityProfileView {
+  const company = lead.company_id ? companiesById.get(lead.company_id) : null;
+  const rawIdentityProfile =
+    company?.metadata.identity_profile ??
+    contacts
+      .map((contact) => contact.metadata.identity_profile)
+      .find(
+        (value) =>
+          typeof value === "object" && value !== null && !Array.isArray(value),
+      );
+
+  if (
+    typeof rawIdentityProfile !== "object" ||
+    rawIdentityProfile === null ||
+    Array.isArray(rawIdentityProfile)
+  ) {
+    return {};
+  }
+
+  return rawIdentityProfile as IdentityProfileView;
+}
+
 function getRecommendedNextActionLabel(action?: string): string {
   const labels: Record<string, string> = {
     send_outreach: "Send outreach",
     run_enrichment: "Run enrichment",
+    use_fallback_channel: "Use fallback channel",
+    skip_until_contact_found: "Skip until contact is found",
+    contact_primary_person: "Contact primary person",
+    contact_alternative_person: "Contact alternative person",
+    monitor_changes: "Monitor changes",
     find_target_persona: "Find target persona",
     monitor_for_new_signal: "Monitor for a stronger signal",
     defer: "Defer",
@@ -603,6 +738,11 @@ export function CampaignDetails({
               contactsByLeadId,
             );
             const fallbackEntry = getFallbackEntryForLead(lead, contactsByLeadId);
+            const identityProfile = getLeadIdentityProfile({
+              lead,
+              companiesById,
+              contacts: leadContacts,
+            });
             const contactIntelligence = getContactIntelligence({
               peopleDiscovery,
               contacts: leadContacts,
@@ -618,6 +758,10 @@ export function CampaignDetails({
             const personaSearchStatus = getPersonaSearchStatus(
               bestOutreachEntry ?? fallbackEntry ?? bestContact,
             );
+            const primaryIdentityChannel =
+              identityProfile.primary_contact_channel ?? null;
+            const identityFallbackChannel =
+              identityProfile.fallback_channel ?? null;
 
             return (
               <article className="campaign-details-lead" key={lead.id}>
@@ -715,6 +859,37 @@ export function CampaignDetails({
                         Source: {contactIntelligence.best_method.source_label}
                       </p>
                     ) : null}
+                  </div>
+                  <div>
+                    <span className="field-label">Identity Profile</span>
+                    <p>
+                      {identityProfile.identity_summary ??
+                        "No confirmed personal contact found. Identity profile is not available for this lead yet."}
+                    </p>
+                    {typeof identityProfile.identity_confidence === "number" ? (
+                      <p className="company-domain">
+                        Identity confidence:{" "}
+                        {identityProfile.identity_confidence}/100
+                      </p>
+                    ) : null}
+                    <p className="company-domain">
+                      Best identity channel:{" "}
+                      {primaryIdentityChannel?.label ?? "Not found yet"}
+                    </p>
+                    {primaryIdentityChannel?.value ? (
+                      <p className="company-domain">
+                        {primaryIdentityChannel.value}
+                      </p>
+                    ) : null}
+                    <p className="company-domain">
+                      Fallback: {identityFallbackChannel?.label ?? "Not found"}
+                    </p>
+                    <p className="company-domain">
+                      Recommended next action:{" "}
+                      {getRecommendedNextActionLabel(
+                        identityProfile.recommended_next_action,
+                      )}
+                    </p>
                   </div>
                   <div>
                     <span className="field-label">Fallback entry</span>
@@ -940,6 +1115,114 @@ export function CampaignDetails({
                           "Found Person: Not found"}
                       </p>
                     </div>
+                    {peopleDiscovery.selection_reasoning ? (
+                      <div>
+                        <span className="field-label">Person selection reason</span>
+                        <p>{peopleDiscovery.selection_reasoning}</p>
+                      </div>
+                    ) : null}
+                    {peopleDiscovery.primary_person_intelligence ? (
+                      <div>
+                        <span className="field-label">Person intelligence</span>
+                        <p>
+                          Person{" "}
+                          {peopleDiscovery.primary_person_intelligence
+                            .person_score ?? 0}
+                          /100 - Persona{" "}
+                          {peopleDiscovery.primary_person_intelligence
+                            .persona_match_score ?? 0}
+                          /100 - Confidence{" "}
+                          {peopleDiscovery.primary_person_intelligence
+                            .confidence_score ?? 0}
+                          /100
+                        </p>
+                        <p className="company-domain">
+                          Ownership:{" "}
+                          {peopleDiscovery.primary_person_intelligence
+                            .business_problem_ownership ?? "unknown"}
+                          {" - Authority: "}
+                          {peopleDiscovery.primary_person_intelligence
+                            .decision_authority ?? "unknown"}
+                          {" - Influence: "}
+                          {peopleDiscovery.primary_person_intelligence
+                            .influence_level ?? "unknown"}
+                        </p>
+                        <p className="company-domain">
+                          Recommended next action:{" "}
+                          {getRecommendedNextActionLabel(
+                            peopleDiscovery.primary_person_intelligence
+                              .recommended_next_action,
+                          )}
+                        </p>
+                        {peopleDiscovery.primary_person_intelligence.strengths
+                          ?.length ? (
+                          <p className="company-domain">
+                            Strengths:{" "}
+                            {peopleDiscovery.primary_person_intelligence.strengths.join(
+                              " ",
+                            )}
+                          </p>
+                        ) : null}
+                        {peopleDiscovery.primary_person_intelligence.weaknesses
+                          ?.length ? (
+                          <p className="company-domain">
+                            Risks:{" "}
+                            {peopleDiscovery.primary_person_intelligence.weaknesses.join(
+                              " ",
+                            )}
+                          </p>
+                        ) : null}
+                        {peopleDiscovery.primary_person_intelligence
+                          .why_not_other_candidates?.length ? (
+                          <p className="company-domain">
+                            Why not alternatives:{" "}
+                            {peopleDiscovery.primary_person_intelligence.why_not_other_candidates.join(
+                              " ",
+                            )}
+                          </p>
+                        ) : null}
+                      </div>
+                    ) : null}
+                    {peopleDiscovery.alternative_people_intelligence?.length ? (
+                      <div>
+                        <span className="field-label">
+                          Alternative decision makers
+                        </span>
+                        <div className="campaign-details-signal-list">
+                          {peopleDiscovery.alternative_people_intelligence.map(
+                            (person, index) => (
+                              <article
+                                className="campaign-details-signal-card"
+                                key={`${lead.id}-person-intelligence-${index}`}
+                              >
+                                <div className="campaign-details-signal-heading">
+                                  <strong>{person.candidate.full_name}</strong>
+                                  <span className="mock-pill">
+                                    {person.person_score}/100
+                                  </span>
+                                </div>
+                                <p>
+                                  {[person.candidate.role_title, person.candidate.department]
+                                    .filter(Boolean)
+                                    .join(" - ") || "Role not available"}
+                                </p>
+                                <p className="company-domain">
+                                  Authority {person.decision_authority} -
+                                  Ownership {person.business_problem_ownership} -
+                                  Confidence {person.confidence_score}/100
+                                </p>
+                                <p className="company-domain">
+                                  Next:{" "}
+                                  {getRecommendedNextActionLabel(
+                                    person.recommended_next_action,
+                                  )}
+                                </p>
+                              </article>
+                            ),
+                          )}
+                        </div>
+                      </div>
+                    ) : null}
                     {peopleDiscovery.primary_person?.role_title ? (
                       <div>
                         <span className="field-label">Found role</span>
