@@ -393,6 +393,24 @@ function clampScore(score: number): number {
 }
 
 const gtmAnnouncementTerms = [
+  "анонсирует",
+  "анонсировала",
+  "анонсировал",
+  "объявила",
+  "объявил",
+  "представила",
+  "представил",
+  "запустила",
+  "запустил",
+  "запускает",
+  "выпустила",
+  "выпустил",
+  "теперь доступен",
+  "теперь доступна",
+  "новый продукт",
+  "новая функция",
+  "новая интеграция",
+  "выход на новый рынок",
   "announcing",
   "announces",
   "announced",
@@ -442,6 +460,13 @@ const gtmConfirmedEventPatterns = [
 ];
 
 const gtmTopicTerms = [
+  "запуск продукта",
+  "вывод продукта на рынок",
+  "стратегия запуска",
+  "релиз продукта",
+  "клиентский успех",
+  "продуктовый маркетинг",
+  "чеклист запуска",
   "product launch",
   "go-to-market",
   "gtm",
@@ -464,6 +489,20 @@ const gtmTopicTerms = [
 ];
 
 const gtmSpecificityTerms = [
+  "версия",
+  "релиз",
+  "анонс",
+  "доступен сегодня",
+  "доступна сегодня",
+  "доступен сейчас",
+  "доступна сейчас",
+  "клиенты могут",
+  "пользователи могут",
+  "интеграция",
+  "функция",
+  "продукт",
+  "платформа",
+  "рынок",
   "version",
   "release",
   "announcement",
@@ -496,6 +535,14 @@ const gtmSpecificityTerms = [
 ];
 
 const gtmEducationalTerms = [
+  "как запустить",
+  "как вывести",
+  "руководство",
+  "гайд",
+  "стратегия",
+  "чеклист",
+  "советы",
+  "лучшие практики",
   "how to",
   "guide",
   "strategy",
@@ -530,6 +577,9 @@ const gtmEducationalTerms = [
   "фреймворк",
   "уроки",
 ];
+
+const nonEventGtmPagePattern =
+  /\b(glossary|resources?|learn|academy|guide|how-to|how to|template|checklist|best-practices|best practices|pricing|features?|product-launch(?:\/)?$|\u0441\u043b\u043e\u0432\u0430\u0440\u044c|\u0440\u0435\u0441\u0443\u0440\u0441\u044b|\u0433\u0430\u0439\u0434|\u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e|\u0447\u0435\u043a\u043b\u0438\u0441\u0442|\u0446\u0435\u043d\u044b|\u0442\u0430\u0440\u0438\u0444\u044b)\b/i;
 
 const nonOpportunityPageTerms = [
   "about us",
@@ -700,6 +750,11 @@ function scoreEventStrength({
     pattern.test(text),
   );
   const archivePenalty = isPressReleaseArchivePage(result) ? 35 : 0;
+  const nonEventPagePenalty = nonEventGtmPagePattern.test(
+    `${result.url} ${result.title} ${result.source_label}`,
+  )
+    ? 45
+    : 0;
   const staleEventPenalty = getStaleEventPenalty(text);
   const sourceBonus =
     sourceType === "press_release" || sourceType === "news"
@@ -716,6 +771,7 @@ function scoreEventStrength({
       specificityMatches.length * 8 +
       (hasConfirmedEventPattern ? sourceBonus : Math.min(sourceBonus, 4)) -
       archivePenalty -
+      nonEventPagePenalty -
       staleEventPenalty,
   );
   const educationalIntentScore = clampScore(educationalMatches.length * 18);

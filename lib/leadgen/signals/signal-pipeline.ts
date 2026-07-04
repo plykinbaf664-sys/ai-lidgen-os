@@ -57,8 +57,8 @@ const DEFAULT_TARGET_CANDIDATES = 5;
 const DEFAULT_MAX_QUERIES = 5;
 const DEFAULT_MAX_RESULTS_PER_QUERY = 5;
 
-const TARGET_CANDIDATES_CAP = 10;
-const MAX_QUERIES_CAP = 8;
+const TARGET_CANDIDATES_CAP = 20;
+const MAX_QUERIES_CAP = 10;
 const MAX_RESULTS_PER_QUERY_CAP = 10;
 const MAX_CANDIDATES_PER_ANGLE = 2;
 const MAX_SOFT_MARKET_SHARE = 0.7;
@@ -369,6 +369,8 @@ export async function runSignalPipeline({
     const searchResults = await searchProvider.search({
       query: query.query,
       maxResults: safeMaxResultsPerQuery,
+      market: query.market,
+      queryLanguage: query.query_language,
     });
     const queryEvidence = searchResults.map((result) => ({
       ...collectSignalEvidence({

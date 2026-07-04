@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import { runLeadDiscoveryEngine } from "@/lib/leadgen/lead-discovery-engine";
-import { TavilySearchProvider } from "@/lib/leadgen/search/tavily-provider";
+import {
+  createLeadgenSearchProvider,
+  isLeadgenSearchProviderMode,
+  type LeadgenSearchProviderMode,
+} from "@/lib/leadgen/search/leadgen-search-provider";
 import { savePipelineResult } from "@/lib/leadgen/storage";
 import { prepareTelegramNotification } from "@/lib/leadgen/telegram-notification";
 import type {
@@ -15,7 +19,9 @@ import type {
   PersonaSearchStatus,
 } from "@/lib/leadgen/types";
 
-type RunLeadgenRequestBody = Partial<CampaignInput>;
+type RunLeadgenRequestBody = Partial<CampaignInput> & {
+  searchProvider?: string;
+};
 
 function getDecisionMakerProfile(
   company: LeadgenCompany | undefined,
@@ -164,33 +170,31 @@ function formatRouteError(error: unknown): string {
   return String(error);
 }
 
-async function readCampaignInput(request: Request): Promise<CampaignInput> {
+async function readRunRequest(request: Request): Promise<{
+  campaignInput: CampaignInput;
+  searchProviderMode?: LeadgenSearchProviderMode;
+}> {
   const body = (await request.json().catch(() => ({}))) as RunLeadgenRequestBody;
 
   return {
-    name: body.name?.trim() || "Тестовая кампания Leadgen OS",
-    requestedBy: body.requestedBy?.trim() || "api/leadgen/run",
+    campaignInput: {
+      name: body.name?.trim() || "Тестовая кампания Leadgen OS",
+      requestedBy: body.requestedBy?.trim() || "api/leadgen/run",
+    },
+    searchProviderMode: isLeadgenSearchProviderMode(body.searchProvider)
+      ? body.searchProvider
+      : undefined,
   };
 }
-
 export async function POST(request: Request) {
   try {
-    const campaignInput = await readCampaignInput(request);
-
-    if (!process.env.TAVILY_API_KEY) {
-      return NextResponse.json(
-        {
-          success: false,
-          error:
-            "TAVILY_API_KEY is not configured. Real lead discovery was not started and no mock campaign was created.",
-        },
-        { status: 500 },
-      );
-    }
+    const { campaignInput, searchProviderMode } = await readRunRequest(request);
 
     const result = await runLeadDiscoveryEngine({
       campaignInput,
-      searchProvider: new TavilySearchProvider(),
+      searchProvider: createLeadgenSearchProvider({
+        mode: searchProviderMode,
+      }),
     });
     const companiesById = new Map(
       result.companies.map((company) => [company.id, company]),

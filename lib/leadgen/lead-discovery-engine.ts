@@ -37,11 +37,11 @@ type CandidateRecord = {
   opportunity: OpportunityAssessment;
 };
 
-const DEFAULT_TARGET_COMPANIES = 5;
+const DEFAULT_TARGET_COMPANIES = 10;
 const MAX_SIGNALS_PER_RUN = 3;
-const TARGET_PER_SIGNAL = 6;
-const MAX_QUERIES_PER_SIGNAL = 6;
-const MAX_RESULTS_PER_QUERY = 5;
+const TARGET_PER_SIGNAL = 12;
+const MAX_QUERIES_PER_SIGNAL = 10;
+const MAX_RESULTS_PER_QUERY = 10;
 
 function createRecordId(...parts: string[]): string {
   return parts
@@ -59,11 +59,92 @@ function normalizeCompanyName(companyName: string): string {
 }
 
 function getCandidateKey(candidate: LeadCandidate): string {
-  if (candidate.company_domain) {
-    return `domain:${candidate.company_domain.toLowerCase()}`;
+  return `name:${normalizeCompanyName(candidate.company_name)}`;
+}
+
+function getCompanyIdentityTokens(companyName: string): string[] {
+  return companyName
+    .toLowerCase()
+    .split(/[^a-z0-9\u0430-\u044f\u0451]+/gi)
+    .map((token) => token.trim())
+    .filter((token) => token.length >= 3)
+    .filter(
+      (token) =>
+        ![
+          "company",
+          "group",
+          "supply",
+          "chain",
+          "inc",
+          "llc",
+          "ltd",
+          "corp",
+          "компания",
+          "группа",
+        ].includes(token),
+    );
+}
+
+function getDomainFromUrl(url: string | null | undefined): string {
+  if (!url) {
+    return "";
   }
 
-  return `name:${normalizeCompanyName(candidate.company_name)}`;
+  try {
+    return new URL(url).hostname.replace(/^www\./, "").toLowerCase();
+  } catch {
+    return "";
+  }
+}
+
+function getCompanyOwnedSourceScore(candidate: LeadCandidate): number {
+  const tokens = getCompanyIdentityTokens(candidate.company_name);
+  const domainText = [
+    candidate.company_domain ?? "",
+    getDomainFromUrl(candidate.company_source_url),
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  return tokens.filter((token) => domainText.includes(token)).length;
+}
+
+function shouldReplaceCandidateRecord(
+  nextRecord: CandidateRecord,
+  existingRecord: CandidateRecord,
+): boolean {
+  if (
+    existingRecord.opportunity.should_create_lead &&
+    !nextRecord.opportunity.should_create_lead
+  ) {
+    return false;
+  }
+
+  if (
+    !existingRecord.opportunity.should_create_lead &&
+    nextRecord.opportunity.should_create_lead
+  ) {
+    return true;
+  }
+
+  if (
+    nextRecord.opportunity.opportunity_score >
+    existingRecord.opportunity.opportunity_score
+  ) {
+    return true;
+  }
+
+  if (
+    nextRecord.opportunity.opportunity_score ===
+    existingRecord.opportunity.opportunity_score
+  ) {
+    return (
+      getCompanyOwnedSourceScore(nextRecord.candidate) >
+      getCompanyOwnedSourceScore(existingRecord.candidate)
+    );
+  }
+
+  return false;
 }
 
 function getSignalOrder(): SignalType[] {
@@ -177,6 +258,18 @@ function buildCompany({
       discovery_query_language: candidate.discovery_query_language,
       discovery_query_angle: candidate.discovery_query_angle,
       source_country_hint: candidate.source_country_hint,
+      final_decision: opportunity.should_create_lead
+        ? "lead_created"
+        : "skipped_before_lead_creation",
+      rejection_reason: opportunity.should_create_lead
+        ? null
+        : opportunity.negative_factors[0] ??
+          opportunity.missing_information[0] ??
+          "Opportunity engine did not find a strong enough reason to create a lead.",
+      skipped_reason: opportunity.should_create_lead
+        ? null
+        : opportunity.recommended_action,
+      recommended_next_action: opportunity.recommended_action,
       signal_interpretation: {
         evidence_language: candidate.evidence_language,
         confirmed_facts: candidate.confirmed_facts,
@@ -551,12 +644,13 @@ async function discoverCandidates({
         }
       } else {
         const existingRecord = candidateRecords.get(candidateKey);
+        const nextRecord = {
+          candidate: interpretedCandidate,
+          signalType,
+          opportunity,
+        };
 
-        if (
-          existingRecord &&
-          opportunity.opportunity_score >
-            existingRecord.opportunity.opportunity_score
-        ) {
+        if (existingRecord && shouldReplaceCandidateRecord(nextRecord, existingRecord)) {
           if (
             !existingRecord.opportunity.should_create_lead &&
             opportunity.should_create_lead
@@ -564,11 +658,7 @@ async function discoverCandidates({
             acceptedOpportunityCount += 1;
           }
 
-          candidateRecords.set(candidateKey, {
-            candidate: interpretedCandidate,
-            signalType,
-            opportunity,
-          });
+          candidateRecords.set(candidateKey, nextRecord);
         }
       }
 

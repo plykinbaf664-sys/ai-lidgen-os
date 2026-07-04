@@ -1475,3 +1475,222 @@ Dropcontact
 После этого Leadgen OS сможет искать уже не просто компании, а конкретных ЛПР и готовить полностью персонализированный Outreach.
 
 __________________________________________________
+
+04.07.2026
+
+# Day X — Stage 8: Identity Discovery & Contact Intelligence
+
+## 🎯 Цель этапа
+
+Построить полноценный слой Identity Discovery & Contact Intelligence, который использует результаты People Discovery и определяет полный цифровой профиль найденного ЛПР.
+
+После завершения этапа система умеет отвечать не только на вопросы:
+
+- Почему именно этой компании стоит написать?
+- Кому именно стоит писать?
+
+Но и:
+
+- Через какой канал лучше всего начать коммуникацию?
+
+---
+
+# ✅ Что реализовано
+
+## Identity Discovery Engine
+
+Добавлен новый модуль:
+
+```
+lib/leadgen/identity-discovery-engine.ts
+```
+
+Engine отвечает за построение цифрового профиля найденного человека и выбор оптимального канала первого контакта.
+
+---
+
+## Identity Profile
+
+Добавлены новые сущности:
+
+- IdentityProfile
+- IdentityChannel
+
+Для каждого найденного человека теперь формируется полноценный Identity Profile.
+
+---
+
+## Contact Intelligence
+
+Contact Discovery был существенно расширен.
+
+Теперь система определяет:
+
+- Primary Contact Channel
+- Fallback Contact Channel
+- Alternative Contact Channels
+- Missing Channels
+- Identity Confidence
+- Recommended Next Action
+
+---
+
+## Digital Identity
+
+Добавлена поддержка анализа персональных цифровых каналов.
+
+Система готова работать с:
+
+- Work Email
+- LinkedIn
+- Telegram
+- Personal Website
+- X (Twitter)
+- GitHub
+- Instagram
+- Facebook
+- YouTube
+- Medium
+- Substack
+
+Если в будущем provider вернёт эти данные, они автоматически попадут в Identity Profile.
+
+---
+
+## Contact Ranking
+
+Логика ранжирования каналов была переработана.
+
+Теперь учитываются:
+
+- принадлежность канала найденному человеку;
+- качество источника;
+- confidence;
+- тип канала;
+- пригодность для первого outreach.
+
+Social Profile больше не считается Company Profile.
+
+---
+
+## Lead Discovery Integration
+
+Identity Discovery встроен в основной Discovery Pipeline.
+
+После завершения Contact Discovery система автоматически:
+
+- строит Identity Profile;
+- сохраняет его в metadata компании;
+- определяет лучший канал первого контакта;
+- рассчитывает Identity Confidence.
+
+Identity Profile сохраняется в:
+
+```
+company.metadata.identity_profile
+```
+
+---
+
+## Campaign Details
+
+Карточка компании была расширена.
+
+Теперь отображаются:
+
+- Identity Profile
+- Best Contact Channel
+- Fallback Channel
+- Alternative Channels
+- Identity Confidence
+- Recommended Next Action
+
+---
+
+## Telegram Card
+
+Telegram Preview теперь также использует Identity Profile.
+
+Добавлено отображение:
+
+- Identity Summary
+- Best Contact Channel
+- Fallback Channel
+- Recommended Next Action
+
+---
+
+## Архитектурные изменения
+
+Identity Discovery стал отдельным слоем системы.
+
+Теперь Discovery Pipeline выглядит следующим образом:
+
+```
+Lead Discovery
+        │
+        ▼
+Opportunity Intelligence
+        │
+        ▼
+People Discovery
+        │
+        ▼
+Identity Discovery
+        │
+        ▼
+Contact Intelligence
+        │
+        ▼
+Lead Prioritization
+        │
+        ▼
+Campaign Details
+        │
+        ▼
+Telegram Notifications
+```
+
+---
+
+# 🧪 Проверки
+
+Успешно пройдены:
+
+```bash
+npx tsc --noEmit
+```
+
+```bash
+npm run lint
+```
+
+```bash
+npm run build
+```
+
+```bash
+scripts/check-project.sh
+```
+
+Статус:
+
+```
+CHECK_STATUS=OK
+```
+
+---
+
+# 🚀 Что дальше
+
+Следующий этап — Stage 9.
+
+Планируется построить полноценный **People Enrichment Layer**, который будет подключать внешние источники данных (Apollo, Hunter, People Data Labs, Clay и другие) для поиска и верификации реальных ЛПР, объединяя информацию из нескольких провайдеров в единый подтверждённый профиль человека.
+
+---
+
+# 💥 Итог
+
+После завершения Stage 8 Leadgen OS перестала ограничиваться поиском контактных данных и научилась строить цифровую идентичность потенциального ЛПР.
+
+Система теперь определяет не только наличие контактов, но и оценивает качество доступных каналов связи, формирует Identity Profile и подготавливает архитектуру для подключения профессиональных enrichment-провайдеров на следующем этапе.

@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { leadgenConfig } from "@/lib/leadgen/config";
-import { TavilySearchProvider } from "@/lib/leadgen/search/tavily-provider";
+import {
+  createLeadgenSearchProvider,
+  isLeadgenSearchProviderMode,
+} from "@/lib/leadgen/search/leadgen-search-provider";
 import { collectSignalEvidence } from "@/lib/leadgen/signals/evidence-collector";
 import type { EvidenceResult } from "@/lib/leadgen/signals/evidence-collector";
 import type { SearchResult } from "@/lib/leadgen/search/search-provider";
@@ -112,10 +115,16 @@ export async function GET(request: Request) {
       );
     }
 
-    const provider = new TavilySearchProvider();
+    const providerParam = url.searchParams.get("provider");
+    const languageParam = url.searchParams.get("language");
+    const provider = createLeadgenSearchProvider({
+      mode: isLeadgenSearchProviderMode(providerParam) ? providerParam : undefined,
+    });
     const results = await provider.search({
       query,
       maxResults: 5,
+      market: languageParam === "ru" ? "ru" : "global",
+      queryLanguage: languageParam === "ru" ? "ru" : "en",
     });
     const validEvidence = [];
     const weakEvidence = [];

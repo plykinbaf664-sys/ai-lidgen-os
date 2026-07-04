@@ -57,6 +57,7 @@ type SignalQueryAngleProfile = {
   sourceHint: string;
   priorityOffset: number;
   termIndex: number;
+  customQuery?: string;
 };
 
 const hiringQueryAngles: SignalQueryAngleProfile[] = [
@@ -67,7 +68,7 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
     eventPhrase: "we are hiring",
     contextPhrase: "recruitment",
     sourceHint: "company careers page",
-    priorityOffset: 0,
+    priorityOffset: 4,
     termIndex: 0,
   },
   {
@@ -77,7 +78,7 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
     eventPhrase: "open positions",
     contextPhrase: "sales hiring",
     sourceHint: "Greenhouse Lever Ashby Workday",
-    priorityOffset: 1,
+    priorityOffset: 5,
     termIndex: 1,
   },
   {
@@ -87,7 +88,7 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
     eventPhrase: "join our team",
     contextPhrase: "sales hiring",
     sourceHint: "job board",
-    priorityOffset: 2,
+    priorityOffset: 6,
     termIndex: 1,
   },
   {
@@ -99,8 +100,10 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
       "\u0440\u0430\u0431\u043e\u0442\u0430 \u0432 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
     sourceHint:
       "HH \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u044f \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f",
-    priorityOffset: 2,
+    priorityOffset: 0,
     termIndex: 0,
+    customQuery:
+      '"открыта вакансия" "руководитель отдела продаж" "работодатель" "ООО"',
   },
   {
     angle: "ru_job_board",
@@ -113,8 +116,10 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
       "\u043e\u0442\u0434\u0435\u043b \u043f\u0440\u043e\u0434\u0430\u0436",
     sourceHint:
       "hh \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f \u0420\u041e\u041f",
-    priorityOffset: 2,
+    priorityOffset: 0,
     termIndex: 1,
+    customQuery:
+      '"ищем" "отдел продаж" "работодатель" "розничная сеть"',
   },
   {
     angle: "ru_job_board",
@@ -127,8 +132,10 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
       "\u043a\u043b\u0438\u0435\u043d\u0442\u0441\u043a\u0438\u0439 \u0441\u0435\u0440\u0432\u0438\u0441",
     sourceHint:
       "\u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0430 \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f",
-    priorityOffset: 3,
+    priorityOffset: 1,
     termIndex: 2,
+    customQuery:
+      '"вакансия" "клиентский сервис" "работодатель" "клиника"',
   },
   {
     angle: "ru_job_board",
@@ -140,8 +147,10 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
       "\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043f\u0440\u043e\u0434\u0430\u0436 CRM",
     sourceHint:
       "\u0440\u0430\u0431\u043e\u0442\u0430 \u0432 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438 \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438 CRM",
-    priorityOffset: 4,
+    priorityOffset: 2,
     termIndex: 3,
+    customQuery:
+      '"требуется" "менеджер по продажам" "работодатель" "интернет-магазин"',
   },
   {
     angle: "company_blog",
@@ -150,7 +159,7 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
     eventPhrase: "growing our team",
     contextPhrase: "company blog",
     sourceHint: "team growth blog",
-    priorityOffset: 4,
+    priorityOffset: 7,
     termIndex: 2,
   },
   {
@@ -160,7 +169,7 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
     eventPhrase: "expanding team",
     contextPhrase: "hiring announcement",
     sourceHint: "company news",
-    priorityOffset: 5,
+    priorityOffset: 8,
     termIndex: 3,
   },
 ];
@@ -526,12 +535,12 @@ function applyMarketMode(
   const maxLength = Math.max(globalQueries.length, ruQueries.length);
 
   for (let index = 0; index < maxLength; index += 1) {
-    if (globalQueries[index]) {
-      mixedQueries.push(globalQueries[index]);
-    }
-
     if (ruQueries[index]) {
       mixedQueries.push(ruQueries[index]);
+    }
+
+    if (globalQueries[index]) {
+      mixedQueries.push(globalQueries[index]);
     }
   }
 
@@ -554,14 +563,16 @@ function buildHiringSignalQueries({
   const queries = hiringQueryAngles.map((angleProfile) =>
     createSignalQuery({
       signalType,
-      query: buildQueryParts(
-        profile,
-        icp,
-        signalType,
-        angleProfile.language,
-        angleProfile.termIndex,
-        angleProfile,
-      ).join(" "),
+      query:
+        angleProfile.customQuery ??
+        buildQueryParts(
+          profile,
+          icp,
+          signalType,
+          angleProfile.language,
+          angleProfile.termIndex,
+          angleProfile,
+        ).join(" "),
       intent: angleProfile.intent,
       priority: Math.max(basePriority - angleProfile.priorityOffset, 1),
       language: angleProfile.language,

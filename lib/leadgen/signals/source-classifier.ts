@@ -21,6 +21,8 @@ export type SourceClassificationResult = {
 
 const jobBoardDomains = [
   "hh.ru",
+  "hh.kz",
+  "hh.uz",
   "linkedin.com",
   "indeed.com",
   "ziprecruiter.com",
@@ -38,6 +40,14 @@ const jobBoardDomains = [
   "paycor.com",
   "zohorecruit.com",
   "welcometothejungle.com",
+  "rabota.ru",
+  "robota.ua",
+  "jobrun.ru",
+  "avito.ru",
+  "superjob.ru",
+  "zarplata.ru",
+  "jobfilter.ru",
+  "remote-job.ru",
   "remote.co",
   "remoteok.com",
   "remoterocketship.com",

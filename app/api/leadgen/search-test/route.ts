@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
-import { TavilySearchProvider } from "@/lib/leadgen/search/tavily-provider";
+import {
+  createLeadgenSearchProvider,
+  isLeadgenSearchProviderMode,
+} from "@/lib/leadgen/search/leadgen-search-provider";
 
 function formatRouteError(error: unknown): string {
   if (error instanceof Error) {
@@ -24,10 +27,17 @@ export async function GET(request: Request) {
       );
     }
 
-    const provider = new TavilySearchProvider();
+    const providerParam = url.searchParams.get("provider");
+    const marketParam = url.searchParams.get("market");
+    const languageParam = url.searchParams.get("language");
+    const provider = createLeadgenSearchProvider({
+      mode: isLeadgenSearchProviderMode(providerParam) ? providerParam : undefined,
+    });
     const results = await provider.search({
       query,
       maxResults: 5,
+      market: marketParam === "ru" ? "ru" : "global",
+      queryLanguage: languageParam === "ru" ? "ru" : "en",
     });
 
     return NextResponse.json({

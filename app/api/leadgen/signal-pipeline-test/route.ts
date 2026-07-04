@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
-import { TavilySearchProvider } from "@/lib/leadgen/search/tavily-provider";
+import {
+  createLeadgenSearchProvider,
+  isLeadgenSearchProviderMode,
+} from "@/lib/leadgen/search/leadgen-search-provider";
 import { runSignalPipelineTest } from "@/lib/leadgen/signals/signal-pipeline-test";
 import type { SignalSearchMarket } from "@/lib/leadgen/signals/query-builder";
 import type { SignalType } from "@/lib/leadgen/types";
@@ -66,7 +69,10 @@ export async function GET(request: Request) {
       );
     }
 
-    const searchProvider = new TavilySearchProvider();
+    const providerParam = url.searchParams.get("provider");
+    const searchProvider = createLeadgenSearchProvider({
+      mode: isLeadgenSearchProviderMode(providerParam) ? providerParam : undefined,
+    });
     const result = await runSignalPipelineTest({
       signalType: signal,
       searchProvider,

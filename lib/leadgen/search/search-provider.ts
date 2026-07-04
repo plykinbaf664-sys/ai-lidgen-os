@@ -11,6 +11,8 @@ export type SearchResult = {
 export type SearchProviderSearchInput = {
   query: string;
   maxResults?: number;
+  market?: "global" | "ru";
+  queryLanguage?: "en" | "ru";
 };
 
 export interface SearchProvider {
