@@ -5,6 +5,7 @@ import {
   isLeadgenSearchProviderMode,
   type LeadgenSearchProviderMode,
 } from "@/lib/leadgen/search/leadgen-search-provider";
+import type { SignalSearchMarket } from "@/lib/leadgen/signals/query-builder";
 import { savePipelineResult } from "@/lib/leadgen/storage";
 import { prepareTelegramNotification } from "@/lib/leadgen/telegram-notification";
 import type {
@@ -21,7 +22,11 @@ import type {
 
 type RunLeadgenRequestBody = Partial<CampaignInput> & {
   searchProvider?: string;
+  market?: string;
 };
+
+const DEFAULT_PRODUCTION_SEARCH_PROVIDER: LeadgenSearchProviderMode = "yandex";
+const DEFAULT_PRODUCTION_MARKET: SignalSearchMarket = "ru";
 
 function getDecisionMakerProfile(
   company: LeadgenCompany | undefined,
@@ -172,29 +177,36 @@ function formatRouteError(error: unknown): string {
 
 async function readRunRequest(request: Request): Promise<{
   campaignInput: CampaignInput;
-  searchProviderMode?: LeadgenSearchProviderMode;
+  searchProviderMode: LeadgenSearchProviderMode;
+  market: SignalSearchMarket;
 }> {
   const body = (await request.json().catch(() => ({}))) as RunLeadgenRequestBody;
+  const market =
+    body.market === "global" || body.market === "mixed" || body.market === "ru"
+      ? body.market
+      : DEFAULT_PRODUCTION_MARKET;
 
   return {
     campaignInput: {
-      name: body.name?.trim() || "Тестовая кампания Leadgen OS",
+      name: body.name?.trim() || "\u0422\u0435\u0441\u0442\u043e\u0432\u0430\u044f \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u044f Leadgen OS",
       requestedBy: body.requestedBy?.trim() || "api/leadgen/run",
     },
     searchProviderMode: isLeadgenSearchProviderMode(body.searchProvider)
       ? body.searchProvider
-      : undefined,
+      : DEFAULT_PRODUCTION_SEARCH_PROVIDER,
+    market,
   };
 }
 export async function POST(request: Request) {
   try {
-    const { campaignInput, searchProviderMode } = await readRunRequest(request);
+    const { campaignInput, searchProviderMode, market } = await readRunRequest(request);
 
     const result = await runLeadDiscoveryEngine({
       campaignInput,
       searchProvider: createLeadgenSearchProvider({
         mode: searchProviderMode,
       }),
+      market,
     });
     const companiesById = new Map(
       result.companies.map((company) => [company.id, company]),
@@ -235,6 +247,10 @@ export async function POST(request: Request) {
       events: result.events,
       notifications,
       saved,
+      search_settings: {
+        provider: searchProviderMode,
+        market,
+      },
     });
   } catch (error) {
     return NextResponse.json(

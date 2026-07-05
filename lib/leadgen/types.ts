@@ -525,11 +525,13 @@ export type LeadgenCampaignSummary = {
   status: CampaignStatus;
   created_at: string;
   companies_count: number;
+  leads_count: number;
   contacts_count: number;
 };
 
 export type LeadgenCampaignDetailsStats = {
   companies_count: number;
+  leads_count: number;
   contacts_count: number;
   signals_count: number;
   notifications_count: number;

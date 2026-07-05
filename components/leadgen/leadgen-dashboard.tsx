@@ -415,13 +415,13 @@ export function LeadgenDashboard() {
         <section className="panel table-panel">
           <div className="table-toolbar">
             <div>
-              <p className="eyebrow">Результат процесса</p>
-              <h2>Очередь лидов</h2>
+              <p className="eyebrow">{"\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u0430"}</p>
+              <h2>{"\u041e\u0447\u0435\u0440\u0435\u0434\u044c \u043b\u0438\u0434\u043e\u0432"}</h2>
             </div>
             <span className="table-meta">
               {campaign
-                ? `${leads.length} лидов · ${campaign.name} · ${events.length} событий`
-                : "Ожидание запуска кампании"}
+                ? `${leads.length} ${"\u043b\u0438\u0434\u043e\u0432"} ${"\u00b7"} ${campaign.name} ${"\u00b7"} ${events.length} ${"\u0441\u043e\u0431\u044b\u0442\u0438\u0439"}`
+                : "\u041e\u0436\u0438\u0434\u0430\u043d\u0438\u0435 \u0437\u0430\u043f\u0443\u0441\u043a\u0430 \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u0438"}
             </span>
           </div>
           <LeadsTable

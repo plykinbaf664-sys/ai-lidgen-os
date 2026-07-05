@@ -43,7 +43,17 @@ const jobBoardDomains = [
   "rabota.ru",
   "robota.ua",
   "jobrun.ru",
+  "gorodrabot.ru",
+  "careerist.ru",
+  "rabota-trud.ru",
+  "workius.ru",
+  "gdejob.com",
+  "work.ua",
+  "spisokrabot.ru",
+  "stepo.ru",
+  "gorodrabot.by",
   "avito.ru",
+  "leboard.ru",
   "superjob.ru",
   "zarplata.ru",
   "jobfilter.ru",
@@ -131,6 +141,9 @@ const recruitingProviderPhrases = [
   "recruitment services",
   "one of our clients",
   "our client is hiring",
+  "\u043a\u0430\u0434\u0440\u043e\u0432\u043e\u0435 \u0430\u0433\u0435\u043d\u0442\u0441\u0442\u0432\u043e",
+  "\u043f\u043e\u0434\u0431\u043e\u0440 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u0430",
+  "\u0440\u0435\u043a\u0440\u0443\u0442\u0438\u043d\u0433\u043e\u0432\u043e\u0435 \u0430\u0433\u0435\u043d\u0442\u0441\u0442\u0432\u043e",
 ];
 
 function normalizeText(value: string): string {

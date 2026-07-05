@@ -57,6 +57,16 @@ function formatProviderErrors(errors: string[]): string {
   return errors.length > 0 ? ` Last errors: ${errors.join(" | ")}` : "";
 }
 
+function isRuSearch(input: SearchProviderSearchInput): boolean {
+  return input.market === "ru" || input.queryLanguage === "ru";
+}
+
+function isFatalSearchProviderError(message: string): boolean {
+  return /(?:permission denied|unauthorized|forbidden|\b40[13]\b|api[- ]?key|folder|not configured|search-api\.webSearch\.user)/i.test(
+    message,
+  );
+}
+
 export function isLeadgenSearchProviderMode(
   value: string | null | undefined,
 ): value is LeadgenSearchProviderMode {
@@ -135,9 +145,22 @@ export class MarketAwareSearchProvider implements SearchProvider {
 
         errors.push(`${slot.name}: no results`);
       } catch (error) {
-        errors.push(
-          `${slot.name}: ${error instanceof Error ? error.message : String(error)}`,
-        );
+        const message = error instanceof Error ? error.message : String(error);
+        const formattedError = `${slot.name}: ${message}`;
+        errors.push(formattedError);
+
+        if (
+          this.mode === "auto" &&
+          slot.name === "yandex" &&
+          isRuSearch(input) &&
+          isFatalSearchProviderError(message)
+        ) {
+          throw new Error(
+            `Yandex RU search failed and Tavily fallback was skipped to avoid hiding RU provider issues.${formatProviderErrors(
+              errors,
+            )}`,
+          );
+        }
       }
     }
 

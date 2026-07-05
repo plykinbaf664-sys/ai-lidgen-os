@@ -102,7 +102,17 @@ const platformLikeDomains = [
   "rabota.ru",
   "robota.ua",
   "jobrun.ru",
+  "gorodrabot.ru",
+  "careerist.ru",
+  "rabota-trud.ru",
+  "workius.ru",
+  "gdejob.com",
+  "work.ua",
+  "spisokrabot.ru",
+  "stepo.ru",
+  "gorodrabot.by",
   "avito.ru",
+  "leboard.ru",
   "superjob.ru",
   "zarplata.ru",
   "jobfilter.ru",
@@ -137,7 +147,15 @@ const ignoredSlugParts = new Set([
   "roles",
   "rabota",
   "robota",
+  "gorodrabot",
+  "careerist",
+  "rabota-trud",
+  "workius",
+  "gdejob",
+  "spisokrabot",
+  "stepo",
   "avito",
+  "leboard",
   "vakansii",
   "remote",
   "udalennaya",
@@ -168,7 +186,17 @@ const broadJobBoardDomains = new Set([
   "rabota.ru",
   "robota.ua",
   "jobrun.ru",
+  "gorodrabot.ru",
+  "careerist.ru",
+  "rabota-trud.ru",
+  "workius.ru",
+  "gdejob.com",
+  "work.ua",
+  "spisokrabot.ru",
+  "stepo.ru",
+  "gorodrabot.by",
   "avito.ru",
+  "leboard.ru",
   "superjob.ru",
   "zarplata.ru",
   "jobfilter.ru",
@@ -508,6 +536,13 @@ function cleanCompanyName(value: string): string {
   return value
     .replace(/\u00a0/g, " ")
     .replace(/^at\s+/i, "")
+    .replace(/^company\s+/i, "")
+    .replace(/^\u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f\s+/i, "")
+    .replace(
+      /\s+\u0432\s+[\u0410-\u042f\u0401][\u0410-\u042f\u0430-\u044f\u0401\u0451 -]{2,40}(?:\s+\u0441\u0440\u043e\u0447\u043d\u043e)?$/i,
+      "",
+    )
+    .replace(/\s+\u0441\u0440\u043e\u0447\u043d\u043e$/i, "")
     .replace(/\s*,\s*(?:you|we|which|that|who|where|when)\b[\s\S]*$/i, "")
     .replace(
       /\s*\.\s*(?=(?:salary|compensation|pay|posted|date|archived|archive|location|remote|hybrid|onsite|experience|schedule|conditions|description|\u0437\u0430\u0440\u043f\u043b\u0430\u0442\u0430|\u043e\u043f\u043b\u0430\u0442\u0430|\u0434\u043e\u0445\u043e\u0434|\u0434\u0430\u0442\u0430|\u0430\u0440\u0445\u0438\u0432|\u0433\u043e\u0440\u043e\u0434))[\s\S]*$/i,

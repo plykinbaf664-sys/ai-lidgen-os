@@ -5,6 +5,7 @@ import { prioritizeLead } from "@/lib/leadgen/lead-prioritization-engine";
 import { assessOpportunity } from "@/lib/leadgen/opportunity-intelligence";
 import { PeopleDiscoveryEngine } from "@/lib/leadgen/people-discovery-engine";
 import type { SearchProvider } from "@/lib/leadgen/search/search-provider";
+import type { SignalSearchMarket } from "@/lib/leadgen/signals/query-builder";
 import { interpretSignal } from "@/lib/leadgen/signals/signal-interpreter";
 import { runSignalPipeline } from "@/lib/leadgen/signals/signal-pipeline";
 import type {
@@ -29,6 +30,7 @@ type RunLeadDiscoveryInput = {
   campaignInput: CampaignInput;
   searchProvider: SearchProvider;
   targetCompanies?: number;
+  market?: SignalSearchMarket;
 };
 
 type CandidateRecord = {
@@ -605,9 +607,11 @@ function buildEvent(
 async function discoverCandidates({
   searchProvider,
   targetCompanies,
+  market,
 }: {
   searchProvider: SearchProvider;
   targetCompanies: number;
+  market: SignalSearchMarket;
 }): Promise<CandidateRecord[]> {
   const candidateRecords = new Map<string, CandidateRecord>();
   let acceptedOpportunityCount = 0;
@@ -619,6 +623,7 @@ async function discoverCandidates({
       targetCandidates: TARGET_PER_SIGNAL,
       maxQueries: MAX_QUERIES_PER_SIGNAL,
       maxResultsPerQuery: MAX_RESULTS_PER_QUERY,
+      market,
     });
 
     for (const candidate of result.candidates) {
@@ -675,6 +680,7 @@ export async function runLeadDiscoveryEngine({
   campaignInput,
   searchProvider,
   targetCompanies = DEFAULT_TARGET_COMPANIES,
+  market = "ru",
 }: RunLeadDiscoveryInput): Promise<LeadDiscoveryResult> {
   const createdAt = new Date().toISOString();
   const pipelineRunId = createRecordId(
@@ -686,6 +692,7 @@ export async function runLeadDiscoveryEngine({
   const candidateRecords = await discoverCandidates({
     searchProvider,
     targetCompanies,
+    market,
   });
   const acceptedCandidateRecords = candidateRecords.filter(
     (record) => record.opportunity.should_create_lead,

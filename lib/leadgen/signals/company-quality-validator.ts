@@ -40,7 +40,7 @@ export type CompanyQualityValidationResult = {
 };
 
 const platformNamePattern =
-  /^(indeed|linkedin|reddit|telegram|t\.me|avito(\.ru)?|hh(\.(ru|kz|uz))?|headhunter(?:\s+(?:in|\u0432)\s+.+)?|vc(\.ru)?|habr|habr career|cnews|rb(\.ru)?|rusbase|rabota(\.ru)?|robota(\.ua)?|jobrun(\.ru)?|superjob|zarplata(\.ru)?|jobfilter|remote-job|remote rocketship|remoterocketship|remote job assistant|remotejobassistant|remoteok|we work remotely|weworkremotely|ziprecruiter|glassdoor|greenhouse|lever|workday|successfactors|smartrecruiters|recruitee|workable|paycor)$/i;
+  /^(indeed|linkedin|reddit|telegram|t\.me|avito(\.ru)?|hh(\.(ru|kz|uz))?|headhunter(?:\s+(?:in|\u0432)\s+.+)?|vc(\.ru)?|habr|habr career|cnews|rb(\.ru)?|rusbase|rabota(\.ru)?|robota(\.ua)?|jobrun(\.ru)?|gorodrabot(\.(ru|by))?|careerist(\.ru)?|rabota-trud(\.ru)?|workius(\.ru)?|gdejob(\.com)?|work(\.ua)?|spisokrabot(\.ru)?|stepo(\.ru)?|leboard(\.ru)?|superjob|zarplata(\.ru)?|jobfilter|remote-job|remote rocketship|remoterocketship|remote job assistant|remotejobassistant|remoteok|we work remotely|weworkremotely|ziprecruiter|glassdoor|greenhouse|lever|workday|successfactors|smartrecruiters|recruitee|workable|paycor)$/i;
 
 const broadJobBoardPlatforms = new Set([
   "hh.ru",
@@ -54,7 +54,17 @@ const broadJobBoardPlatforms = new Set([
   "rabota.ru",
   "robota.ua",
   "jobrun.ru",
+  "gorodrabot.ru",
+  "careerist.ru",
+  "rabota-trud.ru",
+  "workius.ru",
+  "gdejob.com",
+  "work.ua",
+  "spisokrabot.ru",
+  "stepo.ru",
+  "gorodrabot.by",
   "avito.ru",
+  "leboard.ru",
   "superjob.ru",
   "zarplata.ru",
   "jobfilter.ru",
@@ -75,7 +85,7 @@ const genericJobCategoryPattern =
   /\b(jobs?|careers?|vacanc(?:y|ies)|positions?|roles?|openings?|hiring|recruit(?:ing|ment)|talent|sales|customer success|account executive|account manager|sales manager|crm manager|product manager|software engineer|engineer|developer|specialist|consultant|analyst|administrator|architect|director|head of|lead|senior|junior|saas sales|b2b saas|\u0440\u0430\u0431\u043e\u0442\u0430|\u0432\u0430\u043a\u0430\u043d\u0441\u0438[\u044f\u0438]|\u043d\u0430\u0439\u043c|\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440|\u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a|\u0438\u043d\u0436\u0435\u043d\u0435\u0440|\u0441\u043f\u0435\u0446\u0438\u0430\u043b\u0438\u0441\u0442|\u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a|\u043e\u043f\u0435\u0440\u0430\u0442\u043e\u0440|\u0440\u043e\u043f|\u043f\u0440\u043e\u0434\u0430\u0436[\u0430\u0438]?|\u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044c)\b/i;
 
 const genericBusinessPhrasePattern =
-  /^(ai|b2b|saas|crm|gtm|hr|bdm|recruitment|hiring|funding tracker|customer success|email service|business software|crm software|sales software|marketing software|automation software|revenue teams?|growth teams?|technical skills?|sales talent|top talent|every level|open saas|cloud and ai|recruitment automation|bitrix24|amoCRM|\u0442\u0435\u0445,?\s+\u043a\u0442\u043e|\u0442\u0435,?\s+\u043a\u0442\u043e|\u043d\u0430\u0431\u0435\u0440\u0435\u0436\u043d\u043e\u0439|\u0431\u044b\u0442\u043e\u0432(?:\u043e\u0439|\u0430\u044f)?\s+\u0445\u0438\u043c\u0438[ия]\s+\u0438\s+\u043a\u043e\u0441\u043c\u0435\u0442\u0438\u043a[аи]|\u0431\u0438\u0442\u0440\u0438\u043a\u044124|\u0431\u0438\u0442\u0440\u0438\u043a\u0441\s*24|\u0430\u043c\u043e\s*crm|\u0430\u043c\u043eCRM|\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 \u043f\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c|\u0440\u043e\u043f|\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043d\u0430\u0439\u043c\u0430)$/i;
+  /^(ai|b2b|saas|crm|gtm|hr|bdm|recruitment|hiring|funding tracker|customer success|email service|business software|crm software|sales software|marketing software|automation software|revenue teams?|growth teams?|technical skills?|sales talent|top talent|every level|open saas|cloud and ai|recruitment automation|bitrix24|amoCRM|\u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438|\u0441\u0442\u0440\u0435\u043c\u0438\u0442\u0435\u043b\u044c\u043d\u043e\s+\u0440\u0430\u0437\u0432\u0438\u0432\u0430\u0435\u0442\u0441\u044f(?:\s+\u0438\s+\u043a\u0440\u0430\u0442\u043d\u043e)?|\u0442\u0435\u0445,?\s+\u043a\u0442\u043e|\u0442\u0435,?\s+\u043a\u0442\u043e|\u043d\u0430\u0431\u0435\u0440\u0435\u0436\u043d\u043e\u0439|\u0431\u044b\u0442\u043e\u0432(?:\u043e\u0439|\u0430\u044f)?\s+\u0445\u0438\u043c\u0438[ия]\s+\u0438\s+\u043a\u043e\u0441\u043c\u0435\u0442\u0438\u043a[аи]|\u0431\u0438\u0442\u0440\u0438\u043a\u044124|\u0431\u0438\u0442\u0440\u0438\u043a\u0441\s*24|\u0430\u043c\u043e\s*crm|\u0430\u043c\u043eCRM|\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 \u043f\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c|\u0440\u043e\u043f|\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043d\u0430\u0439\u043c\u0430)$/i;
 
 const genericBusinessWordPattern =
   /\b(ai|b2b|saas|crm|gtm|recruitment|hiring|talent|customer success|email service|revenue|growth|technical skills|sales talent|top talent|bitrix24|amocrm|\u0431\u0438\u0442\u0440\u0438\u043a\u044124|\u0431\u0438\u0442\u0440\u0438\u043a\u0441\s*24|\u0430\u043c\u043e\s*crm|\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f|\u043d\u0430\u0439\u043c)\b/i;
@@ -93,7 +103,7 @@ const jobUiActionTokenPattern =
   /^(?:select|apply|view|open|choose|filter|search|job|jobs|role|roles|position|positions|\u0432\u044b\u0431\u0440\u0430\u0442\u044c|\u043e\u0442\u043a\u043b\u0438\u043a\u043d\u0443\u0442\u044c\u0441\u044f|\u043f\u043e\u0438\u0441\u043a|\u0432\u0430\u043a\u0430\u043d\u0441\u0438\u044f|\u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438)$/i;
 
 const sentenceVerbPattern =
-  /\b(is|are|was|were|be|being|been|has|have|had|leads?|supports?|supporting|builds?|building|helps?|helping|works?|working|hires?|hiring|looking|seeking|offers?|provides?|announces?|announced|launch(?:es|ed)|releases?|released|companies?|teams?|\u043a\u043e\u0442\u043e\u0440|\u0438\u0449\u0435\u0442|\u043d\u0430\u043d\u0438\u043c\u0430\u0435\u0442|\u043f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u0435\u0442|\u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442|\u043f\u043e\u043c\u043e\u0433\u0430\u0435\u0442|\u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442)\b/i;
+  /\b(is|are|was|were|be|being|been|has|have|had|leads?|supports?|supporting|builds?|building|helps?|helping|works?|working|hires?|hiring|looking|seeking|offers?|provides?|announces?|announced|launch(?:es|ed)|releases?|released|companies?|teams?|\u043a\u043e\u0442\u043e\u0440|\u0438\u0449\u0435\u0442|\u0438\u0449\u0435\u043c|\u043d\u0430\u043d\u0438\u043c\u0430\u0435\u0442|\u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f|\u0440\u0430\u0441\u0448\u0438\u0440\u044f\u0435\u0442|\u0440\u0430\u0441\u0448\u0438\u0440\u044f\u0435\u043c|\u0443\u0432\u0435\u043b\u0438\u0447\u0438\u0432\u0430\u0435\u0442|\u0443\u0432\u0435\u043b\u0438\u0447\u0438\u0432\u0430\u0435\u043c|\u043f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u0435\u0442|\u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442|\u043f\u043e\u043c\u043e\u0433\u0430\u0435\u0442|\u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442|\u0440\u0430\u0437\u0432\u0438\u0432\u0430\u0435\u0442\u0441\u044f|\u0440\u0430\u0441\u0442(?:\u0435\u0442|\u0451\u0442))\b/i;
 
 const exactActionVerbPattern =
   /^(offers?|provides?|leads?|supports?|helps?|builds?|hires?|hiring|seeking|looking|\u043f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u0435\u0442|\u0438\u0449\u0435\u0442|\u043d\u0430\u043d\u0438\u043c\u0430\u0435\u0442|\u043f\u043e\u043c\u043e\u0433\u0430\u0435\u0442|\u0441\u0442\u0440\u043e\u0438\u0442|\u0432\u0435\u0434\u0435\u0442)$/i;
@@ -355,7 +365,7 @@ function looksLikeActionOrVerb(companyName: string): boolean {
   return (
     exactActionVerbPattern.test(companyName) ||
     /^(offers?|provides?|leads?|supports?|helps?|builds?|hiring|seeking|looking)\s+/i.test(companyName) ||
-    /^(\u043f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u0435\u0442|\u0438\u0449\u0435\u0442|\u043d\u0430\u043d\u0438\u043c\u0430\u0435\u0442|\u043f\u043e\u043c\u043e\u0433\u0430\u0435\u0442)\s+/i.test(companyName)
+    /^(\u043f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u0435\u0442|\u0438\u0449\u0435\u0442|\u0438\u0449\u0435\u043c|\u043d\u0430\u043d\u0438\u043c\u0430\u0435\u0442|\u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f|\u0440\u0430\u0441\u0448\u0438\u0440\u044f\u0435\u0442|\u0440\u0430\u0441\u0448\u0438\u0440\u044f\u0435\u043c|\u043f\u043e\u043c\u043e\u0433\u0430\u0435\u0442)\s+/i.test(companyName)
   );
 }
 
@@ -386,6 +396,7 @@ function looksLikeSentenceFragment(companyName: string): boolean {
     words >= 6 ||
     /\.\s+\w+/.test(companyName) ||
     /^(your|our|this|that|these|those)\s+/i.test(companyName) ||
+    /^(\u043d\u0430\u0448|\u043d\u0430\u0448\u0430|\u043d\u0430\u0448\u0435|\u044d\u0442\u0430|\u044d\u0442\u043e\u0442|\u044d\u0442\u043e)\s+/i.test(companyName) ||
     /\b(we|you|your|our|they|their|this|that)\b/i.test(companyName) ||
     sentenceVerbPattern.test(companyName) ||
     /\b(with|that|which|for|from|into|across|in cloud|and ai|high-performing)\b/i.test(

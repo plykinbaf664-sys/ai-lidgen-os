@@ -11,7 +11,12 @@ type YandexSearchProviderOptions = {
   ruRegionId?: string;
 };
 
-const DEFAULT_YANDEX_XML_ENDPOINT = "https://yandex.com/search/xml";
+type YandexWebSearchResponse = {
+  rawData?: unknown;
+};
+
+const DEFAULT_YANDEX_SEARCH_ENDPOINT =
+  "https://searchapi.api.cloud.yandex.net/v2/web/search";
 const DEFAULT_RU_REGION_ID = "225";
 
 function decodeXmlEntities(value: string): string {
@@ -50,6 +55,28 @@ function getYandexError(xml: string): string | null {
   const error = getXmlTagValue(xml, "error");
 
   return error || null;
+}
+
+function formatYandexHttpError(status: number, responseText: string): string {
+  try {
+    const errorBody = JSON.parse(responseText) as {
+      code?: unknown;
+      message?: unknown;
+    };
+    const message =
+      typeof errorBody.message === "string" ? errorBody.message : responseText;
+
+    if (status === 403 || message.toLowerCase().includes("permission denied")) {
+      return [
+        `Yandex search failed: ${status} ${message}.`,
+        "Check that the service account has the search-api.webSearch.user role for YANDEX_SEARCH_FOLDER_ID and that the API key is created for that service account.",
+      ].join(" ");
+    }
+  } catch {
+    // Fall through to the raw error below.
+  }
+
+  return `Yandex search failed: ${status} ${responseText}`;
 }
 
 function parseYandexXml(xml: string): SearchResult[] {
@@ -100,7 +127,7 @@ export class YandexSearchProvider implements SearchProvider {
 
     this.apiKey = apiKey;
     this.folderId = folderId;
-    this.endpoint = endpoint || DEFAULT_YANDEX_XML_ENDPOINT;
+    this.endpoint = endpoint || DEFAULT_YANDEX_SEARCH_ENDPOINT;
     this.ruRegionId = ruRegionId || DEFAULT_RU_REGION_ID;
   }
 
@@ -111,42 +138,61 @@ export class YandexSearchProvider implements SearchProvider {
     queryLanguage,
   }: SearchProviderSearchInput): Promise<SearchResult[]> {
     const isRuSearch = market === "ru" || queryLanguage === "ru";
-    const url = new URL(this.endpoint);
     const resultsLimit = Math.min(Math.max(maxResults, 1), 100);
-
-    url.searchParams.set("folderid", this.folderId);
-    url.searchParams.set("apikey", this.apiKey);
-    url.searchParams.set("query", query);
-    url.searchParams.set("l10n", isRuSearch ? "ru" : "en");
-    url.searchParams.set("filter", "none");
-    url.searchParams.set("sortby", "rlv");
-    url.searchParams.set(
-      "groupby",
-      `attr=d.mode=flat.groups-on-page=${resultsLimit}.docs-in-group=1`,
-    );
-
-    if (isRuSearch) {
-      url.searchParams.set("lr", this.ruRegionId);
-    }
-
-    const response = await fetch(url, {
+    const response = await fetch(this.endpoint, {
+      method: "POST",
       headers: {
-        Accept: "application/xml,text/xml,*/*",
+        Authorization: `Api-Key ${this.apiKey}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
+      body: JSON.stringify({
+        query: {
+          searchType: isRuSearch ? "SEARCH_TYPE_RU" : "SEARCH_TYPE_COM",
+          queryText: query,
+          familyMode: "FAMILY_MODE_MODERATE",
+          page: "0",
+          fixTypoMode: "FIX_TYPO_MODE_ON",
+        },
+        sortSpec: {
+          sortMode: "SORT_MODE_BY_RELEVANCE",
+          sortOrder: "SORT_ORDER_DESC",
+        },
+        groupSpec: {
+          groupMode: "GROUP_MODE_FLAT",
+          groupsOnPage: String(resultsLimit),
+          docsInGroup: "1",
+        },
+        maxPassages: "3",
+        region: isRuSearch ? this.ruRegionId : undefined,
+        l10n: isRuSearch ? "LOCALIZATION_RU" : "LOCALIZATION_EN",
+        folderId: this.folderId,
+        responseFormat: "FORMAT_XML",
+      }),
     });
 
     const responseText = await response.text();
 
     if (!response.ok) {
-      throw new Error(`Yandex search failed: ${response.status} ${responseText}`);
+      throw new Error(formatYandexHttpError(response.status, responseText));
     }
 
-    const yandexError = getYandexError(responseText);
+    const data = JSON.parse(responseText) as YandexWebSearchResponse;
+    const rawData = typeof data.rawData === "string" ? data.rawData : "";
+
+    if (!rawData) {
+      return [];
+    }
+
+    const xml = rawData.trim().startsWith("<")
+      ? rawData
+      : Buffer.from(rawData, "base64").toString("utf8");
+    const yandexError = getYandexError(xml);
 
     if (yandexError) {
       throw new Error(`Yandex search failed: ${yandexError}`);
     }
 
-    return parseYandexXml(responseText).slice(0, resultsLimit);
+    return parseYandexXml(xml).slice(0, resultsLimit);
   }
 }

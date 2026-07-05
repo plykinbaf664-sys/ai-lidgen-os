@@ -20,16 +20,16 @@ import type {
 
 const statusLabels: Record<LeadgenCampaignDetails["campaign"]["status"], string> =
   {
-    completed: "Завершена",
+    completed: "\u0417\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430",
   };
 
 const signalTypeLabels: Record<SignalType, string> = {
-  HIRING_SIGNAL: "Найм",
+  HIRING_SIGNAL: "\u041d\u0430\u0439\u043c",
   GO_TO_MARKET_SIGNAL: "Go-to-market",
-  GROWTH_SIGNAL: "Рост",
-  CONTENT_SIGNAL: "Контент",
-  TRAFFIC_SIGNAL: "Трафик",
-  TECH_SIGNAL: "Технологии",
+  GROWTH_SIGNAL: "\u0420\u043e\u0441\u0442",
+  CONTENT_SIGNAL: "\u041a\u043e\u043d\u0442\u0435\u043d\u0442",
+  TRAFFIC_SIGNAL: "\u0422\u0440\u0430\u0444\u0438\u043a",
+  TECH_SIGNAL: "\u0422\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0438",
 };
 const contactTypeLabels: Record<LeadgenContact["contact_type"], string> = {
   work_email: "Work email",
@@ -646,8 +646,8 @@ export function CampaignDetails({
     return (
       <section className="panel campaign-details-panel">
         <div className="empty-state">
-          <h3>Загружаю детали кампании</h3>
-          <p>Получаю сохранённые компании, события и уведомления из Supabase.</p>
+          <h3>{"\u0417\u0430\u0433\u0440\u0443\u0436\u0430\u044e \u0434\u0435\u0442\u0430\u043b\u0438 \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u0438"}</h3>
+          <p>{"\u041f\u043e\u043b\u0443\u0447\u0430\u044e \u0441\u043e\u0445\u0440\u0430\u043d\u0451\u043d\u043d\u044b\u0435 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438, \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u0438 \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u0438\u0437 Supabase."}</p>
         </div>
       </section>
     );
@@ -657,7 +657,7 @@ export function CampaignDetails({
     return (
       <section className="panel campaign-details-panel">
         <div className="empty-state">
-          <h3>Не удалось открыть кампанию</h3>
+          <h3>{"\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043e\u0442\u043a\u0440\u044b\u0442\u044c \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u044e"}</h3>
           <p>{errorMessage}</p>
         </div>
       </section>
@@ -688,7 +688,7 @@ export function CampaignDetails({
     <section className="panel campaign-details-panel">
       <div className="table-toolbar">
         <div>
-          <p className="eyebrow">Детали запуска</p>
+          <p className="eyebrow">{"\u0414\u0435\u0442\u0430\u043b\u0438 \u0437\u0430\u043f\u0443\u0441\u043a\u0430"}</p>
           <h2>{details.campaign.name}</h2>
           <p className="company-domain">
             {new Date(details.campaign.created_at).toLocaleString("ru-RU")}
@@ -702,23 +702,27 @@ export function CampaignDetails({
       <div className="campaign-details-content">
         <div className="campaign-details-stats">
           <div>
-            <span className="field-label">Компаний найдено</span>
+            <span className="field-label">\u0413\u043e\u0442\u043e\u0432\u044b\u0435 \u043b\u0438\u0434\u044b</span>
+            <strong>{details.stats.leads_count}</strong>
+          </div>
+          <div>
+            <span className="field-label">\u041a\u043e\u043c\u043f\u0430\u043d\u0438\u0439 \u043d\u0430\u0439\u0434\u0435\u043d\u043e</span>
             <strong>{details.stats.companies_count}</strong>
           </div>
           <div>
-            <span className="field-label">Контактов найдено</span>
+            <span className="field-label">\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u043e\u0432 \u043d\u0430\u0439\u0434\u0435\u043d\u043e</span>
             <strong>{details.stats.contacts_count}</strong>
           </div>
           <div>
-            <span className="field-label">Сигналов найдено</span>
+            <span className="field-label">\u0421\u0438\u0433\u043d\u0430\u043b\u043e\u0432 \u043d\u0430\u0439\u0434\u0435\u043d\u043e</span>
             <strong>{details.stats.signals_count}</strong>
           </div>
           <div>
-            <span className="field-label">Уведомлений подготовлено</span>
+            <span className="field-label">\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u0439 \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043b\u0435\u043d\u043e</span>
             <strong>{details.stats.notifications_count}</strong>
           </div>
           <div>
-            <span className="field-label">Событий создано</span>
+            <span className="field-label">\u0421\u043e\u0431\u044b\u0442\u0438\u0439 \u0441\u043e\u0437\u0434\u0430\u043d\u043e</span>
             <strong>{details.stats.events_count}</strong>
           </div>
         </div>
@@ -769,7 +773,7 @@ export function CampaignDetails({
                   <div>
                     <h3>{lead.company_name}</h3>
                     <p className="company-domain">
-                      {lead.company_domain ?? "Домен не найден"}
+                      {lead.company_domain ?? "\u0414\u043e\u043c\u0435\u043d \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d"}
                     </p>
                     {lead.company_source_url ? (
                       <a
@@ -777,7 +781,7 @@ export function CampaignDetails({
                         href={lead.company_source_url}
                         rel="noreferrer"
                         target="_blank"
-                      >Источник компании</a>
+                      >{"\u0418\u0441\u0442\u043e\u0447\u043d\u0438\u043a \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438"}</a>
                     ) : null}
                   </div>
                   <div>
@@ -963,12 +967,12 @@ export function CampaignDetails({
                     type="button"
                     onClick={() => toggleLead(lead.id)}
                   >
-                    {expandedLeadId === lead.id ? "Скрыть" : "Раскрыть"}
+                    {expandedLeadId === lead.id ? "\u0421\u043a\u0440\u044b\u0442\u044c" : "\u0420\u0430\u0441\u043a\u0440\u044b\u0442\u044c"}
                   </button>
                 </div>
 
                 <div className="campaign-details-signal">
-                  <span className="field-label">Сигналы</span>
+                  <span className="field-label">{"\u0421\u0438\u0433\u043d\u0430\u043b\u044b"}</span>
                   <div className="campaign-details-copy">
                     <div>
                       <span className="field-label">Signal summary</span>
@@ -1000,8 +1004,8 @@ export function CampaignDetails({
                       <div>
                         <span className="field-label">Opportunity evidence</span>
                         <p>
-                          Strength {opportunity.evidence_strength}/100 ·
-                          Confidence {opportunity.confidence ?? 0}/100 · Action{" "}
+                          Strength {opportunity.evidence_strength}/100 {"\u00b7"}
+                          Confidence {opportunity.confidence ?? 0}/100 {"\u00b7"} Action{" "}
                           {opportunity.recommended_action ?? "not_available"}
                         </p>
                       </div>
@@ -1342,11 +1346,11 @@ export function CampaignDetails({
                       <div>
                         <span className="field-label">Priority components</span>
                         <p>
-                          ICP {leadPriority.components.icp_score}/100 · Signal{" "}
-                          {leadPriority.components.signal_strength}/100 · Intent{" "}
-                          {leadPriority.components.buying_intent}/100 · Timing{" "}
-                          {leadPriority.components.timing_score}/100 · Contact{" "}
-                          {leadPriority.components.contact_readiness}/100 ·
+                          ICP {leadPriority.components.icp_score}/100 {"\u00b7"} Signal{" "}
+                          {leadPriority.components.signal_strength}/100 {"\u00b7"} Intent{" "}
+                          {leadPriority.components.buying_intent}/100 {"\u00b7"} Timing{" "}
+                          {leadPriority.components.timing_score}/100 {"\u00b7"} Contact{" "}
+                          {leadPriority.components.contact_readiness}/100 {"\u00b7"}
                           Confidence {leadPriority.components.confidence}/100
                         </p>
                       </div>
@@ -1388,7 +1392,7 @@ export function CampaignDetails({
                         <h4>{signal.signal_title}</h4>
                         <p>{signal.signal_detail}</p>
                         <p className="company-domain">
-                          {signal.signal_source_label} ·{" "}
+                          {signal.signal_source_label} {"\u00b7"}{" "}
                           {new Date(signal.found_at).toLocaleString("ru-RU")}
                         </p>
                         {signal.source_url ? (
@@ -1398,7 +1402,7 @@ export function CampaignDetails({
                             rel="noreferrer"
                             target="_blank"
                           >
-                            Открыть источник сигнала
+                            {"\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a \u0441\u0438\u0433\u043d\u0430\u043b\u0430"}
                           </a>
                         ) : null}
                       </article>
@@ -1409,15 +1413,15 @@ export function CampaignDetails({
                 {expandedLeadId === lead.id ? (
                   <div className="campaign-details-copy">
                     <div>
-                      <span className="field-label">Хук</span>
+                      <span className="field-label">{"\u0425\u0443\u043a"}</span>
                       <p>{lead.hook}</p>
                     </div>
                     <div>
-                      <span className="field-label">Сообщение</span>
+                      <span className="field-label">{"\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435"}</span>
                       <p>{lead.message}</p>
                     </div>
                     <div>
-                      <span className="field-label">Повторное сообщение</span>
+                      <span className="field-label">{"\u041f\u043e\u0432\u0442\u043e\u0440\u043d\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435"}</span>
                       <p>{lead.follow_up}</p>
                     </div>
                   </div>

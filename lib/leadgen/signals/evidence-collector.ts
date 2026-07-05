@@ -95,7 +95,7 @@ const signalEvidenceProfiles: Record<SignalType, SignalEvidenceProfile> = {
   HIRING_SIGNAL: {
     title: {
       en: "Hiring activity detected",
-      ru: "Обнаружен сигнал найма",
+      ru: "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d \u0441\u0438\u0433\u043d\u0430\u043b \u043d\u0430\u0439\u043c\u0430",
     },
     directPhrases: {
       en: [
@@ -113,23 +113,24 @@ const signalEvidenceProfiles: Record<SignalType, SignalEvidenceProfile> = {
         "customer success",
       ],
       ru: [
-        "ищем в команду",
-        "открыта вакансия",
-        "открытые вакансии",
-        "расширяем команду",
-        "набор сотрудников",
-        "менеджер по продажам",
-        "аккаунт-менеджер",
-        "руководитель отдела продаж",
+        "\u0438\u0449\u0435\u043c \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0443",
+        "\u043e\u0442\u043a\u0440\u044b\u0442\u0430 \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u044f",
+        "\u043e\u0442\u043a\u0440\u044b\u0442\u044b\u0435 \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438",
+        "\u0440\u0430\u0441\u0448\u0438\u0440\u044f\u0435\u043c \u043a\u043e\u043c\u0430\u043d\u0434\u0443",
+        "\u0440\u0430\u0441\u0448\u0438\u0440\u044f\u0435\u043c \u043e\u0442\u0434\u0435\u043b \u043f\u0440\u043e\u0434\u0430\u0436",
+        "\u043d\u0430\u0431\u043e\u0440 \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a\u043e\u0432",
+        "\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 \u043f\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c",
+        "\u0430\u043a\u043a\u0430\u0443\u043d\u0442-\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440",
+        "\u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044c \u043e\u0442\u0434\u0435\u043b\u0430 \u043f\u0440\u043e\u0434\u0430\u0436",
       ],
     },
     contextPhrases: {
       en: ["careers", "jobs", "recruitment", "job opening", "sales team"],
-      ru: ["вакансии", "работа", "требуется", "найм", "отдел продаж"],
+      ru: ["\u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438", "\u0440\u0430\u0431\u043e\u0442\u0430", "\u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f", "\u043d\u0430\u0439\u043c", "\u043e\u0442\u0434\u0435\u043b \u043f\u0440\u043e\u0434\u0430\u0436"],
     },
     genericPhrases: {
       en: ["hiring", "job", "career"],
-      ru: ["вакансия", "работа", "требуется"],
+      ru: ["\u0432\u0430\u043a\u0430\u043d\u0441\u0438\u044f", "\u0440\u0430\u0431\u043e\u0442\u0430", "\u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f"],
     },
   },
   GO_TO_MARKET_SIGNAL: {
@@ -601,11 +602,32 @@ const nonOpportunityPageTerms = [
   "\u043f\u0440\u043e\u0434\u0443\u043a\u0442",
   "\u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0438",
   "\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f",
+  "\u043a\u0430\u043a \u0437\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c",
+  "\u043a\u0430\u043a \u0432\u044b\u0432\u0435\u0441\u0442\u0438",
+  "\u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e",
+  "\u0433\u0430\u0439\u0434",
+  "\u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044f",
+  "\u0447\u0435\u043a\u043b\u0438\u0441\u0442",
+  "\u0441\u043e\u0432\u0435\u0442\u044b",
+  "\u043b\u0443\u0447\u0448\u0438\u0435 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438",
+  "\u043f\u043b\u0435\u0439\u0431\u0443\u043a",
+  "\u0448\u0430\u0431\u043b\u043e\u043d",
+  "\u0447\u0442\u043e \u0442\u0430\u043a\u043e\u0435",
+  "\u043a\u0430\u043a \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442",
+  "\u043f\u0440\u0438\u0447\u0438\u043d\u044b",
+  "\u0441\u0435\u043a\u0440\u0435\u0442",
+  "\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a",
+  "\u0443\u0440\u043e\u043a\u0438",
+  "\u0447\u0442\u043e \u0442\u0430\u043a\u043e\u0435 \u0440\u043e\u043f",
+  "\u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044c \u043e\u0442\u0434\u0435\u043b\u0430 \u043f\u0440\u043e\u0434\u0430\u0436",
+  "\u043e\u0431\u044f\u0437\u0430\u043d\u043d\u043e\u0441\u0442\u0438 \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044f \u043e\u0442\u0434\u0435\u043b\u0430 \u043f\u0440\u043e\u0434\u0430\u0436",
+  "sales-head",
+  "rukovoditel-otdela-prodazh",
 ];
 
 const hiringEventPatterns = [
   /\b(?:we are hiring|now hiring|join our team|join the team|open roles|open positions|job opening|hiring sales|hiring for|account executive|business development|customer success|revenue operations)\b/i,
-  /\b(?:\u0438\u0449\u0435\u043c \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0443|\u043e\u0442\u043a\u0440\u044b\u0442(?:\u0430|\u044b|\u044b\u0435) \u0432\u0430\u043a\u0430\u043d\u0441|\u043d\u0430\u0431\u043e\u0440 \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a\u043e\u0432|\u0440\u0430\u0441\u0448\u0438\u0440\u044f\u0435\u043c \u043a\u043e\u043c\u0430\u043d\u0434\u0443)\b/i,
+  /(?:\u0438\u0449\u0435\u043c \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0443|\u0438\u0449\u0435\u043c [^.!?]{0,60}(?:\u043f\u0440\u043e\u0434\u0430\u0432\u0446|\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440)|\u043e\u0442\u043a\u0440\u044b\u0442(?:\u0430|\u044b|\u044b\u0435) \u0432\u0430\u043a\u0430\u043d\u0441|\u043d\u0430\u0431\u043e\u0440 \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a\u043e\u0432|\u0440\u0430\u0441\u0448\u0438\u0440\u044f\u0435\u043c (?:\u043a\u043e\u043c\u0430\u043d\u0434\u0443|\u043e\u0442\u0434\u0435\u043b \u043f\u0440\u043e\u0434\u0430\u0436|\u0441\u043b\u0443\u0436\u0431\u0443 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0438)|\u0443\u0432\u0435\u043b\u0438\u0447\u0438\u0432\u0430\u0435\u043c \u043e\u0442\u0434\u0435\u043b \u043f\u0440\u043e\u0434\u0430\u0436)/i,
 ];
 
 const growthEventPatterns = [
@@ -619,7 +641,7 @@ const operationalEventPatterns = [
 ];
 
 function detectEvidenceLanguage(text: string): SignalLanguage | "mixed" {
-  const cyrillicMatches = text.match(/[а-яё]/gi)?.length ?? 0;
+  const cyrillicMatches = text.match(/[\u0430-\u044f\u0451]/gi)?.length ?? 0;
   const latinMatches = text.match(/[a-z]/gi)?.length ?? 0;
 
   if (cyrillicMatches > 20 && latinMatches > 20) {
@@ -1094,11 +1116,20 @@ export function collectSignalEvidence({
   const hasConfirmedGtmEvent =
     signalType === "GO_TO_MARKET_SIGNAL" &&
     eventStrength.breakdown.gtm_signal_type === "confirmed_event";
+  const hasConfirmedCompanyOwnedHiring =
+    signalType === "HIRING_SIGNAL" &&
+    hasConcreteEvent &&
+    companyExtraction.is_candidate_company_valid &&
+    (sourceClassification.source_type === "company_careers" ||
+      sourceClassification.source_type === "company_site") &&
+    confidenceScore >= 45;
   const decision =
     isAggregatorWithoutCompany || hasInvalidCompanyCandidate
       ? "rejected"
       : hasNonOpportunityInfo
         ? "rejected"
+      : hasConfirmedCompanyOwnedHiring
+        ? "valid_signal"
       : isGtmSignal && !hasConfirmedGtmEvent
         ? confidenceScore >= 45 &&
           eventStrength.breakdown.topic_match_score > 0 &&
@@ -1130,7 +1161,10 @@ export function collectSignalEvidence({
     is_valid_signal: decision === "valid_signal",
     decision,
     signal_type: signalType,
-    signal_title: profile.title.en,
+    signal_title:
+      evidenceLanguage === "ru" || evidenceLanguage === "mixed"
+        ? profile.title.ru
+        : profile.title.en,
     signal_detail: result.snippet || result.title,
     signal_source_label: result.source_label,
     source_url: result.url,

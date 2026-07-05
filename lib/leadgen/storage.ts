@@ -317,6 +317,7 @@ export async function getRecentCampaigns(
     ...campaign,
     companies_count:
       companyCounts.get(campaign.id) ?? legacyLeadCounts.get(campaign.id) ?? 0,
+    leads_count: legacyLeadCounts.get(campaign.id) ?? 0,
     contacts_count: contactCounts.get(campaign.id) ?? 0,
   }));
 }
@@ -429,6 +430,7 @@ export async function getCampaignDetails(
     stats: {
       companies_count:
         storedCompanies.length > 0 ? storedCompanies.length : storedLeads.length,
+      leads_count: storedLeads.length,
       contacts_count:
         storedContacts.length > 0
           ? storedContacts.length
