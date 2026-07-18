@@ -3,47 +3,132 @@ import type { ContactEntryRole, LeadgenContact } from "@/lib/leadgen/types";
 export const contactTypePriority: Record<LeadgenContact["contact_type"], number> =
   {
     work_email: 110,
-    linkedin: 95,
-    telegram: 90,
-    phone: 85,
-    social_profile: 82,
     generic_email: 80,
-    website_form: 70,
-    company_social: 50,
+    linkedin: 30,
+    telegram: 28,
+    phone: 25,
+    social_profile: 24,
+    website_form: 20,
+    company_social: 18,
     no_contact_found: 0,
-    // Legacy types are kept for stored records, but new discovery emits the
-    // normalized contact types above.
-    confirmed_person: 100,
-    role_based_person: 90,
-    contact_form: 75,
-    company_website: 35,
+    // Evidence-only records verify identity and must never outrank real
+    // contact channels.
+    confirmed_person: 1,
+    role_based_person: 1,
+    contact_form: 20,
+    company_website: 10,
   };
 
 const outreachContactTypes = new Set<LeadgenContact["contact_type"]>([
   "work_email",
+]);
+
+const fallbackContactTypes = new Set<LeadgenContact["contact_type"]>([
+  "generic_email",
+]);
+
+const identityEvidenceContactTypes = new Set<LeadgenContact["contact_type"]>([
   "linkedin",
   "telegram",
   "phone",
   "social_profile",
-  "generic_email",
   "website_form",
+  "contact_form",
   "company_social",
+  "company_website",
+  "confirmed_person",
+  "role_based_person",
 ]);
 
-const fallbackContactTypes = new Set<LeadgenContact["contact_type"]>([
-  "company_website",
-  "no_contact_found",
+const evidenceOnlyContactTypes = new Set<LeadgenContact["contact_type"]>([
+  "confirmed_person",
+  "role_based_person",
 ]);
+
+export function isEvidenceOnlyContact(contact: LeadgenContact): boolean {
+  return evidenceOnlyContactTypes.has(contact.contact_type);
+}
+
+export function isSendableEmailContact(contact: LeadgenContact | null): boolean {
+  if (!contact) {
+    return false;
+  }
+
+  return contact.contact_type === "work_email" && Boolean(contact.email);
+}
+
+export function isFallbackEmailContact(contact: LeadgenContact | null): boolean {
+  if (!contact) {
+    return false;
+  }
+
+  return contact.contact_type === "generic_email" && Boolean(contact.email);
+}
+
+export function isEmailContact(contact: LeadgenContact | null): boolean {
+  return isSendableEmailContact(contact) || isFallbackEmailContact(contact);
+}
+
+export function isIdentityEvidenceContact(contact: LeadgenContact): boolean {
+  return identityEvidenceContactTypes.has(contact.contact_type);
+}
 
 function hasReachableValue(contact: LeadgenContact): boolean {
+  if (isEvidenceOnlyContact(contact)) {
+    return false;
+  }
+
+  if (!hasValidReachableChannelShape(contact)) {
+    return false;
+  }
+
   return Boolean(
     contact.email ||
-      contact.linkedin_url ||
-      contact.telegram_url ||
-      typeof contact.metadata.phone === "string" ||
-      contact.contact_url ||
+      (!isIdentityEvidenceContact(contact) &&
+        (contact.linkedin_url ||
+          contact.telegram_url ||
+          typeof contact.metadata.phone === "string" ||
+          contact.contact_url)) ||
       contact.contact_type === "no_contact_found",
   );
+}
+
+function hasValidReachableChannelShape(contact: LeadgenContact): boolean {
+  const url =
+    contact.telegram_url ??
+    (contact.contact_type === "telegram" ? contact.contact_url : null);
+
+  if (contact.contact_type !== "telegram" || !url) {
+    return true;
+  }
+
+  try {
+    const parsedUrl = new URL(url);
+    const host = parsedUrl.hostname.replace(/^www\./, "").toLowerCase();
+    const segments = parsedUrl.pathname.split("/").filter(Boolean);
+    const username = segments[0]?.toLowerCase() ?? "";
+
+    if (!["t.me", "telegram.me"].includes(host)) {
+      return false;
+    }
+
+    if (segments.length !== 1) {
+      return false;
+    }
+
+    return (
+      username.length > 0 &&
+      !username.startsWith("gk") &&
+      !username.startsWith("ooo") &&
+      !username.includes("company") &&
+      !username.includes("channel") &&
+      !username.includes("news") &&
+      !username.includes("job") &&
+      !username.includes("vacanc")
+    );
+  } catch {
+    return false;
+  }
 }
 
 function hasSource(contact: LeadgenContact): boolean {
@@ -65,11 +150,11 @@ function isAlternativePersonContact(contact: LeadgenContact): boolean {
 }
 
 function isOutreachContact(contact: LeadgenContact): boolean {
-  return (
-    outreachContactTypes.has(contact.contact_type) &&
-    hasReachableValue(contact) &&
-    hasSource(contact)
-  );
+  return outreachContactTypes.has(contact.contact_type) && isSendableEmailContact(contact) && hasSource(contact);
+}
+
+function isRankableContactChannel(contact: LeadgenContact): boolean {
+  return !isEvidenceOnlyContact(contact) && hasReachableValue(contact);
 }
 
 export type RankedContactEntries = {
@@ -115,7 +200,11 @@ function sortByContactPriority(
 export function chooseBestAvailableEntry(
   contacts: LeadgenContact[],
 ): LeadgenContact {
-  return [...contacts].sort(sortByContactPriority)[0];
+  const rankableContacts = contacts.filter(isRankableContactChannel);
+
+  return [...(rankableContacts.length > 0 ? rankableContacts : contacts)].sort(
+    sortByContactPriority,
+  )[0];
 }
 
 export function chooseBestOutreachEntry(

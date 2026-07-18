@@ -1,12 +1,17 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import { CampaignHistory } from "@/components/leadgen/campaign-history";
 import { CampaignDetails } from "@/components/leadgen/campaign-details";
 import { CampaignForm } from "@/components/leadgen/campaign-form";
+import { EmailOutreachQueue } from "@/components/leadgen/email-outreach-queue";
 import { LeadsTable } from "@/components/leadgen/leads-table";
 import { TelegramCardPreview } from "@/components/leadgen/telegram-card-preview";
 import { TelegramNotifications } from "@/components/leadgen/telegram-notifications";
+import {
+  isFallbackEmailContact,
+  isSendableEmailContact,
+} from "@/lib/leadgen/contact-channel-ranking";
 import type {
   CampaignInput,
   DecisionMakerProfile,
@@ -23,6 +28,7 @@ import type {
   OpportunityAssessment,
   PeopleDiscoveryResult,
   TelegramNotification,
+  ProductionDiscoveryStats,
 } from "@/lib/leadgen/types";
 
 type RunLeadgenResponse =
@@ -35,6 +41,7 @@ type RunLeadgenResponse =
       signals: LeadgenSignal[];
       events: LeadgenEvent[];
       notifications: TelegramNotification[];
+      production_discovery_stats?: ProductionDiscoveryStats;
     }
   | {
       success: false;
@@ -102,6 +109,8 @@ export function LeadgenDashboard() {
   const [detailsErrorMessage, setDetailsErrorMessage] = useState<string | null>(
     null,
   );
+  const [productionDiscoveryStats, setProductionDiscoveryStats] =
+    useState<ProductionDiscoveryStats | null>(null);
 
   const selectedLead = useMemo(
     () => leads.find((lead) => lead.id === selectedLeadId) ?? null,
@@ -141,19 +150,12 @@ export function LeadgenDashboard() {
 
     return (
       leadContacts.find(
-        (contact) => contact.metadata.entry_role === "best_outreach_entry",
-      ) ??
-      leadContacts.find(
         (contact) =>
-          contact.contact_type !== "company_website" &&
-          contact.contact_type !== "no_contact_found" &&
-          contact.is_primary,
+          contact.metadata.entry_role === "best_outreach_entry" &&
+          isSendableEmailContact(contact),
       ) ??
-      leadContacts.find(
-        (contact) =>
-          contact.contact_type !== "company_website" &&
-          contact.contact_type !== "no_contact_found",
-      ) ??
+      leadContacts.find((contact) => isSendableEmailContact(contact) && contact.is_primary) ??
+      leadContacts.find(isSendableEmailContact) ??
       null
     );
   }, [contacts, selectedLead]);
@@ -168,9 +170,11 @@ export function LeadgenDashboard() {
 
     return (
       leadContacts.find(
-        (contact) => contact.metadata.entry_role === "fallback_entry",
+        (contact) =>
+          contact.metadata.entry_role === "fallback_entry" &&
+          isFallbackEmailContact(contact),
       ) ??
-      leadContacts.find((contact) => contact.contact_type === "company_website") ??
+      leadContacts.find(isFallbackEmailContact) ??
       null
     );
   }, [contacts, selectedLead]);
@@ -235,6 +239,7 @@ export function LeadgenDashboard() {
     selectedCompany,
     selectedFallbackEntry,
   ]);
+  const activeOutreachCampaignId = campaign?.id ?? selectedCampaignId;
 
   async function loadCampaignHistory() {
     setIsHistoryLoading(true);
@@ -249,11 +254,9 @@ export function LeadgenDashboard() {
       }
 
       setCampaignHistory(data.campaigns);
-    } catch (error) {
+    } catch {
       setHistoryErrorMessage(
-        error instanceof Error
-          ? error.message
-          : "Не удалось загрузить историю кампаний",
+        "Не удалось загрузить историю кампаний. Попробуйте обновить страницу.",
       );
     } finally {
       setIsHistoryLoading(false);
@@ -275,12 +278,10 @@ export function LeadgenDashboard() {
           setCampaignHistory(data.campaigns);
         }
       })
-      .catch((error) => {
+      .catch(() => {
         if (isMounted) {
           setHistoryErrorMessage(
-            error instanceof Error
-              ? error.message
-              : "Не удалось загрузить историю кампаний",
+            "Не удалось загрузить историю кампаний. Попробуйте обновить страницу.",
           );
         }
       })
@@ -320,15 +321,14 @@ export function LeadgenDashboard() {
       setLeads(data.leads);
       setEvents(data.events);
       setNotifications(data.notifications);
+      setProductionDiscoveryStats(data.production_discovery_stats ?? null);
       setSelectedLeadId(data.leads[0]?.id ?? null);
       setSelectedCampaignDetails(null);
       setSelectedCampaignId(null);
       void loadCampaignHistory();
-    } catch (error) {
+    } catch {
       setErrorMessage(
-        error instanceof Error
-          ? error.message
-          : "Не удалось запустить тестовый процесс",
+        "Не удалось запустить поиск лидов. Попробуйте обновить страницу.",
       );
     } finally {
       setIsRunning(false);
@@ -351,12 +351,13 @@ export function LeadgenDashboard() {
       }
 
       setSelectedCampaignDetails(data.details);
-    } catch (error) {
+      setProductionDiscoveryStats(
+        data.details.campaign.production_discovery_stats ?? null,
+      );
+    } catch {
       setSelectedCampaignDetails(null);
       setDetailsErrorMessage(
-        error instanceof Error
-          ? error.message
-          : "Не удалось открыть детали кампании",
+        "Не удалось открыть детали кампании. Попробуйте обновить страницу.",
       );
     } finally {
       setIsDetailsLoading(false);
@@ -395,15 +396,20 @@ export function LeadgenDashboard() {
       <section className="panel campaign-panel">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Управление кампанией</p>
-            <h2>Создать тестовую выборку лидов</h2>
+            <p className="eyebrow">Новая кампания</p>
+            <h2>Запустите поиск готовых лидов</h2>
             <p className="muted">
-              Запуск теперь идет через API route, сохраняет данные в Supabase и
-              возвращает результат в интерфейс.
+              Укажите параметры поиска — система найдёт компании, ЛПР, контакты и подготовит письма.
             </p>
           </div>
         </div>
         <CampaignForm isRunning={isRunning} onRun={handleRun} />
+        <div className="campaign-flow" aria-label="Как работает Leadgen OS">
+          <span>Ищем компании</span>
+          <span>Проверяем сигнал</span>
+          <span>Находим ЛПР и email</span>
+          <span>Готовим письмо</span>
+        </div>
         {errorMessage ? (
           <p className="muted" role="alert">
             {errorMessage}
@@ -415,15 +421,52 @@ export function LeadgenDashboard() {
         <section className="panel table-panel">
           <div className="table-toolbar">
             <div>
-              <p className="eyebrow">{"\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u0430"}</p>
-              <h2>{"\u041e\u0447\u0435\u0440\u0435\u0434\u044c \u043b\u0438\u0434\u043e\u0432"}</h2>
+              <p className="eyebrow">{"Результат поиска"}</p>
+              <h2>{"Очередь лидов"}</h2>
             </div>
             <span className="table-meta">
               {campaign
-                ? `${leads.length} ${"\u043b\u0438\u0434\u043e\u0432"} ${"\u00b7"} ${campaign.name} ${"\u00b7"} ${events.length} ${"\u0441\u043e\u0431\u044b\u0442\u0438\u0439"}`
-                : "\u041e\u0436\u0438\u0434\u0430\u043d\u0438\u0435 \u0437\u0430\u043f\u0443\u0441\u043a\u0430 \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u0438"}
+                ? `${leads.length} ${"лидов"} ${"·"} ${campaign.name} ${"·"} ${events.length} ${"событий"}`
+                : "Ожидание запуска кампании"}
             </span>
           </div>
+          {productionDiscoveryStats ? (
+            <div className="outreach-metrics campaign-production-metrics">
+              <div>
+                <span>Получено результатов</span>
+                <strong>{productionDiscoveryStats.results_received}</strong>
+              </div>
+              <div>
+                <span>Ранее найдено и пропущено</span>
+                <strong>{productionDiscoveryStats.previously_discovered_skipped}</strong>
+              </div>
+              <div>
+                <span>Дубликаты внутри выдачи</span>
+                <strong>{productionDiscoveryStats.within_run_duplicates}</strong>
+              </div>
+              <div>
+                <span>Новых компаний</span>
+                <strong>
+                  {productionDiscoveryStats.new_unique_companies} из{" "}
+                  {productionDiscoveryStats.target_companies}
+                </strong>
+              </div>
+              <div>
+                <span>Без email</span>
+                <strong>
+                  {Math.max(
+                    0,
+                    companies.length -
+                      new Set(
+                        contacts
+                          .filter((contact) => contact.email)
+                          .map((contact) => contact.company_id),
+                      ).size,
+                  )}
+                </strong>
+              </div>
+            </div>
+          ) : null}
           <LeadsTable
             companies={companies}
             contacts={contacts}
@@ -445,6 +488,9 @@ export function LeadgenDashboard() {
           onStatusChange={handleStatusChange}
         />
       </div>
+
+      <div style={{ height: 20 }} />
+      <EmailOutreachQueue campaignId={activeOutreachCampaignId} />
 
       <div style={{ height: 20 }} />
       <TelegramNotifications leads={leads} notifications={notifications} />

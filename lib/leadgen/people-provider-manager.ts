@@ -29,6 +29,15 @@ export class PeopleProviderManager {
           provider_label: provider.label,
           candidates: [],
           unavailable: true,
+          diagnostics: [
+            {
+              level: "error" as const,
+              message:
+                result.reason instanceof Error
+                  ? result.reason.message
+                  : String(result.reason),
+            },
+          ],
         },
       ];
     });

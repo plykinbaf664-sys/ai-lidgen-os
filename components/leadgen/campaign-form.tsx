@@ -8,39 +8,32 @@ type CampaignFormProps = {
   onRun: (campaign: CampaignInput) => void | Promise<void>;
 };
 
+const defaultCampaignName = "Производственные компании — отдел продаж";
+const defaultRequestedBy = "Оператор Leadgen OS";
+
 export function CampaignForm({ isRunning = false, onRun }: CampaignFormProps) {
-  const [name, setName] = useState("Первая тестовая кампания");
-  const [requestedBy, setRequestedBy] = useState("Оператор Leadgen OS");
+  const [name, setName] = useState(defaultCampaignName);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    void onRun({ name: name.trim(), requestedBy: requestedBy.trim() });
+    void onRun({ name: name.trim(), requestedBy: defaultRequestedBy });
   }
 
   return (
-    <form className="campaign-form" onSubmit={handleSubmit}>
+    <form className="campaign-form campaign-form-compact" onSubmit={handleSubmit}>
       <label className="form-field">
         <span>Название кампании</span>
         <input
           disabled={isRunning}
+          placeholder="Например: Производственные компании — отдел продаж"
           required
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
       </label>
 
-      <label className="form-field">
-        <span>Инициатор запуска</span>
-        <input
-          disabled={isRunning}
-          required
-          value={requestedBy}
-          onChange={(event) => setRequestedBy(event.target.value)}
-        />
-      </label>
-
-      <button className="primary-button" disabled={isRunning} type="submit">
-        {isRunning ? "Запускаю..." : "Запустить тестовый процесс"}
+      <button className="primary-button campaign-submit-button" disabled={isRunning} type="submit">
+        {isRunning ? "Идёт поиск..." : "Запустить поиск"}
       </button>
     </form>
   );

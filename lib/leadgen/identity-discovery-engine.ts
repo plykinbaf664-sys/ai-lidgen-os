@@ -8,8 +8,19 @@ import type {
   PersonCandidate,
   PersonIntelligence,
 } from "@/lib/leadgen/types";
+import {
+  isFallbackEmailContact,
+  isSendableEmailContact,
+} from "@/lib/leadgen/contact-channel-ranking";
 
 function getContactValue(contact: LeadgenContact): string | null {
+  if (
+    contact.contact_type === "confirmed_person" ||
+    contact.contact_type === "role_based_person"
+  ) {
+    return null;
+  }
+
   return (
     contact.email ??
     contact.linkedin_url ??
@@ -20,6 +31,13 @@ function getContactValue(contact: LeadgenContact): string | null {
 }
 
 function getContactUrl(contact: LeadgenContact): string | null {
+  if (
+    contact.contact_type === "confirmed_person" ||
+    contact.contact_type === "role_based_person"
+  ) {
+    return null;
+  }
+
   return (
     contact.linkedin_url ??
     contact.telegram_url ??
@@ -57,32 +75,24 @@ function getChannelLabel(contact: LeadgenContact): string {
 }
 
 function getChannelTier(contact: LeadgenContact): IdentityChannel["tier"] {
-  if (
-    contact.contact_type === "work_email" ||
-    contact.contact_type === "linkedin" ||
-    contact.contact_type === "telegram" ||
-    contact.contact_type === "phone"
-  ) {
+  if (contact.contact_type === "work_email") {
     return 1;
   }
 
-  if (contact.contact_type === "social_profile") {
+  if (contact.contact_type === "generic_email") {
     return 2;
   }
 
   if (
+    contact.contact_type === "linkedin" ||
+    contact.contact_type === "telegram" ||
+    contact.contact_type === "phone" ||
+    contact.contact_type === "social_profile" ||
     contact.contact_type === "website_form" ||
-    contact.contact_type === "company_social" ||
-    contact.contact_type === "company_website"
+    contact.contact_type === "contact_form" ||
+    contact.contact_type === "company_social"
   ) {
     return 3;
-  }
-
-  if (
-    contact.contact_type === "generic_email" ||
-    contact.contact_type === "contact_form"
-  ) {
-    return 4;
   }
 
   return 4;
@@ -114,11 +124,7 @@ function getOwnership(contact: LeadgenContact): IdentityChannelOwnership {
 }
 
 function canUseForOutreach(contact: LeadgenContact): boolean {
-  return (
-    contact.contact_type !== "company_website" &&
-    contact.contact_type !== "no_contact_found" &&
-    Boolean(getContactValue(contact))
-  );
+  return isSendableEmailContact(contact) || isFallbackEmailContact(contact);
 }
 
 function toIdentityChannel(contact: LeadgenContact): IdentityChannel {
@@ -149,13 +155,13 @@ function toIdentityChannel(contact: LeadgenContact): IdentityChannel {
 function channelRank(channel: IdentityChannel): number {
   const typePriority: Record<IdentityChannel["contact_type"], number> = {
     work_email: 140,
-    linkedin: 130,
-    telegram: 120,
-    phone: 110,
-    social_profile: 95,
-    role_based_person: 90,
-    confirmed_person: 90,
-    generic_email: 70,
+    generic_email: 120,
+    linkedin: 60,
+    telegram: 55,
+    phone: 50,
+    social_profile: 45,
+    role_based_person: 1,
+    confirmed_person: 1,
     website_form: 65,
     contact_form: 65,
     company_social: 55,
@@ -219,19 +225,15 @@ function getRecommendedNextAction({
   primaryChannel: IdentityChannel | null;
   fallbackChannel: IdentityChannel | null;
 }): ContactRecommendedNextAction {
-  if (primaryChannel?.ownership === "primary_person") {
+  if (primaryChannel?.contact_type === "work_email" && primaryChannel.value) {
     return "send_outreach";
   }
 
-  if (primaryChannel?.can_use_for_outreach) {
-    return "manual_review";
+  if (fallbackChannel?.contact_type === "generic_email" && fallbackChannel.value) {
+    return "use_fallback_channel";
   }
 
-  if (fallbackChannel) {
-    return "run_enrichment";
-  }
-
-  return "skip_until_contact_found";
+  return "run_enrichment";
 }
 
 export function buildIdentityProfile({
@@ -248,6 +250,11 @@ export function buildIdentityProfile({
   const person = peopleDiscovery.primary_person;
   const personIntelligence = getPrimaryPersonIntelligence(peopleDiscovery);
   const availableChannels = contacts
+    .filter(
+      (contact) =>
+        contact.contact_type !== "confirmed_person" &&
+        contact.contact_type !== "role_based_person",
+    )
     .map(toIdentityChannel)
     .sort((left, right) => channelRank(right) - channelRank(left));
   const bestOutreachChannel = bestOutreachEntry

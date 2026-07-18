@@ -165,8 +165,24 @@ function getContactReadiness({
     return 86;
   }
 
+  if (bestOutreachEntry?.contact_type === "work_email") {
+    return 96;
+  }
+
+  if (bestOutreachEntry?.contact_type === "linkedin") {
+    return 90;
+  }
+
+  if (bestOutreachEntry?.contact_type === "telegram") {
+    return 88;
+  }
+
+  if (bestOutreachEntry?.contact_type === "phone") {
+    return 82;
+  }
+
   if (bestOutreachEntry?.contact_type === "generic_email") {
-    return 58;
+    return 35;
   }
 
   if (bestOutreachEntry?.contact_type === "contact_form") {
@@ -179,6 +195,14 @@ function getContactReadiness({
 
   if (fallbackEntry?.contact_type === "company_website") {
     return 24;
+  }
+
+  if (
+    fallbackEntry?.contact_type === "generic_email" ||
+    fallbackEntry?.contact_type === "website_form" ||
+    fallbackEntry?.contact_type === "company_social"
+  ) {
+    return 32;
   }
 
   return 10;
@@ -258,18 +282,30 @@ function getRecommendedNextAction({
   }
 
   if (!bestOutreachEntry) {
+    if (
+      fallbackEntry?.contact_type === "generic_email" ||
+      fallbackEntry?.contact_type === "website_form" ||
+      fallbackEntry?.contact_type === "company_social"
+    ) {
+      return "run_enrichment";
+    }
+
     return priorityScore >= 55 ? "find_target_persona" : "monitor_for_new_signal";
   }
 
   if (
     bestOutreachEntry.contact_type === "confirmed_person" ||
-    bestOutreachEntry.contact_type === "role_based_person"
+    bestOutreachEntry.contact_type === "role_based_person" ||
+    bestOutreachEntry.contact_type === "work_email" ||
+    bestOutreachEntry.contact_type === "linkedin" ||
+    bestOutreachEntry.contact_type === "telegram" ||
+    bestOutreachEntry.contact_type === "phone"
   ) {
     return priorityScore >= 55 ? "send_outreach" : "review_manually";
   }
 
   if (bestOutreachEntry.contact_type === "generic_email") {
-    return priorityScore >= 75 ? "send_outreach" : "run_enrichment";
+    return "run_enrichment";
   }
 
   if (bestOutreachEntry.contact_type === "contact_form") {

@@ -6,6 +6,7 @@ import type {
   TelegramNotification,
   TelegramNotificationStatus,
 } from "@/lib/leadgen/types";
+import { normalizeLeadgenText } from "@/lib/leadgen/text-normalization";
 
 const statusLabels: Record<TelegramNotificationStatus, string> = {
   pending: "Ожидает подготовки",
@@ -34,7 +35,7 @@ export function TelegramNotifications({
     string | null
   >(null);
   const companyNames = new Map(
-    leads.map((lead) => [lead.id, lead.company_name]),
+    leads.map((lead) => [lead.id, normalizeLeadgenText(lead.company_name)]),
   );
   const preparedCount = notifications.filter(
     (notification) => notification.status === "prepared",
@@ -50,8 +51,8 @@ export function TelegramNotifications({
     <section className="panel notifications-panel">
       <div className="table-toolbar">
         <div>
-          <p className="eyebrow">Слой Telegram-уведомлений</p>
-          <h2>Подготовленные Telegram-уведомления</h2>
+          <p className="eyebrow">Уведомления для Телеграм</p>
+          <h2>Подготовленные карточки</h2>
         </div>
         <span className="table-meta">
           {notifications.length === 0
@@ -64,8 +65,8 @@ export function TelegramNotifications({
         <div className="empty-state">
           <h3>Уведомлений пока нет</h3>
           <p>
-            После запуска кампании здесь появятся локально подготовленные
-            Telegram-карточки. Отправка сообщений отключена.
+            После запуска кампании здесь появятся подготовленные карточки.
+            Отправка сообщений отключена.
           </p>
         </div>
       ) : (
@@ -74,9 +75,7 @@ export function TelegramNotifications({
             <article className="notification-item" key={notification.id}>
               <div className="notification-meta">
                 <div>
-                  <h3>
-                    {companyNames.get(notification.lead_id) ?? "Неизвестный лид"}
-                  </h3>
+                  <h3>{companyNames.get(notification.lead_id) ?? "Лид без названия"}</h3>
                   <p className="company-domain">
                     {new Date(notification.created_at).toLocaleString("ru-RU")}
                   </p>
@@ -99,16 +98,16 @@ export function TelegramNotifications({
               {expandedNotificationId === notification.id ? (
                 <div className="notification-details">
                   <p>
-                    <strong>ID уведомления:</strong> {notification.id}
+                    <strong>Идентификатор уведомления:</strong> {notification.id}
                   </p>
                   <p>
-                    <strong>ID лида:</strong> {notification.lead_id}
+                    <strong>Идентификатор лида:</strong> {notification.lead_id}
                   </p>
                   <p>
-                    <strong>ID кампании:</strong> {notification.campaign_id}
+                    <strong>Идентификатор кампании:</strong> {notification.campaign_id}
                   </p>
                   <div className="telegram-card">
-                    {notification.telegram_card_text}
+                    {normalizeLeadgenText(notification.telegram_card_text)}
                   </div>
                 </div>
               ) : null}

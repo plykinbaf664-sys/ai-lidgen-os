@@ -9,6 +9,10 @@ function normalizeText(value: string | null): string {
   return value?.toLowerCase().trim() ?? "";
 }
 
+function hasMetadataUrl(candidate: PersonCandidate, key: string): boolean {
+  return typeof candidate.metadata[key] === "string";
+}
+
 export function getMatchedPersonKeywords({
   candidate,
   decisionMaker,
@@ -272,7 +276,7 @@ export function scorePersonConfidence({
   }
 
   if (candidate.work_email) {
-    score += 5;
+    score += 12;
   }
 
   if (candidate.linkedin_url) {
@@ -281,6 +285,14 @@ export function scorePersonConfidence({
 
   if (candidate.phone) {
     score += 3;
+  }
+
+  if (hasMetadataUrl(candidate, "telegram_url")) {
+    score += 4;
+  }
+
+  if (hasMetadataUrl(candidate, "vk_url")) {
+    score += 2;
   }
 
   return clampPersonConfidence(score);
@@ -308,6 +320,7 @@ export function scorePersonCandidate({
       scorePriority(authority) * 0.18 +
       scorePriority(influence) * 0.17 +
       confidenceScore * 0.1 -
-      (hasLowAuthorityRole(candidate) ? 25 : 0),
+      (hasLowAuthorityRole(candidate) ? 25 : 0) +
+      (candidate.work_email ? 12 : 0),
   );
 }

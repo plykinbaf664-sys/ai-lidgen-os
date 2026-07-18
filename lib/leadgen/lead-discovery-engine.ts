@@ -1,5 +1,12 @@
 import { leadgenConfig } from "@/lib/leadgen/config";
+import {
+  getCompanyIdentity,
+  getDuplicateReason,
+  type CompanyIdentity,
+} from "@/lib/leadgen/company-identity";
+import { leadgenProductionConfig } from "@/lib/leadgen/production-config";
 import { ContactEnrichmentEngine } from "@/lib/leadgen/contact-enrichment-engine";
+import { isEvidenceOnlyContact } from "@/lib/leadgen/contact-channel-ranking";
 import { discoverDecisionMaker } from "@/lib/leadgen/decision-maker-discovery";
 import { prioritizeLead } from "@/lib/leadgen/lead-prioritization-engine";
 import { assessOpportunity } from "@/lib/leadgen/opportunity-intelligence";
@@ -19,6 +26,7 @@ import type {
   LeadgenEvent,
   LeadgenLead,
   LeadgenSignal,
+  LeadReadinessStatus,
   LeadPriority,
   OpportunityAssessment,
   ContactDiscoveryResult,
@@ -31,6 +39,7 @@ type RunLeadDiscoveryInput = {
   searchProvider: SearchProvider;
   targetCompanies?: number;
   market?: SignalSearchMarket;
+  knownCompanyIdentities?: CompanyIdentity[];
 };
 
 type CandidateRecord = {
@@ -39,11 +48,13 @@ type CandidateRecord = {
   opportunity: OpportunityAssessment;
 };
 
-const DEFAULT_TARGET_COMPANIES = 10;
-const MAX_SIGNALS_PER_RUN = 3;
-const TARGET_PER_SIGNAL = 12;
+const DEFAULT_TARGET_COMPANIES =
+  leadgenProductionConfig.campaignCompanyLimit;
+const MAX_SIGNALS_PER_RUN = 5;
+const TARGET_PER_SIGNAL = 15;
 const MAX_QUERIES_PER_SIGNAL = 10;
 const MAX_RESULTS_PER_QUERY = 10;
+const MIN_ENRICHMENT_OPPORTUNITY_SCORE = 50;
 
 function createRecordId(...parts: string[]): string {
   return parts
@@ -53,15 +64,13 @@ function createRecordId(...parts: string[]): string {
     .replace(/(^-|-$)/g, "");
 }
 
-function normalizeCompanyName(companyName: string): string {
-  return companyName
-    .toLowerCase()
-    .replace(/[^a-z0-9\u0430-\u044f\u0451]+/gi, "-")
-    .replace(/(^-|-$)/g, "");
-}
-
 function getCandidateKey(candidate: LeadCandidate): string {
-  return `name:${normalizeCompanyName(candidate.company_name)}`;
+  return getCompanyIdentity({
+    company_name: candidate.company_name,
+    company_domain: candidate.company_domain,
+    website: candidate.company_source_url,
+    region: candidate.source_country_hint,
+  }).identityKey;
 }
 
 function getCompanyIdentityTokens(companyName: string): string[] {
@@ -147,6 +156,29 @@ function shouldReplaceCandidateRecord(
   }
 
   return false;
+}
+
+function shouldRunLeadWorkflow(record: CandidateRecord): boolean {
+  return (
+    record.opportunity.should_create_lead ||
+    (record.opportunity.recommended_action === "run_enrichment" &&
+      record.opportunity.opportunity_score >= MIN_ENRICHMENT_OPPORTUNITY_SCORE)
+  );
+}
+
+function getOpportunityFinalDecision(opportunity: OpportunityAssessment): string {
+  if (opportunity.should_create_lead) {
+    return "lead_created";
+  }
+
+  if (
+    opportunity.recommended_action === "run_enrichment" &&
+    opportunity.opportunity_score >= MIN_ENRICHMENT_OPPORTUNITY_SCORE
+  ) {
+    return "lead_created_for_enrichment";
+  }
+
+  return "skipped_before_lead_creation";
 }
 
 function getSignalOrder(): SignalType[] {
@@ -260,9 +292,7 @@ function buildCompany({
       discovery_query_language: candidate.discovery_query_language,
       discovery_query_angle: candidate.discovery_query_angle,
       source_country_hint: candidate.source_country_hint,
-      final_decision: opportunity.should_create_lead
-        ? "lead_created"
-        : "skipped_before_lead_creation",
+      final_decision: getOpportunityFinalDecision(opportunity),
       rejection_reason: opportunity.should_create_lead
         ? null
         : opportunity.negative_factors[0] ??
@@ -342,16 +372,39 @@ function attachContactDiscoveryToCompany(
   company: LeadgenCompany,
   contactDiscovery: ContactDiscoveryResult,
 ): LeadgenCompany {
+  const contactReadiness = getContactReadinessStatus(contactDiscovery);
+
   return {
     ...company,
     metadata: {
       ...company.metadata,
       contact_discovery: {
+        final_contact_readiness: contactReadiness,
+        stop_reason:
+          contactDiscovery.email_stop_reason ??
+          (contactReadiness === "outreach_ready"
+            ? "direct_email_found"
+            : contactReadiness === "fallback_ready"
+              ? "fallback_email_found"
+              : contactReadiness === "enrichment_required"
+                ? "email_search_incomplete"
+                : "email_search_exhausted"),
         discovery_status: contactDiscovery.discovery_status,
         persona_search_status: contactDiscovery.persona_search_status,
         recommended_next_action: contactDiscovery.recommended_next_action,
         providers_used: contactDiscovery.providers_used,
         warnings: contactDiscovery.warnings,
+        strategies_attempted: contactDiscovery.strategies_attempted,
+        queries_executed: contactDiscovery.queries_executed ?? [],
+        urls_inspected: contactDiscovery.urls_inspected,
+        channels_found: contactDiscovery.channels_found,
+        channels_rejected: contactDiscovery.channels_rejected,
+        provider_errors: contactDiscovery.provider_errors,
+        emails_extracted: contactDiscovery.emails_extracted ?? [],
+        emails_rejected: contactDiscovery.emails_rejected ?? [],
+        email_search_completed: contactDiscovery.email_search_completed ?? false,
+        email_search_status: contactDiscovery.email_search_status ?? null,
+        email_stop_reason: contactDiscovery.email_stop_reason ?? null,
         best_outreach_entry_id: contactDiscovery.best_outreach_entry?.id ?? null,
         fallback_entry_id: contactDiscovery.fallback_entry?.id ?? null,
         alternative_channel_ids: contactDiscovery.alternative_channels.map(
@@ -403,6 +456,18 @@ function writeFollowUp(
   return `Quick follow-up on ${company.company_name}. I reached out because ${candidate.why_now ?? "the public signal suggested a possible current workflow window"}. The relevant owner looks like ${decisionMaker.primary_persona}; the hypothesis is ${decisionMaker.expected_goal}`;
 }
 
+function writeDraftHypothesis(
+  company: LeadgenCompany,
+  candidate: LeadCandidate,
+  decisionMaker: DecisionMakerProfile,
+): string {
+  return [
+    "Draft only - not ready to send.",
+    "No confirmed outreach channel has been selected yet.",
+    writeMessage(company, candidate, decisionMaker),
+  ].join(" ");
+}
+
 function buildLead({
   campaign,
   company,
@@ -435,23 +500,122 @@ function buildLead({
     signal_title: candidate.card_signal_title ?? primarySignal.signal_title,
     signal_detail: candidate.signal_summary ?? primarySignal.signal_detail,
     signal_source_label: primarySignal.signal_source_label,
-    hook: createHook(company, candidate, decisionMaker),
-    message: writeMessage(company, candidate, decisionMaker),
-    follow_up: writeFollowUp(company, candidate, decisionMaker),
+    hook: `Draft hypothesis pending contact readiness. ${createHook(
+      company,
+      candidate,
+      decisionMaker,
+    )}`,
+    message: writeDraftHypothesis(company, candidate, decisionMaker),
+    follow_up:
+      "Not ready to send - follow-up is disabled until a direct or fallback channel is confirmed.",
     status: "new",
     created_at: createdAt,
     updated_at: createdAt,
   };
 }
 
-function getContactValue(contact: LeadgenContact): string | null {
-  return (
-    contact.email ??
-    contact.linkedin_url ??
-    contact.telegram_url ??
-    (typeof contact.metadata.phone === "string" ? contact.metadata.phone : null) ??
-    contact.contact_url
+function getContactReadinessStatus(
+  contactDiscovery: ContactDiscoveryResult,
+): LeadReadinessStatus {
+  if (contactDiscovery.best_outreach_entry) {
+    return "outreach_ready";
+  }
+
+  if (
+    contactDiscovery.fallback_entry &&
+    contactDiscovery.fallback_entry.contact_type !== "company_website" &&
+    contactDiscovery.fallback_entry.contact_type !== "no_contact_found"
+  ) {
+    return "fallback_ready";
+  }
+
+  if (contactDiscovery.identity_profile.person) {
+    return "enrichment_required";
+  }
+
+  if (contactDiscovery.fallback_entry?.contact_type === "company_website") {
+    return "enrichment_required";
+  }
+
+  return "provider_exhausted";
+}
+
+function getLeadStatusForReadiness(
+  readinessStatus: LeadReadinessStatus,
+): LeadgenLead["status"] {
+  if (
+    readinessStatus === "outreach_ready" ||
+    readinessStatus === "fallback_ready"
+  ) {
+    return "new";
+  }
+
+  if (
+    readinessStatus === "provider_exhausted" ||
+    readinessStatus === "rejected"
+  ) {
+    return "rejected";
+  }
+
+  return "paused";
+}
+
+function finalizeLeadOutput({
+  lead,
+  company,
+  candidate,
+  decisionMaker,
+  contactDiscovery,
+}: {
+  lead: LeadgenLead;
+  company: LeadgenCompany;
+  candidate: LeadCandidate;
+  decisionMaker: DecisionMakerProfile;
+  contactDiscovery: ContactDiscoveryResult;
+}): LeadgenLead {
+  const readinessStatus = getContactReadinessStatus(contactDiscovery);
+  const leadWithContact = applyBestAvailableEntryToLead(
+    lead,
+    contactDiscovery.best_outreach_entry ?? contactDiscovery.fallback_entry,
   );
+  const isReadyToSend =
+    readinessStatus === "outreach_ready" ||
+    readinessStatus === "fallback_ready";
+  const readinessNote = `Contact readiness: ${readinessStatus}.`;
+
+  return {
+    ...leadWithContact,
+    hook: isReadyToSend
+      ? createHook(company, candidate, decisionMaker)
+      : `Draft hypothesis only - not ready to send. ${createHook(
+          company,
+          candidate,
+          decisionMaker,
+        )}`,
+    message: isReadyToSend
+      ? writeMessage(company, candidate, decisionMaker)
+      : `${readinessNote} Draft only - no confirmed sendable channel found. ${writeMessage(
+          company,
+          candidate,
+          decisionMaker,
+        )}`,
+    follow_up: isReadyToSend
+      ? writeFollowUp(company, candidate, decisionMaker)
+      : `${readinessNote} Follow-up is not ready to send until contact enrichment confirms a usable channel.`,
+    status: getLeadStatusForReadiness(readinessStatus),
+  };
+}
+
+function getContactValue(contact: LeadgenContact): string | null {
+  if (
+    isEvidenceOnlyContact(contact) ||
+    (contact.contact_type !== "work_email" &&
+      contact.contact_type !== "generic_email")
+  ) {
+    return null;
+  }
+
+  return contact.email;
 }
 
 function getContactLabel(contact: LeadgenContact): string {
@@ -489,14 +653,6 @@ function getContactLabel(contact: LeadgenContact): string {
 function getContactChannel(
   contact: LeadgenContact,
 ): LeadgenLead["contact_channel"] {
-  if (contact.contact_type === "confirmed_person") {
-    return "decision-maker";
-  }
-
-  if (contact.contact_type === "role_based_person") {
-    return "department-head";
-  }
-
   if (contact.contact_type === "generic_email") {
     return "general-email";
   }
@@ -537,9 +693,14 @@ function getContactChannel(
 
 function applyBestAvailableEntryToLead(
   lead: LeadgenLead,
-  bestAvailableEntry: LeadgenContact,
+  bestAvailableEntry: LeadgenContact | null,
 ): LeadgenLead {
-  if (bestAvailableEntry.contact_type === "no_contact_found") {
+  if (
+    !bestAvailableEntry ||
+    bestAvailableEntry.contact_type === "no_contact_found" ||
+    isEvidenceOnlyContact(bestAvailableEntry) ||
+    !getContactValue(bestAvailableEntry)
+  ) {
     return {
       ...lead,
       contact_channel: null,
@@ -608,25 +769,44 @@ async function discoverCandidates({
   searchProvider,
   targetCompanies,
   market,
+  knownCompanyIdentities,
 }: {
   searchProvider: SearchProvider;
   targetCompanies: number;
   market: SignalSearchMarket;
-}): Promise<CandidateRecord[]> {
+  knownCompanyIdentities: CompanyIdentity[];
+}): Promise<{
+  records: CandidateRecord[];
+  stats: NonNullable<LeadDiscoveryResult["production_discovery_stats"]>;
+}> {
   const candidateRecords = new Map<string, CandidateRecord>();
-  let acceptedOpportunityCount = 0;
+  let workflowCandidateCount = 0;
+  let resultsReceived = 0;
+  let candidatesViewed = 0;
+  let previouslyDiscoveredSkipped = 0;
+  let withinRunDuplicates = 0;
+  const skipReasons: Record<string, number> = {};
+  const skippedIdentityKeys = new Set<string>();
 
   for (const signalType of getSignalOrder()) {
     const result = await runSignalPipeline({
       signalType,
       searchProvider,
-      targetCandidates: TARGET_PER_SIGNAL,
+      targetCandidates: Math.min(
+        leadgenProductionConfig.discoveryCandidateBudget,
+        Math.max(TARGET_PER_SIGNAL, targetCompanies * 2),
+      ),
       maxQueries: MAX_QUERIES_PER_SIGNAL,
       maxResultsPerQuery: MAX_RESULTS_PER_QUERY,
       market,
     });
+    resultsReceived += result.all_evidence.length;
 
     for (const candidate of result.candidates) {
+      candidatesViewed += 1;
+      if (candidatesViewed > leadgenProductionConfig.discoveryCandidateBudget) {
+        break;
+      }
       const interpretedCandidate = interpretCandidate(candidate);
 
       if (!interpretedCandidate) {
@@ -634,6 +814,21 @@ async function discoverCandidates({
       }
 
       const candidateKey = getCandidateKey(candidate);
+      const identity = getCompanyIdentity({
+        company_name: candidate.company_name,
+        company_domain: candidate.company_domain,
+        website: candidate.company_source_url,
+        region: candidate.source_country_hint,
+      });
+      const registryMatch = knownCompanyIdentities
+        .map((known) => getDuplicateReason(identity, known))
+        .find(Boolean);
+      if (registryMatch) {
+        skippedIdentityKeys.add(identity.identityKey);
+        previouslyDiscoveredSkipped += 1;
+        skipReasons[registryMatch] = (skipReasons[registryMatch] ?? 0) + 1;
+        continue;
+      }
       const opportunity = assessOpportunity({
         candidate: interpretedCandidate,
       });
@@ -644,10 +839,19 @@ async function discoverCandidates({
           signalType,
           opportunity,
         });
-        if (opportunity.should_create_lead) {
-          acceptedOpportunityCount += 1;
+        if (
+          shouldRunLeadWorkflow({
+            candidate: interpretedCandidate,
+            signalType,
+            opportunity,
+          })
+        ) {
+          workflowCandidateCount += 1;
         }
       } else {
+        withinRunDuplicates += 1;
+        skipReasons.duplicate_within_run =
+          (skipReasons.duplicate_within_run ?? 0) + 1;
         const existingRecord = candidateRecords.get(candidateKey);
         const nextRecord = {
           candidate: interpretedCandidate,
@@ -657,23 +861,44 @@ async function discoverCandidates({
 
         if (existingRecord && shouldReplaceCandidateRecord(nextRecord, existingRecord)) {
           if (
-            !existingRecord.opportunity.should_create_lead &&
-            opportunity.should_create_lead
+            !shouldRunLeadWorkflow(existingRecord) &&
+            shouldRunLeadWorkflow(nextRecord)
           ) {
-            acceptedOpportunityCount += 1;
+            workflowCandidateCount += 1;
           }
 
           candidateRecords.set(candidateKey, nextRecord);
         }
       }
 
-      if (acceptedOpportunityCount >= targetCompanies) {
-        return [...candidateRecords.values()];
+      if (workflowCandidateCount >= targetCompanies) {
+        break;
       }
+    }
+    if (
+      workflowCandidateCount >= targetCompanies ||
+      candidatesViewed >= leadgenProductionConfig.discoveryCandidateBudget
+    ) {
+      break;
     }
   }
 
-  return [...candidateRecords.values()];
+  const records = [...candidateRecords.values()]
+    .filter(shouldRunLeadWorkflow)
+    .slice(0, targetCompanies);
+  return {
+    records,
+    stats: {
+      results_received: resultsReceived,
+      previously_discovered_skipped: previouslyDiscoveredSkipped,
+      within_run_duplicates: withinRunDuplicates,
+      new_unique_companies: records.length,
+      target_companies: targetCompanies,
+      search_budget: leadgenProductionConfig.discoveryCandidateBudget,
+      skip_reasons: skipReasons,
+      skipped_identity_keys: [...skippedIdentityKeys],
+    },
+  };
 }
 
 export async function runLeadDiscoveryEngine({
@@ -681,6 +906,7 @@ export async function runLeadDiscoveryEngine({
   searchProvider,
   targetCompanies = DEFAULT_TARGET_COMPANIES,
   market = "ru",
+  knownCompanyIdentities = [],
 }: RunLeadDiscoveryInput): Promise<LeadDiscoveryResult> {
   const createdAt = new Date().toISOString();
   const pipelineRunId = createRecordId(
@@ -689,15 +915,18 @@ export async function runLeadDiscoveryEngine({
     createdAt,
   );
   const campaign = buildCampaign(campaignInput, pipelineRunId, createdAt);
-  const candidateRecords = await discoverCandidates({
+  const discovery = await discoverCandidates({
     searchProvider,
-    targetCompanies,
+    targetCompanies: Math.min(
+      targetCompanies,
+      leadgenProductionConfig.campaignCompanyLimit,
+    ),
     market,
+    knownCompanyIdentities,
   });
-  const acceptedCandidateRecords = candidateRecords.filter(
-    (record) => record.opportunity.should_create_lead,
-  );
-  const decisionMakerRecommendations = acceptedCandidateRecords.map(
+  const candidateRecords = discovery.records;
+  const leadWorkflowCandidateRecords = candidateRecords;
+  const decisionMakerRecommendations = leadWorkflowCandidateRecords.map(
     ({ candidate, signalType }) =>
       discoverDecisionMaker({
         candidate,
@@ -705,7 +934,7 @@ export async function runLeadDiscoveryEngine({
       }),
   );
   const acceptedDecisionMakerByKey = new Map(
-    acceptedCandidateRecords.map((record, index) => [
+    leadWorkflowCandidateRecords.map((record, index) => [
       getCandidateKey(record.candidate),
       decisionMakerRecommendations[index],
     ]),
@@ -731,7 +960,7 @@ export async function runLeadDiscoveryEngine({
   );
   const peopleDiscoveryEngine = new PeopleDiscoveryEngine();
   const peopleDiscoveryResults = await Promise.all(
-    acceptedCandidateRecords.map((record, index) =>
+    leadWorkflowCandidateRecords.map((record, index) =>
       peopleDiscoveryEngine.discoverPeople({
         company:
           companiesByCandidateKey.get(getCandidateKey(record.candidate)) ??
@@ -741,7 +970,7 @@ export async function runLeadDiscoveryEngine({
     ),
   );
   const peopleDiscoveryByCompanyId = new Map(
-    acceptedCandidateRecords.map((record, index) => {
+    leadWorkflowCandidateRecords.map((record, index) => {
       const company = companiesByCandidateKey.get(getCandidateKey(record.candidate));
 
       return [company?.id ?? "", peopleDiscoveryResults[index]] as const;
@@ -755,7 +984,7 @@ export async function runLeadDiscoveryEngine({
       : company;
   });
   const companiesById = new Map(companies.map((company) => [company.id, company]));
-  const leadRecords = acceptedCandidateRecords
+  const leadRecords = leadWorkflowCandidateRecords
     .map((record, index) => {
       const candidate = record.candidate;
       const company = companiesByCandidateKey.get(getCandidateKey(candidate));
@@ -817,10 +1046,13 @@ export async function runLeadDiscoveryEngine({
     ),
   );
   const leads = leadRecords.map((record, index) =>
-    applyBestAvailableEntryToLead(
-      record.lead,
-      contactDiscoveryResults[index].best_available_entry,
-    ),
+    finalizeLeadOutput({
+      lead: record.lead,
+      company: record.company,
+      candidate: record.candidate,
+      decisionMaker: record.decisionMaker,
+      contactDiscovery: contactDiscoveryResults[index],
+    }),
   );
   const signals = leadRecords.flatMap((record) => record.signals);
   const contacts = contactDiscoveryResults.flatMap((result) => result.contacts);
@@ -875,5 +1107,6 @@ export async function runLeadDiscoveryEngine({
     leads,
     signals,
     events,
+    production_discovery_stats: discovery.stats,
   };
 }

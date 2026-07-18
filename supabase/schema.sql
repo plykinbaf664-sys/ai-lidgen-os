@@ -72,6 +72,8 @@ create table if not exists public.leadgen_leads (
         'general-email',
         'website-form',
         'linkedin',
+        'telegram',
+        'phone',
         'social'
       )
     ),
@@ -143,9 +145,15 @@ create table if not exists public.leadgen_contacts (
       contact_type in (
         'confirmed_person',
         'role_based_person',
+        'work_email',
+        'linkedin',
+        'telegram',
+        'phone',
+        'website_form',
         'generic_email',
         'contact_form',
         'social_profile',
+        'company_social',
         'company_website',
         'no_contact_found'
       )
@@ -300,3 +308,6 @@ create index if not exists leadgen_telegram_notifications_lead_id_idx
 
 create index if not exists leadgen_telegram_notifications_status_idx
   on public.leadgen_telegram_notifications (status);
+
+-- Production Outreach Launch tables and atomic queue claim are defined in:
+-- supabase/production_outreach_launch.sql

@@ -1,4 +1,4 @@
-import { MockPeopleProvider } from "@/lib/leadgen/mock-people-provider";
+import { createPeopleProviders } from "@/lib/leadgen/people-provider-factory";
 import { PeopleProviderManager } from "@/lib/leadgen/people-provider-manager";
 import type { PeopleEnrichmentProvider } from "@/lib/leadgen/people-provider";
 import { rankPersonCandidates } from "@/lib/leadgen/person-ranking-engine";
@@ -51,7 +51,7 @@ export class PeopleDiscoveryEngine {
   private readonly providerManager: PeopleProviderManager;
 
   constructor(
-    providers: PeopleEnrichmentProvider[] = [new MockPeopleProvider()],
+    providers: PeopleEnrichmentProvider[] = createPeopleProviders(),
   ) {
     this.providerManager = new PeopleProviderManager(providers);
   }
@@ -65,7 +65,25 @@ export class PeopleDiscoveryEngine {
       decisionMaker,
       searchKeywords: decisionMaker.search_keywords,
     });
+
+    if (providerResults.length === 0) {
+      return {
+        primary_person: null,
+        alternative_people: [],
+        all_candidates: [],
+        search_status: "provider_unavailable",
+        providers_used: [],
+      };
+    }
+
     const providersUsed = providerResults.map((result) => result.provider_label);
+    const providerDiagnostics = providerResults.flatMap((result) =>
+      (result.diagnostics ?? []).map((diagnostic) => ({
+        provider_id: result.provider_id,
+        provider_label: result.provider_label,
+        ...diagnostic,
+      })),
+    );
     const candidates = dedupeCandidates(
       providerResults.flatMap((result) => result.candidates),
     );
@@ -88,6 +106,7 @@ export class PeopleDiscoveryEngine {
             ? "provider_unavailable"
             : "no_person_found",
         providers_used: providersUsed,
+        provider_diagnostics: providerDiagnostics,
       };
     }
 
@@ -103,6 +122,7 @@ export class PeopleDiscoveryEngine {
       selection_reasoning: ranking.primary_person?.selection_reason ?? null,
       search_status: "person_found",
       providers_used: providersUsed,
+      provider_diagnostics: providerDiagnostics,
     };
   }
 }

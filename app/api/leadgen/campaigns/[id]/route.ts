@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getCampaignDetails } from "@/lib/leadgen/storage";
+import { normalizeLeadgenStrings } from "@/lib/leadgen/text-normalization";
 
 function formatRouteError(error: unknown): string {
   if (error instanceof Error) {
@@ -51,7 +52,7 @@ export async function GET(
 
     return NextResponse.json({
       success: true,
-      details,
+      details: normalizeLeadgenStrings(details, "api.campaign_details.response"),
     });
   } catch (error) {
     return NextResponse.json(

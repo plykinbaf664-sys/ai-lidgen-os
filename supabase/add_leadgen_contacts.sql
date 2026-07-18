@@ -15,9 +15,15 @@ create table if not exists public.leadgen_contacts (
       contact_type in (
         'confirmed_person',
         'role_based_person',
+        'work_email',
+        'linkedin',
+        'telegram',
+        'phone',
+        'website_form',
         'generic_email',
         'contact_form',
         'social_profile',
+        'company_social',
         'company_website',
         'no_contact_found'
       )

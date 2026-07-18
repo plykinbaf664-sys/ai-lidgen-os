@@ -1,4 +1,5 @@
 import { leadgenConfig } from "@/lib/leadgen/config";
+import { leadgenProductionConfig } from "@/lib/leadgen/production-config";
 import type { SearchProvider } from "@/lib/leadgen/search/search-provider";
 import type { EvidenceResult } from "@/lib/leadgen/signals/evidence-collector";
 import { collectSignalEvidence } from "@/lib/leadgen/signals/evidence-collector";
@@ -17,6 +18,7 @@ export type SignalPipelineStoppedReason =
   | "no_more_queries";
 
 export type SignalPipelineQueryUsed = SignalQuery & {
+  page: number;
   results_count: number;
   candidates_found_after_query: number;
 };
@@ -35,6 +37,7 @@ export type RunSignalPipelineInput = {
   targetCandidates?: number;
   maxQueries?: number;
   maxResultsPerQuery?: number;
+  maxPagesPerQuery?: number;
   market?: SignalSearchMarket;
 };
 
@@ -57,7 +60,7 @@ const DEFAULT_TARGET_CANDIDATES = 5;
 const DEFAULT_MAX_QUERIES = 5;
 const DEFAULT_MAX_RESULTS_PER_QUERY = 5;
 
-const TARGET_CANDIDATES_CAP = 20;
+const TARGET_CANDIDATES_CAP = 100;
 const MAX_QUERIES_CAP = 10;
 const MAX_RESULTS_PER_QUERY_CAP = 10;
 const MAX_CANDIDATES_PER_ANGLE = 2;
@@ -325,6 +328,7 @@ export async function runSignalPipeline({
   targetCandidates,
   maxQueries,
   maxResultsPerQuery,
+  maxPagesPerQuery = leadgenProductionConfig.searchMaxPages,
   market = "mixed",
 }: RunSignalPipelineInput): Promise<SignalPipelineResult> {
   const safeTargetCandidates = applyLimit(
@@ -364,15 +368,22 @@ export async function runSignalPipeline({
   const candidateSourceCountryHintByKey = new Map<string, string | null>();
   let candidates: LeadCandidate[] = [];
 
-  for (let queryIndex = 0; queryIndex < queries.length; queryIndex += 1) {
+  queryLoop: for (let queryIndex = 0; queryIndex < queries.length; queryIndex += 1) {
     const query = queries[queryIndex];
-    const searchResults = await searchProvider.search({
+    const safeMaxPages = Math.min(
+      Math.max(maxPagesPerQuery, 1),
+      leadgenProductionConfig.searchMaxPages,
+    );
+
+    for (let page = 0; page < safeMaxPages; page += 1) {
+      const searchResults = await searchProvider.search({
       query: query.query,
       maxResults: safeMaxResultsPerQuery,
+      page,
       market: query.market,
       queryLanguage: query.query_language,
-    });
-    const queryEvidence = searchResults.map((result) => ({
+      });
+      const queryEvidence = searchResults.map((result) => ({
       ...collectSignalEvidence({
         result,
         signalType,
@@ -385,8 +396,8 @@ export async function runSignalPipeline({
       why_market_selected: query.why_market_selected,
     }));
 
-    evidenceResults.push(...queryEvidence);
-    rememberCandidateMetadata({
+      evidenceResults.push(...queryEvidence);
+      rememberCandidateMetadata({
       queryEvidence,
       query,
       candidateAngleByKey,
@@ -395,28 +406,35 @@ export async function runSignalPipeline({
       candidateQueryLanguageByKey,
       candidateQueryAngleByKey,
       candidateSourceCountryHintByKey,
-    });
+      });
 
-    const allCandidates = buildLeadCandidates(evidenceResults).candidates;
-    const isLastQuery = queryIndex === queries.length - 1;
+      const allCandidates = buildLeadCandidates(evidenceResults).candidates;
+      const isLastQuery =
+        queryIndex === queries.length - 1 && page === safeMaxPages - 1;
 
-    candidates = selectCandidatesWithDiversity({
+      candidates = selectCandidatesWithDiversity({
       candidates: allCandidates,
       candidateAngleByKey,
       candidateMarketByKey,
       targetCandidates: safeTargetCandidates,
       allowOverflow: isLastQuery,
-    });
+      });
 
-    queriesUsed.push({
-      ...query,
-      results_count: searchResults.length,
-      candidates_found_after_query: candidates.length,
-    });
+      queriesUsed.push({
+        ...query,
+        page,
+        results_count: searchResults.length,
+        candidates_found_after_query: candidates.length,
+      });
 
-    if (candidates.length >= safeTargetCandidates) {
-      candidates = candidates.slice(0, safeTargetCandidates);
-      break;
+      if (candidates.length >= safeTargetCandidates) {
+        candidates = candidates.slice(0, safeTargetCandidates);
+        break queryLoop;
+      }
+
+      if (searchResults.length < safeMaxResultsPerQuery) {
+        break;
+      }
     }
   }
 

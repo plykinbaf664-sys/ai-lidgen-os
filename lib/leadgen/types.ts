@@ -13,6 +13,25 @@ export type TelegramNotificationStatus =
   | "sent"
   | "failed";
 
+export type OutreachEmailStatus =
+  | "draft"
+  | "needs_review"
+  | "approved"
+  | "queued"
+  | "sending"
+  | "sent"
+  | "failed"
+  | "paused"
+  | "rejected"
+  | "replied"
+  | "follow_up_due"
+  | "completed";
+
+export type OutreachMessageMode =
+  | "personal"
+  | "department"
+  | "generic_routing";
+
 export type SignalType =
   | "HIRING_SIGNAL"
   | "GO_TO_MARKET_SIGNAL"
@@ -190,7 +209,117 @@ export type LeadgenContactMetadata = {
   extraction?: string;
   phone?: string;
   reason?: string;
+  email_subject?: string | null;
+  email_body?: string | null;
+  email_status?: string | null;
+  email_classification?: string | null;
+  message_mode?: OutreachMessageMode | null;
+  outreach_ready?: boolean;
+  outreach_queue?: {
+    id: string;
+    status: OutreachEmailStatus;
+    subject: string;
+    body: string;
+    idempotency_key: string;
+    approved_at?: string | null;
+    queued_at?: string | null;
+    sent_at?: string | null;
+    provider?: string | null;
+    provider_message_id?: string | null;
+    send_attempts?: number;
+    last_error?: string | null;
+    follow_up_due_at?: string | null;
+    follow_up_status?: string | null;
+    history?: Array<{
+      status: OutreachEmailStatus;
+      at: string;
+      note?: string;
+    }>;
+  };
   [key: string]: unknown;
+};
+
+export type OutreachQueueEntry = {
+  id: string;
+  contact_id: string;
+  lead_id: string;
+  campaign_id: string;
+  company_id: string | null;
+  company_name: string;
+  company_website?: string | null;
+  recipient_name: string | null;
+  recipient_role: string | null;
+  email: string;
+  email_type: LeadgenContactType;
+  email_source_url: string | null;
+  email_source_label: string | null;
+  readiness: string;
+  signal: {
+    type: SignalType | null;
+    title: string | null;
+    detail: string | null;
+    source_url: string | null;
+    confidence_score: number | null;
+  };
+  subject: string;
+  body: string;
+  message_mode: OutreachMessageMode;
+  status: OutreachEmailStatus;
+  idempotency_key: string;
+  normalized_recipient_email?: string;
+  message_version?: number;
+  send_attempts: number;
+  last_error: string | null;
+  provider: string | null;
+  provider_message_id: string | null;
+  created_at: string;
+  approved_at: string | null;
+  queued_at: string | null;
+  scheduled_at?: string | null;
+  next_attempt_at?: string | null;
+  sending_started_at?: string | null;
+  sent_at: string | null;
+  failed_at?: string | null;
+  updated_at?: string;
+  approval_invalidated_reason?: string | null;
+  queue_position?: number | null;
+  follow_up_due_at: string | null;
+  follow_up_status: string | null;
+  history: Array<{
+    status: OutreachEmailStatus;
+    at: string;
+    note?: string;
+  }>;
+};
+
+export type OutreachReadiness = {
+  smtp_connected: boolean;
+  email_test_mode: boolean;
+  mode_label: string;
+  queue_paused: boolean;
+  approved: number;
+  queued: number;
+  sending: number;
+  sent_today: number;
+  daily_limit: number;
+  daily_remaining: number;
+  queued_for_today: number;
+  batch_limit: number;
+  min_delay_seconds: number;
+  max_delay_seconds: number;
+  can_launch: boolean;
+  blockers: string[];
+};
+
+export type ProductionDiscoveryStats = {
+  results_received: number;
+  previously_discovered_skipped: number;
+  within_run_duplicates: number;
+  new_unique_companies: number;
+  target_companies: number;
+  search_budget: number;
+  skip_reasons: Record<string, number>;
+  skipped_identity_keys?: string[];
 };
 
 export type PeopleDiscoverySearchStatus =
@@ -263,6 +392,13 @@ export type PersonCandidate = {
   metadata: Record<string, unknown>;
 };
 
+export type ProviderDiagnostic = {
+  provider_id: string;
+  provider_label: string;
+  level: "info" | "warning" | "error";
+  message: string;
+};
+
 export type PeopleDiscoveryResult = {
   primary_person: PersonCandidate | null;
   alternative_people: PersonCandidate[];
@@ -273,6 +409,7 @@ export type PeopleDiscoveryResult = {
   selection_reasoning?: string | null;
   search_status: PeopleDiscoverySearchStatus;
   providers_used: string[];
+  provider_diagnostics?: ProviderDiagnostic[];
 };
 
 export type PeopleProviderInput = {
@@ -286,6 +423,97 @@ export type PeopleProviderResult = {
   provider_label: string;
   candidates: PersonCandidate[];
   unavailable?: boolean;
+  diagnostics?: Array<Omit<ProviderDiagnostic, "provider_id" | "provider_label">>;
+};
+
+export type LeadReadinessStatus =
+  | "outreach_ready"
+  | "fallback_ready"
+  | "enrichment_required"
+  | "manual_research_required"
+  | "provider_exhausted"
+  | "rejected";
+
+export type LeadReadyContactType =
+  | "work_email"
+  | "linkedin"
+  | "telegram"
+  | "phone"
+  | "generic_email"
+  | "website_form"
+  | "company_social"
+  | "company_website"
+  | "none";
+
+export type LeadReadyCandidate = {
+  id: string;
+  source_track: "contact_first" | "signal_first_ru" | "merged";
+  company: {
+    name: string;
+    normalized_name: string;
+    domain: string | null;
+    website: string | null;
+    source_url: string | null;
+    location: string | null;
+    industry: string | null;
+  };
+  person: {
+    full_name: string | null;
+    role_title: string | null;
+    decision_authority: DecisionMakerPriority | "unknown";
+    source: string | null;
+    source_url: string | null;
+  };
+  contact: {
+    type: LeadReadyContactType;
+    value: string | null;
+    verified: boolean;
+    source: string | null;
+    source_url: string | null;
+  };
+  signal: {
+    type: SignalType | null;
+    strength: number;
+    why_now: string | null;
+    source_url: string | null;
+  };
+  scores: {
+    icp_fit: number;
+    contact_readiness: number;
+    signal_strength: number;
+    decision_authority: number;
+    overall: number;
+  };
+  readiness_status: LeadReadinessStatus;
+  readiness_reason: string;
+  providers_used: string[];
+  diagnostics: ProviderDiagnostic[];
+  raw_refs: {
+    company_id?: string;
+    lead_id?: string;
+    people_discovery?: PeopleDiscoveryResult;
+  };
+};
+
+export type DiscoverySuccessMetrics = {
+  companies_discovered: number;
+  people_verified: number;
+  confirmed_people_count: number;
+  direct_contacts_found: number;
+  fallback_contacts_found: number;
+  verified_contacts_count: number;
+  outreach_ready_count: number;
+  fallback_ready_count: number;
+  enrichment_required_count: number;
+  manual_research_required_count: number;
+  provider_exhausted_count: number;
+  rejected_count: number;
+};
+
+export type DiscoveryOrchestratorResult = {
+  candidates: LeadReadyCandidate[];
+  metrics: DiscoverySuccessMetrics;
+  diagnostics: ProviderDiagnostic[];
 };
 
 export type ContactDiscoveryStatus =
@@ -370,6 +598,7 @@ export type LeadgenCampaign = {
   icp_label: string;
   offer_label: string;
   created_at: string;
+  production_discovery_stats?: ProductionDiscoveryStats;
 };
 
 export type LeadgenLead = {
@@ -566,6 +795,17 @@ export type ContactProviderResult = {
   provider_id?: string;
   provider_label?: string;
   warnings?: string[];
+  strategies_attempted?: string[];
+  queries_executed?: string[];
+  urls_inspected?: string[];
+  channels_found?: string[];
+  channels_rejected?: string[];
+  provider_errors?: string[];
+  emails_extracted?: string[];
+  emails_rejected?: string[];
+  email_search_completed?: boolean;
+  email_search_status?: string;
+  email_stop_reason?: string;
 };
 
 export type ContactDiscoveryResult = {
@@ -580,6 +820,17 @@ export type ContactDiscoveryResult = {
   recommended_next_action: ContactRecommendedNextAction;
   providers_used: string[];
   warnings: string[];
+  strategies_attempted: string[];
+  queries_executed?: string[];
+  urls_inspected: string[];
+  channels_found: string[];
+  channels_rejected: string[];
+  provider_errors: string[];
+  emails_extracted?: string[];
+  emails_rejected?: string[];
+  email_search_completed?: boolean;
+  email_search_status?: string;
+  email_stop_reason?: string;
 };
 
 export type ContactEnrichmentInput = ContactDiscoveryInput;
@@ -602,4 +853,8 @@ export type LeadDiscoveryResult = {
   leads: LeadgenLead[];
   signals: LeadgenSignal[];
   events: LeadgenEvent[];
+  lead_ready_candidates?: LeadReadyCandidate[];
+  discovery_metrics?: DiscoverySuccessMetrics;
+  discovery_diagnostics?: ProviderDiagnostic[];
+  production_discovery_stats?: ProductionDiscoveryStats;
 };

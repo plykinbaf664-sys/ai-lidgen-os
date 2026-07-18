@@ -1,0 +1,12 @@
+{
+  "smtp_connection": "connected_and_authenticated",
+  "sent_at": "2026-07-18T18:19:18.186Z",
+  "send_duration_ms": 2661,
+  "message_id": "<ee9370eb-2246-467b-a1b6-2e05796fd096@yandex.com>",
+  "from": "leadgenos@yandex.com",
+  "recipient": "plykinbaf664@gmail.com",
+  "queue_status": "sent",
+  "send_attempts": 1,
+  "provider": "yandex_smtp_test",
+  "error": null
+}

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getRecentCampaigns } from "@/lib/leadgen/storage";
+import { normalizeLeadgenStrings } from "@/lib/leadgen/text-normalization";
 
 function formatRouteError(error: unknown): string {
   if (error instanceof Error) {
@@ -27,7 +28,10 @@ function formatRouteError(error: unknown): string {
 
 export async function GET() {
   try {
-    const campaigns = await getRecentCampaigns();
+    const campaigns = normalizeLeadgenStrings(
+      await getRecentCampaigns(),
+      "api.campaigns.response",
+    );
 
     return NextResponse.json({
       success: true,

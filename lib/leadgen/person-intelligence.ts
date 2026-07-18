@@ -20,6 +20,16 @@ function getTelegramAvailability(candidate: PersonCandidate): boolean {
   return typeof candidate.metadata.telegram_url === "string";
 }
 
+function hasDirectContactSignal(candidate: PersonCandidate): boolean {
+  return Boolean(
+    candidate.work_email ||
+      candidate.linkedin_url ||
+      candidate.phone ||
+      candidate.metadata.telegram_url ||
+      candidate.metadata.vk_url,
+  );
+}
+
 function formatPriority(value: string): string {
   return value.replace(/_/g, " ");
 }
@@ -99,7 +109,7 @@ function getStrengths({
     strengths.push("High influence in the buying process");
   }
 
-  if (candidate.work_email || candidate.linkedin_url || candidate.phone) {
+  if (hasDirectContactSignal(candidate)) {
     strengths.push("Has at least one usable public contact signal");
   }
 
@@ -135,7 +145,7 @@ function getWeaknesses({
     weaknesses.push(`Low confidence (${confidenceScore}/100)`);
   }
 
-  if (!candidate.work_email && !candidate.linkedin_url && !candidate.phone) {
+  if (!hasDirectContactSignal(candidate)) {
     weaknesses.push("No direct personal contact channel found");
   }
 
@@ -145,19 +155,21 @@ function getWeaknesses({
 function getRecommendedNextAction({
   personScore,
   confidenceScore,
+  hasWorkEmail,
   hasDirectContact,
   weaknesses,
 }: {
   personScore: number;
   confidenceScore: number;
+  hasWorkEmail: boolean;
   hasDirectContact: boolean;
   weaknesses: string[];
 }): PersonRecommendedNextAction {
-  if (personScore >= 70 && confidenceScore >= 60 && hasDirectContact) {
+  if (personScore >= 70 && confidenceScore >= 60 && hasWorkEmail) {
     return "contact_primary_person";
   }
 
-  if (personScore >= 55 && hasDirectContact) {
+  if (personScore >= 55 && hasWorkEmail) {
     return "contact_alternative_person";
   }
 
@@ -165,7 +177,7 @@ function getRecommendedNextAction({
     return "manual_review";
   }
 
-  if (!hasDirectContact) {
+  if (!hasWorkEmail || !hasDirectContact) {
     return "run_enrichment";
   }
 
@@ -192,9 +204,7 @@ export function buildPersonIntelligence({
     candidate,
     personaMatchScore,
   });
-  const hasDirectContact = Boolean(
-    candidate.work_email || candidate.linkedin_url || candidate.phone,
-  );
+  const hasDirectContact = hasDirectContactSignal(candidate);
   const strengths = getStrengths({
     candidate,
     matchedKeywords,
@@ -222,6 +232,7 @@ export function buildPersonIntelligence({
   const recommendedNextAction = getRecommendedNextAction({
     personScore,
     confidenceScore,
+    hasWorkEmail: Boolean(candidate.work_email),
     hasDirectContact,
     weaknesses,
   });

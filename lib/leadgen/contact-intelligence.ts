@@ -38,6 +38,13 @@ const contactTypeLabels: Record<LeadgenContact["contact_type"], string> = {
 };
 
 export function getContactValue(contact?: LeadgenContact | null): string | null {
+  if (
+    contact?.contact_type === "confirmed_person" ||
+    contact?.contact_type === "role_based_person"
+  ) {
+    return null;
+  }
+
   return (
     contact?.email ??
     contact?.linkedin_url ??
@@ -101,10 +108,14 @@ function getPrimaryPersonContact({
   return (
     contacts.find(
       (contact) =>
-        (person.linkedin_url && contact.linkedin_url === person.linkedin_url) ||
-        (person.work_email && contact.email === person.work_email) ||
-        (person.phone && contact.metadata.phone === person.phone) ||
-        (person.full_name && contact.full_name === person.full_name),
+        contact.contact_type !== "confirmed_person" &&
+        contact.contact_type !== "role_based_person" &&
+        ((person.linkedin_url && contact.linkedin_url === person.linkedin_url) ||
+          (person.work_email && contact.email === person.work_email) ||
+          (person.phone && contact.metadata.phone === person.phone) ||
+          (person.full_name &&
+            contact.full_name === person.full_name &&
+            getContactValue(contact))),
     ) ?? null
   );
 }

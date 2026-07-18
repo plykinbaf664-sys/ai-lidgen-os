@@ -51,7 +51,11 @@ export class TavilySearchProvider implements SearchProvider {
   async search({
     query,
     maxResults = 5,
+    page = 0,
   }: SearchProviderSearchInput): Promise<SearchResult[]> {
+    // Tavily's current endpoint has no stable page/cursor contract. Additional
+    // discovery comes from unique queries; never repeat the same query as a fake page.
+    if (page > 0) return [];
     const response = await fetch("https://api.tavily.com/search", {
       method: "POST",
       headers: {

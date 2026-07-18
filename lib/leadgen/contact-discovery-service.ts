@@ -1,6 +1,9 @@
 import { PublicContactProvider } from "@/lib/leadgen/public-contact-provider";
 import {
   getContactEntryRole,
+  isEvidenceOnlyContact,
+  isFallbackEmailContact,
+  isSendableEmailContact,
   rankContactEntries,
 } from "@/lib/leadgen/contact-channel-ranking";
 import type { ContactProvider } from "@/lib/leadgen/contact-provider";
@@ -24,6 +27,8 @@ const allowedContactTypes = new Set<LeadgenContactType>([
   "linkedin",
   "telegram",
   "phone",
+  "confirmed_person",
+  "role_based_person",
   "website_form",
   "generic_email",
   "company_social",
@@ -177,6 +182,16 @@ function getPersonTelegramUrl(person: PersonCandidate): string | null {
     : null;
 }
 
+function getPersonSourceUrl(person: PersonCandidate): string | null {
+  const sourceUrl = person.metadata.source_url;
+
+  if (typeof sourceUrl === "string" && sourceUrl.trim()) {
+    return sourceUrl;
+  }
+
+  return person.linkedin_url;
+}
+
 function getPrimaryPersonIntelligence(
   input: ContactDiscoveryInput,
 ): PersonIntelligence | null {
@@ -220,7 +235,7 @@ function createPrimaryPersonContactEntries(
     full_name: person.full_name,
     role_title: person.role_title,
     department: person.department,
-    source_url: person.linkedin_url ?? input.company.source_url,
+    source_url: getPersonSourceUrl(person) ?? input.company.source_url,
     source_label: person.source,
     confidence_score: clampConfidenceScore(
       primaryIntelligence?.confidence_score ?? person.confidence_score,
@@ -229,6 +244,25 @@ function createPrimaryPersonContactEntries(
     created_at: input.createdAt,
   };
   const entries: LeadgenContact[] = [];
+
+  entries.push({
+    ...baseContact,
+    id: createRecordId("contact", input.lead.id, "primary-person-confirmed"),
+    contact_type: "confirmed_person",
+    email: null,
+    linkedin_url: null,
+    telegram_url: null,
+    contact_url: null,
+    metadata: {
+      ...intelligenceMetadata,
+      people_discovery_role: "primary",
+      people_discovery_source: person.source,
+      person_verification_source_url: getPersonSourceUrl(person),
+      source: "people_discovery.primary_person",
+      note:
+        "Confirmed decision maker identity only; this is not a sendable outreach channel.",
+    },
+  });
 
   if (person.work_email) {
     entries.push({
@@ -565,6 +599,7 @@ function getAlternativeChannels(contacts: LeadgenContact[]): LeadgenContact[] {
   return contacts.filter(
     (contact) =>
       contact.metadata.entry_role === "other_entry" &&
+      !isEvidenceOnlyContact(contact) &&
       contact.contact_type !== "no_contact_found",
   );
 }
@@ -599,29 +634,13 @@ function getRecommendedNextAction({
   personaSearchStatus: PersonaSearchStatus;
 }): ContactRecommendedNextAction {
   if (bestOutreachEntry) {
-    if (
-      bestOutreachEntry.contact_type === "work_email" ||
-      bestOutreachEntry.contact_type === "linkedin" ||
-      bestOutreachEntry.contact_type === "telegram" ||
-      bestOutreachEntry.contact_type === "phone"
-    ) {
+    if (isSendableEmailContact(bestOutreachEntry)) {
       return "send_outreach";
-    }
-
-    if (
-      bestOutreachEntry.contact_type === "website_form" ||
-      bestOutreachEntry.contact_type === "generic_email" ||
-      bestOutreachEntry.contact_type === "company_social"
-    ) {
-      return personaSearchStatus === "target_persona_found" ||
-        personaSearchStatus === "alternative_persona_found"
-        ? "manual_review"
-        : "run_enrichment";
     }
   }
 
-  if (fallbackEntry?.contact_type === "company_website") {
-    return "run_enrichment";
+  if (isFallbackEmailContact(fallbackEntry)) {
+    return "use_fallback_channel";
   }
 
   return personaSearchStatus === "no_entry_found"
@@ -656,6 +675,41 @@ export class ContactDiscoveryService {
       })
       .filter((providerId): providerId is string => Boolean(providerId));
     const warnings = providerResults.flatMap((result) => result.warnings ?? []);
+    const strategiesAttempted = [
+      ...new Set(
+        providerResults.flatMap((result) => result.strategies_attempted ?? []),
+      ),
+    ];
+    const urlsInspected = [
+      ...new Set(providerResults.flatMap((result) => result.urls_inspected ?? [])),
+    ];
+    const queriesExecuted = [
+      ...new Set(providerResults.flatMap((result) => result.queries_executed ?? [])),
+    ];
+    const channelsFound = providerResults.flatMap(
+      (result) => result.channels_found ?? [],
+    );
+    const channelsRejected = providerResults.flatMap(
+      (result) => result.channels_rejected ?? [],
+    );
+    const providerErrors = providerResults.flatMap(
+      (result) => result.provider_errors ?? [],
+    );
+    const emailsExtracted = [
+      ...new Set(providerResults.flatMap((result) => result.emails_extracted ?? [])),
+    ];
+    const emailsRejected = [
+      ...new Set(providerResults.flatMap((result) => result.emails_rejected ?? [])),
+    ];
+    const emailSearchCompleted = providerResults.some(
+      (result) => result.email_search_completed,
+    );
+    const emailSearchStatus =
+      providerResults.find((result) => result.email_search_status)
+        ?.email_search_status ?? null;
+    const emailStopReason =
+      providerResults.find((result) => result.email_stop_reason)
+        ?.email_stop_reason ?? null;
     const contacts = applyPeopleDiscoveryContext(
       input,
       dedupeContacts(
@@ -675,8 +729,19 @@ export class ContactDiscoveryService {
         ],
       ),
     );
-    const discoverableContacts =
-      contacts.length > 0 ? contacts : [createNoContactFoundEntry(input)];
+    const hasRankableContact = contacts.some(
+      (contact) =>
+        !isEvidenceOnlyContact(contact) &&
+        contact.contact_type !== "no_contact_found",
+    );
+    const hasNoContactEntry = contacts.some(
+      (contact) => contact.contact_type === "no_contact_found",
+    );
+    const discoverableContacts = hasRankableContact
+      ? contacts
+      : hasNoContactEntry
+        ? contacts
+        : [...contacts, createNoContactFoundEntry(input)];
     const {
       best_available_entry: bestAvailableEntry,
       best_outreach_entry: bestOutreachEntry,
@@ -750,6 +815,17 @@ export class ContactDiscoveryService {
       recommended_next_action: recommendedNextAction,
       providers_used: providersUsed,
       warnings,
+      strategies_attempted: strategiesAttempted,
+      queries_executed: queriesExecuted,
+      urls_inspected: urlsInspected,
+      channels_found: channelsFound,
+      channels_rejected: channelsRejected,
+      provider_errors: providerErrors,
+      emails_extracted: emailsExtracted,
+      emails_rejected: emailsRejected,
+      email_search_completed: emailSearchCompleted,
+      email_search_status: emailSearchStatus ?? undefined,
+      email_stop_reason: emailStopReason ?? undefined,
     };
   }
 }

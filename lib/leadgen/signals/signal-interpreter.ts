@@ -130,7 +130,10 @@ function canCreateLeadFromSignal({
 }
 
 function isRussianCandidate(candidate: LeadCandidate): boolean {
-  return candidate.evidence_language === "ru";
+  return (
+    candidate.evidence_language === "ru" ||
+    candidate.evidence_language === "mixed"
+  );
 }
 
 function getGtmQuality(candidate: LeadCandidate): EvidenceQuality {

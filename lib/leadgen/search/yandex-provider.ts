@@ -134,6 +134,7 @@ export class YandexSearchProvider implements SearchProvider {
   async search({
     query,
     maxResults = 5,
+    page = 0,
     market,
     queryLanguage,
   }: SearchProviderSearchInput): Promise<SearchResult[]> {
@@ -151,7 +152,7 @@ export class YandexSearchProvider implements SearchProvider {
           searchType: isRuSearch ? "SEARCH_TYPE_RU" : "SEARCH_TYPE_COM",
           queryText: query,
           familyMode: "FAMILY_MODE_MODERATE",
-          page: "0",
+          page: String(Math.max(0, page)),
           fixTypoMode: "FIX_TYPO_MODE_ON",
         },
         sortSpec: {
