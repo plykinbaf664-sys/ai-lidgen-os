@@ -13,6 +13,10 @@ export const outreachStatusLabels: Record<OutreachEmailStatus, string> = {
   replied: "Получен ответ",
   follow_up_due: "Нужен follow-up",
   completed: "Завершено",
+  eligible: "Готов к генерации",
+  generating: "Генерируется",
+  skipped: "Пропущено",
+  cancelled: "Отменено",
 };
 
 export function canSendStatus(status: OutreachEmailStatus): boolean {
@@ -20,5 +24,5 @@ export function canSendStatus(status: OutreachEmailStatus): boolean {
 }
 
 export function isTerminalOutreachStatus(status: OutreachEmailStatus): boolean {
-  return status === "sent" || status === "completed" || status === "rejected";
+  return ["sent", "completed", "rejected", "skipped", "cancelled"].includes(status);
 }

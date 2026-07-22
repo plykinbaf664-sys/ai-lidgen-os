@@ -7,13 +7,12 @@ import {
   isFallbackEmailContact,
   isSendableEmailContact,
 } from "@/lib/leadgen/contact-channel-ranking";
-import { normalizeLeadgenText } from "@/lib/leadgen/text-normalization";
 import {
-  getShortWhyNow,
-  getSignalEvidenceSentence,
-  getSignalHypothesis,
-  getSignalVariant,
-} from "@/lib/leadgen/signal-messaging";
+  generateFirstEmailV3,
+  type OutreachMicroValue,
+  type OutreachQualityScore,
+} from "@/lib/leadgen/first-email-generator";
+import { normalizeLeadgenText } from "@/lib/leadgen/text-normalization";
 
 export type EmailMessageMode = "personal" | "department" | "generic_routing";
 
@@ -57,77 +56,49 @@ function getMessageMode(contact: LeadgenContact): EmailMessageMode {
   return "generic_routing";
 }
 
-function getSubject({
-  companyName,
-  signalType,
-  signalTitle,
-  signalDetail,
-  whyNow,
-}: {
-  companyName: string;
-  signalType?: SignalType | string | null;
-  signalTitle?: string | null;
-  signalDetail?: string | null;
-  whyNow: string;
-}): string {
-  const safeCompanyName = normalizeLeadgenText(companyName, {
-    source: "email_outreach.company",
-  });
-  const context = { signalType, signalTitle, signalDetail, whyNow };
-  const variant = getSignalVariant(context);
-  const hypothesis = getSignalHypothesis(context);
-
-  if (variant === "hiring_sales") {
-    return /отдел продаж/i.test(whyNow)
-      ? "Пока расширяете отдел продаж"
-      : hypothesis.subject;
-  }
-
-  if (variant === "product_launch") {
-    return "Идея к запуску продукта";
-  }
-
-  if (variant === "hiring_support") {
-    return "Как разгрузить поддержку";
-  }
-
-  if (variant === "tech_change") {
-    return "Как снизить ручную работу";
-  }
-
-  if (variant === "expansion" || variant === "growth") {
-    return "Автоматизация при масштабировании";
-  }
-
-  return safeCompanyName.length <= 24
-    ? `Идея для ${safeCompanyName}`
-    : hypothesis.subject;
-}
-
 export function buildEmailOutreach({
   companyName,
+  companyWebsite,
+  companyDescription,
+  industry,
   personName,
+  personRole,
   contact,
   readiness,
   whyNow,
+  selectionReason,
   signalType,
   signalTitle,
   signalDetail,
+  signalSourceUrl,
+  signalConfidence,
 }: {
   companyName: string;
+  companyWebsite?: string | null;
+  companyDescription?: string | null;
+  industry?: string | null;
   personName?: string | null;
+  personRole?: string | null;
   contact: LeadgenContact | null;
   readiness: LeadReadinessStatus;
   whyNow: string;
+  selectionReason?: string | null;
   signalType?: SignalType | string | null;
   signalTitle?: string | null;
   signalDetail?: string | null;
+  signalSourceUrl?: string | null;
+  signalConfidence?: number | null;
 }): {
   subject: string | null;
   body: string;
   readyToSend: boolean;
   messageMode: EmailMessageMode | null;
   outreachReady: boolean;
+  microValue: OutreachMicroValue | null;
+  quality: OutreachQualityScore | null;
+  qualityGatePassed: boolean;
+  generationAttempts: number;
+  copyReviewStatus: "ready" | "needs_manual_copy_review" | null;
 } {
   if (
     !contact ||
@@ -138,59 +109,52 @@ export function buildEmailOutreach({
     return {
       subject: null,
       body:
-        "Email не найден.\n\nЧерновик будет подготовлен после нахождения подходящего email.",
+        "Письмо не создано: автоматический поиск не нашёл доступный контакт.",
       readyToSend: false,
       messageMode: null,
       outreachReady: false,
+      microValue: null,
+      quality: null,
+      qualityGatePassed: false,
+      generationAttempts: 0,
+      copyReviewStatus: null,
     };
   }
 
   const safeCompanyName = normalizeLeadgenText(companyName, {
     source: "email_outreach.company",
   });
-  const context = { signalType, signalTitle, signalDetail, whyNow };
-  const shortWhyNow = getShortWhyNow(context).replace(/\.$/, "").toLowerCase();
-  const evidence = getSignalEvidenceSentence(context);
-  const hypothesis = getSignalHypothesis(context);
-  const subject = getSubject({
-    companyName: safeCompanyName,
-    signalType,
-    signalTitle,
-    signalDetail,
-    whyNow,
-  });
   const messageMode = getMessageMode(contact);
   const firstName = messageMode === "personal" ? getFirstName(personName) : null;
-  const signalLine =
-    shortWhyNow === "сигнал требует проверки"
-      ? `Нашёл публичный сигнал по ${safeCompanyName}: ${evidence}.`
-      : `Увидел, что ${safeCompanyName} ${shortWhyNow}.`;
-
-  if (messageMode === "personal" && firstName) {
-    return {
-      subject,
-      readyToSend: true,
-      outreachReady: true,
-      messageMode,
-      body: `${firstName}, добрый день.\n\n${signalLine}\n\n${hypothesis.problem}\n\n${hypothesis.value}\n\n${hypothesis.cta}`,
-    };
-  }
-
-  if (messageMode === "department") {
-    return {
-      subject,
-      readyToSend: true,
-      outreachReady: true,
-      messageMode,
-      body: `Добрый день.\n\n${signalLine}\n\n${hypothesis.problem}\n\n${hypothesis.value}\n\nПодскажите, пожалуйста, кто у вас отвечает за развитие и автоматизацию этого направления?`,
-    };
-  }
+  const copy = generateFirstEmailV3({
+    companyName: safeCompanyName,
+    website: companyWebsite,
+    companyDescription,
+    industry,
+    decisionMakerName: firstName,
+    decisionMakerRole: personRole ?? contact.role_title,
+    contactEmail: contact.email,
+    messageMode,
+    growthSignal: [signalType, signalTitle, signalDetail, whyNow]
+      .filter(Boolean)
+      .join(" "),
+    selectionReason,
+    signalType,
+    signalEvidence: signalDetail || signalTitle || whyNow,
+    signalSourceUrl,
+    uniquenessKey: `${contact.id}:${contact.email ?? ""}:${signalConfidence ?? ""}`,
+  });
 
   return {
-    subject,
+    subject: copy.subject,
     readyToSend: true,
     outreachReady: true,
     messageMode,
-    body: `Добрый день.\n\n${signalLine}\n\nХотел направить короткое предложение по автоматизации повторяющихся задач с помощью ИИ.\n\nПодскажите, пожалуйста, кому лучше адресовать 2-3 конкретные идеи по этой задаче?`,
+    body: copy.body,
+    microValue: copy.microValue,
+    quality: copy.quality,
+    qualityGatePassed: copy.qualityGatePassed,
+    generationAttempts: copy.generationAttempts,
+    copyReviewStatus: copy.reviewStatus,
   };
 }

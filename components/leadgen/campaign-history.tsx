@@ -1,8 +1,15 @@
 import type { LeadgenCampaignSummary } from "@/lib/leadgen/types";
 import { normalizeLeadgenText } from "@/lib/leadgen/text-normalization";
+import { Button } from "@/components/ui/button";
+import type { CampaignOperationalStatus } from "@/lib/leadgen/types";
 
-const statusLabels: Record<LeadgenCampaignSummary["status"], string> = {
-  completed: "Завершена",
+const campaignStatusCopy: Record<CampaignOperationalStatus, { label: string; tone: string }> = {
+  discovery_complete: { label: "Поиск завершён", tone: "paused" },
+  needs_review: { label: "Требует проверки", tone: "needs_review" },
+  ready_to_send: { label: "Готова к отправке", tone: "approved" },
+  queue_active: { label: "Очередь активна", tone: "queued" },
+  sent: { label: "Отправка завершена", tone: "sent" },
+  needs_attention: { label: "Требует внимания", tone: "failed" },
 };
 
 type CampaignHistoryProps = {
@@ -22,87 +29,43 @@ export function CampaignHistory({
   isOpeningCampaign = false,
   onOpenCampaign,
 }: CampaignHistoryProps) {
-  function handleOpenCampaign(campaign: LeadgenCampaignSummary) {
-    onOpenCampaign?.(campaign);
-  }
-
   return (
-    <section className="panel table-panel">
-      <div className="table-toolbar">
-        <div>
-          <p className="eyebrow">История запусков</p>
-          <h2>Кампании</h2>
-        </div>
-        <span className="table-meta">
-          {isLoading ? "Загрузка..." : `${campaigns.length} кампаний`}
-        </span>
+    <details className="panel campaign-history-disclosure">
+      <summary>
+        <span><strong>История кампаний</strong><small>{isLoading ? "Загрузка…" : `${campaigns.length} запусков`}</small></span>
+        <span className="disclosure-icon" aria-hidden="true">⌄</span>
+      </summary>
+      <div className="campaign-history-content">
+        {errorMessage && campaigns.length === 0 ? <p className="outreach-error">{errorMessage}</p> : null}
+        {!errorMessage && !isLoading && campaigns.length === 0 ? <p className="empty-state">История пока пуста.</p> : null}
+        {campaigns.map((campaign) => {
+          const status = campaignStatusCopy[campaign.operational_status];
+          return (
+          <article className={`campaign-history-row ${activeCampaignId === campaign.id ? "active" : ""}`} key={campaign.id}>
+            <div className="campaign-history-identity">
+              <strong title={normalizeLeadgenText(campaign.name)}>{normalizeLeadgenText(campaign.name)}</strong>
+              <small>{new Date(campaign.created_at).toLocaleString("ru-RU")}</small>
+            </div>
+            <dl>
+              <div><dt>Компании</dt><dd>{campaign.companies_count}</dd></div>
+              <div><dt>Лиды</dt><dd>{campaign.leads_count}</dd></div>
+              <div><dt>Email</dt><dd>{campaign.email_count ?? campaign.contacts_count}</dd></div>
+              <div><dt>Отправлено</dt><dd>{campaign.initial_sent_count}{campaign.followup_sent_count ? ` + ${campaign.followup_sent_count} follow-up` : ""}</dd></div>
+              <div><dt>В очереди</dt><dd>{campaign.queued_count + campaign.sending_count}</dd></div>
+              <div><dt>Ошибки</dt><dd>{campaign.failed_count}</dd></div>
+            </dl>
+            <span className={`outreach-status outreach-status-${status.tone}`}>{status.label}</span>
+            <Button
+              disabled={isOpeningCampaign}
+              loading={isOpeningCampaign && activeCampaignId === campaign.id}
+              onClick={() => onOpenCampaign?.(campaign)}
+              variant={activeCampaignId === campaign.id ? "success" : "secondary"}
+            >
+              {isOpeningCampaign && activeCampaignId === campaign.id ? "Загрузка…" : activeCampaignId === campaign.id ? "Открыта" : "Открыть"}
+            </Button>
+          </article>
+        );})}
       </div>
-
-      {errorMessage ? (
-        <div className="empty-state">
-          <h3>Не удалось загрузить историю</h3>
-          <p>{errorMessage}</p>
-        </div>
-      ) : null}
-
-      {!errorMessage && campaigns.length === 0 ? (
-        <div className="empty-state">
-          <h3>История пока пустая</h3>
-          <p>Запустите кампанию, чтобы она появилась здесь.</p>
-        </div>
-      ) : null}
-
-      {!errorMessage && campaigns.length > 0 ? (
-        <div className="campaign-history-list">
-          {campaigns.map((campaign) => (
-            <article className="campaign-history-card" key={campaign.id}>
-              <div className="campaign-history-card-row">
-                <div className="campaign-history-main">
-                  <div>
-                    <h3 title={normalizeLeadgenText(campaign.name)}>
-                      {normalizeLeadgenText(campaign.name)}
-                    </h3>
-                    <p className="company-domain">
-                      {new Date(campaign.created_at).toLocaleString("ru-RU")}
-                    </p>
-                  </div>
-                  <span className="status-pill status-approved">
-                    {statusLabels[campaign.status]}
-                  </span>
-                </div>
-
-                <div className="campaign-history-stats">
-                  <div>
-                    <span className="field-label">Готовые лиды</span>
-                    <strong>{campaign.leads_count}</strong>
-                  </div>
-                  <div>
-                    <span className="field-label">Компании</span>
-                    <strong>{campaign.companies_count}</strong>
-                  </div>
-                  <div>
-                    <span className="field-label">Контакты</span>
-                    <strong>{campaign.contacts_count}</strong>
-                  </div>
-                </div>
-
-                <button
-                  className="detail-button"
-                  disabled={isOpeningCampaign}
-                  type="button"
-                  onClick={() => handleOpenCampaign(campaign)}
-                >
-                  {isOpeningCampaign && activeCampaignId === campaign.id
-                    ? "Загрузка..."
-                    : activeCampaignId === campaign.id
-                      ? "Открыто"
-                      : "Открыть"}
-                </button>
-              </div>
-            </article>
-          ))}
-        </div>
-      ) : null}
-    </section>
+    </details>
   );
 }

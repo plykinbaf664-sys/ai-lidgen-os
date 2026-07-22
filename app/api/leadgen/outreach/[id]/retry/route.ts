@@ -1,21 +1,18 @@
 import { NextResponse } from "next/server";
-import { updateOutreachQueueEntry } from "@/lib/leadgen/outreach-storage";
+import { retryFailedItem } from "@/lib/leadgen/outreach-storage";
+import { formatUnknownError } from "@/lib/leadgen/error-format";
 
 export async function POST(
   _request: Request,
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    const entry = await updateOutreachQueueEntry({
-      id: (await params).id,
-      status: "approved",
-      note: "Ошибка сброшена; письмо ожидает постановки в очередь",
-    });
+    const entry = await retryFailedItem((await params).id);
     if (!entry) return NextResponse.json({ success: false, error: "Письмо не найдено" }, { status: 404 });
     return NextResponse.json({ success: true, entry });
   } catch (error) {
     return NextResponse.json(
-      { success: false, error: error instanceof Error ? error.message : String(error) },
+      { success: false, error: formatUnknownError(error) },
       { status: 500 },
     );
   }

@@ -68,6 +68,18 @@ const broadJobBoardPlatforms = new Set([
   "superjob.ru",
   "zarplata.ru",
   "jobfilter.ru",
+  "it-vacancies.ru",
+  "geekjob.ru",
+  "rabotajob.ru",
+  "jobcareer.ru",
+  "na-svyazi.ru",
+  "layboard.com",
+  "joblum.com",
+  "najtiraboty.ru",
+  "knopka.kz",
+  "cyberleninka.ru",
+  "sostav.ru",
+  "22century.ru",
   "remote-job.ru",
   "zohorecruit.com",
   "remote.co",
@@ -79,6 +91,19 @@ const broadJobBoardPlatforms = new Set([
   "otta.com",
   "wellfound.com",
   "startup.jobs",
+  "careerjet.ru",
+  "careerjet.com",
+  "joblab.ru",
+  "workzilla.com",
+  "work-zilla.com",
+  "workhere.ru",
+  "facancy.ru",
+  "trudvsem.ru",
+  "rabix.ru",
+  "freelance.ru",
+  "freelancehunt.com",
+  "rabota-ipoisk.ru",
+  "startupfellows.ru",
 ]);
 
 const genericJobCategoryPattern =
@@ -89,6 +114,9 @@ const genericBusinessPhrasePattern =
 
 const genericBusinessWordPattern =
   /\b(ai|b2b|saas|crm|gtm|recruitment|hiring|talent|customer success|email service|revenue|growth|technical skills|sales talent|top talent|bitrix24|amocrm|\u0431\u0438\u0442\u0440\u0438\u043a\u044124|\u0431\u0438\u0442\u0440\u0438\u043a\u0441\s*24|\u0430\u043c\u043e\s*crm|\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f|\u043d\u0430\u0439\u043c)\b/i;
+
+const genericPageShellPattern =
+  /^(about(?:\s+company|\s+us)?|news|docs?|promo|forum|home|homepage|ru|en|\u043d\u043e\u0432\u043e\u0441\u0442\u0438|\u043e\s+\u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438)$/i;
 
 const locationPattern =
   /^(?:[a-z .'-]+,\s*[a-z]{2}|bay area|remote|krym|united states|usa|us|uk|canada|germany|france|spain|italy|india|europe|emea|apac|latam|california|colorado|texas|florida|new york|los angeles|san francisco|boston|chicago|seattle|austin|denver|london|berlin|paris|toronto|moscow|saint petersburg|\u0443\u0434\u0430\u043b\u0435\u043d\u043d\u043e|\u0443\u0434\u0430\u043b\u0451\u043d\u043d\u043e|\u043a\u0440\u044b\u043c|\u0441\u043f\u0431|\u043c\u043e\u0441\u043a\u0432\u0430|\u0441\u0430\u043d\u043a\u0442-\u043f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433|\u0440\u043e\u0441\u0441\u0438\u044f|\u043a\u0430\u0437\u0430\u0445\u0441\u0442\u0430\u043d|\u0431\u0435\u043b\u0430\u0440\u0443\u0441\u044c)$/i;
@@ -812,6 +840,15 @@ export function validateCompanyQuality(
       is_valid: false,
       invalid_reason: "source_platform_name",
       validation_reason: "Candidate company looks like a source platform",
+      company_quality_score: qualityScore,
+    };
+  }
+
+  if (genericPageShellPattern.test(companyName)) {
+    return {
+      is_valid: false,
+      invalid_reason: "generic_business_phrase",
+      validation_reason: "Candidate is a generic page label, not a company",
       company_quality_score: qualityScore,
     };
   }

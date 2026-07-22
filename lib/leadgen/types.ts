@@ -2,6 +2,14 @@ export type LeadStatus = "new" | "approved" | "rejected" | "paused";
 
 export type CampaignStatus = "completed";
 
+export type CampaignOperationalStatus =
+  | "discovery_complete"
+  | "needs_review"
+  | "ready_to_send"
+  | "queue_active"
+  | "sent"
+  | "needs_attention";
+
 export type LeadgenEventType =
   | "campaign_started"
   | "lead_generated"
@@ -25,12 +33,24 @@ export type OutreachEmailStatus =
   | "rejected"
   | "replied"
   | "follow_up_due"
-  | "completed";
+  | "completed"
+  | "eligible"
+  | "generating"
+  | "skipped"
+  | "cancelled";
 
 export type OutreachMessageMode =
   | "personal"
   | "department"
   | "generic_routing";
+
+export type OutreachMessageKind = "initial" | "follow_up";
+export type ReplyCheckStatus = "pending" | "verified" | "unavailable";
+export type ReplyDetectionMethod =
+  | "in_reply_to"
+  | "references"
+  | "sender_email"
+  | "subject_time";
 
 export type SignalType =
   | "HIRING_SIGNAL"
@@ -88,6 +108,34 @@ export type OpportunityRecommendedAction =
   | "run_enrichment"
   | "monitor"
   | "discard";
+
+export type CommercialSignalType =
+  | "hiring"
+  | "expansion"
+  | "new_location"
+  | "new_product"
+  | "new_service"
+  | "partnership"
+  | "investment"
+  | "sales_growth"
+  | "digital_transformation"
+  | "customer_service_growth"
+  | "infrastructure_change"
+  | "procurement_activity"
+  | "market_entry"
+  | "leadership_change"
+  | "other_verified"
+  | "none";
+
+export type CommercialSignal = {
+  type: CommercialSignalType;
+  summary: string;
+  evidence: string;
+  sourceUrl: string;
+  sourceTitle?: string;
+  detectedAt?: string;
+  confidence: number;
+};
 
 export type OpportunityAssessment = {
   should_create_lead: boolean;
@@ -213,6 +261,15 @@ export type LeadgenContactMetadata = {
   email_body?: string | null;
   email_status?: string | null;
   email_classification?: string | null;
+  email_micro_value?: {
+    type: "ideas" | "audit" | "scenarios" | "processes";
+    items: string[];
+    summary: string;
+  } | null;
+  email_quality?: Record<string, number> | null;
+  email_quality_gate_passed?: boolean;
+  email_generation_attempts?: number;
+  email_copy_review_status?: "ready" | "needs_manual_copy_review" | null;
   message_mode?: OutreachMessageMode | null;
   outreach_ready?: boolean;
   outreach_queue?: {
@@ -272,6 +329,9 @@ export type OutreachQueueEntry = {
   last_error: string | null;
   provider: string | null;
   provider_message_id: string | null;
+  smtp_response?: string | null;
+  sent_copy_saved_at?: string | null;
+  sent_copy_error?: string | null;
   created_at: string;
   approved_at: string | null;
   queued_at: string | null;
@@ -282,6 +342,15 @@ export type OutreachQueueEntry = {
   failed_at?: string | null;
   updated_at?: string;
   approval_invalidated_reason?: string | null;
+  copy_quality?: Record<string, number> | null;
+  quality_gate_passed?: boolean;
+  copy_review_status?: "ready" | "needs_manual_copy_review" | null;
+  generation_attempts?: number;
+  micro_value?: {
+    type: "ideas" | "audit" | "scenarios" | "processes";
+    items: string[];
+    summary: string;
+  } | null;
   queue_position?: number | null;
   follow_up_due_at: string | null;
   follow_up_status: string | null;
@@ -290,6 +359,19 @@ export type OutreachQueueEntry = {
     at: string;
     note?: string;
   }>;
+  message_kind?: OutreachMessageKind;
+  parent_outreach_id?: string | null;
+  followup_number?: number | null;
+  parent_smtp_message_id?: string | null;
+  reply_check_status?: ReplyCheckStatus;
+  reply_checked_at?: string | null;
+  reply_detected_at?: string | null;
+  reply_message_id?: string | null;
+  reply_from?: string | null;
+  reply_subject?: string | null;
+  reply_detection_method?: ReplyDetectionMethod | null;
+  generation_reason?: string | null;
+  skip_reason?: string | null;
 };
 
 export type OutreachReadiness = {
@@ -309,6 +391,21 @@ export type OutreachReadiness = {
   max_delay_seconds: number;
   can_launch: boolean;
   blockers: string[];
+  imap_configured: boolean;
+  imap_connected: boolean;
+  imap_message: string;
+  followup_send_blocked: boolean;
+  consistency_issue_count: number;
+  consistency_healthy: boolean;
+};
+
+export type OutreachOperationalState = {
+  state: "empty" | "ready" | "waiting" | "sending" | "paused" | "stalled";
+  due_count: number;
+  overdue_count: number;
+  next_scheduled_at: string | null;
+  oldest_overdue_at: string | null;
+  checked_at: string;
 };
 
 export type ProductionDiscoveryStats = {
@@ -316,7 +413,11 @@ export type ProductionDiscoveryStats = {
   previously_discovered_skipped: number;
   within_run_duplicates: number;
   new_unique_companies: number;
-  target_companies: number;
+  lead_target: number;
+  email_target?: number;
+  new_unique_emails?: number;
+  known_emails_skipped?: number;
+  duplicate_emails_skipped?: number;
   search_budget: number;
   skip_reasons: Record<string, number>;
   skipped_identity_keys?: string[];
@@ -599,6 +700,7 @@ export type LeadgenCampaign = {
   offer_label: string;
   created_at: string;
   production_discovery_stats?: ProductionDiscoveryStats;
+  operational_status?: CampaignOperationalStatus;
 };
 
 export type LeadgenLead = {
@@ -700,6 +802,7 @@ export type LeadCandidate = {
   discovery_query_angle?: string | null;
   source_country_hint?: string | null;
   matched_signal_count?: number;
+  commercial_signal?: CommercialSignal | null;
 };
 
 export type LeadgenCompany = {
@@ -756,6 +859,16 @@ export type LeadgenCampaignSummary = {
   companies_count: number;
   leads_count: number;
   contacts_count: number;
+  email_count?: number;
+  sent_count?: number;
+  initial_sent_count: number;
+  followup_sent_count: number;
+  needs_review_count: number;
+  approved_count: number;
+  queued_count: number;
+  sending_count: number;
+  failed_count: number;
+  operational_status: CampaignOperationalStatus;
 };
 
 export type LeadgenCampaignDetailsStats = {
@@ -765,6 +878,13 @@ export type LeadgenCampaignDetailsStats = {
   signals_count: number;
   notifications_count: number;
   events_count: number;
+  initial_sent_count: number;
+  followup_sent_count: number;
+  needs_review_count: number;
+  approved_count: number;
+  queued_count: number;
+  sending_count: number;
+  failed_count: number;
 };
 
 export type LeadgenCampaignDetails = {

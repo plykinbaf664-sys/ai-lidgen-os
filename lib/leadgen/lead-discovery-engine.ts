@@ -1,11 +1,12 @@
 import { leadgenConfig } from "@/lib/leadgen/config";
 import {
-  getCompanyIdentity,
   getDuplicateReason,
+  getLeadCandidateIdentity,
   type CompanyIdentity,
 } from "@/lib/leadgen/company-identity";
 import { leadgenProductionConfig } from "@/lib/leadgen/production-config";
 import { ContactEnrichmentEngine } from "@/lib/leadgen/contact-enrichment-engine";
+import { generateFirstEmailV2 } from "@/lib/leadgen/first-email-generator";
 import { isEvidenceOnlyContact } from "@/lib/leadgen/contact-channel-ranking";
 import { discoverDecisionMaker } from "@/lib/leadgen/decision-maker-discovery";
 import { prioritizeLead } from "@/lib/leadgen/lead-prioritization-engine";
@@ -37,9 +38,10 @@ import type {
 type RunLeadDiscoveryInput = {
   campaignInput: CampaignInput;
   searchProvider: SearchProvider;
-  targetCompanies?: number;
+  leadTarget?: number;
   market?: SignalSearchMarket;
   knownCompanyIdentities?: CompanyIdentity[];
+  knownRecipientEmails?: string[];
 };
 
 type CandidateRecord = {
@@ -48,13 +50,78 @@ type CandidateRecord = {
   opportunity: OpportunityAssessment;
 };
 
-const DEFAULT_TARGET_COMPANIES =
-  leadgenProductionConfig.campaignCompanyLimit;
+type EnrichedLeadRecord = {
+  lead: LeadgenLead;
+  company: LeadgenCompany;
+  candidate: LeadCandidate;
+  decisionMaker: DecisionMakerProfile;
+  signals: LeadgenSignal[];
+  peopleDiscovery: PeopleDiscoveryResult;
+};
+
 const MAX_SIGNALS_PER_RUN = 5;
-const TARGET_PER_SIGNAL = 15;
-const MAX_QUERIES_PER_SIGNAL = 10;
+const MAX_QUERIES_PER_SIGNAL = 20;
 const MAX_RESULTS_PER_QUERY = 10;
 const MIN_ENRICHMENT_OPPORTUNITY_SCORE = 50;
+const DISCOVERY_ENRICHMENT_CONCURRENCY = 3;
+
+async function mapWithConcurrency<T, R>(
+  items: T[],
+  concurrency: number,
+  mapper: (item: T, index: number) => Promise<R>,
+): Promise<R[]> {
+  const results = new Array<R>(items.length);
+  let nextIndex = 0;
+
+  async function worker() {
+    while (nextIndex < items.length) {
+      const index = nextIndex;
+      nextIndex += 1;
+      results[index] = await mapper(items[index], index);
+    }
+  }
+
+  await Promise.all(
+    Array.from(
+      { length: Math.min(Math.max(concurrency, 1), items.length) },
+      () => worker(),
+    ),
+  );
+
+  return results;
+}
+
+function shouldDeferPeopleDiscovery(company: LeadgenCompany): boolean {
+  if (!company.company_domain) {
+    return true;
+  }
+
+  try {
+    const hostname = new URL(company.source_url ?? "").hostname.toLowerCase();
+    return hostname === "hh.ru" || hostname.endsWith(".hh.ru");
+  } catch {
+    return false;
+  }
+}
+
+function getDeferredPeopleDiscoveryResult(): PeopleDiscoveryResult {
+  return {
+    primary_person: null,
+    alternative_people: [],
+    all_candidates: [],
+    search_status: "provider_unavailable",
+    providers_used: [],
+    provider_diagnostics: [
+      {
+        provider_id: "deferred_until_official_domain",
+        provider_label: "People Discovery",
+        level: "info",
+        message:
+          "People search deferred until the employer official domain is resolved; company email discovery remains active.",
+      },
+    ],
+  };
+}
 
 function createRecordId(...parts: string[]): string {
   return parts
@@ -65,10 +132,9 @@ function createRecordId(...parts: string[]): string {
 }
 
 function getCandidateKey(candidate: LeadCandidate): string {
-  return getCompanyIdentity({
+  return getLeadCandidateIdentity({
     company_name: candidate.company_name,
     company_domain: candidate.company_domain,
-    website: candidate.company_source_url,
     region: candidate.source_country_hint,
   }).identityKey;
 }
@@ -160,10 +226,28 @@ function shouldReplaceCandidateRecord(
 
 function shouldRunLeadWorkflow(record: CandidateRecord): boolean {
   return (
+    hasVerifiedHiringEvent(record.candidate) ||
     record.opportunity.should_create_lead ||
     (record.opportunity.recommended_action === "run_enrichment" &&
       record.opportunity.opportunity_score >= MIN_ENRICHMENT_OPPORTUNITY_SCORE)
   );
+}
+
+function hasVerifiedHiringEvent(candidate: LeadCandidate): boolean {
+  if (
+    candidate.signal_type !== "HIRING_SIGNAL" ||
+    candidate.commercial_signal?.type !== "hiring" ||
+    candidate.commercial_signal.confidence < 60
+  ) {
+    return false;
+  }
+
+  try {
+    const hostname = new URL(candidate.company_source_url).hostname.toLowerCase();
+    return hostname === "hh.ru" || hostname.endsWith(".hh.ru");
+  } catch {
+    return false;
+  }
 }
 
 function getOpportunityFinalDecision(opportunity: OpportunityAssessment): string {
@@ -182,10 +266,17 @@ function getOpportunityFinalDecision(opportunity: OpportunityAssessment): string
 }
 
 function getSignalOrder(): SignalType[] {
-  return Object.entries(leadgenConfig.icp.signalPriorities)
+  const prioritizedSignals = Object.entries(leadgenConfig.icp.signalPriorities)
     .sort((left, right) => right[1] - left[1])
-    .map(([signalType]) => signalType as SignalType)
-    .slice(0, MAX_SIGNALS_PER_RUN);
+    .map(([signalType]) => signalType as SignalType);
+
+  return [
+    "HIRING_SIGNAL" as const,
+    ...prioritizedSignals.filter(
+      (signalType) =>
+        signalType !== "HIRING_SIGNAL" && signalType !== "TRAFFIC_SIGNAL",
+    ),
+  ].slice(0, MAX_SIGNALS_PER_RUN);
 }
 
 function buildCampaign(
@@ -283,6 +374,7 @@ function buildCompany({
     company_size: null,
     linkedin_url: null,
     metadata: {
+      commercial_signal: candidate.commercial_signal ?? null,
       signal_source_urls: candidate.signals.map((signal) => signal.source_url),
       signal_types: [
         ...new Set(candidate.signals.map((signal) => signal.signal_type)),
@@ -429,23 +521,20 @@ function writeMessage(
   candidate: LeadCandidate,
   decisionMaker: DecisionMakerProfile,
 ): string {
-  const signalSummary =
-    candidate.signal_summary ??
-    "I found a business signal that may point to current workflow pressure";
-  const whyNow =
-    candidate.why_now ??
-    "the timing looks relevant based on the available public evidence";
-  const confidenceNote =
-    candidate.confidence_level === "weak_evidence"
-      ? "I would treat this as a working hypothesis rather than a confirmed internal priority."
-      : "This looks like a reasonable moment to check whether the team is feeling related process load.";
-
-  return [
-    `I noticed ${signalSummary}`,
-    `The reason for reaching out now is that ${whyNow}`,
-    `For a ${decisionMaker.primary_persona}, the likely pain is: ${decisionMaker.expected_pain}`,
-    `${confidenceNote} I can send a short, concrete hypothesis map for where AI agents or workflow automation may help ${company.company_name}.`,
-  ].join(" ");
+  return generateFirstEmailV2({
+    companyName: company.company_name,
+    website: company.company_domain ?? company.source_url,
+    industry: company.industry ?? company.company_segment,
+    decisionMakerRole: decisionMaker.primary_persona,
+    growthSignal: [
+      candidate.signal_type,
+      candidate.signal_summary,
+      candidate.why_now,
+    ]
+      .filter(Boolean)
+      .join(" "),
+    selectionReason: candidate.outreach_hypothesis,
+  }).body;
 }
 
 function writeFollowUp(
@@ -767,12 +856,12 @@ function buildEvent(
 
 async function discoverCandidates({
   searchProvider,
-  targetCompanies,
+  leadTarget,
   market,
   knownCompanyIdentities,
 }: {
   searchProvider: SearchProvider;
-  targetCompanies: number;
+  leadTarget: number;
   market: SignalSearchMarket;
   knownCompanyIdentities: CompanyIdentity[];
 }): Promise<{
@@ -780,24 +869,22 @@ async function discoverCandidates({
   stats: NonNullable<LeadDiscoveryResult["production_discovery_stats"]>;
 }> {
   const candidateRecords = new Map<string, CandidateRecord>();
-  let workflowCandidateCount = 0;
   let resultsReceived = 0;
   let candidatesViewed = 0;
   let previouslyDiscoveredSkipped = 0;
   let withinRunDuplicates = 0;
   const skipReasons: Record<string, number> = {};
   const skippedIdentityKeys = new Set<string>();
+  const pageOffset = 0;
 
   for (const signalType of getSignalOrder()) {
     const result = await runSignalPipeline({
       signalType,
       searchProvider,
-      targetCandidates: Math.min(
-        leadgenProductionConfig.discoveryCandidateBudget,
-        Math.max(TARGET_PER_SIGNAL, targetCompanies * 2),
-      ),
+      targetCandidates: leadgenProductionConfig.discoveryCandidateBudget,
       maxQueries: MAX_QUERIES_PER_SIGNAL,
       maxResultsPerQuery: MAX_RESULTS_PER_QUERY,
+      pageOffset,
       market,
     });
     resultsReceived += result.all_evidence.length;
@@ -814,10 +901,9 @@ async function discoverCandidates({
       }
 
       const candidateKey = getCandidateKey(candidate);
-      const identity = getCompanyIdentity({
+      const identity = getLeadCandidateIdentity({
         company_name: candidate.company_name,
         company_domain: candidate.company_domain,
-        website: candidate.company_source_url,
         region: candidate.source_country_hint,
       });
       const registryMatch = knownCompanyIdentities
@@ -839,15 +925,6 @@ async function discoverCandidates({
           signalType,
           opportunity,
         });
-        if (
-          shouldRunLeadWorkflow({
-            candidate: interpretedCandidate,
-            signalType,
-            opportunity,
-          })
-        ) {
-          workflowCandidateCount += 1;
-        }
       } else {
         withinRunDuplicates += 1;
         skipReasons.duplicate_within_run =
@@ -860,32 +937,17 @@ async function discoverCandidates({
         };
 
         if (existingRecord && shouldReplaceCandidateRecord(nextRecord, existingRecord)) {
-          if (
-            !shouldRunLeadWorkflow(existingRecord) &&
-            shouldRunLeadWorkflow(nextRecord)
-          ) {
-            workflowCandidateCount += 1;
-          }
-
           candidateRecords.set(candidateKey, nextRecord);
         }
       }
-
-      if (workflowCandidateCount >= targetCompanies) {
-        break;
-      }
     }
-    if (
-      workflowCandidateCount >= targetCompanies ||
-      candidatesViewed >= leadgenProductionConfig.discoveryCandidateBudget
-    ) {
+    if (candidatesViewed >= leadgenProductionConfig.discoveryCandidateBudget) {
       break;
     }
   }
 
   const records = [...candidateRecords.values()]
-    .filter(shouldRunLeadWorkflow)
-    .slice(0, targetCompanies);
+    .filter(shouldRunLeadWorkflow);
   return {
     records,
     stats: {
@@ -893,7 +955,7 @@ async function discoverCandidates({
       previously_discovered_skipped: previouslyDiscoveredSkipped,
       within_run_duplicates: withinRunDuplicates,
       new_unique_companies: records.length,
-      target_companies: targetCompanies,
+      lead_target: leadTarget,
       search_budget: leadgenProductionConfig.discoveryCandidateBudget,
       skip_reasons: skipReasons,
       skipped_identity_keys: [...skippedIdentityKeys],
@@ -904,9 +966,10 @@ async function discoverCandidates({
 export async function runLeadDiscoveryEngine({
   campaignInput,
   searchProvider,
-  targetCompanies = DEFAULT_TARGET_COMPANIES,
+  leadTarget = leadgenProductionConfig.dailyLeadLimit,
   market = "ru",
   knownCompanyIdentities = [],
+  knownRecipientEmails = [],
 }: RunLeadDiscoveryInput): Promise<LeadDiscoveryResult> {
   const createdAt = new Date().toISOString();
   const pipelineRunId = createRecordId(
@@ -917,10 +980,7 @@ export async function runLeadDiscoveryEngine({
   const campaign = buildCampaign(campaignInput, pipelineRunId, createdAt);
   const discovery = await discoverCandidates({
     searchProvider,
-    targetCompanies: Math.min(
-      targetCompanies,
-      leadgenProductionConfig.campaignCompanyLimit,
-    ),
+    leadTarget,
     market,
     knownCompanyIdentities,
   });
@@ -959,93 +1019,128 @@ export async function runLeadDiscoveryEngine({
     ]),
   );
   const peopleDiscoveryEngine = new PeopleDiscoveryEngine();
-  const peopleDiscoveryResults = await Promise.all(
-    leadWorkflowCandidateRecords.map((record, index) =>
-      peopleDiscoveryEngine.discoverPeople({
-        company:
+  const contactEnrichmentEngine = new ContactEnrichmentEngine();
+  const knownEmailSet = new Set(
+    knownRecipientEmails.map((email) => email.trim().toLowerCase()),
+  );
+  const discoveredEmailSet = new Set<string>();
+  const emailReadyLeadIds = new Set<string>();
+  const processedLeadRecords: EnrichedLeadRecord[] = [];
+  const contactDiscoveryResults: ContactDiscoveryResult[] = [];
+  const enrichedCompaniesById = new Map<string, LeadgenCompany>();
+
+  for (
+    let offset = 0;
+    offset < leadWorkflowCandidateRecords.length &&
+    emailReadyLeadIds.size < leadTarget;
+    offset += DISCOVERY_ENRICHMENT_CONCURRENCY
+  ) {
+    const indexedBatch = leadWorkflowCandidateRecords
+      .slice(offset, offset + DISCOVERY_ENRICHMENT_CONCURRENCY)
+      .map((record, batchIndex) => ({
+        record,
+        index: offset + batchIndex,
+      }));
+    const batchPeopleDiscovery = await mapWithConcurrency(
+      indexedBatch,
+      DISCOVERY_ENRICHMENT_CONCURRENCY,
+      ({ record, index }) => {
+        const company =
           companiesByCandidateKey.get(getCandidateKey(record.candidate)) ??
-          baseCompanies[index],
-        decisionMaker: decisionMakerRecommendations[index],
-      }),
-    ),
-  );
-  const peopleDiscoveryByCompanyId = new Map(
-    leadWorkflowCandidateRecords.map((record, index) => {
-      const company = companiesByCandidateKey.get(getCandidateKey(record.candidate));
+          baseCompanies[index];
 
-      return [company?.id ?? "", peopleDiscoveryResults[index]] as const;
-    }),
-  );
-  const companies = baseCompanies.map((company) => {
-    const peopleDiscovery = peopleDiscoveryByCompanyId.get(company.id);
+        return shouldDeferPeopleDiscovery(company)
+          ? Promise.resolve(getDeferredPeopleDiscoveryResult())
+          : peopleDiscoveryEngine.discoverPeople({
+              company,
+              decisionMaker: decisionMakerRecommendations[index],
+            });
+      },
+    );
+    const batch = indexedBatch
+      .map(({ record, index }, batchIndex): EnrichedLeadRecord | null => {
+        const candidate = record.candidate;
+        const baseCompany =
+          companiesByCandidateKey.get(getCandidateKey(candidate)) ??
+          baseCompanies[index];
+        const peopleDiscovery = batchPeopleDiscovery[batchIndex];
+        const company = attachPeopleDiscoveryToCompany(
+          baseCompany,
+          peopleDiscovery,
+        );
+        const primarySignal = getPrimarySignal(candidate);
+        enrichedCompaniesById.set(company.id, company);
 
-    return peopleDiscovery
-      ? attachPeopleDiscoveryToCompany(company, peopleDiscovery)
-      : company;
-  });
-  const companiesById = new Map(companies.map((company) => [company.id, company]));
-  const leadRecords = leadWorkflowCandidateRecords
-    .map((record, index) => {
-      const candidate = record.candidate;
-      const company = companiesByCandidateKey.get(getCandidateKey(candidate));
-      const primarySignal = getPrimarySignal(candidate);
-      const companyWithMetadata = company ? companiesById.get(company.id) : null;
+        if (!primarySignal) {
+          return null;
+        }
 
-      if (!primarySignal || !companyWithMetadata) {
-        return null;
-      }
-
-      const lead = buildLead({
-        campaign,
-        company: companyWithMetadata,
-        primarySignal,
-        candidate,
-        decisionMaker: decisionMakerRecommendations[index],
-        createdAt,
-      });
-
-      return {
-        lead,
-        company: companyWithMetadata,
-        candidate,
-        decisionMaker: decisionMakerRecommendations[index],
-        peopleDiscovery: peopleDiscoveryResults[index],
-        signals: buildSignals({
+        const decisionMaker = decisionMakerRecommendations[index];
+        const lead = buildLead({
           campaign,
-          company: companyWithMetadata,
-          lead,
+          company,
+          primarySignal,
           candidate,
+          decisionMaker,
+          createdAt,
+        });
+
+        return {
+          lead,
+          company,
+          candidate,
+          decisionMaker,
+          peopleDiscovery,
+          signals: buildSignals({
+            campaign,
+            company,
+            lead,
+            candidate,
+            createdAt,
+          }),
+        };
+      })
+      .filter((record): record is EnrichedLeadRecord => Boolean(record));
+    const batchResults = await mapWithConcurrency(
+      batch,
+      DISCOVERY_ENRICHMENT_CONCURRENCY,
+      (record) =>
+        contactEnrichmentEngine.enrichContacts({
+          campaign,
+          company: record.company,
+          lead: record.lead,
+          signals: record.signals,
+          decisionMaker: record.decisionMaker,
+          peopleDiscovery: record.peopleDiscovery,
           createdAt,
         }),
-      };
-    })
-    .filter(
-      (
-        record,
-      ): record is {
-        lead: LeadgenLead;
-        company: LeadgenCompany;
-        candidate: LeadCandidate;
-        decisionMaker: DecisionMakerProfile;
-        signals: LeadgenSignal[];
-        peopleDiscovery: PeopleDiscoveryResult;
-      } => Boolean(record),
     );
-  const contactEnrichmentEngine = new ContactEnrichmentEngine();
-  const contactDiscoveryResults = await Promise.all(
-    leadRecords.map((record) =>
-      contactEnrichmentEngine.enrichContacts({
-        campaign,
-        company: record.company,
-        lead: record.lead,
-        signals: record.signals,
-        decisionMaker: record.decisionMaker,
-        peopleDiscovery: record.peopleDiscovery,
-        createdAt,
-      }),
-    ),
+
+    processedLeadRecords.push(...batch);
+    contactDiscoveryResults.push(...batchResults);
+    for (const [resultIndex, result] of batchResults.entries()) {
+      let hasNewUniqueEmail = false;
+      for (const contact of result.contacts) {
+        const email = getContactValue(contact)?.trim().toLowerCase();
+        if (
+          email &&
+          !knownEmailSet.has(email) &&
+          !discoveredEmailSet.has(email)
+        ) {
+          discoveredEmailSet.add(email);
+          hasNewUniqueEmail = true;
+        }
+      }
+      if (hasNewUniqueEmail) {
+        emailReadyLeadIds.add(batch[resultIndex].lead.id);
+      }
+    }
+  }
+
+  const companies = baseCompanies.map(
+    (company) => enrichedCompaniesById.get(company.id) ?? company,
   );
-  const leads = leadRecords.map((record, index) =>
+  const leads = processedLeadRecords.map((record, index) =>
     finalizeLeadOutput({
       lead: record.lead,
       company: record.company,
@@ -1054,10 +1149,10 @@ export async function runLeadDiscoveryEngine({
       contactDiscovery: contactDiscoveryResults[index],
     }),
   );
-  const signals = leadRecords.flatMap((record) => record.signals);
+  const signals = processedLeadRecords.flatMap((record) => record.signals);
   const contacts = contactDiscoveryResults.flatMap((result) => result.contacts);
   const prioritizedCompaniesById = new Map(
-    leadRecords.map((record, index) => [
+    processedLeadRecords.map((record, index) => [
       record.company.id,
       attachLeadPriorityToCompany(
         attachContactDiscoveryToCompany(

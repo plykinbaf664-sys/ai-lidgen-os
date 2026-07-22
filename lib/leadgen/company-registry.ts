@@ -42,13 +42,18 @@ export async function registerDiscoveredCompanies(
   const now = new Date().toISOString();
 
   for (const company of companies) {
+    const officialWebsite =
+      typeof company.metadata.official_website === "string"
+        ? company.metadata.official_website
+        : typeof company.metadata.resolved_official_domain === "string"
+          ? `https://${company.metadata.resolved_official_domain}`
+          : company.company_domain
+            ? `https://${company.company_domain}`
+            : null;
     const identity = getCompanyIdentity({
       company_name: company.company_name,
       company_domain: company.company_domain,
-      website:
-        typeof company.metadata.official_website === "string"
-          ? company.metadata.official_website
-          : company.source_url,
+      website: officialWebsite,
       region: company.country,
       legal_id:
         typeof company.metadata.legal_id === "string"

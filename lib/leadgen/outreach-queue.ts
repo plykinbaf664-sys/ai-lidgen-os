@@ -141,6 +141,19 @@ export function buildOutreachQueueEntry({
     last_error: queue?.last_error ?? null,
     provider: queue?.provider ?? null,
     provider_message_id: queue?.provider_message_id ?? null,
+    copy_quality:
+      (contact.metadata.email_quality as Record<string, number> | null | undefined) ?? null,
+    quality_gate_passed: contact.metadata.email_quality_gate_passed === true,
+    copy_review_status:
+      contact.metadata.email_copy_review_status === "ready"
+        ? "ready"
+        : "needs_manual_copy_review",
+    generation_attempts:
+      typeof contact.metadata.email_generation_attempts === "number"
+        ? contact.metadata.email_generation_attempts
+        : 0,
+    micro_value:
+      (contact.metadata.email_micro_value as OutreachQueueEntry["micro_value"]) ?? null,
     created_at: contact.created_at,
     approved_at: queue?.approved_at ?? null,
     queued_at: queue?.queued_at ?? null,

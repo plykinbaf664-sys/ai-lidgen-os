@@ -1,6 +1,7 @@
 "use client";
 
 import { formatTelegramCard } from "@/lib/leadgen/telegram-card";
+import { Button, type ButtonVariant } from "@/components/ui/button";
 import type {
   DecisionMakerProfile,
   IdentityProfile,
@@ -13,6 +14,13 @@ import type {
 } from "@/lib/leadgen/types";
 
 const statuses: LeadStatus[] = ["approved", "rejected", "paused", "new"];
+
+const statusVariants: Record<LeadStatus, ButtonVariant> = {
+  approved: "success",
+  rejected: "danger",
+  paused: "secondary",
+  new: "ghost",
+};
 
 const statusLabels: Record<LeadStatus, string> = {
   approved: "Одобрить",
@@ -82,16 +90,13 @@ export function TelegramCardPreview({
           </div>
           <div className="status-actions">
             {statuses.map((status) => (
-              <button
-                className={`status-button ${
-                  lead.status === status ? "active" : ""
-                }`}
+              <Button
                 key={status}
-                type="button"
                 onClick={() => onStatusChange(lead.id, status)}
+                variant={lead.status === status ? statusVariants[status] : "ghost"}
               >
                 {statusLabels[status]}
-              </button>
+              </Button>
             ))}
           </div>
         </div>

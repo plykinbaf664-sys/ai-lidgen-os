@@ -22,6 +22,7 @@ export type SmtpSendReceipt = {
   messageId: string;
   accepted: boolean;
   response: string;
+  rawMessage: string;
 };
 
 const SMTP_TIMEOUT_MS = 15_000;
@@ -123,10 +124,58 @@ function dotStuff(value: string): string {
 }
 
 function encodeBase64Body(value: string): string {
-  return Buffer.from(dotStuff(value), "utf8")
+  return Buffer.from(value, "utf8")
     .toString("base64")
     .match(/.{1,76}/g)!
     .join("\r\n");
+}
+
+export function buildRawEmailMessage({
+  to,
+  subject,
+  body,
+  messageId,
+  sentAt = new Date(),
+  config = getSmtpConfigFromEnv(),
+  inReplyTo,
+  references,
+}: {
+  to: string;
+  subject: string;
+  body: string;
+  messageId?: string;
+  sentAt?: Date;
+  config?: SmtpConfig;
+  inReplyTo?: string | null;
+  references?: string[];
+}) {
+  const fromEmail = assertSafeHeader(config.fromEmail, "from email");
+  const fromName = assertSafeHeader(config.fromName, "from name");
+  const recipient = assertSafeHeader(to, "recipient");
+  const safeSubject = assertSafeHeader(subject, "subject");
+  const safeMessageId = assertSafeHeader(
+    messageId ?? `<${randomUUID()}@${fromEmail.split("@")[1] || "localhost"}>`,
+    "Message-ID",
+  );
+  const safeInReplyTo = inReplyTo ? assertSafeHeader(inReplyTo, "In-Reply-To") : null;
+  const safeReferences = (references ?? []).map((value) => assertSafeHeader(value, "References"));
+  return {
+    messageId: safeMessageId,
+    rawMessage: [
+      `From: ${encodeHeader(fromName)} <${fromEmail}>`,
+      `To: <${recipient}>`,
+      `Subject: ${encodeHeader(safeSubject)}`,
+      `Message-ID: ${safeMessageId}`,
+      ...(safeInReplyTo ? [`In-Reply-To: ${safeInReplyTo}`] : []),
+      ...(safeReferences.length ? [`References: ${safeReferences.join(" ")}`] : []),
+      `Date: ${sentAt.toUTCString()}`,
+      "MIME-Version: 1.0",
+      'Content-Type: text/plain; charset="UTF-8"',
+      "Content-Transfer-Encoding: base64",
+      "",
+      encodeBase64Body(body),
+    ].join("\r\n"),
+  };
 }
 
 function expectCode(
@@ -247,19 +296,27 @@ class SmtpSession {
     to,
     subject,
     body,
+    inReplyTo,
+    references,
   }: {
     to: string;
     subject: string;
     body: string;
+    inReplyTo?: string | null;
+    references?: string[];
   }): Promise<SmtpSendReceipt> {
     await this.connect();
 
     const fromEmail = assertSafeHeader(this.config.fromEmail, "from email");
-    const fromName = assertSafeHeader(this.config.fromName, "from name");
     const recipient = assertSafeHeader(to, "recipient");
-    const safeSubject = assertSafeHeader(subject, "subject");
-    const domain = fromEmail.split("@")[1] || "localhost";
-    const messageId = `<${randomUUID()}@${domain}>`;
+    const { messageId, rawMessage } = buildRawEmailMessage({
+      to: recipient,
+      subject,
+      body,
+      config: this.config,
+      inReplyTo,
+      references,
+    });
 
     try {
       let response = await this.command(`MAIL FROM:<${fromEmail}>`);
@@ -269,20 +326,7 @@ class SmtpSession {
       response = await this.command("DATA");
       expectCode(response, 354, "DATA");
 
-      const message = [
-        `From: ${encodeHeader(fromName)} <${fromEmail}>`,
-        `To: <${recipient}>`,
-        `Subject: ${encodeHeader(safeSubject)}`,
-        `Message-ID: ${messageId}`,
-        `Date: ${new Date().toUTCString()}`,
-        "MIME-Version: 1.0",
-        'Content-Type: text/plain; charset="UTF-8"',
-        "Content-Transfer-Encoding: base64",
-        "",
-        encodeBase64Body(body),
-      ].join("\r\n");
-
-      this.socket!.write(`${message}\r\n.\r\n`);
+      this.socket!.write(`${dotStuff(rawMessage)}\r\n.\r\n`);
       response = await this.reader!.read();
       expectCode(response, 250, "Отправка DATA");
 
@@ -290,6 +334,7 @@ class SmtpSession {
         messageId,
         accepted: true,
         response: response.message,
+        rawMessage,
       };
     } finally {
       await this.quit();
@@ -363,11 +408,15 @@ export async function sendSmtpEmail({
   subject,
   body,
   config = getSmtpConfigFromEnv(),
+  inReplyTo,
+  references,
 }: {
   to: string;
   subject: string;
   body: string;
   config?: SmtpConfig;
+  inReplyTo?: string | null;
+  references?: string[];
 }) {
-  return new SmtpSession(config).send({ to, subject, body });
+  return new SmtpSession(config).send({ to, subject, body, inReplyTo, references });
 }

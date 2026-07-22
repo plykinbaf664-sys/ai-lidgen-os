@@ -1,6 +1,7 @@
 import type { SearchResult } from "@/lib/leadgen/search/search-provider";
 
 export type SourceType =
+  | "contact_page"
   | "company_site"
   | "company_careers"
   | "job_board"
@@ -57,6 +58,15 @@ const jobBoardDomains = [
   "superjob.ru",
   "zarplata.ru",
   "jobfilter.ru",
+  "it-vacancies.ru",
+  "geekjob.ru",
+  "rabotajob.ru",
+  "jobcareer.ru",
+  "na-svyazi.ru",
+  "layboard.com",
+  "joblum.com",
+  "najtiraboty.ru",
+  "knopka.kz",
   "remote-job.ru",
   "remote.co",
   "remoteok.com",
@@ -67,11 +77,28 @@ const jobBoardDomains = [
   "otta.com",
   "wellfound.com",
   "startup.jobs",
+  "careerjet.ru",
+  "careerjet.com",
+  "joblab.ru",
+  "workzilla.com",
+  "work-zilla.com",
+  "workhere.ru",
+  "facancy.ru",
+  "trudvsem.ru",
+  "rabix.ru",
+  "freelance.ru",
+  "freelancehunt.com",
+  "rabota-ipoisk.ru",
+  "startupfellows.ru",
 ];
 
 const socialDomains = [
   "youtube.com",
   "linkedin.com",
+  "vk.com",
+  "ok.ru",
+  "tenchat.ru",
+  "rutube.ru",
   "t.me",
   "telegram.me",
   "twitter.com",
@@ -88,6 +115,15 @@ const newsDomains = [
   "bloomberg.com",
   "vc.ru",
   "rb.ru",
+  "dzen.ru",
+  "tass.ru",
+  "vedomosti.ru",
+  "kommersant.ru",
+  "iz.ru",
+  "fedpress.ru",
+  "spark.ru",
+  "incrussia.ru",
+  "vctr.media",
 ];
 
 const directoryDomains = [
@@ -100,6 +136,9 @@ const directoryDomains = [
   "getapp.com",
   "repvue.com",
   "topstartups.io",
+  "cyberleninka.ru",
+  "sostav.ru",
+  "22century.ru",
 ];
 
 const careerPathHints = [
@@ -110,6 +149,16 @@ const careerPathHints = [
   "/joinus",
   "/vacancies",
   "/work-with-us",
+];
+
+const contactPathHints = [
+  "/contact",
+  "/contacts",
+  "/contact-us",
+  "/kontakty",
+  "/requisites",
+  "/rekvizity",
+  "/feedback",
 ];
 
 const aggregatorPhrases = [
@@ -197,6 +246,24 @@ export function classifySearchResultSource(
     };
   }
 
+  if (domainIncludesAny(domain, socialDomains)) {
+    return {
+      source_type: "social",
+      source_domain: domain,
+      classification_confidence: 92,
+      classification_reason: "Known public social platform detected",
+    };
+  }
+
+  if (domainIncludesAny(domain, newsDomains)) {
+    return {
+      source_type: "news",
+      source_domain: domain,
+      classification_confidence: 90,
+      classification_reason: "Known news or publication domain detected",
+    };
+  }
+
   if (includesAny(text, aggregatorPhrases)) {
     return {
       source_type: "aggregator",
@@ -228,6 +295,16 @@ export function classifySearchResultSource(
     };
   }
 
+  if (includesAny(path, contactPathHints)) {
+    return {
+      source_type: "contact_page",
+      source_domain: domain,
+      classification_confidence: 96,
+      classification_reason:
+        "Contact or requisites page; usable for Contact Discovery, not as opportunity evidence by itself",
+    };
+  }
+
   if (
     includesAny(path, careerPathHints) ||
     text.includes("careers") ||
@@ -255,7 +332,7 @@ export function classifySearchResultSource(
     };
   }
 
-  if (domainIncludesAny(domain, newsDomains) || text.includes("news")) {
+  if (text.includes("news")) {
     return {
       source_type: "news",
       source_domain: domain,
@@ -274,15 +351,6 @@ export function classifySearchResultSource(
       source_domain: domain,
       classification_confidence: 68,
       classification_reason: "Blog or resources context detected",
-    };
-  }
-
-  if (domainIncludesAny(domain, socialDomains)) {
-    return {
-      source_type: "social",
-      source_domain: domain,
-      classification_confidence: 66,
-      classification_reason: "Public social platform detected",
     };
   }
 

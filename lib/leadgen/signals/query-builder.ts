@@ -5,6 +5,7 @@ export type SignalSearchMarket = "global" | "ru" | "mixed";
 
 export type SignalQueryAngle =
   | "company_careers"
+  | "company_contacts"
   | "ats"
   | "job_board"
   | "ru_job_board"
@@ -103,7 +104,7 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
     priorityOffset: 0,
     termIndex: 0,
     customQuery:
-      '"\u0440\u0430\u0441\u0448\u0438\u0440\u044f\u0435\u043c \u043e\u0442\u0434\u0435\u043b \u043f\u0440\u043e\u0434\u0430\u0436" "\u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f" -avito -hh -headhunter -superjob',
+      'site:hh.ru/vacancy "\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 \u043f\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c" \u043a\u043b\u0438\u043d\u0438\u043a\u0430',
   },
   {
     angle: "ru_job_board",
@@ -119,7 +120,7 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
     priorityOffset: 0,
     termIndex: 1,
     customQuery:
-      '"\u0438\u0449\u0435\u043c \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0443" "\u043e\u0442\u0434\u0435\u043b \u043f\u0440\u043e\u0434\u0430\u0436" "\u043e\u043e\u043e" -avito -hh -headhunter -superjob',
+      'site:hh.ru/vacancy "\u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044c \u043e\u0442\u0434\u0435\u043b\u0430 \u043f\u0440\u043e\u0434\u0430\u0436" \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u043e',
   },
   {
     angle: "ru_job_board",
@@ -135,7 +136,7 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
     priorityOffset: 1,
     termIndex: 2,
     customQuery:
-      '"\u0440\u0430\u0441\u0448\u0438\u0440\u044f\u0435\u043c \u0441\u043b\u0443\u0436\u0431\u0443 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0438" "\u043a\u043b\u0438\u0435\u043d\u0442\u0441\u043a\u0438\u0439 \u0441\u0435\u0440\u0432\u0438\u0441" "\u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f" -avito -hh -headhunter',
+      'site:hh.ru/vacancy "\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 \u043f\u043e \u0440\u0430\u0431\u043e\u0442\u0435 \u0441 \u043a\u043b\u0438\u0435\u043d\u0442\u0430\u043c\u0438" \u043b\u043e\u0433\u0438\u0441\u0442\u0438\u043a\u0430',
   },
   {
     angle: "ru_job_board",
@@ -150,7 +151,79 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
     priorityOffset: 2,
     termIndex: 3,
     customQuery:
-      '"\u0443\u0432\u0435\u043b\u0438\u0447\u0438\u0432\u0430\u0435\u043c \u043e\u0442\u0434\u0435\u043b \u043f\u0440\u043e\u0434\u0430\u0436" "\u0438\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043c\u0430\u0433\u0430\u0437\u0438\u043d" "\u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f" -avito -hh -headhunter',
+      'site:hh.ru/vacancy "\u043e\u043f\u0435\u0440\u0430\u0442\u043e\u0440 \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u043d\u043e\u0433\u043e \u0446\u0435\u043d\u0442\u0440\u0430" \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f',
+  },
+  {
+    angle: "company_careers",
+    language: "ru",
+    intent: "Find hiring on official education company pages",
+    eventPhrase: "\u0438\u0449\u0435\u043c \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0443",
+    contextPhrase: "\u043e\u043d\u043b\u0430\u0439\u043d-\u0448\u043a\u043e\u043b\u0430",
+    sourceHint: "\u0441\u0430\u0439\u0442 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+    priorityOffset: 2,
+    termIndex: 4,
+    customQuery:
+      '"\u0438\u0449\u0435\u043c \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0443" \u043e\u043d\u043b\u0430\u0439\u043d-\u0448\u043a\u043e\u043b\u0430',
+  },
+  {
+    angle: "company_careers",
+    language: "ru",
+    intent: "Find hiring on official retail company pages",
+    eventPhrase: "\u0440\u0430\u0441\u0448\u0438\u0440\u044f\u0435\u043c \u043a\u043e\u043c\u0430\u043d\u0434\u0443",
+    contextPhrase: "\u0440\u043e\u0437\u043d\u0438\u0447\u043d\u0430\u044f \u0441\u0435\u0442\u044c",
+    sourceHint: "\u0441\u0430\u0439\u0442 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+    priorityOffset: 3,
+    termIndex: 5,
+    customQuery:
+      '"\u0440\u0430\u0441\u0448\u0438\u0440\u044f\u0435\u043c \u043a\u043e\u043c\u0430\u043d\u0434\u0443" "\u0440\u043e\u0437\u043d\u0438\u0447\u043d\u0430\u044f \u0441\u0435\u0442\u044c"',
+  },
+  {
+    angle: "company_careers",
+    language: "ru",
+    intent: "Find hiring on official service company pages",
+    eventPhrase: "\u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0430\u0435\u043c \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0443",
+    contextPhrase: "\u0441\u0435\u0440\u0432\u0438\u0441\u043d\u0430\u044f \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f",
+    sourceHint: "\u0441\u0430\u0439\u0442 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+    priorityOffset: 3,
+    termIndex: 6,
+    customQuery:
+      '"\u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0430\u0435\u043c \u0432 \u043a\u043e\u043c\u0430\u043d\u0434\u0443" "\u0441\u0435\u0440\u0432\u0438\u0441\u043d\u0430\u044f \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f"',
+  },
+  {
+    angle: "company_careers",
+    language: "ru",
+    intent: "Find hiring on official real estate developer pages",
+    eventPhrase: "\u043e\u0442\u043a\u0440\u044b\u0442\u0430 \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u044f",
+    contextPhrase: "\u0434\u0435\u0432\u0435\u043b\u043e\u043f\u0435\u0440",
+    sourceHint: "\u0441\u0430\u0439\u0442 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+    priorityOffset: 4,
+    termIndex: 7,
+    customQuery:
+      '"\u043e\u0442\u043a\u0440\u044b\u0442\u0430 \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u044f" \u0434\u0435\u0432\u0435\u043b\u043e\u043f\u0435\u0440',
+  },
+  {
+    angle: "company_careers",
+    language: "ru",
+    intent: "Find expansion hiring on official company pages",
+    eventPhrase: "\u0432 \u0441\u0432\u044f\u0437\u0438 \u0441 \u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043d\u0438\u0435\u043c",
+    contextPhrase: "\u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f",
+    sourceHint: "\u0441\u0430\u0439\u0442 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+    priorityOffset: 4,
+    termIndex: 8,
+    customQuery:
+      '"\u0432 \u0441\u0432\u044f\u0437\u0438 \u0441 \u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043d\u0438\u0435\u043c" "\u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f" \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f',
+  },
+  {
+    angle: "company_careers",
+    language: "ru",
+    intent: "Find sales hiring on official wholesale company pages",
+    eventPhrase: "\u0438\u0449\u0435\u043c \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u0430 \u043f\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c",
+    contextPhrase: "\u043e\u043f\u0442\u043e\u0432\u0430\u044f \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f",
+    sourceHint: "\u0441\u0430\u0439\u0442 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+    priorityOffset: 5,
+    termIndex: 9,
+    customQuery:
+      '"\u0438\u0449\u0435\u043c \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u0430 \u043f\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c" "\u043e\u043f\u0442\u043e\u0432\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0438\u044f"',
   },
   {
     angle: "company_blog",
@@ -173,6 +246,8 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
     termIndex: 3,
   },
 ];
+
+const searchExclusions = "";
 
 const ruMarketHints: Record<SignalType, readonly string[]> = {
   HIRING_SIGNAL: [
@@ -458,27 +533,39 @@ function buildQueryParts(
 ): string[] {
   const eventPhrase =
     angleProfile?.eventPhrase ?? pickByIndex(profile.eventPhrases[language], index);
+  const industry = pickByIndex(icp.industries[language], index);
   const contextPhrase =
     angleProfile?.contextPhrase ??
     pickByIndex(profile.contextPhrases[language], index + 1);
-  const industry = pickByIndex(icp.industries[language], index);
-  const companyType = pickByIndex(icp.companyTypes[language], index + 1);
-  const keyword = pickByIndex(icp.keywords[language], index + 2);
-  const sourceHint =
-    angleProfile?.sourceHint ??
-    pickByIndex(icp.signalSourceHints[signalType][language], index);
   const marketHint =
     language === "ru" ? pickByIndex(ruMarketHints[signalType], index) : null;
 
+  if (!angleProfile) {
+    return [
+      quote(eventPhrase),
+      industry,
+      searchExclusions,
+    ].filter(Boolean);
+  }
+
   return [
     quote(eventPhrase),
-    quote(contextPhrase),
-    quote(industry),
-    quote(companyType),
-    quote(keyword),
-    quote(sourceHint),
-    marketHint ? quote(marketHint) : null,
+    industry,
+    contextPhrase,
+    marketHint,
+    angleProfile.sourceHint,
   ].filter((part): part is string => Boolean(part));
+}
+
+function getOpportunityQueryAngle(
+  signalType: SignalType,
+  index: number,
+): SignalQueryAngle {
+  if (signalType === "CONTENT_SIGNAL" || signalType === "TECH_SIGNAL") {
+    return index % 2 === 0 ? "company_blog" : "market_news";
+  }
+
+  return "company_blog";
 }
 
 function createSignalQuery({
@@ -564,21 +651,76 @@ function buildHiringSignalQueries({
     createSignalQuery({
       signalType,
       query:
-        angleProfile.customQuery ??
-        buildQueryParts(
-          profile,
-          icp,
-          signalType,
-          angleProfile.language,
-          angleProfile.termIndex,
-          angleProfile,
-        ).join(" "),
+        [
+          angleProfile.customQuery ??
+            buildQueryParts(
+              profile,
+              icp,
+              signalType,
+              angleProfile.language,
+              angleProfile.termIndex,
+              angleProfile,
+            ).join(" "),
+          searchExclusions,
+        ]
+          .filter(Boolean)
+          .join(" "),
       intent: angleProfile.intent,
       priority: Math.max(basePriority - angleProfile.priorityOffset, 1),
       language: angleProfile.language,
       angle: angleProfile.angle,
     }),
   );
+
+  return applyMarketMode(queries, market, maxQueries);
+}
+
+function buildTrafficContactQueries({
+  icp,
+  signalType,
+  maxQueries,
+  market,
+}: {
+  icp: SignalQueryIcp;
+  signalType: SignalType;
+  maxQueries: number;
+  market: SignalSearchMarket;
+}): SignalQuery[] {
+  const languages: SignalQueryLanguage[] =
+    market === "mixed" ? ["ru", "en"] : market === "ru" ? ["ru"] : ["en"];
+  const queries: SignalQuery[] = [];
+  const contactPhrases: LocalizedTerms = {
+    ru: [
+      "контакты email",
+      "отдел продаж email",
+      "коммерческий отдел контакты",
+      "электронная почта контакты",
+    ],
+    en: [
+      "contact email",
+      "sales email",
+      "business inquiries contact",
+      "contact us email",
+    ],
+  };
+  const perLanguageLimit = Math.ceil(maxQueries / languages.length);
+
+  for (const language of languages) {
+    for (let index = 0; index < perLanguageLimit; index += 1) {
+      const industry = pickByIndex(icp.industries[language], index);
+      const contactPhrase = pickByIndex(contactPhrases[language], index);
+      queries.push(
+        createSignalQuery({
+          signalType,
+          query: `${quote(industry)} ${contactPhrase} ${searchExclusions}`,
+          intent: "Find official company contact pages with a public inbound email",
+          priority: Math.max(icp.signalPriorities[signalType] - index, 1),
+          language,
+          angle: "company_contacts",
+        }),
+      );
+    }
+  }
 
   return applyMarketMode(queries, market, maxQueries);
 }
@@ -595,6 +737,15 @@ export function buildSignalQueries({
 
   if (signalType === "HIRING_SIGNAL") {
     return buildHiringSignalQueries({
+      icp,
+      signalType,
+      maxQueries,
+      market,
+    });
+  }
+
+  if (signalType === "TRAFFIC_SIGNAL") {
+    return buildTrafficContactQueries({
       icp,
       signalType,
       maxQueries,
@@ -619,7 +770,7 @@ export function buildSignalQueries({
           intent: profile.intent[language],
           priority: Math.max(basePriority - index, 1),
           language,
-          angle: language === "ru" ? "ru_job_board" : "market_news",
+          angle: getOpportunityQueryAngle(signalType, index),
         }),
       );
     }

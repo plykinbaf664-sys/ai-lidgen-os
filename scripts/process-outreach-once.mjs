@@ -1,3 +1,8 @@
+import { resolve } from "node:path";
+import { loadEnvFile } from "node:process";
+
+loadEnvFile(resolve(process.cwd(), ".env.local"));
+
 const baseUrl = (process.env.LEADGEN_BASE_URL || "http://localhost:3000").replace(
   /\/$/,
   "",
@@ -12,7 +17,11 @@ if (!secret) {
 
 const response = await fetch(`${baseUrl}/api/leadgen/outreach/process`, {
   method: "POST",
-  headers: { Authorization: `Bearer ${secret}` },
+  headers: {
+    "x-outreach-processor-token": Buffer.from(secret, "utf8").toString(
+      "base64url",
+    ),
+  },
 });
 const payload = await response.json();
 

@@ -1,30 +1,7 @@
 import { NextResponse } from "next/server";
 import { getCampaignDetails } from "@/lib/leadgen/storage";
 import { normalizeLeadgenStrings } from "@/lib/leadgen/text-normalization";
-
-function formatRouteError(error: unknown): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (typeof error === "object" && error !== null) {
-    const maybeError = error as {
-      message?: unknown;
-      code?: unknown;
-      details?: unknown;
-      hint?: unknown;
-    };
-
-    return JSON.stringify({
-      message: maybeError.message,
-      code: maybeError.code,
-      details: maybeError.details,
-      hint: maybeError.hint,
-    });
-  }
-
-  return String(error);
-}
+import { formatUnknownError } from "@/lib/leadgen/error-format";
 
 type CampaignDetailsRouteContext = {
   params: Promise<{
@@ -58,7 +35,7 @@ export async function GET(
     return NextResponse.json(
       {
         success: false,
-        error: formatRouteError(error),
+        error: formatUnknownError(error, "Не удалось загрузить кампанию."),
       },
       { status: 500 },
     );

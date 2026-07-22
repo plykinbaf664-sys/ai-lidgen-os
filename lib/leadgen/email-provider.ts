@@ -1,16 +1,22 @@
 import type { OutreachQueueEntry } from "@/lib/leadgen/types";
+import { appendToSentMailbox } from "./imap-sent-client";
 import {
   getSmtpConfigFromEnv,
   sendSmtpEmail,
   verifySmtpConnection,
 } from "./smtp-client";
 import { resolveDeliveryRecipient } from "./outreach-policy";
+import { formatUnknownError } from "./error-format";
 
 export type EmailSendResult =
   | {
       ok: true;
       provider: string;
       provider_message_id: string;
+      subject: string;
+      smtp_response: string;
+      sent_copy_saved_at: string | null;
+      sent_copy_error: string | null;
     }
   | {
       ok: false;
@@ -80,7 +86,7 @@ export class SmtpEmailProvider implements EmailProvider {
     } catch (error) {
       return {
         ok: false,
-        message: error instanceof Error ? error.message : String(error),
+        message: formatUnknownError(error, "SMTP недоступен."),
       };
     }
   }
@@ -101,24 +107,47 @@ export class SmtpEmailProvider implements EmailProvider {
         actualRecipient: entry.email,
       });
 
-      const receipt = await sendSmtpEmail({
+      const message = {
         to: recipient,
         subject: this.isTestMode()
           ? `[TEST → ${entry.email}] ${entry.subject}`
           : entry.subject,
         body: entry.body,
-      });
+        inReplyTo:
+          entry.message_kind === "follow_up" ? entry.parent_smtp_message_id : null,
+        references:
+          entry.message_kind === "follow_up" && entry.parent_smtp_message_id
+            ? [entry.parent_smtp_message_id]
+            : [],
+      };
+      const receipt = await sendSmtpEmail(message);
+      let sentCopySavedAt: string | null = null;
+      let sentCopyError: string | null = null;
+      try {
+        await appendToSentMailbox({
+          rawMessage: receipt.rawMessage,
+          messageId: receipt.messageId,
+          sentAt: new Date(),
+        });
+        sentCopySavedAt = new Date().toISOString();
+      } catch (error) {
+        sentCopyError = formatUnknownError(error, "Не удалось сохранить копию в Sent.");
+      }
 
       return {
         ok: true,
         provider: this.id,
         provider_message_id: receipt.messageId,
+        subject: message.subject,
+        smtp_response: receipt.response,
+        sent_copy_saved_at: sentCopySavedAt,
+        sent_copy_error: sentCopyError,
       };
     } catch (error) {
       return {
         ok: false,
         provider: this.id,
-        error: error instanceof Error ? error.message : String(error),
+        error: formatUnknownError(error, "SMTP-отправка завершилась ошибкой."),
       };
     }
   }

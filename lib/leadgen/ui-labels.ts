@@ -28,9 +28,9 @@ export function getReadinessLabel(readiness: LeadReadinessStatus): string {
   const labels: Record<LeadReadinessStatus, string> = {
     outreach_ready: "Готов к email-отправке",
     fallback_ready: "Доступен общий email",
-    enrichment_required: "Нужно найти email",
+    enrichment_required: "Контакт не найден",
     manual_research_required: "Нужна ручная проверка",
-    provider_exhausted: "Email не найден",
+    provider_exhausted: "Контакт не найден",
     rejected: "Отклонён",
   };
 
@@ -54,21 +54,21 @@ export function getNextActionLabel(action?: string | null): string {
   const labels: Record<string, string> = {
     send_outreach: "Отправить сообщение",
     use_fallback_channel: "Использовать общий email",
-    run_enrichment: "Продолжить поиск email",
+    run_enrichment: "Пропустить",
     manual_review: "Проверить вручную",
     review_manually: "Проверить вручную",
-    skip_until_contact_found: "Отложить до появления email",
+    skip_until_contact_found: "Пропустить",
     monitor: "Наблюдать",
     monitor_changes: "Наблюдать",
     discard: "Пропустить",
     find_signal: "Найти коммерческий повод",
-    contact_primary_person: "Продолжить поиск email",
-    contact_alternative_person: "Продолжить поиск email",
+    contact_primary_person: "Пропустить",
+    contact_alternative_person: "Пропустить",
   };
 
   return action
     ? labels[action] ?? "Проверить вручную"
-    : "Продолжить поиск email";
+    : "Пропустить";
 }
 
 export function getActionForReadiness(readiness: LeadReadinessStatus): string {
@@ -85,14 +85,14 @@ export function getActionForReadiness(readiness: LeadReadinessStatus): string {
   }
 
   if (readiness === "provider_exhausted") {
-    return "Запустить дополнительный поиск";
+    return "Пропустить";
   }
 
   if (readiness === "rejected") {
     return "Не брать в работу";
   }
 
-  return "Продолжить поиск email";
+  return "Пропустить";
 }
 
 export function getContactTypeLabel(type: LeadgenContact["contact_type"]): string {
@@ -109,7 +109,7 @@ export function getContactTypeLabel(type: LeadgenContact["contact_type"]): strin
     contact_form: "Форма связи",
     social_profile: "Дополнительный источник: соцпрофиль",
     company_website: "Дополнительный источник: сайт",
-    no_contact_found: "Email не найден",
+    no_contact_found: "Контакт не найден",
   };
 
   return labels[type];
@@ -176,7 +176,7 @@ export function translateDiagnosticValue(value?: string | null): string {
   const labels: Record<string, string> = {
     direct_channel_found: "найден прямой канал",
     fallback_channel_found: "найден резервный канал",
-    enrichment_required: "нужен поиск контакта",
+    enrichment_required: "контакт не найден после автоматического поиска",
     provider_exhausted: "источники исчерпаны",
     no_contact_found: "контакт не найден",
     known_context_email_parse: "поиск почты в найденном контексте",
@@ -263,8 +263,8 @@ export function getContactDisplay(contact: LeadgenContact | null): {
   type: string;
 } {
   return {
-    value: getCompactContactValue(contact) ?? "Email не найден",
-    type: contact ? getContactTypeLabel(contact.contact_type) : "Email не найден",
+    value: getCompactContactValue(contact) ?? "Нет доступного контакта",
+    type: contact ? getContactTypeLabel(contact.contact_type) : "Контакт не найден",
   };
 }
 
@@ -342,7 +342,7 @@ export function buildOutreachDraft({
   ) {
     return {
       text:
-        "Email не найден.\n\nЧерновик будет сформирован после нахождения подходящего email.",
+        "Письмо не создано: автоматический поиск не нашёл доступный контакт.",
       readyToSend: false,
     };
   }
@@ -377,6 +377,6 @@ export function buildOutreachDraft({
   return {
     readyToSend: false,
     text:
-      "Email не найден.\n\nДля автоматической отправки требуется email.",
+      "Письмо не создано: автоматический поиск не нашёл доступный контакт.",
   };
 }

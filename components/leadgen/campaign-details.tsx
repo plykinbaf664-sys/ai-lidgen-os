@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   getActionForReadiness,
   getContactDisplay,
@@ -9,17 +10,22 @@ import {
   getReadinessClass,
   getReadinessLabel,
   getSourceDisplay,
-  makeShortWhyNow,
   translateDiagnosticValue,
 } from "@/lib/leadgen/ui-labels";
 import { buildEmailOutreach } from "@/lib/leadgen/email-outreach-builder";
 import { normalizeLeadgenText } from "@/lib/leadgen/text-normalization";
+import {
+  getCommercialSignalTypeLabel,
+  NO_VERIFIED_COMMERCIAL_SIGNAL,
+  validateCommercialSignalCandidate,
+} from "@/lib/leadgen/signals/commercial-signal-validator";
 import {
   isFallbackEmailContact,
   isIdentityEvidenceContact,
   isSendableEmailContact,
 } from "@/lib/leadgen/contact-channel-ranking";
 import type {
+  CommercialSignal,
   LeadgenCampaignDetails,
   LeadgenContact,
   LeadgenLead,
@@ -61,10 +67,37 @@ type ContactDiscoveryView = {
   email_stop_reason?: string | null;
 };
 
-type OpportunityView = {
-  why_now?: string;
-  why_this_company?: string;
-};
+function getCommercialSignal(
+  lead: LeadgenLead,
+  details: LeadgenCampaignDetails,
+  primarySignal: LeadgenSignal | undefined,
+): CommercialSignal | null {
+  const stored = getMetadata<CommercialSignal>(
+    lead,
+    details,
+    "commercial_signal",
+  );
+
+  if (
+    stored &&
+    typeof stored.type === "string" &&
+    typeof stored.summary === "string" &&
+    typeof stored.evidence === "string" &&
+    typeof stored.sourceUrl === "string" &&
+    typeof stored.confidence === "number"
+  ) {
+    return stored;
+  }
+
+  return validateCommercialSignalCandidate({
+    text: primarySignal?.signal_detail ?? lead.signal_detail,
+    sourceUrl: primarySignal?.source_url ?? lead.company_source_url,
+    sourceTitle: primarySignal?.signal_source_label,
+    confidence: primarySignal?.confidence_score,
+    detectedAt: primarySignal?.found_at,
+    pipelineSignalType: primarySignal?.signal_type,
+  });
+}
 
 function getMetadata<T>(
   lead: LeadgenLead,
@@ -235,7 +268,7 @@ function getMessageModeLabel(value?: string | null): string {
     return "Маршрутизация через общий email";
   }
 
-  return "Email не найден";
+  return "Письмо не создано";
 }
 
 export function CampaignDetails({
@@ -322,11 +355,6 @@ export function CampaignDetails({
               details,
               "contact_discovery",
             );
-            const opportunity = getMetadata<OpportunityView>(
-              lead,
-              details,
-              "opportunity",
-            );
             const bestOutreachEntry = getBestOutreachEntry(contacts);
             const fallbackEntry = getFallbackEntry(contacts);
             const displayedContact = bestOutreachEntry ?? fallbackEntry;
@@ -341,17 +369,19 @@ export function CampaignDetails({
             const primarySignal = signals[0];
             const signalTitle = primarySignal?.signal_title ?? lead.signal_title;
             const signalDetail = primarySignal?.signal_detail ?? lead.signal_detail;
-            const whyNow = makeShortWhyNow(signalTitle, signalDetail, {
-              signalType: primarySignal?.signal_type,
-              confidenceScore: primarySignal?.confidence_score,
-              whyNow: opportunity?.why_now ?? opportunity?.why_this_company,
-            });
+            const commercialSignal = getCommercialSignal(
+              lead,
+              details,
+              primarySignal,
+            );
+            const whyNow =
+              commercialSignal?.summary ?? NO_VERIFIED_COMMERCIAL_SIGNAL;
             const draft = buildEmailOutreach({
               companyName: lead.company_name,
               personName: peopleDiscovery?.primary_person?.full_name,
               contact: displayedContact,
               readiness,
-              whyNow,
+              whyNow: commercialSignal?.summary ?? "",
               signalType: primarySignal?.signal_type,
               signalTitle,
               signalDetail,
@@ -386,7 +416,7 @@ export function CampaignDetails({
 
                   <div className="sales-lead-grid">
                     <div>
-                      <span className="field-label">Почему сейчас</span>
+                      <span className="field-label">Коммерческий сигнал</span>
                       <p>{whyNow}</p>
                     </div>
                     <div>
@@ -444,7 +474,7 @@ export function CampaignDetails({
                     <span className="field-label">
                       {draft.readyToSend ? "Тема письма" : "Сообщение"}
                     </span>
-                    <p>{emailSubject ?? "Email не найден"}</p>
+                    <p>{emailSubject ?? "Письмо не создано"}</p>
                   </div>
 
                   <div className="outreach-draft">
@@ -454,15 +484,15 @@ export function CampaignDetails({
                     <p>{emailBody}</p>
                   </div>
 
-                  <button
-                    className="detail-button sales-details-button"
-                    type="button"
+                  <Button
+                    className="sales-details-button"
                     onClick={() => toggleLead(lead.id)}
+                    variant="ghost"
                   >
                     {expandedLeadId === lead.id
                       ? "Скрыть диагностику"
                       : "Техническая диагностика"}
-                  </button>
+                  </Button>
                 </div>
 
                 {expandedLeadId === lead.id ? (
@@ -474,19 +504,30 @@ export function CampaignDetails({
                       </div>
                       <div>
                         <span className="field-label">Тип сигнала</span>
-                        <p>{primarySignal?.signal_type ?? "Нет данных"}</p>
+                        <p>
+                          {getCommercialSignalTypeLabel(
+                            commercialSignal?.type ?? "none",
+                          )}
+                        </p>
                       </div>
                       <div>
                         <span className="field-label">Доказательство сигнала</span>
-                        <p>{normalizeLeadgenText(signalDetail)}</p>
+                        <p>
+                          {commercialSignal?.evidence ??
+                            NO_VERIFIED_COMMERCIAL_SIGNAL}
+                        </p>
                       </div>
                       <div>
                         <span className="field-label">Источник сигнала</span>
-                        <p>{getSourceDisplay(primarySignal?.source_url)}</p>
+                        <p>{getSourceDisplay(commercialSignal?.sourceUrl)}</p>
                       </div>
                       <div>
-                        <span className="field-label">Confidence сигнала</span>
-                        <p>{primarySignal?.confidence_score ?? "Нет данных"}</p>
+                        <span className="field-label">Уверенность</span>
+                        <p>
+                          {commercialSignal
+                            ? `${commercialSignal.confidence}%`
+                            : "0%"}
+                        </p>
                       </div>
                       <div>
                         <span className="field-label">Тип сообщения</span>
@@ -533,30 +574,45 @@ export function CampaignDetails({
                       <div>
                         <span className="field-label">Сигналы</span>
                         <div className="campaign-details-signal-list">
-                          {signals.map((signal) => (
-                            <article
-                              className="campaign-details-signal-card"
-                              key={signal.id}
-                            >
-                              <h4>
-                                {makeShortWhyNow(signal.signal_title, signal.signal_detail, {
-                                  signalType: signal.signal_type,
-                                  confidenceScore: signal.confidence_score,
-                                })}
-                              </h4>
-                              <p>{normalizeLeadgenText(signal.signal_detail)}</p>
-                              {signal.source_url ? (
-                                <a
-                                  className="source-link"
-                                  href={signal.source_url}
-                                  rel="noreferrer"
-                                  target="_blank"
-                                >
-                                  Открыть источник
-                                </a>
-                              ) : null}
-                            </article>
-                          ))}
+                          {signals.map((signal) => {
+                            const verified =
+                              validateCommercialSignalCandidate({
+                                text: signal.signal_detail,
+                                sourceUrl: signal.source_url,
+                                sourceTitle: signal.signal_source_label,
+                                confidence: signal.confidence_score,
+                                detectedAt: signal.found_at,
+                                pipelineSignalType: signal.signal_type,
+                              });
+
+                            return (
+                              <article
+                                className="campaign-details-signal-card"
+                                key={signal.id}
+                              >
+                                <h4>
+                                  {verified?.summary ??
+                                    NO_VERIFIED_COMMERCIAL_SIGNAL}
+                                </h4>
+                                <p>
+                                  Тип:{" "}
+                                  {getCommercialSignalTypeLabel(
+                                    verified?.type ?? "none",
+                                  )}
+                                </p>
+                                {verified?.sourceUrl ? (
+                                  <a
+                                    className="source-link"
+                                    href={verified.sourceUrl}
+                                    rel="noreferrer"
+                                    target="_blank"
+                                  >
+                                    Открыть источник
+                                  </a>
+                                ) : null}
+                              </article>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>

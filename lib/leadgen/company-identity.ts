@@ -6,6 +6,11 @@ export type CompanyIdentityInput = {
   legal_id?: string | null;
 };
 
+export type LeadCandidateIdentityInput = Pick<
+  CompanyIdentityInput,
+  "company_name" | "company_domain" | "region"
+>;
+
 export type CompanyIdentity = {
   identityKey: string;
   normalizedLegalId: string | null;
@@ -96,6 +101,12 @@ export function getCompanyIdentity(
     normalizedName,
     normalizedRegion,
   };
+}
+
+export function getLeadCandidateIdentity(
+  candidate: LeadCandidateIdentityInput,
+): CompanyIdentity {
+  return getCompanyIdentity(candidate);
 }
 
 export function getDuplicateReason(

@@ -176,7 +176,9 @@ function classifyEmail(
   }
 
   if (domainMatched) {
-    return "candidate_unverified";
+    // A non-technical address published on the company's own domain is a
+    // verified corporate entry point even when its local part is custom.
+    return "company_generic_verified";
   }
 
   return "invalid";

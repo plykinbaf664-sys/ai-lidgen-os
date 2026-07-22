@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { Button } from "@/components/ui/button";
 import type { CampaignInput } from "@/lib/leadgen/types";
 
 type CampaignFormProps = {
@@ -32,9 +33,9 @@ export function CampaignForm({ isRunning = false, onRun }: CampaignFormProps) {
         />
       </label>
 
-      <button className="primary-button campaign-submit-button" disabled={isRunning} type="submit">
+      <Button className="campaign-submit-button" loading={isRunning} type="submit" variant="primary">
         {isRunning ? "Идёт поиск..." : "Запустить поиск"}
-      </button>
+      </Button>
     </form>
   );
 }

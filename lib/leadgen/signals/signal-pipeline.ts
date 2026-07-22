@@ -10,6 +10,7 @@ import type {
 } from "@/lib/leadgen/signals/query-builder";
 import { buildSignalQueries } from "@/lib/leadgen/signals/query-builder";
 import { buildLeadCandidates } from "@/lib/leadgen/signals/lead-candidate-builder";
+import { enrichJobPostingSearchResult } from "@/lib/leadgen/signals/job-posting-context";
 import type { LeadCandidate, SignalType } from "@/lib/leadgen/types";
 
 export type SignalPipelineStoppedReason =
@@ -38,6 +39,7 @@ export type RunSignalPipelineInput = {
   maxQueries?: number;
   maxResultsPerQuery?: number;
   maxPagesPerQuery?: number;
+  pageOffset?: number;
   market?: SignalSearchMarket;
 };
 
@@ -61,13 +63,14 @@ const DEFAULT_MAX_QUERIES = 5;
 const DEFAULT_MAX_RESULTS_PER_QUERY = 5;
 
 const TARGET_CANDIDATES_CAP = 100;
-const MAX_QUERIES_CAP = 10;
+const MAX_QUERIES_CAP = 20;
 const MAX_RESULTS_PER_QUERY_CAP = 10;
 const MAX_CANDIDATES_PER_ANGLE = 2;
 const MAX_SOFT_MARKET_SHARE = 0.7;
 
 const signalQueryAngles: SignalQueryAngle[] = [
   "company_careers",
+  "company_contacts",
   "ats",
   "job_board",
   "ru_job_board",
@@ -329,6 +332,7 @@ export async function runSignalPipeline({
   maxQueries,
   maxResultsPerQuery,
   maxPagesPerQuery = leadgenProductionConfig.searchMaxPages,
+  pageOffset = 0,
   market = "mixed",
 }: RunSignalPipelineInput): Promise<SignalPipelineResult> {
   const safeTargetCandidates = applyLimit(
@@ -376,14 +380,19 @@ export async function runSignalPipeline({
     );
 
     for (let page = 0; page < safeMaxPages; page += 1) {
+      const providerPage = Math.max(0, pageOffset) + page;
       const searchResults = await searchProvider.search({
       query: query.query,
       maxResults: safeMaxResultsPerQuery,
-      page,
+      page: providerPage,
       market: query.market,
       queryLanguage: query.query_language,
       });
-      const queryEvidence = searchResults.map((result) => ({
+      const evidenceSearchResults =
+        signalType === "HIRING_SIGNAL"
+          ? await Promise.all(searchResults.map(enrichJobPostingSearchResult))
+          : searchResults;
+      const queryEvidence = evidenceSearchResults.map((result) => ({
       ...collectSignalEvidence({
         result,
         signalType,
@@ -422,7 +431,7 @@ export async function runSignalPipeline({
 
       queriesUsed.push({
         ...query,
-        page,
+        page: providerPage,
         results_count: searchResults.length,
         candidates_found_after_query: candidates.length,
       });

@@ -5,15 +5,18 @@ import type {
 } from "@/lib/leadgen/search/search-provider";
 import { TavilySearchProvider } from "@/lib/leadgen/search/tavily-provider";
 import { YandexSearchProvider } from "@/lib/leadgen/search/yandex-provider";
+import { PublicWebSearchProvider } from "@/lib/leadgen/search/public-web-search-provider";
+import { formatUnknownError } from "@/lib/leadgen/error-format";
 
 export type LeadgenSearchProviderMode =
   | "auto"
+  | "browser"
   | "tavily"
   | "yandex"
   | "yandex_tavily";
 
 type ProviderSlot = {
-  name: "tavily" | "yandex";
+  name: "browser" | "tavily" | "yandex";
   provider: SearchProvider;
 };
 
@@ -35,12 +38,16 @@ function createProviderSlot(name: ProviderSlot["name"]): ProviderSlot {
   return {
     name,
     provider:
-      name === "yandex" ? new YandexSearchProvider() : new TavilySearchProvider(),
+      name === "yandex"
+        ? new YandexSearchProvider()
+        : name === "tavily"
+          ? new TavilySearchProvider()
+          : new PublicWebSearchProvider(),
   };
 }
 
 function getConfiguredSlots(): ProviderSlot[] {
-  const slots: ProviderSlot[] = [];
+  const slots: ProviderSlot[] = [createProviderSlot("browser")];
 
   if (isYandexConfigured()) {
     slots.push(createProviderSlot("yandex"));
@@ -72,6 +79,7 @@ export function isLeadgenSearchProviderMode(
 ): value is LeadgenSearchProviderMode {
   return (
     value === "auto" ||
+    value === "browser" ||
     value === "tavily" ||
     value === "yandex" ||
     value === "yandex_tavily"
@@ -102,6 +110,11 @@ export class MarketAwareSearchProvider implements SearchProvider {
   private getProviderChain(input: SearchProviderSearchInput): ProviderSlot[] {
     const yandex = this.slots.find((slot) => slot.name === "yandex");
     const tavily = this.slots.find((slot) => slot.name === "tavily");
+    const browser = this.slots.find((slot) => slot.name === "browser");
+
+    if (this.mode === "browser") {
+      return browser ? [browser] : [];
+    }
 
     if (this.mode === "yandex") {
       return yandex ? [yandex] : [];
@@ -118,13 +131,14 @@ export class MarketAwareSearchProvider implements SearchProvider {
     const isRuSearch = input.market === "ru" || input.queryLanguage === "ru";
 
     return isRuSearch
-      ? ([yandex, tavily].filter(Boolean) as ProviderSlot[])
-      : ([tavily, yandex].filter(Boolean) as ProviderSlot[]);
+      ? ([yandex, tavily, browser].filter(Boolean) as ProviderSlot[])
+      : ([tavily, yandex, browser].filter(Boolean) as ProviderSlot[]);
   }
 
   async search(input: SearchProviderSearchInput): Promise<SearchResult[]> {
     const providerChain = this.getProviderChain(input);
     const errors: string[] = [];
+    let receivedSuccessfulResponse = false;
 
     if (providerChain.length === 0) {
       throw new Error(
@@ -135,6 +149,7 @@ export class MarketAwareSearchProvider implements SearchProvider {
     for (const slot of providerChain) {
       try {
         const results = await slot.provider.search(input);
+        receivedSuccessfulResponse = true;
 
         if (results.length > 0) {
           return results.map((result) => ({
@@ -145,7 +160,7 @@ export class MarketAwareSearchProvider implements SearchProvider {
 
         errors.push(`${slot.name}: no results`);
       } catch (error) {
-        const message = error instanceof Error ? error.message : String(error);
+        const message = formatUnknownError(error, "Search provider failed.");
         const formattedError = `${slot.name}: ${message}`;
         errors.push(formattedError);
 
@@ -164,7 +179,10 @@ export class MarketAwareSearchProvider implements SearchProvider {
       }
     }
 
-    if (errors.some((error) => !error.endsWith(": no results"))) {
+    if (
+      !receivedSuccessfulResponse &&
+      errors.some((error) => !error.endsWith(": no results"))
+    ) {
       throw new Error(`All search providers failed.${formatProviderErrors(errors)}`);
     }
 

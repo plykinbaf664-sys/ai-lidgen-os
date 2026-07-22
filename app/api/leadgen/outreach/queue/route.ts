@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
-import { syncOutreachQueue } from "@/lib/leadgen/outreach-storage";
+import {
+  getOutreachOperationalState,
+  getDailySendStats,
+  syncOutreachQueue,
+} from "@/lib/leadgen/outreach-storage";
+import { formatUnknownError } from "@/lib/leadgen/error-format";
 
 export async function POST(request: Request) {
   try {
@@ -7,10 +12,21 @@ export async function POST(request: Request) {
     if (!campaignId) {
       return NextResponse.json({ success: false, error: "campaignId обязателен" }, { status: 400 });
     }
-    return NextResponse.json({ success: true, entries: await syncOutreachQueue(campaignId) });
+    const entries = await syncOutreachQueue(campaignId);
+    const daily = await getDailySendStats();
+    return NextResponse.json({
+      success: true,
+      entries,
+      operational: await getOutreachOperationalState(entries),
+      daily: {
+        sent_today: daily.sentToday,
+        daily_limit: daily.dailyLimit,
+        daily_remaining: daily.availableToQueue,
+      },
+    });
   } catch (error) {
     return NextResponse.json(
-      { success: false, error: error instanceof Error ? error.message : String(error) },
+      { success: false, error: formatUnknownError(error) },
       { status: 500 },
     );
   }

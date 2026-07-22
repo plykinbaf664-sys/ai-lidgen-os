@@ -1,5 +1,6 @@
 import { randomInt } from "node:crypto";
 import { normalizeRecipientEmail } from "@/lib/leadgen/company-identity";
+import { generateFirstEmailV3 } from "@/lib/leadgen/first-email-generator";
 import {
   calculateBatchCapacity,
   getNextScheduledAt,
@@ -17,11 +18,12 @@ import type {
   LeadgenLead,
   LeadgenSignal,
   OutreachEmailStatus,
+  OutreachOperationalState,
   OutreachQueueEntry,
   OutreachReadiness,
 } from "@/lib/leadgen/types";
 
-type QueueRow = {
+export type QueueRow = {
   id: string;
   contact_id: string;
   lead_id: string;
@@ -53,9 +55,23 @@ type QueueRow = {
   metadata: Record<string, unknown>;
   created_at: string;
   updated_at: string;
+  message_kind?: "initial" | "follow_up";
+  parent_outreach_id?: string | null;
+  followup_number?: number | null;
+  parent_smtp_message_id?: string | null;
+  reply_check_status?: "pending" | "verified" | "unavailable";
+  reply_checked_at?: string | null;
+  reply_detected_at?: string | null;
+  reply_message_id?: string | null;
+  reply_from?: string | null;
+  reply_subject?: string | null;
+  reply_detection_method?: OutreachQueueEntry["reply_detection_method"];
+  generation_reason?: string | null;
+  skip_reason?: string | null;
+  copy_review_status?: string | null;
 };
 
-function rowToEntry(row: QueueRow, queuePosition: number | null = null): OutreachQueueEntry {
+export function rowToEntry(row: QueueRow, queuePosition: number | null = null): OutreachQueueEntry {
   const metadata = row.metadata ?? {};
   return {
     id: row.id,
@@ -90,6 +106,10 @@ function rowToEntry(row: QueueRow, queuePosition: number | null = null): Outreac
     last_error: row.last_error,
     provider: row.provider,
     provider_message_id: row.smtp_message_id,
+    smtp_response: (metadata.smtp_response as string | null) ?? null,
+    sent_copy_saved_at:
+      (metadata.sent_copy_saved_at as string | null) ?? null,
+    sent_copy_error: (metadata.sent_copy_error as string | null) ?? null,
     created_at: row.created_at,
     updated_at: row.updated_at,
     approved_at: row.approved_at,
@@ -100,11 +120,66 @@ function rowToEntry(row: QueueRow, queuePosition: number | null = null): Outreac
     sent_at: row.sent_at,
     failed_at: row.failed_at,
     approval_invalidated_reason: row.approval_invalidated_reason,
+    copy_quality:
+      (metadata.copy_quality as Record<string, number> | null | undefined) ?? null,
+    quality_gate_passed: metadata.quality_gate_passed === true,
+    copy_review_status:
+      metadata.copy_review_status === "ready"
+        ? "ready"
+        : "needs_manual_copy_review",
+    generation_attempts:
+      typeof metadata.generation_attempts === "number"
+        ? metadata.generation_attempts
+        : 0,
+    micro_value:
+      (metadata.micro_value as OutreachQueueEntry["micro_value"]) ?? null,
     queue_position: queuePosition,
     follow_up_due_at: null,
     follow_up_status: null,
     history: [],
+    message_kind: row.message_kind ?? "initial",
+    parent_outreach_id: row.parent_outreach_id ?? null,
+    followup_number: row.followup_number ?? null,
+    parent_smtp_message_id: row.parent_smtp_message_id ?? null,
+    reply_check_status: row.reply_check_status ?? "pending",
+    reply_checked_at: row.reply_checked_at ?? null,
+    reply_detected_at: row.reply_detected_at ?? null,
+    reply_message_id: row.reply_message_id ?? null,
+    reply_from: row.reply_from ?? null,
+    reply_subject: row.reply_subject ?? null,
+    reply_detection_method: row.reply_detection_method ?? null,
+    generation_reason: row.generation_reason ?? null,
+    skip_reason: row.skip_reason ?? null,
   };
+}
+
+export async function getKnownRecipientEmails(): Promise<string[]> {
+  const supabase = createSupabaseServerClient();
+  const [contactsResult, queueResult] = await Promise.all([
+    supabase
+      .from("leadgen_contacts")
+      .select("email")
+      .not("email", "is", null),
+    supabase
+      .from("leadgen_outreach_queue")
+      .select("normalized_recipient_email"),
+  ]);
+  if (contactsResult.error) throw contactsResult.error;
+  if (queueResult.error) throw queueResult.error;
+
+  return [
+    ...new Set(
+      [
+        ...(contactsResult.data ?? []).map((row) => row.email),
+        ...(queueResult.data ?? []).map(
+          (row) => row.normalized_recipient_email,
+        ),
+      ]
+        .filter((email): email is string => Boolean(email))
+        .map(normalizeRecipientEmail)
+        .filter(Boolean),
+    ),
+  ];
 }
 
 async function readCampaignSources(campaignId: string) {
@@ -137,6 +212,11 @@ export async function syncOutreachQueue(campaignId: string) {
   const seenEmails = new Set<string>();
 
   for (const contact of contacts.filter(isEmailReadyContact)) {
+    if (
+      seenEmails.size >= leadgenProductionConfig.dailyLeadLimit
+    ) {
+      break;
+    }
     const entry = buildOutreachQueueEntry({
       contact,
       lead: leadsById.get(contact.lead_id) ?? null,
@@ -188,6 +268,11 @@ export async function syncOutreachQueue(campaignId: string) {
         email_source_label: entry.email_source_label,
         readiness: entry.readiness,
         signal: entry.signal,
+        copy_quality: entry.copy_quality,
+        quality_gate_passed: entry.quality_gate_passed,
+        copy_review_status: entry.copy_review_status,
+        generation_attempts: entry.generation_attempts,
+        micro_value: entry.micro_value,
       },
     });
     if (error && error.code !== "23505") throw error;
@@ -200,6 +285,7 @@ export async function getOutreachQueue({
 }: { campaignId?: string | null } = {}) {
   const supabase = createSupabaseServerClient();
   let query = supabase.from("leadgen_outreach_queue").select("*");
+  query = query.eq("message_kind", "initial");
   if (campaignId) query = query.eq("campaign_id", campaignId);
   const { data, error } = await query.order("created_at", { ascending: true });
   if (error) {
@@ -271,6 +357,15 @@ export async function updateOutreachQueueEntry({
     approval_invalidated_reason: edited
       ? "approval_invalidated_by_edit"
       : current.approval_invalidated_reason,
+    ...(edited
+      ? {
+          metadata: {
+            ...(current.metadata ?? {}),
+            quality_gate_passed: false,
+            copy_review_status: "needs_manual_copy_review",
+          },
+        }
+      : {}),
     approved_at: nextStatus === "approved" ? now : edited ? null : current.approved_at,
     updated_at: now,
     last_error: nextStatus === "approved" ? null : current.last_error,
@@ -297,6 +392,7 @@ export async function approveOutreachEntry(id: string) {
     .from("leadgen_outreach_queue")
     .select("id")
     .eq("status", "sent")
+    .eq("message_kind", "initial")
     .eq(
       "normalized_recipient_email",
       currentResult.data.normalized_recipient_email,
@@ -310,6 +406,7 @@ export async function approveOutreachEntry(id: string) {
       .from("leadgen_outreach_queue")
       .select("id")
       .eq("status", "sent")
+      .eq("message_kind", "initial")
       .eq("company_id", currentResult.data.company_id)
       .neq("id", id)
       .limit(1);
@@ -346,7 +443,8 @@ export async function bulkApproveOutreach(campaignId: string, execute: boolean) 
   const sentResult = await supabase
     .from("leadgen_outreach_queue")
     .select("normalized_recipient_email")
-    .eq("status", "sent");
+    .eq("status", "sent")
+    .eq("message_kind", "initial");
   if (sentResult.error) throw sentResult.error;
   const stopListResult = await supabase
     .from("leadgen_email_stop_list")
@@ -363,6 +461,7 @@ export async function bulkApproveOutreach(campaignId: string, execute: boolean) 
     (entry) =>
       ["draft", "needs_review", "paused", "failed"].includes(entry.status) &&
       Boolean(entry.email && entry.subject.trim() && entry.body.trim()) &&
+      entry.quality_gate_passed === true &&
       !sentEmails.has(normalizeRecipientEmail(entry.email)) &&
       !stoppedEmails.has(normalizeRecipientEmail(entry.email)),
   );
@@ -376,12 +475,105 @@ export async function bulkApproveOutreach(campaignId: string, execute: boolean) 
     stop_list: entries.filter((entry) =>
       stoppedEmails.has(normalizeRecipientEmail(entry.email)),
     ).length,
+    quality_gate: entries.filter(
+      (entry) => entry.quality_gate_passed !== true,
+    ).length,
     invalid_status: entries.length - eligible.length,
   };
   if (execute) {
     for (const entry of eligible) await approveOutreachEntry(entry.id);
   }
   return { eligible_count: eligible.length, skipped, approved: execute ? eligible.length : 0 };
+}
+
+export async function regenerateLatestUnsentOutreach(execute: boolean) {
+  const supabase = createSupabaseServerClient();
+  const latestResult = await supabase
+    .from("leadgen_outreach_queue")
+    .select("campaign_id")
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle<{ campaign_id: string }>();
+  if (latestResult.error) throw latestResult.error;
+  if (!latestResult.data) {
+    return { campaign_id: null, eligible_count: 0, regenerated: 0, manual_review: 0 };
+  }
+
+  const campaignId = latestResult.data.campaign_id;
+  const queueResult = await supabase
+    .from("leadgen_outreach_queue")
+    .select("*")
+    .eq("campaign_id", campaignId)
+    .in("status", ["draft", "needs_review", "approved", "failed", "paused"])
+    .is("sent_at", null)
+    .order("created_at", { ascending: true });
+  if (queueResult.error) throw queueResult.error;
+
+  const entries = (queueResult.data ?? []) as QueueRow[];
+  let regenerated = 0;
+  let manualReview = 0;
+  const batchBodies: string[] = [];
+
+  for (const row of entries) {
+    const metadata = row.metadata ?? {};
+    const signal = (metadata.signal as OutreachQueueEntry["signal"] | undefined) ?? null;
+    const copy = generateFirstEmailV3({
+      companyName: row.company_name,
+      website: (metadata.company_website as string | null | undefined) ?? null,
+      decisionMakerName: row.recipient_name,
+      decisionMakerRole: row.recipient_role,
+      contactEmail: row.recipient_email,
+      messageMode: row.message_mode,
+      growthSignal: [signal?.title, signal?.detail].filter(Boolean).join(" "),
+      signalType: signal?.type,
+      signalEvidence: signal?.detail ?? signal?.title,
+      signalSourceUrl: signal?.source_url,
+      uniquenessKey: `${row.id}:${row.message_version + 1}`,
+      batchBodies,
+    });
+    batchBodies.push(copy.body);
+    if (!copy.qualityGatePassed) manualReview += 1;
+    if (!execute) continue;
+
+    const messageVersion = row.message_version + 1;
+    const updateResult = await supabase
+      .from("leadgen_outreach_queue")
+      .update({
+        subject: copy.subject,
+        body: copy.body,
+        status: "needs_review",
+        approved_at: null,
+        message_version: messageVersion,
+        idempotency_key: getOutreachIdempotencyKey({
+          campaignId,
+          email: row.normalized_recipient_email,
+          messageVersion,
+        }),
+        approval_invalidated_reason: "content_regenerated",
+        last_error: null,
+        metadata: {
+          ...metadata,
+          copy_quality: copy.quality,
+          quality_gate_passed: copy.qualityGatePassed,
+          copy_review_status: copy.reviewStatus,
+          generation_attempts: copy.generationAttempts,
+          micro_value: copy.microValue,
+        },
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", row.id)
+      .eq("message_version", row.message_version)
+      .is("sent_at", null);
+    if (updateResult.error) throw updateResult.error;
+    regenerated += 1;
+  }
+
+  return {
+    campaign_id: campaignId,
+    eligible_count: entries.length,
+    regenerated: execute ? regenerated : 0,
+    manual_review: manualReview,
+  };
 }
 
 function getZonedParts(date: Date, timeZone: string) {
@@ -446,17 +638,21 @@ export async function scheduleApprovedBatch({
   requestedCount,
   randomDelay = (min: number, max: number) => randomInt(min, max + 1),
 }: {
-  campaignId: string;
+  campaignId?: string | null;
   requestedCount: number;
   randomDelay?: (min: number, max: number) => number;
 }) {
   const supabase = createSupabaseServerClient();
   const stats = await getDailySendStats();
-  const approvedCountResult = await supabase
+  let approvedCountQuery = supabase
     .from("leadgen_outreach_queue")
     .select("id", { count: "exact", head: true })
-    .eq("campaign_id", campaignId)
-    .eq("status", "approved");
+    .eq("status", "approved")
+    .eq("message_kind", "initial");
+  if (campaignId) {
+    approvedCountQuery = approvedCountQuery.eq("campaign_id", campaignId);
+  }
+  const approvedCountResult = await approvedCountQuery;
   if (approvedCountResult.error) throw approvedCountResult.error;
   const safeCount = calculateBatchCapacity({
     requested: Math.max(0, requestedCount),
@@ -469,13 +665,20 @@ export async function scheduleApprovedBatch({
   if (safeCount < 1) {
     return { queued: [], stats, remaining_approved: 0 };
   }
-  const { data, error } = await supabase
+  let approvedEntriesQuery = supabase
     .from("leadgen_outreach_queue")
     .select("*")
-    .eq("campaign_id", campaignId)
     .eq("status", "approved")
+    .eq("message_kind", "initial")
     .order("approved_at", { ascending: true })
     .limit(safeCount);
+  if (campaignId) {
+    approvedEntriesQuery = approvedEntriesQuery.eq(
+      "campaign_id",
+      campaignId,
+    );
+  }
+  const { data, error } = await approvedEntriesQuery;
   if (error) throw error;
   const { minimum, maximum } = getEmailDelayBounds();
   let scheduledAt = Date.now();
@@ -492,6 +695,19 @@ export async function scheduleApprovedBatch({
       .maybeSingle();
     if (duplicate.error) throw duplicate.error;
     if (duplicate.data) continue;
+    if (row.company_id) {
+      const contactedCompany = await supabase
+        .from("leadgen_outreach_queue")
+        .select("id")
+        .eq("company_id", row.company_id)
+        .eq("status", "sent")
+        .eq("message_kind", "initial")
+        .neq("id", row.id)
+        .limit(1)
+        .maybeSingle();
+      if (contactedCompany.error) throw contactedCompany.error;
+      if (contactedCompany.data) continue;
+    }
     const stopList = await supabase
       .from("leadgen_email_stop_list")
       .select("normalized_email")
@@ -528,7 +744,14 @@ export async function scheduleApprovedBatch({
       });
     }
   }
-  return { queued, stats, remaining_approved: Math.max(0, (data?.length ?? 0) - queued.length) };
+  return {
+    queued,
+    stats,
+    remaining_approved: Math.max(
+      0,
+      (approvedCountResult.count ?? 0) - queued.length,
+    ),
+  };
 }
 
 export async function getQueuePaused() {
@@ -571,15 +794,61 @@ export async function cancelQueued(campaignId?: string) {
   if (error) throw error;
 }
 
+export async function cancelQueuedItem(id: string) {
+  const supabase = createSupabaseServerClient();
+  const { data, error } = await supabase
+    .from("leadgen_outreach_queue")
+    .update({
+      status: "approved",
+      queued_at: null,
+      scheduled_at: null,
+      next_attempt_at: null,
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", id)
+    .eq("status", "queued")
+    .select("*")
+    .maybeSingle<QueueRow>();
+  if (error) throw error;
+  return data ? rowToEntry(data) : null;
+}
+
 export async function retryFailed(campaignId?: string) {
   const supabase = createSupabaseServerClient();
   let query = supabase
     .from("leadgen_outreach_queue")
-    .update({ status: "approved", last_error: null, failed_at: null, updated_at: new Date().toISOString() })
+    .update({
+      status: "approved",
+      last_error: null,
+      failed_at: null,
+      smtp_message_id: null,
+      provider: null,
+      updated_at: new Date().toISOString(),
+    })
     .eq("status", "failed");
   if (campaignId) query = query.eq("campaign_id", campaignId);
   const { error } = await query;
   if (error) throw error;
+}
+
+export async function retryFailedItem(id: string) {
+  const supabase = createSupabaseServerClient();
+  const { data, error } = await supabase
+    .from("leadgen_outreach_queue")
+    .update({
+      status: "approved",
+      last_error: null,
+      failed_at: null,
+      smtp_message_id: null,
+      provider: null,
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", id)
+    .eq("status", "failed")
+    .select("*")
+    .maybeSingle<QueueRow>();
+  if (error) throw error;
+  return data ? rowToEntry(data) : null;
 }
 
 export async function claimDueOutreachItem(workerId: string) {
@@ -592,24 +861,133 @@ export async function claimDueOutreachItem(workerId: string) {
   return row ? rowToEntry(row) : null;
 }
 
+export async function rejectPreviouslyContactedQueuedItems() {
+  const supabase = createSupabaseServerClient();
+  const [{ data: sent, error: sentError }, { data: queued, error: queuedError }] =
+    await Promise.all([
+      supabase
+        .from("leadgen_outreach_queue")
+        .select("normalized_recipient_email,company_id")
+        .eq("status", "sent")
+        .eq("message_kind", "initial"),
+      supabase
+        .from("leadgen_outreach_queue")
+        .select("id,normalized_recipient_email,company_id")
+        .eq("status", "queued")
+        .eq("message_kind", "initial"),
+    ]);
+  if (sentError) throw sentError;
+  if (queuedError) throw queuedError;
+
+  const sentEmails = new Set(
+    (sent ?? []).map((item) => item.normalized_recipient_email),
+  );
+  const sentCompanies = new Set(
+    (sent ?? [])
+      .map((item) => item.company_id)
+      .filter((value): value is string => Boolean(value)),
+  );
+  const duplicateIds = (queued ?? [])
+    .filter(
+      (item) =>
+        sentEmails.has(item.normalized_recipient_email) ||
+        (item.company_id ? sentCompanies.has(item.company_id) : false),
+    )
+    .map((item) => item.id);
+
+  if (duplicateIds.length === 0) return 0;
+  const { error } = await supabase
+    .from("leadgen_outreach_queue")
+    .update({
+      status: "rejected",
+      last_error: "Уже отправляли этому email или компании.",
+      scheduled_at: null,
+      next_attempt_at: null,
+      updated_at: new Date().toISOString(),
+    })
+    .in("id", duplicateIds)
+    .eq("status", "queued");
+  if (error) throw error;
+  return duplicateIds.length;
+}
+
+export async function deferRemainingQueuedItems(
+  attemptedAt = new Date(),
+) {
+  const supabase = createSupabaseServerClient();
+  const { data, error } = await supabase
+    .from("leadgen_outreach_queue")
+    .select("id,next_attempt_at,scheduled_at,created_at")
+    .eq("status", "queued")
+    .order("next_attempt_at", { ascending: true });
+  if (error) throw error;
+
+  const { minimum, maximum } = getEmailDelayBounds();
+  let cursor = attemptedAt.getTime();
+
+  for (const row of data ?? []) {
+    const minimumNext = getNextScheduledAt({
+      currentTimestamp: cursor,
+      minimumDelaySeconds: minimum,
+      maximumDelaySeconds: maximum,
+      randomDelay: (min, max) => randomInt(min, max + 1),
+    });
+    const existing = Date.parse(
+      row.next_attempt_at ?? row.scheduled_at ?? row.created_at,
+    );
+    const next = Math.max(
+      Number.isFinite(existing) ? existing : 0,
+      minimumNext,
+    );
+    if (next !== existing) {
+      const timestamp = new Date(next).toISOString();
+      const update = await supabase
+        .from("leadgen_outreach_queue")
+        .update({
+          scheduled_at: timestamp,
+          next_attempt_at: timestamp,
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", row.id)
+        .eq("status", "queued");
+      if (update.error) throw update.error;
+    }
+    cursor = next;
+  }
+}
+
 export async function markPersistentOutreachEntry(
   id: string,
   status: "sent" | "failed" | "approved",
   patch: {
     provider?: string | null;
     smtp_message_id?: string | null;
+    subject?: string;
     last_error?: string | null;
+    metadata?: Record<string, unknown>;
   } = {},
 ) {
   const supabase = createSupabaseServerClient();
   const now = new Date().toISOString();
+  const current = patch.metadata
+    ? await supabase
+        .from("leadgen_outreach_queue")
+        .select("metadata")
+        .eq("id", id)
+        .single<{ metadata: Record<string, unknown> }>()
+    : null;
+  if (current?.error) throw current.error;
   const { data, error } = await supabase
     .from("leadgen_outreach_queue")
     .update({
       status,
       provider: patch.provider,
       smtp_message_id: patch.smtp_message_id,
+      ...(patch.subject ? { subject: patch.subject } : {}),
       last_error: patch.last_error,
+      ...(patch.metadata
+        ? { metadata: { ...(current?.data.metadata ?? {}), ...patch.metadata } }
+        : {}),
       sent_at: status === "sent" ? now : null,
       failed_at: status === "failed" ? now : null,
       updated_at: now,
@@ -621,9 +999,13 @@ export async function markPersistentOutreachEntry(
   return rowToEntry(data);
 }
 
-export async function buildOutreachReadiness(
-  smtpConnected: boolean,
-): Promise<OutreachReadiness> {
+export async function buildOutreachReadiness(health: {
+  smtpConnected: boolean;
+  imapConfigured: boolean;
+  imapConnected: boolean;
+  imapMessage: string;
+  consistencyIssueCount: number;
+}): Promise<OutreachReadiness> {
   const [entries, daily, paused] = await Promise.all([
     getOutreachQueue(),
     getDailySendStats(),
@@ -633,16 +1015,19 @@ export async function buildOutreachReadiness(
   const queued = entries.filter((item) => item.status === "queued").length;
   const sending = entries.filter((item) => item.status === "sending").length;
   const blockers = [
-    ...(!smtpConnected ? ["SMTP не подключён"] : []),
+    ...(!health.smtpConnected ? ["SMTP не подключён"] : []),
     ...(approved === 0 ? ["Нет одобренных писем"] : []),
     ...(daily.availableToQueue === 0 ? ["Дневной лимит или доступный batch исчерпан"] : []),
     ...(paused ? ["Очередь на паузе"] : []),
     ...(sending > 0 ? ["Очередь уже выполняется"] : []),
+    ...(health.consistencyIssueCount > 0
+      ? [`Обнаружены неконсистентные записи: ${health.consistencyIssueCount}`]
+      : []),
   ];
   const { minimum, maximum } = getEmailDelayBounds();
   const testMode = process.env.EMAIL_TEST_MODE?.toLowerCase() !== "false";
   return {
-    smtp_connected: smtpConnected,
+    smtp_connected: health.smtpConnected,
     email_test_mode: testMode,
     mode_label: testMode ? "Тестовая отправка" : "Реальная отправка",
     queue_paused: paused,
@@ -658,5 +1043,55 @@ export async function buildOutreachReadiness(
     max_delay_seconds: maximum,
     can_launch: blockers.length === 0,
     blockers,
+    imap_configured: health.imapConfigured,
+    imap_connected: health.imapConnected,
+    imap_message: health.imapMessage,
+    followup_send_blocked: !health.imapConnected,
+    consistency_issue_count: health.consistencyIssueCount,
+    consistency_healthy: health.consistencyIssueCount === 0,
+  };
+}
+
+export async function getOutreachOperationalState(
+  entries?: OutreachQueueEntry[],
+): Promise<OutreachOperationalState> {
+  const [queue, paused] = await Promise.all([
+    entries ? Promise.resolve(entries) : getOutreachQueue(),
+    getQueuePaused(),
+  ]);
+  const now = Date.now();
+  const overdueThreshold = now - 2 * 60 * 1000;
+  const queued = queue.filter((item) => item.status === "queued");
+  const sending = queue.filter((item) => item.status === "sending");
+  const staleSending = sending.filter((item) =>
+    !item.sending_started_at || Date.parse(item.sending_started_at) <= now - 30 * 60 * 1000,
+  );
+  const approved = queue.filter((item) => item.status === "approved");
+  const scheduled = queued
+    .map((item) => item.next_attempt_at ?? item.scheduled_at)
+    .filter((value): value is string =>
+      typeof value === "string" && Number.isFinite(Date.parse(value)),
+    )
+    .sort((left, right) => Date.parse(left) - Date.parse(right));
+  const due = scheduled.filter((value) => Date.parse(value) <= now);
+  const overdue = scheduled.filter(
+    (value) => Date.parse(value) <= overdueThreshold,
+  );
+
+  let state: OutreachOperationalState["state"] = "empty";
+  if (paused && (queued.length > 0 || sending.length > 0)) state = "paused";
+  else if (staleSending.length > 0) state = "stalled";
+  else if (sending.length > 0) state = "sending";
+  else if (overdue.length > 0) state = "stalled";
+  else if (queued.length > 0) state = "waiting";
+  else if (approved.length > 0) state = "ready";
+
+  return {
+    state,
+    due_count: due.length,
+    overdue_count: overdue.length + staleSending.length,
+    next_scheduled_at: scheduled[0] ?? null,
+    oldest_overdue_at: overdue[0] ?? null,
+    checked_at: new Date(now).toISOString(),
   };
 }

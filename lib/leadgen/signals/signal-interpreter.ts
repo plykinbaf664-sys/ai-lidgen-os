@@ -49,10 +49,10 @@ const nonOpportunityPagePattern =
   /\b(about(?:[-_\s]+us)?|company[-_\s]+overview|overview|careers?|jobs?|pricing|blog|resources?|company[-_\s]+news|features?|solutions?|product(?:[-_\s]+page)?|platform|technology(?:[-_\s]+page)?|ai(?:[-_\s]+page)?|workflow(?:[-_\s]+page)?|automation(?:[-_\s]+page)?|crm(?:[-_\s]+page)?)\b/i;
 
 const activeHiringPattern =
-  /\b(we'?re hiring|now hiring|actively hiring|open roles?|open positions?|job openings?|vacanc(?:y|ies)|hiring for|join our team as|apply now|recruiting|headcount|talent acquisition)\b/i;
+  /\b(we'?re hiring|now hiring|actively hiring|open roles?|open positions?|job openings?|vacanc(?:y|ies)|hiring for|join our team as|apply now|recruiting|headcount|talent acquisition)\b|(?:ищет|ищем|требуется|требуются|нанимает|набирает|открыт[аы]?\s+ваканси|ваканси[яи]|расширяет\s+команду)/i;
 
 const explicitOpportunityEventPattern =
-  /\b(we'?re hiring|now hiring|actively hiring|open roles?|open positions?|job openings?|hiring for|launch(?:ed|es|ing)?|released?|announc(?:ed|es|ing)|roll(?:ed)? out|go[-\s]?to[-\s]?market|gtm|new product|new feature|integration|integrates? with|partnership|funding|funded|raised|series [a-f]|seed round|expansion|expands?|expanded|new market|market expansion|opens? (?:a )?(?:new )?(?:office|branch|location)|new office|new branch|scal(?:e|es|ed|ing) sales|sales team growth|operational pressure|capacity pressure|rapid growth|revenue growth)\b/i;
+  /\b(we'?re hiring|now hiring|actively hiring|open roles?|open positions?|job openings?|hiring for|launch(?:ed|es|ing)?|released?|announc(?:ed|es|ing)|roll(?:ed)? out|go[-\s]?to[-\s]?market|gtm|new product|new feature|integration|integrates? with|partnership|funding|funded|raised|series [a-f]|seed round|expansion|expands?|expanded|new market|market expansion|opens? (?:a )?(?:new )?(?:office|branch|location)|new office|new branch|scal(?:e|es|ed|ing) sales|sales team growth|operational pressure|capacity pressure|rapid growth|revenue growth)\b|(?:ищет|ищем|требуется|требуются|открыт[аы]?\s+ваканси|ваканси[яи]|запусти(?:ла|ли)|анонсирова(?:ла|ли)|представи(?:ла|ли)|откры(?:ла|ли)\s+нов|открытие\s+нов|расшири(?:ла|ли|яет)|масштабиру(?:ет|ют)|привлек(?:ла|ли)\s+инвестици|выш(?:ла|ли)\s+на\s+новый\s+рынок)/i;
 
 const activeTechEventPattern =
   /\b(integration|integrates? with|implemented|implements?|migrat(?:ed|ing|ion)|roll(?:ed)? out|adopt(?:ed|ing|ion)|connected|api integration|partnership|new stack|replatform)\b/i;

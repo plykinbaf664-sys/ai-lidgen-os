@@ -30,18 +30,8 @@ const officialSitePaths = [
   "kontakty",
   "about",
   "o-kompanii",
-  "team",
-  "management",
-  "leadership",
-  "rukovodstvo",
-  "company",
-  "press",
-  "news",
   "requisites",
   "rekvizity",
-  "sales",
-  "marketing",
-  "partners",
 ];
 const contactPathPattern =
   /(contact|kontakty|about|o-kompanii|company|team|management|leadership|rukovodstvo|sales|marketing|partners|press|news|requisites|rekvizity)/i;
@@ -58,6 +48,27 @@ const registryEvidenceHostPatterns = [
   "audit-it.ru",
   "xfirm.ru",
   "companies.rbc.ru",
+];
+const nonOfficialSiteHostPatterns = [
+  ...registryEvidenceHostPatterns,
+  "hh.ru",
+  "avito.ru",
+  "rabota.ru",
+  "superjob.ru",
+  "careerjet.ru",
+  "jobfilter.ru",
+  "facancy.ru",
+  "vk.com",
+  "vk.ru",
+  "ok.ru",
+  "t.me",
+  "youtube.com",
+  "dzen.ru",
+  "vc.ru",
+  "forbes.ru",
+  "kommersant.ru",
+  "tass.ru",
+  "vedomosti.ru",
 ];
 
 function createRecordId(...parts: string[]): string {
@@ -112,6 +123,21 @@ function getCompanyWebsite(company: LeadgenCompany): string | null {
   }
 
   return `https://${company.company_domain}`;
+}
+
+function getCompanyDescription(company: LeadgenCompany): string | null {
+  for (const key of [
+    "company_description",
+    "description",
+    "business_description",
+  ]) {
+    const value = company.metadata[key];
+    if (typeof value === "string" && value.trim()) {
+      return value.trim();
+    }
+  }
+
+  return null;
 }
 
 function getCompanyDomain(company: LeadgenCompany): string | null {
@@ -317,6 +343,86 @@ function getSearchText(result: SearchResult): string {
     .join(" ")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function getHostname(url: string): string | null {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "").toLowerCase();
+  } catch {
+    return null;
+  }
+}
+
+function isNonOfficialSiteHost(hostname: string): boolean {
+  return nonOfficialSiteHostPatterns.some(
+    (pattern) => hostname === pattern || hostname.endsWith(`.${pattern}`),
+  );
+}
+
+function getCompanyIdentityTokens(companyName: string): string[] {
+  return companyName
+    .toLowerCase()
+    .replace(/\b(?:ооо|ао|пао|зао|ип|компания|группа|group|company)\b/gi, " ")
+    .split(/[^a-zа-яё0-9]+/i)
+    .map((token) => token.trim())
+    .filter((token) => token.length >= 3);
+}
+
+async function resolveOfficialCompanyDomain(
+  input: ContactProviderInput,
+  searchProvider: SearchProvider | null,
+): Promise<string | null> {
+  const existingDomain = getCompanyDomain(input.company);
+  if (existingDomain || !searchProvider) {
+    return existingDomain;
+  }
+
+  const companyName = input.company.company_name.trim();
+  const tokens = getCompanyIdentityTokens(companyName);
+  if (!companyName || tokens.length === 0) {
+    return null;
+  }
+
+  const queries = [
+    `"${companyName}" официальный сайт`,
+    `"${companyName}" контакты`,
+  ];
+
+  for (const query of queries) {
+    let results: SearchResult[] = [];
+    try {
+      results = await searchProvider.search({
+        query,
+        maxResults: 8,
+        market: "ru",
+        queryLanguage: "ru",
+      });
+    } catch {
+      continue;
+    }
+
+    for (const result of results) {
+      const hostname = getHostname(result.url);
+      if (!hostname || isNonOfficialSiteHost(hostname)) {
+        continue;
+      }
+
+      const haystack = getSearchText(result).toLowerCase();
+      const domainLabel = hostname.split(".")[0] ?? "";
+      const matchingTokens = tokens.filter(
+        (token) => haystack.includes(token) || domainLabel.includes(token),
+      );
+
+      if (
+        matchingTokens.length >= Math.min(tokens.length, 2) ||
+        (tokens.length === 1 && matchingTokens.length === 1)
+      ) {
+        return hostname;
+      }
+    }
+  }
+
+  return null;
 }
 
 function getConfirmedPersonEmail(
@@ -568,19 +674,21 @@ async function findPublicCompanyEmails({
     return { emails: [], rejected: [], queriesExecuted: queries };
   }
 
-  const results = await Promise.allSettled(
-    queries.map((query) =>
-      searchProvider.search({
+  const searchResults: SearchResult[] = [];
+  for (const query of queries) {
+    try {
+      searchResults.push(
+        ...(await searchProvider.search({
         query,
         maxResults: 5,
         market: "ru",
         queryLanguage: "ru",
-      }),
-    ),
-  );
-  const searchResults = results.flatMap((result) =>
-    result.status === "fulfilled" ? result.value : [],
-  );
+        })),
+      );
+    } catch {
+      // A single fallback query must not fail contact discovery.
+    }
+  }
   const parsed = searchResults.map((result) =>
     extractPublicEmailsDetailed({
       text: getSearchText(result),
@@ -1025,14 +1133,34 @@ export class PublicContactProvider implements ContactProvider {
     }
 
     try {
-      return createLeadgenSearchProvider({ mode: "auto" });
+      return createLeadgenSearchProvider();
     } catch {
       return null;
     }
   }
 
-  async findContacts(input: ContactProviderInput): Promise<ContactProviderResult> {
+  async findContacts(
+    rawInput: ContactProviderInput,
+  ): Promise<ContactProviderResult> {
     const contacts: LeadgenContact[] = [];
+    const searchProvider = this.getSearchProvider();
+    const resolvedDomain = await resolveOfficialCompanyDomain(
+      rawInput,
+      searchProvider,
+    );
+    const input: ContactProviderInput = resolvedDomain
+      ? {
+          ...rawInput,
+          company: {
+            ...rawInput.company,
+            company_domain: resolvedDomain,
+            metadata: {
+              ...rawInput.company.metadata,
+              resolved_official_domain: resolvedDomain,
+            },
+          },
+        }
+      : rawInput;
     const officialSiteContext = await getOfficialSiteContext(input);
     const knownUrls = [
       ...new Set([...getKnownUrls(input), ...officialSiteContext.urls]),
@@ -1074,18 +1202,25 @@ export class PublicContactProvider implements ContactProvider {
         (person) => person.full_name !== primaryPerson?.full_name,
       ),
     ];
-    const searchProvider = this.getSearchProvider();
     const directPersonEmails: ParsedPublicEmail[] = [];
-    const companySearchEmails = await findPublicCompanyEmails({
-      input,
-      searchProvider,
-    });
-    strategiesAttempted.push("company_email_yandex_queries");
+    const preliminaryEmails = dedupeParsedEmails([
+      ...knownContextEmails.emails,
+      ...officialSiteEmails.flatMap((result) => result.emails),
+    ]);
+    const companySearchEmails =
+      preliminaryEmails.length > 0
+        ? { emails: [], rejected: [], queriesExecuted: [] }
+        : await findPublicCompanyEmails({
+            input,
+            searchProvider,
+          });
+    if (companySearchEmails.queriesExecuted.length > 0) {
+      strategiesAttempted.push("company_email_yandex_queries");
+    }
     queriesExecuted.push(...companySearchEmails.queriesExecuted);
     emailsRejected.push(...companySearchEmails.rejected);
     const emails = dedupeParsedEmails([
-      ...knownContextEmails.emails,
-      ...officialSiteEmails.flatMap((result) => result.emails),
+      ...preliminaryEmails,
       ...companySearchEmails.emails,
     ]);
 
@@ -1125,7 +1260,12 @@ export class PublicContactProvider implements ContactProvider {
       if (workEmail) {
         const emailOutreach = buildEmailOutreach({
           companyName: input.company.company_name,
+          companyWebsite:
+            getCompanyWebsite(input.company) ?? input.company.source_url,
+          companyDescription: getCompanyDescription(input.company),
+          industry: input.company.industry,
           personName: person.full_name,
+          personRole: person.role_title,
           contact: {
             ...createContact({
               input,
@@ -1146,10 +1286,13 @@ export class PublicContactProvider implements ContactProvider {
             input.signals[0]?.signal_detail ||
             input.lead.signal_detail ||
             input.lead.signal_title,
+          selectionReason: input.lead.hook,
           signalType: input.signals[0]?.signal_type,
           signalTitle: input.signals[0]?.signal_title ?? input.lead.signal_title,
           signalDetail:
             input.signals[0]?.signal_detail ?? input.lead.signal_detail,
+          signalSourceUrl: input.signals[0]?.source_url ?? null,
+          signalConfidence: input.signals[0]?.confidence_score ?? null,
         });
         directPersonEmails.push({
           email: workEmail,
@@ -1196,6 +1339,11 @@ export class PublicContactProvider implements ContactProvider {
               email_extraction_method: "public_person_search",
               email_subject: emailOutreach.subject,
               email_body: emailOutreach.body,
+              email_micro_value: emailOutreach.microValue,
+              email_quality: emailOutreach.quality,
+              email_quality_gate_passed: emailOutreach.qualityGatePassed,
+              email_generation_attempts: emailOutreach.generationAttempts,
+              email_copy_review_status: emailOutreach.copyReviewStatus,
               message_mode: emailOutreach.messageMode,
               outreach_ready: emailOutreach.outreachReady,
             },
@@ -1293,6 +1441,12 @@ export class PublicContactProvider implements ContactProvider {
       const emailType = getEmailContactType(email);
       const emailOutreach = buildEmailOutreach({
         companyName: input.company.company_name,
+        companyWebsite:
+          getCompanyWebsite(input.company) ?? input.company.source_url,
+        companyDescription: getCompanyDescription(input.company),
+        industry: input.company.industry,
+        personName: input.decisionMaker?.primary_persona ?? null,
+        personRole: input.decisionMaker?.primary_persona ?? null,
         contact: {
           ...createContact({
             input,
@@ -1310,9 +1464,12 @@ export class PublicContactProvider implements ContactProvider {
           input.signals[0]?.signal_detail ||
           input.lead.signal_detail ||
           input.lead.signal_title,
+        selectionReason: input.lead.hook,
         signalType: input.signals[0]?.signal_type,
         signalTitle: input.signals[0]?.signal_title ?? input.lead.signal_title,
         signalDetail: input.signals[0]?.signal_detail ?? input.lead.signal_detail,
+        signalSourceUrl: input.signals[0]?.source_url ?? null,
+        signalConfidence: input.signals[0]?.confidence_score ?? null,
       });
       contacts.push(
         createContact({
@@ -1336,6 +1493,11 @@ export class PublicContactProvider implements ContactProvider {
             email_extraction_method: email.extraction_method,
             email_subject: emailOutreach.subject,
             email_body: emailOutreach.body,
+            email_micro_value: emailOutreach.microValue,
+            email_quality: emailOutreach.quality,
+            email_quality_gate_passed: emailOutreach.qualityGatePassed,
+            email_generation_attempts: emailOutreach.generationAttempts,
+            email_copy_review_status: emailOutreach.copyReviewStatus,
             message_mode: emailOutreach.messageMode,
             outreach_ready: emailOutreach.outreachReady,
           },

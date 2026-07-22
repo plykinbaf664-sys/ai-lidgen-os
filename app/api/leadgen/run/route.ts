@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
+import { formatUnknownError } from "@/lib/leadgen/error-format";
 import {
   getRegisteredCompanyIdentities,
   registerDiscoveredCompanies,
   touchDiscoveredCompanies,
 } from "@/lib/leadgen/company-registry";
-import { leadgenProductionConfig } from "@/lib/leadgen/production-config";
+import { getDailyLeadStats } from "@/lib/leadgen/daily-lead-limit";
+import { selectCampaignEmailTarget } from "@/lib/leadgen/email-target-selector";
 import { runDiscoveryOrchestrator } from "@/lib/leadgen/discovery-orchestrator";
 import { runLeadDiscoveryEngine } from "@/lib/leadgen/lead-discovery-engine";
 import {
@@ -14,6 +16,7 @@ import {
 } from "@/lib/leadgen/search/leadgen-search-provider";
 import type { SignalSearchMarket } from "@/lib/leadgen/signals/query-builder";
 import { savePipelineResult } from "@/lib/leadgen/storage";
+import { getKnownRecipientEmails } from "@/lib/leadgen/outreach-storage";
 import { prepareTelegramNotification } from "@/lib/leadgen/telegram-notification";
 import { normalizeLeadgenStrings, normalizeLeadgenText } from "@/lib/leadgen/text-normalization";
 import {
@@ -35,12 +38,16 @@ import type {
 type RunLeadgenRequestBody = Partial<CampaignInput> & {
   searchProvider?: string;
   market?: string;
-  targetCompanies?: number;
   dryRun?: boolean;
 };
 
-const DEFAULT_PRODUCTION_SEARCH_PROVIDER: LeadgenSearchProviderMode = "yandex";
 const DEFAULT_PRODUCTION_MARKET: SignalSearchMarket = "ru";
+
+function getDefaultProductionSearchProvider(): LeadgenSearchProviderMode {
+  return isLeadgenSearchProviderMode(process.env.LEADGEN_SEARCH_PROVIDER)
+    ? process.env.LEADGEN_SEARCH_PROVIDER
+    : "auto";
+}
 
 function getDecisionMakerProfile(
   company: LeadgenCompany | undefined,
@@ -163,34 +170,13 @@ function getPersonaSearchStatus(
 }
 
 function formatRouteError(error: unknown): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (typeof error === "object" && error !== null) {
-    const maybeError = error as {
-      message?: unknown;
-      code?: unknown;
-      details?: unknown;
-      hint?: unknown;
-    };
-
-    return JSON.stringify({
-      message: maybeError.message,
-      code: maybeError.code,
-      details: maybeError.details,
-      hint: maybeError.hint,
-    });
-  }
-
-  return String(error);
+  return formatUnknownError(error, "Не удалось выполнить поиск лидов.");
 }
 
 async function readRunRequest(request: Request): Promise<{
   campaignInput: CampaignInput;
   searchProviderMode: LeadgenSearchProviderMode;
   market: SignalSearchMarket;
-  targetCompanies?: number;
   dryRun: boolean;
 }> {
   const body = (await request.json().catch(() => ({}))) as RunLeadgenRequestBody;
@@ -198,14 +184,6 @@ async function readRunRequest(request: Request): Promise<{
     body.market === "global" || body.market === "mixed" || body.market === "ru"
       ? body.market
       : DEFAULT_PRODUCTION_MARKET;
-  const targetCompanies =
-    Number.isInteger(body.targetCompanies) && body.targetCompanies
-      ? Math.min(
-          Math.max(body.targetCompanies, 1),
-          leadgenProductionConfig.campaignCompanyLimit,
-        )
-      : leadgenProductionConfig.campaignCompanyLimit;
-
   return {
     campaignInput: {
       name: normalizeLeadgenText(
@@ -219,31 +197,54 @@ async function readRunRequest(request: Request): Promise<{
     },
     searchProviderMode: isLeadgenSearchProviderMode(body.searchProvider)
       ? body.searchProvider
-      : DEFAULT_PRODUCTION_SEARCH_PROVIDER,
+      : getDefaultProductionSearchProvider(),
     market,
-    targetCompanies,
     dryRun: body.dryRun === true,
   };
 }
 export async function POST(request: Request) {
   try {
-    const { campaignInput, searchProviderMode, market, targetCompanies, dryRun } =
+    const { campaignInput, searchProviderMode, market, dryRun } =
       await readRunRequest(request);
 
-    const knownCompanyIdentities = dryRun
-      ? []
-      : await getRegisteredCompanyIdentities();
+    const [knownCompanyIdentities, knownRecipientEmails, dailyLeads] = await Promise.all([
+      getRegisteredCompanyIdentities(),
+      getKnownRecipientEmails(),
+      getDailyLeadStats(),
+    ]);
+    if (!dryRun && dailyLeads.remaining === 0) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Дневной лимит новых лидов исчерпан.",
+          daily_leads: {
+            created_today: dailyLeads.createdToday,
+            daily_limit: dailyLeads.dailyLimit,
+            remaining: 0,
+          },
+        },
+        { status: 429 },
+      );
+    }
+    const leadTarget = dryRun ? dailyLeads.dailyLimit : dailyLeads.remaining;
     const result = await runLeadDiscoveryEngine({
       campaignInput,
       searchProvider: createLeadgenSearchProvider({
         mode: searchProviderMode,
       }),
+      leadTarget,
       market,
-      targetCompanies,
       knownCompanyIdentities,
+      knownRecipientEmails,
     });
+    const emailTargetSelection = selectCampaignEmailTarget({
+      result,
+      knownEmails: knownRecipientEmails,
+      target: leadTarget,
+    });
+    const campaignResult = emailTargetSelection.result;
     const discovery = await runDiscoveryOrchestrator({
-      signalFirstResult: result,
+      signalFirstResult: campaignResult,
     });
     const leadReadyCandidateByCompanyId = new Map(
       discovery.candidates
@@ -251,12 +252,13 @@ export async function POST(request: Request) {
         .map((candidate) => [candidate.raw_refs.company_id, candidate]),
     );
     const enrichedResult = normalizeLeadgenStrings({
-      ...result,
+      ...campaignResult,
       campaign: {
-        ...result.campaign,
-        production_discovery_stats: result.production_discovery_stats,
+        ...campaignResult.campaign,
+        production_discovery_stats:
+          campaignResult.production_discovery_stats,
       },
-      companies: result.companies.map((company) => ({
+      companies: campaignResult.companies.map((company) => ({
         ...company,
         metadata: {
           ...company.metadata,
@@ -302,6 +304,14 @@ export async function POST(request: Request) {
         enrichedResult.campaign.id,
       );
       await registerDiscoveredCompanies(enrichedResult.companies);
+      const selectedCompanyIds = new Set(
+        enrichedResult.companies.map((company) => company.id),
+      );
+      await registerDiscoveredCompanies(
+        result.companies.filter(
+          (company) => !selectedCompanyIds.has(company.id),
+        ),
+      );
     }
 
     return NextResponse.json({
@@ -323,8 +333,57 @@ export async function POST(request: Request) {
       search_settings: {
         provider: searchProviderMode,
         market,
-        target_companies: targetCompanies ?? null,
+        lead_target: leadTarget,
+        selected_emails: emailTargetSelection.selectedEmails.length,
       },
+      daily_leads: {
+        created_today: dailyLeads.createdToday,
+        daily_limit: dailyLeads.dailyLimit,
+        remaining_before_run: dailyLeads.remaining,
+        remaining_after_run: Math.max(
+          0,
+          dailyLeads.remaining - emailTargetSelection.selectedEmails.length,
+        ),
+      },
+      dry_run_audit: dryRun
+        ? result.companies.map((company) => {
+            const contactDiscovery =
+              company.metadata.contact_discovery as
+                | Record<string, unknown>
+                | undefined;
+            return {
+              company_name: company.company_name,
+              company_domain: company.company_domain,
+              source_url: company.source_url,
+              contact_count: result.contacts.filter(
+                (contact) => contact.company_id === company.id,
+              ).length,
+              email_count: result.contacts.filter(
+                (contact) =>
+                  contact.company_id === company.id && Boolean(contact.email),
+              ).length,
+              email_search_status:
+                contactDiscovery?.email_search_status ?? null,
+              email_stop_reason: contactDiscovery?.email_stop_reason ?? null,
+              urls_inspected_count: Array.isArray(
+                contactDiscovery?.urls_inspected,
+              )
+                ? contactDiscovery.urls_inspected.length
+                : 0,
+              emails_extracted_count: Array.isArray(
+                contactDiscovery?.emails_extracted,
+              )
+                ? contactDiscovery.emails_extracted.length
+                : 0,
+              emails_rejected_count: Array.isArray(
+                contactDiscovery?.emails_rejected,
+              )
+                ? contactDiscovery.emails_rejected.length
+                : 0,
+              provider_errors: contactDiscovery?.provider_errors ?? [],
+            };
+          })
+        : undefined,
     });
   } catch (error) {
     return NextResponse.json(

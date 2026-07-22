@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import type {
   LeadgenLead,
   TelegramNotification,
@@ -85,15 +86,14 @@ export function TelegramNotifications({
                 >
                   {statusLabels[notification.status]}
                 </span>
-                <button
-                  className="detail-button"
-                  type="button"
+                <Button
                   onClick={() => toggleDetails(notification.id)}
+                  variant="secondary"
                 >
                   {expandedNotificationId === notification.id
                     ? "Скрыть детали"
                     : "Показать детали"}
-                </button>
+                </Button>
               </div>
               {expandedNotificationId === notification.id ? (
                 <div className="notification-details">

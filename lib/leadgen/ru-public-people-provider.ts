@@ -616,7 +616,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
     }
 
     try {
-      return createLeadgenSearchProvider({ mode: "auto" });
+      return createLeadgenSearchProvider();
     } catch {
       return null;
     }

@@ -1,516 +1,173 @@
-﻿"use client";
+"use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { CampaignHistory } from "@/components/leadgen/campaign-history";
-import { CampaignDetails } from "@/components/leadgen/campaign-details";
+import { useEffect, useState } from "react";
 import { CampaignForm } from "@/components/leadgen/campaign-form";
+import { CampaignHistory } from "@/components/leadgen/campaign-history";
 import { EmailOutreachQueue } from "@/components/leadgen/email-outreach-queue";
-import { LeadsTable } from "@/components/leadgen/leads-table";
-import { TelegramCardPreview } from "@/components/leadgen/telegram-card-preview";
-import { TelegramNotifications } from "@/components/leadgen/telegram-notifications";
-import {
-  isFallbackEmailContact,
-  isSendableEmailContact,
-} from "@/lib/leadgen/contact-channel-ranking";
 import type {
   CampaignInput,
-  DecisionMakerProfile,
+  LeadgenCampaign,
   LeadgenCampaignDetails,
   LeadgenCampaignSummary,
-  LeadgenCampaign,
-  LeadgenCompany,
-  LeadgenContact,
-  LeadgenEvent,
-  LeadgenLead,
-  LeadgenSignal,
-  LeadStatus,
-  IdentityProfile,
-  OpportunityAssessment,
-  PeopleDiscoveryResult,
-  TelegramNotification,
   ProductionDiscoveryStats,
 } from "@/lib/leadgen/types";
+import { formatUnknownError } from "@/lib/leadgen/error-format";
 
-type RunLeadgenResponse =
-  | {
-      success: true;
-      campaign: LeadgenCampaign;
-      companies: LeadgenCompany[];
-      contacts: LeadgenContact[];
-      leads: LeadgenLead[];
-      signals: LeadgenSignal[];
-      events: LeadgenEvent[];
-      notifications: TelegramNotification[];
-      production_discovery_stats?: ProductionDiscoveryStats;
-    }
-  | {
-      success: false;
-      error?: string;
-    };
-
+type RunResponse =
+  | { success: true; campaign: LeadgenCampaign; production_discovery_stats?: ProductionDiscoveryStats }
+  | { success: false; error?: string };
 type CampaignsResponse =
-  | {
-      success: true;
-      campaigns: LeadgenCampaignSummary[];
-    }
-  | {
-      success: false;
-      error?: string;
-    };
+  | { success: true; campaigns: LeadgenCampaignSummary[] }
+  | { success: false; error?: string };
+type DetailsResponse =
+  | { success: true; details: LeadgenCampaignDetails }
+  | { success: false; error?: string };
 
-type CampaignDetailsResponse =
-  | {
-      success: true;
-      details: LeadgenCampaignDetails;
-    }
-  | {
-      success: false;
-      error?: string;
-    };
+function campaignStatusCopyForDashboard(status: LeadgenCampaignSummary["operational_status"]) {
+  return {
+    discovery_complete: "Поиск завершён",
+    needs_review: "Есть письма для проверки",
+    ready_to_send: "Одобренные письма готовы",
+    queue_active: "Очередь отправки активна",
+    sent: "Отправка завершена",
+    needs_attention: "Есть ошибки, требующие внимания",
+  }[status];
+}
 
-async function readApiJson<T>(response: Response): Promise<T> {
-  const contentType = response.headers.get("content-type") ?? "";
-
-  if (contentType.includes("application/json")) {
-    return (await response.json()) as T;
+async function readJson<T>(response: Response): Promise<T> {
+  if (!(response.headers.get("content-type") ?? "").includes("application/json")) {
+    throw new Error(`Некорректный ответ API (HTTP ${response.status})`);
   }
-
-  const body = await response.text();
-  const preview = body.replace(/\s+/g, " ").trim().slice(0, 160);
-
-  throw new Error(
-    `API returned ${contentType || "non-JSON response"} instead of JSON (HTTP ${response.status}). ${preview}`,
-  );
+  return (await response.json()) as T;
 }
 
 export function LeadgenDashboard() {
-  const [campaign, setCampaign] = useState<LeadgenCampaign | null>(null);
-  const [leads, setLeads] = useState<LeadgenLead[]>([]);
-  const [companies, setCompanies] = useState<LeadgenCompany[]>([]);
-  const [contacts, setContacts] = useState<LeadgenContact[]>([]);
-  const [events, setEvents] = useState<LeadgenEvent[]>([]);
-  const [notifications, setNotifications] = useState<TelegramNotification[]>([]);
-  const [selectedLeadId, setSelectedLeadId] = useState<string | null>(null);
+  const [campaigns, setCampaigns] = useState<LeadgenCampaignSummary[]>([]);
+  const [activeCampaignId, setActiveCampaignId] = useState<string | null>(null);
+  const [activeCampaignName, setActiveCampaignName] = useState<string | null>(null);
+  const [discovery, setDiscovery] = useState<ProductionDiscoveryStats | null>(null);
   const [isRunning, setIsRunning] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [campaignHistory, setCampaignHistory] = useState<
-    LeadgenCampaignSummary[]
-  >([]);
   const [isHistoryLoading, setIsHistoryLoading] = useState(true);
-  const [historyErrorMessage, setHistoryErrorMessage] = useState<string | null>(
-    null,
-  );
-  const [selectedCampaignDetails, setSelectedCampaignDetails] =
-    useState<LeadgenCampaignDetails | null>(null);
-  const [selectedCampaignId, setSelectedCampaignId] = useState<string | null>(
-    null,
-  );
-  const [isDetailsLoading, setIsDetailsLoading] = useState(false);
-  const [detailsErrorMessage, setDetailsErrorMessage] = useState<string | null>(
-    null,
-  );
-  const [productionDiscoveryStats, setProductionDiscoveryStats] =
-    useState<ProductionDiscoveryStats | null>(null);
+  const [isOpening, setIsOpening] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const selectedLead = useMemo(
-    () => leads.find((lead) => lead.id === selectedLeadId) ?? null,
-    [leads, selectedLeadId],
-  );
-  const selectedCompany = useMemo(
-    () =>
-      selectedLead?.company_id
-        ? companies.find((company) => company.id === selectedLead.company_id) ??
-          null
-        : null,
-    [companies, selectedLead],
-  );
-  const selectedBestContact = useMemo(() => {
-    if (!selectedLead) {
-      return null;
-    }
-
-    const leadContacts = contacts.filter(
-      (contact) => contact.lead_id === selectedLead.id,
-    );
-
-    return (
-      leadContacts.find((contact) => contact.is_primary) ??
-      leadContacts[0] ??
-      null
-    );
-  }, [contacts, selectedLead]);
-  const selectedBestOutreachEntry = useMemo(() => {
-    if (!selectedLead) {
-      return null;
-    }
-
-    const leadContacts = contacts.filter(
-      (contact) => contact.lead_id === selectedLead.id,
-    );
-
-    return (
-      leadContacts.find(
-        (contact) =>
-          contact.metadata.entry_role === "best_outreach_entry" &&
-          isSendableEmailContact(contact),
-      ) ??
-      leadContacts.find((contact) => isSendableEmailContact(contact) && contact.is_primary) ??
-      leadContacts.find(isSendableEmailContact) ??
-      null
-    );
-  }, [contacts, selectedLead]);
-  const selectedFallbackEntry = useMemo(() => {
-    if (!selectedLead) {
-      return null;
-    }
-
-    const leadContacts = contacts.filter(
-      (contact) => contact.lead_id === selectedLead.id,
-    );
-
-    return (
-      leadContacts.find(
-        (contact) =>
-          contact.metadata.entry_role === "fallback_entry" &&
-          isFallbackEmailContact(contact),
-      ) ??
-      leadContacts.find(isFallbackEmailContact) ??
-      null
-    );
-  }, [contacts, selectedLead]);
-  const selectedDecisionMaker = useMemo(() => {
-    const rawDecisionMaker = selectedCompany?.metadata.decision_maker;
-
-    if (
-      typeof rawDecisionMaker !== "object" ||
-      rawDecisionMaker === null ||
-      Array.isArray(rawDecisionMaker)
-    ) {
-      return null;
-    }
-
-    return rawDecisionMaker as DecisionMakerProfile;
-  }, [selectedCompany]);
-  const selectedPeopleDiscovery = useMemo(() => {
-    const rawPeopleDiscovery = selectedCompany?.metadata.people_discovery;
-
-    if (
-      typeof rawPeopleDiscovery !== "object" ||
-      rawPeopleDiscovery === null ||
-      Array.isArray(rawPeopleDiscovery)
-    ) {
-      return null;
-    }
-
-    return rawPeopleDiscovery as PeopleDiscoveryResult;
-  }, [selectedCompany]);
-  const selectedOpportunity = useMemo(() => {
-    const rawOpportunity = selectedCompany?.metadata.opportunity;
-
-    if (
-      typeof rawOpportunity !== "object" ||
-      rawOpportunity === null ||
-      Array.isArray(rawOpportunity)
-    ) {
-      return null;
-    }
-
-    return rawOpportunity as OpportunityAssessment;
-  }, [selectedCompany]);
-  const selectedIdentityProfile = useMemo(() => {
-    const rawIdentityProfile =
-      selectedCompany?.metadata.identity_profile ??
-      selectedBestContact?.metadata.identity_profile ??
-      selectedBestOutreachEntry?.metadata.identity_profile ??
-      selectedFallbackEntry?.metadata.identity_profile;
-
-    if (
-      typeof rawIdentityProfile !== "object" ||
-      rawIdentityProfile === null ||
-      Array.isArray(rawIdentityProfile)
-    ) {
-      return null;
-    }
-
-    return rawIdentityProfile as IdentityProfile;
-  }, [
-    selectedBestContact,
-    selectedBestOutreachEntry,
-    selectedCompany,
-    selectedFallbackEntry,
-  ]);
-  const activeOutreachCampaignId = campaign?.id ?? selectedCampaignId;
-
-  async function loadCampaignHistory() {
+  async function loadHistory(selectLatest = false) {
     setIsHistoryLoading(true);
-    setHistoryErrorMessage(null);
-
     try {
       const response = await fetch("/api/leadgen/campaigns");
-      const data = await readApiJson<CampaignsResponse>(response);
-
-      if (!response.ok || !data.success) {
-        throw new Error(data.success ? undefined : data.error);
+      const data = await readJson<CampaignsResponse>(response);
+      if (!response.ok || !data.success) throw new Error(formatUnknownError(data.success ? null : data.error));
+      setCampaigns(data.campaigns);
+      if (selectLatest && !activeCampaignId && data.campaigns[0]) {
+        setActiveCampaignId(data.campaigns[0].id);
+        setActiveCampaignName(data.campaigns[0].name);
       }
-
-      setCampaignHistory(data.campaigns);
-    } catch {
-      setHistoryErrorMessage(
-        "Не удалось загрузить историю кампаний. Попробуйте обновить страницу.",
-      );
     } finally {
       setIsHistoryLoading(false);
     }
   }
 
   useEffect(() => {
-    let isMounted = true;
-
+    let active = true;
     fetch("/api/leadgen/campaigns")
       .then(async (response) => {
-        const data = await readApiJson<CampaignsResponse>(response);
-
-        if (!response.ok || !data.success) {
-          throw new Error(data.success ? undefined : data.error);
-        }
-
-        if (isMounted) {
-          setCampaignHistory(data.campaigns);
-        }
-      })
-      .catch(() => {
-        if (isMounted) {
-          setHistoryErrorMessage(
-            "Не удалось загрузить историю кампаний. Попробуйте обновить страницу.",
-          );
+        const data = await readJson<CampaignsResponse>(response);
+        if (!response.ok || !data.success) throw new Error(formatUnknownError(data.success ? null : data.error));
+        if (!active) return;
+        setCampaigns(data.campaigns);
+        if (data.campaigns[0]) {
+          setActiveCampaignId(data.campaigns[0].id);
+          setActiveCampaignName(data.campaigns[0].name);
         }
       })
-      .finally(() => {
-        if (isMounted) {
-          setIsHistoryLoading(false);
-        }
-      });
-
-    return () => {
-      isMounted = false;
-    };
+      .catch(() => active && setError("Не удалось загрузить кампании."))
+      .finally(() => active && setIsHistoryLoading(false));
+    return () => { active = false; };
   }, []);
 
-  async function handleRun(campaignInput: CampaignInput) {
+  async function handleRun(input: CampaignInput) {
     setIsRunning(true);
-    setErrorMessage(null);
-    setDetailsErrorMessage(null);
-
+    setError(null);
     try {
       const response = await fetch("/api/leadgen/run", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(campaignInput),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(input),
       });
-      const data = await readApiJson<RunLeadgenResponse>(response);
-
-      if (!response.ok || !data.success) {
-        throw new Error(data.success ? undefined : data.error);
-      }
-
-      setCampaign(data.campaign);
-      setCompanies(data.companies);
-      setContacts(data.contacts);
-      setLeads(data.leads);
-      setEvents(data.events);
-      setNotifications(data.notifications);
-      setProductionDiscoveryStats(data.production_discovery_stats ?? null);
-      setSelectedLeadId(data.leads[0]?.id ?? null);
-      setSelectedCampaignDetails(null);
-      setSelectedCampaignId(null);
-      void loadCampaignHistory();
-    } catch {
-      setErrorMessage(
-        "Не удалось запустить поиск лидов. Попробуйте обновить страницу.",
-      );
+      const data = await readJson<RunResponse>(response);
+      if (!response.ok || !data.success) throw new Error(formatUnknownError(data.success ? null : data.error));
+      setActiveCampaignId(data.campaign.id);
+      setActiveCampaignName(data.campaign.name);
+      setDiscovery(data.production_discovery_stats ?? null);
+      await loadHistory();
+    } catch (caught) {
+      setError(caught instanceof Error && caught.message ? caught.message : "Не удалось запустить поиск.");
     } finally {
       setIsRunning(false);
     }
   }
 
-  async function handleOpenCampaign(campaignSummary: LeadgenCampaignSummary) {
-    setSelectedCampaignId(campaignSummary.id);
-    setIsDetailsLoading(true);
-    setDetailsErrorMessage(null);
-
+  async function handleOpenCampaign(summary: LeadgenCampaignSummary) {
+    setActiveCampaignId(summary.id);
+    setActiveCampaignName(summary.name);
+    setIsOpening(true);
+    setError(null);
     try {
       const response = await fetch(
-        `/api/leadgen/campaigns/${campaignSummary.id}`,
+          `/api/leadgen/campaigns/details?pipelineRunId=${encodeURIComponent(summary.pipeline_run_id)}`,
       );
-      const data = await readApiJson<CampaignDetailsResponse>(response);
-
-      if (!response.ok || !data.success) {
-        throw new Error(data.success ? undefined : data.error);
-      }
-
-      setSelectedCampaignDetails(data.details);
-      setProductionDiscoveryStats(
-        data.details.campaign.production_discovery_stats ?? null,
-      );
-    } catch {
-      setSelectedCampaignDetails(null);
-      setDetailsErrorMessage(
-        "Не удалось открыть детали кампании. Попробуйте обновить страницу.",
-      );
+      const data = await readJson<DetailsResponse>(response);
+      if (!response.ok || !data.success) throw new Error(formatUnknownError(data.success ? null : data.error));
+      setDiscovery(data.details.campaign.production_discovery_stats ?? null);
+    } catch (caught) {
+      setError(caught instanceof Error && caught.message ? caught.message : "Не удалось открыть кампанию.");
     } finally {
-      setIsDetailsLoading(false);
+      setIsOpening(false);
     }
-  }
-
-  function handleStatusChange(leadId: string, status: LeadStatus) {
-    const createdAt = new Date().toISOString();
-
-    setLeads((currentLeads) =>
-      currentLeads.map((lead) =>
-        lead.id === leadId ? { ...lead, status, updated_at: createdAt } : lead,
-      ),
-    );
-
-    if (!campaign) {
-      return;
-    }
-
-    setEvents((currentEvents) => [
-      ...currentEvents,
-      {
-        id: `event-${campaign.id}-${leadId}-lead-status-changed-${createdAt}`,
-        pipeline_run_id: campaign.pipeline_run_id,
-        campaign_id: campaign.id,
-        lead_id: leadId,
-        event_type: "lead_status_changed",
-        payload: { status },
-        created_at: createdAt,
-      },
-    ]);
   }
 
   return (
-    <>
-      <section className="panel campaign-panel">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">Новая кампания</p>
-            <h2>Запустите поиск готовых лидов</h2>
-            <p className="muted">
-              Укажите параметры поиска — система найдёт компании, ЛПР, контакты и подготовит письма.
-            </p>
+    <div className="leadgen-console">
+      <section className="leadgen-config panel">
+        <div className="section-heading compact">
+          <div><p className="eyebrow">Новая кампания</p><h2>Параметры поиска</h2></div>
+          <div className="config-facts" aria-label="Активные ограничения">
+            <span>Россия</span><span>Web search</span><span>20 лидов в день</span>
           </div>
         </div>
         <CampaignForm isRunning={isRunning} onRun={handleRun} />
-        <div className="campaign-flow" aria-label="Как работает Leadgen OS">
-          <span>Ищем компании</span>
-          <span>Проверяем сигнал</span>
-          <span>Находим ЛПР и email</span>
-          <span>Готовим письмо</span>
-        </div>
-        {errorMessage ? (
-          <p className="muted" role="alert">
-            {errorMessage}
-          </p>
-        ) : null}
+        {error ? <p className="outreach-error" role="alert">{error}</p> : null}
       </section>
 
-      <div className="workspace-grid">
-        <section className="panel table-panel">
-          <div className="table-toolbar">
-            <div>
-              <p className="eyebrow">{"Результат поиска"}</p>
-              <h2>{"Очередь лидов"}</h2>
-            </div>
-            <span className="table-meta">
-              {campaign
-                ? `${leads.length} ${"лидов"} ${"·"} ${campaign.name} ${"·"} ${events.length} ${"событий"}`
-                : "Ожидание запуска кампании"}
-            </span>
+      {activeCampaignId ? (
+        <section className="active-campaign-shell">
+          <div className="active-campaign-heading">
+            <div><p className="eyebrow">Текущая кампания</p><h2>{activeCampaignName}</h2>{campaigns.find((item) => item.id === activeCampaignId) ? <small className="muted">{campaignStatusCopyForDashboard(campaigns.find((item) => item.id === activeCampaignId)!.operational_status)}</small> : null}</div>
+            {discovery ? (
+              <div className="discovery-inline">
+                <span>Проверено <strong>{discovery.results_received}</strong></span>
+                <span>Новых <strong>{discovery.new_unique_companies}</strong></span>
+                <span>Email <strong>{discovery.new_unique_emails ?? 0} из {discovery.email_target ?? 20}</strong></span>
+              </div>
+            ) : null}
           </div>
-          {productionDiscoveryStats ? (
-            <div className="outreach-metrics campaign-production-metrics">
-              <div>
-                <span>Получено результатов</span>
-                <strong>{productionDiscoveryStats.results_received}</strong>
-              </div>
-              <div>
-                <span>Ранее найдено и пропущено</span>
-                <strong>{productionDiscoveryStats.previously_discovered_skipped}</strong>
-              </div>
-              <div>
-                <span>Дубликаты внутри выдачи</span>
-                <strong>{productionDiscoveryStats.within_run_duplicates}</strong>
-              </div>
-              <div>
-                <span>Новых компаний</span>
-                <strong>
-                  {productionDiscoveryStats.new_unique_companies} из{" "}
-                  {productionDiscoveryStats.target_companies}
-                </strong>
-              </div>
-              <div>
-                <span>Без email</span>
-                <strong>
-                  {Math.max(
-                    0,
-                    companies.length -
-                      new Set(
-                        contacts
-                          .filter((contact) => contact.email)
-                          .map((contact) => contact.company_id),
-                      ).size,
-                  )}
-                </strong>
-              </div>
-            </div>
-          ) : null}
-          <LeadsTable
-            companies={companies}
-            contacts={contacts}
-            leads={leads}
-            selectedLeadId={selectedLeadId}
-            onSelectLead={setSelectedLeadId}
-          />
+          <EmailOutreachQueue campaignId={activeCampaignId} discoveryStats={discovery} />
         </section>
+      ) : (
+        <section className="panel leadgen-empty-campaign">
+          <h2>Нет активной кампании</h2>
+          <p>Запустите поиск, чтобы найти новые компании.</p>
+        </section>
+      )}
 
-        <TelegramCardPreview
-          lead={selectedLead}
-          decisionMaker={selectedDecisionMaker}
-          peopleDiscovery={selectedPeopleDiscovery}
-          bestAvailableEntry={selectedBestContact}
-          bestOutreachEntry={selectedBestOutreachEntry}
-          fallbackEntry={selectedFallbackEntry}
-          opportunity={selectedOpportunity}
-          identityProfile={selectedIdentityProfile}
-          onStatusChange={handleStatusChange}
-        />
-      </div>
-
-      <div style={{ height: 20 }} />
-      <EmailOutreachQueue campaignId={activeOutreachCampaignId} />
-
-      <div style={{ height: 20 }} />
-      <TelegramNotifications leads={leads} notifications={notifications} />
-
-      <div style={{ height: 20 }} />
       <CampaignHistory
-        activeCampaignId={selectedCampaignId}
-        campaigns={campaignHistory}
-        errorMessage={historyErrorMessage}
+        activeCampaignId={activeCampaignId}
+        campaigns={campaigns}
+        errorMessage={error}
         isLoading={isHistoryLoading}
-        isOpeningCampaign={isDetailsLoading}
+        isOpeningCampaign={isOpening}
         onOpenCampaign={handleOpenCampaign}
       />
-
-      <div style={{ height: 20 }} />
-      <CampaignDetails
-        details={selectedCampaignDetails}
-        errorMessage={detailsErrorMessage}
-        isLoading={isDetailsLoading}
-      />
-    </>
+    </div>
   );
 }

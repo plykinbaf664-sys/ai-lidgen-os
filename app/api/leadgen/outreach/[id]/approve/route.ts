@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { approveOutreachEntry } from "@/lib/leadgen/outreach-storage";
+import { formatUnknownError } from "@/lib/leadgen/error-format";
 
 export async function POST(
   _request: Request,
@@ -11,7 +12,7 @@ export async function POST(
     return NextResponse.json({ success: true, entry });
   } catch (error) {
     return NextResponse.json(
-      { success: false, error: error instanceof Error ? error.message : String(error) },
+      { success: false, error: formatUnknownError(error) },
       { status: 500 },
     );
   }

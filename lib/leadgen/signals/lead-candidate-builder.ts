@@ -156,6 +156,10 @@ function getEvidenceLanguage(
 
 function createLeadCandidate(group: CandidateGroup): LeadCandidate {
   const icpFit = scoreIcpFit(group.evidence);
+  const commercialSignal = [...group.evidence]
+    .filter((item) => item.commercial_signal)
+    .sort((left, right) => right.confidence_score - left.confidence_score)[0]
+    ?.commercial_signal ?? null;
 
   return {
     company_name: group.companyName,
@@ -168,6 +172,7 @@ function createLeadCandidate(group: CandidateGroup): LeadCandidate {
     icp_fit_breakdown: icpFit.breakdown,
     gtm_signal_type: getGtmSignalType(group.evidence),
     evidence_language: getEvidenceLanguage(group.evidence),
+    commercial_signal: commercialSignal,
   };
 }
 

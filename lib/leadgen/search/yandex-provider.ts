@@ -57,6 +57,16 @@ function getYandexError(xml: string): string | null {
   return error || null;
 }
 
+function isEmptySearchResult(error: string): boolean {
+  const normalized = error.toLowerCase();
+
+  return (
+    normalized.includes("искомая комбинация слов нигде не встречается") ||
+    normalized.includes("no documents found") ||
+    normalized.includes("no results found")
+  );
+}
+
 function formatYandexHttpError(status: number, responseText: string): string {
   try {
     const errorBody = JSON.parse(responseText) as {
@@ -77,6 +87,25 @@ function formatYandexHttpError(status: number, responseText: string): string {
   }
 
   return `Yandex search failed: ${status} ${responseText}`;
+}
+
+async function fetchWithRateLimitRetry(
+  endpoint: string,
+  init: RequestInit,
+): Promise<Response> {
+  const retryDelaysMs = [350, 900, 1_800];
+  let response = await fetch(endpoint, init);
+
+  for (const delayMs of retryDelaysMs) {
+    if (response.status !== 429) {
+      return response;
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, delayMs));
+    response = await fetch(endpoint, init);
+  }
+
+  return response;
 }
 
 function parseYandexXml(xml: string): SearchResult[] {
@@ -140,7 +169,7 @@ export class YandexSearchProvider implements SearchProvider {
   }: SearchProviderSearchInput): Promise<SearchResult[]> {
     const isRuSearch = market === "ru" || queryLanguage === "ru";
     const resultsLimit = Math.min(Math.max(maxResults, 1), 100);
-    const response = await fetch(this.endpoint, {
+    const response = await fetchWithRateLimitRetry(this.endpoint, {
       method: "POST",
       headers: {
         Authorization: `Api-Key ${this.apiKey}`,
@@ -191,6 +220,10 @@ export class YandexSearchProvider implements SearchProvider {
     const yandexError = getYandexError(xml);
 
     if (yandexError) {
+      if (isEmptySearchResult(yandexError)) {
+        return [];
+      }
+
       throw new Error(`Yandex search failed: ${yandexError}`);
     }
 

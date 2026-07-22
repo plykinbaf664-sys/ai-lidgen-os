@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { updateOutreachQueueEntry } from "@/lib/leadgen/outreach-storage";
+import { formatUnknownError } from "@/lib/leadgen/error-format";
 import type { OutreachEmailStatus } from "@/lib/leadgen/types";
 
 export async function PATCH(
@@ -28,7 +29,7 @@ export async function PATCH(
     return NextResponse.json({ success: true, entry });
   } catch (error) {
     return NextResponse.json(
-      { success: false, error: error instanceof Error ? error.message : String(error) },
+      { success: false, error: formatUnknownError(error) },
       { status: 500 },
     );
   }

@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import {
   getActionForReadiness,
   getContactDisplay,
@@ -284,13 +285,12 @@ export function LeadsTable({
                   </td>
                   <td>{whyNow}</td>
                   <td className="lead-action-cell">
-                    <button
-                      className="detail-button"
-                      type="button"
+                    <Button
                       onClick={() => onSelectLead(lead.id)}
+                      variant={selectedLeadId === lead.id ? "success" : "secondary"}
                     >
                       {selectedLeadId === lead.id ? "Открыто" : "Подробнее"}
-                    </button>
+                    </Button>
                   </td>
                 </tr>
               );

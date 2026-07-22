@@ -4,6 +4,8 @@ import { classifySearchResultSource } from "@/lib/leadgen/signals/source-classif
 import type { CompanyExtractionResult } from "@/lib/leadgen/signals/company-extractor";
 import type { SourceType } from "@/lib/leadgen/signals/source-classifier";
 import type { SignalType } from "@/lib/leadgen/types";
+import type { CommercialSignal } from "@/lib/leadgen/types";
+import { validateCommercialSignalCandidate } from "@/lib/leadgen/signals/commercial-signal-validator";
 
 export type EvidenceDecision = "valid_signal" | "weak_signal" | "rejected";
 
@@ -40,6 +42,7 @@ export type EvidenceResult = {
   matched_source_hints: string[];
   decision_reason: string;
   rejection_reason?: EvidenceRejectionReason;
+  commercial_signal: CommercialSignal | null;
 };
 
 type SignalLanguage = "en" | "ru";
@@ -122,6 +125,9 @@ const signalEvidenceProfiles: Record<SignalType, SignalEvidenceProfile> = {
         "\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 \u043f\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c",
         "\u0430\u043a\u043a\u0430\u0443\u043d\u0442-\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440",
         "\u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044c \u043e\u0442\u0434\u0435\u043b\u0430 \u043f\u0440\u043e\u0434\u0430\u0436",
+        "\u0438\u0449\u0435\u0442 \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u0430 \u043f\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c",
+        "\u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440 \u043f\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c",
+        "\u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438 \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u0430 \u043f\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0430\u043c",
       ],
     },
     contextPhrases: {
@@ -192,6 +198,10 @@ const signalEvidenceProfiles: Record<SignalType, SignalEvidenceProfile> = {
         "привлекли инвестиции",
         "масштабирование",
         "новый рынок",
+        "открыли филиал",
+        "открыла новый филиал",
+        "открытие нового филиала",
+        "расширили сеть",
       ],
     },
     contextPhrases: {
@@ -239,8 +249,8 @@ const signalEvidenceProfiles: Record<SignalType, SignalEvidenceProfile> = {
   },
   TRAFFIC_SIGNAL: {
     title: {
-      en: "Traffic capture activity detected",
-      ru: "Обнаружен сигнал привлечения трафика",
+      en: "Public inbound contact channel detected",
+      ru: "Обнаружен публичный канал входящих обращений",
     },
     directPhrases: {
       en: [
@@ -250,8 +260,15 @@ const signalEvidenceProfiles: Record<SignalType, SignalEvidenceProfile> = {
         "webinar registration",
         "lead magnet",
         "request a consultation",
+        "contact us",
+        "sales contact",
+        "email us",
       ],
       ru: [
+        "контакты",
+        "электронная почта",
+        "отдел продаж",
+        "email",
         "оставить заявку",
         "записаться на демо",
         "бесплатный доступ",
@@ -261,12 +278,12 @@ const signalEvidenceProfiles: Record<SignalType, SignalEvidenceProfile> = {
       ],
     },
     contextPhrases: {
-      en: ["landing page", "demo", "trial", "conversion", "registration"],
-      ru: ["лендинг", "демо", "заявка", "регистрация", "конверсия"],
+      en: ["landing page", "demo", "trial", "conversion", "registration", "contact", "email"],
+      ru: ["лендинг", "демо", "заявка", "регистрация", "конверсия", "контакт", "почта", "email"],
     },
     genericPhrases: {
-      en: ["demo", "trial", "signup"],
-      ru: ["демо", "заявка", "регистрация"],
+      en: ["demo", "trial", "signup", "contact", "email"],
+      ru: ["демо", "заявка", "регистрация", "контакт", "почта", "email"],
     },
   },
   TECH_SIGNAL: {
@@ -632,7 +649,7 @@ const hiringEventPatterns = [
 
 const growthEventPatterns = [
   /\b(?:expanding|expanded|expansion|growth|scaling|raises funding|raised funding|funding round|series [a-z]|opens new office|new office|new branch|market expansion|new market|new region|new country)\b/i,
-  /\b(?:\u0440\u0430\u0441\u0448\u0438\u0440|\u0440\u043e\u0441\u0442|\u043c\u0430\u0441\u0448\u0442\u0430\u0431|\u0438\u043d\u0432\u0435\u0441\u0442\u0438\u0446|\u0440\u0430\u0443\u043d\u0434|\u043d\u043e\u0432(?:\u044b\u0439|\u0430\u044f) (?:\u0440\u044b\u043d\u043e\u043a|\u0440\u0435\u0433\u0438\u043e\u043d|\u043e\u0444\u0438\u0441|\u0444\u0438\u043b\u0438\u0430\u043b))\b/i,
+  /(?:\u0440\u0430\u0441\u0448\u0438\u0440|\u0440\u043e\u0441\u0442|\u043c\u0430\u0441\u0448\u0442\u0430\u0431|\u0438\u043d\u0432\u0435\u0441\u0442\u0438\u0446|\u0440\u0430\u0443\u043d\u0434|\u043e\u0442\u043a\u0440\u044b\u0442\u0438\u0435 \u043d\u043e\u0432|\u043e\u0442\u043a\u0440\u044b\u043b(?:\u0430|\u0438)? \u043d\u043e\u0432|\u043d\u043e\u0432(?:\u044b\u0439|\u0430\u044f) (?:\u0440\u044b\u043d\u043e\u043a|\u0440\u0435\u0433\u0438\u043e\u043d|\u043e\u0444\u0438\u0441|\u0444\u0438\u043b\u0438\u0430\u043b))/i,
 ];
 
 const operationalEventPatterns = [
@@ -853,6 +870,9 @@ function getSourceScoreAdjustment(
   signalType: SignalType,
   companyExtraction: CompanyExtractionResult,
 ): number {
+  if (sourceType === "contact_page") {
+    return -24;
+  }
   if (sourceType === "company_careers" && signalType === "HIRING_SIGNAL") {
     return 14;
   }
@@ -1087,6 +1107,14 @@ export function collectSignalEvidence({
     sourceHintMatches: matchedSourceHints,
     result,
   });
+  const preliminaryCommercialSignal = validateCommercialSignalCandidate({
+    text: result.raw_content || result.snippet || result.title,
+    sourceUrl: result.url,
+    sourceTitle: result.title || result.source_label,
+    confidence: 70,
+    detectedAt: result.published_at,
+    pipelineSignalType: signalType,
+  });
   const confidenceScore = clampScore(
     scoreBreakdown.signalScore +
       scoreBreakdown.icpScore +
@@ -1096,7 +1124,8 @@ export function collectSignalEvidence({
         sourceClassification.source_type,
         signalType,
         companyExtraction,
-      ),
+      ) +
+      (preliminaryCommercialSignal ? 18 : 0),
   );
   const isAggregatorWithoutCompany =
     sourceClassification.source_type === "aggregator" &&
@@ -1105,6 +1134,14 @@ export function collectSignalEvidence({
     Boolean(companyExtraction.company_name) &&
     !companyExtraction.is_candidate_company_valid;
   const baseDecision = decideEvidence(confidenceScore);
+  const commercialSignal = validateCommercialSignalCandidate({
+    text: result.raw_content || result.snippet || result.title,
+    sourceUrl: result.url,
+    sourceTitle: result.title || result.source_label,
+    confidence: confidenceScore,
+    detectedAt: result.published_at,
+    pipelineSignalType: signalType,
+  });
   const isGtmSignal = signalType === "GO_TO_MARKET_SIGNAL";
   const hasWeakGtmEventEvidence =
     signalType === "GO_TO_MARKET_SIGNAL" &&
@@ -1123,12 +1160,21 @@ export function collectSignalEvidence({
     (sourceClassification.source_type === "company_careers" ||
       sourceClassification.source_type === "company_site") &&
     confidenceScore >= 45;
+  const hasVerifiedTrustedEvent =
+    Boolean(commercialSignal) &&
+    companyExtraction.is_candidate_company_valid &&
+    sourceClassification.source_type !== "contact_page" &&
+    sourceClassification.source_type !== "directory" &&
+    sourceClassification.source_type !== "aggregator" &&
+    confidenceScore >= 50;
   const decision =
-    isAggregatorWithoutCompany || hasInvalidCompanyCandidate
+    !commercialSignal || isAggregatorWithoutCompany || hasInvalidCompanyCandidate
       ? "rejected"
       : hasNonOpportunityInfo
         ? "rejected"
       : hasConfirmedCompanyOwnedHiring
+        ? "valid_signal"
+      : hasVerifiedTrustedEvent
         ? "valid_signal"
       : isGtmSignal && !hasConfirmedGtmEvent
         ? confidenceScore >= 45 &&
@@ -1165,7 +1211,7 @@ export function collectSignalEvidence({
       evidenceLanguage === "ru" || evidenceLanguage === "mixed"
         ? profile.title.ru
         : profile.title.en,
-    signal_detail: result.snippet || result.title,
+    signal_detail: commercialSignal?.evidence ?? "",
     signal_source_label: result.source_label,
     source_url: result.url,
     confidence_score: confidenceScore,
@@ -1190,5 +1236,6 @@ export function collectSignalEvidence({
       companyExtraction,
     }),
     rejection_reason: rejectionReason,
+    commercial_signal: commercialSignal,
   };
 }

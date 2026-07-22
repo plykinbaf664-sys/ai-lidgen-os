@@ -3,6 +3,7 @@ import type {
   PeopleProviderInput,
   PeopleProviderResult,
 } from "@/lib/leadgen/people-provider";
+import { formatUnknownError } from "@/lib/leadgen/error-format";
 
 export class PeopleProviderManager {
   constructor(private readonly providers: PeopleEnrichmentProvider[]) {}
@@ -32,10 +33,10 @@ export class PeopleProviderManager {
           diagnostics: [
             {
               level: "error" as const,
-              message:
-                result.reason instanceof Error
-                  ? result.reason.message
-                  : String(result.reason),
+              message: formatUnknownError(
+                result.reason,
+                "Провайдер поиска контакта вернул неизвестную ошибку.",
+              ),
             },
           ],
         },

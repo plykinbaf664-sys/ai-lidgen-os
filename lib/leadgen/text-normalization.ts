@@ -261,6 +261,18 @@ function shouldPreserveUrlEncoding(keyPath: string): boolean {
   return /(?:^|\.|_)(url|href|link)(?:$|\.|_)/i.test(keyPath);
 }
 
+function shouldPreserveIdentifier(keyPath: string): boolean {
+  const key = keyPath.split(".").at(-1) ?? "";
+  return key === "id" || key.endsWith("_id") || [
+    "idempotency_key",
+    "identity_key",
+    "smtp_message_id",
+    "provider_message_id",
+    "parent_smtp_message_id",
+    "reply_message_id",
+  ].includes(key);
+}
+
 export function normalizeLeadgenStrings<T>(
   value: T,
   source = "leadgen",
@@ -268,6 +280,7 @@ export function normalizeLeadgenStrings<T>(
 ): T {
   function visit(input: unknown, path: string): unknown {
     if (typeof input === "string") {
+      if (shouldPreserveIdentifier(path)) return input;
       return normalizeLeadgenText(input, {
         source: path ? `${source}.${path}` : source,
         preserveUrlEncoding: shouldPreserveUrlEncoding(path),

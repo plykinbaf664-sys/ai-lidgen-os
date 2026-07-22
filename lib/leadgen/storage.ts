@@ -1,6 +1,7 @@
 ﻿import "server-only";
 
 import { createSupabaseServerClient } from "@/lib/supabase/client";
+import { leadgenHistoryResetAt } from "@/lib/leadgen/history-policy";
 import { normalizeLeadgenStrings } from "@/lib/leadgen/text-normalization";
 import type {
   DiscoverySuccessMetrics,
@@ -15,6 +16,7 @@ import type {
   LeadDiscoveryResult,
   MockPipelineResult,
   OutreachEmailStatus,
+  CampaignOperationalStatus,
   OutreachQueueEntry,
   TelegramNotification,
 } from "@/lib/leadgen/types";
@@ -55,7 +57,28 @@ type StoredLeadCampaignRef = Pick<
 >;
 
 type StoredCompanyCampaignRef = Pick<LeadgenCompany, "campaign_id">;
-type StoredContactCampaignRef = Pick<LeadgenContact, "campaign_id">;
+type StoredContactCampaignRef = Pick<LeadgenContact, "campaign_id" | "email">;
+type StoredOutreachCampaignRef = {
+  campaign_id: string;
+  status: string;
+  message_kind?: "initial" | "follow_up";
+};
+
+function deriveCampaignOperationalStatus(counts: {
+  needsReview: number;
+  approved: number;
+  queued: number;
+  sending: number;
+  sent: number;
+  failed: number;
+}): CampaignOperationalStatus {
+  if (counts.failed > 0) return "needs_attention";
+  if (counts.sending > 0 || counts.queued > 0) return "queue_active";
+  if (counts.approved > 0) return "ready_to_send";
+  if (counts.needsReview > 0) return "needs_review";
+  if (counts.sent > 0) return "sent";
+  return "discovery_complete";
+}
 
 function isMissingRelationError(error: unknown): boolean {
   if (typeof error !== "object" || error === null) {
@@ -255,6 +278,7 @@ export async function getRecentCampaigns(
   const { data: campaigns, error: campaignsError } = await supabase
     .from("leadgen_campaigns")
     .select("id,pipeline_run_id,name,status,created_at")
+    .gt("created_at", leadgenHistoryResetAt)
     .order("created_at", { ascending: false })
     .limit(limit)
     .returns<StoredCampaign[]>();
@@ -272,6 +296,7 @@ export async function getRecentCampaigns(
     { data: companies, error: companiesError },
     { data: contacts, error: contactsError },
     { data: leads, error: leadsError },
+    { data: outreach, error: outreachError },
   ] = await Promise.all([
     supabase
       .from("leadgen_companies")
@@ -280,7 +305,7 @@ export async function getRecentCampaigns(
       .returns<StoredCompanyCampaignRef[]>(),
     supabase
       .from("leadgen_contacts")
-      .select("campaign_id")
+      .select("campaign_id,email")
       .in("campaign_id", campaignIds)
       .returns<StoredContactCampaignRef[]>(),
     supabase
@@ -288,6 +313,11 @@ export async function getRecentCampaigns(
       .select("campaign_id,contact_value")
       .in("campaign_id", campaignIds)
       .returns<StoredLeadCampaignRef[]>(),
+    supabase
+      .from("leadgen_outreach_queue")
+      .select("campaign_id,status,message_kind")
+      .in("campaign_id", campaignIds)
+      .returns<StoredOutreachCampaignRef[]>(),
   ]);
 
   if (companiesError && !isMissingRelationError(companiesError)) {
@@ -301,16 +331,47 @@ export async function getRecentCampaigns(
   if (contactsError && !isMissingRelationError(contactsError)) {
     throw contactsError;
   }
+  if (outreachError && !isMissingRelationError(outreachError)) {
+    throw outreachError;
+  }
 
   const companyCounts = new Map<string, number>();
   const legacyLeadCounts = new Map<string, number>();
   const contactCounts = new Map<string, number>();
+  const emailCounts = new Map<string, number>();
+  const sentCounts = new Map<string, number>();
+  const initialSentCounts = new Map<string, number>();
+  const followupSentCounts = new Map<string, number>();
+  const outreachCounts = new Map<string, {
+    needsReview: number; approved: number; queued: number; sending: number; sent: number; failed: number;
+  }>();
 
   for (const contact of contactsError ? [] : contacts ?? []) {
     contactCounts.set(
       contact.campaign_id,
       (contactCounts.get(contact.campaign_id) ?? 0) + 1,
     );
+    if (contact.email) {
+      emailCounts.set(contact.campaign_id, (emailCounts.get(contact.campaign_id) ?? 0) + 1);
+    }
+  }
+
+  for (const item of outreachError ? [] : outreach ?? []) {
+    const counts = outreachCounts.get(item.campaign_id) ?? {
+      needsReview: 0, approved: 0, queued: 0, sending: 0, sent: 0, failed: 0,
+    };
+    if (["draft", "needs_review"].includes(item.status)) counts.needsReview += 1;
+    else if (item.status === "approved") counts.approved += 1;
+    else if (item.status === "queued") counts.queued += 1;
+    else if (item.status === "sending") counts.sending += 1;
+    else if (item.status === "failed") counts.failed += 1;
+    if (item.status === "sent") {
+      counts.sent += 1;
+      sentCounts.set(item.campaign_id, (sentCounts.get(item.campaign_id) ?? 0) + 1);
+      const target = item.message_kind === "follow_up" ? followupSentCounts : initialSentCounts;
+      target.set(item.campaign_id, (target.get(item.campaign_id) ?? 0) + 1);
+    }
+    outreachCounts.set(item.campaign_id, counts);
   }
 
   for (const company of companiesError ? [] : companies ?? []) {
@@ -334,13 +395,27 @@ export async function getRecentCampaigns(
     }
   }
 
-  return normalizeLeadgenStrings(campaigns.map((campaign) => ({
+  return normalizeLeadgenStrings(campaigns.map((campaign) => {
+    const counts = outreachCounts.get(campaign.id) ?? {
+      needsReview: 0, approved: 0, queued: 0, sending: 0, sent: 0, failed: 0,
+    };
+    return {
     ...campaign,
     companies_count:
       companyCounts.get(campaign.id) ?? legacyLeadCounts.get(campaign.id) ?? 0,
     leads_count: legacyLeadCounts.get(campaign.id) ?? 0,
     contacts_count: contactCounts.get(campaign.id) ?? 0,
-  })), "storage.read.campaigns");
+    email_count: emailCounts.get(campaign.id) ?? 0,
+    sent_count: sentCounts.get(campaign.id) ?? 0,
+    initial_sent_count: initialSentCounts.get(campaign.id) ?? 0,
+    followup_sent_count: followupSentCounts.get(campaign.id) ?? 0,
+    needs_review_count: counts.needsReview,
+    approved_count: counts.approved,
+    queued_count: counts.queued,
+    sending_count: counts.sending,
+    failed_count: counts.failed,
+    operational_status: deriveCampaignOperationalStatus(counts),
+  };}), "storage.read.campaigns");
 }
 
 export async function getCampaignDetails(
@@ -369,6 +444,7 @@ export async function getCampaignDetails(
     { data: signals, error: signalsError },
     { data: events, error: eventsError },
     { data: notifications, error: notificationsError },
+    { data: campaignOutreach, error: campaignOutreachError },
   ] = await Promise.all([
     supabase
       .from("leadgen_companies")
@@ -407,6 +483,11 @@ export async function getCampaignDetails(
       .eq("campaign_id", campaignId)
       .order("created_at", { ascending: true })
       .returns<TelegramNotification[]>(),
+    supabase
+      .from("leadgen_outreach_queue")
+      .select("campaign_id,status,message_kind")
+      .eq("campaign_id", campaignId)
+      .returns<StoredOutreachCampaignRef[]>(),
   ]);
 
   if (companiesError && !isMissingRelationError(companiesError)) {
@@ -432,6 +513,9 @@ export async function getCampaignDetails(
   if (notificationsError) {
     throw notificationsError;
   }
+  if (campaignOutreachError && !isMissingRelationError(campaignOutreachError)) {
+    throw campaignOutreachError;
+  }
 
   const storedCompanies = companiesError ? [] : companies ?? [];
   const storedContacts = contactsError ? [] : contacts ?? [];
@@ -439,9 +523,21 @@ export async function getCampaignDetails(
   const storedSignals = signals ?? [];
   const storedEvents = events ?? [];
   const storedNotifications = notifications ?? [];
+  const detailOutreach = campaignOutreachError ? [] : campaignOutreach ?? [];
+  const detailCounts = {
+    needsReview: detailOutreach.filter((item) => ["draft", "needs_review"].includes(item.status)).length,
+    approved: detailOutreach.filter((item) => item.status === "approved").length,
+    queued: detailOutreach.filter((item) => item.status === "queued").length,
+    sending: detailOutreach.filter((item) => item.status === "sending").length,
+    sent: detailOutreach.filter((item) => item.status === "sent").length,
+    failed: detailOutreach.filter((item) => item.status === "failed").length,
+  };
 
   return normalizeLeadgenStrings({
-    campaign,
+    campaign: {
+      ...campaign,
+      operational_status: deriveCampaignOperationalStatus(detailCounts),
+    },
     companies: storedCompanies,
     contacts: storedContacts,
     leads: storedLeads,
@@ -459,8 +555,35 @@ export async function getCampaignDetails(
       signals_count: storedSignals.length,
       notifications_count: storedNotifications.length,
       events_count: storedEvents.length,
+      initial_sent_count: detailOutreach.filter((item) => item.status === "sent" && item.message_kind !== "follow_up").length,
+      followup_sent_count: detailOutreach.filter((item) => item.status === "sent" && item.message_kind === "follow_up").length,
+      needs_review_count: detailCounts.needsReview,
+      approved_count: detailCounts.approved,
+      queued_count: detailCounts.queued,
+      sending_count: detailCounts.sending,
+      failed_count: detailCounts.failed,
     },
   }, "storage.read.details");
+}
+
+export async function getCampaignDetailsByPipelineRunId(
+  pipelineRunId: string,
+): Promise<LeadgenCampaignDetails | null> {
+  const supabase = createSupabaseServerClient();
+  const { data: campaign, error } = await supabase
+    .from("leadgen_campaigns")
+    .select("id")
+    .eq("pipeline_run_id", pipelineRunId)
+    .single<Pick<LeadgenCampaign, "id">>();
+
+  if (error) {
+    if (error.code === "PGRST116") {
+      return null;
+    }
+    throw error;
+  }
+
+  return getCampaignDetails(campaign.id);
 }
 
 function getContactIdFromOutreachId(id: string): string {
