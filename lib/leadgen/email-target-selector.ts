@@ -5,6 +5,7 @@ import type {
   LeadgenContact,
   LeadgenLead,
 } from "@/lib/leadgen/types";
+import { selectCampaignLeadIds } from "@/lib/leadgen/campaign-target-policy";
 
 function getRankedEmailContacts(
   lead: LeadgenLead,
@@ -73,9 +74,25 @@ export function selectCampaignEmailTarget({
     if (lead.company_id) selectedCompanyIds.add(lead.company_id);
   }
 
+  const campaignLeadIds = selectCampaignLeadIds({
+    orderedLeadIds: result.leads.map((lead) => lead.id),
+    emailReadyLeadIds: [...selectedLeadIds],
+    target,
+  });
+  selectedLeadIds.clear();
+  for (const leadId of campaignLeadIds) selectedLeadIds.add(leadId);
+  selectedCompanyIds.clear();
+  for (const lead of result.leads) {
+    if (selectedLeadIds.has(lead.id) && lead.company_id) {
+      selectedCompanyIds.add(lead.company_id);
+    }
+  }
+
   const productionStats = result.production_discovery_stats
     ? {
         ...result.production_discovery_stats,
+        qualified_candidates_found: result.production_discovery_stats.new_unique_companies,
+        new_unique_companies: selectedCompanyIds.size,
         email_target: target,
         new_unique_emails: selectedEmails.size,
         known_emails_skipped: knownEmailsSkipped,

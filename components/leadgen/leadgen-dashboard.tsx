@@ -46,6 +46,7 @@ export function LeadgenDashboard() {
   const [activeCampaignId, setActiveCampaignId] = useState<string | null>(null);
   const [activeCampaignName, setActiveCampaignName] = useState<string | null>(null);
   const [discovery, setDiscovery] = useState<ProductionDiscoveryStats | null>(null);
+  const [campaignDetails, setCampaignDetails] = useState<LeadgenCampaignDetails | null>(null);
   const [isRunning, setIsRunning] = useState(false);
   const [isHistoryLoading, setIsHistoryLoading] = useState(true);
   const [isOpening, setIsOpening] = useState(false);
@@ -78,6 +79,14 @@ export function LeadgenDashboard() {
         if (data.campaigns[0]) {
           setActiveCampaignId(data.campaigns[0].id);
           setActiveCampaignName(data.campaigns[0].name);
+          const detailsResponse = await fetch(
+            `/api/leadgen/campaigns/details?pipelineRunId=${encodeURIComponent(data.campaigns[0].pipeline_run_id)}`,
+          );
+          const details = await readJson<DetailsResponse>(detailsResponse);
+          if (detailsResponse.ok && details.success) {
+            setCampaignDetails(details.details);
+            setDiscovery(details.details.campaign.production_discovery_stats ?? null);
+          }
         }
       })
       .catch(() => active && setError("Не удалось загрузить кампании."))
@@ -87,6 +96,7 @@ export function LeadgenDashboard() {
 
   async function handleRun(input: CampaignInput) {
     setIsRunning(true);
+    setCampaignDetails(null);
     setError(null);
     try {
       const response = await fetch("/api/leadgen/run", {
@@ -100,6 +110,11 @@ export function LeadgenDashboard() {
       setActiveCampaignName(data.campaign.name);
       setDiscovery(data.production_discovery_stats ?? null);
       await loadHistory();
+      const detailsResponse = await fetch(
+        `/api/leadgen/campaigns/details?pipelineRunId=${encodeURIComponent(data.campaign.pipeline_run_id)}`,
+      );
+      const details = await readJson<DetailsResponse>(detailsResponse);
+      if (detailsResponse.ok && details.success) setCampaignDetails(details.details);
     } catch (caught) {
       setError(caught instanceof Error && caught.message ? caught.message : "Не удалось запустить поиск.");
     } finally {
@@ -111,6 +126,7 @@ export function LeadgenDashboard() {
     setActiveCampaignId(summary.id);
     setActiveCampaignName(summary.name);
     setIsOpening(true);
+    setCampaignDetails(null);
     setError(null);
     try {
       const response = await fetch(
@@ -119,6 +135,7 @@ export function LeadgenDashboard() {
       const data = await readJson<DetailsResponse>(response);
       if (!response.ok || !data.success) throw new Error(formatUnknownError(data.success ? null : data.error));
       setDiscovery(data.details.campaign.production_discovery_stats ?? null);
+      setCampaignDetails(data.details);
     } catch (caught) {
       setError(caught instanceof Error && caught.message ? caught.message : "Не удалось открыть кампанию.");
     } finally {
@@ -132,7 +149,7 @@ export function LeadgenDashboard() {
         <div className="section-heading compact">
           <div><p className="eyebrow">Новая кампания</p><h2>Параметры поиска</h2></div>
           <div className="config-facts" aria-label="Активные ограничения">
-            <span>Россия</span><span>Web search</span><span>20 лидов в день</span>
+            <span>Россия</span><span>Web search</span><span>20 готовых лидов за запуск</span>
           </div>
         </div>
         <CampaignForm isRunning={isRunning} onRun={handleRun} />
@@ -146,12 +163,11 @@ export function LeadgenDashboard() {
             {discovery ? (
               <div className="discovery-inline">
                 <span>Проверено <strong>{discovery.results_received}</strong></span>
-                <span>Новых <strong>{discovery.new_unique_companies}</strong></span>
-                <span>Email <strong>{discovery.new_unique_emails ?? 0} из {discovery.email_target ?? 20}</strong></span>
+                <span>Кандидатов <strong>{discovery.qualified_candidates_found ?? discovery.new_unique_companies}</strong></span>
               </div>
             ) : null}
           </div>
-          <EmailOutreachQueue campaignId={activeCampaignId} discoveryStats={discovery} />
+          <EmailOutreachQueue campaignDetails={campaignDetails} campaignId={activeCampaignId} discoveryStats={discovery} />
         </section>
       ) : (
         <section className="panel leadgen-empty-campaign">

@@ -6,6 +6,7 @@ import {
 } from "@/lib/leadgen/company-identity";
 import { leadgenProductionConfig } from "@/lib/leadgen/production-config";
 import { ContactEnrichmentEngine } from "@/lib/leadgen/contact-enrichment-engine";
+import { resolveOfficialCompanyWebsite } from "@/lib/leadgen/public-contact-provider";
 import { generateFirstEmailV2 } from "@/lib/leadgen/first-email-generator";
 import { isEvidenceOnlyContact } from "@/lib/leadgen/contact-channel-ranking";
 import { discoverDecisionMaker } from "@/lib/leadgen/decision-maker-discovery";
@@ -63,7 +64,12 @@ const MAX_SIGNALS_PER_RUN = 5;
 const MAX_QUERIES_PER_SIGNAL = 20;
 const MAX_RESULTS_PER_QUERY = 10;
 const MIN_ENRICHMENT_OPPORTUNITY_SCORE = 50;
-const DISCOVERY_ENRICHMENT_CONCURRENCY = 3;
+const DISCOVERY_ENRICHMENT_CONCURRENCY = 10;
+const WEBSITE_RESOLUTION_CONCURRENCY = 10;
+const DISCOVERY_ENRICHMENT_POOL_MULTIPLIER = 4;
+// Keep enough headroom for an in-flight enrichment batch to settle before the
+// 300-second serverless request ceiling.
+const DISCOVERY_RUN_BUDGET_MS = 200_000;
 
 async function mapWithConcurrency<T, R>(
   items: T[],
@@ -96,12 +102,23 @@ function shouldDeferPeopleDiscovery(company: LeadgenCompany): boolean {
     return true;
   }
 
-  try {
-    const hostname = new URL(company.source_url ?? "").hostname.toLowerCase();
-    return hostname === "hh.ru" || hostname.endsWith(".hh.ru");
-  } catch {
-    return false;
+  const sourceCandidates = [
+    company.source_url,
+    company.metadata.signal_source_url,
+  ];
+  for (const source of sourceCandidates) {
+    if (typeof source !== "string") continue;
+    try {
+      const hostname = new URL(source).hostname.toLowerCase();
+      if (hostname === "hh.ru" || hostname.endsWith(".hh.ru")) {
+        return true;
+      }
+    } catch {
+      // Continue with the next known source.
+    }
   }
+
+  return false;
 }
 
 function getDeferredPeopleDiscoveryResult(): PeopleDiscoveryResult {
@@ -117,7 +134,7 @@ function getDeferredPeopleDiscoveryResult(): PeopleDiscoveryResult {
         provider_label: "People Discovery",
         level: "info",
         message:
-          "People search deferred until the employer official domain is resolved; company email discovery remains active.",
+          "People search deferred while the best available company email is resolved; company email discovery remains active.",
       },
     ],
   };
@@ -468,8 +485,18 @@ function attachContactDiscoveryToCompany(
 
   return {
     ...company,
+    company_domain:
+      contactDiscovery.resolved_official_domain ?? company.company_domain,
     metadata: {
       ...company.metadata,
+      official_website: contactDiscovery.official_website,
+      resolved_official_domain: contactDiscovery.resolved_official_domain,
+      official_website_status: contactDiscovery.official_website_status,
+      official_website_source_url:
+        contactDiscovery.official_website_source_url,
+      official_website_confidence:
+        contactDiscovery.official_website_confidence,
+      official_website_reason: contactDiscovery.official_website_reason,
       contact_discovery: {
         final_contact_readiness: contactReadiness,
         stop_reason:
@@ -497,6 +524,12 @@ function attachContactDiscoveryToCompany(
         email_search_completed: contactDiscovery.email_search_completed ?? false,
         email_search_status: contactDiscovery.email_search_status ?? null,
         email_stop_reason: contactDiscovery.email_stop_reason ?? null,
+        email_pages_audit: contactDiscovery.email_pages_audit,
+        ranked_email_candidates: contactDiscovery.ranked_email_candidates,
+        contact_forms_found: contactDiscovery.contact_forms_found,
+        email_final_reason: contactDiscovery.email_final_reason,
+        official_website_status: contactDiscovery.official_website_status,
+        official_website_reason: contactDiscovery.official_website_reason,
         best_outreach_entry_id: contactDiscovery.best_outreach_entry?.id ?? null,
         fallback_entry_id: contactDiscovery.fallback_entry?.id ?? null,
         alternative_channel_ids: contactDiscovery.alternative_channels.map(
@@ -859,11 +892,13 @@ async function discoverCandidates({
   leadTarget,
   market,
   knownCompanyIdentities,
+  deadlineAt,
 }: {
   searchProvider: SearchProvider;
   leadTarget: number;
   market: SignalSearchMarket;
   knownCompanyIdentities: CompanyIdentity[];
+  deadlineAt: number;
 }): Promise<{
   records: CandidateRecord[];
   stats: NonNullable<LeadDiscoveryResult["production_discovery_stats"]>;
@@ -876,13 +911,26 @@ async function discoverCandidates({
   const skipReasons: Record<string, number> = {};
   const skippedIdentityKeys = new Set<string>();
   const pageOffset = 0;
+  const enrichmentCandidateTarget = Math.min(
+    leadgenProductionConfig.discoveryCandidateBudget,
+    Math.max(leadTarget * DISCOVERY_ENRICHMENT_POOL_MULTIPLIER, 80),
+  );
+  const candidatesPerSignal = Math.min(
+    leadgenProductionConfig.discoveryCandidateBudget,
+    Math.max(leadTarget * 3, 60),
+  );
+  const queriesPerSignal = Math.min(
+    MAX_QUERIES_PER_SIGNAL,
+    Math.max(4, Math.ceil(leadTarget / 3)),
+  );
 
   for (const signalType of getSignalOrder()) {
+    if (Date.now() >= deadlineAt) break;
     const result = await runSignalPipeline({
       signalType,
       searchProvider,
-      targetCandidates: leadgenProductionConfig.discoveryCandidateBudget,
-      maxQueries: MAX_QUERIES_PER_SIGNAL,
+      targetCandidates: candidatesPerSignal,
+      maxQueries: queriesPerSignal,
       maxResultsPerQuery: MAX_RESULTS_PER_QUERY,
       pageOffset,
       market,
@@ -944,6 +992,12 @@ async function discoverCandidates({
     if (candidatesViewed >= leadgenProductionConfig.discoveryCandidateBudget) {
       break;
     }
+    if (
+      [...candidateRecords.values()].filter(shouldRunLeadWorkflow).length >=
+      enrichmentCandidateTarget
+    ) {
+      break;
+    }
   }
 
   const records = [...candidateRecords.values()]
@@ -971,6 +1025,7 @@ export async function runLeadDiscoveryEngine({
   knownCompanyIdentities = [],
   knownRecipientEmails = [],
 }: RunLeadDiscoveryInput): Promise<LeadDiscoveryResult> {
+  const deadlineAt = Date.now() + DISCOVERY_RUN_BUDGET_MS;
   const createdAt = new Date().toISOString();
   const pipelineRunId = createRecordId(
     "pipeline-run",
@@ -983,6 +1038,7 @@ export async function runLeadDiscoveryEngine({
     leadTarget,
     market,
     knownCompanyIdentities,
+    deadlineAt,
   });
   const candidateRecords = discovery.records;
   const leadWorkflowCandidateRecords = candidateRecords;
@@ -999,7 +1055,7 @@ export async function runLeadDiscoveryEngine({
       decisionMakerRecommendations[index],
     ]),
   );
-  const baseCompanies = candidateRecords.map((record, index) =>
+  const unresolvedCompanies = candidateRecords.map((record, index) =>
     buildCompany({
       campaign,
       candidate: record.candidate,
@@ -1011,12 +1067,6 @@ export async function runLeadDiscoveryEngine({
       createdAt,
       index,
     }),
-  );
-  const companiesByCandidateKey = new Map(
-    candidateRecords.map((record, index) => [
-      getCandidateKey(record.candidate),
-      baseCompanies[index],
-    ]),
   );
   const peopleDiscoveryEngine = new PeopleDiscoveryEngine();
   const contactEnrichmentEngine = new ContactEnrichmentEngine();
@@ -1032,7 +1082,8 @@ export async function runLeadDiscoveryEngine({
   for (
     let offset = 0;
     offset < leadWorkflowCandidateRecords.length &&
-    emailReadyLeadIds.size < leadTarget;
+    emailReadyLeadIds.size < leadTarget &&
+    Date.now() < deadlineAt;
     offset += DISCOVERY_ENRICHMENT_CONCURRENCY
   ) {
     const indexedBatch = leadWorkflowCandidateRecords
@@ -1041,13 +1092,43 @@ export async function runLeadDiscoveryEngine({
         record,
         index: offset + batchIndex,
       }));
+    const resolvedCompanies = await mapWithConcurrency(
+      indexedBatch,
+      WEBSITE_RESOLUTION_CONCURRENCY,
+      async ({ index }) => {
+        const company = unresolvedCompanies[index];
+        const resolution = await resolveOfficialCompanyWebsite(
+          company,
+          searchProvider,
+        );
+
+        return {
+          ...company,
+          company_domain: resolution.domain,
+          source_url: resolution.website,
+          source_label:
+            resolution.status === "confirmed"
+              ? "official company website"
+              : null,
+          metadata: {
+            ...company.metadata,
+            signal_source_url: company.source_url,
+            signal_source_label: company.source_label,
+            official_website: resolution.website,
+            resolved_official_domain: resolution.domain,
+            official_website_status: resolution.status,
+            official_website_source_url: resolution.sourceUrl,
+            official_website_confidence: resolution.confidence,
+            official_website_reason: resolution.reason,
+          },
+        };
+      },
+    );
     const batchPeopleDiscovery = await mapWithConcurrency(
       indexedBatch,
       DISCOVERY_ENRICHMENT_CONCURRENCY,
-      ({ record, index }) => {
-        const company =
-          companiesByCandidateKey.get(getCandidateKey(record.candidate)) ??
-          baseCompanies[index];
+      ({ index }, batchIndex) => {
+        const company = resolvedCompanies[batchIndex];
 
         return shouldDeferPeopleDiscovery(company)
           ? Promise.resolve(getDeferredPeopleDiscoveryResult())
@@ -1060,9 +1141,7 @@ export async function runLeadDiscoveryEngine({
     const batch = indexedBatch
       .map(({ record, index }, batchIndex): EnrichedLeadRecord | null => {
         const candidate = record.candidate;
-        const baseCompany =
-          companiesByCandidateKey.get(getCandidateKey(candidate)) ??
-          baseCompanies[index];
+        const baseCompany = resolvedCompanies[batchIndex];
         const peopleDiscovery = batchPeopleDiscovery[batchIndex];
         const company = attachPeopleDiscoveryToCompany(
           baseCompany,
@@ -1137,8 +1216,8 @@ export async function runLeadDiscoveryEngine({
     }
   }
 
-  const companies = baseCompanies.map(
-    (company) => enrichedCompaniesById.get(company.id) ?? company,
+  const companies = processedLeadRecords.map(
+    (record) => enrichedCompaniesById.get(record.company.id) ?? record.company,
   );
   const leads = processedLeadRecords.map((record, index) =>
     finalizeLeadOutput({
@@ -1202,6 +1281,14 @@ export async function runLeadDiscoveryEngine({
     leads,
     signals,
     events,
-    production_discovery_stats: discovery.stats,
+    production_discovery_stats: {
+      ...discovery.stats,
+      enriched_candidates_checked: processedLeadRecords.length,
+      official_sites_found: companies.filter(
+        (company) => company.metadata.official_website_status === "confirmed",
+      ).length,
+      enrichment_budget_exhausted:
+        Date.now() >= deadlineAt && emailReadyLeadIds.size < leadTarget,
+    },
   };
 }

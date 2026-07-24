@@ -26,9 +26,11 @@ required(rules, [/in_reply_to/, /references/, /sender_email/, /subject_time/, /n
 required(generator, [/continuity/, /new_value/, /non_repetition/, /needs_manual_copy_review/, /getFollowupCta/, /generationAttempts/], "generation");
 required(storage, [/interval_not_reached/, /reply_check_unavailable/, /missing_parent_message_id/, /already_followed_up/, /stop_list/, /assertFollowupSendable/, /getDailySendStats/], "eligibility");
 required(storage, [/evaluateFollowupEligibility/, /eligibility_diagnostics/, /next_eligible_at/, /reply_detected/], "eligibility diagnostics");
+required(storage, [/runAutomaticFollowupCycle/, /followupAutomationEnabled/, /followupAutomationScanMinutes/, /scheduleFollowupBatch/], "automation");
 required(smtp, [/In-Reply-To/, /References/, /randomUUID/], "thread headers");
 required(provider, [/message_kind === "follow_up"/, /parent_smtp_message_id/], "provider threading");
 required(processor, [/assertFollowupSendable/, /claimDueOutreachItem/], "pre-send reply check");
+assert.match(processor, /runAutomaticFollowupCycle/);
 required(ui, [/Дожимные письма/, /Проверить входящие ответы/, /Сгенерировать дожимы/, /История касаний/, /Отменить до отправки/], "UI");
 required(ui, [/Дожимы станут доступны через/, /Почему письма пока не готовы/, /formatFollowupWait/], "eligibility UI");
 assert.match(followupRoute, /getFollowups\(campaignId\), getFollowupSummary\(\)/);

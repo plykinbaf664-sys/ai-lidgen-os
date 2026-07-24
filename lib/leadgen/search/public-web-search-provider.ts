@@ -17,8 +17,8 @@ type PublicWebSearchProviderOptions = {
 type ParsedPublicResult = Pick<SearchResult, "title" | "url" | "snippet">;
 
 const DEFAULT_SOURCES: PublicSearchSource[] = ["yahoo", "brave", "bing-rss"];
-const DEFAULT_TIMEOUT_MS = 12_000;
-const DEFAULT_MIN_REQUEST_INTERVAL_MS = 850;
+const DEFAULT_TIMEOUT_MS = 8_000;
+const DEFAULT_MIN_REQUEST_INTERVAL_MS = 400;
 const MAX_RESULTS_PER_REQUEST = 20;
 const PUBLIC_SEARCH_USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +

@@ -21,6 +21,7 @@ import {
   type RejectedPublicEmail,
 } from "@/lib/leadgen/public-email-parser";
 import { buildEmailOutreach } from "@/lib/leadgen/email-outreach-builder";
+import { discoverCompanyEmails } from "@/lib/leadgen/email-discovery-engine";
 
 const publicUrlPattern = /https?:\/\/[^\s"'<>\\)]+/gi;
 const officialSitePaths = [
@@ -58,6 +59,14 @@ const nonOfficialSiteHostPatterns = [
   "careerjet.ru",
   "jobfilter.ru",
   "facancy.ru",
+  "dreamjob.ru",
+  "2gis.ru",
+  "zoon.ru",
+  "orgpage.ru",
+  "e-ecolog.ru",
+  "b2b.house",
+  "e-xecutive.ru",
+  "wikipedia.org",
   "vk.com",
   "vk.ru",
   "ok.ru",
@@ -65,6 +74,8 @@ const nonOfficialSiteHostPatterns = [
   "youtube.com",
   "dzen.ru",
   "vc.ru",
+  "linkedin.com",
+  "crunchbase.com",
   "forbes.ru",
   "kommersant.ru",
   "tass.ru",
@@ -118,11 +129,14 @@ function getCompanyWebsite(company: LeadgenCompany): string | null {
     return null;
   }
 
-  if (company.company_domain.startsWith("http")) {
-    return normalizeUrl(company.company_domain);
+  const website = company.company_domain.startsWith("http")
+    ? normalizeUrl(company.company_domain)
+    : `https://${company.company_domain}`;
+  if (!website) {
+    return null;
   }
-
-  return `https://${company.company_domain}`;
+  const hostname = getHostname(website);
+  return hostname && !isNonOfficialSiteHost(hostname) ? website : null;
 }
 
 function getCompanyDescription(company: LeadgenCompany): string | null {
@@ -148,48 +162,15 @@ function getCompanyDomain(company: LeadgenCompany): string | null {
   }
 
   try {
-    return new URL(website).hostname.replace(/^www\./, "").toLowerCase();
+    const hostname = new URL(website).hostname.replace(/^www\./, "").toLowerCase();
+    return isNonOfficialSiteHost(hostname) ? null : hostname;
   } catch {
     return null;
   }
 }
 
-function getKnownText(input: ContactProviderInput): string {
-  const contactFacingSourceUrls = [
-    input.company.source_url,
-    ...input.signals.map((signal) => signal.source_url),
-  ].filter((url) => !isRegistryEvidenceUrl(url));
-
-  return [
-    input.company.company_name,
-    input.company.company_domain ?? "",
-    input.company.source_url && !isRegistryEvidenceUrl(input.company.source_url)
-      ? input.company.source_url
-      : "",
-    input.company.source_label ?? "",
-    input.lead.signal_title,
-    input.lead.signal_detail,
-    input.lead.hook,
-    input.lead.message,
-    ...input.signals.flatMap((signal) => [
-      signal.signal_title,
-      signal.signal_detail,
-      contactFacingSourceUrls.includes(signal.source_url) ? signal.source_url : "",
-    ]),
-  ].join(" ");
-}
-
 function getKnownUrls(input: ContactProviderInput): string[] {
-  const urls = [
-    input.company.source_url,
-    input.lead.company_source_url,
-    ...input.signals.map((signal) => signal.source_url),
-  ]
-    .map(normalizeUrl)
-    .filter((url) => !isRegistryEvidenceUrl(url))
-    .filter((url): url is string => Boolean(url));
-
-  return [...new Set(urls)];
+  return getOfficialSiteUrls(input);
 }
 
 function getOfficialSiteUrls(input: ContactProviderInput): string[] {
@@ -251,6 +232,115 @@ async function fetchPublicPageText(url: string): Promise<string | null> {
   } finally {
     clearTimeout(timeout);
   }
+}
+
+function getHhVacancyUrl(company: LeadgenCompany): string | null {
+  const candidates = [
+    company.source_url,
+    company.metadata.signal_source_url,
+    ...(Array.isArray(company.metadata.signal_source_urls)
+      ? company.metadata.signal_source_urls
+      : []),
+  ];
+
+  for (const candidate of candidates) {
+    if (typeof candidate !== "string") continue;
+    try {
+      const url = new URL(candidate);
+      if (
+        (url.hostname === "hh.ru" || url.hostname.endsWith(".hh.ru")) &&
+        /^\/vacancy\/\d+/.test(url.pathname)
+      ) {
+        return url.toString();
+      }
+    } catch {
+      // Continue with the next source URL.
+    }
+  }
+
+  return null;
+}
+
+function decodeHtmlAttribute(value: string): string {
+  return value
+    .replace(/&amp;/gi, "&")
+    .replace(/&quot;|&#34;/gi, '"')
+    .replace(/&#39;|&apos;/gi, "'");
+}
+
+async function fetchHhPageHtml(url: string): Promise<string | null> {
+  try {
+    const response = await fetch(url, {
+      headers: {
+        accept: "text/html",
+        "user-agent":
+          "Mozilla/5.0 (compatible; LeadgenOS/1.0; official-site-resolution)",
+      },
+      signal: AbortSignal.timeout(8_000),
+    });
+    if (!response.ok) return null;
+    return (await response.text()).slice(0, 1_600_000);
+  } catch {
+    return null;
+  }
+}
+
+export function parseHhEmployerId(html: string): string | null {
+  return (
+    html.match(/\/employer\/(\d+)/i)?.[1] ??
+    html.match(/employerId(?:=|%3D|\\u003d)(\d+)/i)?.[1] ??
+    null
+  );
+}
+
+export function parseHhEmployerWebsite(html: string): string | null {
+  const rawWebsite =
+    html.match(
+      /data-qa=["']company-site["'][^>]*\bhref=["']([^"']+)["']/i,
+    )?.[1] ??
+    html.match(
+      /\bhref=["']([^"']+)["'][^>]*data-qa=["']company-site["']/i,
+    )?.[1] ??
+    html.match(/siteUrl(?:&(?:#34|quot);|\\u0022)?\s*:\s*(?:&(?:#34|quot);|\\u0022)(https?:[^<&"\\]+)/i)?.[1] ??
+    null;
+
+  if (!rawWebsite) return null;
+
+  const normalized = normalizeUrl(decodeHtmlAttribute(rawWebsite));
+  if (!normalized) return null;
+
+  const hostname = getHostname(normalized);
+  return hostname && !isNonOfficialSiteHost(hostname) ? normalized : null;
+}
+
+async function resolveOfficialWebsiteFromHh(
+  company: LeadgenCompany,
+): Promise<OfficialWebsiteResolution | null> {
+  const vacancyUrl = getHhVacancyUrl(company);
+  if (!vacancyUrl) return null;
+
+  const vacancyHtml = await fetchHhPageHtml(vacancyUrl);
+  const employerId = vacancyHtml ? parseHhEmployerId(vacancyHtml) : null;
+  if (!employerId) return null;
+
+  const employerUrl = `https://hh.ru/employer/${employerId}`;
+  const employerHtml = await fetchHhPageHtml(employerUrl);
+  const website = employerHtml
+    ? parseHhEmployerWebsite(employerHtml)
+    : null;
+  if (!website) return null;
+
+  const hostname = getHostname(website);
+  if (!hostname) return null;
+
+  return {
+    domain: hostname,
+    website: `https://${hostname}`,
+    sourceUrl: employerUrl,
+    status: "confirmed",
+    confidence: 90,
+    reason: "official_site_declared_on_hh_employer_profile",
+  };
 }
 
 function extractRelevantInternalLinks(html: string, pageUrl: string): string[] {
@@ -362,38 +452,91 @@ function isNonOfficialSiteHost(hostname: string): boolean {
 function getCompanyIdentityTokens(companyName: string): string[] {
   return companyName
     .toLowerCase()
-    .replace(/\b(?:ооо|ао|пао|зао|ип|компания|группа|group|company)\b/gi, " ")
+    .replace(/\b(?:ооо|ао|пао|зао|ип|компания|компании|группа|группы|group|company)\b/gi, " ")
     .split(/[^a-zа-яё0-9]+/i)
     .map((token) => token.trim())
     .filter((token) => token.length >= 3);
 }
 
-async function resolveOfficialCompanyDomain(
-  input: ContactProviderInput,
+function hasCompanyDomainMatch(tokens: string[], hostname: string): boolean {
+  const domainLabel = (hostname.split(".")[0] ?? "")
+    .replace(/[^a-z0-9]/gi, "")
+    .toLowerCase();
+
+  return tokens.some((token) => {
+    const transliterated = transliterateRu(token)
+      .replace(/[^a-z0-9]/gi, "")
+      .toLowerCase();
+    return (
+      transliterated.length >= 4 &&
+      (domainLabel.includes(transliterated) ||
+        transliterated.includes(domainLabel))
+    );
+  });
+}
+
+export type OfficialWebsiteResolution = {
+  domain: string | null;
+  website: string | null;
+  sourceUrl: string | null;
+  status: "confirmed" | "not_found";
+  confidence: number;
+  reason: string;
+};
+
+export async function resolveOfficialCompanyWebsite(
+  company: LeadgenCompany,
   searchProvider: SearchProvider | null,
-): Promise<string | null> {
-  const existingDomain = getCompanyDomain(input.company);
-  if (existingDomain || !searchProvider) {
-    return existingDomain;
+): Promise<OfficialWebsiteResolution> {
+  const existingDomain = getCompanyDomain(company);
+  if (existingDomain) {
+    return {
+      domain: existingDomain,
+      website: `https://${existingDomain}`,
+      sourceUrl: getCompanyWebsite(company),
+      status: "confirmed",
+      confidence: 100,
+      reason: "confirmed_existing_company_domain",
+    };
   }
 
-  const companyName = input.company.company_name.trim();
+  const hhResolution = await resolveOfficialWebsiteFromHh(company);
+  if (hhResolution) {
+    return hhResolution;
+  }
+
+  if (!searchProvider) {
+    return {
+      domain: null,
+      website: null,
+      sourceUrl: null,
+      status: "not_found",
+      confidence: 0,
+      reason: "official_site_search_provider_unavailable",
+    };
+  }
+
+  const companyName = company.company_name.trim();
   const tokens = getCompanyIdentityTokens(companyName);
   if (!companyName || tokens.length === 0) {
-    return null;
+    return {
+      domain: null,
+      website: null,
+      sourceUrl: null,
+      status: "not_found",
+      confidence: 0,
+      reason: "company_name_insufficient_for_resolution",
+    };
   }
 
-  const queries = [
-    `"${companyName}" официальный сайт`,
-    `"${companyName}" контакты`,
-  ];
+  const queries = [`"${companyName}" официальный сайт`];
 
   for (const query of queries) {
     let results: SearchResult[] = [];
     try {
       results = await searchProvider.search({
         query,
-        maxResults: 8,
+        maxResults: 12,
         market: "ru",
         queryLanguage: "ru",
       });
@@ -401,6 +544,7 @@ async function resolveOfficialCompanyDomain(
       continue;
     }
 
+    let identityPagesChecked = 0;
     for (const result of results) {
       const hostname = getHostname(result.url);
       if (!hostname || isNonOfficialSiteHost(hostname)) {
@@ -408,21 +552,63 @@ async function resolveOfficialCompanyDomain(
       }
 
       const haystack = getSearchText(result).toLowerCase();
-      const domainLabel = hostname.split(".")[0] ?? "";
       const matchingTokens = tokens.filter(
-        (token) => haystack.includes(token) || domainLabel.includes(token),
+        (token) => haystack.includes(token),
       );
+      const domainMatchesCompany = hasCompanyDomainMatch(tokens, hostname);
+      let pageConfirmsCompany = false;
+      if (!domainMatchesCompany && identityPagesChecked < 3) {
+        try {
+          const pathname = new URL(result.url).pathname.replace(/\/+$/, "") || "/";
+          if (pathname === "/") {
+            identityPagesChecked += 1;
+            const pageText = (await fetchPublicPageText(result.url))?.toLowerCase() ?? "";
+            const distinctiveToken = [...tokens].sort(
+              (left, right) => right.length - left.length,
+            )[0];
+            const occurrences = distinctiveToken
+              ? pageText.split(distinctiveToken).length - 1
+              : 0;
+            pageConfirmsCompany =
+              Boolean(distinctiveToken && distinctiveToken.length >= 6) &&
+              occurrences >= 2;
+          }
+        } catch {
+          pageConfirmsCompany = false;
+        }
+      }
 
       if (
-        matchingTokens.length >= Math.min(tokens.length, 2) ||
-        (tokens.length === 1 && matchingTokens.length === 1)
+        (domainMatchesCompany || pageConfirmsCompany) &&
+        (matchingTokens.length >= 1 ||
+          haystack.includes(companyName.toLowerCase()))
       ) {
-        return hostname;
+        return {
+          domain: hostname,
+          website: `https://${hostname}`,
+          sourceUrl: result.url,
+          status: "confirmed",
+          confidence: domainMatchesCompany
+            ? matchingTokens.length >= 2
+              ? 95
+              : 85
+            : 80,
+          reason: domainMatchesCompany
+            ? "official_site_confirmed_by_company_identity"
+            : "official_site_confirmed_by_repeated_company_identity_on_homepage",
+        };
       }
     }
   }
 
-  return null;
+  return {
+    domain: null,
+    website: null,
+    sourceUrl: null,
+    status: "not_found",
+    confidence: 0,
+    reason: "official_site_not_found",
+  };
 }
 
 function getConfirmedPersonEmail(
@@ -577,15 +763,13 @@ function getCompanyEmailQueries(input: ContactProviderInput): string[] {
   const companyDomain = getCompanyDomain(input.company);
   const quotedCompany = `"${input.company.company_name}"`;
 
-  return [
-    `${quotedCompany} email OR e-mail`,
-    `${quotedCompany} \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u044b`,
-    `${quotedCompany} \u043e\u0442\u0434\u0435\u043b \u043f\u0440\u043e\u0434\u0430\u0436 email`,
-    `${quotedCompany} \u043a\u043e\u043c\u043c\u0435\u0440\u0447\u0435\u0441\u043a\u0438\u0439 \u043e\u0442\u0434\u0435\u043b email`,
-    companyDomain ? `site:${companyDomain} "@${companyDomain}"` : "",
-    companyDomain ? `site:${companyDomain} email` : "",
-    companyDomain ? `site:${companyDomain} \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u044b` : "",
-  ].filter(Boolean);
+  return companyDomain
+    ? [
+        `site:${companyDomain} ${quotedCompany} email OR e-mail`,
+        `site:${companyDomain} "@${companyDomain}"`,
+        `site:${companyDomain} \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u044b`,
+      ]
+    : [];
 }
 
 async function findPublicPersonEmail({
@@ -627,6 +811,9 @@ async function findPublicPersonEmail({
   );
 
   for (const result of searchResults) {
+    if (getHostname(result.url) !== companyDomain) {
+      continue;
+    }
     const searchText = getSearchText(result);
 
     if (!includesPersonName(searchText, person)) {
@@ -690,11 +877,13 @@ async function findPublicCompanyEmails({
     }
   }
   const parsed = searchResults.map((result) =>
-    extractPublicEmailsDetailed({
-      text: getSearchText(result),
-      sourceUrl: result.url || null,
-      companyDomain,
-    }),
+    getHostname(result.url) === companyDomain
+      ? extractPublicEmailsDetailed({
+          text: getSearchText(result),
+          sourceUrl: result.url || null,
+          companyDomain,
+        })
+      : { emails: [], rejected: [] },
   );
 
   return {
@@ -1144,44 +1333,83 @@ export class PublicContactProvider implements ContactProvider {
   ): Promise<ContactProviderResult> {
     const contacts: LeadgenContact[] = [];
     const searchProvider = this.getSearchProvider();
-    const resolvedDomain = await resolveOfficialCompanyDomain(
-      rawInput,
+    const websiteResolution = await resolveOfficialCompanyWebsite(
+      rawInput.company,
       searchProvider,
     );
-    const input: ContactProviderInput = resolvedDomain
+    const input: ContactProviderInput = websiteResolution.domain
       ? {
           ...rawInput,
           company: {
             ...rawInput.company,
-            company_domain: resolvedDomain,
+            company_domain: websiteResolution.domain,
             metadata: {
               ...rawInput.company.metadata,
-              resolved_official_domain: resolvedDomain,
+              official_website: websiteResolution.website,
+              resolved_official_domain: websiteResolution.domain,
             },
           },
         }
       : rawInput;
-    const officialSiteContext = await getOfficialSiteContext(input);
+    const emailDiscovery = websiteResolution.domain && websiteResolution.website
+      ? await discoverCompanyEmails({
+          rawInput: {
+            companyId: input.company.id,
+            companyName: input.company.company_name,
+            officialWebsiteUrl: websiteResolution.website,
+            officialDomain: websiteResolution.domain,
+            commercialSignalSourceUrl: input.signals[0]?.source_url ?? null,
+            targetPersona: input.decisionMaker?.primary_persona ?? null,
+            targetDepartment: input.decisionMaker?.department ?? null,
+          },
+          searchProvider,
+        })
+      : null;
+    const officialSiteContext = emailDiscovery
+      ? {
+          text: "",
+          urls: [
+            ...emailDiscovery.urlsInspected,
+            ...emailDiscovery.forms,
+          ],
+          pages: [] as Array<{ url: string; text: string }>,
+          warnings: emailDiscovery.diagnostics,
+        }
+      : await getOfficialSiteContext(input);
     const knownUrls = [
       ...new Set([...getKnownUrls(input), ...officialSiteContext.urls]),
     ];
     const companyDomain = getCompanyDomain(input.company);
-    const knownContextEmails = extractPublicEmailsDetailed({
-        text: getKnownText(input),
-        sourceUrl: isRegistryEvidenceUrl(input.company.source_url)
-          ? null
-          : input.company.source_url,
-        companyDomain,
-    });
-    const officialSiteEmails = officialSiteContext.pages.map((page) =>
-      extractPublicEmailsDetailed({
-          text: page.text,
-          sourceUrl: page.url,
-          companyDomain,
-      }),
-    );
+    const knownContextEmails = { emails: [] as ParsedPublicEmail[], rejected: [] as RejectedPublicEmail[] };
+    const officialSiteEmails = emailDiscovery
+      ? [{
+          emails: emailDiscovery.candidates
+            .filter((candidate) => !candidate.rejectionReason)
+            .map((candidate): ParsedPublicEmail => ({
+              email: candidate.email,
+              source_url: candidate.sourceUrl,
+              context: "",
+              classification:
+                candidate.kind === "personal_work"
+                  ? "personal_verified"
+                  : ["sales", "commercial", "marketing", "partnership", "press", "support", "hr"].includes(candidate.kind)
+                    ? "department_verified"
+                    : "company_generic_verified",
+              confidence_score: Math.min(99, Math.max(55, candidate.score)),
+              extraction_method: candidate.extractionMethod,
+            })),
+          rejected: emailDiscovery.rejected,
+        }]
+      : officialSiteContext.pages.map((page) =>
+          extractPublicEmailsDetailed({
+            text: page.text,
+            sourceUrl: page.url,
+            companyDomain,
+          }),
+        );
     const strategiesAttempted = [
-      "known_context_email_parse",
+      "official_company_context_email_parse",
+      "official_website_resolution",
       "official_site_homepage",
       "official_site_bounded_pages",
     ];
@@ -1207,13 +1435,15 @@ export class PublicContactProvider implements ContactProvider {
       ...knownContextEmails.emails,
       ...officialSiteEmails.flatMap((result) => result.emails),
     ]);
-    const companySearchEmails =
-      preliminaryEmails.length > 0
+    const companySearchEmails = emailDiscovery
+      ? {
+          emails: [],
+          rejected: [],
+          queriesExecuted: emailDiscovery.queriesExecuted,
+        }
+      : preliminaryEmails.length > 0
         ? { emails: [], rejected: [], queriesExecuted: [] }
-        : await findPublicCompanyEmails({
-            input,
-            searchProvider,
-          });
+        : await findPublicCompanyEmails({ input, searchProvider });
     if (companySearchEmails.queriesExecuted.length > 0) {
       strategiesAttempted.push("company_email_yandex_queries");
     }
@@ -1253,7 +1483,15 @@ export class PublicContactProvider implements ContactProvider {
       };
       const sourceUrl =
         publicEmail?.sourceUrl ?? getPersonSourceUrl(person);
-      const workEmail = person.work_email ?? publicEmail?.email ?? null;
+      const personSourceHost = getHostname(getPersonSourceUrl(person) ?? "");
+      const personEmailDomain = person.work_email?.split("@")[1]?.toLowerCase();
+      const confirmedPeopleEmail =
+        person.work_email &&
+        personEmailDomain === companyDomain &&
+        personSourceHost === companyDomain
+          ? person.work_email
+          : null;
+      const workEmail = confirmedPeopleEmail ?? publicEmail?.email ?? null;
       const emailSourceLabel =
         publicEmail?.sourceLabel ?? person.source;
 
@@ -1261,7 +1499,7 @@ export class PublicContactProvider implements ContactProvider {
         const emailOutreach = buildEmailOutreach({
           companyName: input.company.company_name,
           companyWebsite:
-            getCompanyWebsite(input.company) ?? input.company.source_url,
+            getCompanyWebsite(input.company),
           companyDescription: getCompanyDescription(input.company),
           industry: input.company.industry,
           personName: person.full_name,
@@ -1442,7 +1680,7 @@ export class PublicContactProvider implements ContactProvider {
       const emailOutreach = buildEmailOutreach({
         companyName: input.company.company_name,
         companyWebsite:
-          getCompanyWebsite(input.company) ?? input.company.source_url,
+          getCompanyWebsite(input.company),
         companyDescription: getCompanyDescription(input.company),
         industry: input.company.industry,
         personName: input.decisionMaker?.primary_persona ?? null,
@@ -1479,9 +1717,7 @@ export class PublicContactProvider implements ContactProvider {
           email: email.email,
           sourceUrl:
             email.source_url ??
-            (isRegistryEvidenceUrl(input.company.source_url)
-              ? null
-              : input.company.source_url),
+            getCompanyWebsite(input.company),
           sourceLabel: "public email parser",
           confidenceScore: email.confidence_score,
           metadata: {
@@ -1555,10 +1791,8 @@ export class PublicContactProvider implements ContactProvider {
           type: "company_website",
           index: contacts.length,
           contactUrl: companyWebsite,
-          sourceUrl: isRegistryEvidenceUrl(input.company.source_url)
-            ? companyWebsite
-            : input.company.source_url ?? companyWebsite,
-          sourceLabel: "company domain",
+          sourceUrl: companyWebsite,
+          sourceLabel: "official company website",
           confidenceScore: 35,
           metadata: {
             extraction: "company_domain_fallback",
@@ -1576,13 +1810,13 @@ export class PublicContactProvider implements ContactProvider {
           input,
           type: "no_contact_found",
           index: 0,
-          sourceUrl: isRegistryEvidenceUrl(input.company.source_url)
-            ? null
-            : input.company.source_url,
-          sourceLabel: "available company context",
+          sourceUrl: null,
+          sourceLabel: "official website resolution",
           confidenceScore: 0,
           metadata: {
-            reason: "No public entry point found from available company context",
+            reason: websiteResolution.domain
+              ? "Email not found on official company website"
+              : "Official company website could not be resolved",
           },
         }),
       );
@@ -1595,6 +1829,19 @@ export class PublicContactProvider implements ContactProvider {
 
     return {
       contacts,
+      official_website: websiteResolution.website,
+      resolved_official_domain: websiteResolution.domain,
+      official_website_status: websiteResolution.status,
+      official_website_source_url: websiteResolution.sourceUrl,
+      official_website_confidence: websiteResolution.confidence,
+      official_website_reason: websiteResolution.reason,
+      email_pages_audit: emailDiscovery?.pages ?? [],
+      ranked_email_candidates:
+        emailDiscovery?.candidates.map((candidate) => ({ ...candidate })) ?? [],
+      contact_forms_found: emailDiscovery?.forms ?? [],
+      email_final_reason:
+        emailDiscovery?.finalReason ??
+        (websiteResolution.domain ? "no_email_in_html" : "official_site_missing"),
       provider_id: this.id,
       provider_label: this.label,
       warnings: officialSiteContext.warnings,
@@ -1623,14 +1870,12 @@ export class PublicContactProvider implements ContactProvider {
           .map((email) => `${email.email} | candidate_unverified | ${email.source_url ?? ""}`),
       ].slice(0, 80),
       email_search_completed: searchProviderAvailable,
-      email_search_status: getFinalEmailStatus({
-        bestEmail,
-        searchProviderAvailable,
-      }),
-      email_stop_reason: getFinalEmailStopReason({
-        bestEmail,
-        searchProviderAvailable,
-      }),
+      email_search_status: websiteResolution.domain
+        ? getFinalEmailStatus({ bestEmail, searchProviderAvailable })
+        : "official_site_not_found",
+      email_stop_reason: websiteResolution.domain
+        ? getFinalEmailStopReason({ bestEmail, searchProviderAvailable })
+        : "official_site_not_found",
     };
   }
 }

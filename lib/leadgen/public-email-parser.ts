@@ -31,7 +31,9 @@ const departmentPrefixPattern =
 const genericPrefixPattern =
   /^(info|contact|hello|office|mail|admin|welcome|reception)@/i;
 const technicalPrefixPattern =
-  /^(no-?reply|noreply|donotreply|robot|mailer-daemon|postmaster|webmaster|abuse|hostmaster|privacy|legal|test|example|dev|null|undefined)@/i;
+  /^(no-?reply|noreply|donotreply|robot|mailer-daemon|postmaster|webmaster|abuse|hostmaster|privacy|legal|dpo|pd|test|example|dev|null|undefined)@/i;
+const technicalArtifactPattern =
+  /^(?:fonts\.[a-z]{1,8}@[a-z]{1,8}\.com|api\.[a-z]{1,8}@[a-z]{1,8}\.com)$/i;
 
 const ruTranslitMap: Record<string, string> = {
   "\u0430": "a",
@@ -83,12 +85,28 @@ function normalizeEmail(value: string): string | null {
   return email;
 }
 
+export function isTechnicalEmailArtifact(value: string): boolean {
+  const email = normalizeEmail(value);
+  return Boolean(email && technicalArtifactPattern.test(email));
+}
+
 function deobfuscateText(text: string): string {
   return text
+    .replace(/&#x40;|&#64;|&commat;/gi, "@")
+    .replace(/&#x2e;|&#46;|&period;/gi, ".")
+    .replace(
+      /([a-z0-9._%+-]+)(?:\s+(?:at|собака)\s+|\s*(?:\(|\[)\s*(?:at|собака)\s*(?:\)|\])\s*)([a-z0-9-]+(?:\s*\.\s*[a-z0-9-]+)+)/gi,
+      (_match, local: string, domain: string) =>
+        `${local}@${domain.replace(/\s+/g, "")}`,
+    )
+    .replace(
+      /([a-z0-9._%+-]+)(?:\s+(?:at|собака)\s+|\s*(?:\(|\[)\s*(?:at|собака)\s*(?:\)|\])\s*)([a-z0-9-]+)(?:\s+(?:dot|точка)\s+|\s*(?:\(|\[)\s*(?:dot|точка)\s*(?:\)|\])\s*)([a-z]{2,})/gi,
+      "$1@$2.$3",
+    )
     .replace(/&#64;|&commat;/gi, "@")
     .replace(/&period;|&#46;/gi, ".")
     .replace(
-      /([a-z0-9._%+-]+)\s*(?:\(|\[)?\s*(?:at|\u0441\u043e\u0431\u0430\u043a\u0430)\s*(?:\)|\])?\s*([a-z0-9.-]+)\s*(?:\(|\[)?\s*(?:dot|\u0442\u043e\u0447\u043a\u0430|\.)\s*(?:\)|\])?\s*([a-z]{2,})/gi,
+      /([a-z0-9._%+-]+)(?:\s+(?:at|\u0441\u043e\u0431\u0430\u043a\u0430)\s+|\s*(?:\(|\[)\s*(?:at|\u0441\u043e\u0431\u0430\u043a\u0430)\s*(?:\)|\])\s*)([a-z0-9.-]+)(?:\s+(?:dot|\u0442\u043e\u0447\u043a\u0430)\s+|\s*(?:\(|\[)\s*(?:dot|\u0442\u043e\u0447\u043a\u0430)\s*(?:\)|\])\s*|\s*\.\s*)([a-z]{2,})/gi,
       "$1@$2.$3",
     )
     .replace(/\s+\.\.\s+/g, ".")
@@ -265,12 +283,16 @@ export function extractPublicEmailsDetailed({
     const domainMatched = expectedDomain ? emailDomain === expectedDomain : true;
     const classification = classifyEmail(email, domainMatched, person);
 
-    if (classification === "invalid") {
+    if (classification === "invalid" || isTechnicalEmailArtifact(email)) {
       rejected.push(
         reject(
           email,
           sourceUrl,
-          domainMatched ? "technical_or_invalid_address" : "wrong_domain",
+          isTechnicalEmailArtifact(email)
+            ? "technical_asset_artifact"
+            : domainMatched
+              ? "technical_or_invalid_address"
+              : "wrong_domain",
           visibleText,
         ),
       );
@@ -291,7 +313,14 @@ export function extractPublicEmailsDetailed({
 
   return {
     emails: [...uniqueEmails.values()],
-    rejected,
+    rejected: [
+      ...new Map(
+        rejected.map((item) => [
+          `${item.value.toLowerCase()}:${item.reason}:${item.source_url ?? ""}`,
+          item,
+        ]),
+      ).values(),
+    ],
   };
 }
 

@@ -13,6 +13,12 @@ function readBoundedInteger(
 }
 
 export const leadgenProductionConfig = {
+  campaignCompanyLimit: readBoundedInteger(
+    "LEADGEN_CAMPAIGN_COMPANY_LIMIT",
+    20,
+    1,
+    20,
+  ),
   dailyLeadLimit: readBoundedInteger(
     "LEADGEN_DAILY_LEAD_LIMIT",
     20,
@@ -54,6 +60,14 @@ export const leadgenProductionConfig = {
     process.env.EMAIL_BUSINESS_TIMEZONE?.trim() || "Europe/Moscow",
   followupEnabled:
     process.env.FOLLOWUP_ENABLED?.trim().toLowerCase() !== "false",
+  followupAutomationEnabled:
+    process.env.FOLLOWUP_AUTOMATION_ENABLED?.trim().toLowerCase() === "true",
+  followupAutomationScanMinutes: readBoundedInteger(
+    "FOLLOWUP_AUTOMATION_SCAN_MINUTES",
+    15,
+    5,
+    1_440,
+  ),
   followupMinIntervalHours: readBoundedInteger(
     "FOLLOWUP_MIN_INTERVAL_HOURS",
     24,

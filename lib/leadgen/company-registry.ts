@@ -8,11 +8,14 @@ export async function getRegisteredCompanyIdentities(): Promise<
   RegisteredCompanyIdentity[]
 > {
   const supabase = createSupabaseServerClient();
-  const { data, error } = await supabase
-    .from("leadgen_discovered_companies")
-    .select(
-      "normalized_domain,normalized_website,normalized_name,region,legal_id,legal_name",
-    );
+  const [{ data, error }, storedCompanies] = await Promise.all([
+    supabase
+      .from("leadgen_discovered_companies")
+      .select(
+        "canonical_company_id,normalized_domain,normalized_website,normalized_name,region,legal_id,legal_name",
+      ),
+    supabase.from("leadgen_companies").select("id"),
+  ]);
 
   if (error) {
     if (error.code === "42P01" || error.code === "PGRST205") {
@@ -22,8 +25,10 @@ export async function getRegisteredCompanyIdentities(): Promise<
     }
     throw error;
   }
+  if (storedCompanies.error) throw storedCompanies.error;
+  const persistedCompanyIds = new Set((storedCompanies.data ?? []).map((row) => row.id));
 
-  return (data ?? []).map((row) =>
+  return (data ?? []).filter((row) => persistedCompanyIds.has(row.canonical_company_id)).map((row) =>
     getCompanyIdentity({
       company_name: row.legal_name || row.normalized_name,
       company_domain: row.normalized_domain,

@@ -25,6 +25,8 @@ export type FollowupSummary = {
   next_eligible_at: string | null;
   eligibility_diagnostics: FollowupEligibilityDiagnostic[];
   min_interval_hours: number;
+  automation_enabled: boolean;
+  automation_mode: "automatic" | "manual";
 };
 
 export type FollowupEligibilityReason =
@@ -255,6 +257,11 @@ export async function getFollowupSummary(campaignId?: string | null): Promise<Fo
     next_eligible_at: nextEligibleAt,
     eligibility_diagnostics: diagnostics,
     min_interval_hours: leadgenProductionConfig.followupMinIntervalHours,
+    automation_enabled: leadgenProductionConfig.followupAutomationEnabled,
+    automation_mode:
+      leadgenProductionConfig.followupAutomationEnabled && !settings.data.followup_paused
+        ? "automatic"
+        : "manual",
   };
 }
 
@@ -379,6 +386,11 @@ export async function approveFollowups(ids?: string[]) {
 
 export async function scheduleFollowupBatch(requestedCount: number) {
   const supabase = createSupabaseServerClient();
+  const resume = await supabase.from("leadgen_outreach_settings").update({
+    followup_paused: false,
+    updated_at: new Date().toISOString(),
+  }).eq("id", "global");
+  if (resume.error) throw resume.error;
   const [daily, approved] = await Promise.all([
     getDailySendStats(),
     supabase.from("leadgen_outreach_queue").select("*").eq("message_kind", "follow_up")
@@ -407,6 +419,58 @@ export async function scheduleFollowupBatch(requestedCount: number) {
       maximumDelaySeconds: maximum, randomDelay: (min, max) => randomInt(min, max + 1) });
   }
   return { queued, daily, remaining_approved: rows.length - queued.length };
+}
+
+export async function runAutomaticFollowupCycle() {
+  if (!leadgenProductionConfig.followupAutomationEnabled) {
+    return { status: "disabled" as const, scanned: false, generated: 0, approved: 0, queued: 0 };
+  }
+
+  const supabase = createSupabaseServerClient();
+  const [settings, scanState] = await Promise.all([
+    supabase.from("leadgen_outreach_settings").select("followup_paused")
+      .eq("id", "global").single(),
+    supabase.from("leadgen_followup_scan_lock").select("updated_at")
+      .eq("id", "global").single(),
+  ]);
+  if (settings.error) throw settings.error;
+  if (scanState.error) throw scanState.error;
+  if (settings.data.followup_paused) {
+    return { status: "manual" as const, scanned: false, generated: 0, approved: 0, queued: 0 };
+  }
+
+  const scanIntervalMs = leadgenProductionConfig.followupAutomationScanMinutes * 60_000;
+  const lastScanAt = Date.parse(scanState.data.updated_at ?? "");
+  const scanDue = !Number.isFinite(lastScanAt) || Date.now() - lastScanAt >= scanIntervalMs;
+  let scan: Awaited<ReturnType<typeof scanFollowupReplies>> | null = null;
+  if (scanDue) {
+    scan = await scanFollowupReplies();
+    if (scan.error) {
+      return {
+        status: "reply_check_unavailable" as const,
+        scanned: true,
+        generated: 0,
+        approved: 0,
+        queued: 0,
+        error: scan.error,
+      };
+    }
+  }
+
+  const generation = await generateEligibleFollowups();
+  const approval = await approveFollowups();
+  const daily = await getDailySendStats();
+  const batch = daily.remaining > 0
+    ? await scheduleFollowupBatch(daily.remaining)
+    : { queued: [] };
+  return {
+    status: "ready" as const,
+    scanned: scanDue,
+    reply_found: scan?.reply_found ?? 0,
+    generated: generation.generated,
+    approved: approval.approved,
+    queued: batch.queued.length,
+  };
 }
 
 export async function assertFollowupSendable(entry: OutreachQueueEntry) {

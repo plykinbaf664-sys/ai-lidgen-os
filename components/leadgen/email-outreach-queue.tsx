@@ -5,6 +5,10 @@ import { Button } from "@/components/ui/button";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
 import { outreachStatusLabels } from "@/lib/leadgen/outreach-status";
 import {
+  isTechnicalEmailArtifact,
+  type OutreachSkippedCompany,
+} from "@/lib/leadgen/outreach-working-set";
+import {
   getCommercialSignalTypeLabel,
   NO_VERIFIED_COMMERCIAL_SIGNAL,
   validateCommercialSignalCandidate,
@@ -13,6 +17,7 @@ import type {
   OutreachOperationalState,
   OutreachQueueEntry,
   OutreachReadiness,
+  LeadgenCampaignDetails,
   ProductionDiscoveryStats,
 } from "@/lib/leadgen/types";
 
@@ -21,11 +26,26 @@ type QueueResponse =
   | {
       success: true;
       entries: OutreachQueueEntry[];
+      working_set: {
+        entries: OutreachQueueEntry[];
+        skipped_companies: OutreachSkippedCompany[];
+        eligible_for_bulk_approval_count: number;
+        counters: {
+          total: number;
+          needs_review: number;
+          approved: number;
+          queued: number;
+          sending: number;
+          sent: number;
+          failed: number;
+        };
+      };
       operational: OutreachOperationalState;
       daily: {
         sent_today: number;
         daily_limit: number;
         daily_remaining: number;
+        queued_for_today: number;
       };
     }
   | ApiError;
@@ -43,11 +63,17 @@ type ImapDiagnostic = {
   mailbox_opened: boolean;
 };
 type BulkPreview = {
+  checked: number;
   eligible_count: number;
+  skipped_count: number;
   approved: number;
   skipped: Record<string, number>;
 };
 type BulkResponse = ({ success: true } & BulkPreview) | ApiError;
+type WorkingSetCounters = Extract<
+  QueueResponse,
+  { success: true }
+>["working_set"]["counters"];
 type BatchResponse =
   | {
       success: true;
@@ -107,6 +133,8 @@ type FollowupResponse =
           remaining_seconds: number;
         }>;
         min_interval_hours: number;
+        automation_enabled: boolean;
+        automation_mode: "automatic" | "manual";
       };
       daily: { sent_today: number; daily_limit: number; daily_remaining: number };
     }
@@ -160,6 +188,17 @@ function formatDate(value?: string | null) {
         timeStyle: "short",
       }).format(new Date(value))
     : "—";
+}
+
+function isTodayInMoscow(value?: string | null) {
+  if (!value) return false;
+  const formatter = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Moscow",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+  return formatter.format(new Date(value)) === formatter.format(new Date());
 }
 
 function formatFollowupWait(value?: string | null) {
@@ -245,14 +284,96 @@ function getOperationalCopy(state: OutreachOperationalState | null) {
   };
 }
 
+function PrimaryOutreachToolbar({
+  counters,
+  foundCompanies,
+  emailCount,
+  eligibleCount,
+  maxBatch,
+  disabled,
+  loading,
+  onApproveAll,
+  onSend,
+  sendState,
+}: {
+  counters: WorkingSetCounters;
+  foundCompanies: number;
+  emailCount: number;
+  eligibleCount: number;
+  maxBatch: number;
+  disabled: boolean;
+  loading: boolean;
+  onApproveAll: () => void;
+  onSend: () => void;
+  sendState: string;
+}) {
+  const progress = Math.min(100, Math.round((emailCount / 20) * 100));
+  return (
+    <section className="dispatch-control-panel initial-dispatch-panel" aria-labelledby="initial-panel-title">
+      <header>
+        <div>
+          <p className="eyebrow">Initial outreach</p>
+          <h3 id="initial-panel-title">Новые компании</h3>
+        </div>
+        <span className="dispatch-panel-badge">Лимит: 20 новых адресатов</span>
+      </header>
+      <dl className="dispatch-metrics">
+        <div><dt>Проверено кандидатов</dt><dd>{foundCompanies}</dd></div>
+        <div><dt>Рабочих email</dt><dd>{emailCount}</dd></div>
+        <div><dt>Первичных писем</dt><dd>{counters.total}</dd></div>
+        <div><dt>К проверке</dt><dd>{counters.needs_review}</dd></div>
+        <div><dt>Одобрено</dt><dd>{counters.approved}</dd></div>
+        <div><dt>В очереди</dt><dd>{counters.queued}</dd></div>
+        <div><dt>Отправлено</dt><dd>{counters.sent}</dd></div>
+      </dl>
+      <div className="dispatch-progress" aria-label={`Рабочие email: ${progress}%`}>
+        <span style={{ width: `${progress}%` }} />
+      </div>
+      <div className="dispatch-panel-actions">
+        <Button
+          disabled={disabled || eligibleCount === 0}
+          loading={loading}
+          onClick={onApproveAll}
+          variant="success"
+        >
+          Одобрить все корректные
+          {eligibleCount > 0 ? ` · ${eligibleCount}` : ""}
+        </Button>
+        <Button
+          disabled={disabled || maxBatch < 1}
+          onClick={onSend}
+          variant="primary"
+        >
+          Отправить первичные письма
+          {maxBatch > 0 ? ` · ${maxBatch}` : ""}
+        </Button>
+      </div>
+      <p className="dispatch-send-state">{sendState}</p>
+    </section>
+  );
+}
+
 export function EmailOutreachQueue({
+  campaignDetails,
   campaignId,
   discoveryStats,
 }: {
+  campaignDetails?: LeadgenCampaignDetails | null;
   campaignId: string | null;
   discoveryStats?: ProductionDiscoveryStats | null;
 }) {
   const [entries, setEntries] = useState<OutreachQueueEntry[]>([]);
+  const [workingSetCounters, setWorkingSetCounters] = useState<WorkingSetCounters>({
+    total: 0,
+    needs_review: 0,
+    approved: 0,
+    queued: 0,
+    sending: 0,
+    sent: 0,
+    failed: 0,
+  });
+  const [skippedCompanies, setSkippedCompanies] = useState<OutreachSkippedCompany[]>([]);
+  const [eligibleForBulkApprovalCount, setEligibleForBulkApprovalCount] = useState(0);
   const [readiness, setReadiness] = useState<OutreachReadiness | null>(null);
   const [operational, setOperational] =
     useState<OutreachOperationalState | null>(null);
@@ -269,6 +390,7 @@ export function EmailOutreachQueue({
   const [showBatchConfirm, setShowBatchConfirm] = useState(false);
   const [batchSize, setBatchSize] = useState(5);
   const [followups, setFollowups] = useState<OutreachQueueEntry[]>([]);
+  const [dailyFollowups, setDailyFollowups] = useState<OutreachQueueEntry[]>([]);
   const [followupSummary, setFollowupSummary] = useState<Extract<FollowupResponse, { success: true }>["summary"] | null>(null);
   const [followupBatchSize, setFollowupBatchSize] = useState(1);
   const [imapDiagnostic, setImapDiagnostic] = useState<ImapDiagnostic | null>(null);
@@ -314,20 +436,26 @@ export function EmailOutreachQueue({
   );
   const metrics = useMemo(
     () => ({
-      total: entries.length,
-      review: entries.filter((entry) =>
-        ["draft", "needs_review"].includes(entry.status),
-      ).length,
-      approved: entries.filter((entry) => entry.status === "approved").length,
-      queued: entries.filter((entry) => entry.status === "queued").length,
-      sending: entries.filter((entry) => entry.status === "sending").length,
-      sent: entries.filter((entry) => entry.status === "sent").length,
-      failed: entries.filter((entry) => entry.status === "failed").length,
-      rejected: entries.filter((entry) => entry.status === "rejected").length,
+      total: workingSetCounters.total,
+      review: workingSetCounters.needs_review,
+      approved: workingSetCounters.approved,
+      queued: workingSetCounters.queued,
+      sending: workingSetCounters.sending,
+      sent: workingSetCounters.sent,
+      failed: workingSetCounters.failed,
+      rejected: 0,
     }),
-    [entries],
+    [workingSetCounters],
   );
-
+  const companiesWithoutOutreach = useMemo(() => {
+    if (!campaignDetails) return [];
+    const skippedIds = new Set(
+      skippedCompanies.map((company) => company.company_id),
+    );
+    return campaignDetails.companies.filter((company) =>
+      skippedIds.has(company.id),
+    );
+  }, [campaignDetails, skippedCompanies]);
   const selectEntry = useCallback((entry: OutreachQueueEntry) => {
     setSelectedId(entry.id);
     setSubject(entry.subject);
@@ -339,10 +467,21 @@ export function EmailOutreachQueue({
     const url = campaignId
       ? `/api/leadgen/followups?campaignId=${encodeURIComponent(campaignId)}`
       : "/api/leadgen/followups";
-    const response = await fetch(url);
+    const [response, dailyResponse] = await Promise.all([
+      fetch(url),
+      campaignId ? fetch("/api/leadgen/followups") : Promise.resolve(null),
+    ]);
     const data = await readJson<FollowupResponse>(response);
     if (!response.ok || !data.success) throw new Error(getError(data as ApiError));
     setFollowups(data.entries);
+    if (dailyResponse) {
+      const dailyData = await readJson<FollowupResponse>(dailyResponse);
+      if (dailyResponse.ok && dailyData.success) {
+        setDailyFollowups(dailyData.entries);
+      }
+    } else {
+      setDailyFollowups(data.entries);
+    }
     setFollowupSummary(data.summary);
     setFollowupBatchSize((value) => Math.max(1, Math.min(value, data.summary.approved || 1, data.daily.daily_remaining || 1)));
   }, [campaignId]);
@@ -362,6 +501,11 @@ export function EmailOutreachQueue({
       throw new Error(getError(queue as ApiError));
     }
     setEntries(queue.entries);
+    setWorkingSetCounters(queue.working_set.counters);
+    setSkippedCompanies(queue.working_set.skipped_companies);
+    setEligibleForBulkApprovalCount(
+      queue.working_set.eligible_for_bulk_approval_count,
+    );
     setOperational(queue.operational);
     setLastUpdated(new Date().toISOString());
     if (ready.success) {
@@ -370,6 +514,7 @@ export function EmailOutreachQueue({
         sent_today: queue.daily.sent_today,
         daily_limit: queue.daily.daily_limit,
         daily_remaining: queue.daily.daily_remaining,
+        queued_for_today: queue.daily.queued_for_today,
       });
     }
     if (selectedId && !queue.entries.some((entry) => entry.id === selectedId)) {
@@ -381,11 +526,9 @@ export function EmailOutreachQueue({
   useEffect(() => {
     let active = true;
     const queueRequest = campaignId
-      ? fetch("/api/leadgen/outreach/queue", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ campaignId }),
-        })
+      ? fetch(
+          `/api/leadgen/outreach?campaignId=${encodeURIComponent(campaignId)}`,
+        )
       : fetch("/api/leadgen/outreach");
     const followupUrl = campaignId
       ? `/api/leadgen/followups?campaignId=${encodeURIComponent(campaignId)}`
@@ -403,6 +546,11 @@ export function EmailOutreachQueue({
         if (!followup.success) throw new Error(getError(followup));
         if (!active) return;
         setEntries(queue.entries);
+        setWorkingSetCounters(queue.working_set.counters);
+        setSkippedCompanies(queue.working_set.skipped_companies);
+        setEligibleForBulkApprovalCount(
+          queue.working_set.eligible_for_bulk_approval_count,
+        );
         setFollowups(followup.entries);
         setFollowupSummary(followup.summary);
         setOperational(queue.operational);
@@ -413,8 +561,13 @@ export function EmailOutreachQueue({
             sent_today: queue.daily.sent_today,
             daily_limit: queue.daily.daily_limit,
             daily_remaining: queue.daily.daily_remaining,
+            queued_for_today: queue.daily.queued_for_today,
           });
         }
+        void loadFollowups().catch(() => {
+          // The campaign queue remains usable if the secondary daily follow-up
+          // aggregation is temporarily unavailable.
+        });
       })
       .catch((caught: unknown) => {
         if (active) setError(caught instanceof Error ? caught.message : "Ошибка загрузки очереди");
@@ -422,7 +575,7 @@ export function EmailOutreachQueue({
     return () => {
       active = false;
     };
-  }, [campaignId, selectEntry]);
+  }, [campaignId, loadFollowups]);
 
   useEffect(() => {
     let active = true;
@@ -438,6 +591,11 @@ export function EmailOutreachQueue({
         }
         if (!active) return;
         setEntries(data.entries);
+        setWorkingSetCounters(data.working_set.counters);
+        setSkippedCompanies(data.working_set.skipped_companies);
+        setEligibleForBulkApprovalCount(
+          data.working_set.eligible_for_bulk_approval_count,
+        );
         setOperational(data.operational);
         setLastUpdated(new Date().toISOString());
         setReadiness((current) =>
@@ -447,6 +605,7 @@ export function EmailOutreachQueue({
                 sent_today: data.daily.sent_today,
                 daily_limit: data.daily.daily_limit,
                 daily_remaining: data.daily.daily_remaining,
+                queued_for_today: data.daily.queued_for_today,
               }
             : current,
         );
@@ -594,6 +753,7 @@ export function EmailOutreachQueue({
     setError(null);
     try {
       await patchEntry(entry.id, {}, `/api/leadgen/outreach/${entry.id}/approve`);
+      await load();
       setMessage("Письмо одобрено и готово к отправке.");
     } catch (caught) {
       setEntries((current) =>
@@ -615,6 +775,7 @@ export function EmailOutreachQueue({
     setError(null);
     try {
       await action();
+      await load();
       setMessage(successMessage);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Не удалось выполнить действие");
@@ -638,6 +799,7 @@ export function EmailOutreachQueue({
         await loadFollowups();
       } else {
         await patchEntry(selectedEntry.id, { subject, body, email });
+        await load();
       }
       setMessage(
         selectedEntry.status === "approved"
@@ -761,9 +923,41 @@ export function EmailOutreachQueue({
     readiness?.batch_limit ?? 20,
     metrics.approved,
   );
-  const operationCopy = getOperationalCopy(operational);
-  const activeFilter =
-    filters.find((item) => item.id === filter) ?? filters[0];
+  const followupMaxBatch = Math.min(
+    followupSummary?.approved ?? 0,
+    readiness?.daily_remaining ?? 0,
+  );
+  const generatedFollowupsCount = followups.filter(
+    (entry) => !["skipped", "cancelled"].includes(entry.status),
+  ).length;
+  const followupSentToday = dailyFollowups.filter(
+    (entry) => entry.status === "sent" && isTodayInMoscow(entry.sent_at),
+  ).length;
+  const initialSentToday = Math.max(
+    0,
+    (readiness?.sent_today ?? 0) - followupSentToday,
+  );
+  const followupsQueuedToday = dailyFollowups.filter(
+    (entry) =>
+      entry.status === "sending" ||
+      (entry.status === "queued" &&
+        isTodayInMoscow(entry.next_attempt_at ?? entry.scheduled_at)),
+  ).length;
+  const initialQueuedToday = Math.max(
+    0,
+    (readiness?.queued_for_today ?? 0) - followupsQueuedToday,
+  );
+  const initialPlannedToday =
+    initialSentToday + initialQueuedToday;
+  const followupPlannedToday =
+    followupSentToday + followupsQueuedToday;
+  const initialDailyLimit = readiness?.daily_limit ?? 20;
+  const initialRemainingToday = readiness?.daily_remaining ?? 0;
+  const followupRemainingToday = followupsQueuedToday;
+  const totalSentToday = initialSentToday + followupSentToday;
+  const validInitialEmailCount = entries.filter(
+    (entry) => !isTechnicalEmailArtifact(entry.email),
+  ).length;
   const nextQueued = entries
     .filter((entry) => entry.status === "queued")
     .sort(
@@ -773,6 +967,30 @@ export function EmailOutreachQueue({
           right.next_attempt_at ?? right.scheduled_at ?? right.created_at,
         ),
     )[0];
+  const initialSendState =
+    metrics.approved > 0 && maxBatch === 0
+      ? (readiness?.daily_remaining ?? 0) < 1
+        ? `Одобрено ${metrics.approved}, но в очередь не поставлено: дневной лимит ${readiness?.sent_today ?? 0} из ${readiness?.daily_limit ?? 20} исчерпан.`
+        : readiness?.queue_paused
+          ? `Одобрено ${metrics.approved}, отправка ждёт снятия очереди с паузы.`
+          : `Одобрено ${metrics.approved}, но сейчас постановка в очередь недоступна.`
+      : metrics.queued + metrics.sending > 0
+        ? `Очередь активна: ${metrics.queued + metrics.sending}. Следующее письмо — ${nextQueued ? formatDate(nextQueued.next_attempt_at ?? nextQueued.scheduled_at) : "обрабатывается"}.`
+        : metrics.approved > 0
+          ? `Готово к постановке в очередь: ${Math.min(metrics.approved, maxBatch)}.`
+          : metrics.sent > 0
+            ? `Отправлено в этой кампании: ${metrics.sent}.`
+            : "После одобрения здесь появится доступное количество для отправки.";
+  const operationCopy =
+    metrics.approved > 0 && (readiness?.daily_remaining ?? 0) < 1
+      ? {
+          title: "Лимит на сегодня исчерпан",
+          detail:
+            "Одобренные письма сохранены, но не стоят в очереди. Постановка станет доступна после обновления дневного лимита.",
+        }
+      : getOperationalCopy(operational);
+  const activeFilter =
+    filters.find((item) => item.id === filter) ?? filters[0];
   const dailyProgress = Math.min(
     100,
     Math.round(
@@ -814,16 +1032,134 @@ export function EmailOutreachQueue({
             Проверка, очередь и результат отправки в одном месте.
           </p>
         </div>
-        <div className="outreach-toolbar-actions">
-          <Button
-            disabled={!campaignId || metrics.review === 0 || pending !== null}
-            loading={pending === "bulk-preview" || pending === "bulk-execute"}
-            onClick={previewBulkApprove}
-            variant="success"
-          >
-            Одобрить все корректные
-          </Button>
-        </div>
+      </div>
+
+      <div className="daily-dispatch-panels">
+        <PrimaryOutreachToolbar
+          counters={workingSetCounters}
+          disabled={!campaignId || pending !== null}
+          eligibleCount={eligibleForBulkApprovalCount}
+          emailCount={validInitialEmailCount}
+          foundCompanies={
+            discoveryStats?.qualified_candidates_found ??
+            discoveryStats?.new_unique_companies ??
+            entries.length + skippedCompanies.length
+          }
+          loading={pending === "bulk-preview" || pending === "bulk-execute"}
+          maxBatch={maxBatch}
+          onApproveAll={previewBulkApprove}
+          onSend={() => {
+            setBatchSize(Math.max(1, Math.min(batchSize, maxBatch)));
+            setShowBatchConfirm(true);
+          }}
+          sendState={initialSendState}
+        />
+
+        <section className="dispatch-control-panel followup-dispatch-panel" aria-labelledby="followup-summary-title">
+          <header>
+            <div>
+              <p className="eyebrow">Follow-up</p>
+              <h3 id="followup-summary-title">Дожимы</h3>
+            </div>
+            <span className={`dispatch-panel-badge ${readiness?.imap_connected ? "ready" : "warning"}`}>
+              {readiness?.imap_connected ? "Ответы проверяются" : "IMAP недоступен"}
+            </span>
+          </header>
+          <dl className="dispatch-metrics">
+            <div><dt>Кандидатов</dt><dd>{followupSummary?.eligibility_diagnostics.length ?? 0}</dd></div>
+            <div><dt>Готово дожимов</dt><dd>{generatedFollowupsCount}</dd></div>
+            <div><dt>К проверке</dt><dd>{followupSummary?.needs_review ?? 0}</dd></div>
+            <div><dt>Одобрено</dt><dd>{followupSummary?.approved ?? 0}</dd></div>
+            <div><dt>В очереди</dt><dd>{followupSummary?.queued ?? 0}</dd></div>
+            <div><dt>Отправлено</dt><dd>{followupSummary?.sent ?? 0}</dd></div>
+          </dl>
+          <div className="dispatch-progress" aria-label={`Готово дожимов: ${generatedFollowupsCount}`}>
+            <span
+              style={{
+                width: `${Math.min(
+                  100,
+                  Math.round(
+                    (generatedFollowupsCount /
+                      Math.max(1, followupSummary?.eligibility_diagnostics.length ?? 0)) *
+                      100,
+                  ),
+                )}%`,
+              }}
+            />
+          </div>
+          <p className="dispatch-panel-note">
+            Отдельный поток. Не входит в лимит 20 новых адресатов; доступность отправки определяет очередь.
+          </p>
+          <div className="dispatch-panel-actions">
+            <Button
+              disabled={pending !== null || !followupSummary?.eligible}
+              loading={pending === "followup-generate"}
+              onClick={() => runFollowupAction("generate")}
+              variant="secondary"
+            >
+              Сформировать дожимы
+            </Button>
+            <Button
+              disabled={pending !== null || !followupSummary?.needs_review}
+              loading={pending === "followup-bulk-approve"}
+              onClick={() => runFollowupAction("bulk-approve")}
+              variant="success"
+            >
+              Одобрить все
+            </Button>
+            <Button
+              disabled={
+                pending !== null ||
+                followupMaxBatch < 1 ||
+                !readiness?.imap_connected
+              }
+              loading={pending === "followup-batch"}
+              onClick={() =>
+                runFollowupAction("batch", {
+                  count: followupMaxBatch,
+                })
+              }
+              variant="primary"
+            >
+              Отправить дожимы
+              {followupMaxBatch > 0 ? ` · ${followupMaxBatch}` : ""}
+            </Button>
+          </div>
+        </section>
+
+        <section className="dispatch-control-panel today-dispatch-panel" aria-labelledby="today-summary-title">
+          <header>
+            <div>
+              <p className="eyebrow">Оперативная сводка</p>
+              <h3 id="today-summary-title">Сегодня</h3>
+            </div>
+            <span className="dispatch-panel-badge ready">Москва</span>
+          </header>
+          <div className="today-message-groups">
+            <div>
+              <h4>Новые письма</h4>
+              <dl>
+                <div><dt>Лимит</dt><dd>{initialDailyLimit}</dd></div>
+                <div><dt>Запланировано</dt><dd>{initialPlannedToday}</dd></div>
+                <div><dt>Отправлено</dt><dd>{initialSentToday}</dd></div>
+                <div><dt>Осталось</dt><dd>{initialRemainingToday}</dd></div>
+              </dl>
+            </div>
+            <div>
+              <h4>Дожимы</h4>
+              <dl>
+                <div><dt>Запланировано</dt><dd>{followupPlannedToday}</dd></div>
+                <div><dt>Отправлено</dt><dd>{followupSentToday}</dd></div>
+                <div><dt>Осталось в очереди</dt><dd>{followupRemainingToday}</dd></div>
+              </dl>
+            </div>
+          </div>
+          <div className="today-total">
+            <span>Всего отправлено сегодня</span>
+            <strong>{totalSentToday}</strong>
+            <small>Первичных: {initialSentToday} · Дожимов: {followupSentToday}</small>
+          </div>
+        </section>
       </div>
 
       {(metrics.queued > 0 ||
@@ -895,11 +1231,13 @@ export function EmailOutreachQueue({
       {bulkPreview ? (
         <div className="outreach-confirm">
           <h3>Подтверждение массового одобрения</h3>
+          <p>Проверено: {bulkPreview.checked}</p>
           <p><strong>Будет одобрено: {bulkPreview.eligible_count}</strong></p>
-          <p>Без корректного письма: {bulkPreview.skipped.invalid_message ?? 0}</p>
+          <p>Пропущено: {bulkPreview.skipped_count}</p>
+          <p>Без корректного письма: {(bulkPreview.skipped.missing_email ?? 0) + (bulkPreview.skipped.missing_subject ?? 0) + (bulkPreview.skipped.missing_body ?? 0)}</p>
           <p>Уже писали раньше: {bulkPreview.skipped.already_contacted ?? 0}</p>
           <p>Stop-list: {bulkPreview.skipped.stop_list ?? 0}</p>
-          <p>Не прошли quality gate: {bulkPreview.skipped.quality_gate ?? 0}</p>
+          <p>Не прошли quality gate: {bulkPreview.skipped.quality_gate_failed ?? 0}</p>
           <div>
             <Button onClick={() => setBulkPreview(null)} variant="ghost">Отмена</Button>
             <Button disabled={pending !== null} loading={pending === "bulk-approve"} onClick={executeBulkApprove} variant="primary">
@@ -961,7 +1299,7 @@ export function EmailOutreachQueue({
         </div>
       ) : null}
 
-      <section className="followup-console" aria-labelledby="followup-title">
+      <section className="followup-console legacy-followup-console" aria-hidden="true" aria-labelledby="followup-title">
         <div className="followup-console-heading">
           <div>
             <p className="eyebrow">Follow-up Engine</p>
@@ -971,6 +1309,12 @@ export function EmailOutreachQueue({
             IMAP {readiness?.imap_connected ? "подключён" : readiness?.imap_configured ? "ошибка" : "не настроен"}
           </span>
         </div>
+        <p className="muted">
+          Режим дожимов: {followupSummary?.automation_mode === "automatic"
+            ? "автоматический"
+            : "ручной контроль"}
+          {!followupSummary?.automation_enabled ? " · автоматизация выключена в конфигурации" : ""}
+        </p>
         <dl className="followup-metrics">
           <div><dt>Проверить ответы</dt><dd>{followupSummary?.pending_reply_check ?? 0}</dd></div>
           <div><dt>Ответ найден</dt><dd>{followupSummary?.reply_found ?? 0}</dd></div>
@@ -1017,7 +1361,9 @@ export function EmailOutreachQueue({
           <Button disabled={pending !== null} loading={pending === "followup-scan"} onClick={() => runFollowupAction("scan")} variant="secondary">Проверить входящие ответы</Button>
           <Button disabled={pending !== null || !followupSummary?.eligible} loading={pending === "followup-generate"} onClick={() => runFollowupAction("generate")} variant="secondary">Сгенерировать дожимы</Button>
           <Button disabled={pending !== null || !followupSummary?.needs_review} loading={pending === "followup-bulk-approve"} onClick={() => runFollowupAction("bulk-approve")} variant="success">Одобрить все корректные</Button>
-          <Button disabled={pending !== null} onClick={() => controlFollowupQueue(followupSummary?.queue_paused ? "resume" : "pause")} variant="ghost">{followupSummary?.queue_paused ? "Продолжить очередь" : "Поставить очередь на паузу"}</Button>
+          {followupSummary?.automation_enabled ? (
+            <Button disabled={pending !== null} onClick={() => controlFollowupQueue(followupSummary.queue_paused ? "resume" : "pause")} variant="ghost">{followupSummary.queue_paused ? "Включить автоматический режим" : "Перейти в ручной режим"}</Button>
+          ) : null}
           {(followupSummary?.queued ?? 0) > 0 ? <Button disabled={pending !== null} onClick={() => controlFollowupQueue("cancel")} variant="danger">Отменить неотправленные</Button> : null}
           {(followupSummary?.failed ?? 0) > 0 ? <Button disabled={pending !== null} onClick={() => controlFollowupQueue("retry")} variant="secondary">Повторить ошибочные</Button> : null}
         </div>
@@ -1034,6 +1380,99 @@ export function EmailOutreachQueue({
         ) : null}
       </section>
 
+      {companiesWithoutOutreach.length > 0 ? (
+        <details className="outreach-missing-contacts">
+          <summary className="outreach-list-heading">
+            <h3>Пропущено без контакта</h3>
+            <span>{companiesWithoutOutreach.length}</span>
+          </summary>
+          <div className="outreach-lead-cards">
+            {companiesWithoutOutreach.map((company) => {
+              const skippedCompany = skippedCompanies.find(
+                (item) => item.company_id === company.id,
+              );
+              const signal = campaignDetails?.signals.find((item) => item.company_id === company.id);
+              const officialWebsite =
+                typeof company.metadata.official_website === "string"
+                  ? company.metadata.official_website
+                  : company.company_domain
+                    ? `https://${company.company_domain}`
+                    : null;
+              const contactDiscovery =
+                company.metadata.contact_discovery &&
+                typeof company.metadata.contact_discovery === "object"
+                  ? company.metadata.contact_discovery as Record<string, unknown>
+                  : null;
+              const officialSiteMissing =
+                skippedCompany?.reason === "official_site_missing" ||
+                skippedCompany?.reason === "site_unreachable";
+              const pageAudit = Array.isArray(contactDiscovery?.email_pages_audit)
+                ? contactDiscovery.email_pages_audit as Array<Record<string, unknown>>
+                : [];
+              const openedPages = pageAudit.filter((page) => page.opened === true);
+              const forms = Array.isArray(contactDiscovery?.contact_forms_found)
+                ? contactDiscovery.contact_forms_found as string[]
+                : [];
+              const finalReason =
+                typeof contactDiscovery?.email_final_reason === "string"
+                  ? contactDiscovery.email_final_reason
+                  : null;
+              return (
+                <article className="outreach-lead-card outreach-card-paused" key={company.id}>
+                  <div className="outreach-card-main">
+                    <span className="outreach-card-heading">
+                      <strong>{company.company_name}</strong>
+                      <span className="outreach-status outreach-status-paused">
+                        {officialSiteMissing ? "Сайт не найден" : "Email не найден"}
+                      </span>
+                    </span>
+                    <dl className="lead-card-summary">
+                      <div><dt>Коммерческий сигнал</dt><dd>{signal?.signal_detail || NO_VERIFIED_COMMERCIAL_SIGNAL}</dd></div>
+                      <div>
+                        <dt>Источник сигнала</dt>
+                        <dd>{signal?.source_url ? <a href={signal.source_url} rel="noreferrer" target="_blank">{signal.signal_source_label || "Публичный источник"}</a> : "—"}</dd>
+                      </div>
+                      <div>
+                        <dt>Официальный сайт</dt>
+                        <dd>{officialWebsite ? <a href={officialWebsite} rel="noreferrer" target="_blank">{officialWebsite}</a> : "Официальный сайт определить не удалось."}</dd>
+                      </div>
+                      <div><dt>Источник контактов</dt><dd>{officialWebsite || "—"}</dd></div>
+                      <div><dt>Email</dt><dd>{officialSiteMissing ? "Официальный сайт определить не удалось." : "Email не найден на официальном сайте."}</dd></div>
+                      <div><dt>Причина пропуска</dt><dd>{skippedCompany?.reason ?? "email_not_found"}</dd></div>
+                      {!officialSiteMissing ? (
+                        <div>
+                          <dt>Проверка</dt>
+                          <dd>
+                            Просканировано: {openedPages.length} из {pageAudit.length} страниц
+                            {forms.length > 0 ? ` · доступна форма обратной связи` : ""}
+                          </dd>
+                        </div>
+                      ) : null}
+                      <div><dt>Следующее действие</dt><dd>Компания сохранена; письмо и дожим не создаются без реального email.</dd></div>
+                    </dl>
+                    {pageAudit.length > 0 ? (
+                      <details className="lead-card-diagnostics">
+                        <summary>Техническая диагностика Email Discovery</summary>
+                        <p>Итог: {finalReason || "email_not_found"}</p>
+                        <ul>
+                          {pageAudit.map((page, index) => (
+                            <li key={`${String(page.requestedUrl)}-${index}`}>
+                              {String(page.finalUrl || page.requestedUrl || "URL")}
+                              {" · "}
+                              {page.opened ? `HTTP ${String(page.status)}` : String(page.error || "не открыта")}
+                            </li>
+                          ))}
+                        </ul>
+                      </details>
+                    ) : null}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </details>
+      ) : null}
+
       {entries.length === 0 ? (
         <p className="empty-state">Писем пока нет.</p>
       ) : (
@@ -1048,6 +1487,11 @@ export function EmailOutreachQueue({
             ) : (
               <div className="outreach-lead-cards">
                 {visibleEntries.map((entry) => (
+                  (() => {
+                    const sourceContact = campaignDetails?.contacts.find(
+                      (contact) => contact.id === entry.contact_id,
+                    );
+                    return (
                   <article
                     className={`outreach-lead-card outreach-card-${entry.status} ${
                       entry.id === selectedEntry?.id ? "selected" : ""
@@ -1064,6 +1508,10 @@ export function EmailOutreachQueue({
                       {entry.company_website ? <a href={entry.company_website} rel="noreferrer" target="_blank">{entry.company_website}</a> : null}
                       <dl className="lead-card-summary">
                         <div><dt>Коммерческий сигнал</dt><dd>{validateCommercialSignalCandidate({ text: entry.signal.detail, sourceUrl: entry.signal.source_url, sourceTitle: entry.signal.title, confidence: entry.signal.confidence_score, pipelineSignalType: entry.signal.type })?.summary ?? NO_VERIFIED_COMMERCIAL_SIGNAL}</dd></div>
+                        <div><dt>Источник сигнала</dt><dd>{entry.signal.source_url ? <a href={entry.signal.source_url} rel="noreferrer" target="_blank">Публичный источник</a> : "—"}</dd></div>
+                        <div><dt>Источник контакта</dt><dd>{entry.email_source_url ? <a href={entry.email_source_url} rel="noreferrer" target="_blank">{entry.email_source_label || entry.email_source_url}</a> : "—"}</dd></div>
+                        <div><dt>Тип email</dt><dd>{typeof sourceContact?.metadata.email_kind === "string" ? sourceContact.metadata.email_kind : entry.readiness}</dd></div>
+                        <div><dt>Статус проверки</dt><dd>{sourceContact?.metadata.email_mx_verified === true ? "Домен подтверждён, MX найден" : "Домен подтверждён"}</dd></div>
                         <div><dt>Контакт</dt><dd>{entry.recipient_name || entry.recipient_role || "Общий вход"} · {entry.email || "email не найден"}</dd></div>
                         <div><dt>Тема</dt><dd>{entry.subject || "Не подготовлена"}</dd></div>
                         <div><dt>Письмо</dt><dd className="lead-copy-preview">{entry.body || "Не подготовлено"}</dd></div>
@@ -1124,12 +1572,21 @@ export function EmailOutreachQueue({
                       </div>
                     ) : null}
                     {entry.status === "approved" ? (
-                      <div className="lead-card-actions"><span className="action-confirmed">✓ Одобрено</span><Button onClick={() => selectEntry(entry)} variant="secondary">Редактировать</Button><Button disabled={pending !== null} loading={pending === entry.id} onClick={() => runEntryAction(entry.id, () => patchEntry(entry.id, { status: "needs_review", note: "Одобрение отменено пользователем" }), "Одобрение отменено.")} variant="danger">Отменить одобрение</Button></div>
+                      <>
+                        <p className="approved-delivery-state">
+                          {(readiness?.daily_remaining ?? 0) < 1
+                            ? `Одобрено, но не в очереди. Сегодня отправлено ${readiness?.sent_today ?? 0} из ${readiness?.daily_limit ?? 20}; письмо сможет быть поставлено в очередь после обновления дневного лимита.`
+                            : "Одобрено и готово к постановке в очередь."}
+                        </p>
+                        <div className="lead-card-actions"><span className="action-confirmed">✓ Одобрено</span><Button onClick={() => selectEntry(entry)} variant="secondary">Редактировать</Button><Button disabled={pending !== null} loading={pending === entry.id} onClick={() => runEntryAction(entry.id, () => patchEntry(entry.id, { status: "needs_review", note: "Одобрение отменено пользователем" }), "Одобрение отменено.")} variant="danger">Отменить одобрение</Button></div>
+                      </>
                     ) : null}
                     {entry.status === "queued" ? <div className="lead-card-actions"><Button disabled={pending !== null} loading={pending === entry.id} onClick={() => runEntryAction(entry.id, () => patchEntry(entry.id, {}, `/api/leadgen/outreach/${entry.id}/cancel`), "Письмо снято с очереди и осталось одобренным.")} variant="danger">Отменить до отправки</Button></div> : null}
                     {entry.status === "failed" ? <div className="lead-card-actions"><Button disabled={pending !== null} loading={pending === entry.id} onClick={() => runEntryAction(entry.id, () => patchEntry(entry.id, {}, `/api/leadgen/outreach/${entry.id}/retry`), "Ошибка сброшена. Письмо снова одобрено.")} variant="success">Повторить</Button></div> : null}
                     {entry.quality_gate_passed !== true && ["draft", "needs_review"].includes(entry.status) ? <p className="copy-quality-warning">Требуется ручная проверка текста: quality gate не пройден.</p> : null}
                   </article>
+                    );
+                  })()
                 ))}
               </div>
             )}
@@ -1139,7 +1596,7 @@ export function EmailOutreachQueue({
             <div className="delivery-dashboard-heading">
               <div>
                 <p className="eyebrow">Текущая картина</p>
-                <h3>Отправки</h3>
+                <h3>Контроль списка</h3>
               </div>
               <span className={`delivery-live-state delivery-live-${operational?.state ?? "empty"}`}>
                 {operationCopy.title}

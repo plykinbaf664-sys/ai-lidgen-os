@@ -8,11 +8,15 @@ import {
   markPersistentOutreachEntry,
   rejectPreviouslyContactedQueuedItems,
 } from "@/lib/leadgen/outreach-storage";
-import { assertFollowupSendable } from "@/lib/leadgen/followup-storage";
+import {
+  assertFollowupSendable,
+  runAutomaticFollowupCycle,
+} from "@/lib/leadgen/followup-storage";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
 
 export async function processNextOutreachItem() {
   await rejectPreviouslyContactedQueuedItems();
+  await runAutomaticFollowupCycle();
   if (await getQueuePaused()) {
     return { status: "paused" as const, entry: null };
   }

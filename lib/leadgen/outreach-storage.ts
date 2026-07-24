@@ -11,6 +11,16 @@ import {
   getOutreachIdempotencyKey,
   isEmailReadyContact,
 } from "@/lib/leadgen/outreach-queue";
+import {
+  countOutreachStatuses,
+  getBulkApprovalBaseReason,
+  getConfirmedOfficialWebsite,
+  getOutreachSkipReason,
+  isTechnicalEmailArtifact,
+  isCanonicalOutreachWorkItem,
+  type BulkApprovalSkipReason,
+  type OutreachSkippedCompany,
+} from "@/lib/leadgen/outreach-working-set";
 import { createSupabaseServerClient } from "@/lib/supabase/client";
 import type {
   LeadgenCompany,
@@ -202,8 +212,42 @@ async function readCampaignSources(campaignId: string) {
   };
 }
 
+async function quarantineTechnicalOutreachArtifacts(campaignId?: string | null) {
+  const supabase = createSupabaseServerClient();
+  let query = supabase
+    .from("leadgen_outreach_queue")
+    .select("id,recipient_email")
+    .eq("message_kind", "initial")
+    .in("status", ["draft", "needs_review", "approved", "failed"]);
+  if (campaignId) query = query.eq("campaign_id", campaignId);
+  const result = await query;
+  if (result.error) throw result.error;
+
+  const invalidIds = (result.data ?? [])
+    .filter((row) => isTechnicalEmailArtifact(row.recipient_email))
+    .map((row) => row.id);
+  if (invalidIds.length === 0) return 0;
+
+  const update = await supabase
+    .from("leadgen_outreach_queue")
+    .update({
+      status: "rejected",
+      approved_at: null,
+      queued_at: null,
+      scheduled_at: null,
+      next_attempt_at: null,
+      last_error: "Технический адрес из кода страницы, не email компании.",
+      updated_at: new Date().toISOString(),
+    })
+    .in("id", invalidIds)
+    .in("status", ["draft", "needs_review", "approved", "failed"]);
+  if (update.error) throw update.error;
+  return invalidIds.length;
+}
+
 export async function syncOutreachQueue(campaignId: string) {
   const supabase = createSupabaseServerClient();
+  await quarantineTechnicalOutreachArtifacts(campaignId);
   const { contacts, leads, companies, signals } =
     await readCampaignSources(campaignId);
   const leadsById = new Map(leads.map((item) => [item.id, item]));
@@ -211,16 +255,25 @@ export async function syncOutreachQueue(campaignId: string) {
   const signalsByLeadId = new Map(signals.map((item) => [item.lead_id, item]));
   const seenEmails = new Set<string>();
 
-  for (const contact of contacts.filter(isEmailReadyContact)) {
+  for (const contact of contacts.filter(
+    (item) =>
+      isEmailReadyContact(item) &&
+      !isTechnicalEmailArtifact(item.email ?? ""),
+  )) {
     if (
       seenEmails.size >= leadgenProductionConfig.dailyLeadLimit
     ) {
       break;
     }
+    const company = companiesById.get(contact.company_id) ?? null;
+    const officialWebsite = company
+      ? getConfirmedOfficialWebsite(company)
+      : null;
+    if (!officialWebsite) continue;
     const entry = buildOutreachQueueEntry({
       contact,
       lead: leadsById.get(contact.lead_id) ?? null,
-      company: companiesById.get(contact.company_id) ?? null,
+      company,
       signal: signalsByLeadId.get(contact.lead_id) ?? null,
     });
     if (!entry) continue;
@@ -258,11 +311,7 @@ export async function syncOutreachQueue(campaignId: string) {
         messageVersion: 1,
       }),
       metadata: {
-        company_website:
-          companiesById.get(contact.company_id)?.source_url ??
-          (companiesById.get(contact.company_id)?.company_domain
-            ? `https://${companiesById.get(contact.company_id)?.company_domain}`
-            : null),
+        company_website: officialWebsite,
         email_type: entry.email_type,
         email_source_url: entry.email_source_url,
         email_source_label: entry.email_source_label,
@@ -295,10 +344,105 @@ export async function getOutreachQueue({
     throw error;
   }
   let position = 0;
-  return ((data ?? []) as QueueRow[]).map((row) => {
-    const queuePosition = row.status === "queued" ? ++position : null;
-    return rowToEntry(row, queuePosition);
-  });
+  return ((data ?? []) as QueueRow[])
+    .map((row) => rowToEntry(row))
+    .filter(isCanonicalOutreachWorkItem)
+    .map((entry) => ({
+      ...entry,
+      queue_position: entry.status === "queued" ? ++position : null,
+    }));
+}
+
+async function getBulkApprovalPlan(entries: OutreachQueueEntry[]) {
+  const supabase = createSupabaseServerClient();
+  const [sentResult, stopListResult] = await Promise.all([
+    supabase
+      .from("leadgen_outreach_queue")
+      .select("normalized_recipient_email, company_id")
+      .eq("status", "sent")
+      .eq("message_kind", "initial"),
+    supabase
+      .from("leadgen_email_stop_list")
+      .select("normalized_email")
+      .eq("is_active", true),
+  ]);
+  if (sentResult.error) throw sentResult.error;
+  if (stopListResult.error) throw stopListResult.error;
+
+  const sentEmails = new Set(
+    (sentResult.data ?? []).map((row) => row.normalized_recipient_email),
+  );
+  const sentCompanyIds = new Set(
+    (sentResult.data ?? [])
+      .map((row) => row.company_id)
+      .filter((companyId): companyId is string => Boolean(companyId)),
+  );
+  const stoppedEmails = new Set(
+    (stopListResult.data ?? []).map((row) => row.normalized_email),
+  );
+  const reasons = new Map<string, BulkApprovalSkipReason | null>();
+  for (const entry of entries) {
+    const normalizedEmail = normalizeRecipientEmail(entry.email);
+    reasons.set(
+      entry.id,
+      sentEmails.has(normalizedEmail) ||
+        (entry.company_id ? sentCompanyIds.has(entry.company_id) : false)
+        ? "already_contacted"
+        : stoppedEmails.has(normalizedEmail)
+          ? "stop_list"
+          : getBulkApprovalBaseReason(entry),
+    );
+  }
+  return {
+    eligible: entries.filter((entry) => reasons.get(entry.id) === null),
+    reasons,
+  };
+}
+
+export async function getOutreachWorkingSet(campaignId: string) {
+  const [{ contacts, companies }, entries] = await Promise.all([
+    readCampaignSources(campaignId),
+    getOutreachQueue({ campaignId }),
+  ]);
+  const bulkApprovalPlan = await getBulkApprovalPlan(entries);
+  const companyIdsWithEmail = new Set(
+    contacts
+      .filter(
+        (contact) =>
+          isEmailReadyContact(contact) &&
+          !isTechnicalEmailArtifact(contact.email ?? ""),
+      )
+      .map((contact) => contact.company_id),
+  );
+  const companyIdsWithOutreach = new Set(
+    entries
+      .map((entry) => entry.company_id)
+      .filter((companyId): companyId is string => Boolean(companyId)),
+  );
+  const skippedCompanies: OutreachSkippedCompany[] = companies.flatMap(
+    (company) => {
+      const reason = getOutreachSkipReason(
+        company,
+        companyIdsWithEmail.has(company.id),
+        companyIdsWithOutreach.has(company.id),
+      );
+      return reason
+        ? [{
+            company_id: company.id,
+            company_name: company.company_name,
+            reason,
+            official_website_url: getConfirmedOfficialWebsite(company),
+          }]
+        : [];
+    },
+  );
+
+  return {
+    entries,
+    skipped_companies: skippedCompanies,
+    counters: countOutreachStatuses(entries),
+    eligible_for_bulk_approval_count: bulkApprovalPlan.eligible.length,
+  };
 }
 
 export async function updateOutreachQueueEntry({
@@ -439,51 +583,26 @@ export async function approveOutreachEntry(id: string) {
 export async function bulkApproveOutreach(campaignId: string, execute: boolean) {
   await syncOutreachQueue(campaignId);
   const entries = await getOutreachQueue({ campaignId });
-  const supabase = createSupabaseServerClient();
-  const sentResult = await supabase
-    .from("leadgen_outreach_queue")
-    .select("normalized_recipient_email")
-    .eq("status", "sent")
-    .eq("message_kind", "initial");
-  if (sentResult.error) throw sentResult.error;
-  const stopListResult = await supabase
-    .from("leadgen_email_stop_list")
-    .select("normalized_email")
-    .eq("is_active", true);
-  if (stopListResult.error) throw stopListResult.error;
-  const sentEmails = new Set(
-    (sentResult.data ?? []).map((row) => row.normalized_recipient_email),
+  const { eligible, reasons } = await getBulkApprovalPlan(entries);
+  const skipped = [...reasons.values()].reduce<Record<string, number>>(
+    (result, reason) => {
+      if (reason) result[reason] = (result[reason] ?? 0) + 1;
+      return result;
+    },
+    {},
   );
-  const stoppedEmails = new Set(
-    (stopListResult.data ?? []).map((row) => row.normalized_email),
-  );
-  const eligible = entries.filter(
-    (entry) =>
-      ["draft", "needs_review", "paused", "failed"].includes(entry.status) &&
-      Boolean(entry.email && entry.subject.trim() && entry.body.trim()) &&
-      entry.quality_gate_passed === true &&
-      !sentEmails.has(normalizeRecipientEmail(entry.email)) &&
-      !stoppedEmails.has(normalizeRecipientEmail(entry.email)),
-  );
-  const skipped = {
-    invalid_message: entries.filter(
-      (entry) => !entry.email || !entry.subject.trim() || !entry.body.trim(),
-    ).length,
-    already_contacted: entries.filter((entry) =>
-      sentEmails.has(normalizeRecipientEmail(entry.email)),
-    ).length,
-    stop_list: entries.filter((entry) =>
-      stoppedEmails.has(normalizeRecipientEmail(entry.email)),
-    ).length,
-    quality_gate: entries.filter(
-      (entry) => entry.quality_gate_passed !== true,
-    ).length,
-    invalid_status: entries.length - eligible.length,
-  };
   if (execute) {
-    for (const entry of eligible) await approveOutreachEntry(entry.id);
+    for (const entry of eligible) {
+      await approveOutreachEntry(entry.id);
+    }
   }
-  return { eligible_count: eligible.length, skipped, approved: execute ? eligible.length : 0 };
+  return {
+    checked: entries.length,
+    eligible_count: eligible.length,
+    skipped_count: entries.length - eligible.length,
+    skipped,
+    approved: execute ? eligible.length : 0,
+  };
 }
 
 export async function regenerateLatestUnsentOutreach(execute: boolean) {
@@ -643,6 +762,7 @@ export async function scheduleApprovedBatch({
   randomDelay?: (min: number, max: number) => number;
 }) {
   const supabase = createSupabaseServerClient();
+  await quarantineTechnicalOutreachArtifacts(campaignId);
   const stats = await getDailySendStats();
   let approvedCountQuery = supabase
     .from("leadgen_outreach_queue")

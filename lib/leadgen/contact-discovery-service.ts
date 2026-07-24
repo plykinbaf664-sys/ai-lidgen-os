@@ -710,6 +710,12 @@ export class ContactDiscoveryService {
     const emailStopReason =
       providerResults.find((result) => result.email_stop_reason)
         ?.email_stop_reason ?? null;
+    const websiteResult =
+      providerResults.find((result) => result.official_website_status === "confirmed") ??
+      providerResults.find((result) => result.official_website_status) ??
+      null;
+    const emailDiagnosticResult =
+      providerResults.find((result) => result.email_pages_audit) ?? null;
     const contacts = applyPeopleDiscoveryContext(
       input,
       dedupeContacts(
@@ -793,6 +799,23 @@ export class ContactDiscoveryService {
 
     return {
       contacts: contactsWithStatus,
+      official_website: websiteResult?.official_website ?? null,
+      resolved_official_domain: websiteResult?.resolved_official_domain ?? null,
+      official_website_status:
+        websiteResult?.official_website_status ?? "not_found",
+      official_website_source_url:
+        websiteResult?.official_website_source_url ?? null,
+      official_website_confidence:
+        websiteResult?.official_website_confidence ?? 0,
+      official_website_reason:
+        websiteResult?.official_website_reason ?? "official_site_not_found",
+      email_pages_audit: emailDiagnosticResult?.email_pages_audit ?? [],
+      ranked_email_candidates:
+        emailDiagnosticResult?.ranked_email_candidates ?? [],
+      contact_forms_found:
+        emailDiagnosticResult?.contact_forms_found ?? [],
+      email_final_reason:
+        emailDiagnosticResult?.email_final_reason ?? "official_site_missing",
       best_available_entry:
         contactsWithStatus.find((contact) => contact.is_primary) ??
         bestAvailableEntry,

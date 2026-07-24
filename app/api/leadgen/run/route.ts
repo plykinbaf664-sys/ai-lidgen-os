@@ -16,7 +16,11 @@ import {
 } from "@/lib/leadgen/search/leadgen-search-provider";
 import type { SignalSearchMarket } from "@/lib/leadgen/signals/query-builder";
 import { savePipelineResult } from "@/lib/leadgen/storage";
-import { getKnownRecipientEmails } from "@/lib/leadgen/outreach-storage";
+import {
+  getKnownRecipientEmails,
+  syncOutreachQueue,
+} from "@/lib/leadgen/outreach-storage";
+import { leadgenProductionConfig } from "@/lib/leadgen/production-config";
 import { prepareTelegramNotification } from "@/lib/leadgen/telegram-notification";
 import { normalizeLeadgenStrings, normalizeLeadgenText } from "@/lib/leadgen/text-normalization";
 import {
@@ -40,6 +44,8 @@ type RunLeadgenRequestBody = Partial<CampaignInput> & {
   market?: string;
   dryRun?: boolean;
 };
+
+export const maxDuration = 300;
 
 const DEFAULT_PRODUCTION_MARKET: SignalSearchMarket = "ru";
 
@@ -212,21 +218,7 @@ export async function POST(request: Request) {
       getKnownRecipientEmails(),
       getDailyLeadStats(),
     ]);
-    if (!dryRun && dailyLeads.remaining === 0) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: "Дневной лимит новых лидов исчерпан.",
-          daily_leads: {
-            created_today: dailyLeads.createdToday,
-            daily_limit: dailyLeads.dailyLimit,
-            remaining: 0,
-          },
-        },
-        { status: 429 },
-      );
-    }
-    const leadTarget = dryRun ? dailyLeads.dailyLimit : dailyLeads.remaining;
+    const leadTarget = leadgenProductionConfig.campaignCompanyLimit;
     const result = await runLeadDiscoveryEngine({
       campaignInput,
       searchProvider: createLeadgenSearchProvider({
@@ -303,15 +295,8 @@ export async function POST(request: Request) {
         enrichedResult.production_discovery_stats?.skipped_identity_keys ?? [],
         enrichedResult.campaign.id,
       );
-      await registerDiscoveredCompanies(enrichedResult.companies);
-      const selectedCompanyIds = new Set(
-        enrichedResult.companies.map((company) => company.id),
-      );
-      await registerDiscoveredCompanies(
-        result.companies.filter(
-          (company) => !selectedCompanyIds.has(company.id),
-        ),
-      );
+      await registerDiscoveredCompanies(result.companies);
+      await syncOutreachQueue(enrichedResult.campaign.id);
     }
 
     return NextResponse.json({
@@ -342,7 +327,7 @@ export async function POST(request: Request) {
         remaining_before_run: dailyLeads.remaining,
         remaining_after_run: Math.max(
           0,
-          dailyLeads.remaining - emailTargetSelection.selectedEmails.length,
+          dailyLeads.remaining - enrichedResult.companies.length,
         ),
       },
       dry_run_audit: dryRun

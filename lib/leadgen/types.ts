@@ -413,11 +413,15 @@ export type ProductionDiscoveryStats = {
   previously_discovered_skipped: number;
   within_run_duplicates: number;
   new_unique_companies: number;
+  qualified_candidates_found?: number;
   lead_target: number;
   email_target?: number;
   new_unique_emails?: number;
   known_emails_skipped?: number;
   duplicate_emails_skipped?: number;
+  enriched_candidates_checked?: number;
+  official_sites_found?: number;
+  enrichment_budget_exhausted?: boolean;
   search_budget: number;
   skip_reasons: Record<string, number>;
   skipped_identity_keys?: string[];
@@ -912,6 +916,25 @@ export type ContactProviderInput = ContactDiscoveryInput;
 
 export type ContactProviderResult = {
   contacts: LeadgenContact[];
+  official_website?: string | null;
+  resolved_official_domain?: string | null;
+  official_website_status?: "confirmed" | "not_found";
+  official_website_source_url?: string | null;
+  official_website_confidence?: number;
+  official_website_reason?: string;
+  email_pages_audit?: Array<{
+    requestedUrl: string;
+    finalUrl: string | null;
+    status: number | null;
+    contentType: string | null;
+    opened: boolean;
+    bytes: number;
+    depth: number;
+    error: string | null;
+  }>;
+  ranked_email_candidates?: Array<Record<string, unknown>>;
+  contact_forms_found?: string[];
+  email_final_reason?: string;
   provider_id?: string;
   provider_label?: string;
   warnings?: string[];
@@ -930,6 +953,16 @@ export type ContactProviderResult = {
 
 export type ContactDiscoveryResult = {
   contacts: LeadgenContact[];
+  official_website: string | null;
+  resolved_official_domain: string | null;
+  official_website_status: "confirmed" | "not_found";
+  official_website_source_url: string | null;
+  official_website_confidence: number;
+  official_website_reason: string;
+  email_pages_audit: NonNullable<ContactProviderResult["email_pages_audit"]>;
+  ranked_email_candidates: NonNullable<ContactProviderResult["ranked_email_candidates"]>;
+  contact_forms_found: string[];
+  email_final_reason: string;
   best_available_entry: LeadgenContact;
   best_outreach_entry: LeadgenContact | null;
   fallback_entry: LeadgenContact | null;
