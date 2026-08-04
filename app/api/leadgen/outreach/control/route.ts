@@ -1,12 +1,18 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { cancelQueued, retryFailed, setQueuePaused } from "@/lib/leadgen/outreach-storage";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
+import { runOutreachProcessorIteration } from "@/lib/leadgen/outreach-scheduler";
 
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as { action?: string; campaignId?: string };
     if (body.action === "pause") await setQueuePaused(true);
-    else if (body.action === "resume") await setQueuePaused(false);
+    else if (body.action === "resume" || body.action === "kick") {
+      await setQueuePaused(false);
+      after(async () => {
+        await runOutreachProcessorIteration("initial");
+      });
+    }
     else if (body.action === "cancel") await cancelQueued(body.campaignId);
     else if (body.action === "retry") await retryFailed(body.campaignId);
     else return NextResponse.json({ success: false, error: "Неизвестное действие" }, { status: 400 });

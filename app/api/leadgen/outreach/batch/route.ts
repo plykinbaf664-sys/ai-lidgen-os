@@ -1,10 +1,10 @@
-import { NextResponse } from "next/server";
-import { processNextOutreachItem } from "@/lib/leadgen/outreach-processor";
+import { after, NextResponse } from "next/server";
 import {
   getDailySendStats,
   scheduleApprovedBatch,
 } from "@/lib/leadgen/outreach-storage";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
+import { runOutreachProcessorIteration } from "@/lib/leadgen/outreach-scheduler";
 
 export async function POST(request: Request) {
   try {
@@ -26,30 +26,19 @@ export async function POST(request: Request) {
       campaignId: body.campaignId,
       requestedCount: Number(body.count),
     });
-    let processor:
-      | Awaited<ReturnType<typeof processNextOutreachItem>>
-      | { status: "error"; entry: null; error: string } = {
-      status: "idle",
-      entry: null,
-    };
-
-    if (scheduled.queued.length > 0) {
-      try {
-        processor = await processNextOutreachItem();
-      } catch (error) {
-        processor = {
-          status: "error",
-          entry: null,
-          error: formatUnknownError(error),
-        };
-      }
-    }
     const daily = await getDailySendStats();
+    if (scheduled.queued_count > 0) {
+      after(async () => {
+        await runOutreachProcessorIteration("initial");
+      });
+    }
 
     return NextResponse.json({
       success: true,
       ...scheduled,
-      processor,
+      // The response stays fast; the first processor iteration runs after it.
+      // Further due items are handled by the local timer or production cron.
+      processor: { status: "starting", entry: null },
       daily: {
         sent_today: daily.sentToday,
         daily_limit: daily.dailyLimit,

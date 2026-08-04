@@ -46,14 +46,16 @@ for (const [index, copy] of copies.entries()) {
   assert.equal(copy.body.split("\n\n").length, 5);
   assert.equal(copy.qualityGatePassed, true);
   assert.equal(copy.microValue.items.length, 3);
-  assert.match(copy.body, /три конкретные идеи/i);
+  assert.match(copy.body, /схему из трёх шагов/i);
   assert.doesNotMatch(copy.body, /найден\w*\s+сигнал|обнаруж\w*\s+сигнал|признак\w*\s+рост/i);
-  assert.doesNotMatch(copy.body, /созвон|встреч/i);
+  assert.match(copy.body, /15[-\s]?минут|15\s+минут/i);
+  assert.match(copy.body, /покаж|разбор|обсуд/i);
+  assert.equal(copy.quality.call_relevance, 10);
 }
 
-assert.match(copies[0].blocks.cta, /Прислать/i);
-assert.match(copies[1].blocks.cta, /Кому в вашей команде/i);
-assert.match(copies[2].blocks.cta, /Кто у вас отвечает/i);
+assert.match(copies[0].blocks.cta, /за 15 минут — обсудим/i);
+assert.match(copies[1].blocks.cta, /Кого из вашей команды/i);
+assert.match(copies[2].blocks.cta, /Кто отвечает за этот процесс/i);
 assert.equal(new Set(copies.map((copy) => copy.subject)).size, copies.length);
 
 const noSignal = generateFirstEmailV3({ companyName: "Без сигнала", messageMode: "personal" });

@@ -4,24 +4,38 @@ import {
   claimDueOutreachItem,
   deferRemainingQueuedItems,
   getDailySendStats,
+  getNextDueOutreachMessageKind,
   getQueuePaused,
   markPersistentOutreachEntry,
   rejectPreviouslyContactedQueuedItems,
 } from "@/lib/leadgen/outreach-storage";
 import {
   assertFollowupSendable,
+  getFollowupQueuePaused,
   runAutomaticFollowupCycle,
 } from "@/lib/leadgen/followup-storage";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
 
-export async function processNextOutreachItem() {
+export async function processNextOutreachItem(
+  requestedKind?: "initial" | "follow_up",
+) {
   await rejectPreviouslyContactedQueuedItems();
-  await runAutomaticFollowupCycle();
-  if (await getQueuePaused()) {
+  if (!requestedKind || requestedKind === "follow_up") {
+    await runAutomaticFollowupCycle();
+  }
+  const nextKind =
+    requestedKind ?? (await getNextDueOutreachMessageKind());
+  if (!nextKind) {
+    return { status: "idle" as const, entry: null };
+  }
+  if (
+    (nextKind === "initial" && (await getQueuePaused())) ||
+    (nextKind === "follow_up" && (await getFollowupQueuePaused()))
+  ) {
     return { status: "paused" as const, entry: null };
   }
   const daily = await getDailySendStats();
-  if (daily.remaining <= 0) {
+  if (daily.remaining <= 0 && nextKind === "initial") {
     return { status: "daily_limit_reached" as const, entry: null };
   }
   const provider = createEmailProvider();
@@ -33,7 +47,10 @@ export async function processNextOutreachItem() {
       error: validation.message,
     };
   }
-  const entry = await claimDueOutreachItem(`processor-${randomUUID()}`);
+  const entry = await claimDueOutreachItem(
+    `processor-${randomUUID()}`,
+    nextKind,
+  );
   if (!entry) return { status: "idle" as const, entry: null };
 
   try {

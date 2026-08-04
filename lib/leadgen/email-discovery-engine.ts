@@ -161,9 +161,7 @@ function normalizeOfficialInput(input: EmailDiscoveryInput): EmailDiscoveryInput
 
   if (
     websiteDomain !== officialDomain ||
-    isBlockedHost(websiteDomain) ||
-    (input.commercialSignalSourceUrl &&
-      normalizeHostname(input.commercialSignalSourceUrl) === websiteDomain)
+    isBlockedHost(websiteDomain)
   ) {
     throw new Error("email_discovery_official_site_contract_violation");
   }

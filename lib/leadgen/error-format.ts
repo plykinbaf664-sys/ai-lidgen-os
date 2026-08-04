@@ -46,5 +46,19 @@ export function formatUnknownError(
   const parts = collect(error, 0, new Set());
   const message = parts.join(" · ").trim();
   if (!message || message === "[object Object]") return fallback;
+  if (
+    /AbortError|TimeoutError|operation was aborted|request was aborted|signal timed out|timeout or manual cancellation/i.test(
+      message,
+    )
+  ) {
+    return "Запрос к хранилищу был прерван по таймауту. Проверьте состояние очереди и повторите действие.";
+  }
+  if (
+    /ECONNRESET|ECONNREFUSED|EPIPE|UND_ERR_SOCKET|socket hang up|other side closed|terminated|fetch failed/i.test(
+      message,
+    )
+  ) {
+    return "Внешний сервис временно разорвал соединение. Запрос можно безопасно повторить.";
+  }
   return message.slice(0, 800);
 }

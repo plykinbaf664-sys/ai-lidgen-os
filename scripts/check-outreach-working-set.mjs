@@ -191,14 +191,14 @@ assert.match(componentSource, /function PrimaryOutreachToolbar/);
 assert.match(componentSource, /eligibleCount === 0/);
 assert.match(
   componentSource,
-  /queue\.working_set\.eligible_for_bulk_approval_count/,
+  /outreachSummary\?\.initial\.eligibleForBulkApproval/,
 );
 assert.match(componentSource, /await load\(\);\s+setMessage\("Письмо одобрено/);
 assert.match(componentSource, /<details className="outreach-missing-contacts">/);
 assert.match(outreachRouteSource, /await syncOutreachQueue\(campaignId\)/);
 assert.match(runRouteSource, /await syncOutreachQueue\(enrichedResult\.campaign\.id\)/);
 assert.match(componentSource, /className="daily-dispatch-panels"/);
-assert.match(componentSource, /setWorkingSetCounters\(data\.working_set\.counters\)/);
+assert.match(componentSource, /setOutreachSummary\(data\.summary\)/);
 assert.match(componentSource, /Одобрено, но не в очереди/);
 assert.match(componentSource, />Новые компании</);
 assert.match(componentSource, />Дожимы</);

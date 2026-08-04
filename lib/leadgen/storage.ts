@@ -2,6 +2,10 @@
 
 import { createSupabaseServerClient } from "@/lib/supabase/client";
 import { leadgenHistoryResetAt } from "@/lib/leadgen/history-policy";
+import {
+  compactCompanyForStorage,
+  compactContactsForStorage,
+} from "@/lib/leadgen/storage-compaction";
 import { normalizeLeadgenStrings } from "@/lib/leadgen/text-normalization";
 import type {
   DiscoverySuccessMetrics,
@@ -134,7 +138,9 @@ async function saveCompanies(
     return;
   }
 
-  const { error } = await supabase.from("leadgen_companies").insert(companies);
+  const { error } = await supabase
+    .from("leadgen_companies")
+    .insert(companies.map(compactCompanyForStorage));
 
   if (error) {
     throw error;
@@ -149,7 +155,14 @@ async function saveContacts(
     return;
   }
 
-  const { error } = await supabase.from("leadgen_contacts").insert(contacts);
+  const compactedContacts = compactContactsForStorage(contacts);
+  if (compactedContacts.length === 0) {
+    return;
+  }
+
+  const { error } = await supabase
+    .from("leadgen_contacts")
+    .insert(compactedContacts);
 
   if (error) {
     throw error;
@@ -360,13 +373,15 @@ export async function getRecentCampaigns(
     const counts = outreachCounts.get(item.campaign_id) ?? {
       needsReview: 0, approved: 0, queued: 0, sending: 0, sent: 0, failed: 0,
     };
-    if (["draft", "needs_review"].includes(item.status)) counts.needsReview += 1;
-    else if (item.status === "approved") counts.approved += 1;
-    else if (item.status === "queued") counts.queued += 1;
-    else if (item.status === "sending") counts.sending += 1;
-    else if (item.status === "failed") counts.failed += 1;
+    if (item.message_kind !== "follow_up") {
+      if (["draft", "needs_review"].includes(item.status)) counts.needsReview += 1;
+      else if (item.status === "approved") counts.approved += 1;
+      else if (item.status === "queued") counts.queued += 1;
+      else if (item.status === "sending") counts.sending += 1;
+      else if (item.status === "failed") counts.failed += 1;
+    }
     if (item.status === "sent") {
-      counts.sent += 1;
+      if (item.message_kind !== "follow_up") counts.sent += 1;
       sentCounts.set(item.campaign_id, (sentCounts.get(item.campaign_id) ?? 0) + 1);
       const target = item.message_kind === "follow_up" ? followupSentCounts : initialSentCounts;
       target.set(item.campaign_id, (target.get(item.campaign_id) ?? 0) + 1);
@@ -524,13 +539,16 @@ export async function getCampaignDetails(
   const storedEvents = events ?? [];
   const storedNotifications = notifications ?? [];
   const detailOutreach = campaignOutreachError ? [] : campaignOutreach ?? [];
+  const initialOutreach = detailOutreach.filter(
+    (item) => item.message_kind !== "follow_up",
+  );
   const detailCounts = {
-    needsReview: detailOutreach.filter((item) => ["draft", "needs_review"].includes(item.status)).length,
-    approved: detailOutreach.filter((item) => item.status === "approved").length,
-    queued: detailOutreach.filter((item) => item.status === "queued").length,
-    sending: detailOutreach.filter((item) => item.status === "sending").length,
-    sent: detailOutreach.filter((item) => item.status === "sent").length,
-    failed: detailOutreach.filter((item) => item.status === "failed").length,
+    needsReview: initialOutreach.filter((item) => ["draft", "needs_review"].includes(item.status)).length,
+    approved: initialOutreach.filter((item) => item.status === "approved").length,
+    queued: initialOutreach.filter((item) => item.status === "queued").length,
+    sending: initialOutreach.filter((item) => item.status === "sending").length,
+    sent: initialOutreach.filter((item) => item.status === "sent").length,
+    failed: initialOutreach.filter((item) => item.status === "failed").length,
   };
 
   return normalizeLeadgenStrings({

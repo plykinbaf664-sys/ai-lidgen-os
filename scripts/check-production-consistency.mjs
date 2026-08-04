@@ -20,6 +20,16 @@ const dashboard = await read("components/leadgen/leadgen-dashboard.tsx");
 assert.equal(formatUnknownError({ message: "Database failed", code: "PGRST100" }), "Database failed · PGRST100");
 assert.notEqual(formatUnknownError({ reason: { message: "Nested failure" } }), "[object Object]");
 assert.doesNotMatch(formatUnknownError({ message: "password=super-secret" }), /super-secret/);
+assert.equal(
+  formatUnknownError(
+    new TypeError("terminated", {
+      cause: Object.assign(new Error("read ECONNRESET"), {
+        code: "ECONNRESET",
+      }),
+    }),
+  ),
+  "Внешний сервис временно разорвал соединение. Запрос можно безопасно повторить.",
+);
 const technicalId = "campaign-РўРµСЃС‚-%D0%A2";
 assert.equal(normalizeLeadgenStrings({ id: technicalId, campaign_id: technicalId }).id, technicalId);
 assert.equal(normalizeLeadgenStrings({ id: technicalId, campaign_id: technicalId }).campaign_id, technicalId);

@@ -207,6 +207,7 @@ class ImapInboxSession {
           ?.replace(/\n[ \t]+/g, " ").trim() ?? null;
         if (!/^\* \d+ FETCH \(/i.test(block)) continue;
         results.push({
+          uid: block.match(/\bUID\s+(\d+)/i)?.[1] ?? null,
           messageId: header("Message-ID"),
           inReplyTo: header("In-Reply-To"),
           references: parseReferences(header("References")),
@@ -217,6 +218,18 @@ class ImapInboxSession {
       }
     }
     return results;
+  }
+
+  async readBody(uid: string) {
+    const response = await this.command(`UID FETCH ${uid} (BODY.PEEK[])`);
+    const joined = response.join("\n");
+    const marker = joined.match(/BODY\[\]\s*\{\d+\}\n/i);
+    if (!marker || marker.index === undefined) return null;
+    const start = marker.index + marker[0].length;
+    const end = joined.lastIndexOf("\n)");
+    const raw = joined.slice(start, end > start ? end : undefined);
+    const bodyStart = raw.search(/\n\s*\n/);
+    return (bodyStart >= 0 ? raw.slice(bodyStart).replace(/^\s+/, "") : raw).trim() || null;
   }
 
   async close(graceful = true) {
@@ -236,6 +249,12 @@ export async function fetchRecentInboxHeaders(since: Date) {
   } finally {
     await session.close();
   }
+}
+
+export async function fetchInboxMessageBody(uid: string) {
+  const session = new ImapInboxSession(getImapReplyConfig());
+  await session.connect();
+  try { return await session.readBody(uid); } finally { await session.close(); }
 }
 
 export async function verifyImapReplyConnection() {

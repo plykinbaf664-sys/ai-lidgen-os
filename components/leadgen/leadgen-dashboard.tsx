@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CampaignForm } from "@/components/leadgen/campaign-form";
 import { CampaignHistory } from "@/components/leadgen/campaign-history";
 import { EmailOutreachQueue } from "@/components/leadgen/email-outreach-queue";
@@ -51,6 +51,7 @@ export function LeadgenDashboard() {
   const [isHistoryLoading, setIsHistoryLoading] = useState(true);
   const [isOpening, setIsOpening] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const activeCampaignRef = useRef<HTMLElement | null>(null);
 
   async function loadHistory(selectLatest = false) {
     setIsHistoryLoading(true);
@@ -130,12 +131,18 @@ export function LeadgenDashboard() {
     setError(null);
     try {
       const response = await fetch(
-          `/api/leadgen/campaigns/details?pipelineRunId=${encodeURIComponent(summary.pipeline_run_id)}`,
+        `/api/leadgen/campaigns/details?id=${encodeURIComponent(summary.id)}`,
       );
       const data = await readJson<DetailsResponse>(response);
       if (!response.ok || !data.success) throw new Error(formatUnknownError(data.success ? null : data.error));
       setDiscovery(data.details.campaign.production_discovery_stats ?? null);
       setCampaignDetails(data.details);
+      window.requestAnimationFrame(() => {
+        activeCampaignRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
     } catch (caught) {
       setError(caught instanceof Error && caught.message ? caught.message : "Не удалось открыть кампанию.");
     } finally {
@@ -157,7 +164,7 @@ export function LeadgenDashboard() {
       </section>
 
       {activeCampaignId ? (
-        <section className="active-campaign-shell">
+        <section className="active-campaign-shell" ref={activeCampaignRef}>
           <div className="active-campaign-heading">
             <div><p className="eyebrow">Текущая кампания</p><h2>{activeCampaignName}</h2>{campaigns.find((item) => item.id === activeCampaignId) ? <small className="muted">{campaignStatusCopyForDashboard(campaigns.find((item) => item.id === activeCampaignId)!.operational_status)}</small> : null}</div>
             {discovery ? (
@@ -167,7 +174,11 @@ export function LeadgenDashboard() {
               </div>
             ) : null}
           </div>
-          <EmailOutreachQueue campaignDetails={campaignDetails} campaignId={activeCampaignId} discoveryStats={discovery} />
+          <EmailOutreachQueue
+            campaignDetails={campaignDetails}
+            campaignId={activeCampaignId}
+            key={activeCampaignId}
+          />
         </section>
       ) : (
         <section className="panel leadgen-empty-campaign">

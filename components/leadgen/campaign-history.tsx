@@ -51,6 +51,7 @@ export function CampaignHistory({
               <div><dt>Лиды</dt><dd>{campaign.leads_count}</dd></div>
               <div><dt>Email</dt><dd>{campaign.email_count ?? campaign.contacts_count}</dd></div>
               <div><dt>Отправлено</dt><dd>{campaign.initial_sent_count}{campaign.followup_sent_count ? ` + ${campaign.followup_sent_count} follow-up` : ""}</dd></div>
+              <div><dt>Одобрено</dt><dd>{campaign.approved_count}</dd></div>
               <div><dt>В очереди</dt><dd>{campaign.queued_count + campaign.sending_count}</dd></div>
               <div><dt>Ошибки</dt><dd>{campaign.failed_count}</dd></div>
             </dl>
@@ -61,7 +62,15 @@ export function CampaignHistory({
               onClick={() => onOpenCampaign?.(campaign)}
               variant={activeCampaignId === campaign.id ? "success" : "secondary"}
             >
-              {isOpeningCampaign && activeCampaignId === campaign.id ? "Загрузка…" : activeCampaignId === campaign.id ? "Открыта" : "Открыть"}
+              {isOpeningCampaign && activeCampaignId === campaign.id
+                ? "Загрузка…"
+                : activeCampaignId === campaign.id
+                  ? campaign.approved_count > 0
+                    ? `Доотправить ${campaign.approved_count}`
+                    : "Открыта"
+                  : campaign.approved_count > 0
+                    ? `Открыть · ${campaign.approved_count} ждут`
+                    : "Открыть"}
             </Button>
           </article>
         );})}

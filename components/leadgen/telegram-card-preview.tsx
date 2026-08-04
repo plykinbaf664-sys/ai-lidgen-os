@@ -13,13 +13,15 @@ import type {
   PersonaSearchStatus,
 } from "@/lib/leadgen/types";
 
-const statuses: LeadStatus[] = ["approved", "rejected", "paused", "new"];
+const statuses: LeadStatus[] = ["approved", "interested", "replied", "rejected", "paused", "new"];
 
 const statusVariants: Record<LeadStatus, ButtonVariant> = {
   approved: "success",
   rejected: "danger",
   paused: "secondary",
   new: "ghost",
+  replied: "secondary",
+  interested: "success",
 };
 
 const statusLabels: Record<LeadStatus, string> = {
@@ -27,6 +29,8 @@ const statusLabels: Record<LeadStatus, string> = {
   rejected: "Отклонить",
   paused: "Поставить на паузу",
   new: "Вернуть в новые",
+  replied: "Ответ получен",
+  interested: "Заинтересован",
 };
 
 type TelegramCardPreviewProps = {

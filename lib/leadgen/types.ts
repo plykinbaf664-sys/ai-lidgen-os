@@ -1,4 +1,4 @@
-export type LeadStatus = "new" | "approved" | "rejected" | "paused";
+export type LeadStatus = "new" | "approved" | "rejected" | "paused" | "replied" | "interested";
 
 export type CampaignStatus = "completed";
 
@@ -370,6 +370,14 @@ export type OutreachQueueEntry = {
   reply_from?: string | null;
   reply_subject?: string | null;
   reply_detection_method?: ReplyDetectionMethod | null;
+  reply_intent?: "interested" | "neutral" | "negative" | "unsubscribe" | null;
+  reply_contact?: {
+    full_name: string | null;
+    role_title: string | null;
+    phone: string | null;
+    phone_extension: string | null;
+    confidence: number;
+  } | null;
   generation_reason?: string | null;
   skip_reason?: string | null;
 };

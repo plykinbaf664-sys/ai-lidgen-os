@@ -2,13 +2,39 @@ import { normalizeRecipientEmail } from "@/lib/leadgen/company-identity";
 import type { OutreachMessageMode, ReplyDetectionMethod } from "@/lib/leadgen/types";
 
 export type IncomingHeader = {
+  uid?: string | null;
   messageId: string | null;
   inReplyTo: string | null;
   references: string[];
   from: string | null;
   subject: string | null;
   date: string | null;
+  bodyText?: string | null;
 };
+
+export type ReplyIntent = "interested" | "neutral" | "negative" | "unsubscribe";
+
+export type ExtractedReplyContact = {
+  fullName: string | null;
+  roleTitle: string | null;
+  phone: string | null;
+  phoneExtension: string | null;
+  intent: ReplyIntent;
+  confidence: number;
+};
+
+export function analyzeReplyText(text: string | null | undefined): ExtractedReplyContact {
+  const value = (text ?? "").replace(/\r/g, "").trim();
+  const unsubscribe = /(удалите|отпис|не присыл|не интерес|не актуаль|stop|unsubscribe)/i.test(value);
+  const interested = /(вышлите|пришлите|документац|предложени|материал|изучени|интересно|готовы обсудить|давайте)/i.test(value);
+  const negative = /(не интерес|не актуаль|откаж|удалите|отпис)/i.test(value);
+  const phone = value.match(/(?:\+7|8)\s*\(?\d{3}\)?[\s-]*\d{3}[\s-]*\d{2}[\s-]*\d{2}/)?.[0] ?? null;
+  const phoneExtension = value.match(/(?:доб\.?|добавочн\.?|ext\.?|extension)\s*[:.]?\s*(\d{2,6})/i)?.[1] ?? null;
+  const name = value.match(/(?:С уважением|С уважением,|Best regards)[,\s]*\n\s*([А-ЯЁA-Z][А-ЯЁа-яёA-Za-z-]+\s+[А-ЯЁA-Z][А-ЯЁа-яёA-Za-z-]+)/i)?.[1] ?? null;
+  const role = value.match(/(?:^|\n)\s*((?:директор|руководитель|начальник|заместитель|director|head|manager)[^,\n]{0,100})/i)?.[1]?.trim() ?? null;
+  const intent: ReplyIntent = unsubscribe ? "unsubscribe" : interested ? "interested" : negative ? "negative" : "neutral";
+  return { fullName: name, roleTitle: role, phone, phoneExtension, intent, confidence: interested || negative ? 0.92 : 0.6 };
+}
 
 export type ReplyCandidate = {
   id: string;

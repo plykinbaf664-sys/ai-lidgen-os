@@ -1,10 +1,16 @@
 import { randomInt, randomUUID } from "node:crypto";
 import { createSupabaseServerClient } from "@/lib/supabase/client";
-import { fetchRecentInboxHeaders } from "./imap-reply-detector";
+import { formatUnknownError } from "@/lib/leadgen/error-format";
+import { fetchInboxMessageBody, fetchRecentInboxHeaders } from "./imap-reply-detector";
 import { generateFollowup } from "./followup-generator";
-import { getFollowupIdempotencyKey, matchReply, type ReplyCandidate } from "./followup-rules";
-import { getDailySendStats, rowToEntry, type QueueRow } from "./outreach-storage";
-import { calculateBatchCapacity, getNextScheduledAt } from "./outreach-policy";
+import { analyzeReplyText, getFollowupIdempotencyKey, matchReply, type ReplyCandidate } from "./followup-rules";
+import {
+  getBusinessDayRange,
+  getDailySendStats,
+  rowToEntry,
+  type QueueRow,
+} from "./outreach-storage";
+import { getNextScheduledAt } from "./outreach-policy";
 import { getEmailDelayBounds, leadgenProductionConfig } from "./production-config";
 import type { OutreachQueueEntry } from "./types";
 
@@ -17,6 +23,8 @@ export type FollowupSummary = {
   queued: number;
   sending: number;
   sent: number;
+  sent_today: number;
+  queued_now: number;
   skipped: number;
   failed: number;
   reply_checks_verified: number;
@@ -27,6 +35,7 @@ export type FollowupSummary = {
   min_interval_hours: number;
   automation_enabled: boolean;
   automation_mode: "automatic" | "manual";
+  eligible_for_bulk_approval: number;
 };
 
 export type FollowupEligibilityReason =
@@ -54,6 +63,21 @@ export type FollowupEligibilityDiagnostic = {
   eligible_at: string | null;
   remaining_seconds: number;
 };
+
+export function isFollowupBulkApprovable(
+  entry: OutreachQueueEntry,
+): boolean {
+  return Boolean(
+    entry.status === "needs_review" &&
+      entry.subject.trim() &&
+      entry.body.trim() &&
+      entry.reply_check_status === "verified" &&
+      !entry.reply_detected_at &&
+      entry.parent_smtp_message_id &&
+      entry.quality_gate_passed === true &&
+      entry.copy_review_status !== "needs_manual_copy_review",
+  );
+}
 
 function intervalReached(row: QueueRow, now = Date.now()) {
   return Boolean(row.sent_at && now - Date.parse(row.sent_at) >=
@@ -111,14 +135,35 @@ async function readInitialCandidates() {
   return (data ?? []) as QueueRow[];
 }
 
-export async function scanFollowupReplies() {
-  const supabase = createSupabaseServerClient();
+async function scanFollowupRepliesUnsafe() {
+  let supabase;
+  try {
+    supabase = createSupabaseServerClient();
+  } catch (error) {
+    throw new Error(
+      `reply_scan_client_failed: ${formatUnknownError(error)}`,
+      { cause: error },
+    );
+  }
   const workerId = `reply-scan-${randomUUID()}`;
-  const lock = await supabase.rpc("claim_followup_reply_scan", {
-    worker_id: workerId,
-    lock_seconds: 180,
-  });
-  if (lock.error) throw lock.error;
+  let lock;
+  try {
+    lock = await supabase.rpc("claim_followup_reply_scan", {
+      worker_id: workerId,
+      lock_seconds: 180,
+    });
+  } catch (error) {
+    throw new Error(
+      `reply_scan_lock_transport: ${formatUnknownError(error)}`,
+      { cause: error },
+    );
+  }
+  if (lock.error) {
+    throw new Error(
+      `reply_scan_lock_failed: ${formatUnknownError(lock.error)}`,
+      { cause: lock.error },
+    );
+  }
   if (!lock.data) throw new Error("Проверка входящих уже выполняется.");
   let parents: QueueRow[] = [];
   let candidates: ReplyCandidate[] = [];
@@ -145,11 +190,16 @@ export async function scanFollowupReplies() {
     const since = new Date(Math.max(earliest, Date.now() - 30 * 86_400_000));
     const inbox = await fetchRecentInboxHeaders(since);
     headersScanned = inbox.scanned;
-    const matches = new Map<string, { header: typeof inbox.headers[number]; method: string }>();
+    const matches = new Map<string, { header: typeof inbox.headers[number]; method: string; analysis: ReturnType<typeof analyzeReplyText> }>();
     for (const header of inbox.headers) {
       const match = matchReply(header, candidates);
       if (match && !matches.has(match.candidate.id)) {
-        matches.set(match.candidate.id, { header, method: match.method });
+        const body = header.uid ? await fetchInboxMessageBody(header.uid) : null;
+        matches.set(match.candidate.id, {
+          header,
+          method: match.method,
+          analysis: analyzeReplyText(body),
+        });
       }
     }
     for (const parent of parents) {
@@ -162,9 +212,55 @@ export async function scanFollowupReplies() {
         reply_from: match?.header.from ?? null,
         reply_subject: match?.header.subject ?? null,
         reply_detection_method: match?.method ?? null,
+        metadata: match ? {
+          ...(parent.metadata ?? {}),
+          reply_intent: match.analysis.intent,
+          reply_contact: {
+            full_name: match.analysis.fullName,
+            role_title: match.analysis.roleTitle,
+            phone: match.analysis.phone,
+            phone_extension: match.analysis.phoneExtension,
+            confidence: match.analysis.confidence,
+          },
+          reply_contact_extracted_at: checkedAt,
+        } : parent.metadata,
         updated_at: checkedAt,
       }).eq("id", parent.id).eq("message_kind", "initial");
       if (update.error) throw update.error;
+      if (match) {
+        const leadStatus = match.analysis.intent === "interested" ? "interested" : "replied";
+        const leadUpdate = await supabase.from("leadgen_leads").update({ status: leadStatus, updated_at: checkedAt })
+          .eq("id", parent.lead_id).in("status", ["new", "approved", "paused", "replied", "interested"]);
+        if (leadUpdate.error?.code === "23514") {
+          // Older installations may not yet allow replied/interested in the
+          // lead status constraint. Reply state is still persisted on the
+          // initial outreach and contact instead of failing the whole scan.
+          console.warn(
+            "[followup-reply-scan] lead reply status migration is pending",
+          );
+        } else if (leadUpdate.error) {
+          throw leadUpdate.error;
+        }
+        const contact = await supabase.from("leadgen_contacts").select("id,full_name,role_title,metadata")
+          .eq("lead_id", parent.lead_id).order("is_primary", { ascending: false }).limit(1).maybeSingle();
+        if (contact.error) throw contact.error;
+        if (contact.data) {
+          const extracted = match.analysis;
+          const contactUpdate = await supabase.from("leadgen_contacts").update({
+            full_name: extracted.fullName || contact.data.full_name,
+            role_title: extracted.roleTitle || contact.data.role_title,
+            metadata: {
+              ...(contact.data.metadata ?? {}),
+              reply_phone: extracted.phone,
+              reply_phone_extension: extracted.phoneExtension,
+              reply_intent: extracted.intent,
+              reply_confidence: extracted.confidence,
+              reply_extracted_at: checkedAt,
+            },
+          }).eq("id", contact.data.id);
+          if (contactUpdate.error) throw contactUpdate.error;
+        }
+      }
     }
     return {
       checked_outbound: parents.length,
@@ -175,14 +271,27 @@ export async function scanFollowupReplies() {
     };
   } catch (error) {
     if (parents.length) {
-      const update = await supabase.from("leadgen_outreach_queue").update({
-        reply_check_status: "unavailable",
-        reply_checked_at: checkedAt,
-        updated_at: checkedAt,
-      }).in("id", parents.map((row) => row.id)).is("reply_detected_at", null);
-      if (update.error) throw update.error;
+      const parentIds = parents.map((row) => row.id);
+      for (let index = 0; index < parentIds.length; index += 20) {
+        const update = await supabase
+          .from("leadgen_outreach_queue")
+          .update({
+            reply_check_status: "unavailable",
+            reply_checked_at: checkedAt,
+            updated_at: checkedAt,
+          })
+          .in("id", parentIds.slice(index, index + 20))
+          .is("reply_detected_at", null);
+        if (update.error) {
+          console.error(
+            "[followup-reply-scan] unable to persist unavailable state:",
+            formatUnknownError(update.error),
+          );
+          break;
+        }
+      }
     }
-    const message = error instanceof Error ? error.message : "IMAP недоступен.";
+    const message = formatUnknownError(error, "IMAP недоступен.");
     return {
       checked_outbound: parents.length,
       reply_found: 0,
@@ -192,7 +301,35 @@ export async function scanFollowupReplies() {
       error: message,
     };
   } finally {
-    await supabase.rpc("release_followup_reply_scan", { worker_id: workerId });
+    try {
+      const release = await supabase.rpc("release_followup_reply_scan", {
+        worker_id: workerId,
+      });
+      if (release.error) {
+        console.error(
+          "[followup-reply-scan] lock release failed:",
+          formatUnknownError(release.error),
+        );
+      }
+    } catch (error) {
+      // A lock expires automatically; a release transport failure must not
+      // discard the completed IMAP scan result.
+      console.error(
+        "[followup-reply-scan] lock release transport failed:",
+        formatUnknownError(error),
+      );
+    }
+  }
+}
+
+export async function scanFollowupReplies() {
+  try {
+    return await scanFollowupRepliesUnsafe();
+  } catch (error) {
+    throw new Error(
+      `reply_scan_unhandled: ${formatUnknownError(error)}`,
+      { cause: error },
+    );
   }
 }
 
@@ -240,6 +377,12 @@ export async function getFollowupSummary(campaignId?: string | null): Promise<Fo
     .filter((item) => item.reason === "interval_not_reached" && item.eligible_at)
     .map((item) => item.eligible_at!)
     .sort()[0] ?? null;
+  const { start, end } = getBusinessDayRange();
+  const sentToday = followups.filter((row) => {
+    if (row.status !== "sent" || !row.sent_at) return false;
+    const sentAt = Date.parse(row.sent_at);
+    return sentAt >= start.getTime() && sentAt < end.getTime();
+  }).length;
   return {
     pending_reply_check: diagnostics.filter((item) => item.reason === "reply_check_unavailable").length,
     reply_found: diagnostics.filter((item) => item.reason === "reply_detected").length,
@@ -249,6 +392,10 @@ export async function getFollowupSummary(campaignId?: string | null): Promise<Fo
     queued: followups.filter((row) => row.status === "queued").length,
     sending: followups.filter((row) => row.status === "sending").length,
     sent: followups.filter((row) => row.status === "sent").length,
+    sent_today: sentToday,
+    queued_now: followups.filter((row) =>
+      ["queued", "sending"].includes(row.status),
+    ).length,
     skipped: followups.filter((row) => row.status === "skipped").length,
     failed: followups.filter((row) => row.status === "failed").length,
     reply_checks_verified: diagnostics.filter((item) => item.reply_check_status === "verified").length,
@@ -262,6 +409,9 @@ export async function getFollowupSummary(campaignId?: string | null): Promise<Fo
       leadgenProductionConfig.followupAutomationEnabled && !settings.data.followup_paused
         ? "automatic"
         : "manual",
+    eligible_for_bulk_approval: followups.filter(
+      isFollowupBulkApprovable,
+    ).length,
   };
 }
 
@@ -367,40 +517,66 @@ function canApprove(row: QueueRow, manual = false) {
     row.copy_review_status !== "needs_manual_copy_review"));
 }
 
-export async function approveFollowups(ids?: string[]) {
+export async function approveFollowups(
+  ids?: string[],
+  campaignId?: string | null,
+  manual = false,
+) {
   const supabase = createSupabaseServerClient();
   let query = supabase.from("leadgen_outreach_queue").select("*").eq("message_kind", "follow_up");
   if (ids?.length) query = query.in("id", ids);
+  if (campaignId) query = query.eq("campaign_id", campaignId);
   const rows = await query;
   if (rows.error) throw rows.error;
-  const eligible = ((rows.data ?? []) as QueueRow[]).filter((row) => canApprove(row, Boolean(ids?.length)));
+  const eligible = ((rows.data ?? []) as QueueRow[]).filter((row) =>
+    canApprove(row, manual || Boolean(ids?.length)),
+  );
+  let approved = 0;
   if (eligible.length) {
     const now = new Date().toISOString();
     const update = await supabase.from("leadgen_outreach_queue").update({
       status: "approved", approved_at: now, approval_invalidated_reason: null, updated_at: now,
-    }).in("id", eligible.map((row) => row.id)).eq("status", "needs_review");
+    }).in("id", eligible.map((row) => row.id)).eq("status", "needs_review")
+      .select("id");
     if (update.error) throw update.error;
+    approved = update.data?.length ?? 0;
   }
-  return { approved: eligible.length, skipped: (rows.data?.length ?? 0) - eligible.length };
+  return {
+    approved,
+    skipped: (rows.data?.length ?? 0) - approved,
+  };
 }
 
-export async function scheduleFollowupBatch(requestedCount: number) {
+export async function scheduleFollowupBatch(
+  requestedCount: number,
+  campaignId?: string | null,
+) {
   const supabase = createSupabaseServerClient();
   const resume = await supabase.from("leadgen_outreach_settings").update({
     followup_paused: false,
     updated_at: new Date().toISOString(),
   }).eq("id", "global");
   if (resume.error) throw resume.error;
+  let approvedQuery = supabase
+    .from("leadgen_outreach_queue")
+    .select("*")
+    .eq("message_kind", "follow_up")
+    .eq("status", "approved")
+    .order("approved_at", { ascending: true });
+  if (campaignId) approvedQuery = approvedQuery.eq("campaign_id", campaignId);
   const [daily, approved] = await Promise.all([
     getDailySendStats(),
-    supabase.from("leadgen_outreach_queue").select("*").eq("message_kind", "follow_up")
-      .eq("status", "approved").order("approved_at", { ascending: true }),
+    approvedQuery,
   ]);
   if (approved.error) throw approved.error;
   const rows = (approved.data ?? []) as QueueRow[];
-  const count = calculateBatchCapacity({ requested: requestedCount, approved: rows.length,
-    sentToday: daily.sentToday, queuedForToday: daily.queuedForToday,
-    dailyLimit: daily.dailyLimit, batchLimit: leadgenProductionConfig.emailBatchSendLimit });
+  // Follow-ups have their own queue and do not consume the initial-outreach
+  // daily capacity. Keep only the explicit batch safety bound here.
+  const count = Math.min(
+    Math.max(0, Math.floor(requestedCount)),
+    rows.length,
+    leadgenProductionConfig.emailBatchSendLimit,
+  );
   const { minimum, maximum } = getEmailDelayBounds();
   let cursor = Date.now();
   const queued: OutreachQueueEntry[] = [];
@@ -459,10 +635,7 @@ export async function runAutomaticFollowupCycle() {
 
   const generation = await generateEligibleFollowups();
   const approval = await approveFollowups();
-  const daily = await getDailySendStats();
-  const batch = daily.remaining > 0
-    ? await scheduleFollowupBatch(daily.remaining)
-    : { queued: [] };
+  const batch = await scheduleFollowupBatch(leadgenProductionConfig.emailBatchSendLimit);
   return {
     status: "ready" as const,
     scanned: scanDue,
@@ -471,6 +644,17 @@ export async function runAutomaticFollowupCycle() {
     approved: approval.approved,
     queued: batch.queued.length,
   };
+}
+
+export async function getFollowupQueuePaused() {
+  const supabase = createSupabaseServerClient();
+  const settings = await supabase
+    .from("leadgen_outreach_settings")
+    .select("followup_paused")
+    .eq("id", "global")
+    .single();
+  if (settings.error) throw settings.error;
+  return Boolean(settings.data.followup_paused);
 }
 
 export async function assertFollowupSendable(entry: OutreachQueueEntry) {

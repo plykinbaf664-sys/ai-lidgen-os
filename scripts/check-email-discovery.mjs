@@ -64,6 +64,11 @@ const engineSource = await readFile(
   "utf8",
 );
 assert.match(engineSource, /email_discovery_official_site_contract_violation/);
+assert.doesNotMatch(
+  engineSource,
+  /normalizeHostname\(input\.commercialSignalSourceUrl\)\s*===\s*websiteDomain/,
+  "A verified signal on the official company domain must not violate the Email Discovery contract",
+);
 assert.match(engineSource, /resolveMx/);
 assert.match(engineSource, /sitemap\.xml/);
 assert.match(engineSource, /robots\.txt/);

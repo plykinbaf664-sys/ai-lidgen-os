@@ -4,6 +4,7 @@ import type {
   SearchResult,
 } from "@/lib/leadgen/search/search-provider";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
+import { fetchWithTransientRetry } from "@/lib/network/fetch-with-transient-retry";
 
 type PublicSearchSource = "hh-web" | "yahoo" | "brave" | "bing-rss";
 
@@ -392,11 +393,9 @@ export class PublicWebSearchProvider implements SearchProvider {
     input: SearchProviderSearchInput,
   ): Promise<ParsedPublicResult[]> {
     await this.waitForRequestSlot();
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), this.timeoutMs);
-
-    try {
-      const response = await this.fetchImpl(sourceUrl(source, input), {
+    const response = await fetchWithTransientRetry(
+      sourceUrl(source, input),
+      {
         headers: {
           Accept: source === "bing-rss"
             ? "application/rss+xml, application/xml;q=0.9, text/html;q=0.8"
@@ -408,24 +407,26 @@ export class PublicWebSearchProvider implements SearchProvider {
           "User-Agent": PUBLIC_SEARCH_USER_AGENT,
         },
         redirect: "follow",
-        signal: controller.signal,
-      });
-      const body = await response.text();
+      },
+      {
+        fetchImpl: this.fetchImpl,
+        timeoutMs: this.timeoutMs,
+        maxAttempts: 3,
+      },
+    );
+    const body = await response.text();
 
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
-      }
-      const parsed = parseSource(source, body);
-      if (parsed.length === 0 && looksBlocked(body)) {
-        throw new Error("blocked by an anti-bot challenge");
-      }
-
-      return parsed.filter((result) =>
-        isRelevant(result, input.query),
-      );
-    } finally {
-      clearTimeout(timeout);
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
     }
+    const parsed = parseSource(source, body);
+    if (parsed.length === 0 && looksBlocked(body)) {
+      throw new Error("blocked by an anti-bot challenge");
+    }
+
+    return parsed.filter((result) =>
+      isRelevant(result, input.query),
+    );
   }
 
   private async searchUncached(

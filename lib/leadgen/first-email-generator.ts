@@ -16,6 +16,7 @@ export type OutreachQualityScore = {
   cta_ease: number;
   human_tone: number;
   truthfulness: number;
+  call_relevance: number;
   template_similarity: number;
 };
 
@@ -74,11 +75,11 @@ const forbiddenPatterns: Array<{ pattern: RegExp; label: string }> = [
 ];
 
 const subjectPatterns = [
-  (company: string) => `Три идеи для ${company}`,
-  (company: string) => `Что проверить в ${company}`,
-  (company: string) => `Одна мысль для ${company}`,
-  (company: string) => `Вопрос по работе ${company}`,
-  (company: string) => `Идея без нового найма — ${company}`,
+  (company: string) => `Где теряется скорость — ${company}`,
+  (company: string) => `Что тормозит первый ответ ${company}`,
+  (company: string) => `${company}: рост без ручной рутины`,
+  (company: string) => `Одна дорогая точка в ${company}`,
+  (company: string) => `Как разгрузить команду ${company}`,
 ] as const;
 
 function cleanText(value: string | null | undefined): string {
@@ -182,6 +183,26 @@ function getObservation(context: FirstEmailContext, intent: EmailIntent, attempt
   return variants[intent][attempt % variants[intent].length];
 }
 
+function getPatternInterrupt(
+  context: FirstEmailContext,
+  intent: EmailIntent,
+  attempt: number,
+): string {
+  const fallback = getObservation(context, intent, attempt);
+  if (!hasVerifiedSignal(context)) return fallback;
+  const company = compactCompanyName(context.companyName);
+  const variants: Record<EmailIntent, string> = {
+    sales: `Увидел, что ${company} усиливает коммерческую команду. В этот момент дорогие менеджеры часто незаметно превращаются в диспетчеров входящих заявок.`,
+    support: `Увидел изменения в клиентском направлении ${company}. Обычно первым начинает проседать не сервис, а скорость и точность первого ответа.`,
+    launch: `Обратил внимание на новое направление ${company}. Именно на старте чаще всего теряются запросы, которые никто не успел правильно разобрать и передать.`,
+    technology: `Посмотрел на изменения в процессах ${company}. Между новой системой и сотрудником почти всегда остаётся ручной участок, который съедает эффект автоматизации.`,
+    expansion: `Увидел расширение ${company}. При таком росте обращения часто начинают двигаться между командами медленнее, чем растёт сам бизнес.`,
+    inbound: `Посмотрел путь входящего обращения в ${company}. Самая дорогая задержка обычно возникает ещё до того, как заявку увидит нужный менеджер.`,
+    general: `Изучил работу ${company}. Нашёл участок, где скорость ответа можно увеличить без расширения команды и перестройки действующих систем.`,
+  };
+  return variants[intent];
+}
+
 function getHypothesis(intent: EmailIntent): string {
   const variants: Record<EmailIntent, string> = {
     sales: "Часто при таком росте менеджеры тратят первые часы не на продажи, а на разбор однотипных запросов и ручную квалификацию.",
@@ -193,6 +214,35 @@ function getHypothesis(intent: EmailIntent): string {
     general: "Есть вероятность, что сотрудники вручную разбирают типовые запросы, уточняют данные и передают их дальше без единой логики.",
   };
   return variants[intent];
+}
+
+function getSharpHypothesis(intent: EmailIntent): string {
+  const variants: Partial<Record<EmailIntent, string>> = {
+    sales: "Моя гипотеза: часть сильных заявок остывает в первые 10–15 минут, пока менеджер вручную выясняет задачу и собирает контекст. Клиент в это время уже говорит с тем, кто ответил быстрее.",
+    support: "Моя гипотеза: команда тратит лучшие часы на повторяющиеся вопросы и маршрутизацию, а действительно сложные обращения получают внимание слишком поздно.",
+    launch: "Моя гипотеза: новый спрос упирается не в привлечение, а в разрыв между первым вопросом клиента, уточнением деталей и передачей ответственному сотруднику.",
+    technology: "Моя гипотеза: данные уже собираются, но проверка, уточнение и передача следующему сотруднику всё ещё требуют ручного контроля и замедляют весь контур.",
+    expansion: "Моя гипотеза: при росте теряется управляемость первого контакта — разные команды отвечают с разной скоростью, а часть обращений остаётся без понятного владельца.",
+    inbound: "Моя гипотеза: часть потенциально сильных заявок теряется не из-за качества трафика, а из-за ручной сортировки и слишком позднего первого содержательного ответа.",
+  };
+  return variants[intent] ?? getHypothesis(intent);
+}
+
+function getValuePitch(
+  context: FirstEmailContext,
+  intent: EmailIntent,
+): string {
+  const company = compactCompanyName(context.companyName);
+  const outcomes: Record<EmailIntent, string> = {
+    sales: "отвечать сразу, собирать задачу и передавать менеджеру уже квалифицированную заявку",
+    support: "закрывать типовые вопросы, определять тему обращения и подключать человека только там, где он действительно нужен",
+    launch: "единым сценарием встречать новый спрос, собирать обязательный контекст и не терять запрос между отделами",
+    technology: "проверять данные, запрашивать недостающее и запускать следующий шаг без ручной диспетчеризации",
+    expansion: "сохранять единый стандарт первого ответа и автоматически назначать владельца обращения",
+    inbound: "моментально квалифицировать входящий запрос и отдавать менеджеру клиента с понятной задачей и приоритетом",
+    general: "забирать первый контакт, повторяющиеся уточнения и передачу запроса ответственному сотруднику",
+  };
+  return `Для ${company} собрал схему из трёх шагов: как ${outcomes[intent]}. Мы внедряем ИИ-сотрудников, которые берут рутину, а человеку оставляют решение и продажу. Покажу, где это встраивается в ваш процесс — без презентации и общих слов.`;
 }
 
 function getMicroValue(intent: EmailIntent): OutreachMicroValue {
@@ -210,9 +260,13 @@ function getMicroValue(intent: EmailIntent): OutreachMicroValue {
 }
 
 function getCta(mode: OutreachMessageMode | null | undefined): string {
-  if (mode === "personal") return "Прислать эти три идеи?";
-  if (mode === "department") return "Кому в вашей команде лучше отправить эти три идеи?";
-  return "Кто у вас отвечает за обработку входящих обращений?";
+  if (mode === "personal") {
+    return "Если разложу это на вашем процессе за 15 минут — обсудим?";
+  }
+  if (mode === "department") {
+    return "Кого из вашей команды подключить на 15-минутный разбор?";
+  }
+  return "Кто отвечает за этот процесс — кому предложить 15-минутный разбор?";
 }
 
 function contentWords(value: string): Set<string> {
@@ -248,12 +302,17 @@ function scoreCopy(context: FirstEmailContext, body: string, microValue: Outreac
     cta_ease: 10,
     human_tone: 9,
     truthfulness: verified ? 10 : 9,
+    call_relevance:
+      /15[-\s]?минут|15\s+минут/i.test(body) &&
+      /созвон|сверить|покаж|разбор|обсуд/i.test(body)
+        ? 10
+        : 5,
     template_similarity: getTemplateSimilarityScore(body, context.batchBodies),
   };
 }
 
 export function passesFirstEmailQualityGate(score: OutreachQualityScore): boolean {
-  return score.hook_strength >= 8 && score.company_specificity >= 8 && score.business_relevance >= 8 && score.curiosity >= 8 && score.cta_ease >= 9 && score.truthfulness >= 9 && score.template_similarity <= 4;
+  return score.hook_strength >= 8 && score.company_specificity >= 8 && score.business_relevance >= 8 && score.curiosity >= 8 && score.credibility >= 8 && score.cta_ease >= 9 && score.human_tone >= 8 && score.truthfulness >= 9 && score.call_relevance >= 9 && score.template_similarity <= 4;
 }
 
 export function validateFirstEmailV3(copy: Pick<FirstEmailCopy, "subject" | "body">, context?: FirstEmailContext): FirstEmailValidation {
@@ -266,7 +325,8 @@ export function validateFirstEmailV3(copy: Pick<FirstEmailCopy, "subject" | "bod
   if (paragraphs.length < 4 || paragraphs.length > 6) errors.push("Письмо должно содержать 4–6 коротких абзацев.");
   if (words < 60 || words > 110) errors.push("Письмо должно содержать 60–110 слов.");
   for (const forbidden of forbiddenPatterns) if (forbidden.pattern.test(content)) errors.push(`Запрещённая формулировка: ${forbidden.label}.`);
-  if (/созвон|встреч/i.test(copy.body)) errors.push("Первое касание не должно просить созвон.");
+  if (!/15[-\s]?минут|15\s+минут/i.test(copy.body)) errors.push("CTA должен предлагать конкретный короткий разговор на 15 минут.");
+  if (!/созвон|сверить|покаж|разбор|обсуд/i.test(copy.body)) errors.push("Письмо должно вести к короткому разбору или созвону.");
   if ((copy.body.match(/\?/g) ?? []).length !== 1) errors.push("В письме должен быть один CTA.");
   if (context && cleanText(context.growthSignal).length > 32 && copy.body.includes(cleanText(context.growthSignal))) errors.push("В письмо попал raw commercial signal.");
   return { valid: errors.length === 0, errors };
@@ -282,9 +342,9 @@ export function generateFirstEmailV3(context: FirstEmailContext): FirstEmailCopy
   for (let attempt = 0; attempt < 3; attempt += 1) {
     const blocks = {
       greeting: getFirstName(context.decisionMakerName) ? `${getFirstName(context.decisionMakerName)}, добрый день.` : "Добрый день.",
-      observation: getObservation(context, intent, attempt),
-      hypothesis: getHypothesis(intent),
-      value: `Для вашей ситуации подготовил три конкретные идеи. Мы внедряем ИИ-сотрудников, которые отвечают, квалифицируют запрос и передают менеджеру уже понятного клиента.`,
+      observation: getPatternInterrupt(context, intent, attempt),
+      hypothesis: getSharpHypothesis(intent),
+      value: getValuePitch(context, intent),
       cta: getCta(context.messageMode),
     };
     const body = [blocks.greeting, blocks.observation, blocks.hypothesis, blocks.value, blocks.cta].join("\n\n");

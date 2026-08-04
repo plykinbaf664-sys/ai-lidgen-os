@@ -1,8 +1,9 @@
 import "server-only";
 
 import { createClient } from "@supabase/supabase-js";
+import { fetchWithTransientRetry } from "@/lib/network/fetch-with-transient-retry";
 
-const SUPABASE_FETCH_TIMEOUT_MS = 10000;
+const SUPABASE_FETCH_TIMEOUT_MS = 30000;
 
 function requireEnv(name: string): string {
   const value = process.env[name];
@@ -18,33 +19,10 @@ async function fetchWithTimeout(
   input: Parameters<typeof fetch>[0],
   init?: Parameters<typeof fetch>[1],
 ): Promise<Response> {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => {
-    controller.abort();
-  }, SUPABASE_FETCH_TIMEOUT_MS);
-  const externalSignal = init?.signal;
-
-  if (externalSignal?.aborted) {
-    clearTimeout(timeoutId);
-    controller.abort();
-  } else {
-    externalSignal?.addEventListener(
-      "abort",
-      () => {
-        controller.abort();
-      },
-      { once: true },
-    );
-  }
-
-  try {
-    return await fetch(input, {
-      ...init,
-      signal: controller.signal,
-    });
-  } finally {
-    clearTimeout(timeoutId);
-  }
+  return fetchWithTransientRetry(input, init, {
+    timeoutMs: SUPABASE_FETCH_TIMEOUT_MS,
+    maxAttempts: 3,
+  });
 }
 
 export function createSupabaseServerClient() {

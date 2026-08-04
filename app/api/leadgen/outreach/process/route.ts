@@ -1,23 +1,29 @@
 import { NextResponse } from "next/server";
-import { processNextOutreachItem } from "@/lib/leadgen/outreach-processor";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
+import { runOutreachProcessorIteration } from "@/lib/leadgen/outreach-scheduler";
 
 async function handleProcess(request: Request) {
-  const secret =
-    process.env.OUTREACH_PROCESSOR_SECRET ?? process.env.CRON_SECRET;
-  const encodedSecret = secret
-    ? Buffer.from(secret, "utf8").toString("base64url")
-    : null;
+  const secrets = [
+    process.env.OUTREACH_PROCESSOR_SECRET,
+    process.env.CRON_SECRET,
+  ].filter((value): value is string => Boolean(value));
+  const encodedSecrets = secrets.map((secret) =>
+    Buffer.from(secret, "utf8").toString("base64url"),
+  );
   const encodedToken = request.headers.get("x-outreach-processor-token");
   const authorization = request.headers.get("authorization");
   if (
-    !secret ||
-    (encodedToken !== encodedSecret && authorization !== `Bearer ${secret}`)
+    secrets.length === 0 ||
+    (!encodedSecrets.includes(encodedToken ?? "") &&
+      !secrets.some((secret) => authorization === `Bearer ${secret}`))
   ) {
     return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
   }
   try {
-    return NextResponse.json({ success: true, ...(await processNextOutreachItem()) });
+    return NextResponse.json({
+      success: true,
+      ...(await runOutreachProcessorIteration()),
+    });
   } catch (error) {
     return NextResponse.json({ success: false, error: formatUnknownError(error) }, { status: 500 });
   }

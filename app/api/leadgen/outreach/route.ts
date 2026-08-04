@@ -7,6 +7,7 @@ import {
   syncOutreachQueue,
 } from "@/lib/leadgen/outreach-storage";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
+import { getOutreachSummary } from "@/lib/leadgen/outreach-summary";
 
 const errorText = (error: unknown) => formatUnknownError(error);
 
@@ -16,7 +17,7 @@ export async function GET(request: NextRequest) {
     if (campaignId) {
       await syncOutreachQueue(campaignId);
     }
-    const [workingSet, daily] = await Promise.all([
+    const [workingSet, daily, summary] = await Promise.all([
       campaignId
         ? getOutreachWorkingSet(campaignId)
         : getOutreachQueue().then((entries) => ({
@@ -40,6 +41,7 @@ export async function GET(request: NextRequest) {
             },
           })),
       getDailySendStats(),
+      campaignId ? getOutreachSummary(campaignId) : Promise.resolve(null),
     ]);
     const entries = workingSet.entries;
     return NextResponse.json({
@@ -53,6 +55,7 @@ export async function GET(request: NextRequest) {
         daily_remaining: daily.availableToQueue,
         queued_for_today: daily.queuedForToday,
       },
+      summary,
     });
   } catch (error) {
     return NextResponse.json({ success: false, error: errorText(error) }, { status: 500 });
@@ -66,9 +69,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: "campaignId обязателен" }, { status: 400 });
     }
     await syncOutreachQueue(campaignId);
-    const [workingSet, daily] = await Promise.all([
+    const [workingSet, daily, summary] = await Promise.all([
       getOutreachWorkingSet(campaignId),
       getDailySendStats(),
+      getOutreachSummary(campaignId),
     ]);
     const entries = workingSet.entries;
     return NextResponse.json({
@@ -82,6 +86,7 @@ export async function POST(request: NextRequest) {
         daily_remaining: daily.availableToQueue,
         queued_for_today: daily.queuedForToday,
       },
+      summary,
     });
   } catch (error) {
     return NextResponse.json({ success: false, error: errorText(error) }, { status: 500 });

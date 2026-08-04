@@ -3,13 +3,17 @@ import { readFile } from "node:fs/promises";
 
 const root = new URL("../", import.meta.url);
 const read = (path) => readFile(new URL(path, root), "utf8");
-const [rules, generator, smtp, provider, processor, storage, migration, env, ui, followupRoute] = await Promise.all([
+const [rules, generator, smtp, provider, processor, storage, outreachStorage, scheduler, followupBatch, followupBulkApprove, migration, env, ui, followupRoute] = await Promise.all([
   read("lib/leadgen/followup-rules.ts"),
   read("lib/leadgen/followup-generator.ts"),
   read("lib/leadgen/smtp-client.ts"),
   read("lib/leadgen/email-provider.ts"),
   read("lib/leadgen/outreach-processor.ts"),
   read("lib/leadgen/followup-storage.ts"),
+  read("lib/leadgen/outreach-storage.ts"),
+  read("lib/leadgen/outreach-scheduler.ts"),
+  read("app/api/leadgen/followups/batch/route.ts"),
+  read("app/api/leadgen/followups/bulk-approve/route.ts"),
   read("supabase/followup_engine_v1.sql"),
   read(".env.example"),
   read("components/leadgen/email-outreach-queue.tsx"),
@@ -31,9 +35,22 @@ required(smtp, [/In-Reply-To/, /References/, /randomUUID/], "thread headers");
 required(provider, [/message_kind === "follow_up"/, /parent_smtp_message_id/], "provider threading");
 required(processor, [/assertFollowupSendable/, /claimDueOutreachItem/], "pre-send reply check");
 assert.match(processor, /runAutomaticFollowupCycle/);
+required(processor, [/requestedKind/, /nextKind === "initial"/, /nextKind === "follow_up"/], "separate processors");
+required(scheduler, [/MessageKind/, /runOutreachProcessorIteration\(messageKind/], "separate scheduler");
+required(scheduler, [/messageKind === "follow_up"/, /await getFollowups\(\)/], "follow-up local scheduler");
+required(followupBatch, [/runOutreachProcessorIteration\("follow_up"\)/], "follow-up trigger");
+required(followupBulkApprove, [/body\.manual === true/], "manual bulk approval");
+required(ui, [/\{ manual: true, \.\.\.payload \}/, /followupSummary\?\.needs_review/], "follow-up bulk approval UI");
+assert.match(
+  outreachStorage.match(/export async function cancelQueued[\s\S]*?export async function cancelQueuedItem/)?.[0] ?? "",
+  /\.eq\("message_kind", "initial"\)/,
+);
 required(ui, [/Дожимные письма/, /Проверить входящие ответы/, /Сгенерировать дожимы/, /История касаний/, /Отменить до отправки/], "UI");
 required(ui, [/Дожимы станут доступны через/, /Почему письма пока не готовы/, /formatFollowupWait/], "eligibility UI");
-assert.match(followupRoute, /getFollowups\(campaignId\), getFollowupSummary\(\)/);
+assert.match(
+  followupRoute,
+  /getFollowups\(campaignId\), getFollowupSummary\(campaignId\)/,
+);
 assert.match(ui, /runFollowupAction\("generate"\)/);
 
 assert.doesNotMatch(

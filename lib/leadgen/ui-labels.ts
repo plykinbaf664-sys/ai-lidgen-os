@@ -163,6 +163,8 @@ export function getLeadStatusLabel(status: LeadgenLead["status"]): string {
     approved: "Одобрен",
     rejected: "Отклонён",
     paused: "На паузе",
+    replied: "Ответ получен",
+    interested: "Заинтересован",
   };
 
   return labels[status];

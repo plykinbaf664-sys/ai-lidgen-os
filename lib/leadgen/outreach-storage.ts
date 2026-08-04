@@ -158,6 +158,8 @@ export function rowToEntry(row: QueueRow, queuePosition: number | null = null): 
     reply_from: row.reply_from ?? null,
     reply_subject: row.reply_subject ?? null,
     reply_detection_method: row.reply_detection_method ?? null,
+    reply_intent: (metadata.reply_intent as OutreachQueueEntry["reply_intent"]) ?? null,
+    reply_contact: (metadata.reply_contact as OutreachQueueEntry["reply_contact"]) ?? null,
     generation_reason: row.generation_reason ?? null,
     skip_reason: row.skip_reason ?? null,
   };
@@ -591,9 +593,12 @@ export async function bulkApproveOutreach(campaignId: string, execute: boolean) 
     },
     {},
   );
+  let approved = 0;
   if (execute) {
     for (const entry of eligible) {
-      await approveOutreachEntry(entry.id);
+      if (await approveOutreachEntry(entry.id)) {
+        approved += 1;
+      }
     }
   }
   return {
@@ -601,7 +606,7 @@ export async function bulkApproveOutreach(campaignId: string, execute: boolean) 
     eligible_count: eligible.length,
     skipped_count: entries.length - eligible.length,
     skipped,
-    approved: execute ? eligible.length : 0,
+    approved,
   };
 }
 
@@ -720,14 +725,25 @@ function zonedMidnightUtc(date: Date, timeZone: string) {
   return new Date(guess - (represented - guess));
 }
 
+export function getBusinessDayRange(now = new Date()) {
+  const start = zonedMidnightUtc(
+    now,
+    leadgenProductionConfig.emailBusinessTimezone,
+  );
+  return {
+    start,
+    end: new Date(start.getTime() + 86_400_000),
+  };
+}
+
 export async function getDailySendStats(now = new Date()) {
   const supabase = createSupabaseServerClient();
-  const start = zonedMidnightUtc(now, leadgenProductionConfig.emailBusinessTimezone);
-  const end = new Date(start.getTime() + 86_400_000);
+  const { start, end } = getBusinessDayRange(now);
   const { count, error } = await supabase
     .from("leadgen_outreach_queue")
     .select("id", { count: "exact", head: true })
     .eq("status", "sent")
+    .eq("message_kind", "initial")
     .gte("sent_at", start.toISOString())
     .lt("sent_at", end.toISOString());
   if (error) throw error;
@@ -736,6 +752,7 @@ export async function getDailySendStats(now = new Date()) {
     .from("leadgen_outreach_queue")
     .select("id", { count: "exact", head: true })
     .in("status", ["queued", "sending"])
+    .eq("message_kind", "initial")
     .lt("next_attempt_at", end.toISOString());
   if (activeResult.error) throw activeResult.error;
   const queuedForToday = activeResult.count ?? 0;
@@ -774,16 +791,29 @@ export async function scheduleApprovedBatch({
   }
   const approvedCountResult = await approvedCountQuery;
   if (approvedCountResult.error) throw approvedCountResult.error;
+  const approvedCount = approvedCountResult.count ?? 0;
+  const reasons: Record<string, number> = {};
+  const addReason = (reason: string) => {
+    reasons[reason] = (reasons[reason] ?? 0) + 1;
+  };
   const safeCount = calculateBatchCapacity({
     requested: Math.max(0, requestedCount),
-    approved: approvedCountResult.count ?? 0,
+    approved: approvedCount,
     sentToday: stats.sentToday,
     queuedForToday: stats.queuedForToday,
     dailyLimit: stats.dailyLimit,
     batchLimit: leadgenProductionConfig.emailBatchSendLimit,
   });
   if (safeCount < 1) {
-    return { queued: [], stats, remaining_approved: 0 };
+    addReason(approvedCount < 1 ? "no_approved_items" : "daily_limit_reached");
+    return {
+      queued: [],
+      queued_count: 0,
+      skipped_count: 0,
+      reasons,
+      stats,
+      remaining_approved: approvedCount,
+    };
   }
   let approvedEntriesQuery = supabase
     .from("leadgen_outreach_queue")
@@ -800,44 +830,86 @@ export async function scheduleApprovedBatch({
   }
   const { data, error } = await approvedEntriesQuery;
   if (error) throw error;
-  const { minimum, maximum } = getEmailDelayBounds();
-  let scheduledAt = Date.now();
-  const queued: OutreachQueueEntry[] = [];
-
-  for (const row of (data ?? []) as QueueRow[]) {
-    const duplicate = await supabase
+  const rows = (data ?? []) as QueueRow[];
+  const [blockedResult, stopListResult] = await Promise.all([
+    supabase
       .from("leadgen_outreach_queue")
-      .select("id,campaign_id,sent_at")
-      .eq("normalized_recipient_email", row.normalized_recipient_email)
-      .in("status", ["sent", "queued", "sending"])
-      .neq("id", row.id)
-      .limit(1)
-      .maybeSingle();
-    if (duplicate.error) throw duplicate.error;
-    if (duplicate.data) continue;
-    if (row.company_id) {
-      const contactedCompany = await supabase
-        .from("leadgen_outreach_queue")
-        .select("id")
-        .eq("company_id", row.company_id)
-        .eq("status", "sent")
-        .eq("message_kind", "initial")
-        .neq("id", row.id)
-        .limit(1)
-        .maybeSingle();
-      if (contactedCompany.error) throw contactedCompany.error;
-      if (contactedCompany.data) continue;
-    }
-    const stopList = await supabase
+      .select("normalized_recipient_email,company_id")
+      .eq("message_kind", "initial")
+      .in("status", ["sent", "queued", "sending"]),
+    supabase
       .from("leadgen_email_stop_list")
       .select("normalized_email")
-      .eq("normalized_email", row.normalized_recipient_email)
-      .eq("is_active", true)
-      .maybeSingle();
-    if (stopList.error) throw stopList.error;
-    if (stopList.data) continue;
+      .eq("is_active", true),
+  ]);
+  if (blockedResult.error) throw blockedResult.error;
+  if (stopListResult.error) throw stopListResult.error;
+
+  const blockedEmails = new Set(
+    (blockedResult.data ?? []).map((item) => item.normalized_recipient_email),
+  );
+  const blockedCompanies = new Set(
+    (blockedResult.data ?? [])
+      .map((item) => item.company_id)
+      .filter((value): value is string => Boolean(value)),
+  );
+  const stoppedEmails = new Set(
+    (stopListResult.data ?? []).map((item) => item.normalized_email),
+  );
+  const selectedEmails = new Set<string>();
+  const selectedCompanies = new Set<string>();
+  const eligibleRows = rows.filter((row) => {
+    if (!row.recipient_email.trim()) {
+      addReason("missing_email");
+      return false;
+    }
+    if (!row.subject.trim()) {
+      addReason("missing_subject");
+      return false;
+    }
+    if (!row.body.trim()) {
+      addReason("missing_body");
+      return false;
+    }
+    if (stoppedEmails.has(row.normalized_recipient_email)) {
+      addReason("stop_list");
+      return false;
+    }
+    if (
+      blockedEmails.has(row.normalized_recipient_email) ||
+      selectedEmails.has(row.normalized_recipient_email)
+    ) {
+      addReason("duplicate_email");
+      return false;
+    }
+    if (
+      row.company_id &&
+      (blockedCompanies.has(row.company_id) ||
+        selectedCompanies.has(row.company_id))
+    ) {
+      addReason("already_contacted");
+      return false;
+    }
+    selectedEmails.add(row.normalized_recipient_email);
+    if (row.company_id) selectedCompanies.add(row.company_id);
+    return true;
+  });
+
+  const { minimum, maximum } = getEmailDelayBounds();
+  let scheduledAt = Date.now();
+  const scheduledRows = eligibleRows.map((row) => {
     const timestamp = new Date(scheduledAt).toISOString();
-    const update = await supabase
+    scheduledAt = getNextScheduledAt({
+      currentTimestamp: scheduledAt,
+      minimumDelaySeconds: minimum,
+      maximumDelaySeconds: maximum,
+      randomDelay,
+    });
+    return { row, timestamp };
+  });
+  const updateResults = await Promise.all(
+    scheduledRows.map(({ row, timestamp }) =>
+      supabase
       .from("leadgen_outreach_queue")
       .update({
         status: "queued",
@@ -849,27 +921,31 @@ export async function scheduleApprovedBatch({
       .eq("id", row.id)
       .eq("status", "approved")
       .select("*")
-      .maybeSingle<QueueRow>();
+      .maybeSingle<QueueRow>(),
+    ),
+  );
+  const queued: OutreachQueueEntry[] = [];
+  for (const update of updateResults) {
     if (update.error) {
-      if (update.error.code === "23505") continue;
+      if (update.error.code === "23505") {
+        addReason("queue_already_created");
+        continue;
+      }
       throw update.error;
     }
     if (update.data) {
       queued.push(rowToEntry(update.data, queued.length + 1));
-      scheduledAt = getNextScheduledAt({
-        currentTimestamp: scheduledAt,
-        minimumDelaySeconds: minimum,
-        maximumDelaySeconds: maximum,
-        randomDelay,
-      });
-    }
+    } else addReason("state_changed");
   }
   return {
     queued,
+    queued_count: queued.length,
+    skipped_count: rows.length - queued.length,
+    reasons,
     stats,
     remaining_approved: Math.max(
       0,
-      (approvedCountResult.count ?? 0) - queued.length,
+      approvedCount - queued.length,
     ),
   };
 }
@@ -908,7 +984,8 @@ export async function cancelQueued(campaignId?: string) {
       next_attempt_at: null,
       updated_at: new Date().toISOString(),
     })
-    .eq("status", "queued");
+    .eq("status", "queued")
+    .eq("message_kind", "initial");
   if (campaignId) query = query.eq("campaign_id", campaignId);
   const { error } = await query;
   if (error) throw error;
@@ -926,6 +1003,7 @@ export async function cancelQueuedItem(id: string) {
       updated_at: new Date().toISOString(),
     })
     .eq("id", id)
+    .eq("message_kind", "initial")
     .eq("status", "queued")
     .select("*")
     .maybeSingle<QueueRow>();
@@ -945,7 +1023,8 @@ export async function retryFailed(campaignId?: string) {
       provider: null,
       updated_at: new Date().toISOString(),
     })
-    .eq("status", "failed");
+    .eq("status", "failed")
+    .eq("message_kind", "initial");
   if (campaignId) query = query.eq("campaign_id", campaignId);
   const { error } = await query;
   if (error) throw error;
@@ -964,6 +1043,7 @@ export async function retryFailedItem(id: string) {
       updated_at: new Date().toISOString(),
     })
     .eq("id", id)
+    .eq("message_kind", "initial")
     .eq("status", "failed")
     .select("*")
     .maybeSingle<QueueRow>();
@@ -971,14 +1051,84 @@ export async function retryFailedItem(id: string) {
   return data ? rowToEntry(data) : null;
 }
 
-export async function claimDueOutreachItem(workerId: string) {
+export async function claimDueOutreachItem(
+  workerId: string,
+  messageKind?: "initial" | "follow_up",
+) {
   const supabase = createSupabaseServerClient();
+  if (messageKind) {
+    const now = new Date().toISOString();
+    const stale = await supabase
+      .from("leadgen_outreach_queue")
+      .update({
+        status: "failed",
+        failed_at: now,
+        last_error: "Processor interrupted while sending; manual retry required.",
+        updated_at: now,
+      })
+      .eq("message_kind", messageKind)
+      .eq("status", "sending")
+      .lt(
+        "sending_started_at",
+        new Date(Date.now() - 30 * 60_000).toISOString(),
+      );
+    if (stale.error) throw stale.error;
+
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      const candidate = await supabase
+        .from("leadgen_outreach_queue")
+        .select("id,attempt_count")
+        .eq("message_kind", messageKind)
+        .eq("status", "queued")
+        .lte("next_attempt_at", now)
+        .order("next_attempt_at", { ascending: true })
+        .order("created_at", { ascending: true })
+        .limit(1)
+        .maybeSingle<{ id: string; attempt_count: number }>();
+      if (candidate.error) throw candidate.error;
+      if (!candidate.data) return null;
+      const claimed = await supabase
+        .from("leadgen_outreach_queue")
+        .update({
+          status: "sending",
+          sending_started_at: now,
+          attempt_count: candidate.data.attempt_count + 1,
+          last_error: null,
+          updated_at: now,
+          provider: workerId,
+        })
+        .eq("id", candidate.data.id)
+        .eq("message_kind", messageKind)
+        .eq("status", "queued")
+        .select("*")
+        .maybeSingle<QueueRow>();
+      if (claimed.error) throw claimed.error;
+      if (claimed.data) return rowToEntry(claimed.data);
+    }
+    return null;
+  }
   const { data, error } = await supabase.rpc("claim_due_outreach_item", {
     worker_id: workerId,
   });
   if (error) throw error;
   const row = ((data ?? []) as QueueRow[])[0];
   return row ? rowToEntry(row) : null;
+}
+
+/** Returns the kind of the next due item without claiming it. */
+export async function getNextDueOutreachMessageKind() {
+  const supabase = createSupabaseServerClient();
+  const { data, error } = await supabase
+    .from("leadgen_outreach_queue")
+    .select("message_kind")
+    .eq("status", "queued")
+    .lte("next_attempt_at", new Date().toISOString())
+    .order("next_attempt_at", { ascending: true })
+    .order("created_at", { ascending: true })
+    .limit(1)
+    .maybeSingle<{ message_kind: "initial" | "follow_up" }>();
+  if (error) throw error;
+  return data?.message_kind ?? null;
 }
 
 export async function rejectPreviouslyContactedQueuedItems() {

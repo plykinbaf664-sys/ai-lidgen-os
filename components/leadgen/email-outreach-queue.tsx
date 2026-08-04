@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
 import { outreachStatusLabels } from "@/lib/leadgen/outreach-status";
 import {
-  isTechnicalEmailArtifact,
   type OutreachSkippedCompany,
 } from "@/lib/leadgen/outreach-working-set";
+import type { OutreachSummary } from "@/lib/leadgen/outreach-summary-model";
 import {
   getCommercialSignalTypeLabel,
   NO_VERIFIED_COMMERCIAL_SIGNAL,
@@ -18,7 +18,6 @@ import type {
   OutreachQueueEntry,
   OutreachReadiness,
   LeadgenCampaignDetails,
-  ProductionDiscoveryStats,
 } from "@/lib/leadgen/types";
 
 type ApiError = { success: false; error?: unknown };
@@ -47,6 +46,7 @@ type QueueResponse =
         daily_remaining: number;
         queued_for_today: number;
       };
+      summary: OutreachSummary | null;
     }
   | ApiError;
 type EntryResponse = { success: true; entry: OutreachQueueEntry } | ApiError;
@@ -70,14 +70,13 @@ type BulkPreview = {
   skipped: Record<string, number>;
 };
 type BulkResponse = ({ success: true } & BulkPreview) | ApiError;
-type WorkingSetCounters = Extract<
-  QueueResponse,
-  { success: true }
->["working_set"]["counters"];
 type BatchResponse =
   | {
       success: true;
       queued: OutreachQueueEntry[];
+      queued_count: number;
+      skipped_count: number;
+      reasons: Record<string, number>;
       stats: { sentToday: number; dailyLimit: number; remaining: number };
       remaining_approved: number;
       processor: {
@@ -88,7 +87,8 @@ type BatchResponse =
           | "paused"
           | "daily_limit_reached"
           | "smtp_unavailable"
-          | "error";
+          | "error"
+          | "queued";
         entry: OutreachQueueEntry | null;
         error?: string;
       };
@@ -113,6 +113,8 @@ type FollowupResponse =
         queued: number;
         sending: number;
         sent: number;
+        sent_today: number;
+        queued_now: number;
         skipped: number;
         failed: number;
         reply_checks_verified: number;
@@ -135,6 +137,7 @@ type FollowupResponse =
         min_interval_hours: number;
         automation_enabled: boolean;
         automation_mode: "automatic" | "manual";
+        eligible_for_bulk_approval: number;
       };
       daily: { sent_today: number; daily_limit: number; daily_remaining: number };
     }
@@ -188,17 +191,6 @@ function formatDate(value?: string | null) {
         timeStyle: "short",
       }).format(new Date(value))
     : "—";
-}
-
-function isTodayInMoscow(value?: string | null) {
-  if (!value) return false;
-  const formatter = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Europe/Moscow",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  });
-  return formatter.format(new Date(value)) === formatter.format(new Date());
 }
 
 function formatFollowupWait(value?: string | null) {
@@ -290,21 +282,35 @@ function PrimaryOutreachToolbar({
   emailCount,
   eligibleCount,
   maxBatch,
+  batchSize,
+  sentToday,
+  dailyLimit,
+  dailyRemaining,
+  queuedToday,
   disabled,
   loading,
+  queueLoading,
   onApproveAll,
-  onSend,
+  onBatchSizeChange,
+  onQueue,
   sendState,
 }: {
-  counters: WorkingSetCounters;
+  counters: OutreachSummary["initial"];
   foundCompanies: number;
   emailCount: number;
   eligibleCount: number;
   maxBatch: number;
+  batchSize: number;
+  sentToday: number;
+  dailyLimit: number;
+  dailyRemaining: number;
+  queuedToday: number;
   disabled: boolean;
   loading: boolean;
+  queueLoading: boolean;
   onApproveAll: () => void;
-  onSend: () => void;
+  onBatchSizeChange: (value: number) => void;
+  onQueue: () => void;
   sendState: string;
 }) {
   const progress = Math.min(100, Math.round((emailCount / 20) * 100));
@@ -320,8 +326,8 @@ function PrimaryOutreachToolbar({
       <dl className="dispatch-metrics">
         <div><dt>Проверено кандидатов</dt><dd>{foundCompanies}</dd></div>
         <div><dt>Рабочих email</dt><dd>{emailCount}</dd></div>
-        <div><dt>Первичных писем</dt><dd>{counters.total}</dd></div>
-        <div><dt>К проверке</dt><dd>{counters.needs_review}</dd></div>
+        <div><dt>Первичных писем</dt><dd>{counters.generated}</dd></div>
+        <div><dt>К проверке</dt><dd>{counters.needsReview}</dd></div>
         <div><dt>Одобрено</dt><dd>{counters.approved}</dd></div>
         <div><dt>В очереди</dt><dd>{counters.queued}</dd></div>
         <div><dt>Отправлено</dt><dd>{counters.sent}</dd></div>
@@ -339,14 +345,57 @@ function PrimaryOutreachToolbar({
           Одобрить все корректные
           {eligibleCount > 0 ? ` · ${eligibleCount}` : ""}
         </Button>
-        <Button
-          disabled={disabled || maxBatch < 1}
-          onClick={onSend}
-          variant="primary"
-        >
-          Отправить первичные письма
-          {maxBatch > 0 ? ` · ${maxBatch}` : ""}
-        </Button>
+      </div>
+      <div className="dispatch-queue-inline">
+        <dl>
+          <div><dt>Одобрено</dt><dd>{counters.approved}</dd></div>
+          <div><dt>Отправлено сегодня</dt><dd>{sentToday}</dd></div>
+          <div><dt>Дневной лимит</dt><dd>{dailyLimit}</dd></div>
+          <div><dt>Доступно сейчас</dt><dd>{maxBatch}</dd></div>
+        </dl>
+        <label className="batch-slider">
+          <span>
+            К постановке в очередь:{" "}
+            <strong>{Math.min(batchSize, Math.max(1, maxBatch))}</strong>
+          </span>
+          <input
+            aria-label="Количество первичных писем для постановки в очередь"
+            disabled={disabled || maxBatch < 1}
+            max={Math.max(1, maxBatch)}
+            min="1"
+            onChange={(event) => onBatchSizeChange(Number(event.target.value))}
+            step="1"
+            type="range"
+            value={Math.min(Math.max(1, batchSize), Math.max(1, maxBatch))}
+          />
+        </label>
+        <div className="dispatch-queue-action">
+          <span>
+            После запуска останется одобренными:{" "}
+            {Math.max(0, counters.approved - Math.min(batchSize, maxBatch))}
+          </span>
+          <Button
+            disabled={
+              disabled ||
+              maxBatch < 1 ||
+              batchSize < 1 ||
+              batchSize > maxBatch
+            }
+            loading={queueLoading}
+            onClick={onQueue}
+            variant="primary"
+          >
+            {maxBatch > 0
+              ? `Запустить первичные · ${Math.min(batchSize, maxBatch)}`
+              : counters.approved > 0 && dailyRemaining < 1
+                ? `Лимит ${sentToday}/${dailyLimit} — запуск завтра`
+                : "Сначала одобрите письма"}
+          </Button>
+        </div>
+        <small>
+          Пауза между письмами: 5–10 минут. Осталось успешно отправить сегодня:{" "}
+          {dailyRemaining}. Уже в очереди: {queuedToday}.
+        </small>
       </div>
       <p className="dispatch-send-state">{sendState}</p>
     </section>
@@ -356,24 +405,14 @@ function PrimaryOutreachToolbar({
 export function EmailOutreachQueue({
   campaignDetails,
   campaignId,
-  discoveryStats,
 }: {
   campaignDetails?: LeadgenCampaignDetails | null;
   campaignId: string | null;
-  discoveryStats?: ProductionDiscoveryStats | null;
 }) {
   const [entries, setEntries] = useState<OutreachQueueEntry[]>([]);
-  const [workingSetCounters, setWorkingSetCounters] = useState<WorkingSetCounters>({
-    total: 0,
-    needs_review: 0,
-    approved: 0,
-    queued: 0,
-    sending: 0,
-    sent: 0,
-    failed: 0,
-  });
+  const [outreachSummary, setOutreachSummary] =
+    useState<OutreachSummary | null>(null);
   const [skippedCompanies, setSkippedCompanies] = useState<OutreachSkippedCompany[]>([]);
-  const [eligibleForBulkApprovalCount, setEligibleForBulkApprovalCount] = useState(0);
   const [readiness, setReadiness] = useState<OutreachReadiness | null>(null);
   const [operational, setOperational] =
     useState<OutreachOperationalState | null>(null);
@@ -387,13 +426,15 @@ export function EmailOutreachQueue({
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [bulkPreview, setBulkPreview] = useState<BulkPreview | null>(null);
-  const [showBatchConfirm, setShowBatchConfirm] = useState(false);
   const [batchSize, setBatchSize] = useState(5);
   const [followups, setFollowups] = useState<OutreachQueueEntry[]>([]);
-  const [dailyFollowups, setDailyFollowups] = useState<OutreachQueueEntry[]>([]);
   const [followupSummary, setFollowupSummary] = useState<Extract<FollowupResponse, { success: true }>["summary"] | null>(null);
   const [followupBatchSize, setFollowupBatchSize] = useState(1);
   const [imapDiagnostic, setImapDiagnostic] = useState<ImapDiagnostic | null>(null);
+  const [followupNotice, setFollowupNotice] = useState<{
+    tone: "loading" | "success" | "error";
+    text: string;
+  } | null>(null);
 
   const visibleEntries = useMemo(
     () =>
@@ -434,18 +475,33 @@ export function EmailOutreachQueue({
         : null,
     [selectedEntry],
   );
+  const actionableFollowups = useMemo(
+    () =>
+      followups
+        .filter((entry) =>
+          ["needs_review", "approved", "queued", "sending", "failed"].includes(
+            entry.status,
+          ),
+        )
+        .sort(
+          (left, right) =>
+            Date.parse(right.updated_at ?? right.created_at) -
+            Date.parse(left.updated_at ?? left.created_at),
+        ),
+    [followups],
+  );
   const metrics = useMemo(
     () => ({
-      total: workingSetCounters.total,
-      review: workingSetCounters.needs_review,
-      approved: workingSetCounters.approved,
-      queued: workingSetCounters.queued,
-      sending: workingSetCounters.sending,
-      sent: workingSetCounters.sent,
-      failed: workingSetCounters.failed,
-      rejected: 0,
+      total: outreachSummary?.initial.generated ?? 0,
+      review: outreachSummary?.initial.needsReview ?? 0,
+      approved: outreachSummary?.initial.approved ?? 0,
+      queued: outreachSummary?.initial.queued ?? 0,
+      sending: outreachSummary?.initial.sending ?? 0,
+      sent: outreachSummary?.initial.sent ?? 0,
+      failed: outreachSummary?.initial.failed ?? 0,
+      rejected: outreachSummary?.initial.rejected ?? 0,
     }),
-    [workingSetCounters],
+    [outreachSummary],
   );
   const companiesWithoutOutreach = useMemo(() => {
     if (!campaignDetails) return [];
@@ -464,27 +520,15 @@ export function EmailOutreachQueue({
   }, []);
 
   const loadFollowups = useCallback(async () => {
-    const url = campaignId
-      ? `/api/leadgen/followups?campaignId=${encodeURIComponent(campaignId)}`
-      : "/api/leadgen/followups";
-    const [response, dailyResponse] = await Promise.all([
-      fetch(url),
-      campaignId ? fetch("/api/leadgen/followups") : Promise.resolve(null),
-    ]);
+    const response = await fetch("/api/leadgen/followups");
     const data = await readJson<FollowupResponse>(response);
     if (!response.ok || !data.success) throw new Error(getError(data as ApiError));
     setFollowups(data.entries);
-    if (dailyResponse) {
-      const dailyData = await readJson<FollowupResponse>(dailyResponse);
-      if (dailyResponse.ok && dailyData.success) {
-        setDailyFollowups(dailyData.entries);
-      }
-    } else {
-      setDailyFollowups(data.entries);
-    }
     setFollowupSummary(data.summary);
-    setFollowupBatchSize((value) => Math.max(1, Math.min(value, data.summary.approved || 1, data.daily.daily_remaining || 1)));
-  }, [campaignId]);
+    setFollowupBatchSize((value) =>
+      Math.max(1, Math.min(value, data.summary.approved || 1, 20)),
+    );
+  }, []);
 
   const load = useCallback(async () => {
     setError(null);
@@ -501,11 +545,8 @@ export function EmailOutreachQueue({
       throw new Error(getError(queue as ApiError));
     }
     setEntries(queue.entries);
-    setWorkingSetCounters(queue.working_set.counters);
+    setOutreachSummary(queue.summary);
     setSkippedCompanies(queue.working_set.skipped_companies);
-    setEligibleForBulkApprovalCount(
-      queue.working_set.eligible_for_bulk_approval_count,
-    );
     setOperational(queue.operational);
     setLastUpdated(new Date().toISOString());
     if (ready.success) {
@@ -530,13 +571,10 @@ export function EmailOutreachQueue({
           `/api/leadgen/outreach?campaignId=${encodeURIComponent(campaignId)}`,
         )
       : fetch("/api/leadgen/outreach");
-    const followupUrl = campaignId
-      ? `/api/leadgen/followups?campaignId=${encodeURIComponent(campaignId)}`
-      : "/api/leadgen/followups";
     Promise.all([
       queueRequest,
       fetch("/api/leadgen/outreach/readiness"),
-      fetch(followupUrl),
+      fetch("/api/leadgen/followups"),
     ])
       .then(async ([queueResponse, readinessResponse, followupResponse]) => {
         const queue = await readJson<QueueResponse>(queueResponse);
@@ -546,11 +584,8 @@ export function EmailOutreachQueue({
         if (!followup.success) throw new Error(getError(followup));
         if (!active) return;
         setEntries(queue.entries);
-        setWorkingSetCounters(queue.working_set.counters);
+        setOutreachSummary(queue.summary);
         setSkippedCompanies(queue.working_set.skipped_companies);
-        setEligibleForBulkApprovalCount(
-          queue.working_set.eligible_for_bulk_approval_count,
-        );
         setFollowups(followup.entries);
         setFollowupSummary(followup.summary);
         setOperational(queue.operational);
@@ -591,11 +626,8 @@ export function EmailOutreachQueue({
         }
         if (!active) return;
         setEntries(data.entries);
-        setWorkingSetCounters(data.working_set.counters);
+        setOutreachSummary(data.summary);
         setSkippedCompanies(data.working_set.skipped_companies);
-        setEligibleForBulkApprovalCount(
-          data.working_set.eligible_for_bulk_approval_count,
-        );
         setOperational(data.operational);
         setLastUpdated(new Date().toISOString());
         setReadiness((current) =>
@@ -633,23 +665,41 @@ export function EmailOutreachQueue({
   ) {
     setPending(`followup-${action}`);
     setError(null);
+    setMessage(null);
+    setFollowupNotice({
+      tone: "loading",
+      text:
+        action === "scan"
+          ? "Проверяем входящие ответы через IMAP… Обычно это занимает 10–20 секунд."
+          : "Выполняем действие…",
+    });
     try {
       const response = await fetch(`/api/leadgen/followups/${action}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(
+          action === "bulk-approve" ? { manual: true, ...payload } : payload,
+        ),
       });
       const data = await readJson<{ success: boolean; error?: string; generated?: number; approved?: number; queued?: unknown[]; reply_found?: number }>(response);
       if (!response.ok || !data.success) throw new Error(formatUnknownError(data.error, "Действие не выполнено"));
-      setMessage(
+      setFollowupNotice({
+        tone: "success",
+        text:
         action === "scan" ? `Ответы проверены. Найдено ответов: ${data.reply_found ?? 0}.` :
         action === "generate" ? `Сгенерировано дожимов: ${data.generated ?? 0}.` :
         action === "bulk-approve" ? `Одобрено дожимов: ${data.approved ?? 0}.` :
         `В очередь поставлено: ${data.queued?.length ?? 0}.`,
-      );
-      await loadFollowups();
+      });
+      await load();
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : "Ошибка Follow-up Engine");
+      setFollowupNotice({
+        tone: "error",
+        text:
+          caught instanceof Error
+            ? caught.message
+            : "Не удалось выполнить действие Follow-up Engine.",
+      });
     } finally {
       setPending(null);
     }
@@ -686,7 +736,7 @@ export function EmailOutreachQueue({
       const data = await readJson<{ success: boolean; approved?: number; error?: string }>(response);
       if (!response.ok || !data.success || !data.approved) throw new Error(formatUnknownError(data.error, "Дожим не прошёл quality gate"));
       setMessage("Дожим одобрен.");
-      await loadFollowups();
+      await load();
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Не удалось одобрить дожим");
     } finally { setPending(null); }
@@ -701,7 +751,7 @@ export function EmailOutreachQueue({
       });
       const data = await readJson<{ success: boolean; error?: string }>(response);
       if (!response.ok || !data.success) throw new Error(formatUnknownError(data.error, "Действие не выполнено"));
-      await loadFollowups();
+      await load();
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Не удалось обновить follow-up");
     } finally { setPending(null); }
@@ -715,7 +765,7 @@ export function EmailOutreachQueue({
       });
       const data = await readJson<{ success: boolean; error?: string }>(response);
       if (!response.ok || !data.success) throw new Error(formatUnknownError(data.error, "Действие не выполнено"));
-      await loadFollowups();
+      await load();
     } catch (caught) { setError(caught instanceof Error ? caught.message : "Ошибка управления очередью"); }
     finally { setPending(null); }
   }
@@ -796,7 +846,7 @@ export function EmailOutreachQueue({
         });
         const data = await readJson<EntryResponse>(response);
         if (!response.ok || !data.success) throw new Error(getError(data as ApiError));
-        await loadFollowups();
+        await load();
       } else {
         await patchEntry(selectedEntry.id, { subject, body, email });
         await load();
@@ -865,41 +915,30 @@ export function EmailOutreachQueue({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ campaignId, count: batchSize }),
+        signal: AbortSignal.timeout(40_000),
       });
       const data = await readJson<BatchResponse>(response);
       if (!response.ok || !data.success) throw new Error(getError(data as ApiError));
-      setShowBatchConfirm(false);
-      if (data.processor.status === "sent") {
-        setMessage(
-          `Отправка запущена. Первое письмо отправлено, в очереди осталось ${Math.max(
-            0,
-            data.queued.length - 1,
-          )}.`,
-        );
-      } else if (
-        data.processor.status === "failed" ||
-        data.processor.status === "smtp_unavailable" ||
-        data.processor.status === "error"
-      ) {
-        setError(
-          data.processor.error ||
-            data.processor.entry?.last_error ||
-            "Первое письмо не отправлено. Проверьте статус ошибки; остальные письма сохранены в очереди.",
-        );
-      } else {
-        setMessage(
-          `Отправка запущена. В постоянной очереди: ${data.queued.length}.`,
-        );
-      }
+      setMessage(
+        `Поставлено в очередь: ${data.queued_count}. Пропущено: ${data.skipped_count}.`,
+      );
       await load();
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : "Ошибка постановки в очередь");
+      await load().catch(() => {
+        // Keep the original queue error visible if reconciliation is unavailable.
+      });
+      setError(
+        formatUnknownError(
+          caught,
+          "Не удалось поставить письма в очередь. Попробуйте ещё раз.",
+        ),
+      );
     } finally {
       setPending(null);
     }
   }
 
-  async function control(action: "pause" | "resume" | "cancel" | "retry") {
+  async function control(action: "pause" | "resume" | "kick" | "cancel" | "retry") {
     setPending(action);
     try {
       const response = await fetch("/api/leadgen/outreach/control", {
@@ -925,39 +964,61 @@ export function EmailOutreachQueue({
   );
   const followupMaxBatch = Math.min(
     followupSummary?.approved ?? 0,
-    readiness?.daily_remaining ?? 0,
+    readiness?.batch_limit ?? 20,
   );
-  const generatedFollowupsCount = followups.filter(
-    (entry) => !["skipped", "cancelled"].includes(entry.status),
-  ).length;
-  const followupSentToday = dailyFollowups.filter(
-    (entry) => entry.status === "sent" && isTodayInMoscow(entry.sent_at),
-  ).length;
-  const initialSentToday = Math.max(
+  const followupCandidates =
+    followupSummary?.eligibility_diagnostics.length ?? 0;
+  const generatedFollowups =
+    (followupSummary?.needs_review ?? 0) +
+    (followupSummary?.approved ?? 0) +
+    (followupSummary?.queued ?? 0) +
+    (followupSummary?.sending ?? 0) +
+    (followupSummary?.sent ?? 0) +
+    (followupSummary?.failed ?? 0);
+  const unavailableFollowups =
+    followupSummary?.eligibility_diagnostics.filter((item) => !item.eligible)
+      .length ?? 0;
+  const manualReviewFollowups = Math.max(
     0,
-    (readiness?.sent_today ?? 0) - followupSentToday,
+    (followupSummary?.needs_review ?? 0) -
+      (followupSummary?.eligible_for_bulk_approval ?? 0),
   );
-  const followupsQueuedToday = dailyFollowups.filter(
-    (entry) =>
-      entry.status === "sending" ||
-      (entry.status === "queued" &&
-        isTodayInMoscow(entry.next_attempt_at ?? entry.scheduled_at)),
-  ).length;
-  const initialQueuedToday = Math.max(
-    0,
-    (readiness?.queued_for_today ?? 0) - followupsQueuedToday,
-  );
-  const initialPlannedToday =
-    initialSentToday + initialQueuedToday;
-  const followupPlannedToday =
-    followupSentToday + followupsQueuedToday;
-  const initialDailyLimit = readiness?.daily_limit ?? 20;
-  const initialRemainingToday = readiness?.daily_remaining ?? 0;
+  const initialSentToday = readiness?.sent_today ?? 0;
+  const followupSentToday = followupSummary?.sent_today ?? 0;
+  const initialQueuedToday = readiness?.queued_for_today ?? 0;
+  const followupsQueuedToday = followupSummary?.queued_now ?? 0;
+  const initialPlannedToday = initialSentToday + initialQueuedToday;
+  const followupPlannedToday = followupSentToday + followupsQueuedToday;
+  const initialDailyLimit = outreachSummary?.today.dailyLimit ?? 20;
+  const initialRemainingToday = outreachSummary?.today.dailyRemaining ?? 0;
   const followupRemainingToday = followupsQueuedToday;
   const totalSentToday = initialSentToday + followupSentToday;
-  const validInitialEmailCount = entries.filter(
-    (entry) => !isTechnicalEmailArtifact(entry.email),
-  ).length;
+  const nextFollowup = followups
+    .filter((entry) => entry.status === "queued")
+    .sort(
+      (left, right) =>
+        Date.parse(left.next_attempt_at ?? left.scheduled_at ?? left.created_at) -
+        Date.parse(
+          right.next_attempt_at ?? right.scheduled_at ?? right.created_at,
+        ),
+    )[0];
+  const followupQueueCount =
+    (followupSummary?.queued ?? 0) + (followupSummary?.sending ?? 0);
+  const followupPrimaryAction =
+    followupMaxBatch > 0
+      ? {
+          label: `Запустить дожимы · ${followupMaxBatch}`,
+          action: "batch" as const,
+        }
+      : followupQueueCount > 0
+        ? {
+            label: `Продолжить дожимы · ${followupQueueCount}`,
+            action: "resume" as const,
+          }
+        : {
+            label: "Нет дожимов для запуска",
+            action: null,
+          };
   const nextQueued = entries
     .filter((entry) => entry.status === "queued")
     .sort(
@@ -1036,22 +1097,43 @@ export function EmailOutreachQueue({
 
       <div className="daily-dispatch-panels">
         <PrimaryOutreachToolbar
-          counters={workingSetCounters}
-          disabled={!campaignId || pending !== null}
-          eligibleCount={eligibleForBulkApprovalCount}
-          emailCount={validInitialEmailCount}
-          foundCompanies={
-            discoveryStats?.qualified_candidates_found ??
-            discoveryStats?.new_unique_companies ??
-            entries.length + skippedCompanies.length
+          counters={
+            outreachSummary?.initial ?? {
+              candidates: 0,
+              workingEmails: 0,
+              generated: 0,
+              skipped: 0,
+              eligibleForBulkApproval: 0,
+              draft: 0,
+              needsReview: 0,
+              approved: 0,
+              queued: 0,
+              sending: 0,
+              sent: 0,
+              failed: 0,
+              rejected: 0,
+            }
           }
+          disabled={!campaignId || pending !== null}
+          eligibleCount={
+            outreachSummary?.initial.eligibleForBulkApproval ?? 0
+          }
+          emailCount={outreachSummary?.initial.workingEmails ?? 0}
+          foundCompanies={outreachSummary?.initial.candidates ?? 0}
           loading={pending === "bulk-preview" || pending === "bulk-execute"}
           maxBatch={maxBatch}
+          batchSize={batchSize}
+          sentToday={readiness?.sent_today ?? 0}
+          dailyLimit={readiness?.daily_limit ?? 20}
+          dailyRemaining={Math.max(
+            0,
+            (readiness?.daily_limit ?? 20) - (readiness?.sent_today ?? 0),
+          )}
+          queuedToday={readiness?.queued_for_today ?? 0}
+          queueLoading={pending === "batch"}
           onApproveAll={previewBulkApprove}
-          onSend={() => {
-            setBatchSize(Math.max(1, Math.min(batchSize, maxBatch)));
-            setShowBatchConfirm(true);
-          }}
+          onBatchSizeChange={setBatchSize}
+          onQueue={scheduleBatch}
           sendState={initialSendState}
         />
 
@@ -1062,25 +1144,32 @@ export function EmailOutreachQueue({
               <h3 id="followup-summary-title">Дожимы</h3>
             </div>
             <span className={`dispatch-panel-badge ${readiness?.imap_connected ? "ready" : "warning"}`}>
-              {readiness?.imap_connected ? "Ответы проверяются" : "IMAP недоступен"}
+              {pending === "followup-scan"
+                ? "Проверяем ответы…"
+                : readiness?.imap_connected
+                  ? "IMAP подключён"
+                  : "IMAP недоступен"}
             </span>
           </header>
           <dl className="dispatch-metrics">
-            <div><dt>Кандидатов</dt><dd>{followupSummary?.eligibility_diagnostics.length ?? 0}</dd></div>
-            <div><dt>Готово дожимов</dt><dd>{generatedFollowupsCount}</dd></div>
+            <div><dt>Кандидатов</dt><dd>{followupCandidates}</dd></div>
+            <div><dt>Готово дожимов</dt><dd>{generatedFollowups}</dd></div>
             <div><dt>К проверке</dt><dd>{followupSummary?.needs_review ?? 0}</dd></div>
             <div><dt>Одобрено</dt><dd>{followupSummary?.approved ?? 0}</dd></div>
             <div><dt>В очереди</dt><dd>{followupSummary?.queued ?? 0}</dd></div>
             <div><dt>Отправлено</dt><dd>{followupSummary?.sent ?? 0}</dd></div>
+            <div><dt>Недоступно сейчас</dt><dd>{unavailableFollowups}</dd></div>
+            <div><dt>Можно одобрить</dt><dd>{followupSummary?.eligible_for_bulk_approval ?? 0}</dd></div>
+            <div><dt>Только вручную</dt><dd>{manualReviewFollowups}</dd></div>
           </dl>
-          <div className="dispatch-progress" aria-label={`Готово дожимов: ${generatedFollowupsCount}`}>
+          <div className="dispatch-progress" aria-label={`Готово дожимов: ${generatedFollowups}`}>
             <span
               style={{
                 width: `${Math.min(
                   100,
                   Math.round(
-                    (generatedFollowupsCount /
-                      Math.max(1, followupSummary?.eligibility_diagnostics.length ?? 0)) *
+                    (generatedFollowups /
+                      Math.max(1, followupCandidates)) *
                       100,
                   ),
                 )}%`,
@@ -1092,6 +1181,14 @@ export function EmailOutreachQueue({
           </p>
           <div className="dispatch-panel-actions">
             <Button
+              disabled={pending !== null}
+              loading={pending === "followup-scan"}
+              onClick={() => runFollowupAction("scan")}
+              variant="secondary"
+            >
+              Проверить входящие ответы
+            </Button>
+            <Button
               disabled={pending !== null || !followupSummary?.eligible}
               loading={pending === "followup-generate"}
               onClick={() => runFollowupAction("generate")}
@@ -1100,31 +1197,91 @@ export function EmailOutreachQueue({
               Сформировать дожимы
             </Button>
             <Button
-              disabled={pending !== null || !followupSummary?.needs_review}
+              disabled={pending !== null || !(followupSummary?.needs_review ?? 0)}
               loading={pending === "followup-bulk-approve"}
               onClick={() => runFollowupAction("bulk-approve")}
               variant="success"
             >
               Одобрить все
+              {(followupSummary?.needs_review ?? 0) > 0
+                ? ` · ${followupSummary?.needs_review ?? 0}`
+                : ""}
             </Button>
             <Button
               disabled={
                 pending !== null ||
-                followupMaxBatch < 1 ||
+                !followupPrimaryAction.action ||
                 !readiness?.imap_connected
               }
-              loading={pending === "followup-batch"}
-              onClick={() =>
-                runFollowupAction("batch", {
-                  count: followupMaxBatch,
-                })
+              loading={
+                pending === "followup-batch" || pending === "followup-resume"
               }
+              onClick={() => {
+                if (followupPrimaryAction.action === "batch") {
+                  void runFollowupAction("batch", {
+                    count: followupMaxBatch,
+                  });
+                } else if (followupPrimaryAction.action === "resume") {
+                  void controlFollowupQueue("resume");
+                }
+              }}
               variant="primary"
             >
-              Отправить дожимы
-              {followupMaxBatch > 0 ? ` · ${followupMaxBatch}` : ""}
+              {followupPrimaryAction.label}
             </Button>
+            {followupQueueCount > 0 &&
+            !followupSummary?.queue_paused ? (
+              <Button
+                disabled={pending !== null}
+                loading={pending === "followup-pause"}
+                onClick={() => controlFollowupQueue("pause")}
+                variant="ghost"
+              >
+                Пауза
+              </Button>
+            ) : null}
+            {(followupSummary?.failed ?? 0) > 0 ? (
+              <Button
+                disabled={pending !== null}
+                loading={pending === "followup-retry"}
+                onClick={() => controlFollowupQueue("retry")}
+                variant="secondary"
+              >
+                Повторить ошибки · {followupSummary?.failed ?? 0}
+              </Button>
+            ) : null}
           </div>
+          <p className="dispatch-send-state">
+            {followupQueueCount > 0
+              ? `Очередь дожимов активна: ${followupQueueCount}. Следующее письмо — ${
+                  nextFollowup
+                    ? formatDate(
+                        nextFollowup.next_attempt_at ??
+                          nextFollowup.scheduled_at,
+                      )
+                    : "обрабатывается"
+                }.`
+              : followupMaxBatch > 0
+                ? `Готово к постановке в очередь: ${followupMaxBatch}.`
+                : (followupSummary?.failed ?? 0) > 0
+                  ? `Ошибок: ${followupSummary?.failed ?? 0}. Нажмите «Повторить ошибки», затем запустите дожимы.`
+                  : "Новых одобренных дожимов для запуска нет."}
+          </p>
+          {followupNotice ? (
+            <p
+              className={`followup-action-feedback ${followupNotice.tone}`}
+              role={followupNotice.tone === "error" ? "alert" : "status"}
+              aria-live="polite"
+            >
+              {followupNotice.text}
+            </p>
+          ) : null}
+          {(followupSummary?.approved ?? 0) === 0 &&
+          (followupSummary?.needs_review ?? 0) > 0 ? (
+            <p className="dispatch-panel-note">
+              Сначала откройте список ниже и одобрите подготовленные дожимы.
+            </p>
+          ) : null}
         </section>
 
         <section className="dispatch-control-panel today-dispatch-panel" aria-labelledby="today-summary-title">
@@ -1162,11 +1319,93 @@ export function EmailOutreachQueue({
         </section>
       </div>
 
+      {actionableFollowups.length > 0 ? (
+        <details className="followup-working-set">
+          <summary>
+            <span>Подготовленные дожимы</span>
+            <strong>{actionableFollowups.length}</strong>
+          </summary>
+          <div className="followup-working-list">
+            {actionableFollowups.map((followup) => (
+              <article className="followup-working-row" key={followup.id}>
+                <div>
+                  <strong>{followup.company_name}</strong>
+                  <span>{followup.subject}</span>
+                  <small>
+                    {outreachStatusLabels[followup.status]}
+                    {followup.copy_review_status === "needs_manual_copy_review"
+                      ? " · нужна ручная проверка"
+                      : ""}
+                  </small>
+                </div>
+                <div className="lead-card-actions">
+                  {followup.status === "needs_review" ? (
+                    <>
+                      <Button
+                        onClick={() => selectEntry(followup)}
+                        variant="secondary"
+                      >
+                        Открыть
+                      </Button>
+                      <Button
+                        disabled={pending !== null}
+                        loading={pending === followup.id}
+                        onClick={() => approveFollowup(followup)}
+                        variant="primary"
+                      >
+                        Одобрить
+                      </Button>
+                    </>
+                  ) : null}
+                  {followup.status === "approved" ? (
+                    <Button
+                      disabled={pending !== null}
+                      onClick={() => controlFollowup(followup.id, "unapprove")}
+                      variant="danger"
+                    >
+                      Отменить одобрение
+                    </Button>
+                  ) : null}
+                  {followup.status === "queued" ? (
+                    <Button
+                      disabled={pending !== null}
+                      onClick={() => controlFollowup(followup.id, "cancel")}
+                      variant="danger"
+                    >
+                      Отменить до отправки
+                    </Button>
+                  ) : null}
+                  {followup.status === "failed" ? (
+                    <Button
+                      disabled={pending !== null}
+                      onClick={() => controlFollowup(followup.id, "retry")}
+                      variant="success"
+                    >
+                      Повторить
+                    </Button>
+                  ) : null}
+                </div>
+              </article>
+            ))}
+          </div>
+        </details>
+      ) : null}
+
       {(metrics.queued > 0 ||
         metrics.sending > 0 ||
         metrics.failed > 0 ||
         readiness?.queue_paused) && (
         <div className="outreach-queue-actions">
+          {operational?.state === "stalled" && metrics.queued > 0 ? (
+            <Button
+              disabled={pending !== null}
+              loading={pending === "kick"}
+              onClick={() => control("kick")}
+              variant="success"
+            >
+              Продолжить отправку
+            </Button>
+          ) : null}
           {(metrics.queued > 0 ||
             metrics.sending > 0 ||
             readiness?.queue_paused) && (
@@ -1211,7 +1450,7 @@ export function EmailOutreachQueue({
       ) : null}
       {readiness &&
       !readiness.email_test_mode &&
-      (showBatchConfirm || maxBatch > 0) ? (
+      maxBatch > 0 ? (
         <p className="outreach-production-note">
           Реальный режим: при запуске письма уйдут указанным получателям.
         </p>
@@ -1247,58 +1486,6 @@ export function EmailOutreachQueue({
         </div>
       ) : null}
 
-      {showBatchConfirm && readiness ? (
-        <div className="outreach-confirm production-confirm">
-          <h3>{readiness.email_test_mode ? "ТЕСТОВАЯ ОТПРАВКА" : "РЕАЛЬНАЯ ОТПРАВКА"}</h3>
-          <p>Одобрено писем: {metrics.approved}</p>
-          <p>Отправлено сегодня: {readiness.sent_today}</p>
-          <p>Дневной лимит: {readiness.daily_limit}</p>
-          <p>Доступно к отправке сейчас: {maxBatch}</p>
-          <p>Останется одобренными: {Math.max(0, metrics.approved - Math.min(batchSize, maxBatch))}</p>
-          <p>Письма будут обработаны по одному с паузой 5–10 минут.</p>
-          <label className="batch-slider">
-            <span>
-              Отправить сейчас: <strong>{batchSize}</strong>
-            </span>
-            <input
-              aria-label="Количество писем для запуска"
-              max={Math.max(1, maxBatch)}
-              min="1"
-              onChange={(event) => setBatchSize(Number(event.target.value))}
-              step="1"
-              type="range"
-              value={batchSize}
-            />
-            <span className="batch-slider-scale">
-              <small>1</small>
-              <small>{maxBatch}</small>
-            </span>
-            {batchSize > maxBatch ? (
-              <small className="batch-slider-error">
-                Сейчас можно отправить максимум {maxBatch}.
-              </small>
-            ) : null}
-          </label>
-          <div>
-            <Button onClick={() => setShowBatchConfirm(false)} variant="ghost">Отмена</Button>
-            <Button
-              disabled={
-                pending !== null ||
-                batchSize < 1 ||
-                batchSize > maxBatch
-              }
-              loading={pending === "batch"}
-              onClick={scheduleBatch}
-              variant="primary"
-            >
-              {pending === "batch"
-                ? "Запускаем…"
-                : `Запустить отправку: ${batchSize}`}
-            </Button>
-          </div>
-        </div>
-      ) : null}
-
       <section className="followup-console legacy-followup-console" aria-hidden="true" aria-labelledby="followup-title">
         <div className="followup-console-heading">
           <div>
@@ -1319,12 +1506,15 @@ export function EmailOutreachQueue({
           <div><dt>Проверить ответы</dt><dd>{followupSummary?.pending_reply_check ?? 0}</dd></div>
           <div><dt>Ответ найден</dt><dd>{followupSummary?.reply_found ?? 0}</dd></div>
           <div><dt>Готовы к генерации</dt><dd>{followupSummary?.eligible ?? 0}</dd></div>
-          <div><dt>Требуют проверки</dt><dd>{followupSummary?.needs_review ?? 0}</dd></div>
-          <div><dt>Одобрено</dt><dd>{followupSummary?.approved ?? 0}</dd></div>
-          <div><dt>В очереди</dt><dd>{followupSummary?.queued ?? 0}</dd></div>
-          <div><dt>Отправляется</dt><dd>{followupSummary?.sending ?? 0}</dd></div>
-          <div><dt>Отправлено</dt><dd>{followupSummary?.sent ?? 0}</dd></div>
-          <div><dt>Ошибки</dt><dd>{followupSummary?.failed ?? 0}</dd></div>
+          <div><dt>Требуют проверки</dt><dd>{outreachSummary?.followUps.needsReview ?? 0}</dd></div>
+          <div><dt>Одобрено</dt><dd>{outreachSummary?.followUps.approved ?? 0}</dd></div>
+          <div><dt>В очереди</dt><dd>{outreachSummary?.followUps.queued ?? 0}</dd></div>
+          <div><dt>Отправляется</dt><dd>{outreachSummary?.followUps.sending ?? 0}</dd></div>
+          <div><dt>Отправлено</dt><dd>{outreachSummary?.followUps.sent ?? 0}</dd></div>
+          <div><dt>Ошибки</dt><dd>{outreachSummary?.followUps.failed ?? 0}</dd></div>
+          <div><dt>Недоступно сейчас</dt><dd>{outreachSummary?.followUps.unavailableNow ?? 0}</dd></div>
+          <div><dt>Можно одобрить</dt><dd>{outreachSummary?.followUps.eligibleForBulkApproval ?? 0}</dd></div>
+          <div><dt>Только вручную</dt><dd>{outreachSummary?.followUps.approvalBlocked ?? 0}</dd></div>
         </dl>
         {followupSummary?.eligible === 0 && followupSummary.next_eligible_at ? (
           <p className="muted">
@@ -1360,20 +1550,20 @@ export function EmailOutreachQueue({
           <Button disabled={pending !== null} loading={pending === "imap-check"} onClick={checkImapConnection} variant="secondary">Проверить IMAP-подключение</Button>
           <Button disabled={pending !== null} loading={pending === "followup-scan"} onClick={() => runFollowupAction("scan")} variant="secondary">Проверить входящие ответы</Button>
           <Button disabled={pending !== null || !followupSummary?.eligible} loading={pending === "followup-generate"} onClick={() => runFollowupAction("generate")} variant="secondary">Сгенерировать дожимы</Button>
-          <Button disabled={pending !== null || !followupSummary?.needs_review} loading={pending === "followup-bulk-approve"} onClick={() => runFollowupAction("bulk-approve")} variant="success">Одобрить все корректные</Button>
+          <Button disabled={pending !== null || !(outreachSummary?.followUps.eligibleForBulkApproval ?? 0)} loading={pending === "followup-bulk-approve"} onClick={() => runFollowupAction("bulk-approve")} variant="success">Одобрить все корректные</Button>
           {followupSummary?.automation_enabled ? (
             <Button disabled={pending !== null} onClick={() => controlFollowupQueue(followupSummary.queue_paused ? "resume" : "pause")} variant="ghost">{followupSummary.queue_paused ? "Включить автоматический режим" : "Перейти в ручной режим"}</Button>
           ) : null}
-          {(followupSummary?.queued ?? 0) > 0 ? <Button disabled={pending !== null} onClick={() => controlFollowupQueue("cancel")} variant="danger">Отменить неотправленные</Button> : null}
-          {(followupSummary?.failed ?? 0) > 0 ? <Button disabled={pending !== null} onClick={() => controlFollowupQueue("retry")} variant="secondary">Повторить ошибочные</Button> : null}
+          {(outreachSummary?.followUps.queued ?? 0) > 0 ? <Button disabled={pending !== null} onClick={() => controlFollowupQueue("cancel")} variant="danger">Отменить неотправленные</Button> : null}
+          {(outreachSummary?.followUps.failed ?? 0) > 0 ? <Button disabled={pending !== null} onClick={() => controlFollowupQueue("retry")} variant="secondary">Повторить ошибочные</Button> : null}
         </div>
-        {(followupSummary?.approved ?? 0) > 0 ? (
+        {(outreachSummary?.followUps.approved ?? 0) > 0 ? (
           <div className="followup-send-control">
             <label><span>Отправить одобренные</span><strong>{followupBatchSize}</strong></label>
-            <input aria-label="Количество follow-up писем" min="1" max={Math.max(1, Math.min(followupSummary?.approved ?? 1, readiness?.daily_remaining ?? 1))} type="range" value={followupBatchSize} onChange={(event) => setFollowupBatchSize(Number(event.target.value))} />
+            <input aria-label="Количество follow-up писем" min="1" max={Math.max(1, Math.min(outreachSummary?.followUps.approved ?? 1, readiness?.daily_remaining ?? 1))} type="range" value={followupBatchSize} onChange={(event) => setFollowupBatchSize(Number(event.target.value))} />
             <div className="delivery-quick-values">
-              {[5].filter((value) => value <= Math.min(followupSummary?.approved ?? 0, readiness?.daily_remaining ?? 0)).map((value) => <Button key={value} onClick={() => setFollowupBatchSize(value)} variant="ghost">{value}</Button>)}
-              <Button onClick={() => setFollowupBatchSize(Math.max(1, Math.min(followupSummary?.approved ?? 1, readiness?.daily_remaining ?? 1)))} variant="ghost">Все доступные</Button>
+              {[5].filter((value) => value <= Math.min(outreachSummary?.followUps.approved ?? 0, readiness?.daily_remaining ?? 0)).map((value) => <Button key={value} onClick={() => setFollowupBatchSize(value)} variant="ghost">{value}</Button>)}
+              <Button onClick={() => setFollowupBatchSize(Math.max(1, Math.min(outreachSummary?.followUps.approved ?? 1, readiness?.daily_remaining ?? 1)))} variant="ghost">Все доступные</Button>
             </div>
             <Button disabled={pending !== null || !readiness?.imap_connected || (readiness?.daily_remaining ?? 0) < 1} loading={pending === "followup-batch"} onClick={() => runFollowupAction("batch", { count: followupBatchSize })} variant="primary">Отправить одобренные дожимы</Button>
           </div>
@@ -1546,6 +1736,13 @@ export function EmailOutreachQueue({
                             <strong>Проверка ответа</strong>
                             <span>{entry.reply_detected_at ? `Ответ получен: ${formatDate(entry.reply_detected_at)}` : entry.reply_check_status === "verified" ? `Ответ не найден: ${formatDate(entry.reply_checked_at)}` : "Ответ ещё не проверен"}</span>
                           </div>
+                          {entry.reply_intent ? (
+                            <div className="timeline-event completed">
+                              <strong>{entry.reply_intent === "interested" ? "Лид заинтересован" : entry.reply_intent === "unsubscribe" ? "Отписка" : entry.reply_intent === "negative" ? "Негативный ответ" : "Ответ получен"}</strong>
+                              {entry.reply_contact?.full_name ? <span>{entry.reply_contact.full_name}{entry.reply_contact.role_title ? ` · ${entry.reply_contact.role_title}` : ""}</span> : null}
+                              {entry.reply_contact?.phone ? <small>Телефон: {entry.reply_contact.phone}{entry.reply_contact.phone_extension ? `, доб. ${entry.reply_contact.phone_extension}` : ""}</small> : null}
+                            </div>
+                          ) : null}
                           {followups.filter((item) => item.parent_outreach_id === entry.id).map((followup) => (
                             <div className={`timeline-event timeline-${followup.status}`} key={followup.id}>
                               <strong>Дожим №{followup.followup_number ?? 1} · {outreachStatusLabels[followup.status]}</strong>
@@ -1614,28 +1811,17 @@ export function EmailOutreachQueue({
             </div>
 
             <dl className="delivery-summary-grid">
-              <div><dt>Найдено</dt><dd>{discoveryStats?.new_unique_companies ?? entries.length}</dd></div>
-              <div><dt>С email</dt><dd>{entries.length}</dd></div>
+              <div><dt>Кандидатов поиска</dt><dd>{outreachSummary?.initial.candidates ?? 0}</dd></div>
+              <div><dt>С email</dt><dd>{outreachSummary?.initial.workingEmails ?? 0}</dd></div>
               <div><dt>К проверке</dt><dd>{metrics.review}</dd></div>
               <div><dt>Одобрено</dt><dd>{metrics.approved}</dd></div>
               <div><dt>В очереди</dt><dd>{metrics.queued}</dd></div>
               <div><dt>Отправляется</dt><dd>{metrics.sending}</dd></div>
               <div><dt>Ошибки</dt><dd>{metrics.failed}</dd></div>
-              <div><dt>Запланировано сегодня</dt><dd>{readiness?.queued_for_today ?? 0}</dd></div>
-              <div><dt>Можно поставить ещё</dt><dd>{readiness?.daily_remaining ?? 0}</dd></div>
+              <div><dt>Запланировано сегодня</dt><dd>{outreachSummary?.today.totalQueued ?? 0}</dd></div>
+              <div><dt>Осталось отправить сегодня</dt><dd>{outreachSummary?.today.dailyRemaining ?? 0}</dd></div>
+              <div><dt>Можно поставить ещё</dt><dd>{outreachSummary?.today.dailyAvailableToQueue ?? 0}</dd></div>
             </dl>
-
-            {metrics.approved > 0 ? (
-              <div className="delivery-launch-control">
-                <label><span>Отправить сейчас</span><strong>{Math.min(batchSize, maxBatch)}</strong></label>
-                <input aria-label="Количество писем" max={Math.max(1, maxBatch)} min="1" onChange={(event) => setBatchSize(Number(event.target.value))} type="range" value={Math.min(Math.max(1, batchSize), Math.max(1, maxBatch))} />
-                <div className="delivery-quick-values">
-                  {[5, 10].filter((value) => value <= maxBatch).map((value) => <Button key={value} onClick={() => setBatchSize(value)} variant="ghost">{value}</Button>)}
-                  <Button onClick={() => setBatchSize(maxBatch)} variant="ghost">Все доступные</Button>
-                </div>
-                <Button disabled={maxBatch < 1 || pending !== null || readiness?.queue_paused || !readiness?.smtp_connected} onClick={() => setShowBatchConfirm(true)} variant="primary">Запустить отправку</Button>
-              </div>
-            ) : null}
 
             <label className="delivery-filter">
               <span>Показать письма</span>

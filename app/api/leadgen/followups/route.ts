@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
   try {
     const campaignId = request.nextUrl.searchParams.get("campaignId");
     const [entries, summary, daily] = await Promise.all([
-      getFollowups(campaignId), getFollowupSummary(), getDailySendStats(),
+      getFollowups(campaignId), getFollowupSummary(campaignId), getDailySendStats(),
     ]);
     return NextResponse.json({ success: true, entries, summary, daily: {
       sent_today: daily.sentToday, daily_limit: daily.dailyLimit,
