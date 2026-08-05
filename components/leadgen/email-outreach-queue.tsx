@@ -313,7 +313,10 @@ function PrimaryOutreachToolbar({
   onQueue: () => void;
   sendState: string;
 }) {
-  const progress = Math.min(100, Math.round((emailCount / 20) * 100));
+  const progress = Math.min(
+    100,
+    Math.round((emailCount / Math.max(1, dailyLimit)) * 100),
+  );
   return (
     <section className="dispatch-control-panel initial-dispatch-panel" aria-labelledby="initial-panel-title">
       <header>
@@ -321,7 +324,7 @@ function PrimaryOutreachToolbar({
           <p className="eyebrow">Initial outreach</p>
           <h3 id="initial-panel-title">Новые компании</h3>
         </div>
-        <span className="dispatch-panel-badge">Лимит: 20 новых адресатов</span>
+        <span className="dispatch-panel-badge">Лимит: {dailyLimit} новых адресатов</span>
       </header>
       <dl className="dispatch-metrics">
         <div><dt>Проверено кандидатов</dt><dd>{foundCompanies}</dd></div>
@@ -959,7 +962,7 @@ export function EmailOutreachQueue({
 
   const maxBatch = Math.min(
     readiness?.daily_remaining ?? 0,
-    readiness?.batch_limit ?? 20,
+    readiness?.batch_limit ?? 50,
     metrics.approved,
   );
   const followupMaxBatch = Math.min(
@@ -989,7 +992,7 @@ export function EmailOutreachQueue({
   const followupsQueuedToday = followupSummary?.queued_now ?? 0;
   const initialPlannedToday = initialSentToday + initialQueuedToday;
   const followupPlannedToday = followupSentToday + followupsQueuedToday;
-  const initialDailyLimit = outreachSummary?.today.dailyLimit ?? 20;
+  const initialDailyLimit = outreachSummary?.today.dailyLimit ?? 50;
   const initialRemainingToday = outreachSummary?.today.dailyRemaining ?? 0;
   const followupRemainingToday = followupsQueuedToday;
   const totalSentToday = initialSentToday + followupSentToday;
@@ -1031,7 +1034,7 @@ export function EmailOutreachQueue({
   const initialSendState =
     metrics.approved > 0 && maxBatch === 0
       ? (readiness?.daily_remaining ?? 0) < 1
-        ? `Одобрено ${metrics.approved}, но в очередь не поставлено: дневной лимит ${readiness?.sent_today ?? 0} из ${readiness?.daily_limit ?? 20} исчерпан.`
+        ? `Одобрено ${metrics.approved}, но в очередь не поставлено: дневной лимит ${readiness?.sent_today ?? 0} из ${readiness?.daily_limit ?? 50} исчерпан.`
         : readiness?.queue_paused
           ? `Одобрено ${metrics.approved}, отправка ждёт снятия очереди с паузы.`
           : `Одобрено ${metrics.approved}, но сейчас постановка в очередь недоступна.`
@@ -1056,7 +1059,7 @@ export function EmailOutreachQueue({
     100,
     Math.round(
       ((readiness?.sent_today ?? 0) /
-        Math.max(1, readiness?.daily_limit ?? 20)) *
+        Math.max(1, readiness?.daily_limit ?? 50)) *
         100,
     ),
   );
@@ -1124,10 +1127,10 @@ export function EmailOutreachQueue({
           maxBatch={maxBatch}
           batchSize={batchSize}
           sentToday={readiness?.sent_today ?? 0}
-          dailyLimit={readiness?.daily_limit ?? 20}
+          dailyLimit={readiness?.daily_limit ?? 50}
           dailyRemaining={Math.max(
             0,
-            (readiness?.daily_limit ?? 20) - (readiness?.sent_today ?? 0),
+            (readiness?.daily_limit ?? 50) - (readiness?.sent_today ?? 0),
           )}
           queuedToday={readiness?.queued_for_today ?? 0}
           queueLoading={pending === "batch"}
@@ -1177,7 +1180,7 @@ export function EmailOutreachQueue({
             />
           </div>
           <p className="dispatch-panel-note">
-            Отдельный поток. Не входит в лимит 20 новых адресатов; доступность отправки определяет очередь.
+            Отдельный поток. Не входит в лимит 50 новых адресатов; доступность отправки определяет очередь.
           </p>
           <div className="dispatch-panel-actions">
             <Button
@@ -1772,7 +1775,7 @@ export function EmailOutreachQueue({
                       <>
                         <p className="approved-delivery-state">
                           {(readiness?.daily_remaining ?? 0) < 1
-                            ? `Одобрено, но не в очереди. Сегодня отправлено ${readiness?.sent_today ?? 0} из ${readiness?.daily_limit ?? 20}; письмо сможет быть поставлено в очередь после обновления дневного лимита.`
+                            ? `Одобрено, но не в очереди. Сегодня отправлено ${readiness?.sent_today ?? 0} из ${readiness?.daily_limit ?? 50}; письмо сможет быть поставлено в очередь после обновления дневного лимита.`
                             : "Одобрено и готово к постановке в очередь."}
                         </p>
                         <div className="lead-card-actions"><span className="action-confirmed">✓ Одобрено</span><Button onClick={() => selectEntry(entry)} variant="secondary">Редактировать</Button><Button disabled={pending !== null} loading={pending === entry.id} onClick={() => runEntryAction(entry.id, () => patchEntry(entry.id, { status: "needs_review", note: "Одобрение отменено пользователем" }), "Одобрение отменено.")} variant="danger">Отменить одобрение</Button></div>
@@ -1803,7 +1806,7 @@ export function EmailOutreachQueue({
             <div className="delivery-today">
               <div>
                 <strong>{readiness?.sent_today ?? 0}</strong>
-                <span>из {readiness?.daily_limit ?? 20} отправлено сегодня</span>
+                <span>из {readiness?.daily_limit ?? 50} отправлено сегодня</span>
               </div>
               <div className="delivery-progress" aria-label={`Выполнено ${dailyProgress}% дневного лимита`}>
                 <span style={{ width: `${dailyProgress}%` }} />

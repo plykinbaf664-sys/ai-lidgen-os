@@ -43,7 +43,7 @@ for (const [index, context] of scenarios.entries()) {
 for (const [index, copy] of copies.entries()) {
   const validation = validateFirstEmailV3(copy, scenarios[index]);
   assert.equal(validation.valid, true, validation.errors.join(" "));
-  assert.equal(copy.body.split("\n\n").length, 5);
+  assert.equal(copy.body.split("\n\n").length, 6);
   assert.equal(copy.qualityGatePassed, true);
   assert.equal(copy.microValue.items.length, 3);
   assert.match(copy.body, /схему из трёх шагов/i);
@@ -51,6 +51,7 @@ for (const [index, copy] of copies.entries()) {
   assert.match(copy.body, /15[-\s]?минут|15\s+минут/i);
   assert.match(copy.body, /покаж|разбор|обсуд/i);
   assert.equal(copy.quality.call_relevance, 10);
+  assert.match(copy.body, /Александр Плыкин, Ai-архитектор\n\+79629910514$/);
 }
 
 assert.match(copies[0].blocks.cta, /за 15 минут — обсудим/i);

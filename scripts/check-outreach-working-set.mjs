@@ -203,8 +203,8 @@ assert.match(componentSource, /Одобрено, но не в очереди/);
 assert.match(componentSource, />Новые компании</);
 assert.match(componentSource, />Дожимы</);
 assert.match(componentSource, />Сегодня</);
-assert.match(componentSource, /Не входит в лимит 20 новых адресатов/);
-assert.match(componentSource, /Отправить первичные письма/);
-assert.match(componentSource, /Отправить дожимы/);
+assert.match(componentSource, /Не входит в лимит 50 новых адресатов/);
+assert.match(componentSource, /Запустить первичные/);
+assert.match(componentSource, /Запустить дожимы|Отправить одобренные дожимы/);
 
 console.log("Outreach working-set regression checks: OK (41 assertions)");

@@ -47,6 +47,7 @@ export type FirstEmailCopy = {
     hypothesis: string;
     value: string;
     cta: string;
+    signature: string;
   };
   microValue: OutreachMicroValue;
   quality: OutreachQualityScore;
@@ -61,6 +62,9 @@ export type FirstEmailValidation = {
 };
 
 type EmailIntent = "sales" | "support" | "launch" | "technology" | "expansion" | "inbound" | "general";
+
+export const INITIAL_OUTREACH_SIGNATURE =
+  "Александр Плыкин, Ai-архитектор\n+79629910514";
 
 const forbiddenPatterns: Array<{ pattern: RegExp; label: string }> = [
   { pattern: /найден\w*\s+сигнал/i, label: "найден сигнал" },
@@ -346,8 +350,16 @@ export function generateFirstEmailV3(context: FirstEmailContext): FirstEmailCopy
       hypothesis: getSharpHypothesis(intent),
       value: getValuePitch(context, intent),
       cta: getCta(context.messageMode),
+      signature: INITIAL_OUTREACH_SIGNATURE,
     };
-    const body = [blocks.greeting, blocks.observation, blocks.hypothesis, blocks.value, blocks.cta].join("\n\n");
+    const body = [
+      blocks.greeting,
+      blocks.observation,
+      blocks.hypothesis,
+      blocks.value,
+      blocks.cta,
+      blocks.signature,
+    ].join("\n\n");
     const quality = scoreCopy(context, body, microValue);
     const validation = validateFirstEmailV3({ subject: getPersonalizedOutboundSubject({ companyName, uniquenessKey: `${context.uniquenessKey ?? ""}:${attempt}` }), body }, context);
     const qualityGatePassed = validation.valid && passesFirstEmailQualityGate(quality);

@@ -21,7 +21,7 @@ const response = await fetch(`${baseUrl}/api/leadgen/run`, {
 const body = await response.json();
 assert.equal(response.ok, true, JSON.stringify(body.error ?? body));
 assert.equal(body.dry_run, true);
-assert.ok(body.companies.length <= 20);
+assert.ok(body.companies.length <= 50);
 assert.equal(body.companies.length, body.leads.length);
 console.log(JSON.stringify({
   mode: "dry_run_no_persistence_no_send",

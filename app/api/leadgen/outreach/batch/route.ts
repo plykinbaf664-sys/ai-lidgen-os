@@ -4,6 +4,7 @@ import {
   scheduleApprovedBatch,
 } from "@/lib/leadgen/outreach-storage";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
+import { leadgenProductionConfig } from "@/lib/leadgen/production-config";
 import { runOutreachProcessorIteration } from "@/lib/leadgen/outreach-scheduler";
 
 export async function POST(request: Request) {
@@ -15,7 +16,7 @@ export async function POST(request: Request) {
     if (
       !Number.isInteger(body.count) ||
       Number(body.count) < 1 ||
-      Number(body.count) > 20
+      Number(body.count) > leadgenProductionConfig.emailBatchSendLimit
     ) {
       return NextResponse.json(
         { success: false, error: "Некорректный batch" },

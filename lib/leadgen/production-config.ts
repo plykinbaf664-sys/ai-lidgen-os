@@ -15,15 +15,15 @@ function readBoundedInteger(
 export const leadgenProductionConfig = {
   campaignCompanyLimit: readBoundedInteger(
     "LEADGEN_CAMPAIGN_COMPANY_LIMIT",
-    20,
+    50,
     1,
-    20,
+    50,
   ),
   dailyLeadLimit: readBoundedInteger(
     "LEADGEN_DAILY_LEAD_LIMIT",
-    20,
+    50,
     1,
-    20,
+    50,
   ),
   discoveryCandidateBudget: readBoundedInteger(
     "LEADGEN_DISCOVERY_CANDIDATE_BUDGET",
@@ -34,15 +34,15 @@ export const leadgenProductionConfig = {
   searchMaxPages: readBoundedInteger("LEADGEN_SEARCH_MAX_PAGES", 10, 1, 10),
   emailDailySendLimit: readBoundedInteger(
     "EMAIL_DAILY_SEND_LIMIT",
-    20,
+    50,
     1,
-    20,
+    50,
   ),
   emailBatchSendLimit: readBoundedInteger(
     "EMAIL_BATCH_SEND_LIMIT",
-    20,
+    50,
     1,
-    20,
+    50,
   ),
   emailMinDelaySeconds: readBoundedInteger(
     "EMAIL_MIN_DELAY_SECONDS",

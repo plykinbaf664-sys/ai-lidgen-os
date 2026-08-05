@@ -156,7 +156,7 @@ export function LeadgenDashboard() {
         <div className="section-heading compact">
           <div><p className="eyebrow">Новая кампания</p><h2>Параметры поиска</h2></div>
           <div className="config-facts" aria-label="Активные ограничения">
-            <span>Россия</span><span>Web search</span><span>20 готовых лидов за запуск</span>
+            <span>Россия</span><span>Web search</span><span>До 50 готовых лидов за запуск</span>
           </div>
         </div>
         <CampaignForm isRunning={isRunning} onRun={handleRun} />
