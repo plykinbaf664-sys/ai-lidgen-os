@@ -13,6 +13,7 @@ import {
   type OutreachQualityScore,
 } from "@/lib/leadgen/first-email-generator";
 import { normalizeLeadgenText } from "@/lib/leadgen/text-normalization";
+import type { LeadgenVerticalId } from "@/lib/leadgen/verticals";
 
 export type EmailMessageMode = "personal" | "department" | "generic_routing";
 
@@ -72,6 +73,7 @@ export function buildEmailOutreach({
   signalDetail,
   signalSourceUrl,
   signalConfidence,
+  verticalId,
 }: {
   companyName: string;
   companyWebsite?: string | null;
@@ -88,6 +90,7 @@ export function buildEmailOutreach({
   signalDetail?: string | null;
   signalSourceUrl?: string | null;
   signalConfidence?: number | null;
+  verticalId?: LeadgenVerticalId;
 }): {
   subject: string | null;
   body: string;
@@ -143,6 +146,7 @@ export function buildEmailOutreach({
     signalEvidence: signalDetail || signalTitle || whyNow,
     signalSourceUrl,
     uniquenessKey: `${contact.id}:${contact.email ?? ""}:${signalConfidence ?? ""}`,
+    verticalId,
   });
 
   return {

@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
 import { runOutreachProcessorIteration } from "@/lib/leadgen/outreach-scheduler";
+import { getOutreachDeliveryStorageMode } from "@/lib/leadgen/local-outreach-store";
+import { runLocalOutreachProcessorIteration } from "@/lib/leadgen/local-outreach-scheduler";
 
 async function handleProcess(request: Request) {
   const secrets = [
@@ -22,7 +24,10 @@ async function handleProcess(request: Request) {
   try {
     return NextResponse.json({
       success: true,
-      ...(await runOutreachProcessorIteration()),
+      storage_mode: getOutreachDeliveryStorageMode(),
+      ...(getOutreachDeliveryStorageMode() === "local"
+        ? await runLocalOutreachProcessorIteration()
+        : await runOutreachProcessorIteration()),
     });
   } catch (error) {
     return NextResponse.json({ success: false, error: formatUnknownError(error) }, { status: 500 });

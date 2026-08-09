@@ -22,6 +22,9 @@ import {
   type OutreachSkippedCompany,
 } from "@/lib/leadgen/outreach-working-set";
 import { createSupabaseServerClient } from "@/lib/supabase/client";
+import { getBusinessDayRange } from "@/lib/leadgen/business-day";
+import { COMPANY_FIELDS, CONTACT_FIELDS, LEAD_FIELDS, QUEUE_FIELDS, SIGNAL_FIELDS } from "@/lib/leadgen/storage-projections";
+export { getBusinessDayRange } from "@/lib/leadgen/business-day";
 import type {
   LeadgenCompany,
   LeadgenContact,
@@ -83,6 +86,17 @@ export type QueueRow = {
 
 export function rowToEntry(row: QueueRow, queuePosition: number | null = null): OutreachQueueEntry {
   const metadata = row.metadata ?? {};
+  const storedSignal =
+    metadata.signal && typeof metadata.signal === "object"
+      ? (metadata.signal as Partial<OutreachQueueEntry["signal"]>)
+      : {};
+  const signal: OutreachQueueEntry["signal"] = {
+    type: storedSignal.type ?? null,
+    title: storedSignal.title ?? null,
+    detail: storedSignal.detail ?? null,
+    source_url: storedSignal.source_url ?? null,
+    confidence_score: storedSignal.confidence_score ?? null,
+  };
   return {
     id: row.id,
     contact_id: row.contact_id,
@@ -99,13 +113,7 @@ export function rowToEntry(row: QueueRow, queuePosition: number | null = null): 
     email_source_url: (metadata.email_source_url as string | null) ?? null,
     email_source_label: (metadata.email_source_label as string | null) ?? null,
     readiness: (metadata.readiness as string) ?? "email_ready",
-    signal: (metadata.signal as OutreachQueueEntry["signal"]) ?? {
-      type: null,
-      title: null,
-      detail: null,
-      source_url: null,
-      confidence_score: null,
-    },
+    signal,
     subject: row.subject,
     body: row.body,
     message_mode: row.message_mode,
@@ -198,10 +206,10 @@ async function readCampaignSources(campaignId: string) {
   const supabase = createSupabaseServerClient();
   const [contactsResult, leadsResult, companiesResult, signalsResult] =
     await Promise.all([
-      supabase.from("leadgen_contacts").select("*").eq("campaign_id", campaignId),
-      supabase.from("leadgen_leads").select("*").eq("campaign_id", campaignId),
-      supabase.from("leadgen_companies").select("*").eq("campaign_id", campaignId),
-      supabase.from("leadgen_signals").select("*").eq("campaign_id", campaignId),
+      supabase.from("leadgen_contacts").select(CONTACT_FIELDS).eq("campaign_id", campaignId),
+      supabase.from("leadgen_leads").select(LEAD_FIELDS).eq("campaign_id", campaignId),
+      supabase.from("leadgen_companies").select(COMPANY_FIELDS).eq("campaign_id", campaignId),
+      supabase.from("leadgen_signals").select(SIGNAL_FIELDS).eq("campaign_id", campaignId),
     ]);
   for (const result of [contactsResult, leadsResult, companiesResult, signalsResult]) {
     if (result.error) throw result.error;
@@ -291,6 +299,7 @@ export async function syncOutreachQueue(campaignId: string) {
     if (existingError) throw existingError;
     if (existing) continue;
 
+    const now = new Date().toISOString();
     const { error } = await supabase.from("leadgen_outreach_queue").insert({
       id: entry.id,
       contact_id: entry.contact_id,
@@ -305,7 +314,9 @@ export async function syncOutreachQueue(campaignId: string) {
       subject: entry.subject,
       body: entry.body,
       message_mode: entry.message_mode,
+      message_kind: "initial",
       message_version: 1,
+      attempt_count: 0,
       status: "needs_review",
       idempotency_key: getOutreachIdempotencyKey({
         campaignId,
@@ -324,7 +335,10 @@ export async function syncOutreachQueue(campaignId: string) {
         copy_review_status: entry.copy_review_status,
         generation_attempts: entry.generation_attempts,
         micro_value: entry.micro_value,
+        vertical_id: company?.metadata.vertical_id ?? null,
       },
+      created_at: now,
+      updated_at: now,
     });
     if (error && error.code !== "23505") throw error;
   }
@@ -335,7 +349,7 @@ export async function getOutreachQueue({
   campaignId,
 }: { campaignId?: string | null } = {}) {
   const supabase = createSupabaseServerClient();
-  let query = supabase.from("leadgen_outreach_queue").select("*");
+  let query = supabase.from("leadgen_outreach_queue").select(QUEUE_FIELDS);
   query = query.eq("message_kind", "initial");
   if (campaignId) query = query.eq("campaign_id", campaignId);
   const { data, error } = await query.order("created_at", { ascending: true });
@@ -353,6 +367,17 @@ export async function getOutreachQueue({
       ...entry,
       queue_position: entry.status === "queued" ? ++position : null,
     }));
+}
+
+export async function getOutreachQueueEntry(id: string) {
+  const supabase = createSupabaseServerClient();
+  const { data, error } = await supabase
+    .from("leadgen_outreach_queue")
+    .select(QUEUE_FIELDS)
+    .eq("id", id)
+    .maybeSingle<QueueRow>();
+  if (error) throw error;
+  return data ? rowToEntry(data) : null;
 }
 
 async function getBulkApprovalPlan(entries: OutreachQueueEntry[]) {
@@ -466,7 +491,7 @@ export async function updateOutreachQueueEntry({
   const supabase = createSupabaseServerClient();
   const { data: current, error: readError } = await supabase
     .from("leadgen_outreach_queue")
-    .select("*")
+    .select(QUEUE_FIELDS)
     .eq("id", id)
     .single<QueueRow>();
   if (readError) return null;
@@ -520,7 +545,7 @@ export async function updateOutreachQueueEntry({
     .from("leadgen_outreach_queue")
     .update(patch)
     .eq("id", id)
-    .select("*")
+    .select(QUEUE_FIELDS)
     .single<QueueRow>();
   if (error) throw error;
   return rowToEntry(data);
@@ -576,7 +601,7 @@ export async function approveOutreachEntry(id: string) {
     .in("status", ["draft", "needs_review", "paused", "failed"])
     .neq("subject", "")
     .neq("body", "")
-    .select("*")
+    .select(QUEUE_FIELDS)
     .maybeSingle<QueueRow>();
   if (error) throw error;
   return data ? rowToEntry(data) : null;
@@ -626,7 +651,7 @@ export async function regenerateLatestUnsentOutreach(execute: boolean) {
   const campaignId = latestResult.data.campaign_id;
   const queueResult = await supabase
     .from("leadgen_outreach_queue")
-    .select("*")
+    .select(QUEUE_FIELDS)
     .eq("campaign_id", campaignId)
     .in("status", ["draft", "needs_review", "approved", "failed", "paused"])
     .is("sent_at", null)
@@ -652,6 +677,7 @@ export async function regenerateLatestUnsentOutreach(execute: boolean) {
       signalType: signal?.type,
       signalEvidence: signal?.detail ?? signal?.title,
       signalSourceUrl: signal?.source_url,
+      verticalId: metadata.vertical_id as import("@/lib/leadgen/verticals").LeadgenVerticalId | undefined,
       uniquenessKey: `${row.id}:${row.message_version + 1}`,
       batchBodies,
     });
@@ -697,42 +723,6 @@ export async function regenerateLatestUnsentOutreach(execute: boolean) {
     eligible_count: entries.length,
     regenerated: execute ? regenerated : 0,
     manual_review: manualReview,
-  };
-}
-
-function getZonedParts(date: Date, timeZone: string) {
-  const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hourCycle: "h23",
-  }).formatToParts(date);
-  return Object.fromEntries(parts.map((part) => [part.type, part.value]));
-}
-
-function zonedMidnightUtc(date: Date, timeZone: string) {
-  const p = getZonedParts(date, timeZone);
-  const guess = Date.UTC(Number(p.year), Number(p.month) - 1, Number(p.day));
-  const atGuess = getZonedParts(new Date(guess), timeZone);
-  const represented = Date.UTC(
-    Number(atGuess.year), Number(atGuess.month) - 1, Number(atGuess.day),
-    Number(atGuess.hour), Number(atGuess.minute), Number(atGuess.second),
-  );
-  return new Date(guess - (represented - guess));
-}
-
-export function getBusinessDayRange(now = new Date()) {
-  const start = zonedMidnightUtc(
-    now,
-    leadgenProductionConfig.emailBusinessTimezone,
-  );
-  return {
-    start,
-    end: new Date(start.getTime() + 86_400_000),
   };
 }
 
@@ -817,7 +807,7 @@ export async function scheduleApprovedBatch({
   }
   let approvedEntriesQuery = supabase
     .from("leadgen_outreach_queue")
-    .select("*")
+    .select(QUEUE_FIELDS)
     .eq("status", "approved")
     .eq("message_kind", "initial")
     .order("approved_at", { ascending: true })
@@ -920,7 +910,7 @@ export async function scheduleApprovedBatch({
       })
       .eq("id", row.id)
       .eq("status", "approved")
-      .select("*")
+      .select(QUEUE_FIELDS)
       .maybeSingle<QueueRow>(),
     ),
   );
@@ -1005,7 +995,7 @@ export async function cancelQueuedItem(id: string) {
     .eq("id", id)
     .eq("message_kind", "initial")
     .eq("status", "queued")
-    .select("*")
+    .select(QUEUE_FIELDS)
     .maybeSingle<QueueRow>();
   if (error) throw error;
   return data ? rowToEntry(data) : null;
@@ -1045,7 +1035,7 @@ export async function retryFailedItem(id: string) {
     .eq("id", id)
     .eq("message_kind", "initial")
     .eq("status", "failed")
-    .select("*")
+    .select(QUEUE_FIELDS)
     .maybeSingle<QueueRow>();
   if (error) throw error;
   return data ? rowToEntry(data) : null;
@@ -1100,7 +1090,7 @@ export async function claimDueOutreachItem(
         .eq("id", candidate.data.id)
         .eq("message_kind", messageKind)
         .eq("status", "queued")
-        .select("*")
+        .select(QUEUE_FIELDS)
         .maybeSingle<QueueRow>();
       if (claimed.error) throw claimed.error;
       if (claimed.data) return rowToEntry(claimed.data);
@@ -1263,7 +1253,7 @@ export async function markPersistentOutreachEntry(
       updated_at: now,
     })
     .eq("id", id)
-    .select("*")
+    .select(QUEUE_FIELDS)
     .single<QueueRow>();
   if (error) throw error;
   return rowToEntry(data);

@@ -12,6 +12,9 @@
 .env*
 !.env.example
 
+# Local persistent outreach queue (contains recipients and message bodies)
+/.leadgen-data/
+
 # logs
 npm-debug.log*
 yarn-debug.log*

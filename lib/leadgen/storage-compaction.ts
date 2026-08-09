@@ -12,19 +12,19 @@ const COMPANY_METADATA_TRANSIENT_KEYS = new Set([
 ]);
 
 const CONTACT_DISCOVERY_ARRAY_LIMITS: Record<string, number> = {
-  warnings: 8,
-  strategies_attempted: 8,
-  queries_executed: 10,
-  urls_inspected: 12,
-  channels_found: 10,
-  channels_rejected: 10,
-  provider_errors: 8,
-  emails_extracted: 10,
-  emails_rejected: 10,
-  email_pages_audit: 12,
-  ranked_email_candidates: 5,
-  contact_forms_found: 3,
-  alternative_channel_ids: 8,
+  warnings: 3,
+  strategies_attempted: 3,
+  queries_executed: 3,
+  urls_inspected: 5,
+  channels_found: 3,
+  channels_rejected: 3,
+  provider_errors: 3,
+  emails_extracted: 3,
+  emails_rejected: 3,
+  email_pages_audit: 5,
+  ranked_email_candidates: 2,
+  contact_forms_found: 1,
+  alternative_channel_ids: 3,
 };
 
 const SINGLETON_TECHNICAL_CONTACT_TYPES = new Set([

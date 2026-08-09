@@ -22,6 +22,7 @@ import {
 } from "@/lib/leadgen/public-email-parser";
 import { buildEmailOutreach } from "@/lib/leadgen/email-outreach-builder";
 import { discoverCompanyEmails } from "@/lib/leadgen/email-discovery-engine";
+import { getVerticalProfile } from "@/lib/leadgen/verticals";
 
 const publicUrlPattern = /https?:\/\/[^\s"'<>\\)]+/gi;
 const officialSitePaths = [
@@ -1333,10 +1334,23 @@ export class PublicContactProvider implements ContactProvider {
   ): Promise<ContactProviderResult> {
     const contacts: LeadgenContact[] = [];
     const searchProvider = this.getSearchProvider();
-    const websiteResolution = await resolveOfficialCompanyWebsite(
-      rawInput.company,
-      searchProvider,
-    );
+    const auditedWebsiteStatus =
+      rawInput.company.metadata.official_website_status;
+    const auditedWebsiteReason =
+      rawInput.company.metadata.official_website_reason;
+    const websiteResolution = auditedWebsiteStatus === "not_found"
+      ? {
+          domain: null,
+          website: null,
+          sourceUrl: null,
+          status: "not_found" as const,
+          confidence: 0,
+          reason:
+            typeof auditedWebsiteReason === "string"
+              ? auditedWebsiteReason
+              : "official_site_not_found",
+        }
+      : await resolveOfficialCompanyWebsite(rawInput.company, searchProvider);
     const input: ContactProviderInput = websiteResolution.domain
       ? {
           ...rawInput,
@@ -1361,6 +1375,11 @@ export class PublicContactProvider implements ContactProvider {
             commercialSignalSourceUrl: input.signals[0]?.source_url ?? null,
             targetPersona: input.decisionMaker?.primary_persona ?? null,
             targetDepartment: input.decisionMaker?.department ?? null,
+            emailPriority: getVerticalProfile(
+              typeof input.company.metadata.vertical_id === "string"
+                ? input.company.metadata.vertical_id
+                : null,
+            ).emailPriority,
           },
           searchProvider,
         })

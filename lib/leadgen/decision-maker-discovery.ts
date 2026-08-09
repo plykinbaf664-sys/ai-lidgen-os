@@ -9,6 +9,7 @@
 type DecisionMakerInput = {
   candidate: LeadCandidate;
   signalType: SignalType;
+  preferredRoles?: string[];
 };
 
 type DepartmentKey =
@@ -524,6 +525,7 @@ function buildConfidenceReason(
 export function discoverDecisionMaker({
   candidate,
   signalType,
+  preferredRoles,
 }: DecisionMakerInput): DecisionMakerProfile {
   const contextText = normalizeText(
     candidate.company_segment,
@@ -557,8 +559,11 @@ export function discoverDecisionMaker({
   ].filter((persona, index, personas) => personas.indexOf(persona) === index);
 
   return {
-    primary_persona: selectPrimaryPersona(profile),
-    alternative_personas: alternativePersonas.slice(0, 6),
+    primary_persona: preferredRoles?.[0] ?? selectPrimaryPersona(profile),
+    alternative_personas: [
+      ...(preferredRoles?.slice(1) ?? []),
+      ...alternativePersonas,
+    ].filter((persona, index, values) => values.indexOf(persona) === index).slice(0, 6),
     department: profile.department,
     buying_role: profile.buyingRole,
     influence_level: profile.influenceLevel,

@@ -14,6 +14,7 @@ export type EmailDiscoveryInput = {
   commercialSignalSourceUrl: string | null;
   targetPersona: string | null;
   targetDepartment: string | null;
+  emailPriority?: Array<"personal" | "sales" | "commercial" | "marketing" | "general">;
 };
 
 export type EmailCandidateKind =
@@ -393,8 +394,8 @@ function classifyKind(email: string): EmailCandidateKind {
   return local.includes(".") ? "personal_work" : "unknown";
 }
 
-function kindScore(kind: EmailCandidateKind): number {
-  return {
+function kindScore(kind: EmailCandidateKind, priority: EmailDiscoveryInput["emailPriority"]): number {
+  const base = {
     personal_work: 38,
     sales: 34,
     commercial: 33,
@@ -406,6 +407,9 @@ function kindScore(kind: EmailCandidateKind): number {
     unknown: 10,
     hr: -12,
   }[kind];
+  const profileKind = kind === "personal_work" ? "personal" : kind;
+  const priorityIndex = priority?.indexOf(profileKind as NonNullable<EmailDiscoveryInput["emailPriority"]>[number]) ?? -1;
+  return base + (priorityIndex >= 0 ? (priority!.length - priorityIndex) * 8 : 0);
 }
 
 async function hasMx(domain: string): Promise<boolean> {
@@ -587,7 +591,7 @@ export async function discoverCompanyEmails({
         : "public_search";
       const score =
         40 +
-        kindScore(kind) +
+        kindScore(kind, input.emailPriority) +
         (domainMatch ? 24 : 8) +
         (candidate.extraction_method === "mailto" ? 10 : 0) +
         (candidate.evidenceCount > 1 ? 8 : 0) +

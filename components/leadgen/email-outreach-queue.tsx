@@ -51,7 +51,12 @@ type QueueResponse =
   | ApiError;
 type EntryResponse = { success: true; entry: OutreachQueueEntry } | ApiError;
 type ReadinessResponse =
-  | { success: true; readiness: OutreachReadiness; smtp_message: string }
+  | {
+      success: true;
+      readiness: OutreachReadiness;
+      smtp_message: string;
+      storage_mode?: "local" | "supabase";
+    }
   | ApiError;
 type ImapDiagnostic = {
   status: string;
@@ -73,6 +78,7 @@ type BulkResponse = ({ success: true } & BulkPreview) | ApiError;
 type BatchResponse =
   | {
       success: true;
+      storage_mode: "local" | "supabase";
       queued: OutreachQueueEntry[];
       queued_count: number;
       skipped_count: number;
@@ -98,8 +104,24 @@ type BatchResponse =
         daily_remaining: number;
         queued_for_today: number;
       };
+      operational?: OutreachOperationalState;
     }
   | ApiError;
+type LocalQueueResponse =
+  | {
+      success: true;
+      storage_mode: "local";
+      entries: OutreachQueueEntry[];
+      operational: OutreachOperationalState;
+      daily: {
+        sent_today: number;
+        daily_limit: number;
+        daily_remaining: number;
+        queued_for_today: number;
+      };
+    }
+  | ApiError;
+type LocalDaily = Extract<LocalQueueResponse, { success: true }>["daily"];
 type FollowupResponse =
   | {
       success: true;
@@ -182,6 +204,131 @@ function matchesFilter(entry: OutreachQueueEntry, filter: QueueFilter) {
   if (filter === "sent") return entry.status === "sent";
   if (filter === "failed") return entry.status === "failed";
   return entry.status === "rejected";
+}
+
+function mergeQueueEntries(
+  current: OutreachQueueEntry[],
+  updates: OutreachQueueEntry[],
+) {
+  const byId = new Map(current.map((entry) => [entry.id, entry]));
+  for (const entry of updates) byId.set(entry.id, entry);
+  return [...byId.values()];
+}
+
+function reconcileInitialSummary(
+  summary: OutreachSummary | null,
+  current: OutreachQueueEntry[],
+  updates: OutreachQueueEntry[],
+  daily?: LocalDaily,
+) {
+  if (!summary) return summary;
+  const previousById = new Map(current.map((entry) => [entry.id, entry]));
+  const initial = { ...summary.initial };
+  const field = (status: string) => {
+    if (status === "needs_review") return "needsReview" as const;
+    if (
+      status === "approved" ||
+      status === "queued" ||
+      status === "sending" ||
+      status === "sent" ||
+      status === "failed" ||
+      status === "rejected" ||
+      status === "draft"
+    ) return status;
+    return null;
+  };
+  for (const update of updates) {
+    if (update.message_kind === "follow_up") continue;
+    const previous = previousById.get(update.id);
+    if (!previous || previous.status === update.status) continue;
+    const from = field(previous.status);
+    const to = field(update.status);
+    if (from) initial[from] = Math.max(0, initial[from] - 1);
+    if (to) initial[to] += 1;
+  }
+  return {
+    ...summary,
+    initial,
+    today: daily
+      ? {
+          ...summary.today,
+          initialQueued: daily.queued_for_today,
+          initialSent: daily.sent_today,
+          totalQueued:
+            daily.queued_for_today + summary.today.followUpQueued,
+          totalSent: daily.sent_today + summary.today.followUpSent,
+          dailyLimit: daily.daily_limit,
+          dailyRemaining: daily.daily_remaining,
+          dailyAvailableToQueue: daily.daily_remaining,
+        }
+      : summary.today,
+  };
+}
+
+function buildLocalOutreachSummary(
+  campaignId: string | null,
+  entries: OutreachQueueEntry[],
+  daily: LocalDaily,
+): OutreachSummary {
+  const count = (items: OutreachQueueEntry[], status: string) =>
+    items.filter((entry) => entry.status === status).length;
+  const initialEntries = entries.filter(
+    (entry) => entry.message_kind !== "follow_up",
+  );
+  const followUpEntries = entries.filter(
+    (entry) => entry.message_kind === "follow_up",
+  );
+  const counters = (items: OutreachQueueEntry[]) => ({
+    draft: count(items, "draft"),
+    needsReview: count(items, "needs_review"),
+    approved: count(items, "approved"),
+    queued: count(items, "queued"),
+    sending: count(items, "sending"),
+    sent: count(items, "sent"),
+    failed: count(items, "failed"),
+    rejected: count(items, "rejected"),
+  });
+  const initial = counters(initialEntries);
+  const followUps = counters(followUpEntries);
+  const followUpSentToday = followUpEntries.filter(
+    (entry) => entry.status === "sent" && entry.sent_at,
+  ).length;
+  return {
+    campaignId: campaignId ?? "local",
+    initial: {
+      ...initial,
+      candidates: initialEntries.length,
+      workingEmails: new Set(initialEntries.map((entry) => entry.email)).size,
+      generated: initialEntries.length,
+      skipped: 0,
+      eligibleForBulkApproval: 0,
+    },
+    followUps: {
+      ...followUps,
+      candidates: followUpEntries.length,
+      generated: followUpEntries.length,
+      eligible: 0,
+      unavailableNow: 0,
+      eligibleForBulkApproval: 0,
+      approvalBlocked: 0,
+    },
+    today: {
+      initialQueued: daily.queued_for_today,
+      initialSent: daily.sent_today,
+      followUpQueued: followUps.queued + followUps.sending,
+      followUpSent: followUpSentToday,
+      totalQueued:
+        daily.queued_for_today + followUps.queued + followUps.sending,
+      totalSent: daily.sent_today + followUpSentToday,
+      dailyLimit: daily.daily_limit,
+      dailyRemaining: daily.daily_remaining,
+      dailyAvailableToQueue: daily.daily_remaining,
+    },
+    diagnostics: {
+      healthy: true,
+      issues: ["Контур отправки работает из локального хранилища."],
+    },
+  };
 }
 
 function formatDate(value?: string | null) {
@@ -438,6 +585,9 @@ export function EmailOutreachQueue({
     tone: "loading" | "success" | "error";
     text: string;
   } | null>(null);
+  const [deliveryStorageMode, setDeliveryStorageMode] = useState<
+    "local" | "supabase"
+  >("supabase");
 
   const visibleEntries = useMemo(
     () =>
@@ -493,6 +643,12 @@ export function EmailOutreachQueue({
         ),
     [followups],
   );
+  const hasActiveQueue = useMemo(
+    () =>
+      entries.some((entry) => ["queued", "sending"].includes(entry.status)) ||
+      followups.some((entry) => ["queued", "sending"].includes(entry.status)),
+    [entries, followups],
+  );
   const metrics = useMemo(
     () => ({
       total: outreachSummary?.initial.generated ?? 0,
@@ -515,15 +671,28 @@ export function EmailOutreachQueue({
       skippedIds.has(company.id),
     );
   }, [campaignDetails, skippedCompanies]);
-  const selectEntry = useCallback((entry: OutreachQueueEntry) => {
-    setSelectedId(entry.id);
-    setSubject(entry.subject);
-    setBody(entry.body);
-    setEmail(entry.email);
+  const selectEntry = useCallback(async (entry: OutreachQueueEntry) => {
+    setPending(`open-${entry.id}`);
+    try {
+      const response = await fetch(`/api/leadgen/outreach/${entry.id}`);
+      const data = await readJson<EntryResponse>(response);
+      if (!response.ok || !data.success) throw new Error(getError(data as ApiError));
+      setSelectedId(data.entry.id);
+      setSubject(data.entry.subject);
+      setBody(data.entry.body);
+      setEmail(data.entry.email);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Не удалось открыть письмо");
+    } finally {
+      setPending(null);
+    }
   }, []);
 
   const loadFollowups = useCallback(async () => {
-    const response = await fetch("/api/leadgen/followups");
+    const followupUrl = campaignId
+      ? `/api/leadgen/followups?campaignId=${encodeURIComponent(campaignId)}`
+      : "/api/leadgen/followups";
+    const response = await fetch(followupUrl);
     const data = await readJson<FollowupResponse>(response);
     if (!response.ok || !data.success) throw new Error(getError(data as ApiError));
     setFollowups(data.entries);
@@ -531,7 +700,7 @@ export function EmailOutreachQueue({
     setFollowupBatchSize((value) =>
       Math.max(1, Math.min(value, data.summary.approved || 1, 20)),
     );
-  }, []);
+  }, [campaignId]);
 
   const load = useCallback(async () => {
     setError(null);
@@ -553,6 +722,7 @@ export function EmailOutreachQueue({
     setOperational(queue.operational);
     setLastUpdated(new Date().toISOString());
     if (ready.success) {
+      if (ready.storage_mode) setDeliveryStorageMode(ready.storage_mode);
       setReadiness({
         ...ready.readiness,
         sent_today: queue.daily.sent_today,
@@ -577,7 +747,11 @@ export function EmailOutreachQueue({
     Promise.all([
       queueRequest,
       fetch("/api/leadgen/outreach/readiness"),
-      fetch("/api/leadgen/followups"),
+      fetch(
+        campaignId
+          ? `/api/leadgen/followups?campaignId=${encodeURIComponent(campaignId)}`
+          : "/api/leadgen/followups",
+      ),
     ])
       .then(async ([queueResponse, readinessResponse, followupResponse]) => {
         const queue = await readJson<QueueResponse>(queueResponse);
@@ -594,6 +768,7 @@ export function EmailOutreachQueue({
         setOperational(queue.operational);
         setLastUpdated(new Date().toISOString());
         if (ready.success) {
+          if (ready.storage_mode) setDeliveryStorageMode(ready.storage_mode);
           setReadiness({
             ...ready.readiness,
             sent_today: queue.daily.sent_today,
@@ -602,13 +777,46 @@ export function EmailOutreachQueue({
             queued_for_today: queue.daily.queued_for_today,
           });
         }
-        void loadFollowups().catch(() => {
-          // The campaign queue remains usable if the secondary daily follow-up
-          // aggregation is temporarily unavailable.
-        });
       })
-      .catch((caught: unknown) => {
-        if (active) setError(caught instanceof Error ? caught.message : "Ошибка загрузки очереди");
+      .catch(async (caught: unknown) => {
+        if (!active) return;
+        try {
+          const localUrl = campaignId
+            ? `/api/leadgen/outreach/batch?campaignId=${encodeURIComponent(campaignId)}`
+            : "/api/leadgen/outreach/batch";
+          const [localResponse, localReadinessResponse] = await Promise.all([
+            fetch(localUrl),
+            fetch("/api/leadgen/outreach/readiness"),
+          ]);
+          const local = await readJson<LocalQueueResponse>(localResponse);
+          const localReadiness = await readJson<ReadinessResponse>(
+            localReadinessResponse,
+          );
+          if (!localResponse.ok || !local.success) throw caught;
+          setDeliveryStorageMode("local");
+          setEntries(
+            local.entries.filter((entry) => entry.message_kind !== "follow_up"),
+          );
+          setFollowups(
+            local.entries.filter((entry) => entry.message_kind === "follow_up"),
+          );
+          setOutreachSummary(
+            buildLocalOutreachSummary(campaignId, local.entries, local.daily),
+          );
+          setOperational(local.operational);
+          setLastUpdated(new Date().toISOString());
+          if (localReadiness.success) {
+            setReadiness(localReadiness.readiness);
+            if (localReadiness.storage_mode) {
+              setDeliveryStorageMode(localReadiness.storage_mode);
+            }
+          }
+          setError(null);
+        } catch {
+          setError(
+            caught instanceof Error ? caught.message : "Ошибка загрузки очереди",
+          );
+        }
       });
     return () => {
       active = false;
@@ -616,9 +824,49 @@ export function EmailOutreachQueue({
   }, [campaignId, loadFollowups]);
 
   useEffect(() => {
+    if (!hasActiveQueue) return;
+
     let active = true;
     const refresh = async () => {
       try {
+        if (deliveryStorageMode === "local") {
+          const localUrl = campaignId
+            ? `/api/leadgen/outreach/batch?campaignId=${encodeURIComponent(campaignId)}`
+            : "/api/leadgen/outreach/batch";
+          const response = await fetch(localUrl);
+          const data = await readJson<LocalQueueResponse>(response);
+          if (!response.ok || !data.success) {
+            throw new Error(getError(data as ApiError));
+          }
+          if (!active) return;
+          setOutreachSummary((current) =>
+            reconcileInitialSummary(current, entries, data.entries, data.daily),
+          );
+          const initialUpdates = data.entries.filter(
+            (entry) => entry.message_kind !== "follow_up",
+          );
+          const followUpUpdates = data.entries.filter(
+            (entry) => entry.message_kind === "follow_up",
+          );
+          setEntries((current) => mergeQueueEntries(current, initialUpdates));
+          setFollowups((current) =>
+            mergeQueueEntries(current, followUpUpdates),
+          );
+          setOperational(data.operational);
+          setLastUpdated(new Date().toISOString());
+          setReadiness((current) =>
+            current
+              ? {
+                  ...current,
+                  sent_today: data.daily.sent_today,
+                  daily_limit: data.daily.daily_limit,
+                  daily_remaining: data.daily.daily_remaining,
+                  queued_for_today: data.daily.queued_for_today,
+                }
+              : current,
+          );
+          return;
+        }
         const queueUrl = campaignId
           ? `/api/leadgen/outreach?campaignId=${encodeURIComponent(campaignId)}`
           : "/api/leadgen/outreach";
@@ -655,12 +903,12 @@ export function EmailOutreachQueue({
         }
       }
     };
-    const interval = window.setInterval(refresh, 15_000);
+    const interval = window.setInterval(refresh, 30_000);
     return () => {
       active = false;
       window.clearInterval(interval);
     };
-  }, [campaignId, loadFollowups]);
+  }, [campaignId, deliveryStorageMode, entries, hasActiveQueue, loadFollowups]);
 
   async function runFollowupAction(
     action: "scan" | "generate" | "bulk-approve" | "batch",
@@ -677,6 +925,30 @@ export function EmailOutreachQueue({
           : "Выполняем действие…",
     });
     try {
+      if (action === "batch" && deliveryStorageMode === "local") {
+        const response = await fetch("/api/leadgen/outreach/batch", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            campaignId,
+            count: Number(payload.count ?? followupBatchSize),
+            messageKind: "follow_up",
+            entries: followups,
+            sentToday: readiness?.sent_today ?? 0,
+          }),
+        });
+        const data = await readJson<BatchResponse>(response);
+        if (!response.ok || !data.success) {
+          throw new Error(getError(data as ApiError));
+        }
+        setFollowups((current) => mergeQueueEntries(current, data.queued));
+        setOperational(data.operational ?? null);
+        setFollowupNotice({
+          tone: "success",
+          text: `В локальную очередь поставлено дожимов: ${data.queued_count}. Пропущено: ${data.skipped_count}.`,
+        });
+        return;
+      }
       const response = await fetch(`/api/leadgen/followups/${action}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -917,15 +1189,39 @@ export function EmailOutreachQueue({
       const response = await fetch("/api/leadgen/outreach/batch", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ campaignId, count: batchSize }),
-        signal: AbortSignal.timeout(40_000),
+        body: JSON.stringify({
+          campaignId,
+          count: batchSize,
+          entries,
+          sentToday: readiness?.sent_today ?? 0,
+        }),
       });
       const data = await readJson<BatchResponse>(response);
       if (!response.ok || !data.success) throw new Error(getError(data as ApiError));
       setMessage(
         `Поставлено в очередь: ${data.queued_count}. Пропущено: ${data.skipped_count}.`,
       );
-      await load();
+      setDeliveryStorageMode(data.storage_mode);
+      if (data.storage_mode === "local") {
+        setOutreachSummary((current) =>
+          reconcileInitialSummary(current, entries, data.queued, data.daily),
+        );
+        setEntries((current) => mergeQueueEntries(current, data.queued));
+        setOperational(data.operational ?? null);
+        setReadiness((current) =>
+          current
+            ? {
+                ...current,
+                sent_today: data.daily.sent_today,
+                daily_limit: data.daily.daily_limit,
+                daily_remaining: data.daily.daily_remaining,
+                queued_for_today: data.daily.queued_for_today,
+              }
+            : current,
+        );
+      } else {
+        await load();
+      }
     } catch (caught) {
       await load().catch(() => {
         // Keep the original queue error visible if reconciliation is unavailable.
@@ -952,7 +1248,32 @@ export function EmailOutreachQueue({
       const data = await readJson<{ success: boolean; error?: string }>(response);
       if (!data.success) throw new Error(formatUnknownError(data.error));
       setMessage("Состояние очереди обновлено.");
-      await load();
+      if (deliveryStorageMode === "local") {
+        const localUrl = campaignId
+          ? `/api/leadgen/outreach/batch?campaignId=${encodeURIComponent(campaignId)}`
+          : "/api/leadgen/outreach/batch";
+        const localResponse = await fetch(localUrl);
+        const local = await readJson<LocalQueueResponse>(localResponse);
+        if (!localResponse.ok || !local.success) {
+          throw new Error(getError(local as ApiError));
+        }
+        setOutreachSummary((current) =>
+          reconcileInitialSummary(current, entries, local.entries, local.daily),
+        );
+        const initialUpdates = local.entries.filter(
+          (entry) => entry.message_kind !== "follow_up",
+        );
+        const followUpUpdates = local.entries.filter(
+          (entry) => entry.message_kind === "follow_up",
+        );
+        setEntries((current) => mergeQueueEntries(current, initialUpdates));
+        setFollowups((current) =>
+          mergeQueueEntries(current, followUpUpdates),
+        );
+        setOperational(local.operational);
+      } else {
+        await load();
+      }
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Ошибка управления очередью");
     } finally {
@@ -1089,6 +1410,11 @@ export function EmailOutreachQueue({
                 {readiness.email_test_mode
                   ? "Тестовый режим"
                   : "Реальная отправка"}
+              </span>
+            ) : null}
+            {deliveryStorageMode === "local" ? (
+              <span className="outreach-mode-badge test">
+                Локальная очередь · без Supabase
               </span>
             ) : null}
           </div>
@@ -1568,7 +1894,7 @@ export function EmailOutreachQueue({
               {[5].filter((value) => value <= Math.min(outreachSummary?.followUps.approved ?? 0, readiness?.daily_remaining ?? 0)).map((value) => <Button key={value} onClick={() => setFollowupBatchSize(value)} variant="ghost">{value}</Button>)}
               <Button onClick={() => setFollowupBatchSize(Math.max(1, Math.min(outreachSummary?.followUps.approved ?? 1, readiness?.daily_remaining ?? 1)))} variant="ghost">Все доступные</Button>
             </div>
-            <Button disabled={pending !== null || !readiness?.imap_connected || (readiness?.daily_remaining ?? 0) < 1} loading={pending === "followup-batch"} onClick={() => runFollowupAction("batch", { count: followupBatchSize })} variant="primary">Отправить одобренные дожимы</Button>
+            <Button disabled={pending !== null || !readiness?.imap_connected || followupMaxBatch < 1} loading={pending === "followup-batch"} onClick={() => runFollowupAction("batch", { count: followupBatchSize })} variant="primary">Отправить одобренные дожимы</Button>
           </div>
         ) : null}
       </section>
@@ -1684,6 +2010,13 @@ export function EmailOutreachQueue({
                     const sourceContact = campaignDetails?.contacts.find(
                       (contact) => contact.id === entry.contact_id,
                     );
+                    const signal = entry.signal ?? {
+                      type: null,
+                      title: null,
+                      detail: null,
+                      source_url: null,
+                      confidence_score: null,
+                    };
                     return (
                   <article
                     className={`outreach-lead-card outreach-card-${entry.status} ${
@@ -1700,8 +2033,8 @@ export function EmailOutreachQueue({
                       </span>
                       {entry.company_website ? <a href={entry.company_website} rel="noreferrer" target="_blank">{entry.company_website}</a> : null}
                       <dl className="lead-card-summary">
-                        <div><dt>Коммерческий сигнал</dt><dd>{validateCommercialSignalCandidate({ text: entry.signal.detail, sourceUrl: entry.signal.source_url, sourceTitle: entry.signal.title, confidence: entry.signal.confidence_score, pipelineSignalType: entry.signal.type })?.summary ?? NO_VERIFIED_COMMERCIAL_SIGNAL}</dd></div>
-                        <div><dt>Источник сигнала</dt><dd>{entry.signal.source_url ? <a href={entry.signal.source_url} rel="noreferrer" target="_blank">Публичный источник</a> : "—"}</dd></div>
+                        <div><dt>Коммерческий сигнал</dt><dd>{validateCommercialSignalCandidate({ text: signal.detail, sourceUrl: signal.source_url, sourceTitle: signal.title, confidence: signal.confidence_score, pipelineSignalType: signal.type })?.summary ?? NO_VERIFIED_COMMERCIAL_SIGNAL}</dd></div>
+                        <div><dt>Источник сигнала</dt><dd>{signal.source_url ? <a href={signal.source_url} rel="noreferrer" target="_blank">Публичный источник</a> : "—"}</dd></div>
                         <div><dt>Источник контакта</dt><dd>{entry.email_source_url ? <a href={entry.email_source_url} rel="noreferrer" target="_blank">{entry.email_source_label || entry.email_source_url}</a> : "—"}</dd></div>
                         <div><dt>Тип email</dt><dd>{typeof sourceContact?.metadata.email_kind === "string" ? sourceContact.metadata.email_kind : entry.readiness}</dd></div>
                         <div><dt>Статус проверки</dt><dd>{sourceContact?.metadata.email_mx_verified === true ? "Домен подтверждён, MX найден" : "Домен подтверждён"}</dd></div>

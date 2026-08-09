@@ -1,4 +1,5 @@
 import type { CommercialSignalType, OutreachMessageMode } from "@/lib/leadgen/types";
+import { getVerticalProfile, inferVerticalId, type LeadgenVerticalId } from "@/lib/leadgen/verticals";
 
 export type OutreachMicroValue = {
   type: "ideas" | "audit" | "scenarios" | "processes";
@@ -36,6 +37,7 @@ export type FirstEmailContext = {
   selectionReason?: string | null;
   uniquenessKey?: string | null;
   batchBodies?: string[];
+  verticalId?: LeadgenVerticalId;
 };
 
 export type FirstEmailCopy = {
@@ -237,6 +239,7 @@ function getValuePitch(
   intent: EmailIntent,
 ): string {
   const company = compactCompanyName(context.companyName);
+  const vertical = getVerticalProfile(context.verticalId ?? inferVerticalId(context.industry));
   const outcomes: Record<EmailIntent, string> = {
     sales: "отвечать сразу, собирать задачу и передавать менеджеру уже квалифицированную заявку",
     support: "закрывать типовые вопросы, определять тему обращения и подключать человека только там, где он действительно нужен",
@@ -246,10 +249,10 @@ function getValuePitch(
     inbound: "моментально квалифицировать входящий запрос и отдавать менеджеру клиента с понятной задачей и приоритетом",
     general: "забирать первый контакт, повторяющиеся уточнения и передачу запроса ответственному сотруднику",
   };
-  return `Для ${company} собрал схему из трёх шагов: как ${outcomes[intent]}. Мы внедряем ИИ-сотрудников, которые берут рутину, а человеку оставляют решение и продажу. Покажу, где это встраивается в ваш процесс — без презентации и общих слов.`;
+  return `Для ${company} собрал схему из трёх шагов: как ${outcomes[intent]}. В ${vertical.label.toLowerCase()} мы ${vertical.offer}. Покажу, где это встраивается в ваш процесс — без презентации и общих слов.`;
 }
 
-function getMicroValue(intent: EmailIntent): OutreachMicroValue {
+function getMicroValue(intent: EmailIntent, context?: FirstEmailContext): OutreachMicroValue {
   const itemsByIntent: Record<EmailIntent, string[]> = {
     sales: ["автоматическая первичная квалификация", "сбор контекста до передачи менеджеру", "контроль необработанных обращений"],
     support: ["ответы на типовые вопросы", "маршрутизация по теме запроса", "эскалация сложных обращений сотруднику"],
@@ -259,7 +262,8 @@ function getMicroValue(intent: EmailIntent): OutreachMicroValue {
     inbound: ["ответ в первые минуты", "квалификация запроса", "передача менеджеру с готовым контекстом"],
     general: ["разбор входящего запроса", "сбор недостающих данных", "передача ответственному с понятным контекстом"],
   };
-  const items = itemsByIntent[intent];
+  const vertical = context ? getVerticalProfile(context.verticalId ?? inferVerticalId(context.industry)) : null;
+  const items = vertical?.examples.slice(0, 3) ?? itemsByIntent[intent];
   return { type: "ideas", items, summary: `Три идеи: ${items.join("; ")}.` };
 }
 
@@ -340,7 +344,7 @@ export function generateFirstEmailV3(context: FirstEmailContext): FirstEmailCopy
   const companyName = cleanText(context.companyName);
   if (!companyName) throw new Error("Для генерации первого письма требуется название компании.");
   const intent = getIntent(context);
-  const microValue = getMicroValue(intent);
+  const microValue = getMicroValue(intent, context);
   let lastCopy: FirstEmailCopy | null = null;
 
   for (let attempt = 0; attempt < 3; attempt += 1) {

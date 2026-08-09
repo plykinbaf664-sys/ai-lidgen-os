@@ -1,6 +1,7 @@
 ﻿import "server-only";
 
 import { createSupabaseServerClient } from "@/lib/supabase/client";
+import { CAMPAIGN_FIELDS, COMPANY_FIELDS, CONTACT_FIELDS, LEAD_FIELDS, SIGNAL_FIELDS } from "@/lib/leadgen/storage-projections";
 import { leadgenHistoryResetAt } from "@/lib/leadgen/history-policy";
 import {
   compactCompanyForStorage,
@@ -14,7 +15,6 @@ import type {
   LeadgenCampaignSummary,
   LeadgenCompany,
   LeadgenContact,
-  LeadgenEvent,
   LeadgenLead,
   LeadgenSignal,
   LeadDiscoveryResult,
@@ -169,21 +169,6 @@ async function saveContacts(
   }
 }
 
-async function saveEvents(
-  supabase: SupabaseServerClient,
-  events: LeadgenEvent[],
-) {
-  if (events.length === 0) {
-    return;
-  }
-
-  const { error } = await supabase.from("leadgen_events").insert(events);
-
-  if (error) {
-    throw error;
-  }
-}
-
 async function saveSignals(
   supabase: SupabaseServerClient,
   signals: LeadgenSignal[],
@@ -193,23 +178,6 @@ async function saveSignals(
   }
 
   const { error } = await supabase.from("leadgen_signals").insert(signals);
-
-  if (error) {
-    throw error;
-  }
-}
-
-async function saveTelegramNotifications(
-  supabase: SupabaseServerClient,
-  notifications: TelegramNotification[],
-) {
-  if (notifications.length === 0) {
-    return;
-  }
-
-  const { error } = await supabase
-    .from("leadgen_telegram_notifications")
-    .insert(notifications);
 
   if (error) {
     throw error;
@@ -234,14 +202,9 @@ async function rollbackPipelineResult(
 
 export async function savePipelineResult({
   result,
-  notifications,
 }: SavePipelineInput): Promise<SavePipelineResult> {
   const supabase = createSupabaseServerClient();
   const normalizedResult = normalizeLeadgenStrings(result, "storage.save.result");
-  const normalizedNotifications = normalizeLeadgenStrings(
-    notifications,
-    "storage.save.notifications",
-  );
 
   try {
     await saveCampaign(supabase, normalizedResult.campaign);
@@ -249,8 +212,6 @@ export async function savePipelineResult({
     await saveLeads(supabase, normalizedResult.leads);
     await saveSignals(supabase, normalizedResult.signals);
     await saveContacts(supabase, normalizedResult.contacts ?? []);
-    await saveEvents(supabase, normalizedResult.events);
-    await saveTelegramNotifications(supabase, normalizedNotifications);
   } catch (error) {
     const rollbackErrorMessage = await rollbackPipelineResult(
       supabase,
@@ -275,8 +236,82 @@ export async function savePipelineResult({
     contacts_count: normalizedResult.contacts?.length ?? 0,
     leads_count: normalizedResult.leads.length,
     signals_count: normalizedResult.signals.length,
-    events_count: normalizedResult.events.length,
-    notifications_count: normalizedNotifications.length,
+    events_count: 0,
+    notifications_count: 0,
+    discovery_metrics:
+      "discovery_metrics" in normalizedResult
+        ? normalizedResult.discovery_metrics
+        : undefined,
+  };
+}
+
+async function rollbackDiscoveryPass(
+  supabase: SupabaseServerClient,
+  pipelineRunId: string,
+) {
+  const tables = [
+    "leadgen_telegram_notifications",
+    "leadgen_events",
+    "leadgen_contacts",
+    "leadgen_signals",
+    "leadgen_leads",
+    "leadgen_companies",
+  ] as const;
+
+  for (const table of tables) {
+    await supabase.from(table).delete().eq("pipeline_run_id", pipelineRunId);
+  }
+}
+
+export async function appendPipelineResult({
+  result,
+}: SavePipelineInput): Promise<SavePipelineResult> {
+  const supabase = createSupabaseServerClient();
+  const normalizedResult = normalizeLeadgenStrings(
+    result,
+    "storage.append.result",
+  );
+  const campaignId = normalizedResult.campaign.id;
+  const pipelineRunId = normalizedResult.campaign.pipeline_run_id;
+  const campaignCheck = await supabase
+    .from("leadgen_campaigns")
+    .select("id")
+    .eq("id", campaignId)
+    .maybeSingle<Pick<LeadgenCampaign, "id">>();
+
+  if (campaignCheck.error) throw campaignCheck.error;
+  if (!campaignCheck.data) {
+    throw new Error("Кампания для продолжения поиска не найдена.");
+  }
+
+  try {
+    await saveCompanies(supabase, normalizedResult.companies ?? []);
+    await saveLeads(supabase, normalizedResult.leads);
+    await saveSignals(supabase, normalizedResult.signals);
+    await saveContacts(supabase, normalizedResult.contacts ?? []);
+    const campaignUpdate = await supabase
+      .from("leadgen_campaigns")
+      .update({
+        production_discovery_stats:
+          normalizedResult.campaign.production_discovery_stats ?? {},
+      })
+      .eq("id", campaignId);
+    if (campaignUpdate.error) throw campaignUpdate.error;
+  } catch (error) {
+    await rollbackDiscoveryPass(supabase, pipelineRunId);
+    throw error;
+  }
+
+  return {
+    pipeline_run_id: pipelineRunId,
+    campaign_id: campaignId,
+    companies_count:
+      normalizedResult.companies?.length ?? normalizedResult.leads.length,
+    contacts_count: normalizedResult.contacts?.length ?? 0,
+    leads_count: normalizedResult.leads.length,
+    signals_count: normalizedResult.signals.length,
+    events_count: 0,
+    notifications_count: 0,
     discovery_metrics:
       "discovery_metrics" in normalizedResult
         ? normalizedResult.discovery_metrics
@@ -440,7 +475,7 @@ export async function getCampaignDetails(
 
   const { data: campaign, error: campaignError } = await supabase
     .from("leadgen_campaigns")
-    .select("*")
+    .select(CAMPAIGN_FIELDS)
     .eq("id", campaignId)
     .single<LeadgenCampaign>();
 
@@ -457,47 +492,33 @@ export async function getCampaignDetails(
     { data: contacts, error: contactsError },
     { data: leads, error: leadsError },
     { data: signals, error: signalsError },
-    { data: events, error: eventsError },
-    { data: notifications, error: notificationsError },
     { data: campaignOutreach, error: campaignOutreachError },
   ] = await Promise.all([
     supabase
       .from("leadgen_companies")
-      .select("*")
+      .select(COMPANY_FIELDS)
       .eq("campaign_id", campaignId)
       .order("lead_score", { ascending: false })
       .returns<LeadgenCompany[]>(),
     supabase
       .from("leadgen_contacts")
-      .select("*")
+      .select(CONTACT_FIELDS)
       .eq("campaign_id", campaignId)
       .order("is_primary", { ascending: false })
       .order("confidence_score", { ascending: false })
       .returns<LeadgenContact[]>(),
     supabase
       .from("leadgen_leads")
-      .select("*")
+      .select(LEAD_FIELDS)
       .eq("campaign_id", campaignId)
       .order("created_at", { ascending: true })
       .returns<LeadgenLead[]>(),
     supabase
       .from("leadgen_signals")
-      .select("*")
+      .select(SIGNAL_FIELDS)
       .eq("campaign_id", campaignId)
       .order("confidence_score", { ascending: false })
       .returns<LeadgenSignal[]>(),
-    supabase
-      .from("leadgen_events")
-      .select("*")
-      .eq("campaign_id", campaignId)
-      .order("created_at", { ascending: true })
-      .returns<LeadgenEvent[]>(),
-    supabase
-      .from("leadgen_telegram_notifications")
-      .select("*")
-      .eq("campaign_id", campaignId)
-      .order("created_at", { ascending: true })
-      .returns<TelegramNotification[]>(),
     supabase
       .from("leadgen_outreach_queue")
       .select("campaign_id,status,message_kind")
@@ -521,13 +542,6 @@ export async function getCampaignDetails(
     throw signalsError;
   }
 
-  if (eventsError) {
-    throw eventsError;
-  }
-
-  if (notificationsError) {
-    throw notificationsError;
-  }
   if (campaignOutreachError && !isMissingRelationError(campaignOutreachError)) {
     throw campaignOutreachError;
   }
@@ -536,8 +550,6 @@ export async function getCampaignDetails(
   const storedContacts = contactsError ? [] : contacts ?? [];
   const storedLeads = leads ?? [];
   const storedSignals = signals ?? [];
-  const storedEvents = events ?? [];
-  const storedNotifications = notifications ?? [];
   const detailOutreach = campaignOutreachError ? [] : campaignOutreach ?? [];
   const initialOutreach = detailOutreach.filter(
     (item) => item.message_kind !== "follow_up",
@@ -560,8 +572,8 @@ export async function getCampaignDetails(
     contacts: storedContacts,
     leads: storedLeads,
     signals: storedSignals,
-    events: storedEvents,
-    notifications: storedNotifications,
+    events: [],
+    notifications: [],
     stats: {
       companies_count:
         storedCompanies.length > 0 ? storedCompanies.length : storedLeads.length,
@@ -571,8 +583,8 @@ export async function getCampaignDetails(
           ? storedContacts.length
           : storedLeads.filter((lead) => lead.contact_value).length,
       signals_count: storedSignals.length,
-      notifications_count: storedNotifications.length,
-      events_count: storedEvents.length,
+      notifications_count: 0,
+      events_count: 0,
       initial_sent_count: detailOutreach.filter((item) => item.status === "sent" && item.message_kind !== "follow_up").length,
       followup_sent_count: detailOutreach.filter((item) => item.status === "sent" && item.message_kind === "follow_up").length,
       needs_review_count: detailCounts.needsReview,
@@ -615,7 +627,7 @@ async function getContactByOutreachId(
   const contactId = getContactIdFromOutreachId(id);
   const { data, error } = await supabase
     .from("leadgen_contacts")
-    .select("*")
+    .select(CONTACT_FIELDS)
     .eq("id", contactId)
     .single<LeadgenContact>();
 
@@ -691,7 +703,7 @@ async function updateContactOutreachQueue(
     .from("leadgen_contacts")
     .update({ metadata })
     .eq("id", contact.id)
-    .select("*")
+    .select(CONTACT_FIELDS)
     .single<LeadgenContact>();
 
   if (error) {
@@ -726,22 +738,22 @@ export async function getOutreachQueue({
   ] = await Promise.all([
     supabase
       .from("leadgen_contacts")
-      .select("*")
+      .select(CONTACT_FIELDS)
       .in("campaign_id", campaignIds)
       .returns<LeadgenContact[]>(),
     supabase
       .from("leadgen_leads")
-      .select("*")
+      .select(LEAD_FIELDS)
       .in("campaign_id", campaignIds)
       .returns<LeadgenLead[]>(),
     supabase
       .from("leadgen_companies")
-      .select("*")
+      .select(COMPANY_FIELDS)
       .in("campaign_id", campaignIds)
       .returns<LeadgenCompany[]>(),
     supabase
       .from("leadgen_signals")
-      .select("*")
+      .select(SIGNAL_FIELDS)
       .in("campaign_id", campaignIds)
       .returns<LeadgenSignal[]>(),
   ]);
@@ -796,7 +808,7 @@ export async function queueReadyOutreachEmails({
   const supabase = createSupabaseServerClient();
   const { data: contacts, error } = await supabase
     .from("leadgen_contacts")
-    .select("*")
+    .select(CONTACT_FIELDS)
     .eq("campaign_id", campaignId)
     .returns<LeadgenContact[]>();
 

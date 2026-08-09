@@ -1,12 +1,22 @@
 import { NextResponse } from "next/server";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
 import {
+  getCompanyIdentity,
+  getDuplicateReason,
+} from "@/lib/leadgen/company-identity";
+import {
   getRegisteredCompanyIdentities,
   registerDiscoveredCompanies,
   touchDiscoveredCompanies,
 } from "@/lib/leadgen/company-registry";
 import { getDailyLeadStats } from "@/lib/leadgen/daily-lead-limit";
 import { selectCampaignEmailTarget } from "@/lib/leadgen/email-target-selector";
+import {
+  DISCOVERY_PASS_BUDGET_MS,
+  getDiscoveryPageOffset,
+  getDiscoveryPassNumber,
+  mergeDiscoveryPassStats,
+} from "@/lib/leadgen/discovery-continuation";
 import { runDiscoveryOrchestrator } from "@/lib/leadgen/discovery-orchestrator";
 import { runLeadDiscoveryEngine } from "@/lib/leadgen/lead-discovery-engine";
 import {
@@ -15,7 +25,11 @@ import {
   type LeadgenSearchProviderMode,
 } from "@/lib/leadgen/search/leadgen-search-provider";
 import type { SignalSearchMarket } from "@/lib/leadgen/signals/query-builder";
-import { savePipelineResult } from "@/lib/leadgen/storage";
+import {
+  appendPipelineResult,
+  getCampaignDetails,
+  savePipelineResult,
+} from "@/lib/leadgen/storage";
 import {
   getKnownRecipientEmails,
   syncOutreachQueue,
@@ -33,21 +47,93 @@ import type {
   LeadgenCompany,
   LeadgenContact,
   LeadgenLead,
+  LeadDiscoveryResult,
   LeadPriority,
   OpportunityAssessment,
   PeopleDiscoveryResult,
   PersonaSearchStatus,
 } from "@/lib/leadgen/types";
+import { isLeadgenVerticalId } from "@/lib/leadgen/verticals";
 
 type RunLeadgenRequestBody = Partial<CampaignInput> & {
   searchProvider?: string;
   market?: string;
   dryRun?: boolean;
+  campaignId?: string;
 };
 
 export const maxDuration = 300;
 
 const DEFAULT_PRODUCTION_MARKET: SignalSearchMarket = "ru";
+
+function getCompanyWebsiteForIdentity(company: LeadgenCompany): string | null {
+  const website = company.metadata.official_website;
+  return typeof website === "string" ? website : company.source_url;
+}
+
+function excludeExistingCampaignCompanies({
+  result,
+  existingCompanies,
+}: {
+  result: LeadDiscoveryResult;
+  existingCompanies: LeadgenCompany[];
+}): LeadDiscoveryResult {
+  if (existingCompanies.length === 0 || result.companies.length === 0) {
+    return result;
+  }
+
+  const existingIds = new Set(existingCompanies.map((company) => company.id));
+  const existingIdentities = existingCompanies.map((company) =>
+    getCompanyIdentity({
+      company_name: company.company_name,
+      company_domain: company.company_domain,
+      website: getCompanyWebsiteForIdentity(company),
+      region: company.country,
+    }),
+  );
+  const duplicateCompanyIds = new Set(
+    result.companies
+      .filter((company) => {
+        if (existingIds.has(company.id)) return true;
+        const identity = getCompanyIdentity({
+          company_name: company.company_name,
+          company_domain: company.company_domain,
+          website: getCompanyWebsiteForIdentity(company),
+          region: company.country,
+        });
+        return existingIdentities.some((existing) =>
+          Boolean(getDuplicateReason(identity, existing)),
+        );
+      })
+      .map((company) => company.id),
+  );
+  if (duplicateCompanyIds.size === 0) return result;
+
+  const duplicateLeadIds = new Set(
+    result.leads
+      .filter((lead) =>
+        lead.company_id ? duplicateCompanyIds.has(lead.company_id) : false,
+      )
+      .map((lead) => lead.id),
+  );
+
+  return {
+    ...result,
+    companies: result.companies.filter(
+      (company) => !duplicateCompanyIds.has(company.id),
+    ),
+    leads: result.leads.filter((lead) => !duplicateLeadIds.has(lead.id)),
+    contacts: result.contacts.filter(
+      (contact) => !duplicateLeadIds.has(contact.lead_id),
+    ),
+    signals: result.signals.filter(
+      (signal) => !duplicateLeadIds.has(signal.lead_id),
+    ),
+    events: result.events.filter(
+      (event) => !event.lead_id || !duplicateLeadIds.has(event.lead_id),
+    ),
+  };
+}
 
 function getDefaultProductionSearchProvider(): LeadgenSearchProviderMode {
   return isLeadgenSearchProviderMode(process.env.LEADGEN_SEARCH_PROVIDER)
@@ -184,6 +270,7 @@ async function readRunRequest(request: Request): Promise<{
   searchProviderMode: LeadgenSearchProviderMode;
   market: SignalSearchMarket;
   dryRun: boolean;
+  campaignId: string | null;
 }> {
   const body = (await request.json().catch(() => ({}))) as RunLeadgenRequestBody;
   const market =
@@ -200,41 +287,110 @@ async function readRunRequest(request: Request): Promise<{
         body.requestedBy?.trim() || "api/leadgen/run",
         { source: "api.run.body.requestedBy" },
       ),
+      verticalId: isLeadgenVerticalId(body.verticalId) ? body.verticalId : undefined,
     },
     searchProviderMode: isLeadgenSearchProviderMode(body.searchProvider)
       ? body.searchProvider
       : getDefaultProductionSearchProvider(),
     market,
     dryRun: body.dryRun === true,
+    campaignId:
+      typeof body.campaignId === "string" && body.campaignId.trim()
+        ? body.campaignId.trim()
+        : null,
   };
 }
 export async function POST(request: Request) {
   try {
-    const { campaignInput, searchProviderMode, market, dryRun } =
+    const {
+      campaignInput: requestedCampaignInput,
+      searchProviderMode,
+      market,
+      dryRun,
+      campaignId,
+    } =
       await readRunRequest(request);
+
+    const existingCampaign = campaignId
+      ? await getCampaignDetails(campaignId)
+      : null;
+    if (campaignId && !existingCampaign) {
+      return NextResponse.json(
+        { success: false, error: "Кампания для продолжения поиска не найдена." },
+        { status: 404 },
+      );
+    }
+    const campaignInput = existingCampaign
+      ? {
+          name: existingCampaign.campaign.name,
+          requestedBy: existingCampaign.campaign.requested_by,
+          verticalId: existingCampaign.campaign.vertical_id,
+        }
+      : requestedCampaignInput;
+    const storedUniqueEmails = new Set(
+      (existingCampaign?.contacts ?? [])
+        .map((contact) => contact.email?.trim().toLowerCase())
+        .filter((email): email is string => Boolean(email)),
+    ).size;
+    const storedCompanyCount = existingCampaign?.stats.companies_count ?? 0;
+    const storedStats =
+      existingCampaign?.campaign.production_discovery_stats ?? null;
+    const previousStats = storedStats
+      ? {
+          ...storedStats,
+          // Persisted rows are authoritative. A client can disconnect after a
+          // pass and old aggregate diagnostics may otherwise overstate what
+          // was actually appended to the campaign.
+          new_unique_emails: storedUniqueEmails,
+          new_unique_companies: storedCompanyCount,
+          target_reached: storedUniqueEmails >= leadgenProductionConfig.campaignCompanyLimit,
+        }
+      : null;
+    const leadTarget = leadgenProductionConfig.campaignCompanyLimit;
+    const alreadyFound = existingCampaign
+      ? storedUniqueEmails
+      : Math.max(previousStats?.new_unique_emails ?? 0, storedCompanyCount);
+    const passTarget = Math.max(1, leadTarget - alreadyFound);
+    const passNumber = getDiscoveryPassNumber(previousStats);
+    const searchPageOffset = getDiscoveryPageOffset(
+      previousStats,
+      leadgenProductionConfig.searchMaxPages,
+    );
 
     const [knownCompanyIdentities, knownRecipientEmails, dailyLeads] = await Promise.all([
       getRegisteredCompanyIdentities(),
       getKnownRecipientEmails(),
       getDailyLeadStats(),
     ]);
-    const leadTarget = leadgenProductionConfig.campaignCompanyLimit;
     const result = await runLeadDiscoveryEngine({
       campaignInput,
       searchProvider: createLeadgenSearchProvider({
         mode: searchProviderMode,
       }),
-      leadTarget,
+      leadTarget: passTarget,
       market,
       knownCompanyIdentities,
       knownRecipientEmails,
+      campaignId: campaignId ?? undefined,
+      searchPageOffset,
+      runBudgetMs: DISCOVERY_PASS_BUDGET_MS,
+    });
+    const deduplicatedResult = excludeExistingCampaignCompanies({
+      result,
+      existingCompanies: existingCampaign?.companies ?? [],
     });
     const emailTargetSelection = selectCampaignEmailTarget({
-      result,
+      result: deduplicatedResult,
       knownEmails: knownRecipientEmails,
-      target: leadTarget,
+      target: passTarget,
     });
     const campaignResult = emailTargetSelection.result;
+    const aggregateStats = mergeDiscoveryPassStats({
+      previous: previousStats,
+      pass: campaignResult.production_discovery_stats!,
+      target: leadTarget,
+      pagesPerPass: leadgenProductionConfig.searchMaxPages,
+    });
     const discovery = await runDiscoveryOrchestrator({
       signalFirstResult: campaignResult,
     });
@@ -247,8 +403,7 @@ export async function POST(request: Request) {
       ...campaignResult,
       campaign: {
         ...campaignResult.campaign,
-        production_discovery_stats:
-          campaignResult.production_discovery_stats,
+        production_discovery_stats: aggregateStats,
       },
       companies: campaignResult.companies.map((company) => ({
         ...company,
@@ -289,7 +444,9 @@ export async function POST(request: Request) {
     }), "api.run.notifications");
     const saved = dryRun
       ? null
-      : await savePipelineResult({ result: enrichedResult, notifications });
+      : campaignId
+        ? await appendPipelineResult({ result: enrichedResult, notifications })
+        : await savePipelineResult({ result: enrichedResult, notifications });
     if (!dryRun) {
       await touchDiscoveredCompanies(
         enrichedResult.production_discovery_stats?.skipped_identity_keys ?? [],
@@ -320,6 +477,16 @@ export async function POST(request: Request) {
         market,
         lead_target: leadTarget,
         selected_emails: emailTargetSelection.selectedEmails.length,
+        pass_number: passNumber,
+        page_offset: searchPageOffset,
+      },
+      continuation: {
+        available: aggregateStats.continuation_available === true,
+        target: leadTarget,
+        found: aggregateStats.new_unique_emails ?? 0,
+        passes_completed: aggregateStats.passes_completed ?? passNumber,
+        next_page_offset: aggregateStats.next_page_offset ?? null,
+        search_exhausted: aggregateStats.search_exhausted === true,
       },
       daily_leads: {
         created_today: dailyLeads.createdToday,

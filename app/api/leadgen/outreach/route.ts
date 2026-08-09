@@ -11,12 +11,16 @@ import { getOutreachSummary } from "@/lib/leadgen/outreach-summary";
 
 const errorText = (error: unknown) => formatUnknownError(error);
 
+function lazyEntry<T extends { body: string }>(entry: T): T {
+  return {
+    ...entry,
+    body: entry.body.length > 240 ? `${entry.body.slice(0, 240)}…` : entry.body,
+  };
+}
+
 export async function GET(request: NextRequest) {
   try {
     const campaignId = request.nextUrl.searchParams.get("campaignId");
-    if (campaignId) {
-      await syncOutreachQueue(campaignId);
-    }
     const [workingSet, daily, summary] = await Promise.all([
       campaignId
         ? getOutreachWorkingSet(campaignId)
@@ -43,11 +47,11 @@ export async function GET(request: NextRequest) {
       getDailySendStats(),
       campaignId ? getOutreachSummary(campaignId) : Promise.resolve(null),
     ]);
-    const entries = workingSet.entries;
+    const entries = workingSet.entries.map(lazyEntry);
     return NextResponse.json({
       success: true,
       entries,
-      working_set: workingSet,
+      working_set: { ...workingSet, entries },
       operational: await getOutreachOperationalState(entries),
       daily: {
         sent_today: daily.sentToday,
@@ -74,11 +78,11 @@ export async function POST(request: NextRequest) {
       getDailySendStats(),
       getOutreachSummary(campaignId),
     ]);
-    const entries = workingSet.entries;
+    const entries = workingSet.entries.map(lazyEntry);
     return NextResponse.json({
       success: true,
       entries,
-      working_set: workingSet,
+      working_set: { ...workingSet, entries },
       operational: await getOutreachOperationalState(entries),
       daily: {
         sent_today: daily.sentToday,

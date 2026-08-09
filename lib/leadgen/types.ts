@@ -430,6 +430,13 @@ export type ProductionDiscoveryStats = {
   enriched_candidates_checked?: number;
   official_sites_found?: number;
   enrichment_budget_exhausted?: boolean;
+  passes_completed?: number;
+  consecutive_empty_passes?: number;
+  search_page_offset?: number;
+  next_page_offset?: number;
+  continuation_available?: boolean;
+  search_exhausted?: boolean;
+  target_reached?: boolean;
   search_budget: number;
   skip_reasons: Record<string, number>;
   skipped_identity_keys?: string[];
@@ -674,6 +681,7 @@ export type DecisionMakerRecommendation = DecisionMakerProfile;
 export type CampaignInput = {
   name: string;
   requestedBy: string;
+  verticalId?: import("@/lib/leadgen/verticals").LeadgenVerticalId;
 };
 
 export type Contact = {
@@ -711,6 +719,7 @@ export type LeadgenCampaign = {
   icp_label: string;
   offer_label: string;
   created_at: string;
+  vertical_id?: import("@/lib/leadgen/verticals").LeadgenVerticalId;
   production_discovery_stats?: ProductionDiscoveryStats;
   operational_status?: CampaignOperationalStatus;
 };

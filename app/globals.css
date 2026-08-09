@@ -179,7 +179,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-input {
+input,
+select {
   font: inherit;
 }
 
@@ -576,7 +577,8 @@ input {
   outline: none;
 }
 
-input:focus {
+input:focus,
+select:focus {
   border-color: var(--brand);
   box-shadow: 0 0 0 3px var(--brand-soft);
 }

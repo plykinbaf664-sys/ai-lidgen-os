@@ -1,5 +1,6 @@
 import { randomInt, randomUUID } from "node:crypto";
 import { createSupabaseServerClient } from "@/lib/supabase/client";
+import { QUEUE_FIELDS } from "@/lib/leadgen/storage-projections";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
 import { fetchInboxMessageBody, fetchRecentInboxHeaders } from "./imap-reply-detector";
 import { generateFollowup } from "./followup-generator";
@@ -121,14 +122,16 @@ function evaluateFollowupEligibility(
   };
 }
 
-async function readInitialCandidates() {
+async function readInitialCandidates(campaignId?: string | null) {
   const supabase = createSupabaseServerClient();
-  const { data, error } = await supabase
+  let query = supabase
     .from("leadgen_outreach_queue")
-    .select("*")
+    .select(QUEUE_FIELDS)
     .eq("message_kind", "initial")
     .eq("status", "sent")
-    .not("sent_at", "is", null)
+    .not("sent_at", "is", null);
+  if (campaignId) query = query.eq("campaign_id", campaignId);
+  const { data, error } = await query
     .order("sent_at", { ascending: true })
     .limit(500);
   if (error) throw error;
@@ -335,7 +338,7 @@ export async function scanFollowupReplies() {
 
 export async function getFollowups(campaignId?: string | null) {
   const supabase = createSupabaseServerClient();
-  let query = supabase.from("leadgen_outreach_queue").select("*")
+  let query = supabase.from("leadgen_outreach_queue").select(QUEUE_FIELDS)
     .eq("message_kind", "follow_up").order("created_at", { ascending: true });
   if (campaignId) query = query.eq("campaign_id", campaignId);
   const { data, error } = await query;
@@ -346,8 +349,8 @@ export async function getFollowups(campaignId?: string | null) {
 export async function getFollowupEligibilityDiagnostics(campaignId?: string | null) {
   const supabase = createSupabaseServerClient();
   const [parents, followups, stopped] = await Promise.all([
-    readInitialCandidates(),
-    getFollowups(),
+    readInitialCandidates(campaignId),
+    getFollowups(campaignId),
     supabase.from("leadgen_email_stop_list").select("normalized_email").eq("is_active", true),
   ]);
   if (stopped.error) throw stopped.error;
@@ -486,7 +489,7 @@ export async function generateEligibleFollowups(campaignId?: string | null) {
 
 export async function updateFollowup(id: string, patch: { subject?: string; body?: string; email?: string }) {
   const supabase = createSupabaseServerClient();
-  const current = await supabase.from("leadgen_outreach_queue").select("*").eq("id", id)
+  const current = await supabase.from("leadgen_outreach_queue").select(QUEUE_FIELDS).eq("id", id)
     .eq("message_kind", "follow_up").single<QueueRow>();
   if (current.error) throw current.error;
   if (["queued", "sending", "sent"].includes(current.data.status)) throw new Error("Это письмо уже нельзя редактировать.");
@@ -505,7 +508,7 @@ export async function updateFollowup(id: string, patch: { subject?: string; body
     copy_review_status: "needs_manual_copy_review",
     metadata: { ...current.data.metadata, quality_gate_passed: false, copy_review_status: "needs_manual_copy_review" },
     updated_at: new Date().toISOString(),
-  }).eq("id", id).select("*").single<QueueRow>();
+  }).eq("id", id).select(QUEUE_FIELDS).single<QueueRow>();
   if (result.error) throw result.error;
   return rowToEntry(result.data);
 }
@@ -523,7 +526,7 @@ export async function approveFollowups(
   manual = false,
 ) {
   const supabase = createSupabaseServerClient();
-  let query = supabase.from("leadgen_outreach_queue").select("*").eq("message_kind", "follow_up");
+  let query = supabase.from("leadgen_outreach_queue").select(QUEUE_FIELDS).eq("message_kind", "follow_up");
   if (ids?.length) query = query.in("id", ids);
   if (campaignId) query = query.eq("campaign_id", campaignId);
   const rows = await query;
@@ -559,7 +562,7 @@ export async function scheduleFollowupBatch(
   if (resume.error) throw resume.error;
   let approvedQuery = supabase
     .from("leadgen_outreach_queue")
-    .select("*")
+    .select(QUEUE_FIELDS)
     .eq("message_kind", "follow_up")
     .eq("status", "approved")
     .order("approved_at", { ascending: true });
@@ -588,7 +591,7 @@ export async function scheduleFollowupBatch(
     const timestamp = new Date(cursor).toISOString();
     const update = await supabase.from("leadgen_outreach_queue").update({ status: "queued", queued_at: new Date().toISOString(),
       scheduled_at: timestamp, next_attempt_at: timestamp, updated_at: new Date().toISOString() })
-      .eq("id", row.id).eq("status", "approved").select("*").maybeSingle<QueueRow>();
+      .eq("id", row.id).eq("status", "approved").select(QUEUE_FIELDS).maybeSingle<QueueRow>();
     if (update.error) throw update.error;
     if (update.data) queued.push(rowToEntry(update.data));
     cursor = getNextScheduledAt({ currentTimestamp: cursor, minimumDelaySeconds: minimum,

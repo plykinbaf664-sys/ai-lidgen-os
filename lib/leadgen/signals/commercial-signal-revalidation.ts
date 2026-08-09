@@ -1,6 +1,7 @@
 import "server-only";
 
 import { createSupabaseServerClient } from "@/lib/supabase/client";
+import { COMPANY_FIELDS, LEAD_FIELDS, SIGNAL_FIELDS } from "@/lib/leadgen/storage-projections";
 import {
   NO_VERIFIED_COMMERCIAL_SIGNAL,
   validateCommercialSignalCandidate,
@@ -60,7 +61,7 @@ export async function revalidateRecentCommercialSignals({
   const safeLimit = Math.max(1, Math.min(Math.trunc(limit), 250));
   const { data: companies, error: companiesError } = await supabase
     .from("leadgen_companies")
-    .select("*")
+    .select(COMPANY_FIELDS)
     .order("created_at", { ascending: false })
     .limit(safeLimit)
     .returns<LeadgenCompany[]>();
@@ -81,12 +82,12 @@ export async function revalidateRecentCommercialSignals({
   ] = await Promise.all([
     supabase
       .from("leadgen_signals")
-      .select("*")
+      .select(SIGNAL_FIELDS)
       .in("company_id", companyIds)
       .returns<LeadgenSignal[]>(),
     supabase
       .from("leadgen_leads")
-      .select("*")
+      .select(LEAD_FIELDS)
       .in("company_id", companyIds)
       .returns<LeadgenLead[]>(),
   ]);

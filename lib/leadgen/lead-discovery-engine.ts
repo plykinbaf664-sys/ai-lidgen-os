@@ -1,4 +1,3 @@
-import { leadgenConfig } from "@/lib/leadgen/config";
 import {
   getDuplicateReason,
   getLeadCandidateIdentity,
@@ -17,6 +16,7 @@ import type { SearchProvider } from "@/lib/leadgen/search/search-provider";
 import type { SignalSearchMarket } from "@/lib/leadgen/signals/query-builder";
 import { interpretSignal } from "@/lib/leadgen/signals/signal-interpreter";
 import { runSignalPipeline } from "@/lib/leadgen/signals/signal-pipeline";
+import { getVerticalIcp, getVerticalProfile, type LeadgenVerticalId } from "@/lib/leadgen/verticals";
 import type {
   CampaignInput,
   DecisionMakerProfile,
@@ -43,6 +43,9 @@ type RunLeadDiscoveryInput = {
   market?: SignalSearchMarket;
   knownCompanyIdentities?: CompanyIdentity[];
   knownRecipientEmails?: string[];
+  campaignId?: string;
+  searchPageOffset?: number;
+  runBudgetMs?: number;
 };
 
 type CandidateRecord = {
@@ -67,9 +70,44 @@ const MIN_ENRICHMENT_OPPORTUNITY_SCORE = 50;
 const DISCOVERY_ENRICHMENT_CONCURRENCY = 10;
 const WEBSITE_RESOLUTION_CONCURRENCY = 10;
 const DISCOVERY_ENRICHMENT_POOL_MULTIPLIER = 4;
+const WEBSITE_RESOLUTION_TIMEOUT_MS = 40_000;
+const PEOPLE_DISCOVERY_TIMEOUT_MS = 30_000;
+const CONTACT_ENRICHMENT_TIMEOUT_MS = 75_000;
+const DISCOVERY_DEADLINE_RESERVE_MS = 5_000;
 // Keep enough headroom for an in-flight enrichment batch to settle before the
 // 300-second serverless request ceiling.
 const DISCOVERY_RUN_BUDGET_MS = 200_000;
+
+async function resolveBeforeDeadline<T>({
+  operation,
+  deadlineAt,
+  timeoutMs,
+  fallback,
+}: {
+  operation: Promise<T>;
+  deadlineAt: number;
+  timeoutMs: number;
+  fallback: T;
+}): Promise<T> {
+  const availableMs = Math.max(
+    1,
+    deadlineAt - Date.now() - DISCOVERY_DEADLINE_RESERVE_MS,
+  );
+  const effectiveTimeoutMs = Math.min(timeoutMs, availableMs);
+
+  return new Promise<T>((resolve) => {
+    let settled = false;
+    const finish = (value: T) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timeoutId);
+      resolve(value);
+    };
+    const timeoutId = setTimeout(() => finish(fallback), effectiveTimeoutMs);
+
+    operation.then(finish, () => finish(fallback));
+  });
+}
 
 async function mapWithConcurrency<T, R>(
   items: T[],
@@ -282,8 +320,8 @@ function getOpportunityFinalDecision(opportunity: OpportunityAssessment): string
   return "skipped_before_lead_creation";
 }
 
-function getSignalOrder(): SignalType[] {
-  const prioritizedSignals = Object.entries(leadgenConfig.icp.signalPriorities)
+function getSignalOrder(verticalId?: LeadgenVerticalId): SignalType[] {
+  const prioritizedSignals = Object.entries(getVerticalIcp(verticalId).signalPriorities)
     .sort((left, right) => right[1] - left[1])
     .map(([signalType]) => signalType as SignalType);
 
@@ -300,16 +338,18 @@ function buildCampaign(
   campaignInput: CampaignInput,
   pipelineRunId: string,
   createdAt: string,
+  campaignId?: string,
 ): LeadgenCampaign {
   return {
-    id: createRecordId("campaign", campaignInput.name, createdAt),
+    id: campaignId ?? createRecordId("campaign", campaignInput.name, createdAt),
     pipeline_run_id: pipelineRunId,
     name: campaignInput.name,
     requested_by: campaignInput.requestedBy,
     status: "completed",
-    icp_label: leadgenConfig.icp.label,
-    offer_label: leadgenConfig.offer.label,
+    icp_label: getVerticalIcp(campaignInput.verticalId).label,
+    offer_label: getVerticalProfile(campaignInput.verticalId).offer,
     created_at: createdAt,
+    vertical_id: campaignInput.verticalId,
   };
 }
 
@@ -391,6 +431,7 @@ function buildCompany({
     company_size: null,
     linkedin_url: null,
     metadata: {
+      vertical_id: campaign.vertical_id ?? null,
       commercial_signal: candidate.commercial_signal ?? null,
       signal_source_urls: candidate.signals.map((signal) => signal.source_url),
       signal_types: [
@@ -567,6 +608,7 @@ function writeMessage(
       .filter(Boolean)
       .join(" "),
     selectionReason: candidate.outreach_hypothesis,
+    verticalId: company.metadata.vertical_id as LeadgenVerticalId | undefined,
   }).body;
 }
 
@@ -893,12 +935,16 @@ async function discoverCandidates({
   market,
   knownCompanyIdentities,
   deadlineAt,
+  searchPageOffset,
+  verticalId,
 }: {
   searchProvider: SearchProvider;
   leadTarget: number;
   market: SignalSearchMarket;
   knownCompanyIdentities: CompanyIdentity[];
   deadlineAt: number;
+  searchPageOffset: number;
+  verticalId?: LeadgenVerticalId;
 }): Promise<{
   records: CandidateRecord[];
   stats: NonNullable<LeadDiscoveryResult["production_discovery_stats"]>;
@@ -910,7 +956,7 @@ async function discoverCandidates({
   let withinRunDuplicates = 0;
   const skipReasons: Record<string, number> = {};
   const skippedIdentityKeys = new Set<string>();
-  const pageOffset = 0;
+  const pageOffset = Math.max(0, searchPageOffset);
   const enrichmentCandidateTarget = Math.min(
     leadgenProductionConfig.discoveryCandidateBudget,
     Math.max(leadTarget * DISCOVERY_ENRICHMENT_POOL_MULTIPLIER, 80),
@@ -924,7 +970,7 @@ async function discoverCandidates({
     Math.max(4, Math.ceil(leadTarget / 3)),
   );
 
-  for (const signalType of getSignalOrder()) {
+  for (const signalType of getSignalOrder(verticalId)) {
     if (Date.now() >= deadlineAt) break;
     const result = await runSignalPipeline({
       signalType,
@@ -934,6 +980,7 @@ async function discoverCandidates({
       maxResultsPerQuery: MAX_RESULTS_PER_QUERY,
       pageOffset,
       market,
+      verticalId,
     });
     resultsReceived += result.all_evidence.length;
 
@@ -1024,21 +1071,31 @@ export async function runLeadDiscoveryEngine({
   market = "ru",
   knownCompanyIdentities = [],
   knownRecipientEmails = [],
+  campaignId,
+  searchPageOffset = 0,
+  runBudgetMs = DISCOVERY_RUN_BUDGET_MS,
 }: RunLeadDiscoveryInput): Promise<LeadDiscoveryResult> {
-  const deadlineAt = Date.now() + DISCOVERY_RUN_BUDGET_MS;
+  const deadlineAt = Date.now() + Math.max(10_000, runBudgetMs);
   const createdAt = new Date().toISOString();
   const pipelineRunId = createRecordId(
     "pipeline-run",
     campaignInput.name,
     createdAt,
   );
-  const campaign = buildCampaign(campaignInput, pipelineRunId, createdAt);
+  const campaign = buildCampaign(
+    campaignInput,
+    pipelineRunId,
+    createdAt,
+    campaignId,
+  );
   const discovery = await discoverCandidates({
     searchProvider,
     leadTarget,
     market,
     knownCompanyIdentities,
     deadlineAt,
+    searchPageOffset,
+    verticalId: campaignInput.verticalId,
   });
   const candidateRecords = discovery.records;
   const leadWorkflowCandidateRecords = candidateRecords;
@@ -1047,6 +1104,7 @@ export async function runLeadDiscoveryEngine({
       discoverDecisionMaker({
         candidate,
         signalType,
+        preferredRoles: getVerticalProfile(campaignInput.verticalId).targetRoles,
       }),
   );
   const acceptedDecisionMakerByKey = new Map(
@@ -1083,7 +1141,7 @@ export async function runLeadDiscoveryEngine({
     let offset = 0;
     offset < leadWorkflowCandidateRecords.length &&
     emailReadyLeadIds.size < leadTarget &&
-    Date.now() < deadlineAt;
+    Date.now() + DISCOVERY_DEADLINE_RESERVE_MS < deadlineAt;
     offset += DISCOVERY_ENRICHMENT_CONCURRENCY
   ) {
     const indexedBatch = leadWorkflowCandidateRecords
@@ -1097,10 +1155,19 @@ export async function runLeadDiscoveryEngine({
       WEBSITE_RESOLUTION_CONCURRENCY,
       async ({ index }) => {
         const company = unresolvedCompanies[index];
-        const resolution = await resolveOfficialCompanyWebsite(
-          company,
-          searchProvider,
-        );
+        const resolution = await resolveBeforeDeadline({
+          operation: resolveOfficialCompanyWebsite(company, searchProvider),
+          deadlineAt,
+          timeoutMs: WEBSITE_RESOLUTION_TIMEOUT_MS,
+          fallback: {
+            domain: null,
+            website: null,
+            sourceUrl: null,
+            status: "not_found" as const,
+            confidence: 0,
+            reason: "official_site_resolution_timeout",
+          },
+        });
 
         return {
           ...company,
@@ -1132,9 +1199,14 @@ export async function runLeadDiscoveryEngine({
 
         return shouldDeferPeopleDiscovery(company)
           ? Promise.resolve(getDeferredPeopleDiscoveryResult())
-          : peopleDiscoveryEngine.discoverPeople({
-              company,
-              decisionMaker: decisionMakerRecommendations[index],
+          : resolveBeforeDeadline({
+              operation: peopleDiscoveryEngine.discoverPeople({
+                company,
+                decisionMaker: decisionMakerRecommendations[index],
+              }),
+              deadlineAt,
+              timeoutMs: PEOPLE_DISCOVERY_TIMEOUT_MS,
+              fallback: getDeferredPeopleDiscoveryResult(),
             });
       },
     );
@@ -1180,22 +1252,41 @@ export async function runLeadDiscoveryEngine({
         };
       })
       .filter((record): record is EnrichedLeadRecord => Boolean(record));
-    const batchResults = await mapWithConcurrency(
+    const completedBatch = (
+      await mapWithConcurrency(
       batch,
       DISCOVERY_ENRICHMENT_CONCURRENCY,
-      (record) =>
-        contactEnrichmentEngine.enrichContacts({
-          campaign,
-          company: record.company,
-          lead: record.lead,
-          signals: record.signals,
-          decisionMaker: record.decisionMaker,
-          peopleDiscovery: record.peopleDiscovery,
-          createdAt,
-        }),
-    );
+      async (record) => {
+        const result = await resolveBeforeDeadline({
+          operation: contactEnrichmentEngine.enrichContacts({
+            campaign,
+            company: record.company,
+            lead: record.lead,
+            signals: record.signals,
+            decisionMaker: record.decisionMaker,
+            peopleDiscovery: record.peopleDiscovery,
+            createdAt,
+          }),
+          deadlineAt,
+          timeoutMs: CONTACT_ENRICHMENT_TIMEOUT_MS,
+          fallback: null,
+        });
 
-    processedLeadRecords.push(...batch);
+        return result ? { record, result } : null;
+      },
+    )
+    ).filter(
+      (
+        completed,
+      ): completed is {
+        record: EnrichedLeadRecord;
+        result: ContactDiscoveryResult;
+      } => Boolean(completed),
+    );
+    const completedRecords = completedBatch.map(({ record }) => record);
+    const batchResults = completedBatch.map(({ result }) => result);
+
+    processedLeadRecords.push(...completedRecords);
     contactDiscoveryResults.push(...batchResults);
     for (const [resultIndex, result] of batchResults.entries()) {
       let hasNewUniqueEmail = false;
@@ -1211,7 +1302,7 @@ export async function runLeadDiscoveryEngine({
         }
       }
       if (hasNewUniqueEmail) {
-        emailReadyLeadIds.add(batch[resultIndex].lead.id);
+        emailReadyLeadIds.add(completedRecords[resultIndex].lead.id);
       }
     }
   }
@@ -1289,6 +1380,7 @@ export async function runLeadDiscoveryEngine({
       ).length,
       enrichment_budget_exhausted:
         Date.now() >= deadlineAt && emailReadyLeadIds.size < leadTarget,
+      search_page_offset: searchPageOffset,
     },
   };
 }

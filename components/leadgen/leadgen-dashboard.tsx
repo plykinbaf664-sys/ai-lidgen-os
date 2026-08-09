@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { CampaignForm } from "@/components/leadgen/campaign-form";
 import { CampaignHistory } from "@/components/leadgen/campaign-history";
 import { EmailOutreachQueue } from "@/components/leadgen/email-outreach-queue";
+import { Button } from "@/components/ui/button";
 import type {
   CampaignInput,
   LeadgenCampaign,
@@ -12,9 +13,25 @@ import type {
   ProductionDiscoveryStats,
 } from "@/lib/leadgen/types";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
+import {
+  canContinueDiscovery,
+  DISCOVERY_MAX_PASSES,
+} from "@/lib/leadgen/discovery-continuation";
 
 type RunResponse =
-  | { success: true; campaign: LeadgenCampaign; production_discovery_stats?: ProductionDiscoveryStats }
+  | {
+      success: true;
+      campaign: LeadgenCampaign;
+      production_discovery_stats?: ProductionDiscoveryStats;
+      continuation?: {
+        available: boolean;
+        target: number;
+        found: number;
+        passes_completed: number;
+        next_page_offset: number | null;
+        search_exhausted: boolean;
+      };
+    }
   | { success: false; error?: string };
 type CampaignsResponse =
   | { success: true; campaigns: LeadgenCampaignSummary[] }
@@ -50,6 +67,7 @@ export function LeadgenDashboard() {
   const [isRunning, setIsRunning] = useState(false);
   const [isHistoryLoading, setIsHistoryLoading] = useState(true);
   const [isOpening, setIsOpening] = useState(false);
+  const [runProgress, setRunProgress] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const activeCampaignRef = useRef<HTMLElement | null>(null);
 
@@ -80,14 +98,6 @@ export function LeadgenDashboard() {
         if (data.campaigns[0]) {
           setActiveCampaignId(data.campaigns[0].id);
           setActiveCampaignName(data.campaigns[0].name);
-          const detailsResponse = await fetch(
-            `/api/leadgen/campaigns/details?pipelineRunId=${encodeURIComponent(data.campaigns[0].pipeline_run_id)}`,
-          );
-          const details = await readJson<DetailsResponse>(detailsResponse);
-          if (detailsResponse.ok && details.success) {
-            setCampaignDetails(details.details);
-            setDiscovery(details.details.campaign.production_discovery_stats ?? null);
-          }
         }
       })
       .catch(() => active && setError("Не удалось загрузить кампании."))
@@ -95,32 +105,77 @@ export function LeadgenDashboard() {
     return () => { active = false; };
   }, []);
 
-  async function handleRun(input: CampaignInput) {
+  async function runCampaignUntilComplete(
+    input: CampaignInput,
+    startingCampaignId: string | null = null,
+  ) {
     setIsRunning(true);
-    setCampaignDetails(null);
+    if (!startingCampaignId) setCampaignDetails(null);
     setError(null);
     try {
-      const response = await fetch("/api/leadgen/run", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(input),
-      });
-      const data = await readJson<RunResponse>(response);
-      if (!response.ok || !data.success) throw new Error(formatUnknownError(data.success ? null : data.error));
-      setActiveCampaignId(data.campaign.id);
-      setActiveCampaignName(data.campaign.name);
-      setDiscovery(data.production_discovery_stats ?? null);
+      let campaignId = startingCampaignId;
+      let finalCampaign: LeadgenCampaign | null = null;
+      for (let pass = 1; pass <= DISCOVERY_MAX_PASSES; pass += 1) {
+        setRunProgress(
+          campaignId
+            ? `Продолжаем поиск: проход ${pass}, найдено ${discovery?.new_unique_emails ?? 0} из 50`
+            : "Первый проход поиска: цель — 50 новых email",
+        );
+        const response = await fetch("/api/leadgen/run", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...input, campaignId }),
+        });
+        const data = await readJson<RunResponse>(response);
+        if (!response.ok || !data.success) {
+          throw new Error(formatUnknownError(data.success ? null : data.error));
+        }
+        campaignId = data.campaign.id;
+        finalCampaign = data.campaign;
+        setActiveCampaignId(data.campaign.id);
+        setActiveCampaignName(data.campaign.name);
+        setDiscovery(data.production_discovery_stats ?? null);
+        setRunProgress(
+          `Найдено ${data.continuation?.found ?? data.production_discovery_stats?.new_unique_emails ?? 0} из ${data.continuation?.target ?? 50}. Проходов: ${data.continuation?.passes_completed ?? pass}.`,
+        );
+        if (!data.continuation?.available) break;
+      }
       await loadHistory();
-      const detailsResponse = await fetch(
-        `/api/leadgen/campaigns/details?pipelineRunId=${encodeURIComponent(data.campaign.pipeline_run_id)}`,
-      );
-      const details = await readJson<DetailsResponse>(detailsResponse);
-      if (detailsResponse.ok && details.success) setCampaignDetails(details.details);
+      if (campaignId) {
+        const detailsResponse = await fetch(
+          `/api/leadgen/campaigns/details?id=${encodeURIComponent(campaignId)}`,
+        );
+        const details = await readJson<DetailsResponse>(detailsResponse);
+        if (detailsResponse.ok && details.success) {
+          setCampaignDetails(details.details);
+          setDiscovery(
+            details.details.campaign.production_discovery_stats ?? null,
+          );
+        }
+      }
+      if (finalCampaign) setActiveCampaignName(finalCampaign.name);
     } catch (caught) {
       setError(caught instanceof Error && caught.message ? caught.message : "Не удалось запустить поиск.");
     } finally {
       setIsRunning(false);
+      setRunProgress(null);
     }
+  }
+
+  async function handleRun(input: CampaignInput) {
+    await runCampaignUntilComplete(input);
+  }
+
+  async function handleContinueSearch() {
+    if (!activeCampaignId || !activeCampaignName) return;
+    await runCampaignUntilComplete(
+      {
+        name: activeCampaignName,
+        requestedBy:
+          campaignDetails?.campaign.requested_by ?? "Оператор Leadgen OS",
+      },
+      activeCampaignId,
+    );
   }
 
   async function handleOpenCampaign(summary: LeadgenCampaignSummary) {
@@ -160,6 +215,7 @@ export function LeadgenDashboard() {
           </div>
         </div>
         <CampaignForm isRunning={isRunning} onRun={handleRun} />
+        {runProgress ? <p className="muted">{runProgress}</p> : null}
         {error ? <p className="outreach-error" role="alert">{error}</p> : null}
       </section>
 
@@ -167,6 +223,16 @@ export function LeadgenDashboard() {
         <section className="active-campaign-shell" ref={activeCampaignRef}>
           <div className="active-campaign-heading">
             <div><p className="eyebrow">Текущая кампания</p><h2>{activeCampaignName}</h2>{campaigns.find((item) => item.id === activeCampaignId) ? <small className="muted">{campaignStatusCopyForDashboard(campaigns.find((item) => item.id === activeCampaignId)!.operational_status)}</small> : null}</div>
+            {canContinueDiscovery(discovery) ? (
+              <Button
+                disabled={isRunning}
+                loading={isRunning}
+                onClick={handleContinueSearch}
+                variant="secondary"
+              >
+                Продолжить поиск до 50
+              </Button>
+            ) : null}
             {discovery ? (
               <div className="discovery-inline">
                 <span>Проверено <strong>{discovery.results_received}</strong></span>

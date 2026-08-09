@@ -12,6 +12,7 @@ import { buildSignalQueries } from "@/lib/leadgen/signals/query-builder";
 import { buildLeadCandidates } from "@/lib/leadgen/signals/lead-candidate-builder";
 import { enrichJobPostingSearchResult } from "@/lib/leadgen/signals/job-posting-context";
 import type { LeadCandidate, SignalType } from "@/lib/leadgen/types";
+import { getVerticalIcp, type LeadgenVerticalId } from "@/lib/leadgen/verticals";
 
 export type SignalPipelineStoppedReason =
   | "target_reached"
@@ -41,6 +42,7 @@ export type RunSignalPipelineInput = {
   maxPagesPerQuery?: number;
   pageOffset?: number;
   market?: SignalSearchMarket;
+  verticalId?: LeadgenVerticalId;
 };
 
 export type SignalPipelineResult = {
@@ -334,6 +336,7 @@ export async function runSignalPipeline({
   maxPagesPerQuery = leadgenProductionConfig.searchMaxPages,
   pageOffset = 0,
   market = "mixed",
+  verticalId,
 }: RunSignalPipelineInput): Promise<SignalPipelineResult> {
   const safeTargetCandidates = applyLimit(
     targetCandidates,
@@ -351,7 +354,7 @@ export async function runSignalPipeline({
     MAX_RESULTS_PER_QUERY_CAP,
   );
   const queries = buildSignalQueries({
-    icp: leadgenConfig.icp,
+    icp: getVerticalIcp(verticalId),
     signalType,
     maxQueries: safeMaxQueries,
     market,
