@@ -17,6 +17,7 @@ import { getVerticalIcp, type LeadgenVerticalId } from "@/lib/leadgen/verticals"
 export type SignalPipelineStoppedReason =
   | "target_reached"
   | "query_limit_reached"
+  | "deadline_reached"
   | "no_more_queries";
 
 export type SignalPipelineQueryUsed = SignalQuery & {
@@ -43,6 +44,7 @@ export type RunSignalPipelineInput = {
   pageOffset?: number;
   market?: SignalSearchMarket;
   verticalId?: LeadgenVerticalId;
+  deadlineAt?: number;
 };
 
 export type SignalPipelineResult = {
@@ -337,6 +339,7 @@ export async function runSignalPipeline({
   pageOffset = 0,
   market = "mixed",
   verticalId,
+  deadlineAt,
 }: RunSignalPipelineInput): Promise<SignalPipelineResult> {
   const safeTargetCandidates = applyLimit(
     targetCandidates,
@@ -374,8 +377,13 @@ export async function runSignalPipeline({
   const candidateQueryAngleByKey = new Map<string, SignalQuery["query_angle"]>();
   const candidateSourceCountryHintByKey = new Map<string, string | null>();
   let candidates: LeadCandidate[] = [];
+  let deadlineReached = false;
 
   queryLoop: for (let queryIndex = 0; queryIndex < queries.length; queryIndex += 1) {
+    if (deadlineAt && Date.now() >= deadlineAt) {
+      deadlineReached = true;
+      break;
+    }
     const query = queries[queryIndex];
     const safeMaxPages = Math.min(
       Math.max(maxPagesPerQuery, 1),
@@ -383,6 +391,10 @@ export async function runSignalPipeline({
     );
 
     for (let page = 0; page < safeMaxPages; page += 1) {
+      if (deadlineAt && Date.now() >= deadlineAt) {
+        deadlineReached = true;
+        break queryLoop;
+      }
       const providerPage = Math.max(0, pageOffset) + page;
       const searchResults = await searchProvider.search({
       query: query.query,
@@ -494,11 +506,13 @@ export async function runSignalPipeline({
       (evidence) => evidence.decision === "rejected",
     ),
     all_evidence: evidenceResults,
-    stopped_reason: getStoppedReason({
-      candidatesFound: enrichedCandidates.length,
-      targetCandidates: safeTargetCandidates,
-      queriesUsed: queriesUsed.length,
-      maxQueries: safeMaxQueries,
-    }),
+    stopped_reason: deadlineReached
+      ? "deadline_reached"
+      : getStoppedReason({
+          candidatesFound: enrichedCandidates.length,
+          targetCandidates: safeTargetCandidates,
+          queriesUsed: queriesUsed.length,
+          maxQueries: safeMaxQueries,
+        }),
   };
 }

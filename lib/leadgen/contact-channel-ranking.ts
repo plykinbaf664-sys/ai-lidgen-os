@@ -186,6 +186,16 @@ function sortByContactPriority(
     return alternativePersonDiff;
   }
 
+  // A corporate mailbox tied to a published person is a stronger entry than
+  // an address that merely looks personal from its local-part pattern.
+  const namedWorkEmailDiff =
+    Number(right.contact_type === "work_email" && Boolean(right.full_name)) -
+    Number(left.contact_type === "work_email" && Boolean(left.full_name));
+
+  if (namedWorkEmailDiff !== 0) {
+    return namedWorkEmailDiff;
+  }
+
   const priorityDiff =
     contactTypePriority[right.contact_type] -
     contactTypePriority[left.contact_type];

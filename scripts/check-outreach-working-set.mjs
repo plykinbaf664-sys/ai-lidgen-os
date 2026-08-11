@@ -203,7 +203,10 @@ assert.match(componentSource, /Одобрено, но не в очереди/);
 assert.match(componentSource, />Новые компании</);
 assert.match(componentSource, />Дожимы</);
 assert.match(componentSource, />Сегодня</);
-assert.match(componentSource, /Не входит в лимит 50 новых адресатов/);
+assert.match(componentSource, /Не входит в лимит 100 первичных писем/);
+assert.match(componentSource, /Одобрено всего:/);
+assert.match(componentSource, /Можно отправить сегодня/);
+assert.match(componentSource, /Останется\s+одобренными на следующий день/);
 assert.match(componentSource, /Запустить первичные/);
 assert.match(componentSource, /Запустить дожимы|Отправить одобренные дожимы/);
 

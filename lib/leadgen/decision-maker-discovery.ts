@@ -550,6 +550,14 @@ export function discoverDecisionMaker({
     primaryScore,
     competingScore,
   );
+  const organizationScale = /(?:small|micro|малый бизнес|до 50|1-50|небольш)/i.test(contextText)
+    ? "small"
+    : /(?:enterprise|крупн|холдинг|федеральн|1000\+|500\+)/i.test(contextText)
+      ? "large"
+      : "unknown";
+  const dynamicPrimaryPersona = organizationScale === "small"
+    ? "Собственник / генеральный директор"
+    : selectPrimaryPersona(profile);
   const alternativePersonas = [
     ...profile.primaryPersonas.slice(1),
     ...profile.alternativePersonas,
@@ -559,11 +567,16 @@ export function discoverDecisionMaker({
   ].filter((persona, index, personas) => personas.indexOf(persona) === index);
 
   return {
-    primary_persona: preferredRoles?.[0] ?? selectPrimaryPersona(profile),
+    // A vertical supplies market context and useful aliases. It must not
+    // override the role inferred from the actual signal and company context.
+    primary_persona: dynamicPrimaryPersona,
     alternative_personas: [
-      ...(preferredRoles?.slice(1) ?? []),
+      ...(preferredRoles ?? []),
       ...alternativePersonas,
-    ].filter((persona, index, values) => values.indexOf(persona) === index).slice(0, 6),
+    ].filter(
+      (persona, index, values) =>
+        persona !== dynamicPrimaryPersona && values.indexOf(persona) === index,
+    ).slice(0, 6),
     department: profile.department,
     buying_role: profile.buyingRole,
     influence_level: profile.influenceLevel,
@@ -573,7 +586,7 @@ export function discoverDecisionMaker({
     expected_goal: profile.expectedGoal,
     search_keywords: profile.searchKeywords,
     priority: getPriority(confidenceScore),
-    reasoning: buildReasoning(profile, primaryScore),
+    reasoning: `${buildReasoning(profile, primaryScore)} Company scale: ${organizationScale}.`,
     confidence_score: confidenceScore,
     source_reasoning: {
       signal_type: signalType,

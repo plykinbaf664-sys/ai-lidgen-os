@@ -3,6 +3,7 @@ import type {
   OutreachEmailStatus,
   OutreachQueueEntry,
 } from "@/lib/leadgen/types";
+import { isLegacyTruncatedOutreachBody } from "@/lib/leadgen/outreach-body-integrity";
 
 const TECHNICAL_EMAIL_ARTIFACT_PATTERN =
   /^(?:fonts\.[a-z]{1,8}@[a-z]{1,8}\.com|api\.[a-z]{1,8}@[a-z]{1,8}\.com)$/i;
@@ -49,6 +50,7 @@ export type BulkApprovalSkipReason =
   | "missing_email"
   | "missing_subject"
   | "missing_body"
+  | "truncated_body"
   | "missing_official_website"
   | "quality_gate_failed"
   | "manual_review_required"
@@ -117,6 +119,7 @@ export function getBulkApprovalBaseReason(
   if (!entry.email?.trim()) return "missing_email";
   if (!entry.subject?.trim()) return "missing_subject";
   if (!entry.body?.trim()) return "missing_body";
+  if (isLegacyTruncatedOutreachBody(entry.body)) return "truncated_body";
   if (!normalizeWebsite(entry.company_website)) return "missing_official_website";
   if (entry.status === "approved") return "already_approved";
   if (["queued", "sending"].includes(entry.status)) return "already_queued";

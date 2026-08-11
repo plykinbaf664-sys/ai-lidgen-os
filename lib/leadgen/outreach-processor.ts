@@ -15,6 +15,7 @@ import {
   runAutomaticFollowupCycle,
 } from "@/lib/leadgen/followup-storage";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
+import { assertCompleteOutreachBody } from "@/lib/leadgen/outreach-body-integrity";
 
 export async function processNextOutreachItem(
   requestedKind?: "initial" | "follow_up",
@@ -54,6 +55,7 @@ export async function processNextOutreachItem(
   if (!entry) return { status: "idle" as const, entry: null };
 
   try {
+    assertCompleteOutreachBody(entry.body);
     await assertFollowupSendable(entry);
   } catch (error) {
     const failed = await markPersistentOutreachEntry(entry.id, "failed", {

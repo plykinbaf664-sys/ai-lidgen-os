@@ -6,22 +6,34 @@ import type {
   LeadgenLead,
 } from "@/lib/leadgen/types";
 import { selectCampaignLeadIds } from "@/lib/leadgen/campaign-target-policy";
+import {
+  getContactedPersonKey,
+  isConfirmedOutreachEmail,
+  isContactReadyPerson,
+} from "@/lib/leadgen/adaptive-contact-intelligence";
 
 function getRankedEmailContacts(
   lead: LeadgenLead,
   contacts: LeadgenContact[],
 ): LeadgenContact[] {
   const leadContacts = contacts.filter(
-    (contact) => contact.lead_id === lead.id && isEmailReadyContact(contact),
+    (contact) =>
+      contact.lead_id === lead.id &&
+      isEmailReadyContact(contact) &&
+      isConfirmedOutreachEmail(contact),
   );
 
   return [...leadContacts].sort((left, right) => {
     const rank = (contact: LeadgenContact) =>
-      contact.metadata.entry_role === "best_outreach_entry"
+      isContactReadyPerson(contact)
         ? 0
-        : contact.is_primary
+        : contact.metadata.email_status === "department_email_ready"
           ? 1
-          : 2;
+          : contact.metadata.entry_role === "best_outreach_entry"
+            ? 2
+            : contact.is_primary
+              ? 3
+              : 4;
     return rank(left) - rank(right);
   });
 }
@@ -29,21 +41,27 @@ function getRankedEmailContacts(
 export function selectCampaignEmailTarget({
   result,
   knownEmails,
+  knownPersonKeys = [],
   target,
 }: {
   result: LeadDiscoveryResult;
   knownEmails: Iterable<string>;
+  knownPersonKeys?: Iterable<string>;
   target: number;
 }) {
   const unavailableEmails = new Set(
     [...knownEmails].map(normalizeRecipientEmail).filter(Boolean),
   );
   const selectedEmails = new Set<string>();
+  const unavailablePeople = new Set(knownPersonKeys);
+  const selectedPeople = new Set<string>();
   const selectedLeadIds = new Set<string>();
   const selectedCompanyIds = new Set<string>();
   const selectedContactIds = new Set<string>();
   let knownEmailsSkipped = 0;
   let duplicateEmailsSkipped = 0;
+  let duplicatePeopleSkipped = 0;
+  let contactReadyPeople = 0;
 
   for (const lead of result.leads) {
     if (selectedEmails.size >= target) break;
@@ -62,8 +80,16 @@ export function selectCampaignEmailTarget({
         duplicateEmailsSkipped += 1;
         continue;
       }
+      const personKey = contact.full_name
+        ? getContactedPersonKey(lead.company_name, contact.full_name)
+        : "";
+      if (personKey && (unavailablePeople.has(personKey) || selectedPeople.has(personKey))) {
+        duplicatePeopleSkipped += 1;
+        continue;
+      }
       selectedContact = contact;
       selectedEmail = normalizedEmail;
+      if (personKey) selectedPeople.add(personKey);
       break;
     }
     if (!selectedContact || !selectedEmail) continue;
@@ -71,6 +97,7 @@ export function selectCampaignEmailTarget({
     selectedEmails.add(selectedEmail);
     selectedLeadIds.add(lead.id);
     selectedContactIds.add(selectedContact.id);
+    if (isContactReadyPerson(selectedContact)) contactReadyPeople += 1;
     if (lead.company_id) selectedCompanyIds.add(lead.company_id);
   }
 
@@ -95,8 +122,11 @@ export function selectCampaignEmailTarget({
         new_unique_companies: selectedCompanyIds.size,
         email_target: target,
         new_unique_emails: selectedEmails.size,
+        contact_ready_people: contactReadyPeople,
+        email_ready_companies: selectedEmails.size,
         known_emails_skipped: knownEmailsSkipped,
         duplicate_emails_skipped: duplicateEmailsSkipped,
+        duplicate_people_skipped: duplicatePeopleSkipped,
       }
     : undefined;
 
@@ -129,5 +159,6 @@ export function selectCampaignEmailTarget({
     selectedEmails: [...selectedEmails],
     knownEmailsSkipped,
     duplicateEmailsSkipped,
+    duplicatePeopleSkipped,
   };
 }

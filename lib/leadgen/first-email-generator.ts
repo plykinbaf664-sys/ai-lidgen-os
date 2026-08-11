@@ -28,6 +28,11 @@ export type FirstEmailContext = {
   industry?: string | null;
   decisionMakerName?: string | null;
   decisionMakerRole?: string | null;
+  businessProblemHypothesis?: string | null;
+  targetResponsibility?: string | null;
+  whyThisPerson?: string | null;
+  publicPersonContext?: string | null;
+  emailEvidence?: string | null;
   contactEmail?: string | null;
   messageMode?: OutreachMessageMode | null;
   growthSignal?: string | null;
@@ -67,6 +72,18 @@ type EmailIntent = "sales" | "support" | "launch" | "technology" | "expansion" |
 
 export const INITIAL_OUTREACH_SIGNATURE =
   "Александр Плыкин, Ai-архитектор\n+79629910514";
+
+function getFirstEmailContent(body: string): string {
+  const trimmedBody = body.trimEnd();
+  const signature = INITIAL_OUTREACH_SIGNATURE.trim();
+  return trimmedBody.endsWith(signature)
+    ? trimmedBody.slice(0, -signature.length).trimEnd()
+    : trimmedBody;
+}
+
+export function countFirstEmailContentWords(body: string): number {
+  return getFirstEmailContent(body).match(/[\p{L}\p{N}-]+/gu)?.length ?? 0;
+}
 
 const forbiddenPatterns: Array<{ pattern: RegExp; label: string }> = [
   { pattern: /найден\w*\s+сигнал/i, label: "найден сигнал" },
@@ -206,7 +223,9 @@ function getPatternInterrupt(
     inbound: `Посмотрел путь входящего обращения в ${company}. Самая дорогая задержка обычно возникает ещё до того, как заявку увидит нужный менеджер.`,
     general: `Изучил работу ${company}. Нашёл участок, где скорость ответа можно увеличить без расширения команды и перестройки действующих систем.`,
   };
-  return variants[intent];
+  const responsibility = cleanText(context.targetResponsibility);
+  const role = cleanText(context.decisionMakerRole);
+  return `${variants[intent]}${role && responsibility ? ` Судя по вашей роли, этот участок связан с ${responsibility.toLowerCase()}.` : ""}`;
 }
 
 function getHypothesis(intent: EmailIntent): string {
@@ -222,7 +241,7 @@ function getHypothesis(intent: EmailIntent): string {
   return variants[intent];
 }
 
-function getSharpHypothesis(intent: EmailIntent): string {
+function getSharpHypothesis(intent: EmailIntent, context?: FirstEmailContext): string {
   const variants: Partial<Record<EmailIntent, string>> = {
     sales: "Моя гипотеза: часть сильных заявок остывает в первые 10–15 минут, пока менеджер вручную выясняет задачу и собирает контекст. Клиент в это время уже говорит с тем, кто ответил быстрее.",
     support: "Моя гипотеза: команда тратит лучшие часы на повторяющиеся вопросы и маршрутизацию, а действительно сложные обращения получают внимание слишком поздно.",
@@ -231,7 +250,30 @@ function getSharpHypothesis(intent: EmailIntent): string {
     expansion: "Моя гипотеза: при росте теряется управляемость первого контакта — разные команды отвечают с разной скоростью, а часть обращений остаётся без понятного владельца.",
     inbound: "Моя гипотеза: часть потенциально сильных заявок теряется не из-за качества трафика, а из-за ручной сортировки и слишком позднего первого содержательного ответа.",
   };
+  const groundedHypothesis = cleanText(context?.businessProblemHypothesis);
+  if (groundedHypothesis) {
+    return `Моя гипотеза: в такой ситуации ${groundedHypothesis.charAt(0).toLowerCase()}${groundedHypothesis.slice(1)}`;
+  }
   return variants[intent] ?? getHypothesis(intent);
+}
+
+function getContextualSubject(context: FirstEmailContext, attempt: number): string {
+  const company = compactCompanyName(context.companyName);
+  const role = cleanText(context.decisionMakerRole).split(/\s+/).slice(0, 2).join(" ");
+  const options = [
+    `Что проверить в ${company}`,
+    `Одна мысль для ${company}`,
+    role ? `Вопрос по зоне ${role}` : `Вопрос по процессу ${company}`,
+    `${company}: где теряется скорость`,
+    `Идея без нового найма`,
+  ];
+  return options[stableIndex(
+    `${company}:${role}:${context.signalType ?? ""}:${context.uniquenessKey ?? company}:${attempt}`,
+    options.length,
+  )]
+    .split(/\s+/)
+    .slice(0, 7)
+    .join(" ");
 }
 
 function getValuePitch(
@@ -328,7 +370,9 @@ export function validateFirstEmailV3(copy: Pick<FirstEmailCopy, "subject" | "bod
   const content = `${copy.subject}\n${copy.body}`;
   const paragraphs = copy.body.split(/\n\n/).filter(Boolean);
   const subjectWords = copy.subject.match(/[\p{L}\p{N}-]+/gu)?.length ?? 0;
-  const words = copy.body.match(/[\p{L}\p{N}-]+/gu)?.length ?? 0;
+  // The fixed sender signature is transport copy, not outreach content. Keeping
+  // it outside the content limit prevents otherwise valid copy from failing.
+  const words = countFirstEmailContentWords(copy.body);
   if (subjectWords < 3 || subjectWords > 7) errors.push("Тема должна содержать 3–7 слов.");
   if (paragraphs.length < 4 || paragraphs.length > 6) errors.push("Письмо должно содержать 4–6 коротких абзацев.");
   if (words < 60 || words > 110) errors.push("Письмо должно содержать 60–110 слов.");
@@ -351,7 +395,7 @@ export function generateFirstEmailV3(context: FirstEmailContext): FirstEmailCopy
     const blocks = {
       greeting: getFirstName(context.decisionMakerName) ? `${getFirstName(context.decisionMakerName)}, добрый день.` : "Добрый день.",
       observation: getPatternInterrupt(context, intent, attempt),
-      hypothesis: getSharpHypothesis(intent),
+      hypothesis: getSharpHypothesis(intent, context),
       value: getValuePitch(context, intent),
       cta: getCta(context.messageMode),
       signature: INITIAL_OUTREACH_SIGNATURE,
@@ -365,10 +409,11 @@ export function generateFirstEmailV3(context: FirstEmailContext): FirstEmailCopy
       blocks.signature,
     ].join("\n\n");
     const quality = scoreCopy(context, body, microValue);
-    const validation = validateFirstEmailV3({ subject: getPersonalizedOutboundSubject({ companyName, uniquenessKey: `${context.uniquenessKey ?? ""}:${attempt}` }), body }, context);
+    const subject = getContextualSubject(context, attempt);
+    const validation = validateFirstEmailV3({ subject, body }, context);
     const qualityGatePassed = validation.valid && passesFirstEmailQualityGate(quality);
     lastCopy = {
-      subject: getPersonalizedOutboundSubject({ companyName, uniquenessKey: `${context.uniquenessKey ?? ""}:${attempt}` }),
+      subject,
       body,
       blocks,
       microValue,

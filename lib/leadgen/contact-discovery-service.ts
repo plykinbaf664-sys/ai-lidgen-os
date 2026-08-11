@@ -265,6 +265,8 @@ function createPrimaryPersonContactEntries(
   });
 
   if (person.work_email) {
+    const isRoutingContact =
+      person.metadata.contact_route === "corporate_router";
     entries.push({
       ...baseContact,
       id: createRecordId("contact", input.lead.id, "primary-person-work-email"),
@@ -278,6 +280,16 @@ function createPrimaryPersonContactEntries(
         people_discovery_role: "primary",
         people_discovery_source: person.source,
         source: "people_discovery.primary_person",
+        ...(isRoutingContact
+          ? {
+              contact_route: "corporate_router",
+              public_contact_verified:
+                person.metadata.public_contact_verified === true,
+              email_classification: "routing_person_verified",
+              email_status: "work_email_ready",
+              email_extraction_method: "public_people_discovery",
+            }
+          : {}),
       },
     });
   }

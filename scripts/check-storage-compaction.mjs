@@ -70,6 +70,8 @@ const company = compactCompanyForStorage({
   metadata: {
     identity_profile: { raw: "large" },
     lead_ready_candidate: { raw: "large" },
+    people_discovery: { all_candidates: Array.from({ length: 50 }, () => ({ snippet: "large" })) },
+    contact_intelligence: { confidence: "HIGH", readiness: "contact_ready" },
     official_website: "https://company.ru",
     contact_discovery: {
       urls_inspected: Array.from(
@@ -83,8 +85,10 @@ const company = compactCompanyForStorage({
 });
 assert.equal(company.metadata.identity_profile, undefined);
 assert.equal(company.metadata.lead_ready_candidate, undefined);
+assert.equal(company.metadata.people_discovery, undefined);
+assert.equal(company.metadata.contact_intelligence.confidence, "HIGH");
 assert.equal(company.metadata.official_website, "https://company.ru");
-assert.equal(company.metadata.contact_discovery.urls_inspected.length, 12);
+assert.equal(company.metadata.contact_discovery.urls_inspected.length, 5);
 assert.equal(company.metadata.contact_discovery.urls_inspected_count, 20);
 
 console.log(JSON.stringify({ status: "OK", storage_compaction: "OK" }));

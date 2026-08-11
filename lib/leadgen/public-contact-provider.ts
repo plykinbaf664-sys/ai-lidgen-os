@@ -262,6 +262,102 @@ function getHhVacancyUrl(company: LeadgenCompany): string | null {
   return null;
 }
 
+export type HhPublicVacancyContact = {
+  fullName: string;
+  email: string;
+  phones: string[];
+  sourceUrl: string;
+};
+
+function isLikelyNamedPerson(value: string): boolean {
+  const normalized = value.replace(/\s+/g, " ").trim();
+  const parts = normalized.split(" ").filter(Boolean);
+  return parts.length >= 2 && parts.length <= 4 &&
+    !/(?:отдел|служба|команда|подбор|персонал|кадры|recruitment|human resources|hr team)/i.test(normalized) &&
+    parts.every((part) => /^[\p{L}][\p{L}'-]{1,}$/u.test(part));
+}
+
+function isPersonalCorporateEmail(email: string, officialDomain: string): boolean {
+  const normalized = email.trim().toLowerCase();
+  const [local = "", domain = ""] = normalized.split("@");
+  const domainMatches =
+    domain === officialDomain || domain.endsWith(`.${officialDomain}`);
+  return domainMatches &&
+    !/^(?:info|sales|support|hello|office|admin|contact|mail|marketing|hr|jobs?|career|press|pr|reception|service)$/i.test(local);
+}
+
+export function parseHhPublicVacancyContact(
+  payload: unknown,
+  officialDomain: string,
+  sourceUrl: string,
+): HhPublicVacancyContact | null {
+  if (!payload || typeof payload !== "object") return null;
+  const contacts = (payload as { contacts?: unknown }).contacts;
+  if (!contacts || typeof contacts !== "object") return null;
+  const record = contacts as {
+    name?: unknown;
+    email?: unknown;
+    phones?: unknown;
+  };
+  const fullName = typeof record.name === "string" ? record.name.trim() : "";
+  const email = typeof record.email === "string"
+    ? record.email.trim().toLowerCase()
+    : "";
+  if (
+    !isLikelyNamedPerson(fullName) ||
+    !isPersonalCorporateEmail(email, officialDomain)
+  ) {
+    return null;
+  }
+
+  const phones = Array.isArray(record.phones)
+    ? record.phones.flatMap((phone) => {
+        if (!phone || typeof phone !== "object") return [];
+        const item = phone as Record<string, unknown>;
+        const formatted = typeof item.formatted === "string"
+          ? item.formatted.trim()
+          : [item.country, item.city, item.number]
+              .filter((value): value is string => typeof value === "string" && Boolean(value.trim()))
+              .join("");
+        return formatted ? [formatted] : [];
+      })
+    : [];
+
+  return { fullName, email, phones, sourceUrl };
+}
+
+async function findHhPublicVacancyContact(
+  company: LeadgenCompany,
+  officialDomain: string | null,
+): Promise<HhPublicVacancyContact | null> {
+  const vacancyUrl = getHhVacancyUrl(company);
+  const vacancyId = vacancyUrl?.match(/\/vacancy\/(\d+)/)?.[1] ?? null;
+  if (!vacancyUrl || !vacancyId || !officialDomain) return null;
+
+  const feedbackEmail =
+    process.env.SMTP_USER?.trim() || process.env.IMAP_USER?.trim() || "";
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(feedbackEmail)) return null;
+
+  try {
+    const response = await fetch(`https://api.hh.ru/vacancies/${vacancyId}`, {
+      headers: {
+        accept: "application/json",
+        "HH-User-Agent": `LeadgenOS/1.0 (${feedbackEmail})`,
+        "user-agent": `LeadgenOS/1.0 (${feedbackEmail})`,
+      },
+      signal: AbortSignal.timeout(5_000),
+    });
+    if (!response.ok) return null;
+    return parseHhPublicVacancyContact(
+      await response.json(),
+      officialDomain,
+      vacancyUrl,
+    );
+  } catch {
+    return null;
+  }
+}
+
 function decodeHtmlAttribute(value: string): string {
   return value
     .replace(/&amp;/gi, "&")
@@ -810,6 +906,7 @@ async function findPublicPersonEmail({
   const searchResults = results.flatMap((result) =>
     result.status === "fulfilled" ? result.value : [],
   );
+  let fetchedOfficialPages = 0;
 
   for (const result of searchResults) {
     if (getHostname(result.url) !== companyDomain) {
@@ -821,12 +918,27 @@ async function findPublicPersonEmail({
       continue;
     }
 
-    const email = getConfirmedPersonEmail(
+    let email = getConfirmedPersonEmail(
       searchText,
       companyDomain,
       person,
       result.url || null,
     );
+
+    // Search snippets often contain the name but omit the nearby mailto.
+    // Open at most two matching official pages and parse their public content.
+    if (!email && fetchedOfficialPages < 2 && result.url) {
+      fetchedOfficialPages += 1;
+      const pageText = await fetchPublicPageText(result.url);
+      if (pageText && includesPersonName(pageText, person)) {
+        email = getConfirmedPersonEmail(
+          pageText,
+          companyDomain,
+          person,
+          result.url,
+        );
+      }
+    }
 
     if (email) {
       return {
@@ -1192,7 +1304,10 @@ function isTelegramUrl(url: string): boolean {
 }
 
 function getPersonSourceUrl(person: PersonCandidate): string | null {
-  return person.linkedin_url;
+  const sourceUrl = person.metadata.source_url;
+  return typeof sourceUrl === "string" && sourceUrl.trim()
+    ? normalizeUrl(sourceUrl)
+    : person.linkedin_url;
 }
 
 function getPersonMetadataUrl(
@@ -1443,13 +1558,96 @@ export class PublicContactProvider implements ContactProvider {
     ];
     const primaryPerson = input.peopleDiscovery?.primary_person ?? null;
     const alternativePeople = input.peopleDiscovery?.alternative_people ?? [];
+    const allPeople = input.peopleDiscovery?.all_candidates ?? [];
     const people = [
-      ...(primaryPerson ? [primaryPerson] : []),
-      ...alternativePeople.filter(
-        (person) => person.full_name !== primaryPerson?.full_name,
-      ),
-    ];
+      ...new Map(
+        [
+          ...(primaryPerson ? [primaryPerson] : []),
+          ...alternativePeople,
+          ...allPeople.filter((person) => Boolean(person.work_email)),
+        ].map((person) => [person.full_name.toLowerCase(), person]),
+      ).values(),
+    ].slice(0, 4);
     const directPersonEmails: ParsedPublicEmail[] = [];
+    const hhPublicContact = await findHhPublicVacancyContact(
+      input.company,
+      companyDomain,
+    );
+    if (hhPublicContact) {
+      strategiesAttempted.push("hh_public_vacancy_contact");
+      const routingMetadata = {
+        extraction: "hh_public_vacancy_api",
+        people_discovery_role: "routing",
+        contact_route: "corporate_router",
+        public_contact_verified: true,
+        email_classification: "routing_person_verified",
+        email_status: "work_email_ready",
+        email_extraction_method: "hh_public_vacancy_api",
+        phone: hhPublicContact.phones[0] ?? null,
+        phones: hhPublicContact.phones,
+        note:
+          "Контакт публично указан работодателем в вакансии HH; владение целевой бизнес-задачей не предполагается.",
+      };
+      const routingContact = createContact({
+        input,
+        type: "work_email",
+        index: contacts.length,
+        email: hhPublicContact.email,
+        fullName: hhPublicContact.fullName,
+        roleTitle: "Контакт вакансии",
+        sourceUrl: hhPublicContact.sourceUrl,
+        sourceLabel: "HH public vacancy contact",
+        confidenceScore: 76,
+        metadata: routingMetadata,
+      });
+      const emailOutreach = buildEmailOutreach({
+        companyName: input.company.company_name,
+        companyWebsite: getCompanyWebsite(input.company),
+        companyDescription: getCompanyDescription(input.company),
+        industry: input.company.industry,
+        personName: hhPublicContact.fullName,
+        personRole: "Контакт вакансии",
+        contact: { ...routingContact, id: "email-outreach-preview" },
+        readiness: "outreach_ready",
+        whyNow:
+          input.signals[0]?.signal_detail ||
+          input.lead.signal_detail ||
+          input.lead.signal_title,
+        selectionReason: input.lead.hook,
+        signalType: input.signals[0]?.signal_type,
+        signalTitle: input.signals[0]?.signal_title ?? input.lead.signal_title,
+        signalDetail: input.signals[0]?.signal_detail ?? input.lead.signal_detail,
+        signalSourceUrl: input.signals[0]?.source_url ?? null,
+        signalConfidence: input.signals[0]?.confidence_score ?? null,
+        businessProblemHypothesis: input.decisionMaker?.expected_pain ?? null,
+        targetResponsibility: input.decisionMaker?.business_problem_owner ?? null,
+        whyThisPerson:
+          "Публичный корпоративный контакт выбран как маршрутизатор, а не как предполагаемый владелец задачи.",
+      });
+      contacts.push({
+        ...routingContact,
+        metadata: {
+          ...routingContact.metadata,
+          email_subject: emailOutreach.subject,
+          email_body: emailOutreach.body,
+          email_micro_value: emailOutreach.microValue,
+          email_quality: emailOutreach.quality,
+          email_quality_gate_passed: emailOutreach.qualityGatePassed,
+          email_generation_attempts: emailOutreach.generationAttempts,
+          email_copy_review_status: emailOutreach.copyReviewStatus,
+          message_mode: emailOutreach.messageMode,
+          outreach_ready: emailOutreach.outreachReady,
+        },
+      });
+      directPersonEmails.push({
+        email: hhPublicContact.email,
+        source_url: hhPublicContact.sourceUrl,
+        context: `Public vacancy contact: ${hhPublicContact.fullName}`,
+        classification: "work_verified",
+        confidence_score: 76,
+        extraction_method: "hh_public_vacancy_api",
+      });
+    }
     const preliminaryEmails = dedupeParsedEmails([
       ...knownContextEmails.emails,
       ...officialSiteEmails.flatMap((result) => result.emails),
@@ -1473,27 +1671,31 @@ export class PublicContactProvider implements ContactProvider {
       ...companySearchEmails.emails,
     ]);
 
-    for (const person of people) {
-      strategiesAttempted.push("person_email_yandex_queries");
-      queriesExecuted.push(...getExpandedPersonEmailQueries(input, person));
-      const publicEmail = await findPublicPersonEmail({
-          input,
-          person,
-          searchProvider,
-        });
+    for (const [personIndex, person] of people.entries()) {
+      const shouldSearchPersonEmail = !person.work_email && personIndex < 2;
+      if (shouldSearchPersonEmail) {
+        strategiesAttempted.push("person_email_yandex_queries");
+        queriesExecuted.push(...getExpandedPersonEmailQueries(input, person));
+      }
+      const publicEmail = shouldSearchPersonEmail
+        ? await findPublicPersonEmail({ input, person, searchProvider })
+        : null;
       if (publicEmail) {
         queriesExecuted.push(...publicEmail.queriesExecuted);
       }
-      strategiesAttempted.push("person_social_yandex_queries");
-      const publicSocialProfiles = await findPublicPersonSocialProfiles({
-        input,
-        person,
-        searchProvider,
-      });
+      const shouldSearchSocial = personIndex === 0 && !person.work_email && !publicEmail;
+      if (shouldSearchSocial) strategiesAttempted.push("person_social_yandex_queries");
+      const publicSocialProfiles = shouldSearchSocial
+        ? await findPublicPersonSocialProfiles({ input, person, searchProvider })
+        : [];
+      const isRoutingPerson = person.metadata.contact_route === "corporate_router";
       const personMetadata = {
         extraction: "people_discovery_candidate",
         people_discovery_role:
-          person.full_name === primaryPerson?.full_name ? "primary" : "alternative",
+          isRoutingPerson
+            ? "routing"
+            : person.full_name === primaryPerson?.full_name ? "primary" : "alternative",
+        ...(isRoutingPerson ? { contact_route: "corporate_router" } : {}),
         full_name: person.full_name,
         role_title: person.role_title,
         department: person.department,
@@ -1507,7 +1709,8 @@ export class PublicContactProvider implements ContactProvider {
       const confirmedPeopleEmail =
         person.work_email &&
         personEmailDomain === companyDomain &&
-        personSourceHost === companyDomain
+        (personSourceHost === companyDomain ||
+          person.metadata.public_contact_verified === true)
           ? person.work_email
           : null;
       const workEmail = confirmedPeopleEmail ?? publicEmail?.email ?? null;
@@ -1550,6 +1753,11 @@ export class PublicContactProvider implements ContactProvider {
             input.signals[0]?.signal_detail ?? input.lead.signal_detail,
           signalSourceUrl: input.signals[0]?.source_url ?? null,
           signalConfidence: input.signals[0]?.confidence_score ?? null,
+          businessProblemHypothesis: input.decisionMaker?.expected_pain ?? null,
+          targetResponsibility: input.decisionMaker?.business_problem_owner ?? null,
+          whyThisPerson: input.decisionMaker?.reasoning ?? null,
+          publicPersonContext: person.evidence.slice(0, 2).join(" "),
+          emailEvidence: publicEmail?.context ?? null,
         });
         directPersonEmails.push({
           email: workEmail,
@@ -1581,7 +1789,8 @@ export class PublicContactProvider implements ContactProvider {
               ...personMetadata,
               email_context: publicEmail?.context ?? null,
               email_classification:
-                publicEmail?.classification ?? "personal_verified",
+                publicEmail?.classification ??
+                (isRoutingPerson ? "routing_person_verified" : "personal_verified"),
               email_status: publicEmail
                 ? getEmailStatus({
                     email: publicEmail.email,
@@ -1696,6 +1905,9 @@ export class PublicContactProvider implements ContactProvider {
 
     for (const email of emails.filter(isVerifiedSendableEmail)) {
       const emailType = getEmailContactType(email);
+      const rankedEmail = emailDiscovery?.candidates.find(
+        (candidate) => candidate.email === email.email,
+      ) ?? null;
       const emailOutreach = buildEmailOutreach({
         companyName: input.company.company_name,
         companyWebsite:
@@ -1727,6 +1939,9 @@ export class PublicContactProvider implements ContactProvider {
         signalDetail: input.signals[0]?.signal_detail ?? input.lead.signal_detail,
         signalSourceUrl: input.signals[0]?.source_url ?? null,
         signalConfidence: input.signals[0]?.confidence_score ?? null,
+        businessProblemHypothesis: input.decisionMaker?.expected_pain ?? null,
+        targetResponsibility: input.decisionMaker?.business_problem_owner ?? null,
+        whyThisPerson: input.decisionMaker?.reasoning ?? null,
       });
       contacts.push(
         createContact({
@@ -1746,6 +1961,11 @@ export class PublicContactProvider implements ContactProvider {
             email_status: getEmailStatus(email),
             email_confidence: email.confidence_score,
             email_extraction_method: email.extraction_method,
+            email_kind: rankedEmail?.kind ?? null,
+            email_mx_verified:
+              rankedEmail?.validationStatus === "domain_and_mx_confirmed",
+            email_domain_match_reason: rankedEmail?.domainMatchReason ?? null,
+            email_validation_status: rankedEmail?.validationStatus ?? null,
             email_subject: emailOutreach.subject,
             email_body: emailOutreach.body,
             email_micro_value: emailOutreach.microValue,

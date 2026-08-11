@@ -42,9 +42,12 @@ const MAX_GENERIC_STRING = 20_000;
 const MAX_ERROR_STRING = 1_000;
 const MAX_TECHNICAL_ARRAY = 20;
 
-function compactValue(value: unknown, key = ""): unknown {
+function compactValue(value: unknown, key = "", parentKey = ""): unknown {
   const normalizedKey = key.toLowerCase();
-  if (OMIT_KEYS.has(normalizedKey)) return undefined;
+  if (
+    OMIT_KEYS.has(normalizedKey) &&
+    !(parentKey === "contact_intelligence" && normalizedKey === "strategies_attempted")
+  ) return undefined;
   if (typeof value === "string") {
     const maximum = normalizedKey.includes("error") ? MAX_ERROR_STRING : MAX_GENERIC_STRING;
     return value.length > maximum ? value.slice(0, maximum) : value;
@@ -52,13 +55,13 @@ function compactValue(value: unknown, key = ""): unknown {
   if (Array.isArray(value)) {
     return value
       .slice(0, MAX_TECHNICAL_ARRAY)
-      .map((item) => compactValue(item))
+      .map((item) => compactValue(item, "", normalizedKey))
       .filter((item) => item !== undefined);
   }
   if (!value || typeof value !== "object") return value;
   return Object.fromEntries(
     Object.entries(value as Record<string, unknown>)
-      .map(([childKey, childValue]) => [childKey, compactValue(childValue, childKey)] as const)
+      .map(([childKey, childValue]) => [childKey, compactValue(childValue, childKey, normalizedKey)] as const)
       .filter((entry) => entry[1] !== undefined),
   );
 }

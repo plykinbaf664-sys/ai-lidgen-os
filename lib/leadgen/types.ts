@@ -237,6 +237,7 @@ export type IdentityProfile = {
 };
 
 export type LeadgenContactMetadata = {
+  contact_intelligence?: ContactIntelligenceResult;
   entry_role?: ContactEntryRole;
   persona_search_status?: PersonaSearchStatus;
   recommended_next_action?: ContactRecommendedNextAction;
@@ -425,8 +426,14 @@ export type ProductionDiscoveryStats = {
   lead_target: number;
   email_target?: number;
   new_unique_emails?: number;
+  email_ready_target?: number;
+  email_ready_companies?: number;
+  contact_ready_target?: number;
+  contact_ready_people?: number;
+  unresolved_people?: number;
   known_emails_skipped?: number;
   duplicate_emails_skipped?: number;
+  duplicate_people_skipped?: number;
   enriched_candidates_checked?: number;
   official_sites_found?: number;
   enrichment_budget_exhausted?: boolean;
@@ -440,6 +447,37 @@ export type ProductionDiscoveryStats = {
   search_budget: number;
   skip_reasons: Record<string, number>;
   skipped_identity_keys?: string[];
+};
+
+export type ContactConfidenceLevel = "HIGH" | "MEDIUM" | "LOW" | "UNRESOLVED";
+
+export type ContactIntelligenceEvidence = {
+  kind: "person" | "role" | "email" | "domain" | "pattern" | "verification";
+  source_url: string | null;
+  summary: string;
+};
+
+export type ContactIntelligenceResult = {
+  business_problem: string;
+  target_responsibility: string;
+  target_persona: string;
+  alternative_personas: string[];
+  why_this_person: string;
+  person_name: string | null;
+  person_role: string | null;
+  email: string | null;
+  email_type: "public_personal" | "corporate_router" | "pattern_candidate" | "department_fallback" | "generic_fallback" | "none";
+  verification_methods: string[];
+  confidence: ContactConfidenceLevel;
+  readiness: "contact_ready" | "manual_verification" | "fallback_only" | "unresolved";
+  evidence: ContactIntelligenceEvidence[];
+  inferred_pattern: string | null;
+  pattern_support: number;
+  generated_candidates: string[];
+  catch_all: "unknown" | "detected" | "not_detected";
+  smtp_verification: "not_performed" | "ambiguous" | "verified" | "rejected";
+  strategies_attempted: string[];
+  stop_reason: string;
 };
 
 export type PeopleDiscoverySearchStatus =

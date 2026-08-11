@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import {
+  INITIAL_OUTREACH_SIGNATURE,
+  countFirstEmailContentWords,
   generateFirstEmailV3,
   validateFirstEmailV3,
 } from "../lib/leadgen/first-email-generator.ts";
@@ -58,6 +60,13 @@ assert.match(copies[0].blocks.cta, /за 15 минут — обсудим/i);
 assert.match(copies[1].blocks.cta, /Кого из вашей команды/i);
 assert.match(copies[2].blocks.cta, /Кто отвечает за этот процесс/i);
 assert.equal(new Set(copies.map((copy) => copy.subject)).size, copies.length);
+
+const contentAtLimit = Array.from({ length: 110 }, (_, index) => `word${index}`).join(" ");
+assert.equal(
+  countFirstEmailContentWords(`${contentAtLimit}\n\n${INITIAL_OUTREACH_SIGNATURE}`),
+  110,
+  "fixed signature must not consume the first-email content word budget",
+);
 
 const noSignal = generateFirstEmailV3({ companyName: "Без сигнала", messageMode: "personal" });
 assert.equal(noSignal.qualityGatePassed, false);

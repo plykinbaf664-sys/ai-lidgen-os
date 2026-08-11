@@ -13,6 +13,7 @@ import { getDailyLeadStats } from "@/lib/leadgen/daily-lead-limit";
 import { selectCampaignEmailTarget } from "@/lib/leadgen/email-target-selector";
 import {
   DISCOVERY_PASS_BUDGET_MS,
+  DISCOVERY_PAGES_PER_QUERY_PER_PASS,
   getDiscoveryPageOffset,
   getDiscoveryPassNumber,
   mergeDiscoveryPassStats,
@@ -31,9 +32,14 @@ import {
   savePipelineResult,
 } from "@/lib/leadgen/storage";
 import {
+  getKnownContactedPersonKeys,
   getKnownRecipientEmails,
   syncOutreachQueue,
 } from "@/lib/leadgen/outreach-storage";
+import {
+  isConfirmedOutreachEmail,
+  isContactReadyPerson,
+} from "@/lib/leadgen/adaptive-contact-intelligence";
 import { leadgenProductionConfig } from "@/lib/leadgen/production-config";
 import { prepareTelegramNotification } from "@/lib/leadgen/telegram-notification";
 import { normalizeLeadgenStrings, normalizeLeadgenText } from "@/lib/leadgen/text-normalization";
@@ -327,12 +333,18 @@ export async function POST(request: Request) {
           verticalId: existingCampaign.campaign.vertical_id,
         }
       : requestedCampaignInput;
-    const storedUniqueEmails = new Set(
+    const storedContactReadyEmails = new Set(
       (existingCampaign?.contacts ?? [])
+        .filter(isContactReadyPerson)
         .map((contact) => contact.email?.trim().toLowerCase())
         .filter((email): email is string => Boolean(email)),
     ).size;
-    const storedCompanyCount = existingCampaign?.stats.companies_count ?? 0;
+    const storedConfirmedEmails = new Set(
+      (existingCampaign?.contacts ?? [])
+        .filter(isConfirmedOutreachEmail)
+        .map((contact) => contact.email?.trim().toLowerCase())
+        .filter((email): email is string => Boolean(email)),
+    ).size;
     const storedStats =
       existingCampaign?.campaign.production_discovery_stats ?? null;
     const previousStats = storedStats
@@ -341,25 +353,29 @@ export async function POST(request: Request) {
           // Persisted rows are authoritative. A client can disconnect after a
           // pass and old aggregate diagnostics may otherwise overstate what
           // was actually appended to the campaign.
-          new_unique_emails: storedUniqueEmails,
-          new_unique_companies: storedCompanyCount,
-          target_reached: storedUniqueEmails >= leadgenProductionConfig.campaignCompanyLimit,
+          new_unique_emails: storedConfirmedEmails,
+          new_unique_companies: storedConfirmedEmails,
+          email_ready_companies: storedConfirmedEmails,
+          email_ready_target: leadgenProductionConfig.campaignEmailTarget,
+          contact_ready_people: storedContactReadyEmails,
+          target_reached: storedConfirmedEmails >= leadgenProductionConfig.campaignEmailTarget,
         }
       : null;
-    const leadTarget = leadgenProductionConfig.campaignCompanyLimit;
+    const leadTarget = leadgenProductionConfig.campaignEmailTarget;
     const alreadyFound = existingCampaign
-      ? storedUniqueEmails
-      : Math.max(previousStats?.new_unique_emails ?? 0, storedCompanyCount);
+      ? storedConfirmedEmails
+      : previousStats?.email_ready_companies ?? previousStats?.new_unique_emails ?? 0;
     const passTarget = Math.max(1, leadTarget - alreadyFound);
     const passNumber = getDiscoveryPassNumber(previousStats);
     const searchPageOffset = getDiscoveryPageOffset(
       previousStats,
-      leadgenProductionConfig.searchMaxPages,
+      DISCOVERY_PAGES_PER_QUERY_PER_PASS,
     );
 
-    const [knownCompanyIdentities, knownRecipientEmails, dailyLeads] = await Promise.all([
+    const [knownCompanyIdentities, knownRecipientEmails, knownPersonKeys, dailyLeads] = await Promise.all([
       getRegisteredCompanyIdentities(),
       getKnownRecipientEmails(),
+      getKnownContactedPersonKeys(),
       getDailyLeadStats(),
     ]);
     const result = await runLeadDiscoveryEngine({
@@ -367,10 +383,12 @@ export async function POST(request: Request) {
       searchProvider: createLeadgenSearchProvider({
         mode: searchProviderMode,
       }),
-      leadTarget: passTarget,
+      leadTarget: leadgenProductionConfig.campaignCompanyLimit,
+      emailReadyTarget: passTarget,
       market,
       knownCompanyIdentities,
       knownRecipientEmails,
+      knownPersonKeys,
       campaignId: campaignId ?? undefined,
       searchPageOffset,
       runBudgetMs: DISCOVERY_PASS_BUDGET_MS,
@@ -382,6 +400,7 @@ export async function POST(request: Request) {
     const emailTargetSelection = selectCampaignEmailTarget({
       result: deduplicatedResult,
       knownEmails: knownRecipientEmails,
+      knownPersonKeys,
       target: passTarget,
     });
     const campaignResult = emailTargetSelection.result;
@@ -389,7 +408,7 @@ export async function POST(request: Request) {
       previous: previousStats,
       pass: campaignResult.production_discovery_stats!,
       target: leadTarget,
-      pagesPerPass: leadgenProductionConfig.searchMaxPages,
+      pagesPerPass: DISCOVERY_PAGES_PER_QUERY_PER_PASS,
     });
     const discovery = await runDiscoveryOrchestrator({
       signalFirstResult: campaignResult,

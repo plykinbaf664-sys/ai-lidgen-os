@@ -19,6 +19,18 @@ export const leadgenProductionConfig = {
     1,
     50,
   ),
+  contactReadyTarget: readBoundedInteger(
+    "LEADGEN_CONTACT_READY_TARGET",
+    20,
+    1,
+    50,
+  ),
+  campaignEmailTarget: readBoundedInteger(
+    "LEADGEN_CAMPAIGN_EMAIL_TARGET",
+    50,
+    1,
+    50,
+  ),
   dailyLeadLimit: readBoundedInteger(
     "LEADGEN_DAILY_LEAD_LIMIT",
     50,
@@ -34,9 +46,9 @@ export const leadgenProductionConfig = {
   searchMaxPages: readBoundedInteger("LEADGEN_SEARCH_MAX_PAGES", 10, 1, 10),
   emailDailySendLimit: readBoundedInteger(
     "EMAIL_DAILY_SEND_LIMIT",
-    50,
+    100,
     1,
-    50,
+    100,
   ),
   emailBatchSendLimit: readBoundedInteger(
     "EMAIL_BATCH_SEND_LIMIT",

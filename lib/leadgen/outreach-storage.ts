@@ -1,6 +1,12 @@
 import { randomInt } from "node:crypto";
 import { normalizeRecipientEmail } from "@/lib/leadgen/company-identity";
-import { generateFirstEmailV3 } from "@/lib/leadgen/first-email-generator";
+import {
+  INITIAL_OUTREACH_SIGNATURE,
+  generateFirstEmailV3,
+  passesFirstEmailQualityGate,
+  validateFirstEmailV3,
+  type OutreachQualityScore,
+} from "@/lib/leadgen/first-email-generator";
 import {
   calculateBatchCapacity,
   getNextScheduledAt,
@@ -22,7 +28,12 @@ import {
   type OutreachSkippedCompany,
 } from "@/lib/leadgen/outreach-working-set";
 import { createSupabaseServerClient } from "@/lib/supabase/client";
+import { getContactedPersonKey } from "@/lib/leadgen/adaptive-contact-intelligence";
 import { getBusinessDayRange } from "@/lib/leadgen/business-day";
+import {
+  assertCompleteOutreachBody,
+  isLegacyTruncatedOutreachBody,
+} from "@/lib/leadgen/outreach-body-integrity";
 import { COMPANY_FIELDS, CONTACT_FIELDS, LEAD_FIELDS, QUEUE_FIELDS, SIGNAL_FIELDS } from "@/lib/leadgen/storage-projections";
 export { getBusinessDayRange } from "@/lib/leadgen/business-day";
 import type {
@@ -84,6 +95,38 @@ export type QueueRow = {
   copy_review_status?: string | null;
 };
 
+function hasPassingLegacySignatureCopy(
+  row: QueueRow,
+  metadata: Record<string, unknown>,
+  signalDetail: string | null,
+): boolean {
+  if (
+    (row.message_kind ?? "initial") !== "initial" ||
+    row.status !== "needs_review" ||
+    row.message_version !== 1 ||
+    row.approval_invalidated_reason ||
+    metadata.quality_gate_passed === true ||
+    metadata.copy_review_status !== "needs_manual_copy_review" ||
+    metadata.generation_attempts !== 3 ||
+    !row.body.trimEnd().endsWith(INITIAL_OUTREACH_SIGNATURE.trim())
+  ) {
+    return false;
+  }
+
+  // Normalize only records affected by the old calculation, where the fixed
+  // signature was incorrectly included in the 110-word content limit.
+  const legacyWordCount = row.body.match(/[\p{L}\p{N}-]+/gu)?.length ?? 0;
+  if (legacyWordCount <= 110 || legacyWordCount > 115) return false;
+
+  const quality = metadata.copy_quality as OutreachQualityScore | undefined;
+  if (!quality || !passesFirstEmailQualityGate(quality)) return false;
+
+  return validateFirstEmailV3(
+    { subject: row.subject, body: row.body },
+    { companyName: row.company_name, growthSignal: signalDetail },
+  ).valid;
+}
+
 export function rowToEntry(row: QueueRow, queuePosition: number | null = null): OutreachQueueEntry {
   const metadata = row.metadata ?? {};
   const storedSignal =
@@ -97,6 +140,13 @@ export function rowToEntry(row: QueueRow, queuePosition: number | null = null): 
     source_url: storedSignal.source_url ?? null,
     confidence_score: storedSignal.confidence_score ?? null,
   };
+  const normalizedLegacyQualityGate = hasPassingLegacySignatureCopy(
+    row,
+    metadata,
+    signal.detail,
+  );
+  const qualityGatePassed =
+    metadata.quality_gate_passed === true || normalizedLegacyQualityGate;
   return {
     id: row.id,
     contact_id: row.contact_id,
@@ -140,9 +190,9 @@ export function rowToEntry(row: QueueRow, queuePosition: number | null = null): 
     approval_invalidated_reason: row.approval_invalidated_reason,
     copy_quality:
       (metadata.copy_quality as Record<string, number> | null | undefined) ?? null,
-    quality_gate_passed: metadata.quality_gate_passed === true,
+    quality_gate_passed: qualityGatePassed,
     copy_review_status:
-      metadata.copy_review_status === "ready"
+      qualityGatePassed || metadata.copy_review_status === "ready"
         ? "ready"
         : "needs_manual_copy_review",
     generation_attempts:
@@ -198,6 +248,28 @@ export async function getKnownRecipientEmails(): Promise<string[]> {
         .filter((email): email is string => Boolean(email))
         .map(normalizeRecipientEmail)
         .filter(Boolean),
+    ),
+  ];
+}
+
+export async function getKnownContactedPersonKeys(): Promise<string[]> {
+  const supabase = createSupabaseServerClient();
+  const result = await supabase
+    .from("leadgen_outreach_queue")
+    .select("company_name,recipient_name");
+  if (result.error) throw result.error;
+
+  return [
+    ...new Set(
+      (result.data ?? [])
+        .filter(
+          (row): row is { company_name: string; recipient_name: string } =>
+            typeof row.company_name === "string" &&
+            Boolean(row.company_name.trim()) &&
+            typeof row.recipient_name === "string" &&
+            Boolean(row.recipient_name.trim()),
+        )
+        .map((row) => getContactedPersonKey(row.company_name, row.recipient_name)),
     ),
   ];
 }
@@ -345,6 +417,74 @@ export async function syncOutreachQueue(campaignId: string) {
   return getOutreachQueue({ campaignId });
 }
 
+export async function repairLegacyTruncatedOutreachBodies(campaignId: string) {
+  const supabase = createSupabaseServerClient();
+  const { contacts } = await readCampaignSources(campaignId);
+  const contactsById = new Map(contacts.map((contact) => [contact.id, contact]));
+  const { data, error } = await supabase
+    .from("leadgen_outreach_queue")
+    .select(QUEUE_FIELDS)
+    .eq("campaign_id", campaignId)
+    .eq("message_kind", "initial")
+    .in("status", ["draft", "needs_review", "approved", "queued", "failed"]);
+  if (error) throw error;
+
+  let repaired = 0;
+  for (const row of (data ?? []) as QueueRow[]) {
+    if (!isLegacyTruncatedOutreachBody(row.body)) continue;
+    const contact = contactsById.get(row.contact_id);
+    const sourceBody = contact?.metadata.email_body;
+    if (
+      typeof sourceBody !== "string" ||
+      sourceBody.trim().length <= row.body.length ||
+      isLegacyTruncatedOutreachBody(sourceBody.trim())
+    ) {
+      continue;
+    }
+    const sourceSubject = contact?.metadata.email_subject;
+    const now = new Date().toISOString();
+    const messageVersion = row.message_version + 1;
+    const metadata = contact?.metadata ?? {};
+    const update = await supabase
+      .from("leadgen_outreach_queue")
+      .update({
+        body: sourceBody.trim(),
+        ...(typeof sourceSubject === "string" && sourceSubject.trim()
+          ? { subject: sourceSubject.trim() }
+          : {}),
+        status: "needs_review",
+        approved_at: null,
+        queued_at: null,
+        scheduled_at: null,
+        next_attempt_at: null,
+        failed_at: null,
+        last_error: null,
+        message_version: messageVersion,
+        idempotency_key: getOutreachIdempotencyKey({
+          campaignId: row.campaign_id,
+          email: row.normalized_recipient_email,
+          messageVersion,
+        }),
+        approval_invalidated_reason: "content_restored_from_truncated_preview",
+        metadata: {
+          ...(row.metadata ?? {}),
+          quality_gate_passed: metadata.email_quality_gate_passed === true,
+          copy_review_status:
+            typeof metadata.email_copy_review_status === "string"
+              ? metadata.email_copy_review_status
+              : "needs_manual_copy_review",
+          body_integrity_repaired_at: now,
+        },
+        updated_at: now,
+      })
+      .eq("id", row.id)
+      .in("status", ["draft", "needs_review", "approved", "queued", "failed"]);
+    if (update.error) throw update.error;
+    repaired += 1;
+  }
+  return repaired;
+}
+
 export async function getOutreachQueue({
   campaignId,
 }: { campaignId?: string | null } = {}) {
@@ -488,6 +628,7 @@ export async function updateOutreachQueueEntry({
   note?: string;
 }) {
   void note;
+  if (body !== undefined) assertCompleteOutreachBody(body);
   const supabase = createSupabaseServerClient();
   const { data: current, error: readError } = await supabase
     .from("leadgen_outreach_queue")
@@ -859,6 +1000,10 @@ export async function scheduleApprovedBatch({
     }
     if (!row.body.trim()) {
       addReason("missing_body");
+      return false;
+    }
+    if (isLegacyTruncatedOutreachBody(row.body)) {
+      addReason("truncated_body");
       return false;
     }
     if (stoppedEmails.has(row.normalized_recipient_email)) {

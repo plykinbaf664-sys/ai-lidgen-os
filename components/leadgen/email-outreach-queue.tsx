@@ -501,8 +501,15 @@ function PrimaryOutreachToolbar({
           <div><dt>Одобрено</dt><dd>{counters.approved}</dd></div>
           <div><dt>Отправлено сегодня</dt><dd>{sentToday}</dd></div>
           <div><dt>Дневной лимит</dt><dd>{dailyLimit}</dd></div>
-          <div><dt>Доступно сейчас</dt><dd>{maxBatch}</dd></div>
+          <div><dt>Можно отправить сегодня</dt><dd>{maxBatch}</dd></div>
         </dl>
+        {counters.approved > maxBatch ? (
+          <p className="dispatch-limit-explanation" role="status">
+            Одобрено всего: <strong>{counters.approved}</strong>. Сегодня можно
+            поставить в очередь: <strong>{maxBatch}</strong>. Останется
+            одобренными на следующий день: {counters.approved - maxBatch}.
+          </p>
+        ) : null}
         <label className="batch-slider">
           <span>
             К постановке в очередь:{" "}
@@ -536,7 +543,7 @@ function PrimaryOutreachToolbar({
             variant="primary"
           >
             {maxBatch > 0
-              ? `Запустить первичные · ${Math.min(batchSize, maxBatch)}`
+              ? `Запустить первичные · ${Math.min(batchSize, maxBatch)} сегодня`
               : counters.approved > 0 && dailyRemaining < 1
                 ? `Лимит ${sentToday}/${dailyLimit} — запуск завтра`
                 : "Сначала одобрите письма"}
@@ -677,6 +684,15 @@ export function EmailOutreachQueue({
       const response = await fetch(`/api/leadgen/outreach/${entry.id}`);
       const data = await readJson<EntryResponse>(response);
       if (!response.ok || !data.success) throw new Error(getError(data as ApiError));
+      if (data.entry.message_kind === "follow_up") {
+        setFollowups((current) =>
+          current.map((item) => item.id === data.entry.id ? data.entry : item),
+        );
+      } else {
+        setEntries((current) =>
+          current.map((item) => item.id === data.entry.id ? data.entry : item),
+        );
+      }
       setSelectedId(data.entry.id);
       setSubject(data.entry.subject);
       setBody(data.entry.body);
@@ -1313,7 +1329,7 @@ export function EmailOutreachQueue({
   const followupsQueuedToday = followupSummary?.queued_now ?? 0;
   const initialPlannedToday = initialSentToday + initialQueuedToday;
   const followupPlannedToday = followupSentToday + followupsQueuedToday;
-  const initialDailyLimit = outreachSummary?.today.dailyLimit ?? 50;
+  const initialDailyLimit = outreachSummary?.today.dailyLimit ?? 100;
   const initialRemainingToday = outreachSummary?.today.dailyRemaining ?? 0;
   const followupRemainingToday = followupsQueuedToday;
   const totalSentToday = initialSentToday + followupSentToday;
@@ -1355,7 +1371,7 @@ export function EmailOutreachQueue({
   const initialSendState =
     metrics.approved > 0 && maxBatch === 0
       ? (readiness?.daily_remaining ?? 0) < 1
-        ? `Одобрено ${metrics.approved}, но в очередь не поставлено: дневной лимит ${readiness?.sent_today ?? 0} из ${readiness?.daily_limit ?? 50} исчерпан.`
+        ? `Одобрено ${metrics.approved}, но в очередь не поставлено: дневной лимит ${readiness?.sent_today ?? 0} из ${readiness?.daily_limit ?? 100} исчерпан.`
         : readiness?.queue_paused
           ? `Одобрено ${metrics.approved}, отправка ждёт снятия очереди с паузы.`
           : `Одобрено ${metrics.approved}, но сейчас постановка в очередь недоступна.`
@@ -1380,7 +1396,7 @@ export function EmailOutreachQueue({
     100,
     Math.round(
       ((readiness?.sent_today ?? 0) /
-        Math.max(1, readiness?.daily_limit ?? 50)) *
+        Math.max(1, readiness?.daily_limit ?? 100)) *
         100,
     ),
   );
@@ -1453,10 +1469,10 @@ export function EmailOutreachQueue({
           maxBatch={maxBatch}
           batchSize={batchSize}
           sentToday={readiness?.sent_today ?? 0}
-          dailyLimit={readiness?.daily_limit ?? 50}
+          dailyLimit={readiness?.daily_limit ?? 100}
           dailyRemaining={Math.max(
             0,
-            (readiness?.daily_limit ?? 50) - (readiness?.sent_today ?? 0),
+            (readiness?.daily_limit ?? 100) - (readiness?.sent_today ?? 0),
           )}
           queuedToday={readiness?.queued_for_today ?? 0}
           queueLoading={pending === "batch"}
@@ -1506,7 +1522,7 @@ export function EmailOutreachQueue({
             />
           </div>
           <p className="dispatch-panel-note">
-            Отдельный поток. Не входит в лимит 50 новых адресатов; доступность отправки определяет очередь.
+            Отдельный поток. Не входит в лимит 100 первичных писем; доступность отправки определяет очередь.
           </p>
           <div className="dispatch-panel-actions">
             <Button
@@ -2010,6 +2026,7 @@ export function EmailOutreachQueue({
                     const sourceContact = campaignDetails?.contacts.find(
                       (contact) => contact.id === entry.contact_id,
                     );
+                    const contactIntelligence = sourceContact?.metadata.contact_intelligence;
                     const signal = entry.signal ?? {
                       type: null,
                       title: null,
@@ -2036,12 +2053,26 @@ export function EmailOutreachQueue({
                         <div><dt>Коммерческий сигнал</dt><dd>{validateCommercialSignalCandidate({ text: signal.detail, sourceUrl: signal.source_url, sourceTitle: signal.title, confidence: signal.confidence_score, pipelineSignalType: signal.type })?.summary ?? NO_VERIFIED_COMMERCIAL_SIGNAL}</dd></div>
                         <div><dt>Источник сигнала</dt><dd>{signal.source_url ? <a href={signal.source_url} rel="noreferrer" target="_blank">Публичный источник</a> : "—"}</dd></div>
                         <div><dt>Источник контакта</dt><dd>{entry.email_source_url ? <a href={entry.email_source_url} rel="noreferrer" target="_blank">{entry.email_source_label || entry.email_source_url}</a> : "—"}</dd></div>
-                        <div><dt>Тип email</dt><dd>{typeof sourceContact?.metadata.email_kind === "string" ? sourceContact.metadata.email_kind : entry.readiness}</dd></div>
+                        <div><dt>ЛПР</dt><dd>{contactIntelligence?.person_name || entry.recipient_name || "—"}{contactIntelligence?.person_role || entry.recipient_role ? ` · ${contactIntelligence?.person_role || entry.recipient_role}` : ""}</dd></div>
+                        <div><dt>Почему выбран</dt><dd>{contactIntelligence?.why_this_person || "Корпоративный email подтверждён; поиск персонального ЛПР не завершён."}</dd></div>
+                        <div><dt>Надёжность</dt><dd>{contactIntelligence?.confidence ?? (sourceContact?.metadata.email_mx_verified === true ? "Подтверждённый корпоративный email" : "—")}</dd></div>
+                        <div><dt>Как найден</dt><dd>{contactIntelligence?.verification_methods.join(" + ") || (typeof sourceContact?.metadata.email_kind === "string" ? sourceContact.metadata.email_kind : entry.readiness)}</dd></div>
                         <div><dt>Статус проверки</dt><dd>{sourceContact?.metadata.email_mx_verified === true ? "Домен подтверждён, MX найден" : "Домен подтверждён"}</dd></div>
                         <div><dt>Контакт</dt><dd>{entry.recipient_name || entry.recipient_role || "Общий вход"} · {entry.email || "email не найден"}</dd></div>
                         <div><dt>Тема</dt><dd>{entry.subject || "Не подготовлена"}</dd></div>
                         <div><dt>Письмо</dt><dd className="lead-copy-preview">{entry.body || "Не подготовлено"}</dd></div>
                       </dl>
+                      {contactIntelligence ? (
+                        <details className="outreach-technical-details">
+                          <summary>Диагностика контакта</summary>
+                          <p>Стоп-причина: {contactIntelligence.stop_reason}</p>
+                          <p>Стратегии: {contactIntelligence.strategies_attempted.join(" · ")}</p>
+                          {contactIntelligence.evidence.length ? (
+                            <ul>{contactIntelligence.evidence.map((item, index) => <li key={`${item.kind}-${index}`}>{item.summary}</li>)}</ul>
+                          ) : null}
+                          {contactIntelligence.generated_candidates.length ? <p>Неподтверждённые кандидаты: {contactIntelligence.generated_candidates.join(", ")}</p> : null}
+                        </details>
+                      ) : null}
                       {entry.status === "queued" ? (
                         <span className={isOverdue(entry, operational) ? "outreach-row-error" : undefined}>
                           {isOverdue(entry, operational) ? "Не отправлено" : "Запланировано"}:{" "}
@@ -2086,6 +2117,7 @@ export function EmailOutreachQueue({
                               <small>{followup.sent_at ? `Отправлено: ${formatDate(followup.sent_at)}` : followup.scheduled_at ? `Запланировано: ${formatDate(followup.scheduled_at)}` : followup.last_error || "Ожидает действия"}</small>
                               {followup.provider_message_id ? <small>Message-ID: {followup.provider_message_id}</small> : null}
                               <div className="lead-card-actions">
+                                {!['needs_review', 'approved'].includes(followup.status) ? <Button onClick={() => selectEntry(followup)} variant="secondary">Открыть письмо</Button> : null}
                                 {followup.status === "needs_review" ? <><Button onClick={() => selectEntry(followup)} variant="secondary">Открыть</Button><Button disabled={pending !== null} loading={pending === followup.id} onClick={() => approveFollowup(followup)} variant="primary">Одобрить</Button><Button disabled={pending !== null} onClick={() => controlFollowup(followup.id, "skip")} variant="danger">Пропустить</Button></> : null}
                                 {followup.status === "approved" ? <><Button onClick={() => selectEntry(followup)} variant="secondary">Редактировать</Button><Button disabled={pending !== null} onClick={() => controlFollowup(followup.id, "unapprove")} variant="danger">Отменить одобрение</Button></> : null}
                                 {followup.status === "queued" ? <Button disabled={pending !== null} onClick={() => controlFollowup(followup.id, "cancel")} variant="danger">Отменить до отправки</Button> : null}
@@ -2108,7 +2140,7 @@ export function EmailOutreachQueue({
                       <>
                         <p className="approved-delivery-state">
                           {(readiness?.daily_remaining ?? 0) < 1
-                            ? `Одобрено, но не в очереди. Сегодня отправлено ${readiness?.sent_today ?? 0} из ${readiness?.daily_limit ?? 50}; письмо сможет быть поставлено в очередь после обновления дневного лимита.`
+                            ? `Одобрено, но не в очереди. Сегодня отправлено ${readiness?.sent_today ?? 0} из ${readiness?.daily_limit ?? 100}; письмо сможет быть поставлено в очередь после обновления дневного лимита.`
                             : "Одобрено и готово к постановке в очередь."}
                         </p>
                         <div className="lead-card-actions"><span className="action-confirmed">✓ Одобрено</span><Button onClick={() => selectEntry(entry)} variant="secondary">Редактировать</Button><Button disabled={pending !== null} loading={pending === entry.id} onClick={() => runEntryAction(entry.id, () => patchEntry(entry.id, { status: "needs_review", note: "Одобрение отменено пользователем" }), "Одобрение отменено.")} variant="danger">Отменить одобрение</Button></div>
@@ -2116,6 +2148,7 @@ export function EmailOutreachQueue({
                     ) : null}
                     {entry.status === "queued" ? <div className="lead-card-actions"><Button disabled={pending !== null} loading={pending === entry.id} onClick={() => runEntryAction(entry.id, () => patchEntry(entry.id, {}, `/api/leadgen/outreach/${entry.id}/cancel`), "Письмо снято с очереди и осталось одобренным.")} variant="danger">Отменить до отправки</Button></div> : null}
                     {entry.status === "failed" ? <div className="lead-card-actions"><Button disabled={pending !== null} loading={pending === entry.id} onClick={() => runEntryAction(entry.id, () => patchEntry(entry.id, {}, `/api/leadgen/outreach/${entry.id}/retry`), "Ошибка сброшена. Письмо снова одобрено.")} variant="success">Повторить</Button></div> : null}
+                    {!['draft', 'needs_review', 'paused', 'approved'].includes(entry.status) ? <div className="lead-card-actions"><Button loading={pending === `open-${entry.id}`} onClick={() => selectEntry(entry)} variant="secondary">Открыть письмо</Button></div> : null}
                     {entry.quality_gate_passed !== true && ["draft", "needs_review"].includes(entry.status) ? <p className="copy-quality-warning">Требуется ручная проверка текста: quality gate не пройден.</p> : null}
                   </article>
                     );
@@ -2139,7 +2172,7 @@ export function EmailOutreachQueue({
             <div className="delivery-today">
               <div>
                 <strong>{readiness?.sent_today ?? 0}</strong>
-                <span>из {readiness?.daily_limit ?? 50} отправлено сегодня</span>
+                <span>из {readiness?.daily_limit ?? 100} отправлено сегодня</span>
               </div>
               <div className="delivery-progress" aria-label={`Выполнено ${dailyProgress}% дневного лимита`}>
                 <span style={{ width: `${dailyProgress}%` }} />

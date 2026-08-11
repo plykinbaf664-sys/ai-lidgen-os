@@ -74,6 +74,11 @@ export function buildEmailOutreach({
   signalSourceUrl,
   signalConfidence,
   verticalId,
+  businessProblemHypothesis,
+  targetResponsibility,
+  whyThisPerson,
+  publicPersonContext,
+  emailEvidence,
 }: {
   companyName: string;
   companyWebsite?: string | null;
@@ -91,6 +96,11 @@ export function buildEmailOutreach({
   signalSourceUrl?: string | null;
   signalConfidence?: number | null;
   verticalId?: LeadgenVerticalId;
+  businessProblemHypothesis?: string | null;
+  targetResponsibility?: string | null;
+  whyThisPerson?: string | null;
+  publicPersonContext?: string | null;
+  emailEvidence?: string | null;
 }): {
   subject: string | null;
   body: string;
@@ -147,6 +157,11 @@ export function buildEmailOutreach({
     signalSourceUrl,
     uniquenessKey: `${contact.id}:${contact.email ?? ""}:${signalConfidence ?? ""}`,
     verticalId,
+    businessProblemHypothesis,
+    targetResponsibility,
+    whyThisPerson,
+    publicPersonContext,
+    emailEvidence,
   });
 
   return {

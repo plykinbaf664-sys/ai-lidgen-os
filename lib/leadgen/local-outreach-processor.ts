@@ -1,4 +1,5 @@
 import { createEmailProvider } from "@/lib/leadgen/email-provider";
+import { assertCompleteOutreachBody } from "@/lib/leadgen/outreach-body-integrity";
 import {
   claimDueLocalOutreachItem,
   deferLocalQueuedItems,
@@ -54,6 +55,15 @@ export async function processNextLocalOutreachItem() {
     nextDue.message_kind ?? "initial",
   );
   if (!entry) return { status: "idle" as const, entry: null };
+  try {
+    assertCompleteOutreachBody(entry.body);
+  } catch (error) {
+    const failed = await markLocalOutreachEntry(entry.id, "failed", {
+      provider_message_id: null,
+      last_error: error instanceof Error ? error.message : String(error),
+    });
+    return { status: "failed" as const, entry: failed };
+  }
   const result = await provider.sendEmail(entry);
   if (!result.ok) {
     const failed = await markLocalOutreachEntry(entry.id, "failed", {

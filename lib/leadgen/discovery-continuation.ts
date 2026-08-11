@@ -1,8 +1,9 @@
 import type { ProductionDiscoveryStats } from "@/lib/leadgen/types";
 
-export const DISCOVERY_PASS_BUDGET_MS = 200_000;
-export const DISCOVERY_MAX_PASSES = 12;
-export const DISCOVERY_EMPTY_PASS_LIMIT = 2;
+export const DISCOVERY_PASS_BUDGET_MS = 160_000;
+export const DISCOVERY_MAX_PASSES = 30;
+export const DISCOVERY_EMPTY_PASS_LIMIT = 3;
+export const DISCOVERY_PAGES_PER_QUERY_PER_PASS = 1;
 
 function addRecords(
   left: Record<string, number> = {},
@@ -25,11 +26,7 @@ export function getDiscoveryPageOffset(
 ) {
   const qualified = stats?.qualified_candidates_found ?? 0;
   const enriched = stats?.enriched_candidates_checked ?? 0;
-  if (
-    stats?.search_exhausted === true &&
-    stats.enrichment_budget_exhausted === true &&
-    qualified > enriched
-  ) {
+  if (stats?.search_exhausted === true && qualified > enriched) {
     // Repair checkpoints created by the first continuation implementation:
     // it advanced pages while a large part of the original candidate pool
     // had never reached enrichment.
@@ -52,9 +49,13 @@ export function mergeDiscoveryPassStats({
   target: number;
   pagesPerPass: number;
 }): ProductionDiscoveryStats {
-  const passEmails = pass.new_unique_emails ?? pass.new_unique_companies;
-  const previousEmails = previous?.new_unique_emails ?? previous?.new_unique_companies ?? 0;
+  const passEmails = pass.email_ready_companies ?? pass.new_unique_emails ?? pass.new_unique_companies;
+  const previousEmails = previous?.email_ready_companies ?? previous?.new_unique_emails ?? previous?.new_unique_companies ?? 0;
   const totalEmails = Math.min(target, previousEmails + passEmails);
+  const totalContactReadyPeople = Math.min(
+    totalEmails,
+    (previous?.contact_ready_people ?? 0) + (pass.contact_ready_people ?? 0),
+  );
   const passesCompleted = previous
     ? Math.max(1, previous.passes_completed ?? 1) + 1
     : 1;
@@ -78,6 +79,9 @@ export function mergeDiscoveryPassStats({
     ...pass,
     lead_target: target,
     email_target: target,
+    email_ready_target: target,
+    email_ready_companies: totalEmails,
+    contact_ready_people: totalContactReadyPeople,
     results_received:
       (previous?.results_received ?? 0) + pass.results_received,
     previously_discovered_skipped:
@@ -96,6 +100,9 @@ export function mergeDiscoveryPassStats({
     duplicate_emails_skipped:
       (previous?.duplicate_emails_skipped ?? 0) +
       (pass.duplicate_emails_skipped ?? 0),
+    duplicate_people_skipped:
+      (previous?.duplicate_people_skipped ?? 0) +
+      (pass.duplicate_people_skipped ?? 0),
     enriched_candidates_checked:
       (previous?.enriched_candidates_checked ?? 0) +
       (pass.enriched_candidates_checked ?? 0),
@@ -124,8 +131,8 @@ export function canContinueDiscovery(
   fallbackTarget = 50,
 ) {
   if (!stats) return false;
-  const target = stats.email_target ?? stats.lead_target ?? fallbackTarget;
-  const found = stats.new_unique_emails ?? stats.new_unique_companies;
+  const target = stats.email_ready_target ?? stats.email_target ?? stats.lead_target ?? fallbackTarget;
+  const found = stats.email_ready_companies ?? stats.new_unique_emails ?? stats.new_unique_companies;
   if (found >= target || stats.target_reached === true) return false;
   if (stats.continuation_available === true) return true;
 
@@ -133,7 +140,6 @@ export function canContinueDiscovery(
   // exhausted after advancing past a still-unprocessed candidate pool.
   return Boolean(
     stats.search_exhausted === true &&
-      stats.enrichment_budget_exhausted === true &&
       (stats.qualified_candidates_found ?? 0) >
         (stats.enriched_candidates_checked ?? 0) &&
       (stats.passes_completed ?? 0) < DISCOVERY_MAX_PASSES,

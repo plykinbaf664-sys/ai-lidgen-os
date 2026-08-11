@@ -4,11 +4,14 @@ const CONTACT_METADATA_DUPLICATE_KEYS = new Set([
   "identity_profile",
   "alternative_channels",
   "alternative_channel_ids",
+  "people_metadata",
+  "email_context",
 ]);
 
 const COMPANY_METADATA_TRANSIENT_KEYS = new Set([
   "identity_profile",
   "lead_ready_candidate",
+  "people_discovery",
 ]);
 
 const CONTACT_DISCOVERY_ARRAY_LIMITS: Record<string, number> = {

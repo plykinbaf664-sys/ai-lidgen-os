@@ -29,6 +29,7 @@ type CandidateDraft = {
   telegramUrl: string | null;
   vkUrl: string | null;
   workEmail: string | null;
+  contactRoute: "target_persona" | "corporate_router";
   evidence: string[];
 };
 
@@ -245,41 +246,45 @@ function draftsFromOfficialText({
   const emails = getWorkEmails(text, input);
 
   return emails.flatMap((email) => {
-    const context = getTextWindow(text, email);
+    const context = getTextWindow(text, email, 360);
     const roleTitle = getRoleTitle(context, roleKeywords);
     const names = getNames(context, input);
+    const emailIndex = context.toLowerCase().indexOf(email.toLowerCase());
+    const nearestName = names
+      .map((fullName) => ({
+        fullName,
+        distance: Math.abs(
+          context.toLowerCase().indexOf(fullName.toLowerCase()) - emailIndex,
+        ),
+      }))
+      .filter((candidate) => candidate.distance <= 260)
+      .sort((left, right) => left.distance - right.distance)[0]?.fullName;
 
-    if (!roleTitle || names.length === 0) {
+    if (!nearestName) {
       return [];
     }
+    const nameContext = getTextWindow(context, nearestName, 250);
+    const nameRoleTitle = getRoleTitle(nameContext, roleKeywords) ?? roleTitle;
 
-    return names
-      .slice(0, 2)
-      .flatMap((fullName): CandidateDraft[] => {
-        const nameContext = getTextWindow(context, fullName, 250);
-        const nameRoleTitle = getRoleTitle(nameContext, roleKeywords);
-
-        if (!nameRoleTitle) {
-          return [];
-        }
-
-        return [{
-          fullName,
-          roleTitle: nameRoleTitle ?? roleTitle,
-          department: input.decisionMaker.department,
-          sourceUrl,
-          sourceTitle: "Official company website",
-          sourceSnippet: context.slice(0, 500),
-          linkedinUrl: null,
-          telegramUrl: null,
-          vkUrl: null,
-          workEmail: email,
-          evidence: [
-            `Official site contact: ${sourceUrl}`,
-            `Email and role found near ${fullName}`,
-          ],
-        }];
-      });
+    return [{
+      fullName: nearestName,
+      roleTitle: nameRoleTitle ?? "Публичный контакт компании",
+      department: nameRoleTitle ? input.decisionMaker.department : null,
+      sourceUrl,
+      sourceTitle: "Official company website",
+      sourceSnippet: context.slice(0, 500),
+      linkedinUrl: null,
+      telegramUrl: null,
+      vkUrl: null,
+      workEmail: email,
+      contactRoute: nameRoleTitle ? "target_persona" : "corporate_router",
+      evidence: [
+        `Official site contact: ${sourceUrl}`,
+        nameRoleTitle
+          ? `Email and target role found near ${nearestName}`
+          : `Published corporate email found near ${nearestName}; exact responsibility is not asserted`,
+      ],
+    }];
   });
 }
 
@@ -411,30 +416,21 @@ function getInitialQueryParts(input: PeopleProviderInput): string[] {
   const domain = getCompanyDomain(input.company);
   const targetRoles = unique([
     input.decisionMaker.primary_persona,
+    ...input.decisionMaker.alternative_personas,
+    ...input.decisionMaker.search_keywords,
     ...getRoleKeywordGroups(input.decisionMaker).flat(),
-    ...RU_EXECUTIVE_TITLES,
-  ]).slice(0, 12);
-  const roleQuery = targetRoles.map(quote).join(" OR ");
+  ]).filter(Boolean);
+  const roleQuery = targetRoles.slice(0, 8).map(quote).join(" OR ");
+  const responsibility = quote(input.decisionMaker.business_problem_owner);
+  const department = quote(input.decisionMaker.department);
 
   return [
     `${company} (${roleQuery})`,
-    `${company} (${roleQuery}) email OR @ OR \u043f\u043e\u0447\u0442\u0430`,
-    `${company} (${roleQuery}) Telegram OR \u0442\u0435\u043b\u0435\u0433\u0440\u0430\u043c OR t.me`,
-    `${company} (${roleQuery}) VK OR vk.com`,
-    `${company} (${roleQuery}) LinkedIn OR linkedin`,
-    `${company} (${roleQuery}) vc.ru OR rb.ru OR \u0438\u043d\u0442\u0435\u0440\u0432\u044c\u044e`,
-    `${company} "${input.company.company_name}" "\u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e"`,
-    `${company} "\u0433\u0435\u043d\u0435\u0440\u0430\u043b\u044c\u043d\u044b\u0439 \u0434\u0438\u0440\u0435\u043a\u0442\u043e\u0440"`,
-    `${company} "\u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044c \u043e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u0438"`,
-    `${company} "\u0443\u0447\u0440\u0435\u0434\u0438\u0442\u0435\u043b\u044c"`,
-    `${company} "\u0433\u0435\u043d\u0434\u0438\u0440\u0435\u043a\u0442\u043e\u0440"`,
-    `${company} "\u0418\u041d\u041d" "\u0433\u0435\u043d\u0435\u0440\u0430\u043b\u044c\u043d\u044b\u0439 \u0434\u0438\u0440\u0435\u043a\u0442\u043e\u0440"`,
-    `${company} site:rusprofile.ru`,
-    `${company} site:checko.ru`,
-    `${company} site:zachestnyibiznes.ru`,
+    `${company} ${department} ${responsibility}`,
+    `${company} (${roleQuery}) публикация OR интервью OR конференция`,
     domain ? `site:${domain} (${roleQuery})` : "",
     domain
-      ? `site:${domain} (${roleQuery}) email OR @ OR Telegram OR vk.com`
+      ? `site:${domain} (${roleQuery}) email OR @ OR контакты`
       : "",
   ].filter(Boolean);
 }
@@ -446,15 +442,16 @@ function getCandidateContactQueries(
   const company = quote(input.company.company_name);
   const name = quote(candidate.fullName);
   const domain = getCompanyDomain(input.company);
-
+  const missingEmail = !candidate.workEmail;
+  const missingRole = !candidate.roleTitle;
   return [
-    `${name} ${company} email OR @ OR \u043f\u043e\u0447\u0442\u0430`,
-    domain ? `${name} "@${domain}"` : "",
-    domain ? `${name} ${domain} email OR e-mail OR почта` : "",
-    `${name} ${company} Telegram OR t.me OR \u0442\u0435\u043b\u0435\u0433\u0440\u0430\u043c`,
-    `${name} ${company} VK OR vk.com`,
-    `${name} ${company} LinkedIn OR linkedin`,
-    domain ? `${name} ${domain} email OR @` : "",
+    missingEmail ? `${name} ${company} email OR @ OR почта` : "",
+    missingEmail && domain ? `${name} "@${domain}"` : "",
+    missingEmail && domain ? `site:${domain} ${name}` : "",
+    missingRole ? `${name} ${company} должность OR руководитель` : "",
+    !candidate.linkedinUrl && !candidate.telegramUrl && !candidate.vkUrl
+      ? `${name} ${company} профессиональный профиль`
+      : "",
   ].filter(Boolean);
 }
 
@@ -467,6 +464,10 @@ function mergeDrafts(left: CandidateDraft, right: CandidateDraft): CandidateDraf
     telegramUrl: left.telegramUrl ?? right.telegramUrl,
     vkUrl: left.vkUrl ?? right.vkUrl,
     workEmail: left.workEmail ?? right.workEmail,
+    contactRoute:
+      left.contactRoute === "target_persona" || right.contactRoute === "target_persona"
+        ? "target_persona"
+        : "corporate_router",
     evidence: unique([...left.evidence, ...right.evidence]),
   };
 }
@@ -511,6 +512,7 @@ function draftFromSearchResult({
     telegramUrl,
     vkUrl,
     workEmail: emails[0] ?? null,
+    contactRoute: roleTitle ? "target_persona" : "corporate_router",
     evidence: [`Public search result: ${result.title}`, `Source URL: ${result.url}`],
   }));
 }
@@ -588,6 +590,9 @@ function toPersonCandidate(
       snippet: draft.sourceSnippet,
       telegram_url: draft.telegramUrl,
       vk_url: draft.vkUrl,
+      contact_route: draft.contactRoute,
+      public_contact_verified:
+        draft.contactRoute === "corporate_router" && Boolean(draft.workEmail),
     },
   };
 
@@ -599,7 +604,7 @@ function toPersonCandidate(
       hasDirectContact: Boolean(
         draft.workEmail || draft.linkedinUrl || draft.telegramUrl || draft.vkUrl,
       ),
-      baseConfidence: 52,
+      baseConfidence: draft.contactRoute === "corporate_router" ? 66 : 52,
     }),
   };
 }
@@ -672,7 +677,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
       initialResults.flatMap((result) => draftFromSearchResult({ input, result })),
     )
       .filter((draft) =>
-        hasTargetRoleMatch(
+        draft.contactRoute === "corporate_router" || hasTargetRoleMatch(
           toPersonCandidate(draft, input, this.label, this.id),
           input.decisionMaker,
         ),
@@ -714,7 +719,10 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
 
     const candidates = dedupeDrafts([...enrichedDrafts, ...officialSiteDrafts])
       .map((draft) => toPersonCandidate(draft, input, this.label, this.id))
-      .filter((candidate) => hasTargetRoleMatch(candidate, input.decisionMaker))
+      .filter((candidate) =>
+        candidate.metadata.contact_route === "corporate_router" ||
+        hasTargetRoleMatch(candidate, input.decisionMaker),
+      )
       .filter(
         (candidate) =>
           Boolean(
@@ -725,9 +733,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
           ) ||
           (Boolean(candidate.role_title) &&
             candidate.confidence_score >= 68 &&
-            candidate.evidence.some((item) =>
-              /source url:.*(?:linkedin\.com\/in|vk\.com\/|rusprofile\.ru|checko\.ru|zachestnyibiznes\.ru|focus\.kontur\.ru)/i.test(item),
-            )),
+            candidate.evidence.some((item) => /source url:\s*https?:\/\//i.test(item))),
       );
 
     return {
@@ -735,6 +741,12 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
       provider_label: this.label,
       candidates,
       unavailable: false,
+      diagnostics: [{
+        level: "info",
+        message: candidates.length
+          ? `Adaptive public search stopped after ${candidates.length} evidence-backed candidate(s) were found.`
+          : "Adaptive public search stopped because the remaining public steps were unlikely to improve contact quality.",
+      }],
     };
   }
 }

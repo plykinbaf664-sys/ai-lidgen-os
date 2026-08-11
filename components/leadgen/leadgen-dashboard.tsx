@@ -110,16 +110,22 @@ export function LeadgenDashboard() {
     startingCampaignId: string | null = null,
   ) {
     setIsRunning(true);
-    if (!startingCampaignId) setCampaignDetails(null);
+    if (!startingCampaignId) {
+      setCampaignDetails(null);
+      setDiscovery(null);
+    }
     setError(null);
     try {
       let campaignId = startingCampaignId;
       let finalCampaign: LeadgenCampaign | null = null;
+      let completedTarget = false;
+      let finalFound = 0;
+      let finalTarget = 50;
       for (let pass = 1; pass <= DISCOVERY_MAX_PASSES; pass += 1) {
         setRunProgress(
           campaignId
-            ? `Продолжаем поиск: проход ${pass}, найдено ${discovery?.new_unique_emails ?? 0} из 50`
-            : "Первый проход поиска: цель — 50 новых email",
+            ? `Продолжаем поиск: проход ${pass}, готово ${discovery?.email_ready_companies ?? discovery?.new_unique_emails ?? 0} из 50 компаний с подтверждённым email`
+            : "Первый проход поиска: цель — до 50 новых компаний с подтверждённым email",
         );
         const response = await fetch("/api/leadgen/run", {
           method: "POST",
@@ -135,10 +141,17 @@ export function LeadgenDashboard() {
         setActiveCampaignId(data.campaign.id);
         setActiveCampaignName(data.campaign.name);
         setDiscovery(data.production_discovery_stats ?? null);
+        finalFound =
+          data.continuation?.found ??
+          data.production_discovery_stats?.email_ready_companies ??
+          data.production_discovery_stats?.new_unique_emails ??
+          0;
+        finalTarget = data.continuation?.target ?? 50;
+        completedTarget = finalFound >= finalTarget;
         setRunProgress(
-          `Найдено ${data.continuation?.found ?? data.production_discovery_stats?.new_unique_emails ?? 0} из ${data.continuation?.target ?? 50}. Проходов: ${data.continuation?.passes_completed ?? pass}.`,
+          `Готово ${finalFound} из ${finalTarget} компаний с подтверждённым email. Проходов: ${data.continuation?.passes_completed ?? pass}.`,
         );
-        if (!data.continuation?.available) break;
+        if (completedTarget || !data.continuation?.available) break;
       }
       await loadHistory();
       if (campaignId) {
@@ -154,6 +167,11 @@ export function LeadgenDashboard() {
         }
       }
       if (finalCampaign) setActiveCampaignName(finalCampaign.name);
+      if (!completedTarget) {
+        throw new Error(
+          `Поиск не завершён: готово ${finalFound} из ${finalTarget}. Промежуточный результат сохранён; продолжите поиск до 50.`,
+        );
+      }
     } catch (caught) {
       setError(caught instanceof Error && caught.message ? caught.message : "Не удалось запустить поиск.");
     } finally {
@@ -205,13 +223,23 @@ export function LeadgenDashboard() {
     }
   }
 
+  const discoveryFound =
+    discovery?.email_ready_companies ?? discovery?.new_unique_emails ?? 0;
+  const discoveryTarget =
+    discovery?.email_ready_target ?? discovery?.email_target ?? 50;
+  const discoveryIncomplete = Boolean(
+    discovery &&
+      discovery.target_reached !== true &&
+      discoveryFound < discoveryTarget,
+  );
+
   return (
     <div className="leadgen-console">
       <section className="leadgen-config panel">
         <div className="section-heading compact">
           <div><p className="eyebrow">Новая кампания</p><h2>Параметры поиска</h2></div>
           <div className="config-facts" aria-label="Активные ограничения">
-            <span>Россия</span><span>Web search</span><span>До 50 готовых лидов за запуск</span>
+            <span>Россия</span><span>Web search</span><span>До 50 компаний с подтверждённым email за запуск</span>
           </div>
         </div>
         <CampaignForm isRunning={isRunning} onRun={handleRun} />
@@ -230,21 +258,42 @@ export function LeadgenDashboard() {
                 onClick={handleContinueSearch}
                 variant="secondary"
               >
-                Продолжить поиск до 50
+                Продолжить поиск до 50 компаний
               </Button>
             ) : null}
             {discovery ? (
               <div className="discovery-inline">
-                <span>Проверено <strong>{discovery.results_received}</strong></span>
-                <span>Кандидатов <strong>{discovery.qualified_candidates_found ?? discovery.new_unique_companies}</strong></span>
+                <span>
+                  Готовые компании{" "}
+                  <strong>
+                    {discovery.email_ready_companies ?? discovery.new_unique_emails ?? 0} из{" "}
+                    {discovery.email_ready_target ?? discovery.email_target ?? 50}
+                  </strong>
+                </span>
+                <span>Персональных ЛПР <strong>{discovery.contact_ready_people ?? 0}</strong></span>
+                <span>Проверено результатов <strong>{discovery.results_received}</strong></span>
+                <span>
+                  Прошли первичный отбор{" "}
+                  <strong>{discovery.qualified_candidates_found ?? discovery.new_unique_companies}</strong>
+                </span>
               </div>
             ) : null}
           </div>
-          <EmailOutreachQueue
-            campaignDetails={campaignDetails}
-            campaignId={activeCampaignId}
-            key={activeCampaignId}
-          />
+          {isRunning || discoveryIncomplete ? (
+            <section className="panel leadgen-empty-campaign" aria-live="polite">
+              <h2>Формируем полный набор</h2>
+              <p>
+                Готово {discoveryFound} из {discoveryTarget}. Промежуточные
+                карточки появятся только после завершения поиска 50/50.
+              </p>
+            </section>
+          ) : (
+            <EmailOutreachQueue
+              campaignDetails={campaignDetails}
+              campaignId={activeCampaignId}
+              key={`${activeCampaignId}:${campaignDetails?.leads.length ?? "stored"}`}
+            />
+          )}
         </section>
       ) : (
         <section className="panel leadgen-empty-campaign">

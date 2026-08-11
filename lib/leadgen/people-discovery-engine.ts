@@ -51,7 +51,9 @@ export class PeopleDiscoveryEngine {
   private readonly providerManager: PeopleProviderManager;
 
   constructor(
-    providers: PeopleEnrichmentProvider[] = createPeopleProviders(),
+    providers: PeopleEnrichmentProvider[] = createPeopleProviders().filter(
+      (provider) => provider.id === "ru-public-web",
+    ),
   ) {
     this.providerManager = new PeopleProviderManager(providers);
   }

@@ -8,6 +8,13 @@ import { ContactEnrichmentEngine } from "@/lib/leadgen/contact-enrichment-engine
 import { resolveOfficialCompanyWebsite } from "@/lib/leadgen/public-contact-provider";
 import { generateFirstEmailV2 } from "@/lib/leadgen/first-email-generator";
 import { isEvidenceOnlyContact } from "@/lib/leadgen/contact-channel-ranking";
+import {
+  attachContactIntelligence,
+  createUnresolvedContactIntelligence,
+  evaluateAdaptiveContactIntelligence,
+  isConfirmedOutreachEmail,
+  isContactReadyPerson,
+} from "@/lib/leadgen/adaptive-contact-intelligence";
 import { discoverDecisionMaker } from "@/lib/leadgen/decision-maker-discovery";
 import { prioritizeLead } from "@/lib/leadgen/lead-prioritization-engine";
 import { assessOpportunity } from "@/lib/leadgen/opportunity-intelligence";
@@ -16,6 +23,7 @@ import type { SearchProvider } from "@/lib/leadgen/search/search-provider";
 import type { SignalSearchMarket } from "@/lib/leadgen/signals/query-builder";
 import { interpretSignal } from "@/lib/leadgen/signals/signal-interpreter";
 import { runSignalPipeline } from "@/lib/leadgen/signals/signal-pipeline";
+import { DISCOVERY_PAGES_PER_QUERY_PER_PASS } from "@/lib/leadgen/discovery-continuation";
 import { getVerticalIcp, getVerticalProfile, type LeadgenVerticalId } from "@/lib/leadgen/verticals";
 import type {
   CampaignInput,
@@ -43,6 +51,8 @@ type RunLeadDiscoveryInput = {
   market?: SignalSearchMarket;
   knownCompanyIdentities?: CompanyIdentity[];
   knownRecipientEmails?: string[];
+  knownPersonKeys?: string[];
+  emailReadyTarget?: number;
   campaignId?: string;
   searchPageOffset?: number;
   runBudgetMs?: number;
@@ -67,13 +77,16 @@ const MAX_SIGNALS_PER_RUN = 5;
 const MAX_QUERIES_PER_SIGNAL = 20;
 const MAX_RESULTS_PER_QUERY = 10;
 const MIN_ENRICHMENT_OPPORTUNITY_SCORE = 50;
-const DISCOVERY_ENRICHMENT_CONCURRENCY = 10;
-const WEBSITE_RESOLUTION_CONCURRENCY = 10;
+const DISCOVERY_ENRICHMENT_CONCURRENCY = 12;
+const WEBSITE_RESOLUTION_CONCURRENCY = 12;
 const DISCOVERY_ENRICHMENT_POOL_MULTIPLIER = 4;
-const WEBSITE_RESOLUTION_TIMEOUT_MS = 40_000;
-const PEOPLE_DISCOVERY_TIMEOUT_MS = 30_000;
-const CONTACT_ENRICHMENT_TIMEOUT_MS = 75_000;
+const WEBSITE_RESOLUTION_TIMEOUT_MS = 25_000;
+// Person enrichment is best-effort. It must not block an already verifiable
+// company email from occupying one of the campaign's 50 delivery slots.
+const PEOPLE_DISCOVERY_TIMEOUT_MS = 8_000;
+const CONTACT_ENRICHMENT_TIMEOUT_MS = 40_000;
 const DISCOVERY_DEADLINE_RESERVE_MS = 5_000;
+const DISCOVERY_SEARCH_BUDGET_MS = 45_000;
 // Keep enough headroom for an in-flight enrichment batch to settle before the
 // 300-second serverless request ceiling.
 const DISCOVERY_RUN_BUDGET_MS = 200_000;
@@ -138,6 +151,15 @@ async function mapWithConcurrency<T, R>(
 function shouldDeferPeopleDiscovery(company: LeadgenCompany): boolean {
   if (!company.company_domain) {
     return true;
+  }
+
+  if (
+    company.metadata.official_website_status === "confirmed" &&
+    typeof company.metadata.official_website === "string"
+  ) {
+    // HH remains evidence for the commercial signal only. Once the official
+    // website is resolved, people discovery must continue on that domain.
+    return false;
   }
 
   const sourceCandidates = [
@@ -523,6 +545,9 @@ function attachContactDiscoveryToCompany(
   contactDiscovery: ContactDiscoveryResult,
 ): LeadgenCompany {
   const contactReadiness = getContactReadinessStatus(contactDiscovery);
+  const contactIntelligence = contactDiscovery.contacts
+    .map((contact) => contact.metadata.contact_intelligence)
+    .find(Boolean) ?? null;
 
   return {
     ...company,
@@ -578,6 +603,7 @@ function attachContactDiscoveryToCompany(
         ),
       },
       identity_profile: contactDiscovery.identity_profile,
+      contact_intelligence: contactIntelligence,
     },
   };
 }
@@ -681,12 +707,16 @@ function buildLead({
 function getContactReadinessStatus(
   contactDiscovery: ContactDiscoveryResult,
 ): LeadReadinessStatus {
-  if (contactDiscovery.best_outreach_entry) {
+  if (
+    contactDiscovery.best_outreach_entry &&
+    isConfirmedOutreachEmail(contactDiscovery.best_outreach_entry)
+  ) {
     return "outreach_ready";
   }
 
   if (
     contactDiscovery.fallback_entry &&
+    isConfirmedOutreachEmail(contactDiscovery.fallback_entry) &&
     contactDiscovery.fallback_entry.contact_type !== "company_website" &&
     contactDiscovery.fallback_entry.contact_type !== "no_contact_found"
   ) {
@@ -707,10 +737,7 @@ function getContactReadinessStatus(
 function getLeadStatusForReadiness(
   readinessStatus: LeadReadinessStatus,
 ): LeadgenLead["status"] {
-  if (
-    readinessStatus === "outreach_ready" ||
-    readinessStatus === "fallback_ready"
-  ) {
+  if (readinessStatus === "outreach_ready" || readinessStatus === "fallback_ready") {
     return "new";
   }
 
@@ -743,8 +770,7 @@ function finalizeLeadOutput({
     contactDiscovery.best_outreach_entry ?? contactDiscovery.fallback_entry,
   );
   const isReadyToSend =
-    readinessStatus === "outreach_ready" ||
-    readinessStatus === "fallback_ready";
+    readinessStatus === "outreach_ready" || readinessStatus === "fallback_ready";
   const readinessNote = `Contact readiness: ${readinessStatus}.`;
 
   return {
@@ -957,6 +983,10 @@ async function discoverCandidates({
   const skipReasons: Record<string, number> = {};
   const skippedIdentityKeys = new Set<string>();
   const pageOffset = Math.max(0, searchPageOffset);
+  const searchDeadlineAt = Math.min(
+    deadlineAt - DISCOVERY_DEADLINE_RESERVE_MS,
+    Date.now() + DISCOVERY_SEARCH_BUDGET_MS,
+  );
   const enrichmentCandidateTarget = Math.min(
     leadgenProductionConfig.discoveryCandidateBudget,
     Math.max(leadTarget * DISCOVERY_ENRICHMENT_POOL_MULTIPLIER, 80),
@@ -971,16 +1001,18 @@ async function discoverCandidates({
   );
 
   for (const signalType of getSignalOrder(verticalId)) {
-    if (Date.now() >= deadlineAt) break;
+    if (Date.now() >= searchDeadlineAt) break;
     const result = await runSignalPipeline({
       signalType,
       searchProvider,
       targetCandidates: candidatesPerSignal,
       maxQueries: queriesPerSignal,
       maxResultsPerQuery: MAX_RESULTS_PER_QUERY,
+      maxPagesPerQuery: DISCOVERY_PAGES_PER_QUERY_PER_PASS,
       pageOffset,
       market,
       verticalId,
+      deadlineAt: searchDeadlineAt,
     });
     resultsReceived += result.all_evidence.length;
 
@@ -1071,6 +1103,8 @@ export async function runLeadDiscoveryEngine({
   market = "ru",
   knownCompanyIdentities = [],
   knownRecipientEmails = [],
+  knownPersonKeys = [],
+  emailReadyTarget = leadgenProductionConfig.campaignEmailTarget,
   campaignId,
   searchPageOffset = 0,
   runBudgetMs = DISCOVERY_RUN_BUDGET_MS,
@@ -1133,6 +1167,7 @@ export async function runLeadDiscoveryEngine({
   );
   const discoveredEmailSet = new Set<string>();
   const emailReadyLeadIds = new Set<string>();
+  const contactReadyLeadIds = new Set<string>();
   const processedLeadRecords: EnrichedLeadRecord[] = [];
   const contactDiscoveryResults: ContactDiscoveryResult[] = [];
   const enrichedCompaniesById = new Map<string, LeadgenCompany>();
@@ -1140,7 +1175,7 @@ export async function runLeadDiscoveryEngine({
   for (
     let offset = 0;
     offset < leadWorkflowCandidateRecords.length &&
-    emailReadyLeadIds.size < leadTarget &&
+    emailReadyLeadIds.size < emailReadyTarget &&
     Date.now() + DISCOVERY_DEADLINE_RESERVE_MS < deadlineAt;
     offset += DISCOVERY_ENRICHMENT_CONCURRENCY
   ) {
@@ -1264,6 +1299,9 @@ export async function runLeadDiscoveryEngine({
             lead: record.lead,
             signals: record.signals,
             decisionMaker: record.decisionMaker,
+            // Reuse the bounded People Discovery result. Passing a deferred
+            // placeholder here disconnected known people from their public
+            // corporate email and forced the pipeline toward generic inboxes.
             peopleDiscovery: record.peopleDiscovery,
             createdAt,
           }),
@@ -1272,7 +1310,27 @@ export async function runLeadDiscoveryEngine({
           fallback: null,
         });
 
-        return result ? { record, result } : null;
+        if (!result) return null;
+        const intelligence = await resolveBeforeDeadline({
+          operation: evaluateAdaptiveContactIntelligence({
+            company: record.company,
+            decisionMaker: record.decisionMaker,
+            peopleDiscovery: record.peopleDiscovery,
+            contactDiscovery: result,
+            knownPersonKeys,
+          }),
+          deadlineAt,
+          timeoutMs: 5_000,
+          fallback: createUnresolvedContactIntelligence({
+            decisionMaker: record.decisionMaker,
+            peopleDiscovery: record.peopleDiscovery,
+            stopReason: "contact_evaluation_deadline_reached",
+          }),
+        });
+        return {
+          record,
+          result: attachContactIntelligence(result, intelligence),
+        };
       },
     )
     ).filter(
@@ -1289,8 +1347,10 @@ export async function runLeadDiscoveryEngine({
     processedLeadRecords.push(...completedRecords);
     contactDiscoveryResults.push(...batchResults);
     for (const [resultIndex, result] of batchResults.entries()) {
-      let hasNewUniqueEmail = false;
+      let hasNewContactReadyPerson = false;
+      let hasNewConfirmedEmail = false;
       for (const contact of result.contacts) {
+        if (!isConfirmedOutreachEmail(contact)) continue;
         const email = getContactValue(contact)?.trim().toLowerCase();
         if (
           email &&
@@ -1298,10 +1358,14 @@ export async function runLeadDiscoveryEngine({
           !discoveredEmailSet.has(email)
         ) {
           discoveredEmailSet.add(email);
-          hasNewUniqueEmail = true;
+          hasNewConfirmedEmail = true;
+          if (isContactReadyPerson(contact)) hasNewContactReadyPerson = true;
         }
       }
-      if (hasNewUniqueEmail) {
+      if (hasNewContactReadyPerson) {
+        contactReadyLeadIds.add(completedRecords[resultIndex].lead.id);
+      }
+      if (hasNewConfirmedEmail) {
         emailReadyLeadIds.add(completedRecords[resultIndex].lead.id);
       }
     }
@@ -1379,7 +1443,13 @@ export async function runLeadDiscoveryEngine({
         (company) => company.metadata.official_website_status === "confirmed",
       ).length,
       enrichment_budget_exhausted:
-        Date.now() >= deadlineAt && emailReadyLeadIds.size < leadTarget,
+        emailReadyLeadIds.size < emailReadyTarget &&
+        processedLeadRecords.length < leadWorkflowCandidateRecords.length,
+      email_ready_target: emailReadyTarget,
+      email_ready_companies: emailReadyLeadIds.size,
+      contact_ready_target: leadgenProductionConfig.contactReadyTarget,
+      contact_ready_people: contactReadyLeadIds.size,
+      unresolved_people: Math.max(0, processedLeadRecords.length - contactReadyLeadIds.size),
       search_page_offset: searchPageOffset,
     },
   };
