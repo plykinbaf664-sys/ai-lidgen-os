@@ -1,6 +1,6 @@
 export type LeadStatus = "new" | "approved" | "rejected" | "paused" | "replied" | "interested";
 
-export type CampaignStatus = "completed";
+export type CampaignStatus = "running" | "completed" | "failed";
 
 export type CampaignOperationalStatus =
   | "discovery_complete"
@@ -271,6 +271,7 @@ export type LeadgenContactMetadata = {
   email_quality_gate_passed?: boolean;
   email_generation_attempts?: number;
   email_copy_review_status?: "ready" | "needs_manual_copy_review" | null;
+  email_guide_assignment?: import("@/lib/leadgen/outreach-guides").OutreachGuideAssignment | null;
   message_mode?: OutreachMessageMode | null;
   outreach_ready?: boolean;
   outreach_queue?: {
@@ -293,6 +294,7 @@ export type LeadgenContactMetadata = {
       at: string;
       note?: string;
     }>;
+    guide_assignment?: import("@/lib/leadgen/outreach-guides").OutreachGuideAssignment | null;
   };
   [key: string]: unknown;
 };
@@ -312,6 +314,7 @@ export type OutreachQueueEntry = {
   email_source_url: string | null;
   email_source_label: string | null;
   readiness: string;
+  email_confidence?: "VERIFIED" | "HIGH_CONFIDENCE" | "INFERRED" | "GENERAL";
   signal: {
     type: SignalType | null;
     title: string | null;
@@ -352,6 +355,8 @@ export type OutreachQueueEntry = {
     items: string[];
     summary: string;
   } | null;
+  guide_assignment?: import("@/lib/leadgen/outreach-guides").OutreachGuideAssignment | null;
+  outreach_version?: 2;
   queue_position?: number | null;
   follow_up_due_at: string | null;
   follow_up_status: string | null;
@@ -419,6 +424,10 @@ export type OutreachOperationalState = {
 
 export type ProductionDiscoveryStats = {
   results_received: number;
+  raw_candidates?: number;
+  unique_candidates?: number;
+  prefiltered_candidates?: number;
+  rejected_candidates?: number;
   previously_discovered_skipped: number;
   within_run_duplicates: number;
   new_unique_companies: number;
@@ -436,6 +445,25 @@ export type ProductionDiscoveryStats = {
   duplicate_people_skipped?: number;
   enriched_candidates_checked?: number;
   official_sites_found?: number;
+  segment_matches?: number;
+  segment_uncertain?: number;
+  segment_mismatches?: number;
+  deep_research_count?: number;
+  research_errors?: number;
+  search_attempts?: number;
+  cache_hits?: number;
+  diminishing_return_passes?: number;
+  timings_ms?: {
+    discovery: number;
+    prefilter: number;
+    deep_research: number;
+    total: number;
+  };
+  search_strategy_metrics?: Record<string, {
+    attempts: number;
+    results: number;
+    unique_candidates: number;
+  }>;
   enrichment_budget_exhausted?: boolean;
   passes_completed?: number;
   consecutive_empty_passes?: number;
@@ -444,6 +472,7 @@ export type ProductionDiscoveryStats = {
   continuation_available?: boolean;
   search_exhausted?: boolean;
   target_reached?: boolean;
+  stop_reason?: "target_reached" | "diminishing_returns" | "pass_budget_exhausted" | "cursor_exhausted" | null;
   search_budget: number;
   skip_reasons: Record<string, number>;
   skipped_identity_keys?: string[];

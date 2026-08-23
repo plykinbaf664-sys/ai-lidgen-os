@@ -292,6 +292,7 @@ export async function appendPipelineResult({
     const campaignUpdate = await supabase
       .from("leadgen_campaigns")
       .update({
+        status: normalizedResult.campaign.status,
         production_discovery_stats:
           normalizedResult.campaign.production_discovery_stats ?? {},
       })

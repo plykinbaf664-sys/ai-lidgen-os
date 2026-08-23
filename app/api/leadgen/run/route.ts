@@ -50,6 +50,7 @@ import {
 import type {
   CampaignInput,
   DecisionMakerProfile,
+  LeadgenCampaign,
   LeadgenCompany,
   LeadgenContact,
   LeadgenLead,
@@ -71,6 +72,12 @@ type RunLeadgenRequestBody = Partial<CampaignInput> & {
 export const maxDuration = 300;
 
 const DEFAULT_PRODUCTION_MARKET: SignalSearchMarket = "ru";
+const discoveryRuntime = globalThis as typeof globalThis & {
+  __leadgenActiveDiscoveryRuns?: Set<string>;
+};
+const activeDiscoveryRuns =
+  discoveryRuntime.__leadgenActiveDiscoveryRuns ?? new Set<string>();
+discoveryRuntime.__leadgenActiveDiscoveryRuns = activeDiscoveryRuns;
 
 function getCompanyWebsiteForIdentity(company: LeadgenCompany): string | null {
   const website = company.metadata.official_website;
@@ -307,6 +314,7 @@ async function readRunRequest(request: Request): Promise<{
   };
 }
 export async function POST(request: Request) {
+  let activeRunKey: string | null = null;
   try {
     const {
       campaignInput: requestedCampaignInput,
@@ -316,6 +324,21 @@ export async function POST(request: Request) {
       campaignId,
     } =
       await readRunRequest(request);
+    const requestedRunKey = campaignId
+      ? `campaign:${campaignId}`
+      : `new:${requestedCampaignInput.name.toLowerCase()}`;
+    if (activeDiscoveryRuns.has(requestedRunKey)) {
+      return NextResponse.json(
+        {
+          success: false,
+          code: "discovery_already_running",
+          error: "Поиск этой кампании уже выполняется. Прогресс не потерян.",
+        },
+        { status: 409 },
+      );
+    }
+    activeDiscoveryRuns.add(requestedRunKey);
+    activeRunKey = requestedRunKey;
 
     const existingCampaign = campaignId
       ? await getCampaignDetails(campaignId)
@@ -333,6 +356,16 @@ export async function POST(request: Request) {
           verticalId: existingCampaign.campaign.vertical_id,
         }
       : requestedCampaignInput;
+    if (!campaignInput.verticalId) {
+      return NextResponse.json(
+        {
+          success: false,
+          code: "segment_required",
+          error: "Перед запуском поиска выберите сегмент. Default-сегмент не применяется.",
+        },
+        { status: 400 },
+      );
+    }
     const storedContactReadyEmails = new Set(
       (existingCampaign?.contacts ?? [])
         .filter(isContactReadyPerson)
@@ -422,6 +455,12 @@ export async function POST(request: Request) {
       ...campaignResult,
       campaign: {
         ...campaignResult.campaign,
+        status:
+          (aggregateStats.target_reached === true
+            ? "completed"
+            : aggregateStats.continuation_available === true
+              ? "running"
+              : "completed") as LeadgenCampaign["status"],
         production_discovery_stats: aggregateStats,
       },
       companies: campaignResult.companies.map((company) => ({
@@ -499,6 +538,28 @@ export async function POST(request: Request) {
         pass_number: passNumber,
         page_offset: searchPageOffset,
       },
+      pass_audit: {
+        results_received: result.production_discovery_stats?.results_received ?? 0,
+        raw_candidates: result.production_discovery_stats?.raw_candidates ?? 0,
+        unique_candidates: result.production_discovery_stats?.unique_candidates ?? 0,
+        prefiltered_candidates:
+          result.production_discovery_stats?.prefiltered_candidates ?? 0,
+        qualified_candidates:
+          result.production_discovery_stats?.new_unique_companies ?? 0,
+        previously_discovered_skipped:
+          result.production_discovery_stats?.previously_discovered_skipped ?? 0,
+        enriched_candidates:
+          result.production_discovery_stats?.enriched_candidates_checked ?? 0,
+        official_sites_found:
+          result.production_discovery_stats?.official_sites_found ?? 0,
+        deep_research_count:
+          result.production_discovery_stats?.deep_research_count ?? 0,
+        search_attempts: result.production_discovery_stats?.search_attempts ?? 0,
+        cache_hits: result.production_discovery_stats?.cache_hits ?? 0,
+        timings_ms: result.production_discovery_stats?.timings_ms ?? null,
+        selected_email_companies: emailTargetSelection.selectedEmails.length,
+        search_cursor: searchPageOffset,
+      },
       continuation: {
         available: aggregateStats.continuation_available === true,
         target: leadTarget,
@@ -564,6 +625,8 @@ export async function POST(request: Request) {
       },
       { status: 500 },
     );
+  } finally {
+    if (activeRunKey) activeDiscoveryRuns.delete(activeRunKey);
   }
 }
 

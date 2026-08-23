@@ -24,18 +24,19 @@ function getRankedEmailContacts(
   );
 
   return [...leadContacts].sort((left, right) => {
-    const rank = (contact: LeadgenContact) =>
-      isContactReadyPerson(contact)
-        ? 0
-        : contact.metadata.email_status === "department_email_ready"
-          ? 1
-          : contact.metadata.entry_role === "best_outreach_entry"
-            ? 2
-            : contact.is_primary
-              ? 3
-              : 4;
-    return rank(left) - rank(right);
+    return getEmailTargetPriority(left) - getEmailTargetPriority(right) ||
+      right.confidence_score - left.confidence_score;
   });
+}
+
+export function getEmailTargetPriority(contact: LeadgenContact): number {
+  if (isContactReadyPerson(contact)) return 0;
+  if (contact.contact_type === "work_email" && contact.full_name) return 1;
+  if (contact.metadata.email_status === "department_email_ready") return 2;
+  if (contact.contact_type === "work_email") return 3;
+  if (contact.metadata.entry_role === "best_outreach_entry") return 4;
+  if (contact.is_primary) return 5;
+  return 6;
 }
 
 export function selectCampaignEmailTarget({
@@ -63,9 +64,22 @@ export function selectCampaignEmailTarget({
   let duplicatePeopleSkipped = 0;
   let contactReadyPeople = 0;
 
-  for (const lead of result.leads) {
+  const rankedLeads = result.leads
+    .map((lead, index) => ({
+      lead,
+      index,
+      contacts: getRankedEmailContacts(lead, result.contacts),
+    }))
+    .filter((item) => item.contacts.length > 0)
+    .sort((left, right) =>
+      getEmailTargetPriority(left.contacts[0]) -
+        getEmailTargetPriority(right.contacts[0]) ||
+      right.contacts[0].confidence_score - left.contacts[0].confidence_score ||
+      left.index - right.index,
+    );
+
+  for (const { lead, contacts } of rankedLeads) {
     if (selectedEmails.size >= target) break;
-    const contacts = getRankedEmailContacts(lead, result.contacts);
     let selectedContact: LeadgenContact | null = null;
     let selectedEmail = "";
 

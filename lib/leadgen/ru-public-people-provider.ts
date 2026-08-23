@@ -435,6 +435,22 @@ function getInitialQueryParts(input: PeopleProviderInput): string[] {
   ].filter(Boolean);
 }
 
+function getRoutingQueryParts(input: PeopleProviderInput): string[] {
+  const company = quote(input.company.company_name);
+  const domain = getCompanyDomain(input.company);
+
+  return [
+    `${company} ("руководитель" OR "директор" OR "менеджер" OR "специалист") email`,
+    `${company} сотрудник контакты email`,
+    domain
+      ? `site:${domain} ("руководство" OR "команда" OR "сотрудники")`
+      : "",
+    domain
+      ? `"@${domain}" ${company} -info@ -sales@ -office@ -support@`
+      : "",
+  ].filter(Boolean);
+}
+
 function getCandidateContactQueries(
   input: PeopleProviderInput,
   candidate: CandidateDraft,
@@ -612,8 +628,11 @@ function toPersonCandidate(
 export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
   id = "ru-public-web";
   label = "RU public web";
+  private readonly searchProvider?: SearchProvider;
 
-  constructor(private readonly searchProvider?: SearchProvider) {}
+  constructor(searchProvider?: SearchProvider) {
+    this.searchProvider = searchProvider;
+  }
 
   private getSearchProvider(): SearchProvider | null {
     if (this.searchProvider) {
@@ -673,7 +692,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
       getInitialQueryParts(input),
       4,
     );
-    const initialDrafts = dedupeDrafts(
+    let initialDrafts = dedupeDrafts(
       initialResults.flatMap((result) => draftFromSearchResult({ input, result })),
     )
       .filter((draft) =>
@@ -683,6 +702,28 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
         ),
       )
       .slice(0, 4);
+
+    if (!initialDrafts.some((draft) => Boolean(draft.workEmail))) {
+      const routingResults = await this.runSearches(
+        searchProvider,
+        getRoutingQueryParts(input),
+        4,
+      );
+      initialDrafts = dedupeDrafts([
+        ...initialDrafts,
+        ...routingResults.flatMap((result) =>
+          draftFromSearchResult({ input, result }),
+        ),
+      ])
+        .filter((draft) =>
+          draft.contactRoute === "corporate_router" ||
+          hasTargetRoleMatch(
+            toPersonCandidate(draft, input, this.label, this.id),
+            input.decisionMaker,
+          ),
+        )
+        .slice(0, 6);
+    }
 
     const enrichedDrafts = await Promise.all(
       initialDrafts.map(async (draft) => {

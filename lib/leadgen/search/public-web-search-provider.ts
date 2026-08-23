@@ -433,6 +433,7 @@ export class PublicWebSearchProvider implements SearchProvider {
     input: SearchProviderSearchInput,
   ): Promise<SearchResult[]> {
     const errors: string[] = [];
+    const resultsBySource: ParsedPublicResult[][] = [];
     let receivedSuccessfulResponse = false;
     const maxResults = Math.min(
       Math.max(input.maxResults ?? 10, 1),
@@ -443,25 +444,45 @@ export class PublicWebSearchProvider implements SearchProvider {
       ? (["hh-web", ...this.sources] as PublicSearchSource[])
       : this.sources;
 
-    for (const source of Array.from(new Set(sources))) {
-      try {
-        const results = await this.fetchSource(source, input);
-        receivedSuccessfulResponse = true;
-        if (results.length > 0) {
-          return results.slice(0, maxResults).map((result, index) => ({
-            ...result,
-            source_label: `public-web:${source}`,
-            score: Math.max(0.1, 1 - index * 0.05),
-            published_at: null,
-            raw_content: result.snippet || null,
-          }));
+    const sourceResponses = await Promise.all(
+      Array.from(new Set(sources)).map(async (source) => {
+        try {
+          return { source, results: await this.fetchSource(source, input), error: null };
+        } catch (error) {
+          return {
+            source,
+            results: [] as ParsedPublicResult[],
+            error: formatUnknownError(error, "public search failed"),
+          };
         }
-        errors.push(`${source}: no relevant results`);
-      } catch (error) {
-        errors.push(
-          `${source}: ${formatUnknownError(error, "public search failed")}`,
-        );
+      }),
+    );
+    for (const response of sourceResponses) {
+      if (response.error) {
+        errors.push(`${response.source}: ${response.error}`);
+        continue;
       }
+      receivedSuccessfulResponse = true;
+      if (response.results.length > 0) resultsBySource.push(response.results);
+      else errors.push(`${response.source}: no relevant results`);
+    }
+
+    const interleaved: ParsedPublicResult[] = [];
+    const longestSource = Math.max(0, ...resultsBySource.map((items) => items.length));
+    for (let index = 0; index < longestSource; index += 1) {
+      for (const sourceResults of resultsBySource) {
+        if (sourceResults[index]) interleaved.push(sourceResults[index]);
+      }
+    }
+    const unique = uniqueResults(interleaved).slice(0, maxResults);
+    if (unique.length > 0) {
+      return unique.map((result, index) => ({
+        ...result,
+        source_label: "public-web:multi-source",
+        score: Math.max(0.1, 1 - index * 0.04),
+        published_at: null,
+        raw_content: result.snippet || null,
+      }));
     }
 
     if (receivedSuccessfulResponse) {

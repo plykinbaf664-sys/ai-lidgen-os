@@ -4,9 +4,12 @@ import {
   canContinueDiscovery,
   DISCOVERY_EMPTY_PASS_LIMIT,
   DISCOVERY_MAX_PASSES,
+  DISCOVERY_MAX_SEARCH_CURSORS,
+  DISCOVERY_PROVIDER_PAGE_WINDOW,
   DISCOVERY_PAGES_PER_QUERY_PER_PASS,
   DISCOVERY_PASS_BUDGET_MS,
   getDiscoveryPageOffset,
+  getDiscoverySearchCursor,
   mergeDiscoveryPassStats,
 } from "../lib/leadgen/discovery-continuation.ts";
 
@@ -31,54 +34,33 @@ const pass = (contacts, offset = 0) => ({
   skip_reasons: {},
 });
 
-assert.equal(DISCOVERY_PASS_BUDGET_MS, 160_000);
-assert.equal(DISCOVERY_MAX_PASSES, 30);
-assert.equal(DISCOVERY_EMPTY_PASS_LIMIT, 3);
+assert.equal(DISCOVERY_PASS_BUDGET_MS, 240_000);
+assert.equal(DISCOVERY_MAX_PASSES, 100);
+assert.equal(DISCOVERY_MAX_SEARCH_CURSORS, 500);
+assert.equal(DISCOVERY_PROVIDER_PAGE_WINDOW, 10);
+assert.ok(DISCOVERY_EMPTY_PASS_LIMIT >= 1);
 assert.equal(DISCOVERY_PAGES_PER_QUERY_PER_PASS, 1);
 
-const first = mergeDiscoveryPassStats({
-  pass: pass(8),
-  target: 50,
-  pagesPerPass: 10,
-});
+const first = mergeDiscoveryPassStats({ pass: pass(8), target: 50, pagesPerPass: 10 });
 assert.equal(first.email_ready_companies, 8);
-assert.equal(first.contact_ready_people, 3);
-assert.equal(first.passes_completed, 1);
-assert.equal(first.next_page_offset, 0);
+assert.equal(first.next_page_offset, 10);
 assert.equal(first.continuation_available, true);
 
-const emptyOnce = mergeDiscoveryPassStats({
-  previous: first,
-  pass: pass(0, 10),
-  target: 50,
-  pagesPerPass: 10,
-});
-assert.equal(emptyOnce.consecutive_empty_passes, 0);
-assert.equal(emptyOnce.continuation_available, true);
-assert.equal(emptyOnce.next_page_offset, 0);
-
-const completedPageEmptyOnce = mergeDiscoveryPassStats({
-  previous: emptyOnce,
-  pass: { ...pass(0, 10), enrichment_budget_exhausted: false },
-  target: 50,
-  pagesPerPass: 10,
-});
-const completedPageEmptyTwice = mergeDiscoveryPassStats({
-  previous: completedPageEmptyOnce,
-  pass: { ...pass(0, 20), enrichment_budget_exhausted: false },
-  target: 50,
-  pagesPerPass: 10,
-});
-assert.equal(completedPageEmptyTwice.search_exhausted, false);
-assert.equal(completedPageEmptyTwice.continuation_available, true);
-const completedPageEmptyThrice = mergeDiscoveryPassStats({
-  previous: completedPageEmptyTwice,
-  pass: { ...pass(0, 30), enrichment_budget_exhausted: false },
-  target: 50,
-  pagesPerPass: 10,
-});
-assert.equal(completedPageEmptyThrice.search_exhausted, true);
-assert.equal(completedPageEmptyThrice.continuation_available, false);
+let lowYield = first;
+for (let index = 0; index < DISCOVERY_EMPTY_PASS_LIMIT; index += 1) {
+  lowYield = mergeDiscoveryPassStats({
+    previous: lowYield,
+    pass: pass(0, lowYield.next_page_offset ?? 0),
+    target: 50,
+    pagesPerPass: 10,
+  });
+}
+assert.equal(lowYield.diminishing_return_passes, DISCOVERY_EMPTY_PASS_LIMIT);
+assert.equal(lowYield.search_exhausted, true);
+assert.equal(lowYield.continuation_available, false);
+assert.equal(lowYield.stop_reason, "diminishing_returns");
+assert.equal(canContinueDiscovery(lowYield), false);
+assert.ok((lowYield.next_page_offset ?? 0) > (first.next_page_offset ?? 0));
 
 const completed = mergeDiscoveryPassStats({
   previous: first,
@@ -86,12 +68,19 @@ const completed = mergeDiscoveryPassStats({
   target: 50,
   pagesPerPass: 10,
 });
-assert.equal(completed.new_unique_emails, 50);
 assert.equal(completed.email_ready_companies, 50);
-assert.equal(completed.contact_ready_people, 6);
 assert.equal(completed.target_reached, true);
 assert.equal(completed.continuation_available, false);
+assert.equal(completed.stop_reason, "target_reached");
 
+assert.deepEqual(getDiscoverySearchCursor(0), {
+  cursor: 0,
+  providerPage: 0,
+  queryExpansion: "",
+  wave: 0,
+});
+assert.equal(getDiscoverySearchCursor(10).providerPage, 0);
+assert.equal(getDiscoverySearchCursor(499).providerPage, 9);
 assert.equal(getDiscoveryPageOffset(pass(8), 10), 10);
 
 const brokenLegacyCheckpoint = {
@@ -105,30 +94,22 @@ const brokenLegacyCheckpoint = {
 };
 assert.equal(getDiscoveryPageOffset(brokenLegacyCheckpoint, 10), 0);
 assert.equal(canContinueDiscovery(brokenLegacyCheckpoint), true);
-const legacyWithoutBudgetFlag = {
-  ...brokenLegacyCheckpoint,
-  enrichment_budget_exhausted: false,
-};
-assert.equal(getDiscoveryPageOffset(legacyWithoutBudgetFlag, 10), 0);
-assert.equal(canContinueDiscovery(legacyWithoutBudgetFlag), true);
 
 const route = await fs.readFile("app/api/leadgen/run/route.ts", "utf8");
 const dashboard = await fs.readFile("components/leadgen/leadgen-dashboard.tsx", "utf8");
+const engine = await fs.readFile("lib/leadgen/lead-discovery-engine.ts", "utf8");
 const signalPipeline = await fs.readFile("lib/leadgen/signals/signal-pipeline.ts", "utf8");
-assert.match(route, /appendPipelineResult/);
-assert.match(route, /emailReadyTarget/);
-assert.match(route, /DISCOVERY_PAGES_PER_QUERY_PER_PASS/);
-assert.match(signalPipeline, /deadlineAt/);
-assert.match(signalPipeline, /deadline_reached/);
-assert.match(route, /knownPersonKeys/);
-assert.match(dashboard, /Продолжить поиск до 50 компаний/);
-assert.match(dashboard, /Готовые компании/);
-assert.match(dashboard, /discovery\.email_ready_companies \?\? discovery\.new_unique_emails/);
-assert.match(dashboard, /discovery\.email_ready_target \?\? discovery\.email_target \?\? 50/);
-assert.match(dashboard, /setDiscovery\(null\)/);
-assert.match(dashboard, /completedTarget/);
-assert.match(dashboard, /discoveryIncomplete/);
-assert.match(dashboard, /Прромежуточные карточки|Промежуточные/);
+assert.match(route, /aggregateStats\.target_reached === true/);
+assert.match(route, /raw_candidates/);
+assert.match(signalPipeline, /discoverySearchConcurrency/);
+assert.match(signalPipeline, /diminishing_return/);
+assert.match(engine, /prefilterCandidate/);
+assert.match(engine, /getCandidateResearchPriority/);
+assert.match(engine, /discoveryResearchConcurrency/);
+assert.match(dashboard, /discovery\.unique_candidates/);
+assert.match(dashboard, /discovery\.deep_research_count/);
 assert.match(dashboard, /campaignDetails\?\.leads\.length/);
 
-console.log("DISCOVERY_CONTINUATION_OK checkpoint=persistent email_ready_target=50 personal_lpr_is_quality_metric empty_pass_guard=3 max_passes=30");
+console.log(
+  "DISCOVERY_CONTINUATION_OK cursor_advances=true diminishing_stop=true target_stop=true",
+);

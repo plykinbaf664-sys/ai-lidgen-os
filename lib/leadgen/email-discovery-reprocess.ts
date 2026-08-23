@@ -224,6 +224,7 @@ export async function reprocessLatestCampaignEmailDiscovery({
           email_quality_gate_passed: draft.qualityGatePassed,
           email_generation_attempts: draft.generationAttempts,
           email_copy_review_status: draft.copyReviewStatus,
+          email_guide_assignment: draft.guideAssignment,
           message_mode: draft.messageMode,
           outreach_ready: draft.outreachReady,
         },

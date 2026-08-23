@@ -57,7 +57,7 @@ const first = await provider.search(input);
 const second = await provider.search(input);
 
 assert.equal(first.length, 1);
-assert.equal(first[0].source_label, "public-web:brave");
+assert.equal(first[0].source_label, "public-web:multi-source");
 assert.deepEqual(second, first);
 assert.equal(requests.length, 2, "identical searches must use the in-memory cache");
 assert.ok(requests[0].includes("b=21"), "Yahoo pagination must advance");

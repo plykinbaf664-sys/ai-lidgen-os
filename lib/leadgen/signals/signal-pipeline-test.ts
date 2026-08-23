@@ -17,6 +17,7 @@ import type {
   OpportunityAssessment,
   SignalType,
 } from "@/lib/leadgen/types";
+import type { LeadgenVerticalId } from "@/lib/leadgen/verticals";
 
 export type SignalPipelineTestStoppedReason = SignalPipelineStoppedReason;
 
@@ -57,6 +58,9 @@ export type RunSignalPipelineTestInput = {
   maxQueries?: number;
   maxResultsPerQuery?: number;
   market?: SignalSearchMarket;
+  pageOffset?: number;
+  queryExpansion?: string;
+  verticalId?: LeadgenVerticalId;
 };
 
 export type SignalPipelineTestResult = {
@@ -184,6 +188,9 @@ export async function runSignalPipelineTest({
   maxQueries,
   maxResultsPerQuery,
   market,
+  pageOffset,
+  queryExpansion,
+  verticalId,
 }: RunSignalPipelineTestInput): Promise<SignalPipelineTestResult> {
   const result = await runSignalPipeline({
     signalType,
@@ -192,6 +199,9 @@ export async function runSignalPipelineTest({
     maxQueries,
     maxResultsPerQuery,
     market,
+    pageOffset,
+    queryExpansion,
+    verticalId,
   });
 
   return {

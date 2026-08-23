@@ -8,6 +8,7 @@ import type {
   PeopleDiscoveryResult,
   PersonCandidate,
 } from "@/lib/leadgen/types";
+import { isPlausiblePublicPersonName } from "@/lib/leadgen/person-factuality";
 
 export type PeopleDiscoveryInput = {
   company: LeadgenCompany;
@@ -86,9 +87,22 @@ export class PeopleDiscoveryEngine {
         ...diagnostic,
       })),
     );
+    const rawCandidates = providerResults.flatMap((result) => result.candidates);
     const candidates = dedupeCandidates(
-      providerResults.flatMap((result) => result.candidates),
+      rawCandidates.filter((candidate) =>
+        isPlausiblePublicPersonName(candidate.full_name) &&
+        candidate.evidence.length > 0 &&
+        Boolean(candidate.source),
+      ),
     );
+    if (rawCandidates.length > candidates.length) {
+      providerDiagnostics.push({
+        provider_id: "people-factuality",
+        provider_label: "Person factuality guard",
+        level: "info",
+        message: `Отклонено неподтверждённых или некорректных кандидатов: ${rawCandidates.length - candidates.length}.`,
+      });
+    }
     const unavailableProviders = providerResults.filter(
       (result) => result.unavailable,
     );

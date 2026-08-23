@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { CampaignForm } from "@/components/leadgen/campaign-form";
 import { CampaignHistory } from "@/components/leadgen/campaign-history";
 import { EmailOutreachQueue } from "@/components/leadgen/email-outreach-queue";
@@ -32,7 +32,7 @@ type RunResponse =
         search_exhausted: boolean;
       };
     }
-  | { success: false; error?: string };
+  | { success: false; error?: string; code?: string };
 type CampaignsResponse =
   | { success: true; campaigns: LeadgenCampaignSummary[] }
   | { success: false; error?: string };
@@ -71,7 +71,7 @@ export function LeadgenDashboard() {
   const [error, setError] = useState<string | null>(null);
   const activeCampaignRef = useRef<HTMLElement | null>(null);
 
-  async function loadHistory(selectLatest = false) {
+  const loadHistory = useCallback(async (selectLatest = false) => {
     setIsHistoryLoading(true);
     try {
       const response = await fetch("/api/leadgen/campaigns");
@@ -85,7 +85,7 @@ export function LeadgenDashboard() {
     } finally {
       setIsHistoryLoading(false);
     }
-  }
+  }, [activeCampaignId]);
 
   useEffect(() => {
     let active = true;
@@ -98,6 +98,16 @@ export function LeadgenDashboard() {
         if (data.campaigns[0]) {
           setActiveCampaignId(data.campaigns[0].id);
           setActiveCampaignName(data.campaigns[0].name);
+          const detailsResponse = await fetch(
+            `/api/leadgen/campaigns/details?id=${encodeURIComponent(data.campaigns[0].id)}`,
+          );
+          const details = await readJson<DetailsResponse>(detailsResponse);
+          if (detailsResponse.ok && details.success && active) {
+            setCampaignDetails(details.details);
+            setDiscovery(
+              details.details.campaign.production_discovery_stats ?? null,
+            );
+          }
         }
       })
       .catch(() => active && setError("Не удалось загрузить кампании."))
@@ -105,10 +115,10 @@ export function LeadgenDashboard() {
     return () => { active = false; };
   }, []);
 
-  async function runCampaignUntilComplete(
+  const runCampaignUntilComplete = useCallback(async (
     input: CampaignInput,
     startingCampaignId: string | null = null,
-  ) {
+  ) => {
     setIsRunning(true);
     if (!startingCampaignId) {
       setCampaignDetails(null);
@@ -121,20 +131,43 @@ export function LeadgenDashboard() {
       let completedTarget = false;
       let finalFound = 0;
       let finalTarget = 50;
-      for (let pass = 1; pass <= DISCOVERY_MAX_PASSES; pass += 1) {
+      let pass = 1;
+      let transientFailures = 0;
+      while (pass <= DISCOVERY_MAX_PASSES) {
         setRunProgress(
           campaignId
-            ? `Продолжаем поиск: проход ${pass}, готово ${discovery?.email_ready_companies ?? discovery?.new_unique_emails ?? 0} из 50 компаний с подтверждённым email`
+            ? `Продолжаем поиск: проход ${pass}, готово ${finalFound} из 50 компаний с подтверждённым email`
             : "Первый проход поиска: цель — до 50 новых компаний с подтверждённым email",
         );
-        const response = await fetch("/api/leadgen/run", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...input, campaignId }),
-        });
-        const data = await readJson<RunResponse>(response);
-        if (!response.ok || !data.success) {
-          throw new Error(formatUnknownError(data.success ? null : data.error));
+        let response: Response | null = null;
+        let data: RunResponse;
+        try {
+          response = await fetch("/api/leadgen/run", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ ...input, campaignId }),
+          });
+          data = await readJson<RunResponse>(response);
+          if (!response.ok || !data.success) {
+            throw new Error(formatUnknownError(data.success ? null : data.error));
+          }
+          transientFailures = 0;
+        } catch (caught) {
+          if (
+            response &&
+            response.status >= 400 &&
+            response.status < 500 &&
+            response.status !== 409
+          ) {
+            throw caught;
+          }
+          transientFailures += 1;
+          const retryDelay = Math.min(30_000, transientFailures * 3_000);
+          setRunProgress(
+            `Поиск временно прерван сетью. Прогресс сохранён; повтор через ${Math.ceil(retryDelay / 1_000)} сек.`,
+          );
+          await new Promise((resolve) => window.setTimeout(resolve, retryDelay));
+          continue;
         }
         campaignId = data.campaign.id;
         finalCampaign = data.campaign;
@@ -152,6 +185,7 @@ export function LeadgenDashboard() {
           `Готово ${finalFound} из ${finalTarget} компаний с подтверждённым email. Проходов: ${data.continuation?.passes_completed ?? pass}.`,
         );
         if (completedTarget || !data.continuation?.available) break;
+        pass += 1;
       }
       await loadHistory();
       if (campaignId) {
@@ -168,17 +202,16 @@ export function LeadgenDashboard() {
       }
       if (finalCampaign) setActiveCampaignName(finalCampaign.name);
       if (!completedTarget) {
-        throw new Error(
-          `Поиск не завершён: готово ${finalFound} из ${finalTarget}. Промежуточный результат сохранён; продолжите поиск до 50.`,
+        setRunProgress(
+          `Найдено ${finalFound} из ${finalTarget} качественных лидов. Поиск остановлен: дальнейшие стратегии перестали давать достаточно новых релевантных компаний.`,
         );
       }
     } catch (caught) {
       setError(caught instanceof Error && caught.message ? caught.message : "Не удалось запустить поиск.");
     } finally {
       setIsRunning(false);
-      setRunProgress(null);
     }
-  }
+  }, [loadHistory]);
 
   async function handleRun(input: CampaignInput) {
     await runCampaignUntilComplete(input);
@@ -232,6 +265,37 @@ export function LeadgenDashboard() {
       discovery.target_reached !== true &&
       discoveryFound < discoveryTarget,
   );
+  const autoResumeCampaignRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (
+      !activeCampaignId ||
+      !activeCampaignName ||
+      !campaignDetails ||
+      campaignDetails.campaign.status !== "running" ||
+      !discoveryIncomplete ||
+      isRunning ||
+      autoResumeCampaignRef.current === activeCampaignId
+    ) {
+      return;
+    }
+    autoResumeCampaignRef.current = activeCampaignId;
+    void runCampaignUntilComplete(
+      {
+        name: activeCampaignName,
+        requestedBy: campaignDetails.campaign.requested_by,
+        verticalId: campaignDetails.campaign.vertical_id,
+      },
+      activeCampaignId,
+    );
+  }, [
+    activeCampaignId,
+    activeCampaignName,
+    campaignDetails,
+    discoveryIncomplete,
+    isRunning,
+    runCampaignUntilComplete,
+  ]);
 
   return (
     <div className="leadgen-console">
@@ -270,21 +334,31 @@ export function LeadgenDashboard() {
                     {discovery.email_ready_target ?? discovery.email_target ?? 50}
                   </strong>
                 </span>
-                <span>Персональных ЛПР <strong>{discovery.contact_ready_people ?? 0}</strong></span>
-                <span>Проверено результатов <strong>{discovery.results_received}</strong></span>
+                <span>
+                  Персональных контактов / ЛПР{" "}
+                  <strong>
+                    {discovery.contact_ready_people ?? 0} из{" "}
+                    {discovery.contact_ready_target ?? discovery.email_ready_target ?? 50}
+                  </strong>
+                </span>
+                <span>Найдено кандидатов <strong>{discovery.raw_candidates ?? discovery.results_received}</strong></span>
+                <span>Уникальных <strong>{discovery.unique_candidates ?? discovery.new_unique_companies}</strong></span>
                 <span>
                   Прошли первичный отбор{" "}
-                  <strong>{discovery.qualified_candidates_found ?? discovery.new_unique_companies}</strong>
+                  <strong>{discovery.prefiltered_candidates ?? discovery.qualified_candidates_found ?? discovery.new_unique_companies}</strong>
                 </span>
+                <span>Deep research <strong>{discovery.deep_research_count ?? discovery.enriched_candidates_checked ?? 0}</strong></span>
+                <span>Search attempts <strong>{discovery.search_attempts ?? 0}</strong></span>
+                <span>Cache hits <strong>{discovery.cache_hits ?? 0}</strong></span>
               </div>
             ) : null}
           </div>
-          {isRunning || discoveryIncomplete ? (
+          {isRunning && !campaignDetails ? (
             <section className="panel leadgen-empty-campaign" aria-live="polite">
               <h2>Формируем полный набор</h2>
               <p>
-                Готово {discoveryFound} из {discoveryTarget}. Промежуточные
-                карточки появятся только после завершения поиска 50/50.
+                Найдено: {discovery?.raw_candidates ?? 0}. Уникальных: {discovery?.unique_candidates ?? 0}.
+                Прошли фильтр: {discovery?.prefiltered_candidates ?? 0}. Готово: {discoveryFound} / {discoveryTarget}.
               </p>
             </section>
           ) : (

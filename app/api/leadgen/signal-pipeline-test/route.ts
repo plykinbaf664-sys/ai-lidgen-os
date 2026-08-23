@@ -6,6 +6,7 @@ import {
 import { runSignalPipelineTest } from "@/lib/leadgen/signals/signal-pipeline-test";
 import type { SignalSearchMarket } from "@/lib/leadgen/signals/query-builder";
 import type { SignalType } from "@/lib/leadgen/types";
+import { isLeadgenVerticalId } from "@/lib/leadgen/verticals";
 
 const signalTypes: SignalType[] = [
   "HIRING_SIGNAL",
@@ -84,6 +85,11 @@ export async function GET(request: Request) {
         url.searchParams.get("maxResultsPerQuery"),
       ),
       market: readMarketParam(url.searchParams.get("market")),
+      pageOffset: readNumberParam(url.searchParams.get("pageOffset")),
+      queryExpansion: url.searchParams.get("queryExpansion") ?? undefined,
+      verticalId: isLeadgenVerticalId(url.searchParams.get("verticalId"))
+        ? url.searchParams.get("verticalId") as import("@/lib/leadgen/verticals").LeadgenVerticalId
+        : undefined,
     });
 
     return NextResponse.json({

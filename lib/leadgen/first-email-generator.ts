@@ -1,5 +1,6 @@
 import type { CommercialSignalType, OutreachMessageMode } from "@/lib/leadgen/types";
 import { getVerticalProfile, inferVerticalId, type LeadgenVerticalId } from "@/lib/leadgen/verticals";
+import { OUTREACH_GUIDE_ATTACHMENTS_ENABLED } from "@/lib/leadgen/outreach-guide-config";
 
 export type OutreachMicroValue = {
   type: "ideas" | "audit" | "scenarios" | "processes";
@@ -52,6 +53,8 @@ export type FirstEmailCopy = {
     greeting: string;
     observation: string;
     hypothesis: string;
+    insight: string;
+    experts: string;
     value: string;
     cta: string;
     signature: string;
@@ -135,8 +138,11 @@ export function getPersonalizedOutboundSubject({
 }
 
 function getFirstName(value: string | null | undefined): string | null {
-  const firstName = cleanText(value).split(" ")[0]?.replace(/[^\p{L}-]/gu, "");
-  return firstName && firstName.length >= 2 ? firstName : null;
+  const normalized = cleanText(value);
+  const parts = normalized.split(" ").map((part) => part.replace(/[^\p{L}-]/gu, "")).filter(Boolean);
+  if (parts.length < 2 || parts.some((part) => part.length < 2)) return null;
+  if (/директор|руководител|менеджер|отдел|компан|контакт|ваканси/i.test(normalized)) return null;
+  return parts[0];
 }
 
 function getIntent(context: FirstEmailContext): EmailIntent {
@@ -262,10 +268,10 @@ function getContextualSubject(context: FirstEmailContext, attempt: number): stri
   const role = cleanText(context.decisionMakerRole).split(/\s+/).slice(0, 2).join(" ");
   const options = [
     `Что проверить в ${company}`,
-    `Одна мысль для ${company}`,
+    `${company}: до расширения команды`,
     role ? `Вопрос по зоне ${role}` : `Вопрос по процессу ${company}`,
     `${company}: где теряется скорость`,
-    `Идея без нового найма`,
+    `${company}: нагрузка до найма`,
   ];
   return options[stableIndex(
     `${company}:${role}:${context.signalType ?? ""}:${context.uniquenessKey ?? company}:${attempt}`,
@@ -276,11 +282,27 @@ function getContextualSubject(context: FirstEmailContext, attempt: number): stri
     .join(" ");
 }
 
+function getNonObviousInsight(intent: EmailIntent): string {
+  const variants: Record<EmailIntent, string> = {
+    sales: "Просто добавить ещё одного менеджера — не всегда решение: новый человек наследует тот же ручной разбор и делает узкое место дороже.",
+    support: "Расширение поддержки не устраняет причину, если типовые вопросы и маршрутизация по-прежнему требуют внимания специалиста.",
+    launch: "Дополнительный трафик не исправляет этот разрыв: он лишь быстрее нагружает участок, где запрос ещё не получил владельца.",
+    technology: "Новая система сама по себе не убирает ручной стык — его нужно отдельно увидеть и встроить в процесс.",
+    expansion: "Новый найм может ускорить отдельную команду, но не исправит передачу между командами и отсутствие единого владельца.",
+    inbound: "Увеличение рекламы здесь не помогает: больше обращений попадает в тот же медленный ручной контур.",
+    general: "Добавлять людей поверх такого участка рискованно: вместе с объёмом масштабируются ожидание, повторный ввод и потеря контроля.",
+  };
+  return variants[intent];
+}
+
+function getExpertsContext() {
+  return "Александр как бизнес-аналитик разбирает компании, которые выросли из прежней системы управления, и показывает, где процессы уже ограничивают рост. AI-эксперт находит ручной труд в лидах, продажах и операциях, где теряются время и деньги.";
+}
+
 function getValuePitch(
   context: FirstEmailContext,
   intent: EmailIntent,
 ): string {
-  const company = compactCompanyName(context.companyName);
   const vertical = getVerticalProfile(context.verticalId ?? inferVerticalId(context.industry));
   const outcomes: Record<EmailIntent, string> = {
     sales: "отвечать сразу, собирать задачу и передавать менеджеру уже квалифицированную заявку",
@@ -291,7 +313,10 @@ function getValuePitch(
     inbound: "моментально квалифицировать входящий запрос и отдавать менеджеру клиента с понятной задачей и приоритетом",
     general: "забирать первый контакт, повторяющиеся уточнения и передачу запроса ответственному сотруднику",
   };
-  return `Для ${company} собрал схему из трёх шагов: как ${outcomes[intent]}. В ${vertical.label.toLowerCase()} мы ${vertical.offer}. Покажу, где это встраивается в ваш процесс — без презентации и общих слов.`;
+  const attachmentsNote = OUTREACH_GUIDE_ATTACHMENTS_ENABLED
+    ? " К письму приложил два коротких материала: один про процессы и управление, второй — про ручной труд и автоматизацию."
+    : "";
+  return `На короткой консультации разберём, как ${outcomes[intent]}; для ${vertical.label.toLowerCase()} это связано с тем, что мы ${vertical.offer}. Стандартная стоимость консультации любого эксперта — 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведём её бесплатно.${attachmentsNote}`;
 }
 
 function getMicroValue(intent: EmailIntent, context?: FirstEmailContext): OutreachMicroValue {
@@ -311,12 +336,12 @@ function getMicroValue(intent: EmailIntent, context?: FirstEmailContext): Outrea
 
 function getCta(mode: OutreachMessageMode | null | undefined): string {
   if (mode === "personal") {
-    return "Если разложу это на вашем процессе за 15 минут — обсудим?";
+    return "Если это актуально, ответите «да» — предложу два времени для короткого разговора?";
   }
   if (mode === "department") {
-    return "Кого из вашей команды подключить на 15-минутный разбор?";
+    return "Подскажете, кому из команды переслать этот разбор?";
   }
-  return "Кто отвечает за этот процесс — кому предложить 15-минутный разбор?";
+  return "Подскажете, кто у вас отвечает за этот процесс?";
 }
 
 function contentWords(value: string): Set<string> {
@@ -353,8 +378,8 @@ function scoreCopy(context: FirstEmailContext, body: string, microValue: Outreac
     human_tone: 9,
     truthfulness: verified ? 10 : 9,
     call_relevance:
-      /15[-\s]?минут|15\s+минут/i.test(body) &&
-      /созвон|сверить|покаж|разбор|обсуд/i.test(body)
+      /разговор|созвон|консультац|разбор/i.test(body) &&
+      /ответ|подскаж/i.test(body)
         ? 10
         : 5,
     template_similarity: getTemplateSimilarityScore(body, context.batchBodies),
@@ -374,13 +399,17 @@ export function validateFirstEmailV3(copy: Pick<FirstEmailCopy, "subject" | "bod
   // it outside the content limit prevents otherwise valid copy from failing.
   const words = countFirstEmailContentWords(copy.body);
   if (subjectWords < 3 || subjectWords > 7) errors.push("Тема должна содержать 3–7 слов.");
-  if (paragraphs.length < 4 || paragraphs.length > 6) errors.push("Письмо должно содержать 4–6 коротких абзацев.");
-  if (words < 60 || words > 110) errors.push("Письмо должно содержать 60–110 слов.");
+  if (paragraphs.length < 7 || paragraphs.length > 9) errors.push("Письмо должно содержать 7–9 коротких абзацев.");
+  if (words < 120 || words > 220) errors.push("Письмо должно содержать 120–220 слов.");
   for (const forbidden of forbiddenPatterns) if (forbidden.pattern.test(content)) errors.push(`Запрещённая формулировка: ${forbidden.label}.`);
-  if (!/15[-\s]?минут|15\s+минут/i.test(copy.body)) errors.push("CTA должен предлагать конкретный короткий разговор на 15 минут.");
-  if (!/созвон|сверить|покаж|разбор|обсуд/i.test(copy.body)) errors.push("Письмо должно вести к короткому разбору или созвону.");
+  if (!/9\s*900\s*₽/.test(copy.body)) errors.push("В письме должна быть стандартная стоимость 9 900 ₽.");
+  if (!/24\s+час/i.test(copy.body) || !/бесплат/i.test(copy.body)) errors.push("В письме должно быть корректное условие бесплатной консультации при ответе в течение 24 часов.");
+  if (!/Александр/.test(copy.body) || !/AI-эксперт/i.test(copy.body)) errors.push("В письме должен быть релевантный контекст двух экспертов.");
+  if (OUTREACH_GUIDE_ATTACHMENTS_ENABLED && !/два коротких материала/i.test(copy.body)) errors.push("В письме нужно естественно обозначить два вложения.");
+  if (!/разговор|созвон|консультац|разбор/i.test(copy.body)) errors.push("Письмо должно вести к короткому разговору или разбору.");
   if ((copy.body.match(/\?/g) ?? []).length !== 1) errors.push("В письме должен быть один CTA.");
   if (context && cleanText(context.growthSignal).length > 32 && copy.body.includes(cleanText(context.growthSignal))) errors.push("В письмо попал raw commercial signal.");
+  if (context && !hasVerifiedSignal(context)) errors.push("Нет подтверждённого commercial signal с источником.");
   return { valid: errors.length === 0, errors };
 }
 
@@ -396,6 +425,8 @@ export function generateFirstEmailV3(context: FirstEmailContext): FirstEmailCopy
       greeting: getFirstName(context.decisionMakerName) ? `${getFirstName(context.decisionMakerName)}, добрый день.` : "Добрый день.",
       observation: getPatternInterrupt(context, intent, attempt),
       hypothesis: getSharpHypothesis(intent, context),
+      insight: getNonObviousInsight(intent),
+      experts: getExpertsContext(),
       value: getValuePitch(context, intent),
       cta: getCta(context.messageMode),
       signature: INITIAL_OUTREACH_SIGNATURE,
@@ -404,6 +435,8 @@ export function generateFirstEmailV3(context: FirstEmailContext): FirstEmailCopy
       blocks.greeting,
       blocks.observation,
       blocks.hypothesis,
+      blocks.insight,
+      blocks.experts,
       blocks.value,
       blocks.cta,
       blocks.signature,

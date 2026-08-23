@@ -1,10 +1,11 @@
 import assert from "node:assert/strict";
-import {
+import "./register-ts-paths.mjs";
+const {
   INITIAL_OUTREACH_SIGNATURE,
   countFirstEmailContentWords,
   generateFirstEmailV3,
   validateFirstEmailV3,
-} from "../lib/leadgen/first-email-generator.ts";
+} = await import("../lib/leadgen/first-email-generator.ts");
 
 const scenarios = [
   {
@@ -45,26 +46,29 @@ for (const [index, context] of scenarios.entries()) {
 for (const [index, copy] of copies.entries()) {
   const validation = validateFirstEmailV3(copy, scenarios[index]);
   assert.equal(validation.valid, true, validation.errors.join(" "));
-  assert.equal(copy.body.split("\n\n").length, 6);
+  assert.equal(copy.body.split("\n\n").length, 8);
   assert.equal(copy.qualityGatePassed, true);
   assert.equal(copy.microValue.items.length, 3);
-  assert.match(copy.body, /схему из трёх шагов/i);
+  assert.match(copy.body, /9\s*900\s*₽/i);
+  assert.match(copy.body, /24\s+час/i);
+  assert.doesNotMatch(copy.body, /два коротких материала/i);
+  assert.match(copy.body, /Александр/i);
+  assert.match(copy.body, /AI-эксперт/i);
   assert.doesNotMatch(copy.body, /найден\w*\s+сигнал|обнаруж\w*\s+сигнал|признак\w*\s+рост/i);
-  assert.match(copy.body, /15[-\s]?минут|15\s+минут/i);
-  assert.match(copy.body, /покаж|разбор|обсуд/i);
+  assert.match(copy.body, /разговор|разбор|консультац/i);
   assert.equal(copy.quality.call_relevance, 10);
   assert.match(copy.body, /Александр Плыкин, Ai-архитектор\n\+79629910514$/);
 }
 
-assert.match(copies[0].blocks.cta, /за 15 минут — обсудим/i);
-assert.match(copies[1].blocks.cta, /Кого из вашей команды/i);
-assert.match(copies[2].blocks.cta, /Кто отвечает за этот процесс/i);
+assert.match(copies[0].blocks.cta, /ответите «да»/i);
+assert.match(copies[1].blocks.cta, /кому из команды/i);
+assert.match(copies[2].blocks.cta, /кто у вас отвечает/i);
 assert.equal(new Set(copies.map((copy) => copy.subject)).size, copies.length);
 
-const contentAtLimit = Array.from({ length: 110 }, (_, index) => `word${index}`).join(" ");
+const contentAtLimit = Array.from({ length: 220 }, (_, index) => `word${index}`).join(" ");
 assert.equal(
   countFirstEmailContentWords(`${contentAtLimit}\n\n${INITIAL_OUTREACH_SIGNATURE}`),
-  110,
+  220,
   "fixed signature must not consume the first-email content word budget",
 );
 

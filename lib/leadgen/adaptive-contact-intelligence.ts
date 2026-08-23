@@ -9,6 +9,7 @@ import type {
   PeopleDiscoveryResult,
   PersonCandidate,
 } from "@/lib/leadgen/types";
+import { isPlausiblePublicPersonName } from "@/lib/leadgen/person-factuality";
 
 const mxCache = new Map<string, Promise<boolean>>();
 
@@ -162,7 +163,10 @@ export async function evaluateAdaptiveContactIntelligence({
     contactDiscovery.resolved_official_domain ?? contactDiscovery.official_website ?? company.company_domain,
   );
   const directContacts = contactDiscovery.contacts
-    .filter((contact) => contact.contact_type === "work_email" && contact.email && contact.full_name)
+    .filter((contact) =>
+      contact.contact_type === "work_email" && contact.email &&
+      isPlausiblePublicPersonName(contact.full_name),
+    )
     .sort((left, right) => {
       const primaryName = normalize(person?.full_name);
       return Number(normalize(right.full_name) === primaryName) - Number(normalize(left.full_name) === primaryName) ||
@@ -320,12 +324,18 @@ export function attachContactIntelligence(
   result: ContactDiscoveryResult,
   intelligence: ContactIntelligenceResult,
 ): ContactDiscoveryResult {
+  const matchingContact = result.contacts.find(
+    (contact) =>
+      contact.contact_type === "work_email" &&
+      normalize(contact.email) === normalize(intelligence.email),
+  );
+  const intelligenceCarrierId =
+    matchingContact?.id ?? result.best_available_entry.id;
   const contacts = result.contacts.map((contact) => ({
     ...contact,
     metadata: {
       ...contact.metadata,
-      ...((contact.email === intelligence.email && contact.contact_type === "work_email") ||
-      (!intelligence.email && contact.id === result.best_available_entry.id)
+      ...(contact.id === intelligenceCarrierId
         ? { contact_intelligence: intelligence }
         : {}),
     },
@@ -342,9 +352,12 @@ export function attachContactIntelligence(
 }
 
 export function isContactReadyPerson(contact: LeadgenContact): boolean {
-  return contact.contact_type === "work_email" && Boolean(contact.email && contact.full_name && contact.role_title) &&
-    contact.metadata.contact_intelligence?.confidence === "HIGH" &&
-    contact.metadata.contact_intelligence.readiness === "contact_ready";
+  const intelligence = contact.metadata.contact_intelligence;
+  return contact.contact_type === "work_email" &&
+    Boolean(contact.email && contact.full_name && contact.role_title) &&
+    normalize(contact.email) === normalize(intelligence?.email) &&
+    intelligence?.confidence === "HIGH" &&
+    intelligence.readiness === "contact_ready";
 }
 
 export function isConfirmedOutreachEmail(contact: LeadgenContact): boolean {

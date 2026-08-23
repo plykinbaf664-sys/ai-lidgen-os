@@ -25,6 +25,12 @@ export type SmtpSendReceipt = {
   rawMessage: string;
 };
 
+export type SmtpAttachment = {
+  filename: string;
+  contentType: string;
+  content: Buffer;
+};
+
 const SMTP_TIMEOUT_MS = 15_000;
 
 class SmtpResponseReader {
@@ -139,6 +145,7 @@ export function buildRawEmailMessage({
   config = getSmtpConfigFromEnv(),
   inReplyTo,
   references,
+  attachments = [],
 }: {
   to: string;
   subject: string;
@@ -148,6 +155,7 @@ export function buildRawEmailMessage({
   config?: SmtpConfig;
   inReplyTo?: string | null;
   references?: string[];
+  attachments?: SmtpAttachment[];
 }) {
   const fromEmail = assertSafeHeader(config.fromEmail, "from email");
   const fromName = assertSafeHeader(config.fromName, "from name");
@@ -159,22 +167,54 @@ export function buildRawEmailMessage({
   );
   const safeInReplyTo = inReplyTo ? assertSafeHeader(inReplyTo, "In-Reply-To") : null;
   const safeReferences = (references ?? []).map((value) => assertSafeHeader(value, "References"));
+  const headers = [
+    `From: ${encodeHeader(fromName)} <${fromEmail}>`,
+    `To: <${recipient}>`,
+    `Subject: ${encodeHeader(safeSubject)}`,
+    `Message-ID: ${safeMessageId}`,
+    ...(safeInReplyTo ? [`In-Reply-To: ${safeInReplyTo}`] : []),
+    ...(safeReferences.length ? [`References: ${safeReferences.join(" ")}`] : []),
+    `Date: ${sentAt.toUTCString()}`,
+    "MIME-Version: 1.0",
+  ];
+  const rawMessage = attachments.length === 0
+    ? [
+        ...headers,
+        'Content-Type: text/plain; charset="UTF-8"',
+        "Content-Transfer-Encoding: base64",
+        "",
+        encodeBase64Body(body),
+      ].join("\r\n")
+    : (() => {
+        const boundary = `leadgen-${randomUUID()}`;
+        const parts = [
+          ...headers,
+          `Content-Type: multipart/mixed; boundary="${boundary}"`,
+          "",
+          `--${boundary}`,
+          'Content-Type: text/plain; charset="UTF-8"',
+          "Content-Transfer-Encoding: base64",
+          "",
+          encodeBase64Body(body),
+        ];
+        for (const attachment of attachments) {
+          const filename = assertSafeHeader(attachment.filename, "attachment filename");
+          const contentType = assertSafeHeader(attachment.contentType, "attachment content type");
+          parts.push(
+            `--${boundary}`,
+            `Content-Type: ${contentType}; name="${filename}"`,
+            "Content-Transfer-Encoding: base64",
+            `Content-Disposition: attachment; filename="${filename}"`,
+            "",
+            attachment.content.toString("base64").match(/.{1,76}/g)?.join("\r\n") ?? "",
+          );
+        }
+        parts.push(`--${boundary}--`);
+        return parts.join("\r\n");
+      })();
   return {
     messageId: safeMessageId,
-    rawMessage: [
-      `From: ${encodeHeader(fromName)} <${fromEmail}>`,
-      `To: <${recipient}>`,
-      `Subject: ${encodeHeader(safeSubject)}`,
-      `Message-ID: ${safeMessageId}`,
-      ...(safeInReplyTo ? [`In-Reply-To: ${safeInReplyTo}`] : []),
-      ...(safeReferences.length ? [`References: ${safeReferences.join(" ")}`] : []),
-      `Date: ${sentAt.toUTCString()}`,
-      "MIME-Version: 1.0",
-      'Content-Type: text/plain; charset="UTF-8"',
-      "Content-Transfer-Encoding: base64",
-      "",
-      encodeBase64Body(body),
-    ].join("\r\n"),
+    rawMessage,
   };
 }
 
@@ -298,12 +338,14 @@ class SmtpSession {
     body,
     inReplyTo,
     references,
+    attachments,
   }: {
     to: string;
     subject: string;
     body: string;
     inReplyTo?: string | null;
     references?: string[];
+    attachments?: SmtpAttachment[];
   }): Promise<SmtpSendReceipt> {
     await this.connect();
 
@@ -316,6 +358,7 @@ class SmtpSession {
       config: this.config,
       inReplyTo,
       references,
+      attachments,
     });
 
     try {
@@ -410,6 +453,7 @@ export async function sendSmtpEmail({
   config = getSmtpConfigFromEnv(),
   inReplyTo,
   references,
+  attachments,
 }: {
   to: string;
   subject: string;
@@ -417,6 +461,7 @@ export async function sendSmtpEmail({
   config?: SmtpConfig;
   inReplyTo?: string | null;
   references?: string[];
+  attachments?: SmtpAttachment[];
 }) {
-  return new SmtpSession(config).send({ to, subject, body, inReplyTo, references });
+  return new SmtpSession(config).send({ to, subject, body, inReplyTo, references, attachments });
 }

@@ -652,15 +652,28 @@ function buildHiringSignalQueries({
       signalType,
       query:
         [
-          angleProfile.customQuery ??
-            buildQueryParts(
-              profile,
-              icp,
-              signalType,
-              angleProfile.language,
-              angleProfile.termIndex,
-              angleProfile,
-            ).join(" "),
+          angleProfile.angle === "ru_job_board"
+            ? [
+                "site:hh.ru/vacancy",
+                quote(
+                  angleProfile.customQuery?.match(/"([^"]+)"/)?.[1] ??
+                    angleProfile.eventPhrase,
+                ),
+                pickByIndex(icp.industries.ru, angleProfile.termIndex),
+              ].join(" ")
+            : angleProfile.language === "ru"
+              ? [
+                  quote(angleProfile.eventPhrase),
+                  pickByIndex(icp.industries.ru, angleProfile.termIndex),
+                ].join(" ")
+            : buildQueryParts(
+                profile,
+                icp,
+                signalType,
+                angleProfile.language,
+                angleProfile.termIndex,
+                angleProfile,
+              ).join(" "),
           searchExclusions,
         ]
           .filter(Boolean)

@@ -12,6 +12,8 @@ import type {
   OutreachMessageMode,
   OutreachQueueEntry,
 } from "@/lib/leadgen/types";
+import { isOutreachGuideAssignment } from "@/lib/leadgen/outreach-guides";
+import { isPlausiblePublicPersonName } from "@/lib/leadgen/person-factuality";
 
 const readyEmailStatuses = new Set([
   "personal_email_ready",
@@ -69,6 +71,26 @@ function getMessageMode(contact: LeadgenContact): OutreachMessageMode {
   return contact.contact_type === "work_email" ? "personal" : "generic_routing";
 }
 
+function getEmailConfidence(contact: LeadgenContact): OutreachQueueEntry["email_confidence"] {
+  const intelligence =
+    contact.metadata.contact_intelligence?.email?.trim().toLowerCase() ===
+    contact.email?.trim().toLowerCase()
+      ? contact.metadata.contact_intelligence
+      : null;
+  if (intelligence?.email_type === "public_personal" && intelligence.confidence === "HIGH") return "VERIFIED";
+  if (intelligence?.email_type === "corporate_router" && intelligence.confidence === "HIGH") return "VERIFIED";
+  if (intelligence?.email_type === "public_personal" && intelligence.confidence === "MEDIUM") return "HIGH_CONFIDENCE";
+  if (intelligence?.email_type === "pattern_candidate") return "INFERRED";
+  const classification = String(contact.metadata.email_classification ?? "");
+  if (
+    isPlausiblePublicPersonName(contact.full_name) &&
+    ["personal_verified", "work_verified"].includes(classification)
+  ) {
+    return contact.confidence_score >= 85 ? "VERIFIED" : "HIGH_CONFIDENCE";
+  }
+  return "GENERAL";
+}
+
 export function buildOutreachQueueEntry({
   contact,
   lead,
@@ -87,11 +109,13 @@ export function buildOutreachQueueEntry({
   const subject =
     typeof contact.metadata.email_subject === "string"
       ? contact.metadata.email_subject.trim()
-      : "";
+      : lead?.company_name
+        ? `Идея для ${lead.company_name}`
+        : "";
   const body =
     typeof contact.metadata.email_body === "string"
       ? contact.metadata.email_body.trim()
-      : "";
+      : lead?.message?.trim() ?? "";
 
   if (!subject || !body) {
     return null;
@@ -106,6 +130,11 @@ export function buildOutreachQueueEntry({
       campaignId: contact.campaign_id,
       email: contact.email,
     });
+  const guideAssignment = isOutreachGuideAssignment(queue?.guide_assignment)
+    ? queue.guide_assignment
+    : isOutreachGuideAssignment(contact.metadata.email_guide_assignment)
+      ? contact.metadata.email_guide_assignment
+      : null;
 
   return {
     id,
@@ -122,6 +151,7 @@ export function buildOutreachQueueEntry({
     email_source_url: contact.source_url,
     email_source_label: contact.source_label,
     readiness: String(contact.metadata.email_status ?? "email_ready"),
+    email_confidence: getEmailConfidence(contact),
     signal: {
       type: signal?.signal_type ?? company?.signal_type ?? null,
       title: signal?.signal_title ?? lead?.signal_title ?? null,
@@ -154,6 +184,8 @@ export function buildOutreachQueueEntry({
         : 0,
     micro_value:
       (contact.metadata.email_micro_value as OutreachQueueEntry["micro_value"]) ?? null,
+    guide_assignment: guideAssignment,
+    ...(guideAssignment ? { outreach_version: 2 as const } : {}),
     created_at: contact.created_at,
     approved_at: queue?.approved_at ?? null,
     queued_at: queue?.queued_at ?? null,

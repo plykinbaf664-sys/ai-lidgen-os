@@ -46,6 +46,7 @@ import type {
   OutreachQueueEntry,
   OutreachReadiness,
 } from "@/lib/leadgen/types";
+import { isOutreachGuideAssignment } from "@/lib/leadgen/outreach-guides";
 
 export type QueueRow = {
   id: string;
@@ -163,6 +164,8 @@ export function rowToEntry(row: QueueRow, queuePosition: number | null = null): 
     email_source_url: (metadata.email_source_url as string | null) ?? null,
     email_source_label: (metadata.email_source_label as string | null) ?? null,
     readiness: (metadata.readiness as string) ?? "email_ready",
+    email_confidence:
+      (metadata.email_confidence as OutreachQueueEntry["email_confidence"]) ?? "GENERAL",
     signal,
     subject: row.subject,
     body: row.body,
@@ -201,6 +204,10 @@ export function rowToEntry(row: QueueRow, queuePosition: number | null = null): 
         : 0,
     micro_value:
       (metadata.micro_value as OutreachQueueEntry["micro_value"]) ?? null,
+    guide_assignment: isOutreachGuideAssignment(metadata.guide_assignment)
+      ? metadata.guide_assignment
+      : null,
+    ...(metadata.outreach_version === 2 ? { outreach_version: 2 as const } : {}),
     queue_position: queuePosition,
     follow_up_due_at: null,
     follow_up_status: null,
@@ -401,12 +408,15 @@ export async function syncOutreachQueue(campaignId: string) {
         email_source_url: entry.email_source_url,
         email_source_label: entry.email_source_label,
         readiness: entry.readiness,
+        email_confidence: entry.email_confidence,
         signal: entry.signal,
         copy_quality: entry.copy_quality,
         quality_gate_passed: entry.quality_gate_passed,
         copy_review_status: entry.copy_review_status,
         generation_attempts: entry.generation_attempts,
         micro_value: entry.micro_value,
+        guide_assignment: entry.guide_assignment,
+        outreach_version: entry.outreach_version,
         vertical_id: company?.metadata.vertical_id ?? null,
       },
       created_at: now,

@@ -7,6 +7,8 @@ import {
 } from "./smtp-client";
 import { resolveDeliveryRecipient } from "./outreach-policy";
 import { formatUnknownError } from "./error-format";
+import { resolveOutreachGuideAttachments } from "./outreach-guides";
+import { OUTREACH_GUIDE_ATTACHMENTS_ENABLED } from "./outreach-guide-config";
 
 export type EmailSendResult =
   | {
@@ -101,6 +103,9 @@ export class SmtpEmailProvider implements EmailProvider {
 
   async sendEmail(entry: OutreachQueueEntry): Promise<EmailSendResult> {
     try {
+      if (OUTREACH_GUIDE_ATTACHMENTS_ENABLED && entry.message_kind !== "follow_up" && entry.outreach_version === 2 && !entry.guide_assignment) {
+        throw new Error("Outreach V2 заблокирован: не назначены два обязательных PDF-гайда.");
+      }
       const recipient = resolveDeliveryRecipient({
         testMode: this.isTestMode(),
         testRecipient: this.isTestMode() ? this.getTestRecipient() : null,
@@ -118,6 +123,10 @@ export class SmtpEmailProvider implements EmailProvider {
         references:
           entry.message_kind === "follow_up" && entry.parent_smtp_message_id
             ? [entry.parent_smtp_message_id]
+            : [],
+        attachments:
+          OUTREACH_GUIDE_ATTACHMENTS_ENABLED && entry.message_kind !== "follow_up" && entry.guide_assignment
+            ? await resolveOutreachGuideAttachments(entry.guide_assignment)
             : [],
       };
       const receipt = await sendSmtpEmail(message);

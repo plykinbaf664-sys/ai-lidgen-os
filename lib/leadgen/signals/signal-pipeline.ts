@@ -1,4 +1,3 @@
-import { leadgenConfig } from "@/lib/leadgen/config";
 import { leadgenProductionConfig } from "@/lib/leadgen/production-config";
 import type { SearchProvider } from "@/lib/leadgen/search/search-provider";
 import type { EvidenceResult } from "@/lib/leadgen/signals/evidence-collector";
@@ -18,12 +17,14 @@ export type SignalPipelineStoppedReason =
   | "target_reached"
   | "query_limit_reached"
   | "deadline_reached"
-  | "no_more_queries";
+  | "no_more_queries"
+  | "diminishing_returns";
 
 export type SignalPipelineQueryUsed = SignalQuery & {
   page: number;
   results_count: number;
   candidates_found_after_query: number;
+  unique_candidates_added: number;
 };
 
 export type SignalPipelineEvidenceResult = EvidenceResult & {
@@ -42,6 +43,7 @@ export type RunSignalPipelineInput = {
   maxResultsPerQuery?: number;
   maxPagesPerQuery?: number;
   pageOffset?: number;
+  queryExpansion?: string;
   market?: SignalSearchMarket;
   verticalId?: LeadgenVerticalId;
   deadlineAt?: number;
@@ -68,9 +70,52 @@ const DEFAULT_MAX_RESULTS_PER_QUERY = 5;
 
 const TARGET_CANDIDATES_CAP = 100;
 const MAX_QUERIES_CAP = 20;
-const MAX_RESULTS_PER_QUERY_CAP = 10;
+const MAX_RESULTS_PER_QUERY_CAP = 20;
 const MAX_CANDIDATES_PER_ANGLE = 2;
 const MAX_SOFT_MARKET_SHARE = 0.7;
+const SEARCH_CALL_TIMEOUT_MS = 20_000;
+
+async function mapWithConcurrency<T, R>(
+  items: T[],
+  concurrency: number,
+  mapper: (item: T) => Promise<R>,
+) {
+  const results = new Array<R>(items.length);
+  let cursor = 0;
+  async function worker() {
+    while (cursor < items.length) {
+      const index = cursor++;
+      results[index] = await mapper(items[index]);
+    }
+  }
+  await Promise.all(Array.from(
+    { length: Math.min(items.length, Math.max(1, concurrency)) },
+    () => worker(),
+  ));
+  return results;
+}
+
+async function searchWithinDeadline(
+  searchProvider: SearchProvider,
+  input: Parameters<SearchProvider["search"]>[0],
+  deadlineAt?: number,
+) {
+  const available = deadlineAt
+    ? Math.max(1, deadlineAt - Date.now())
+    : SEARCH_CALL_TIMEOUT_MS;
+  const timeoutMs = Math.min(SEARCH_CALL_TIMEOUT_MS, available);
+  let timeout: ReturnType<typeof setTimeout> | null = null;
+  try {
+    return await Promise.race([
+      searchProvider.search(input).catch(() => []),
+      new Promise<Awaited<ReturnType<SearchProvider["search"]>>>((resolve) => {
+        timeout = setTimeout(() => resolve([]), timeoutMs);
+      }),
+    ]);
+  } finally {
+    if (timeout) clearTimeout(timeout);
+  }
+}
 
 const signalQueryAngles: SignalQueryAngle[] = [
   "company_careers",
@@ -337,6 +382,7 @@ export async function runSignalPipeline({
   maxResultsPerQuery,
   maxPagesPerQuery = leadgenProductionConfig.searchMaxPages,
   pageOffset = 0,
+  queryExpansion = "",
   market = "mixed",
   verticalId,
   deadlineAt,
@@ -356,8 +402,9 @@ export async function runSignalPipeline({
     DEFAULT_MAX_RESULTS_PER_QUERY,
     MAX_RESULTS_PER_QUERY_CAP,
   );
+  const verticalIcp = getVerticalIcp(verticalId);
   const queries = buildSignalQueries({
-    icp: getVerticalIcp(verticalId),
+    icp: verticalIcp,
     signalType,
     maxQueries: safeMaxQueries,
     market,
@@ -378,87 +425,110 @@ export async function runSignalPipeline({
   const candidateSourceCountryHintByKey = new Map<string, string | null>();
   let candidates: LeadCandidate[] = [];
   let deadlineReached = false;
+  let diminishingBatches = 0;
+  let diminishingReturnsReached = false;
+  const knownCandidateKeys = new Set<string>();
 
-  queryLoop: for (let queryIndex = 0; queryIndex < queries.length; queryIndex += 1) {
+  queryLoop: for (
+    let queryIndex = 0;
+    queryIndex < queries.length;
+    queryIndex += leadgenProductionConfig.discoverySearchConcurrency
+  ) {
     if (deadlineAt && Date.now() >= deadlineAt) {
       deadlineReached = true;
       break;
     }
-    const query = queries[queryIndex];
     const safeMaxPages = Math.min(
       Math.max(maxPagesPerQuery, 1),
       leadgenProductionConfig.searchMaxPages,
     );
-
-    for (let page = 0; page < safeMaxPages; page += 1) {
-      if (deadlineAt && Date.now() >= deadlineAt) {
-        deadlineReached = true;
-        break queryLoop;
-      }
-      const providerPage = Math.max(0, pageOffset) + page;
-      const searchResults = await searchProvider.search({
-      query: query.query,
-      maxResults: safeMaxResultsPerQuery,
-      page: providerPage,
-      market: query.market,
-      queryLanguage: query.query_language,
-      });
-      const evidenceSearchResults =
-        signalType === "HIRING_SIGNAL"
-          ? await Promise.all(searchResults.map(enrichJobPostingSearchResult))
+    const queryBatch = queries
+      .slice(queryIndex, queryIndex + leadgenProductionConfig.discoverySearchConcurrency)
+      .map((query) => queryExpansion.trim()
+        ? { ...query, query: `${query.query} ${queryExpansion.trim()}` }
+        : query);
+    const executions = await Promise.all(queryBatch.map(async (activeQuery) => {
+      const pages: Array<{
+        page: number;
+        resultsCount: number;
+        evidence: SignalPipelineEvidenceResult[];
+      }> = [];
+      for (let page = 0; page < safeMaxPages; page += 1) {
+        if (deadlineAt && Date.now() >= deadlineAt) break;
+        const providerPage = Math.max(0, pageOffset) + page;
+        const searchResults = await searchWithinDeadline(searchProvider, {
+          query: activeQuery.query,
+          maxResults: safeMaxResultsPerQuery,
+          page: providerPage,
+          market: activeQuery.market,
+          queryLanguage: activeQuery.query_language,
+        }, deadlineAt);
+        const evidenceSearchResults = signalType === "HIRING_SIGNAL"
+          ? await mapWithConcurrency(searchResults, 5, async (result) =>
+              enrichJobPostingSearchResult(result).catch(() => result))
           : searchResults;
-      const queryEvidence = evidenceSearchResults.map((result) => ({
-      ...collectSignalEvidence({
-        result,
-        signalType,
-        icp: leadgenConfig.icp,
-      }),
-      market: query.market,
-      query_language: query.query_language,
-      query_angle: query.query_angle,
-      source_country_hint: query.source_country_hint,
-      why_market_selected: query.why_market_selected,
+        const evidence = evidenceSearchResults.map((result) => ({
+          ...collectSignalEvidence({ result, signalType, icp: verticalIcp }),
+          market: activeQuery.market,
+          query_language: activeQuery.query_language,
+          query_angle: activeQuery.query_angle,
+          source_country_hint: activeQuery.source_country_hint,
+          why_market_selected: activeQuery.why_market_selected,
+        }));
+        pages.push({ page: providerPage, resultsCount: searchResults.length, evidence });
+        if (searchResults.length < safeMaxResultsPerQuery) break;
+      }
+      return { activeQuery, pages };
     }));
 
-      evidenceResults.push(...queryEvidence);
-      rememberCandidateMetadata({
-      queryEvidence,
-      query,
-      candidateAngleByKey,
-      candidateMarketByKey,
-      candidateQueryByKey,
-      candidateQueryLanguageByKey,
-      candidateQueryAngleByKey,
-      candidateSourceCountryHintByKey,
-      });
-
-      const allCandidates = buildLeadCandidates(evidenceResults).candidates;
-      const isLastQuery =
-        queryIndex === queries.length - 1 && page === safeMaxPages - 1;
-
-      candidates = selectCandidatesWithDiversity({
-      candidates: allCandidates,
-      candidateAngleByKey,
-      candidateMarketByKey,
-      targetCandidates: safeTargetCandidates,
-      allowOverflow: isLastQuery,
-      });
-
-      queriesUsed.push({
-        ...query,
-        page: providerPage,
-        results_count: searchResults.length,
-        candidates_found_after_query: candidates.length,
-      });
-
-      if (candidates.length >= safeTargetCandidates) {
-        candidates = candidates.slice(0, safeTargetCandidates);
-        break queryLoop;
+    let batchUniqueAdded = 0;
+    for (const execution of executions) {
+      for (const pageResult of execution.pages) {
+        evidenceResults.push(...pageResult.evidence);
+        rememberCandidateMetadata({
+          queryEvidence: pageResult.evidence,
+          query: execution.activeQuery,
+          candidateAngleByKey,
+          candidateMarketByKey,
+          candidateQueryByKey,
+          candidateQueryLanguageByKey,
+          candidateQueryAngleByKey,
+          candidateSourceCountryHintByKey,
+        });
+        const allCandidates = buildLeadCandidates(evidenceResults).candidates;
+        let uniqueAdded = 0;
+        for (const candidate of allCandidates) {
+          const key = getLeadCandidateKey(candidate);
+          if (!knownCandidateKeys.has(key)) {
+            knownCandidateKeys.add(key);
+            uniqueAdded += 1;
+          }
+        }
+        batchUniqueAdded += uniqueAdded;
+        candidates = selectCandidatesWithDiversity({
+          candidates: allCandidates,
+          candidateAngleByKey,
+          candidateMarketByKey,
+          targetCandidates: safeTargetCandidates,
+          allowOverflow: false,
+        });
+        queriesUsed.push({
+          ...execution.activeQuery,
+          page: pageResult.page,
+          results_count: pageResult.resultsCount,
+          candidates_found_after_query: candidates.length,
+          unique_candidates_added: uniqueAdded,
+        });
       }
-
-      if (searchResults.length < safeMaxResultsPerQuery) {
-        break;
-      }
+    }
+    if (candidates.length >= safeTargetCandidates) {
+      candidates = candidates.slice(0, safeTargetCandidates);
+      break queryLoop;
+    }
+    diminishingBatches = batchUniqueAdded <= 1 ? diminishingBatches + 1 : 0;
+    if (diminishingBatches >= leadgenProductionConfig.discoveryDiminishingBatchLimit) {
+      diminishingReturnsReached = true;
+      break;
     }
   }
 
@@ -508,6 +578,8 @@ export async function runSignalPipeline({
     all_evidence: evidenceResults,
     stopped_reason: deadlineReached
       ? "deadline_reached"
+      : diminishingReturnsReached
+        ? "diminishing_returns"
       : getStoppedReason({
           candidatesFound: enrichedCandidates.length,
           targetCandidates: safeTargetCandidates,

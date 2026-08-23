@@ -14,6 +14,7 @@ import {
   scheduleLocalApprovedBatch,
 } from "@/lib/leadgen/local-outreach-store";
 import { runLocalOutreachProcessorIteration } from "@/lib/leadgen/local-outreach-scheduler";
+import { createEmailProvider } from "@/lib/leadgen/email-provider";
 import type { OutreachQueueEntry } from "@/lib/leadgen/types";
 
 export async function GET(request: Request) {
@@ -67,6 +68,20 @@ export async function POST(request: Request) {
         { status: 400 },
       );
     }
+    // Queue creation and actual delivery are separate, but an unavailable SMTP
+    // channel must never allow a newly approved batch to enter the queue.
+    // This closes the race between a stale browser readiness value and queueing.
+    const smtp = await createEmailProvider().validateConnection();
+    if (!smtp.ok) {
+      return NextResponse.json(
+        {
+          success: false,
+          code: "smtp_unavailable",
+          error: smtp.message,
+        },
+        { status: 503 },
+      );
+    }
     if (getOutreachDeliveryStorageMode() === "local") {
       if (!Array.isArray(body.entries)) {
         return NextResponse.json(
@@ -93,6 +108,7 @@ export async function POST(request: Request) {
       return NextResponse.json({
         success: true,
         storage_mode: "local",
+        smtp: { connected: true, message: smtp.message },
         ...scheduled,
         operational: await getLocalOutreachOperationalState(body.campaignId),
         processor: { status: "starting", entry: null },
@@ -118,6 +134,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       storage_mode: "supabase",
+      smtp: { connected: true, message: smtp.message },
       ...scheduled,
       // The response stays fast; the first processor iteration runs after it.
       // Further due items are handled by the local timer or production cron.

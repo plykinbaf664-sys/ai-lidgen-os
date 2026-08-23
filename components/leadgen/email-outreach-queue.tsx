@@ -19,6 +19,7 @@ import type {
   OutreachReadiness,
   LeadgenCampaignDetails,
 } from "@/lib/leadgen/types";
+import { OUTREACH_GUIDE_ATTACHMENTS_ENABLED } from "@/lib/leadgen/outreach-guide-config";
 
 type ApiError = { success: false; error?: unknown };
 type QueueResponse =
@@ -98,6 +99,7 @@ type BatchResponse =
         entry: OutreachQueueEntry | null;
         error?: string;
       };
+      smtp?: { connected: boolean; message: string };
       daily: {
         sent_today: number;
         daily_limit: number;
@@ -204,6 +206,20 @@ function matchesFilter(entry: OutreachQueueEntry, filter: QueueFilter) {
   if (filter === "sent") return entry.status === "sent";
   if (filter === "failed") return entry.status === "failed";
   return entry.status === "rejected";
+}
+
+function getGuideLabels(entry: OutreachQueueEntry): string[] {
+  if (!OUTREACH_GUIDE_ATTACHMENTS_ENABLED) return ["Вложения временно отключены"];
+  const assignment = entry.guide_assignment;
+  if (!assignment) return [];
+  return [
+    assignment.alexanderGuideVariant === "A"
+      ? "Александр A · Шаблон бизнес-процессов"
+      : "Александр B · Чек-лист по диагностике бизнеса",
+    assignment.aiGuideVariant === "A"
+      ? "AI A · Где ручной труд забирает ваши деньги"
+      : "AI B · Почему новый найм может ухудшить ситуацию",
+  ];
 }
 
 function mergeQueueEntries(
@@ -460,9 +476,14 @@ function PrimaryOutreachToolbar({
   onQueue: () => void;
   sendState: string;
 }) {
+  const campaignTotal = counters.generated;
+  const campaignSent = counters.sent;
+  const campaignInProgress = counters.queued + counters.sending;
+  const campaignNeedsAction =
+    counters.needsReview + counters.approved + counters.failed;
   const progress = Math.min(
     100,
-    Math.round((emailCount / Math.max(1, dailyLimit)) * 100),
+    Math.round((campaignSent / Math.max(1, campaignTotal)) * 100),
   );
   return (
     <section className="dispatch-control-panel initial-dispatch-panel" aria-labelledby="initial-panel-title">
@@ -482,8 +503,17 @@ function PrimaryOutreachToolbar({
         <div><dt>В очереди</dt><dd>{counters.queued}</dd></div>
         <div><dt>Отправлено</dt><dd>{counters.sent}</dd></div>
       </dl>
-      <div className="dispatch-progress" aria-label={`Рабочие email: ${progress}%`}>
-        <span style={{ width: `${progress}%` }} />
+      <div className="dispatch-campaign-progress" aria-live="polite">
+        <div className="dispatch-campaign-progress-heading">
+          <span>Общий прогресс текущей кампании</span>
+          <strong>{campaignSent} из {campaignTotal} отправлено</strong>
+        </div>
+        <div className="dispatch-progress" aria-label={`Отправлено ${campaignSent} из ${campaignTotal} первичных писем`}>
+          <span style={{ width: `${progress}%` }} />
+        </div>
+        <small>
+          В очереди: {campaignInProgress} · Требуют действия: {campaignNeedsAction}
+        </small>
       </div>
       <div className="dispatch-panel-actions">
         <Button
@@ -1218,6 +1248,11 @@ export function EmailOutreachQueue({
         `Поставлено в очередь: ${data.queued_count}. Пропущено: ${data.skipped_count}.`,
       );
       setDeliveryStorageMode(data.storage_mode);
+      if (data.smtp?.connected) {
+        setReadiness((current) =>
+          current ? { ...current, smtp_connected: true } : current,
+        );
+      }
       if (data.storage_mode === "local") {
         setOutreachSummary((current) =>
           reconcileInitialSummary(current, entries, data.queued, data.daily),
@@ -2055,12 +2090,14 @@ export function EmailOutreachQueue({
                         <div><dt>Источник контакта</dt><dd>{entry.email_source_url ? <a href={entry.email_source_url} rel="noreferrer" target="_blank">{entry.email_source_label || entry.email_source_url}</a> : "—"}</dd></div>
                         <div><dt>ЛПР</dt><dd>{contactIntelligence?.person_name || entry.recipient_name || "—"}{contactIntelligence?.person_role || entry.recipient_role ? ` · ${contactIntelligence?.person_role || entry.recipient_role}` : ""}</dd></div>
                         <div><dt>Почему выбран</dt><dd>{contactIntelligence?.why_this_person || "Корпоративный email подтверждён; поиск персонального ЛПР не завершён."}</dd></div>
-                        <div><dt>Надёжность</dt><dd>{contactIntelligence?.confidence ?? (sourceContact?.metadata.email_mx_verified === true ? "Подтверждённый корпоративный email" : "—")}</dd></div>
+                        <div><dt>Надёжность</dt><dd>{entry.email_confidence ?? contactIntelligence?.confidence ?? (sourceContact?.metadata.email_mx_verified === true ? "Подтверждённый корпоративный email" : "—")}</dd></div>
                         <div><dt>Как найден</dt><dd>{contactIntelligence?.verification_methods.join(" + ") || (typeof sourceContact?.metadata.email_kind === "string" ? sourceContact.metadata.email_kind : entry.readiness)}</dd></div>
                         <div><dt>Статус проверки</dt><dd>{sourceContact?.metadata.email_mx_verified === true ? "Домен подтверждён, MX найден" : "Домен подтверждён"}</dd></div>
                         <div><dt>Контакт</dt><dd>{entry.recipient_name || entry.recipient_role || "Общий вход"} · {entry.email || "email не найден"}</dd></div>
                         <div><dt>Тема</dt><dd>{entry.subject || "Не подготовлена"}</dd></div>
                         <div><dt>Письмо</dt><dd className="lead-copy-preview">{entry.body || "Не подготовлено"}</dd></div>
+                        <div><dt>Оффер</dt><dd>9 900 ₽ · бесплатно при ответе в течение 24 часов после отправки</dd></div>
+                        <div><dt>Вложения</dt><dd>{getGuideLabels(entry).join(" · ") || "Для legacy-письма не назначены"}</dd></div>
                       </dl>
                       {contactIntelligence ? (
                         <details className="outreach-technical-details">
@@ -2302,7 +2339,9 @@ export function EmailOutreachQueue({
                 </div>
                 <div><dt>Контакт</dt><dd>{selectedEntry.recipient_name || selectedEntry.recipient_role || "Persona / общий вход"}</dd></div>
                 <div><dt>Источник контакта</dt><dd>{selectedEntry.email_source_url || "—"}</dd></div>
-                <div><dt>Качество email</dt><dd>{selectedEntry.readiness}</dd></div>
+                <div><dt>Качество email</dt><dd>{selectedEntry.email_confidence ?? selectedEntry.readiness}</dd></div>
+                <div><dt>Оффер</dt><dd>9 900 ₽ · бесплатно при ответе в течение 24 часов после отправки</dd></div>
+                <div><dt>Вложения</dt><dd>{getGuideLabels(selectedEntry).join(" · ") || "Для legacy-письма не назначены"}</dd></div>
                 <div><dt>Последнее изменение</dt><dd>{formatDate(selectedEntry.updated_at)}</dd></div>
                 <div><dt>Отправлено</dt><dd>{formatDate(selectedEntry.sent_at)}</dd></div>
                 <div><dt>Message-ID</dt><dd>{selectedEntry.provider_message_id || "—"}</dd></div>

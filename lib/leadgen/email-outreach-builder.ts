@@ -14,21 +14,13 @@ import {
 } from "@/lib/leadgen/first-email-generator";
 import { normalizeLeadgenText } from "@/lib/leadgen/text-normalization";
 import type { LeadgenVerticalId } from "@/lib/leadgen/verticals";
+import { isPlausiblePublicPersonName } from "@/lib/leadgen/person-factuality";
+import {
+  assignOutreachGuides,
+  type OutreachGuideAssignment,
+} from "@/lib/leadgen/outreach-guides";
 
 export type EmailMessageMode = "personal" | "department" | "generic_routing";
-
-function getFirstName(fullName?: string | null): string | null {
-  if (!fullName) {
-    return null;
-  }
-
-  const normalizedName = normalizeLeadgenText(fullName, {
-    source: "email_outreach.person_name",
-  });
-  const firstName = normalizedName.split(/\s+/)[0]?.trim();
-
-  return firstName && firstName.length >= 2 ? firstName : null;
-}
 
 function getMessageMode(contact: LeadgenContact): EmailMessageMode {
   const classification =
@@ -112,6 +104,7 @@ export function buildEmailOutreach({
   qualityGatePassed: boolean;
   generationAttempts: number;
   copyReviewStatus: "ready" | "needs_manual_copy_review" | null;
+  guideAssignment: OutreachGuideAssignment | null;
 } {
   if (
     !contact ||
@@ -131,6 +124,7 @@ export function buildEmailOutreach({
       qualityGatePassed: false,
       generationAttempts: 0,
       copyReviewStatus: null,
+      guideAssignment: null,
     };
   }
 
@@ -138,14 +132,20 @@ export function buildEmailOutreach({
     source: "email_outreach.company",
   });
   const messageMode = getMessageMode(contact);
-  const firstName = messageMode === "personal" ? getFirstName(personName) : null;
+  const factualPersonName = isPlausiblePublicPersonName(personName)
+    ? personName
+    : null;
+  const guideAssignment = assignOutreachGuides(`${contact.id}:${contact.email ?? ""}`);
   const copy = generateFirstEmailV3({
     companyName: safeCompanyName,
     website: companyWebsite,
     companyDescription,
     industry,
-    decisionMakerName: firstName,
-    decisionMakerRole: personRole ?? contact.role_title,
+    decisionMakerName: factualPersonName,
+    decisionMakerRole:
+      messageMode === "generic_routing"
+        ? null
+        : personRole ?? contact.role_title,
     contactEmail: contact.email,
     messageMode,
     growthSignal: [signalType, signalTitle, signalDetail, whyNow]
@@ -158,7 +158,8 @@ export function buildEmailOutreach({
     uniquenessKey: `${contact.id}:${contact.email ?? ""}:${signalConfidence ?? ""}`,
     verticalId,
     businessProblemHypothesis,
-    targetResponsibility,
+    targetResponsibility:
+      messageMode === "generic_routing" ? null : targetResponsibility,
     whyThisPerson,
     publicPersonContext,
     emailEvidence,
@@ -175,5 +176,6 @@ export function buildEmailOutreach({
     qualityGatePassed: copy.qualityGatePassed,
     generationAttempts: copy.generationAttempts,
     copyReviewStatus: copy.reviewStatus,
+    guideAssignment,
   };
 }

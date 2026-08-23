@@ -25,7 +25,11 @@ assert.match(schedule, /reasons/);
 
 assert.match(ui, /Запустить первичные/);
 assert.match(ui, /Лимит \$\{sentToday\}\/\$\{dailyLimit\} — запуск завтра/);
-assert.match(ui, /AbortSignal\.timeout\(40_000\)/);
+const scheduleBatchStart = ui.indexOf("async function scheduleBatch");
+const scheduleBatchEnd = ui.indexOf("async function control", scheduleBatchStart);
+const scheduleBatch = ui.slice(scheduleBatchStart, scheduleBatchEnd);
+assert.doesNotMatch(scheduleBatch, /AbortController|AbortSignal\.timeout/);
+assert.match(scheduleBatch, /finally\s*\{\s*setPending\(null\)/);
 assert.match(ui, /finally\s*\{\s*setPending\(null\)/);
 assert.doesNotMatch(ui, /showBatchConfirm/);
 assert.doesNotMatch(ui, /production-confirm/);
