@@ -8,7 +8,7 @@ import {
 import { syncOutreachQueue } from "@/lib/leadgen/outreach-storage";
 import { createLeadgenSearchProvider } from "@/lib/leadgen/search/leadgen-search-provider";
 import { discoverCompanyEmails } from "@/lib/leadgen/email-discovery-engine";
-import { buildEmailOutreach } from "@/lib/leadgen/email-outreach-builder";
+import { buildEmailOutreachWithAi } from "@/lib/leadgen/email-outreach-builder";
 import type {
   LeadgenCompany,
   LeadgenContact,
@@ -154,7 +154,7 @@ export async function reprocessLatestCampaignEmailDiscovery({
       if (!discovery.bestEmail || !lead) continue;
       const email = discovery.bestEmail;
       const contactType = contactTypeForKind(email.kind);
-      const draft = buildEmailOutreach({
+      const draft = await buildEmailOutreachWithAi({
         companyName: company.company_name,
         companyWebsite: discovery.input.officialWebsiteUrl,
         companyDescription: null,

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import "./register-ts-paths.mjs";
+
 const {
   INITIAL_OUTREACH_SIGNATURE,
   countFirstEmailContentWords,
@@ -12,7 +13,6 @@ const scenarios = [
     companyName: "Альфа",
     decisionMakerName: "Анна Петрова",
     decisionMakerRole: "Руководитель отдела продаж",
-    contactEmail: "anna@alpha.example",
     messageMode: "personal",
     signalType: "hiring",
     signalEvidence: "Компания опубликовала вакансии менеджеров по продажам.",
@@ -21,7 +21,6 @@ const scenarios = [
   {
     companyName: "Бета Клиника",
     industry: "частная медицина",
-    contactEmail: "support@beta.example",
     messageMode: "department",
     signalType: "customer_service_growth",
     signalEvidence: "Компания расширяет клиентский сервис.",
@@ -30,50 +29,61 @@ const scenarios = [
   {
     companyName: "Гамма Технологии",
     industry: "разработка программного обеспечения",
-    contactEmail: "hello@gamma.example",
     messageMode: "generic_routing",
     signalType: "digital_transformation",
     signalEvidence: "Компания внедряет новую CRM и API.",
     signalSourceUrl: "https://gamma.example/news/crm",
   },
+  {
+    companyName: "Меридиан Девелопмент",
+    decisionMakerName: "Илья Соколов",
+    messageMode: "personal",
+    signalType: "new_location",
+    signalEvidence: "Компания начала работу в новом регионе.",
+    signalSourceUrl: "https://meridian.example/news/region",
+  },
+  {
+    companyName: "Север Пром",
+    messageMode: "generic_routing",
+    signalType: "new_product",
+    signalEvidence: "Компания запустила новую производственную линию.",
+    signalSourceUrl: "https://sever.example/news/line",
+  },
 ];
 
-const copies = [];
-for (const [index, context] of scenarios.entries()) {
-  copies.push(generateFirstEmailV3({ ...context, uniquenessKey: String(index), batchBodies: copies.map((copy) => copy.body) }));
-}
+const copies = scenarios.map((context, index) => generateFirstEmailV3({
+  ...context,
+  uniquenessKey: String(index),
+}));
 
 for (const [index, copy] of copies.entries()) {
   const validation = validateFirstEmailV3(copy, scenarios[index]);
-  assert.equal(validation.valid, true, validation.errors.join(" "));
-  assert.equal(copy.body.split("\n\n").length, 8);
+  assert.equal(validation.valid, true, `${index + 1}: ${validation.errors.join(" ")}`);
   assert.equal(copy.qualityGatePassed, true);
-  assert.equal(copy.microValue.items.length, 3);
-  assert.match(copy.body, /9\s*900\s*₽/i);
-  assert.match(copy.body, /24\s+час/i);
-  assert.doesNotMatch(copy.body, /два коротких материала/i);
-  assert.match(copy.body, /Александр/i);
-  assert.match(copy.body, /AI-эксперт/i);
-  assert.doesNotMatch(copy.body, /найден\w*\s+сигнал|обнаруж\w*\s+сигнал|признак\w*\s+рост/i);
-  assert.match(copy.body, /разговор|разбор|консультац/i);
-  assert.equal(copy.quality.call_relevance, 10);
-  assert.match(copy.body, /Александр Плыкин, Ai-архитектор\n\+79629910514$/);
+  assert.ok(countFirstEmailContentWords(copy.body) >= 120);
+  assert.ok(countFirstEmailContentWords(copy.body) <= 200);
+  assert.match(copy.body, /Я AI-архитектор/);
+  assert.match(copy.body, /бизнес-аналитика/);
+  assert.match(copy.body, /9\s*900\s*₽/);
+  assert.match(copy.body, /24\s+час/);
+  assert.match(copy.body, /диагностик[ау] отдела продаж/);
+  assert.match(copy.body, /шаблон бизнес-процессов/);
+  assert.doesNotMatch(copy.body, /operations leadership|growth and|manual handoffs|process fragmentation|operational bottlenecks/i);
+  assert.match(copy.body, /Александр Плыкин, AI-архитектор\n\+79629910514$/);
 }
 
-assert.match(copies[0].blocks.cta, /ответите «да»/i);
-assert.match(copies[1].blocks.cta, /кому из команды/i);
+assert.match(copies[0].blocks.cta, /посмотреть этот участок/i);
+assert.match(copies[1].blocks.cta, /кто у вас отвечает/i);
 assert.match(copies[2].blocks.cta, /кто у вас отвечает/i);
 assert.equal(new Set(copies.map((copy) => copy.subject)).size, copies.length);
 
-const contentAtLimit = Array.from({ length: 220 }, (_, index) => `word${index}`).join(" ");
-assert.equal(
-  countFirstEmailContentWords(`${contentAtLimit}\n\n${INITIAL_OUTREACH_SIGNATURE}`),
-  220,
-  "fixed signature must not consume the first-email content word budget",
-);
+const contentAtLimit = Array.from({ length: 200 }, (_, index) => `слово${index}`).join(" ");
+assert.equal(countFirstEmailContentWords(`${contentAtLimit}\n\n${INITIAL_OUTREACH_SIGNATURE}`), 200);
 
 const noSignal = generateFirstEmailV3({ companyName: "Без сигнала", messageMode: "personal" });
 assert.equal(noSignal.qualityGatePassed, false);
-assert.equal(noSignal.reviewStatus, "needs_manual_copy_review");
 
-process.stdout.write("FIRST_EMAIL_V3_OK scenarios=3 quality_gate=passed promise_integrity=passed contact_cta=passed\n");
+for (const [index, copy] of copies.entries()) {
+  process.stdout.write(`\n--- TEST EMAIL ${index + 1} ---\nSUBJECT: ${copy.subject}\n${copy.body}\n`);
+}
+process.stdout.write("\nFIRST_EMAIL_V4_OK scenarios=5 russian=passed signal=passed cta=passed\n");

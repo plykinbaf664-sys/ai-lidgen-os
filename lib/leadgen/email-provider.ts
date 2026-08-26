@@ -103,8 +103,8 @@ export class SmtpEmailProvider implements EmailProvider {
 
   async sendEmail(entry: OutreachQueueEntry): Promise<EmailSendResult> {
     try {
-      if (OUTREACH_GUIDE_ATTACHMENTS_ENABLED && entry.message_kind !== "follow_up" && entry.outreach_version === 2 && !entry.guide_assignment) {
-        throw new Error("Outreach V2 заблокирован: не назначены два обязательных PDF-гайда.");
+      if (OUTREACH_GUIDE_ATTACHMENTS_ENABLED && entry.message_kind !== "follow_up" && entry.outreach_version === 3 && !entry.guide_assignment) {
+        throw new Error("Outreach V3 заблокирован: не назначены два обязательных XLSX-материала.");
       }
       const recipient = resolveDeliveryRecipient({
         testMode: this.isTestMode(),
@@ -125,7 +125,7 @@ export class SmtpEmailProvider implements EmailProvider {
             ? [entry.parent_smtp_message_id]
             : [],
         attachments:
-          OUTREACH_GUIDE_ATTACHMENTS_ENABLED && entry.message_kind !== "follow_up" && entry.guide_assignment
+          OUTREACH_GUIDE_ATTACHMENTS_ENABLED && entry.message_kind !== "follow_up" && entry.outreach_version === 3 && entry.guide_assignment
             ? await resolveOutreachGuideAttachments(entry.guide_assignment)
             : [],
       };

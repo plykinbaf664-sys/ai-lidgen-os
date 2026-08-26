@@ -20,7 +20,7 @@ import {
   type ParsedPublicEmail,
   type RejectedPublicEmail,
 } from "@/lib/leadgen/public-email-parser";
-import { buildEmailOutreach } from "@/lib/leadgen/email-outreach-builder";
+import { buildEmailOutreachWithAi } from "@/lib/leadgen/email-outreach-builder";
 import { discoverCompanyEmails } from "@/lib/leadgen/email-discovery-engine";
 import { getVerticalProfile } from "@/lib/leadgen/verticals";
 
@@ -1600,7 +1600,7 @@ export class PublicContactProvider implements ContactProvider {
         confidenceScore: 76,
         metadata: routingMetadata,
       });
-      const emailOutreach = buildEmailOutreach({
+      const emailOutreach = await buildEmailOutreachWithAi({
         companyName: input.company.company_name,
         companyWebsite: getCompanyWebsite(input.company),
         companyDescription: getCompanyDescription(input.company),
@@ -1719,7 +1719,7 @@ export class PublicContactProvider implements ContactProvider {
         publicEmail?.sourceLabel ?? person.source;
 
       if (workEmail) {
-        const emailOutreach = buildEmailOutreach({
+        const emailOutreach = await buildEmailOutreachWithAi({
           companyName: input.company.company_name,
           companyWebsite:
             getCompanyWebsite(input.company),
@@ -1910,7 +1910,7 @@ export class PublicContactProvider implements ContactProvider {
       const rankedEmail = emailDiscovery?.candidates.find(
         (candidate) => candidate.email === email.email,
       ) ?? null;
-      const emailOutreach = buildEmailOutreach({
+      const emailOutreach = await buildEmailOutreachWithAi({
         companyName: input.company.company_name,
         companyWebsite:
           getCompanyWebsite(input.company),

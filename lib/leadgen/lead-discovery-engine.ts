@@ -24,6 +24,7 @@ import type { SignalSearchMarket } from "@/lib/leadgen/signals/query-builder";
 import { interpretSignal } from "@/lib/leadgen/signals/signal-interpreter";
 import { runSignalPipeline } from "@/lib/leadgen/signals/signal-pipeline";
 import { verifyCompanySegment } from "@/lib/leadgen/segment-guard";
+import { recheckUncertainCompanySegment } from "@/lib/leadgen/segment-verification-research";
 import {
   cacheCandidateResearch,
   getCachedCandidateResearch,
@@ -52,6 +53,7 @@ import type {
   OpportunityAssessment,
   ContactDiscoveryResult,
   PeopleDiscoveryResult,
+  ProductionDiscoveryStats,
   SignalType,
 } from "@/lib/leadgen/types";
 
@@ -84,6 +86,24 @@ type EnrichedLeadRecord = {
   signals: LeadgenSignal[];
   peopleDiscovery: PeopleDiscoveryResult;
 };
+
+type RejectionSample = NonNullable<
+  ProductionDiscoveryStats["rejection_samples"]
+>[number];
+
+function addRejectionSample(
+  samples: RejectionSample[],
+  sample: RejectionSample,
+) {
+  if (samples.length >= 5) return;
+  const duplicate = samples.some(
+    (item) =>
+      item.stage === sample.stage &&
+      item.reason === sample.reason &&
+      item.company_name === sample.company_name,
+  );
+  if (!duplicate) samples.push(sample);
+}
 
 const MAX_SIGNALS_PER_RUN = 5;
 const MAX_QUERIES_PER_SIGNAL = 20;
@@ -1000,6 +1020,7 @@ async function discoverCandidates({
     NonNullable<LeadDiscoveryResult["production_discovery_stats"]>["search_strategy_metrics"]
   > = {};
   const skipReasons: Record<string, number> = {};
+  const rejectionSamples: RejectionSample[] = [];
   const skippedIdentityKeys = new Set<string>();
   const searchCursor = getDiscoverySearchCursor(searchPageOffset);
   const pageOffset = searchCursor.providerPage;
@@ -1053,6 +1074,21 @@ async function discoverCandidates({
       };
     }
     resultsReceived += result.all_evidence.length;
+    for (const evidence of [
+      ...result.rejected_results,
+      ...result.weak_evidence,
+    ]) {
+      const reason = evidence.rejection_reason ?? evidence.decision;
+      const diagnosticReason = `signal:${reason}`;
+      skipReasons[diagnosticReason] =
+        (skipReasons[diagnosticReason] ?? 0) + 1;
+      addRejectionSample(rejectionSamples, {
+        company_name: evidence.company_extraction.company_name,
+        stage: "signal",
+        reason,
+        source_url: evidence.source_url,
+      });
+    }
 
     for (const candidate of result.candidates) {
       const prefilterStartedAt = Date.now();
@@ -1087,6 +1123,12 @@ async function discoverCandidates({
       if (prefilter.decision === "FAIL") {
         prefilterRejected += 1;
         skipReasons[prefilter.reason] = (skipReasons[prefilter.reason] ?? 0) + 1;
+        addRejectionSample(rejectionSamples, {
+          company_name: interpretedCandidate.company_name,
+          stage: "prefilter",
+          reason: prefilter.reason,
+          source_url: interpretedCandidate.company_source_url,
+        });
         prefilterMs += Date.now() - prefilterStartedAt;
         continue;
       }
@@ -1160,6 +1202,7 @@ async function discoverCandidates({
         total: discoveryMs + prefilterMs,
       },
       skip_reasons: skipReasons,
+      rejection_samples: rejectionSamples,
       skipped_identity_keys: [...skippedIdentityKeys],
     },
   };
@@ -1254,6 +1297,12 @@ export async function runLeadDiscoveryEngine({
   let researchErrors = 0;
   let deepResearchCount = 0;
   let researchCacheHits = 0;
+  let websiteResolutionMs = 0;
+  let segmentVerificationMs = 0;
+  let lprResearchMs = 0;
+  let emailResolutionMs = 0;
+  const deepSkipReasons = { ...discovery.stats.skip_reasons };
+  const rejectionSamples = [...(discovery.stats.rejection_samples ?? [])];
   const deepResearchStartedAt = Date.now();
   const researched = await mapWithConcurrency(
     leadWorkflowCandidateRecords,
@@ -1268,6 +1317,7 @@ export async function runLeadDiscoveryEngine({
       try {
         const unresolvedCompany = unresolvedCompanies[index];
         const cached = getCachedCandidateResearch(record.candidate, selectedVerticalId);
+        const websiteStartedAt = Date.now();
         const resolution = cached?.website ?? await resolveBeforeDeadline({
           operation: resolveOfficialCompanyWebsite(unresolvedCompany, searchProvider),
           deadlineAt,
@@ -1281,6 +1331,7 @@ export async function runLeadDiscoveryEngine({
             reason: "official_site_resolution_timeout",
           },
         });
+        websiteResolutionMs += Date.now() - websiteStartedAt;
         if (cached?.website) researchCacheHits += 1;
         else cacheCandidateResearch(record.candidate, selectedVerticalId, { website: resolution });
         const baseCompany: LeadgenCompany = {
@@ -1301,7 +1352,7 @@ export async function runLeadDiscoveryEngine({
           },
         };
         const commercialSignal = record.candidate.commercial_signal;
-        const verification = cached?.segment ?? verifyCompanySegment({
+        const segmentInput = {
           selectedSegment: selectedVerticalId,
           companyName: baseCompany.company_name,
           companySegment: baseCompany.company_segment,
@@ -1311,15 +1362,48 @@ export async function runLeadDiscoveryEngine({
           signalSummary: commercialSignal?.summary ?? record.candidate.signal_summary ?? null,
           signalEvidence: commercialSignal?.evidence ?? null,
           discoveryQuery: record.candidate.discovery_query,
-        });
+        };
+        const segmentStartedAt = Date.now();
+        let verification = cached?.segment ?? verifyCompanySegment(segmentInput);
         if (cached?.segment) researchCacheHits += 1;
-        else cacheCandidateResearch(record.candidate, selectedVerticalId, { segment: verification });
+        if (verification.match === "UNCERTAIN") {
+          const recheck = await resolveBeforeDeadline({
+            operation: recheckUncertainCompanySegment({
+              input: segmentInput,
+              initial: verification,
+              searchProvider,
+            }),
+            deadlineAt,
+            timeoutMs: 9_000,
+            fallback: {
+              verification,
+              attempted: true,
+              sourceUrls: [],
+            },
+          });
+          verification = recheck.verification;
+        }
+        segmentVerificationMs += Date.now() - segmentStartedAt;
+        cacheCandidateResearch(record.candidate, selectedVerticalId, { segment: verification });
         if (verification.match === "MATCH") segmentMatchCount += 1;
         else if (verification.match === "MISMATCH") segmentMismatchCount += 1;
         else segmentUncertainCount += 1;
-        if (verification.match !== "MATCH") return null;
+        if (verification.match !== "MATCH") {
+          const reason = verification.match === "MISMATCH"
+            ? "segment_mismatch"
+            : "segment_uncertain_after_recheck";
+          deepSkipReasons[reason] = (deepSkipReasons[reason] ?? 0) + 1;
+          addRejectionSample(rejectionSamples, {
+            company_name: baseCompany.company_name,
+            stage: "segment",
+            reason,
+            source_url: baseCompany.source_url ?? record.candidate.company_source_url,
+          });
+          return null;
+        }
 
         const decisionMaker = decisionMakerRecommendations[index];
+        const lprStartedAt = Date.now();
         const peopleDiscovery = shouldDeferPeopleDiscovery(baseCompany)
           ? getDeferredPeopleDiscoveryResult()
           : await resolveBeforeDeadline({
@@ -1328,6 +1412,7 @@ export async function runLeadDiscoveryEngine({
               timeoutMs: PEOPLE_DISCOVERY_TIMEOUT_MS,
               fallback: getDeferredPeopleDiscoveryResult(),
             });
+        lprResearchMs += Date.now() - lprStartedAt;
         const company = attachPeopleDiscoveryToCompany({
           ...baseCompany,
           metadata: { ...baseCompany.metadata, segment_verification: verification },
@@ -1350,6 +1435,7 @@ export async function runLeadDiscoveryEngine({
           peopleDiscovery,
           signals: buildSignals({ campaign, company, lead, candidate: record.candidate, createdAt }),
         };
+        const emailStartedAt = Date.now();
         const contactResult = await resolveBeforeDeadline({
           operation: contactEnrichmentEngine.enrichContacts({
             campaign,
@@ -1364,7 +1450,18 @@ export async function runLeadDiscoveryEngine({
           timeoutMs: CONTACT_ENRICHMENT_TIMEOUT_MS,
           fallback: null,
         });
-        if (!contactResult) return null;
+        emailResolutionMs += Date.now() - emailStartedAt;
+        if (!contactResult) {
+          deepSkipReasons.contact_enrichment_timeout =
+            (deepSkipReasons.contact_enrichment_timeout ?? 0) + 1;
+          addRejectionSample(rejectionSamples, {
+            company_name: company.company_name,
+            stage: "contact",
+            reason: "contact_enrichment_timeout",
+            source_url: company.source_url,
+          });
+          return null;
+        }
         const intelligence = await resolveBeforeDeadline({
           operation: evaluateAdaptiveContactIntelligence({
             company,
@@ -1402,6 +1499,16 @@ export async function runLeadDiscoveryEngine({
       }
       if (hasNewConfirmedEmail) {
           emailReadyLeadIds.add(lead.id);
+      }
+      if (!hasNewConfirmedEmail) {
+        deepSkipReasons.no_new_confirmed_email =
+          (deepSkipReasons.no_new_confirmed_email ?? 0) + 1;
+        addRejectionSample(rejectionSamples, {
+          company_name: company.company_name,
+          stage: "contact",
+          reason: "no_new_confirmed_email",
+          source_url: company.source_url,
+        });
       }
         return { record: enrichedRecord, result };
       } catch {
@@ -1496,11 +1603,17 @@ export async function runLeadDiscoveryEngine({
         prefilter: discovery.stats.timings_ms?.prefilter ?? 0,
         deep_research: deepResearchMs,
         total: Date.now() - runStartedAt,
+        website_resolution: websiteResolutionMs,
+        segment_verification: segmentVerificationMs,
+        lpr_research: lprResearchMs,
+        email_resolution: emailResolutionMs,
       },
+      skip_reasons: deepSkipReasons,
+      rejection_samples: rejectionSamples.slice(0, 5),
       enrichment_budget_exhausted:
         (emailReadyLeadIds.size < emailReadyTarget ||
           contactReadyLeadIds.size < contactReadyTarget) &&
-        processedLeadRecords.length < leadWorkflowCandidateRecords.length,
+        Date.now() + DISCOVERY_DEADLINE_RESERVE_MS >= deadlineAt,
       email_ready_target: emailReadyTarget,
       email_ready_companies: emailReadyLeadIds.size,
       contact_ready_target: contactReadyTarget,

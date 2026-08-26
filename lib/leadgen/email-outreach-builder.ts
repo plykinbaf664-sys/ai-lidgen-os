@@ -12,6 +12,7 @@ import {
   type OutreachMicroValue,
   type OutreachQualityScore,
 } from "@/lib/leadgen/first-email-generator";
+import { generateFirstEmailWithAi } from "@/lib/leadgen/first-email-ai-generator";
 import { normalizeLeadgenText } from "@/lib/leadgen/text-normalization";
 import type { LeadgenVerticalId } from "@/lib/leadgen/verticals";
 import { isPlausiblePublicPersonName } from "@/lib/leadgen/person-factuality";
@@ -177,5 +178,48 @@ export function buildEmailOutreach({
     generationAttempts: copy.generationAttempts,
     copyReviewStatus: copy.reviewStatus,
     guideAssignment,
+  };
+}
+
+export async function buildEmailOutreachWithAi(
+  input: Parameters<typeof buildEmailOutreach>[0],
+): Promise<ReturnType<typeof buildEmailOutreach>> {
+  const deterministic = buildEmailOutreach(input);
+  if (!deterministic.readyToSend || !input.contact) return deterministic;
+  const messageMode = deterministic.messageMode;
+  const factualPersonName = isPlausiblePublicPersonName(input.personName)
+    ? input.personName
+    : null;
+  const copy = await generateFirstEmailWithAi({
+    companyName: normalizeLeadgenText(input.companyName, { source: "email_outreach.company" }),
+    website: input.companyWebsite,
+    companyDescription: input.companyDescription,
+    industry: input.industry,
+    decisionMakerName: factualPersonName,
+    decisionMakerRole: messageMode === "generic_routing" ? null : input.personRole ?? input.contact.role_title,
+    contactEmail: input.contact.email,
+    messageMode,
+    growthSignal: [input.signalType, input.signalTitle, input.signalDetail, input.whyNow].filter(Boolean).join(" "),
+    selectionReason: input.selectionReason,
+    signalType: input.signalType,
+    signalEvidence: input.signalDetail || input.signalTitle || input.whyNow,
+    signalSourceUrl: input.signalSourceUrl,
+    uniquenessKey: `${input.contact.id}:${input.contact.email ?? ""}:${input.signalConfidence ?? ""}`,
+    verticalId: input.verticalId,
+    businessProblemHypothesis: input.businessProblemHypothesis,
+    targetResponsibility: messageMode === "generic_routing" ? null : input.targetResponsibility,
+    whyThisPerson: input.whyThisPerson,
+    publicPersonContext: input.publicPersonContext,
+    emailEvidence: input.emailEvidence,
+  });
+  return {
+    ...deterministic,
+    subject: copy.subject,
+    body: copy.body,
+    microValue: copy.microValue,
+    quality: copy.quality,
+    qualityGatePassed: copy.qualityGatePassed,
+    generationAttempts: copy.generationAttempts,
+    copyReviewStatus: copy.reviewStatus,
   };
 }

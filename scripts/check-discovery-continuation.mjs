@@ -56,11 +56,26 @@ for (let index = 0; index < DISCOVERY_EMPTY_PASS_LIMIT; index += 1) {
   });
 }
 assert.equal(lowYield.diminishing_return_passes, DISCOVERY_EMPTY_PASS_LIMIT);
-assert.equal(lowYield.search_exhausted, true);
-assert.equal(lowYield.continuation_available, false);
-assert.equal(lowYield.stop_reason, "diminishing_returns");
-assert.equal(canContinueDiscovery(lowYield), false);
+assert.equal(lowYield.search_exhausted, false);
+assert.equal(lowYield.continuation_available, true);
+assert.equal(lowYield.stop_reason, null);
+assert.equal(canContinueDiscovery(lowYield), true);
 assert.ok((lowYield.next_page_offset ?? 0) > (first.next_page_offset ?? 0));
+
+const passBudgetExhausted = mergeDiscoveryPassStats({
+  previous: {
+    ...lowYield,
+    passes_completed: DISCOVERY_MAX_PASSES - 1,
+    stop_reason: null,
+    search_exhausted: false,
+  },
+  pass: pass(0, lowYield.next_page_offset ?? 0),
+  target: 50,
+  pagesPerPass: 10,
+});
+assert.equal(passBudgetExhausted.search_exhausted, true);
+assert.equal(passBudgetExhausted.continuation_available, false);
+assert.equal(passBudgetExhausted.stop_reason, "pass_budget_exhausted");
 
 const completed = mergeDiscoveryPassStats({
   previous: first,
@@ -111,5 +126,5 @@ assert.match(dashboard, /discovery\.deep_research_count/);
 assert.match(dashboard, /campaignDetails\?\.leads\.length/);
 
 console.log(
-  "DISCOVERY_CONTINUATION_OK cursor_advances=true diminishing_stop=true target_stop=true",
+  "DISCOVERY_CONTINUATION_OK cursor_advances=true empty_pass_continues=true target_stop=true",
 );

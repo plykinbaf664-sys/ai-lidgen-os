@@ -136,6 +136,20 @@ function encodeBase64Body(value: string): string {
     .join("\r\n");
 }
 
+function encodeMimeParameter(value: string): string {
+  return encodeURIComponent(value)
+    .replace(/[!'()*]/g, (character) => `%${character.charCodeAt(0).toString(16).toUpperCase()}`);
+}
+
+function asciiFilenameFallback(value: string): string {
+  const extension = value.match(/\.[A-Za-z0-9]+$/)?.[0] ?? "";
+  const basename = value.slice(0, extension ? -extension.length : undefined)
+    .normalize("NFKD")
+    .replace(/[^A-Za-z0-9._-]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "attachment";
+  return `${basename}${extension}`;
+}
+
 export function buildRawEmailMessage({
   to,
   subject,
@@ -200,11 +214,13 @@ export function buildRawEmailMessage({
         for (const attachment of attachments) {
           const filename = assertSafeHeader(attachment.filename, "attachment filename");
           const contentType = assertSafeHeader(attachment.contentType, "attachment content type");
+          const encodedFilename = encodeMimeParameter(filename);
+          const fallbackFilename = asciiFilenameFallback(filename);
           parts.push(
             `--${boundary}`,
-            `Content-Type: ${contentType}; name="${filename}"`,
+            `Content-Type: ${contentType}; name="${fallbackFilename}"; name*=UTF-8''${encodedFilename}`,
             "Content-Transfer-Encoding: base64",
-            `Content-Disposition: attachment; filename="${filename}"`,
+            `Content-Disposition: attachment; filename="${fallbackFilename}"; filename*=UTF-8''${encodedFilename}`,
             "",
             attachment.content.toString("base64").match(/.{1,76}/g)?.join("\r\n") ?? "",
           );

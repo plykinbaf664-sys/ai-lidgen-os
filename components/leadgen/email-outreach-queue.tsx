@@ -212,14 +212,13 @@ function getGuideLabels(entry: OutreachQueueEntry): string[] {
   if (!OUTREACH_GUIDE_ATTACHMENTS_ENABLED) return ["Вложения временно отключены"];
   const assignment = entry.guide_assignment;
   if (!assignment) return [];
-  return [
-    assignment.alexanderGuideVariant === "A"
-      ? "Александр A · Шаблон бизнес-процессов"
-      : "Александр B · Чек-лист по диагностике бизнеса",
-    assignment.aiGuideVariant === "A"
-      ? "AI A · Где ручной труд забирает ваши деньги"
-      : "AI B · Почему новый найм может ухудшить ситуацию",
-  ];
+  if (assignment.bundleVersion === 3) {
+    return [
+      "Диагностика отдела продаж — PRO продажи просто.xlsx",
+      "Бизнес процессы (шаблон).xlsx",
+    ];
+  }
+  return [];
 }
 
 function mergeQueueEntries(

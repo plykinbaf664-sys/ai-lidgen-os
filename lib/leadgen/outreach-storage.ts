@@ -207,7 +207,9 @@ export function rowToEntry(row: QueueRow, queuePosition: number | null = null): 
     guide_assignment: isOutreachGuideAssignment(metadata.guide_assignment)
       ? metadata.guide_assignment
       : null,
-    ...(metadata.outreach_version === 2 ? { outreach_version: 2 as const } : {}),
+    ...(metadata.outreach_version === 2 || metadata.outreach_version === 3
+      ? { outreach_version: metadata.outreach_version }
+      : {}),
     queue_position: queuePosition,
     follow_up_due_at: null,
     follow_up_status: null,

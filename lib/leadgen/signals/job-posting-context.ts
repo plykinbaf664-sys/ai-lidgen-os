@@ -26,6 +26,14 @@ function isHhVacancy(url: string): boolean {
   }
 }
 
+function getHhVacancyId(url: string): string | null {
+  try {
+    return new URL(url).pathname.match(/^\/vacancy\/(\d+)/)?.[1] ?? null;
+  } catch {
+    return null;
+  }
+}
+
 function asText(value: unknown): string | null {
   return typeof value === "string" && value.trim() ? value.trim() : null;
 }
@@ -100,6 +108,55 @@ export function parseJobPostingContext(html: string): {
   return null;
 }
 
+export function parseHhVacancyApiContext(value: unknown): {
+  companyName: string;
+  jobTitle: string;
+  datePosted: string | null;
+  description: string | null;
+} | null {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  const record = value as Record<string, unknown>;
+  const employer = record.employer;
+  const companyName = employer && typeof employer === "object" && !Array.isArray(employer)
+    ? asText((employer as Record<string, unknown>).name)
+    : null;
+  const jobTitle = asText(record.name);
+  if (!companyName || !jobTitle) return null;
+  const description = asText(record.description);
+  return {
+    companyName,
+    jobTitle,
+    datePosted: asText(record.published_at),
+    description: description ? stripHtml(description).slice(0, 1_200) : null,
+  };
+}
+
+function applyJobPostingContext(
+  result: SearchResult,
+  context: {
+    companyName: string;
+    jobTitle: string;
+    datePosted: string | null;
+    description: string | null;
+  },
+): SearchResult {
+  const evidence = [
+    `Работодатель: ${context.companyName}; открыта вакансия: ${context.jobTitle}.`,
+    context.datePosted ? `Дата публикации: ${context.datePosted}.` : "",
+    context.description ?? "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  return {
+    ...result,
+    title: `Вакансия ${context.jobTitle} — ${context.companyName}`,
+    snippet: evidence,
+    raw_content: evidence,
+    published_at: context.datePosted ?? result.published_at,
+  };
+}
+
 export async function enrichJobPostingSearchResult(
   result: SearchResult,
 ): Promise<SearchResult> {
@@ -108,6 +165,21 @@ export async function enrichJobPostingSearchResult(
   }
 
   try {
+    const vacancyId = getHhVacancyId(result.url);
+    if (vacancyId) {
+      const apiResponse = await fetch(`https://api.hh.ru/vacancies/${vacancyId}`, {
+        headers: {
+          "User-Agent": "LeadgenOS/1.0 (contact discovery)",
+          Accept: "application/json",
+        },
+        signal: AbortSignal.timeout(7_000),
+      });
+      if (apiResponse.ok) {
+        const apiContext = parseHhVacancyApiContext(await apiResponse.json());
+        if (apiContext) return applyJobPostingContext(result, apiContext);
+      }
+    }
+
     const response = await fetch(result.url, {
       headers: {
         "User-Agent": "Mozilla/5.0 (compatible; LeadgenOS/1.0)",
@@ -125,21 +197,7 @@ export async function enrichJobPostingSearchResult(
       return result;
     }
 
-    const evidence = [
-      `Работодатель: ${context.companyName}; открыта вакансия: ${context.jobTitle}.`,
-      context.datePosted ? `Дата публикации: ${context.datePosted}.` : "",
-      context.description ?? "",
-    ]
-      .filter(Boolean)
-      .join(" ");
-
-    return {
-      ...result,
-      title: `Вакансия ${context.jobTitle} — ${context.companyName}`,
-      snippet: evidence,
-      raw_content: evidence,
-      published_at: context.datePosted ?? result.published_at,
-    };
+    return applyJobPostingContext(result, context);
   } catch {
     return result;
   }

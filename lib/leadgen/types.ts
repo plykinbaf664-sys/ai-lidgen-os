@@ -356,7 +356,7 @@ export type OutreachQueueEntry = {
     summary: string;
   } | null;
   guide_assignment?: import("@/lib/leadgen/outreach-guides").OutreachGuideAssignment | null;
-  outreach_version?: 2;
+  outreach_version?: 2 | 3;
   queue_position?: number | null;
   follow_up_due_at: string | null;
   follow_up_status: string | null;
@@ -458,6 +458,10 @@ export type ProductionDiscoveryStats = {
     prefilter: number;
     deep_research: number;
     total: number;
+    website_resolution?: number;
+    segment_verification?: number;
+    lpr_research?: number;
+    email_resolution?: number;
   };
   search_strategy_metrics?: Record<string, {
     attempts: number;
@@ -475,6 +479,12 @@ export type ProductionDiscoveryStats = {
   stop_reason?: "target_reached" | "diminishing_returns" | "pass_budget_exhausted" | "cursor_exhausted" | null;
   search_budget: number;
   skip_reasons: Record<string, number>;
+  rejection_samples?: Array<{
+    company_name: string | null;
+    stage: "signal" | "prefilter" | "segment" | "website" | "contact";
+    reason: string;
+    source_url: string | null;
+  }>;
   skipped_identity_keys?: string[];
 };
 

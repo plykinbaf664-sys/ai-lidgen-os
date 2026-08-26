@@ -185,7 +185,9 @@ export function buildOutreachQueueEntry({
     micro_value:
       (contact.metadata.email_micro_value as OutreachQueueEntry["micro_value"]) ?? null,
     guide_assignment: guideAssignment,
-    ...(guideAssignment ? { outreach_version: 2 as const } : {}),
+    ...(guideAssignment
+      ? { outreach_version: guideAssignment.bundleVersion === 3 ? 3 as const : 2 as const }
+      : {}),
     created_at: contact.created_at,
     approved_at: queue?.approved_at ?? null,
     queued_at: queue?.queued_at ?? null,

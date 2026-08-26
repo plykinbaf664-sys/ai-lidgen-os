@@ -156,8 +156,7 @@ export function mergeDiscoveryPassStats({
     : 0;
   const searchExhausted =
     totalEmails >= target ||
-    passesCompleted >= DISCOVERY_MAX_PASSES ||
-    diminishingPasses >= leadgenProductionConfig.discoveryDiminishingPassLimit;
+    passesCompleted >= DISCOVERY_MAX_PASSES;
   const currentOffset = previous
     ? getDiscoveryPageOffset(previous, pagesPerPass)
     : pass.search_page_offset ?? 0;
@@ -165,7 +164,10 @@ export function mergeDiscoveryPassStats({
   const nextWaveOffset =
     Math.floor(currentOffset / DISCOVERY_PROVIDER_PAGE_WINDOW + 1) *
     DISCOVERY_PROVIDER_PAGE_WINDOW;
-  const nextOffset = passEmails === 0 && (pass.qualified_candidates_found ?? 0) === 0
+  // A pass can contain candidates that fail the segment/contact gates. Staying
+  // on the adjacent provider page then repeats the same weak result cluster.
+  // Jump to the next geographic wave whenever a pass yields no usable email.
+  const nextOffset = passEmails === 0
       ? nextWaveOffset
       : nextSequentialOffset;
   const cursorExhausted = nextOffset >= DISCOVERY_MAX_SEARCH_CURSORS;
@@ -229,8 +231,24 @@ export function mergeDiscoveryPassStats({
       prefilter: (previous?.timings_ms?.prefilter ?? 0) + (pass.timings_ms?.prefilter ?? 0),
       deep_research: (previous?.timings_ms?.deep_research ?? 0) + (pass.timings_ms?.deep_research ?? 0),
       total: (previous?.timings_ms?.total ?? 0) + (pass.timings_ms?.total ?? 0),
+      website_resolution:
+        (previous?.timings_ms?.website_resolution ?? 0) +
+        (pass.timings_ms?.website_resolution ?? 0),
+      segment_verification:
+        (previous?.timings_ms?.segment_verification ?? 0) +
+        (pass.timings_ms?.segment_verification ?? 0),
+      lpr_research:
+        (previous?.timings_ms?.lpr_research ?? 0) +
+        (pass.timings_ms?.lpr_research ?? 0),
+      email_resolution:
+        (previous?.timings_ms?.email_resolution ?? 0) +
+        (pass.timings_ms?.email_resolution ?? 0),
     },
     skip_reasons: addRecords(previous?.skip_reasons, pass.skip_reasons),
+    rejection_samples: [
+      ...(previous?.rejection_samples ?? []),
+      ...(pass.rejection_samples ?? []),
+    ].slice(0, 5),
     skipped_identity_keys: [
       ...new Set([
         ...(previous?.skipped_identity_keys ?? []),
@@ -250,9 +268,7 @@ export function mergeDiscoveryPassStats({
       ? "target_reached"
       : cursorExhausted
         ? "cursor_exhausted"
-        : diminishingPasses >= leadgenProductionConfig.discoveryDiminishingPassLimit
-          ? "diminishing_returns"
-          : passesCompleted >= DISCOVERY_MAX_PASSES
+        : passesCompleted >= DISCOVERY_MAX_PASSES
             ? "pass_budget_exhausted"
             : null,
   };

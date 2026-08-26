@@ -9,6 +9,7 @@ export type OutreachGuideAssignment = {
   alexanderGuideVariant: OutreachGuideVariant;
   aiGuideId: string;
   aiGuideVariant: OutreachGuideVariant;
+  bundleVersion?: 3;
 };
 
 type GuideDefinition = {
@@ -17,6 +18,7 @@ type GuideDefinition = {
   variant: OutreachGuideVariant;
   title: string;
   filename: string;
+  contentType: string;
 };
 
 const GUIDE_ROOT = path.join(process.cwd(), "private-assets", "outreach-guides");
@@ -24,39 +26,40 @@ const GUIDE_ROOT = path.join(process.cwd(), "private-assets", "outreach-guides")
 export const OUTREACH_GUIDES = {
   "alexander-process-map": {
     id: "alexander-process-map", owner: "alexander", variant: "A",
-    title: "Шаблон бизнес-процессов", filename: "alexander-business-process-template.pdf",
+    title: "Шаблон бизнес-процессов", filename: "alexander-business-process-template.pdf", contentType: "application/pdf",
   },
   "alexander-business-diagnostic": {
     id: "alexander-business-diagnostic", owner: "alexander", variant: "B",
-    title: "Чек-лист по диагностике бизнеса", filename: "alexander-business-diagnostic-checklist.pdf",
+    title: "Чек-лист по диагностике бизнеса", filename: "alexander-business-diagnostic-checklist.pdf", contentType: "application/pdf",
   },
   "ai-manual-work-cost": {
     id: "ai-manual-work-cost", owner: "ai", variant: "A",
-    title: "Где ручной труд забирает ваши деньги", filename: "ai-manual-work-cost.pdf",
+    title: "Где ручной труд забирает ваши деньги", filename: "ai-manual-work-cost.pdf", contentType: "application/pdf",
   },
   "ai-hiring-risk": {
     id: "ai-hiring-risk", owner: "ai", variant: "B",
-    title: "Почему найм новых сотрудников может ухудшить ситуацию", filename: "ai-hiring-risk.pdf",
+    title: "Почему найм новых сотрудников может ухудшить ситуацию", filename: "ai-hiring-risk.pdf", contentType: "application/pdf",
+  },
+  "business-process-template-xlsx": {
+    id: "business-process-template-xlsx", owner: "alexander", variant: "A",
+    title: "Бизнес процессы (шаблон)", filename: "Бизнес процессы (шаблон).xlsx", contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  },
+  "sales-diagnostic-xlsx": {
+    id: "sales-diagnostic-xlsx", owner: "ai", variant: "A",
+    title: "Диагностика отдела продаж — PRO продажи просто", filename: "Диагностика отдела продаж — PRO продажи просто.xlsx", contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
   },
 } as const satisfies Record<string, GuideDefinition>;
 
-function stableBit(value: string, salt: string) {
-  let hash = 2166136261;
-  for (const character of `${salt}:${value}`) {
-    hash ^= character.codePointAt(0) ?? 0;
-    hash = Math.imul(hash, 16777619);
-  }
-  return (hash >>> 0) % 2;
-}
-
 export function assignOutreachGuides(stableKey: string): OutreachGuideAssignment {
-  const alexanderGuideVariant = stableBit(stableKey, "alexander") === 0 ? "A" : "B";
-  const aiGuideVariant = stableBit(stableKey, "ai") === 0 ? "A" : "B";
+  // Keep the parameter in the contract so persisted assignment remains stable,
+  // while every new cold email receives the same required two-file bundle.
+  void stableKey;
   return {
-    alexanderGuideId: alexanderGuideVariant === "A" ? "alexander-process-map" : "alexander-business-diagnostic",
-    alexanderGuideVariant,
-    aiGuideId: aiGuideVariant === "A" ? "ai-manual-work-cost" : "ai-hiring-risk",
-    aiGuideVariant,
+    alexanderGuideId: "business-process-template-xlsx",
+    alexanderGuideVariant: "A",
+    aiGuideId: "sales-diagnostic-xlsx",
+    aiGuideVariant: "A",
+    bundleVersion: 3,
   };
 }
 
@@ -84,7 +87,7 @@ export async function resolveOutreachGuideAttachments(assignment: OutreachGuideA
   const guides = describeOutreachGuideAssignment(assignment);
   return Promise.all(guides.map(async (guide) => ({
     filename: guide.filename,
-    contentType: "application/pdf",
+    contentType: guide.contentType,
     content: await readFile(path.join(GUIDE_ROOT, guide.filename)),
   })));
 }

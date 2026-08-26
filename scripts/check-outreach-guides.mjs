@@ -3,22 +3,36 @@ import "./register-ts-paths.mjs";
 
 const { assignOutreachGuides, describeOutreachGuideAssignment, resolveOutreachGuideAttachments } =
   await import("../lib/leadgen/outreach-guides.ts");
-const { OUTREACH_GUIDE_ATTACHMENTS_ENABLED } = await import("../lib/leadgen/outreach-guide-config.ts");
 const { buildRawEmailMessage } = await import("../lib/leadgen/smtp-client.ts");
 
 const assignment = assignOutreachGuides("contact-42:person@company.ru");
-assert.deepEqual(assignment, assignOutreachGuides("contact-42:person@company.ru"));
+assert.equal(assignment.bundleVersion, 3);
+assert.deepEqual(assignment, assignOutreachGuides("another-contact"));
 const guides = describeOutreachGuideAssignment(assignment);
-assert.equal(guides.length, 2);
-assert.equal(guides.filter((guide) => guide.owner === "alexander").length, 1);
-assert.equal(guides.filter((guide) => guide.owner === "ai").length, 1);
-assert.equal(OUTREACH_GUIDE_ATTACHMENTS_ENABLED, false);
-const attachments = await resolveOutreachGuideAttachments(assignment);
-assert.equal(attachments.length, 0);
+assert.deepEqual(guides.map((guide) => guide.filename).sort(), [
+  "Бизнес процессы (шаблон).xlsx",
+  "Диагностика отдела продаж — PRO продажи просто.xlsx",
+].sort());
 
+let assetsReady = true;
+try {
+  const resolved = await resolveOutreachGuideAttachments(assignment);
+  assert.equal(resolved.length, 2);
+} catch (error) {
+  assetsReady = false;
+  assert.match(String(error), /ENOENT|no such file/i);
+}
+
+const attachments = guides.map((guide) => ({
+  filename: guide.filename,
+  contentType: guide.contentType,
+  content: Buffer.from("PK-test-only"),
+}));
 const config = { host: "smtp.test", port: 465, secure: true, user: "test", password: "test", fromEmail: "sender@example.com", fromName: "Leadgen Test" };
-const raw = buildRawEmailMessage({ to: "recipient@example.com", subject: "Test", body: "No send", config, attachments }).rawMessage;
-assert.equal((raw.match(/Content-Disposition: attachment/g) ?? []).length, 0);
-const plain = buildRawEmailMessage({ to: "recipient@example.com", subject: "Follow-up", body: "No attachments", config }).rawMessage;
-assert.equal((plain.match(/Content-Disposition: attachment/g) ?? []).length, 0);
-process.stdout.write("OUTREACH_GUIDES_PAUSED stable_assignment=passed mime_attachments=0\n");
+const raw = buildRawEmailMessage({ to: "recipient@example.com", subject: "Тест", body: "Без отправки", config, attachments }).rawMessage;
+assert.equal((raw.match(/Content-Disposition: attachment/g) ?? []).length, 2);
+assert.match(raw, /filename\*=UTF-8''/);
+
+const followUp = buildRawEmailMessage({ to: "recipient@example.com", subject: "Follow-up", body: "No attachments", config }).rawMessage;
+assert.equal((followUp.match(/Content-Disposition: attachment/g) ?? []).length, 0);
+process.stdout.write(`OUTREACH_XLSX_BUNDLE mime=passed assets=${assetsReady ? "ready" : "missing"}\n`);

@@ -1,3 +1,3 @@
-// Enable only after the user supplies the final four PDF assets and confirms
-// that they are ready for test sending.
-export const OUTREACH_GUIDE_ATTACHMENTS_ENABLED = false;
+// New Outreach V3 entries require the fixed two-file XLSX bundle. Existing
+// queued V2 entries are intentionally left unchanged by the SMTP provider.
+export const OUTREACH_GUIDE_ATTACHMENTS_ENABLED = true;

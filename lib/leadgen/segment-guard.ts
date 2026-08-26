@@ -10,7 +10,7 @@ export type SegmentVerification = {
   evidence: string[];
 };
 
-type SegmentGuardInput = {
+export type SegmentGuardInput = {
   selectedSegment: LeadgenVerticalId;
   companyName: string;
   companySegment?: string | null;
