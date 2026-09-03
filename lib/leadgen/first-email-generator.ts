@@ -1,5 +1,6 @@
 import type { CommercialSignalType, OutreachMessageMode } from "@/lib/leadgen/types";
 import { inferVerticalId, type LeadgenVerticalId } from "@/lib/leadgen/verticals";
+import { OUTREACH_BONUS_LINKS } from "@/lib/leadgen/outreach-guide-config";
 
 export type OutreachMicroValue = {
   type: "ideas" | "audit" | "scenarios" | "processes";
@@ -79,8 +80,11 @@ type EmailIntent =
 export const INITIAL_OUTREACH_SIGNATURE =
   "Александр Плыкин, AI-архитектор\n+79629910514";
 
-export const OUTREACH_GIFTS_NOTE =
-  "К письму приложил два рабочих материала: диагностику отдела продаж и шаблон бизнес-процессов. Их можно забрать и использовать независимо от нашего разговора.";
+export const OUTREACH_BONUSES_NOTE = [
+  "Бонусы можно забрать по ссылкам:",
+  ...OUTREACH_BONUS_LINKS.map(({ title, url }, index) => `${index + 1}. ${title}: ${url}`),
+  "Материалы можно использовать независимо от нашего разговора.",
+].join("\n");
 
 const FORBIDDEN_PHRASES: Array<{ pattern: RegExp; label: string }> = [
   { pattern: /operations leadership/i, label: "operations leadership" },
@@ -92,6 +96,7 @@ const FORBIDDEN_PHRASES: Array<{ pattern: RegExp; label: string }> = [
   { pattern: /предложение о сотрудничестве/i, label: "предложение о сотрудничестве" },
   { pattern: /инновационн(?:ое|ые) решен/i, label: "инновационное решение" },
   { pattern: /моя гипотеза:/i, label: "нейросетевой маркер «моя гипотеза»" },
+  { pattern: /к письму (?:приложил|прикрепил)|во вложени/i, label: "упоминание несуществующих вложений" },
 ];
 
 const ALLOWED_LATIN_WORDS = new Set([
@@ -107,6 +112,10 @@ const ALLOWED_LATIN_WORDS = new Set([
 
 function cleanText(value: string | null | undefined): string {
   return (value ?? "").replace(/\s+/g, " ").trim();
+}
+
+function stripUrls(value: string): string {
+  return value.replace(/https?:\/\/\S+/gi, "");
 }
 
 function compactCompanyName(value: string): string {
@@ -220,11 +229,11 @@ function getFirstEmailContent(body: string): string {
 }
 
 export function countFirstEmailContentWords(body: string): number {
-  return getFirstEmailContent(body).match(/[\p{L}\p{N}-]+/gu)?.length ?? 0;
+  return stripUrls(getFirstEmailContent(body)).match(/[\p{L}\p{N}-]+/gu)?.length ?? 0;
 }
 
 function contentWords(value: string): Set<string> {
-  return new Set((value.toLowerCase().match(/[\p{L}\p{N}-]+/gu) ?? []).filter((word) => word.length >= 5));
+  return new Set((stripUrls(value).toLowerCase().match(/[\p{L}\p{N}-]+/gu) ?? []).filter((word) => word.length >= 5));
 }
 
 export function getTemplateSimilarityScore(body: string, peers: string[] = []): number {
@@ -241,7 +250,7 @@ export function getTemplateSimilarityScore(body: string, peers: string[] = []): 
 
 function unexplainedEnglishWords(content: string, companyName = ""): string[] {
   const companyWords = new Set((companyName.toLowerCase().match(/[a-z][a-z-]*/g) ?? []));
-  return [...new Set(content.match(/\b[A-Za-z][A-Za-z-]{2,}\b/g) ?? [])]
+  return [...new Set(stripUrls(content).match(/\b[A-Za-z][A-Za-z-]{2,}\b/g) ?? [])]
     .filter((word) => !ALLOWED_LATIN_WORDS.has(word.toLowerCase()) && !companyWords.has(word.toLowerCase()));
 }
 
@@ -281,8 +290,8 @@ export function validateFirstEmailV3(copy: Pick<FirstEmailCopy, "subject" | "bod
   if (!/бизнес-аналитик/i.test(copy.body)) errors.push("Отсутствует дополнительный слой бизнес-аналитика.");
   if (!/9\s*900\s*₽/.test(copy.body)) errors.push("Отсутствует стоимость 9 900 ₽.");
   if (!/24\s+час/i.test(copy.body) || !/бесплат/i.test(copy.body)) errors.push("Некорректно указано условие бесплатного разбора в течение 24 часов.");
-  if (!/диагностик[ау] отдела продаж/i.test(copy.body) || !/шаблон бизнес-процессов/i.test(copy.body)) errors.push("Не обозначены оба подарочных материала.");
-  if ((copy.body.match(/\?/g) ?? []).length !== 1) errors.push("В письме должен быть один простой CTA.");
+  if (!copy.body.includes(OUTREACH_BONUS_LINKS[0].url) || !copy.body.includes(OUTREACH_BONUS_LINKS[1].url)) errors.push("Не добавлены обе ссылки на бонусы.");
+  if ((stripUrls(copy.body).match(/\?/g) ?? []).length !== 1) errors.push("В письме должен быть один простой CTA.");
   if (context) {
     const company = compactCompanyName(context.companyName);
     if (!content.toLowerCase().includes(company.toLowerCase())) errors.push("В письме отсутствует название компании.");
@@ -317,7 +326,7 @@ export function generateFirstEmailV3(context: FirstEmailContext): FirstEmailCopy
     hypothesis: source.hypothesis,
     insight: source.insight,
     experts,
-    value: `${value}\n\n${OUTREACH_GIFTS_NOTE}`,
+    value: `${value}\n\n${OUTREACH_BONUSES_NOTE}`,
     cta,
     signature: INITIAL_OUTREACH_SIGNATURE,
   };

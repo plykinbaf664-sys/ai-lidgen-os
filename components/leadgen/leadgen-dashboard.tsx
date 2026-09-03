@@ -235,20 +235,23 @@ export function LeadgenDashboard() {
     setIsOpening(true);
     setCampaignDetails(null);
     setError(null);
-    try {
-      const response = await fetch(
-        `/api/leadgen/campaigns/details?id=${encodeURIComponent(summary.id)}`,
-      );
-      const data = await readJson<DetailsResponse>(response);
-      if (!response.ok || !data.success) throw new Error(formatUnknownError(data.success ? null : data.error));
-      setDiscovery(data.details.campaign.production_discovery_stats ?? null);
-      setCampaignDetails(data.details);
+    window.requestAnimationFrame(() => {
       window.requestAnimationFrame(() => {
         activeCampaignRef.current?.scrollIntoView({
           behavior: "smooth",
           block: "start",
         });
       });
+    });
+    try {
+      const response = await fetch(
+        `/api/leadgen/campaigns/details?id=${encodeURIComponent(summary.id)}`,
+        { cache: "no-store" },
+      );
+      const data = await readJson<DetailsResponse>(response);
+      if (!response.ok || !data.success) throw new Error(formatUnknownError(data.success ? null : data.error));
+      setDiscovery(data.details.campaign.production_discovery_stats ?? null);
+      setCampaignDetails(data.details);
     } catch (caught) {
       setError(caught instanceof Error && caught.message ? caught.message : "Не удалось открыть кампанию.");
     } finally {
@@ -311,6 +314,15 @@ export function LeadgenDashboard() {
         {error ? <p className="outreach-error" role="alert">{error}</p> : null}
       </section>
 
+      <CampaignHistory
+        activeCampaignId={activeCampaignId}
+        campaigns={campaigns}
+        errorMessage={error}
+        isLoading={isHistoryLoading}
+        isOpeningCampaign={isOpening}
+        onOpenCampaign={handleOpenCampaign}
+      />
+
       {activeCampaignId ? (
         <section className="active-campaign-shell" ref={activeCampaignRef}>
           <div className="active-campaign-heading">
@@ -365,7 +377,7 @@ export function LeadgenDashboard() {
             <EmailOutreachQueue
               campaignDetails={campaignDetails}
               campaignId={activeCampaignId}
-              key={`${activeCampaignId}:${campaignDetails?.leads.length ?? "stored"}`}
+              key={activeCampaignId}
             />
           )}
         </section>
@@ -376,14 +388,6 @@ export function LeadgenDashboard() {
         </section>
       )}
 
-      <CampaignHistory
-        activeCampaignId={activeCampaignId}
-        campaigns={campaigns}
-        errorMessage={error}
-        isLoading={isHistoryLoading}
-        isOpeningCampaign={isOpening}
-        onOpenCampaign={handleOpenCampaign}
-      />
     </div>
   );
 }

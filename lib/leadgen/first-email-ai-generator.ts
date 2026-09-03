@@ -1,5 +1,6 @@
 import {
   INITIAL_OUTREACH_SIGNATURE,
+  OUTREACH_BONUSES_NOTE,
   generateFirstEmailV3,
   passesFirstEmailQualityGate,
   validateFirstEmailV3,
@@ -16,7 +17,6 @@ type StructuredOutreach = {
     grounded_hypothesis: boolean;
     russian_only: boolean;
     personal_cta: boolean;
-    gifts_mentioned: boolean;
   };
 };
 
@@ -64,14 +64,14 @@ export const OUTREACH_GENERATOR_INSTRUCTIONS = `
 
 Правила:
 - Только естественный русский язык. Не копируй английские формулировки из research-контекста; переводи их по смыслу.
-- 120–200 слов без подписи. Короткие абзацы и предложения.
+- 120–175 слов без подписи и без блока бонусов, который система добавит после генерации. Короткие абзацы и предложения.
 - Не выдумывай факты, цифры, потери, людей и проблемы компании. Предположения обозначай словами «часто», «может», «в такой ситуации».
 - Первый смысловой абзац сразу объясняет, почему письмо отправлено сейчас, и называет компанию.
 - Дай одну небанальную полезную мысль, связанную с сигналом.
 - Главный эксперт — Александр Плыкин: «Я AI-архитектор». Опиши только релевантные этому участку действия AI.
 - Бизнес-аналитик — один короткий дополнительный слой: сначала разобраться в процессе, затем автоматизировать осмысленное.
 - Естественно укажи: обычная стоимость разбора 9 900 ₽; при ответе в течение 24 часов после отправки письма разбор бесплатный.
-- Обязательно упомяни два вложения: «диагностика отдела продаж» и «шаблон бизнес-процессов»; их можно использовать независимо от разговора.
+- Не упоминай подарки, бонусы, вложения и ссылки: две ссылки на бонусы система детерминированно добавит в готовое письмо.
 - PERSONAL: CTA на обсуждение участка. GENERAL: CTA с просьбой направить к ответственному.
 - Ровно один вопросительный знак. Не используй кликбейт, канцелярит и маркеры нейросетевого текста.
 - Не добавляй подпись: транспортный слой добавит её отдельно.
@@ -92,9 +92,8 @@ const OUTREACH_SCHEMA = {
         grounded_hypothesis: { type: "boolean" },
         russian_only: { type: "boolean" },
         personal_cta: { type: "boolean" },
-        gifts_mentioned: { type: "boolean" },
       },
-      required: ["reason_now", "grounded_hypothesis", "russian_only", "personal_cta", "gifts_mentioned"],
+      required: ["reason_now", "grounded_hypothesis", "russian_only", "personal_cta"],
     },
   },
   required: ["subject", "body", "cta", "quality"],
@@ -149,9 +148,10 @@ export async function generateFirstEmailWithAi(context: FirstEmailContext): Prom
     if (!text) throw new Error("Outreach LLM returned no structured text");
     const parsed = JSON.parse(text) as unknown;
     if (!isStructuredOutreach(parsed)) throw new Error("Outreach LLM returned an invalid schema");
-    const bodyWithoutSignature = parsed.body.trim().endsWith(parsed.cta.trim())
-      ? parsed.body.trim()
-      : `${parsed.body.trim()}\n\n${parsed.cta.trim()}`;
+    const copyWithoutCta = parsed.body.trim().endsWith(parsed.cta.trim())
+      ? parsed.body.trim().slice(0, -parsed.cta.trim().length).trimEnd()
+      : parsed.body.trim();
+    const bodyWithoutSignature = `${copyWithoutCta}\n\n${OUTREACH_BONUSES_NOTE}\n\n${parsed.cta.trim()}`;
     const body = `${bodyWithoutSignature}\n\n${INITIAL_OUTREACH_SIGNATURE}`;
     const validation = validateFirstEmailV3({ subject: parsed.subject.trim(), body }, context);
     const selfCheckPassed = Object.values(parsed.quality).every(Boolean);

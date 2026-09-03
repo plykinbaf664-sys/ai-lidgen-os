@@ -9,7 +9,13 @@ export async function POST(
   try {
     const entry = await approveOutreachEntry((await params).id);
     if (!entry) return NextResponse.json({ success: false, error: "Письмо не найдено или уже обработано" }, { status: 404 });
-    return NextResponse.json({ success: true, entry });
+    return NextResponse.json({
+      success: true,
+      entry,
+      // The client reconciles this one transition immediately. Rebuilding the
+      // whole campaign summary must not delay an approval mutation.
+      summary: null,
+    });
   } catch (error) {
     return NextResponse.json(
       { success: false, error: formatUnknownError(error) },

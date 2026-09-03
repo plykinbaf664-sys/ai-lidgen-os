@@ -60,7 +60,7 @@ assert.match(storage, /deriveCampaignOperationalStatus/);
 assert.match(storage, /message_kind/);
 assert.match(history, /campaign\.operational_status/);
 assert.doesNotMatch(history, /outreach-status-sent">Завершена/);
-assert.match(dashboard, /campaigns\/details\?pipelineRunId=\$\{encodeURIComponent\(summary\.pipeline_run_id\)\}/);
+assert.match(dashboard, /campaigns\/details\?id=\$\{encodeURIComponent\(summary\.id\)\}/);
 assert.match(readiness, /verifyImapReplyConnection/);
 assert.match(readiness, /auditProductionConsistency/);
 assert.match(imap, /getImapReplyConfig\(\);\s*return true/);

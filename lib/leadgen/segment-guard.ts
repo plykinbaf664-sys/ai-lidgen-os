@@ -1,4 +1,5 @@
 import { getVerticalProfile, type LeadgenVerticalId } from "@/lib/leadgen/verticals";
+import { isDiscoveryV2Enabled } from "@/lib/leadgen/discovery-v2-config";
 
 export type SegmentMatch = "MATCH" | "UNCERTAIN" | "MISMATCH";
 
@@ -93,7 +94,17 @@ export function verifyCompanySegment(input: SegmentGuardInput): SegmentVerificat
     .sort((left, right) => right[1].score - left[1].score);
   const selected = scores[input.selectedSegment];
   const strongest = ranked[0];
-  const selectedIsStrong = selected.score >= 2;
+  const selectedIdentityTerms = termsFor(input.selectedSegment);
+  const identityText = normalize([
+    input.companyName,
+    input.companySegment,
+    input.industry,
+  ].filter(Boolean).join(" "));
+  const hasIdentitySegmentEvidence = selectedIdentityTerms.some((term) =>
+    identityText.includes(term),
+  );
+  const selectedIsStrong = selected.score >= 2 &&
+    (!isDiscoveryV2Enabled() || hasIdentitySegmentEvidence);
   const competitorIsStrong = strongest[0] !== input.selectedSegment && strongest[1].score >= 3;
   const mismatch = competitorIsStrong && strongest[1].score >= selected.score + 1.5;
   const match: SegmentMatch = mismatch ? "MISMATCH" : selectedIsStrong ? "MATCH" : "UNCERTAIN";

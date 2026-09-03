@@ -40,6 +40,11 @@ export function CampaignHistory({
         {!errorMessage && !isLoading && campaigns.length === 0 ? <p className="empty-state">История пока пуста.</p> : null}
         {campaigns.map((campaign) => {
           const status = campaignStatusCopy[campaign.operational_status];
+          const notSent = Math.max(
+            0,
+            (campaign.email_count ?? campaign.leads_count) -
+              campaign.initial_sent_count,
+          );
           return (
           <article className={`campaign-history-row ${activeCampaignId === campaign.id ? "active" : ""}`} key={campaign.id}>
             <div className="campaign-history-identity">
@@ -65,12 +70,12 @@ export function CampaignHistory({
               {isOpeningCampaign && activeCampaignId === campaign.id
                 ? "Загрузка…"
                 : activeCampaignId === campaign.id
-                  ? campaign.approved_count > 0
-                    ? `Доотправить ${campaign.approved_count}`
-                    : "Открыта"
-                  : campaign.approved_count > 0
-                    ? `Открыть · ${campaign.approved_count} ждут`
-                    : "Открыть"}
+                  ? notSent > 0
+                    ? `Открыта · не отправлено ${notSent}`
+                    : "Все сообщения отправлены"
+                  : notSent > 0
+                    ? `Открыть · не отправлено ${notSent}`
+                    : "Открыть · всё отправлено"}
             </Button>
           </article>
         );})}

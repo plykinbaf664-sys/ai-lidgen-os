@@ -44,6 +44,7 @@ export async function GET(request: Request) {
       sent_today: daily.sentToday,
       daily_limit: daily.dailyLimit,
       daily_remaining: daily.availableToQueue,
+      queued_total: daily.queuedTotal,
       queued_for_today: daily.queuedForToday,
     },
   });
@@ -116,6 +117,7 @@ export async function POST(request: Request) {
           sent_today: daily.sentToday,
           daily_limit: daily.dailyLimit,
           daily_remaining: daily.availableToQueue,
+          queued_total: daily.queuedTotal,
           queued_for_today: daily.queuedForToday,
         },
       });
@@ -143,6 +145,7 @@ export async function POST(request: Request) {
         sent_today: daily.sentToday,
         daily_limit: daily.dailyLimit,
         daily_remaining: daily.availableToQueue,
+        queued_total: daily.queuedForToday,
         queued_for_today: daily.queuedForToday,
       },
     });

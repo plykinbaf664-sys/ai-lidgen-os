@@ -9,12 +9,21 @@ import {
 } from "@/lib/leadgen/outreach-storage";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
 import { getOutreachSummary } from "@/lib/leadgen/outreach-summary";
+import {
+  getLocalDailySendStats,
+  getLocalOutreachOperationalState,
+  getOutreachDeliveryStorageMode,
+} from "@/lib/leadgen/local-outreach-store";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 const errorText = (error: unknown) => formatUnknownError(error);
 
 export async function GET(request: NextRequest) {
   try {
     const campaignId = request.nextUrl.searchParams.get("campaignId");
+    const localMode = getOutreachDeliveryStorageMode() === "local";
     if (campaignId) await repairLegacyTruncatedOutreachBodies(campaignId);
     const [workingSet, daily, summary] = await Promise.all([
       campaignId
@@ -39,19 +48,24 @@ export async function GET(request: NextRequest) {
               failed: entries.filter((entry) => entry.status === "failed").length,
             },
           })),
-      getDailySendStats(),
+      localMode ? getLocalDailySendStats() : getDailySendStats(),
       campaignId ? getOutreachSummary(campaignId) : Promise.resolve(null),
     ]);
+    const queuedTotal =
+      "queuedTotal" in daily ? daily.queuedTotal : daily.queuedForToday;
     const entries = workingSet.entries;
     return NextResponse.json({
       success: true,
       entries,
       working_set: { ...workingSet, entries },
-      operational: await getOutreachOperationalState(entries),
+      operational: localMode
+        ? await getLocalOutreachOperationalState(campaignId)
+        : await getOutreachOperationalState(entries),
       daily: {
         sent_today: daily.sentToday,
         daily_limit: daily.dailyLimit,
         daily_remaining: daily.availableToQueue,
+        queued_total: queuedTotal,
         queued_for_today: daily.queuedForToday,
       },
       summary,
@@ -68,21 +82,27 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: "campaignId обязателен" }, { status: 400 });
     }
     await syncOutreachQueue(campaignId);
+    const localMode = getOutreachDeliveryStorageMode() === "local";
     const [workingSet, daily, summary] = await Promise.all([
       getOutreachWorkingSet(campaignId),
-      getDailySendStats(),
+      localMode ? getLocalDailySendStats() : getDailySendStats(),
       getOutreachSummary(campaignId),
     ]);
+    const queuedTotal =
+      "queuedTotal" in daily ? daily.queuedTotal : daily.queuedForToday;
     const entries = workingSet.entries;
     return NextResponse.json({
       success: true,
       entries,
       working_set: { ...workingSet, entries },
-      operational: await getOutreachOperationalState(entries),
+      operational: localMode
+        ? await getLocalOutreachOperationalState(campaignId)
+        : await getOutreachOperationalState(entries),
       daily: {
         sent_today: daily.sentToday,
         daily_limit: daily.dailyLimit,
         daily_remaining: daily.availableToQueue,
+        queued_total: queuedTotal,
         queued_for_today: daily.queuedForToday,
       },
       summary,

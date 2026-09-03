@@ -17,10 +17,19 @@ export async function POST(request: Request) {
       campaignId,
       body.manual === true,
     );
+    let summary = null;
+    try {
+      summary = await getFollowupSummary(campaignId);
+    } catch (error) {
+      console.error("[leadgen:followup-bulk-approve] summary refresh failed", {
+        campaignId,
+        error: formatUnknownError(error),
+      });
+    }
     return NextResponse.json({
       success: true,
       ...result,
-      summary: await getFollowupSummary(campaignId),
+      summary,
     });
   } catch (error) {
     return NextResponse.json({ success: false, error: formatUnknownError(error) }, { status: 500 });

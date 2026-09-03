@@ -78,7 +78,10 @@ function normalizeEmail(value: string): string | null {
     .replace(/^mailto:\s*/i, "")
     .replace(/[.,;:)\]}>"']+$/g, "");
 
-  if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(email)) {
+  if (
+    /%[0-9a-f]{2}/i.test(email) ||
+    !/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(email)
+  ) {
     return null;
   }
 

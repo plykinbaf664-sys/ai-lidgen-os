@@ -51,7 +51,7 @@ export const leadgenProductionConfig = {
   ),
   discoverySearchStrategyBudget: readBoundedInteger(
     "LEADGEN_DISCOVERY_SEARCH_STRATEGY_BUDGET",
-    16,
+    24,
     8,
     40,
   ),

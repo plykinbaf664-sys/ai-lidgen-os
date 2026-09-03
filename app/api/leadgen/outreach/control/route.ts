@@ -5,6 +5,7 @@ import { runOutreachProcessorIteration } from "@/lib/leadgen/outreach-scheduler"
 import {
   cancelLocalQueued,
   getOutreachDeliveryStorageMode,
+  resumeLocalQueue,
   retryLocalFailed,
   setLocalQueuePaused,
 } from "@/lib/leadgen/local-outreach-store";
@@ -16,7 +17,7 @@ export async function POST(request: Request) {
     if (getOutreachDeliveryStorageMode() === "local") {
       if (body.action === "pause") await setLocalQueuePaused(true);
       else if (body.action === "resume" || body.action === "kick") {
-        await setLocalQueuePaused(false);
+        await resumeLocalQueue(body.campaignId);
         after(async () => {
           await runLocalOutreachProcessorIteration();
         });

@@ -1,4 +1,5 @@
 import type { SearchResult } from "@/lib/leadgen/search/search-provider";
+import { isDiscoveryV2Enabled } from "@/lib/leadgen/discovery-v2-config";
 import type { CompanyInvalidReason } from "@/lib/leadgen/signals/company-quality-validator";
 import { validateCompanyQuality } from "@/lib/leadgen/signals/company-quality-validator";
 import type { SourceClassificationResult } from "@/lib/leadgen/signals/source-classifier";
@@ -361,7 +362,7 @@ const explicitCandidatePatterns: CandidatePattern[] = [
     ),
     role: "employer_subject",
     source: "explicit_pattern",
-    baseScore: 92,
+    baseScore: 78,
     reason: "At-company employer phrase",
   },
   {
@@ -464,6 +465,45 @@ const structuredCandidatePatterns: CandidatePattern[] = [
     source: "structured_job_text",
     baseScore: 48,
     reason: "Company-like title before jobs/careers word",
+  },
+];
+
+const commercialEventCandidatePatterns: CandidatePattern[] = [
+  {
+    pattern:
+      /(?:(?:медицинский|промышленный)\s+)?(?:компания|сеть|клиника|завод|холдинг)\s+[«"]?([А-ЯЁ][А-Яа-яЁё0-9&.,'’ «»"-]{1,70}?)[»"]?\s+(?:запустил[аи]?|открыл[аи]?|внедрил[аи]?|расширил[аи]?|представил[аи]?|анонсировал[аи]?|привлекл[аи]?|заключил[аи]?|объявил[аи]?)/giu,
+    role: "employer_subject",
+    source: "explicit_pattern",
+    baseScore: 95,
+    reason: "Russian company is the subject of a commercial event",
+    matchedRuPattern: "company_event_subject",
+  },
+  {
+    pattern:
+      /(?:нов[а-яё-]*\s+)?(?:филиал|офис|медцентр|медицинский\s+центр)\s+(?:клиники|сети|компании)\s+[«"]([^»"]{2,70})[»"]\s+открыл/giu,
+    role: "employer_subject",
+    source: "explicit_pattern",
+    baseScore: 98,
+    reason: "Named company owns the newly opened location",
+    matchedRuPattern: "new_location_owner",
+  },
+  {
+    pattern:
+      /открыл(?:ся|ась|ись)?\s+(?:нов[а-яё-]*\s+)?(?:филиал|офис|медцентр|медицинский\s+центр|клиника|поликлиника)\s+[«"]([^»"]{2,70})[»"]/giu,
+    role: "employer_subject",
+    source: "explicit_pattern",
+    baseScore: 96,
+    reason: "Named organization is the newly opened location",
+    matchedRuPattern: "opened_named_location",
+  },
+  {
+    pattern:
+      /(?:^|[.!?]\s+)([А-ЯЁ][А-Яа-яЁё0-9&.,'’ «»"-]{1,70}?)\s+(?:запустил[аи]?|открыл[аи]?|внедрил[аи]?|расширил[аи]?|представил[аи]?|анонсировал[аи]?|привлекл[аи]?|заключил[аи]?|объявил[аи]?)/gu,
+    role: "employer_subject",
+    source: "explicit_pattern",
+    baseScore: 92,
+    reason: "Russian organization appears before a commercial event verb",
+    matchedRuPattern: "subject_before_commercial_event",
   },
 ];
 
@@ -617,6 +657,8 @@ function cleanCompanyName(value: string): string {
     .replace(/^at\s+/i, "")
     .replace(/^company\s+/i, "")
     .replace(/^\u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f\s+/i, "")
+    .replace(/^(?:(?:медицинский|промышленный)\s+)?(?:сеть|клиника|завод|холдинг)\s+[«"']?/i, "")
+    .replace(/^[«»"']+|[«»"']+$/g, "")
     .replace(
       /\s+\u0432\s+[\u0410-\u042f\u0401][\u0410-\u042f\u0430-\u044f\u0401\u0451 -]{2,40}(?:\s+\u0441\u0440\u043e\u0447\u043d\u043e)?$/i,
       "",
@@ -862,7 +904,10 @@ function collectPatternDrafts(
       for (const match of text.matchAll(candidatePattern.pattern)) {
         const companyName = match[1] ? cleanCompanyName(match[1]) : null;
 
-        if (!companyName) {
+        if (
+          !companyName ||
+          (isDiscoveryV2Enabled() && /^(?:в|на)\s+[А-ЯЁ]/iu.test(companyName))
+        ) {
           continue;
         }
 
@@ -892,7 +937,11 @@ function collectOrganizationMentionDrafts(
     for (const match of textSource.text.matchAll(organizationMentionPattern)) {
       const companyName = match[1] ? cleanCompanyName(match[1]) : null;
 
-      if (!companyName || !isOrganizationLikeMention(companyName)) {
+      if (
+        !companyName ||
+        !isOrganizationLikeMention(companyName) ||
+        (isDiscoveryV2Enabled() && /^(?:в|на)\s+[А-ЯЁ]/iu.test(companyName))
+      ) {
         continue;
       }
 
@@ -998,6 +1047,17 @@ function compareScoredCandidateOptions(
     return -1;
   }
 
+  const eventPatternPriority: Record<string, number> = {
+    new_location_owner: 4,
+    opened_named_location: 3,
+    company_event_subject: 2,
+    subject_before_commercial_event: 1,
+  };
+  const eventPatternDiff =
+    (eventPatternPriority[right.draft.matchedRuPattern ?? ""] ?? 0) -
+    (eventPatternPriority[left.draft.matchedRuPattern ?? ""] ?? 0);
+  if (eventPatternDiff !== 0) return eventPatternDiff;
+
   const rolePriority: Record<CandidateRole, number> = {
     ats_slug: 5,
     company_owned_domain: 4,
@@ -1086,17 +1146,33 @@ export function extractCompanyFromSearchResult(
   ].filter(Boolean);
   const allowLooseTextMentions =
     !isBroadJobBoardPlatform(sourcePlatform) && !isHostedCompanyPath;
+  const discoveryV2Enabled = isDiscoveryV2Enabled();
+  const allowStructuredJobText =
+    !discoveryV2Enabled ||
+    source.source_type === "job_board" ||
+    source.source_type === "company_careers" ||
+    isPlatformLikeSource ||
+    isHostedCompanyPath;
   const drafts: CandidateDraft[] = [
     ...collectPatternDrafts(
       textFields,
       explicitCandidatePatterns,
       candidateDomain,
     ),
-    ...collectPatternDrafts(
-      [result.title, result.snippet],
-      structuredCandidatePatterns,
-      candidateDomain,
-    ),
+    ...(discoveryV2Enabled
+      ? collectPatternDrafts(
+          [result.title, result.snippet],
+          commercialEventCandidatePatterns,
+          candidateDomain,
+        )
+      : []),
+    ...(allowStructuredJobText
+      ? collectPatternDrafts(
+          [result.title, result.snippet],
+          structuredCandidatePatterns,
+          candidateDomain,
+        )
+      : []),
     ...(allowLooseTextMentions
       ? collectOrganizationMentionDrafts(
           [

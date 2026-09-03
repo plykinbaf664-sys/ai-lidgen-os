@@ -3,6 +3,9 @@ import { getDailySendStats } from "@/lib/leadgen/outreach-storage";
 import { getFollowups, getFollowupSummary } from "@/lib/leadgen/followup-storage";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export async function GET(request: NextRequest) {
   try {
     const campaignId = request.nextUrl.searchParams.get("campaignId");

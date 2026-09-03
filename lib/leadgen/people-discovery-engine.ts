@@ -9,10 +9,15 @@ import type {
   PersonCandidate,
 } from "@/lib/leadgen/types";
 import { isPlausiblePublicPersonName } from "@/lib/leadgen/person-factuality";
+import {
+  applyLprRolePlan,
+  resolveBoundedLprRoles,
+} from "@/lib/leadgen/lpr-role-resolver";
 
 export type PeopleDiscoveryInput = {
   company: LeadgenCompany;
   decisionMaker: DecisionMakerProfile;
+  signal?: AbortSignal;
 };
 
 function normalizeText(value: string | null): string {
@@ -62,11 +67,18 @@ export class PeopleDiscoveryEngine {
   async discoverPeople({
     company,
     decisionMaker,
+    signal,
   }: PeopleDiscoveryInput): Promise<PeopleDiscoveryResult> {
+    const rolePlan = resolveBoundedLprRoles(decisionMaker);
     const providerResults = await this.providerManager.findPeople({
       company,
-      decisionMaker,
-      searchKeywords: decisionMaker.search_keywords,
+      decisionMaker: applyLprRolePlan(decisionMaker, rolePlan),
+      searchKeywords: rolePlan.primary.aliases,
+      roleSearchPlan: {
+        primary: rolePlan.primary.aliases,
+        alternatives: rolePlan.alternatives.map((role) => role.aliases),
+      },
+      signal,
     });
 
     if (providerResults.length === 0) {

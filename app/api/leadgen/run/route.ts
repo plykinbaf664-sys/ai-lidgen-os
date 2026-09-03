@@ -9,6 +9,7 @@ import {
   registerDiscoveredCompanies,
   touchDiscoveredCompanies,
 } from "@/lib/leadgen/company-registry";
+import { getActiveAbortableOperationCount } from "@/lib/network/abortable-operation";
 import { getDailyLeadStats } from "@/lib/leadgen/daily-lead-limit";
 import { selectCampaignEmailTarget } from "@/lib/leadgen/email-target-selector";
 import {
@@ -425,6 +426,7 @@ export async function POST(request: Request) {
       campaignId: campaignId ?? undefined,
       searchPageOffset,
       runBudgetMs: DISCOVERY_PASS_BUDGET_MS,
+      previousStrategyMetrics: previousStats?.search_strategy_metrics,
     });
     const deduplicatedResult = excludeExistingCampaignCompanies({
       result,
@@ -578,7 +580,10 @@ export async function POST(request: Request) {
         ),
       },
       dry_run_audit: dryRun
-        ? result.companies.map((company) => {
+        ? {
+          qualified: result.qualified_research_audit ?? [],
+          orphan_requests_after_completion: getActiveAbortableOperationCount(),
+          processed: result.companies.map((company) => {
             const contactDiscovery =
               company.metadata.contact_discovery as
                 | Record<string, unknown>
@@ -614,7 +619,8 @@ export async function POST(request: Request) {
                 : 0,
               provider_errors: contactDiscovery?.provider_errors ?? [],
             };
-          })
+          }),
+        }
         : undefined,
     });
   } catch (error) {

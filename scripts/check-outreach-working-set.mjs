@@ -1,11 +1,13 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import {
+import "./register-ts-paths.mjs";
+
+const {
   getBulkApprovalBaseReason,
   getConfirmedOfficialWebsite,
   getOutreachSkipReason,
   isCanonicalOutreachWorkItem,
-} from "../lib/leadgen/outreach-working-set.ts";
+} = await import("../lib/leadgen/outreach-working-set.ts");
 
 const company = (overrides = {}) => ({
   id: "company-1",
@@ -193,7 +195,7 @@ assert.match(
   componentSource,
   /outreachSummary\?\.initial\.eligibleForBulkApproval/,
 );
-assert.match(componentSource, /await load\(\);\s+setMessage\("Письмо одобрено/);
+assert.match(componentSource, /reconcileInitialSummary\(current, \[previous\], \[result\.entry\]\)/);
 assert.match(componentSource, /<details className="outreach-missing-contacts">/);
 assert.match(outreachRouteSource, /await syncOutreachQueue\(campaignId\)/);
 assert.match(runRouteSource, /await syncOutreachQueue\(enrichedResult\.campaign\.id\)/);

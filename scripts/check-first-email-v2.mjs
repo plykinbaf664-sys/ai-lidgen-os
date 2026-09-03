@@ -7,6 +7,7 @@ const {
   generateFirstEmailV3,
   validateFirstEmailV3,
 } = await import("../lib/leadgen/first-email-generator.ts");
+const { OUTREACH_BONUS_LINKS } = await import("../lib/leadgen/outreach-guide-config.ts");
 
 const scenarios = [
   {
@@ -66,8 +67,9 @@ for (const [index, copy] of copies.entries()) {
   assert.match(copy.body, /бизнес-аналитика/);
   assert.match(copy.body, /9\s*900\s*₽/);
   assert.match(copy.body, /24\s+час/);
-  assert.match(copy.body, /диагностик[ау] отдела продаж/);
-  assert.match(copy.body, /шаблон бизнес-процессов/);
+  assert.match(copy.body, /Бонусы можно забрать по ссылкам:/);
+  for (const bonus of OUTREACH_BONUS_LINKS) assert.ok(copy.body.includes(bonus.url));
+  assert.doesNotMatch(copy.body, /к письму (?:приложил|прикрепил)|во вложени/i);
   assert.doesNotMatch(copy.body, /operations leadership|growth and|manual handoffs|process fragmentation|operational bottlenecks/i);
   assert.match(copy.body, /Александр Плыкин, AI-архитектор\n\+79629910514$/);
 }

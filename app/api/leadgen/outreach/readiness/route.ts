@@ -12,6 +12,9 @@ import {
 } from "@/lib/leadgen/local-outreach-store";
 import { getEmailDelayBounds, leadgenProductionConfig } from "@/lib/leadgen/production-config";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export async function GET() {
   try {
     if (getOutreachDeliveryStorageMode() === "local") {
@@ -57,6 +60,7 @@ export async function GET() {
           sent_today: daily.sentToday,
           daily_limit: daily.dailyLimit,
           daily_remaining: daily.availableToQueue,
+          queued_total: daily.queuedTotal,
           queued_for_today: daily.queuedForToday,
           batch_limit: leadgenProductionConfig.emailBatchSendLimit,
           min_delay_seconds: minimum,

@@ -1,4 +1,6 @@
 import { leadgenProductionConfig } from "@/lib/leadgen/production-config";
+import { isDiscoveryV2Enabled } from "@/lib/leadgen/discovery-v2-config";
+import { runAbortableOperation } from "@/lib/network/abortable-operation";
 import type { SearchProvider } from "@/lib/leadgen/search/search-provider";
 import type { EvidenceResult } from "@/lib/leadgen/signals/evidence-collector";
 import { collectSignalEvidence } from "@/lib/leadgen/signals/evidence-collector";
@@ -61,6 +63,12 @@ export type SignalPipelineResult = {
   weak_evidence: SignalPipelineEvidenceResult[];
   rejected_results: SignalPipelineEvidenceResult[];
   all_evidence: SignalPipelineEvidenceResult[];
+  source_metrics: Record<string, {
+    results: number;
+    company_candidates: number;
+    valid_signals: number;
+    unique_candidates: number;
+  }>;
   stopped_reason: SignalPipelineStoppedReason;
 };
 
@@ -104,17 +112,11 @@ async function searchWithinDeadline(
     ? Math.max(1, deadlineAt - Date.now())
     : SEARCH_CALL_TIMEOUT_MS;
   const timeoutMs = Math.min(SEARCH_CALL_TIMEOUT_MS, available);
-  let timeout: ReturnType<typeof setTimeout> | null = null;
-  try {
-    return await Promise.race([
-      searchProvider.search(input).catch(() => []),
-      new Promise<Awaited<ReturnType<SearchProvider["search"]>>>((resolve) => {
-        timeout = setTimeout(() => resolve([]), timeoutMs);
-      }),
-    ]);
-  } finally {
-    if (timeout) clearTimeout(timeout);
-  }
+  return runAbortableOperation({
+    timeoutMs,
+    fallback: [] as Awaited<ReturnType<SearchProvider["search"]>>,
+    operation: (signal) => searchProvider.search({ ...input, signal }),
+  });
 }
 
 const signalQueryAngles: SignalQueryAngle[] = [
@@ -169,6 +171,46 @@ function getLeadCandidateKey(candidate: LeadCandidate): string {
   }
 
   return `name:${normalizeCompanyName(candidate.company_name)}`;
+}
+
+function buildSourceMetrics(
+  evidenceResults: SignalPipelineEvidenceResult[],
+): SignalPipelineResult["source_metrics"] {
+  const metrics: SignalPipelineResult["source_metrics"] = {};
+  const uniqueBySource = new Map<string, Set<string>>();
+
+  for (const evidence of evidenceResults) {
+    const source = evidence.search_source || evidence.signal_source_label;
+    const current = metrics[source] ?? {
+      results: 0,
+      company_candidates: 0,
+      valid_signals: 0,
+      unique_candidates: 0,
+    };
+    current.results += 1;
+    if (evidence.company_extraction.is_candidate_company_valid) {
+      current.company_candidates += 1;
+    }
+    if (evidence.decision === "valid_signal") {
+      current.valid_signals += 1;
+      const companyKey = evidence.company_extraction.company_domain
+        ? `domain:${evidence.company_extraction.company_domain.toLowerCase()}`
+        : evidence.company_extraction.company_name
+          ? `name:${normalizeCompanyName(evidence.company_extraction.company_name)}`
+          : null;
+      if (companyKey) {
+        const keys = uniqueBySource.get(source) ?? new Set<string>();
+        keys.add(companyKey);
+        uniqueBySource.set(source, keys);
+      }
+    }
+    metrics[source] = current;
+  }
+
+  for (const [source, keys] of uniqueBySource) {
+    metrics[source].unique_candidates = keys.size;
+  }
+  return metrics;
 }
 
 function createEmptyCandidatesByAngle(): Record<SignalQueryAngle, number> {
@@ -453,6 +495,7 @@ export async function runSignalPipeline({
         resultsCount: number;
         evidence: SignalPipelineEvidenceResult[];
       }> = [];
+      const seenResultUrls = new Set<string>();
       for (let page = 0; page < safeMaxPages; page += 1) {
         if (deadlineAt && Date.now() >= deadlineAt) break;
         const providerPage = Math.max(0, pageOffset) + page;
@@ -462,11 +505,24 @@ export async function runSignalPipeline({
           page: providerPage,
           market: activeQuery.market,
           queryLanguage: activeQuery.query_language,
+          queryAngle: activeQuery.query_angle,
         }, deadlineAt);
-        const evidenceSearchResults = signalType === "HIRING_SIGNAL"
-          ? await mapWithConcurrency(searchResults, 5, async (result) =>
-              enrichJobPostingSearchResult(result).catch(() => result))
+        const uniqueSearchResults = isDiscoveryV2Enabled()
+          ? searchResults.filter((result) => {
+              const key = result.url.toLowerCase().replace(/\/$/, "");
+              if (seenResultUrls.has(key)) return false;
+              seenResultUrls.add(key);
+              return true;
+            })
           : searchResults;
+        if (isDiscoveryV2Enabled() && uniqueSearchResults.length === 0) {
+          pages.push({ page: providerPage, resultsCount: 0, evidence: [] });
+          break;
+        }
+        const evidenceSearchResults = signalType === "HIRING_SIGNAL"
+          ? await mapWithConcurrency(uniqueSearchResults, 5, async (result) =>
+              enrichJobPostingSearchResult(result).catch(() => result))
+          : uniqueSearchResults;
         const evidence = evidenceSearchResults.map((result) => ({
           ...collectSignalEvidence({ result, signalType, icp: verticalIcp }),
           market: activeQuery.market,
@@ -475,7 +531,7 @@ export async function runSignalPipeline({
           source_country_hint: activeQuery.source_country_hint,
           why_market_selected: activeQuery.why_market_selected,
         }));
-        pages.push({ page: providerPage, resultsCount: searchResults.length, evidence });
+        pages.push({ page: providerPage, resultsCount: uniqueSearchResults.length, evidence });
         if (searchResults.length < safeMaxResultsPerQuery) break;
       }
       return { activeQuery, pages };
@@ -576,6 +632,7 @@ export async function runSignalPipeline({
       (evidence) => evidence.decision === "rejected",
     ),
     all_evidence: evidenceResults,
+    source_metrics: buildSourceMetrics(evidenceResults),
     stopped_reason: deadlineReached
       ? "deadline_reached"
       : diminishingReturnsReached

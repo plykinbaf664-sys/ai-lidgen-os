@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { bulkApproveOutreach } from "@/lib/leadgen/outreach-storage";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
-import { getOutreachSummary } from "@/lib/leadgen/outreach-summary";
 
 export async function POST(request: Request) {
   try {
@@ -14,10 +13,9 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       ...result,
-      summary:
-        body.execute === true
-          ? await getOutreachSummary(body.campaignId)
-          : undefined,
+      // approved_ids drive the immediate UI reconciliation; the regular
+      // refresh updates the complete summary outside this mutation request.
+      summary: null,
     });
   } catch (error) {
     return NextResponse.json({ success: false, error: formatUnknownError(error) }, { status: 500 });

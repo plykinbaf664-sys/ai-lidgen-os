@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import "./register-ts-paths.mjs";
 
 const { buildRawEmailMessage } = await import(
   new URL("../lib/leadgen/smtp-client.ts", import.meta.url).href

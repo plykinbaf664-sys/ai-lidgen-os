@@ -3,6 +3,7 @@ import type {
   CommercialSignalType,
   SignalType,
 } from "@/lib/leadgen/types";
+import { isDiscoveryV2Enabled } from "@/lib/leadgen/discovery-v2-config";
 
 export const NO_VERIFIED_COMMERCIAL_SIGNAL =
   "Подтверждённый коммерческий сигнал не найден";
@@ -154,6 +155,28 @@ const signalPatterns: readonly SignalPattern[] = [
   },
 ] as const;
 
+const discoveryV2SignalPatterns: readonly SignalPattern[] = [
+  {
+    type: "new_location",
+    patterns: [
+      /(?:откры(?:л|ла|ли|т|вает|лся|лась|лись)|запусти(?:л|ла|ли)|появил(?:ся|ась))\s+(?:[а-яё-]+\s+){0,3}(?:филиал|офис|клиник|точк|представительств|стационар|поликлиник|медцентр|медицинск[а-яё-]*\s+центр)/i,
+      /(?:филиал|офис|клиник|точк|представительств|стационар|поликлиник|медцентр|медицинск[а-яё-]*\s+центр)(?:\s+[а-яё«»"'-]+){0,6}\s+открыл(?:ся|ась|ись)/i,
+    ],
+  },
+  {
+    type: "new_service",
+    patterns: [
+      /(?:запусти(?:л|ла|ли)|откры(?:л|ла|ли)|добави(?:л|ла|ли))\s+(?:(?:нов|перв)[а-яё-]*\s+)?(?:направлен|услуг|сервис|программ)/i,
+    ],
+  },
+  {
+    type: "digital_transformation",
+    patterns: [
+      /(?:внедри(?:л|ла|ли)|запусти(?:л|ла|ли)|переш(?:ел|ла|ли))\s+(?:на\s+)?(?:crm|erp|цифров|автоматизац|онлайн-платформ)/i,
+    ],
+  },
+] as const;
+
 type CandidateInput = {
   text: string | null | undefined;
   sourceUrl: string | null | undefined;
@@ -176,6 +199,11 @@ function splitFragments(value: string): string[] {
 }
 
 function getSignalType(text: string): CommercialSignalType {
+  if (isDiscoveryV2Enabled()) {
+    for (const group of discoveryV2SignalPatterns) {
+      if (group.patterns.some((pattern) => pattern.test(text))) return group.type;
+    }
+  }
   for (const group of signalPatterns) {
     if (group.patterns.some((pattern) => pattern.test(text))) {
       return group.type;

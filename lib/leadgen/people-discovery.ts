@@ -8,6 +8,7 @@ import type {
 export type PeopleDiscoveryInput = {
   company: LeadgenCompany;
   decisionMaker: DecisionMakerProfile;
+  signal?: AbortSignal;
 };
 
 export type PeopleDiscoveryContract = {

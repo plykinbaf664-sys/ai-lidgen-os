@@ -19,7 +19,7 @@ import type {
   OutreachReadiness,
   LeadgenCampaignDetails,
 } from "@/lib/leadgen/types";
-import { OUTREACH_GUIDE_ATTACHMENTS_ENABLED } from "@/lib/leadgen/outreach-guide-config";
+import { OUTREACH_BONUS_LINKS } from "@/lib/leadgen/outreach-guide-config";
 
 type ApiError = { success: false; error?: unknown };
 type QueueResponse =
@@ -45,12 +45,19 @@ type QueueResponse =
         sent_today: number;
         daily_limit: number;
         daily_remaining: number;
+        queued_total: number;
         queued_for_today: number;
       };
       summary: OutreachSummary | null;
     }
   | ApiError;
-type EntryResponse = { success: true; entry: OutreachQueueEntry } | ApiError;
+type EntryResponse =
+  | {
+      success: true;
+      entry: OutreachQueueEntry;
+      summary?: OutreachSummary | null;
+    }
+  | ApiError;
 type ReadinessResponse =
   | {
       success: true;
@@ -74,6 +81,8 @@ type BulkPreview = {
   skipped_count: number;
   approved: number;
   skipped: Record<string, number>;
+  approved_ids?: string[];
+  summary?: OutreachSummary | null;
 };
 type BulkResponse = ({ success: true } & BulkPreview) | ApiError;
 type BatchResponse =
@@ -104,6 +113,7 @@ type BatchResponse =
         sent_today: number;
         daily_limit: number;
         daily_remaining: number;
+        queued_total: number;
         queued_for_today: number;
       };
       operational?: OutreachOperationalState;
@@ -119,6 +129,7 @@ type LocalQueueResponse =
         sent_today: number;
         daily_limit: number;
         daily_remaining: number;
+        queued_total: number;
         queued_for_today: number;
       };
     }
@@ -194,6 +205,27 @@ async function readJson<T>(response: Response): Promise<T> {
   return (await response.json()) as T;
 }
 
+async function fetchMutation(
+  input: RequestInfo | URL,
+  init: RequestInit,
+  timeoutMs = 30_000,
+) {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(input, { ...init, signal: controller.signal });
+  } catch (error) {
+    if (error instanceof Error && error.name === "AbortError") {
+      throw new Error(
+        "Сервер не завершил операцию вовремя. Обновите данные перед повторной попыткой.",
+      );
+    }
+    throw error;
+  } finally {
+    window.clearTimeout(timeout);
+  }
+}
+
 function getError(data: ApiError) {
   return formatUnknownError(data.error, "Не удалось выполнить действие");
 }
@@ -209,7 +241,7 @@ function matchesFilter(entry: OutreachQueueEntry, filter: QueueFilter) {
 }
 
 function getGuideLabels(entry: OutreachQueueEntry): string[] {
-  if (!OUTREACH_GUIDE_ATTACHMENTS_ENABLED) return ["Вложения временно отключены"];
+  if (OUTREACH_BONUS_LINKS.length) return OUTREACH_BONUS_LINKS.map(({ title }) => `${title} · ссылка в письме`);
   const assignment = entry.guide_assignment;
   if (!assignment) return [];
   if (assignment.bundleVersion === 3) {
@@ -452,7 +484,11 @@ function PrimaryOutreachToolbar({
   disabled,
   loading,
   queueLoading,
+  continuationLabel,
+  continuationDisabled,
+  continuationLoading,
   onApproveAll,
+  onContinue,
   onBatchSizeChange,
   onQueue,
   sendState,
@@ -470,7 +506,11 @@ function PrimaryOutreachToolbar({
   disabled: boolean;
   loading: boolean;
   queueLoading: boolean;
+  continuationLabel: string;
+  continuationDisabled: boolean;
+  continuationLoading: boolean;
   onApproveAll: () => void;
+  onContinue: () => void;
   onBatchSizeChange: (value: number) => void;
   onQueue: () => void;
   sendState: string;
@@ -478,6 +518,7 @@ function PrimaryOutreachToolbar({
   const campaignTotal = counters.generated;
   const campaignSent = counters.sent;
   const campaignInProgress = counters.queued + counters.sending;
+  const campaignNotSent = Math.max(0, campaignTotal - campaignSent);
   const campaignNeedsAction =
     counters.needsReview + counters.approved + counters.failed;
   const progress = Math.min(
@@ -511,10 +552,20 @@ function PrimaryOutreachToolbar({
           <span style={{ width: `${progress}%` }} />
         </div>
         <small>
-          В очереди: {campaignInProgress} · Требуют действия: {campaignNeedsAction}
+          {campaignNotSent === 0 && campaignTotal > 0
+            ? "Все сообщения отправлены"
+            : `Не отправлено: ${campaignNotSent}`} · В очереди: {campaignInProgress} · Требуют действия: {campaignNeedsAction}
         </small>
       </div>
       <div className="dispatch-panel-actions">
+        <Button
+          disabled={disabled || continuationDisabled}
+          loading={continuationLoading}
+          onClick={onContinue}
+          variant="primary"
+        >
+          {continuationLabel}
+        </Button>
         <Button
           disabled={disabled || eligibleCount === 0}
           loading={loading}
@@ -579,8 +630,9 @@ function PrimaryOutreachToolbar({
           </Button>
         </div>
         <small>
-          Пауза между письмами: 5–10 минут. Осталось успешно отправить сегодня:{" "}
-          {dailyRemaining}. Уже в очереди: {queuedToday}.
+          Пауза между письмами: 5–10 минут. В этой кампании: {campaignInProgress}.
+          По всем кампаниям до конца дня: {queuedToday}. Свободно в дневном
+          лимите: {dailyRemaining}.
         </small>
       </div>
       <p className="dispatch-send-state">{sendState}</p>
@@ -737,7 +789,7 @@ export function EmailOutreachQueue({
     const followupUrl = campaignId
       ? `/api/leadgen/followups?campaignId=${encodeURIComponent(campaignId)}`
       : "/api/leadgen/followups";
-    const response = await fetch(followupUrl);
+    const response = await fetch(followupUrl, { cache: "no-store" });
     const data = await readJson<FollowupResponse>(response);
     if (!response.ok || !data.success) throw new Error(getError(data as ApiError));
     setFollowups(data.entries);
@@ -753,8 +805,8 @@ export function EmailOutreachQueue({
       ? `/api/leadgen/outreach?campaignId=${encodeURIComponent(campaignId)}`
       : "/api/leadgen/outreach";
     const [queueResponse, readinessResponse] = await Promise.all([
-      fetch(queueUrl),
-      fetch("/api/leadgen/outreach/readiness"),
+      fetch(queueUrl, { cache: "no-store" }),
+      fetch("/api/leadgen/outreach/readiness", { cache: "no-store" }),
     ]);
     const queue = await readJson<QueueResponse>(queueResponse);
     const ready = await readJson<ReadinessResponse>(readinessResponse);
@@ -773,6 +825,7 @@ export function EmailOutreachQueue({
         sent_today: queue.daily.sent_today,
         daily_limit: queue.daily.daily_limit,
         daily_remaining: queue.daily.daily_remaining,
+        queued_total: queue.daily.queued_total,
         queued_for_today: queue.daily.queued_for_today,
       });
     }
@@ -784,44 +837,26 @@ export function EmailOutreachQueue({
 
   useEffect(() => {
     let active = true;
-    const queueRequest = campaignId
-      ? fetch(
-          `/api/leadgen/outreach?campaignId=${encodeURIComponent(campaignId)}`,
-        )
-      : fetch("/api/leadgen/outreach");
-    Promise.all([
-      queueRequest,
-      fetch("/api/leadgen/outreach/readiness"),
-      fetch(
-        campaignId
-          ? `/api/leadgen/followups?campaignId=${encodeURIComponent(campaignId)}`
-          : "/api/leadgen/followups",
-      ),
-    ])
-      .then(async ([queueResponse, readinessResponse, followupResponse]) => {
-        const queue = await readJson<QueueResponse>(queueResponse);
-        const ready = await readJson<ReadinessResponse>(readinessResponse);
-        const followup = await readJson<FollowupResponse>(followupResponse);
-        if (!queue.success) throw new Error(getError(queue));
-        if (!followup.success) throw new Error(getError(followup));
+    const queueUrl = campaignId
+      ? `/api/leadgen/outreach?campaignId=${encodeURIComponent(campaignId)}`
+      : "/api/leadgen/outreach";
+    const followupUrl = campaignId
+      ? `/api/leadgen/followups?campaignId=${encodeURIComponent(campaignId)}`
+      : "/api/leadgen/followups";
+
+    // These snapshots have different failure modes. SMTP/IMAP readiness or
+    // follow-up diagnostics must not replace valid initial-outreach counters
+    // with a differently calculated fallback after a page reload.
+    void fetch(queueUrl, { cache: "no-store" })
+      .then(async (response) => {
+        const queue = await readJson<QueueResponse>(response);
+        if (!response.ok || !queue.success) throw new Error(getError(queue as ApiError));
         if (!active) return;
         setEntries(queue.entries);
         setOutreachSummary(queue.summary);
         setSkippedCompanies(queue.working_set.skipped_companies);
-        setFollowups(followup.entries);
-        setFollowupSummary(followup.summary);
         setOperational(queue.operational);
         setLastUpdated(new Date().toISOString());
-        if (ready.success) {
-          if (ready.storage_mode) setDeliveryStorageMode(ready.storage_mode);
-          setReadiness({
-            ...ready.readiness,
-            sent_today: queue.daily.sent_today,
-            daily_limit: queue.daily.daily_limit,
-            daily_remaining: queue.daily.daily_remaining,
-            queued_for_today: queue.daily.queued_for_today,
-          });
-        }
       })
       .catch(async (caught: unknown) => {
         if (!active) return;
@@ -829,39 +864,52 @@ export function EmailOutreachQueue({
           const localUrl = campaignId
             ? `/api/leadgen/outreach/batch?campaignId=${encodeURIComponent(campaignId)}`
             : "/api/leadgen/outreach/batch";
-          const [localResponse, localReadinessResponse] = await Promise.all([
-            fetch(localUrl),
-            fetch("/api/leadgen/outreach/readiness"),
-          ]);
+          const localResponse = await fetch(localUrl, { cache: "no-store" });
           const local = await readJson<LocalQueueResponse>(localResponse);
-          const localReadiness = await readJson<ReadinessResponse>(
-            localReadinessResponse,
-          );
           if (!localResponse.ok || !local.success) throw caught;
+          if (!active) return;
           setDeliveryStorageMode("local");
           setEntries(
             local.entries.filter((entry) => entry.message_kind !== "follow_up"),
-          );
-          setFollowups(
-            local.entries.filter((entry) => entry.message_kind === "follow_up"),
           );
           setOutreachSummary(
             buildLocalOutreachSummary(campaignId, local.entries, local.daily),
           );
           setOperational(local.operational);
           setLastUpdated(new Date().toISOString());
-          if (localReadiness.success) {
-            setReadiness(localReadiness.readiness);
-            if (localReadiness.storage_mode) {
-              setDeliveryStorageMode(localReadiness.storage_mode);
-            }
-          }
           setError(null);
         } catch {
-          setError(
-            caught instanceof Error ? caught.message : "Ошибка загрузки очереди",
-          );
+          if (active) {
+            setError(
+              caught instanceof Error ? caught.message : "Ошибка загрузки очереди",
+            );
+          }
         }
+      });
+
+    void fetch("/api/leadgen/outreach/readiness", { cache: "no-store" })
+      .then(async (response) => {
+        const ready = await readJson<ReadinessResponse>(response);
+        if (!response.ok || !ready.success || !active) return;
+        if (ready.storage_mode) setDeliveryStorageMode(ready.storage_mode);
+        setReadiness(ready.readiness);
+      })
+      .catch(() => {
+        // Queue counters stay visible; readiness has its own unavailable state.
+      });
+
+    void fetch(followupUrl, { cache: "no-store" })
+      .then(async (response) => {
+        const followup = await readJson<FollowupResponse>(response);
+        if (!response.ok || !followup.success) {
+          throw new Error(getError(followup as ApiError));
+        }
+        if (!active) return;
+        setFollowups(followup.entries);
+        setFollowupSummary(followup.summary);
+      })
+      .catch(() => {
+        // Initial outreach is independent from follow-up diagnostics.
       });
     return () => {
       active = false;
@@ -878,7 +926,7 @@ export function EmailOutreachQueue({
           const localUrl = campaignId
             ? `/api/leadgen/outreach/batch?campaignId=${encodeURIComponent(campaignId)}`
             : "/api/leadgen/outreach/batch";
-          const response = await fetch(localUrl);
+          const response = await fetch(localUrl, { cache: "no-store" });
           const data = await readJson<LocalQueueResponse>(response);
           if (!response.ok || !data.success) {
             throw new Error(getError(data as ApiError));
@@ -906,6 +954,7 @@ export function EmailOutreachQueue({
                   sent_today: data.daily.sent_today,
                   daily_limit: data.daily.daily_limit,
                   daily_remaining: data.daily.daily_remaining,
+                  queued_total: data.daily.queued_total,
                   queued_for_today: data.daily.queued_for_today,
                 }
               : current,
@@ -915,7 +964,7 @@ export function EmailOutreachQueue({
         const queueUrl = campaignId
           ? `/api/leadgen/outreach?campaignId=${encodeURIComponent(campaignId)}`
           : "/api/leadgen/outreach";
-        const response = await fetch(queueUrl);
+        const response = await fetch(queueUrl, { cache: "no-store" });
         const data = await readJson<QueueResponse>(response);
         if (!response.ok || !data.success) {
           throw new Error(getError(data as ApiError));
@@ -933,6 +982,7 @@ export function EmailOutreachQueue({
                 sent_today: data.daily.sent_today,
                 daily_limit: data.daily.daily_limit,
                 daily_remaining: data.daily.daily_remaining,
+                queued_total: data.daily.queued_total,
                 queued_for_today: data.daily.queued_for_today,
               }
             : current,
@@ -954,6 +1004,68 @@ export function EmailOutreachQueue({
       window.clearInterval(interval);
     };
   }, [campaignId, deliveryStorageMode, entries, hasActiveQueue, loadFollowups]);
+
+  function applyFollowupApprovals(
+    ids: string[],
+    summary?: Extract<FollowupResponse, { success: true }>["summary"],
+  ) {
+    const approvedIds = new Set(ids);
+    if (approvedIds.size === 0) return;
+    const transitioned = followups.filter(
+      (entry) => approvedIds.has(entry.id) && entry.status === "needs_review",
+    );
+    const transitionedEligible = transitioned.filter(
+      (entry) =>
+        entry.quality_gate_passed === true &&
+        entry.copy_review_status !== "needs_manual_copy_review",
+    ).length;
+    const approvedAt = new Date().toISOString();
+    setFollowups((current) =>
+      current.map((entry) =>
+        approvedIds.has(entry.id)
+          ? { ...entry, status: "approved", approved_at: approvedAt }
+          : entry,
+      ),
+    );
+    setFollowupSummary((current) =>
+      summary ??
+      (current
+        ? {
+            ...current,
+            needs_review: Math.max(0, current.needs_review - transitioned.length),
+            approved: current.approved + transitioned.length,
+            eligible_for_bulk_approval: Math.max(
+              0,
+              current.eligible_for_bulk_approval - transitionedEligible,
+            ),
+          }
+        : current),
+    );
+    setOutreachSummary((current) =>
+      current
+        ? {
+            ...current,
+            followUps: {
+              ...current.followUps,
+              needsReview: Math.max(
+                0,
+                current.followUps.needsReview - transitioned.length,
+              ),
+              approved: current.followUps.approved + transitioned.length,
+              eligibleForBulkApproval: Math.max(
+                0,
+                current.followUps.eligibleForBulkApproval - transitionedEligible,
+              ),
+              approvalBlocked: Math.max(
+                0,
+                current.followUps.approvalBlocked -
+                  (transitioned.length - transitionedEligible),
+              ),
+            },
+          }
+        : current,
+    );
+  }
 
   async function runFollowupAction(
     action: "scan" | "generate" | "bulk-approve" | "batch",
@@ -994,15 +1106,30 @@ export function EmailOutreachQueue({
         });
         return;
       }
-      const response = await fetch(`/api/leadgen/followups/${action}`, {
+      const requestInit = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(
-          action === "bulk-approve" ? { manual: true, ...payload } : payload,
+          payload,
         ),
-      });
-      const data = await readJson<{ success: boolean; error?: string; generated?: number; approved?: number; queued?: unknown[]; reply_found?: number }>(response);
+      } satisfies RequestInit;
+      const response = action === "bulk-approve"
+        ? await fetchMutation(`/api/leadgen/followups/${action}`, requestInit)
+        : await fetch(`/api/leadgen/followups/${action}`, requestInit);
+      const data = await readJson<{
+        success: boolean;
+        error?: string;
+        generated?: number;
+        approved?: number;
+        approved_ids?: string[];
+        queued?: unknown[];
+        reply_found?: number;
+        summary?: Extract<FollowupResponse, { success: true }>["summary"];
+      }>(response);
       if (!response.ok || !data.success) throw new Error(formatUnknownError(data.error, "Действие не выполнено"));
+      if (action === "bulk-approve") {
+        applyFollowupApprovals(data.approved_ids ?? [], data.summary);
+      }
       setFollowupNotice({
         tone: "success",
         text:
@@ -1011,7 +1138,7 @@ export function EmailOutreachQueue({
         action === "bulk-approve" ? `Одобрено дожимов: ${data.approved ?? 0}.` :
         `В очередь поставлено: ${data.queued?.length ?? 0}.`,
       });
-      await load();
+      if (action !== "bulk-approve") await load();
     } catch (caught) {
       setFollowupNotice({
         tone: "error",
@@ -1052,11 +1179,20 @@ export function EmailOutreachQueue({
   async function approveFollowup(entry: OutreachQueueEntry) {
     setPending(entry.id);
     try {
-      const response = await fetch(`/api/leadgen/followups/${entry.id}/approve`, { method: "POST" });
-      const data = await readJson<{ success: boolean; approved?: number; error?: string }>(response);
+      const response = await fetchMutation(
+        `/api/leadgen/followups/${entry.id}/approve`,
+        { method: "POST" },
+      );
+      const data = await readJson<{
+        success: boolean;
+        approved?: number;
+        approved_ids?: string[];
+        error?: string;
+        summary?: Extract<FollowupResponse, { success: true }>["summary"];
+      }>(response);
       if (!response.ok || !data.success || !data.approved) throw new Error(formatUnknownError(data.error, "Дожим не прошёл quality gate"));
+      applyFollowupApprovals(data.approved_ids ?? [entry.id], data.summary);
       setMessage("Дожим одобрен.");
-      await load();
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Не удалось одобрить дожим");
     } finally { setPending(null); }
@@ -1095,7 +1231,7 @@ export function EmailOutreachQueue({
     payload: Record<string, unknown>,
     endpoint?: string,
   ) {
-    const response = await fetch(endpoint ?? `/api/leadgen/outreach/${id}`, {
+    const response = await fetchMutation(endpoint ?? `/api/leadgen/outreach/${id}`, {
       method: endpoint ? "POST" : "PATCH",
       headers: { "Content-Type": "application/json" },
       body: endpoint ? undefined : JSON.stringify(payload),
@@ -1105,8 +1241,12 @@ export function EmailOutreachQueue({
     setEntries((current) =>
       current.map((entry) => (entry.id === id ? data.entry : entry)),
     );
-    selectEntry(data.entry);
-    return data.entry;
+    if (selectedId === id) {
+      setSubject(data.entry.subject);
+      setBody(data.entry.body);
+      setEmail(data.entry.email);
+    }
+    return data;
   }
 
   async function approve(entry: OutreachQueueEntry) {
@@ -1122,8 +1262,15 @@ export function EmailOutreachQueue({
     setPending(entry.id);
     setError(null);
     try {
-      await patchEntry(entry.id, {}, `/api/leadgen/outreach/${entry.id}/approve`);
-      await load();
+      const result = await patchEntry(
+        entry.id,
+        {},
+        `/api/leadgen/outreach/${entry.id}/approve`,
+      );
+      setOutreachSummary((current) =>
+        result.summary ??
+        reconcileInitialSummary(current, [previous], [result.entry]),
+      );
       setMessage("Письмо одобрено и готово к отправке.");
     } catch (caught) {
       setEntries((current) =>
@@ -1187,13 +1334,24 @@ export function EmailOutreachQueue({
     if (!campaignId) return;
     setPending("bulk-preview");
     try {
-      const response = await fetch("/api/leadgen/outreach/bulk-approve", {
+      const response = await fetchMutation("/api/leadgen/outreach/bulk-approve", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ campaignId, execute: false }),
       });
       const data = await readJson<BulkResponse>(response);
       if (!data.success) throw new Error(getError(data));
+      if (data.eligible_count === 0) {
+        setBulkPreview(null);
+        const alreadyApproved = data.skipped.already_approved ?? 0;
+        setMessage(
+          alreadyApproved > 0
+            ? `Уже одобрено: ${alreadyApproved}. Состояние обновлено.`
+            : "Новых корректных писем для одобрения нет. Состояние обновлено.",
+        );
+        await load();
+        return;
+      }
       setBulkPreview(data);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Ошибка проверки");
@@ -1206,7 +1364,7 @@ export function EmailOutreachQueue({
     if (!campaignId) return;
     setPending("bulk-approve");
     try {
-      const response = await fetch("/api/leadgen/outreach/bulk-approve", {
+      const response = await fetchMutation("/api/leadgen/outreach/bulk-approve", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ campaignId, execute: true }),
@@ -1214,10 +1372,29 @@ export function EmailOutreachQueue({
       const data = await readJson<BulkResponse>(response);
       if (!data.success) throw new Error(getError(data));
       setBulkPreview(null);
+      const approvedIds = new Set(data.approved_ids ?? []);
+      const approvedAt = new Date().toISOString();
+      const approvedEntries = entries
+        .filter((entry) => approvedIds.has(entry.id))
+        .map((entry) => ({
+          ...entry,
+          status: "approved" as const,
+          approved_at: approvedAt,
+        }));
+      setEntries((current) =>
+        current.map((entry) =>
+          approvedIds.has(entry.id)
+            ? { ...entry, status: "approved", approved_at: approvedAt }
+            : entry,
+        ),
+      );
+      setOutreachSummary((current) =>
+        data.summary ??
+        reconcileInitialSummary(current, entries, approvedEntries),
+      );
       setMessage(`Одобрено: ${data.approved}. Пропущено: ${
         Object.values(data.skipped).reduce((sum, count) => sum + count, 0)
       }.`);
-      await load();
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Ошибка массового одобрения");
     } finally {
@@ -1225,8 +1402,9 @@ export function EmailOutreachQueue({
     }
   }
 
-  async function scheduleBatch() {
-    if (batchSize < 1 || batchSize > maxBatch) return;
+  async function scheduleBatch(requestedCount?: number) {
+    const count = requestedCount ?? batchSize;
+    if (count < 1 || count > maxBatch) return;
     setPending("batch");
     setError(null);
     setMessage(null);
@@ -1236,7 +1414,7 @@ export function EmailOutreachQueue({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           campaignId,
-          count: batchSize,
+          count,
           entries,
           sentToday: readiness?.sent_today ?? 0,
         }),
@@ -1265,6 +1443,7 @@ export function EmailOutreachQueue({
                 sent_today: data.daily.sent_today,
                 daily_limit: data.daily.daily_limit,
                 daily_remaining: data.daily.daily_remaining,
+                queued_total: data.daily.queued_total,
                 queued_for_today: data.daily.queued_for_today,
               }
             : current,
@@ -1360,13 +1539,17 @@ export function EmailOutreachQueue({
   const initialSentToday = readiness?.sent_today ?? 0;
   const followupSentToday = followupSummary?.sent_today ?? 0;
   const initialQueuedToday = readiness?.queued_for_today ?? 0;
-  const followupsQueuedToday = followupSummary?.queued_now ?? 0;
-  const initialPlannedToday = initialSentToday + initialQueuedToday;
-  const followupPlannedToday = followupSentToday + followupsQueuedToday;
+  const initialQueueTotal = readiness?.queued_total ?? initialQueuedToday;
+  const initialQueuedLater = Math.max(0, initialQueueTotal - initialQueuedToday);
   const initialDailyLimit = outreachSummary?.today.dailyLimit ?? 100;
-  const initialRemainingToday = outreachSummary?.today.dailyRemaining ?? 0;
-  const followupRemainingToday = followupsQueuedToday;
+  const initialRemainingToday =
+    outreachSummary?.today.dailyAvailableToQueue ??
+    readiness?.daily_remaining ??
+    0;
   const totalSentToday = initialSentToday + followupSentToday;
+  const followupQueueCount =
+    (followupSummary?.queued ?? 0) + (followupSummary?.sending ?? 0);
+  const totalQueuedNow = initialQueueTotal + followupQueueCount;
   const nextFollowup = followups
     .filter((entry) => entry.status === "queued")
     .sort(
@@ -1376,8 +1559,6 @@ export function EmailOutreachQueue({
           right.next_attempt_at ?? right.scheduled_at ?? right.created_at,
         ),
     )[0];
-  const followupQueueCount =
-    (followupSummary?.queued ?? 0) + (followupSummary?.sending ?? 0);
   const followupPrimaryAction =
     followupMaxBatch > 0
       ? {
@@ -1416,6 +1597,49 @@ export function EmailOutreachQueue({
           : metrics.sent > 0
             ? `Отправлено в этой кампании: ${metrics.sent}.`
             : "После одобрения здесь появится доступное количество для отправки.";
+  const initialNotSent = Math.max(0, metrics.total - metrics.sent);
+  const initialInProgress = metrics.queued + metrics.sending;
+  const canResumeInitial =
+    initialInProgress > 0 &&
+    (readiness?.queue_paused === true || operational?.state === "stalled");
+  const initialContinuation =
+    metrics.total > 0 && initialNotSent === 0
+      ? { label: "Все сообщения отправлены", action: null }
+      : metrics.approved > 0 && maxBatch > 0
+        ? {
+            label: `Продолжить отправку · ${Math.min(metrics.approved, maxBatch)}`,
+            action: "queue" as const,
+          }
+        : canResumeInitial
+          ? {
+              label: `Продолжить отправку · ${initialInProgress}`,
+              action: "resume" as const,
+            }
+          : initialInProgress > 0
+            ? {
+                label: `Отправка продолжается · ${initialInProgress}`,
+                action: null,
+              }
+            : metrics.review > 0
+              ? {
+                  label: `Сначала одобрите · ${metrics.review}`,
+                  action: null,
+                }
+              : metrics.failed > 0
+                ? {
+                    label: `Не отправлено с ошибкой · ${metrics.failed}`,
+                    action: null,
+                  }
+                : { label: "Нет сообщений для отправки", action: null };
+  async function continueInitialDelivery() {
+    if (initialContinuation.action === "queue") {
+      await scheduleBatch(Math.min(metrics.approved, maxBatch));
+      return;
+    }
+    if (initialContinuation.action === "resume") {
+      await control(readiness?.queue_paused ? "resume" : "kick");
+    }
+  }
   const operationCopy =
     metrics.approved > 0 && (readiness?.daily_remaining ?? 0) < 1
       ? {
@@ -1510,9 +1734,15 @@ export function EmailOutreachQueue({
           )}
           queuedToday={readiness?.queued_for_today ?? 0}
           queueLoading={pending === "batch"}
+          continuationLabel={initialContinuation.label}
+          continuationDisabled={initialContinuation.action === null}
+          continuationLoading={
+            pending === "batch" || pending === "resume" || pending === "kick"
+          }
           onApproveAll={previewBulkApprove}
+          onContinue={continueInitialDelivery}
           onBatchSizeChange={setBatchSize}
-          onQueue={scheduleBatch}
+          onQueue={() => void scheduleBatch()}
           sendState={initialSendState}
         />
 
@@ -1676,24 +1906,28 @@ export function EmailOutreachQueue({
               <h4>Новые письма</h4>
               <dl>
                 <div><dt>Лимит</dt><dd>{initialDailyLimit}</dd></div>
-                <div><dt>Запланировано</dt><dd>{initialPlannedToday}</dd></div>
-                <div><dt>Отправлено</dt><dd>{initialSentToday}</dd></div>
-                <div><dt>Осталось</dt><dd>{initialRemainingToday}</dd></div>
+                <div><dt>В очереди всего</dt><dd>{initialQueueTotal}</dd></div>
+                <div><dt>До конца дня</dt><dd>{initialQueuedToday}</dd></div>
+                <div><dt>После полуночи</dt><dd>{initialQueuedLater}</dd></div>
+                <div><dt>Отправлено сегодня</dt><dd>{initialSentToday}</dd></div>
+                <div><dt>Свободно в лимите</dt><dd>{initialRemainingToday}</dd></div>
               </dl>
             </div>
             <div>
               <h4>Дожимы</h4>
               <dl>
-                <div><dt>Запланировано</dt><dd>{followupPlannedToday}</dd></div>
-                <div><dt>Отправлено</dt><dd>{followupSentToday}</dd></div>
-                <div><dt>Осталось в очереди</dt><dd>{followupRemainingToday}</dd></div>
+                <div><dt>В очереди всего</dt><dd>{followupQueueCount}</dd></div>
+                <div><dt>Отправлено сегодня</dt><dd>{followupSentToday}</dd></div>
               </dl>
             </div>
           </div>
           <div className="today-total">
-            <span>Всего отправлено сегодня</span>
-            <strong>{totalSentToday}</strong>
-            <small>Первичных: {initialSentToday} · Дожимов: {followupSentToday}</small>
+            <span>Всего сообщений в очереди</span>
+            <strong>{totalQueuedNow}</strong>
+            <small>
+              Первичных: {initialQueueTotal} · Дожимов: {followupQueueCount} ·
+              Отправлено сегодня: {totalSentToday}
+            </small>
           </div>
         </section>
       </div>
@@ -1775,30 +2009,17 @@ export function EmailOutreachQueue({
         metrics.failed > 0 ||
         readiness?.queue_paused) && (
         <div className="outreach-queue-actions">
-          {operational?.state === "stalled" && metrics.queued > 0 ? (
+          {(metrics.queued > 0 || metrics.sending > 0) &&
+          !readiness?.queue_paused ? (
             <Button
               disabled={pending !== null}
-              loading={pending === "kick"}
-              onClick={() => control("kick")}
-              variant="success"
-            >
-              Продолжить отправку
-            </Button>
-          ) : null}
-          {(metrics.queued > 0 ||
-            metrics.sending > 0 ||
-            readiness?.queue_paused) && (
-            <Button
-              disabled={pending !== null}
-              loading={pending === "pause" || pending === "resume"}
-              onClick={() =>
-                control(readiness?.queue_paused ? "resume" : "pause")
-              }
+              loading={pending === "pause"}
+              onClick={() => control("pause")}
               variant="secondary"
             >
-              {readiness?.queue_paused ? "Продолжить" : "Пауза"}
+              Пауза
             </Button>
-          )}
+          ) : null}
           {metrics.queued > 0 ? (
             <Button
               disabled={pending !== null}
@@ -1858,8 +2079,10 @@ export function EmailOutreachQueue({
           <p>Не прошли quality gate: {bulkPreview.skipped.quality_gate_failed ?? 0}</p>
           <div>
             <Button onClick={() => setBulkPreview(null)} variant="ghost">Отмена</Button>
-            <Button disabled={pending !== null} loading={pending === "bulk-approve"} onClick={executeBulkApprove} variant="primary">
-              Одобрить {bulkPreview.eligible_count}
+            <Button disabled={pending !== null || bulkPreview.eligible_count === 0} loading={pending === "bulk-approve"} onClick={executeBulkApprove} variant="primary">
+              {bulkPreview.eligible_count > 0
+                ? `Одобрить ${bulkPreview.eligible_count}`
+                : "Нет писем для одобрения"}
             </Button>
           </div>
         </div>
@@ -2096,7 +2319,7 @@ export function EmailOutreachQueue({
                         <div><dt>Тема</dt><dd>{entry.subject || "Не подготовлена"}</dd></div>
                         <div><dt>Письмо</dt><dd className="lead-copy-preview">{entry.body || "Не подготовлено"}</dd></div>
                         <div><dt>Оффер</dt><dd>9 900 ₽ · бесплатно при ответе в течение 24 часов после отправки</dd></div>
-                        <div><dt>Вложения</dt><dd>{getGuideLabels(entry).join(" · ") || "Для legacy-письма не назначены"}</dd></div>
+                        <div><dt>Бонусы</dt><dd>{getGuideLabels(entry).join(" · ") || "Для старого письма ссылки не добавлены"}</dd></div>
                       </dl>
                       {contactIntelligence ? (
                         <details className="outreach-technical-details">
@@ -2340,7 +2563,7 @@ export function EmailOutreachQueue({
                 <div><dt>Источник контакта</dt><dd>{selectedEntry.email_source_url || "—"}</dd></div>
                 <div><dt>Качество email</dt><dd>{selectedEntry.email_confidence ?? selectedEntry.readiness}</dd></div>
                 <div><dt>Оффер</dt><dd>9 900 ₽ · бесплатно при ответе в течение 24 часов после отправки</dd></div>
-                <div><dt>Вложения</dt><dd>{getGuideLabels(selectedEntry).join(" · ") || "Для legacy-письма не назначены"}</dd></div>
+                <div><dt>Бонусы</dt><dd>{getGuideLabels(selectedEntry).join(" · ") || "Для старого письма ссылки не добавлены"}</dd></div>
                 <div><dt>Последнее изменение</dt><dd>{formatDate(selectedEntry.updated_at)}</dd></div>
                 <div><dt>Отправлено</dt><dd>{formatDate(selectedEntry.sent_at)}</dd></div>
                 <div><dt>Message-ID</dt><dd>{selectedEntry.provider_message_id || "—"}</dd></div>

@@ -399,6 +399,7 @@ export type OutreachReadiness = {
   sent_today: number;
   daily_limit: number;
   daily_remaining: number;
+  queued_total: number;
   queued_for_today: number;
   batch_limit: number;
   min_delay_seconds: number;
@@ -468,6 +469,24 @@ export type ProductionDiscoveryStats = {
     results: number;
     unique_candidates: number;
   }>;
+  search_source_metrics?: Record<string, {
+    results: number;
+    company_candidates: number;
+    valid_signals: number;
+    unique_candidates: number;
+    qualified_companies: number;
+    ready_leads: number;
+  }>;
+  source_candidate_samples?: Array<{
+    company_name: string;
+    source: string;
+    website: string | null;
+    segment_result: "MATCH" | "UNCERTAIN" | "MISMATCH";
+    signal_type: string | null;
+    signal_source_url: string | null;
+    qualified: boolean;
+    ready: boolean;
+  }>;
   enrichment_budget_exhausted?: boolean;
   passes_completed?: number;
   consecutive_empty_passes?: number;
@@ -488,6 +507,38 @@ export type ProductionDiscoveryStats = {
   skipped_identity_keys?: string[];
 };
 
+export type QualifiedResearchAudit = {
+  company_name: string;
+  company_domain: string | null;
+  source: string;
+  source_url: string | null;
+  signal_type: string | null;
+  signal_title: string | null;
+  segment_result: "MATCH";
+  lpr_attempted: boolean;
+  lpr_found: boolean;
+  lpr_role: string | null;
+  lpr_evidence: string[];
+  lpr_status: string | null;
+  lpr_latency_ms: number;
+  email_attempted: boolean;
+  domains_checked: string[];
+  email_candidates: string[];
+  email_classifications: string[];
+  email_statuses: string[];
+  department_email_found: boolean;
+  general_email_found: boolean;
+  personal_email_found: boolean;
+  usable_contact_found: boolean;
+  contact_level: "A" | "B" | "C" | "D" | "E" | null;
+  email_latency_ms: number;
+  outreach_generated: boolean;
+  outreach_quality_passed: boolean;
+  ready: boolean;
+  primary_loss_reason: string | null;
+  secondary_reasons: string[];
+};
+
 export type ContactConfidenceLevel = "HIGH" | "MEDIUM" | "LOW" | "UNRESOLVED";
 
 export type ContactIntelligenceEvidence = {
@@ -505,6 +556,8 @@ export type ContactIntelligenceResult = {
   person_name: string | null;
   person_role: string | null;
   email: string | null;
+  contact_level: "A" | "B" | "C" | "D" | "E" | null;
+  email_classification: "VERIFIED_PERSONAL" | "HIGH_CONFIDENCE_PERSONAL" | "INFERRED_PERSONAL" | "DEPARTMENT" | "GENERAL" | "INVALID";
   email_type: "public_personal" | "corporate_router" | "pattern_candidate" | "department_fallback" | "generic_fallback" | "none";
   verification_methods: string[];
   confidence: ContactConfidenceLevel;
@@ -613,6 +666,12 @@ export type PeopleProviderInput = {
   company: LeadgenCompany;
   decisionMaker: DecisionMakerProfile;
   searchKeywords: string[];
+  roleSearchPlan?: {
+    primary: string[];
+    alternatives: string[][];
+  };
+  bypassCache?: boolean;
+  signal?: AbortSignal;
 };
 
 export type PeopleProviderResult = {
@@ -621,6 +680,24 @@ export type PeopleProviderResult = {
   candidates: PersonCandidate[];
   unavailable?: boolean;
   diagnostics?: Array<Omit<ProviderDiagnostic, "provider_id" | "provider_label">>;
+  metrics?: {
+    search_attempts: number;
+    official_pages_fetched: number;
+    aborted_requests: number;
+    elapsed_ms: number;
+    stop_reason: string;
+    trace?: {
+      queries_executed: Array<{
+        level: "LEVEL_1" | "LEVEL_2" | "LEVEL_3" | "EMAIL";
+        query: string;
+        result_count: number;
+        results: Array<{ title: string; url: string }>;
+      }>;
+      sources_checked: string[];
+      rejected_candidates: Record<string, number>;
+      final_failure_reason: string | null;
+    };
+  };
 };
 
 export type LeadReadinessStatus =
@@ -1004,6 +1081,7 @@ export type ContactDiscoveryInput = {
   decisionMaker?: DecisionMakerProfile;
   peopleDiscovery: PeopleDiscoveryResult;
   createdAt: string;
+  signal?: AbortSignal;
 };
 
 export type ContactProviderInput = ContactDiscoveryInput;
@@ -1104,4 +1182,5 @@ export type LeadDiscoveryResult = {
   discovery_metrics?: DiscoverySuccessMetrics;
   discovery_diagnostics?: ProviderDiagnostic[];
   production_discovery_stats?: ProductionDiscoveryStats;
+  qualified_research_audit?: QualifiedResearchAudit[];
 };

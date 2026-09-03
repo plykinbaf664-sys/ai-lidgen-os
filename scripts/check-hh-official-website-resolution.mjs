@@ -1,9 +1,11 @@
 import assert from "node:assert/strict";
-import {
+import "./register-ts-paths.mjs";
+
+const {
   parseHhEmployerId,
   parseHhEmployerWebsite,
   parseHhPublicVacancyContact,
-} from "../lib/leadgen/public-contact-provider.ts";
+} = await import("../lib/leadgen/public-contact-provider.ts");
 
 assert.equal(
   parseHhEmployerId('<a href="/employer/64174">Работодатель</a>'),

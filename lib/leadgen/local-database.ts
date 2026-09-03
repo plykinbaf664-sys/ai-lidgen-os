@@ -93,13 +93,14 @@ export function mutateLocalTable<T>(
       rejectResult(error);
     }
   });
-  writeChains.set(
-    table,
-    next.then(
-      () => undefined,
-      () => undefined,
-    ),
+  const settled = next.then(
+    () => undefined,
+    () => undefined,
   );
+  writeChains.set(table, settled);
+  void settled.then(() => {
+    if (writeChains.get(table) === settled) writeChains.delete(table);
+  });
   return result;
 }
 

@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
-import {
+import "./register-ts-paths.mjs";
+
+const {
   applyCorporateEmailPattern,
   attachContactIntelligence,
   evaluateAdaptiveContactIntelligence,
@@ -8,9 +10,13 @@ import {
   inferCorporateEmailPattern,
   isConfirmedOutreachEmail,
   isContactReadyPerson,
-} from "../lib/leadgen/adaptive-contact-intelligence.ts";
-import { discoverDecisionMaker } from "../lib/leadgen/decision-maker-discovery.ts";
-import { chooseBestOutreachEntry } from "../lib/leadgen/contact-channel-ranking.ts";
+} = await import("../lib/leadgen/adaptive-contact-intelligence.ts");
+const { discoverDecisionMaker } = await import(
+  "../lib/leadgen/decision-maker-discovery.ts"
+);
+const { chooseBestOutreachEntry } = await import(
+  "../lib/leadgen/contact-channel-ranking.ts"
+);
 
 const pattern = inferCorporateEmailPattern([
   { fullName: "Иван Петров", email: "ivan.petrov@acme.ru" },
@@ -166,7 +172,9 @@ const routerResult = await evaluateAdaptiveContactIntelligence({
   },
   verifyMx: async () => true,
 });
-assert.equal(routerResult.readiness, "contact_ready");
+assert.equal(routerResult.readiness, "manual_verification");
+assert.equal(routerResult.email_classification, "GENERAL");
+assert.equal(routerResult.contact_level, "E");
 assert.equal(routerResult.email_type, "corporate_router");
 assert.match(routerResult.why_this_person, /маршрутизатор/);
 assert.doesNotMatch(routerResult.why_this_person, /владеет этим процессом/);

@@ -40,7 +40,8 @@ required(scheduler, [/MessageKind/, /runOutreachProcessorIteration\(messageKind/
 required(scheduler, [/messageKind === "follow_up"/, /await getFollowups\(\)/], "follow-up local scheduler");
 required(followupBatch, [/runOutreachProcessorIteration\("follow_up"\)/], "follow-up trigger");
 required(followupBulkApprove, [/body\.manual === true/], "manual bulk approval");
-required(ui, [/\{ manual: true, \.\.\.payload \}/, /followupSummary\?\.needs_review/], "follow-up bulk approval UI");
+required(ui, [/applyFollowupApprovals/, /followupSummary\?\.needs_review/], "follow-up bulk approval UI");
+assert.doesNotMatch(ui, /\{ manual: true, \.\.\.payload \}/);
 assert.match(
   outreachStorage.match(/export async function cancelQueued[\s\S]*?export async function cancelQueuedItem/)?.[0] ?? "",
   /\.eq\("message_kind", "initial"\)/,

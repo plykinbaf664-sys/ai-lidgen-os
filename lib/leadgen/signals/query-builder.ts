@@ -1,4 +1,5 @@
 import type { SignalType } from "@/lib/leadgen/types";
+import { isDiscoveryV2Enabled } from "@/lib/leadgen/discovery-v2-config";
 
 export type SignalQueryLanguage = "en" | "ru";
 export type SignalSearchMarket = "global" | "ru" | "mixed";
@@ -34,6 +35,7 @@ type SignalQueryIcp = {
   keywords: LocalizedTerms;
   signalPriorities: Record<SignalType, number>;
   signalSourceHints: Record<SignalType, LocalizedTerms>;
+  discoverySources?: readonly string[];
 };
 
 type BuildSignalQueriesInput = {
@@ -247,7 +249,31 @@ const hiringQueryAngles: SignalQueryAngleProfile[] = [
   },
 ];
 
-const searchExclusions = "";
+const searchExclusions = "-википедия -блогер -реферат -курсовая -список -топ";
+
+const freeSourceHints: Record<string, string> = {
+  hh: "вакансии работодателя",
+  company_site: "официальный сайт компании",
+  cian: "объекты застройщика",
+  avito: "профиль компании",
+  industry_catalogs: "отраслевой каталог предприятий",
+  clinic_sites: "официальный сайт клиники",
+  medical_catalogs: "публичная карточка медицинской организации",
+  legal_catalogs: "публичный профиль юридической фирмы",
+  industry_news: "отраслевые новости",
+  product_news: "новости продукта",
+  agency_sites: "официальный сайт агентства",
+  case_studies: "кейс компании",
+  school_sites: "официальный сайт учебного центра",
+  course_catalogs: "каталог образовательных программ",
+  tenders: "тендер победитель компания",
+};
+
+function getConfiguredSourceHint(icp: SignalQueryIcp, index: number): string {
+  const sources = icp.discoverySources?.filter((source) => source !== "hh") ?? [];
+  const source = sources[index % Math.max(1, sources.length)];
+  return source ? freeSourceHints[source] ?? source.replace(/_/g, " ") : "";
+}
 
 const ruMarketHints: Record<SignalType, readonly string[]> = {
   HIRING_SIGNAL: [
@@ -292,6 +318,13 @@ const ruMarketHints: Record<SignalType, readonly string[]> = {
     "amoCRM Bitrix24",
     "\u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u043e\u0431\u0440\u0430\u0449\u0435\u043d\u0438\u0439",
   ],
+};
+
+const discoveryV2EventPhrases: Partial<Record<SignalType, readonly string[]>> = {
+  GO_TO_MARKET_SIGNAL: ["запустила новую услугу", "запустил новую услугу"],
+  GROWTH_SIGNAL: ["открыла филиал", "открыл филиал"],
+  CONTENT_SIGNAL: ["провела вебинар", "запустила вебинар"],
+  TECH_SIGNAL: ["внедрила CRM", "внедрил CRM"],
 };
 
 const signalSemanticProfiles: Record<SignalType, SignalSemanticProfile> = {
@@ -539,11 +572,21 @@ function buildQueryParts(
     pickByIndex(profile.contextPhrases[language], index + 1);
   const marketHint =
     language === "ru" ? pickByIndex(ruMarketHints[signalType], index) : null;
+  const configuredSourceHint =
+    language === "ru" ? getConfiguredSourceHint(icp, index) : "";
+
+  if (isDiscoveryV2Enabled()) {
+    const discoveryEventPhrase = language === "ru"
+      ? pickByIndex(discoveryV2EventPhrases[signalType] ?? [eventPhrase], index)
+      : eventPhrase;
+    return [quote(industry), discoveryEventPhrase, searchExclusions].filter(Boolean);
+  }
 
   if (!angleProfile) {
     return [
       quote(eventPhrase),
       industry,
+      configuredSourceHint,
       searchExclusions,
     ].filter(Boolean);
   }
@@ -554,6 +597,8 @@ function buildQueryParts(
     contextPhrase,
     marketHint,
     angleProfile.sourceHint,
+    configuredSourceHint,
+    searchExclusions,
   ].filter((part): part is string => Boolean(part));
 }
 
@@ -561,7 +606,12 @@ function getOpportunityQueryAngle(
   signalType: SignalType,
   index: number,
 ): SignalQueryAngle {
-  if (signalType === "CONTENT_SIGNAL" || signalType === "TECH_SIGNAL") {
+  if (
+    signalType === "CONTENT_SIGNAL" ||
+    signalType === "TECH_SIGNAL" ||
+    signalType === "GO_TO_MARKET_SIGNAL" ||
+    signalType === "GROWTH_SIGNAL"
+  ) {
     return index % 2 === 0 ? "company_blog" : "market_news";
   }
 
@@ -645,45 +695,61 @@ function buildHiringSignalQueries({
   maxQueries: number;
   market: SignalSearchMarket;
 }): SignalQuery[] {
-  const profile = signalSemanticProfiles[signalType];
   const basePriority = icp.signalPriorities[signalType];
-  const queries = hiringQueryAngles.map((angleProfile) =>
+  const ruRoles = [
+    "руководитель отдела продаж",
+    "менеджер по продажам",
+    "директор по развитию",
+    "коммерческий директор",
+  ];
+  const ruEvents = [
+    "в связи с расширением",
+    "расширяем команду",
+    "открыта вакансия",
+    "ищем в команду",
+  ];
+  const ruQueries = Array.from({ length: Math.max(maxQueries, 8) }, (_, index) => {
+    const industry = pickByIndex(icp.industries.ru, index);
+    const isJobBoard = index < ruRoles.length;
+    const phrase = isJobBoard
+      ? ruRoles[index]
+      : ruEvents[(index - ruRoles.length) % ruEvents.length];
+    const angle: SignalQueryAngle = isJobBoard
+      ? "ru_job_board"
+      : index % 2 === 0
+        ? "company_careers"
+        : "market_news";
+    return createSignalQuery({
+      signalType,
+      query: [
+        isJobBoard ? "site:hh.ru/vacancy" : quote(phrase),
+        isJobBoard ? quote(phrase) : "",
+        quote(industry),
+        isJobBoard ? "" : getConfiguredSourceHint(icp, index),
+        isJobBoard ? "" : searchExclusions,
+      ].filter(Boolean).join(" "),
+      intent: isJobBoard
+        ? "Найти вакансии с явным работодателем в выбранном сегменте"
+        : "Найти подтверждённое расширение команды в выбранном сегменте",
+      priority: Math.max(basePriority - index, 1),
+      language: "ru",
+      angle,
+    });
+  });
+  const safeEnglishHiringAngles = hiringQueryAngles
+    .filter((angle) => angle.language === "en" && !angle.customQuery)
+    .slice(0, Math.min(4, maxQueries));
+  const enQueries = safeEnglishHiringAngles.map((angleProfile, index) =>
     createSignalQuery({
       signalType,
-      query:
-        [
-          angleProfile.angle === "ru_job_board"
-            ? [
-                "site:hh.ru/vacancy",
-                quote(
-                  angleProfile.customQuery?.match(/"([^"]+)"/)?.[1] ??
-                    angleProfile.eventPhrase,
-                ),
-                pickByIndex(icp.industries.ru, angleProfile.termIndex),
-              ].join(" ")
-            : angleProfile.language === "ru"
-              ? [
-                  quote(angleProfile.eventPhrase),
-                  pickByIndex(icp.industries.ru, angleProfile.termIndex),
-                ].join(" ")
-            : buildQueryParts(
-                profile,
-                icp,
-                signalType,
-                angleProfile.language,
-                angleProfile.termIndex,
-                angleProfile,
-              ).join(" "),
-          searchExclusions,
-        ]
-          .filter(Boolean)
-          .join(" "),
-      intent: angleProfile.intent,
-      priority: Math.max(basePriority - angleProfile.priorityOffset, 1),
-      language: angleProfile.language,
+      query: `${quote(angleProfile.eventPhrase)} ${quote(pickByIndex(icp.industries.en, index))} ${searchExclusions}`,
+      intent: "Find company-owned hiring evidence in the selected segment",
+      priority: Math.max(basePriority - 8 - index, 1),
+      language: "en",
       angle: angleProfile.angle,
     }),
   );
+  const queries = [...ruQueries, ...enQueries];
 
   return applyMarketMode(queries, market, maxQueries);
 }
@@ -704,16 +770,16 @@ function buildTrafficContactQueries({
   const queries: SignalQuery[] = [];
   const contactPhrases: LocalizedTerms = {
     ru: [
-      "контакты email",
-      "отдел продаж email",
-      "коммерческий отдел контакты",
-      "электронная почта контакты",
+      "оставить заявку",
+      "получить расчёт",
+      "записаться на консультацию",
+      "регистрация на вебинар",
     ],
     en: [
-      "contact email",
-      "sales email",
-      "business inquiries contact",
-      "contact us email",
+      "request a quote",
+      "book a demo",
+      "request a consultation",
+      "webinar registration",
     ],
   };
   const perLanguageLimit = Math.ceil(maxQueries / languages.length);
@@ -726,10 +792,10 @@ function buildTrafficContactQueries({
         createSignalQuery({
           signalType,
           query: `${quote(industry)} ${contactPhrase} ${searchExclusions}`,
-          intent: "Find official company contact pages with a public inbound email",
+          intent: "Find active public inbound acquisition channels in the selected segment",
           priority: Math.max(icp.signalPriorities[signalType] - index, 1),
           language,
-          angle: "company_contacts",
+          angle: index % 2 === 0 ? "company_blog" : "market_news",
         }),
       );
     }

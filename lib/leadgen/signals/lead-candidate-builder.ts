@@ -1,4 +1,5 @@
 import type { EvidenceResult } from "@/lib/leadgen/signals/evidence-collector";
+import { isDiscoveryV2Enabled } from "@/lib/leadgen/discovery-v2-config";
 import { scoreIcpFit } from "@/lib/leadgen/signals/icp-fit-scorer";
 import type { LeadCandidate, LeadgenSignal } from "@/lib/leadgen/types";
 
@@ -120,9 +121,21 @@ function calculateLeadScore(evidence: EvidenceResult[]): number {
 }
 
 function getCompanySegment(evidence: EvidenceResult[]): string {
-  const icpTerms = evidence.flatMap((item) => item.matched_icp_terms);
+  const identityPatterns = new Set([
+    "company_event_subject",
+    "new_location_owner",
+    "opened_named_location",
+  ]);
+  const segmentEvidence = isDiscoveryV2Enabled()
+    ? evidence.filter((item) =>
+        item.source_type === "job_board" ||
+        item.source_type === "company_site" ||
+        item.source_type === "company_careers" ||
+        identityPatterns.has(item.company_extraction.matched_ru_pattern ?? ""))
+    : evidence;
+  const icpTerms = segmentEvidence.flatMap((item) => item.matched_icp_terms);
 
-  return icpTerms[0] ?? "ICP-matched company";
+  return icpTerms[0] ?? (isDiscoveryV2Enabled() ? "unverified" : "ICP-matched company");
 }
 
 function getGtmSignalType(

@@ -10,6 +10,7 @@ import {
   runSignalPipeline,
   type SignalPipelineEvidenceResult,
   type SignalPipelineQueryUsed,
+  type SignalPipelineResult,
   type SignalPipelineStoppedReason,
 } from "@/lib/leadgen/signals/signal-pipeline";
 import type {
@@ -29,6 +30,8 @@ export type SignalPipelineEvidenceDiagnostic = {
   decision: EvidenceResult["decision"];
   rejection_reason?: EvidenceResult["rejection_reason"];
   source_type: EvidenceResult["source_type"];
+  search_source: string;
+  discovery_result_type: EvidenceResult["discovery_result_type"];
   market: SignalPipelineEvidenceResult["market"];
   query_language: SignalPipelineEvidenceResult["query_language"];
   query_angle: SignalPipelineEvidenceResult["query_angle"];
@@ -70,6 +73,7 @@ export type SignalPipelineTestResult = {
   queries_used: SignalPipelineQueryUsed[];
   candidates_by_angle: Record<SignalQueryAngle, number>;
   candidates_by_market: Record<Exclude<SignalSearchMarket, "mixed">, number>;
+  source_metrics: SignalPipelineResult["source_metrics"];
   candidates: LeadCandidate[];
   opportunity_diagnostics: Array<{
     company_name: string;
@@ -152,6 +156,8 @@ function toEvidenceDiagnostic(
     decision: evidence.decision,
     rejection_reason: evidence.rejection_reason,
     source_type: evidence.source_type,
+    search_source: evidence.search_source,
+    discovery_result_type: evidence.discovery_result_type,
     market: evidence.market,
     query_language: evidence.query_language,
     query_angle: evidence.query_angle,
@@ -211,6 +217,7 @@ export async function runSignalPipelineTest({
     queries_used: result.queries_used,
     candidates_by_angle: result.candidates_by_angle,
     candidates_by_market: result.candidates_by_market,
+    source_metrics: result.source_metrics,
     candidates: result.candidates,
     opportunity_diagnostics: result.candidates
       .map(assessCandidateOpportunity)

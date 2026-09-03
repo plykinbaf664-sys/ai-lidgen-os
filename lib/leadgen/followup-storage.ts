@@ -535,6 +535,7 @@ export async function approveFollowups(
     canApprove(row, manual || Boolean(ids?.length)),
   );
   let approved = 0;
+  let approvedIds: string[] = [];
   if (eligible.length) {
     const now = new Date().toISOString();
     const update = await supabase.from("leadgen_outreach_queue").update({
@@ -542,10 +543,12 @@ export async function approveFollowups(
     }).in("id", eligible.map((row) => row.id)).eq("status", "needs_review")
       .select("id");
     if (update.error) throw update.error;
-    approved = update.data?.length ?? 0;
+    approvedIds = (update.data ?? []).map((row) => row.id);
+    approved = approvedIds.length;
   }
   return {
     approved,
+    approved_ids: approvedIds,
     skipped: (rows.data?.length ?? 0) - approved,
   };
 }

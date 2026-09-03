@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
-import {
+import "./register-ts-paths.mjs";
+
+const {
   canContinueDiscovery,
   DISCOVERY_EMPTY_PASS_LIMIT,
   DISCOVERY_MAX_PASSES,
@@ -11,7 +13,7 @@ import {
   getDiscoveryPageOffset,
   getDiscoverySearchCursor,
   mergeDiscoveryPassStats,
-} from "../lib/leadgen/discovery-continuation.ts";
+} = await import("../lib/leadgen/discovery-continuation.ts");
 
 const pass = (contacts, offset = 0) => ({
   results_received: 100,
@@ -35,7 +37,7 @@ const pass = (contacts, offset = 0) => ({
 });
 
 assert.equal(DISCOVERY_PASS_BUDGET_MS, 240_000);
-assert.equal(DISCOVERY_MAX_PASSES, 100);
+assert.equal(DISCOVERY_MAX_PASSES, 30);
 assert.equal(DISCOVERY_MAX_SEARCH_CURSORS, 500);
 assert.equal(DISCOVERY_PROVIDER_PAGE_WINDOW, 10);
 assert.ok(DISCOVERY_EMPTY_PASS_LIMIT >= 1);
@@ -56,20 +58,21 @@ for (let index = 0; index < DISCOVERY_EMPTY_PASS_LIMIT; index += 1) {
   });
 }
 assert.equal(lowYield.diminishing_return_passes, DISCOVERY_EMPTY_PASS_LIMIT);
-assert.equal(lowYield.search_exhausted, false);
-assert.equal(lowYield.continuation_available, true);
-assert.equal(lowYield.stop_reason, null);
-assert.equal(canContinueDiscovery(lowYield), true);
+assert.equal(lowYield.search_exhausted, true);
+assert.equal(lowYield.continuation_available, false);
+assert.equal(lowYield.stop_reason, "diminishing_returns");
+assert.equal(canContinueDiscovery(lowYield), false);
 assert.ok((lowYield.next_page_offset ?? 0) > (first.next_page_offset ?? 0));
 
 const passBudgetExhausted = mergeDiscoveryPassStats({
   previous: {
     ...lowYield,
     passes_completed: DISCOVERY_MAX_PASSES - 1,
+    consecutive_empty_passes: 0,
     stop_reason: null,
     search_exhausted: false,
   },
-  pass: pass(0, lowYield.next_page_offset ?? 0),
+  pass: pass(1, lowYield.next_page_offset ?? 0),
   target: 50,
   pagesPerPass: 10,
 });
@@ -123,8 +126,8 @@ assert.match(engine, /getCandidateResearchPriority/);
 assert.match(engine, /discoveryResearchConcurrency/);
 assert.match(dashboard, /discovery\.unique_candidates/);
 assert.match(dashboard, /discovery\.deep_research_count/);
-assert.match(dashboard, /campaignDetails\?\.leads\.length/);
+assert.match(dashboard, /campaignDetails=\{campaignDetails\}/);
 
 console.log(
-  "DISCOVERY_CONTINUATION_OK cursor_advances=true empty_pass_continues=true target_stop=true",
+  "DISCOVERY_CONTINUATION_OK cursor_advances=true empty_pass_stops=true target_stop=true",
 );

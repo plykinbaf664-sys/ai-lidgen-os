@@ -57,6 +57,7 @@ export function getVerticalIcp(value?: string | null) {
     industries: { en: vertical.industries, ru: vertical.industries },
     companyTypes: { en: vertical.companyTypes, ru: vertical.companyTypes },
     keywords: { en: [...vertical.signalTerms, ...vertical.vocabulary], ru: [...vertical.signalTerms, ...vertical.vocabulary] },
+    discoverySources: vertical.sources,
   };
 }
 

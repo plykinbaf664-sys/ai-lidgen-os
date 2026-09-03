@@ -17,6 +17,8 @@ import {
   hasTargetRoleMatch,
 } from "@/lib/leadgen/people-provider-utils";
 import type { PersonCandidate } from "@/lib/leadgen/types";
+import { runAbortableOperation, throwIfAborted } from "@/lib/network/abortable-operation";
+import { isPlausiblePublicPersonName } from "@/lib/leadgen/person-factuality";
 
 type CandidateDraft = {
   fullName: string;
@@ -25,6 +27,7 @@ type CandidateDraft = {
   sourceUrl: string;
   sourceTitle: string;
   sourceSnippet: string;
+  sourceUrls?: string[];
   linkedinUrl: string | null;
   telegramUrl: string | null;
   vkUrl: string | null;
@@ -46,6 +49,8 @@ const ROLE_LIKE_NAME_PATTERN =
   /\b(?:sales|director|head|executive|assistant|manager|operations|marketing|product|support|success|growth|page|team|leadership|north|america|commercial|revenue|founder|owner|chief|officer|coo|ceo|cmo|cro|management|consulting|academy|university|objective|toggle|navigation|menu|catalog|contact|contacts|search|home|about|phone|email)\b/i;
 const RU_ROLE_LIKE_NAME_PATTERN =
   /(?:\u0440\u0443\u043a\u043e\u0432\u043e\u0434|\u0434\u0438\u0440\u0435\u043a\u0442\u043e\u0440|\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440|\u043f\u0440\u043e\u0434\u0430\u0436|\u043c\u0430\u0440\u043a\u0435\u0442|\u043e\u043f\u0435\u0440\u0430\u0446|\u043a\u043e\u043c\u043c\u0435\u0440\u0447|\u043e\u0442\u0434\u0435\u043b|\u043a\u043e\u043c\u0430\u043d\u0434|\u043e\u0441\u043d\u043e\u0432\u0430\u0442|\u0432\u043b\u0430\u0434\u0435\u043b|\u0433\u0435\u043d\u0435\u0440\u0430\u043b|\u043d\u0430\u0448\u0435|\u043d\u0430\u0448\u0430|\u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432|\u043a\u043e\u043c\u043f\u0430\u043d\u0438|\u043a\u0430\u0442\u0430\u043b\u043e\u0433|\u043f\u0440\u043e\u0434\u0443\u043a\u0446|\u0432\u0430\u043a\u0430\u043d\u0441|\u0443\u0441\u043b\u043e\u0432\u0438|\u0431\u043e\u043b\u044c\u0448\u0430\u044f|\u043f\u0438\u043e\u043d\u0435\u0440\u0441\u043a|\u0443\u043b\u0438\u0446|\u0430\u0434\u0440\u0435\u0441|\u0433\u043e\u0440\u043e\u0434|\u043e\u0431\u043b\u0430\u0441\u0442|\u043a\u043e\u043b\u043b\u0435\u0433|\u0431\u0438\u0437\u043d\u0435\u0441|\u0446\u0435\u043d\u0442\u0440|\u043e\u0431\u0449\u0435\u0441\u0442\u0432|\u0441\u043e\u044e\u0437|\u0430\u043b\u044c\u044f\u043d\u0441|\u0440\u043e\u0441\u0441\u0438\u0439|\u0444\u0435\u0434\u0435\u0440\u0430\u0446|\u0441\u0442\u0440\u0430\u043d|\u0440\u0435\u0433\u0438\u043e\u043d|\u043a\u0440\u0430\u0439|\u0440\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a)/i;
+const RU_PROFESSION_LIKE_NAME_PATTERN =
+  /(?:инженер|архитектор|конструктор|специалист|врач|эксперт|консультант|администратор|главн|заместител|начальник|прораб)/i;
 
 const RU_EXECUTIVE_TITLES = [
   "\u0433\u0435\u043d\u0435\u0440\u0430\u043b\u044c\u043d\u044b\u0439 \u0434\u0438\u0440\u0435\u043a\u0442\u043e\u0440",
@@ -60,6 +65,64 @@ const RU_EXECUTIVE_TITLES = [
   "\u043e\u0441\u043d\u043e\u0432\u0430\u0442\u0435\u043b\u044c",
   "\u0432\u043b\u0430\u0434\u0435\u043b\u0435\u0446",
 ];
+
+const boundedPeopleCache = new Map<string, {
+  expiresAt: number;
+  result: PeopleProviderResult;
+}>();
+const BOUNDED_PEOPLE_CACHE_MAX = 500;
+const BOUNDED_PEOPLE_CACHE_TTL_MS = Math.min(
+  Math.max(Number(process.env.LEADGEN_LPR_CACHE_TTL_HOURS ?? 168), 1),
+  720,
+) * 3_600_000;
+
+function getBoundedPeopleCacheKey(input: PeopleProviderInput): string {
+  return [
+    getCompanyDomain(input.company) ?? "",
+    normalizeComparable(input.company.company_name),
+    ...(input.roleSearchPlan?.primary ?? [input.decisionMaker.primary_persona]),
+    ...(input.roleSearchPlan?.alternatives.flat() ?? []),
+  ].join("|").toLowerCase();
+}
+
+function getCachedBoundedPeople(input: PeopleProviderInput): PeopleProviderResult | null {
+  const key = getBoundedPeopleCacheKey(input);
+  const cached = boundedPeopleCache.get(key);
+  if (!cached || cached.expiresAt <= Date.now()) {
+    boundedPeopleCache.delete(key);
+    return null;
+  }
+  return {
+    ...cached.result,
+    diagnostics: [{ level: "info", message: "Compact LPR cache hit." }],
+    metrics: cached.result.metrics ? {
+      ...cached.result.metrics,
+      search_attempts: 0,
+      official_pages_fetched: 0,
+      elapsed_ms: 0,
+      stop_reason: "cache_hit",
+      trace: {
+        queries_executed: [],
+        sources_checked: [],
+        rejected_candidates: {},
+        final_failure_reason: cached.result.candidates.length ? null : "CACHED_NOT_FOUND",
+      },
+    } : undefined,
+  };
+}
+
+function cacheBoundedPeople(input: PeopleProviderInput, result: PeopleProviderResult) {
+  const key = getBoundedPeopleCacheKey(input);
+  boundedPeopleCache.set(key, {
+    expiresAt: Date.now() + BOUNDED_PEOPLE_CACHE_TTL_MS,
+    result,
+  });
+  while (boundedPeopleCache.size > BOUNDED_PEOPLE_CACHE_MAX) {
+    const oldest = boundedPeopleCache.keys().next().value;
+    if (!oldest) break;
+    boundedPeopleCache.delete(oldest);
+  }
+}
 
 function unique(values: string[]): string[] {
   return values.filter((value, index, list) => list.indexOf(value) === index);
@@ -121,6 +184,7 @@ function isLikelyPersonName(name: string, input: PeopleProviderInput): boolean {
   if (
     ROLE_LIKE_NAME_PATTERN.test(name) ||
     RU_ROLE_LIKE_NAME_PATTERN.test(name) ||
+    RU_PROFESSION_LIKE_NAME_PATTERN.test(name) ||
     isCompanyNameLike(name, input)
   ) {
     return false;
@@ -186,6 +250,23 @@ function getOfficialSiteUrls(input: PeopleProviderInput): string[] {
   );
 }
 
+function getBoundedOfficialSiteUrls(input: PeopleProviderInput): string[] {
+  const website = getCompanyWebsite(input);
+  if (!website) return [];
+  return [
+    "",
+    "team",
+    "management",
+    "rukovodstvo",
+    "leadership",
+    "about",
+    "company",
+    "contacts",
+    "news",
+    "press",
+  ].map((path) => path ? `${website}/${path}` : website);
+}
+
 function stripHtml(value: string): string {
   return normalizeWhitespace(
     value
@@ -199,28 +280,91 @@ function stripHtml(value: string): string {
   );
 }
 
-async function fetchOfficialText(url: string): Promise<string | null> {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 7000);
-
-  try {
+async function fetchOfficialText(
+  url: string,
+  parentSignal?: AbortSignal,
+): Promise<string | null> {
+  return runAbortableOperation({
+    timeoutMs: 7_000,
+    fallback: null,
+    parentSignal,
+    operation: async (signal) => {
     const response = await fetch(url, {
       headers: {
         "User-Agent": "LeadgenOS/1.0 contact discovery",
       },
-      signal: controller.signal,
+      signal,
     });
 
     if (!response.ok) {
       return null;
     }
 
-    return stripHtml(await response.text());
-  } catch {
-    return null;
-  } finally {
-    clearTimeout(timeoutId);
+      return stripHtml(await response.text());
+    },
+  });
+}
+
+type OfficialPage = {
+  text: string;
+  relevantLinks: string[];
+};
+
+const RELEVANT_OFFICIAL_LINK_PATTERN =
+  /(?:team|management|leadership|rukovod|руковод|команд|about|company|о-компан|о_компан|contacts?|kontakt|контакт|news|press|новост|пресс)/i;
+
+function getRelevantOfficialLinks(html: string, pageUrl: string, companyDomain: string): string[] {
+  const links: string[] = [];
+  for (const match of html.matchAll(/<a\b[^>]*href=["']([^"'#]+)["'][^>]*>([\s\S]*?)<\/a>/gi)) {
+    const href = match[1].replace(/&amp;/gi, "&").replace(/&quot;/gi, '"');
+    const anchor = stripHtml(match[2]);
+    if (!RELEVANT_OFFICIAL_LINK_PATTERN.test(`${href} ${anchor}`)) continue;
+    try {
+      const url = new URL(href, pageUrl);
+      const hostname = url.hostname.toLowerCase().replace(/^www\./, "");
+      if (hostname !== companyDomain && !hostname.endsWith(`.${companyDomain}`)) continue;
+      url.hash = "";
+      links.push(url.toString());
+    } catch {
+      // Ignore malformed links from public pages.
+    }
   }
+  const score = (value: string) => {
+    if (/(?:management|leadership|rukovod|руковод)/i.test(value)) return 100;
+    if (/(?:team|команд|staff)/i.test(value)) return 90;
+    if (/(?:contacts?|kontakt|контакт)/i.test(value)) return 80;
+    if (/(?:about|company|о-компан|о_компан)/i.test(value)) return 70;
+    if (/(?:press|пресс|news|новост)/i.test(value)) return 50;
+    return 0;
+  };
+  return unique(links)
+    .sort((left, right) => score(right) - score(left))
+    .slice(0, 8);
+}
+
+async function fetchOfficialPage(
+  url: string,
+  companyDomain: string,
+  parentSignal?: AbortSignal,
+): Promise<OfficialPage | null> {
+  return runAbortableOperation({
+    timeoutMs: 7_000,
+    fallback: null,
+    parentSignal,
+    operation: async (signal) => {
+      const response = await fetch(url, {
+        headers: { "User-Agent": "LeadgenOS/1.0 contact discovery" },
+        redirect: "follow",
+        signal,
+      });
+      if (!response.ok) return null;
+      const html = await response.text();
+      return {
+        text: stripHtml(html),
+        relevantLinks: getRelevantOfficialLinks(html, response.url || url, companyDomain),
+      };
+    },
+  });
 }
 
 function getTextWindow(text: string, needle: string, radius = 700): string {
@@ -273,6 +417,7 @@ function draftsFromOfficialText({
       sourceUrl,
       sourceTitle: "Official company website",
       sourceSnippet: context.slice(0, 500),
+      sourceUrls: [sourceUrl],
       linkedinUrl: null,
       telegramUrl: null,
       vkUrl: null,
@@ -286,6 +431,74 @@ function draftsFromOfficialText({
       ],
     }];
   });
+}
+
+function draftsFromOfficialPeopleText({
+  input,
+  text,
+  sourceUrl,
+}: {
+  input: PeopleProviderInput;
+  text: string;
+  sourceUrl: string;
+}): CandidateDraft[] {
+  const roleKeywords = unique([
+    input.decisionMaker.primary_persona,
+    ...input.decisionMaker.alternative_personas,
+    ...input.searchKeywords,
+  ])
+    .map((value) => value.trim())
+    .filter((value) => value.length >= 4)
+    .sort((left, right) => right.length - left.length);
+  const drafts: CandidateDraft[] = [];
+
+  for (const roleTitle of roleKeywords) {
+    const normalizedText = text.toLowerCase();
+    const normalizedRole = roleTitle.toLowerCase();
+    let cursor = 0;
+    let occurrences = 0;
+    while (occurrences < 3) {
+      const roleIndex = normalizedText.indexOf(normalizedRole, cursor);
+      if (roleIndex < 0) break;
+      occurrences += 1;
+      cursor = roleIndex + normalizedRole.length;
+      const start = Math.max(0, roleIndex - 420);
+      const end = Math.min(text.length, roleIndex + normalizedRole.length + 420);
+      const context = text.slice(start, end);
+      const names = getNames(context, input)
+        .map((fullName) => ({
+          fullName,
+          distance: Math.abs(
+            start + context.toLowerCase().indexOf(fullName.toLowerCase()) - roleIndex,
+          ),
+        }))
+        .filter((candidate) => candidate.distance <= 360)
+        .sort((left, right) => left.distance - right.distance);
+      const nearestName = names[0]?.fullName;
+      if (!nearestName) continue;
+      const email = getWorkEmails(getTextWindow(context, nearestName, 300), input)[0] ?? null;
+      drafts.push({
+        fullName: nearestName,
+        roleTitle,
+        department: input.decisionMaker.department,
+        sourceUrl,
+        sourceTitle: "Official company website",
+        sourceSnippet: context.slice(0, 500),
+        sourceUrls: [sourceUrl],
+        linkedinUrl: null,
+        telegramUrl: null,
+        vkUrl: null,
+        workEmail: email,
+        contactRoute: "target_persona",
+        evidence: [
+          `Official page links ${nearestName} to role ${roleTitle}`,
+          `Official source: ${sourceUrl}`,
+        ],
+      });
+    }
+  }
+
+  return dedupeDrafts(drafts);
 }
 
 function hasCompanyEvidence(input: PeopleProviderInput, result: SearchResult): boolean {
@@ -471,6 +684,190 @@ function getCandidateContactQueries(
   ].filter(Boolean);
 }
 
+function getCompanySearchNames(input: PeopleProviderInput): string[] {
+  const raw = normalizeWhitespace(input.company.company_name);
+  const withoutPrefix = raw
+    .replace(/^(?:группа\s+компаний|гк|сеть\s+(?:премиальных\s+)?(?:центров\s+)?(?:стоматологии\s+)?|дц|мц|пкф)\s+/i, "")
+    .replace(/\s+-\s+/g, " ")
+    .trim();
+  const latinBrand = raw.match(/\b[A-Z][A-Za-z\d-]{2,}\b/g)?.at(-1) ?? "";
+  return unique([raw, withoutPrefix, latinBrand])
+    .map((value) => normalizeWhitespace(value))
+    .filter((value) => value.length >= 3)
+    .slice(0, 2);
+}
+
+type AdaptivePersonQuery = {
+  level: "LEVEL_1" | "LEVEL_2" | "LEVEL_3";
+  query: string;
+  queryAngle: "person_research" | "market_news";
+};
+
+function getAdaptivePersonQueries(input: PeopleProviderInput): AdaptivePersonQuery[] {
+  const names = getCompanySearchNames(input);
+  const company = quote(names[1] ?? names[0] ?? input.company.company_name);
+  const primary = unique(
+    input.roleSearchPlan?.primary ?? input.searchKeywords.slice(0, 3),
+  ).filter(Boolean);
+  const alternatives = (input.roleSearchPlan?.alternatives ??
+    input.decisionMaker.alternative_personas.map((role) => [role]))
+    .slice(0, 2)
+    .map((roles) => unique(roles).filter(Boolean));
+  const domain = getCompanyDomain(input.company);
+  const queries: AdaptivePersonQuery[] = [];
+  const push = (
+    level: AdaptivePersonQuery["level"],
+    query: string,
+    queryAngle: AdaptivePersonQuery["queryAngle"] = "person_research",
+  ) => {
+    const normalized = normalizeWhitespace(query);
+    if (!normalized || queries.some((item) => item.query === normalized)) return;
+    queries.push({ level, query: normalized, queryAngle });
+  };
+
+  if (primary[0]) push("LEVEL_1", `${company} ${quote(primary[0])}`);
+  if (domain && primary[1]) {
+    push("LEVEL_1", `site:${domain} ${quote(primary[1])}`);
+  }
+  for (const role of primary.slice(1, 3)) {
+    push("LEVEL_2", `${company} ${quote(role)}`);
+  }
+  for (const roles of alternatives) {
+    if (roles[0]) push("LEVEL_2", `${company} ${quote(roles[0])}`);
+  }
+  const evidenceRoles = unique([
+    primary[0],
+    alternatives[0]?.[0],
+    alternatives[1]?.[0],
+  ].filter((value): value is string => Boolean(value)));
+  if (evidenceRoles[0]) {
+    push("LEVEL_3", `${company} ${quote(evidenceRoles[0])} интервью`, "person_research");
+    push("LEVEL_3", `${company} ${quote(evidenceRoles[0])} назначен`, "market_news");
+  }
+  return queries.slice(0, 8);
+}
+
+function isExplicitlyStaleDraft(draft: CandidateDraft): boolean {
+  return /(?:бывш(?:ий|ая)|экс[-\s]|покинул[аи]?\s+(?:компанию|должность)|ранее\s+занимал[аи]?)/i.test(
+    `${draft.sourceTitle} ${draft.sourceSnippet}`,
+  );
+}
+
+function isOrganizationLikePersonName(value: string): boolean {
+  return /(?:^|\s)(?:групп?[а-я]*|медикал|клиник[а-я]*|центр[а-я]*|холдинг[а-я]*|компани[а-я]*|сервис[а-я]*|лаборатор[а-я]*|dental|clinic|medical|dream|group|company|center|centre|laboratory|studio|agency)(?:\s|$)/i.test(value);
+}
+
+const COMMON_RU_GIVEN_NAMES = new Set([
+  "александр", "алексей", "анатолий", "андрей", "антон", "артем", "артём",
+  "борис", "вадим", "валерий", "василий", "виктор", "виталий", "владимир",
+  "владислав", "вячеслав", "геннадий", "георгий", "глеб", "григорий", "даниил",
+  "денис", "дмитрий", "евгений", "егор", "иван", "игорь", "илья", "кирилл",
+  "константин", "лев", "леонид", "максим", "михаил", "никита", "николай",
+  "олег", "павел", "петр", "пётр", "роман", "руслан", "сергей", "станислав",
+  "степан", "тимур", "федор", "фёдор", "филипп", "юрий", "ярослав",
+  "александра", "алина", "алла", "анастасия", "анна", "валентина", "валерия",
+  "вера", "вероника", "виктория", "галина", "дарья", "диана", "екатерина",
+  "елена", "елизавета", "евгения", "инна", "ирина", "карина", "ксения",
+  "лариса", "лидия", "любовь", "людмила", "маргарита", "марина", "мария",
+  "надежда", "наталья", "нина", "оксана", "ольга", "полина", "светлана",
+  "софья", "тамара", "татьяна", "юлия", "яна",
+]);
+
+function hasPlausibleGivenName(value: string): boolean {
+  const parts = value.toLowerCase().split(/\s+/).filter(Boolean);
+  const isCyrillic = parts.some((part) => /[а-яё]/i.test(part));
+  if (!isCyrillic) return true;
+  return parts.some((part) => COMMON_RU_GIVEN_NAMES.has(part)) ||
+    parts.some((part) => /(?:ович|евич|ич|овна|евна|ична)$/i.test(part));
+}
+
+function toBoundedCandidates(
+  drafts: CandidateDraft[],
+  input: PeopleProviderInput,
+  providerLabel: string,
+  providerId: string,
+): PersonCandidate[] {
+  const domain = getCompanyDomain(input.company);
+  return dedupeDrafts(drafts)
+    .filter((draft) => !isExplicitlyStaleDraft(draft))
+    .map((draft) => toPersonCandidate(draft, input, providerLabel, providerId))
+    .filter((candidate) =>
+      isPlausiblePublicPersonName(candidate.full_name) &&
+      !isOrganizationLikePersonName(candidate.full_name) &&
+      hasPlausibleGivenName(candidate.full_name) &&
+      Boolean(candidate.role_title) &&
+      hasTargetRoleMatch(candidate, input.decisionMaker) &&
+      candidate.evidence.length > 0 &&
+      Boolean(candidate.metadata.source_url),
+    )
+    .map((candidate) => {
+      const sourceUrl = String(candidate.metadata.source_url ?? "");
+      const sourceUrls = Array.isArray(candidate.metadata.source_urls)
+        ? candidate.metadata.source_urls.filter((value): value is string => typeof value === "string")
+        : [sourceUrl];
+      const sourceHosts = unique(sourceUrls.flatMap((value) => {
+        try {
+          return [new URL(value).hostname.toLowerCase().replace(/^www\./, "")];
+        } catch {
+          return [];
+        }
+      }));
+      const officialSource = Boolean(domain && sourceHosts.some(
+        (hostname) => hostname === domain || hostname.endsWith(`.${domain}`),
+      ));
+      const corroboratedSources = sourceHosts.filter((hostname) =>
+        !/(?:^|\.)(?:youtube\.com|youtu\.be|vk\.com|t\.me|hh\.ru)$/i.test(hostname),
+      ).length >= 2;
+      return {
+        ...candidate,
+        confidence_score: Math.max(
+          candidate.confidence_score,
+          officialSource || corroboratedSources ? 82 : 68,
+        ),
+        metadata: {
+          ...candidate.metadata,
+          normalized_role: input.decisionMaker.primary_persona,
+          freshness: officialSource
+            ? "current_official_source"
+            : corroboratedSources
+              ? "corroborated_public_sources"
+              : "unknown",
+          company_verified: true,
+          role_verified: true,
+          evidence_source_count: sourceHosts.length,
+        },
+      };
+    })
+    .sort((left, right) => right.confidence_score - left.confidence_score);
+}
+
+function getBoundedDraftRejectionReason(
+  draft: CandidateDraft,
+  input: PeopleProviderInput,
+): string | null {
+  if (isExplicitlyStaleDraft(draft)) return "STALE_ROLE";
+  if (!isPlausiblePublicPersonName(draft.fullName)) return "INVALID_PERSON_NAME";
+  if (isOrganizationLikePersonName(draft.fullName)) return "ORGANIZATION_AS_PERSON";
+  if (!hasPlausibleGivenName(draft.fullName)) return "NO_GIVEN_NAME_EVIDENCE";
+  if (!draft.roleTitle) return "ROLE_NOT_FOUND";
+  const candidate = toPersonCandidate(draft, input, "audit", "audit");
+  if (!hasTargetRoleMatch(candidate, input.decisionMaker)) return "ROLE_MISMATCH";
+  if (draft.evidence.length === 0 || !draft.sourceUrl) return "INSUFFICIENT_EVIDENCE";
+  return null;
+}
+
+function aggregateBoundedRejections(
+  drafts: CandidateDraft[],
+  input: PeopleProviderInput,
+): Record<string, number> {
+  const counts: Record<string, number> = {};
+  for (const draft of dedupeDrafts(drafts)) {
+    const reason = getBoundedDraftRejectionReason(draft, input);
+    if (reason) counts[reason] = (counts[reason] ?? 0) + 1;
+  }
+  return counts;
+}
+
 function mergeDrafts(left: CandidateDraft, right: CandidateDraft): CandidateDraft {
   return {
     ...left,
@@ -480,6 +877,10 @@ function mergeDrafts(left: CandidateDraft, right: CandidateDraft): CandidateDraf
     telegramUrl: left.telegramUrl ?? right.telegramUrl,
     vkUrl: left.vkUrl ?? right.vkUrl,
     workEmail: left.workEmail ?? right.workEmail,
+    sourceUrls: unique([
+      ...(left.sourceUrls ?? [left.sourceUrl]),
+      ...(right.sourceUrls ?? [right.sourceUrl]),
+    ]),
     contactRoute:
       left.contactRoute === "target_persona" || right.contactRoute === "target_persona"
         ? "target_persona"
@@ -524,6 +925,7 @@ function draftFromSearchResult({
     sourceUrl: result.url,
     sourceTitle: result.title,
     sourceSnippet: result.snippet,
+    sourceUrls: [result.url],
     linkedinUrl,
     telegramUrl,
     vkUrl,
@@ -558,6 +960,7 @@ function mergeContactEvidence({
     sourceUrl: result.url,
     sourceTitle: result.title,
     sourceSnippet: result.snippet,
+    sourceUrls: unique([...(candidate.sourceUrls ?? [candidate.sourceUrl]), result.url]),
     linkedinUrl: candidate.linkedinUrl ?? getLinkedInUrl(result.url),
     telegramUrl: candidate.telegramUrl ?? getTelegramUrl(result.url),
     vkUrl: candidate.vkUrl ?? getVkUrl(result.url),
@@ -604,6 +1007,7 @@ function toPersonCandidate(
       source_url: draft.sourceUrl,
       source_title: draft.sourceTitle,
       snippet: draft.sourceSnippet,
+      source_urls: draft.sourceUrls ?? [draft.sourceUrl],
       telegram_url: draft.telegramUrl,
       vk_url: draft.vkUrl,
       contact_route: draft.contactRoute,
@@ -650,11 +1054,13 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
     searchProvider: SearchProvider,
     queries: string[],
     maxResults: number,
+    signal?: AbortSignal,
   ): Promise<SearchResult[]> {
     const allResults: SearchResult[] = [];
     const uniqueQueries = unique(queries);
 
     for (let index = 0; index < uniqueQueries.length; index += 3) {
+      throwIfAborted(signal);
       const batch = uniqueQueries.slice(index, index + 3);
       const results = await Promise.allSettled(
         batch.map((query) =>
@@ -663,6 +1069,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
             maxResults,
             market: "ru",
             queryLanguage: "ru",
+            signal,
           }),
         ),
       );
@@ -672,12 +1079,222 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
           result.status === "fulfilled" ? result.value : [],
         ),
       );
+      throwIfAborted(signal);
     }
 
     return allResults;
   }
 
+  /** Read-only bounded resolver used by the shadow evaluation. */
+  async findPeopleBounded(
+    input: PeopleProviderInput,
+  ): Promise<PeopleProviderResult> {
+    const startedAt = Date.now();
+    const searchProvider = this.getSearchProvider();
+    if (!searchProvider) {
+      return {
+        ...buildProviderUnavailableResult({
+          providerId: this.id,
+          providerLabel: this.label,
+        }),
+        metrics: {
+          search_attempts: 0,
+          official_pages_fetched: 0,
+          aborted_requests: 0,
+          elapsed_ms: Date.now() - startedAt,
+          stop_reason: "provider_unavailable",
+        },
+      };
+    }
+    if (!input.bypassCache) {
+      const cached = getCachedBoundedPeople(input);
+      if (cached) return cached;
+    }
+
+    let searchAttempts = 0;
+    let officialPagesFetched = 0;
+    let drafts: CandidateDraft[] = [];
+    const sourcesChecked: string[] = [];
+    const queriesExecuted: NonNullable<NonNullable<PeopleProviderResult["metrics"]>["trace"]>["queries_executed"] = [];
+    const domain = getCompanyDomain(input.company);
+    const initialOfficialUrls = getBoundedOfficialSiteUrls(input);
+    const homepageUrl = initialOfficialUrls[0];
+    let officialUrls: string[] = [];
+
+    if (domain && homepageUrl) {
+      throwIfAborted(input.signal);
+      const homepage = await fetchOfficialPage(homepageUrl, domain, input.signal);
+      sourcesChecked.push(homepageUrl);
+      officialPagesFetched += 1;
+      if (homepage) {
+        drafts.push(
+          ...draftsFromOfficialPeopleText({ input, text: homepage.text, sourceUrl: homepageUrl }),
+          ...draftsFromOfficialText({ input, text: homepage.text, sourceUrl: homepageUrl }),
+        );
+      }
+      const discoveredLinks = homepage?.relevantLinks ?? [];
+      officialUrls = unique([
+        ...discoveredLinks,
+        ...initialOfficialUrls.slice(1),
+      ]).slice(0, 7);
+    }
+
+    let candidates = toBoundedCandidates(drafts, input, this.label, this.id);
+    const fetchOfficialBatch = async (batch: string[]) => {
+      if (!domain || batch.length === 0 || candidates.length > 0) return;
+      throwIfAborted(input.signal);
+      const pages = await Promise.all(
+        batch.map(async (url) => ({
+          url,
+          page: await fetchOfficialPage(url, domain, input.signal),
+        })),
+      );
+      sourcesChecked.push(...batch);
+      officialPagesFetched += pages.length;
+      drafts.push(...pages.flatMap(({ url, page }) => page ? [
+        ...draftsFromOfficialPeopleText({ input, text: page.text, sourceUrl: url }),
+        ...draftsFromOfficialText({ input, text: page.text, sourceUrl: url }),
+      ] : []));
+      candidates = toBoundedCandidates(drafts, input, this.label, this.id);
+    };
+    const runQuery = async (
+      query: string,
+      level: "LEVEL_1" | "LEVEL_2" | "LEVEL_3" | "EMAIL",
+      queryAngle: "person_research" | "market_news" = "person_research",
+    ) => {
+      throwIfAborted(input.signal);
+      searchAttempts += 1;
+      try {
+        const results = await searchProvider.search({
+          query,
+          maxResults: 5,
+          page: 0,
+          market: "ru",
+          queryLanguage: "ru",
+          queryAngle,
+          signal: input.signal,
+        });
+        queriesExecuted.push({
+          level,
+          query,
+          result_count: results.length,
+          results: results.slice(0, 3).map((result) => ({
+            title: result.title.slice(0, 180),
+            url: result.url,
+          })),
+        });
+        drafts.push(...results.flatMap((result) => draftFromSearchResult({ input, result })));
+      } catch {
+        throwIfAborted(input.signal);
+        queriesExecuted.push({ level, query, result_count: 0, results: [] });
+      }
+      candidates = toBoundedCandidates(drafts, input, this.label, this.id);
+    };
+
+    const adaptiveQueries = getAdaptivePersonQueries(input);
+    const levelOne = adaptiveQueries.filter((query) => query.level === "LEVEL_1");
+    if (candidates.length === 0 && levelOne[0]) {
+      await runQuery(levelOne[0].query, levelOne[0].level, levelOne[0].queryAngle);
+    }
+    await fetchOfficialBatch(officialUrls.slice(0, 3));
+    if (candidates.length === 0 && levelOne[1]) {
+      await runQuery(levelOne[1].query, levelOne[1].level, levelOne[1].queryAngle);
+    }
+    for (const level of ["LEVEL_2", "LEVEL_3"] as const) {
+      if (candidates.length > 0) break;
+      await fetchOfficialBatch(
+        level === "LEVEL_2" ? officialUrls.slice(3, 6) : officialUrls.slice(6, 7),
+      );
+      for (const item of adaptiveQueries.filter((query) => query.level === level)) {
+        await runQuery(item.query, item.level, item.queryAngle);
+        if (candidates.length > 0) break;
+      }
+    }
+
+    const primary = candidates[0] ?? null;
+    if (primary && !primary.work_email) {
+      const draft = drafts.find(
+        (item) => normalizeComparable(item.fullName) === normalizeComparable(primary.full_name),
+      );
+      if (draft) {
+        for (const query of getCandidateContactQueries(input, draft).slice(0, 2)) {
+          throwIfAborted(input.signal);
+          searchAttempts += 1;
+          try {
+            const results = await searchProvider.search({
+              query,
+              maxResults: 4,
+              page: 0,
+              market: "ru",
+              queryLanguage: "ru",
+              queryAngle: "person_research",
+              signal: input.signal,
+            });
+            queriesExecuted.push({
+              level: "EMAIL",
+              query,
+              result_count: results.length,
+              results: results.slice(0, 3).map((result) => ({
+                title: result.title.slice(0, 180),
+                url: result.url,
+              })),
+            });
+            for (const result of results) {
+              drafts = drafts.map((candidate) =>
+                normalizeComparable(candidate.fullName) === normalizeComparable(draft.fullName)
+                  ? mergeContactEvidence({ candidate, input, result })
+                  : candidate,
+              );
+            }
+          } catch {
+            throwIfAborted(input.signal);
+            queriesExecuted.push({ level: "EMAIL", query, result_count: 0, results: [] });
+          }
+          candidates = toBoundedCandidates(drafts, input, this.label, this.id);
+          if (candidates[0]?.work_email) break;
+        }
+      }
+    }
+
+    const result: PeopleProviderResult = {
+      provider_id: this.id,
+      provider_label: this.label,
+      candidates: candidates.slice(0, 3),
+      unavailable: false,
+      diagnostics: [{
+        level: "info",
+        message: candidates.length
+          ? "Bounded shadow search found an evidence-backed person."
+          : "Bounded shadow search exhausted the person budget; fallback remains available.",
+      }],
+      metrics: {
+        search_attempts: searchAttempts,
+        official_pages_fetched: officialPagesFetched,
+        aborted_requests: 0,
+        elapsed_ms: Date.now() - startedAt,
+        stop_reason: candidates.length ? "person_found" : "lpr_not_found",
+        trace: {
+          queries_executed: queriesExecuted,
+          sources_checked: unique(sourcesChecked),
+          rejected_candidates: aggregateBoundedRejections(drafts, input),
+          final_failure_reason: candidates.length
+            ? null
+            : drafts.length > 0
+              ? "ENTITY_VERIFICATION_REJECT"
+              : queriesExecuted.some((item) => item.result_count > 0)
+                ? "INSUFFICIENT_EVIDENCE"
+                : "NO_PERSON_RESULTS",
+        },
+      },
+    };
+    if (!input.bypassCache) cacheBoundedPeople(input, result);
+    return result;
+  }
+
   async findPeople(input: PeopleProviderInput): Promise<PeopleProviderResult> {
+    if (input.roleSearchPlan) {
+      return this.findPeopleBounded(input);
+    }
     const searchProvider = this.getSearchProvider();
 
     if (!searchProvider) {
@@ -691,6 +1308,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
       searchProvider,
       getInitialQueryParts(input),
       4,
+      input.signal,
     );
     let initialDrafts = dedupeDrafts(
       initialResults.flatMap((result) => draftFromSearchResult({ input, result })),
@@ -708,6 +1326,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
         searchProvider,
         getRoutingQueryParts(input),
         4,
+        input.signal,
       );
       initialDrafts = dedupeDrafts([
         ...initialDrafts,
@@ -735,6 +1354,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
           searchProvider,
           getCandidateContactQueries(input, draft),
           3,
+          input.signal,
         );
 
         return contactResults.reduce(
@@ -751,7 +1371,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
     const officialSiteDrafts = (
       await Promise.all(
         getOfficialSiteUrls(input).map(async (url) => {
-          const text = await fetchOfficialText(url);
+          const text = await fetchOfficialText(url, input.signal);
 
           return text ? draftsFromOfficialText({ input, text, sourceUrl: url }) : [];
         }),

@@ -325,12 +325,18 @@ export async function getLocalDailySendStats(now = new Date()) {
       Date.parse(entry.next_attempt_at ?? entry.scheduled_at ?? entry.created_at) <
         end.getTime(),
   ).length;
+  const queuedTotal = entries.filter(
+    (entry) =>
+      entry.message_kind !== "follow_up" &&
+      ["queued", "sending"].includes(entry.status),
+  ).length;
   const remaining = Math.max(
     0,
     leadgenProductionConfig.emailDailySendLimit - sentToday,
   );
   return {
     sentToday,
+    queuedTotal,
     queuedForToday,
     dailyLimit: leadgenProductionConfig.emailDailySendLimit,
     remaining,
@@ -527,7 +533,26 @@ export async function scheduleLocalApprovedBatch({
     }
 
     const { minimum, maximum } = getEmailDelayBounds();
+    const latestScheduledAt = stored
+      .filter(
+        (entry) =>
+          (entry.message_kind ?? "initial") === messageKind &&
+          ["queued", "sending"].includes(entry.status),
+      )
+      .map((entry) =>
+        Date.parse(entry.next_attempt_at ?? entry.scheduled_at ?? ""),
+      )
+      .filter(Number.isFinite)
+      .reduce((latest, value) => Math.max(latest, value), 0);
     let cursor = Date.now();
+    if (latestScheduledAt > cursor) {
+      cursor = getNextScheduledAt({
+        currentTimestamp: latestScheduledAt,
+        minimumDelaySeconds: minimum,
+        maximumDelaySeconds: maximum,
+        randomDelay,
+      });
+    }
     const now = new Date().toISOString();
     const queued: OutreachQueueEntry[] = [];
     for (const entry of selected) {
@@ -573,6 +598,44 @@ export async function setLocalQueuePaused(value: boolean) {
     const state = await readState();
     state.queue_paused = value;
     await writeState(state);
+  });
+}
+
+export async function resumeLocalQueue(campaignId?: string | null) {
+  await setLocalQueuePaused(false);
+  return withWriteLock(async () => {
+    const { minimum, maximum } = getEmailDelayBounds();
+    let cursor = Date.now();
+    let position = 0;
+    const updatedAt = new Date().toISOString();
+    await mutateLocalTable("leadgen_outreach_queue", (rows) => {
+      const queued = rows
+        .filter(
+          (row) =>
+            (row.message_kind ?? "initial") === "initial" &&
+            row.status === "queued" &&
+            (!campaignId || row.campaign_id === campaignId),
+        )
+        .sort(
+          (left, right) =>
+            Date.parse(String(left.next_attempt_at ?? left.created_at)) -
+            Date.parse(String(right.next_attempt_at ?? right.created_at)),
+        );
+      for (const row of queued) {
+        const scheduledAt = new Date(cursor).toISOString();
+        row.scheduled_at = scheduledAt;
+        row.next_attempt_at = scheduledAt;
+        row.updated_at = updatedAt;
+        position += 1;
+        cursor = getNextScheduledAt({
+          currentTimestamp: cursor,
+          minimumDelaySeconds: minimum,
+          maximumDelaySeconds: maximum,
+          randomDelay: (min, max) => randomInt(min, max + 1),
+        });
+      }
+    });
+    return position;
   });
 }
 
@@ -710,7 +773,14 @@ export async function deferLocalQueuedItems(attemptedAt = new Date()) {
     const entries = await listLocalOutreachEntries();
     const { minimum, maximum } = getEmailDelayBounds();
     let cursor = attemptedAt.getTime();
-    for (const entry of entries.filter((item) => item.status === "queued")) {
+    const queued = entries
+      .filter((item) => item.status === "queued")
+      .sort(
+        (left, right) =>
+          Date.parse(left.next_attempt_at ?? left.scheduled_at ?? left.created_at) -
+          Date.parse(right.next_attempt_at ?? right.scheduled_at ?? right.created_at),
+      );
+    for (const entry of queued) {
       const minimumNext = getNextScheduledAt({
         currentTimestamp: cursor,
         minimumDelaySeconds: minimum,

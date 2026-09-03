@@ -339,12 +339,24 @@ async function quarantineTechnicalOutreachArtifacts(campaignId?: string | null) 
 export async function syncOutreachQueue(campaignId: string) {
   const supabase = createSupabaseServerClient();
   await quarantineTechnicalOutreachArtifacts(campaignId);
-  const { contacts, leads, companies, signals } =
-    await readCampaignSources(campaignId);
+  const [{ contacts, leads, companies, signals }, existingResult] =
+    await Promise.all([
+      readCampaignSources(campaignId),
+      supabase
+        .from("leadgen_outreach_queue")
+        .select("id")
+        .eq("campaign_id", campaignId)
+        .eq("message_kind", "initial"),
+    ]);
+  if (existingResult.error) throw existingResult.error;
+  const existingIds = new Set(
+    (existingResult.data ?? []).map((row) => row.id),
+  );
   const leadsById = new Map(leads.map((item) => [item.id, item]));
   const companiesById = new Map(companies.map((item) => [item.id, item]));
   const signalsByLeadId = new Map(signals.map((item) => [item.lead_id, item]));
   const seenEmails = new Set<string>();
+  const pendingRows: Record<string, unknown>[] = [];
 
   for (const contact of contacts.filter(
     (item) =>
@@ -372,16 +384,10 @@ export async function syncOutreachQueue(campaignId: string) {
     if (seenEmails.has(normalizedEmail)) continue;
     seenEmails.add(normalizedEmail);
 
-    const { data: existing, error: existingError } = await supabase
-      .from("leadgen_outreach_queue")
-      .select("id")
-      .eq("id", entry.id)
-      .maybeSingle();
-    if (existingError) throw existingError;
-    if (existing) continue;
+    if (existingIds.has(entry.id)) continue;
 
     const now = new Date().toISOString();
-    const { error } = await supabase.from("leadgen_outreach_queue").insert({
+    pendingRows.push({
       id: entry.id,
       contact_id: entry.contact_id,
       lead_id: entry.lead_id,
@@ -424,6 +430,12 @@ export async function syncOutreachQueue(campaignId: string) {
       created_at: now,
       updated_at: now,
     });
+    existingIds.add(entry.id);
+  }
+  if (pendingRows.length > 0) {
+    const { error } = await supabase
+      .from("leadgen_outreach_queue")
+      .insert(pendingRows);
     if (error && error.code !== "23505") throw error;
   }
   return getOutreachQueue({ campaignId });
@@ -708,35 +720,56 @@ export async function approveOutreachEntry(id: string) {
   const supabase = createSupabaseServerClient();
   const currentResult = await supabase
     .from("leadgen_outreach_queue")
-    .select("normalized_recipient_email,company_id")
+    .select(QUEUE_FIELDS)
     .eq("id", id)
-    .single();
-  if (currentResult.error) return null;
-  const duplicateEmailResult = await supabase
-    .from("leadgen_outreach_queue")
-    .select("id")
-    .eq("status", "sent")
     .eq("message_kind", "initial")
-    .eq(
-      "normalized_recipient_email",
-      currentResult.data.normalized_recipient_email,
-    )
-    .neq("id", id)
-    .limit(1);
-  if (duplicateEmailResult.error) throw duplicateEmailResult.error;
-  let hasDuplicate = (duplicateEmailResult.data ?? []).length > 0;
-  if (currentResult.data.company_id) {
-    const duplicateCompanyResult = await supabase
+    .maybeSingle<QueueRow>();
+  if (currentResult.error) return null;
+  if (!currentResult.data) return null;
+  const current = currentResult.data;
+  if (current.status === "approved") return rowToEntry(current);
+  if (!["draft", "needs_review", "paused", "failed"].includes(current.status)) {
+    return null;
+  }
+  const duplicateEmailPromise = supabase
       .from("leadgen_outreach_queue")
       .select("id")
       .eq("status", "sent")
       .eq("message_kind", "initial")
-      .eq("company_id", currentResult.data.company_id)
+      .eq("normalized_recipient_email", current.normalized_recipient_email)
       .neq("id", id)
       .limit(1);
-    if (duplicateCompanyResult.error) throw duplicateCompanyResult.error;
-    hasDuplicate ||= (duplicateCompanyResult.data ?? []).length > 0;
+  const duplicateCompanyPromise = current.company_id
+    ? supabase
+        .from("leadgen_outreach_queue")
+        .select("id")
+        .eq("status", "sent")
+        .eq("message_kind", "initial")
+        .eq("company_id", current.company_id)
+        .neq("id", id)
+        .limit(1)
+    : Promise.resolve({ data: [], error: null });
+  const stopListPromise = supabase
+    .from("leadgen_email_stop_list")
+    .select("normalized_email")
+    .eq("normalized_email", current.normalized_recipient_email)
+    .eq("is_active", true)
+    .limit(1);
+  const [duplicateEmailResult, duplicateCompanyResult, stopListResult] =
+    await Promise.all([
+      duplicateEmailPromise,
+      duplicateCompanyPromise,
+      stopListPromise,
+    ]);
+  if (duplicateEmailResult.error) throw duplicateEmailResult.error;
+  if (duplicateCompanyResult.error) throw duplicateCompanyResult.error;
+  if (stopListResult.error) throw stopListResult.error;
+  if ((stopListResult.data ?? []).length > 0) {
+    throw new Error("Адрес находится в stop-list.");
   }
+  const hasDuplicate =
+    (duplicateEmailResult.data ?? []).length > 0 ||
+    (duplicateCompanyResult.data ?? []).length > 0;
   if (hasDuplicate) {
     throw new Error("Этому адресу или компании уже отправлялось письмо.");
   }
@@ -761,7 +794,6 @@ export async function approveOutreachEntry(id: string) {
 }
 
 export async function bulkApproveOutreach(campaignId: string, execute: boolean) {
-  await syncOutreachQueue(campaignId);
   const entries = await getOutreachQueue({ campaignId });
   const { eligible, reasons } = await getBulkApprovalPlan(entries);
   const skipped = [...reasons.values()].reduce<Record<string, number>>(
@@ -772,12 +804,26 @@ export async function bulkApproveOutreach(campaignId: string, execute: boolean) 
     {},
   );
   let approved = 0;
-  if (execute) {
-    for (const entry of eligible) {
-      if (await approveOutreachEntry(entry.id)) {
-        approved += 1;
-      }
-    }
+  let approvedIds: string[] = [];
+  if (execute && eligible.length > 0) {
+    const supabase = createSupabaseServerClient();
+    const now = new Date().toISOString();
+    const update = await supabase
+      .from("leadgen_outreach_queue")
+      .update({
+        status: "approved",
+        approved_at: now,
+        approval_invalidated_reason: null,
+        last_error: null,
+        updated_at: now,
+      })
+      .in("id", eligible.map((entry) => entry.id))
+      .eq("message_kind", "initial")
+      .eq("status", "needs_review")
+      .select("id");
+    if (update.error) throw update.error;
+    approvedIds = (update.data ?? []).map((row) => row.id);
+    approved = approvedIds.length;
   }
   return {
     checked: entries.length,
@@ -785,6 +831,7 @@ export async function bulkApproveOutreach(campaignId: string, execute: boolean) 
     skipped_count: entries.length - eligible.length,
     skipped,
     approved,
+    approved_ids: approvedIds,
   };
 }
 
@@ -1454,6 +1501,7 @@ export async function buildOutreachReadiness(health: {
     sent_today: daily.sentToday,
     daily_limit: daily.dailyLimit,
     daily_remaining: daily.availableToQueue,
+    queued_total: queued + sending,
     queued_for_today: daily.queuedForToday,
     batch_limit: leadgenProductionConfig.emailBatchSendLimit,
     min_delay_seconds: minimum,

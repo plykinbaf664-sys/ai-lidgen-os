@@ -1,4 +1,5 @@
 import type { SearchResult } from "@/lib/leadgen/search/search-provider";
+import { isDiscoveryV2Enabled } from "@/lib/leadgen/discovery-v2-config";
 import { extractCompanyFromSearchResult } from "@/lib/leadgen/signals/company-extractor";
 import { classifySearchResultSource } from "@/lib/leadgen/signals/source-classifier";
 import type { CompanyExtractionResult } from "@/lib/leadgen/signals/company-extractor";
@@ -8,6 +9,11 @@ import type { CommercialSignal } from "@/lib/leadgen/types";
 import { validateCommercialSignalCandidate } from "@/lib/leadgen/signals/commercial-signal-validator";
 
 export type EvidenceDecision = "valid_signal" | "weak_signal" | "rejected";
+export type DiscoveryResultType =
+  | "company_with_signal"
+  | "company_candidate"
+  | "signal_evidence"
+  | "irrelevant";
 
 export type EvidenceRejectionReason =
   | "no_signal_context"
@@ -34,6 +40,8 @@ export type EvidenceResult = {
   found_at: string;
   evidence_language: SignalLanguage | "mixed";
   source_type: SourceType;
+  search_source: string;
+  discovery_result_type: DiscoveryResultType;
   company_extraction: CompanyExtractionResult;
   event_strength_score: number;
   event_strength_breakdown: EventStrengthBreakdown;
@@ -1125,7 +1133,11 @@ export function collectSignalEvidence({
         signalType,
         companyExtraction,
       ) +
-      (preliminaryCommercialSignal ? 18 : 0),
+      (preliminaryCommercialSignal
+        ? isDiscoveryV2Enabled()
+          ? 35
+          : 18
+        : 0),
   );
   const isAggregatorWithoutCompany =
     sourceClassification.source_type === "aggregator" &&
@@ -1202,6 +1214,14 @@ export function collectSignalEvidence({
           hasNonOpportunityInfo,
         })
       : undefined;
+  const discoveryResultType: DiscoveryResultType =
+    companyExtraction.is_candidate_company_valid && Boolean(commercialSignal)
+      ? "company_with_signal"
+      : companyExtraction.is_candidate_company_valid
+        ? "company_candidate"
+        : commercialSignal
+          ? "signal_evidence"
+          : "irrelevant";
 
   return {
     is_valid_signal: decision === "valid_signal",
@@ -1218,6 +1238,8 @@ export function collectSignalEvidence({
     found_at: result.published_at ?? new Date().toISOString(),
     evidence_language: evidenceLanguage,
     source_type: sourceClassification.source_type,
+    search_source: result.source_key ?? result.source_label,
+    discovery_result_type: discoveryResultType,
     company_extraction: companyExtraction,
     event_strength_score: eventStrength.event_strength_score,
     event_strength_breakdown: eventStrength.breakdown,

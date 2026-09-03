@@ -5,6 +5,7 @@ import {
   type SegmentVerification,
 } from "@/lib/leadgen/segment-guard";
 import { getVerticalProfile } from "@/lib/leadgen/verticals";
+import { runAbortableOperation } from "@/lib/network/abortable-operation";
 
 const SEGMENT_RECHECK_TIMEOUT_MS = 8_000;
 const MAX_RECHECK_RESULTS = 5;
@@ -30,24 +31,21 @@ function isCompanyEvidence(result: SearchResult, companyName: string) {
 async function searchWithTimeout(
   searchProvider: SearchProvider,
   query: string,
+  parentSignal?: AbortSignal,
 ): Promise<SearchResult[]> {
-  let timeout: ReturnType<typeof setTimeout> | null = null;
-  try {
-    return await Promise.race([
-      searchProvider.search({
+  return runAbortableOperation({
+    timeoutMs: SEGMENT_RECHECK_TIMEOUT_MS,
+    fallback: [],
+    parentSignal,
+    operation: (signal) => searchProvider.search({
         query,
         maxResults: MAX_RECHECK_RESULTS,
         page: 0,
         market: "ru",
         queryLanguage: "ru",
-      }).catch(() => []),
-      new Promise<SearchResult[]>((resolve) => {
-        timeout = setTimeout(() => resolve([]), SEGMENT_RECHECK_TIMEOUT_MS);
+        signal,
       }),
-    ]);
-  } finally {
-    if (timeout) clearTimeout(timeout);
-  }
+  });
 }
 
 export type SegmentRecheckResult = {
@@ -60,10 +58,12 @@ export async function recheckUncertainCompanySegment({
   input,
   initial,
   searchProvider,
+  signal,
 }: {
   input: SegmentGuardInput;
   initial: SegmentVerification;
   searchProvider: SearchProvider;
+  signal?: AbortSignal;
 }): Promise<SegmentRecheckResult> {
   if (initial.match !== "UNCERTAIN") {
     return { verification: initial, attempted: false, sourceUrls: [] };
@@ -77,6 +77,7 @@ export async function recheckUncertainCompanySegment({
   const results = await searchWithTimeout(
     searchProvider,
     `"${input.companyName}" (${segmentTerms})`,
+    signal,
   );
   const evidenceResults = results
     .filter((result) => isCompanyEvidence(result, input.companyName))

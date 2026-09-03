@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import { performance } from "node:perf_hooks";
-import { runSignalPipeline } from "../lib/leadgen/signals/signal-pipeline.ts";
+import "./register-ts-paths.mjs";
+
+const { runSignalPipeline } = await import(
+  "../lib/leadgen/signals/signal-pipeline.ts"
+);
 
 const latencyMs = 80;
 let calls = 0;

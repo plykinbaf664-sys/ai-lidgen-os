@@ -23,6 +23,12 @@ import {
 import { buildEmailOutreachWithAi } from "@/lib/leadgen/email-outreach-builder";
 import { discoverCompanyEmails } from "@/lib/leadgen/email-discovery-engine";
 import { getVerticalProfile } from "@/lib/leadgen/verticals";
+import { runAbortableOperation, throwIfAborted } from "@/lib/network/abortable-operation";
+import {
+  classifyEvidenceBackedEmail,
+  getContactLevel,
+} from "@/lib/leadgen/contact-quality";
+import { emailLocalMatchesPerson } from "@/lib/leadgen/person-email-evidence";
 
 const publicUrlPattern = /https?:\/\/[^\s"'<>\\)]+/gi;
 const officialSitePaths = [
@@ -198,17 +204,21 @@ function getOfficialSiteUrls(input: ContactProviderInput): string[] {
   }
 }
 
-async function fetchPublicPageText(url: string): Promise<string | null> {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 5000);
-
-  try {
+async function fetchPublicPageText(
+  url: string,
+  parentSignal?: AbortSignal,
+): Promise<string | null> {
+  return runAbortableOperation({
+    timeoutMs: 5_000,
+    fallback: null,
+    parentSignal,
+    operation: async (signal) => {
     const response = await fetch(url, {
       headers: {
         accept: "text/html,text/plain;q=0.9,*/*;q=0.1",
         "user-agent": "LeadgenOS/1.0 contact-enrichment",
       },
-      signal: controller.signal,
+      signal,
     });
 
     if (!response.ok) {
@@ -227,12 +237,9 @@ async function fetchPublicPageText(url: string): Promise<string | null> {
 
     const text = await response.text();
 
-    return text.slice(0, 140_000);
-  } catch {
-    return null;
-  } finally {
-    clearTimeout(timeout);
-  }
+      return text.slice(0, 140_000);
+    },
+  });
 }
 
 function getHhVacancyUrl(company: LeadgenCompany): string | null {
@@ -329,6 +336,7 @@ export function parseHhPublicVacancyContact(
 async function findHhPublicVacancyContact(
   company: LeadgenCompany,
   officialDomain: string | null,
+  parentSignal?: AbortSignal,
 ): Promise<HhPublicVacancyContact | null> {
   const vacancyUrl = getHhVacancyUrl(company);
   const vacancyId = vacancyUrl?.match(/\/vacancy\/(\d+)/)?.[1] ?? null;
@@ -339,14 +347,20 @@ async function findHhPublicVacancyContact(
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(feedbackEmail)) return null;
 
   try {
-    const response = await fetch(`https://api.hh.ru/vacancies/${vacancyId}`, {
-      headers: {
-        accept: "application/json",
-        "HH-User-Agent": `LeadgenOS/1.0 (${feedbackEmail})`,
-        "user-agent": `LeadgenOS/1.0 (${feedbackEmail})`,
-      },
-      signal: AbortSignal.timeout(5_000),
+    const response = await runAbortableOperation<Response | null>({
+      timeoutMs: 5_000,
+      fallback: null,
+      parentSignal,
+      operation: (signal) => fetch(`https://api.hh.ru/vacancies/${vacancyId}`, {
+        headers: {
+          accept: "application/json",
+          "HH-User-Agent": `LeadgenOS/1.0 (${feedbackEmail})`,
+          "user-agent": `LeadgenOS/1.0 (${feedbackEmail})`,
+        },
+        signal,
+      }),
     });
+    if (!response) return null;
     if (!response.ok) return null;
     return parseHhPublicVacancyContact(
       await response.json(),
@@ -365,21 +379,27 @@ function decodeHtmlAttribute(value: string): string {
     .replace(/&#39;|&apos;/gi, "'");
 }
 
-async function fetchHhPageHtml(url: string): Promise<string | null> {
-  try {
-    const response = await fetch(url, {
+async function fetchHhPageHtml(
+  url: string,
+  parentSignal?: AbortSignal,
+): Promise<string | null> {
+  return runAbortableOperation({
+    timeoutMs: 8_000,
+    fallback: null,
+    parentSignal,
+    operation: async (signal) => {
+      const response = await fetch(url, {
       headers: {
         accept: "text/html",
         "user-agent":
           "Mozilla/5.0 (compatible; LeadgenOS/1.0; official-site-resolution)",
       },
-      signal: AbortSignal.timeout(8_000),
+        signal,
     });
-    if (!response.ok) return null;
-    return (await response.text()).slice(0, 1_600_000);
-  } catch {
-    return null;
-  }
+      if (!response.ok) return null;
+      return (await response.text()).slice(0, 1_600_000);
+    },
+  });
 }
 
 export function parseHhEmployerId(html: string): string | null {
@@ -412,16 +432,17 @@ export function parseHhEmployerWebsite(html: string): string | null {
 
 async function resolveOfficialWebsiteFromHh(
   company: LeadgenCompany,
+  signal?: AbortSignal,
 ): Promise<OfficialWebsiteResolution | null> {
   const vacancyUrl = getHhVacancyUrl(company);
   if (!vacancyUrl) return null;
 
-  const vacancyHtml = await fetchHhPageHtml(vacancyUrl);
+  const vacancyHtml = await fetchHhPageHtml(vacancyUrl, signal);
   const employerId = vacancyHtml ? parseHhEmployerId(vacancyHtml) : null;
   if (!employerId) return null;
 
   const employerUrl = `https://hh.ru/employer/${employerId}`;
-  const employerHtml = await fetchHhPageHtml(employerUrl);
+  const employerHtml = await fetchHhPageHtml(employerUrl, signal);
   const website = employerHtml
     ? parseHhEmployerWebsite(employerHtml)
     : null;
@@ -483,7 +504,10 @@ async function getOfficialSiteContext(
   warnings: string[];
 }> {
   const urls = getOfficialSiteUrls(input);
-  const results = await Promise.allSettled(urls.map(fetchPublicPageText));
+  const results = await Promise.allSettled(
+    urls.map((url) => fetchPublicPageText(url, input.signal)),
+  );
+  throwIfAborted(input.signal);
   const warnings = results.flatMap((result, index) =>
     result.status === "rejected"
       ? [`official_site_page_failed:${urls[index]}`]
@@ -505,8 +529,9 @@ async function getOfficialSiteContext(
     ),
   ].filter((url) => !urls.includes(url));
   const internalResults = await Promise.allSettled(
-    internalUrls.slice(0, 8).map(fetchPublicPageText),
+    internalUrls.slice(0, 8).map((url) => fetchPublicPageText(url, input.signal)),
   );
+  throwIfAborted(input.signal);
   const internalPages = internalResults.flatMap((result, index) =>
     result.status === "fulfilled" && result.value
       ? [{ url: internalUrls[index], text: result.value }]
@@ -584,6 +609,7 @@ export type OfficialWebsiteResolution = {
 export async function resolveOfficialCompanyWebsite(
   company: LeadgenCompany,
   searchProvider: SearchProvider | null,
+  signal?: AbortSignal,
 ): Promise<OfficialWebsiteResolution> {
   const existingDomain = getCompanyDomain(company);
   if (existingDomain) {
@@ -597,7 +623,7 @@ export async function resolveOfficialCompanyWebsite(
     };
   }
 
-  const hhResolution = await resolveOfficialWebsiteFromHh(company);
+  const hhResolution = await resolveOfficialWebsiteFromHh(company, signal);
   if (hhResolution) {
     return hhResolution;
   }
@@ -636,6 +662,7 @@ export async function resolveOfficialCompanyWebsite(
         maxResults: 12,
         market: "ru",
         queryLanguage: "ru",
+        signal,
       });
     } catch {
       continue;
@@ -659,7 +686,7 @@ export async function resolveOfficialCompanyWebsite(
           const pathname = new URL(result.url).pathname.replace(/\/+$/, "") || "/";
           if (pathname === "/") {
             identityPagesChecked += 1;
-            const pageText = (await fetchPublicPageText(result.url))?.toLowerCase() ?? "";
+            const pageText = (await fetchPublicPageText(result.url, signal))?.toLowerCase() ?? "";
             const distinctiveToken = [...tokens].sort(
               (left, right) => right.length - left.length,
             )[0];
@@ -900,9 +927,11 @@ async function findPublicPersonEmail({
         maxResults: 5,
         market: "ru",
         queryLanguage: "ru",
+        signal: input.signal,
       }),
     ),
   );
+  throwIfAborted(input.signal);
   const searchResults = results.flatMap((result) =>
     result.status === "fulfilled" ? result.value : [],
   );
@@ -929,7 +958,7 @@ async function findPublicPersonEmail({
     // Open at most two matching official pages and parse their public content.
     if (!email && fetchedOfficialPages < 2 && result.url) {
       fetchedOfficialPages += 1;
-      const pageText = await fetchPublicPageText(result.url);
+      const pageText = await fetchPublicPageText(result.url, input.signal);
       if (pageText && includesPersonName(pageText, person)) {
         email = getConfirmedPersonEmail(
           pageText,
@@ -976,6 +1005,7 @@ async function findPublicCompanyEmails({
 
   const searchResults: SearchResult[] = [];
   for (const query of queries) {
+    throwIfAborted(input.signal);
     try {
       searchResults.push(
         ...(await searchProvider.search({
@@ -983,9 +1013,11 @@ async function findPublicCompanyEmails({
         maxResults: 5,
         market: "ru",
         queryLanguage: "ru",
+        signal: input.signal,
         })),
       );
     } catch {
+      throwIfAborted(input.signal);
       // A single fallback query must not fail contact discovery.
     }
   }
@@ -1227,9 +1259,11 @@ async function findPublicPersonSocialProfiles({
         maxResults: 5,
         market: "ru",
         queryLanguage: "ru",
+        signal: input.signal,
       }),
     ),
   );
+  throwIfAborted(input.signal);
   const searchResults = results.flatMap((result) =>
     result.status === "fulfilled" ? result.value : [],
   );
@@ -1429,8 +1463,11 @@ function createContact({
 export class PublicContactProvider implements ContactProvider {
   id = "public-contact-provider";
   label = "Public contact provider";
+  private readonly searchProvider?: SearchProvider;
 
-  constructor(private readonly searchProvider?: SearchProvider) {}
+  constructor(searchProvider?: SearchProvider) {
+    this.searchProvider = searchProvider;
+  }
 
   private getSearchProvider(): SearchProvider | null {
     if (this.searchProvider) {
@@ -1465,7 +1502,11 @@ export class PublicContactProvider implements ContactProvider {
               ? auditedWebsiteReason
               : "official_site_not_found",
         }
-      : await resolveOfficialCompanyWebsite(rawInput.company, searchProvider);
+      : await resolveOfficialCompanyWebsite(
+          rawInput.company,
+          searchProvider,
+          rawInput.signal,
+        );
     const input: ContactProviderInput = websiteResolution.domain
       ? {
           ...rawInput,
@@ -1497,6 +1538,7 @@ export class PublicContactProvider implements ContactProvider {
             ).emailPriority,
           },
           searchProvider,
+          signal: input.signal,
         })
       : null;
     const officialSiteContext = emailDiscovery
@@ -1572,6 +1614,7 @@ export class PublicContactProvider implements ContactProvider {
     const hhPublicContact = await findHhPublicVacancyContact(
       input.company,
       companyDomain,
+      input.signal,
     );
     if (hhPublicContact) {
       strategiesAttempted.push("hh_public_vacancy_contact");
@@ -1719,6 +1762,36 @@ export class PublicContactProvider implements ContactProvider {
         publicEmail?.sourceLabel ?? person.source;
 
       if (workEmail) {
+        const workEmailDomain = workEmail.toLowerCase().split("@")[1] ?? "";
+        const publishedOnOfficialSite = getHostname(sourceUrl ?? "") === companyDomain;
+        const normalizedEmailClassification = classifyEvidenceBackedEmail({
+          email: workEmail,
+          officialDomain: companyDomain ?? "",
+          confirmedPerson: !isRoutingPerson,
+          directPersonEvidence: Boolean(
+            !isRoutingPerson &&
+            workEmailDomain === companyDomain &&
+            emailLocalMatchesPerson(workEmail, person.full_name),
+          ),
+          confirmedCorporateAlias: publishedOnOfficialSite,
+        });
+        const contactLevel = getContactLevel({
+          confirmedPerson: !isRoutingPerson,
+          classification: normalizedEmailClassification,
+        });
+        const legacyEmailClassification = normalizedEmailClassification === "VERIFIED_PERSONAL"
+          ? "personal_verified"
+          : normalizedEmailClassification === "HIGH_CONFIDENCE_PERSONAL"
+            ? "personal_high_confidence"
+            : normalizedEmailClassification === "DEPARTMENT"
+              ? "department_verified"
+              : "company_generic_verified";
+        const emailStatus = normalizedEmailClassification === "VERIFIED_PERSONAL" ||
+          normalizedEmailClassification === "HIGH_CONFIDENCE_PERSONAL"
+          ? "work_email_ready"
+          : normalizedEmailClassification === "DEPARTMENT"
+            ? "department_email_ready"
+            : "company_email_ready";
         const emailOutreach = await buildEmailOutreachWithAi({
           companyName: input.company.company_name,
           companyWebsite:
@@ -1789,20 +1862,10 @@ export class PublicContactProvider implements ContactProvider {
             metadata: {
               ...personMetadata,
               email_context: publicEmail?.context ?? null,
-              email_classification:
-                publicEmail?.classification ??
-                (isRoutingPerson ? "routing_person_verified" : "personal_verified"),
-              email_status: publicEmail
-                ? getEmailStatus({
-                    email: publicEmail.email,
-                    source_url: publicEmail.sourceUrl,
-                    context: publicEmail.context,
-                    classification:
-                      publicEmail.classification as ParsedPublicEmail["classification"],
-                    confidence_score: publicEmail.confidenceScore,
-                    extraction_method: "public_person_search",
-                  })
-                : "work_email_ready",
+              email_classification: legacyEmailClassification,
+              normalized_email_classification: normalizedEmailClassification,
+              contact_level: contactLevel.level,
+              email_status: emailStatus,
               email_extraction_method: "public_person_search",
               email_subject: emailOutreach.subject,
               email_body: emailOutreach.body,

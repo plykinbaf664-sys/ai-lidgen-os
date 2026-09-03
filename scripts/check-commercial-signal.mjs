@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import "./register-ts-paths.mjs";
 
 const rejected = [
   "Телефон: +7 (495) 123-45-67. Email: info@company.ru. Адрес: Москва. Режим работы: круглосуточно.",

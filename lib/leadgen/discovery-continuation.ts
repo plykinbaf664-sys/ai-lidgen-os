@@ -2,11 +2,9 @@ import type { ProductionDiscoveryStats } from "@/lib/leadgen/types";
 import { leadgenProductionConfig } from "@/lib/leadgen/production-config";
 
 export const DISCOVERY_PASS_BUDGET_MS = 240_000;
-export const DISCOVERY_MAX_PASSES = 100;
+export const DISCOVERY_MAX_PASSES = 30;
 export const DISCOVERY_MAX_SEARCH_CURSORS = 500;
 export const DISCOVERY_PROVIDER_PAGE_WINDOW = 10;
-// Kept as a diagnostic threshold. Empty passes no longer finish a campaign:
-// a later geographic query wave can still produce new companies.
 export const DISCOVERY_EMPTY_PASS_LIMIT = leadgenProductionConfig.discoveryDiminishingPassLimit;
 export const DISCOVERY_PAGES_PER_QUERY_PER_PASS = 1;
 
@@ -101,6 +99,35 @@ function mergeStrategyMetrics(
   return result;
 }
 
+function mergeSourceMetrics(
+  left: ProductionDiscoveryStats["search_source_metrics"] = {},
+  right: ProductionDiscoveryStats["search_source_metrics"] = {},
+) {
+  const result = { ...left };
+  for (const [key, value] of Object.entries(right)) {
+    const current = result[key] ?? {
+      results: 0,
+      company_candidates: 0,
+      valid_signals: 0,
+      unique_candidates: 0,
+      qualified_companies: 0,
+      ready_leads: 0,
+    };
+    result[key] = {
+      results: current.results + value.results,
+      company_candidates:
+        current.company_candidates + value.company_candidates,
+      valid_signals: current.valid_signals + value.valid_signals,
+      unique_candidates:
+        current.unique_candidates + value.unique_candidates,
+      qualified_companies:
+        current.qualified_companies + value.qualified_companies,
+      ready_leads: current.ready_leads + value.ready_leads,
+    };
+  }
+  return result;
+}
+
 export function getDiscoveryPassNumber(stats?: ProductionDiscoveryStats | null) {
   return Math.max(1, (stats?.passes_completed ?? 0) + 1);
 }
@@ -156,7 +183,8 @@ export function mergeDiscoveryPassStats({
     : 0;
   const searchExhausted =
     totalEmails >= target ||
-    passesCompleted >= DISCOVERY_MAX_PASSES;
+    passesCompleted >= DISCOVERY_MAX_PASSES ||
+    emptyPasses >= DISCOVERY_EMPTY_PASS_LIMIT;
   const currentOffset = previous
     ? getDiscoveryPageOffset(previous, pagesPerPass)
     : pass.search_page_offset ?? 0;
@@ -226,6 +254,10 @@ export function mergeDiscoveryPassStats({
       previous?.search_strategy_metrics,
       pass.search_strategy_metrics,
     ),
+    search_source_metrics: mergeSourceMetrics(
+      previous?.search_source_metrics,
+      pass.search_source_metrics,
+    ),
     timings_ms: {
       discovery: (previous?.timings_ms?.discovery ?? 0) + (pass.timings_ms?.discovery ?? 0),
       prefilter: (previous?.timings_ms?.prefilter ?? 0) + (pass.timings_ms?.prefilter ?? 0),
@@ -266,6 +298,8 @@ export function mergeDiscoveryPassStats({
     target_reached: totalEmails >= target,
     stop_reason: totalEmails >= target
       ? "target_reached"
+      : emptyPasses >= DISCOVERY_EMPTY_PASS_LIMIT
+        ? "diminishing_returns"
       : cursorExhausted
         ? "cursor_exhausted"
         : passesCompleted >= DISCOVERY_MAX_PASSES

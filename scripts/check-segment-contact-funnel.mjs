@@ -73,7 +73,7 @@ const outreach = buildEmailOutreach({
   targetResponsibility: "развитие клиентских процессов",
 });
 assert.match(outreach.body, /^Олег, добрый день\./);
-assert.match(outreach.body, /кто у вас отвечает за этот процесс/i);
+assert.match(outreach.body, /кто у вас отвечает за (?:этот )?(?:процесс|участок)/i);
 assert.doesNotMatch(outreach.body, /судя по вашей роли/i);
 
 const inferredIntelligence = {

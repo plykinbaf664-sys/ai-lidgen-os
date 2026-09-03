@@ -5,6 +5,7 @@ import {
   type ParsedPublicEmail,
   type RejectedPublicEmail,
 } from "@/lib/leadgen/public-email-parser";
+import { runAbortableOperation, throwIfAborted } from "@/lib/network/abortable-operation";
 
 export type EmailDiscoveryInput = {
   companyId: string;
@@ -139,7 +140,25 @@ const FREE_EMAIL_DOMAINS = new Set([
   "outlook.com",
   "hotmail.com",
 ]);
-const mxCache = new Map<string, Promise<boolean>>();
+type MxCacheEntry = {
+  expiresAt: number;
+  value: Promise<boolean>;
+};
+
+const MX_CACHE_TTL_MS = 6 * 60 * 60 * 1_000;
+const MX_CACHE_MAX_ENTRIES = 256;
+const mxCache = new Map<string, MxCacheEntry>();
+
+function pruneMxCache(now = Date.now()): void {
+  for (const [key, entry] of mxCache) {
+    if (entry.expiresAt <= now) mxCache.delete(key);
+  }
+  while (mxCache.size >= MX_CACHE_MAX_ENTRIES) {
+    const oldest = mxCache.keys().next().value;
+    if (!oldest) break;
+    mxCache.delete(oldest);
+  }
+}
 
 function normalizeHostname(value: string): string | null {
   try {
@@ -202,10 +221,27 @@ function buildPriorityUrls(input: EmailDiscoveryInput): string[] {
   );
 }
 
-async function fetchPage(url: string, depth: number): Promise<CrawledPage> {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-  try {
+async function fetchPage(
+  url: string,
+  depth: number,
+  parentSignal?: AbortSignal,
+): Promise<CrawledPage> {
+  const fallback: CrawledPage = {
+    requestedUrl: url,
+    finalUrl: null,
+    status: null,
+    contentType: null,
+    opened: false,
+    bytes: 0,
+    depth,
+    error: "timeout",
+    html: "",
+  };
+  return runAbortableOperation({
+    timeoutMs: FETCH_TIMEOUT_MS,
+    fallback,
+    parentSignal,
+    operation: async (signal) => {
     const response = await fetch(url, {
       redirect: "follow",
       headers: {
@@ -214,11 +250,11 @@ async function fetchPage(url: string, depth: number): Promise<CrawledPage> {
         "accept-encoding": "gzip, deflate, br",
         "user-agent": "Mozilla/5.0 (compatible; LeadgenOS/1.0; email-discovery)",
       },
-      signal: controller.signal,
+      signal,
     });
     const contentType = response.headers.get("content-type");
     const html = response.ok ? (await response.text()).slice(0, 350_000) : "";
-    return {
+      return {
       requestedUrl: url,
       finalUrl: response.url || url,
       status: response.status,
@@ -228,28 +264,9 @@ async function fetchPage(url: string, depth: number): Promise<CrawledPage> {
       depth,
       error: response.ok ? null : `http_${response.status}`,
       html,
-    };
-  } catch (error) {
-    const message =
-      error instanceof Error && error.name === "AbortError"
-        ? "timeout"
-        : error instanceof Error
-          ? error.message
-          : "fetch_failed";
-    return {
-      requestedUrl: url,
-      finalUrl: null,
-      status: null,
-      contentType: null,
-      opened: false,
-      bytes: 0,
-      depth,
-      error: message,
-      html: "",
-    };
-  } finally {
-    clearTimeout(timeout);
-  }
+      };
+    },
+  });
 }
 
 function extractLinks(html: string, pageUrl: string, domain: string): string[] {
@@ -282,9 +299,10 @@ function extractSitemapUrls(xml: string, domain: string): string[] {
 
 async function crawlOfficialWebsite(
   input: EmailDiscoveryInput,
+  signal?: AbortSignal,
 ): Promise<{ pages: CrawledPage[]; forms: string[]; diagnostics: string[] }> {
   const priorityUrls = buildPriorityUrls(input);
-  const homepage = await fetchPage(priorityUrls[0], 0);
+  const homepage = await fetchPage(priorityUrls[0], 0, signal);
   const pages: CrawledPage[] = [homepage];
   const diagnostics: string[] = [];
   if (!homepage.opened) {
@@ -297,9 +315,10 @@ async function crawlOfficialWebsite(
   const robotsUrl = new URL("/robots.txt", input.officialWebsiteUrl).toString();
   const sitemapUrl = new URL("/sitemap.xml", input.officialWebsiteUrl).toString();
   const [robots, sitemap] = await Promise.all([
-    fetchPage(robotsUrl, 0),
-    fetchPage(sitemapUrl, 0),
+    fetchPage(robotsUrl, 0, signal),
+    fetchPage(sitemapUrl, 0, signal),
   ]);
+  throwIfAborted(signal);
   pages.push(robots, sitemap);
   if (
     robots.opened &&
@@ -316,8 +335,9 @@ async function crawlOfficialWebsite(
     robotsSitemaps
       .filter((url) => isInternalUrl(url, input.officialDomain))
       .slice(0, 2)
-      .map((url) => fetchPage(url, 0)),
+      .map((url) => fetchPage(url, 0, signal)),
   );
+  throwIfAborted(signal);
   pages.push(...extraSitemaps);
 
   const discovered = [
@@ -333,7 +353,8 @@ async function crawlOfficialWebsite(
   ]
     .filter((url) => !pages.some((page) => page.requestedUrl === url))
     .slice(0, Math.max(0, MAX_PAGES - pages.length));
-  const fetched = await Promise.all(queued.map((url) => fetchPage(url, 1)));
+  const fetched = await Promise.all(queued.map((url) => fetchPage(url, 1, signal)));
+  throwIfAborted(signal);
   pages.push(...fetched);
   const forms = [
     ...new Set(
@@ -391,7 +412,10 @@ function classifyKind(email: string): EmailCandidateKind {
   if (/^(hr|job|career|vacancy|resume|recruit)/.test(local)) return "hr";
   if (/^(support|help|service)/.test(local)) return "support";
   if (/^(info|contact|hello|office|mail|reception|admin)/.test(local)) return "general";
-  return local.includes(".") ? "personal_work" : "unknown";
+  // Punctuation in a mailbox (app.support, sales.team, branch.city) is not
+  // evidence that it belongs to a named person. Personal classification is
+  // performed only where a confirmed person identity is available.
+  return "unknown";
 }
 
 function kindScore(kind: EmailCandidateKind, priority: EmailDiscoveryInput["emailPriority"]): number {
@@ -413,15 +437,20 @@ function kindScore(kind: EmailCandidateKind, priority: EmailDiscoveryInput["emai
 }
 
 async function hasMx(domain: string): Promise<boolean> {
-  if (!mxCache.has(domain)) {
-    mxCache.set(
-      domain,
-      resolveMx(domain)
-        .then((records) => records.length > 0)
-        .catch(() => false),
-    );
+  const now = Date.now();
+  const cached = mxCache.get(domain);
+  if (cached && cached.expiresAt > now) {
+    mxCache.delete(domain);
+    mxCache.set(domain, cached);
+    return cached.value;
   }
-  return mxCache.get(domain)!;
+  if (cached) mxCache.delete(domain);
+  pruneMxCache(now);
+  const value = resolveMx(domain)
+    .then((records) => records.length > 0)
+    .catch(() => false);
+  mxCache.set(domain, { value, expiresAt: now + MX_CACHE_TTL_MS });
+  return value;
 }
 
 function getSearchQueries(input: EmailDiscoveryInput): string[] {
@@ -436,11 +465,13 @@ function getSearchQueries(input: EmailDiscoveryInput): string[] {
 async function searchFallback(
   input: EmailDiscoveryInput,
   searchProvider: SearchProvider | null,
+  signal?: AbortSignal,
 ): Promise<{ results: SearchResult[]; queries: string[] }> {
   if (!searchProvider) return { results: [], queries: [] };
   const queries = getSearchQueries(input);
   const results: SearchResult[] = [];
   for (const query of queries) {
+    throwIfAborted(signal);
     try {
       results.push(
         ...(await searchProvider.search({
@@ -448,9 +479,11 @@ async function searchFallback(
           maxResults: 8,
           market: "ru",
           queryLanguage: "ru",
+          signal,
         })),
       );
     } catch {
+      throwIfAborted(signal);
       // One search source must not abort the full company audit.
     }
   }
@@ -481,12 +514,15 @@ function mergeParsedEmails(emails: ParsedPublicEmail[]): Array<ParsedPublicEmail
 export async function discoverCompanyEmails({
   rawInput,
   searchProvider,
+  signal,
 }: {
   rawInput: EmailDiscoveryInput;
   searchProvider: SearchProvider | null;
+  signal?: AbortSignal;
 }): Promise<EmailDiscoveryResult> {
   const input = normalizeOfficialInput(rawInput);
-  const crawl = await crawlOfficialWebsite(input);
+  const crawl = await crawlOfficialWebsite(input, signal);
+  throwIfAborted(signal);
   const openedPages = crawl.pages.filter((page) => page.opened && page.html);
   const rejected: RejectedPublicEmail[] = [];
   const parsedFromOfficialPages = openedPages.flatMap((page) => {
@@ -500,7 +536,7 @@ export async function discoverCompanyEmails({
   });
   const fallback = parsedFromOfficialPages.length > 0
     ? { results: [] as SearchResult[], queries: [] as string[] }
-    : await searchFallback(input, searchProvider);
+    : await searchFallback(input, searchProvider, signal);
   const indexedOfficialPages = await Promise.all(
     fallback.results
       .filter((result) => isInternalUrl(result.url, input.officialDomain))
@@ -511,8 +547,9 @@ export async function discoverCompanyEmails({
           ),
       )
       .slice(0, 6)
-      .map((result) => fetchPage(result.url, 2)),
+      .map((result) => fetchPage(result.url, 2, signal)),
   );
+  throwIfAborted(signal);
   const parsedFromIndexedOfficialPages = indexedOfficialPages.flatMap((page) => {
     if (!page.opened) return [];
     const parsed = extractPublicEmailsDetailed({
