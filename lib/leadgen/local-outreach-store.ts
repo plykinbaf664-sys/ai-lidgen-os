@@ -5,7 +5,9 @@ import { normalizeRecipientEmail } from "@/lib/leadgen/company-identity";
 import { getBusinessDayRange } from "@/lib/leadgen/business-day";
 import { calculateBatchCapacity, getNextScheduledAt } from "@/lib/leadgen/outreach-policy";
 import { getEmailDelayBounds, leadgenProductionConfig } from "@/lib/leadgen/production-config";
-import type { OutreachQueueEntry } from "@/lib/leadgen/types";
+import { assertCompleteOutreachBody } from "@/lib/leadgen/outreach-body-integrity";
+import { getOutreachIdempotencyKey } from "@/lib/leadgen/outreach-queue";
+import type { OutreachEmailStatus, OutreachQueueEntry } from "@/lib/leadgen/types";
 import { mutateLocalTable, readLocalTable } from "@/lib/leadgen/local-database";
 import { rowToEntry, type QueueRow } from "@/lib/leadgen/outreach-storage";
 
@@ -245,6 +247,131 @@ export async function listLocalOutreachEntries(campaignId?: string | null) {
     .map(storedRowToEntry)
     .filter((entry) => !campaignId || entry.campaign_id === campaignId)
     .sort((left, right) => Date.parse(left.created_at) - Date.parse(right.created_at));
+}
+
+export async function getLocalOutreachEntry(id: string) {
+  return (await listLocalOutreachEntries()).find((entry) => entry.id === id) ?? null;
+}
+
+export async function updateLocalOutreachEntry({
+  id,
+  subject,
+  body,
+  email,
+  status,
+}: {
+  id: string;
+  subject?: string;
+  body?: string;
+  email?: string;
+  status?: OutreachEmailStatus;
+}) {
+  if (body !== undefined) assertCompleteOutreachBody(body);
+  return withWriteLock(async () => {
+    const current = await getLocalOutreachEntry(id);
+    if (!current) return null;
+    const edited = subject !== undefined || body !== undefined || email !== undefined;
+    if (
+      edited &&
+      ["queued", "sending", "sent"].includes(current.status)
+    ) {
+      throw new Error("Нельзя редактировать отправляемое или отправленное письмо.");
+    }
+    if (status && !["needs_review", "paused", "rejected"].includes(status)) {
+      throw new Error("Этот статус нельзя установить вручную.");
+    }
+    if (status && ["queued", "sending", "sent", "completed"].includes(current.status)) {
+      throw new Error("Текущий статус нельзя изменить вручную.");
+    }
+    const normalizedEmail = normalizeRecipientEmail(email ?? current.email);
+    const messageVersion = edited
+      ? (current.message_version ?? 1) + 1
+      : current.message_version ?? 1;
+    const now = new Date().toISOString();
+    const updated = compactEntry({
+      ...current,
+      ...(subject !== undefined ? { subject } : {}),
+      ...(body !== undefined ? { body } : {}),
+      ...(email !== undefined ? { email, normalized_recipient_email: normalizedEmail } : {}),
+      status: edited ? "needs_review" : status ?? current.status,
+      message_version: messageVersion,
+      idempotency_key: getOutreachIdempotencyKey({
+        campaignId: current.campaign_id,
+        email: normalizedEmail,
+        messageVersion,
+      }),
+      approval_invalidated_reason: edited
+        ? "approval_invalidated_by_edit"
+        : current.approval_invalidated_reason,
+      quality_gate_passed: edited ? false : current.quality_gate_passed,
+      copy_review_status: edited
+        ? "needs_manual_copy_review"
+        : current.copy_review_status,
+      approved_at: edited ? null : current.approved_at,
+      updated_at: now,
+    });
+    await writeEntry(updated);
+    return updated;
+  });
+}
+
+export async function approveLocalOutreachEntry(id: string) {
+  return withWriteLock(async () => {
+    const current = await getLocalOutreachEntry(id);
+    if (!current) return null;
+    if (current.status === "approved") return current;
+    if (!["draft", "needs_review", "paused", "failed"].includes(current.status)) {
+      return null;
+    }
+    assertCompleteOutreachBody(current.body);
+    const updated = compactEntry({
+      ...current,
+      status: "approved",
+      approved_at: new Date().toISOString(),
+      approval_invalidated_reason: null,
+      quality_gate_passed: true,
+      copy_review_status: "ready",
+      last_error: null,
+      updated_at: new Date().toISOString(),
+    });
+    await writeEntry(updated);
+    return updated;
+  });
+}
+
+export async function cancelLocalQueuedItem(id: string) {
+  return withWriteLock(async () => {
+    const current = await getLocalOutreachEntry(id);
+    if (!current || current.status !== "queued") return null;
+    const updated = compactEntry({
+      ...current,
+      status: "approved",
+      queued_at: null,
+      scheduled_at: null,
+      next_attempt_at: null,
+      updated_at: new Date().toISOString(),
+    });
+    await writeEntry(updated);
+    return updated;
+  });
+}
+
+export async function retryLocalFailedItem(id: string) {
+  return withWriteLock(async () => {
+    const current = await getLocalOutreachEntry(id);
+    if (!current || current.status !== "failed") return null;
+    const updated = compactEntry({
+      ...current,
+      status: "approved",
+      last_error: null,
+      failed_at: null,
+      provider_message_id: null,
+      provider: null,
+      updated_at: new Date().toISOString(),
+    });
+    await writeEntry(updated);
+    return updated;
+  });
 }
 
 export async function getLocalOutreachOperationalState(
@@ -768,13 +895,20 @@ export async function markLocalOutreachEntry(
   });
 }
 
-export async function deferLocalQueuedItems(attemptedAt = new Date()) {
+export async function deferLocalQueuedItems(
+  attemptedAt = new Date(),
+  messageKind?: "initial" | "follow_up",
+) {
   return withWriteLock(async () => {
     const entries = await listLocalOutreachEntries();
     const { minimum, maximum } = getEmailDelayBounds();
     let cursor = attemptedAt.getTime();
     const queued = entries
-      .filter((item) => item.status === "queued")
+      .filter(
+        (item) =>
+          item.status === "queued" &&
+          (!messageKind || (item.message_kind ?? "initial") === messageKind),
+      )
       .sort(
         (left, right) =>
           Date.parse(left.next_attempt_at ?? left.scheduled_at ?? left.created_at) -

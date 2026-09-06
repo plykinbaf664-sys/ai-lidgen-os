@@ -71,7 +71,7 @@ export async function processNextLocalOutreachItem() {
       provider_message_id: null,
       last_error: result.error,
     });
-    await deferLocalQueuedItems(new Date());
+    await deferLocalQueuedItems(new Date(), entry.message_kind ?? "initial");
     return { status: "failed" as const, entry: failed };
   }
   const sent = await markLocalOutreachEntry(entry.id, "sent", {
@@ -82,6 +82,6 @@ export async function processNextLocalOutreachItem() {
     sent_copy_saved_at: result.sent_copy_saved_at,
     sent_copy_error: result.sent_copy_error,
   });
-  await deferLocalQueuedItems(new Date());
+  await deferLocalQueuedItems(new Date(), entry.message_kind ?? "initial");
   return { status: "sent" as const, entry: sent };
 }

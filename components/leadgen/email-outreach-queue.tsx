@@ -66,15 +66,6 @@ type ReadinessResponse =
       storage_mode?: "local" | "supabase";
     }
   | ApiError;
-type ImapDiagnostic = {
-  status: string;
-  message: string;
-  dns_resolved: boolean;
-  socket_connected: boolean;
-  tls_connected: boolean;
-  authenticated: boolean;
-  mailbox_opened: boolean;
-};
 type BulkPreview = {
   checked: number;
   eligible_count: number;
@@ -558,14 +549,16 @@ function PrimaryOutreachToolbar({
         </small>
       </div>
       <div className="dispatch-panel-actions">
-        <Button
-          disabled={disabled || continuationDisabled}
-          loading={continuationLoading}
-          onClick={onContinue}
-          variant="primary"
-        >
-          {continuationLabel}
-        </Button>
+        {counters.approved === 0 || maxBatch === 0 ? (
+          <Button
+            disabled={disabled || continuationDisabled}
+            loading={continuationLoading}
+            onClick={onContinue}
+            variant="primary"
+          >
+            {continuationLabel}
+          </Button>
+        ) : null}
         <Button
           disabled={disabled || eligibleCount === 0}
           loading={loading}
@@ -667,8 +660,6 @@ export function EmailOutreachQueue({
   const [batchSize, setBatchSize] = useState(5);
   const [followups, setFollowups] = useState<OutreachQueueEntry[]>([]);
   const [followupSummary, setFollowupSummary] = useState<Extract<FollowupResponse, { success: true }>["summary"] | null>(null);
-  const [followupBatchSize, setFollowupBatchSize] = useState(1);
-  const [imapDiagnostic, setImapDiagnostic] = useState<ImapDiagnostic | null>(null);
   const [followupNotice, setFollowupNotice] = useState<{
     tone: "loading" | "success" | "error";
     text: string;
@@ -794,9 +785,6 @@ export function EmailOutreachQueue({
     if (!response.ok || !data.success) throw new Error(getError(data as ApiError));
     setFollowups(data.entries);
     setFollowupSummary(data.summary);
-    setFollowupBatchSize((value) =>
-      Math.max(1, Math.min(value, data.summary.approved || 1, 20)),
-    );
   }, [campaignId]);
 
   const load = useCallback(async () => {
@@ -1088,7 +1076,7 @@ export function EmailOutreachQueue({
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             campaignId,
-            count: Number(payload.count ?? followupBatchSize),
+            count: Number(payload.count ?? 1),
             messageKind: "follow_up",
             entries: followups,
             sentToday: readiness?.sent_today ?? 0,
@@ -1147,30 +1135,6 @@ export function EmailOutreachQueue({
             ? caught.message
             : "Не удалось выполнить действие Follow-up Engine.",
       });
-    } finally {
-      setPending(null);
-    }
-  }
-
-  async function checkImapConnection() {
-    setPending("imap-check");
-    setError(null);
-    try {
-      const response = await fetch("/api/leadgen/imap/check", { method: "POST" });
-      const data = await readJson<{
-        success: boolean;
-        diagnostic?: ImapDiagnostic;
-        error?: unknown;
-      }>(response);
-      if (!data.diagnostic) {
-        throw new Error(formatUnknownError(data.error, "Не удалось проверить IMAP."));
-      }
-      setImapDiagnostic(data.diagnostic);
-      if (data.success) setMessage("IMAP подключён: DNS, TLS, авторизация и INBOX доступны.");
-      else setError(data.diagnostic.message);
-      await load();
-    } catch (caught) {
-      setError(formatUnknownError(caught, "Не удалось проверить IMAP."));
     } finally {
       setPending(null);
     }
@@ -1876,6 +1840,27 @@ export function EmailOutreachQueue({
                   ? `Ошибок: ${followupSummary?.failed ?? 0}. Нажмите «Повторить ошибки», затем запустите дожимы.`
                   : "Новых одобренных дожимов для запуска нет."}
           </p>
+          {(followupSummary?.eligible ?? 0) === 0 &&
+          followupSummary?.next_eligible_at ? (
+            <p className="dispatch-panel-note">
+              Дожимы станут доступны через{" "}
+              {formatFollowupWait(followupSummary.next_eligible_at)}.
+            </p>
+          ) : null}
+          {unavailableFollowups > 0 ? (
+            <details className="dispatch-panel-details">
+              <summary>Почему письма пока не готовы</summary>
+              <ul>
+                {Object.entries(
+                  followupSummary?.eligibility_reasons ?? {},
+                ).map(([reason, count]) => (
+                  <li key={reason}>
+                    {followupReasonLabels[reason] ?? reason}: {count}
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ) : null}
           {followupNotice ? (
             <p
               className={`followup-action-feedback ${followupNotice.tone}`}
@@ -2088,90 +2073,6 @@ export function EmailOutreachQueue({
         </div>
       ) : null}
 
-      <section className="followup-console legacy-followup-console" aria-hidden="true" aria-labelledby="followup-title">
-        <div className="followup-console-heading">
-          <div>
-            <p className="eyebrow">Follow-up Engine</p>
-            <h3 id="followup-title">Дожимные письма</h3>
-          </div>
-          <span className={`outreach-mode-badge ${readiness?.imap_connected ? "production" : "test"}`}>
-            IMAP {readiness?.imap_connected ? "подключён" : readiness?.imap_configured ? "ошибка" : "не настроен"}
-          </span>
-        </div>
-        <p className="muted">
-          Режим дожимов: {followupSummary?.automation_mode === "automatic"
-            ? "автоматический"
-            : "ручной контроль"}
-          {!followupSummary?.automation_enabled ? " · автоматизация выключена в конфигурации" : ""}
-        </p>
-        <dl className="followup-metrics">
-          <div><dt>Проверить ответы</dt><dd>{followupSummary?.pending_reply_check ?? 0}</dd></div>
-          <div><dt>Ответ найден</dt><dd>{followupSummary?.reply_found ?? 0}</dd></div>
-          <div><dt>Готовы к генерации</dt><dd>{followupSummary?.eligible ?? 0}</dd></div>
-          <div><dt>Требуют проверки</dt><dd>{outreachSummary?.followUps.needsReview ?? 0}</dd></div>
-          <div><dt>Одобрено</dt><dd>{outreachSummary?.followUps.approved ?? 0}</dd></div>
-          <div><dt>В очереди</dt><dd>{outreachSummary?.followUps.queued ?? 0}</dd></div>
-          <div><dt>Отправляется</dt><dd>{outreachSummary?.followUps.sending ?? 0}</dd></div>
-          <div><dt>Отправлено</dt><dd>{outreachSummary?.followUps.sent ?? 0}</dd></div>
-          <div><dt>Ошибки</dt><dd>{outreachSummary?.followUps.failed ?? 0}</dd></div>
-          <div><dt>Недоступно сейчас</dt><dd>{outreachSummary?.followUps.unavailableNow ?? 0}</dd></div>
-          <div><dt>Можно одобрить</dt><dd>{outreachSummary?.followUps.eligibleForBulkApproval ?? 0}</dd></div>
-          <div><dt>Только вручную</dt><dd>{outreachSummary?.followUps.approvalBlocked ?? 0}</dd></div>
-        </dl>
-        {followupSummary?.eligible === 0 && followupSummary.next_eligible_at ? (
-          <p className="muted">
-            Дожимы станут доступны через {formatFollowupWait(followupSummary.next_eligible_at)}.
-          </p>
-        ) : null}
-        {followupSummary?.eligibility_diagnostics.some((item) => !item.eligible) ? (
-          <details className="followup-eligibility-details">
-            <summary>Почему письма пока не готовы</summary>
-            <ul>
-              {followupSummary!.eligibility_diagnostics
-                .filter((item) => !item.eligible)
-                .map((item) => (
-                  <li key={item.parent_outreach_id}>
-                    {item.company_name}: {followupReasonLabels[item.reason ?? ""] ?? item.reason}
-                    {item.reason === "interval_not_reached" && item.eligible_at
-                      ? ` · через ${formatFollowupWait(item.eligible_at)}`
-                      : ""}
-                  </li>
-                ))}
-            </ul>
-          </details>
-        ) : null}
-        {!readiness?.imap_connected ? (
-          <p className="copy-quality-warning">{readiness?.imap_message || "Ответы не проверены: реальная отправка follow-up заблокирована."}</p>
-        ) : null}
-        {imapDiagnostic ? (
-          <p className="muted">
-            DNS {imapDiagnostic.dns_resolved ? "✓" : "—"} · TCP {imapDiagnostic.socket_connected ? "✓" : "—"} · TLS {imapDiagnostic.tls_connected ? "✓" : "—"} · Авторизация {imapDiagnostic.authenticated ? "✓" : "—"} · INBOX {imapDiagnostic.mailbox_opened ? "✓" : "—"}
-          </p>
-        ) : null}
-        <div className="followup-actions">
-          <Button disabled={pending !== null} loading={pending === "imap-check"} onClick={checkImapConnection} variant="secondary">Проверить IMAP-подключение</Button>
-          <Button disabled={pending !== null} loading={pending === "followup-scan"} onClick={() => runFollowupAction("scan")} variant="secondary">Проверить входящие ответы</Button>
-          <Button disabled={pending !== null || !followupSummary?.eligible} loading={pending === "followup-generate"} onClick={() => runFollowupAction("generate")} variant="secondary">Сгенерировать дожимы</Button>
-          <Button disabled={pending !== null || !(outreachSummary?.followUps.eligibleForBulkApproval ?? 0)} loading={pending === "followup-bulk-approve"} onClick={() => runFollowupAction("bulk-approve")} variant="success">Одобрить все корректные</Button>
-          {followupSummary?.automation_enabled ? (
-            <Button disabled={pending !== null} onClick={() => controlFollowupQueue(followupSummary.queue_paused ? "resume" : "pause")} variant="ghost">{followupSummary.queue_paused ? "Включить автоматический режим" : "Перейти в ручной режим"}</Button>
-          ) : null}
-          {(outreachSummary?.followUps.queued ?? 0) > 0 ? <Button disabled={pending !== null} onClick={() => controlFollowupQueue("cancel")} variant="danger">Отменить неотправленные</Button> : null}
-          {(outreachSummary?.followUps.failed ?? 0) > 0 ? <Button disabled={pending !== null} onClick={() => controlFollowupQueue("retry")} variant="secondary">Повторить ошибочные</Button> : null}
-        </div>
-        {(outreachSummary?.followUps.approved ?? 0) > 0 ? (
-          <div className="followup-send-control">
-            <label><span>Отправить одобренные</span><strong>{followupBatchSize}</strong></label>
-            <input aria-label="Количество follow-up писем" min="1" max={Math.max(1, Math.min(outreachSummary?.followUps.approved ?? 1, readiness?.daily_remaining ?? 1))} type="range" value={followupBatchSize} onChange={(event) => setFollowupBatchSize(Number(event.target.value))} />
-            <div className="delivery-quick-values">
-              {[5].filter((value) => value <= Math.min(outreachSummary?.followUps.approved ?? 0, readiness?.daily_remaining ?? 0)).map((value) => <Button key={value} onClick={() => setFollowupBatchSize(value)} variant="ghost">{value}</Button>)}
-              <Button onClick={() => setFollowupBatchSize(Math.max(1, Math.min(outreachSummary?.followUps.approved ?? 1, readiness?.daily_remaining ?? 1)))} variant="ghost">Все доступные</Button>
-            </div>
-            <Button disabled={pending !== null || !readiness?.imap_connected || followupMaxBatch < 1} loading={pending === "followup-batch"} onClick={() => runFollowupAction("batch", { count: followupBatchSize })} variant="primary">Отправить одобренные дожимы</Button>
-          </div>
-        ) : null}
-      </section>
-
       {companiesWithoutOutreach.length > 0 ? (
         <details className="outreach-missing-contacts">
           <summary className="outreach-list-heading">
@@ -2344,8 +2245,8 @@ export function EmailOutreachQueue({
                         <span>
                           Отправлено: {formatDate(entry.sent_at)} ·{" "}
                           {entry.sent_copy_saved_at
-                            ? "копия есть в Яндекс.Почте"
-                            : "копия в Яндекс.Почте не сохранена"}
+                            ? "копия сохранена в «Отправленных»"
+                            : "копия в «Отправленных» не сохранена"}
                         </span>
                       ) : null}
                       {entry.sent_copy_error ? (

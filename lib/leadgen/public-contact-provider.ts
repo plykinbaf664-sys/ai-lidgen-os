@@ -1979,7 +1979,8 @@ export class PublicContactProvider implements ContactProvider {
           getCompanyWebsite(input.company),
         companyDescription: getCompanyDescription(input.company),
         industry: input.company.industry,
-        personName: input.decisionMaker?.primary_persona ?? null,
+        // A persona is a role hypothesis, never evidence of a person's name.
+        personName: null,
         personRole: input.decisionMaker?.primary_persona ?? null,
         contact: {
           ...createContact({

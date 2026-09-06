@@ -781,6 +781,11 @@ export async function approveOutreachEntry(id: string) {
       approved_at: now,
       approval_invalidated_reason: null,
       last_error: null,
+      metadata: {
+        ...(current.metadata ?? {}),
+        quality_gate_passed: true,
+        copy_review_status: "ready",
+      },
       updated_at: now,
     })
     .eq("id", id)

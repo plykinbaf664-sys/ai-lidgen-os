@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { getContactLevel } from "../lib/leadgen/contact-quality.ts";
 import { resolveBoundedLprRoles } from "../lib/leadgen/lpr-role-resolver.ts";
+import { isPlausiblePublicPersonName } from "../lib/leadgen/person-factuality.ts";
 
 const decisionMaker = {
   primary_persona: "VP Sales",
@@ -30,6 +31,11 @@ assert.deepEqual(getContactLevel({
   confirmedPerson: false,
   classification: "GENERAL",
 }), { level: "E", ready: true });
+assert.equal(isPlausiblePublicPersonName("Роман Усов"), true);
+assert.equal(isPlausiblePublicPersonName("Владимир Олейников Партнер"), false);
+assert.equal(isPlausiblePublicPersonName("Кучкина Наталья Заведующий"), false);
+assert.equal(isPlausiblePublicPersonName("Виктория Руденко Телефон"), false);
+assert.equal(isPlausiblePublicPersonName("Coffee Workshop"), false);
 
 const providerSource = await readFile(
   new URL("../lib/leadgen/ru-public-people-provider.ts", import.meta.url),
@@ -42,6 +48,14 @@ const engineSource = await readFile(
 assert.match(providerSource, /if \(input\.roleSearchPlan\) \{\s*return this\.findPeopleBounded\(input\)/);
 assert.match(engineSource, /resolveBoundedLprRoles\(decisionMaker\)/);
 assert.match(engineSource, /roleSearchPlan:/);
+const contactProviderSource = await readFile(
+  new URL("../lib/leadgen/public-contact-provider.ts", import.meta.url),
+  "utf8",
+);
+assert.doesNotMatch(
+  contactProviderSource,
+  /personName:\s*input\.decisionMaker\?\.primary_persona/,
+);
 
 console.log(JSON.stringify({
   status: "PASS",

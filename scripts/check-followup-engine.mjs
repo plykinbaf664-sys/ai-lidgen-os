@@ -46,7 +46,8 @@ assert.match(
   outreachStorage.match(/export async function cancelQueued[\s\S]*?export async function cancelQueuedItem/)?.[0] ?? "",
   /\.eq\("message_kind", "initial"\)/,
 );
-required(ui, [/Дожимные письма/, /Проверить входящие ответы/, /Сгенерировать дожимы/, /История касаний/, /Отменить до отправки/], "UI");
+required(ui, [/Дожимы/, /Проверить входящие ответы/, /Сформировать дожимы/, /История касаний/, /Отменить до отправки/], "UI");
+assert.doesNotMatch(ui, /legacy-followup-console/);
 required(ui, [/Дожимы станут доступны через/, /Почему письма пока не готовы/, /formatFollowupWait/], "eligibility UI");
 assert.match(
   followupRoute,

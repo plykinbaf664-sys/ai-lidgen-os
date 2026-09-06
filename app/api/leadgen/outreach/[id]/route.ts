@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { getOutreachQueueEntry, updateOutreachQueueEntry } from "@/lib/leadgen/outreach-storage";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
+import {
+  getLocalOutreachEntry,
+  getOutreachDeliveryStorageMode,
+  updateLocalOutreachEntry,
+} from "@/lib/leadgen/local-outreach-store";
 import type { OutreachEmailStatus } from "@/lib/leadgen/types";
 
 export async function GET(
@@ -8,7 +13,11 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    const entry = await getOutreachQueueEntry((await params).id);
+    const id = (await params).id;
+    const entry =
+      getOutreachDeliveryStorageMode() === "local"
+        ? (await getLocalOutreachEntry(id)) ?? (await getOutreachQueueEntry(id))
+        : await getOutreachQueueEntry(id);
     if (!entry) return NextResponse.json({ success: false, error: "Письмо не найдено" }, { status: 404 });
     return NextResponse.json({ success: true, entry });
   } catch (error) {
@@ -37,7 +46,14 @@ export async function PATCH(
         { status: 400 },
       );
     }
-    const entry = await updateOutreachQueueEntry({ id: (await params).id, ...body });
+    const id = (await params).id;
+    const localEntry =
+      getOutreachDeliveryStorageMode() === "local"
+        ? await getLocalOutreachEntry(id)
+        : null;
+    const entry = localEntry
+      ? await updateLocalOutreachEntry({ id, ...body })
+      : await updateOutreachQueueEntry({ id, ...body });
     if (!entry) return NextResponse.json({ success: false, error: "Письмо не найдено" }, { status: 404 });
     return NextResponse.json({ success: true, entry });
   } catch (error) {

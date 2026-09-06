@@ -25,6 +25,22 @@ const outreachStorage = await readFile(
   new URL("../lib/leadgen/outreach-storage.ts", import.meta.url),
   "utf8",
 );
+const entryRoute = await readFile(
+  new URL("../app/api/leadgen/outreach/[id]/route.ts", import.meta.url),
+  "utf8",
+);
+const approveRoute = await readFile(
+  new URL("../app/api/leadgen/outreach/[id]/approve/route.ts", import.meta.url),
+  "utf8",
+);
+const cancelRoute = await readFile(
+  new URL("../app/api/leadgen/outreach/[id]/cancel/route.ts", import.meta.url),
+  "utf8",
+);
+const outreachRoute = await readFile(
+  new URL("../app/api/leadgen/outreach/route.ts", import.meta.url),
+  "utf8",
+);
 
 assert.match(store, /atomicWrite/);
 assert.match(store, /scheduleLocalApprovedBatch/);
@@ -32,6 +48,11 @@ assert.match(store, /quality_gate_failed/);
 assert.match(store, /duplicate_email/);
 assert.match(store, /getLocalDailySendStats/);
 assert.match(store, /claimDueLocalOutreachItem/);
+assert.match(store, /updateLocalOutreachEntry/);
+assert.match(store, /approveLocalOutreachEntry/);
+assert.match(store, /cancelLocalQueuedItem/);
+assert.match(store, /\(!messageKind \|\| \(item\.message_kind \?\? "initial"\) === messageKind\)/);
+assert.match(processor, /deferLocalQueuedItems\(new Date\(\), entry\.message_kind \?\? "initial"\)/);
 assert.match(processor, /provider\.validateConnection\(\)/);
 assert.match(processor, /provider\.sendEmail\(entry\)/);
 assert.match(processor, /reply_check_status !== "verified"/);
@@ -44,6 +65,12 @@ assert.doesNotMatch(storage, /await saveEvents\(supabase, normalizedResult\.even
 assert.doesNotMatch(storage, /await saveTelegramNotifications\(supabase, normalizedNotifications\)/);
 assert.doesNotMatch(ui, /entry\.signal\.detail/);
 assert.match(outreachStorage, /const signal: OutreachQueueEntry\["signal"\]/);
+assert.match(outreachStorage, /quality_gate_passed: true/);
+assert.match(entryRoute, /updateLocalOutreachEntry/);
+assert.match(approveRoute, /approveLocalOutreachEntry/);
+assert.match(cancelRoute, /cancelLocalQueuedItem/);
+assert.match(outreachRoute, /mergeLocalDeliveryEntries/);
+assert.match(outreachRoute, /countCanonicalStatuses\(entries\)/);
 
 const { calculateBatchCapacity, getNextScheduledAt } = await import(
   "../lib/leadgen/outreach-policy.ts"

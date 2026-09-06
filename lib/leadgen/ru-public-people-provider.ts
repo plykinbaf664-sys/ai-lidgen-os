@@ -255,10 +255,12 @@ function getBoundedOfficialSiteUrls(input: PeopleProviderInput): string[] {
   if (!website) return [];
   return [
     "",
-    "team",
-    "management",
     "rukovodstvo",
-    "leadership",
+    "management",
+    "team",
+    "komanda",
+    "rukovoditeli",
+    "direktor",
     "about",
     "company",
     "contacts",
@@ -726,8 +728,9 @@ function getAdaptivePersonQueries(input: PeopleProviderInput): AdaptivePersonQue
   };
 
   if (primary[0]) push("LEVEL_1", `${company} ${quote(primary[0])}`);
-  if (domain && primary[1]) {
-    push("LEVEL_1", `site:${domain} ${quote(primary[1])}`);
+  const siteRole = primary[1] ?? primary[0];
+  if (domain && siteRole) {
+    push("LEVEL_1", `site:${domain} ${quote(siteRole)}`);
   }
   for (const role of primary.slice(1, 3)) {
     push("LEVEL_2", `${company} ${quote(role)}`);
@@ -754,7 +757,7 @@ function isExplicitlyStaleDraft(draft: CandidateDraft): boolean {
 }
 
 function isOrganizationLikePersonName(value: string): boolean {
-  return /(?:^|\s)(?:групп?[а-я]*|медикал|клиник[а-я]*|центр[а-я]*|холдинг[а-я]*|компани[а-я]*|сервис[а-я]*|лаборатор[а-я]*|dental|clinic|medical|dream|group|company|center|centre|laboratory|studio|agency)(?:\s|$)/i.test(value);
+  return /(?:^|\s)(?:групп?[а-я]*|медикал|клиник[а-я]*|центр[а-я]*|холдинг[а-я]*|компани[а-я]*|сервис[а-я]*|лаборатор[а-я]*|мастерск[а-я]*|партн[её]р[а-я]*|заведующ[а-я]*|телефон[а-я]*|контакт[а-я]*|офис[а-я]*|dental|clinic|medical|dream|group|company|center|centre|laboratory|studio|agency|workshop|partner|phone|contact|office)(?:\s|$)/i.test(value);
 }
 
 const COMMON_RU_GIVEN_NAMES = new Set([
