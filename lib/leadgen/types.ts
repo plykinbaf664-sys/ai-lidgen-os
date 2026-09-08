@@ -60,6 +60,18 @@ export type SignalType =
   | "TRAFFIC_SIGNAL"
   | "TECH_SIGNAL";
 
+export type DirectIntentSignalType = "AI_AUTOMATION_HIRING_SIGNAL";
+
+export type LeadOrigin = "DISCOVERY" | "AI_HIRING" | "IMPORTED";
+
+export type LeadOriginContext = {
+  origins: LeadOrigin[];
+  source_provider?: string | null;
+  source_url?: string | null;
+  import_batch_id?: string | null;
+  source_metadata?: Record<string, string | number | boolean | null>;
+};
+
 export type ContactChannel =
   | "decision-maker"
   | "department-head"
@@ -978,6 +990,7 @@ export type LeadCandidate = {
   source_country_hint?: string | null;
   matched_signal_count?: number;
   commercial_signal?: CommercialSignal | null;
+  origin_context?: LeadOriginContext;
 };
 
 export type LeadgenCompany = {
@@ -1003,6 +1016,7 @@ export type LeadgenCompany = {
   metadata: Record<string, unknown>;
   created_at: string;
   updated_at: string;
+  origin_context?: LeadOriginContext;
 };
 
 export type LeadgenEvent = {

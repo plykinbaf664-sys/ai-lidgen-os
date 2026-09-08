@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { CampaignForm } from "@/components/leadgen/campaign-form";
 import { CampaignHistory } from "@/components/leadgen/campaign-history";
 import { EmailOutreachQueue } from "@/components/leadgen/email-outreach-queue";
+import { LeadSourceIngestion } from "@/components/leadgen/lead-source-ingestion";
 import { Button } from "@/components/ui/button";
 import type {
   CampaignInput,
@@ -313,6 +314,8 @@ export function LeadgenDashboard() {
         {runProgress ? <p className="muted">{runProgress}</p> : null}
         {error ? <p className="outreach-error" role="alert">{error}</p> : null}
       </section>
+
+      <LeadSourceIngestion />
 
       <CampaignHistory
         activeCampaignId={activeCampaignId}
