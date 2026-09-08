@@ -152,6 +152,8 @@ export function getSignalLabel(type?: SignalType | string | null): string {
     TECH_CHANGE_SIGNAL: "Компания меняет технологии или процессы",
     EXPANSION_SIGNAL: "Компания расширяется",
     FUNDING_SIGNAL: "Компания получила инвестиции",
+    AI_AUTOMATION_HIRING_SIGNAL: "Компания ищет специалиста для внедрения AI",
+    IMPORTED_CONTEXT: "Контакт загружен из собственной базы",
   };
 
   return type ? labels[type] ?? "Есть публичный сигнал" : "Есть публичный сигнал";

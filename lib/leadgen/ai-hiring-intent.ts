@@ -17,6 +17,7 @@ export type AiHiringIntentResult = {
   reason: string;
   roleMatched: boolean;
   automationIntentMatched: boolean;
+  likelyServiceProvider: boolean;
   confidence: number;
   company: {
     name: string;
@@ -61,6 +62,14 @@ const researchOnlyPatterns = [
   /(?:обучение|training).{0,30}(?:нейросет|foundation model).{0,30}(?:с нуля|from scratch)/iu,
 ];
 
+const serviceProviderPatterns = [
+  /(?:для|под)\s+(?:наших\s+)?(?:клиент|заказчик)/iu,
+  /клиентск(?:ие|их)\s+(?:проекты|решения|внедрения)/iu,
+  /(?:аутсорс|заказная\s+разработка|консалтинг(?:овая)?\s+компания)/iu,
+  /(?:digital|маркетинговое|it)[-\s]?(?:агентство|студия).{0,80}(?:ai|ии|llm)/iu,
+  /(?:помогаем|помогает)\s+бизнесу.{0,160}(?:созда[её]м|внедряем|разрабатываем).{0,100}(?:решени|систем|платформ)/iu,
+];
+
 function compactEvidence(value: string) {
   return value.replace(/\s+/g, " ").trim().slice(0, 420);
 }
@@ -74,16 +83,23 @@ function isProviderDomain(domain: string | null) {
   );
 }
 
+export function matchesAiHiringRole(value: string) {
+  return aiRolePatterns.some((pattern) => pattern.test(value));
+}
+
+export function matchesBusinessAutomationIntent(value: string) {
+  return automationUseCasePatterns.some((pattern) => pattern.test(value));
+}
+
 export function evaluateAiAutomationHiring(
   vacancy: AiHiringVacancy,
 ): AiHiringIntentResult {
   const title = compactEvidence(vacancy.title);
   const description = compactEvidence(vacancy.description);
   const combined = `${title}\n${description}`;
-  const roleMatched = aiRolePatterns.some((pattern) => pattern.test(combined));
-  const automationIntentMatched = automationUseCasePatterns.some((pattern) =>
-    pattern.test(combined),
-  );
+  const roleMatched = matchesAiHiringRole(combined);
+  const automationIntentMatched = matchesBusinessAutomationIntent(combined);
+  const likelyServiceProvider = serviceProviderPatterns.some((pattern) => pattern.test(combined));
   const originContext = createLeadOriginContext("AI_HIRING", {
     source_provider: vacancy.sourceProvider.slice(0, 80),
     source_url: vacancy.sourceUrl.slice(0, 500),
@@ -95,6 +111,7 @@ export function evaluateAiAutomationHiring(
       reason: "missing_vacancy_evidence",
       roleMatched,
       automationIntentMatched,
+      likelyServiceProvider,
       confidence: 0,
       company: null,
       signal: null,
@@ -108,6 +125,7 @@ export function evaluateAiAutomationHiring(
       reason: "missing_structured_employer",
       roleMatched,
       automationIntentMatched,
+      likelyServiceProvider,
       confidence: 0,
       company: null,
       signal: null,
@@ -121,6 +139,7 @@ export function evaluateAiAutomationHiring(
       reason: "ai_role_not_confirmed",
       roleMatched,
       automationIntentMatched,
+      likelyServiceProvider,
       confidence: 20,
       company: null,
       signal: null,
@@ -134,7 +153,22 @@ export function evaluateAiAutomationHiring(
       reason: "business_automation_intent_not_confirmed",
       roleMatched,
       automationIntentMatched,
+      likelyServiceProvider,
       confidence: 35,
+      company: null,
+      signal: null,
+      originContext,
+      outreachAngle: null,
+    };
+  }
+  if (likelyServiceProvider) {
+    return {
+      status: "SKIPPED",
+      reason: "service_provider_not_end_customer",
+      roleMatched,
+      automationIntentMatched,
+      likelyServiceProvider,
+      confidence: 45,
       company: null,
       signal: null,
       originContext,
@@ -149,6 +183,7 @@ export function evaluateAiAutomationHiring(
     reason: "direct_ai_automation_hiring_intent",
     roleMatched,
     automationIntentMatched,
+    likelyServiceProvider,
     confidence,
     company: {
       name: vacancy.employerName.trim().slice(0, 180),

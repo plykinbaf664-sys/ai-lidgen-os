@@ -4,6 +4,7 @@ import { getImportMetrics } from "@/lib/leadgen/contact-import-store";
 import { readLocalTable, mutateLocalTable } from "@/lib/leadgen/local-database";
 import { listLocalOutreachEntries } from "@/lib/leadgen/local-outreach-store";
 import { getRecentCampaigns } from "@/lib/leadgen/storage";
+import { getLatestSourceCanaryMetrics } from "@/lib/leadgen/source-canary-store";
 
 const REFRESH_INTERVAL_MS = 48 * 60 * 60 * 1_000;
 const SNAPSHOT_TABLE = "leadgen_analytics_snapshots";
@@ -30,6 +31,22 @@ export type LeadgenAnalyticsSnapshot = {
       imported: number;
     };
   };
+  sourceCanaries?: {
+    aiHiring: {
+      candidates: number;
+      qualified: number;
+      ready: number;
+      sampleSize: number;
+      confidence: "INSUFFICIENT_DATA" | "LOW" | "USABLE";
+    } | null;
+    imported: {
+      candidates: number;
+      qualified: number;
+      ready: number;
+      sampleSize: number;
+      confidence: "INSUFFICIENT_DATA" | "LOW" | "USABLE";
+    } | null;
+  };
   recommendations: Array<{
     priority: "P0" | "P1" | "P2";
     action: string;
@@ -37,6 +54,12 @@ export type LeadgenAnalyticsSnapshot = {
   }>;
   analysisMode: "code" | "ai_compact";
 };
+
+function canaryConfidence(sampleSize: number, candidates: number) {
+  if (sampleSize < 20 || candidates < 3) return "INSUFFICIENT_DATA" as const;
+  if (sampleSize < 50 || candidates < 10) return "LOW" as const;
+  return "USABLE" as const;
+}
 
 function deterministicRecommendations(
   metrics: LeadgenAnalyticsSnapshot["metrics"],
@@ -46,7 +69,7 @@ function deterministicRecommendations(
     recommendations.push({
       priority: "P0",
       action: `Проверить ${metrics.readyForReview} подготовленных писем.`,
-      argument: "Без approval готовые контакты не переходят в существующую очередь.",
+      argument: "Без ручного одобрения готовые контакты не переходят в общую очередь.",
     });
   }
   if (metrics.approved > 0 && metrics.queued === 0) {
@@ -59,15 +82,15 @@ function deterministicRecommendations(
   if (metrics.initialSent >= 10 && metrics.replyRate < 3) {
     recommendations.push({
       priority: "P1",
-      action: "Проверить signal-to-offer связку и CTA на выборке отправленных писем.",
-      argument: `Текущий reply rate ${metrics.replyRate.toFixed(1)}% ниже рабочего диагностического порога 3%.`,
+      action: "Проверить связь сигнала, предложения и призыва к ответу на выборке отправленных писем.",
+      argument: `Текущая доля ответов ${metrics.replyRate.toFixed(1)}% ниже рабочего диагностического порога 3%.`,
     });
   }
   if (metrics.origins.aiHiring === 0) {
     recommendations.push({
       priority: "P2",
-      action: "После review включить canary прямого AI-hiring контура.",
-      argument: "Сейчас этот более сильный intent не участвует в production-воронке.",
+      action: "После проверки включить контролируемый запуск поиска по прямой потребности в AI.",
+      argument: "Сейчас этот более сильный сигнал не участвует в рабочей воронке.",
     });
   }
   return recommendations.slice(0, 5);
@@ -140,10 +163,11 @@ export async function getLeadgenAnalyticsSnapshot(force = false) {
   )[0];
   if (!force && latest && Date.parse(latest.nextRefreshAt) > Date.now()) return latest;
 
-  const [campaigns, outreach, imports] = await Promise.all([
+  const [campaigns, outreach, imports, canaries] = await Promise.all([
     getRecentCampaigns(100).catch(() => []),
     listLocalOutreachEntries().catch(() => []),
     getImportMetrics().catch(() => ({ batches: 0, rows: 0, readyForEnrichment: 0 })),
+    getLatestSourceCanaryMetrics().catch(() => ({ aiHiring: null, imported: null })),
   ]);
   const initialSent = outreach.filter(
     (entry) => entry.message_kind !== "follow_up" && entry.status === "sent",
@@ -176,6 +200,22 @@ export async function getLeadgenAnalyticsSnapshot(force = false) {
     generatedAt: generatedAt.toISOString(),
     nextRefreshAt: new Date(generatedAt.getTime() + REFRESH_INTERVAL_MS).toISOString(),
     metrics,
+    sourceCanaries: {
+      aiHiring: canaries.aiHiring ? {
+        candidates: canaries.aiHiring.candidates,
+        qualified: canaries.aiHiring.qualified,
+        ready: canaries.aiHiring.ready,
+        sampleSize: canaries.aiHiring.sampleSize,
+        confidence: canaryConfidence(canaries.aiHiring.sampleSize, canaries.aiHiring.candidates),
+      } : null,
+      imported: canaries.imported ? {
+        candidates: canaries.imported.candidates,
+        qualified: canaries.imported.qualified,
+        ready: canaries.imported.ready,
+        sampleSize: canaries.imported.sampleSize,
+        confidence: canaryConfidence(canaries.imported.sampleSize, canaries.imported.candidates),
+      } : null,
+    },
     recommendations: aiRecommendations ?? deterministicRecommendations(metrics),
     analysisMode: aiRecommendations ? "ai_compact" : "code",
   };
@@ -188,4 +228,3 @@ export async function getLeadgenAnalyticsSnapshot(force = false) {
   });
   return snapshot;
 }
-

@@ -2,6 +2,10 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { CampaignForm } from "@/components/leadgen/campaign-form";
+import {
+  CampaignModeSelector,
+  type CampaignMode,
+} from "@/components/leadgen/campaign-mode-selector";
 import { CampaignHistory } from "@/components/leadgen/campaign-history";
 import { EmailOutreachQueue } from "@/components/leadgen/email-outreach-queue";
 import { LeadSourceIngestion } from "@/components/leadgen/lead-source-ingestion";
@@ -70,6 +74,7 @@ export function LeadgenDashboard() {
   const [isOpening, setIsOpening] = useState(false);
   const [runProgress, setRunProgress] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [campaignMode, setCampaignMode] = useState<CampaignMode>("DISCOVERY");
   const activeCampaignRef = useRef<HTMLElement | null>(null);
 
   const loadHistory = useCallback(async (selectLatest = false) => {
@@ -271,6 +276,19 @@ export function LeadgenDashboard() {
   );
   const autoResumeCampaignRef = useRef<string | null>(null);
 
+  const operationalTotals = campaigns.reduce(
+    (totals, campaign) => ({
+      companies: totals.companies + campaign.companies_count,
+      needsReview: totals.needsReview + campaign.needs_review_count,
+      approved: totals.approved + campaign.approved_count,
+      queued: totals.queued + campaign.queued_count + campaign.sending_count,
+      sent: totals.sent + campaign.initial_sent_count,
+      sentToday: totals.sentToday + (campaign.sent_today_count ?? 0),
+      replied: totals.replied + (campaign.replied_count ?? 0),
+    }),
+    { companies: 0, needsReview: 0, approved: 0, queued: 0, sent: 0, sentToday: 0, replied: 0 },
+  );
+
   useEffect(() => {
     if (
       !activeCampaignId ||
@@ -305,17 +323,44 @@ export function LeadgenDashboard() {
     <div className="leadgen-console">
       <section className="leadgen-config panel">
         <div className="section-heading compact">
-          <div><p className="eyebrow">Новая кампания</p><h2>Параметры поиска</h2></div>
-          <div className="config-facts" aria-label="Активные ограничения">
-            <span>Россия</span><span>Web search</span><span>До 50 компаний с подтверждённым email за запуск</span>
-          </div>
+          <div><p className="eyebrow">Новая кампания</p><h2>Выберите способ поиска</h2></div>
+          {campaignMode === "DISCOVERY" ? (
+            <div className="config-facts" aria-label="Активные ограничения">
+              <span>Россия</span><span>Поиск в интернете</span><span>До 50 компаний с подтверждённым email за запуск</span>
+            </div>
+          ) : null}
         </div>
-        <CampaignForm isRunning={isRunning} onRun={handleRun} />
+        <CampaignModeSelector
+          disabled={isRunning}
+          onChange={setCampaignMode}
+          value={campaignMode}
+        />
+        {campaignMode === "DISCOVERY" ? (
+          <CampaignForm isRunning={isRunning} onRun={handleRun} />
+        ) : (
+          <LeadSourceIngestion mode={campaignMode} />
+        )}
         {runProgress ? <p className="muted">{runProgress}</p> : null}
         {error ? <p className="outreach-error" role="alert">{error}</p> : null}
       </section>
 
-      <LeadSourceIngestion />
+      <section className="operational-summary" aria-label="Оперативная сводка">
+        {[
+          ["Кампаний", campaigns.length],
+          ["Компаний", operationalTotals.companies],
+          ["Ожидают проверки", operationalTotals.needsReview],
+          ["Одобрено", operationalTotals.approved],
+          ["В очереди", operationalTotals.queued],
+          ["Отправлено сегодня", operationalTotals.sentToday],
+          ["Отправлено всего", operationalTotals.sent],
+          ["Ответов", operationalTotals.replied],
+        ].map(([label, value]) => (
+          <div key={label}>
+            <span>{label}</span>
+            <strong>{isHistoryLoading ? "—" : value}</strong>
+          </div>
+        ))}
+      </section>
 
       <CampaignHistory
         activeCampaignId={activeCampaignId}
@@ -362,9 +407,6 @@ export function LeadgenDashboard() {
                   Прошли первичный отбор{" "}
                   <strong>{discovery.prefiltered_candidates ?? discovery.qualified_candidates_found ?? discovery.new_unique_companies}</strong>
                 </span>
-                <span>Deep research <strong>{discovery.deep_research_count ?? discovery.enriched_candidates_checked ?? 0}</strong></span>
-                <span>Search attempts <strong>{discovery.search_attempts ?? 0}</strong></span>
-                <span>Cache hits <strong>{discovery.cache_hits ?? 0}</strong></span>
               </div>
             ) : null}
           </div>

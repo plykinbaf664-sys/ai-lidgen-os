@@ -58,7 +58,7 @@ export async function confirmImportPreview(previewId: string) {
   await cleanupExpiredImportPreviews();
   const previews = await readLocalTable<StoredPreview>(PREVIEW_TABLE);
   const preview = previews.find((item) => item.id === previewId);
-  if (!preview) throw new Error("Import preview не найден или истёк.");
+  if (!preview) throw new Error("Предпросмотр импорта не найден или истёк.");
   const batches = await readLocalTable(BATCH_TABLE);
   const duplicate = batches.find((row) => row.file_hash === preview.file_hash);
   if (duplicate) {
@@ -115,4 +115,14 @@ export async function getImportMetrics() {
       (row) => row.pipeline_status === "READY_FOR_ENRICHMENT",
     ).length,
   };
+}
+
+export async function getImportBatchRows(batchId: string) {
+  const rows = await readLocalTable(ROW_TABLE);
+  return rows.filter((row) => row.import_batch_id === batchId);
+}
+
+export async function getImportBatch(batchId: string) {
+  const batches = await readLocalTable(BATCH_TABLE);
+  return batches.find((row) => row.id === batchId) ?? null;
 }

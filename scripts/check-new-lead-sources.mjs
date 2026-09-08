@@ -80,7 +80,7 @@ const shadowVacancies = [
   ["Специалист по внедрению ИИ", "Автоматизация документооборота и бизнес-процессов", "Логистика Юг"],
   ["AI-интегратор", "Интеграция LLM с Bitrix CRM и квалификация заявок", "МедСервис"],
   ["ML Engineer", "Computer vision research and image recognition", "Vision Lab"],
-  ["Data Scientist", "Прогнозирование спроса и обучение моделей", "Retail Data"],
+  ["AI-инженер", "Автоматизация CRM и AI-агенты для наших клиентов и заказчиков", "AI Agency"],
   ["AI Product Manager", "Развитие AI-продукта без задач автоматизации процессов", "Product AI"],
   ["Инженер по автоматизации", "Промышленные контроллеры, КИПиА и электроприводы", "Завод"],
   ["Разработчик", "Backend-разработка личного кабинета", "Web Company"],
@@ -109,18 +109,26 @@ const importedCandidate = {
   originContext: { origins: ["IMPORTED"] },
   signals: [{ type: "AI_AUTOMATION_HIRING_SIGNAL", sourceUrl: "https://hh.ru/2", evidence: "AI automation" }],
 };
+const aiHiringCandidate = {
+  ...discoveryCandidate,
+  fullName: null,
+  email: null,
+  originContext: { origins: ["AI_HIRING"] },
+  signals: [{ type: "AI_AUTOMATION_HIRING_SIGNAL", sourceUrl: "https://hh.ru/3", evidence: "AI agents for CRM" }],
+};
 const shadowResponse = await fetch(`${baseUrl}/api/leadgen/ai-hiring/shadow`, {
   method: "POST",
   headers: { ...headers, "content-type": "application/json" },
-  body: JSON.stringify({ vacancies: shadowVacancies, dedupCandidates: [discoveryCandidate, importedCandidate] }),
+  body: JSON.stringify({ vacancies: shadowVacancies, dedupCandidates: [discoveryCandidate, importedCandidate, aiHiringCandidate] }),
 });
 const shadow = await shadowResponse.json();
 assert.equal(shadowResponse.status, 200, JSON.stringify(shadow));
 assert.equal(shadow.metrics.jobsScanned, 10);
 assert.equal(shadow.metrics.automationIntentPass, 5);
-assert.equal(shadow.dedup.input, 2);
+assert.ok(shadow.results.some((item) => item.reason === "service_provider_not_end_customer"));
+assert.equal(shadow.dedup.input, 3);
 assert.equal(shadow.dedup.output, 1);
-assert.deepEqual(shadow.dedup.candidates[0].originContext.origins, ["DISCOVERY", "IMPORTED"]);
+assert.deepEqual(shadow.dedup.candidates[0].originContext.origins, ["DISCOVERY", "AI_HIRING", "IMPORTED"]);
 assert.match(shadow.results[0].outreachAngle, /не противопоставляя это найму/);
 
 const csvRows = [

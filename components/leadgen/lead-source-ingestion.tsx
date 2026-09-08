@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import type { CampaignMode } from "@/components/leadgen/campaign-mode-selector";
 
 type PreviewResponse = {
   success: boolean;
@@ -22,7 +23,7 @@ type PreviewResponse = {
   };
 };
 
-export function LeadSourceIngestion() {
+export function LeadSourceIngestion({ mode }: { mode: Exclude<CampaignMode, "DISCOVERY"> }) {
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<PreviewResponse | null>(null);
   const [pending, setPending] = useState<"preview" | "confirm" | null>(null);
@@ -40,7 +41,7 @@ export function LeadSourceIngestion() {
         body: form,
       });
       const data = (await response.json()) as PreviewResponse;
-      if (!response.ok || !data.success) throw new Error(data.error ?? "Preview не создан.");
+      if (!response.ok || !data.success) throw new Error(data.error ?? "Предпросмотр не создан.");
       setPreview(data);
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Не удалось проверить файл.");
@@ -59,28 +60,33 @@ export function LeadSourceIngestion() {
         body: JSON.stringify({ previewId: preview.previewId }),
       });
       const data = (await response.json()) as { success?: boolean; error?: string; imported?: number };
-      if (!response.ok || !data.success) throw new Error(data.error ?? "Import не сохранён.");
-      setMessage(`Сохранено строк для enrichment: ${data.imported ?? 0}. Автоотправка не запускалась.`);
+      if (!response.ok || !data.success) throw new Error(data.error ?? "Не удалось загрузить базу.");
+      setMessage(`Принято строк для дополнения данных: ${data.imported ?? 0}. Автоматическая отправка не запускалась.`);
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : "Import не сохранён.");
+      setMessage(error instanceof Error ? error.message : "Не удалось загрузить базу.");
     } finally {
       setPending(null);
     }
   }
 
+  if (mode === "AI_HIRING") {
+    return (
+      <div className="campaign-mode-settings" aria-live="polite">
+        <h3>По прямой потребности в AI</h3>
+        <p className="muted">
+          Проверяем реальные вакансии и отбираем компании, которым нужны AI-агенты,
+          LLM/RAG или автоматизация продаж, маркетинга и внутренних процессов.
+        </p>
+        <p className="campaign-feature-note">Функция пока доступна только для проверки.</p>
+      </div>
+    );
+  }
+
   return (
-    <section className="panel lead-source-panel" aria-labelledby="lead-source-title">
-      <header>
-        <div>
-          <p className="eyebrow">Новые источники</p>
-          <h2 id="lead-source-title">Импорт и прямой AI-hiring intent</h2>
-        </div>
-        <span className="dispatch-panel-badge warning">Review mode</span>
-      </header>
-      <div className="lead-source-grid">
-        <div>
-          <h3>Своя база</h3>
-          <p className="muted">CSV/XLSX → проверка → preview → enrichment. Отправка автоматически не запускается.</p>
+    <div className="campaign-mode-settings" aria-labelledby="lead-source-title">
+      <div>
+          <h3 id="lead-source-title">Загрузить свою базу</h3>
+          <p className="muted">Выбор файла → проверка → предпросмотр → подтверждение → дополнение данных → подготовка.</p>
           <input
             accept=".csv,.xlsx,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
             onChange={(event) => {
@@ -103,18 +109,6 @@ export function LeadSourceIngestion() {
               Подтвердить импорт
             </Button>
           </div>
-        </div>
-        <div>
-          <h3>AI Automation Hiring</h3>
-          <p className="muted">
-            Отдельный сильный сигнал: вакансия должна подтверждать конкретную автоматизацию бизнеса,
-            а не просто содержать AI/ML в названии.
-          </p>
-          <dl className="lead-source-state">
-            <div><dt>Production</dt><dd>Выключен</dd></div>
-            <div><dt>Отправка</dt><dd>Только existing queue</dd></div>
-          </dl>
-        </div>
       </div>
       {preview?.summary ? (
         <div className="lead-source-preview" role="status">
@@ -123,12 +117,14 @@ export function LeadSourceIngestion() {
           <span>Ошибок: {preview.summary.invalid}</span>
           <span>Дубликатов: {preview.summary.duplicates}</span>
           <span>Новых: {preview.summary.newLeads}</span>
-          <span>Нужен enrichment: {preview.summary.requiringEnrichment}</span>
+          <span>Требуют дополнения: {preview.summary.requiringEnrichment}</span>
           {preview.alreadyImported ? <strong>Этот файл уже импортировался</strong> : null}
         </div>
       ) : null}
+      {preview && !preview.productionEnabled ? (
+        <p className="campaign-feature-note">Функция пока доступна только для проверки.</p>
+      ) : null}
       {message ? <p className="dispatch-panel-note">{message}</p> : null}
-    </section>
+    </div>
   );
 }
-

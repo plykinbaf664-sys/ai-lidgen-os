@@ -52,7 +52,7 @@ type SavePipelineResult = {
 
 type StoredCampaign = Pick<
   LeadgenCampaign,
-  "id" | "pipeline_run_id" | "name" | "status" | "created_at"
+  "id" | "pipeline_run_id" | "name" | "status" | "created_at" | "vertical_id"
 >;
 
 type StoredLeadCampaignRef = Pick<
@@ -66,7 +66,10 @@ type StoredOutreachCampaignRef = {
   campaign_id: string;
   status: string;
   message_kind?: "initial" | "follow_up";
+  sent_at?: string | null;
+  reply_detected_at?: string | null;
 };
+type StoredSignalCampaignRef = { campaign_id: string; signal_type: string };
 
 function deriveCampaignOperationalStatus(counts: {
   needsReview: number;
@@ -322,11 +325,12 @@ export async function appendPipelineResult({
 
 export async function getRecentCampaigns(
   limit = 10,
+  options: { includeAnalyticsDimensions?: boolean } = {},
 ): Promise<LeadgenCampaignSummary[]> {
   const supabase = createSupabaseServerClient();
   const { data: campaigns, error: campaignsError } = await supabase
     .from("leadgen_campaigns")
-    .select("id,pipeline_run_id,name,status,created_at")
+    .select("id,pipeline_run_id,name,status,created_at,vertical_id")
     .gt("created_at", leadgenHistoryResetAt)
     .order("created_at", { ascending: false })
     .limit(limit)
@@ -346,6 +350,7 @@ export async function getRecentCampaigns(
     { data: contacts, error: contactsError },
     { data: leads, error: leadsError },
     { data: outreach, error: outreachError },
+    { data: signals, error: signalsError },
   ] = await Promise.all([
     supabase
       .from("leadgen_companies")
@@ -364,9 +369,16 @@ export async function getRecentCampaigns(
       .returns<StoredLeadCampaignRef[]>(),
     supabase
       .from("leadgen_outreach_queue")
-      .select("campaign_id,status,message_kind")
+      .select("campaign_id,status,message_kind,sent_at,reply_detected_at")
       .in("campaign_id", campaignIds)
       .returns<StoredOutreachCampaignRef[]>(),
+    options.includeAnalyticsDimensions
+      ? supabase
+          .from("leadgen_signals")
+          .select("campaign_id,signal_type")
+          .in("campaign_id", campaignIds)
+          .returns<StoredSignalCampaignRef[]>()
+      : Promise.resolve({ data: [] as StoredSignalCampaignRef[], error: null }),
   ]);
 
   if (companiesError && !isMissingRelationError(companiesError)) {
@@ -383,6 +395,9 @@ export async function getRecentCampaigns(
   if (outreachError && !isMissingRelationError(outreachError)) {
     throw outreachError;
   }
+  if (signalsError && !isMissingRelationError(signalsError)) {
+    throw signalsError;
+  }
 
   const companyCounts = new Map<string, number>();
   const legacyLeadCounts = new Map<string, number>();
@@ -390,10 +405,15 @@ export async function getRecentCampaigns(
   const emailCounts = new Map<string, number>();
   const sentCounts = new Map<string, number>();
   const initialSentCounts = new Map<string, number>();
+  const initialSentTodayCounts = new Map<string, number>();
   const followupSentCounts = new Map<string, number>();
+  const repliedCounts = new Map<string, number>();
+  const signalTypes = new Map<string, Set<string>>();
   const outreachCounts = new Map<string, {
     needsReview: number; approved: number; queued: number; sending: number; sent: number; failed: number;
   }>();
+  const todayStart = new Date();
+  todayStart.setHours(0, 0, 0, 0);
 
   for (const contact of contactsError ? [] : contacts ?? []) {
     contactCounts.set(
@@ -421,8 +441,27 @@ export async function getRecentCampaigns(
       sentCounts.set(item.campaign_id, (sentCounts.get(item.campaign_id) ?? 0) + 1);
       const target = item.message_kind === "follow_up" ? followupSentCounts : initialSentCounts;
       target.set(item.campaign_id, (target.get(item.campaign_id) ?? 0) + 1);
+      if (
+        item.message_kind !== "follow_up" &&
+        item.sent_at &&
+        Date.parse(item.sent_at) >= todayStart.getTime()
+      ) {
+        initialSentTodayCounts.set(
+          item.campaign_id,
+          (initialSentTodayCounts.get(item.campaign_id) ?? 0) + 1,
+        );
+      }
+    }
+    if (item.reply_detected_at) {
+      repliedCounts.set(item.campaign_id, (repliedCounts.get(item.campaign_id) ?? 0) + 1);
     }
     outreachCounts.set(item.campaign_id, counts);
+  }
+
+  for (const signal of signalsError ? [] : signals ?? []) {
+    const campaignSignals = signalTypes.get(signal.campaign_id) ?? new Set<string>();
+    campaignSignals.add(signal.signal_type);
+    signalTypes.set(signal.campaign_id, campaignSignals);
   }
 
   for (const company of companiesError ? [] : companies ?? []) {
@@ -450,6 +489,12 @@ export async function getRecentCampaigns(
     const counts = outreachCounts.get(campaign.id) ?? {
       needsReview: 0, approved: 0, queued: 0, sending: 0, sent: 0, failed: 0,
     };
+    const campaignSignalTypes = [...(signalTypes.get(campaign.id) ?? [])];
+    const origin = campaignSignalTypes.includes("AI_AUTOMATION_HIRING_SIGNAL")
+      ? "AI_HIRING"
+      : campaignSignalTypes.includes("IMPORTED_CONTEXT")
+        ? "IMPORTED"
+        : "DISCOVERY";
     return {
     ...campaign,
     companies_count:
@@ -458,6 +503,7 @@ export async function getRecentCampaigns(
     contacts_count: contactCounts.get(campaign.id) ?? 0,
     email_count: emailCounts.get(campaign.id) ?? 0,
     sent_count: sentCounts.get(campaign.id) ?? 0,
+    sent_today_count: initialSentTodayCounts.get(campaign.id) ?? 0,
     initial_sent_count: initialSentCounts.get(campaign.id) ?? 0,
     followup_sent_count: followupSentCounts.get(campaign.id) ?? 0,
     needs_review_count: counts.needsReview,
@@ -465,6 +511,9 @@ export async function getRecentCampaigns(
     queued_count: counts.queued,
     sending_count: counts.sending,
     failed_count: counts.failed,
+    replied_count: repliedCounts.get(campaign.id) ?? 0,
+    origin,
+    signal_types: campaignSignalTypes,
     operational_status: deriveCampaignOperationalStatus(counts),
   };}), "storage.read.campaigns");
 }

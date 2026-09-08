@@ -1133,7 +1133,7 @@ export function EmailOutreachQueue({
         text:
           caught instanceof Error
             ? caught.message
-            : "Не удалось выполнить действие Follow-up Engine.",
+            : "Не удалось выполнить действие с дожимом.",
       });
     } finally {
       setPending(null);
@@ -1154,7 +1154,7 @@ export function EmailOutreachQueue({
         error?: string;
         summary?: Extract<FollowupResponse, { success: true }>["summary"];
       }>(response);
-      if (!response.ok || !data.success || !data.approved) throw new Error(formatUnknownError(data.error, "Дожим не прошёл quality gate"));
+      if (!response.ok || !data.success || !data.approved) throw new Error(formatUnknownError(data.error, "Дожим не прошёл проверку качества"));
       applyFollowupApprovals(data.approved_ids ?? [entry.id], data.summary);
       setMessage("Дожим одобрен.");
     } catch (caught) {
@@ -1173,7 +1173,7 @@ export function EmailOutreachQueue({
       if (!response.ok || !data.success) throw new Error(formatUnknownError(data.error, "Действие не выполнено"));
       await load();
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : "Не удалось обновить follow-up");
+      setError(caught instanceof Error ? caught.message : "Не удалось обновить дожим");
     } finally { setPending(null); }
   }
 
@@ -1713,7 +1713,7 @@ export function EmailOutreachQueue({
         <section className="dispatch-control-panel followup-dispatch-panel" aria-labelledby="followup-summary-title">
           <header>
             <div>
-              <p className="eyebrow">Follow-up</p>
+              <p className="eyebrow">Дожимы</p>
               <h3 id="followup-summary-title">Дожимы</h3>
             </div>
             <span className={`dispatch-panel-badge ${readiness?.imap_connected ? "ready" : "warning"}`}>
@@ -2060,8 +2060,8 @@ export function EmailOutreachQueue({
           <p>Пропущено: {bulkPreview.skipped_count}</p>
           <p>Без корректного письма: {(bulkPreview.skipped.missing_email ?? 0) + (bulkPreview.skipped.missing_subject ?? 0) + (bulkPreview.skipped.missing_body ?? 0)}</p>
           <p>Уже писали раньше: {bulkPreview.skipped.already_contacted ?? 0}</p>
-          <p>Stop-list: {bulkPreview.skipped.stop_list ?? 0}</p>
-          <p>Не прошли quality gate: {bulkPreview.skipped.quality_gate_failed ?? 0}</p>
+          <p>Стоп-лист: {bulkPreview.skipped.stop_list ?? 0}</p>
+          <p>Не прошли проверку качества: {bulkPreview.skipped.quality_gate_failed ?? 0}</p>
           <div>
             <Button onClick={() => setBulkPreview(null)} variant="ghost">Отмена</Button>
             <Button disabled={pending !== null || bulkPreview.eligible_count === 0} loading={pending === "bulk-approve"} onClick={executeBulkApprove} variant="primary">
@@ -2145,7 +2145,7 @@ export function EmailOutreachQueue({
                     </dl>
                     {pageAudit.length > 0 ? (
                       <details className="lead-card-diagnostics">
-                        <summary>Техническая диагностика Email Discovery</summary>
+                        <summary>Техническая диагностика поиска email</summary>
                         <p>Итог: {finalReason || "email_not_found"}</p>
                         <ul>
                           {pageAudit.map((page, index) => (
@@ -2285,7 +2285,7 @@ export function EmailOutreachQueue({
                               </div>
                             </div>
                           ))}
-                          {entry.reply_detected_at ? <div className="timeline-event blocked"><strong>Follow-up заблокирован</strong><span>Получатель уже ответил.</span></div> : null}
+                          {entry.reply_detected_at ? <div className="timeline-event blocked"><strong>Дожим заблокирован</strong><span>Получатель уже ответил.</span></div> : null}
                         </div>
                       ) : null}
                     </div>
@@ -2309,7 +2309,7 @@ export function EmailOutreachQueue({
                     {entry.status === "queued" ? <div className="lead-card-actions"><Button disabled={pending !== null} loading={pending === entry.id} onClick={() => runEntryAction(entry.id, () => patchEntry(entry.id, {}, `/api/leadgen/outreach/${entry.id}/cancel`), "Письмо снято с очереди и осталось одобренным.")} variant="danger">Отменить до отправки</Button></div> : null}
                     {entry.status === "failed" ? <div className="lead-card-actions"><Button disabled={pending !== null} loading={pending === entry.id} onClick={() => runEntryAction(entry.id, () => patchEntry(entry.id, {}, `/api/leadgen/outreach/${entry.id}/retry`), "Ошибка сброшена. Письмо снова одобрено.")} variant="success">Повторить</Button></div> : null}
                     {!['draft', 'needs_review', 'paused', 'approved'].includes(entry.status) ? <div className="lead-card-actions"><Button loading={pending === `open-${entry.id}`} onClick={() => selectEntry(entry)} variant="secondary">Открыть письмо</Button></div> : null}
-                    {entry.quality_gate_passed !== true && ["draft", "needs_review"].includes(entry.status) ? <p className="copy-quality-warning">Требуется ручная проверка текста: quality gate не пройден.</p> : null}
+                    {entry.quality_gate_passed !== true && ["draft", "needs_review"].includes(entry.status) ? <p className="copy-quality-warning">Требуется ручная проверка текста: автоматическая проверка качества не пройдена.</p> : null}
                   </article>
                     );
                   })()
@@ -2395,7 +2395,7 @@ export function EmailOutreachQueue({
             </div>
             <div className="delivery-system-line">
               <span className={readiness?.imap_connected ? "connected" : "disconnected"} />
-              IMAP {readiness?.imap_connected ? "подключён" : readiness?.imap_configured ? "недоступен" : "не настроен"} · follow-up {readiness?.followup_send_blocked ? "заблокирован" : "готов"}
+              IMAP {readiness?.imap_connected ? "подключён" : readiness?.imap_configured ? "недоступен" : "не настроен"} · дожимы {readiness?.followup_send_blocked ? "заблокированы" : "готовы"}
             </div>
             <div className="delivery-system-line">
               <span className={readiness?.consistency_healthy ? "connected" : "disconnected"} />

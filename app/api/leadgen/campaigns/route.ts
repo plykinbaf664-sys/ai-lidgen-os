@@ -6,7 +6,7 @@ import { formatUnknownError } from "@/lib/leadgen/error-format";
 export async function GET() {
   try {
     const campaigns = normalizeLeadgenStrings(
-      await getRecentCampaigns(),
+      await getRecentCampaigns(100, { includeAnalyticsDimensions: true }),
       "api.campaigns.response",
     );
 

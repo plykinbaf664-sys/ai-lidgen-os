@@ -1050,6 +1050,7 @@ export type LeadgenCampaignSummary = {
   contacts_count: number;
   email_count?: number;
   sent_count?: number;
+  sent_today_count?: number;
   initial_sent_count: number;
   followup_sent_count: number;
   needs_review_count: number;
@@ -1057,6 +1058,10 @@ export type LeadgenCampaignSummary = {
   queued_count: number;
   sending_count: number;
   failed_count: number;
+  replied_count?: number;
+  vertical_id?: import("@/lib/leadgen/verticals").LeadgenVerticalId;
+  origin?: LeadOrigin;
+  signal_types?: string[];
   operational_status: CampaignOperationalStatus;
 };
 
