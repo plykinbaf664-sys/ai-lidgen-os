@@ -42,7 +42,7 @@ export function CampaignModeSelector({
     <fieldset className="campaign-mode-selector" disabled={disabled}>
       <legend>Как искать лидов?</legend>
       <div className="campaign-mode-grid">
-        {campaignModes.map((mode) => (
+        {campaignModes.map((mode, index) => (
           <label
             className={`campaign-mode-card ${value === mode.id ? "selected" : ""}`}
             key={mode.id}
@@ -54,10 +54,14 @@ export function CampaignModeSelector({
               type="radio"
               value={mode.id}
             />
-            <span>
+            <span className="campaign-mode-index" aria-hidden="true">
+              0{index + 1}
+            </span>
+            <span className="campaign-mode-copy">
               <strong>{mode.title}</strong>
               <small>{mode.description}</small>
             </span>
+            <span className="campaign-mode-indicator" aria-hidden="true" />
           </label>
         ))}
       </div>

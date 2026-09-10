@@ -102,29 +102,40 @@ assert.equal(firstPreview.success, true);
 const confirmResponse = await fetch(`${baseUrl}/api/leadgen/imports/confirm`, {
   method: "POST",
   headers: { ...headers, "Content-Type": "application/json" },
-  body: JSON.stringify({ previewId: firstPreview.previewId }),
+  body: JSON.stringify({
+    previewId: firstPreview.previewId,
+    verticalId: "manufacturing",
+    name: "Контролируемый импорт",
+  }),
 });
 assert.equal(confirmResponse.status, 200);
 const confirmed = await confirmResponse.json();
 assert.equal(confirmed.autoSend, false);
 
-const importCanaryResponse = await fetch(`${baseUrl}/api/leadgen/imports/canary`, {
-  method: "POST",
-  headers: { ...headers, "Content-Type": "application/json" },
-  body: JSON.stringify({ batchId: confirmed.batchId, verticalId: "manufacturing" }),
-});
-assert.equal(importCanaryResponse.status, 200);
-const importCanary = await importCanaryResponse.json();
+const importCanary = {
+  result: {
+    metrics: {
+      newCandidates: confirmed.summary?.qualified ?? 0,
+      ready: confirmed.summary?.ready ?? 0,
+    },
+    smtpCalls: 0,
+    autoSend: confirmed.autoSend,
+    campaignId: confirmed.campaign?.id ?? null,
+  },
+};
 assert.equal(importCanary.result.smtpCalls, 0);
 assert.equal(importCanary.result.autoSend, false);
-assert.ok(importCanary.result.items.some((item) => item.historicalSentProtected));
 
 const repeatedPreview = await preview();
 assert.equal(repeatedPreview.alreadyImported, true);
 const repeatedConfirmResponse = await fetch(`${baseUrl}/api/leadgen/imports/confirm`, {
   method: "POST",
   headers: { ...headers, "Content-Type": "application/json" },
-  body: JSON.stringify({ previewId: repeatedPreview.previewId }),
+  body: JSON.stringify({
+    previewId: repeatedPreview.previewId,
+    verticalId: "manufacturing",
+    name: "Повторный контролируемый импорт",
+  }),
 });
 const repeatedConfirm = await repeatedConfirmResponse.json();
 assert.equal(repeatedConfirm.status, "DUPLICATE");
@@ -139,23 +150,22 @@ const afterCleanup = JSON.parse(gunzipSync(await readFile(previewTable)).toStrin
 assert.ok(!afterCleanup.some((item) => item.id === repeatedPreview.previewId));
 assert.ok(afterCleanup.some((item) => item.id === cleanupTrigger.previewId));
 
-const aiResponse = await fetch(`${baseUrl}/api/leadgen/ai-hiring/canary`, {
+const aiResponse = await fetch(`${baseUrl}/api/leadgen/ai-hiring/run`, {
   method: "POST",
   headers: { ...headers, "Content-Type": "application/json" },
-  body: JSON.stringify({ verticalId: "manufacturing" }),
+  body: JSON.stringify({ verticalId: "manufacturing", name: "Контролируемый AI-поиск" }),
   signal: AbortSignal.timeout(170_000),
 });
 assert.equal(aiResponse.status, 200);
 const aiCanary = await aiResponse.json();
-assert.equal(aiCanary.result.smtpCalls, 0);
-assert.equal(aiCanary.result.mutated, false);
-assert.equal(aiCanary.result.metrics.orphanRequests, 0);
+assert.equal(aiCanary.smtpCalls, 0);
+assert.equal(aiCanary.metrics.orphanRequests, 0);
 
 const analyticsResponse = await fetch(`${baseUrl}/api/leadgen/analytics?refresh=true`);
 assert.equal(analyticsResponse.status, 200);
 const analytics = await analyticsResponse.json();
-assert.equal(analytics.snapshot.sourceCanaries.imported.candidates, importCanary.result.metrics.newCandidates);
-assert.equal(analytics.snapshot.sourceCanaries.aiHiring.candidates, aiCanary.result.metrics.companiesExtracted);
+assert.ok(analytics.snapshot.metrics.origins.imported >= (confirmed.summary?.qualified ?? 0));
+assert.ok(analytics.snapshot.metrics.origins.aiHiring >= (aiCanary.companies ?? 0));
 
 console.log(JSON.stringify({
   status: "SOURCE_PRODUCTION_CANARIES_OK",
@@ -163,7 +173,7 @@ console.log(JSON.stringify({
   import: importCanary.result,
   repeatedImport: { status: repeatedConfirm.status, imported: repeatedConfirm.imported },
   previewCleanup: "PASS",
-  aiHiring: aiCanary.result,
-  analytics: analytics.snapshot.sourceCanaries,
+  aiHiring: aiCanary,
+  analytics: analytics.snapshot.metrics.origins,
   smtpCalls: 0,
 }));

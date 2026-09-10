@@ -67,6 +67,30 @@ type ContactDiscoveryView = {
   email_stop_reason?: string | null;
 };
 
+type CompanyResearchView = {
+  people?: Array<{
+    fullName?: string;
+    role?: string | null;
+    confidence?: string;
+    profiles?: {
+      tenchat?: string | null;
+      telegram?: string | null;
+    };
+    evidence?: Array<{ sourceUrl?: string; excerpt?: string }>;
+  }>;
+  bestOutreachContact?: {
+    classification?: string;
+    contactLevel?: string;
+  } | null;
+};
+
+function getResearchConfidenceLabel(value?: string) {
+  if (value === "VERIFIED") return "подтверждено";
+  if (value === "HIGH_CONFIDENCE") return "высокая уверенность";
+  if (value === "LIKELY") return "вероятно";
+  return "требует проверки";
+}
+
 function getCommercialSignal(
   lead: LeadgenLead,
   details: LeadgenCampaignDetails,
@@ -355,6 +379,11 @@ export function CampaignDetails({
               details,
               "contact_discovery",
             );
+            const companyResearch = getMetadata<CompanyResearchView>(
+              lead,
+              details,
+              "company_research",
+            );
             const bestOutreachEntry = getBestOutreachEntry(contacts);
             const fallbackEntry = getFallbackEntry(contacts);
             const displayedContact = bestOutreachEntry ?? fallbackEntry;
@@ -452,6 +481,30 @@ export function CampaignDetails({
                       <p>{getActionForReadiness(readiness)}</p>
                     </div>
                   </div>
+
+                  {companyResearch?.people?.length ? (
+                    <div className="outreach-draft">
+                      <span className="field-label">Найденные руководители</span>
+                      <div className="additional-source-list">
+                        {companyResearch.people.slice(0, 3).map((person) => (
+                          <span className="mock-pill" key={`${person.fullName}-${person.role}`}>
+                            {person.fullName ?? "Имя не указано"}
+                            {person.role ? ` · ${person.role}` : ""}
+                            {person.confidence ? ` · ${getResearchConfidenceLabel(person.confidence)}` : ""}
+                            {person.profiles?.tenchat ? (
+                              <> · <a href={person.profiles.tenchat} target="_blank" rel="noreferrer">TenChat</a></>
+                            ) : null}
+                            {person.profiles?.telegram ? (
+                              <> · <a href={person.profiles.telegram} target="_blank" rel="noreferrer">Telegram</a></>
+                            ) : null}
+                            {person.evidence?.[0]?.sourceUrl ? (
+                              <> · <a href={person.evidence[0].sourceUrl} target="_blank" rel="noreferrer">Источник</a></>
+                            ) : null}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
 
                   {additionalSources.length > 0 ? (
                     <div className="outreach-draft">

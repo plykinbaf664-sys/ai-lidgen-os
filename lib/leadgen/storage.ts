@@ -323,10 +323,7 @@ export async function appendPipelineResult({
   };
 }
 
-export async function getRecentCampaigns(
-  limit = 10,
-  options: { includeAnalyticsDimensions?: boolean } = {},
-): Promise<LeadgenCampaignSummary[]> {
+export async function getRecentCampaigns(limit = 10): Promise<LeadgenCampaignSummary[]> {
   const supabase = createSupabaseServerClient();
   const { data: campaigns, error: campaignsError } = await supabase
     .from("leadgen_campaigns")
@@ -372,13 +369,11 @@ export async function getRecentCampaigns(
       .select("campaign_id,status,message_kind,sent_at,reply_detected_at")
       .in("campaign_id", campaignIds)
       .returns<StoredOutreachCampaignRef[]>(),
-    options.includeAnalyticsDimensions
-      ? supabase
-          .from("leadgen_signals")
-          .select("campaign_id,signal_type")
-          .in("campaign_id", campaignIds)
-          .returns<StoredSignalCampaignRef[]>()
-      : Promise.resolve({ data: [] as StoredSignalCampaignRef[], error: null }),
+    supabase
+      .from("leadgen_signals")
+      .select("campaign_id,signal_type")
+      .in("campaign_id", campaignIds)
+      .returns<StoredSignalCampaignRef[]>(),
   ]);
 
   if (companiesError && !isMissingRelationError(companiesError)) {
@@ -490,9 +485,9 @@ export async function getRecentCampaigns(
       needsReview: 0, approved: 0, queued: 0, sending: 0, sent: 0, failed: 0,
     };
     const campaignSignalTypes = [...(signalTypes.get(campaign.id) ?? [])];
-    const origin = campaignSignalTypes.includes("AI_AUTOMATION_HIRING_SIGNAL")
+    const origin = campaign.id.startsWith("campaign-ai-hiring-") || campaignSignalTypes.includes("AI_AUTOMATION_HIRING_SIGNAL")
       ? "AI_HIRING"
-      : campaignSignalTypes.includes("IMPORTED_CONTEXT")
+      : campaign.id.startsWith("campaign-imported-") || campaignSignalTypes.includes("IMPORTED_CONTEXT")
         ? "IMPORTED"
         : "DISCOVERY";
     return {

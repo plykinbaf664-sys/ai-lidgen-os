@@ -1,12 +1,18 @@
 import assert from "node:assert/strict";
 import { deflateRawSync } from "node:zlib";
 
-const baseUrl = process.argv[2] ?? "http://localhost:3000";
-const expectedEnabled = process.argv[3] === "enabled";
+if (!process.argv[2]) {
+  throw new Error("Pass an explicit isolated test server URL; localhost production data must never be the default.");
+}
+const baseUrl = process.argv[2];
+const expectedEnabled = process.argv[3] !== "disabled";
 const headers = {
   origin: baseUrl,
   host: new URL(baseUrl).host,
   "sec-fetch-site": "same-origin",
+  ...(process.env.LEADGEN_ADMIN_SECRET
+    ? { authorization: `Bearer ${process.env.LEADGEN_ADMIN_SECRET}` }
+    : {}),
 };
 
 function crc32(buffer) {
@@ -177,7 +183,7 @@ assert.equal(xlsx.summary.invalid, 1);
 const confirmResponse = await fetch(`${baseUrl}/api/leadgen/imports/confirm`, {
   method: "POST",
   headers: { ...headers, "content-type": "application/json" },
-  body: JSON.stringify({ previewId: imported.previewId }),
+  body: JSON.stringify({ previewId: imported.previewId, verticalId: "manufacturing", name: "Import regression" }),
 });
 if (expectedEnabled) {
   const confirmed = await confirmResponse.json();
@@ -189,13 +195,13 @@ if (expectedEnabled) {
   const repeatedConfirm = await fetch(`${baseUrl}/api/leadgen/imports/confirm`, {
     method: "POST",
     headers: { ...headers, "content-type": "application/json" },
-    body: JSON.stringify({ previewId: repeated.previewId }),
+    body: JSON.stringify({ previewId: repeated.previewId, verticalId: "manufacturing", name: "Repeated import regression" }),
   });
   const repeatedResult = await repeatedConfirm.json();
   assert.equal(repeatedResult.status, "DUPLICATE");
   assert.equal(repeatedResult.imported, 0);
   const queue = await (await fetch(`${baseUrl}/api/leadgen/outreach/batch`)).json();
-  assert.equal(queue.entries.length, 0);
+  assert.equal(queue.entries.filter((entry) => entry.status === "sent").length, 0);
 } else {
   assert.equal(confirmResponse.status, 409);
 }

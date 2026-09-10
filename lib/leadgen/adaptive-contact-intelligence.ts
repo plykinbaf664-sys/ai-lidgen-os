@@ -1,4 +1,3 @@
-import { resolveMx } from "node:dns/promises";
 import type {
   ContactDiscoveryResult,
   ContactIntelligenceEvidence,
@@ -16,26 +15,7 @@ import {
   type NormalizedEmailClassification,
 } from "@/lib/leadgen/contact-quality";
 import { emailLocalMatchesPerson } from "@/lib/leadgen/person-email-evidence";
-
-type MxCacheEntry = {
-  expiresAt: number;
-  value: Promise<boolean>;
-};
-
-const MX_CACHE_TTL_MS = 6 * 60 * 60 * 1_000;
-const MX_CACHE_MAX_ENTRIES = 256;
-const mxCache = new Map<string, MxCacheEntry>();
-
-function pruneMxCache(now = Date.now()): void {
-  for (const [key, entry] of mxCache) {
-    if (entry.expiresAt <= now) mxCache.delete(key);
-  }
-  while (mxCache.size >= MX_CACHE_MAX_ENTRIES) {
-    const oldest = mxCache.keys().next().value;
-    if (!oldest) break;
-    mxCache.delete(oldest);
-  }
-}
+import { hasEmailDomainMx } from "@/lib/leadgen/email-discovery-engine";
 
 function normalize(value: string | null | undefined): string {
   return (value ?? "").trim().toLowerCase().replace(/\s+/g, " ");
@@ -62,21 +42,7 @@ function getEmailDomain(email: string | null | undefined): string | null {
 }
 
 async function domainHasMx(domain: string | null): Promise<boolean> {
-  if (!domain) return false;
-  const now = Date.now();
-  const cached = mxCache.get(domain);
-  if (cached && cached.expiresAt > now) {
-    mxCache.delete(domain);
-    mxCache.set(domain, cached);
-    return cached.value;
-  }
-  if (cached) mxCache.delete(domain);
-  pruneMxCache(now);
-  const value = resolveMx(domain)
-    .then((records) => records.length > 0)
-    .catch(() => false);
-  mxCache.set(domain, { value, expiresAt: now + MX_CACHE_TTL_MS });
-  return value;
+  return hasEmailDomainMx(domain);
 }
 
 const transliteration: Record<string, string> = {

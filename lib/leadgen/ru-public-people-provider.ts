@@ -19,6 +19,7 @@ import {
 import type { PersonCandidate } from "@/lib/leadgen/types";
 import { runAbortableOperation, throwIfAborted } from "@/lib/network/abortable-operation";
 import { isPlausiblePublicPersonName } from "@/lib/leadgen/person-factuality";
+import { emailLocalMatchesPerson } from "@/lib/leadgen/person-email-evidence";
 
 type CandidateDraft = {
   fullName: string;
@@ -29,6 +30,7 @@ type CandidateDraft = {
   sourceSnippet: string;
   sourceUrls?: string[];
   linkedinUrl: string | null;
+  tenchatUrl: string | null;
   telegramUrl: string | null;
   vkUrl: string | null;
   workEmail: string | null;
@@ -197,10 +199,27 @@ function isLikelyPersonName(name: string, input: PeopleProviderInput): boolean {
   );
 }
 
+function trimLeadingCompanyToken(name: string, input: PeopleProviderInput): string {
+  const parts = name.split(/\s+/).filter(Boolean);
+  if (parts.length !== 3) return name;
+  const companyTokens = new Set(
+    input.company.company_name
+      .toLowerCase()
+      .split(/[^a-zа-яё0-9]+/i)
+      .filter((token) => token.length >= 3),
+  );
+  return companyTokens.has(parts[0].toLowerCase())
+    ? parts.slice(1).join(" ")
+    : name;
+}
+
 function getNames(text: string, input: PeopleProviderInput): string[] {
   return unique([
     ...[...text.matchAll(CYRILLIC_NAME_PATTERN)].map((match) =>
-      normalizeWhitespace([match[1], match[2], match[3]].filter(Boolean).join(" ")),
+      trimLeadingCompanyToken(
+        normalizeWhitespace([match[1], match[2], match[3]].filter(Boolean).join(" ")),
+        input,
+      ),
     ),
     ...[...text.matchAll(LATIN_NAME_PATTERN)].map((match) =>
       normalizeWhitespace(`${match[1]} ${match[2]}`),
@@ -397,6 +416,7 @@ function draftsFromOfficialText({
     const names = getNames(context, input);
     const emailIndex = context.toLowerCase().indexOf(email.toLowerCase());
     const nearestName = names
+      .filter((fullName) => emailLocalMatchesPerson(email, fullName))
       .map((fullName) => ({
         fullName,
         distance: Math.abs(
@@ -421,6 +441,7 @@ function draftsFromOfficialText({
       sourceSnippet: context.slice(0, 500),
       sourceUrls: [sourceUrl],
       linkedinUrl: null,
+      tenchatUrl: null,
       telegramUrl: null,
       vkUrl: null,
       workEmail: email,
@@ -478,7 +499,8 @@ function draftsFromOfficialPeopleText({
         .sort((left, right) => left.distance - right.distance);
       const nearestName = names[0]?.fullName;
       if (!nearestName) continue;
-      const email = getWorkEmails(getTextWindow(context, nearestName, 300), input)[0] ?? null;
+      const email = getWorkEmails(getTextWindow(context, nearestName, 300), input)
+        .find((candidate) => emailLocalMatchesPerson(candidate, nearestName)) ?? null;
       drafts.push({
         fullName: nearestName,
         roleTitle,
@@ -488,6 +510,7 @@ function draftsFromOfficialPeopleText({
         sourceSnippet: context.slice(0, 500),
         sourceUrls: [sourceUrl],
         linkedinUrl: null,
+        tenchatUrl: null,
         telegramUrl: null,
         vkUrl: null,
         workEmail: email,
@@ -565,6 +588,18 @@ function getTelegramUrl(url: string): string | null {
   return normalizedUrl.includes("t.me/") || normalizedUrl.includes("telegram.me/")
     ? url
     : null;
+}
+
+function getTenChatUrl(url: string): string | null {
+  try {
+    const parsed = new URL(url);
+    const hostname = parsed.hostname.toLowerCase().replace(/^www\./, "");
+    return hostname === "tenchat.ru" || hostname.endsWith(".tenchat.ru")
+      ? parsed.toString()
+      : null;
+  } catch {
+    return null;
+  }
 }
 
 function getVkUrl(url: string): string | null {
@@ -676,13 +711,12 @@ function getCandidateContactQueries(
   const missingEmail = !candidate.workEmail;
   const missingRole = !candidate.roleTitle;
   return [
+    !candidate.tenchatUrl ? `${name} ${company} TenChat` : "",
+    !candidate.telegramUrl ? `${name} ${company} Telegram` : "",
     missingEmail ? `${name} ${company} email OR @ OR почта` : "",
     missingEmail && domain ? `${name} "@${domain}"` : "",
     missingEmail && domain ? `site:${domain} ${name}` : "",
     missingRole ? `${name} ${company} должность OR руководитель` : "",
-    !candidate.linkedinUrl && !candidate.telegramUrl && !candidate.vkUrl
-      ? `${name} ${company} профессиональный профиль`
-      : "",
   ].filter(Boolean);
 }
 
@@ -707,7 +741,7 @@ type AdaptivePersonQuery = {
 
 function getAdaptivePersonQueries(input: PeopleProviderInput): AdaptivePersonQuery[] {
   const names = getCompanySearchNames(input);
-  const company = quote(names[1] ?? names[0] ?? input.company.company_name);
+  const company = quote(names[0] ?? input.company.company_name);
   const primary = unique(
     input.roleSearchPlan?.primary ?? input.searchKeywords.slice(0, 3),
   ).filter(Boolean);
@@ -738,6 +772,10 @@ function getAdaptivePersonQueries(input: PeopleProviderInput): AdaptivePersonQue
   for (const roles of alternatives) {
     if (roles[0]) push("LEVEL_2", `${company} ${quote(roles[0])}`);
   }
+  if (domain) {
+    push("LEVEL_2", `"${domain}" "генеральный директор"`, "person_research");
+  }
+  push("LEVEL_3", `${company} ИНН "генеральный директор"`, "person_research");
   const evidenceRoles = unique([
     primary[0],
     alternatives[0]?.[0],
@@ -747,7 +785,14 @@ function getAdaptivePersonQueries(input: PeopleProviderInput): AdaptivePersonQue
     push("LEVEL_3", `${company} ${quote(evidenceRoles[0])} интервью`, "person_research");
     push("LEVEL_3", `${company} ${quote(evidenceRoles[0])} назначен`, "market_news");
   }
-  return queries.slice(0, 8);
+  push("LEVEL_3", `${company} TenChat руководство`, "person_research");
+  push("LEVEL_3", `${company} Telegram руководитель`, "person_research");
+  for (const query of input.plannedQueries ?? []) {
+    push("LEVEL_2", query, /новост|интервью|конференц|назначен/i.test(query)
+      ? "market_news"
+      : "person_research");
+  }
+  return queries.slice(0, 12);
 }
 
 function isExplicitlyStaleDraft(draft: CandidateDraft): boolean {
@@ -776,11 +821,16 @@ const COMMON_RU_GIVEN_NAMES = new Set([
   "софья", "тамара", "татьяна", "юлия", "яна",
 ]);
 
-function hasPlausibleGivenName(value: string): boolean {
-  const parts = value.toLowerCase().split(/\s+/).filter(Boolean);
-  const isCyrillic = parts.some((part) => /[а-яё]/i.test(part));
-  if (!isCyrillic) return true;
-  return parts.some((part) => COMMON_RU_GIVEN_NAMES.has(part)) ||
+function hasPlausibleHumanNameEvidence(draft: CandidateDraft): boolean {
+  const parts = draft.fullName.toLowerCase().split(/\s+/).filter(Boolean);
+  const directProfileOrEmail = Boolean(
+    draft.workEmail || draft.tenchatUrl || draft.telegramUrl || draft.vkUrl,
+  );
+  if (!parts.some((part) => /[а-яё]/i.test(part))) {
+    return directProfileOrEmail || parts.length >= 3;
+  }
+  return directProfileOrEmail ||
+    parts.some((part) => COMMON_RU_GIVEN_NAMES.has(part)) ||
     parts.some((part) => /(?:ович|евич|ич|овна|евна|ична)$/i.test(part));
 }
 
@@ -793,11 +843,11 @@ function toBoundedCandidates(
   const domain = getCompanyDomain(input.company);
   return dedupeDrafts(drafts)
     .filter((draft) => !isExplicitlyStaleDraft(draft))
+    .filter(hasPlausibleHumanNameEvidence)
     .map((draft) => toPersonCandidate(draft, input, providerLabel, providerId))
     .filter((candidate) =>
       isPlausiblePublicPersonName(candidate.full_name) &&
       !isOrganizationLikePersonName(candidate.full_name) &&
-      hasPlausibleGivenName(candidate.full_name) &&
       Boolean(candidate.role_title) &&
       hasTargetRoleMatch(candidate, input.decisionMaker) &&
       candidate.evidence.length > 0 &&
@@ -851,7 +901,7 @@ function getBoundedDraftRejectionReason(
   if (isExplicitlyStaleDraft(draft)) return "STALE_ROLE";
   if (!isPlausiblePublicPersonName(draft.fullName)) return "INVALID_PERSON_NAME";
   if (isOrganizationLikePersonName(draft.fullName)) return "ORGANIZATION_AS_PERSON";
-  if (!hasPlausibleGivenName(draft.fullName)) return "NO_GIVEN_NAME_EVIDENCE";
+  if (!hasPlausibleHumanNameEvidence(draft)) return "NO_HUMAN_NAME_EVIDENCE";
   if (!draft.roleTitle) return "ROLE_NOT_FOUND";
   const candidate = toPersonCandidate(draft, input, "audit", "audit");
   if (!hasTargetRoleMatch(candidate, input.decisionMaker)) return "ROLE_MISMATCH";
@@ -871,12 +921,37 @@ function aggregateBoundedRejections(
   return counts;
 }
 
+function getCandidateEvidenceFingerprint(candidates: PersonCandidate[]): string {
+  return candidates
+    .map((candidate) => [
+      normalizeComparable(candidate.full_name),
+      normalizeComparable(candidate.role_title ?? ""),
+      candidate.work_email ?? "",
+      String(candidate.metadata.tenchat_url ?? ""),
+      String(candidate.metadata.telegram_url ?? ""),
+      candidate.evidence.length,
+    ].join(":"))
+    .sort()
+    .join("|");
+}
+
+function hasSufficientPersonBundle(candidates: PersonCandidate[]): boolean {
+  if (candidates.length >= 3) return true;
+  if (candidates.length < 2) return false;
+  return candidates.some((candidate) => Boolean(
+    candidate.work_email ||
+    candidate.metadata.tenchat_url ||
+    candidate.metadata.telegram_url,
+  ));
+}
+
 function mergeDrafts(left: CandidateDraft, right: CandidateDraft): CandidateDraft {
   return {
     ...left,
     roleTitle: left.roleTitle ?? right.roleTitle,
     department: left.department ?? right.department,
     linkedinUrl: left.linkedinUrl ?? right.linkedinUrl,
+    tenchatUrl: left.tenchatUrl ?? right.tenchatUrl,
     telegramUrl: left.telegramUrl ?? right.telegramUrl,
     vkUrl: left.vkUrl ?? right.vkUrl,
     workEmail: left.workEmail ?? right.workEmail,
@@ -907,11 +982,12 @@ function draftFromSearchResult({
   const roleKeywords = getRoleKeywords(input);
   const roleTitle = getRoleTitle(text, roleKeywords);
   const emails = getWorkEmails(text, input);
-  const linkedinUrl = getLinkedInUrl(result.url);
+  const linkedinUrl = input.plannedQueries ? null : getLinkedInUrl(result.url);
+  const tenchatUrl = getTenChatUrl(result.url);
   const telegramUrl = getTelegramUrl(result.url);
   const vkUrl = getVkUrl(result.url);
 
-  if (!roleTitle && !linkedinUrl && !telegramUrl && !vkUrl && emails.length === 0) {
+  if (!roleTitle && !linkedinUrl && !tenchatUrl && !telegramUrl && !vkUrl && emails.length === 0) {
     return [];
   }
 
@@ -930,9 +1006,10 @@ function draftFromSearchResult({
     sourceSnippet: result.snippet,
     sourceUrls: [result.url],
     linkedinUrl,
+    tenchatUrl,
     telegramUrl,
     vkUrl,
-    workEmail: emails[0] ?? null,
+    workEmail: emails.find((email) => emailLocalMatchesPerson(email, fullName)) ?? null,
     contactRoute: roleTitle ? "target_persona" : "corporate_router",
     evidence: [`Public search result: ${result.title}`, `Source URL: ${result.url}`],
   }));
@@ -965,9 +1042,11 @@ function mergeContactEvidence({
     sourceSnippet: result.snippet,
     sourceUrls: unique([...(candidate.sourceUrls ?? [candidate.sourceUrl]), result.url]),
     linkedinUrl: candidate.linkedinUrl ?? getLinkedInUrl(result.url),
+    tenchatUrl: candidate.tenchatUrl ?? getTenChatUrl(result.url),
     telegramUrl: candidate.telegramUrl ?? getTelegramUrl(result.url),
     vkUrl: candidate.vkUrl ?? getVkUrl(result.url),
-    workEmail: candidate.workEmail ?? getWorkEmails(text, input)[0] ?? null,
+    workEmail: candidate.workEmail ?? getWorkEmails(text, input)
+      .find((email) => emailLocalMatchesPerson(email, candidate.fullName)) ?? null,
     evidence: [
       ...candidate.evidence,
       `Contact search result: ${result.title}`,
@@ -1012,6 +1091,7 @@ function toPersonCandidate(
       snippet: draft.sourceSnippet,
       source_urls: draft.sourceUrls ?? [draft.sourceUrl],
       telegram_url: draft.telegramUrl,
+      tenchat_url: draft.tenchatUrl,
       vk_url: draft.vkUrl,
       contact_route: draft.contactRoute,
       public_contact_verified:
@@ -1025,7 +1105,7 @@ function toPersonCandidate(
       candidate,
       decisionMaker: input.decisionMaker,
       hasDirectContact: Boolean(
-        draft.workEmail || draft.linkedinUrl || draft.telegramUrl || draft.vkUrl,
+        draft.workEmail || draft.tenchatUrl || draft.telegramUrl || draft.vkUrl,
       ),
       baseConfidence: draft.contactRoute === "corporate_router" ? 66 : 52,
     }),
@@ -1116,6 +1196,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
 
     let searchAttempts = 0;
     let officialPagesFetched = 0;
+    let consecutiveNoGainQueries = 0;
     let drafts: CandidateDraft[] = [];
     const sourcesChecked: string[] = [];
     const queriesExecuted: NonNullable<NonNullable<PeopleProviderResult["metrics"]>["trace"]>["queries_executed"] = [];
@@ -1144,7 +1225,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
 
     let candidates = toBoundedCandidates(drafts, input, this.label, this.id);
     const fetchOfficialBatch = async (batch: string[]) => {
-      if (!domain || batch.length === 0 || candidates.length > 0) return;
+      if (!domain || batch.length === 0 || hasSufficientPersonBundle(candidates)) return;
       throwIfAborted(input.signal);
       const pages = await Promise.all(
         batch.map(async (url) => ({
@@ -1166,6 +1247,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
       queryAngle: "person_research" | "market_news" = "person_research",
     ) => {
       throwIfAborted(input.signal);
+      const before = getCandidateEvidenceFingerprint(candidates);
       searchAttempts += 1;
       try {
         const results = await searchProvider.search({
@@ -1192,36 +1274,46 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
         queriesExecuted.push({ level, query, result_count: 0, results: [] });
       }
       candidates = toBoundedCandidates(drafts, input, this.label, this.id);
+      const after = getCandidateEvidenceFingerprint(candidates);
+      consecutiveNoGainQueries = before === after
+        ? consecutiveNoGainQueries + 1
+        : 0;
     };
 
     const adaptiveQueries = getAdaptivePersonQueries(input);
     const levelOne = adaptiveQueries.filter((query) => query.level === "LEVEL_1");
-    if (candidates.length === 0 && levelOne[0]) {
+    if (!hasSufficientPersonBundle(candidates) && levelOne[0]) {
       await runQuery(levelOne[0].query, levelOne[0].level, levelOne[0].queryAngle);
     }
     await fetchOfficialBatch(officialUrls.slice(0, 3));
-    if (candidates.length === 0 && levelOne[1]) {
+    if (!hasSufficientPersonBundle(candidates) && levelOne[1]) {
       await runQuery(levelOne[1].query, levelOne[1].level, levelOne[1].queryAngle);
     }
     for (const level of ["LEVEL_2", "LEVEL_3"] as const) {
-      if (candidates.length > 0) break;
+      if (hasSufficientPersonBundle(candidates)) break;
       await fetchOfficialBatch(
         level === "LEVEL_2" ? officialUrls.slice(3, 6) : officialUrls.slice(6, 7),
       );
       for (const item of adaptiveQueries.filter((query) => query.level === level)) {
         await runQuery(item.query, item.level, item.queryAngle);
-        if (candidates.length > 0) break;
+        if (hasSufficientPersonBundle(candidates)) break;
+        if (candidates.length > 0 && consecutiveNoGainQueries >= 3) break;
       }
     }
 
-    const primary = candidates[0] ?? null;
-    if (primary && !primary.work_email) {
+    for (const person of candidates.slice(0, 3)) {
+      if (searchAttempts >= 12) break;
+      if (person.work_email && person.metadata.tenchat_url && person.metadata.telegram_url) {
+        continue;
+      }
       const draft = drafts.find(
-        (item) => normalizeComparable(item.fullName) === normalizeComparable(primary.full_name),
+        (item) => normalizeComparable(item.fullName) === normalizeComparable(person.full_name),
       );
       if (draft) {
         for (const query of getCandidateContactQueries(input, draft).slice(0, 2)) {
+          if (searchAttempts >= 12) break;
           throwIfAborted(input.signal);
+          const before = getCandidateEvidenceFingerprint(candidates);
           searchAttempts += 1;
           try {
             const results = await searchProvider.search({
@@ -1254,7 +1346,16 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
             queriesExecuted.push({ level: "EMAIL", query, result_count: 0, results: [] });
           }
           candidates = toBoundedCandidates(drafts, input, this.label, this.id);
-          if (candidates[0]?.work_email) break;
+          const after = getCandidateEvidenceFingerprint(candidates);
+          consecutiveNoGainQueries = before === after
+            ? consecutiveNoGainQueries + 1
+            : 0;
+          const updated = candidates.find(
+            (candidate) => normalizeComparable(candidate.full_name) === normalizeComparable(person.full_name),
+          );
+          if (updated?.work_email && (updated.metadata.tenchat_url || updated.metadata.telegram_url)) {
+            break;
+          }
         }
       }
     }
@@ -1275,7 +1376,11 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
         official_pages_fetched: officialPagesFetched,
         aborted_requests: 0,
         elapsed_ms: Date.now() - startedAt,
-        stop_reason: candidates.length ? "person_found" : "lpr_not_found",
+        stop_reason: hasSufficientPersonBundle(candidates)
+          ? "contact_bundle_sufficient"
+          : candidates.length
+            ? "diminishing_returns"
+            : "lpr_not_found",
         trace: {
           queries_executed: queriesExecuted,
           sources_checked: unique(sourcesChecked),

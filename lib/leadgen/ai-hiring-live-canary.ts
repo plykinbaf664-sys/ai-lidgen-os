@@ -51,6 +51,9 @@ export type AiHiringCanaryItem = {
   officialWebsite: string | null;
   icpResult: SegmentMatch | "NOT_CHECKED";
   contactsFound: number;
+  contactEmail: string | null;
+  contactKind: string | null;
+  contactSourceUrl: string | null;
   ready: boolean;
 };
 
@@ -185,7 +188,48 @@ function rejectedItem(input: {
     officialWebsite: input.evaluation?.company?.website ?? null,
     icpResult: "NOT_CHECKED",
     contactsFound: 0,
+    contactEmail: null,
+    contactKind: null,
+    contactSourceUrl: null,
     ready: false,
+  };
+}
+
+function compactWebsiteText(html: string | null) {
+  if (!html) return null;
+  return html
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/giu, " ")
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/giu, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&(?:nbsp|amp|quot|#39);/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 1_500) || null;
+}
+
+function requireExplicitSegmentIdentity(
+  result: ReturnType<typeof verifyCompanySegment>,
+  verticalId: LeadgenVerticalId,
+  companyName: string,
+  websiteText: string | null,
+) {
+  if (result.match !== "MATCH") return result;
+  const identity = `${companyName} ${websiteText ?? ""}`
+    .toLocaleLowerCase("ru-RU")
+    .replace(/ё/g, "е");
+  const profile = getVerticalProfile(verticalId);
+  const explicitTerms = [...profile.industries, ...profile.companyTypes]
+    .map((term) => term.toLocaleLowerCase("ru-RU").replace(/ё/g, "е").trim())
+    .filter((term) => term.length >= 4);
+  if (explicitTerms.some((term) => identity.includes(term))) return result;
+  return {
+    ...result,
+    match: "UNCERTAIN" as const,
+    confidence: Math.min(result.confidence, 59),
+    evidence: [
+      ...result.evidence,
+      "Не подтверждён явный тип компании выбранного сегмента.",
+    ].slice(0, 5),
   };
 }
 
@@ -288,18 +332,28 @@ export async function runAiHiringLiveCanary({
         continue;
       }
       officialDomainsConfirmed += 1;
-      const segment = verifyCompanySegment({
+      const officialWebsiteText = compactWebsiteText(
+        await fetchText(
+          evaluation.company.website,
+          trackedFetch,
+          runController.signal,
+        ),
+      );
+      const segment = requireExplicitSegmentIdentity(verifyCompanySegment({
         selectedSegment: verticalId,
         companyName: evaluation.company.name,
-        companySegment: null,
-        industry: null,
+        companySegment: officialWebsiteText,
+        industry: officialWebsiteText,
         officialWebsite: evaluation.company.website,
         signalTitle: vacancy.title,
         signalSummary: evaluation.signal.signalSummary,
         signalEvidence: evaluation.signal.evidence,
         discoveryQuery: "direct AI automation hiring",
-      });
+      }), verticalId, evaluation.company.name, officialWebsiteText);
       let contactsFound = 0;
+      let contactEmail: string | null = null;
+      let contactKind: string | null = null;
+      let contactSourceUrl: string | null = null;
       if (segment.match === "MATCH" && contactChecks < MAX_CONTACT_CHECKS) {
         contactChecks += 1;
         const emailResult = await runAbortableOperation({
@@ -322,6 +376,9 @@ export async function runAiHiringLiveCanary({
           }),
         });
         contactsFound = emailResult?.bestEmail ? 1 : 0;
+        contactEmail = emailResult?.bestEmail?.email ?? null;
+        contactKind = emailResult?.bestEmail?.kind ?? null;
+        contactSourceUrl = emailResult?.bestEmail?.sourceUrl ?? null;
         network.requests += emailResult?.pages.length ?? 0;
       }
       accepted.push({
@@ -336,6 +393,9 @@ export async function runAiHiringLiveCanary({
         officialWebsite: evaluation.company.website,
         icpResult: segment.match,
         contactsFound,
+        contactEmail,
+        contactKind,
+        contactSourceUrl,
         ready: segment.match === "MATCH" && contactsFound > 0,
       });
     }

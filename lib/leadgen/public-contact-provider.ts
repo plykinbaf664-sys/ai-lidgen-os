@@ -880,7 +880,7 @@ function getExpandedPersonEmailQueries(
     companyDomain ? `site:${companyDomain} ${quotedName}` : "",
     `${quotedName} ${quotedCompany} \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u044b`,
     role ? `${quotedName} ${role} ${quotedCompany}` : "",
-  ].filter(Boolean);
+  ].filter(Boolean).slice(0, 2);
 }
 
 function getCompanyEmailQueries(input: ContactProviderInput): string[] {
@@ -1048,9 +1048,9 @@ function getPersonChannelQueries(
 
   return [
     `${quotedName} ${quotedCompany} email OR e-mail`,
+    `${quotedName} ${quotedCompany} TenChat`,
     `${quotedName} ${quotedCompany} Telegram OR t.me`,
     `${quotedName} ${quotedCompany} VK OR vk.com`,
-    `${quotedName} ${quotedCompany} LinkedIn OR linkedin.com/in`,
     role ? `${quotedName} ${role} ${quotedCompany}` : "",
   ].filter(Boolean);
 }
@@ -1145,6 +1145,10 @@ function formatRejectedEmail(email: RejectedPublicEmail): string {
 function getSocialKindFromUrl(url: string): string | null {
   const normalizedUrl = url.toLowerCase();
 
+  if (normalizedUrl.includes("tenchat.ru/")) {
+    return "tenchat";
+  }
+
   if (
     normalizedUrl.includes("linkedin.com/in/") ||
     normalizedUrl.includes("linkedin.com/pub/")
@@ -1196,6 +1200,11 @@ function isLikelyPersonalSocialUrl({
 
   if (kind === "linkedin") {
     return url.toLowerCase().includes("linkedin.com/in/");
+  }
+
+  if (kind === "tenchat") {
+    const username = segments[0]?.toLowerCase() ?? "";
+    return segments.length >= 1 && username.length >= 2 && username !== "company";
   }
 
   if (kind === "telegram") {
@@ -1716,14 +1725,28 @@ export class PublicContactProvider implements ContactProvider {
     ]);
 
     for (const [personIndex, person] of people.entries()) {
-      const shouldSearchPersonEmail = !person.work_email && personIndex < 2;
+      const evidencedPersonEmail = emails.find((email) =>
+        isVerifiedSendableEmail(email) &&
+        emailLocalMatchesPerson(email.email, person.full_name),
+      ) ?? null;
+      const shouldSearchPersonEmail = !person.work_email && !evidencedPersonEmail && personIndex < 2;
       if (shouldSearchPersonEmail) {
         strategiesAttempted.push("person_email_yandex_queries");
         queriesExecuted.push(...getExpandedPersonEmailQueries(input, person));
       }
-      const publicEmail = shouldSearchPersonEmail
-        ? await findPublicPersonEmail({ input, person, searchProvider })
-        : null;
+      const publicEmail = evidencedPersonEmail
+        ? {
+            email: evidencedPersonEmail.email,
+            sourceUrl: evidencedPersonEmail.source_url,
+            sourceLabel: "official company website",
+            context: evidencedPersonEmail.context,
+            classification: evidencedPersonEmail.classification,
+            confidenceScore: evidencedPersonEmail.confidence_score,
+            queriesExecuted: [] as string[],
+          }
+        : shouldSearchPersonEmail
+          ? await findPublicPersonEmail({ input, person, searchProvider })
+          : null;
       if (publicEmail) {
         queriesExecuted.push(...publicEmail.queriesExecuted);
       }

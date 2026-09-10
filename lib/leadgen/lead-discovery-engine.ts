@@ -5,21 +5,17 @@ import {
 } from "@/lib/leadgen/company-identity";
 import { leadgenProductionConfig } from "@/lib/leadgen/production-config";
 import { normalizeDiscoverySourceKey } from "@/lib/leadgen/discovery-v2-config";
-import { ContactEnrichmentEngine } from "@/lib/leadgen/contact-enrichment-engine";
 import { resolveOfficialCompanyWebsite } from "@/lib/leadgen/public-contact-provider";
 import { generateFirstEmailV2 } from "@/lib/leadgen/first-email-generator";
 import { isEvidenceOnlyContact } from "@/lib/leadgen/contact-channel-ranking";
 import {
-  attachContactIntelligence,
-  createUnresolvedContactIntelligence,
-  evaluateAdaptiveContactIntelligence,
   isConfirmedOutreachEmail,
   isContactReadyPerson,
 } from "@/lib/leadgen/adaptive-contact-intelligence";
+import { researchCompany, type CompanyResearchResult } from "@/lib/leadgen/company-research-agent";
 import { discoverDecisionMaker } from "@/lib/leadgen/decision-maker-discovery";
 import { prioritizeLead } from "@/lib/leadgen/lead-prioritization-engine";
 import { assessOpportunity } from "@/lib/leadgen/opportunity-intelligence";
-import { PeopleDiscoveryEngine } from "@/lib/leadgen/people-discovery-engine";
 import type { SearchProvider } from "@/lib/leadgen/search/search-provider";
 import type { SignalSearchMarket } from "@/lib/leadgen/signals/query-builder";
 import { interpretSignal } from "@/lib/leadgen/signals/signal-interpreter";
@@ -123,6 +119,7 @@ const PEOPLE_DISCOVERY_TIMEOUT_MS = Math.min(
   25_000,
 );
 const CONTACT_ENRICHMENT_TIMEOUT_MS = 40_000;
+const COMPANY_RESEARCH_TIMEOUT_MS = PEOPLE_DISCOVERY_TIMEOUT_MS + CONTACT_ENRICHMENT_TIMEOUT_MS;
 const DISCOVERY_DEADLINE_RESERVE_MS = 5_000;
 const DISCOVERY_SEARCH_BUDGET_MS = 105_000;
 // Keep enough headroom for an in-flight enrichment batch to settle before the
@@ -1336,8 +1333,6 @@ export async function runLeadDiscoveryEngine({
       index,
     }),
   );
-  const peopleDiscoveryEngine = new PeopleDiscoveryEngine();
-  const contactEnrichmentEngine = new ContactEnrichmentEngine();
   const knownEmailSet = new Set(
     knownRecipientEmails.map((email) => email.trim().toLowerCase()),
   );
@@ -1531,28 +1526,6 @@ export async function runLeadDiscoveryEngine({
 
         const decisionMaker = decisionMakerRecommendations[index];
         const lprStartedAt = Date.now();
-        const peopleDiscovery = lprDeferred
-          ? getDeferredPeopleDiscoveryResult()
-          : await resolveBeforeDeadline({
-              operation: (signal) => peopleDiscoveryEngine.discoverPeople({
-                company: baseCompany,
-                decisionMaker,
-                signal,
-              }),
-              deadlineAt,
-              timeoutMs: PEOPLE_DISCOVERY_TIMEOUT_MS,
-              fallback: getDeferredPeopleDiscoveryResult(),
-            });
-        lprResearchMs += Date.now() - lprStartedAt;
-        audit.lpr_latency_ms = Date.now() - lprStartedAt;
-        audit.lpr_found = Boolean(peopleDiscovery.primary_person);
-        audit.lpr_role = peopleDiscovery.primary_person?.role_title ?? null;
-        audit.lpr_evidence = (peopleDiscovery.primary_person?.evidence ?? []).slice(0, 5);
-        audit.lpr_status = peopleDiscovery.search_status;
-        const company = attachPeopleDiscoveryToCompany({
-          ...baseCompany,
-          metadata: { ...baseCompany.metadata, segment_verification: verification },
-        }, peopleDiscovery);
         const primarySignal = getPrimarySignal(record.candidate);
         if (!primarySignal) {
           audit.primary_loss_reason = "PRIMARY_SIGNAL_MISSING_AFTER_QUALIFICATION";
@@ -1562,41 +1535,80 @@ export async function runLeadDiscoveryEngine({
         }
         const lead = buildLead({
           campaign,
-          company,
+          company: baseCompany,
           primarySignal,
           candidate: record.candidate,
           decisionMaker,
           createdAt,
         });
-        const enrichedRecord: EnrichedLeadRecord = {
+        const signals = buildSignals({
+          campaign,
+          company: baseCompany,
           lead,
+          candidate: record.candidate,
+          createdAt,
+        });
+        const research = lprDeferred
+          ? null
+          : await resolveBeforeDeadline<CompanyResearchResult | null>({
+              operation: (signal) => researchCompany(
+                baseCompany.company_name,
+                String(baseCompany.metadata.official_website),
+                {
+                  type: primarySignal.signal_type,
+                  title: primarySignal.signal_title,
+                  detail: primarySignal.signal_detail,
+                  sourceUrl: primarySignal.source_url,
+                  confidence: primarySignal.confidence_score,
+                },
+                {
+                  campaign,
+                  company: baseCompany,
+                  lead,
+                  signals,
+                  decisionMaker,
+                  knownPersonKeys,
+                  searchProvider,
+                  createdAt,
+                  signal,
+                },
+              ),
+              deadlineAt,
+              timeoutMs: COMPANY_RESEARCH_TIMEOUT_MS,
+              fallback: null,
+            });
+        const peopleDiscovery = research?.peopleDiscovery ?? getDeferredPeopleDiscoveryResult();
+        lprResearchMs += Date.now() - lprStartedAt;
+        audit.lpr_latency_ms = research?.bundle.metrics.lprMs ?? Date.now() - lprStartedAt;
+        audit.lpr_found = Boolean(peopleDiscovery.primary_person);
+        audit.lpr_role = peopleDiscovery.primary_person?.role_title ?? null;
+        audit.lpr_evidence = (peopleDiscovery.primary_person?.evidence ?? []).slice(0, 5);
+        audit.lpr_status = peopleDiscovery.search_status;
+        const company = attachPeopleDiscoveryToCompany({
+          ...baseCompany,
+          metadata: {
+            ...baseCompany.metadata,
+            segment_verification: verification,
+            ...(research ? { company_research: research.bundle } : {}),
+          },
+        }, peopleDiscovery);
+        const enrichedRecord: EnrichedLeadRecord = {
+          lead: { ...lead, company_id: company.id },
           company,
           candidate: record.candidate,
           decisionMaker,
           peopleDiscovery,
-          signals: buildSignals({ campaign, company, lead, candidate: record.candidate, createdAt }),
+          signals,
         };
         const emailStartedAt = Date.now();
         audit.email_attempted = true;
-        const contactResult = await resolveBeforeDeadline({
-          operation: (signal) => contactEnrichmentEngine.enrichContacts({
-            campaign,
-            company,
-            lead,
-            signals: enrichedRecord.signals,
-            decisionMaker,
-            peopleDiscovery,
-            createdAt,
-            signal,
-          }),
-          deadlineAt,
-          timeoutMs: CONTACT_ENRICHMENT_TIMEOUT_MS,
-          fallback: null,
-        });
-        emailResolutionMs += Date.now() - emailStartedAt;
-        audit.email_latency_ms = Date.now() - emailStartedAt;
+        const contactResult = research?.contactDiscovery ?? null;
+        emailResolutionMs += research?.bundle.metrics.contactMs ?? Date.now() - emailStartedAt;
+        audit.email_latency_ms = research?.bundle.metrics.contactMs ?? Date.now() - emailStartedAt;
         if (!contactResult) {
-          audit.primary_loss_reason = "EMAIL_RESOLUTION_TIMEOUT";
+          audit.primary_loss_reason = lprDeferred
+            ? "NO_OFFICIAL_DOMAIN"
+            : "EMAIL_RESOLUTION_TIMEOUT";
           deepSkipReasons.contact_enrichment_timeout =
             (deepSkipReasons.contact_enrichment_timeout ?? 0) + 1;
           addRejectionSample(rejectionSamples, {
@@ -1607,26 +1619,7 @@ export async function runLeadDiscoveryEngine({
           });
           return null;
         }
-        const intelligence = await resolveBeforeDeadline({
-          operation: async (signal) => {
-            if (signal.aborted) throw signal.reason;
-            return evaluateAdaptiveContactIntelligence({
-            company,
-            decisionMaker,
-            peopleDiscovery,
-            contactDiscovery: contactResult,
-            knownPersonKeys,
-            });
-          },
-          deadlineAt,
-          timeoutMs: 5_000,
-          fallback: createUnresolvedContactIntelligence({
-            decisionMaker,
-            peopleDiscovery,
-            stopReason: "contact_evaluation_deadline_reached",
-          }),
-        });
-        const result = attachContactIntelligence(contactResult, intelligence);
+        const result = contactResult;
       audit.company_domain = result.resolved_official_domain ?? audit.company_domain;
       audit.domains_checked = [...new Set([
         ...audit.domains_checked,

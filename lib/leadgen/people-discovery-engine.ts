@@ -17,6 +17,12 @@ import {
 export type PeopleDiscoveryInput = {
   company: LeadgenCompany;
   decisionMaker: DecisionMakerProfile;
+  researchPlan?: {
+    primaryRoles: string[];
+    alternativeRoles: string[][];
+    queries: string[];
+  };
+  bypassCache?: boolean;
   signal?: AbortSignal;
 };
 
@@ -67,17 +73,39 @@ export class PeopleDiscoveryEngine {
   async discoverPeople({
     company,
     decisionMaker,
+    researchPlan,
+    bypassCache,
     signal,
   }: PeopleDiscoveryInput): Promise<PeopleDiscoveryResult> {
     const rolePlan = resolveBoundedLprRoles(decisionMaker);
+    const primaryRoles = researchPlan?.primaryRoles.length
+      ? researchPlan.primaryRoles
+      : rolePlan.primary.aliases;
+    const alternativeRoles = researchPlan?.alternativeRoles.length
+      ? researchPlan.alternativeRoles.slice(0, 2)
+      : rolePlan.alternatives.map((role) => role.aliases);
+    const plannedDecisionMaker = researchPlan?.primaryRoles.length
+      ? {
+          ...decisionMaker,
+          primary_persona: primaryRoles[0],
+          alternative_personas: alternativeRoles
+            .map((roles) => roles[0])
+            .filter(Boolean),
+          search_keywords: [
+            ...new Set([...primaryRoles, ...alternativeRoles.flat()]),
+          ],
+        }
+      : applyLprRolePlan(decisionMaker, rolePlan);
     const providerResults = await this.providerManager.findPeople({
       company,
-      decisionMaker: applyLprRolePlan(decisionMaker, rolePlan),
-      searchKeywords: rolePlan.primary.aliases,
+      decisionMaker: plannedDecisionMaker,
+      searchKeywords: primaryRoles,
       roleSearchPlan: {
-        primary: rolePlan.primary.aliases,
-        alternatives: rolePlan.alternatives.map((role) => role.aliases),
+        primary: primaryRoles,
+        alternatives: alternativeRoles,
       },
+      plannedQueries: researchPlan?.queries.slice(0, 12),
+      bypassCache,
       signal,
     });
 
@@ -92,6 +120,66 @@ export class PeopleDiscoveryEngine {
     }
 
     const providersUsed = providerResults.map((result) => result.provider_label);
+    const researchMetrics = {
+      search_attempts: providerResults.reduce(
+        (sum, result) => sum + (result.metrics?.search_attempts ?? 0),
+        0,
+      ),
+      official_pages_fetched: providerResults.reduce(
+        (sum, result) => sum + (result.metrics?.official_pages_fetched ?? 0),
+        0,
+      ),
+      aborted_requests: providerResults.reduce(
+        (sum, result) => sum + (result.metrics?.aborted_requests ?? 0),
+        0,
+      ),
+      elapsed_ms: Math.max(
+        0,
+        ...providerResults.map((result) => result.metrics?.elapsed_ms ?? 0),
+      ),
+      stop_reason:
+        providerResults.find((result) => result.candidates.length > 0)?.metrics
+          ?.stop_reason ??
+        providerResults.at(-1)?.metrics?.stop_reason ??
+        "provider_exhausted",
+      queries_executed: [
+        ...new Set(
+          providerResults.flatMap(
+            (result) =>
+              result.metrics?.trace?.queries_executed.map((item) => item.query) ??
+              [],
+          ),
+        ),
+      ].slice(0, 16),
+      sources_checked: [
+        ...new Set(
+          providerResults.flatMap(
+            (result) => result.metrics?.trace?.sources_checked ?? [],
+          ),
+        ),
+      ].slice(0, 20),
+      search_results_seen: providerResults.reduce(
+        (sum, result) => sum + (result.metrics?.trace?.queries_executed.reduce(
+          (querySum, query) => querySum + query.result_count,
+          0,
+        ) ?? 0),
+        0,
+      ),
+      rejected_candidates: providerResults.reduce<Record<string, number>>(
+        (totals, result) => {
+          for (const [reason, count] of Object.entries(
+            result.metrics?.trace?.rejected_candidates ?? {},
+          )) {
+            totals[reason] = (totals[reason] ?? 0) + count;
+          }
+          return totals;
+        },
+        {},
+      ),
+      final_failure_reason: providerResults.find(
+        (result) => result.metrics?.trace?.final_failure_reason,
+      )?.metrics?.trace?.final_failure_reason ?? null,
+    };
     const providerDiagnostics = providerResults.flatMap((result) =>
       (result.diagnostics ?? []).map((diagnostic) => ({
         provider_id: result.provider_id,
@@ -120,7 +208,7 @@ export class PeopleDiscoveryEngine {
     );
     const ranking = rankPersonCandidates({
       candidates,
-      decisionMaker,
+      decisionMaker: plannedDecisionMaker,
     });
 
     if (candidates.length === 0) {
@@ -135,6 +223,7 @@ export class PeopleDiscoveryEngine {
             : "no_person_found",
         providers_used: providersUsed,
         provider_diagnostics: providerDiagnostics,
+        research_metrics: researchMetrics,
       };
     }
 
@@ -151,6 +240,7 @@ export class PeopleDiscoveryEngine {
       search_status: "person_found",
       providers_used: providersUsed,
       provider_diagnostics: providerDiagnostics,
+      research_metrics: researchMetrics,
     };
   }
 }

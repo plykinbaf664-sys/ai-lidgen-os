@@ -672,6 +672,18 @@ export type PeopleDiscoveryResult = {
   search_status: PeopleDiscoverySearchStatus;
   providers_used: string[];
   provider_diagnostics?: ProviderDiagnostic[];
+  research_metrics?: {
+    search_attempts: number;
+    official_pages_fetched: number;
+    aborted_requests: number;
+    elapsed_ms: number;
+    stop_reason: string;
+    queries_executed: string[];
+    sources_checked: string[];
+    search_results_seen: number;
+    rejected_candidates: Record<string, number>;
+    final_failure_reason: string | null;
+  };
 };
 
 export type PeopleProviderInput = {
@@ -682,6 +694,7 @@ export type PeopleProviderInput = {
     primary: string[];
     alternatives: string[][];
   };
+  plannedQueries?: string[];
   bypassCache?: boolean;
   signal?: AbortSignal;
 };

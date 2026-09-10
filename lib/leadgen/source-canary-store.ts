@@ -34,6 +34,20 @@ export async function saveSourceCanaryMetrics(metrics: SourceCanaryMetrics) {
   });
 }
 
+export async function cleanupSourceCanaryMetrics() {
+  return mutateLocalTable(TABLE, (rows) => {
+    const active = rows
+      .filter((row) => isActive(row, Date.now()))
+      .sort((left, right) =>
+        Date.parse(String(right.createdAt)) - Date.parse(String(left.createdAt)),
+      )
+      .slice(0, MAX_ROWS);
+    const removed = rows.length - active.length;
+    rows.splice(0, rows.length, ...active);
+    return removed;
+  });
+}
+
 export async function getLatestSourceCanaryMetrics() {
   const rows = await readLocalTable<SourceCanaryMetrics & Record<string, unknown>>(TABLE);
   const active = rows

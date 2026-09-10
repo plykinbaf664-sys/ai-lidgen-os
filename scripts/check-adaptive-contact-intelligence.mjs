@@ -221,7 +221,7 @@ assert.notEqual(large.primary_persona, small.primary_persona);
 const discoveryEngineSource = await fs.readFile("lib/leadgen/lead-discovery-engine.ts", "utf8");
 assert.match(discoveryEngineSource, /official_website_status === "confirmed"/);
 assert.match(discoveryEngineSource, /people discovery must continue on that domain/i);
-assert.match(discoveryEngineSource, /peopleDiscoveryEngine\.discoverPeople/);
-assert.match(discoveryEngineSource, /peopleDiscovery,\s*createdAt/);
+assert.match(discoveryEngineSource, /researchCompany\(/);
+assert.match(discoveryEngineSource, /research\?\.peopleDiscovery/);
 
 console.log("Adaptive Contact Intelligence checks: OK");

@@ -1636,7 +1636,7 @@ export function EmailOutreachQueue({
     <section className="panel outreach-queue-panel">
       <div className="table-toolbar outreach-operations-header">
         <div>
-          <p className="eyebrow">Email outreach</p>
+          <p className="eyebrow">Рассылка</p>
           <div className="outreach-title-row">
             <h2>Письма</h2>
             {readiness ? (
@@ -1648,11 +1648,6 @@ export function EmailOutreachQueue({
                 {readiness.email_test_mode
                   ? "Тестовый режим"
                   : "Реальная отправка"}
-              </span>
-            ) : null}
-            {deliveryStorageMode === "local" ? (
-              <span className="outreach-mode-badge test">
-                Локальная очередь · без Supabase
               </span>
             ) : null}
           </div>

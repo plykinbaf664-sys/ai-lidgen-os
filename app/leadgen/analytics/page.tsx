@@ -47,7 +47,7 @@ export default async function LeadgenAnalyticsPage({
 }) {
   const [snapshot, campaigns] = await Promise.all([
     getLeadgenAnalyticsSnapshot(),
-    getRecentCampaigns(100, { includeAnalyticsDimensions: true }).catch(() => []),
+    getRecentCampaigns(100).catch(() => []),
   ]);
   const filters = await searchParams;
   const periodDays = filters.period && filters.period !== "all" ? Number(filters.period) : null;
@@ -81,7 +81,7 @@ export default async function LeadgenAnalyticsPage({
   return (
     <main className="leadgen-app analytics-page">
       <header className="leadgen-product-header analytics-hero">
-        <div>
+        <div className="leadgen-hero-copy">
           <span className="leadgen-product-name">Leadgen OS · Аналитика</span>
           <h1>Аналитика и выводы</h1>
           <p>
@@ -89,7 +89,10 @@ export default async function LeadgenAnalyticsPage({
             и строятся только по агрегированным данным.
           </p>
         </div>
-        <Link className="button secondary" href="/leadgen">Вернуться к кампаниям</Link>
+        <div className="leadgen-header-aside analytics-header-aside">
+          <div className="leadgen-orbit" aria-hidden="true"><span /><span /><span /></div>
+          <Link className="button secondary leadgen-analytics-link" href="/leadgen">Вернуться к кампаниям</Link>
+        </div>
       </header>
 
       <form className="panel analytics-filters">

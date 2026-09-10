@@ -68,6 +68,7 @@ type RunLeadgenRequestBody = Partial<CampaignInput> & {
   market?: string;
   dryRun?: boolean;
   campaignId?: string;
+  target?: number;
 };
 
 export const maxDuration = 300;
@@ -285,6 +286,7 @@ async function readRunRequest(request: Request): Promise<{
   market: SignalSearchMarket;
   dryRun: boolean;
   campaignId: string | null;
+  requestedTarget: number | null;
 }> {
   const body = (await request.json().catch(() => ({}))) as RunLeadgenRequestBody;
   const market =
@@ -312,6 +314,10 @@ async function readRunRequest(request: Request): Promise<{
       typeof body.campaignId === "string" && body.campaignId.trim()
         ? body.campaignId.trim()
         : null,
+    requestedTarget:
+      Number.isInteger(body.target) && Number(body.target) >= 1 && Number(body.target) <= 50
+        ? Number(body.target)
+        : null,
   };
 }
 export async function POST(request: Request) {
@@ -323,6 +329,7 @@ export async function POST(request: Request) {
       market,
       dryRun,
       campaignId,
+      requestedTarget,
     } =
       await readRunRequest(request);
     const requestedRunKey = campaignId
@@ -381,6 +388,9 @@ export async function POST(request: Request) {
     ).size;
     const storedStats =
       existingCampaign?.campaign.production_discovery_stats ?? null;
+    const leadTarget = existingCampaign
+      ? storedStats?.email_ready_target ?? requestedTarget ?? leadgenProductionConfig.campaignEmailTarget
+      : requestedTarget ?? leadgenProductionConfig.campaignEmailTarget;
     const previousStats = storedStats
       ? {
           ...storedStats,
@@ -390,12 +400,11 @@ export async function POST(request: Request) {
           new_unique_emails: storedConfirmedEmails,
           new_unique_companies: storedConfirmedEmails,
           email_ready_companies: storedConfirmedEmails,
-          email_ready_target: leadgenProductionConfig.campaignEmailTarget,
+          email_ready_target: leadTarget,
           contact_ready_people: storedContactReadyEmails,
-          target_reached: storedConfirmedEmails >= leadgenProductionConfig.campaignEmailTarget,
+          target_reached: storedConfirmedEmails >= leadTarget,
         }
       : null;
-    const leadTarget = leadgenProductionConfig.campaignEmailTarget;
     const alreadyFound = existingCampaign
       ? storedConfirmedEmails
       : previousStats?.email_ready_companies ?? previousStats?.new_unique_emails ?? 0;

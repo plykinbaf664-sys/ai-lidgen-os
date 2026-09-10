@@ -4,7 +4,7 @@ import { saveImportPreview } from "@/lib/leadgen/contact-import-store";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
 import {
   isAuthorizedLeadSourceRequest,
-  leadSourceContoursEnabled,
+  leadSourceOriginEnabled,
 } from "@/lib/leadgen/lead-source-security";
 import { getKnownRecipientEmails } from "@/lib/leadgen/outreach-storage";
 
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
       previewId: stored.previewId,
       expiresAt: stored.expiresAt,
       alreadyImported: stored.alreadyImported,
-      productionEnabled: leadSourceContoursEnabled(),
+      productionEnabled: leadSourceOriginEnabled("IMPORTED"),
       summary: preview.summary,
       rows: preview.rows.slice(0, 50).map((row) => ({
         rowNumber: row.rowNumber,

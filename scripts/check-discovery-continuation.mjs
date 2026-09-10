@@ -125,7 +125,7 @@ assert.match(engine, /prefilterCandidate/);
 assert.match(engine, /getCandidateResearchPriority/);
 assert.match(engine, /discoveryResearchConcurrency/);
 assert.match(dashboard, /discovery\.unique_candidates/);
-assert.match(dashboard, /discovery\.deep_research_count/);
+assert.match(dashboard, /discovery\.prefiltered_candidates/);
 assert.match(dashboard, /campaignDetails=\{campaignDetails\}/);
 
 console.log(

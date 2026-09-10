@@ -1,6 +1,5 @@
 import "server-only";
 
-import { getImportMetrics } from "@/lib/leadgen/contact-import-store";
 import { readLocalTable, mutateLocalTable } from "@/lib/leadgen/local-database";
 import { listLocalOutreachEntries } from "@/lib/leadgen/local-outreach-store";
 import { getRecentCampaigns } from "@/lib/leadgen/storage";
@@ -10,6 +9,7 @@ const REFRESH_INTERVAL_MS = 48 * 60 * 60 * 1_000;
 const SNAPSHOT_TABLE = "leadgen_analytics_snapshots";
 
 export type LeadgenAnalyticsSnapshot = {
+  schemaVersion: 2;
   id: string;
   generatedAt: string;
   nextRefreshAt: string;
@@ -59,6 +59,15 @@ function canaryConfidence(sampleSize: number, candidates: number) {
   if (sampleSize < 20 || candidates < 3) return "INSUFFICIENT_DATA" as const;
   if (sampleSize < 50 || candidates < 10) return "LOW" as const;
   return "USABLE" as const;
+}
+
+function snapshotPayload(snapshot: LeadgenAnalyticsSnapshot) {
+  return JSON.stringify({
+    metrics: snapshot.metrics,
+    sourceCanaries: snapshot.sourceCanaries,
+    recommendations: snapshot.recommendations,
+    analysisMode: snapshot.analysisMode,
+  });
 }
 
 function deterministicRecommendations(
@@ -161,12 +170,15 @@ export async function getLeadgenAnalyticsSnapshot(force = false) {
   const latest = [...stored].sort(
     (left, right) => Date.parse(right.generatedAt) - Date.parse(left.generatedAt),
   )[0];
-  if (!force && latest && Date.parse(latest.nextRefreshAt) > Date.now()) return latest;
+  if (
+    !force &&
+    latest?.schemaVersion === 2 &&
+    Date.parse(latest.nextRefreshAt) > Date.now()
+  ) return latest;
 
-  const [campaigns, outreach, imports, canaries] = await Promise.all([
+  const [campaigns, outreach, canaries] = await Promise.all([
     getRecentCampaigns(100).catch(() => []),
     listLocalOutreachEntries().catch(() => []),
-    getImportMetrics().catch(() => ({ batches: 0, rows: 0, readyForEnrichment: 0 })),
     getLatestSourceCanaryMetrics().catch(() => ({ aiHiring: null, imported: null })),
   ]);
   const initialSent = outreach.filter(
@@ -188,14 +200,21 @@ export async function getLeadgenAnalyticsSnapshot(force = false) {
     replied,
     replyRate: initialSent > 0 ? Math.round((replied / initialSent) * 1_000) / 10 : 0,
     origins: {
-      discovery: campaigns.reduce((sum, campaign) => sum + campaign.companies_count, 0),
-      aiHiring: 0,
-      imported: imports.rows,
+      discovery: campaigns
+        .filter((campaign) => (campaign.origin ?? "DISCOVERY") === "DISCOVERY")
+        .reduce((sum, campaign) => sum + campaign.companies_count, 0),
+      aiHiring: campaigns
+        .filter((campaign) => campaign.origin === "AI_HIRING")
+        .reduce((sum, campaign) => sum + campaign.companies_count, 0),
+      imported: campaigns
+        .filter((campaign) => campaign.origin === "IMPORTED")
+        .reduce((sum, campaign) => sum + campaign.companies_count, 0),
     },
   };
   const aiRecommendations = await generateAiRecommendations(metrics).catch(() => null);
   const generatedAt = new Date();
   const snapshot: LeadgenAnalyticsSnapshot = {
+    schemaVersion: 2,
     id: `analytics-${generatedAt.toISOString()}`,
     generatedAt: generatedAt.toISOString(),
     nextRefreshAt: new Date(generatedAt.getTime() + REFRESH_INTERVAL_MS).toISOString(),
@@ -220,6 +239,20 @@ export async function getLeadgenAnalyticsSnapshot(force = false) {
     analysisMode: aiRecommendations ? "ai_compact" : "code",
   };
   await mutateLocalTable(SNAPSHOT_TABLE, (rows) => {
+    rows.splice(
+      0,
+      rows.length,
+      ...rows.filter((row) => row.schemaVersion === 2),
+    );
+    const latestIndex = rows.reduce(
+      (best, row, index) => Date.parse(String(row.generatedAt)) > Date.parse(String(rows[best]?.generatedAt ?? 0)) ? index : best,
+      0,
+    );
+    const latestStored = rows[latestIndex] as LeadgenAnalyticsSnapshot | undefined;
+    if (latestStored && snapshotPayload(latestStored) === snapshotPayload(snapshot)) {
+      rows[latestIndex] = snapshot;
+      return;
+    }
     rows.push(snapshot);
     rows.sort(
       (left, right) => Date.parse(String(right.generatedAt)) - Date.parse(String(left.generatedAt)),

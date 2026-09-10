@@ -140,9 +140,11 @@ const FREE_EMAIL_DOMAINS = new Set([
   "outlook.com",
   "hotmail.com",
 ]);
+type MxStatus = "present" | "missing" | "unavailable";
+
 type MxCacheEntry = {
   expiresAt: number;
-  value: Promise<boolean>;
+  value: MxStatus;
 };
 
 const MX_CACHE_TTL_MS = 6 * 60 * 60 * 1_000;
@@ -436,7 +438,37 @@ function kindScore(kind: EmailCandidateKind, priority: EmailDiscoveryInput["emai
   return base + (priorityIndex >= 0 ? (priority!.length - priorityIndex) * 8 : 0);
 }
 
-async function hasMx(domain: string): Promise<boolean> {
+async function resolveMxOverHttps(
+  domain: string,
+  parentSignal?: AbortSignal,
+): Promise<MxStatus> {
+  return runAbortableOperation({
+    timeoutMs: 4_000,
+    parentSignal,
+    fallback: "unavailable" as const,
+    operation: async (signal) => {
+      const response = await fetch(
+        `https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(domain)}&type=MX`,
+        {
+          headers: { accept: "application/dns-json" },
+          signal,
+        },
+      );
+      if (!response.ok) return "unavailable";
+      const payload = (await response.json()) as {
+        Status?: number;
+        Answer?: Array<{ type?: number; data?: string }>;
+      };
+      if (payload.Status === 3) return "missing";
+      if (payload.Status !== 0) return "unavailable";
+      return payload.Answer?.some((answer) => answer.type === 15 && answer.data)
+        ? "present"
+        : "missing";
+    },
+  });
+}
+
+async function getMxStatus(domain: string, signal?: AbortSignal): Promise<MxStatus> {
   const now = Date.now();
   const cached = mxCache.get(domain);
   if (cached && cached.expiresAt > now) {
@@ -446,11 +478,34 @@ async function hasMx(domain: string): Promise<boolean> {
   }
   if (cached) mxCache.delete(domain);
   pruneMxCache(now);
-  const value = resolveMx(domain)
-    .then((records) => records.length > 0)
-    .catch(() => false);
-  mxCache.set(domain, { value, expiresAt: now + MX_CACHE_TTL_MS });
+  let value: MxStatus;
+  try {
+    value = (await resolveMx(domain)).length > 0 ? "present" : "missing";
+  } catch (error) {
+    const code = error && typeof error === "object" && "code" in error
+      ? String(error.code)
+      : "";
+    // ENODATA/ENOTFOUND are authoritative negatives. Transport-level DNS
+    // failures are not: verify over HTTPS before rejecting a published email.
+    if (code === "ENODATA" || code === "ENOTFOUND") {
+      value = "missing";
+    } else {
+      throwIfAborted(signal);
+      value = await resolveMxOverHttps(domain, signal);
+      throwIfAborted(signal);
+    }
+  }
+  if (value !== "unavailable") {
+    mxCache.set(domain, { value, expiresAt: now + MX_CACHE_TTL_MS });
+  }
   return value;
+}
+
+export async function hasEmailDomainMx(
+  domain: string | null,
+  signal?: AbortSignal,
+): Promise<boolean> {
+  return Boolean(domain) && await getMxStatus(domain ?? "", signal) === "present";
 }
 
 function getSearchQueries(input: EmailDiscoveryInput): string[] {
@@ -612,15 +667,18 @@ export async function discoverCompanyEmails({
         getRegistrableDomain(domain) ===
           getRegistrableDomain(input.officialDomain) &&
         isTrustedAliasEvidence(candidate, input);
-      const mxExists = await hasMx(domain);
+      const mxStatus = await getMxStatus(domain, signal);
+      const mxExists = mxStatus === "present";
       const kind = classifyKind(candidate.email);
       const freeDomain = FREE_EMAIL_DOMAINS.has(domain);
       const validDomain =
         domainMatch || aliasPublishedOnOfficialSite || corporateParentDomain;
       const rejectionReason = !validDomain
         ? "domain_mismatch"
-        : !mxExists
+        : mxStatus === "missing"
           ? "mx_missing"
+          : mxStatus === "unavailable"
+            ? "mx_unavailable"
           : null;
       const sourceType = candidate.source_url &&
         isInternalUrl(candidate.source_url, input.officialDomain)

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { CampaignForm } from "@/components/leadgen/campaign-form";
 import {
   CampaignModeSelector,
@@ -95,17 +96,19 @@ export function LeadgenDashboard() {
 
   useEffect(() => {
     let active = true;
+    const requestedCampaignId = new URLSearchParams(window.location.search).get("campaign");
     fetch("/api/leadgen/campaigns")
       .then(async (response) => {
         const data = await readJson<CampaignsResponse>(response);
         if (!response.ok || !data.success) throw new Error(formatUnknownError(data.success ? null : data.error));
         if (!active) return;
         setCampaigns(data.campaigns);
-        if (data.campaigns[0]) {
-          setActiveCampaignId(data.campaigns[0].id);
-          setActiveCampaignName(data.campaigns[0].name);
+        const selectedCampaign = data.campaigns.find((item) => item.id === requestedCampaignId) ?? data.campaigns[0];
+        if (selectedCampaign) {
+          setActiveCampaignId(selectedCampaign.id);
+          setActiveCampaignName(selectedCampaign.name);
           const detailsResponse = await fetch(
-            `/api/leadgen/campaigns/details?id=${encodeURIComponent(data.campaigns[0].id)}`,
+            `/api/leadgen/campaigns/details?id=${encodeURIComponent(selectedCampaign.id)}`,
           );
           const details = await readJson<DetailsResponse>(detailsResponse);
           if (detailsResponse.ok && details.success && active) {
@@ -119,6 +122,12 @@ export function LeadgenDashboard() {
       .catch(() => active && setError("Не удалось загрузить кампании."))
       .finally(() => active && setIsHistoryLoading(false));
     return () => { active = false; };
+  }, []);
+
+  useEffect(() => {
+    const reloadFromHistory = () => window.location.reload();
+    window.addEventListener("popstate", reloadFromHistory);
+    return () => window.removeEventListener("popstate", reloadFromHistory);
   }, []);
 
   const runCampaignUntilComplete = useCallback(async (
@@ -223,6 +232,28 @@ export function LeadgenDashboard() {
     await runCampaignUntilComplete(input);
   }
 
+  async function handleSourceCampaignCreated(
+    campaign: LeadgenCampaign,
+    message: string,
+  ) {
+    setActiveCampaignId(campaign.id);
+    setActiveCampaignName(campaign.name);
+    setRunProgress(message);
+    await loadHistory();
+    const response = await fetch(
+      `/api/leadgen/campaigns/details?id=${encodeURIComponent(campaign.id)}`,
+      { cache: "no-store" },
+    );
+    const data = await readJson<DetailsResponse>(response);
+    if (!response.ok || !data.success) {
+      throw new Error(formatUnknownError(data.success ? null : data.error));
+    }
+    setCampaignDetails(data.details);
+    setDiscovery(data.details.campaign.production_discovery_stats ?? null);
+    window.history.pushState(null, "", `/leadgen?campaign=${encodeURIComponent(campaign.id)}`);
+    window.requestAnimationFrame(() => activeCampaignRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
+  }
+
   async function handleContinueSearch() {
     if (!activeCampaignId || !activeCampaignName) return;
     await runCampaignUntilComplete(
@@ -258,6 +289,7 @@ export function LeadgenDashboard() {
       if (!response.ok || !data.success) throw new Error(formatUnknownError(data.success ? null : data.error));
       setDiscovery(data.details.campaign.production_discovery_stats ?? null);
       setCampaignDetails(data.details);
+      window.history.pushState(null, "", `/leadgen?campaign=${encodeURIComponent(summary.id)}`);
     } catch (caught) {
       setError(caught instanceof Error && caught.message ? caught.message : "Не удалось открыть кампанию.");
     } finally {
@@ -321,7 +353,7 @@ export function LeadgenDashboard() {
 
   return (
     <div className="leadgen-console">
-      <section className="leadgen-config panel">
+      <section className="leadgen-config campaign-launch-panel panel">
         <div className="section-heading compact">
           <div><p className="eyebrow">Новая кампания</p><h2>Выберите способ поиска</h2></div>
           {campaignMode === "DISCOVERY" ? (
@@ -338,7 +370,11 @@ export function LeadgenDashboard() {
         {campaignMode === "DISCOVERY" ? (
           <CampaignForm isRunning={isRunning} onRun={handleRun} />
         ) : (
-          <LeadSourceIngestion mode={campaignMode} />
+          <LeadSourceIngestion
+            key={campaignMode}
+            mode={campaignMode}
+            onCampaignCreated={handleSourceCampaignCreated}
+          />
         )}
         {runProgress ? <p className="muted">{runProgress}</p> : null}
         {error ? <p className="outreach-error" role="alert">{error}</p> : null}
@@ -355,10 +391,10 @@ export function LeadgenDashboard() {
           ["Отправлено всего", operationalTotals.sent],
           ["Ответов", operationalTotals.replied],
         ].map(([label, value]) => (
-          <div key={label}>
+          <article key={label}>
             <span>{label}</span>
             <strong>{isHistoryLoading ? "—" : value}</strong>
-          </div>
+          </article>
         ))}
       </section>
 
@@ -375,6 +411,9 @@ export function LeadgenDashboard() {
         <section className="active-campaign-shell" ref={activeCampaignRef}>
           <div className="active-campaign-heading">
             <div><p className="eyebrow">Текущая кампания</p><h2>{activeCampaignName}</h2>{campaigns.find((item) => item.id === activeCampaignId) ? <small className="muted">{campaignStatusCopyForDashboard(campaigns.find((item) => item.id === activeCampaignId)!.operational_status)}</small> : null}</div>
+            <Link className="button secondary" href={`/leadgen/analytics?campaign=${encodeURIComponent(activeCampaignId)}`}>
+              Аналитика кампании
+            </Link>
             {canContinueDiscovery(discovery) ? (
               <Button
                 disabled={isRunning}
