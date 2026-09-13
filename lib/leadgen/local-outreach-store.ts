@@ -517,7 +517,12 @@ export async function scheduleLocalApprovedBatch({
   return withWriteLock(async () => {
     const stored = await listLocalOutreachEntries();
     const daily = await getLocalDailySendStats();
-    const candidates = entries.filter(
+    // Browser payload selects IDs only. Approval/content must come from the
+    // current persistent record, including edits since the UI last refreshed.
+    const candidates = entries
+      .map((entry) => stored.find((current) => current.id === entry.id))
+      .filter((entry): entry is OutreachQueueEntry => Boolean(entry))
+      .filter(
       (entry) =>
         (entry.message_kind ?? "initial") === messageKind &&
         entry.status === "approved" &&

@@ -114,13 +114,13 @@ async function generateAiRecommendations(
     method: "POST",
     headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      model: process.env.LEADGEN_ANALYTICS_OPENAI_MODEL?.trim() || "gpt-5-mini",
+      model: process.env.LEADGEN_ANALYTICS_OPENAI_MODEL?.trim() || "gpt-4.1-mini",
       store: false,
       instructions:
         "Ты анализируешь только агрегированные метрики Leadgen OS. Верни максимум 5 конкретных действий. Не выдумывай данные, причины и проценты. Каждое действие должно иметь проверяемый аргумент из входных метрик.",
       input: JSON.stringify(metrics),
       text: {
-        verbosity: "low",
+        verbosity: "medium",
         format: {
           type: "json_schema",
           name: "leadgen_analytics_actions",

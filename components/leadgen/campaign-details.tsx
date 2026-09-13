@@ -75,7 +75,10 @@ type CompanyResearchView = {
     profiles?: {
       tenchat?: string | null;
       telegram?: string | null;
+      instagram?: string | null;
+      vk?: string | null;
     };
+    phone?: string | null;
     evidence?: Array<{ sourceUrl?: string; excerpt?: string }>;
   }>;
   bestOutreachContact?: {
@@ -497,6 +500,13 @@ export function CampaignDetails({
                             {person.profiles?.telegram ? (
                               <> · <a href={person.profiles.telegram} target="_blank" rel="noreferrer">Telegram</a></>
                             ) : null}
+                            {person.profiles?.instagram ? (
+                              <> · <a href={person.profiles.instagram} target="_blank" rel="noreferrer">Instagram</a></>
+                            ) : null}
+                            {person.profiles?.vk ? (
+                              <> · <a href={person.profiles.vk} target="_blank" rel="noreferrer">VK</a></>
+                            ) : null}
+                            {person.phone ? <> · {person.phone}</> : null}
                             {person.evidence?.[0]?.sourceUrl ? (
                               <> · <a href={person.evidence[0].sourceUrl} target="_blank" rel="noreferrer">Источник</a></>
                             ) : null}

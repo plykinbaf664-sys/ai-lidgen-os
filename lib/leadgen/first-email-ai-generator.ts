@@ -2,6 +2,8 @@ import {
   INITIAL_OUTREACH_SIGNATURE,
   OUTREACH_BONUSES_NOTE,
   generateFirstEmailV3,
+  getCta,
+  scoreCopy,
   passesFirstEmailQualityGate,
   validateFirstEmailV3,
   type FirstEmailContext,
@@ -54,6 +56,7 @@ export function buildOutreachGenerationInput(context: FirstEmailContext) {
       selection_reason: compact(context.selectionReason, 300),
     },
     contact_type: context.messageMode === "personal" ? "PERSONAL" : "GENERAL",
+    required_cta: getCta(context.messageMode),
   };
 }
 
@@ -73,6 +76,8 @@ export const OUTREACH_GENERATOR_INSTRUCTIONS = `
 - Естественно укажи: обычная стоимость разбора 9 900 ₽; при ответе в течение 24 часов после отправки письма разбор бесплатный.
 - Не упоминай подарки, бонусы, вложения и ссылки: две ссылки на бонусы система детерминированно добавит в готовое письмо.
 - PERSONAL: CTA на обсуждение участка. GENERAL: CTA с просьбой направить к ответственному.
+- В конце используй required_cta дословно: это подтверждённый маршрут следующего шага.
+- Для прямой AI-потребности предлагай аудит, MVP или реализацию части задачи. Не спорь с наймом и не предлагай заменить сотрудника. Если источник не о найме, не придумывай кадровые планы.
 - Ровно один вопросительный знак. Не используй кликбейт, канцелярит и маркеры нейросетевого текста.
 - Не добавляй подпись: транспортный слой добавит её отдельно.
 `.trim();
@@ -125,12 +130,12 @@ export async function generateFirstEmailWithAi(context: FirstEmailContext): Prom
       method: "POST",
       headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: process.env.OUTREACH_OPENAI_MODEL?.trim() || "gpt-5-mini",
+        model: process.env.OUTREACH_OPENAI_MODEL?.trim() || "gpt-4.1-mini",
         store: false,
         instructions: OUTREACH_GENERATOR_INSTRUCTIONS,
         input: JSON.stringify(buildOutreachGenerationInput(context)),
         text: {
-          verbosity: "low",
+          verbosity: "medium",
           format: {
             type: "json_schema",
             name: "leadgen_outreach_v4",
@@ -155,11 +160,13 @@ export async function generateFirstEmailWithAi(context: FirstEmailContext): Prom
     const body = `${bodyWithoutSignature}\n\n${INITIAL_OUTREACH_SIGNATURE}`;
     const validation = validateFirstEmailV3({ subject: parsed.subject.trim(), body }, context);
     const selfCheckPassed = Object.values(parsed.quality).every(Boolean);
-    if (!validation.valid || !selfCheckPassed || !passesFirstEmailQualityGate(fallback.quality)) return fallback;
+    const quality = scoreCopy(context, body, fallback.microValue);
+    if (!validation.valid || !selfCheckPassed || !passesFirstEmailQualityGate(quality)) return fallback;
     return {
       ...fallback,
       subject: parsed.subject.trim(),
       body,
+      quality,
       blocks: { ...fallback.blocks, observation: bodyWithoutSignature, cta: parsed.cta.trim() },
       qualityGatePassed: true,
       generationAttempts: 1,

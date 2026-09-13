@@ -14,20 +14,20 @@ export async function POST(request: Request) {
   }
   try {
     const body = (await request.json().catch(() => ({}))) as { verticalId?: string };
-    if (!isLeadgenVerticalId(body.verticalId)) {
+    if (body.verticalId !== undefined && !isLeadgenVerticalId(body.verticalId)) {
       return NextResponse.json(
-        { success: false, error: "Для canary требуется корректный verticalId." },
+        { success: false, error: "Передан неизвестный сегмент." },
         { status: 400 },
       );
     }
     const result = await runAiHiringLiveCanary({
-      verticalId: body.verticalId,
+      ...(isLeadgenVerticalId(body.verticalId) ? { verticalId: body.verticalId } : {}),
       signal: request.signal,
     });
     await saveSourceCanaryMetrics({
       origin: "AI_HIRING",
       candidates: result.metrics.companiesExtracted,
-      qualified: result.metrics.icpMatch,
+      qualified: result.metrics.icpMatch + result.metrics.segmentNotApplied,
       ready: result.metrics.ready,
       sampleSize: result.metrics.jobsScanned,
       createdAt: new Date().toISOString(),

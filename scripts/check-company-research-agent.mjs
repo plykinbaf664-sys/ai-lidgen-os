@@ -129,6 +129,53 @@ try {
     "VERIFIED_PERSONAL",
   );
 
+  const aliasResult = await researchCompany(
+    "Компания с корпоративным алиасом",
+    "https://alias-owner.ru",
+    {
+      type: "TECH_SIGNAL",
+      title: "Компания развивает автоматизацию",
+      detail: "Публичный контекст подтверждён.",
+      sourceUrl: "https://alias-owner.ru/news/automation",
+      confidence: 85,
+    },
+    {
+      decisionMaker,
+      searchProvider: { async search() { return []; } },
+      bypassCache: true,
+      knownContacts: [{
+        id: "alias-contact",
+        pipeline_run_id: "test-run",
+        campaign_id: "test-campaign",
+        company_id: "test-company",
+        lead_id: "test-lead",
+        contact_type: "generic_email",
+        full_name: null,
+        role_title: null,
+        department: "Продажи",
+        email: "sales@alias-mail.ru",
+        linkedin_url: null,
+        telegram_url: null,
+        contact_url: null,
+        source_url: "https://alias-owner.ru/contacts",
+        source_label: "Официальный сайт",
+        confidence_score: 82,
+        is_primary: true,
+        metadata: {
+          email_status: "department_email_ready",
+          email_mx_verified: true,
+          email_domain_match_reason: "domain_alias_published_on_official_site",
+        },
+        created_at: new Date(0).toISOString(),
+      }],
+    },
+  );
+  assert.equal(
+    aliasResult.bundle.bestOutreachContact?.email,
+    "sales@alias-mail.ru",
+    "a corporate alias published on the official site must survive bundle normalization",
+  );
+
   const failingProvider = { async search() { throw new Error("provider unavailable"); } };
   const fallback = await researchCompany(
     "Компания Альфа",
@@ -160,6 +207,7 @@ try {
     queries: result.bundle.metrics.queries,
     providerFailureFallback: Boolean(fallback.bundle.bestOutreachContact),
     originsUsingSharedService: 3,
+    officialAliasPreserved: true,
   }));
 } finally {
   globalThis.fetch = originalFetch;

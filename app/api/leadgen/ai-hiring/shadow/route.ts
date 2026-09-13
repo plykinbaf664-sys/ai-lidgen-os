@@ -25,7 +25,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: "vacancies обязателен." }, { status: 400 });
     }
     const vacancies = body.vacancies.slice(0, MAX_SHADOW_JOBS);
-    const results = vacancies.map(evaluateAiAutomationHiring);
+    const results = vacancies.map((vacancy) => evaluateAiAutomationHiring(vacancy));
     const accepted = results.filter((result) => result.status === "SUCCESS");
     const deduplicated = Array.isArray(body.dedupCandidates)
       ? deduplicateUnifiedSourceCandidates(body.dedupCandidates.slice(0, 100))

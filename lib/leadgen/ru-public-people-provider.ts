@@ -33,6 +33,7 @@ type CandidateDraft = {
   tenchatUrl: string | null;
   telegramUrl: string | null;
   vkUrl: string | null;
+  instagramUrl?: string | null;
   workEmail: string | null;
   contactRoute: "target_persona" | "corporate_router";
   evidence: string[];
@@ -606,6 +607,12 @@ function getVkUrl(url: string): string | null {
   return url.toLowerCase().includes("vk.com/") ? url : null;
 }
 
+function getInstagramUrl(url: string): string | null {
+  return /(?:^|\.)instagram\.com$/i.test((() => {
+    try { return new URL(url).hostname.replace(/^www\./i, ""); } catch { return ""; }
+  })()) ? url : null;
+}
+
 function titleCase(value: string): string {
   return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
 }
@@ -713,6 +720,7 @@ function getCandidateContactQueries(
   return [
     !candidate.tenchatUrl ? `${name} ${company} TenChat` : "",
     !candidate.telegramUrl ? `${name} ${company} Telegram` : "",
+    !candidate.instagramUrl ? `${name} ${company} Instagram` : "",
     missingEmail ? `${name} ${company} email OR @ OR почта` : "",
     missingEmail && domain ? `${name} "@${domain}"` : "",
     missingEmail && domain ? `site:${domain} ${name}` : "",
@@ -824,7 +832,7 @@ const COMMON_RU_GIVEN_NAMES = new Set([
 function hasPlausibleHumanNameEvidence(draft: CandidateDraft): boolean {
   const parts = draft.fullName.toLowerCase().split(/\s+/).filter(Boolean);
   const directProfileOrEmail = Boolean(
-    draft.workEmail || draft.tenchatUrl || draft.telegramUrl || draft.vkUrl,
+    draft.workEmail || draft.tenchatUrl || draft.telegramUrl || draft.vkUrl || draft.instagramUrl,
   );
   if (!parts.some((part) => /[а-яё]/i.test(part))) {
     return directProfileOrEmail || parts.length >= 3;
@@ -954,6 +962,7 @@ function mergeDrafts(left: CandidateDraft, right: CandidateDraft): CandidateDraf
     tenchatUrl: left.tenchatUrl ?? right.tenchatUrl,
     telegramUrl: left.telegramUrl ?? right.telegramUrl,
     vkUrl: left.vkUrl ?? right.vkUrl,
+    instagramUrl: left.instagramUrl ?? right.instagramUrl,
     workEmail: left.workEmail ?? right.workEmail,
     sourceUrls: unique([
       ...(left.sourceUrls ?? [left.sourceUrl]),
@@ -986,8 +995,9 @@ function draftFromSearchResult({
   const tenchatUrl = getTenChatUrl(result.url);
   const telegramUrl = getTelegramUrl(result.url);
   const vkUrl = getVkUrl(result.url);
+  const instagramUrl = getInstagramUrl(result.url);
 
-  if (!roleTitle && !linkedinUrl && !tenchatUrl && !telegramUrl && !vkUrl && emails.length === 0) {
+  if (!roleTitle && !linkedinUrl && !tenchatUrl && !telegramUrl && !vkUrl && !instagramUrl && emails.length === 0) {
     return [];
   }
 
@@ -1009,6 +1019,7 @@ function draftFromSearchResult({
     tenchatUrl,
     telegramUrl,
     vkUrl,
+    instagramUrl,
     workEmail: emails.find((email) => emailLocalMatchesPerson(email, fullName)) ?? null,
     contactRoute: roleTitle ? "target_persona" : "corporate_router",
     evidence: [`Public search result: ${result.title}`, `Source URL: ${result.url}`],
@@ -1045,6 +1056,7 @@ function mergeContactEvidence({
     tenchatUrl: candidate.tenchatUrl ?? getTenChatUrl(result.url),
     telegramUrl: candidate.telegramUrl ?? getTelegramUrl(result.url),
     vkUrl: candidate.vkUrl ?? getVkUrl(result.url),
+    instagramUrl: candidate.instagramUrl ?? getInstagramUrl(result.url),
     workEmail: candidate.workEmail ?? getWorkEmails(text, input)
       .find((email) => emailLocalMatchesPerson(email, candidate.fullName)) ?? null,
     evidence: [
@@ -1093,6 +1105,7 @@ function toPersonCandidate(
       telegram_url: draft.telegramUrl,
       tenchat_url: draft.tenchatUrl,
       vk_url: draft.vkUrl,
+      instagram_url: draft.instagramUrl ?? null,
       contact_route: draft.contactRoute,
       public_contact_verified:
         draft.contactRoute === "corporate_router" && Boolean(draft.workEmail),
@@ -1105,7 +1118,7 @@ function toPersonCandidate(
       candidate,
       decisionMaker: input.decisionMaker,
       hasDirectContact: Boolean(
-        draft.workEmail || draft.tenchatUrl || draft.telegramUrl || draft.vkUrl,
+        draft.workEmail || draft.tenchatUrl || draft.telegramUrl || draft.vkUrl || draft.instagramUrl,
       ),
       baseConfidence: draft.contactRoute === "corporate_router" ? 66 : 52,
     }),
@@ -1290,20 +1303,20 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
       await runQuery(levelOne[1].query, levelOne[1].level, levelOne[1].queryAngle);
     }
     for (const level of ["LEVEL_2", "LEVEL_3"] as const) {
-      if (hasSufficientPersonBundle(candidates)) break;
+      if (hasSufficientPersonBundle(candidates) || consecutiveNoGainQueries >= 3) break;
       await fetchOfficialBatch(
         level === "LEVEL_2" ? officialUrls.slice(3, 6) : officialUrls.slice(6, 7),
       );
       for (const item of adaptiveQueries.filter((query) => query.level === level)) {
         await runQuery(item.query, item.level, item.queryAngle);
         if (hasSufficientPersonBundle(candidates)) break;
-        if (candidates.length > 0 && consecutiveNoGainQueries >= 3) break;
+        if (consecutiveNoGainQueries >= 3) break;
       }
     }
 
     for (const person of candidates.slice(0, 3)) {
       if (searchAttempts >= 12) break;
-      if (person.work_email && person.metadata.tenchat_url && person.metadata.telegram_url) {
+      if (person.work_email) {
         continue;
       }
       const draft = drafts.find(

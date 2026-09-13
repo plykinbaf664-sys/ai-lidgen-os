@@ -410,7 +410,9 @@ function createInitialScores(signalType: SignalType): DepartmentScore[] {
     reasons: [] as string[],
   }));
 
-  const baseScores = signalBaseScores[signalType];
+  // New evidence-backed signal types may share the existing technology role
+  // baseline without changing their stored signal type or blocking research.
+  const baseScores = signalBaseScores[signalType] ?? signalBaseScores.TECH_SIGNAL;
 
   for (const score of scores) {
     const baseScore = baseScores[score.key] ?? 0;

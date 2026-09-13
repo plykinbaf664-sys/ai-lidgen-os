@@ -6,6 +6,9 @@ import { pathToFileURL } from "node:url";
 const root = process.cwd();
 registerHooks({
   resolve(specifier, context, nextResolve) {
+    if (specifier === "server-only") {
+      return { url: "data:text/javascript,export%20{}", shortCircuit: true };
+    }
     if (!specifier.startsWith("@/")) return nextResolve(specifier, context);
     const base = path.join(root, specifier.slice(2));
     const filename = path.extname(base) ? base : `${base}.ts`;

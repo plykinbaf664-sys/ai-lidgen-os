@@ -1,6 +1,7 @@
 import { normalizeDomain } from "@/lib/leadgen/company-identity";
 import { createLeadOriginContext } from "@/lib/leadgen/lead-origin";
 import type { DirectIntentSignalType, LeadOriginContext } from "@/lib/leadgen/types";
+import type { DirectAiNeedAssessment } from "@/lib/leadgen/direct-ai-need-agent";
 
 export type AiHiringVacancy = {
   id?: string | null;
@@ -93,12 +94,15 @@ export function matchesBusinessAutomationIntent(value: string) {
 
 export function evaluateAiAutomationHiring(
   vacancy: AiHiringVacancy,
+  semanticAssessment?: DirectAiNeedAssessment | null,
 ): AiHiringIntentResult {
   const title = compactEvidence(vacancy.title);
   const description = compactEvidence(vacancy.description);
   const combined = `${title}\n${description}`;
-  const roleMatched = matchesAiHiringRole(combined);
-  const automationIntentMatched = matchesBusinessAutomationIntent(combined);
+  const semanticDirect = semanticAssessment?.classification === "DIRECT" &&
+    semanticAssessment.freshness !== "STALE" && semanticAssessment.confidence >= 70;
+  const roleMatched = semanticDirect || matchesAiHiringRole(combined);
+  const automationIntentMatched = semanticDirect || matchesBusinessAutomationIntent(combined);
   const likelyServiceProvider = serviceProviderPatterns.some((pattern) => pattern.test(combined));
   const originContext = createLeadOriginContext("AI_HIRING", {
     source_provider: vacancy.sourceProvider.slice(0, 80),
@@ -113,6 +117,24 @@ export function evaluateAiAutomationHiring(
       automationIntentMatched,
       likelyServiceProvider,
       confidence: 0,
+      company: null,
+      signal: null,
+      originContext,
+      outreachAngle: null,
+    };
+  }
+  if (semanticAssessment && !semanticDirect) {
+    return {
+      status: "SKIPPED",
+      reason: semanticAssessment.classification === "LIKELY"
+        ? "direct_intent_likely_not_confirmed"
+        : semanticAssessment.freshness === "STALE"
+          ? "direct_intent_stale"
+          : "direct_intent_not_relevant",
+      roleMatched,
+      automationIntentMatched,
+      likelyServiceProvider,
+      confidence: semanticAssessment.confidence,
       company: null,
       signal: null,
       originContext,
@@ -147,7 +169,7 @@ export function evaluateAiAutomationHiring(
       outreachAngle: null,
     };
   }
-  if (!automationIntentMatched || researchOnlyPatterns.some((pattern) => pattern.test(combined))) {
+  if (!semanticDirect && (!automationIntentMatched || researchOnlyPatterns.some((pattern) => pattern.test(combined)))) {
     return {
       status: "SKIPPED",
       reason: "business_automation_intent_not_confirmed",
@@ -161,7 +183,7 @@ export function evaluateAiAutomationHiring(
       outreachAngle: null,
     };
   }
-  if (likelyServiceProvider) {
+  if (!semanticDirect && likelyServiceProvider) {
     return {
       status: "SKIPPED",
       reason: "service_provider_not_end_customer",
@@ -177,7 +199,12 @@ export function evaluateAiAutomationHiring(
   }
   const domain = normalizeDomain(vacancy.employerWebsite);
   const officialDomain = isProviderDomain(domain) ? null : domain;
-  const confidence = officialDomain ? 95 : 82;
+  const confidence = semanticAssessment
+    ? Math.min(98, Math.max(70, semanticAssessment.confidence))
+    : officialDomain ? 95 : 82;
+  const actionSummary = semanticAssessment?.actionSummary ||
+    `${vacancy.employerName.trim()} ищет специалиста для задач AI-автоматизации бизнес-процессов.`;
+  const evidence = semanticAssessment?.evidenceExcerpt || compactEvidence(`${title}. ${description}`);
   return {
     status: "SUCCESS",
     reason: "direct_ai_automation_hiring_intent",
@@ -192,11 +219,12 @@ export function evaluateAiAutomationHiring(
     },
     signal: {
       signalType: "AI_AUTOMATION_HIRING_SIGNAL",
-      signalSummary: `${vacancy.employerName.trim()} ищет специалиста для задач AI-автоматизации бизнес-процессов.`,
-      evidence: compactEvidence(`${title}. ${description}`),
+      signalSummary: compactEvidence(actionSummary),
+      evidence,
       sourceUrl: vacancy.sourceUrl,
       confidence,
       whyRelevant:
+        semanticAssessment?.reason ||
         "Компания уже выделила практическую задачу AI-автоматизации и подтверждает намерение инвестировать в её решение.",
     },
     originContext,

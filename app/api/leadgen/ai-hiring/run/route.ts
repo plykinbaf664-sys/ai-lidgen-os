@@ -29,9 +29,9 @@ export async function POST(request: Request) {
       requestedBy?: string;
       verticalId?: string;
     };
-    if (!isLeadgenVerticalId(body.verticalId)) {
+    if (body.verticalId !== undefined && !isLeadgenVerticalId(body.verticalId)) {
       return NextResponse.json(
-        { success: false, code: "INVALID_SEGMENT", error: "Выберите сегмент." },
+        { success: false, code: "INVALID_SEGMENT", error: "Выбран неизвестный сегмент." },
         { status: 400 },
       );
     }
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
       input: {
         name: body.name?.trim() || "Компании с прямой потребностью в AI",
         requestedBy: body.requestedBy?.trim() || "Оператор Leadgen OS",
-        verticalId: body.verticalId,
+        ...(isLeadgenVerticalId(body.verticalId) ? { verticalId: body.verticalId } : {}),
       },
       signal: request.signal,
     });
@@ -47,6 +47,7 @@ export async function POST(request: Request) {
       success: true,
       campaign: result.campaign,
       metrics: result.live.metrics,
+      planner: result.live.planner,
       companies: result.result.companies.length,
       contacts: result.result.contacts.length,
       ready: result.queue.length,

@@ -575,6 +575,7 @@ export class PublicWebSearchProvider implements SearchProvider {
       ? (["hh-api", "hh-web", "bing-rss"] as PublicSearchSource[])
       : input.queryAngle === "market_news"
         ? ([
+            "brave",
             ...(Math.max(0, input.page ?? 0) === 0 ? ["google-news" as const] : []),
             "bing-rss",
             "yahoo",

@@ -52,6 +52,7 @@ export class TavilySearchProvider implements SearchProvider {
     query,
     maxResults = 5,
     page = 0,
+    signal,
   }: SearchProviderSearchInput): Promise<SearchResult[]> {
     // Tavily's current endpoint has no stable page/cursor contract. Additional
     // discovery comes from unique queries; never repeat the same query as a fake page.
@@ -71,6 +72,7 @@ export class TavilySearchProvider implements SearchProvider {
         include_raw_content: false,
         include_images: false,
       }),
+      signal,
     });
 
     if (!response.ok) {

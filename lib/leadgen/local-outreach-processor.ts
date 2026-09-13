@@ -1,4 +1,4 @@
-import { createEmailProvider } from "@/lib/leadgen/email-provider";
+import { createEmailProvider, type EmailProvider } from "@/lib/leadgen/email-provider";
 import { assertCompleteOutreachBody } from "@/lib/leadgen/outreach-body-integrity";
 import {
   claimDueLocalOutreachItem,
@@ -9,7 +9,7 @@ import {
   recoverStaleLocalSending,
 } from "@/lib/leadgen/local-outreach-store";
 
-export async function processNextLocalOutreachItem() {
+export async function processNextLocalOutreachItem(providerOverride?: EmailProvider) {
   await recoverStaleLocalSending();
   const daily = await getLocalDailySendStats();
   const dueEntries = await listLocalOutreachEntries();
@@ -42,7 +42,7 @@ export async function processNextLocalOutreachItem() {
     return { status: "failed" as const, entry: blocked };
   }
 
-  const provider = createEmailProvider();
+  const provider = providerOverride ?? createEmailProvider();
   const validation = await provider.validateConnection();
   if (!validation.ok) {
     return {

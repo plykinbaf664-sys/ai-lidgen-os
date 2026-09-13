@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
-const [storage, followups, ui, bulkRoute, singleRoute, guideConfig, outreachRoute, localStore, controlRoute] = await Promise.all([
+const [storage, followups, ui, bulkRoute, singleRoute, guideConfig, outreachRoute, localStore, controlRoute, sourceRunner] = await Promise.all([
   read("lib/leadgen/outreach-storage.ts"),
   read("lib/leadgen/followup-storage.ts"),
   read("components/leadgen/email-outreach-queue.tsx"),
@@ -12,6 +12,7 @@ const [storage, followups, ui, bulkRoute, singleRoute, guideConfig, outreachRout
   read("app/api/leadgen/outreach/route.ts"),
   read("lib/leadgen/local-outreach-store.ts"),
   read("app/api/leadgen/outreach/control/route.ts"),
+  read("lib/leadgen/source-campaign-runner.ts"),
 ]);
 
 const bulkApproval = storage.slice(
@@ -56,5 +57,13 @@ assert.match(localStore, /latestScheduledAt/);
 assert.match(localStore, /const queuedTotal = entries\.filter/);
 assert.match(localStore, /const queued = entries[\s\S]*?\.sort\(/);
 assert.match(controlRoute, /await resumeLocalQueue\(body\.campaignId\)/);
+assert.match(sourceRunner, /persistSourceCampaign\(input, "AI_HIRING"/);
+assert.match(sourceRunner, /persistSourceCampaign\(input, "IMPORTED"/);
+assert.equal(
+  (sourceRunner.match(/syncOutreachQueue\(campaign\.id\)/g) ?? []).length,
+  1,
+  "all source origins must converge on one shared approval/queue synchronization path",
+);
+assert.doesNotMatch(sourceRunner, /approveOutreach|bulkApproveOutreach/);
 
 console.log("APPROVAL_STABILITY_OK");

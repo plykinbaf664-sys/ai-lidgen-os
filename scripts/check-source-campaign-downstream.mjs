@@ -39,6 +39,10 @@ assert.match(
   /const confirmedEmail = uniqueContacts[\s\S]+\.filter\(isConfirmedOutreachEmail\)/,
   "source runner must select one evidence-confirmed email before queue sync",
 );
+assert.ok(
+  runner.indexOf("const copy = await buildEmailOutreachWithAi(") > runner.indexOf("const contact = confirmedEmail ?? sourceContact"),
+  "source runner must generate outreach for the final research contact, not only a pre-research email",
+);
 
 const fallbackClassification = classifyEvidenceBackedEmail({
   email: "info@company.ru",

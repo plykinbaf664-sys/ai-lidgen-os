@@ -206,6 +206,10 @@ const small = discoverDecisionMaker({
   signalType: "HIRING_SIGNAL",
   preferredRoles: ["Коммерческий директор"],
 });
+assert.ok(
+  discoverDecisionMaker({ candidate, signalType: "AI_AUTOMATION_HIRING_SIGNAL" }).primary_persona,
+  "new direct AI signal must not crash role selection",
+);
 const large = discoverDecisionMaker({
   candidate: {
     ...candidate,

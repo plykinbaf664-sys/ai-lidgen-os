@@ -69,6 +69,7 @@ export type FirstEmailCopy = {
 export type FirstEmailValidation = { valid: boolean; errors: string[] };
 
 type EmailIntent =
+  | "direct_ai_need"
   | "sales"
   | "support"
   | "launch"
@@ -140,6 +141,7 @@ function getIntent(context: FirstEmailContext): EmailIntent {
     .map(cleanText)
     .join(" ")
     .toLowerCase();
+  if (/ai_automation_hiring_signal|direct_ai_need|прям(?:ая|ой) потребност|внедрен(?:ие|ия) (?:ai|ии)|ai[- ]агент|llm|rag/.test(text)) return "direct_ai_need";
   if (/ваканс|набир|найм|hiring|продаж|sales|sdr|лид|заявк/.test(text)) return "sales";
   if (/поддерж|клиент|обращен|customer service|контакт.?центр/.test(text)) return "support";
   if (/запуск|новое направление|новый продукт|новая услуг|new_product|new_service/.test(text)) return "launch";
@@ -157,6 +159,14 @@ const COPY_BY_INTENT: Record<EmailIntent, {
   aiSolution: string;
   items: string[];
 }> = {
+  direct_ai_need: {
+    subject: (company) => `${company}: быстрый контур AI-задачи`,
+    observation: (company) => `Увидел, что ${company} уже ищет способ реализовать конкретную задачу с AI и автоматизацией.`,
+    hypothesis: "Когда такая инициатива уже сформулирована, найм специалиста и запуск самой задачи часто идут с разной скоростью. Это не означает, что сотрудник не нужен: отдельный ограниченный участок можно проверить раньше, чтобы к выходу человека у команды уже были подтверждённые требования и рабочий прототип.",
+    insight: "Полезно отделить архитектурные решения, которые требуют постоянного владельца внутри компании, от короткого пилота, который быстро проверяет данные, интеграции и реальную ценность сценария.",
+    aiSolution: "Я AI-архитектор. Могу независимо разобрать задачу, собрать ограниченный прототип или реализовать отдельный AI-блок, не подменяя будущего сотрудника и не меняя выбранную вами кадровую стратегию.",
+    items: ["границы пилота", "требования к данным", "проверка интеграций"],
+  },
   sales: {
     subject: (company) => `${company}: что проверить до найма`,
     observation: (company) => `Увидел, что ${company} усиливает коммерческую команду.`,
@@ -215,7 +225,7 @@ const COPY_BY_INTENT: Record<EmailIntent, {
   },
 };
 
-function getCta(mode: OutreachMessageMode | null | undefined): string {
+export function getCta(mode: OutreachMessageMode | null | undefined): string {
   return mode === "personal"
     ? "Есть смысл посмотреть этот участок на вашей компании?"
     : "Подскажете, кто у вас отвечает за этот участок?";
@@ -254,7 +264,7 @@ function unexplainedEnglishWords(content: string, companyName = ""): string[] {
     .filter((word) => !ALLOWED_LATIN_WORDS.has(word.toLowerCase()) && !companyWords.has(word.toLowerCase()));
 }
 
-function scoreCopy(context: FirstEmailContext, body: string, microValue: OutreachMicroValue): OutreachQualityScore {
+export function scoreCopy(context: FirstEmailContext, body: string, microValue: OutreachMicroValue): OutreachQualityScore {
   const grounded = hasVerifiedSignal(context);
   const containsCompany = body.toLowerCase().includes(compactCompanyName(context.companyName).toLowerCase());
   return {
@@ -320,12 +330,20 @@ export function generateFirstEmailV3(context: FirstEmailContext): FirstEmailCopy
   const experts = `${source.aiSolution}\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.`;
   const value = "Могу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.";
   const cta = getCta(context.messageMode);
+  const directEvidence = intent === "direct_ai_need" ? cleanText(context.signalEvidence) : "";
+  const hiringContext = /ваканс|найм|наним|ищ[её]т.*(?:специалист|инженер)|hh\.ru\/vacancy/i.test(`${directEvidence} ${context.signalSourceUrl ?? ""}`);
   const blocks = {
     greeting,
-    observation: source.observation(company),
-    hypothesis: source.hypothesis,
+    observation: directEvidence
+      ? `В публичном источнике ${company} обратил внимание на задачу: «${directEvidence.slice(0, 500)}».`
+      : source.observation(company),
+    hypothesis: intent === "direct_ai_need" && !hiringContext
+      ? "Перед масштабированием этой задачи можно проверить один ограниченный сценарий: какие данные доступны, с чем нужно интегрироваться и какой результат считать успешным. Это поможет оценить решение до большого внедрения."
+      : source.hypothesis,
     insight: source.insight,
-    experts,
+    experts: intent === "direct_ai_need" && !hiringContext
+      ? "Я AI-архитектор. Могу провести аудит этого сценария, собрать ограниченный прототип или реализовать отдельную часть решения вместе с вашей командой. Если потребуется, подключим бизнес-аналитика для проверки самого процесса."
+      : experts,
     value: `${value}\n\n${OUTREACH_BONUSES_NOTE}`,
     cta,
     signature: INITIAL_OUTREACH_SIGNATURE,

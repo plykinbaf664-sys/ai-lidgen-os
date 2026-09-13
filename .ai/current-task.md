@@ -1,159 +1,32 @@
-# Current Task
+# Current Task — close Direct AI Need iteration (2026-09-13)
 
-## Goal
+Goal: finish the uncommitted September 12 iteration for controlled production deployment. No commit, push, deploy, real email, secrets/dependency changes or architecture/UI rewrite.
 
-Production Outreach Launch: find up to 20 new globally unique companies, prepare and bulk-approve outreach, then persistently schedule safe sequential email delivery.
+## Current system
+- Business Signals / DISCOVERY: existing Discovery V2 finds evidence-backed business signals.
+- Direct AI Need / AI_HIRING: semantic AI search across public sources; industry optional; confirmed company/domain required; LPR is enrichment, not a gate.
+- Imported Base / IMPORTED: validated import and segment context feed the same downstream.
+- All sources use researchCompany(), evidence-backed contacts, Russian outreach, Ready, manual approval, persistent queue and sequential sender.
+- Operational storage is local-first; Supabase backup is explicit. Keep compact operational evidence and business history; expire only technical previews/caches.
+- Flags: LEADGEN_DISCOVERY_V2_ENABLED defaults on; LEADGEN_AI_HIRING_ENABLED / LEADGEN_IMPORT_ENABLED default on, LEADGEN_NEW_SOURCE_CONTOURS_ENABLED=false disables both. LEADGEN_DIRECT_AI_LLM_ENABLED / LEADGEN_RESEARCH_LLM_ENABLED default on with configured OpenAI key. EMAIL_TEST_MODE defaults true; FOLLOWUP_AUTOMATION_ENABLED defaults false. Existing environment is unchanged.
+- Limits: public-source coverage/access, evidence freshness, domain identity and published contacts constrain yield. Uncertain identity gets one bounded recheck. No invented company, person, email or signal.
 
-## Business Meaning
+### Stage 1 — clean build and targeted review
+Scope: generated build cleanup; current git diff.
+Acceptance: regenerate Next types; TypeScript, lint, build PASS; no secrets, generated files, debug/test artifacts in commit diff.
+Status: clean regeneration, TypeScript, lint and production build PASS. Targeted review in progress.
 
-Turn the existing internal Leadgen OS prototype into a daily operational workflow without mock production results, duplicate companies, duplicate recipients, long-running HTTP requests, or accidental sends during development.
+### Stage 2 — Direct AI Need live completion
+Scope: existing direct-ai modules, ai-hiring-live-canary, source-campaign-runner, company research and focused checks.
+Acceptance: real no-industry live run reports results/assessed/direct intent/HH/non-HH/domains/LPR/contacts/Ready; source-class bottlenecks visible; VERIFIED/HIGH_CONFIDENCE only downstream; bounded requests and no orphan operations.
+Status: in progress.
 
-## Global Acceptance Criteria
+### Stage 3 — transactional regression
+Scope: existing downstream/approval/queue/sender and isolated regression scripts.
+Acceptance: all three origins; actual HTTP single/bulk/all approval, persistent queue, injected sender simulated Sent, no duplicate queue/send, updated counters, follow-up regression; SMTP calls zero.
+Status: pending.
 
-- Production discovery uses only configured real search providers and never falls back to mock data.
-- A single config source defines a campaign target of 20 new companies and a bounded search budget.
-- Previously discovered companies and duplicate recipients are excluded using persistent Supabase data.
-- Approval, scheduling, pause/resume/cancel/retry, daily quota, and SMTP IDs survive restarts.
-- Batch scheduling is sequential with 5–10 minute randomized spacing; one processor invocation handles at most one due item.
-- Test and production SMTP modes are both supported; tests never send real email.
-- UI provides bulk actions, confirmation, Russian statuses, readiness, filters, immediate approval feedback, and production warnings.
-- No `.env.local`, dependency, commit, push, deploy, real-email-send, destructive migration, reply handling, or follow-up engine changes.
-
-## Stages
-
-### Stage 1 — Discovery identity contract and production limits
-
-#### Goal
-
-Create one production configuration source, robust company/email normalization, pagination input, and deterministic duplicate diagnostics.
-
-#### Scope
-
-- `.env.example`
-- `lib/leadgen/production-config.ts`
-- `lib/leadgen/company-identity.ts`
-- `lib/leadgen/types.ts`
-- `lib/leadgen/search/search-provider.ts`
-- `lib/leadgen/search/leadgen-search-provider.ts`
-- `lib/leadgen/search/tavily-provider.ts`
-- `lib/leadgen/search/yandex-provider.ts`
-- `lib/leadgen/signals/signal-pipeline.ts`
-
-#### Acceptance Criteria
-
-- Company target defaults to 20 from a single config module.
-- Normalization prioritizes legal ID, domain, website, then conservative name+region.
-- Search input supports bounded page iteration and records query/page diagnostics.
-- Production providers never synthesize results.
-
-### Stage 2 — Global company registry and discovery integration
-
-#### Goal
-
-Persist company history and exclude known companies before they create leads or consume the campaign target.
-
-#### Scope
-
-- `supabase/production_outreach_launch.sql`
-- `supabase/schema.sql`
-- `lib/leadgen/company-registry.ts`
-- `lib/leadgen/lead-discovery-engine.ts`
-- `lib/leadgen/storage.ts`
-- `app/api/leadgen/run/route.ts`
-- `lib/leadgen/types.ts`
-
-#### Acceptance Criteria
-
-- Registry survives campaigns and restarts.
-- Known-company and within-run duplicates have explicit reasons and metrics.
-- Discovery continues within a bounded 100-candidate/page budget until 20 new valid companies or exhaustion.
-- Registry updates occur only for real saved campaign results.
-
-### Stage 3 — Persistent outreach queue, idempotency, quota, and processor
-
-#### Goal
-
-Replace metadata-only execution with a database queue and safe one-item processor.
-
-#### Scope
-
-- `supabase/production_outreach_launch.sql`
-- `supabase/schema.sql`
-- `lib/leadgen/outreach-queue.ts`
-- `lib/leadgen/outreach-status.ts`
-- `lib/leadgen/outreach-storage.ts`
-- `lib/leadgen/email-provider.ts`
-- `lib/leadgen/email-sending-engine.ts`
-- `lib/leadgen/outreach-processor.ts`
-- `lib/leadgen/types.ts`
-- `app/api/leadgen/outreach/route.ts`
-- `app/api/leadgen/outreach/queue/route.ts`
-- `app/api/leadgen/outreach/[id]/route.ts`
-- `app/api/leadgen/outreach/[id]/approve/route.ts`
-- `app/api/leadgen/outreach/[id]/retry/route.ts`
-- `app/api/leadgen/outreach/[id]/send/route.ts`
-- `app/api/leadgen/outreach/bulk-approve/route.ts`
-- `app/api/leadgen/outreach/batch/route.ts`
-- `app/api/leadgen/outreach/control/route.ts`
-- `app/api/leadgen/outreach/process/route.ts`
-- `app/api/leadgen/outreach/readiness/route.ts`
-
-#### Acceptance Criteria
-
-- Queue rows contain scheduling, timestamps, attempts, error, SMTP ID, and idempotency fields.
-- Partial unique indexes prevent duplicate active/sent recipients.
-- Bulk scheduling observes database-derived daily quota and selected batch size.
-- Processor atomically claims and handles one due item, with no sleep and no `Promise.all`.
-- One failure does not affect other queued items.
-- Production SMTP sends actual recipient only when `EMAIL_TEST_MODE=false`; no test executes a real send.
-
-### Stage 4 — Bulk workflow and operational UI
-
-#### Goal
-
-Make review, approval, scheduling, and queue status immediately visible and safe.
-
-#### Scope
-
-- `components/leadgen/email-outreach-queue.tsx`
-- `components/leadgen/leadgen-dashboard.tsx`
-- `lib/leadgen/outreach-status.ts`
-- `lib/leadgen/types.ts`
-- `app/globals.css`
-
-#### Acceptance Criteria
-
-- Bulk approve and bulk schedule have confirmation summaries and disabled pending states.
-- Batch options are 5/10/15/20 capped by availability.
-- Individual approval is optimistic with rollback.
-- Editing invalidates approval with reason.
-- Production mode warning and readiness block are prominent.
-- Dashboard counters, filters, cards, schedule position/time, errors, and Russian status labels update without reload.
-- Queue pause/resume/cancel/retry controls are persisted.
-
-### Stage 5 — Quality audit and diagnostics
-
-#### Goal
-
-Validate identity, deduplication, batch, quota, sequential scheduling, edit invalidation, mode safety, and build quality without external sends.
-
-#### Scope
-
-- `scripts/production-outreach-check.mjs`
-- files from Stages 1–4 only for bounded repairs
-- `.ai/final-report.md`
-
-#### Acceptance Criteria
-
-- Deterministic checks cover duplicate URLs/domains, similar names, missing domain/email, batch 5, delay bounds, duplicate request, sent recipient, retry/pause/edit behavior, and test/production recipient routing without SMTP delivery.
-- `npx tsc --noEmit`, `npm run lint`, `npm run build`, and `scripts/check-project.sh` pass.
-- No real email is sent and `.env.local` is unchanged.
-
-## What Must Not Change
-
-- No dependencies or `package.json` changes.
-- No commit, push, deploy, or environment mutation.
-- No real email send during implementation.
-- No destructive migration or deletion of existing rows.
-- No mock fallback in production.
-- No reply handling, follow-up engine, AI SDR, or automatic history cleanup.
+### Stage 4 — final release verification
+Scope: focused repairs from stages 1–3 and this task state.
+Acceptance: complete relevant regression suite, storage hygiene, git diff --check, tsc --noEmit, lint, build PASS; compact final evidence report; READY FOR COMMIT only after all required checks.
+Status: pending.

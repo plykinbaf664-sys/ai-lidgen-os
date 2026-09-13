@@ -1570,6 +1570,18 @@ export async function runLeadDiscoveryEngine({
                   knownPersonKeys,
                   searchProvider,
                   createdAt,
+                  discoveryContext: {
+                    origin: "DISCOVERY",
+                    businessContext: [
+                      record.candidate.why_now,
+                      record.candidate.why_it_matters,
+                      record.candidate.outreach_hypothesis,
+                    ].filter(Boolean).join(" "),
+                    sourceUrls: [
+                      primarySignal.source_url,
+                      String(baseCompany.metadata.official_website),
+                    ],
+                  },
                   signal,
                 },
               ),

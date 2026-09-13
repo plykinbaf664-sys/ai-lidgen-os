@@ -35,6 +35,7 @@ type SourceRunResponse = {
   companies?: number;
   ready?: number;
   metrics?: { jobsScanned?: number };
+  planner?: { status?: "AI" | "UNAVAILABLE" | "FAILED"; reason?: string; execution?: string };
   summary?: { rows?: number; qualified?: number; contacts?: number; ready?: number };
 };
 
@@ -47,7 +48,9 @@ const requestedBy = "Оператор Leadgen OS";
 
 export function LeadSourceIngestion({ mode, onCampaignCreated }: Props) {
   const fileInputId = useId();
-  const [verticalId, setVerticalId] = useState<LeadgenVerticalId>(DEFAULT_VERTICAL_ID);
+  const [verticalId, setVerticalId] = useState<LeadgenVerticalId | "">(
+    mode === "AI_HIRING" ? "" : DEFAULT_VERTICAL_ID,
+  );
   const [name, setName] = useState(
     mode === "AI_HIRING" ? "Компании с прямой потребностью в AI" : "Кампания из собственной базы",
   );
@@ -56,8 +59,12 @@ export function LeadSourceIngestion({ mode, onCampaignCreated }: Props) {
   const [pending, setPending] = useState<"preview" | "confirm" | "search" | null>(null);
   const [message, setMessage] = useState<string | null>(null);
 
-  function campaignInput(): CampaignInput & { verticalId: LeadgenVerticalId } {
-    return { name: name.trim(), requestedBy, verticalId };
+  function campaignInput(): CampaignInput {
+    return {
+      name: name.trim(),
+      requestedBy,
+      ...(verticalId ? { verticalId } : {}),
+    };
   }
 
   async function runAiSearch() {
@@ -71,7 +78,10 @@ export function LeadSourceIngestion({ mode, onCampaignCreated }: Props) {
       });
       const data = (await response.json()) as SourceRunResponse;
       if (!response.ok || !data.success || !data.campaign) throw new Error(data.error ?? "Поиск не завершён.");
-      const status = `Проверено вакансий: ${data.metrics?.jobsScanned ?? 0}. Компаний в кампании: ${data.companies ?? 0}. Писем для проверки: ${data.ready ?? 0}.`;
+      const plannerNote = data.planner?.status === "AI"
+        ? "Поисковую стратегию построил AI."
+        : "AI-планировщик недоступен: использован ограниченный резервный поиск.";
+      const status = `${plannerNote} Проверено источников: ${data.metrics?.jobsScanned ?? 0}. Компаний в кампании: ${data.companies ?? 0}. Писем для проверки: ${data.ready ?? 0}.`;
       setMessage(status);
       await onCampaignCreated?.(data.campaign, status);
     } catch (error) {
@@ -126,19 +136,28 @@ export function LeadSourceIngestion({ mode, onCampaignCreated }: Props) {
     }
   }
 
+  const segmentField = (
+    <label className="form-field">
+      <span>{mode === "AI_HIRING" ? "Отрасль (необязательно)" : "Сегмент"}</span>
+      <select disabled={pending !== null} value={verticalId} onChange={(event) => setVerticalId(event.target.value as LeadgenVerticalId | "")}>
+        {mode === "AI_HIRING" ? <option value="">Без отраслевого ограничения</option> : null}
+        {Object.values(LEADGEN_VERTICALS).map((vertical) => <option key={vertical.id} value={vertical.id}>{vertical.label}</option>)}
+      </select>
+    </label>
+  );
+
   const settings = (
     <div className="campaign-form campaign-form-compact">
-      <label className="form-field">
-        <span>Сегмент</span>
-        <select disabled={pending !== null} value={verticalId} onChange={(event) => setVerticalId(event.target.value as LeadgenVerticalId)}>
-          {Object.values(LEADGEN_VERTICALS).map((vertical) => <option key={vertical.id} value={vertical.id}>{vertical.label}</option>)}
-        </select>
-      </label>
+      {segmentField}
       <label className="form-field">
         <span>Название кампании</span>
         <input disabled={pending !== null} required value={name} onChange={(event) => setName(event.target.value)} />
       </label>
-      <p className="muted campaign-vertical-note">{LEADGEN_VERTICALS[verticalId].offer}</p>
+      <p className="muted campaign-vertical-note">
+        {verticalId
+          ? LEADGEN_VERTICALS[verticalId].offer
+          : "Ищем подтверждённый прямой спрос на AI по всем отраслям."}
+      </p>
     </div>
   );
 
@@ -146,7 +165,7 @@ export function LeadSourceIngestion({ mode, onCampaignCreated }: Props) {
     return (
       <div className="campaign-mode-settings" aria-live="polite">
         <h3>По прямой потребности в AI</h3>
-        <p className="muted">Ищем реальные вакансии, проверяем практическую задачу автоматизации, работодателя и соответствие выбранному сегменту.</p>
+        <p className="muted">Ищем публичные признаки реальной AI-задачи. Отрасль можно указать дополнительно, но по умолчанию поиск открыт по всему рынку.</p>
         {settings}
         <Button disabled={!name.trim() || pending !== null} loading={pending === "search"} onClick={runAiSearch} variant="primary">
           {pending === "search" ? "Идёт поиск…" : "Найти компании"}

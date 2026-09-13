@@ -7,7 +7,7 @@ import { getRegisteredCompanyIdentities, registerDiscoveredCompanies } from "@/l
 import { completeImportBatch, getImportBatchRows } from "@/lib/leadgen/contact-import-store";
 import { classifyEvidenceBackedEmail, getContactLevel } from "@/lib/leadgen/contact-quality";
 import { discoverDecisionMaker } from "@/lib/leadgen/decision-maker-discovery";
-import { buildEmailOutreach } from "@/lib/leadgen/email-outreach-builder";
+import { buildEmailOutreachWithAi } from "@/lib/leadgen/email-outreach-builder";
 import { createLeadOriginContext } from "@/lib/leadgen/lead-origin";
 import { isConfirmedOutreachEmail } from "@/lib/leadgen/adaptive-contact-intelligence";
 import { researchCompany, type CompanyResearchResult } from "@/lib/leadgen/company-research-agent";
@@ -34,7 +34,7 @@ type SourceCandidate = {
   companyName: string;
   domain: string;
   website: string;
-  segmentVerification: SegmentVerification;
+  segmentVerification: SegmentVerification | null;
   signalType: "AI_AUTOMATION_HIRING_SIGNAL" | "IMPORTED_CONTEXT";
   signalTitle: string;
   signalDetail: string;
@@ -43,6 +43,7 @@ type SourceCandidate = {
   email: string | null;
   emailKind: string | null;
   emailSourceUrl: string | null;
+  terminology?: string[];
   importedName?: string | null;
   importedRole?: string | null;
 };
@@ -106,15 +107,16 @@ async function readOfficialContext(website: string, signal?: AbortSignal) {
 }
 
 function candidateForRoleResolution(source: SourceCandidate): LeadCandidate {
+  const segment = source.segmentVerification;
   return {
     company_name: source.companyName,
     company_domain: source.domain,
-    company_segment: source.segmentVerification.detectedSegment ?? source.segmentVerification.selectedSegment,
+    company_segment: segment?.detectedSegment ?? segment?.selectedSegment ?? "без отраслевого ограничения",
     company_source_url: source.website,
     signals: [],
     lead_score: source.signalConfidence,
-    icp_fit_score: source.segmentVerification.confidence,
-    icp_fit_breakdown: { segment: source.segmentVerification },
+    icp_fit_score: segment?.confidence ?? source.signalConfidence,
+    icp_fit_breakdown: segment ? { segment } : { direct_ai_need: true },
     signal_summary: source.signalTitle,
     why_it_matters: source.signalDetail,
     why_now: source.signalDetail,
@@ -123,13 +125,13 @@ function candidateForRoleResolution(source: SourceCandidate): LeadCandidate {
     card_signal_title: source.signalTitle,
     signal_type: "TECH_SIGNAL",
     origin_context: createLeadOriginContext(source.origin, {
-      source_provider: source.origin === "AI_HIRING" ? "hh-web" : "contact_import",
+      source_provider: source.origin === "AI_HIRING" ? "direct_ai_need" : "contact_import",
       source_url: source.signalSourceUrl,
     }),
   };
 }
 
-function buildSourceContact(input: {
+async function buildSourceContact(input: {
   campaign: LeadgenCampaign;
   company: LeadgenCompany;
   lead: LeadgenLead;
@@ -162,7 +164,7 @@ function buildSourceContact(input: {
     telegram_url: null,
     contact_url: null,
     source_url: input.source.emailSourceUrl ?? input.source.website,
-    source_label: "Собственная база",
+    source_label: input.source.origin === "AI_HIRING" ? "Публичный корпоративный контакт" : "Собственная база",
     confidence_score: classification === "DEPARTMENT" ? 78 : 70,
     is_primary: true,
     metadata: {
@@ -179,35 +181,10 @@ function buildSourceContact(input: {
     },
     created_at: input.createdAt,
   };
-  const copy = buildEmailOutreach({
-    companyName: input.source.companyName,
-    companyWebsite: input.source.website,
-    personName: person?.full_name ?? null,
-    personRole: person?.role_title ?? null,
-    contact,
-    readiness: "fallback_ready",
-    whyNow: input.source.signalDetail,
-    selectionReason: person
-      ? `Подтверждён ${person.full_name}${person.role_title ? `, ${person.role_title}` : ""}; письмо доставляется через лучший найденный корпоративный адрес.`
-      : "Используется лучший найденный корпоративный адрес; конкретный получатель не подтверждён.",
-    signalType: input.source.signalType,
-    signalTitle: input.source.signalTitle,
-    signalDetail: input.source.signalDetail,
-    signalSourceUrl: input.source.signalSourceUrl,
-    signalConfidence: input.source.signalConfidence,
-    verticalId: input.source.segmentVerification.selectedSegment,
-  });
-  contact.metadata.email_subject = copy.subject;
-  contact.metadata.email_body = copy.body;
-  contact.metadata.email_quality = copy.quality as unknown as Record<string, number> | null;
-  contact.metadata.email_quality_gate_passed = copy.qualityGatePassed;
-  contact.metadata.email_generation_attempts = copy.generationAttempts;
-  contact.metadata.email_copy_review_status = copy.copyReviewStatus;
-  contact.metadata.email_guide_assignment = copy.guideAssignment;
   return contact;
 }
 
-async function buildSourceRecords(
+export async function buildSourceRecords(
   campaign: LeadgenCampaign,
   source: SourceCandidate,
   index: number,
@@ -218,7 +195,9 @@ async function buildSourceRecords(
   const decisionMaker = discoverDecisionMaker({
     candidate,
     signalType: "TECH_SIGNAL",
-    preferredRoles: getVerticalProfile(campaign.vertical_id).targetRoles,
+    preferredRoles: campaign.vertical_id
+      ? getVerticalProfile(campaign.vertical_id).targetRoles
+      : undefined,
   });
   const companyId = `company-${id(campaign.id, source.domain)}`;
   const leadId = `lead-${id(campaign.id, source.domain, String(index))}`;
@@ -228,18 +207,25 @@ async function buildSourceRecords(
     campaign_id: campaign.id,
     company_name: source.companyName,
     company_domain: source.domain,
-    company_segment: String(source.segmentVerification.detectedSegment ?? campaign.vertical_id),
+    company_segment: String(
+      source.segmentVerification?.detectedSegment ??
+      campaign.vertical_id ??
+      "без отраслевого ограничения",
+    ),
     source: source.origin === "AI_HIRING" ? "ai_hiring" : "imported_base",
     source_url: source.signalSourceUrl,
-    source_label: source.origin === "AI_HIRING" ? "Публичная вакансия" : "Собственная база",
+    source_label: source.origin === "AI_HIRING" ? "Публичная AI-потребность" : "Собственная база",
     signal_type: source.signalType as unknown as SignalType,
     discovery_query: null,
     matched_signal_count: 1,
     lead_score: source.signalConfidence,
-    icp_fit_score: source.segmentVerification.confidence,
-    confidence_score: Math.min(source.signalConfidence, source.segmentVerification.confidence),
+    icp_fit_score: source.segmentVerification?.confidence ?? source.signalConfidence,
+    confidence_score: Math.min(
+      source.signalConfidence,
+      source.segmentVerification?.confidence ?? source.signalConfidence,
+    ),
     country: "Россия",
-    industry: source.segmentVerification.detectedSegment,
+    industry: source.segmentVerification?.detectedSegment ?? null,
     company_size: null,
     linkedin_url: null,
     metadata: {
@@ -285,7 +271,7 @@ async function buildSourceRecords(
     contact_value: source.email,
     company_source_url: source.signalSourceUrl,
     lead_score: source.signalConfidence,
-    icp_fit_score: source.segmentVerification.confidence,
+    icp_fit_score: source.segmentVerification?.confidence ?? source.signalConfidence,
     signal_title: storedSignal.signal_title,
     signal_detail: storedSignal.signal_detail,
     signal_source_label: storedSignal.signal_source_label,
@@ -318,6 +304,12 @@ async function buildSourceRecords(
         signals: [storedSignal],
         decisionMaker,
         createdAt,
+        discoveryContext: {
+          origin: source.origin,
+          businessContext: source.signalDetail,
+          terminology: source.terminology,
+          sourceUrls: [source.signalSourceUrl, source.website],
+        },
         signal: requestSignal,
       },
     ),
@@ -327,7 +319,7 @@ async function buildSourceRecords(
   if (research) {
     company.metadata.company_research = research.bundle;
   }
-  const sourceContact = buildSourceContact({ campaign, company, lead, source, people, createdAt });
+  const sourceContact = await buildSourceContact({ campaign, company, lead, source, people, createdAt });
   const discoveredContacts: LeadgenContact[] = research?.contactDiscovery.contacts ?? [];
   const resolved = research?.contactDiscovery;
   if (resolved) {
@@ -347,7 +339,7 @@ async function buildSourceRecords(
       emails_rejected: resolved.emails_rejected?.slice(0, 10) ?? [],
     };
   }
-  const uniqueContacts = [sourceContact, ...discoveredContacts]
+  const uniqueContacts = [...discoveredContacts, sourceContact]
     .filter((contact): contact is LeadgenContact => Boolean(contact))
     .filter((contact, contactIndex, all) => {
       const key = contact.email?.trim().toLowerCase() || contact.id;
@@ -356,13 +348,42 @@ async function buildSourceRecords(
     });
   const confirmedEmail = uniqueContacts
     .filter(isConfirmedOutreachEmail)
-    .sort((left, right) => right.confidence_score - left.confidence_score)[0] ?? null;
+    .sort((left, right) =>
+      Number(right.email === research?.bundle.bestOutreachContact?.email) -
+      Number(left.email === research?.bundle.bestOutreachContact?.email) ||
+      right.confidence_score - left.confidence_score)[0] ?? null;
   const contact = confirmedEmail ?? sourceContact ?? null;
   const contacts = [
     ...uniqueContacts.filter((candidate) => !candidate.email),
     ...(contact ? [contact] : []),
   ];
-  if (contact?.email) {
+  if (contact?.email && isConfirmedOutreachEmail(contact)) {
+    const person = people.primary_person;
+    const copy = await buildEmailOutreachWithAi({
+      companyName: source.companyName,
+      companyWebsite: source.website,
+      personName: person?.full_name ?? null,
+      personRole: person?.role_title ?? null,
+      contact,
+      readiness: "fallback_ready",
+      whyNow: source.signalDetail,
+      selectionReason: person
+        ? `Подтверждён ${person.full_name}${person.role_title ? `, ${person.role_title}` : ""}; письмо доставляется через лучший найденный корпоративный адрес.`
+        : "Используется лучший найденный корпоративный адрес; конкретный получатель не подтверждён.",
+      signalType: source.signalType,
+      signalTitle: source.signalTitle,
+      signalDetail: source.signalDetail,
+      signalSourceUrl: source.signalSourceUrl,
+      signalConfidence: source.signalConfidence,
+      verticalId: source.segmentVerification?.selectedSegment,
+    });
+    contact.metadata.email_subject = copy.subject;
+    contact.metadata.email_body = copy.body;
+    contact.metadata.email_quality = copy.quality as unknown as Record<string, number> | null;
+    contact.metadata.email_quality_gate_passed = copy.qualityGatePassed;
+    contact.metadata.email_generation_attempts = copy.generationAttempts;
+    contact.metadata.email_copy_review_status = copy.copyReviewStatus;
+    contact.metadata.email_guide_assignment = copy.guideAssignment;
     lead.contact_channel = contact.contact_type === "work_email" ? "decision-maker" : "general-email";
     lead.contact_value = contact.email;
     lead.contact_label = contact.source_label;
@@ -377,7 +398,9 @@ async function persistSourceCampaign(
   candidates: SourceCandidate[],
   signal?: AbortSignal,
 ) {
-  if (!input.verticalId) throw new Error("Перед запуском выберите сегмент.");
+  if (origin === "IMPORTED" && !input.verticalId) {
+    throw new Error("Перед импортом выберите сегмент.");
+  }
   const createdAt = new Date().toISOString();
   const campaign: LeadgenCampaign = {
     id: `campaign-${origin.toLowerCase().replace("_", "-")}-${id(input.name, createdAt)}`,
@@ -385,17 +408,21 @@ async function persistSourceCampaign(
     name: input.name,
     requested_by: input.requestedBy,
     status: "completed",
-    icp_label: getVerticalIcp(input.verticalId).label,
-    offer_label: getVerticalProfile(input.verticalId).offer,
+    icp_label: input.verticalId
+      ? getVerticalIcp(input.verticalId).label
+      : "Прямой подтверждённый спрос на AI",
+    offer_label: input.verticalId
+      ? getVerticalProfile(input.verticalId).offer
+      : "разобрать конкретную AI-задачу и быстро проверить решение через аудит или MVP",
     created_at: createdAt,
-    vertical_id: input.verticalId,
+    ...(input.verticalId ? { vertical_id: input.verticalId } : {}),
   };
   const knownEmails = new Set(
     (await getKnownRecipientEmails()).map((email) => email.trim().toLowerCase()),
   );
   const knownCompanies = await getRegisteredCompanyIdentities();
   const selected = candidates.filter((candidate) => {
-    if (candidate.segmentVerification.match !== "MATCH") return false;
+    if (candidate.segmentVerification && candidate.segmentVerification.match !== "MATCH") return false;
     if (candidate.email && knownEmails.has(candidate.email.toLowerCase())) return false;
     const identity = getCompanyIdentity({
       company_name: candidate.companyName,
@@ -426,24 +453,27 @@ export async function runAiHiringCampaign({
   input,
   signal,
 }: {
-  input: CampaignInput & { verticalId: LeadgenVerticalId };
+  input: CampaignInput;
   signal?: AbortSignal;
 }) {
   const canary = await runAiHiringLiveCanary({ verticalId: input.verticalId, signal });
   const candidates: SourceCandidate[] = canary.accepted
-    .filter((item) => item.icpResult === "MATCH" && item.company && item.officialWebsite)
+    .filter((item) =>
+      (item.icpResult === "MATCH" || item.icpResult === "NOT_APPLIED") &&
+      item.company && item.officialWebsite,
+    )
     .map((item) => ({
       origin: "AI_HIRING",
       companyName: item.company!,
       domain: normalizeDomain(item.officialWebsite)!,
       website: item.officialWebsite!,
-      segmentVerification: {
+      segmentVerification: input.verticalId ? {
         selectedSegment: input.verticalId,
         detectedSegment: input.verticalId,
         match: "MATCH",
         confidence: 85,
         evidence: [compactText(item.evidence ?? item.vacancyTitle, 500)],
-      },
+      } : null,
       signalType: "AI_AUTOMATION_HIRING_SIGNAL",
       signalTitle: item.vacancyTitle,
       signalDetail: item.evidence ?? item.whyRelevant ?? item.vacancyTitle,
@@ -452,6 +482,7 @@ export async function runAiHiringCampaign({
       email: item.contactEmail,
       emailKind: item.contactKind,
       emailSourceUrl: item.contactSourceUrl,
+      terminology: canary.planner.terminology,
     }));
   const persisted = await persistSourceCampaign(input, "AI_HIRING", candidates, signal);
   return { ...persisted, live: canary };

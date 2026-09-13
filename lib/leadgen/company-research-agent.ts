@@ -18,7 +18,11 @@ import { PeopleDiscoveryEngine } from "@/lib/leadgen/people-discovery-engine";
 import { PublicContactProvider } from "@/lib/leadgen/public-contact-provider";
 import { RuPublicPeopleProvider } from "@/lib/leadgen/ru-public-people-provider";
 import { createLeadgenSearchProvider } from "@/lib/leadgen/search/leadgen-search-provider";
-import type { SearchProvider } from "@/lib/leadgen/search/search-provider";
+import type {
+  SearchProvider,
+  SearchProviderSearchInput,
+  SearchResult,
+} from "@/lib/leadgen/search/search-provider";
 import type {
   ContactDiscoveryResult,
   DecisionMakerProfile,
@@ -50,8 +54,11 @@ export type CompanyResearchPerson = {
   profiles: {
     tenchat: string | null;
     telegram: string | null;
+    instagram: string | null;
+    vk: string | null;
     other: string[];
   };
+  phone: string | null;
 };
 
 export type CompanyResearchEmail = {
@@ -84,7 +91,10 @@ export type ContactBundle = {
   researchConfidence: "VERIFIED" | "HIGH_CONFIDENCE" | "LIKELY" | "UNVERIFIED";
   metrics: {
     planner: "llm" | "deterministic";
+    plannerReason: "configured" | "missing_openai_api_key" | "disabled" | "provider_failed";
     queries: number;
+    duplicateQueriesSkipped: number;
+    budgetQueriesSkipped: number;
     officialPages: number;
     lprMs: number;
     contactMs: number;
@@ -111,6 +121,12 @@ export type CompanyResearchTargetContext = {
   knownPersonKeys?: Iterable<string>;
   knownContacts?: LeadgenContact[];
   searchProvider?: SearchProvider;
+  discoveryContext?: {
+    origin?: "DISCOVERY" | "AI_HIRING" | "IMPORTED";
+    businessContext?: string | null;
+    terminology?: string[];
+    sourceUrls?: string[];
+  };
   createdAt?: string;
   bypassCache?: boolean;
   signal?: AbortSignal;
@@ -130,7 +146,11 @@ function mergeKnownOfficialContacts(
   if (!knownContacts?.length) return discovered;
   const reusable = knownContacts.filter((contact) => {
     if (!contact.email || !isConfirmedOutreachEmail(contact)) return false;
-    return normalizeDomain(contact.email.split("@").at(-1)) === officialDomain;
+    const domain = normalizeDomain(contact.email.split("@").at(-1));
+    const matchReason = contact.metadata.email_domain_match_reason;
+    return domain === officialDomain ||
+      matchReason === "domain_alias_published_on_official_site" ||
+      matchReason === "confirmed_corporate_parent_domain";
   });
   if (reusable.length === 0) return discovered;
   const contacts = [...new Map(
@@ -147,6 +167,7 @@ type ResearchPlan = {
   alternativeRoles: string[][];
   queries: string[];
   source: "llm" | "deterministic";
+  reason: "configured" | "missing_openai_api_key" | "disabled" | "provider_failed";
 };
 
 type ResponsesApiResult = {
@@ -233,6 +254,9 @@ function deterministicPlan(decisionMaker: DecisionMakerProfile): ResearchPlan {
     alternativeRoles,
     queries: [],
     source: "deterministic",
+    reason: process.env.LEADGEN_RESEARCH_LLM_ENABLED === "false"
+      ? "disabled"
+      : "missing_openai_api_key",
   };
 }
 
@@ -242,12 +266,14 @@ async function planResearch({
   signalContext,
   decisionMaker,
   signal,
+  discoveryContext,
 }: {
   companyName: string;
   officialWebsite: string;
   signalContext: CompanyResearchSignalContext;
   decisionMaker: DecisionMakerProfile;
   signal?: AbortSignal;
+  discoveryContext?: CompanyResearchTargetContext["discoveryContext"];
 }): Promise<ResearchPlan> {
   const fallback = deterministicPlan(decisionMaker);
   const apiKey = process.env.OPENAI_API_KEY?.trim();
@@ -265,11 +291,11 @@ async function planResearch({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: process.env.LEADGEN_RESEARCH_OPENAI_MODEL?.trim() || "gpt-5-mini",
+          model: process.env.LEADGEN_RESEARCH_OPENAI_MODEL?.trim() || "gpt-4.1-mini",
           store: false,
           instructions: [
             "Ты планировщик публичного B2B-исследования российской компании.",
-            "Выбери владельца проблемы: одну primary role и максимум две alternative role families.",
+            "Определи, кто в этой конкретной компании владеет найденной проблемой или инициативой: до трёх релевантных ролей, без фиксированного whitelist.",
             "Составь разные точные запросы для открытого веб-поиска: руководство, официальные материалы, интервью, конференции, TenChat, Telegram, публичный корпоративный email.",
             "Не используй LinkedIn, Workspace, закрытые профили, утечки или догадки.",
             "Не придумывай людей и факты: сейчас нужны только роли и запросы.",
@@ -279,12 +305,16 @@ async function planResearch({
             companyName,
             officialWebsite,
             signal: signalContext,
-            proposedOwner: decisionMaker.business_problem_owner,
-            proposedPrimaryRole: decisionMaker.primary_persona,
-            proposedAlternatives: decisionMaker.alternative_personas.slice(0, 2),
+            discoveryContext: discoveryContext ?? null,
+            offerContext: "Аудит конкретного процесса, быстрый прототип или реализация части AI-задачи без противопоставления внутренней команде и найму.",
+            heuristicStartingPoint: {
+              owner: decisionMaker.business_problem_owner,
+              primaryRole: decisionMaker.primary_persona,
+              alternatives: decisionMaker.alternative_personas.slice(0, 2),
+            },
           }),
           text: {
-            verbosity: "low",
+            verbosity: "medium",
             format: {
               type: "json_schema",
               name: "company_research_plan",
@@ -296,11 +326,11 @@ async function planResearch({
         }),
         signal: requestSignal,
       });
-      if (!response.ok) return fallback;
+       if (!response.ok) return { ...fallback, reason: "provider_failed" };
       const text = outputText((await response.json()) as ResponsesApiResult);
-      if (!text) return fallback;
+       if (!text) return { ...fallback, reason: "provider_failed" };
       const parsed = JSON.parse(text) as unknown;
-      if (!isResearchPlan(parsed)) return fallback;
+       if (!isResearchPlan(parsed)) return { ...fallback, reason: "provider_failed" };
       const primaryRoles = uniqueStrings(parsed.primary_roles, 4);
       const alternativeRoles = parsed.alternative_roles
         .slice(0, 2)
@@ -308,10 +338,45 @@ async function planResearch({
         .filter((roles) => roles.length > 0);
       const queries = uniqueStrings(parsed.queries, 10)
         .filter((query) => /[а-яёa-z0-9]/i.test(query));
-      if (primaryRoles.length === 0 || queries.length < 4) return fallback;
-      return { primaryRoles, alternativeRoles, queries, source: "llm" };
+       if (primaryRoles.length === 0 || queries.length < 4) {
+         return { ...fallback, reason: "provider_failed" };
+       }
+       return { primaryRoles, alternativeRoles, queries, source: "llm", reason: "configured" };
     },
   });
+}
+
+class ResearchSearchBudget implements SearchProvider {
+  private readonly seen = new Set<string>();
+  private readonly provider: SearchProvider;
+  private readonly maximumQueries: number;
+  private executedCount = 0;
+  duplicateSkipped = 0;
+  budgetSkipped = 0;
+
+  constructor(provider: SearchProvider, maximumQueries = 14) {
+    this.provider = provider;
+    this.maximumQueries = maximumQueries;
+  }
+
+  get queriesExecuted() {
+    return this.executedCount;
+  }
+
+  async search(input: SearchProviderSearchInput): Promise<SearchResult[]> {
+    const key = `${input.query.trim().toLocaleLowerCase("ru-RU").replace(/\s+/g, " ")}:${input.page ?? 0}`;
+    if (this.seen.has(key)) {
+      this.duplicateSkipped += 1;
+      return [];
+    }
+    this.seen.add(key);
+    if (this.executedCount >= this.maximumQueries) {
+      this.budgetSkipped += 1;
+      return [];
+    }
+    this.executedCount += 1;
+    return this.provider.search(input);
+  }
 }
 
 function buildRuntime({
@@ -484,8 +549,11 @@ function mapPeople(
       profiles: {
         tenchat: profileValue(person, "tenchat_url"),
         telegram: profileValue(person, "telegram_url"),
-        other: [profileValue(person, "vk_url")].filter((value): value is string => Boolean(value)),
+        instagram: profileValue(person, "instagram_url"),
+        vk: profileValue(person, "vk_url"),
+        other: [],
       },
+      phone: person.phone ?? profileValue(person, "phone"),
     };
   });
 }
@@ -509,6 +577,9 @@ function contactClassification(
     generatedFromPattern: contact.metadata.email_extraction_method === "pattern",
     patternSupport: Number(contact.metadata.pattern_support ?? 0),
     mxVerified: contact.metadata.email_mx_verified === true,
+    confirmedCorporateAlias:
+      contact.metadata.email_domain_match_reason === "domain_alias_published_on_official_site" ||
+      contact.metadata.email_domain_match_reason === "confirmed_corporate_parent_domain",
   });
 }
 
@@ -576,13 +647,16 @@ export async function researchCompany(
     signalContext,
     targetContext: optionalTargetContext,
   });
-  const searchProvider = optionalTargetContext.searchProvider ?? createLeadgenSearchProvider();
+  const searchProvider = new ResearchSearchBudget(
+    optionalTargetContext.searchProvider ?? createLeadgenSearchProvider(),
+  );
   const plan = await planResearch({
     companyName,
     officialWebsite,
     signalContext,
     decisionMaker: runtime.decisionMaker,
     signal: optionalTargetContext.signal,
+    discoveryContext: optionalTargetContext.discoveryContext,
   });
   throwIfAborted(optionalTargetContext.signal);
   const peopleStartedAt = Date.now();
@@ -675,8 +749,10 @@ export async function researchCompany(
         : "UNVERIFIED",
     metrics: {
       planner: plan.source,
-      queries: (peopleDiscovery.research_metrics?.search_attempts ?? 0) +
-        (contactDiscovery.queries_executed?.length ?? 0),
+      plannerReason: plan.reason,
+      queries: searchProvider.queriesExecuted,
+      duplicateQueriesSkipped: searchProvider.duplicateSkipped,
+      budgetQueriesSkipped: searchProvider.budgetSkipped,
       officialPages: (peopleDiscovery.research_metrics?.official_pages_fetched ?? 0) +
         contactDiscovery.urls_inspected.length,
       lprMs,

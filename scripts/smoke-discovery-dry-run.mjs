@@ -6,12 +6,14 @@ assert.equal(campaignsResponse.ok, true);
 const campaigns = await campaignsResponse.json();
 const latest = campaigns.campaigns[0];
 assert.ok(latest);
+assert.ok(latest.vertical_id, "latest campaign must retain its selected segment");
 
 const response = await fetch(`${baseUrl}/api/leadgen/run`, {
   method: "POST",
   headers: { "content-type": "application/json" },
   body: JSON.stringify({
     name: latest.name,
+    verticalId: latest.vertical_id,
     requestedBy: "production-dry-run-audit",
     searchProvider: "browser",
     market: "ru",
