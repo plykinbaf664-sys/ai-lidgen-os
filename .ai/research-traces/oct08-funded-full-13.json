@@ -1,0 +1,2761 @@
+{
+  "mode": "direct",
+  "name": "Прометей",
+  "website": "https://prometheusenergy.ru",
+  "before": {
+    "companyName": "Прометей",
+    "officialWebsite": "https://prometheusenergy.ru",
+    "officialDomain": "prometheusenergy.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "info@prometheusenergy.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://prometheusenergy.ru/",
+              "sourceType": "official",
+              "excerpt": "info@prometheusenergy.ru — public email parser",
+              "capturedAt": "2026-10-06T08:18:54.191Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "info@prometheusenergy.ru",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://prometheusenergy.ru/"
+    },
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "Специалист по внедрению ИИ и оптимизации бизнес-процессов",
+      "detail": "• искать возможности применения ИИ в продажах, закупках, логистике, маркетинге, документообороте, аналитике и других направлениях; • тестировать ИИ-сервисы и выбирать решения, которые дают измеримый результат для бизнеса; • проектировать и внедрять ИИ-ассистентов, автоматические сценарии обработки информации и внутренние базы знаний;",
+      "sourceUrl": "https://hh.ru/vacancy/138132718",
+      "confidence": 90
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 20,
+      "lprMs": 23998,
+      "contactMs": 3657,
+      "totalMs": 33746,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "AI_AUTOMATION_HIRING_SIGNAL",
+    "title": "Специалист по внедрению ИИ и оптимизации бизнес-процессов",
+    "detail": "• искать возможности применения ИИ в продажах, закупках, логистике, маркетинге, документообороте, аналитике и других направлениях; • тестировать ИИ-сервисы и выбирать решения, которые дают измеримый результат для бизнеса; • проектировать и внедрять ИИ-ассистентов, автоматические сценарии обработки информации и внутренние базы знаний;",
+    "sourceUrl": "https://hh.ru/vacancy/138132718",
+    "confidence": 90
+  },
+  "index": 13,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://prometheusenergy.ru",
+      "status": 200,
+      "elapsedMs": 736
+    },
+    {
+      "stage": "research_open",
+      "url": "https://prometheusenergy.ru",
+      "success": true,
+      "evidence": {
+        "url": "https://prometheusenergy.ru",
+        "kind": "page",
+        "text": "Аккумуляторы от производителя доставка по всей России и в страны СНГ склады в разных уголках страны Оставить заявку Широкий ассортимент Сертификация на товары Тяговые аккумуляторы Свинцово-кислотные аккумуляторы Широкий ассортимент Сертификация на товары Каталог В каталог Литий-ионные аккумуляторы Перейти в раздел Свинцово-кислотные аккумуляторы Перейти в раздел Тяговые аккумуляторы Перейти в раздел Автоматическая солнечная станция Перейти в раздел Источники бесперебойного питания (ИБП) Перейти в раздел Аналог Sonnenshein (Зонненшайн) Перейти в раздел Есть вопросы или хотите заказать продукцию? Оставьте заявку, перезвоним в ближайшее время Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных О компании Мы стабильная, развитая компания, с коллективом профессионалов высокого уровня. Компания продолжает развиваться и имеет несколько складов в разных уголках страны. Prometheus Energy ответственно относится к производству своей продукции, проходит все необходимые испытания и получает документы. Главной целью компании является возможность человека иметь необходимый товар с должным качеством по низкой стоимости. Подробнее о производстве 1 млрд.+ оборот компании 10 + лет на рынке производства 2 млн продано аккумуляторов Популярные товары Prometheus Energy аккумулятор свинцово-кислотный PE 12100 12V 100Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1209 12V 9 Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1207 12V 7.2Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1205 12V 5Ah Запросить прайс-лист Все товары Мы на YouTube Перейти на канал Новости и статьи Все статьи Как выбрать источник бесперебойного питания (ИБП) для котла Грамотный выбор: лучшие ИБП для компьютера и газового котла Подбор аккумулятора для источника бесперебойного питания Все статьи Наши партнёры Мы в соц. сетях 2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 info@prometheusenergy.ru Политика конфиденциальности Согласие на обработку персональных данных Оставить заявку Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Каталог Где купить О компании Новости Контакты Кондиционеры Разработка сайта 2026г, ООО «Прометей» Политика конфиденциальности Разработка сайта",
+        "links": [
+          {
+            "url": "https://prometheusenergy.ru",
+            "label": ""
+          },
+          {
+            "url": "https://prometheusenergy.ru/catalog",
+            "label": "Каталог Литий-ионные аккумуляторы"
+          },
+          {
+            "url": "https://prometheusenergy.ru/catalog/svintsovo-kislotnye-akkumulyatory",
+            "label": "Свинцово-кислотные аккумуляторы"
+          },
+          {
+            "url": "https://prometheusenergy.ru/catalog/tyagovye-akkumulyatory",
+            "label": "Тяговые аккумуляторы"
+          },
+          {
+            "url": "https://prometheusenergy.ru/where-to-buy",
+            "label": "Где купить"
+          },
+          {
+            "url": "https://prometheusenergy.ru/about",
+            "label": "О компании Документация"
+          },
+          {
+            "url": "https://prometheusenergy.ru/service-centres",
+            "label": "Партнёры"
+          },
+          {
+            "url": "https://prometheusenergy.ru/reviews",
+            "label": "Отзывы"
+          },
+          {
+            "url": "https://prometheusenergy.ru/news",
+            "label": "Новости"
+          },
+          {
+            "url": "https://prometheusenergy.ru/contacts",
+            "label": "Контакты"
+          },
+          {
+            "url": "https://prometheusair.ru",
+            "label": "Кондиционеры"
+          },
+          {
+            "url": "https://www.youtube.com/@Admiral134",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/prometheusenergy",
+            "label": ""
+          },
+          {
+            "url": "https://prometheusenergy.ru/privacy-policy",
+            "label": "Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных"
+          },
+          {
+            "url": "https://prometheusenergy.ru/news/kak-vybrat-istochnik-bespereboynogo-pitaniya-ibp-dlya-kotla",
+            "label": "Как выбрать источник бесперебойного питания (ИБП) для котла"
+          },
+          {
+            "url": "https://prometheusenergy.ru/news/gramotnyy-vybor-luchshie-ibp-dlya-kompyutera-i-gazovogo-kotla",
+            "label": "Грамотный выбор: лучшие ИБП для компьютера и газового котла"
+          },
+          {
+            "url": "https://www.etm.ru",
+            "label": ""
+          },
+          {
+            "url": "https://www.chipdip.ru",
+            "label": ""
+          },
+          {
+            "url": "https://www.minimaks.ru",
+            "label": ""
+          },
+          {
+            "url": "https://merlion.com",
+            "label": ""
+          },
+          {
+            "url": "https://www.citilink.ru",
+            "label": ""
+          },
+          {
+            "url": "https://www.vseinstrumenti.ru",
+            "label": ""
+          },
+          {
+            "url": "https://prometheusenergy.ru/privacy-data",
+            "label": "Согласие на обработку персональных данных"
+          },
+          {
+            "url": "https://devade.ru",
+            "label": "Разработка сайта"
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:07:30.845Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3256,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "Прометей",
+        "domain": "prometheusenergy.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Специалист по внедрению ИИ и оптимизации бизнес-процессов",
+            "detail": "• искать возможности применения ИИ в продажах, закупках, логистике, маркетинге, документообороте, аналитике и других направлениях; • тестировать ИИ-сервисы и выбирать решения, которые дают измеримый результат для бизнеса; • проектировать и внедрять ИИ-ассистентов, автоматические сценарии обработки информации и внутренние базы знаний;",
+            "sourceUrl": "https://hh.ru/vacancy/138132718",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://prometheusenergy.ru",
+            "kind": "page",
+            "text": "Аккумуляторы от производителя доставка по всей России и в страны СНГ склады в разных уголках страны Оставить заявку Широкий ассортимент Сертификация на товары Тяговые аккумуляторы Свинцово-кислотные аккумуляторы Широкий ассортимент Сертификация на товары Каталог В каталог Литий-ионные аккумуляторы Перейти в раздел Свинцово-кислотные аккумуляторы Перейти в раздел Тяговые аккумуляторы Перейти в раздел Автоматическая солнечная станция Перейти в раздел Источники бесперебойного питания (ИБП) Перейти в раздел Аналог Sonnenshein (Зонненшайн) Перейти в раздел Есть вопросы или хотите заказать продукцию? Оставьте заявку, перезвоним в ближайшее время Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных О компании Мы стабильная, развитая компания, с коллективом профессионалов высокого уровня. Компания продолжает развиваться и имеет несколько складов в разных уголках страны. Prometheus Energy ответственно относится к производству своей продукции, проходит все необходимые испытания и получает документы. Главной целью компании является возможность человека иметь необходимый товар с должным качеством по низкой стоимости. Подробнее о производстве 1 млрд.+ оборот компании 10 + лет на рынке производства 2 млн продано аккумуляторов Популярные товары Prometheus Energy аккумулятор свинцово-кислотный PE 12100 12V 100Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1209 12V 9 Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1207 12V 7.2Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1205 12V 5Ah Запросить прайс-лист Все товары Мы на YouTube Перейти на канал Новости и статьи Все статьи Как выбрать источник бесперебойного питания (ИБП) для котла Грамотный выбор: лучшие ИБП для компьютера и газового котла Подбор аккумулятора для источника бесперебойного питания Все статьи Наши партнёры Мы в соц. сетях 2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 info@prometheusenergy.ru Политика конфиденциальности Согласие на обработку персональных данных Оставить заявку Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Каталог Где купить О компании Новости Контакты Кондиционеры Разработка сайта 2026г, ООО «Прометей» Политика конфиденциальности Разработка сайта",
+            "links": [
+              {
+                "url": "https://prometheusenergy.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog",
+                "label": "Каталог Литий-ионные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/svintsovo-kislotnye-akkumulyatory",
+                "label": "Свинцово-кислотные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/tyagovye-akkumulyatory",
+                "label": "Тяговые аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/where-to-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://prometheusenergy.ru/about",
+                "label": "О компании Документация"
+              },
+              {
+                "url": "https://prometheusenergy.ru/service-centres",
+                "label": "Партнёры"
+              },
+              {
+                "url": "https://prometheusenergy.ru/reviews",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://prometheusenergy.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://prometheusair.ru",
+                "label": "Кондиционеры"
+              },
+              {
+                "url": "https://www.youtube.com/@Admiral134",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/prometheusenergy",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-policy",
+                "label": "Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news/kak-vybrat-istochnik-bespereboynogo-pitaniya-ibp-dlya-kotla",
+                "label": "Как выбрать источник бесперебойного питания (ИБП) для котла"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news/gramotnyy-vybor-luchshie-ibp-dlya-kompyutera-i-gazovogo-kotla",
+                "label": "Грамотный выбор: лучшие ИБП для компьютера и газового котла"
+              },
+              {
+                "url": "https://www.etm.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.chipdip.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.minimaks.ru",
+                "label": ""
+              },
+              {
+                "url": "https://merlion.com",
+                "label": ""
+              },
+              {
+                "url": "https://www.citilink.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.vseinstrumenti.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-data",
+                "label": "Согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://devade.ru",
+                "label": "Разработка сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:30.845Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 7,
+          "actionsRemaining": 10,
+          "searchRemaining": 8,
+          "remainingMs": 44255
+        }
+      },
+      "usage": {
+        "input_tokens": 2833,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 375,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3208
+      },
+      "output": {
+        "companySummary": "ООО «Прометей» (Prometheus Energy) — производитель аккумуляторов, складская и производственная компания с сетью по всей России и СНГ. Основные продукты: тяговые, литий-ионные и свинцово-кислотные аккумуляторы, а также решения для бесперебойного питания. Юридический и производственный центр в Санкт-Петербурге. На сайте нет отдельной страницы руководства или команды, указан только общий контакт info@prometheusenergy.ru, а также телефон компании. Компания активно развивается и имеет оборот более 1 млрд руб., более 10 лет на рынке.",
+        "missing": [
+          "имена руководителя/владельца подразделения, ответственного за внедрение ИИ или оптимизацию процессов",
+          "публичный личный контакт ЛПР"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "prometheusenergy.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "2026г, ООО «Прометей»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://prometheusenergy.ru/contacts",
+            "focus": "руководство, ответственное лицо, структура, возможные личные контакты",
+            "purpose": "Проверить наличие руководства компании, структурных подразделений, конкретных ЛПР или их публичных контактов."
+          },
+          {
+            "type": "open",
+            "value": "https://prometheusenergy.ru/about",
+            "focus": "история, команда, руководство, ключевые лица",
+            "purpose": "Проверить раздел 'О компании' на предмет упоминания генерального директора, руководителей или владельцев бизнес-процессов."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённых ЛПР и их личных контактов; следующий шаг — открыть профильные страницы компании для поиска руководства или владельца подразделения."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "ООО «Прометей» (Prometheus Energy) — производитель аккумуляторов, складская и производственная компания с сетью по всей России и СНГ. Основные продукты: тяговые, литий-ионные и свинцово-кислотные аккумуляторы, а также решения для бесперебойного питания. Юридический и производственный центр в Санкт-Петербурге. На сайте нет отдельной страницы руководства или команды, указан только общий контакт info@prometheusenergy.ru, а также телефон компании. Компания активно развивается и имеет оборот более 1 млрд руб., более 10 лет на рынке.",
+        "missing": [
+          "имена руководителя/владельца подразделения, ответственного за внедрение ИИ или оптимизацию процессов",
+          "публичный личный контакт ЛПР"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "prometheusenergy.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "2026г, ООО «Прометей»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://prometheusenergy.ru/contacts",
+            "focus": "руководство, ответственное лицо, структура, возможные личные контакты",
+            "purpose": "Проверить наличие руководства компании, структурных подразделений, конкретных ЛПР или их публичных контактов."
+          },
+          {
+            "type": "open",
+            "value": "https://prometheusenergy.ru/about",
+            "focus": "история, команда, руководство, ключевые лица",
+            "purpose": "Проверить раздел 'О компании' на предмет упоминания генерального директора, руководителей или владельцев бизнес-процессов."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённых ЛПР и их личных контактов; следующий шаг — открыть профильные страницы компании для поиска руководства или владельца подразделения."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "prometheusenergy.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://prometheusenergy.ru/contacts",
+      "status": 301,
+      "elapsedMs": 110
+    },
+    {
+      "stage": "fetch",
+      "url": "https://prometheusenergy.ru/about",
+      "status": 301,
+      "elapsedMs": 322
+    },
+    {
+      "stage": "fetch",
+      "url": "https://prometheusenergy.ru/contacts/",
+      "status": 200,
+      "elapsedMs": 392
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://prometheusenergy.ru/contacts",
+      "focus": "руководство, ответственное лицо, структура, возможные личные контакты",
+      "purpose": "Проверить наличие руководства компании, структурных подразделений, конкретных ЛПР или их публичных контактов.",
+      "success": true,
+      "evidence": {
+        "url": "https://prometheusenergy.ru/contacts/",
+        "kind": "page",
+        "text": "Главная Контакты Контакты Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 +7 (812) 402-52-38 Заказать звонок info@prometheusenergy.ru Мы в соц. сетях Мы в соц. сетях 2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 info@prometheusenergy.ru Политика конфиденциальности Согласие на обработку персональных данных Оставить заявку Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Каталог Где купить О компании Новости Контакты Кондиционеры Разработка сайта 2026г, ООО «Прометей» Политика конфиденциальности Разработка сайта",
+        "links": [
+          {
+            "url": "https://prometheusenergy.ru",
+            "label": ""
+          },
+          {
+            "url": "https://prometheusenergy.ru/catalog",
+            "label": "Каталог Литий-ионные аккумуляторы"
+          },
+          {
+            "url": "https://prometheusenergy.ru/catalog/svintsovo-kislotnye-akkumulyatory",
+            "label": "Свинцово-кислотные аккумуляторы"
+          },
+          {
+            "url": "https://prometheusenergy.ru/catalog/tyagovye-akkumulyatory",
+            "label": "Тяговые аккумуляторы"
+          },
+          {
+            "url": "https://prometheusenergy.ru/where-to-buy",
+            "label": "Где купить"
+          },
+          {
+            "url": "https://prometheusenergy.ru/about",
+            "label": "О компании Документация"
+          },
+          {
+            "url": "https://prometheusenergy.ru/service-centres",
+            "label": "Партнёры"
+          },
+          {
+            "url": "https://prometheusenergy.ru/reviews",
+            "label": "Отзывы"
+          },
+          {
+            "url": "https://prometheusenergy.ru/news",
+            "label": "Новости"
+          },
+          {
+            "url": "https://prometheusenergy.ru/contacts",
+            "label": "Контакты"
+          },
+          {
+            "url": "https://prometheusair.ru",
+            "label": "Кондиционеры"
+          },
+          {
+            "url": "https://www.youtube.com/@Admiral134",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/prometheusenergy",
+            "label": ""
+          },
+          {
+            "url": "https://prometheusenergy.ru/privacy-policy",
+            "label": "Политика конфиденциальности"
+          },
+          {
+            "url": "https://prometheusenergy.ru/privacy-data",
+            "label": "Согласие на обработку персональных данных"
+          },
+          {
+            "url": "https://devade.ru",
+            "label": "Разработка сайта"
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:07:34.741Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://prometheusenergy.ru/about/",
+      "status": 200,
+      "elapsedMs": 281
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://prometheusenergy.ru/about",
+      "focus": "история, команда, руководство, ключевые лица",
+      "purpose": "Проверить раздел 'О компании' на предмет упоминания генерального директора, руководителей или владельцев бизнес-процессов.",
+      "success": true,
+      "evidence": {
+        "url": "https://prometheusenergy.ru/about/",
+        "kind": "page",
+        "text": "Главная О компании О компании Компания основана 8 апреля 2010 года, специализируется на аккумуляторах разного типа, и является поставщиком крупных заводов по производству взрывозащищенного оборудования. ООО «Прометей» занимается поставками, комплектующих и сырья из КНР и Южной Кореи для производства аккумуляторных батарей различного назначения. Аккумуляторы совместного производства применяются в изделиях разных заводов изготовителей. Вся номенклатура прошла соответствующие испытания в изделиях заводов изготовителей которые имеют необходимые сертификаты, разрешения на применение и лицензии. Реквизиты ООО “Прометей” Юридический адрес: 191014, г.Санкт-Петербург, вн.тер.г. муниципальный округ Смольнинское, пер Басков, д. 36, Литера А, Помещ. 1Н, Офис 2 Фактический адрес: г. Санкт- Петербург, Басков переулок, 36, Литера А, Помещ. 1Н, Офис 2 Адрес для переписки: 653024, г.Прокопьевск, ул.Серова 1А, а/я №13 ИНН/КПП 4223712739/784201001 ОГРН 1104223001057 ОКВЭД 51.53.54 1 млрд.+ оборот компании 10 + лет на рынке производства 2 млн продано аккумуляторов Преимущества аккумуляторов PROMETHEUS ENERGY Наши партнёры Отзывы Есть вопросы или хотите заказать продукцию? Оставьте заявку, перезвоним в ближайшее время Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Мы в соц. сетях 2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 info@prometheusenergy.ru Политика конфиденциальности Согласие на обработку персональных данных Оставить заявку Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Каталог Где купить О компании Новости Контакты Кондиционеры Разработка сайта 2026г, ООО «Прометей» Политика конфиденциальности Разработка сайта",
+        "links": [
+          {
+            "url": "https://prometheusenergy.ru",
+            "label": ""
+          },
+          {
+            "url": "https://prometheusenergy.ru/catalog",
+            "label": "Каталог Литий-ионные аккумуляторы"
+          },
+          {
+            "url": "https://prometheusenergy.ru/catalog/svintsovo-kislotnye-akkumulyatory",
+            "label": "Свинцово-кислотные аккумуляторы"
+          },
+          {
+            "url": "https://prometheusenergy.ru/catalog/tyagovye-akkumulyatory",
+            "label": "Тяговые аккумуляторы"
+          },
+          {
+            "url": "https://prometheusenergy.ru/where-to-buy",
+            "label": "Где купить"
+          },
+          {
+            "url": "https://prometheusenergy.ru/about",
+            "label": "О компании Документация"
+          },
+          {
+            "url": "https://prometheusenergy.ru/service-centres",
+            "label": "Партнёры"
+          },
+          {
+            "url": "https://prometheusenergy.ru/reviews",
+            "label": "Отзывы"
+          },
+          {
+            "url": "https://prometheusenergy.ru/news",
+            "label": "Новости"
+          },
+          {
+            "url": "https://prometheusenergy.ru/contacts",
+            "label": "Контакты"
+          },
+          {
+            "url": "https://prometheusair.ru",
+            "label": "Кондиционеры"
+          },
+          {
+            "url": "https://www.youtube.com/@Admiral134",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/prometheusenergy",
+            "label": ""
+          },
+          {
+            "url": "https://www.etm.ru",
+            "label": ""
+          },
+          {
+            "url": "https://www.chipdip.ru",
+            "label": ""
+          },
+          {
+            "url": "https://www.minimaks.ru",
+            "label": ""
+          },
+          {
+            "url": "https://merlion.com",
+            "label": ""
+          },
+          {
+            "url": "https://www.citilink.ru",
+            "label": ""
+          },
+          {
+            "url": "https://www.vseinstrumenti.ru",
+            "label": ""
+          },
+          {
+            "url": "https://prometheusenergy.ru/upload/iblock/991/9mtaqk9ovoaorj0djsb5h4lxtzpyoyvx.png",
+            "label": ""
+          },
+          {
+            "url": "https://prometheusenergy.ru/upload/iblock/6d3/w4bu1gnk3tayzxcbameq8a7ympo0vwxd.jpg",
+            "label": ""
+          },
+          {
+            "url": "https://prometheusenergy.ru/upload/iblock/f01/7fsm7p0ieh8u3y9ncpmeoedv7yqmg1i5.jpg",
+            "label": ""
+          },
+          {
+            "url": "https://prometheusenergy.ru/privacy-policy",
+            "label": "Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных"
+          },
+          {
+            "url": "https://prometheusenergy.ru/privacy-data",
+            "label": "Согласие на обработку персональных данных"
+          },
+          {
+            "url": "https://devade.ru",
+            "label": "Разработка сайта"
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:07:34.842Z",
+        "id": "e3"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 5534,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "Прометей",
+        "domain": "prometheusenergy.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Специалист по внедрению ИИ и оптимизации бизнес-процессов",
+            "detail": "• искать возможности применения ИИ в продажах, закупках, логистике, маркетинге, документообороте, аналитике и других направлениях; • тестировать ИИ-сервисы и выбирать решения, которые дают измеримый результат для бизнеса; • проектировать и внедрять ИИ-ассистентов, автоматические сценарии обработки информации и внутренние базы знаний;",
+            "sourceUrl": "https://hh.ru/vacancy/138132718",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://prometheusenergy.ru",
+            "kind": "page",
+            "text": "Аккумуляторы от производителя доставка по всей России и в страны СНГ склады в разных уголках страны Оставить заявку Широкий ассортимент Сертификация на товары Тяговые аккумуляторы Свинцово-кислотные аккумуляторы Широкий ассортимент Сертификация на товары Каталог В каталог Литий-ионные аккумуляторы Перейти в раздел Свинцово-кислотные аккумуляторы Перейти в раздел Тяговые аккумуляторы Перейти в раздел Автоматическая солнечная станция Перейти в раздел Источники бесперебойного питания (ИБП) Перейти в раздел Аналог Sonnenshein (Зонненшайн) Перейти в раздел Есть вопросы или хотите заказать продукцию? Оставьте заявку, перезвоним в ближайшее время Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных О компании Мы стабильная, развитая компания, с коллективом профессионалов высокого уровня. Компания продолжает развиваться и имеет несколько складов в разных уголках страны. Prometheus Energy ответственно относится к производству своей продукции, проходит все необходимые испытания и получает документы. Главной целью компании является возможность человека иметь необходимый товар с должным качеством по низкой стоимости. Подробнее о производстве 1 млрд.+ оборот компании 10 + лет на рынке производства 2 млн продано аккумуляторов Популярные товары Prometheus Energy аккумулятор свинцово-кислотный PE 12100 12V 100Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1209 12V 9 Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1207 12V 7.2Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1205 12V 5Ah Запросить прайс-лист Все товары Мы на YouTube Перейти на канал Новости и статьи Все статьи Как выбрать источник бесперебойного питания (ИБП) для котла Грамотный выбор: лучшие ИБП для компьютера и газового котла Подбор аккумулятора для источника бесперебойного питания Все статьи Наши партнёры Мы в соц. сетях 2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 info@prometheusenergy.ru Политика конфиденциальности Согласие на обработку персональных данных Оставить заявку Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Каталог Где купить О компании Новости Контакты Кондиционеры Разработка сайта 2026г, ООО «Прометей» Политика конфиденциальности Разработка сайта",
+            "links": [
+              {
+                "url": "https://prometheusenergy.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog",
+                "label": "Каталог Литий-ионные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/svintsovo-kislotnye-akkumulyatory",
+                "label": "Свинцово-кислотные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/tyagovye-akkumulyatory",
+                "label": "Тяговые аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/where-to-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://prometheusenergy.ru/about",
+                "label": "О компании Документация"
+              },
+              {
+                "url": "https://prometheusenergy.ru/service-centres",
+                "label": "Партнёры"
+              },
+              {
+                "url": "https://prometheusenergy.ru/reviews",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://prometheusenergy.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://prometheusair.ru",
+                "label": "Кондиционеры"
+              },
+              {
+                "url": "https://www.youtube.com/@Admiral134",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/prometheusenergy",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-policy",
+                "label": "Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news/kak-vybrat-istochnik-bespereboynogo-pitaniya-ibp-dlya-kotla",
+                "label": "Как выбрать источник бесперебойного питания (ИБП) для котла"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news/gramotnyy-vybor-luchshie-ibp-dlya-kompyutera-i-gazovogo-kotla",
+                "label": "Грамотный выбор: лучшие ИБП для компьютера и газового котла"
+              },
+              {
+                "url": "https://www.etm.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.chipdip.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.minimaks.ru",
+                "label": ""
+              },
+              {
+                "url": "https://merlion.com",
+                "label": ""
+              },
+              {
+                "url": "https://www.citilink.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.vseinstrumenti.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-data",
+                "label": "Согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://devade.ru",
+                "label": "Разработка сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:30.845Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://prometheusenergy.ru/contacts/",
+            "kind": "page",
+            "text": "Главная Контакты Контакты Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 +7 (812) 402-52-38 Заказать звонок info@prometheusenergy.ru Мы в соц. сетях Мы в соц. сетях 2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 info@prometheusenergy.ru Политика конфиденциальности Согласие на обработку персональных данных Оставить заявку Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Каталог Где купить О компании Новости Контакты Кондиционеры Разработка сайта 2026г, ООО «Прометей» Политика конфиденциальности Разработка сайта",
+            "links": [
+              {
+                "url": "https://prometheusenergy.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog",
+                "label": "Каталог Литий-ионные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/svintsovo-kislotnye-akkumulyatory",
+                "label": "Свинцово-кислотные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/tyagovye-akkumulyatory",
+                "label": "Тяговые аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/where-to-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://prometheusenergy.ru/about",
+                "label": "О компании Документация"
+              },
+              {
+                "url": "https://prometheusenergy.ru/service-centres",
+                "label": "Партнёры"
+              },
+              {
+                "url": "https://prometheusenergy.ru/reviews",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://prometheusenergy.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://prometheusair.ru",
+                "label": "Кондиционеры"
+              },
+              {
+                "url": "https://www.youtube.com/@Admiral134",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/prometheusenergy",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-policy",
+                "label": "Политика конфиденциальности"
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-data",
+                "label": "Согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://devade.ru",
+                "label": "Разработка сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:34.741Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://prometheusenergy.ru/about/",
+            "kind": "page",
+            "text": "Главная О компании О компании Компания основана 8 апреля 2010 года, специализируется на аккумуляторах разного типа, и является поставщиком крупных заводов по производству взрывозащищенного оборудования. ООО «Прометей» занимается поставками, комплектующих и сырья из КНР и Южной Кореи для производства аккумуляторных батарей различного назначения. Аккумуляторы совместного производства применяются в изделиях разных заводов изготовителей. Вся номенклатура прошла соответствующие испытания в изделиях заводов изготовителей которые имеют необходимые сертификаты, разрешения на применение и лицензии. Реквизиты ООО “Прометей” Юридический адрес: 191014, г.Санкт-Петербург, вн.тер.г. муниципальный округ Смольнинское, пер Басков, д. 36, Литера А, Помещ. 1Н, Офис 2 Фактический адрес: г. Санкт- Петербург, Басков переулок, 36, Литера А, Помещ. 1Н, Офис 2 Адрес для переписки: 653024, г.Прокопьевск, ул.Серова 1А, а/я №13 ИНН/КПП 4223712739/784201001 ОГРН 1104223001057 ОКВЭД 51.53.54 1 млрд.+ оборот компании 10 + лет на рынке производства 2 млн продано аккумуляторов Преимущества аккумуляторов PROMETHEUS ENERGY Наши партнёры Отзывы Есть вопросы или хотите заказать продукцию? Оставьте заявку, перезвоним в ближайшее время Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Мы в соц. сетях 2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 info@prometheusenergy.ru Политика конфиденциальности Согласие на обработку персональных данных Оставить заявку Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Каталог Где купить О компании Новости Контакты Кондиционеры Разработка сайта 2026г, ООО «Прометей» Политика конфиденциальности Разработка сайта",
+            "links": [
+              {
+                "url": "https://prometheusenergy.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog",
+                "label": "Каталог Литий-ионные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/svintsovo-kislotnye-akkumulyatory",
+                "label": "Свинцово-кислотные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/tyagovye-akkumulyatory",
+                "label": "Тяговые аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/where-to-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://prometheusenergy.ru/about",
+                "label": "О компании Документация"
+              },
+              {
+                "url": "https://prometheusenergy.ru/service-centres",
+                "label": "Партнёры"
+              },
+              {
+                "url": "https://prometheusenergy.ru/reviews",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://prometheusenergy.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://prometheusair.ru",
+                "label": "Кондиционеры"
+              },
+              {
+                "url": "https://www.youtube.com/@Admiral134",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/prometheusenergy",
+                "label": ""
+              },
+              {
+                "url": "https://www.etm.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.chipdip.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.minimaks.ru",
+                "label": ""
+              },
+              {
+                "url": "https://merlion.com",
+                "label": ""
+              },
+              {
+                "url": "https://www.citilink.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.vseinstrumenti.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/upload/iblock/991/9mtaqk9ovoaorj0djsb5h4lxtzpyoyvx.png",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/upload/iblock/6d3/w4bu1gnk3tayzxcbameq8a7ympo0vwxd.jpg",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/upload/iblock/f01/7fsm7p0ieh8u3y9ncpmeoedv7yqmg1i5.jpg",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-policy",
+                "label": "Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-data",
+                "label": "Согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://devade.ru",
+                "label": "Разработка сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:34.842Z",
+            "id": "e3"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://prometheusenergy.ru/contacts",
+            "focus": "руководство, ответственное лицо, структура, возможные личные контакты",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://prometheusenergy.ru/about",
+            "focus": "история, команда, руководство, ключевые лица",
+            "success": true
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 6,
+          "actionsRemaining": 8,
+          "searchRemaining": 8,
+          "remainingMs": 40257
+        }
+      },
+      "usage": {
+        "input_tokens": 4582,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 1920
+        },
+        "output_tokens": 379,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4961
+      },
+      "output": {
+        "companySummary": "ООО «Прометей» (prometheusenergy.ru) — производитель и поставщик аккумуляторов, работающий с крупными заводами, с офисом в Санкт-Петербурге. Компания существует более 10 лет, имеет значительный оборот и поставляет продукцию по России и СНГ. В открытых разделах 'О компании' и 'Контакты' опубликованы только общие контакты (телефон, info@prometheusenergy.ru), юридическая информация и адреса. Личных, руководящих или профильных контактов, а также перечисления команды или структуры на сайте нет. В открытых источниках не найдено упоминаний ФИО руководителя или владельца бизнес-процессов.",
+        "missing": [
+          "Имя руководителя, профильных ЛПР или владельца процесса (например, директора, исполнительного директора, руководителя подразделения, реквизит для личного обращения)",
+          "Публичный прямой контакт конкретного лица (email, профиль)"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "prometheusenergy.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "2026г, ООО «Прометей»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "ООО Прометей генеральный директор аккумуляторы site:prometheusenergy.ru OR аккумуляторы Санкт-Петербург",
+            "focus": "ФИО и должности руководства компании, владельца/руководителя направления или генерального директора, профильных специалистов, связанных с бизнес-процессами",
+            "purpose": "Выяснить персоналии ЛПР и релевантных руководителей для установления личного контакта"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет публичных сведений о ЛПР или структуре на сайте компании; требуется внешний поиск по руководству или релевантным лицам."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "ООО «Прометей» (prometheusenergy.ru) — производитель и поставщик аккумуляторов, работающий с крупными заводами, с офисом в Санкт-Петербурге. Компания существует более 10 лет, имеет значительный оборот и поставляет продукцию по России и СНГ. В открытых разделах 'О компании' и 'Контакты' опубликованы только общие контакты (телефон, info@prometheusenergy.ru), юридическая информация и адреса. Личных, руководящих или профильных контактов, а также перечисления команды или структуры на сайте нет. В открытых источниках не найдено упоминаний ФИО руководителя или владельца бизнес-процессов.",
+        "missing": [
+          "Имя руководителя, профильных ЛПР или владельца процесса (например, директора, исполнительного директора, руководителя подразделения, реквизит для личного обращения)",
+          "Публичный прямой контакт конкретного лица (email, профиль)"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "prometheusenergy.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "2026г, ООО «Прометей»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "ООО Прометей генеральный директор аккумуляторы site:prometheusenergy.ru OR аккумуляторы Санкт-Петербург",
+            "focus": "ФИО и должности руководства компании, владельца/руководителя направления или генерального директора, профильных специалистов, связанных с бизнес-процессами",
+            "purpose": "Выяснить персоналии ЛПР и релевантных руководителей для установления личного контакта"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет публичных сведений о ЛПР или структуре на сайте компании; требуется внешний поиск по руководству или релевантным лицам."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "prometheusenergy.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%9E%D0%9E%D0%9E%20%D0%9F%D1%80%D0%BE%D0%BC%D0%B5%D1%82%D0%B5%D0%B9%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80%D1%8B%20OR%20%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80%D1%8B%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3%20prometheusenergy.ru&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 346
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%9E%D0%9E%D0%9E%20%D0%9F%D1%80%D0%BE%D0%BC%D0%B5%D1%82%D0%B5%D0%B9%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80%D1%8B%20OR%20%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80%D1%8B%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3%20prometheusenergy.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 394
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "ООО Прометей генеральный директор аккумуляторы site:prometheusenergy.ru OR аккумуляторы Санкт-Петербург",
+      "focus": "ФИО и должности руководства компании, владельца/руководителя направления или генерального директора, профильных специалистов, связанных с бизнес-процессами",
+      "purpose": "Выяснить персоналии ЛПР и релевантных руководителей для установления личного контакта",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 4004,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "Прометей",
+        "domain": "prometheusenergy.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Специалист по внедрению ИИ и оптимизации бизнес-процессов",
+            "detail": "• искать возможности применения ИИ в продажах, закупках, логистике, маркетинге, документообороте, аналитике и других направлениях; • тестировать ИИ-сервисы и выбирать решения, которые дают измеримый результат для бизнеса; • проектировать и внедрять ИИ-ассистентов, автоматические сценарии обработки информации и внутренние базы знаний;",
+            "sourceUrl": "https://hh.ru/vacancy/138132718",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://prometheusenergy.ru",
+            "kind": "page",
+            "text": "Аккумуляторы от производителя доставка по всей России и в страны СНГ склады в разных уголках страны Оставить заявку Широкий ассортимент Сертификация на товары Тяговые аккумуляторы Свинцово-кислотные аккумуляторы Широкий ассортимент Сертификация на товары Каталог В каталог Литий-ионные аккумуляторы Перейти в раздел Свинцово-кислотные аккумуляторы Перейти в раздел Тяговые аккумуляторы Перейти в раздел Автоматическая солнечная станция Перейти в раздел Источники бесперебойного питания (ИБП) Перейти в раздел Аналог Sonnenshein (Зонненшайн) Перейти в раздел Есть вопросы или хотите заказать продукцию? Оставьте заявку, перезвоним в ближайшее время Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных О компании Мы стабильная, развитая компания, с коллективом профессионалов высокого уровня. Компания продолжает развиваться и имеет несколько складов в разных уголках страны. Prometheus Energy ответственно относится к производству своей продукции, проходит все необходимые испытания и получает документы. Главной целью компании является возможность человека иметь необходимый товар с должным качеством по низкой стоимости. Подробнее о производстве 1 млрд.+ оборот компании 10 + лет на рынке производства 2 млн продано аккумуляторов Популярные товары Prometheus Energy аккумулятор свинцово-кислотный PE 12100 12V 100Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1209 12V 9 Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1207 12V 7.2Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1205 12V 5Ah Запросить прайс-лист Все товары Мы на YouTube Перейти на канал Новости и статьи Все статьи Как выбрать источник бесперебойного питания (ИБП) для котла Грамотный выбор: лучшие ИБП для компьютера и газового котла Подбор аккумулятора для источника бесперебойного питания Все статьи Наши партнёры Мы в соц. сетях 2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 info@prometheusenergy.ru Политика конфиденциальности Согласие на обработку персональных данных Оставить заявку Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Каталог Где купить О компании Новости Контакты Кондиционеры Разработка сайта 2026г, ООО «Прометей» Политика конфиденциальности Разработка сайта",
+            "links": [
+              {
+                "url": "https://prometheusenergy.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog",
+                "label": "Каталог Литий-ионные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/svintsovo-kislotnye-akkumulyatory",
+                "label": "Свинцово-кислотные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/tyagovye-akkumulyatory",
+                "label": "Тяговые аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/where-to-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://prometheusenergy.ru/about",
+                "label": "О компании Документация"
+              },
+              {
+                "url": "https://prometheusenergy.ru/service-centres",
+                "label": "Партнёры"
+              },
+              {
+                "url": "https://prometheusenergy.ru/reviews",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://prometheusenergy.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://prometheusair.ru",
+                "label": "Кондиционеры"
+              },
+              {
+                "url": "https://www.youtube.com/@Admiral134",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/prometheusenergy",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-policy",
+                "label": "Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news/kak-vybrat-istochnik-bespereboynogo-pitaniya-ibp-dlya-kotla",
+                "label": "Как выбрать источник бесперебойного питания (ИБП) для котла"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news/gramotnyy-vybor-luchshie-ibp-dlya-kompyutera-i-gazovogo-kotla",
+                "label": "Грамотный выбор: лучшие ИБП для компьютера и газового котла"
+              },
+              {
+                "url": "https://www.etm.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.chipdip.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.minimaks.ru",
+                "label": ""
+              },
+              {
+                "url": "https://merlion.com",
+                "label": ""
+              },
+              {
+                "url": "https://www.citilink.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.vseinstrumenti.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-data",
+                "label": "Согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://devade.ru",
+                "label": "Разработка сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:30.845Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://prometheusenergy.ru/contacts/",
+            "kind": "page",
+            "text": "Главная Контакты Контакты Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 +7 (812) 402-52-38 Заказать звонок info@prometheusenergy.ru Мы в соц. сетях Мы в соц. сетях 2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 info@prometheusenergy.ru Политика конфиденциальности Согласие на обработку персональных данных Оставить заявку Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Каталог Где купить О компании Новости Контакты Кондиционеры Разработка сайта 2026г, ООО «Прометей» Политика конфиденциальности Разработка сайта",
+            "links": [
+              {
+                "url": "https://prometheusenergy.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog",
+                "label": "Каталог Литий-ионные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/svintsovo-kislotnye-akkumulyatory",
+                "label": "Свинцово-кислотные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/tyagovye-akkumulyatory",
+                "label": "Тяговые аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/where-to-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://prometheusenergy.ru/about",
+                "label": "О компании Документация"
+              },
+              {
+                "url": "https://prometheusenergy.ru/service-centres",
+                "label": "Партнёры"
+              },
+              {
+                "url": "https://prometheusenergy.ru/reviews",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://prometheusenergy.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://prometheusair.ru",
+                "label": "Кондиционеры"
+              },
+              {
+                "url": "https://www.youtube.com/@Admiral134",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/prometheusenergy",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-policy",
+                "label": "Политика конфиденциальности"
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-data",
+                "label": "Согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://devade.ru",
+                "label": "Разработка сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:34.741Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://prometheusenergy.ru/about/",
+            "kind": "page",
+            "text": "Главная О компании О компании Компания основана 8 апреля 2010 года, специализируется на аккумуляторах разного типа, и является поставщиком крупных заводов по производству взрывозащищенного оборудования. ООО «Прометей» занимается поставками, комплектующих и сырья из КНР и Южной Кореи для производства аккумуляторных батарей различного назначения. Аккумуляторы совместного производства применяются в изделиях разных заводов изготовителей. Вся номенклатура прошла соответствующие испытания в изделиях заводов изготовителей которые имеют необходимые сертификаты, разрешения на применение и лицензии. Реквизиты ООО “Прометей” Юридический адрес: 191014, г.Санкт-Петербург, вн.тер.г. муниципальный округ Смольнинское, пер Басков, д. 36, Литера А, Помещ. 1Н, Офис 2 Фактический адрес: г. Санкт- Петербург, Басков переулок, 36, Литера А, Помещ. 1Н, Офис 2 Адрес для переписки: 653024, г.Прокопьевск, ул.Серова 1А, а/я №13 ИНН/КПП 4223712739/784201001 ОГРН 1104223001057 ОКВЭД 51.53.54 1 млрд.+ оборот компании 10 + лет на рынке производства 2 млн продано аккумуляторов Преимущества аккумуляторов PROMETHEUS ENERGY Наши партнёры Отзывы Есть вопросы или хотите заказать продукцию? Оставьте заявку, перезвоним в ближайшее время Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Мы в соц. сетях 2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 info@prometheusenergy.ru Политика конфиденциальности Согласие на обработку персональных данных Оставить заявку Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Каталог Где купить О компании Новости Контакты Кондиционеры Разработка сайта 2026г, ООО «Прометей» Политика конфиденциальности Разработка сайта",
+            "links": [
+              {
+                "url": "https://prometheusenergy.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog",
+                "label": "Каталог Литий-ионные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/svintsovo-kislotnye-akkumulyatory",
+                "label": "Свинцово-кислотные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/tyagovye-akkumulyatory",
+                "label": "Тяговые аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/where-to-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://prometheusenergy.ru/about",
+                "label": "О компании Документация"
+              },
+              {
+                "url": "https://prometheusenergy.ru/service-centres",
+                "label": "Партнёры"
+              },
+              {
+                "url": "https://prometheusenergy.ru/reviews",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://prometheusenergy.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://prometheusair.ru",
+                "label": "Кондиционеры"
+              },
+              {
+                "url": "https://www.youtube.com/@Admiral134",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/prometheusenergy",
+                "label": ""
+              },
+              {
+                "url": "https://www.etm.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.chipdip.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.minimaks.ru",
+                "label": ""
+              },
+              {
+                "url": "https://merlion.com",
+                "label": ""
+              },
+              {
+                "url": "https://www.citilink.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.vseinstrumenti.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/upload/iblock/991/9mtaqk9ovoaorj0djsb5h4lxtzpyoyvx.png",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/upload/iblock/6d3/w4bu1gnk3tayzxcbameq8a7ympo0vwxd.jpg",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/upload/iblock/f01/7fsm7p0ieh8u3y9ncpmeoedv7yqmg1i5.jpg",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-policy",
+                "label": "Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-data",
+                "label": "Согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://devade.ru",
+                "label": "Разработка сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:34.842Z",
+            "id": "e3"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://prometheusenergy.ru/contacts",
+            "focus": "руководство, ответственное лицо, структура, возможные личные контакты",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://prometheusenergy.ru/about",
+            "focus": "история, команда, руководство, ключевые лица",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "ООО Прометей генеральный директор аккумуляторы site:prometheusenergy.ru OR аккумуляторы Санкт-Петербург",
+            "focus": "ФИО и должности руководства компании, владельца/руководителя направления или генерального директора, профильных специалистов, связанных с бизнес-процессами",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 7,
+          "searchRemaining": 7,
+          "remainingMs": 33768
+        }
+      },
+      "usage": {
+        "input_tokens": 4681,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 4352
+        },
+        "output_tokens": 427,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5108
+      },
+      "output": {
+        "companySummary": "ООО «Прометей» (Prometheus Energy) — крупный российский производитель и поставщик аккумуляторов, базируется в Санкт-Петербурге, работает более 10 лет, оборот более 1 млрд руб., продуктовый фокус — промышленные аккумуляторы. Подтверждён официальный сайт, контакты выложены только общие; структура и руководство на сайте не раскрыты.",
+        "missing": [
+          "ФИО и должность руководителя/владельца процесса внедрения AI или автоматизации бизнес-процессов (руководство, ИТ/цифровое направление, процессный владелец или директор компании)",
+          "Публичный личный контакт (email/профиль) релевантного ЛПР"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "prometheusenergy.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 ... info@prometheusenergy.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"ООО Прометей\" генеральный директор аккумуляторы -суд -банк -ликвидация",
+            "focus": "выявить ФИО и актуальную должность руководителя, предпочтительно по данным бизнес-реестра или свежей публикации",
+            "purpose": "Получить имя и должность исполнительного директора/Генерального директора, как наиболее вероятного владельца процесса автоматизации в небольшой производственной компании"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "На сайте нет раскрытых данных о руководстве/ЛПР; требуется внешний поиск для установления ФИО и актуальной должности релевантного ЛПР."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "ООО «Прометей» (Prometheus Energy) — крупный российский производитель и поставщик аккумуляторов, базируется в Санкт-Петербурге, работает более 10 лет, оборот более 1 млрд руб., продуктовый фокус — промышленные аккумуляторы. Подтверждён официальный сайт, контакты выложены только общие; структура и руководство на сайте не раскрыты.",
+        "missing": [
+          "ФИО и должность руководителя/владельца процесса внедрения AI или автоматизации бизнес-процессов (руководство, ИТ/цифровое направление, процессный владелец или директор компании)",
+          "Публичный личный контакт (email/профиль) релевантного ЛПР"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "prometheusenergy.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 ... info@prometheusenergy.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"ООО Прометей\" генеральный директор аккумуляторы -суд -банк -ликвидация",
+            "focus": "выявить ФИО и актуальную должность руководителя, предпочтительно по данным бизнес-реестра или свежей публикации",
+            "purpose": "Получить имя и должность исполнительного директора/Генерального директора, как наиболее вероятного владельца процесса автоматизации в небольшой производственной компании"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "На сайте нет раскрытых данных о руководстве/ЛПР; требуется внешний поиск для установления ФИО и актуальной должности релевантного ЛПР."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "prometheusenergy.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%9E%D0%9E%D0%9E%20%D0%9F%D1%80%D0%BE%D0%BC%D0%B5%D1%82%D0%B5%D0%B9%22%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80%D1%8B%20-%D1%81%D1%83%D0%B4%20-%D0%B1%D0%B0%D0%BD%D0%BA%20-%D0%BB%D0%B8%D0%BA%D0%B2%D0%B8%D0%B4%D0%B0%D1%86%D0%B8%D1%8F&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 390
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%9E%D0%9E%D0%9E%20%D0%9F%D1%80%D0%BE%D0%BC%D0%B5%D1%82%D0%B5%D0%B9%22%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80%D1%8B%20-%D1%81%D1%83%D0%B4%20-%D0%B1%D0%B0%D0%BD%D0%BA%20-%D0%BB%D0%B8%D0%BA%D0%B2%D0%B8%D0%B4%D0%B0%D1%86%D0%B8%D1%8F&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 366
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"ООО Прометей\" генеральный директор аккумуляторы -суд -банк -ликвидация",
+      "focus": "выявить ФИО и актуальную должность руководителя, предпочтительно по данным бизнес-реестра или свежей публикации",
+      "purpose": "Получить имя и должность исполнительного директора/Генерального директора, как наиболее вероятного владельца процесса автоматизации в небольшой производственной компании",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 4488,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "Прометей",
+        "domain": "prometheusenergy.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Специалист по внедрению ИИ и оптимизации бизнес-процессов",
+            "detail": "• искать возможности применения ИИ в продажах, закупках, логистике, маркетинге, документообороте, аналитике и других направлениях; • тестировать ИИ-сервисы и выбирать решения, которые дают измеримый результат для бизнеса; • проектировать и внедрять ИИ-ассистентов, автоматические сценарии обработки информации и внутренние базы знаний;",
+            "sourceUrl": "https://hh.ru/vacancy/138132718",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://prometheusenergy.ru",
+            "kind": "page",
+            "text": "Аккумуляторы от производителя доставка по всей России и в страны СНГ склады в разных уголках страны Оставить заявку Широкий ассортимент Сертификация на товары Тяговые аккумуляторы Свинцово-кислотные аккумуляторы Широкий ассортимент Сертификация на товары Каталог В каталог Литий-ионные аккумуляторы Перейти в раздел Свинцово-кислотные аккумуляторы Перейти в раздел Тяговые аккумуляторы Перейти в раздел Автоматическая солнечная станция Перейти в раздел Источники бесперебойного питания (ИБП) Перейти в раздел Аналог Sonnenshein (Зонненшайн) Перейти в раздел Есть вопросы или хотите заказать продукцию? Оставьте заявку, перезвоним в ближайшее время Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных О компании Мы стабильная, развитая компания, с коллективом профессионалов высокого уровня. Компания продолжает развиваться и имеет несколько складов в разных уголках страны. Prometheus Energy ответственно относится к производству своей продукции, проходит все необходимые испытания и получает документы. Главной целью компании является возможность человека иметь необходимый товар с должным качеством по низкой стоимости. Подробнее о производстве 1 млрд.+ оборот компании 10 + лет на рынке производства 2 млн продано аккумуляторов Популярные товары Prometheus Energy аккумулятор свинцово-кислотный PE 12100 12V 100Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1209 12V 9 Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1207 12V 7.2Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1205 12V 5Ah Запросить прайс-лист Все товары Мы на YouTube Перейти на канал Новости и статьи Все статьи Как выбрать источник бесперебойного питания (ИБП) для котла Грамотный выбор: лучшие ИБП для компьютера и газового котла Подбор аккумулятора для источника бесперебойного питания Все статьи Наши партнёры Мы в соц. сетях 2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 info@prometheusenergy.ru Политика конфиденциальности Согласие на обработку персональных данных Оставить заявку Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Каталог Где купить О компании Новости Контакты Кондиционеры Разработка сайта 2026г, ООО «Прометей» Политика конфиденциальности Разработка сайта",
+            "links": [
+              {
+                "url": "https://prometheusenergy.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog",
+                "label": "Каталог Литий-ионные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/svintsovo-kislotnye-akkumulyatory",
+                "label": "Свинцово-кислотные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/tyagovye-akkumulyatory",
+                "label": "Тяговые аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/where-to-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://prometheusenergy.ru/about",
+                "label": "О компании Документация"
+              },
+              {
+                "url": "https://prometheusenergy.ru/service-centres",
+                "label": "Партнёры"
+              },
+              {
+                "url": "https://prometheusenergy.ru/reviews",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://prometheusenergy.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://prometheusair.ru",
+                "label": "Кондиционеры"
+              },
+              {
+                "url": "https://www.youtube.com/@Admiral134",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/prometheusenergy",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-policy",
+                "label": "Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news/kak-vybrat-istochnik-bespereboynogo-pitaniya-ibp-dlya-kotla",
+                "label": "Как выбрать источник бесперебойного питания (ИБП) для котла"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news/gramotnyy-vybor-luchshie-ibp-dlya-kompyutera-i-gazovogo-kotla",
+                "label": "Грамотный выбор: лучшие ИБП для компьютера и газового котла"
+              },
+              {
+                "url": "https://www.etm.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.chipdip.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.minimaks.ru",
+                "label": ""
+              },
+              {
+                "url": "https://merlion.com",
+                "label": ""
+              },
+              {
+                "url": "https://www.citilink.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.vseinstrumenti.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-data",
+                "label": "Согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://devade.ru",
+                "label": "Разработка сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:30.845Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://prometheusenergy.ru/contacts/",
+            "kind": "page",
+            "text": "Главная Контакты Контакты Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 +7 (812) 402-52-38 Заказать звонок info@prometheusenergy.ru Мы в соц. сетях Мы в соц. сетях 2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 info@prometheusenergy.ru Политика конфиденциальности Согласие на обработку персональных данных Оставить заявку Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Каталог Где купить О компании Новости Контакты Кондиционеры Разработка сайта 2026г, ООО «Прометей» Политика конфиденциальности Разработка сайта",
+            "links": [
+              {
+                "url": "https://prometheusenergy.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog",
+                "label": "Каталог Литий-ионные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/svintsovo-kislotnye-akkumulyatory",
+                "label": "Свинцово-кислотные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/tyagovye-akkumulyatory",
+                "label": "Тяговые аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/where-to-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://prometheusenergy.ru/about",
+                "label": "О компании Документация"
+              },
+              {
+                "url": "https://prometheusenergy.ru/service-centres",
+                "label": "Партнёры"
+              },
+              {
+                "url": "https://prometheusenergy.ru/reviews",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://prometheusenergy.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://prometheusair.ru",
+                "label": "Кондиционеры"
+              },
+              {
+                "url": "https://www.youtube.com/@Admiral134",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/prometheusenergy",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-policy",
+                "label": "Политика конфиденциальности"
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-data",
+                "label": "Согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://devade.ru",
+                "label": "Разработка сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:34.741Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://prometheusenergy.ru/about/",
+            "kind": "page",
+            "text": "Главная О компании О компании Компания основана 8 апреля 2010 года, специализируется на аккумуляторах разного типа, и является поставщиком крупных заводов по производству взрывозащищенного оборудования. ООО «Прометей» занимается поставками, комплектующих и сырья из КНР и Южной Кореи для производства аккумуляторных батарей различного назначения. Аккумуляторы совместного производства применяются в изделиях разных заводов изготовителей. Вся номенклатура прошла соответствующие испытания в изделиях заводов изготовителей которые имеют необходимые сертификаты, разрешения на применение и лицензии. Реквизиты ООО “Прометей” Юридический адрес: 191014, г.Санкт-Петербург, вн.тер.г. муниципальный округ Смольнинское, пер Басков, д. 36, Литера А, Помещ. 1Н, Офис 2 Фактический адрес: г. Санкт- Петербург, Басков переулок, 36, Литера А, Помещ. 1Н, Офис 2 Адрес для переписки: 653024, г.Прокопьевск, ул.Серова 1А, а/я №13 ИНН/КПП 4223712739/784201001 ОГРН 1104223001057 ОКВЭД 51.53.54 1 млрд.+ оборот компании 10 + лет на рынке производства 2 млн продано аккумуляторов Преимущества аккумуляторов PROMETHEUS ENERGY Наши партнёры Отзывы Есть вопросы или хотите заказать продукцию? Оставьте заявку, перезвоним в ближайшее время Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Мы в соц. сетях 2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 info@prometheusenergy.ru Политика конфиденциальности Согласие на обработку персональных данных Оставить заявку Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Каталог Где купить О компании Новости Контакты Кондиционеры Разработка сайта 2026г, ООО «Прометей» Политика конфиденциальности Разработка сайта",
+            "links": [
+              {
+                "url": "https://prometheusenergy.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog",
+                "label": "Каталог Литий-ионные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/svintsovo-kislotnye-akkumulyatory",
+                "label": "Свинцово-кислотные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/tyagovye-akkumulyatory",
+                "label": "Тяговые аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/where-to-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://prometheusenergy.ru/about",
+                "label": "О компании Документация"
+              },
+              {
+                "url": "https://prometheusenergy.ru/service-centres",
+                "label": "Партнёры"
+              },
+              {
+                "url": "https://prometheusenergy.ru/reviews",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://prometheusenergy.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://prometheusair.ru",
+                "label": "Кондиционеры"
+              },
+              {
+                "url": "https://www.youtube.com/@Admiral134",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/prometheusenergy",
+                "label": ""
+              },
+              {
+                "url": "https://www.etm.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.chipdip.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.minimaks.ru",
+                "label": ""
+              },
+              {
+                "url": "https://merlion.com",
+                "label": ""
+              },
+              {
+                "url": "https://www.citilink.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.vseinstrumenti.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/upload/iblock/991/9mtaqk9ovoaorj0djsb5h4lxtzpyoyvx.png",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/upload/iblock/6d3/w4bu1gnk3tayzxcbameq8a7ympo0vwxd.jpg",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/upload/iblock/f01/7fsm7p0ieh8u3y9ncpmeoedv7yqmg1i5.jpg",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-policy",
+                "label": "Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-data",
+                "label": "Согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://devade.ru",
+                "label": "Разработка сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:34.842Z",
+            "id": "e3"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://prometheusenergy.ru/contacts",
+            "focus": "руководство, ответственное лицо, структура, возможные личные контакты",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://prometheusenergy.ru/about",
+            "focus": "история, команда, руководство, ключевые лица",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "ООО Прометей генеральный директор аккумуляторы site:prometheusenergy.ru OR аккумуляторы Санкт-Петербург",
+            "focus": "ФИО и должности руководства компании, владельца/руководителя направления или генерального директора, профильных специалистов, связанных с бизнес-процессами",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "\"ООО Прометей\" генеральный директор аккумуляторы -суд -банк -ликвидация",
+            "focus": "выявить ФИО и актуальную должность руководителя, предпочтительно по данным бизнес-реестра или свежей публикации",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 6,
+          "searchRemaining": 6,
+          "remainingMs": 28943
+        }
+      },
+      "usage": {
+        "input_tokens": 4776,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 4480
+        },
+        "output_tokens": 498,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5274
+      },
+      "output": {
+        "companySummary": "ООО «Прометей» (Prometheus Energy) — российский производитель аккумуляторов и источников бесперебойного питания с основным офисом в Санкт-Петербурге. Компания работает с B2B и B2C сегментом и осуществляет поставки по всей России и в страны СНГ. На сайте подробно представлены ассортимент продукции, контакты офиса и общие сведения о масштабах бизнеса (более 1 млрд оборота, 10+ лет на рынке). В открытую команду, структуру управления и ФИО участников руководство не опубликованы — указаны только общие почтовые и телефонные контакты.",
+        "missing": [
+          "ФИО и роль руководителя компании или подразделения-владельца задачи по автоматизации/внедрению ИИ",
+          "Личный публичный контакт ЛПР или профильного руководителя"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "prometheusair.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Кондиционеры"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"ООО Прометей\" генеральный директор аккумуляторы Санкт-Петербург",
+            "focus": "Установить ФИО действующего генерального директора или главного руководителя, связанного с задачами автоматизации или владеющего процессом в компании",
+            "purpose": "Поиск прямого упоминания ФИО и актуальной должности руководителя, поскольку сайт не содержит этой информации"
+          },
+          {
+            "type": "search",
+            "value": "\"prometheusenergy.ru\" генеральный директор OR директор OR ком. директор OR главный OR руководитель",
+            "focus": "Поиск ФИО и текущих публичных профилей с подтверждённой связью с компанией",
+            "purpose": "Построить связку человек ↔ роль ↔ компания для выявления ЛПР или лица, ответственного за автоматизацию"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "На сайте и контактах нет публичных данных о ЛПР или руководстве. Для установления ЛПР необходим внешний поиск по ФИО и должности."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 3,
+      "decision": {
+        "companySummary": "ООО «Прометей» (Prometheus Energy) — российский производитель аккумуляторов и источников бесперебойного питания с основным офисом в Санкт-Петербурге. Компания работает с B2B и B2C сегментом и осуществляет поставки по всей России и в страны СНГ. На сайте подробно представлены ассортимент продукции, контакты офиса и общие сведения о масштабах бизнеса (более 1 млрд оборота, 10+ лет на рынке). В открытую команду, структуру управления и ФИО участников руководство не опубликованы — указаны только общие почтовые и телефонные контакты.",
+        "missing": [
+          "ФИО и роль руководителя компании или подразделения-владельца задачи по автоматизации/внедрению ИИ",
+          "Личный публичный контакт ЛПР или профильного руководителя"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "prometheusair.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Кондиционеры"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"ООО Прометей\" генеральный директор аккумуляторы Санкт-Петербург",
+            "focus": "Установить ФИО действующего генерального директора или главного руководителя, связанного с задачами автоматизации или владеющего процессом в компании",
+            "purpose": "Поиск прямого упоминания ФИО и актуальной должности руководителя, поскольку сайт не содержит этой информации"
+          },
+          {
+            "type": "search",
+            "value": "\"prometheusenergy.ru\" генеральный директор OR директор OR ком. директор OR главный OR руководитель",
+            "focus": "Поиск ФИО и текущих публичных профилей с подтверждённой связью с компанией",
+            "purpose": "Построить связку человек ↔ роль ↔ компания для выявления ЛПР или лица, ответственного за автоматизацию"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "На сайте и контактах нет публичных данных о ЛПР или руководстве. Для установления ЛПР необходим внешний поиск по ФИО и должности."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:prometheusair.ru"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "prometheusenergy.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%9E%D0%9E%D0%9E%20%D0%9F%D1%80%D0%BE%D0%BC%D0%B5%D1%82%D0%B5%D0%B9%22%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80%D1%8B%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 229
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%9E%D0%9E%D0%9E%20%D0%9F%D1%80%D0%BE%D0%BC%D0%B5%D1%82%D0%B5%D0%B9%22%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80%D1%8B%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 142
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"ООО Прометей\" генеральный директор аккумуляторы Санкт-Петербург",
+      "focus": "Установить ФИО действующего генерального директора или главного руководителя, связанного с задачами автоматизации или владеющего процессом в компании",
+      "purpose": "Поиск прямого упоминания ФИО и актуальной должности руководителя, поскольку сайт не содержит этой информации",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22prometheusenergy.ru%22%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%BA%D0%BE%D0%BC.%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D1%8B%D0%B9%20OR%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 221
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22prometheusenergy.ru%22%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%BA%D0%BE%D0%BC.%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D1%8B%D0%B9%20OR%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 139
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"prometheusenergy.ru\" генеральный директор OR директор OR ком. директор OR главный OR руководитель",
+      "focus": "Поиск ФИО и текущих публичных профилей с подтверждённой связью с компанией",
+      "purpose": "Построить связку человек ↔ роль ↔ компания для выявления ЛПР или лица, ответственного за автоматизацию",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 6026,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "Прометей",
+        "domain": "prometheusenergy.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Специалист по внедрению ИИ и оптимизации бизнес-процессов",
+            "detail": "• искать возможности применения ИИ в продажах, закупках, логистике, маркетинге, документообороте, аналитике и других направлениях; • тестировать ИИ-сервисы и выбирать решения, которые дают измеримый результат для бизнеса; • проектировать и внедрять ИИ-ассистентов, автоматические сценарии обработки информации и внутренние базы знаний;",
+            "sourceUrl": "https://hh.ru/vacancy/138132718",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://prometheusenergy.ru",
+            "kind": "page",
+            "text": "Аккумуляторы от производителя доставка по всей России и в страны СНГ склады в разных уголках страны Оставить заявку Широкий ассортимент Сертификация на товары Тяговые аккумуляторы Свинцово-кислотные аккумуляторы Широкий ассортимент Сертификация на товары Каталог В каталог Литий-ионные аккумуляторы Перейти в раздел Свинцово-кислотные аккумуляторы Перейти в раздел Тяговые аккумуляторы Перейти в раздел Автоматическая солнечная станция Перейти в раздел Источники бесперебойного питания (ИБП) Перейти в раздел Аналог Sonnenshein (Зонненшайн) Перейти в раздел Есть вопросы или хотите заказать продукцию? Оставьте заявку, перезвоним в ближайшее время Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных О компании Мы стабильная, развитая компания, с коллективом профессионалов высокого уровня. Компания продолжает развиваться и имеет несколько складов в разных уголках страны. Prometheus Energy ответственно относится к производству своей продукции, проходит все необходимые испытания и получает документы. Главной целью компании является возможность человека иметь необходимый товар с должным качеством по низкой стоимости. Подробнее о производстве 1 млрд.+ оборот компании 10 + лет на рынке производства 2 млн продано аккумуляторов Популярные товары Prometheus Energy аккумулятор свинцово-кислотный PE 12100 12V 100Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1209 12V 9 Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1207 12V 7.2Ah Запросить прайс-лист Prometheus Energy аккумулятор свинцово-кислотный PE 1205 12V 5Ah Запросить прайс-лист Все товары Мы на YouTube Перейти на канал Новости и статьи Все статьи Как выбрать источник бесперебойного питания (ИБП) для котла Грамотный выбор: лучшие ИБП для компьютера и газового котла Подбор аккумулятора для источника бесперебойного питания Все статьи Наши партнёры Мы в соц. сетях 2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 info@prometheusenergy.ru Политика конфиденциальности Согласие на обработку персональных данных Оставить заявку Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Каталог Где купить О компании Новости Контакты Кондиционеры Разработка сайта 2026г, ООО «Прометей» Политика конфиденциальности Разработка сайта",
+            "links": [
+              {
+                "url": "https://prometheusenergy.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog",
+                "label": "Каталог Литий-ионные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/svintsovo-kislotnye-akkumulyatory",
+                "label": "Свинцово-кислотные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/tyagovye-akkumulyatory",
+                "label": "Тяговые аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/where-to-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://prometheusenergy.ru/about",
+                "label": "О компании Документация"
+              },
+              {
+                "url": "https://prometheusenergy.ru/service-centres",
+                "label": "Партнёры"
+              },
+              {
+                "url": "https://prometheusenergy.ru/reviews",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://prometheusenergy.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://prometheusair.ru",
+                "label": "Кондиционеры"
+              },
+              {
+                "url": "https://www.youtube.com/@Admiral134",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/prometheusenergy",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-policy",
+                "label": "Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news/kak-vybrat-istochnik-bespereboynogo-pitaniya-ibp-dlya-kotla",
+                "label": "Как выбрать источник бесперебойного питания (ИБП) для котла"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news/gramotnyy-vybor-luchshie-ibp-dlya-kompyutera-i-gazovogo-kotla",
+                "label": "Грамотный выбор: лучшие ИБП для компьютера и газового котла"
+              },
+              {
+                "url": "https://www.etm.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.chipdip.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.minimaks.ru",
+                "label": ""
+              },
+              {
+                "url": "https://merlion.com",
+                "label": ""
+              },
+              {
+                "url": "https://www.citilink.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.vseinstrumenti.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-data",
+                "label": "Согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://devade.ru",
+                "label": "Разработка сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:30.845Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://prometheusenergy.ru/contacts/",
+            "kind": "page",
+            "text": "Главная Контакты Контакты Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 +7 (812) 402-52-38 Заказать звонок info@prometheusenergy.ru Мы в соц. сетях Мы в соц. сетях 2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 info@prometheusenergy.ru Политика конфиденциальности Согласие на обработку персональных данных Оставить заявку Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Каталог Где купить О компании Новости Контакты Кондиционеры Разработка сайта 2026г, ООО «Прометей» Политика конфиденциальности Разработка сайта",
+            "links": [
+              {
+                "url": "https://prometheusenergy.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog",
+                "label": "Каталог Литий-ионные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/svintsovo-kislotnye-akkumulyatory",
+                "label": "Свинцово-кислотные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/tyagovye-akkumulyatory",
+                "label": "Тяговые аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/where-to-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://prometheusenergy.ru/about",
+                "label": "О компании Документация"
+              },
+              {
+                "url": "https://prometheusenergy.ru/service-centres",
+                "label": "Партнёры"
+              },
+              {
+                "url": "https://prometheusenergy.ru/reviews",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://prometheusenergy.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://prometheusair.ru",
+                "label": "Кондиционеры"
+              },
+              {
+                "url": "https://www.youtube.com/@Admiral134",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/prometheusenergy",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-policy",
+                "label": "Политика конфиденциальности"
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-data",
+                "label": "Согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://devade.ru",
+                "label": "Разработка сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:34.741Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://prometheusenergy.ru/about/",
+            "kind": "page",
+            "text": "Главная О компании О компании Компания основана 8 апреля 2010 года, специализируется на аккумуляторах разного типа, и является поставщиком крупных заводов по производству взрывозащищенного оборудования. ООО «Прометей» занимается поставками, комплектующих и сырья из КНР и Южной Кореи для производства аккумуляторных батарей различного назначения. Аккумуляторы совместного производства применяются в изделиях разных заводов изготовителей. Вся номенклатура прошла соответствующие испытания в изделиях заводов изготовителей которые имеют необходимые сертификаты, разрешения на применение и лицензии. Реквизиты ООО “Прометей” Юридический адрес: 191014, г.Санкт-Петербург, вн.тер.г. муниципальный округ Смольнинское, пер Басков, д. 36, Литера А, Помещ. 1Н, Офис 2 Фактический адрес: г. Санкт- Петербург, Басков переулок, 36, Литера А, Помещ. 1Н, Офис 2 Адрес для переписки: 653024, г.Прокопьевск, ул.Серова 1А, а/я №13 ИНН/КПП 4223712739/784201001 ОГРН 1104223001057 ОКВЭД 51.53.54 1 млрд.+ оборот компании 10 + лет на рынке производства 2 млн продано аккумуляторов Преимущества аккумуляторов PROMETHEUS ENERGY Наши партнёры Отзывы Есть вопросы или хотите заказать продукцию? Оставьте заявку, перезвоним в ближайшее время Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Мы в соц. сетях 2026г, ООО «Прометей» +7 (812) 402-52-38 Санкт-Петербург, Басков переулок, 36 пн-пт 9.00-17.30 info@prometheusenergy.ru Политика конфиденциальности Согласие на обработку персональных данных Оставить заявку Отправить Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных Каталог Где купить О компании Новости Контакты Кондиционеры Разработка сайта 2026г, ООО «Прометей» Политика конфиденциальности Разработка сайта",
+            "links": [
+              {
+                "url": "https://prometheusenergy.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog",
+                "label": "Каталог Литий-ионные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/svintsovo-kislotnye-akkumulyatory",
+                "label": "Свинцово-кислотные аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/catalog/tyagovye-akkumulyatory",
+                "label": "Тяговые аккумуляторы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/where-to-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://prometheusenergy.ru/about",
+                "label": "О компании Документация"
+              },
+              {
+                "url": "https://prometheusenergy.ru/service-centres",
+                "label": "Партнёры"
+              },
+              {
+                "url": "https://prometheusenergy.ru/reviews",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://prometheusenergy.ru/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://prometheusenergy.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://prometheusair.ru",
+                "label": "Кондиционеры"
+              },
+              {
+                "url": "https://www.youtube.com/@Admiral134",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/prometheusenergy",
+                "label": ""
+              },
+              {
+                "url": "https://www.etm.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.chipdip.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.minimaks.ru",
+                "label": ""
+              },
+              {
+                "url": "https://merlion.com",
+                "label": ""
+              },
+              {
+                "url": "https://www.citilink.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.vseinstrumenti.ru",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/upload/iblock/991/9mtaqk9ovoaorj0djsb5h4lxtzpyoyvx.png",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/upload/iblock/6d3/w4bu1gnk3tayzxcbameq8a7ympo0vwxd.jpg",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/upload/iblock/f01/7fsm7p0ieh8u3y9ncpmeoedv7yqmg1i5.jpg",
+                "label": ""
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-policy",
+                "label": "Нажимая на кнопку «Отправить» я даю своё согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://prometheusenergy.ru/privacy-data",
+                "label": "Согласие на обработку персональных данных"
+              },
+              {
+                "url": "https://devade.ru",
+                "label": "Разработка сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:34.842Z",
+            "id": "e3"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://prometheusenergy.ru/contacts",
+            "focus": "руководство, ответственное лицо, структура, возможные личные контакты",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://prometheusenergy.ru/about",
+            "focus": "история, команда, руководство, ключевые лица",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "ООО Прометей генеральный директор аккумуляторы site:prometheusenergy.ru OR аккумуляторы Санкт-Петербург",
+            "focus": "ФИО и должности руководства компании, владельца/руководителя направления или генерального директора, профильных специалистов, связанных с бизнес-процессами",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "\"ООО Прометей\" генеральный директор аккумуляторы -суд -банк -ликвидация",
+            "focus": "выявить ФИО и актуальную должность руководителя, предпочтительно по данным бизнес-реестра или свежей публикации",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "\"ООО Прометей\" генеральный директор аккумуляторы Санкт-Петербург",
+            "focus": "Установить ФИО действующего генерального директора или главного руководителя, связанного с задачами автоматизации или владеющего процессом в компании",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "\"prometheusenergy.ru\" генеральный директор OR директор OR ком. директор OR главный OR руководитель",
+            "focus": "Поиск ФИО и текущих публичных профилей с подтверждённой связью с компанией",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:prometheusair.ru"
+        ],
+        "budget": {
+          "roundsRemaining": 3,
+          "actionsRemaining": 4,
+          "searchRemaining": 4,
+          "remainingMs": 22974
+        }
+      },
+      "usage": {
+        "input_tokens": 4963,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 4608
+        },
+        "output_tokens": 498,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5461
+      },
+      "output": {
+        "companySummary": "ООО «Прометей» (Prometheus Energy) занимается производством и поставками аккумуляторов различного типа, располагает складами в РФ и СНГ, ориентируется на B2B (в том числе поставки заводам). Компания зарегистрирована в Санкт-Петербурге по адресу: Басков переулок, 36. Оборот превышает 1 млрд руб., на рынке более 10 лет. Среди контактов на сайте – общий info@prometheusenergy.ru и общие телефоны; руководство и структура не раскрыты публично. Прямая страница команды или указание ФИО руководителя отсутствует.",
+        "missing": [
+          "ФИО и текущая должность руководителя (генерального директора или профильного руководителя)",
+          "Публичный личный канал связи (email или профиль) конкретного ЛПР"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "prometheusenergy.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "2026г, ООО «Прометей» ... info@prometheusenergy.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"ООО Прометей\" ИНН 4223712739",
+            "focus": "установить через ИНН в бизнес-реестрах ФИО и должность действующего руководителя",
+            "purpose": "получить подтверждённое имя руководителя или владельца компании"
+          },
+          {
+            "type": "search",
+            "value": "\"ООО Прометей\" генеральный директор Санкт-Петербург аккумуляторы",
+            "focus": "поиск свежих упоминаний о руководителе или владельце в деловых и профильных источниках, чтобы подтвердить актуальность роли",
+            "purpose": "найти прямое подтверждение личности ЛПР"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого ФИО ЛПР: публичные страницы компании его не раскрывают, общий email — единственный опубликованный контакт. Следует использовать бизнес-реестры или свежие публикации для идентификации руководителя с привязкой к ИНН."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 4,
+      "decision": {
+        "companySummary": "ООО «Прометей» (Prometheus Energy) занимается производством и поставками аккумуляторов различного типа, располагает складами в РФ и СНГ, ориентируется на B2B (в том числе поставки заводам). Компания зарегистрирована в Санкт-Петербурге по адресу: Басков переулок, 36. Оборот превышает 1 млрд руб., на рынке более 10 лет. Среди контактов на сайте – общий info@prometheusenergy.ru и общие телефоны; руководство и структура не раскрыты публично. Прямая страница команды или указание ФИО руководителя отсутствует.",
+        "missing": [
+          "ФИО и текущая должность руководителя (генерального директора или профильного руководителя)",
+          "Публичный личный канал связи (email или профиль) конкретного ЛПР"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "prometheusenergy.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "2026г, ООО «Прометей» ... info@prometheusenergy.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"ООО Прометей\" ИНН 4223712739",
+            "focus": "установить через ИНН в бизнес-реестрах ФИО и должность действующего руководителя",
+            "purpose": "получить подтверждённое имя руководителя или владельца компании"
+          },
+          {
+            "type": "search",
+            "value": "\"ООО Прометей\" генеральный директор Санкт-Петербург аккумуляторы",
+            "focus": "поиск свежих упоминаний о руководителе или владельце в деловых и профильных источниках, чтобы подтвердить актуальность роли",
+            "purpose": "найти прямое подтверждение личности ЛПР"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого ФИО ЛПР: публичные страницы компании его не раскрывают, общий email — единственный опубликованный контакт. Следует использовать бизнес-реестры или свежие публикации для идентификации руководителя с привязкой к ИНН."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "prometheusenergy.ru"
+      ]
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "diminishing_returns",
+      "actions": 7,
+      "candidates": [],
+      "domains": [
+        "prometheusenergy.ru"
+      ],
+      "elapsedMs": 28230
+    },
+    {
+      "stage": "people_ranked",
+      "people": []
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Growth and cross-functional execution can create manual handoffs, process fragmentation, and operational bottlenecks.",
+        "target_responsibility": "Operations leadership",
+        "target_persona": "COO",
+        "alternative_personas": [
+          "Head of Operations",
+          "Operations Director",
+          "Head of Business Operations",
+          "Founder / CEO",
+          "Founder"
+        ],
+        "why_this_person": "The context points to process load or operational scaling, so operations leadership is the best entry persona. Matched context: процесс. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": "info@prometheusenergy.ru",
+        "contact_level": "E",
+        "email_classification": "GENERAL",
+        "email_type": "generic_fallback",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "LOW",
+        "readiness": "fallback_only",
+        "evidence": [
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "generic_fallback_does_not_qualify"
+      },
+      "contacts": [
+        {
+          "name": null,
+          "email": "info@prometheusenergy.ru",
+          "type": "generic_email",
+          "source": "https://prometheusenergy.ru",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://prometheusenergy.ru/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://prometheusenergy.ru/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://prometheusenergy.ru/contacts/"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://prometheusenergy.ru"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3091,
+      "schema": "leadgen_outreach_v4",
+      "model": "gpt-4.1-mini",
+      "input": {
+        "company": "Прометей",
+        "segment": null,
+        "industry": null,
+        "signal": {
+          "type": "AI_AUTOMATION_HIRING_SIGNAL",
+          "evidence": "• искать возможности применения ИИ в продажах, закупках, логистике, маркетинге, документообороте, аналитике и других направлениях; • тестировать ИИ-сервисы и выбирать решения, которые дают измеримый результат для бизнеса; • проектировать и внедрять ИИ-ассистентов, автоматические сценарии обработки информации и внутренние базы знаний;",
+          "source": "https://hh.ru/vacancy/138132718"
+        },
+        "company_specifics": null,
+        "lpr": {
+          "name": null,
+          "role": null,
+          "why_this_person": null
+        },
+        "business_context": {
+          "problem_hypothesis": "Growth and cross-functional execution can create manual handoffs, process fragmentation, and operational bottlenecks.",
+          "target_responsibility": null,
+          "selection_reason": null
+        },
+        "contact_type": "GENERAL",
+        "required_cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "required_greeting": "Добрый день."
+      },
+      "usage": {
+        "input_tokens": 687,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 282,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 969
+      },
+      "output": {
+        "subject": "Внедрение ИИ в процессы Прометея",
+        "body": "Согласно опубликованной вакансии на hh.ru, компания Прометей активно ищет возможности применения ИИ в продажах, закупках, логистике, маркетинге и документообороте. Сейчас, когда ведется поиск и тестирование ИИ-сервисов, подходящее время для пилотного проекта, направленного на оценку потенциала ИИ в ключевых бизнес-процессах.\nОдной из возможных проблем может быть фрагментация процессов из-за множества точек контроля и ручных этапов, что замедляет обмен информацией между отделами. Гипотетически, автоматизация обработки информации с помощью ИИ-ассистентов может снизить эти задержки и улучшить внутренний документооборот.\nПредлагаю провести пилотный проект по созданию ИИ-ассистента, который на базе входящих документов и данных из существующих систем будет автоматически формировать внутренние базы знаний и сценарии обработки информации. Это позволит оценить практическую эффективность таких решений без больших первоначальных затрат.",
+        "cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "quality": {
+          "reason_now": true,
+          "grounded_hypothesis": true,
+          "russian_only": true,
+          "personal_cta": true
+        }
+      }
+    }
+  ],
+  "startedAt": "2026-10-07T22:07:30.099Z",
+  "bundle": {
+    "companyName": "Прометей",
+    "officialWebsite": "https://prometheusenergy.ru",
+    "officialDomain": "prometheusenergy.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "info@prometheusenergy.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://prometheusenergy.ru",
+              "sourceType": "official",
+              "excerpt": "info@prometheusenergy.ru — public email parser",
+              "capturedAt": "2026-10-07T22:07:30.099Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "info@prometheusenergy.ru",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://prometheusenergy.ru"
+    },
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "Специалист по внедрению ИИ и оптимизации бизнес-процессов",
+      "detail": "• искать возможности применения ИИ в продажах, закупках, логистике, маркетинге, документообороте, аналитике и других направлениях; • тестировать ИИ-сервисы и выбирать решения, которые дают измеримый результат для бизнеса; • проектировать и внедрять ИИ-ассистентов, автоматические сценарии обработки информации и внутренние базы знаний;",
+      "sourceUrl": "https://hh.ru/vacancy/138132718",
+      "confidence": 90
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 14,
+      "lprMs": 28230,
+      "contactMs": 180,
+      "totalMs": 31552,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "people": {
+    "primary_person": null,
+    "alternative_people": [],
+    "all_candidates": [],
+    "search_status": "no_person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "diminishing_returns"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 4,
+      "official_pages_fetched": 3,
+      "aborted_requests": 0,
+      "elapsed_ms": 28230,
+      "stop_reason": "diminishing_returns",
+      "queries_executed": [
+        "ООО Прометей генеральный директор аккумуляторы site:prometheusenergy.ru OR аккумуляторы Санкт-Петербург",
+        "\"ООО Прометей\" генеральный директор аккумуляторы -суд -банк -ликвидация",
+        "\"ООО Прометей\" генеральный директор аккумуляторы Санкт-Петербург",
+        "\"prometheusenergy.ru\" генеральный директор OR директор OR ком. директор OR главный OR руководитель"
+      ],
+      "sources_checked": [
+        "https://prometheusenergy.ru",
+        "https://prometheusenergy.ru/contacts/",
+        "https://prometheusenergy.ru/about/"
+      ],
+      "search_results_seen": 0,
+      "rejected_candidates": {
+        "validation_rejects": 0
+      },
+      "final_failure_reason": "diminishing_returns"
+    }
+  },
+  "contacts": [
+    {
+      "name": null,
+      "role": null,
+      "email": "info@prometheusenergy.ru",
+      "type": "generic_email",
+      "source": "https://prometheusenergy.ru",
+      "selected": true,
+      "intelligence": {
+        "business_problem": "Growth and cross-functional execution can create manual handoffs, process fragmentation, and operational bottlenecks.",
+        "target_responsibility": "Operations leadership",
+        "target_persona": "COO",
+        "alternative_personas": [
+          "Head of Operations",
+          "Operations Director",
+          "Head of Business Operations",
+          "Founder / CEO",
+          "Founder"
+        ],
+        "why_this_person": "The context points to process load or operational scaling, so operations leadership is the best entry persona. Matched context: процесс. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": "info@prometheusenergy.ru",
+        "contact_level": "E",
+        "email_classification": "GENERAL",
+        "email_type": "generic_fallback",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "LOW",
+        "readiness": "fallback_only",
+        "evidence": [
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "generic_fallback_does_not_qualify"
+      },
+      "ready": true,
+      "copy": "Добрый день.\n\nСогласно опубликованной вакансии на hh.ru, компания Прометей активно ищет возможности применения ИИ в продажах, закупках, логистике, маркетинге и документообороте. Сейчас, когда ведется поиск и тестирование ИИ-сервисов, подходящее время для пилотного проекта, направленного на оценку потенциала ИИ в ключевых бизнес-процессах.\nОдной из возможных проблем может быть фрагментация процессов из-за множества точек контроля и ручных этапов, что замедляет обмен информацией между отделами. Гипотетически, автоматизация обработки информации с помощью ИИ-ассистентов может снизить эти задержки и улучшить внутренний документооборот.\nПредлагаю провести пилотный проект по созданию ИИ-ассистента, который на базе входящих документов и данных из существующих систем будет автоматически формировать внутренние базы знаний и сценарии обработки информации. Это позволит оценить практическую эффективность таких решений без больших первоначальных затрат.\n\nЯ AI-архитектор. Если потребуется, подключим бизнес-аналитика: сначала проверим процесс, затем выберем, что автоматизировать.\n\nМогу провести короткий разбор этого участка. Обычно он стоит 9 900 ₽; если ответите в течение 24 часов после отправки письма, проведу разбор бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514"
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://prometheusenergy.ru/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://prometheusenergy.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://prometheusenergy.ru/contacts/",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://prometheusenergy.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 31552
+}

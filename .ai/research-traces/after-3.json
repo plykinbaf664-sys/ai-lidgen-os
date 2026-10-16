@@ -1,0 +1,2084 @@
+{
+  "mode": "business",
+  "name": "БКК Коломенский",
+  "website": "https://kolomenskoe.ru",
+  "before": {
+    "companyName": "БКК Коломенский",
+    "officialWebsite": "https://kolomenskoe.ru",
+    "officialDomain": "kolomenskoe.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: БКК Коломенский; открыта вакансия: Старший бизнес-партнер по работе с персоналом (департамент логистики).",
+      "sourceUrl": "https://hh.ru/vacancy/135816113",
+      "confidence": 100
+    },
+    "researchConfidence": "UNVERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 24,
+      "lprMs": 20968,
+      "contactMs": 2667,
+      "totalMs": 25985,
+      "stopReason": "lpr_not_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: БКК Коломенский; открыта вакансия: Старший бизнес-партнер по работе с персоналом (департамент логистики).",
+    "sourceUrl": "https://hh.ru/vacancy/135816113",
+    "confidence": 100
+  },
+  "index": 3,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://kolomenskoe.ru",
+      "status": 301,
+      "elapsedMs": 462
+    },
+    {
+      "stage": "fetch",
+      "url": "https://khleb.ru",
+      "status": 200,
+      "elapsedMs": 687
+    },
+    {
+      "stage": "research_open",
+      "url": "https://kolomenskoe.ru",
+      "success": true,
+      "evidence": {
+        "url": "https://khleb.ru",
+        "kind": "page",
+        "text": "Натуральный и вкусный хлеб Узнать больше Узнать больше Сдоба на любой вкус Узнать больше Узнать больше Готовые решения для пекарен Узнать больше Узнать больше Делаем мир вкуснее Узнать больше Узнать больше Торговые марки Продукция Свежий хлеб Кондитерские изделия Замороженная продукция Производственные мощности В холдинг входит 16 производственных площадок Подробнее Мы производим вкусные продукты в лучших традициях «Коломенского» Мы производим вкусные продукты в лучших традициях «Коломенского» Работаем ответственно, с душой, для вас! Задать вопрос генеральному директору Козлову Дмитрию Владимировичу ФИО* Телефон E-mail* Ваш вопрос Введите код с картинки Даю согласие на обработку персональных данных Отправить",
+        "links": [
+          {
+            "url": "https://khleb.ru/export/about-holding",
+            "label": "For export clients"
+          },
+          {
+            "url": "https://khleb.ru/catalog/svezhiy-khleb",
+            "label": "Узнать больше"
+          },
+          {
+            "url": "https://khleb.ru/catalog/svezhiy-khleb/sdoba",
+            "label": "Узнать больше"
+          },
+          {
+            "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya",
+            "label": "Узнать больше"
+          },
+          {
+            "url": "https://khleb.ru/catalog/konditerskie-izdeliya",
+            "label": "Узнать больше"
+          },
+          {
+            "url": "https://khleb.ru/about-holding",
+            "label": "Подробнее"
+          },
+          {
+            "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+            "label": "персональных данных"
+          },
+          {
+            "url": "https://khleb.ru/about-holding/events",
+            "label": "События"
+          },
+          {
+            "url": "https://khleb.ru/about-holding/docs",
+            "label": "Реквизиты компаний"
+          },
+          {
+            "url": "https://khleb.ru/about-holding/disclosure",
+            "label": "Раскрытие информации"
+          },
+          {
+            "url": "https://khleb.ru/about-holding/contacts",
+            "label": "Контакты"
+          },
+          {
+            "url": "https://khleb.ru/where-buy",
+            "label": "Где купить"
+          },
+          {
+            "url": "https://khleb.ru/clients",
+            "label": "Клиентам"
+          },
+          {
+            "url": "https://khleb.ru/providers",
+            "label": "Поставщикам"
+          },
+          {
+            "url": "https://cloudmill.ru",
+            "label": "Клаудмил"
+          },
+          {
+            "url": "https://khleb.ru/catalog/svezhiy-khleb/chernyy-khleb",
+            "label": "Черный хлеб"
+          },
+          {
+            "url": "https://khleb.ru/catalog/svezhiy-khleb/belyy-khleb",
+            "label": "Белый хлеб"
+          },
+          {
+            "url": "https://khleb.ru/catalog/konditerskie-izdeliya/vafli",
+            "label": "Вафли"
+          },
+          {
+            "url": "https://khleb.ru/catalog/konditerskie-izdeliya/torty-vafelnye",
+            "label": "Вафельные торты"
+          },
+          {
+            "url": "https://khleb.ru/catalog/konditerskie-izdeliya/pechene",
+            "label": "Печенье"
+          },
+          {
+            "url": "https://khleb.ru/catalog/konditerskie-izdeliya/konfety",
+            "label": "Конфеты"
+          },
+          {
+            "url": "https://khleb.ru/catalog/konditerskie-izdeliya/zefir",
+            "label": "Зефир"
+          },
+          {
+            "url": "https://khleb.ru/catalog/konditerskie-izdeliya/pryaniki",
+            "label": "Пряники"
+          },
+          {
+            "url": "https://khleb.ru/catalog/konditerskie-izdeliya/sushki",
+            "label": "Сушки"
+          },
+          {
+            "url": "https://khleb.ru/catalog/konditerskie-izdeliya/mini-sushki",
+            "label": "Мини-сушки"
+          },
+          {
+            "url": "https://khleb.ru/catalog/konditerskie-izdeliya/baranki",
+            "label": "Баранки"
+          },
+          {
+            "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/cherniy-khleb",
+            "label": "Черный хлеб"
+          },
+          {
+            "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/beliy-khleb",
+            "label": "Белый хлеб"
+          },
+          {
+            "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/sdoba-sytnaya",
+            "label": "Сдоба сытная"
+          },
+          {
+            "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/sdoba",
+            "label": "Сдоба сладкая"
+          },
+          {
+            "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/testo",
+            "label": "Тесто"
+          },
+          {
+            "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/bonet",
+            "label": "Замороженные полуфабрикаты в розничной упаковке"
+          }
+        ],
+        "fetchedAt": "2026-10-06T12:28:47.618Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3853,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "БКК Коломенский",
+        "domain": "kolomenskoe.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: БКК Коломенский; открыта вакансия: Старший бизнес-партнер по работе с персоналом (департамент логистики).",
+            "sourceUrl": "https://hh.ru/vacancy/135816113",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://khleb.ru",
+            "kind": "page",
+            "text": "Натуральный и вкусный хлеб Узнать больше Узнать больше Сдоба на любой вкус Узнать больше Узнать больше Готовые решения для пекарен Узнать больше Узнать больше Делаем мир вкуснее Узнать больше Узнать больше Торговые марки Продукция Свежий хлеб Кондитерские изделия Замороженная продукция Производственные мощности В холдинг входит 16 производственных площадок Подробнее Мы производим вкусные продукты в лучших традициях «Коломенского» Мы производим вкусные продукты в лучших традициях «Коломенского» Работаем ответственно, с душой, для вас! Задать вопрос генеральному директору Козлову Дмитрию Владимировичу ФИО* Телефон E-mail* Ваш вопрос Введите код с картинки Даю согласие на обработку персональных данных Отправить",
+            "links": [
+              {
+                "url": "https://khleb.ru/export/about-holding",
+                "label": "For export clients"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/sdoba",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/about-holding",
+                "label": "Подробнее"
+              },
+              {
+                "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+                "label": "персональных данных"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/events",
+                "label": "События"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/docs",
+                "label": "Реквизиты компаний"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/disclosure",
+                "label": "Раскрытие информации"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://khleb.ru/where-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://khleb.ru/clients",
+                "label": "Клиентам"
+              },
+              {
+                "url": "https://khleb.ru/providers",
+                "label": "Поставщикам"
+              },
+              {
+                "url": "https://cloudmill.ru",
+                "label": "Клаудмил"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/chernyy-khleb",
+                "label": "Черный хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/belyy-khleb",
+                "label": "Белый хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/vafli",
+                "label": "Вафли"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/torty-vafelnye",
+                "label": "Вафельные торты"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/pechene",
+                "label": "Печенье"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/konfety",
+                "label": "Конфеты"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/zefir",
+                "label": "Зефир"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/pryaniki",
+                "label": "Пряники"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/sushki",
+                "label": "Сушки"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/mini-sushki",
+                "label": "Мини-сушки"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/baranki",
+                "label": "Баранки"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/cherniy-khleb",
+                "label": "Черный хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/beliy-khleb",
+                "label": "Белый хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/sdoba-sytnaya",
+                "label": "Сдоба сытная"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/sdoba",
+                "label": "Сдоба сладкая"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/testo",
+                "label": "Тесто"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/bonet",
+                "label": "Замороженные полуфабрикаты в розничной упаковке"
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:28:47.618Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 10,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "БКК Коломенский - российский производитель хлебобулочных и кондитерских изделий, имеющий многопрофильный холдинг с 16 производственными площадками. Основной сайт khleb.ru демонстрирует ассортимент продукции, направления и ссылки на корпоративные страницы, включая раздел с контактами и представление генерального директора - Дмитрия Владимировича Козлова.",
+        "missing": [
+          "Прямое подтверждение текущего состава команды и руководства в HR или логистике",
+          "Контактные данные именно для Старшего бизнес-партнера по работе с персоналом",
+          "Подтверждение связи между БКК Коломенский и доменом kolomenskoe.ru, потому что сайт холдинга khleb.ru"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "khleb.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Мы производим вкусные продукты в лучших традициях «Коломенского» Мы производим вкусные продукты в лучших традициях «Коломенского»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "colomensky HR leadership site:khleb.ru",
+            "focus": "Поиск информации об HR руководстве БКК Коломенский на официальном сайте холдинга",
+            "purpose": "Найти сведения о сотрудниках, отвечающих за HR или персонал"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "БКК Коломенский - российский производитель хлебобулочных и кондитерских изделий, имеющий многопрофильный холдинг с 16 производственными площадками. Основной сайт khleb.ru демонстрирует ассортимент продукции, направления и ссылки на корпоративные страницы, включая раздел с контактами и представление генерального директора - Дмитрия Владимировича Козлова.",
+        "missing": [
+          "Прямое подтверждение текущего состава команды и руководства в HR или логистике",
+          "Контактные данные именно для Старшего бизнес-партнера по работе с персоналом",
+          "Подтверждение связи между БКК Коломенский и доменом kolomenskoe.ru, потому что сайт холдинга khleb.ru"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "khleb.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Мы производим вкусные продукты в лучших традициях «Коломенского» Мы производим вкусные продукты в лучших традициях «Коломенского»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "colomensky HR leadership site:khleb.ru",
+            "focus": "Поиск информации об HR руководстве БКК Коломенский на официальном сайте холдинга",
+            "purpose": "Найти сведения о сотрудниках, отвечающих за HR или персонал"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      },
+      "validationErrors": [
+        "official_domain_not_proven:khleb.ru"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "kolomenskoe.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=colomensky%20HR%20leadership%20khleb.ru&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 339
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=colomensky%20HR%20leadership%20khleb.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 368
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1708
+    },
+    {
+      "stage": "search",
+      "query": "colomensky HR leadership site:khleb.ru",
+      "results": []
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "colomensky HR leadership site:khleb.ru",
+      "focus": "Поиск информации об HR руководстве БКК Коломенский на официальном сайте холдинга",
+      "purpose": "Найти сведения о сотрудниках, отвечающих за HR или персонал",
+      "results": []
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3474,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "БКК Коломенский",
+        "domain": "kolomenskoe.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: БКК Коломенский; открыта вакансия: Старший бизнес-партнер по работе с персоналом (департамент логистики).",
+            "sourceUrl": "https://hh.ru/vacancy/135816113",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://khleb.ru",
+            "kind": "page",
+            "text": "Натуральный и вкусный хлеб Узнать больше Узнать больше Сдоба на любой вкус Узнать больше Узнать больше Готовые решения для пекарен Узнать больше Узнать больше Делаем мир вкуснее Узнать больше Узнать больше Торговые марки Продукция Свежий хлеб Кондитерские изделия Замороженная продукция Производственные мощности В холдинг входит 16 производственных площадок Подробнее Мы производим вкусные продукты в лучших традициях «Коломенского» Мы производим вкусные продукты в лучших традициях «Коломенского» Работаем ответственно, с душой, для вас! Задать вопрос генеральному директору Козлову Дмитрию Владимировичу ФИО* Телефон E-mail* Ваш вопрос Введите код с картинки Даю согласие на обработку персональных данных Отправить",
+            "links": [
+              {
+                "url": "https://khleb.ru/export/about-holding",
+                "label": "For export clients"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/sdoba",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/about-holding",
+                "label": "Подробнее"
+              },
+              {
+                "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+                "label": "персональных данных"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/events",
+                "label": "События"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/docs",
+                "label": "Реквизиты компаний"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/disclosure",
+                "label": "Раскрытие информации"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://khleb.ru/where-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://khleb.ru/clients",
+                "label": "Клиентам"
+              },
+              {
+                "url": "https://khleb.ru/providers",
+                "label": "Поставщикам"
+              },
+              {
+                "url": "https://cloudmill.ru",
+                "label": "Клаудмил"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/chernyy-khleb",
+                "label": "Черный хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/belyy-khleb",
+                "label": "Белый хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/vafli",
+                "label": "Вафли"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/torty-vafelnye",
+                "label": "Вафельные торты"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/pechene",
+                "label": "Печенье"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/konfety",
+                "label": "Конфеты"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/zefir",
+                "label": "Зефир"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/pryaniki",
+                "label": "Пряники"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/sushki",
+                "label": "Сушки"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/mini-sushki",
+                "label": "Мини-сушки"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/baranki",
+                "label": "Баранки"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/cherniy-khleb",
+                "label": "Черный хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/beliy-khleb",
+                "label": "Белый хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/sdoba-sytnaya",
+                "label": "Сдоба сытная"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/sdoba",
+                "label": "Сдоба сладкая"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/testo",
+                "label": "Тесто"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/bonet",
+                "label": "Замороженные полуфабрикаты в розничной упаковке"
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:28:47.618Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "search",
+            "value": "colomensky HR leadership site:khleb.ru",
+            "focus": "Поиск информации об HR руководстве БКК Коломенский на официальном сайте холдинга",
+            "resultCount": 0
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:khleb.ru"
+        ],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 9,
+          "searchRemaining": 7
+        }
+      },
+      "output": {
+        "companySummary": "БКК Коломенский - производитель хлебобулочных и кондитерских изделий, холдинг включает 16 производственных площадок, официальный сайт относится к домену kolomenskoe.ru. На сайте khleb.ru представлена информация о продукции и компании, но домен khleb.ru не подтвержден как официальный для этой организации.",
+        "missing": [
+          "Подтверждение официального домена kolomenskoe.ru с сайта компании или страницы контактов",
+          "Персоналии, связанные с HR или руководством компании, особенно связанные с департаментом логистики или персонала",
+          "Контактные данные релевантных лиц"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "kolomenskoe.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Работаем ответственно, с душой, для вас! Задать вопрос генеральному директору Козлову Дмитрию Владимировичу ФИО* Телефон E-mail* Ваш вопрос"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Старший бизнес-партнер по работе с персоналом site:kolomenskoe.ru",
+            "focus": "Поиск информации о вакансии и ответственном лице по HR внутри сайта kolomenskoe.ru",
+            "purpose": "Найти релевантных лиц и контакты в контексте указанной вакансии HR"
+          },
+          {
+            "type": "open",
+            "value": "https://kolomenskoe.ru/about/contacts",
+            "focus": "Страница контактов официального сайта kolomenskoe.ru",
+            "purpose": "Подтвердить официальный домен и найти контакты ответственных лиц"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найдено релевантных персон и личных контактов; требуется запрос дополнительных данных на официальном домене компании kolomenskoe.ru."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "БКК Коломенский - производитель хлебобулочных и кондитерских изделий, холдинг включает 16 производственных площадок, официальный сайт относится к домену kolomenskoe.ru. На сайте khleb.ru представлена информация о продукции и компании, но домен khleb.ru не подтвержден как официальный для этой организации.",
+        "missing": [
+          "Подтверждение официального домена kolomenskoe.ru с сайта компании или страницы контактов",
+          "Персоналии, связанные с HR или руководством компании, особенно связанные с департаментом логистики или персонала",
+          "Контактные данные релевантных лиц"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "kolomenskoe.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Работаем ответственно, с душой, для вас! Задать вопрос генеральному директору Козлову Дмитрию Владимировичу ФИО* Телефон E-mail* Ваш вопрос"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Старший бизнес-партнер по работе с персоналом site:kolomenskoe.ru",
+            "focus": "Поиск информации о вакансии и ответственном лице по HR внутри сайта kolomenskoe.ru",
+            "purpose": "Найти релевантных лиц и контакты в контексте указанной вакансии HR"
+          },
+          {
+            "type": "open",
+            "value": "https://kolomenskoe.ru/about/contacts",
+            "focus": "Страница контактов официального сайта kolomenskoe.ru",
+            "purpose": "Подтвердить официальный домен и найти контакты ответственных лиц"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найдено релевантных персон и личных контактов; требуется запрос дополнительных данных на официальном домене компании kolomenskoe.ru."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:kolomenskoe.ru"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "kolomenskoe.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%A1%D1%82%D0%B0%D1%80%D1%88%D0%B8%D0%B9%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D0%B5%D1%80%20%D0%BF%D0%BE%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B5%20%D1%81%20%D0%BF%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%BB%D0%BE%D0%BC%20kolomenskoe.ru&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 337
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%A1%D1%82%D0%B0%D1%80%D1%88%D0%B8%D0%B9%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D0%B5%D1%80%20%D0%BF%D0%BE%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B5%20%D1%81%20%D0%BF%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%BB%D0%BE%D0%BC%20kolomenskoe.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 378
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 3286
+    },
+    {
+      "stage": "search",
+      "query": "Старший бизнес-партнер по работе с персоналом site:kolomenskoe.ru",
+      "results": [
+        {
+          "title": "Коломенский",
+          "url": "https://kolomenskoe.ru",
+          "snippet": "Работаем ответственно, с душой, для вас! Задать вопрос генеральному директору Козлову Дмитрию Владимировичу. ФИО*. Телефон.",
+          "source_label": "tavily",
+          "score": 0.060512852,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "приобрел московский хлебокомбинат «Пролетарец",
+          "url": "https://kolomenskoe.ru/about-holding/events/detail/bkkh-kolomenskiy-priobrel-moskovskiy-khlebokombinat-proletarets",
+          "snippet": "Булочно-кондитерский Холдинг «Коломенский» приобрел один из старейших хлебокомбинатов Москвы. В развитие предприятия компания инвестирует более 4 млрд",
+          "source_label": "tavily",
+          "score": 0.032889787,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "БКХ Коломенский",
+          "url": "https://www.kolomenskoe.ru/about-holding",
+          "snippet": "Наши ценности · Натуральность и вкус с гарантией качества · Честность и ответственность · Лидерство и драйв",
+          "source_label": "tavily",
+          "score": 0.027233893,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Булочка с корицей, 90 г",
+          "url": "https://www.kolomenskoe.ru/catalog/zamorozhennaya-produktsiya/sdoba/detail/bulochka-s-koritsey-90-g",
+          "snippet": "Объемное воздушное слоено-дрожжевое изделие с корицей и сахаром. Яркий, насыщенный и притягательный аромат корицы подарит заряд бодрости и прекрасного",
+          "source_label": "tavily",
+          "score": 0.021322012,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Багет «Традиционный», 260 г",
+          "url": "https://www.kolomenskoe.ru/catalog/zamorozhennaya-produktsiya/beliy-khleb/detail/baget-traditsionnyy-260-g",
+          "snippet": "Классический багет со вкусным нежным мякишем, приготовленный по традиционному рецепту. Великолепен в своей простоте: кусочек сыра, соус песто,",
+          "source_label": "tavily",
+          "score": 0.018449089,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Старший бизнес-партнер по работе с персоналом site:kolomenskoe.ru",
+      "focus": "Поиск информации о вакансии и ответственном лице по HR внутри сайта kolomenskoe.ru",
+      "purpose": "Найти релевантных лиц и контакты в контексте указанной вакансии HR",
+      "results": [
+        {
+          "url": "https://kolomenskoe.ru",
+          "title": "Коломенский",
+          "snippet": "Работаем ответственно, с душой, для вас! Задать вопрос генеральному директору Козлову Дмитрию Владимировичу. ФИО*. Телефон.",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://kolomenskoe.ru/about-holding/events/detail/bkkh-kolomenskiy-priobrel-moskovskiy-khlebokombinat-proletarets",
+          "title": "приобрел московский хлебокомбинат «Пролетарец",
+          "snippet": "Булочно-кондитерский Холдинг «Коломенский» приобрел один из старейших хлебокомбинатов Москвы. В развитие предприятия компания инвестирует более 4 млрд",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.kolomenskoe.ru/about-holding",
+          "title": "БКХ Коломенский",
+          "snippet": "Наши ценности · Натуральность и вкус с гарантией качества · Честность и ответственность · Лидерство и драйв",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.kolomenskoe.ru/catalog/zamorozhennaya-produktsiya/sdoba/detail/bulochka-s-koritsey-90-g",
+          "title": "Булочка с корицей, 90 г",
+          "snippet": "Объемное воздушное слоено-дрожжевое изделие с корицей и сахаром. Яркий, насыщенный и притягательный аромат корицы подарит заряд бодрости и прекрасного",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.kolomenskoe.ru/catalog/zamorozhennaya-produktsiya/beliy-khleb/detail/baget-traditsionnyy-260-g",
+          "title": "Багет «Традиционный», 260 г",
+          "snippet": "Классический багет со вкусным нежным мякишем, приготовленный по традиционному рецепту. Великолепен в своей простоте: кусочек сыра, соус песто,",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2858,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "БКК Коломенский",
+        "domain": "kolomenskoe.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: БКК Коломенский; открыта вакансия: Старший бизнес-партнер по работе с персоналом (департамент логистики).",
+            "sourceUrl": "https://hh.ru/vacancy/135816113",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://khleb.ru",
+            "kind": "page",
+            "text": "Натуральный и вкусный хлеб Узнать больше Узнать больше Сдоба на любой вкус Узнать больше Узнать больше Готовые решения для пекарен Узнать больше Узнать больше Делаем мир вкуснее Узнать больше Узнать больше Торговые марки Продукция Свежий хлеб Кондитерские изделия Замороженная продукция Производственные мощности В холдинг входит 16 производственных площадок Подробнее Мы производим вкусные продукты в лучших традициях «Коломенского» Мы производим вкусные продукты в лучших традициях «Коломенского» Работаем ответственно, с душой, для вас! Задать вопрос генеральному директору Козлову Дмитрию Владимировичу ФИО* Телефон E-mail* Ваш вопрос Введите код с картинки Даю согласие на обработку персональных данных Отправить",
+            "links": [
+              {
+                "url": "https://khleb.ru/export/about-holding",
+                "label": "For export clients"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/sdoba",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/about-holding",
+                "label": "Подробнее"
+              },
+              {
+                "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+                "label": "персональных данных"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/events",
+                "label": "События"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/docs",
+                "label": "Реквизиты компаний"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/disclosure",
+                "label": "Раскрытие информации"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://khleb.ru/where-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://khleb.ru/clients",
+                "label": "Клиентам"
+              },
+              {
+                "url": "https://khleb.ru/providers",
+                "label": "Поставщикам"
+              },
+              {
+                "url": "https://cloudmill.ru",
+                "label": "Клаудмил"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/chernyy-khleb",
+                "label": "Черный хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/belyy-khleb",
+                "label": "Белый хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/vafli",
+                "label": "Вафли"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/torty-vafelnye",
+                "label": "Вафельные торты"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/pechene",
+                "label": "Печенье"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/konfety",
+                "label": "Конфеты"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/zefir",
+                "label": "Зефир"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/pryaniki",
+                "label": "Пряники"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/sushki",
+                "label": "Сушки"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/mini-sushki",
+                "label": "Мини-сушки"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/baranki",
+                "label": "Баранки"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/cherniy-khleb",
+                "label": "Черный хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/beliy-khleb",
+                "label": "Белый хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/sdoba-sytnaya",
+                "label": "Сдоба сытная"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/sdoba",
+                "label": "Сдоба сладкая"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/testo",
+                "label": "Тесто"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/bonet",
+                "label": "Замороженные полуфабрикаты в розничной упаковке"
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:28:47.618Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://kolomenskoe.ru",
+            "kind": "search",
+            "text": "Коломенский\nРаботаем ответственно, с душой, для вас! Задать вопрос генеральному директору Козлову Дмитрию Владимировичу. ФИО*. Телефон.",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:29:01.568Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://kolomenskoe.ru/about-holding/events/detail/bkkh-kolomenskiy-priobrel-moskovskiy-khlebokombinat-proletarets",
+            "kind": "search",
+            "text": "приобрел московский хлебокомбинат «Пролетарец\nБулочно-кондитерский Холдинг «Коломенский» приобрел один из старейших хлебокомбинатов Москвы. В развитие предприятия компания инвестирует более 4 млрд",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:29:01.569Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://www.kolomenskoe.ru/about-holding",
+            "kind": "search",
+            "text": "БКХ Коломенский\nНаши ценности · Натуральность и вкус с гарантией качества · Честность и ответственность · Лидерство и драйв",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:29:01.569Z",
+            "id": "e4"
+          },
+          {
+            "url": "https://www.kolomenskoe.ru/catalog/zamorozhennaya-produktsiya/sdoba/detail/bulochka-s-koritsey-90-g",
+            "kind": "search",
+            "text": "Булочка с корицей, 90 г\nОбъемное воздушное слоено-дрожжевое изделие с корицей и сахаром. Яркий, насыщенный и притягательный аромат корицы подарит заряд бодрости и прекрасного",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:29:01.569Z",
+            "id": "e5"
+          },
+          {
+            "url": "https://www.kolomenskoe.ru/catalog/zamorozhennaya-produktsiya/beliy-khleb/detail/baget-traditsionnyy-260-g",
+            "kind": "search",
+            "text": "Багет «Традиционный», 260 г\nКлассический багет со вкусным нежным мякишем, приготовленный по традиционному рецепту. Великолепен в своей простоте: кусочек сыра, соус песто,",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:29:01.569Z",
+            "id": "e6"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "search",
+            "value": "colomensky HR leadership site:khleb.ru",
+            "focus": "Поиск информации об HR руководстве БКК Коломенский на официальном сайте холдинга",
+            "resultCount": 0
+          },
+          {
+            "type": "search",
+            "value": "Старший бизнес-партнер по работе с персоналом site:kolomenskoe.ru",
+            "focus": "Поиск информации о вакансии и ответственном лице по HR внутри сайта kolomenskoe.ru",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:kolomenskoe.ru"
+        ],
+        "budget": {
+          "roundsRemaining": 3,
+          "actionsRemaining": 8,
+          "searchRemaining": 6
+        }
+      },
+      "output": {
+        "companySummary": "БКК Коломенский - крупный хлебобулочный холдинг, владеющий 16 производственными площадками, специализируется на натуральном хлебе и кондитерских изделиях. Генеральный директор - Дмитрий Владимирович Козлов. Холдинг приобрел московский хлебокомбинат «Пролетарец».",
+        "missing": [
+          "Информация о конкретных сотрудниках, отвечающих за HR и логистику",
+          "Личные контакты или публичные профили ключевых лиц из HR департамента"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "khleb.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "В холдинг входит 16 производственных площадок Подробнее Мы производим вкусные продукты в лучших традициях «Коломенского»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Старший бизнес-партнер по работе с персоналом БКК Коломенский linkedin",
+            "focus": "Поиск профилей HR специалистов на LinkedIn, связанных с БКК Коломенский и вакансией",
+            "purpose": "Найти профиль HR руководителя или старшего бизнес-партнера с персоналом из департамента логистики"
+          },
+          {
+            "type": "search",
+            "value": "Дмитрий Козлов генеральный директор БКК Коломенский linkedin",
+            "focus": "Поиск профиля генерального директора Дмитрия Козлова на LinkedIn",
+            "purpose": "Подтвердить структуру руководства и возможные контакты для уточнения информации"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "БКК Коломенский - крупный хлебобулочный холдинг, владеющий 16 производственными площадками, специализируется на натуральном хлебе и кондитерских изделиях. Генеральный директор - Дмитрий Владимирович Козлов. Холдинг приобрел московский хлебокомбинат «Пролетарец».",
+        "missing": [
+          "Информация о конкретных сотрудниках, отвечающих за HR и логистику",
+          "Личные контакты или публичные профили ключевых лиц из HR департамента"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "khleb.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "В холдинг входит 16 производственных площадок Подробнее Мы производим вкусные продукты в лучших традициях «Коломенского»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Старший бизнес-партнер по работе с персоналом БКК Коломенский linkedin",
+            "focus": "Поиск профилей HR специалистов на LinkedIn, связанных с БКК Коломенский и вакансией",
+            "purpose": "Найти профиль HR руководителя или старшего бизнес-партнера с персоналом из департамента логистики"
+          },
+          {
+            "type": "search",
+            "value": "Дмитрий Козлов генеральный директор БКК Коломенский linkedin",
+            "focus": "Поиск профиля генерального директора Дмитрия Козлова на LinkedIn",
+            "purpose": "Подтвердить структуру руководства и возможные контакты для уточнения информации"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      },
+      "validationErrors": [
+        "official_domain_not_proven:khleb.ru"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "kolomenskoe.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%A1%D1%82%D0%B0%D1%80%D1%88%D0%B8%D0%B9%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D0%B5%D1%80%20%D0%BF%D0%BE%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B5%20%D1%81%20%D0%BF%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%BB%D0%BE%D0%BC%20%D0%91%D0%9A%D0%9A%20%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20linkedin&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 226
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%A1%D1%82%D0%B0%D1%80%D1%88%D0%B8%D0%B9%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D0%B5%D1%80%20%D0%BF%D0%BE%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B5%20%D1%81%20%D0%BF%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%BB%D0%BE%D0%BC%20%D0%91%D0%9A%D0%9A%20%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20linkedin&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 135
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9%20%D0%9A%D0%BE%D0%B7%D0%BB%D0%BE%D0%B2%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%91%D0%9A%D0%9A%20%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20linkedin&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 229
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9%20%D0%9A%D0%BE%D0%B7%D0%BB%D0%BE%D0%B2%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%91%D0%9A%D0%9A%20%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20linkedin&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 124
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1993
+    },
+    {
+      "stage": "search",
+      "query": "Старший бизнес-партнер по работе с персоналом БКК Коломенский linkedin",
+      "results": [
+        {
+          "title": "Работа в компании БКК Коломенский - 411 уникальных вакансий",
+          "url": "https://svoevagro.ru/vacancies/region-russia/kompaniya-bkk-kolomenskiy",
+          "snippet": "## Старший бизнес-партнер по работе с персоналом\n\nОбновлено   30 сентября 2026 г.\n\n427,000 ₽\n\nБКК Коломенский\n\nТребования:\n\nicon\n\nПроживание Нет\n\nicon\n\nТип занятости Полная\n\n## Ведущий менеджер по корпоративным коммуникациям\n\nОбновлено   30 сентября 2026 г.\n\n239,000 ₽\n\nБКК Коломенский\n\nТребования:\n\nicon\n\nПроживание Нет\n\nicon\n\nТип занятости Полная\n\n## Менеджер по подбору и адаптации персонала\n\nОбновлено   30 сентября 2026 г.\n\n140,000 ₽\n\nБКК Коломенский\n\nТребования:\n\nicon\n\nПроживание Нет\n\nicon [...] Обновлено   30 сентября 2026 г.\n\n427,000 ₽\n\nБКК Коломенский\n\nТребования:\n\nicon\n\nПроживание Нет\n\nicon\n\nТип занятости Полная\n\n## Старший бизнес-партнер по работе с персоналом (дивизион готовая еда)\n\nОбновлено   30 сентября 2026 г.\n\n427,000 ₽\n\nБКК Коломенский\n\nТребования:\n\nicon\n\nПроживание Нет\n\nicon\n\nТип занятости Полная\n\n## Руководитель группы по обучению (производство)\n\nОбновлено   30 сентября 2026 г.\n\n190,000 ₽\n\nБКК Коломенский\n\nТребования:\n\nicon\n\nПроживание Нет\n\nicon\n\nТип занятости Полная [...] Обновлено   30 сентября 2026 г.\n\n120,000 ₽\n\nБКК Коломенский\n\nТребования:\n\nicon\n\nПроживание Нет\n\nicon\n\nТип занятости Полная\n\n## Сотрудник на производство\n\nОбновлено   30 сентября 2026 г.\n\n109,000 ₽\n\nБКК Коломенский\n\nТребования:\n\nicon\n\nПроживание Нет\n\nicon\n\nТип занятости Полная\n\n## Оператор на линию\n\nОбновлено   30 сентября 2026 г.\n\n116,000 ₽\n\nБКК Коломенский\n\nТребования:\n\nicon\n\nПроживание Нет\n\nicon\n\nТип занятости Полная\n\n## Старший бизнес-партнер по работе с персоналом (департамент логистики)",
+          "source_label": "tavily",
+          "score": 0.77650476,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Kalmykova Yulia – руководитель по работе с персоналом",
+          "url": "https://ru.linkedin.com/in/kalmykova-yulia-b0372231",
+          "snippet": "Headline: руководитель по работе с персоналом/ HR BP\nCurrent role: Старший HR Бизнес Партнер\nSeniority: Senior, Human Resources\nLocation: Russia\nExperience: 14 years 10 months\nLinkedIn:  · 108 followers [...] ## Experience\n- Старший HR бизнес партнер at Сбербанк Лизинг (Oct 2021 to present)\n- Директор по персоналу at ГК Регион (Nov 2018 to present)\n- НR BP розничного и Digitaie Блоков at Promsvyazbank (Sep 2013 to Jun 2018)\n- Head of Recruitment at Promsvyazbank (May 2011 to Sep 2013)\n\n## Education\n- МГОПУ, Управление человеческими ресурсами/управление персоналом, общее направление [...] вижу именно, как роль партнера для бизнеса, способного решать любые нетривиальные задачи, помогать и поддерживать, так как моя работа отражается в бизнес результате. Сильные стороны в HR - подбор персонала, внутренние коммуникации (вовлеченность , корп. культура), развитие персонала. Не смотря на диджитализацию, важно, чтобы HR был с человеческим лицом , вызывал доверие сотрудников, поддерживал культуру открытых коммуникаций и инноваций.",
+          "source_label": "tavily",
+          "score": 0.459295,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Владислав Николаевич - Национальный менеджер в РК ...",
+          "url": "https://kz.linkedin.com/in/%D0%B2%D0%BB%D0%B0%D0%B4%D0%B8%D1%81%D0%BB%D0%B0%D0%B2-%D0%BD%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%B8%D1%87-b7b975a4",
+          "snippet": "# Владислав Николаевич\n\nHeadline: Национальный менеджер в РК Московской компании ЗАО БКК \"КОЛОМЕНСКИЙ\"\nCurrent role: Национальный Менеджер По Продукци\nSeniority: Manager, Sales\nLocation: Kazakhstan\nExperience: 19 years 10 months\nLinkedIn:  · 862 followers\nDescription: Открыт для предложений. [...] ## Experience\n- Национальный менеджер по продукци at ЗАО БКК \"КОЛОМЕНСКИЙ\" (Feb 2017 to present)\n- Группа компаний Астана Боттлерс; ТОО Астана Дистрибьюшн Компани at ТОО \"Астана Боттлерс\" (Nov 2008 to present)\n- Директор по продажам at Группа компаний Астана Боттлерс; ТОО Астана Дистрибьюшн Компани (Nov 2008 to Jul 2009)\n- Директор департамента at Группа компаний «Dana Group» ТОО Атырау Виват (Oct 2006 to Oct 2008)\n\n## Education\n- Атырауский институт \"Нефти и газа\"",
+          "source_label": "tavily",
+          "score": 0.4233394,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Менеджер по найму в БКК Коломенский | Эйч — сервис развития карьеры",
+          "url": "https://h.careers/job/cd9eb37e-6b87-4eee-8a33-48b95c1b78c3",
+          "snippet": "ИТ-аккредитация\n\nБ\n\nБОРОДИН КИРИЛЛ ВЛАДИМИРОВИЧ\n\n6 окт.\n\n### Помощник рекрутера\n\nот 60 000 ₽\n\nУдалённо\n\nJunior\n\nБизнес Онлайн\n\nБизнес Онлайн\n\n6 окт.\n\n### Менеджер по подбору массового персонала\n\nот 100 000 ₽\n\nМосква\n\nJunior\n\nMiddle\n\nСамолет Плюс (Самолет Плюс Омск-Центр)\n\nСамолет Плюс (Самолет Плюс Омск-Центр)\n\n6 окт.\n\n### Специалист по подбору персонала / Рекрутер / HR\n\nот 70 000 ₽\n\nОфис\n\nMiddle [...] Менеджер по найму в БКК Коломенский | Эйч — сервис развития карьеры\n\nЭйч\n\nБКК Коломенский\n\nБКК Коломенский\n\nБудьте осторожны: если работодатель просит войти через Google, iCloud или Госуслуги, прислать код или пароль, запустить ПО или перевести деньги — это мошенники.\n\nЖмите·Гайд по безопасности\n\n## Похожие вакансии\n\nЭтикет\n\nЭтикет\n\n6 окт.\n\n### Менеджер по подбору персонала\n\nот 60 000 ₽\n\nНоябрьск\n\nОфис\n\nJunior\n\nMiddle\n\nHR.PIVOT\n\nHR.PIVOT\n\n6 окт.\n\n### Рекрутер (с опытом в подборе ИТР должностей) [...] БКХ \"Коломенский\"- крупнейший хлебопекарный и кондитерский холдинг России, компания с высокими амбициями и предпринимательским духом. Компания является абсолютным лидером по производству хлебобулочных изделий, продуктов-бестселлеров с сильным брендом и широким ассортиментом, в холдинг входит 15 современных производственных площадок в Москве, Московской области, Санкт-Петербурге и Твери.\n\nМы ожидаем от кандидатов:",
+          "source_label": "tavily",
+          "score": 0.31827372,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Анна Козлова – HR Business Partner & People ...",
+          "url": "https://ru.linkedin.com/in/anna-kozlova1/ru",
+          "snippet": "## Skills\npayroll, processes, gbs, technical skills, training, learning development, data analysis reporting, overseeing, onboarding processes, front-line support, human resources operations, code, workday, mobility programs, recruitment\n\nLanguages: English (Full professional proficiency), Russian (Native or bilingual proficiency), Spanish (Limited working proficiency) [...] # Anna Kozlova\n\nHeadline: HR BP @ T-Bank | ex. ABB, BAT, IKEA | Career Coach | Driving Culture, Talent & Transformation\nCurrent role: HR Business Partner\nSeniority: Partner, Human Resources\nLocation: Moscow, Moscow City, Russia\nExperience: 11 years 8 months\nLinkedIn:  · 3,425 followers\nDescription: HR Business Partner with 15+ years of experience supporting multinational and… [...] ## Recommendations (3)\n- Zhanar Kalykova: “I have had the privilege of working with Anna for one year at ABB. I can confidently say that Anna is an exceptional professional with all the qualities that make for a HR manager and HR Business Partner senior roles. Anna has demonstrated an incredible ability to manage complex HR tasks and...",
+          "source_label": "tavily",
+          "score": 0.15870851,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Старший бизнес-партнер по работе с персоналом БКК Коломенский linkedin",
+      "focus": "Поиск профилей HR специалистов на LinkedIn, связанных с БКК Коломенский и вакансией",
+      "purpose": "Найти профиль HR руководителя или старшего бизнес-партнера с персоналом из департамента логистики",
+      "results": [
+        {
+          "url": "https://svoevagro.ru/vacancies/region-russia/kompaniya-bkk-kolomenskiy",
+          "title": "Работа в компании БКК Коломенский - 411 уникальных вакансий",
+          "snippet": "## Старший бизнес-партнер по работе с персоналом\n\nОбновлено   30 сентября 2026 г.\n\n427,000 ₽\n\nБКК Коломенский\n\nТребования:\n\nicon\n\nПроживание Нет\n\nicon\n\nТип занятости Полная\n\n## Ведущий менеджер по корпоративным коммуникациям\n\nОбновлено   30 сентября 2026 г.\n\n239,000 ₽\n\nБКК Коломенский\n\nТребования:\n\nicon\n\nПроживание Нет\n\nicon\n\nТип занятости Полная\n\n## Менеджер по подбору и адаптации персонала\n\nОбновлено   30 сентября 2026 г.\n\n140,000 ₽\n\nБКК Коломенский\n\nТребования:\n\nicon\n\nПроживание Нет\n\nicon [..",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://ru.linkedin.com/in/kalmykova-yulia-b0372231",
+          "title": "Kalmykova Yulia – руководитель по работе с персоналом",
+          "snippet": "Headline: руководитель по работе с персоналом/ HR BP\nCurrent role: Старший HR Бизнес Партнер\nSeniority: Senior, Human Resources\nLocation: Russia\nExperience: 14 years 10 months\nLinkedIn:  · 108 followers [...] ## Experience\n- Старший HR бизнес партнер at Сбербанк Лизинг (Oct 2021 to present)\n- Директор по персоналу at ГК Регион (Nov 2018 to present)\n- НR BP розничного и Digitaie Блоков at Promsvyazbank (Sep 2013 to Jun 2018)\n- Head of Recruitment at Promsvyazbank (May 2011 to Sep 2013)\n\n## Educat",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://kz.linkedin.com/in/%D0%B2%D0%BB%D0%B0%D0%B4%D0%B8%D1%81%D0%BB%D0%B0%D0%B2-%D0%BD%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%B8%D1%87-b7b975a4",
+          "title": "Владислав Николаевич - Национальный менеджер в РК ...",
+          "snippet": "# Владислав Николаевич\n\nHeadline: Национальный менеджер в РК Московской компании ЗАО БКК \"КОЛОМЕНСКИЙ\"\nCurrent role: Национальный Менеджер По Продукци\nSeniority: Manager, Sales\nLocation: Kazakhstan\nExperience: 19 years 10 months\nLinkedIn:  · 862 followers\nDescription: Открыт для предложений. [...] ## Experience\n- Национальный менеджер по продукци at ЗАО БКК \"КОЛОМЕНСКИЙ\" (Feb 2017 to present)\n- Группа компаний Астана Боттлерс; ТОО Астана Дистрибьюшн Компани at ТОО \"Астана Боттлерс\" (Nov 2008 to ",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://h.careers/job/cd9eb37e-6b87-4eee-8a33-48b95c1b78c3",
+          "title": "Менеджер по найму в БКК Коломенский | Эйч — сервис развития карьеры",
+          "snippet": "ИТ-аккредитация\n\nБ\n\nБОРОДИН КИРИЛЛ ВЛАДИМИРОВИЧ\n\n6 окт.\n\n### Помощник рекрутера\n\nот 60 000 ₽\n\nУдалённо\n\nJunior\n\nБизнес Онлайн\n\nБизнес Онлайн\n\n6 окт.\n\n### Менеджер по подбору массового персонала\n\nот 100 000 ₽\n\nМосква\n\nJunior\n\nMiddle\n\nСамолет Плюс (Самолет Плюс Омск-Центр)\n\nСамолет Плюс (Самолет Плюс Омск-Центр)\n\n6 окт.\n\n### Специалист по подбору персонала / Рекрутер / HR\n\nот 70 000 ₽\n\nОфис\n\nMiddle [...] Менеджер по найму в БКК Коломенский | Эйч — сервис развития карьеры\n\nЭйч\n\nБКК Коломенский\n\nБКК",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://ru.linkedin.com/in/anna-kozlova1/ru",
+          "title": "Анна Козлова – HR Business Partner & People ...",
+          "snippet": "## Skills\npayroll, processes, gbs, technical skills, training, learning development, data analysis reporting, overseeing, onboarding processes, front-line support, human resources operations, code, workday, mobility programs, recruitment\n\nLanguages: English (Full professional proficiency), Russian (Native or bilingual proficiency), Spanish (Limited working proficiency) [...] # Anna Kozlova\n\nHeadline: HR BP @ T-Bank | ex. ABB, BAT, IKEA | Career Coach | Driving Culture, Talent & Transformation\nCu",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1732
+    },
+    {
+      "stage": "search",
+      "query": "Дмитрий Козлов генеральный директор БКК Коломенский linkedin",
+      "results": [
+        {
+          "title": "Гендиректор БКХ «Коломенский» Дмитрий Козлов рассказал «Ъ» о росте себестоимости хлеба и сокращении спроса",
+          "url": "https://www.kommersant.ru/doc/7460660",
+          "snippet": "Учился в Санкт-Петербургском государственном экономическом университете. Занял пост гендиректора БКХ «Коломенский» в июле 2013 года, сменив на этом посту Максима Большова. Согласно СПАРК, контролирует 1,1% в ООО «БКХ \"Коломенский\"», основном юрлице холдинга. До прихода в компанию работал в других профильных крупных компаниях, специализирующихся на выпуске хлебобулочной продукции. В том числе занимал должность исполнительного директора Fazer. Входит в правление Национального союза хлебопечения, [...] Гендиректор булочно-кондитерского холдинга «Коломенский» Дмитрий Козлов\r\n\nГендиректор булочно-кондитерского холдинга «Коломенский» Дмитрий Козлов\r\n\nГендиректор булочно-кондитерского холдинга «Коломенский» Дмитрий Козлов\n\nФото: Глеб Щелкунов / Коммерсантъ\n\nГендиректор булочно-кондитерского холдинга «Коломенский» Дмитрий Козлов\n\nФото: Глеб Щелкунов / Коммерсантъ\n\n— Увеличился ли у вашей компании объем производства по итогам 2024 года? [...] Последний год выдался непростым для российских производителей продуктов питания. С одной стороны, растет себестоимость, с другой — отпускные цены на такие товары давно стали предметом пристального контроля властей разного уровня. Как в такой ситуации, например, хлебопеки могут удержать маржинальность своего бизнеса, особенно на фоне снижения спроса на свежий хлеб, в интервью “Ъ” рассказал гендиректор булочно-кондитерского холдинга «Коломенский» Дмитрий Козлов.",
+          "source_label": "tavily",
+          "score": 0.6693348,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Холдинг Коломенский",
+          "url": "https://ru.linkedin.com/company/khleb",
+          "snippet": "LinkedIn:  · 165 followers\nIndustry: Manufacturing\nType: Privately Held\nHeadquarters: Москва, Russia [...] Description: «Коломенский» — крупнейшая хлебопекарная компания, производитель № 1 хлеба в России. В компанию входят производственные площадки Москвы, Московской области, Санкт-Петербурга и Тверской области. «Коломенский» ежегодно наращивает производственные мощности. Динамично развивает направления кондитерского производства и быстрозамороженных изделий. Устанавливаются новые производственные линии, расширяется ассортимент. Мы уделяем большое внимание развитию наших сотрудников и абсолютно [...] ## Recent posts\n- 2026-03-27: Холдинг «Коломенский» в цифрах. Холдинг «Коломенский» - крупнейшая хлебопекарная компания, производитель № 1 хлеба в России. Выпускает более 1700 тонн продукции в сутки: свежей хлебобулочной, кондитерской продукции, а также быстрозамороженных изделий и готовой еды. Ежедневно продукция поставляется более чем в 31 000 то...",
+          "source_label": "tavily",
+          "score": 0.5760895,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Дмитрий Козлов, генеральный директор, «БКХ «Коломенский»",
+          "url": "https://www.youtube.com/watch?v=OK9SbLyeH64",
+          "snippet": "# Дмитрий Козлов, генеральный директор, «БКХ «Коломенский»\n## Channel: Бизнес Пища - Роман Калинин\n16.4K subscribers\n17 likes\n\n### Description\n899 views\nPosted: 2024-06-06\n«Индустриальное хлебопечение: главные итоги 2023 года и важные выводы на 2024 год»\n\nХотели бы заглянуть в ближайшее будущее и узнать, что ждет хлебопекарную промышленность? На ПИЩЁВКЕ3D все возможно! Самые актуальные тренды отрасли и негативные стороны рынка, о которых точно нужно знать, — в докладе Дмитрия. [...] [6:02] этой пищев я вот так этот год даже рассматриваю значит ну у нас скончался проект М4 громко распиание\n[6:30] собира дела что-то другое они без глютен в этом году ещ отдель начали потихонечку не\n[6:40] могу по причине коммерческой Тайны говорить о том что это за компания потихоньку стали Разочаровываться в этом бизнесе компании\n[6:49] которую я называю ремесленным неофита это не те кто пекарни А это те люди которые там на волне\n[6:56] развития рука хлебопечения там 3-4 года назад по [...] ### Transcript\n[0:00] [музыка]\n[0:08] Дмитрий Козлов генеральный директор бкх\n[0:16] [музыка]\n[0:18] Коломенский Доброе утро Доброе утро Всех приветствую Так что здесь с этим делать\n[0:23] Зел ВД Зел впер коллеги открыва\n[0:30] [музыка]\n[0:32] Я выступаю скорее с неким дайм о том что произошло в отрасли некоторые интересные Надеюсь цифры покажу Ну и в конце\n[0:41] видение будущего Итак присутствующие здесь работают как в хлебе как в кондитерке это вы наши",
+          "source_label": "tavily",
+          "score": 0.5602773,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Дмитрий Козлов, «Коломенский»: «Без брендов дальнейшего развития рынка готовой еды не будет» | Retail.ru",
+          "url": "https://www.retail.ru/interviews/dmitriy-kozlov-kolomenskiy-bez-brendov-dalneyshego-razvitiya-rynka-gotovoy-edy-ne-budet",
+          "snippet": "Холдинг «Коломенский» готовится продвигать на рынке готовой еды собственный бренд под названием Fresh Club. Кроме того, до конца этого года производитель планирует ввести в эксплуатацию порядка 30 линий на различных площадках. И не исключает, что для дальнейшего развития и экспансии продолжит покупать действующие предприятия в регионах. Планы и тонкости их реализации в медиацентре в рамках «Российского Ритейл Шоу» обсудили с генеральным директором холдинга «Коломенский» Дмитрием Козловым. [...] Мы в этом плане мастера. Например, еще лет 16 назад я был генеральным директором комбината «Звездный» в Москве. И тогда казалось, что мы туда уже поставили все, что можно. Но после слияния с «Коломенским» на эти же площади добавилось еще восемь линий. Мы максимально оптимизировали все, что возможно. Офисы, например, убрали совсем. Так что да, мы растем за счет покупок, но мы и инвестируем в купленные площадки немало. В тот же «Звездный» за три года вложено порядка 5,5 млрд рублей. [...] ГлавнаяИнтервьюДмитрий Козлов, «Коломенский»: «Без брендов дальнейшего развития рынка готовой еды не будет»\n\nРеклама на retail.ru",
+          "source_label": "tavily",
+          "score": 0.5492786,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Дмитрий Козлов – Meta",
+          "url": "https://uk.linkedin.com/in/dmitrii-kozlov-5a044b6b/ru",
+          "snippet": "# Dmitrii Kozlov\n\nHeadline: Principal Online Programmer at PlayStation London Studio\nCurrent role: Software Engineer\nSeniority: Specialist, Engineering and Technical\nLocation: United Kingdom\nExperience: 12 years 5 months\nLinkedIn:  · 1,022 followers [...] ## Recommendations (5)\n- Nico Orru: “In the time we spent together working on network features in our highly custom tech stack at London Studio, Dmitrii proved himself to be a highly talented, competent, dependable, personable, approachable and collaborative network programmer and engineer. He really shined in the -not uncommon-... [...] - Guilherme Lampert: “Dmitrii is an incredibly talented software engineer. His ability to dive into our code base from the get-go and start tackling complex problems stands out. He quickly adapted to his team and work and was debugging issues in the engine and gameplay systems right from the start. His analytical mind...",
+          "source_label": "tavily",
+          "score": 0.5180835,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Дмитрий Козлов генеральный директор БКК Коломенский linkedin",
+      "focus": "Поиск профиля генерального директора Дмитрия Козлова на LinkedIn",
+      "purpose": "Подтвердить структуру руководства и возможные контакты для уточнения информации",
+      "results": [
+        {
+          "url": "https://www.kommersant.ru/doc/7460660",
+          "title": "Гендиректор БКХ «Коломенский» Дмитрий Козлов рассказал «Ъ» о росте себестоимости хлеба и сокращении спроса",
+          "snippet": "Учился в Санкт-Петербургском государственном экономическом университете. Занял пост гендиректора БКХ «Коломенский» в июле 2013 года, сменив на этом посту Максима Большова. Согласно СПАРК, контролирует 1,1% в ООО «БКХ \"Коломенский\"», основном юрлице холдинга. До прихода в компанию работал в других профильных крупных компаниях, специализирующихся на выпуске хлебобулочной продукции. В том числе занимал должность исполнительного директора Fazer. Входит в правление Национального союза хлебопечения, [",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://ru.linkedin.com/company/khleb",
+          "title": "Холдинг Коломенский",
+          "snippet": "LinkedIn:  · 165 followers\nIndustry: Manufacturing\nType: Privately Held\nHeadquarters: Москва, Russia [...] Description: «Коломенский» — крупнейшая хлебопекарная компания, производитель № 1 хлеба в России. В компанию входят производственные площадки Москвы, Московской области, Санкт-Петербурга и Тверской области. «Коломенский» ежегодно наращивает производственные мощности. Динамично развивает направления кондитерского производства и быстрозамороженных изделий. Устанавливаются новые производственн",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=OK9SbLyeH64",
+          "title": "Дмитрий Козлов, генеральный директор, «БКХ «Коломенский»",
+          "snippet": "# Дмитрий Козлов, генеральный директор, «БКХ «Коломенский»\n## Channel: Бизнес Пища - Роман Калинин\n16.4K subscribers\n17 likes\n\n### Description\n899 views\nPosted: 2024-06-06\n«Индустриальное хлебопечение: главные итоги 2023 года и важные выводы на 2024 год»\n\nХотели бы заглянуть в ближайшее будущее и узнать, что ждет хлебопекарную промышленность? На ПИЩЁВКЕ3D все возможно! Самые актуальные тренды отрасли и негативные стороны рынка, о которых точно нужно знать, — в докладе Дмитрия. [...] [6:02] этой ",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.retail.ru/interviews/dmitriy-kozlov-kolomenskiy-bez-brendov-dalneyshego-razvitiya-rynka-gotovoy-edy-ne-budet",
+          "title": "Дмитрий Козлов, «Коломенский»: «Без брендов дальнейшего развития рынка готовой еды не будет» | Retail.ru",
+          "snippet": "Холдинг «Коломенский» готовится продвигать на рынке готовой еды собственный бренд под названием Fresh Club. Кроме того, до конца этого года производитель планирует ввести в эксплуатацию порядка 30 линий на различных площадках. И не исключает, что для дальнейшего развития и экспансии продолжит покупать действующие предприятия в регионах. Планы и тонкости их реализации в медиацентре в рамках «Российского Ритейл Шоу» обсудили с генеральным директором холдинга «Коломенский» Дмитрием Козловым. [...] ",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://uk.linkedin.com/in/dmitrii-kozlov-5a044b6b/ru",
+          "title": "Дмитрий Козлов – Meta",
+          "snippet": "# Dmitrii Kozlov\n\nHeadline: Principal Online Programmer at PlayStation London Studio\nCurrent role: Software Engineer\nSeniority: Specialist, Engineering and Technical\nLocation: United Kingdom\nExperience: 12 years 5 months\nLinkedIn:  · 1,022 followers [...] ## Recommendations (5)\n- Nico Orru: “In the time we spent together working on network features in our highly custom tech stack at London Studio, Dmitrii proved himself to be a highly talented, competent, dependable, personable, approachable and",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 5494,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "БКК Коломенский",
+        "domain": "kolomenskoe.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: БКК Коломенский; открыта вакансия: Старший бизнес-партнер по работе с персоналом (департамент логистики).",
+            "sourceUrl": "https://hh.ru/vacancy/135816113",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://khleb.ru",
+            "kind": "page",
+            "text": "Натуральный и вкусный хлеб Узнать больше Узнать больше Сдоба на любой вкус Узнать больше Узнать больше Готовые решения для пекарен Узнать больше Узнать больше Делаем мир вкуснее Узнать больше Узнать больше Торговые марки Продукция Свежий хлеб Кондитерские изделия Замороженная продукция Производственные мощности В холдинг входит 16 производственных площадок Подробнее Мы производим вкусные продукты в лучших традициях «Коломенского» Мы производим вкусные продукты в лучших традициях «Коломенского» Работаем ответственно, с душой, для вас! Задать вопрос генеральному директору Козлову Дмитрию Владимировичу ФИО* Телефон E-mail* Ваш вопрос Введите код с картинки Даю согласие на обработку персональных данных Отправить",
+            "links": [
+              {
+                "url": "https://khleb.ru/export/about-holding",
+                "label": "For export clients"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/sdoba",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/about-holding",
+                "label": "Подробнее"
+              },
+              {
+                "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+                "label": "персональных данных"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/events",
+                "label": "События"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/docs",
+                "label": "Реквизиты компаний"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/disclosure",
+                "label": "Раскрытие информации"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://khleb.ru/where-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://khleb.ru/clients",
+                "label": "Клиентам"
+              },
+              {
+                "url": "https://khleb.ru/providers",
+                "label": "Поставщикам"
+              },
+              {
+                "url": "https://cloudmill.ru",
+                "label": "Клаудмил"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/chernyy-khleb",
+                "label": "Черный хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/belyy-khleb",
+                "label": "Белый хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/vafli",
+                "label": "Вафли"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/torty-vafelnye",
+                "label": "Вафельные торты"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/pechene",
+                "label": "Печенье"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/konfety",
+                "label": "Конфеты"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/zefir",
+                "label": "Зефир"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/pryaniki",
+                "label": "Пряники"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/sushki",
+                "label": "Сушки"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/mini-sushki",
+                "label": "Мини-сушки"
+              },
+              {
+                "url": "https://khleb.ru/catalog/konditerskie-izdeliya/baranki",
+                "label": "Баранки"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/cherniy-khleb",
+                "label": "Черный хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/beliy-khleb",
+                "label": "Белый хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/sdoba-sytnaya",
+                "label": "Сдоба сытная"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/sdoba",
+                "label": "Сдоба сладкая"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/testo",
+                "label": "Тесто"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya/bonet",
+                "label": "Замороженные полуфабрикаты в розничной упаковке"
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:28:47.618Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://ru.linkedin.com/in/anna-kozlova1/ru",
+            "kind": "search",
+            "text": "Анна Козлова – HR Business Partner & People ...\n## Skills\npayroll, processes, gbs, technical skills, training, learning development, data analysis reporting, overseeing, onboarding processes, front-line support, human resources operations, code, workday, mobility programs, recruitment\n\nLanguages: English (Full professional proficiency), Russian (Native or bilingual proficiency), Spanish (Limited working proficiency) [...] # Anna Kozlova\n\nHeadline: HR BP @ T-Bank | ex. ABB, BAT, IKEA | Career Coach | Driving Culture, Talent & Transformation\nCurrent role: HR Business Partner\nSeniority: Partner, Human Resources\nLocation: Moscow, Moscow City, Russia\nExperience: 11 years 8 months\nLinkedIn:  · 3,425 followers\nDescription: HR Business Partner with 15+ years of experience supporting multinational and… [...] ## Recommendations (3)\n- Zhanar Kalykova: “I have had the privilege of working with Anna for one year at ABB. I can confidently say that Anna is an exceptional professional with all the qualities that make for a HR manager and HR Business Partner senior roles. Anna has demonstrated an incredible ability to manage complex HR tasks and...",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:29:07.099Z",
+            "id": "e11"
+          },
+          {
+            "url": "https://www.kommersant.ru/doc/7460660",
+            "kind": "search",
+            "text": "Гендиректор БКХ «Коломенский» Дмитрий Козлов рассказал «Ъ» о росте себестоимости хлеба и сокращении спроса\nУчился в Санкт-Петербургском государственном экономическом университете. Занял пост гендиректора БКХ «Коломенский» в июле 2013 года, сменив на этом посту Максима Большова. Согласно СПАРК, контролирует 1,1% в ООО «БКХ \"Коломенский\"», основном юрлице холдинга. До прихода в компанию работал в других профильных крупных компаниях, специализирующихся на выпуске хлебобулочной продукции. В том числе занимал должность исполнительного директора Fazer. Входит в правление Национального союза хлебопечения, [...] Гендиректор булочно-кондитерского холдинга «Коломенский» Дмитрий Козлов\r\n\nГендиректор булочно-кондитерского холдинга «Коломенский» Дмитрий Козлов\r\n\nГендиректор булочно-кондитерского холдинга «Коломенский» Дмитрий Козлов\n\nФото: Глеб Щелкунов / Коммерсантъ\n\nГендиректор булочно-кондитерского холдинга «Коломенский» Дмитрий Козлов\n\nФото: Глеб Щелкунов / Коммерсантъ\n\n— Увеличился ли у вашей компании объем производства по итогам 2024 года? [...] Последний год выдался непростым для российских производителей продуктов питания. С одной стороны, растет себестоимость, с другой — отпускные цены на такие товары давно стали предметом пристального контроля властей разного уровня. Как в такой ситуации, например, хлебопеки могут удержать маржинальность своего бизнеса, особенно на фоне снижения спроса на свежий хлеб, в интервью “Ъ” рассказал гендиректор булочно-кондитерского холдинга «Коломенский» Дмитрий Козлов.",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:29:07.659Z",
+            "id": "e12"
+          },
+          {
+            "url": "https://ru.linkedin.com/company/khleb",
+            "kind": "search",
+            "text": "Холдинг Коломенский\nLinkedIn:  · 165 followers\nIndustry: Manufacturing\nType: Privately Held\nHeadquarters: Москва, Russia [...] Description: «Коломенский» — крупнейшая хлебопекарная компания, производитель № 1 хлеба в России. В компанию входят производственные площадки Москвы, Московской области, Санкт-Петербурга и Тверской области. «Коломенский» ежегодно наращивает производственные мощности. Динамично развивает направления кондитерского производства и быстрозамороженных изделий. Устанавливаются новые производственные линии, расширяется ассортимент. Мы уделяем большое внимание развитию наших сотрудников и абсолютно [...] ## Recent posts\n- 2026-03-27: Холдинг «Коломенский» в цифрах. Холдинг «Коломенский» - крупнейшая хлебопекарная компания, производитель № 1 хлеба в России. Выпускает более 1700 тонн продукции в сутки: свежей хлебобулочной, кондитерской продукции, а также быстрозамороженных изделий и готовой еды. Ежедневно продукция поставляется более чем в 31 000 то...",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:29:07.659Z",
+            "id": "e13"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=OK9SbLyeH64",
+            "kind": "search",
+            "text": "Дмитрий Козлов, генеральный директор, «БКХ «Коломенский»\n# Дмитрий Козлов, генеральный директор, «БКХ «Коломенский»\n## Channel: Бизнес Пища - Роман Калинин\n16.4K subscribers\n17 likes\n\n### Description\n899 views\nPosted: 2024-06-06\n«Индустриальное хлебопечение: главные итоги 2023 года и важные выводы на 2024 год»\n\nХотели бы заглянуть в ближайшее будущее и узнать, что ждет хлебопекарную промышленность? На ПИЩЁВКЕ3D все возможно! Самые актуальные тренды отрасли и негативные стороны рынка, о которых точно нужно знать, — в докладе Дмитрия. [...] [6:02] этой пищев я вот так этот год даже рассматриваю значит ну у нас скончался проект М4 громко распиание\n[6:30] собира дела что-то другое они без глютен в этом году ещ отдель начали потихонечку не\n[6:40] могу по причине коммерческой Тайны говорить о том что это за компания потихоньку стали Разочаровываться в этом бизнесе компании\n[6:49] которую я называю ремесленным неофита это не те кто пекарни А это те люди которые там на волне\n[6:56] развития рука хлебопечения там 3-4 года назад по [...] ### Transcript\n[0:00] [музыка]\n[0:08] Дмитрий Козлов генеральный директор бкх\n[0:16] [музыка]\n[0:18] Коломенский Доброе утро Доброе утро Всех приветствую Так что здесь с этим делать\n[0:23] Зел ВД Зел впер коллеги открыва\n[0:30] [музыка]\n[0:32] Я выступаю скорее с неким дайм о том что произошло в отрасли некоторые интересные Надеюсь цифры покажу Ну и в конце\n[0:41] видение будущего Итак присутствующие здесь работают как в хлебе как в кондитерке это вы наши",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:29:07.659Z",
+            "id": "e14"
+          },
+          {
+            "url": "https://www.retail.ru/interviews/dmitriy-kozlov-kolomenskiy-bez-brendov-dalneyshego-razvitiya-rynka-gotovoy-edy-ne-budet",
+            "kind": "search",
+            "text": "Дмитрий Козлов, «Коломенский»: «Без брендов дальнейшего развития рынка готовой еды не будет» | Retail.ru\nХолдинг «Коломенский» готовится продвигать на рынке готовой еды собственный бренд под названием Fresh Club. Кроме того, до конца этого года производитель планирует ввести в эксплуатацию порядка 30 линий на различных площадках. И не исключает, что для дальнейшего развития и экспансии продолжит покупать действующие предприятия в регионах. Планы и тонкости их реализации в медиацентре в рамках «Российского Ритейл Шоу» обсудили с генеральным директором холдинга «Коломенский» Дмитрием Козловым. [...] Мы в этом плане мастера. Например, еще лет 16 назад я был генеральным директором комбината «Звездный» в Москве. И тогда казалось, что мы туда уже поставили все, что можно. Но после слияния с «Коломенским» на эти же площади добавилось еще восемь линий. Мы максимально оптимизировали все, что возможно. Офисы, например, убрали совсем. Так что да, мы растем за счет покупок, но мы и инвестируем в купленные площадки немало. В тот же «Звездный» за три года вложено порядка 5,5 млрд рублей. [...] ГлавнаяИнтервьюДмитрий Козлов, «Коломенский»: «Без брендов дальнейшего развития рынка готовой еды не будет»\n\nРеклама на retail.ru",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:29:07.660Z",
+            "id": "e15"
+          },
+          {
+            "url": "https://uk.linkedin.com/in/dmitrii-kozlov-5a044b6b/ru",
+            "kind": "search",
+            "text": "Дмитрий Козлов – Meta\n# Dmitrii Kozlov\n\nHeadline: Principal Online Programmer at PlayStation London Studio\nCurrent role: Software Engineer\nSeniority: Specialist, Engineering and Technical\nLocation: United Kingdom\nExperience: 12 years 5 months\nLinkedIn:  · 1,022 followers [...] ## Recommendations (5)\n- Nico Orru: “In the time we spent together working on network features in our highly custom tech stack at London Studio, Dmitrii proved himself to be a highly talented, competent, dependable, personable, approachable and collaborative network programmer and engineer. He really shined in the -not uncommon-... [...] - Guilherme Lampert: “Dmitrii is an incredibly talented software engineer. His ability to dive into our code base from the get-go and start tackling complex problems stands out. He quickly adapted to his team and work and was debugging issues in the engine and gameplay systems right from the start. His analytical mind...",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:29:07.660Z",
+            "id": "e16"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "search",
+            "value": "colomensky HR leadership site:khleb.ru",
+            "focus": "Поиск информации об HR руководстве БКК Коломенский на официальном сайте холдинга",
+            "resultCount": 0
+          },
+          {
+            "type": "search",
+            "value": "Старший бизнес-партнер по работе с персоналом site:kolomenskoe.ru",
+            "focus": "Поиск информации о вакансии и ответственном лице по HR внутри сайта kolomenskoe.ru",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "Старший бизнес-партнер по работе с персоналом БКК Коломенский linkedin",
+            "focus": "Поиск профилей HR специалистов на LinkedIn, связанных с БКК Коломенский и вакансией",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "Дмитрий Козлов генеральный директор БКК Коломенский linkedin",
+            "focus": "Поиск профиля генерального директора Дмитрия Козлова на LinkedIn",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:khleb.ru"
+        ],
+        "budget": {
+          "roundsRemaining": 2,
+          "actionsRemaining": 6,
+          "searchRemaining": 4
+        }
+      },
+      "output": {
+        "companySummary": "БКК Коломенский — крупнейшая хлебопекарная компания России, ведущий производитель хлеба и кондитерских изделий, имеет производственные площадки в Москве и регионах. Гендиректор — Дмитрий Козлов, известный топ-менеджер отрасли с длительным опытом. Компания активно расширяет производственные мощности и развивает бренд.",
+        "missing": [
+          "Информация о текущем Старшем бизнес-партнере по работе с персоналом или ответственном лице за HR в департаменте логистики",
+          "Публичные контакты или профиль этого HR специалиста"
+        ],
+        "people": [
+          {
+            "name": "Дмитрий Козлов",
+            "role": "Генеральный директор",
+            "relevance": 90,
+            "reason": "Топ-менеджер и глава компании, играет ключевую роль в управлении холдингом, подтверждено интервью и официальными источниками.",
+            "citations": [
+              {
+                "sourceId": "e12",
+                "quote": "Гендиректор булочно-кондитерского холдинга «Коломенский» Дмитрий Козлов"
+              },
+              {
+                "sourceId": "e14",
+                "quote": "Дмитрий Козлов генеральный директор бкх \"Коломенский\""
+              },
+              {
+                "sourceId": "e15",
+                "quote": "генеральный директор холдинга «Коломенский» Дмитрий Козлов"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "profile",
+                "value": "https://ru.linkedin.com/in/dmitrii-kozlov-5a044b6b",
+                "citation": {
+                  "sourceId": "e16",
+                  "quote": "Dmitrii Kozlov – Meta, LinkedIn профиль"
+                }
+              }
+            ]
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "kolomenskoe.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "БКК Коломенский, домен kolomenskoe.ru, официальный сайт холдинга"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Старший бизнес-партнер по работе с персоналом БКК Коломенский site:khleb.ru",
+            "focus": "Поиск информации о HR должности и ответственном лице на сайте холдинга kolomenskoe.ru",
+            "purpose": "Найти точное имя и контакт лица, отвечающего за HR, чтобы подтвердить релевантного ЛПР"
+          },
+          {
+            "type": "search",
+            "value": "Старший бизнес-партнер по работе с персоналом БКК Коломенский LinkedIn",
+            "focus": "Поиск профиля человека с должностью Старший бизнес-партнер БКК Коломенский на LinkedIn",
+            "purpose": "Найти профиль и контакты нужного HR специалиста"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтвержденных данных о нужном HR бизнес-партнере, нужны дополнительные поиски на официальном сайте и в LinkedIn."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 3,
+      "decision": {
+        "companySummary": "БКК Коломенский — крупнейшая хлебопекарная компания России, ведущий производитель хлеба и кондитерских изделий, имеет производственные площадки в Москве и регионах. Гендиректор — Дмитрий Козлов, известный топ-менеджер отрасли с длительным опытом. Компания активно расширяет производственные мощности и развивает бренд.",
+        "missing": [
+          "Информация о текущем Старшем бизнес-партнере по работе с персоналом или ответственном лице за HR в департаменте логистики",
+          "Публичные контакты или профиль этого HR специалиста"
+        ],
+        "people": [
+          {
+            "name": "Дмитрий Козлов",
+            "role": "Генеральный директор",
+            "relevance": 90,
+            "reason": "Топ-менеджер и глава компании, играет ключевую роль в управлении холдингом, подтверждено интервью и официальными источниками.",
+            "citations": [
+              {
+                "sourceId": "e12",
+                "quote": "Гендиректор булочно-кондитерского холдинга «Коломенский» Дмитрий Козлов"
+              },
+              {
+                "sourceId": "e14",
+                "quote": "Дмитрий Козлов генеральный директор бкх \"Коломенский\""
+              },
+              {
+                "sourceId": "e15",
+                "quote": "генеральный директор холдинга «Коломенский» Дмитрий Козлов"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "profile",
+                "value": "https://ru.linkedin.com/in/dmitrii-kozlov-5a044b6b",
+                "citation": {
+                  "sourceId": "e16",
+                  "quote": "Dmitrii Kozlov – Meta, LinkedIn профиль"
+                }
+              }
+            ]
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "kolomenskoe.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "БКК Коломенский, домен kolomenskoe.ru, официальный сайт холдинга"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Старший бизнес-партнер по работе с персоналом БКК Коломенский site:khleb.ru",
+            "focus": "Поиск информации о HR должности и ответственном лице на сайте холдинга kolomenskoe.ru",
+            "purpose": "Найти точное имя и контакт лица, отвечающего за HR, чтобы подтвердить релевантного ЛПР"
+          },
+          {
+            "type": "search",
+            "value": "Старший бизнес-партнер по работе с персоналом БКК Коломенский LinkedIn",
+            "focus": "Поиск профиля человека с должностью Старший бизнес-партнер БКК Коломенский на LinkedIn",
+            "purpose": "Найти профиль и контакты нужного HR специалиста"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтвержденных данных о нужном HR бизнес-партнере, нужны дополнительные поиски на официальном сайте и в LinkedIn."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:kolomenskoe.ru",
+        "person_rejected:Дмитрий Козлов:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "kolomenskoe.ru"
+      ]
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "diminishing_returns",
+      "actions": 5,
+      "candidates": [],
+      "domains": [
+        "kolomenskoe.ru"
+      ],
+      "elapsedMs": 26721
+    },
+    {
+      "stage": "people_ranked",
+      "people": []
+    },
+    {
+      "stage": "fetch",
+      "url": "https://kolomenskoe.ru/",
+      "status": 200,
+      "elapsedMs": 1047
+    },
+    {
+      "stage": "fetch",
+      "url": "https://kolomenskoe.ru/robots.txt",
+      "status": 200,
+      "elapsedMs": 225
+    },
+    {
+      "stage": "fetch",
+      "url": "https://kolomenskoe.ru/sitemap.xml",
+      "status": 404,
+      "elapsedMs": 429
+    },
+    {
+      "stage": "fetch",
+      "url": "https://kolomenskoe.ru/contact",
+      "status": 404,
+      "elapsedMs": 615
+    },
+    {
+      "stage": "fetch",
+      "url": "https://kolomenskoe.ru/contacts",
+      "status": 403,
+      "elapsedMs": 753
+    },
+    {
+      "stage": "fetch",
+      "url": "https://kolomenskoe.ru/kontakty",
+      "status": 404,
+      "elapsedMs": 767
+    },
+    {
+      "stage": "fetch",
+      "url": "https://kolomenskoe.ru/about",
+      "status": 404,
+      "elapsedMs": 768
+    },
+    {
+      "stage": "fetch",
+      "url": "https://kolomenskoe.ru/about-us",
+      "status": 404,
+      "elapsedMs": 814
+    },
+    {
+      "stage": "fetch",
+      "url": "https://kolomenskoe.ru/contact-us",
+      "status": 404,
+      "elapsedMs": 829
+    },
+    {
+      "stage": "fetch",
+      "url": "https://kolomenskoe.ru/company",
+      "status": 404,
+      "elapsedMs": 834
+    },
+    {
+      "stage": "fetch",
+      "url": "https://kolomenskoe.ru/o-kompanii",
+      "status": 404,
+      "elapsedMs": 847
+    },
+    {
+      "stage": "fetch",
+      "url": "https://kolomenskoe.ru/kontakti",
+      "status": 404,
+      "elapsedMs": 1009
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+        "target_responsibility": "Company leadership",
+        "target_persona": "Founder",
+        "alternative_personas": [
+          "CEO",
+          "Managing Director",
+          "COO",
+          "Head of Growth",
+          "Head of Sales"
+        ],
+        "why_this_person": "The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "no_material_next_step_available"
+      },
+      "contacts": [
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://kolomenskoe.ru/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://kolomenskoe.ru/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://khleb.ru/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://khleb.ru/contacts/"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://khleb.ru/contact-us"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://kolomenskoe.ru"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-10-06T12:28:46.457Z",
+  "bundle": {
+    "companyName": "БКК Коломенский",
+    "officialWebsite": "https://kolomenskoe.ru",
+    "officialDomain": "kolomenskoe.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: БКК Коломенский; открыта вакансия: Старший бизнес-партнер по работе с персоналом (департамент логистики).",
+      "sourceUrl": "https://hh.ru/vacancy/135816113",
+      "confidence": 100
+    },
+    "researchConfidence": "UNVERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 21,
+      "lprMs": 26722,
+      "contactMs": 2821,
+      "totalMs": 29544,
+      "stopReason": "diminishing_returns"
+    }
+  },
+  "people": {
+    "primary_person": null,
+    "alternative_people": [],
+    "all_candidates": [],
+    "search_status": "no_person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "diminishing_returns"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 4,
+      "official_pages_fetched": 1,
+      "aborted_requests": 0,
+      "elapsed_ms": 26721,
+      "stop_reason": "diminishing_returns",
+      "queries_executed": [
+        "colomensky HR leadership site:khleb.ru",
+        "Старший бизнес-партнер по работе с персоналом site:kolomenskoe.ru",
+        "Старший бизнес-партнер по работе с персоналом БКК Коломенский linkedin",
+        "Дмитрий Козлов генеральный директор БКК Коломенский linkedin"
+      ],
+      "sources_checked": [
+        "https://khleb.ru",
+        "https://kolomenskoe.ru",
+        "https://kolomenskoe.ru/about-holding/events/detail/bkkh-kolomenskiy-priobrel-moskovskiy-khlebokombinat-proletarets",
+        "https://www.kolomenskoe.ru/about-holding",
+        "https://www.kolomenskoe.ru/catalog/zamorozhennaya-produktsiya/sdoba/detail/bulochka-s-koritsey-90-g",
+        "https://www.kolomenskoe.ru/catalog/zamorozhennaya-produktsiya/beliy-khleb/detail/baget-traditsionnyy-260-g",
+        "https://svoevagro.ru/vacancies/region-russia/kompaniya-bkk-kolomenskiy",
+        "https://ru.linkedin.com/in/kalmykova-yulia-b0372231",
+        "https://kz.linkedin.com/in/%D0%B2%D0%BB%D0%B0%D0%B4%D0%B8%D1%81%D0%BB%D0%B0%D0%B2-%D0%BD%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%B8%D1%87-b7b975a4",
+        "https://h.careers/job/cd9eb37e-6b87-4eee-8a33-48b95c1b78c3",
+        "https://ru.linkedin.com/in/anna-kozlova1/ru",
+        "https://www.kommersant.ru/doc/7460660",
+        "https://ru.linkedin.com/company/khleb",
+        "https://www.youtube.com/watch?v=OK9SbLyeH64",
+        "https://www.retail.ru/interviews/dmitriy-kozlov-kolomenskiy-bez-brendov-dalneyshego-razvitiya-rynka-gotovoy-edy-ne-budet",
+        "https://uk.linkedin.com/in/dmitrii-kozlov-5a044b6b/ru"
+      ],
+      "search_results_seen": 15,
+      "rejected_candidates": {
+        "validation_rejects": 2
+      },
+      "final_failure_reason": "diminishing_returns"
+    }
+  },
+  "contacts": [
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://kolomenskoe.ru/contacts",
+      "selected": false,
+      "intelligence": {
+        "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+        "target_responsibility": "Company leadership",
+        "target_persona": "Founder",
+        "alternative_personas": [
+          "CEO",
+          "Managing Director",
+          "COO",
+          "Head of Growth",
+          "Head of Sales"
+        ],
+        "why_this_person": "The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "no_material_next_step_available"
+      }
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://kolomenskoe.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://khleb.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://khleb.ru/contacts/",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://khleb.ru/contact-us",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://kolomenskoe.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 29545
+}

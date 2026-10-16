@@ -1,0 +1,3244 @@
+{
+  "mode": "business",
+  "name": "Императорский фарфоровый завод",
+  "website": "https://ipm.ru",
+  "before": {
+    "companyName": "Императорский фарфоровый завод",
+    "officialWebsite": "https://ipm.ru",
+    "officialDomain": "ipm.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "info@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "info@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "ipm_shop@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/",
+              "sourceType": "official",
+              "excerpt": "ipm_shop@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "lat_ep@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "lat_ep@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "isu_ov@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "isu_ov@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "aga_ap@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "aga_ap@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "info@ipm.ru",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://www.ipm.ru/contacts/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+      "sourceUrl": "https://hh.ru/vacancy/138142173",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 2,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 20,
+      "lprMs": 16011,
+      "contactMs": 3829,
+      "totalMs": 28418,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+    "sourceUrl": "https://hh.ru/vacancy/138142173",
+    "confidence": 100
+  },
+  "index": 0,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://ipm.ru",
+      "status": 301,
+      "elapsedMs": 611
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.ipm.ru/",
+      "status": 200,
+      "elapsedMs": 754
+    },
+    {
+      "stage": "research_open",
+      "url": "https://ipm.ru",
+      "success": true,
+      "evidence": {
+        "url": "https://www.ipm.ru/",
+        "kind": "page",
+        "text": "Интернет-магазин Императорского фарфора — Официальный сайт Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026 Осенний фарфор Время создать уют дома Смотрите подборку товаров Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении Новинка COLOR VIBES Создай настроение своего дня ЭЛЕГАНТНЫЕ БОКАЛЫ КОБАЛЬТОВАЯ СЕТКА Сияние лета на вашем столе Новинка ГАРМОНИЯ ПРИРОДЫ Серия скульптур наполненных смыслом Новинка БЛАГОРОДНАЯ ПОРОДА Серия коллекционных скульптур породистых любимцев Новинка МОНПЛЕЗИР Коллекция текстиля Французский шарм и эстетика востока для ценительниц прекрасного Новинка ФОНТАНЫ Серия, вдохновленная летним Петергофом Новинка ВОЛШЕБНЫЙ САД Эксклюзивный совместный проект с Сергеем Сысоевым Новинка «Жемчужный» Эксклюзивный совместный проект с модным домом Alena Akhmadullina Новинки ЖЕМЧУЖНАЯ СЕТКА НОВИНКА COLOR VIBES НОВИНКА ГАРМОНИЯ ПРИРОДЫ НОВИНКА БЛАГОРОДНАЯ ПОРОДА НОВИНКА «МОНПЛЕЗИР» Сервиз Воспоминание НОВИНКА «Золотой Петербург и Золотая Москва»\n[excerpt boundary]\nных (далее - Согласие) посредством сервисом веб-аналитики Яндекс Метрика и, предоставляемый компанией ООО «ЯНДЕКС», 119021, Россия, Москва, ул. Л. Толстого, 16 на следующих условиях: 1. Согласие выдано: АО «Императорский фарфоровый завод», ОГРН: 1027806058213, ИНН 7811000276, КПП 781101001 (далее — Оператор), электронная почта: ipm_shop@ipm.ru 2. Согласие выдано на обработку следующих категорий персональных данных: – IP-адрес, информация из файлов cookie, информация о браузер",
+        "links": [
+          {
+            "url": "https://www.ipm.ru/personal",
+            "label": ""
+          },
+          {
+            "url": "https://ipm-jsc.com",
+            "label": "EN"
+          },
+          {
+            "url": "https://www.ipm.ru",
+            "label": ""
+          },
+          {
+            "url": "https://www.ipm.ru/personal/orders",
+            "label": "Войти Мой кабинет"
+          },
+          {
+            "url": "https://www.ipm.ru/catalog/compare.php",
+            "label": "0"
+          },
+          {
+            "url": "https://www.ipm.ru/wishlist",
+            "label": "0"
+          },
+          {
+            "url": "https://www.ipm.ru/basket",
+            "label": "0"
+          },
+          {
+            "url": "https://www.ipm.ru/catalog",
+            "label": "Интернет-магазин"
+          },
+          {
+            "url": "https://www.ipm.ru/catalog/predmety-interera",
+            "label": "Предметы интерьера"
+          },
+          {
+            "url": "https://www.ipm.ru/collections",
+            "label": "Коллекции"
+          },
+          {
+            "url": "https://www.ipm.ru/personal-orders",
+            "label": "Индивидуальные заказы"
+          },
+          {
+            "url": "https://www.ipm.ru/gallery",
+            "label": "Галерея"
+          },
+          {
+            "url": "https://www.ipm.ru/novosti",
+            "label": "Новости"
+          },
+          {
+            "url": "https://www.ipm.ru/contacts/stores",
+            "label": "Магазины"
+          },
+          {
+            "url": "https://www.ipm.ru/contacts",
+            "label": "Контакты"
+          },
+          {
+            "url": "https://www.ipm.ru/o_zavode",
+            "label": "О заводе"
+          },
+          {
+            "url": "https://www.ipm.ru/o_zavode/istoriya_zavoda",
+            "label": "История завода"
+          },
+          {
+            "url": "https://www.ipm.ru/o_zavode/proizvodstvo",
+            "label": "Производство"
+          },
+          {
+            "url": "https://www.ipm.ru/stati-o-farfore",
+            "label": "Статьи о фарфоре"
+          },
+          {
+            "url": "https://www.ipm.ru/company/vacancy",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://www.ipm.ru/novosti/rezhim-otpravki-zakazov-s-internet-magazina",
+            "label": "Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026"
+          },
+          {
+            "url": "https://www.ipm.ru/novosti/zhemchuzhnaya-setka",
+            "label": "Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении"
+          },
+          {
+            "url": "https://www.ipm.ru/product/blyudo-dekorativnoe-god-loshadi-na-forme-kruglaya-art-60-14814-00-1",
+            "label": "Авторский фарфор — это художественные изделия высочайшего класса, единственные предметы в своем роде"
+          },
+          {
+            "url": "https://www.ipm.ru/collections/volshebnyy-sad",
+            "label": ""
+          },
+          {
+            "url": "https://www.ipm.ru/collections/zhemchuzhnaya-setka",
+            "label": ""
+          },
+          {
+            "url": "https://www.ipm.ru/gallery/ekskursii/sankt-peterburg",
+            "label": ""
+          },
+          {
+            "url": "https://www.ipm.ru/gallery/ekskursii/ekskursii-na-farforovoe-proizvodstvo",
+            "label": ""
+          },
+          {
+            "url": "https://www.ipm.ru/rekvizity",
+            "label": "Реквизиты"
+          },
+          {
+            "url": "https://www.ipm.ru/company/akcioneram",
+            "label": "Акционерам"
+          },
+          {
+            "url": "https://www.ipm.ru/company/dokumenty",
+            "label": "Документы"
+          },
+          {
+            "url": "https://www.ipm.ru/guidescollaboration",
+            "label": "Сотрудничество с гидами"
+          },
+          {
+            "url": "https://www.ipm.ru/press",
+            "label": "Аккредитация СМИ"
+          },
+          {
+            "url": "https://www.ipm.ru/ifz-protiv-covid-19",
+            "label": "ИФЗ против Covid-19"
+          },
+          {
+            "url": "https://www.ipm.ru/education",
+            "label": "Образование"
+          },
+          {
+            "url": "https://www.ipm.ru/upload/ifz_documents/online-store-public-offer25-08-2025.doc",
+            "label": "Оферта (скачать)"
+          },
+          {
+            "url": "https://www.ipm.ru/about/howto",
+            "label": "Как оформить заказ"
+          },
+          {
+            "url": "https://www.ipm.ru/about/payment",
+            "label": "Оплата"
+          },
+          {
+            "url": "https://www.ipm.ru/about/delivery",
+            "label": "Доставка"
+          },
+          {
+            "url": "https://www.ipm.ru/sitemap",
+            "label": "Карта сайта"
+          },
+          {
+            "url": "https://www.ipm.ru/export",
+            "label": "Экспорт"
+          },
+          {
+            "url": "https://www.ipm.ru/franch",
+            "label": "Франчайзинг"
+          },
+          {
+            "url": "https://vk.com/club21814086",
+            "label": "Вконтакте"
+          },
+          {
+            "url": "https://t.me/porcelain_imperial",
+            "label": "Telegram"
+          },
+          {
+            "url": "https://max.ru/ipm_ru",
+            "label": ""
+          },
+          {
+            "url": "https://xn--b1aedfedwqbdfbnzkf0oe.xn--p1ai",
+            "label": ""
+          },
+          {
+            "url": "https://yandex.ru/support/metrika/general/opt-out.html",
+            "label": "https://yandex.ru/support/metrika/general/opt-out.html"
+          },
+          {
+            "url": "https://yandex.ru/legal/confidential",
+            "label": "https://yandex.ru/legal/confidential/"
+          },
+          {
+            "url": "https://vk.ru/privacy",
+            "label": "Подробнее о правилах защиты информации о пользователях сайта"
+          },
+          {
+            "url": "https://vk.ru/privacy/cookies",
+            "label": "Подробнее о политике Cookies"
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:03:17.436Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 4437,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Императорский фарфоровый завод",
+        "domain": "ipm.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+            "sourceUrl": "https://hh.ru/vacancy/138142173",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://www.ipm.ru/",
+            "kind": "page",
+            "text": "Интернет-магазин Императорского фарфора — Официальный сайт Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026 Осенний фарфор Время создать уют дома Смотрите подборку товаров Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении Новинка COLOR VIBES Создай настроение своего дня ЭЛЕГАНТНЫЕ БОКАЛЫ КОБАЛЬТОВАЯ СЕТКА Сияние лета на вашем столе Новинка ГАРМОНИЯ ПРИРОДЫ Серия скульптур наполненных смыслом Новинка БЛАГОРОДНАЯ ПОРОДА Серия коллекционных скульптур породистых любимцев Новинка МОНПЛЕЗИР Коллекция текстиля Французский шарм и эстетика востока для ценительниц прекрасного Новинка ФОНТАНЫ Серия, вдохновленная летним Петергофом Новинка ВОЛШЕБНЫЙ САД Эксклюзивный совместный проект с Сергеем Сысоевым Новинка «Жемчужный» Эксклюзивный совместный проект с модным домом Alena Akhmadullina Новинки ЖЕМЧУЖНАЯ СЕТКА НОВИНКА COLOR VIBES НОВИНКА ГАРМОНИЯ ПРИРОДЫ НОВИНКА БЛАГОРОДНАЯ ПОРОДА НОВИНКА «МОНПЛЕЗИР» Сервиз Воспоминание НОВИНКА «Золотой Петербург и Золотая Москва»\n[excerpt boundary]\nных (далее - Согласие) посредством сервисом веб-аналитики Яндекс Метрика и, предоставляемый компанией ООО «ЯНДЕКС», 119021, Россия, Москва, ул. Л. Толстого, 16 на следующих условиях: 1. Согласие выдано: АО «Императорский фарфоровый завод», ОГРН: 1027806058213, ИНН 7811000276, КПП 781101001 (далее — Оператор), электронная почта: ipm_shop@ipm.ru 2. Согласие выдано на обработку следующих категорий персональных данных: – IP-адрес, информация из файлов cookie, информация о браузер",
+            "links": [
+              {
+                "url": "https://www.ipm.ru/personal",
+                "label": ""
+              },
+              {
+                "url": "https://ipm-jsc.com",
+                "label": "EN"
+              },
+              {
+                "url": "https://www.ipm.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/personal/orders",
+                "label": "Войти Мой кабинет"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog/compare.php",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/wishlist",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/basket",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog",
+                "label": "Интернет-магазин"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog/predmety-interera",
+                "label": "Предметы интерьера"
+              },
+              {
+                "url": "https://www.ipm.ru/collections",
+                "label": "Коллекции"
+              },
+              {
+                "url": "https://www.ipm.ru/personal-orders",
+                "label": "Индивидуальные заказы"
+              },
+              {
+                "url": "https://www.ipm.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti",
+                "label": "Новости"
+              },
+              {
+                "url": "https://www.ipm.ru/contacts/stores",
+                "label": "Магазины"
+              },
+              {
+                "url": "https://www.ipm.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode",
+                "label": "О заводе"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode/istoriya_zavoda",
+                "label": "История завода"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode/proizvodstvo",
+                "label": "Производство"
+              },
+              {
+                "url": "https://www.ipm.ru/stati-o-farfore",
+                "label": "Статьи о фарфоре"
+              },
+              {
+                "url": "https://www.ipm.ru/company/vacancy",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti/rezhim-otpravki-zakazov-s-internet-magazina",
+                "label": "Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti/zhemchuzhnaya-setka",
+                "label": "Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении"
+              },
+              {
+                "url": "https://www.ipm.ru/product/blyudo-dekorativnoe-god-loshadi-na-forme-kruglaya-art-60-14814-00-1",
+                "label": "Авторский фарфор — это художественные изделия высочайшего класса, единственные предметы в своем роде"
+              },
+              {
+                "url": "https://www.ipm.ru/collections/volshebnyy-sad",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/collections/zhemchuzhnaya-setka",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/gallery/ekskursii/sankt-peterburg",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/gallery/ekskursii/ekskursii-na-farforovoe-proizvodstvo",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/rekvizity",
+                "label": "Реквизиты"
+              },
+              {
+                "url": "https://www.ipm.ru/company/akcioneram",
+                "label": "Акционерам"
+              },
+              {
+                "url": "https://www.ipm.ru/company/dokumenty",
+                "label": "Документы"
+              },
+              {
+                "url": "https://www.ipm.ru/guidescollaboration",
+                "label": "Сотрудничество с гидами"
+              },
+              {
+                "url": "https://www.ipm.ru/press",
+                "label": "Аккредитация СМИ"
+              },
+              {
+                "url": "https://www.ipm.ru/ifz-protiv-covid-19",
+                "label": "ИФЗ против Covid-19"
+              },
+              {
+                "url": "https://www.ipm.ru/education",
+                "label": "Образование"
+              },
+              {
+                "url": "https://www.ipm.ru/upload/ifz_documents/online-store-public-offer25-08-2025.doc",
+                "label": "Оферта (скачать)"
+              },
+              {
+                "url": "https://www.ipm.ru/about/howto",
+                "label": "Как оформить заказ"
+              },
+              {
+                "url": "https://www.ipm.ru/about/payment",
+                "label": "Оплата"
+              },
+              {
+                "url": "https://www.ipm.ru/about/delivery",
+                "label": "Доставка"
+              },
+              {
+                "url": "https://www.ipm.ru/sitemap",
+                "label": "Карта сайта"
+              },
+              {
+                "url": "https://www.ipm.ru/export",
+                "label": "Экспорт"
+              },
+              {
+                "url": "https://www.ipm.ru/franch",
+                "label": "Франчайзинг"
+              },
+              {
+                "url": "https://vk.com/club21814086",
+                "label": "Вконтакте"
+              },
+              {
+                "url": "https://t.me/porcelain_imperial",
+                "label": "Telegram"
+              },
+              {
+                "url": "https://max.ru/ipm_ru",
+                "label": ""
+              },
+              {
+                "url": "https://xn--b1aedfedwqbdfbnzkf0oe.xn--p1ai",
+                "label": ""
+              },
+              {
+                "url": "https://yandex.ru/support/metrika/general/opt-out.html",
+                "label": "https://yandex.ru/support/metrika/general/opt-out.html"
+              },
+              {
+                "url": "https://yandex.ru/legal/confidential",
+                "label": "https://yandex.ru/legal/confidential/"
+              },
+              {
+                "url": "https://vk.ru/privacy",
+                "label": "Подробнее о правилах защиты информации о пользователях сайта"
+              },
+              {
+                "url": "https://vk.ru/privacy/cookies",
+                "label": "Подробнее о политике Cookies"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:03:17.436Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 10,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "АО «Императорский фарфоровый завод» — историческое производство фарфора из Санкт-Петербурга, с широкой линейкой продукции, экспортом и собственным интернет-магазином. Сигнал: открыта вакансия «Заместитель коммерческого директора по развитию новых направлений». Целевой контакт — руководитель коммерческого или смежного подразделения с полномочиями по развитию бизнеса.",
+        "missing": [
+          "Имена и контактные данные руководителей коммерческого/развивающего подразделения или топ-менеджеров"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "ipm.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "АО «Императорский фарфоровый завод»"
+            }
+          },
+          {
+            "domain": "ipm-jsc.com",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://ipm-jsc.com"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://www.ipm.ru/contacts",
+            "focus": "контакты, структура, руководство",
+            "purpose": "Проверить наличие имён и прямых контактов руководителей и ключевых подразделений."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нету ни одного проверенного имени руководителя, необходимо открыть раздел контактов для поиска имён и должностей."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "АО «Императорский фарфоровый завод» — историческое производство фарфора из Санкт-Петербурга, с широкой линейкой продукции, экспортом и собственным интернет-магазином. Сигнал: открыта вакансия «Заместитель коммерческого директора по развитию новых направлений». Целевой контакт — руководитель коммерческого или смежного подразделения с полномочиями по развитию бизнеса.",
+        "missing": [
+          "Имена и контактные данные руководителей коммерческого/развивающего подразделения или топ-менеджеров"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "ipm.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "АО «Императорский фарфоровый завод»"
+            }
+          },
+          {
+            "domain": "ipm-jsc.com",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://ipm-jsc.com"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://www.ipm.ru/contacts",
+            "focus": "контакты, структура, руководство",
+            "purpose": "Проверить наличие имён и прямых контактов руководителей и ключевых подразделений."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нету ни одного проверенного имени руководителя, необходимо открыть раздел контактов для поиска имён и должностей."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:ipm-jsc.com"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "ipm.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.ipm.ru/contacts",
+      "status": 301,
+      "elapsedMs": 508
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.ipm.ru/contacts/",
+      "status": 200,
+      "elapsedMs": 577
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://www.ipm.ru/contacts",
+      "focus": "контакты, структура, руководство",
+      "purpose": "Проверить наличие имён и прямых контактов руководителей и ключевых подразделений.",
+      "success": true,
+      "evidence": {
+        "url": "https://www.ipm.ru/contacts/",
+        "kind": "page",
+        "text": "Контакты | Официальный интернет-магазин Императорского фарфорового завода Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин Главная / Контакты Контакты Россия, Санкт-Петербург, проспект Обуховской Обороны, 151 По общим вопросам info@ipm.ru По вопросам заказов и доставки интернет-магазина ipm_shop@ipm.ru Вакансии На сайте представлены основные вакансии производства. Для получения актуальной информации и записи на собеседование обратитесь в отдел кадров по телефону: +7 (921) 431-03-04 +7 (921) 430-99-29 ПОСМОТРЕТЬ ВСЕ ВАКАНСИИ Резюме направляйте по почте lat_ep@ipm.ru : Екатерина Латунова - ведущий специалист по подбору персонала Интернет-магазин Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д. 151 (ст. м. Ломоносовская) Телефон: 8 800 444-44-18 Email: ipm_shop@ipm.ru Магазины Адреса магазинов Отдел розничных продаж в Москве Директор по развитию розничной сети Исупова Ольга Валерьевна Адрес: 127055, Москва, ул. Тихвинская д. 2 Телефон: +7 499 248 34 03 доб. 135 Email: isu_OV@ipm.ru Отдел розничных продаж в Санкт-Петербурге Директор по развитию розничной сети Агатьева Александра Петровна Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Телефон: +7 (812) 608-49-29 доб. 108 Email: aga_ap@ipm.ru Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru Менеджеры по индивидуальным заказам г. Санкт-Петербург, пр. Обуховской обороны, 151 Телефоны: +7 (812) 326-53-78 +7 (812) 608-49-30 Департамент по индивидуальным заказам г. Москва, ул. Тихвинская д.2 Телефон: +7 (495) 909-17-79 Отдел экспорта Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Руководитель отдела экспорта Смирнова Анастасия Николаевна Телефон: +7 (812) 326-17-46 Мобильный: +7-981-828-17-68 Email: smi_an@ipm.ru Старший менеджер по СНГ Поляков Дмитрий Владимирович Телефон: +7 (812) 326-17-46 Мобильный: +7-911-224-85-44 Email: pol_dv@ipm.ru Старший менеджер по экспорту Ахапкина Елена Михайловна Телефон: +7 (812) 326-17-46 Мобильный: +7-904-639-09-25 Email: aha_em@ipm.ru Галерея современного искусства фарфора в Москве Управляющий галереи Балашова Вера Валерьевна. Тел.: +7 (916) 299-72-48 | +7 (925) 755-57-47 | +7 (499) 678-02-48 Адрес: 121248, Россия, Москва, Кутузовский проспект, д. 17, 2 этаж (ст. м. Киевская) Email: bal_vv@ipm.ru Режим работы: Ежедневно с 10.00 до 22.00 , вход свободный Галереи современного искусства фарфора в Санкт-Петербурге Галерея современного искусства фарфора, пр-т Обуховской обороны, д.151 Адрес: Россия, 192171, Санкт-Петербург, пр-т Обуховской обороны, д.151 (ст. м. Ломоносовская) Режим работы: пн-чт с 10:00 до 19:00, пт с 10:00 до 18:00 Телефон: +7 (812) 326-17-43 Email: gallery@ipm.ru Запись на экскурсии и мастер-классы: Телефон: +7 (981) 882-19-96 Email: gallery@ipm.ru Галерея современного искусства фарфора, Невский пр, д. 92 Управляющий галереи Чарушина Надежда Олеговна Тел.: +7 (812) 272-94-10 | +7 (812) 273-89-01 Адрес: Россия, 191025, Санкт-Петербург, Невский пр., д. 92 (ст. м. Маяковская) Режим работы: Понедельник-пятница с 10:00 до 21:00 Email: cha_no@ipm.ru Галерея Амбар Буржуа, Большая Конюшенная, д.2 Управляющий галереи Кулагина Елена Юрьевна Тел.: +7 (812) 493-40-41 Адрес: Россия, 191186, Санкт-Петербург, ул. Большая Конюшенная, д.2 Режим работы: Ежедневно с 11:00 до 22:00 Email: kul_eu@ipm.ru Департамент партнерской розницы НАЧАЛЬНИК ОТДЕЛА ПО РАБОТЕ С ПАРТНЕРСКОЙ РОЗНИЦЕЙ Бушуева Ксения Юрьевна Тел.: +7(812) 608-49-57 Адрес: Россия, 192171, Санкт-Петербург, пр-т Обуховской обороны, д.151 (ст. м. Ломоносовская) Email: bus_ky@ipm.ru По общим вопросам Для обращений по общим вопросам Тел.: +7(812) 326 17 44 Понедельник - четверг: с 9:00 до 18:00 Пятница: с 9:00 до 17:0",
+        "links": [
+          {
+            "url": "https://www.ipm.ru/personal",
+            "label": ""
+          },
+          {
+            "url": "https://ipm-jsc.com",
+            "label": "EN"
+          },
+          {
+            "url": "https://www.ipm.ru",
+            "label": ""
+          },
+          {
+            "url": "https://www.ipm.ru/personal/orders",
+            "label": "Войти Мой кабинет"
+          },
+          {
+            "url": "https://www.ipm.ru/catalog/compare.php",
+            "label": "0"
+          },
+          {
+            "url": "https://www.ipm.ru/wishlist",
+            "label": "0"
+          },
+          {
+            "url": "https://www.ipm.ru/basket",
+            "label": "0"
+          },
+          {
+            "url": "https://www.ipm.ru/catalog",
+            "label": "Интернет-магазин"
+          },
+          {
+            "url": "https://www.ipm.ru/contacts",
+            "label": "Сервировка стола"
+          },
+          {
+            "url": "https://www.ipm.ru/catalog/predmety-interera",
+            "label": "Предметы интерьера"
+          },
+          {
+            "url": "https://www.ipm.ru/collections",
+            "label": "Коллекции"
+          },
+          {
+            "url": "https://www.ipm.ru/personal-orders",
+            "label": "Индивидуальные заказы"
+          },
+          {
+            "url": "https://www.ipm.ru/gallery",
+            "label": "Галерея"
+          },
+          {
+            "url": "https://www.ipm.ru/novosti",
+            "label": "Новости"
+          },
+          {
+            "url": "https://www.ipm.ru/contacts/stores",
+            "label": "Магазины"
+          },
+          {
+            "url": "https://www.ipm.ru/o_zavode",
+            "label": "О заводе"
+          },
+          {
+            "url": "https://www.ipm.ru/o_zavode/istoriya_zavoda",
+            "label": "История завода"
+          },
+          {
+            "url": "https://www.ipm.ru/o_zavode/proizvodstvo",
+            "label": "Производство"
+          },
+          {
+            "url": "https://www.ipm.ru/stati-o-farfore",
+            "label": "Статьи о фарфоре"
+          },
+          {
+            "url": "https://www.ipm.ru/company/vacancy",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://www.ipm.ru/include/licenses_detail.php",
+            "label": "обработку персональных данных"
+          },
+          {
+            "url": "https://www.ipm.ru/rekvizity",
+            "label": "Реквизиты"
+          },
+          {
+            "url": "https://www.ipm.ru/company/akcioneram",
+            "label": "Акционерам"
+          },
+          {
+            "url": "https://www.ipm.ru/company/dokumenty",
+            "label": "Документы"
+          },
+          {
+            "url": "https://www.ipm.ru/guidescollaboration",
+            "label": "Сотрудничество с гидами"
+          },
+          {
+            "url": "https://www.ipm.ru/press",
+            "label": "Аккредитация СМИ"
+          },
+          {
+            "url": "https://www.ipm.ru/ifz-protiv-covid-19",
+            "label": "ИФЗ против Covid-19"
+          },
+          {
+            "url": "https://www.ipm.ru/education",
+            "label": "Образование"
+          },
+          {
+            "url": "https://www.ipm.ru/upload/ifz_documents/online-store-public-offer25-08-2025.doc",
+            "label": "Оферта (скачать)"
+          },
+          {
+            "url": "https://www.ipm.ru/about/howto",
+            "label": "Как оформить заказ"
+          },
+          {
+            "url": "https://www.ipm.ru/about/payment",
+            "label": "Оплата"
+          },
+          {
+            "url": "https://www.ipm.ru/about/delivery",
+            "label": "Доставка"
+          },
+          {
+            "url": "https://www.ipm.ru/sitemap",
+            "label": "Карта сайта"
+          },
+          {
+            "url": "https://www.ipm.ru/export",
+            "label": "Экспорт"
+          },
+          {
+            "url": "https://www.ipm.ru/franch",
+            "label": "Франчайзинг"
+          },
+          {
+            "url": "https://vk.com/club21814086",
+            "label": "Вконтакте"
+          },
+          {
+            "url": "https://t.me/porcelain_imperial",
+            "label": "Telegram"
+          },
+          {
+            "url": "https://max.ru/ipm_ru",
+            "label": ""
+          },
+          {
+            "url": "https://xn--b1aedfedwqbdfbnzkf0oe.xn--p1ai",
+            "label": ""
+          },
+          {
+            "url": "https://yandex.ru/support/metrika/general/opt-out.html",
+            "label": "https://yandex.ru/support/metrika/general/opt-out.html"
+          },
+          {
+            "url": "https://yandex.ru/legal/confidential",
+            "label": "https://yandex.ru/legal/confidential/"
+          },
+          {
+            "url": "https://vk.ru/privacy",
+            "label": "Подробнее о правилах защиты информации о пользователях сайта"
+          },
+          {
+            "url": "https://vk.ru/privacy/cookies",
+            "label": "Подробнее о политике Cookies"
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:03:23.129Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 6228,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Императорский фарфоровый завод",
+        "domain": "ipm.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+            "sourceUrl": "https://hh.ru/vacancy/138142173",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://www.ipm.ru/",
+            "kind": "page",
+            "text": "Интернет-магазин Императорского фарфора — Официальный сайт Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026 Осенний фарфор Время создать уют дома Смотрите подборку товаров Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении Новинка COLOR VIBES Создай настроение своего дня ЭЛЕГАНТНЫЕ БОКАЛЫ КОБАЛЬТОВАЯ СЕТКА Сияние лета на вашем столе Новинка ГАРМОНИЯ ПРИРОДЫ Серия скульптур наполненных смыслом Новинка БЛАГОРОДНАЯ ПОРОДА Серия коллекционных скульптур породистых любимцев Новинка МОНПЛЕЗИР Коллекция текстиля Французский шарм и эстетика востока для ценительниц прекрасного Новинка ФОНТАНЫ Серия, вдохновленная летним Петергофом Новинка ВОЛШЕБНЫЙ САД Эксклюзивный совместный проект с Сергеем Сысоевым Новинка «Жемчужный» Эксклюзивный совместный проект с модным домом Alena Akhmadullina Новинки ЖЕМЧУЖНАЯ СЕТКА НОВИНКА COLOR VIBES НОВИНКА ГАРМОНИЯ ПРИРОДЫ НОВИНКА БЛАГОРОДНАЯ ПОРОДА НОВИНКА «МОНПЛЕЗИР» Сервиз Воспоминание НОВИНКА «Золотой Петербург и Золотая Москва»\n[excerpt boundary]\nных (далее - Согласие) посредством сервисом веб-аналитики Яндекс Метрика и, предоставляемый компанией ООО «ЯНДЕКС», 119021, Россия, Москва, ул. Л. Толстого, 16 на следующих условиях: 1. Согласие выдано: АО «Императорский фарфоровый завод», ОГРН: 1027806058213, ИНН 7811000276, КПП 781101001 (далее — Оператор), электронная почта: ipm_shop@ipm.ru 2. Согласие выдано на обработку следующих категорий персональных данных: – IP-адрес, информация из файлов cookie, информация о браузер",
+            "links": [
+              {
+                "url": "https://www.ipm.ru/personal",
+                "label": ""
+              },
+              {
+                "url": "https://ipm-jsc.com",
+                "label": "EN"
+              },
+              {
+                "url": "https://www.ipm.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/personal/orders",
+                "label": "Войти Мой кабинет"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog/compare.php",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/wishlist",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/basket",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog",
+                "label": "Интернет-магазин"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog/predmety-interera",
+                "label": "Предметы интерьера"
+              },
+              {
+                "url": "https://www.ipm.ru/collections",
+                "label": "Коллекции"
+              },
+              {
+                "url": "https://www.ipm.ru/personal-orders",
+                "label": "Индивидуальные заказы"
+              },
+              {
+                "url": "https://www.ipm.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti",
+                "label": "Новости"
+              },
+              {
+                "url": "https://www.ipm.ru/contacts/stores",
+                "label": "Магазины"
+              },
+              {
+                "url": "https://www.ipm.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode",
+                "label": "О заводе"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode/istoriya_zavoda",
+                "label": "История завода"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode/proizvodstvo",
+                "label": "Производство"
+              },
+              {
+                "url": "https://www.ipm.ru/stati-o-farfore",
+                "label": "Статьи о фарфоре"
+              },
+              {
+                "url": "https://www.ipm.ru/company/vacancy",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti/rezhim-otpravki-zakazov-s-internet-magazina",
+                "label": "Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti/zhemchuzhnaya-setka",
+                "label": "Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении"
+              },
+              {
+                "url": "https://www.ipm.ru/product/blyudo-dekorativnoe-god-loshadi-na-forme-kruglaya-art-60-14814-00-1",
+                "label": "Авторский фарфор — это художественные изделия высочайшего класса, единственные предметы в своем роде"
+              },
+              {
+                "url": "https://www.ipm.ru/collections/volshebnyy-sad",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/collections/zhemchuzhnaya-setka",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/gallery/ekskursii/sankt-peterburg",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/gallery/ekskursii/ekskursii-na-farforovoe-proizvodstvo",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/rekvizity",
+                "label": "Реквизиты"
+              },
+              {
+                "url": "https://www.ipm.ru/company/akcioneram",
+                "label": "Акционерам"
+              },
+              {
+                "url": "https://www.ipm.ru/company/dokumenty",
+                "label": "Документы"
+              },
+              {
+                "url": "https://www.ipm.ru/guidescollaboration",
+                "label": "Сотрудничество с гидами"
+              },
+              {
+                "url": "https://www.ipm.ru/press",
+                "label": "Аккредитация СМИ"
+              },
+              {
+                "url": "https://www.ipm.ru/ifz-protiv-covid-19",
+                "label": "ИФЗ против Covid-19"
+              },
+              {
+                "url": "https://www.ipm.ru/education",
+                "label": "Образование"
+              },
+              {
+                "url": "https://www.ipm.ru/upload/ifz_documents/online-store-public-offer25-08-2025.doc",
+                "label": "Оферта (скачать)"
+              },
+              {
+                "url": "https://www.ipm.ru/about/howto",
+                "label": "Как оформить заказ"
+              },
+              {
+                "url": "https://www.ipm.ru/about/payment",
+                "label": "Оплата"
+              },
+              {
+                "url": "https://www.ipm.ru/about/delivery",
+                "label": "Доставка"
+              },
+              {
+                "url": "https://www.ipm.ru/sitemap",
+                "label": "Карта сайта"
+              },
+              {
+                "url": "https://www.ipm.ru/export",
+                "label": "Экспорт"
+              },
+              {
+                "url": "https://www.ipm.ru/franch",
+                "label": "Франчайзинг"
+              },
+              {
+                "url": "https://vk.com/club21814086",
+                "label": "Вконтакте"
+              },
+              {
+                "url": "https://t.me/porcelain_imperial",
+                "label": "Telegram"
+              },
+              {
+                "url": "https://max.ru/ipm_ru",
+                "label": ""
+              },
+              {
+                "url": "https://xn--b1aedfedwqbdfbnzkf0oe.xn--p1ai",
+                "label": ""
+              },
+              {
+                "url": "https://yandex.ru/support/metrika/general/opt-out.html",
+                "label": "https://yandex.ru/support/metrika/general/opt-out.html"
+              },
+              {
+                "url": "https://yandex.ru/legal/confidential",
+                "label": "https://yandex.ru/legal/confidential/"
+              },
+              {
+                "url": "https://vk.ru/privacy",
+                "label": "Подробнее о правилах защиты информации о пользователях сайта"
+              },
+              {
+                "url": "https://vk.ru/privacy/cookies",
+                "label": "Подробнее о политике Cookies"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:03:17.436Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.ipm.ru/contacts/",
+            "kind": "page",
+            "text": "Контакты | Официальный интернет-магазин Императорского фарфорового завода Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин Главная / Контакты Контакты Россия, Санкт-Петербург, проспект Обуховской Обороны, 151 По общим вопросам info@ipm.ru По вопросам заказов и доставки интернет-магазина ipm_shop@ipm.ru Вакансии На сайте представлены основные вакансии производства. Для получения актуальной информации и записи на собеседование обратитесь в отдел кадров по телефону: +7 (921) 431-03-04 +7 (921) 430-99-29 ПОСМОТРЕТЬ ВСЕ ВАКАНСИИ Резюме направляйте по почте lat_ep@ipm.ru : Екатерина Латунова - ведущий специалист по подбору персонала Интернет-магазин Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д. 151 (ст. м. Ломоносовская) Телефон: 8 800 444-44-18 Email: ipm_shop@ipm.ru Магазины Адреса магазинов Отдел розничных продаж в Москве Директор по развитию розничной сети Исупова Ольга Валерьевна Адрес: 127055, Москва, ул. Тихвинская д. 2 Телефон: +7 499 248 34 03 доб. 135 Email: isu_OV@ipm.ru Отдел розничных продаж в Санкт-Петербурге Директор по развитию розничной сети Агатьева Александра Петровна Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Телефон: +7 (812) 608-49-29 доб. 108 Email: aga_ap@ipm.ru Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru Менеджеры по индивидуальным заказам г. Санкт-Петербург, пр. Обуховской обороны, 151 Телефоны: +7 (812) 326-53-78 +7 (812) 608-49-30 Департамент по индивидуальным заказам г. Москва, ул. Тихвинская д.2 Телефон: +7 (495) 909-17-79 Отдел экспорта Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Руководитель отдела экспорта Смирнова Анастасия Николаевна Телефон: +7 (812) 326-17-46 Мобильный: +7-981-828-17-68 Email: smi_an@ipm.ru Старший менеджер по СНГ Поляков Дмитрий Владимирович Телефон: +7 (812) 326-17-46 Мобильный: +7-911-224-85-44 Email: pol_dv@ipm.ru Старший менеджер по экспорту Ахапкина Елена Михайловна Телефон: +7 (812) 326-17-46 Мобильный: +7-904-639-09-25 Email: aha_em@ipm.ru Галерея современного искусства фарфора в Москве Управляющий галереи Балашова Вера Валерьевна. Тел.: +7 (916) 299-72-48 | +7 (925) 755-57-47 | +7 (499) 678-02-48 Адрес: 121248, Россия, Москва, Кутузовский проспект, д. 17, 2 этаж (ст. м. Киевская) Email: bal_vv@ipm.ru Режим работы: Ежедневно с 10.00 до 22.00 , вход свободный Галереи современного искусства фарфора в Санкт-Петербурге Галерея современного искусства фарфора, пр-т Обуховской обороны, д.151 Адрес: Россия, 192171, Санкт-Петербург, пр-т Обуховской обороны, д.151 (ст. м. Ломоносовская) Режим работы: пн-чт с 10:00 до 19:00, пт с 10:00 до 18:00 Телефон: +7 (812) 326-17-43 Email: gallery@ipm.ru Запись на экскурсии и мастер-классы: Телефон: +7 (981) 882-19-96 Email: gallery@ipm.ru Галерея современного искусства фарфора, Невский пр, д. 92 Управляющий галереи Чарушина Надежда Олеговна Тел.: +7 (812) 272-94-10 | +7 (812) 273-89-01 Адрес: Россия, 191025, Санкт-Петербург, Невский пр., д. 92 (ст. м. Маяковская) Режим работы: Понедельник-пятница с 10:00 до 21:00 Email: cha_no@ipm.ru Галерея Амбар Буржуа, Большая Конюшенная, д.2 Управляющий галереи Кулагина Елена Юрьевна Тел.: +7 (812) 493-40-41 Адрес: Россия, 191186, Санкт-Петербург, ул. Большая Конюшенная, д.2 Режим работы: Ежедневно с 11:00 до 22:00 Email: kul_eu@ipm.ru Департамент партнерской розницы НАЧАЛЬНИК ОТДЕЛА ПО РАБОТЕ С ПАРТНЕРСКОЙ РОЗНИЦЕЙ Бушуева Ксения Юрьевна Тел.: +7(812) 608-49-57 Адрес: Россия, 192171, Санкт-Петербург, пр-т Обуховской обороны, д.151 (ст. м. Ломоносовская) Email: bus_ky@ipm.ru По общим вопросам Для обращений по общим вопросам Тел.: +7(812) 326 17 44 Понедельник - четверг: с 9:00 до 18:00 Пятница: с 9:00 до 17:0",
+            "links": [
+              {
+                "url": "https://www.ipm.ru/personal",
+                "label": ""
+              },
+              {
+                "url": "https://ipm-jsc.com",
+                "label": "EN"
+              },
+              {
+                "url": "https://www.ipm.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/personal/orders",
+                "label": "Войти Мой кабинет"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog/compare.php",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/wishlist",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/basket",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog",
+                "label": "Интернет-магазин"
+              },
+              {
+                "url": "https://www.ipm.ru/contacts",
+                "label": "Сервировка стола"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog/predmety-interera",
+                "label": "Предметы интерьера"
+              },
+              {
+                "url": "https://www.ipm.ru/collections",
+                "label": "Коллекции"
+              },
+              {
+                "url": "https://www.ipm.ru/personal-orders",
+                "label": "Индивидуальные заказы"
+              },
+              {
+                "url": "https://www.ipm.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti",
+                "label": "Новости"
+              },
+              {
+                "url": "https://www.ipm.ru/contacts/stores",
+                "label": "Магазины"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode",
+                "label": "О заводе"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode/istoriya_zavoda",
+                "label": "История завода"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode/proizvodstvo",
+                "label": "Производство"
+              },
+              {
+                "url": "https://www.ipm.ru/stati-o-farfore",
+                "label": "Статьи о фарфоре"
+              },
+              {
+                "url": "https://www.ipm.ru/company/vacancy",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://www.ipm.ru/include/licenses_detail.php",
+                "label": "обработку персональных данных"
+              },
+              {
+                "url": "https://www.ipm.ru/rekvizity",
+                "label": "Реквизиты"
+              },
+              {
+                "url": "https://www.ipm.ru/company/akcioneram",
+                "label": "Акционерам"
+              },
+              {
+                "url": "https://www.ipm.ru/company/dokumenty",
+                "label": "Документы"
+              },
+              {
+                "url": "https://www.ipm.ru/guidescollaboration",
+                "label": "Сотрудничество с гидами"
+              },
+              {
+                "url": "https://www.ipm.ru/press",
+                "label": "Аккредитация СМИ"
+              },
+              {
+                "url": "https://www.ipm.ru/ifz-protiv-covid-19",
+                "label": "ИФЗ против Covid-19"
+              },
+              {
+                "url": "https://www.ipm.ru/education",
+                "label": "Образование"
+              },
+              {
+                "url": "https://www.ipm.ru/upload/ifz_documents/online-store-public-offer25-08-2025.doc",
+                "label": "Оферта (скачать)"
+              },
+              {
+                "url": "https://www.ipm.ru/about/howto",
+                "label": "Как оформить заказ"
+              },
+              {
+                "url": "https://www.ipm.ru/about/payment",
+                "label": "Оплата"
+              },
+              {
+                "url": "https://www.ipm.ru/about/delivery",
+                "label": "Доставка"
+              },
+              {
+                "url": "https://www.ipm.ru/sitemap",
+                "label": "Карта сайта"
+              },
+              {
+                "url": "https://www.ipm.ru/export",
+                "label": "Экспорт"
+              },
+              {
+                "url": "https://www.ipm.ru/franch",
+                "label": "Франчайзинг"
+              },
+              {
+                "url": "https://vk.com/club21814086",
+                "label": "Вконтакте"
+              },
+              {
+                "url": "https://t.me/porcelain_imperial",
+                "label": "Telegram"
+              },
+              {
+                "url": "https://max.ru/ipm_ru",
+                "label": ""
+              },
+              {
+                "url": "https://xn--b1aedfedwqbdfbnzkf0oe.xn--p1ai",
+                "label": ""
+              },
+              {
+                "url": "https://yandex.ru/support/metrika/general/opt-out.html",
+                "label": "https://yandex.ru/support/metrika/general/opt-out.html"
+              },
+              {
+                "url": "https://yandex.ru/legal/confidential",
+                "label": "https://yandex.ru/legal/confidential/"
+              },
+              {
+                "url": "https://vk.ru/privacy",
+                "label": "Подробнее о правилах защиты информации о пользователях сайта"
+              },
+              {
+                "url": "https://vk.ru/privacy/cookies",
+                "label": "Подробнее о политике Cookies"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:03:23.129Z",
+            "id": "e2"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://www.ipm.ru/contacts",
+            "focus": "контакты, структура, руководство",
+            "success": true
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:ipm-jsc.com"
+        ],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 9,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "Императорский фарфоровый завод — один из крупнейших российских производителей фарфоровой посуды и предметов интерьера, ориентированный на эксклюзивные дизайнерские коллекции и индивидуальные заказы. Юридическое лицо — АО «Императорский фарфоровый завод», г. Санкт-Петербург.",
+        "missing": [
+          "руководство компании в целом или коммерческого блока: конкретные ФИО и прямые контакты директора/коммерческого директора или его заместителя по развитию. Есть только руководители департаментов розницы и индивидуальных заказов."
+        ],
+        "people": [
+          {
+            "name": "Николаев Александр Анатольевич",
+            "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+            "relevance": 70,
+            "reason": "Занимает руководящую позицию в коммерческом подразделении (заместитель коммерческого директора), отвечает за индивидуальную работу с клиентами — близко к развитию новых направлений.",
+            "citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "email",
+                "value": "nik_aa@ipm.ru",
+                "citation": {
+                  "sourceId": "e2",
+                  "quote": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич ... Почта: nik_aa@ipm.ru"
+                }
+              }
+            ]
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "ipm.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "АО «Императорский фарфоровый завод» ... электронная почта: ipm_shop@ipm.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"коммерческий директор\" site:ipm.ru OR \"директор по развитию\" site:ipm.ru",
+            "focus": "ФИО и контакты руководства коммерческого блока или директора",
+            "purpose": "Уточнить ФИО и, возможно, личный email действующего коммерческого директора или профильного заместителя по развитию"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет ФИО и прямых контактов собственно директора/заместителя по развитию, только профиль департамента по ключевым клиентам."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "Императорский фарфоровый завод — один из крупнейших российских производителей фарфоровой посуды и предметов интерьера, ориентированный на эксклюзивные дизайнерские коллекции и индивидуальные заказы. Юридическое лицо — АО «Императорский фарфоровый завод», г. Санкт-Петербург.",
+        "missing": [
+          "руководство компании в целом или коммерческого блока: конкретные ФИО и прямые контакты директора/коммерческого директора или его заместителя по развитию. Есть только руководители департаментов розницы и индивидуальных заказов."
+        ],
+        "people": [
+          {
+            "name": "Николаев Александр Анатольевич",
+            "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+            "relevance": 70,
+            "reason": "Занимает руководящую позицию в коммерческом подразделении (заместитель коммерческого директора), отвечает за индивидуальную работу с клиентами — близко к развитию новых направлений.",
+            "citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "email",
+                "value": "nik_aa@ipm.ru",
+                "citation": {
+                  "sourceId": "e2",
+                  "quote": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич ... Почта: nik_aa@ipm.ru"
+                }
+              }
+            ]
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "ipm.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "АО «Императорский фарфоровый завод» ... электронная почта: ipm_shop@ipm.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"коммерческий директор\" site:ipm.ru OR \"директор по развитию\" site:ipm.ru",
+            "focus": "ФИО и контакты руководства коммерческого блока или директора",
+            "purpose": "Уточнить ФИО и, возможно, личный email действующего коммерческого директора или профильного заместителя по развитию"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет ФИО и прямых контактов собственно директора/заместителя по развитию, только профиль департамента по ключевым клиентам."
+      },
+      "validationErrors": [
+        "contact_rejected:Николаев Александр Анатольевич:quote_must_include_name_and_contact"
+      ],
+      "acceptedPeople": [
+        {
+          "full_name": "Николаев Александр Анатольевич",
+          "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+          ],
+          "metadata": {
+            "source_url": "https://www.ipm.ru/contacts/",
+            "source_urls": [
+              "https://www.ipm.ru/contacts/"
+            ],
+            "semantic_role_relevance": 70,
+            "semantic_role_reason": "Занимает руководящую позицию в коммерческом подразделении (заместитель коммерческого директора), отвечает за индивидуальную работу с клиентами — близко к развитию новых направлений.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "ipm.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "ipm.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%BA%D0%BE%D0%BC%D0%BC%D0%B5%D1%80%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%22%20OR%20%22%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%BF%D0%BE%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D1%8E%22%20ipm.ru&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 464
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%BA%D0%BE%D0%BC%D0%BC%D0%B5%D1%80%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%22%20OR%20%22%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%BF%D0%BE%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D1%8E%22%20ipm.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 631
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 2478
+    },
+    {
+      "stage": "search",
+      "query": "\"коммерческий директор\" site:ipm.ru OR \"директор по развитию\" site:ipm.ru",
+      "results": [
+        {
+          "title": "Наименование вредных и (или) опасных факторов ...",
+          "url": "https://www.ipm.ru/upload/ifz_documents/list_of_workplaces_07-11-2025.pdf",
+          "snippet": "коммерче- ского директора по развитию новых направлений; Отдел розничных продаж. Петербург, Невский проспект дом 153, помещение 9Н, лит.",
+          "source_label": "tavily",
+          "score": 0.3563576,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Контакты | Официальный интернет-магазин Императорского фарфорового завода",
+          "url": "https://www.ipm.ru/contacts",
+          "snippet": "Директор по развитию розничной сети  \n Агатьева Александра Петровна  \n Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская)  \n Телефон: +7 (812) 608-49-29  доб. 108  \n Email: aga\\_ap@ipm.ru\n\nДепартамент по индивидуальным заказам\n\nЗаместитель коммерческого директора по работе с ключевыми клиентами  \n Николаев Александр Анатольевич  \n Телефон: +7 (921) 425-99-24  \n Почта: nik\\_aa@ipm.ru [...] Интернет-магазин\n\nАдрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д. 151 (ст. м. Ломоносовская)  \n Телефон: 8 800 444-44-18  \n Email: ipm\\_shop@ipm.ru\n\nМагазины\n\nАдреса магазинов\n\nОтдел розничных продаж в Москве\n\nДиректор по развитию розничной сети  \n Исупова Ольга Валерьевна  \n Адрес: 127055, Москва, ул. Тихвинская д. 2  \n Телефон: +7 499 248 34 03  доб. 135  \n Email: isu\\_OV@ipm.ru\n\nОтдел розничных продаж в Санкт-Петербурге [...] Вакансии\n\nНа сайте представлены основные вакансии производства. Для получения актуальной информации и записи на собеседование обратитесь в отдел кадров по телефону:\n\n+7 (921) 431-03-04  \n +7 (921) 430-99-29\n\n  \n ПОСМОТРЕТЬ ВСЕ ВАКАНСИИ  \n   \n\nРезюме направляйте по почте lat\\_ep@ipm.ru:  \n Екатерина Латунова -  ведущий специалист по подбору персонала\n\nИнтернет-магазин",
+          "source_label": "tavily",
+          "score": 0.18356468,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Решением годового - Общего собрания акционеров",
+          "url": "https://www.ipm.ru/upload/ifz_documents/ustav-ao-imperatorskiy-farforovyy-zavod-zaregestrirovan-01-10-2015.pdf",
+          "snippet": "OCHOBHblMH npe.ll.MeTaMM .lI.eSlTeJIbHOCTM 06111eCTBa SlBJISIIOTCSI npOM3BO.ll.CTBO H pacnpocTpaHeHHe cpapcpopOBOH np0.ll.YKQMM, BKJIlOqaSl, HO, He OrpaHMqHBaSiCb CJIe.ll.YlOlllMMM BM.lI.aMM.lI.eSlTeJIbHOCTH: Pa3pa60TKa H npOM3BO.ll.CTBO BbICOKOXY.lI.O)J(eCTBeHHbIX H3.l1.eJIMH M3 cpapcpopa, np0.ll.YKQMM npOM3BO.ll.CTBeHHO-TeXHMqeCKOrO Ha3HaqeHH.sI cpapcpopOBOH npOMblrnJIeHHOCTH M .lI.PyrMX M3.l1.eJIMH C npaBOM HCnOJIb30BaHH.sI B npOM3BO.ll.CTBe .lI.parOQeHHbIX MeTaJlJIOB, KaMHeH, [...] 061lJ.eCTBO nnpase B YCTaHOBJIeHHOM nopanxe OTKpbIBaTb 6aHKoBcKHe cxera aa repparopaa POCCHHCKOH <I>e,ll;epaUHHH sa ee npenenaua.\n1.10.\n06IIJ,eCTBO necer omeemcmeenuocms no CBOHM 06j13aTeJIbCTBaM BceM npananneacaunnr eMY HMYIIJ,eCTBoM.\n06meCTBO He orsexaer no 06j13aTeJIbCTBaM CBOI1X aKUHOHepOB.\nAKUHOHepbI He oraesaror no 06j13aTeJIbCTBaM 06meCTBa H HecYT PHCK y6bITKOB, CBjl3aHHbIX C ero ,lI;ejlTeJIbHOCTblO, B npenenax CTOHMOCTHnpaaanneacaurax HM aKUHH. [...] IIpe)J(HMe cpMpMeHHbIe HaMMeHOBaHH.sI06111ecTBa: OTKpbITOe axuaoaepaoe 06111ecTBo «Haneparopcxaa cpapCPopoBblH sason» (Ha3BaHMe 6bIJIO H3MeHeHO na nacrosntee no pememno 06111ero c06paHH.sI axunonepoa 06111ecTBa OT 29 MlOIDI 2015 rona); OTKpbITOe aKQHOHepHoe 06111ecTBo «J]OMOHOCOBCKHH cpapcpopoBbIH aason» (Ha3BaHMe 6blJIO H3MeHeHO no peuremno 06111ero c06paHH.sI aKQMOHepOB 06LQeCTBa OT 28 MaSi2005 rona); 3aKpbIToe aKQMOHepHoe 06111ecTBo «J]OMOHOCOBCKHH cpapCPopoBbIH sason» (TMn axuaonepnoro",
+          "source_label": "tavily",
+          "score": 0.05472688,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Наши партнеры | Официальный интернет-магазин Императорского фарфорового завода",
+          "url": "https://www.ipm.ru/company/nashi_partnery",
+          "snippet": "|  | Московская международная высшая школа бизнеса «МИРБИС» (Институт) — старейшая школа бизнеса в России, единственная из российских школ, имеющая четыре авторитетнейшие международные аккредитации AMBA и EPAS по программам бакалавриата, магистратуры, МВА и EМВА.   Школа готовит лидеров, способных осуществлять изменения, содействующих повышению капитализации компаний, развитию российского бизнеса и российского общества. Образовательные продукты МИРБИС сфокусированы на развитии нравственных, [...] |  | ИЛЬ ДЕ БОТЭ входит в состав компании SEPHORA (группа LVMH) и занимает лидирующие позиции на рынке парфюмерно-косметической продукции в России уже более 15 лет. В настоящее время сеть насчитывает более 100 магазинов по всей России, в числе которых Online-магазин. В магазинах сети представлено более 30 000 наименований от ведущих мировых марок парфюмерии, декоративной косметики и средств по уходу.  Центральный офис сети ИЛЬ ДЕ БОТЭ  Адрес: 115184, г. Москва, ул. Пятницкая, д. 74, стр. 1 [...] - это главное.  Для выполнения своих целей Фонд «Артист» реализует благотворительные мероприятия и проекты, направленные на оказание адресной помощи, а также мероприятия по привлечению общественного внимания к проблемам.  Офис в Москве  Адрес: 101000, Москва, Потаповский переулок, дом 10.   Тел./факс: + 7 (499) 515-55-79   Email: info@fond-artist.ru  Офис в Санкт-Петербурге  Адрес: 191036, Санкт-Петербург, 1-я Советская, дом 6, литер А оф. 3 (5 подъезд)   Тел.: + 7 (812) 922-23-34  Email:",
+          "source_label": "tavily",
+          "score": 0.052760426,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Индиви- дуаль",
+          "url": "https://www.ipm.ru/upload/ifz_documents/Summary-statement-07-11-2025.pdf",
+          "snippet": "ro npuueHexur ClI3 a (! [...] (D 'l N Exero,unsrfi rononHt-tT Enbfl brfi onnarr[BaeMbrF orrrycx (aalHet) a Jr a 4 E a H rlr a o J< a a o I Jr o 'J a )r{ o +.\nE N Cor<parueHnar trpoAonxr4renB.\naocrr pa6ouero BpeMeHn (aduer) o I a ,J g Jr o Fl Jr o I t]{ a a o a a 1 tJi o I o >l o 't |.J N Moloro rrnn apyrre paBHorlggHbte nlrIr1oabro npo.ryrcrrr (aalHe4 o I a 4 o 4 H q a F o H a 4 E a a o H E o 4 o il o 4 N IJJ Jleue6Ho-npoQunaKTHqecKoe nH-rauue (,qa/uer) o ,l o E a tJi o o , a a o o ! [...] E Ir A) I I I I 5 Euoloruueorufi I I I I Asposonn npeHMyrrec'meHHo rf u6poreHHoro Aefi orru.r I I I I I I I I o\\ IIIyt't I I I I { Hu{parnyx I t I I I I I I I oo Yrurpaaayx rosAytunrrfi I I I \\o Bu6paryra o6rqa, I I I I I I I Bn6pauHr JroKaJrbHan I I I I I I I Heaouu:r.rpyrou1,re H3JrfteEr.r.E I I I N I4onr.ror.lpyroune rcfiyq9Ht-t, I I I I I IJJ flaparrlerprr MuKpoKJntMara I A flaparr.rerprr cneronofi cpe4sr I I N N N) N N N N N N N TrNecrs rpyAoBoro npouecca l..J t.) N N) l.o N l.J N) o\\",
+          "source_label": "tavily",
+          "score": 0.04615852,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"коммерческий директор\" site:ipm.ru OR \"директор по развитию\" site:ipm.ru",
+      "focus": "ФИО и контакты руководства коммерческого блока или директора",
+      "purpose": "Уточнить ФИО и, возможно, личный email действующего коммерческого директора или профильного заместителя по развитию",
+      "results": [
+        {
+          "url": "https://www.ipm.ru/upload/ifz_documents/list_of_workplaces_07-11-2025.pdf",
+          "title": "Наименование вредных и (или) опасных факторов ...",
+          "snippet": "коммерче- ского директора по развитию новых направлений; Отдел розничных продаж. Петербург, Невский проспект дом 153, помещение 9Н, лит.",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.ipm.ru/contacts",
+          "title": "Контакты | Официальный интернет-магазин Императорского фарфорового завода",
+          "snippet": "Директор по развитию розничной сети  \n Агатьева Александра Петровна  \n Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская)  \n Телефон: +7 (812) 608-49-29  доб. 108  \n Email: aga\\_ap@ipm.ru\n\nДепартамент по индивидуальным заказам\n\nЗаместитель коммерческого директора по работе с ключевыми клиентами  \n Николаев Александр Анатольевич  \n Телефон: +7 (921) 425-99-24  \n Почта: nik\\_aa@ipm.ru [...] Интернет-магазин\n\nАдрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.ipm.ru/upload/ifz_documents/ustav-ao-imperatorskiy-farforovyy-zavod-zaregestrirovan-01-10-2015.pdf",
+          "title": "Решением годового - Общего собрания акционеров",
+          "snippet": "OCHOBHblMH npe.ll.MeTaMM .lI.eSlTeJIbHOCTM 06111eCTBa SlBJISIIOTCSI npOM3BO.ll.CTBO H pacnpocTpaHeHHe cpapcpopOBOH np0.ll.YKQMM, BKJIlOqaSl, HO, He OrpaHMqHBaSiCb CJIe.ll.YlOlllMMM BM.lI.aMM.lI.eSlTeJIbHOCTH: Pa3pa60TKa H npOM3BO.ll.CTBO BbICOKOXY.lI.O)J(eCTBeHHbIX H3.l1.eJIMH M3 cpapcpopa, np0.ll.YKQMM npOM3BO.ll.CTBeHHO-TeXHMqeCKOrO Ha3HaqeHH.sI cpapcpopOBOH npOMblrnJIeHHOCTH M .lI.PyrMX M3.l1.eJIMH C npaBOM HCnOJIb30BaHH.sI B npOM3BO.ll.CTBe .lI.parOQeHHbIX MeTaJlJIOB, KaMHeH, [...] 061lJ.eCT",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.ipm.ru/company/nashi_partnery",
+          "title": "Наши партнеры | Официальный интернет-магазин Императорского фарфорового завода",
+          "snippet": "|  | Московская международная высшая школа бизнеса «МИРБИС» (Институт) — старейшая школа бизнеса в России, единственная из российских школ, имеющая четыре авторитетнейшие международные аккредитации AMBA и EPAS по программам бакалавриата, магистратуры, МВА и EМВА.   Школа готовит лидеров, способных осуществлять изменения, содействующих повышению капитализации компаний, развитию российского бизнеса и российского общества. Образовательные продукты МИРБИС сфокусированы на развитии нравственных, [...",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.ipm.ru/upload/ifz_documents/Summary-statement-07-11-2025.pdf",
+          "title": "Индиви- дуаль",
+          "snippet": "ro npuueHexur ClI3 a (! [...] (D 'l N Exero,unsrfi rononHt-tT Enbfl brfi onnarr[BaeMbrF orrrycx (aalHet) a Jr a 4 E a H rlr a o J< a a o I Jr o 'J a )r{ o +.\nE N Cor<parueHnar trpoAonxr4renB.\naocrr pa6ouero BpeMeHn (aduer) o I a ,J g Jr o Fl Jr o I t]{ a a o a a 1 tJi o I o >l o 't |.J N Moloro rrnn apyrre paBHorlggHbte nlrIr1oabro npo.ryrcrrr (aalHe4 o I a 4 o 4 H q a F o H a 4 E a a o H E o 4 o il o 4 N IJJ Jleue6Ho-npoQunaKTHqecKoe nH-rauue (,qa/uer) o ,l o E a tJi o o , a a o o ! [...] E Ir ",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 6379,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Императорский фарфоровый завод",
+        "domain": "ipm.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+            "sourceUrl": "https://hh.ru/vacancy/138142173",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [
+          {
+            "name": "Николаев Александр Анатольевич",
+            "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+            "email": null,
+            "sources": [
+              "https://www.ipm.ru/contacts/"
+            ]
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://www.ipm.ru/",
+            "kind": "page",
+            "text": "Интернет-магазин Императорского фарфора — Официальный сайт Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026 Осенний фарфор Время создать уют дома Смотрите подборку товаров Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении Новинка COLOR VIBES Создай настроение своего дня ЭЛЕГАНТНЫЕ БОКАЛЫ КОБАЛЬТОВАЯ СЕТКА Сияние лета на вашем столе Новинка ГАРМОНИЯ ПРИРОДЫ Серия скульптур наполненных смыслом Новинка БЛАГОРОДНАЯ ПОРОДА Серия коллекционных скульптур породистых любимцев Новинка МОНПЛЕЗИР Коллекция текстиля Французский шарм и эстетика востока для ценительниц прекрасного Новинка ФОНТАНЫ Серия, вдохновленная летним Петергофом Новинка ВОЛШЕБНЫЙ САД Эксклюзивный совместный проект с Сергеем Сысоевым Новинка «Жемчужный» Эксклюзивный совместный проект с модным домом Alena Akhmadullina Новинки ЖЕМЧУЖНАЯ СЕТКА НОВИНКА COLOR VIBES НОВИНКА ГАРМОНИЯ ПРИРОДЫ НОВИНКА БЛАГОРОДНАЯ ПОРОДА НОВИНКА «МОНПЛЕЗИР» Сервиз Воспоминание НОВИНКА «Золотой Петербург и Золотая Москва»\n[excerpt boundary]\nных (далее - Согласие) посредством сервисом веб-аналитики Яндекс Метрика и, предоставляемый компанией ООО «ЯНДЕКС», 119021, Россия, Москва, ул. Л. Толстого, 16 на следующих условиях: 1. Согласие выдано: АО «Императорский фарфоровый завод», ОГРН: 1027806058213, ИНН 7811000276, КПП 781101001 (далее — Оператор), электронная почта: ipm_shop@ipm.ru 2. Согласие выдано на обработку следующих категорий персональных данных: – IP-адрес, информация из файлов cookie, информация о браузер",
+            "links": [
+              {
+                "url": "https://www.ipm.ru/personal",
+                "label": ""
+              },
+              {
+                "url": "https://ipm-jsc.com",
+                "label": "EN"
+              },
+              {
+                "url": "https://www.ipm.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/personal/orders",
+                "label": "Войти Мой кабинет"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog/compare.php",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/wishlist",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/basket",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog",
+                "label": "Интернет-магазин"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog/predmety-interera",
+                "label": "Предметы интерьера"
+              },
+              {
+                "url": "https://www.ipm.ru/collections",
+                "label": "Коллекции"
+              },
+              {
+                "url": "https://www.ipm.ru/personal-orders",
+                "label": "Индивидуальные заказы"
+              },
+              {
+                "url": "https://www.ipm.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti",
+                "label": "Новости"
+              },
+              {
+                "url": "https://www.ipm.ru/contacts/stores",
+                "label": "Магазины"
+              },
+              {
+                "url": "https://www.ipm.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode",
+                "label": "О заводе"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode/istoriya_zavoda",
+                "label": "История завода"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode/proizvodstvo",
+                "label": "Производство"
+              },
+              {
+                "url": "https://www.ipm.ru/stati-o-farfore",
+                "label": "Статьи о фарфоре"
+              },
+              {
+                "url": "https://www.ipm.ru/company/vacancy",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti/rezhim-otpravki-zakazov-s-internet-magazina",
+                "label": "Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti/zhemchuzhnaya-setka",
+                "label": "Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении"
+              },
+              {
+                "url": "https://www.ipm.ru/product/blyudo-dekorativnoe-god-loshadi-na-forme-kruglaya-art-60-14814-00-1",
+                "label": "Авторский фарфор — это художественные изделия высочайшего класса, единственные предметы в своем роде"
+              },
+              {
+                "url": "https://www.ipm.ru/collections/volshebnyy-sad",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/collections/zhemchuzhnaya-setka",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/gallery/ekskursii/sankt-peterburg",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/gallery/ekskursii/ekskursii-na-farforovoe-proizvodstvo",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/rekvizity",
+                "label": "Реквизиты"
+              },
+              {
+                "url": "https://www.ipm.ru/company/akcioneram",
+                "label": "Акционерам"
+              },
+              {
+                "url": "https://www.ipm.ru/company/dokumenty",
+                "label": "Документы"
+              },
+              {
+                "url": "https://www.ipm.ru/guidescollaboration",
+                "label": "Сотрудничество с гидами"
+              },
+              {
+                "url": "https://www.ipm.ru/press",
+                "label": "Аккредитация СМИ"
+              },
+              {
+                "url": "https://www.ipm.ru/ifz-protiv-covid-19",
+                "label": "ИФЗ против Covid-19"
+              },
+              {
+                "url": "https://www.ipm.ru/education",
+                "label": "Образование"
+              },
+              {
+                "url": "https://www.ipm.ru/upload/ifz_documents/online-store-public-offer25-08-2025.doc",
+                "label": "Оферта (скачать)"
+              },
+              {
+                "url": "https://www.ipm.ru/about/howto",
+                "label": "Как оформить заказ"
+              },
+              {
+                "url": "https://www.ipm.ru/about/payment",
+                "label": "Оплата"
+              },
+              {
+                "url": "https://www.ipm.ru/about/delivery",
+                "label": "Доставка"
+              },
+              {
+                "url": "https://www.ipm.ru/sitemap",
+                "label": "Карта сайта"
+              },
+              {
+                "url": "https://www.ipm.ru/export",
+                "label": "Экспорт"
+              },
+              {
+                "url": "https://www.ipm.ru/franch",
+                "label": "Франчайзинг"
+              },
+              {
+                "url": "https://vk.com/club21814086",
+                "label": "Вконтакте"
+              },
+              {
+                "url": "https://t.me/porcelain_imperial",
+                "label": "Telegram"
+              },
+              {
+                "url": "https://max.ru/ipm_ru",
+                "label": ""
+              },
+              {
+                "url": "https://xn--b1aedfedwqbdfbnzkf0oe.xn--p1ai",
+                "label": ""
+              },
+              {
+                "url": "https://yandex.ru/support/metrika/general/opt-out.html",
+                "label": "https://yandex.ru/support/metrika/general/opt-out.html"
+              },
+              {
+                "url": "https://yandex.ru/legal/confidential",
+                "label": "https://yandex.ru/legal/confidential/"
+              },
+              {
+                "url": "https://vk.ru/privacy",
+                "label": "Подробнее о правилах защиты информации о пользователях сайта"
+              },
+              {
+                "url": "https://vk.ru/privacy/cookies",
+                "label": "Подробнее о политике Cookies"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:03:17.436Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.ipm.ru/contacts/",
+            "kind": "page",
+            "text": "Контакты | Официальный интернет-магазин Императорского фарфорового завода Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин Главная / Контакты Контакты Россия, Санкт-Петербург, проспект Обуховской Обороны, 151 По общим вопросам info@ipm.ru По вопросам заказов и доставки интернет-магазина ipm_shop@ipm.ru Вакансии На сайте представлены основные вакансии производства. Для получения актуальной информации и записи на собеседование обратитесь в отдел кадров по телефону: +7 (921) 431-03-04 +7 (921) 430-99-29 ПОСМОТРЕТЬ ВСЕ ВАКАНСИИ Резюме направляйте по почте lat_ep@ipm.ru : Екатерина Латунова - ведущий специалист по подбору персонала Интернет-магазин Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д. 151 (ст. м. Ломоносовская) Телефон: 8 800 444-44-18 Email: ipm_shop@ipm.ru Магазины Адреса магазинов Отдел розничных продаж в Москве Директор по развитию розничной сети Исупова Ольга Валерьевна Адрес: 127055, Москва, ул. Тихвинская д. 2 Телефон: +7 499 248 34 03 доб. 135 Email: isu_OV@ipm.ru Отдел розничных продаж в Санкт-Петербурге Директор по развитию розничной сети Агатьева Александра Петровна Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Телефон: +7 (812) 608-49-29 доб. 108 Email: aga_ap@ipm.ru Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru Менеджеры по индивидуальным заказам г. Санкт-Петербург, пр. Обуховской обороны, 151 Телефоны: +7 (812) 326-53-78 +7 (812) 608-49-30 Департамент по индивидуальным заказам г. Москва, ул. Тихвинская д.2 Телефон: +7 (495) 909-17-79 Отдел экспорта Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Руководитель отдела экспорта Смирнова Анастасия Николаевна Телефон: +7 (812) 326-17-46 Мобильный: +7-981-828-17-68 Email: smi_an@ipm.ru Старший менеджер по СНГ Поляков Дмитрий Владимирович Телефон: +7 (812) 326-17-46 Мобильный: +7-911-224-85-44 Email: pol_dv@ipm.ru Старший менеджер по экспорту Ахапкина Елена Михайловна Телефон: +7 (812) 326-17-46 Мобильный: +7-904-639-09-25 Email: aha_em@ipm.ru Галерея современного искусства фарфора в Москве Управляющий галереи Балашова Вера Валерьевна. Тел.: +7 (916) 299-72-48 | +7 (925) 755-57-47 | +7 (499) 678-02-48 Адрес: 121248, Россия, Москва, Кутузовский проспект, д. 17, 2 этаж (ст. м. Киевская) Email: bal_vv@ipm.ru Режим работы: Ежедневно с 10.00 до 22.00 , вход свободный Галереи современного искусства фарфора в Санкт-Петербурге Галерея современного искусства фарфора, пр-т Обуховской обороны, д.151 Адрес: Россия, 192171, Санкт-Петербург, пр-т Обуховской обороны, д.151 (ст. м. Ломоносовская) Режим работы: пн-чт с 10:00 до 19:00, пт с 10:00 до 18:00 Телефон: +7 (812) 326-17-43 Email: gallery@ipm.ru Запись на экскурсии и мастер-классы: Телефон: +7 (981) 882-19-96 Email: gallery@ipm.ru Галерея современного искусства фарфора, Невский пр, д. 92 Управляющий галереи Чарушина Надежда Олеговна Тел.: +7 (812) 272-94-10 | +7 (812) 273-89-01 Адрес: Россия, 191025, Санкт-Петербург, Невский пр., д. 92 (ст. м. Маяковская) Режим работы: Понедельник-пятница с 10:00 до 21:00 Email: cha_no@ipm.ru Галерея Амбар Буржуа, Большая Конюшенная, д.2 Управляющий галереи Кулагина Елена Юрьевна Тел.: +7 (812) 493-40-41 Адрес: Россия, 191186, Санкт-Петербург, ул. Большая Конюшенная, д.2 Режим работы: Ежедневно с 11:00 до 22:00 Email: kul_eu@ipm.ru Департамент партнерской розницы НАЧАЛЬНИК ОТДЕЛА ПО РАБОТЕ С ПАРТНЕРСКОЙ РОЗНИЦЕЙ Бушуева Ксения Юрьевна Тел.: +7(812) 608-49-57 Адрес: Россия, 192171, Санкт-Петербург, пр-т Обуховской обороны, д.151 (ст. м. Ломоносовская) Email: bus_ky@ipm.ru По общим вопросам Для обращений по общим вопросам Тел.: +7(812) 326 17 44 Понедельник - четверг: с 9:00 до 18:00 Пятница: с 9:00 до 17:0",
+            "links": [
+              {
+                "url": "https://www.ipm.ru/personal",
+                "label": ""
+              },
+              {
+                "url": "https://ipm-jsc.com",
+                "label": "EN"
+              },
+              {
+                "url": "https://www.ipm.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/personal/orders",
+                "label": "Войти Мой кабинет"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog/compare.php",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/wishlist",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/basket",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog",
+                "label": "Интернет-магазин"
+              },
+              {
+                "url": "https://www.ipm.ru/contacts",
+                "label": "Сервировка стола"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog/predmety-interera",
+                "label": "Предметы интерьера"
+              },
+              {
+                "url": "https://www.ipm.ru/collections",
+                "label": "Коллекции"
+              },
+              {
+                "url": "https://www.ipm.ru/personal-orders",
+                "label": "Индивидуальные заказы"
+              },
+              {
+                "url": "https://www.ipm.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti",
+                "label": "Новости"
+              },
+              {
+                "url": "https://www.ipm.ru/contacts/stores",
+                "label": "Магазины"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode",
+                "label": "О заводе"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode/istoriya_zavoda",
+                "label": "История завода"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode/proizvodstvo",
+                "label": "Производство"
+              },
+              {
+                "url": "https://www.ipm.ru/stati-o-farfore",
+                "label": "Статьи о фарфоре"
+              },
+              {
+                "url": "https://www.ipm.ru/company/vacancy",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://www.ipm.ru/include/licenses_detail.php",
+                "label": "обработку персональных данных"
+              },
+              {
+                "url": "https://www.ipm.ru/rekvizity",
+                "label": "Реквизиты"
+              },
+              {
+                "url": "https://www.ipm.ru/company/akcioneram",
+                "label": "Акционерам"
+              },
+              {
+                "url": "https://www.ipm.ru/company/dokumenty",
+                "label": "Документы"
+              },
+              {
+                "url": "https://www.ipm.ru/guidescollaboration",
+                "label": "Сотрудничество с гидами"
+              },
+              {
+                "url": "https://www.ipm.ru/press",
+                "label": "Аккредитация СМИ"
+              },
+              {
+                "url": "https://www.ipm.ru/ifz-protiv-covid-19",
+                "label": "ИФЗ против Covid-19"
+              },
+              {
+                "url": "https://www.ipm.ru/education",
+                "label": "Образование"
+              },
+              {
+                "url": "https://www.ipm.ru/upload/ifz_documents/online-store-public-offer25-08-2025.doc",
+                "label": "Оферта (скачать)"
+              },
+              {
+                "url": "https://www.ipm.ru/about/howto",
+                "label": "Как оформить заказ"
+              },
+              {
+                "url": "https://www.ipm.ru/about/payment",
+                "label": "Оплата"
+              },
+              {
+                "url": "https://www.ipm.ru/about/delivery",
+                "label": "Доставка"
+              },
+              {
+                "url": "https://www.ipm.ru/sitemap",
+                "label": "Карта сайта"
+              },
+              {
+                "url": "https://www.ipm.ru/export",
+                "label": "Экспорт"
+              },
+              {
+                "url": "https://www.ipm.ru/franch",
+                "label": "Франчайзинг"
+              },
+              {
+                "url": "https://vk.com/club21814086",
+                "label": "Вконтакте"
+              },
+              {
+                "url": "https://t.me/porcelain_imperial",
+                "label": "Telegram"
+              },
+              {
+                "url": "https://max.ru/ipm_ru",
+                "label": ""
+              },
+              {
+                "url": "https://xn--b1aedfedwqbdfbnzkf0oe.xn--p1ai",
+                "label": ""
+              },
+              {
+                "url": "https://yandex.ru/support/metrika/general/opt-out.html",
+                "label": "https://yandex.ru/support/metrika/general/opt-out.html"
+              },
+              {
+                "url": "https://yandex.ru/legal/confidential",
+                "label": "https://yandex.ru/legal/confidential/"
+              },
+              {
+                "url": "https://vk.ru/privacy",
+                "label": "Подробнее о правилах защиты информации о пользователях сайта"
+              },
+              {
+                "url": "https://vk.ru/privacy/cookies",
+                "label": "Подробнее о политике Cookies"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:03:23.129Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://www.ipm.ru/upload/ifz_documents/list_of_workplaces_07-11-2025.pdf",
+            "kind": "search",
+            "text": "Наименование вредных и (или) опасных факторов ...\nкоммерче- ского директора по развитию новых направлений; Отдел розничных продаж. Петербург, Невский проспект дом 153, помещение 9Н, лит.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:03:33.040Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://www.ipm.ru/contacts",
+            "kind": "search",
+            "text": "Контакты | Официальный интернет-магазин Императорского фарфорового завода\nДиректор по развитию розничной сети  \n Агатьева Александра Петровна  \n Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская)  \n Телефон: +7 (812) 608-49-29  доб. 108  \n Email: aga\\_ap@ipm.ru\n\nДепартамент по индивидуальным заказам\n\nЗаместитель коммерческого директора по работе с ключевыми клиентами  \n Николаев Александр Анатольевич  \n Телефон: +7 (921) 425-99-24  \n Почта: nik\\_aa@ipm.ru [...] Интернет-магазин\n\nАдрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д. 151 (ст. м. Ломоносовская)  \n Телефон: 8 800 444-44-18  \n Email: ipm\\_shop@ipm.ru\n\nМагазины\n\nАдреса магазинов\n\nОтдел розничных продаж в Москве\n\nДиректор по развитию розничной сети  \n Исупова Ольга Валерьевна  \n Адрес: 127055, Москва, ул. Тихвинская д. 2  \n Телефон: +7 499 248 34 03  доб. 135  \n Email: isu\\_OV@ipm.ru\n\nОтдел розничных продаж в Санкт-Петербурге [...] Вакансии\n\nНа сайте представлены основные вакансии производства. Для получения актуальной информации и записи на собеседование обратитесь в отдел кадров по телефону:\n\n+7 (921) 431-03-04  \n +7 (921) 430-99-29\n\n  \n ПОСМОТРЕТЬ ВСЕ ВАКАНСИИ  \n   \n\nРезюме направляйте по почте lat\\_ep@ipm.ru:  \n Екатерина Латунова -  ведущий специалист по подбору персонала\n\nИнтернет-магазин",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:03:33.040Z",
+            "id": "e4"
+          },
+          {
+            "url": "https://www.ipm.ru/upload/ifz_documents/ustav-ao-imperatorskiy-farforovyy-zavod-zaregestrirovan-01-10-2015.pdf",
+            "kind": "search",
+            "text": "Решением годового - Общего собрания акционеров\nOCHOBHblMH npe.ll.MeTaMM .lI.eSlTeJIbHOCTM 06111eCTBa SlBJISIIOTCSI npOM3BO.ll.CTBO H pacnpocTpaHeHHe cpapcpopOBOH np0.ll.YKQMM, BKJIlOqaSl, HO, He OrpaHMqHBaSiCb CJIe.ll.YlOlllMMM BM.lI.aMM.lI.eSlTeJIbHOCTH: Pa3pa60TKa H npOM3BO.ll.CTBO BbICOKOXY.lI.O)J(eCTBeHHbIX H3.l1.eJIMH M3 cpapcpopa, np0.ll.YKQMM npOM3BO.ll.CTBeHHO-TeXHMqeCKOrO Ha3HaqeHH.sI cpapcpopOBOH npOMblrnJIeHHOCTH M .lI.PyrMX M3.l1.eJIMH C npaBOM HCnOJIb30BaHH.sI B npOM3BO.ll.CTBe .lI.parOQeHHbIX MeTaJlJIOB, KaMHeH, [...] 061lJ.eCTBO nnpase B YCTaHOBJIeHHOM nopanxe OTKpbIBaTb 6aHKoBcKHe cxera aa repparopaa POCCHHCKOH <I>e,ll;epaUHHH sa ee npenenaua.\n1.10.\n06IIJ,eCTBO necer omeemcmeenuocms no CBOHM 06j13aTeJIbCTBaM BceM npananneacaunnr eMY HMYIIJ,eCTBoM.\n06meCTBO He orsexaer no 06j13aTeJIbCTBaM CBOI1X aKUHOHepOB.\nAKUHOHepbI He oraesaror no 06j13aTeJIbCTBaM 06meCTBa H HecYT PHCK y6bITKOB, CBjl3aHHbIX C ero ,lI;ejlTeJIbHOCTblO, B npenenax CTOHMOCTHnpaaanneacaurax HM aKUHH. [...] IIpe)J(HMe cpMpMeHHbIe HaMMeHOBaHH.sI06111ecTBa: OTKpbITOe axuaoaepaoe 06111ecTBo «Haneparopcxaa cpapCPopoBblH sason» (Ha3BaHMe 6bIJIO H3MeHeHO na nacrosntee no pememno 06111ero c06paHH.sI axunonepoa 06111ecTBa OT 29 MlOIDI 2015 rona); OTKpbITOe aKQHOHepHoe 06111ecTBo «J]OMOHOCOBCKHH cpapcpopoBbIH aason» (Ha3BaHMe 6blJIO H3MeHeHO no peuremno 06111ero c06paHH.sI aKQMOHepOB 06LQeCTBa OT 28 MaSi2005 rona); 3aKpbIToe aKQMOHepHoe 06111ecTBo «J]OMOHOCOBCKHH cpapCPopoBbIH sason» (TMn axuaonepnoro",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:03:33.040Z",
+            "id": "e5"
+          },
+          {
+            "url": "https://www.ipm.ru/company/nashi_partnery",
+            "kind": "search",
+            "text": "Наши партнеры | Официальный интернет-магазин Императорского фарфорового завода\n|  | Московская международная высшая школа бизнеса «МИРБИС» (Институт) — старейшая школа бизнеса в России, единственная из российских школ, имеющая четыре авторитетнейшие международные аккредитации AMBA и EPAS по программам бакалавриата, магистратуры, МВА и EМВА.   Школа готовит лидеров, способных осуществлять изменения, содействующих повышению капитализации компаний, развитию российского бизнеса и российского общества. Образовательные продукты МИРБИС сфокусированы на развитии нравственных, [...] |  | ИЛЬ ДЕ БОТЭ входит в состав компании SEPHORA (группа LVMH) и занимает лидирующие позиции на рынке парфюмерно-косметической продукции в России уже более 15 лет. В настоящее время сеть насчитывает более 100 магазинов по всей России, в числе которых Online-магазин. В магазинах сети представлено более 30 000 наименований от ведущих мировых марок парфюмерии, декоративной косметики и средств по уходу.  Центральный офис сети ИЛЬ ДЕ БОТЭ  Адрес: 115184, г. Москва, ул. Пятницкая, д. 74, стр. 1 [...] - это главное.  Для выполнения своих целей Фонд «Артист» реализует благотворительные мероприятия и проекты, направленные на оказание адресной помощи, а также мероприятия по привлечению общественного внимания к проблемам.  Офис в Москве  Адрес: 101000, Москва, Потаповский переулок, дом 10.   Тел./факс: + 7 (499) 515-55-79   Email: info@fond-artist.ru  Офис в Санкт-Петербурге  Адрес: 191036, Санкт-Петербург, 1-я Советская, дом 6, литер А оф. 3 (5 подъезд)   Тел.: + 7 (812) 922-23-34  Email:",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:03:33.040Z",
+            "id": "e6"
+          },
+          {
+            "url": "https://www.ipm.ru/upload/ifz_documents/Summary-statement-07-11-2025.pdf",
+            "kind": "search",
+            "text": "Индиви- дуаль\nro npuueHexur ClI3 a (! [...] (D 'l N Exero,unsrfi rononHt-tT Enbfl brfi onnarr[BaeMbrF orrrycx (aalHet) a Jr a 4 E a H rlr a o J< a a o I Jr o 'J a )r{ o +.\nE N Cor<parueHnar trpoAonxr4renB.\naocrr pa6ouero BpeMeHn (aduer) o I a ,J g Jr o Fl Jr o I t]{ a a o a a 1 tJi o I o >l o 't |.J N Moloro rrnn apyrre paBHorlggHbte nlrIr1oabro npo.ryrcrrr (aalHe4 o I a 4 o 4 H q a F o H a 4 E a a o H E o 4 o il o 4 N IJJ Jleue6Ho-npoQunaKTHqecKoe nH-rauue (,qa/uer) o ,l o E a tJi o o , a a o o ! [...] E Ir A) I I I I 5 Euoloruueorufi I I I I Asposonn npeHMyrrec'meHHo rf u6poreHHoro Aefi orru.r I I I I I I I I o\\ IIIyt't I I I I { Hu{parnyx I t I I I I I I I oo Yrurpaaayx rosAytunrrfi I I I \\o Bu6paryra o6rqa, I I I I I I I Bn6pauHr JroKaJrbHan I I I I I I I Heaouu:r.rpyrou1,re H3JrfteEr.r.E I I I N I4onr.ror.lpyroune rcfiyq9Ht-t, I I I I I IJJ flaparrlerprr MuKpoKJntMara I A flaparr.rerprr cneronofi cpe4sr I I N N N) N N N N N N N TrNecrs rpyAoBoro npouecca l..J t.) N N) l.o N l.J N) o\\",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:03:33.041Z",
+            "id": "e7"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://www.ipm.ru/contacts",
+            "focus": "контакты, структура, руководство",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "\"коммерческий директор\" site:ipm.ru OR \"директор по развитию\" site:ipm.ru",
+            "focus": "ФИО и контакты руководства коммерческого блока или директора",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [
+          "contact_rejected:Николаев Александр Анатольевич:quote_must_include_name_and_contact"
+        ],
+        "budget": {
+          "roundsRemaining": 3,
+          "actionsRemaining": 8,
+          "searchRemaining": 7
+        }
+      },
+      "output": {
+        "companySummary": "Императорский фарфоровый завод (АО) — ведущий производитель фарфоровой продукции с офисом и производственной базой в Санкт-Петербурге. Коммерческий блок, судя по вакансиям, структурирован с выделением нескольких заместителей коммерческого директора, отвечающих за разные направления развития/финансов. Компания активно развивает как индивидуальное производство, так и розничные и экспортные направления.",
+        "missing": [
+          "Контакт Заместителя коммерческого директора по развитию новых направлений или непосредственно коммерческого директора",
+          "Подтверждение владельца процесса по развитию новых направлений"
+        ],
+        "people": [
+          {
+            "name": "Николаев Александр Анатольевич",
+            "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+            "relevance": 75,
+            "reason": "Руководитель смежного коммерческого подразделения, потенциально осведомлён о коллегах по развитию бизнес-направлений",
+            "citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "email",
+                "value": "nik_aa@ipm.ru",
+                "citation": {
+                  "sourceId": "e2",
+                  "quote": "Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru"
+                }
+              }
+            ]
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "ipm.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Интернет-магазин Императорского фарфора — Официальный сайт"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"коммерческий директор\" site:ipm.ru",
+            "focus": "ФИО и контакты коммерческого директора и заместителя по развитию новых направлений",
+            "purpose": "Уточнить контактные данные и/или ФИО руководителя подразделения по развитию новых направлений или коммерческого директора"
+          },
+          {
+            "type": "search",
+            "value": "\"заместитель коммерческого директора по развитию новых направлений\" Императорский фарфоровый завод",
+            "focus": "Сторонние публикации, интервью, новости",
+            "purpose": "Поиск имени, биографических данных и контактов через внешние источники, если нет на сайте"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Есть только заместитель другой специализации и его контакт; нет данных о владельце процесса по развитию новых направлений или коммерческом директоре."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "Императорский фарфоровый завод (АО) — ведущий производитель фарфоровой продукции с офисом и производственной базой в Санкт-Петербурге. Коммерческий блок, судя по вакансиям, структурирован с выделением нескольких заместителей коммерческого директора, отвечающих за разные направления развития/финансов. Компания активно развивает как индивидуальное производство, так и розничные и экспортные направления.",
+        "missing": [
+          "Контакт Заместителя коммерческого директора по развитию новых направлений или непосредственно коммерческого директора",
+          "Подтверждение владельца процесса по развитию новых направлений"
+        ],
+        "people": [
+          {
+            "name": "Николаев Александр Анатольевич",
+            "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+            "relevance": 75,
+            "reason": "Руководитель смежного коммерческого подразделения, потенциально осведомлён о коллегах по развитию бизнес-направлений",
+            "citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "email",
+                "value": "nik_aa@ipm.ru",
+                "citation": {
+                  "sourceId": "e2",
+                  "quote": "Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru"
+                }
+              }
+            ]
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "ipm.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Интернет-магазин Императорского фарфора — Официальный сайт"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"коммерческий директор\" site:ipm.ru",
+            "focus": "ФИО и контакты коммерческого директора и заместителя по развитию новых направлений",
+            "purpose": "Уточнить контактные данные и/или ФИО руководителя подразделения по развитию новых направлений или коммерческого директора"
+          },
+          {
+            "type": "search",
+            "value": "\"заместитель коммерческого директора по развитию новых направлений\" Императорский фарфоровый завод",
+            "focus": "Сторонние публикации, интервью, новости",
+            "purpose": "Поиск имени, биографических данных и контактов через внешние источники, если нет на сайте"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Есть только заместитель другой специализации и его контакт; нет данных о владельце процесса по развитию новых направлений или коммерческом директоре."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [
+        {
+          "full_name": "Николаев Александр Анатольевич",
+          "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "nik_aa@ipm.ru",
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+            "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru"
+          ],
+          "metadata": {
+            "source_url": "https://www.ipm.ru/contacts/",
+            "source_urls": [
+              "https://www.ipm.ru/contacts/"
+            ],
+            "semantic_role_relevance": 75,
+            "semantic_role_reason": "Руководитель смежного коммерческого подразделения, потенциально осведомлён о коллегах по развитию бизнес-направлений",
+            "email_source_url": "https://www.ipm.ru/contacts/",
+            "email_person_evidence": "Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru",
+            "public_contact_verified": true,
+            "verified_company_domains": [
+              "ipm.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "ipm.ru"
+      ]
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "personal_contact_evidenced",
+      "actions": 3,
+      "candidates": [
+        {
+          "full_name": "Николаев Александр Анатольевич",
+          "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "nik_aa@ipm.ru",
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+            "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru"
+          ],
+          "metadata": {
+            "source_url": "https://www.ipm.ru/contacts/",
+            "source_urls": [
+              "https://www.ipm.ru/contacts/"
+            ],
+            "semantic_role_relevance": 75,
+            "semantic_role_reason": "Руководитель смежного коммерческого подразделения, потенциально осведомлён о коллегах по развитию бизнес-направлений",
+            "email_source_url": "https://www.ipm.ru/contacts/",
+            "email_person_evidence": "Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru",
+            "public_contact_verified": true,
+            "verified_company_domains": [
+              "ipm.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "ipm.ru"
+      ],
+      "elapsedMs": 23549
+    },
+    {
+      "stage": "people_ranked",
+      "people": [
+        {
+          "full_name": "Николаев Александр Анатольевич",
+          "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "nik_aa@ipm.ru",
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+            "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru"
+          ],
+          "metadata": {
+            "source_url": "https://www.ipm.ru/contacts/",
+            "source_urls": [
+              "https://www.ipm.ru/contacts/"
+            ],
+            "semantic_role_relevance": 75,
+            "semantic_role_reason": "Руководитель смежного коммерческого подразделения, потенциально осведомлён о коллегах по развитию бизнес-направлений",
+            "email_source_url": "https://www.ipm.ru/contacts/",
+            "email_person_evidence": "Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru",
+            "public_contact_verified": true,
+            "verified_company_domains": [
+              "ipm.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ]
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+        "target_responsibility": "Company leadership",
+        "target_persona": "Founder",
+        "alternative_personas": [
+          "CEO",
+          "Managing Director",
+          "COO",
+          "Head of Growth",
+          "Head of Sales"
+        ],
+        "why_this_person": "Заместитель коммерческого директора по работе с ключевыми клиентами: The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+        "person_name": "Николаев Александр Анатольевич",
+        "person_role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+        "email": "nik_aa@ipm.ru",
+        "contact_level": "A",
+        "email_classification": "VERIFIED_PERSONAL",
+        "email_type": "public_personal",
+        "verification_methods": [
+          "corporate_domain_match",
+          "mx",
+          "public_evidence"
+        ],
+        "confidence": "HIGH",
+        "readiness": "contact_ready",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Николаев Александр Анатольевич подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Роль связана с зоной ответственности: Company leadership."
+          },
+          {
+            "kind": "email",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Email опубликован в публичном профессиональном контексте."
+          },
+          {
+            "kind": "domain",
+            "source_url": "https://ipm.ru",
+            "summary": "Email относится к подтверждённому корпоративному домену."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+          },
+          {
+            "kind": "person",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "contact_ready_high_confidence"
+      },
+      "contacts": [
+        {
+          "name": "Николаев Александр Анатольевич",
+          "email": null,
+          "type": "confirmed_person",
+          "source": "https://www.ipm.ru/contacts/"
+        },
+        {
+          "name": "Николаев Александр Анатольевич",
+          "email": "nik_aa@ipm.ru",
+          "type": "work_email",
+          "source": "https://www.ipm.ru/contacts/"
+        },
+        {
+          "name": null,
+          "email": "info@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "ipm_shop@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "lat_ep@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "isu_ov@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "aga_ap@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": "Николаев Александр Анатольевич",
+          "email": "nik_aa@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "smi_an@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "pol_dv@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "aha_em@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "bal_vv@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "gallery@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "cha_no@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "kul_eu@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "bus_ky@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "bab_ye@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "zap_em@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://ipm.ru/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://ipm.ru/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://www.ipm.ru/contacts/"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://ipm.ru"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2113,
+      "schema": "leadgen_outreach_v4",
+      "input": {
+        "company": "Императорский фарфоровый завод",
+        "segment": null,
+        "industry": null,
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "evidence": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+          "source": "https://hh.ru/vacancy/138142173"
+        },
+        "company_specifics": null,
+        "lpr": {
+          "name": "Николаев Александр Анатольевич",
+          "role": null,
+          "why_this_person": null
+        },
+        "business_context": {
+          "problem_hypothesis": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+          "target_responsibility": null,
+          "selection_reason": null
+        },
+        "contact_type": "GENERAL",
+        "required_cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "required_greeting": "Александр, добрый день."
+      },
+      "output": {
+        "subject": "Новые направления в Императорском фарфоровом заводе",
+        "body": "Императорский фарфоровый завод объявил вакансию заместителя коммерческого директора по развитию новых направлений. Это свидетельствует о планах расширения и внедрения инноваций в коммерческую деятельность предприятия.\nВ новых направлениях возможно существуют задачи по анализу спроса и оптимизации ассортимента, где традиционно встречаются сложности с прогнозированием и адаптацией под рыночные изменения.\nМы можем провести пилотный аудит с использованием данных по продажам и клиентским предпочтениям для генерации предложений по ассортименту с помощью AI, что поможет понять перспективные сегменты и снизить риски запуска новых продуктов.",
+        "cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "quality": {
+          "reason_now": true,
+          "grounded_hypothesis": true,
+          "russian_only": true,
+          "personal_cta": true
+        }
+      }
+    }
+  ],
+  "startedAt": "2026-10-06T20:03:15.914Z",
+  "bundle": {
+    "companyName": "Императорский фарфоровый завод",
+    "officialWebsite": "https://ipm.ru",
+    "officialDomain": "ipm.ru",
+    "people": [
+      {
+        "fullName": "Николаев Александр Анатольевич",
+        "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://www.ipm.ru/contacts/",
+            "sourceType": "official",
+            "excerpt": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+            "capturedAt": "2026-10-06T20:03:15.919Z",
+            "confidence": 90
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [
+        {
+          "email": "nik_aa@ipm.ru",
+          "personName": "Николаев Александр Анатольевич",
+          "classification": "VERIFIED_PERSONAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "nik_aa@ipm.ru — Iterative public research",
+              "capturedAt": "2026-10-06T20:03:15.919Z",
+              "confidence": 94
+            }
+          ]
+        }
+      ],
+      "department": [],
+      "general": [
+        {
+          "email": "info@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "info@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T20:03:15.919Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "ipm_shop@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/",
+              "sourceType": "official",
+              "excerpt": "ipm_shop@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T20:03:15.919Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "lat_ep@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "lat_ep@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T20:03:15.919Z",
+              "confidence": 94
+            }
+          ]
+        },
+        {
+          "email": "isu_ov@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "isu_ov@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T20:03:15.919Z",
+              "confidence": 94
+            }
+          ]
+        },
+        {
+          "email": "aga_ap@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "aga_ap@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T20:03:15.919Z",
+              "confidence": 94
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "nik_aa@ipm.ru",
+      "personName": "Николаев Александр Анатольевич",
+      "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+      "classification": "VERIFIED_PERSONAL",
+      "contactLevel": "A",
+      "sourceUrl": "https://www.ipm.ru/contacts/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+      "sourceUrl": "https://hh.ru/vacancy/138142173",
+      "confidence": 100
+    },
+    "researchConfidence": "VERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 1,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 12,
+      "lprMs": 23555,
+      "contactMs": 141,
+      "totalMs": 25854,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "people": {
+    "primary_person": {
+      "full_name": "Николаев Александр Анатольевич",
+      "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+      "department": null,
+      "linkedin_url": null,
+      "work_email": "nik_aa@ipm.ru",
+      "phone": null,
+      "source": "Iterative public research",
+      "confidence_score": 90,
+      "evidence": [
+        "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+        "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru"
+      ],
+      "metadata": {
+        "source_url": "https://www.ipm.ru/contacts/",
+        "source_urls": [
+          "https://www.ipm.ru/contacts/"
+        ],
+        "semantic_role_relevance": 75,
+        "semantic_role_reason": "Руководитель смежного коммерческого подразделения, потенциально осведомлён о коллегах по развитию бизнес-направлений",
+        "email_source_url": "https://www.ipm.ru/contacts/",
+        "email_person_evidence": "Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru",
+        "public_contact_verified": true,
+        "verified_company_domains": [
+          "ipm.ru"
+        ],
+        "verified_public_profiles": [],
+        "tenchat_url": null,
+        "telegram_url": null,
+        "vk_url": null,
+        "instagram_url": null,
+        "contact_route": "target_persona",
+        "company_verified": true,
+        "role_verified": true
+      }
+    },
+    "alternative_people": [],
+    "all_candidates": [
+      {
+        "full_name": "Николаев Александр Анатольевич",
+        "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": "nik_aa@ipm.ru",
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+          "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru"
+        ],
+        "metadata": {
+          "source_url": "https://www.ipm.ru/contacts/",
+          "source_urls": [
+            "https://www.ipm.ru/contacts/"
+          ],
+          "semantic_role_relevance": 75,
+          "semantic_role_reason": "Руководитель смежного коммерческого подразделения, потенциально осведомлён о коллегах по развитию бизнес-направлений",
+          "email_source_url": "https://www.ipm.ru/contacts/",
+          "email_person_evidence": "Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru",
+          "public_contact_verified": true,
+          "verified_company_domains": [
+            "ipm.ru"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      }
+    ],
+    "primary_person_intelligence": {
+      "candidate": {
+        "full_name": "Николаев Александр Анатольевич",
+        "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": "nik_aa@ipm.ru",
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+          "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru"
+        ],
+        "metadata": {
+          "source_url": "https://www.ipm.ru/contacts/",
+          "source_urls": [
+            "https://www.ipm.ru/contacts/"
+          ],
+          "semantic_role_relevance": 75,
+          "semantic_role_reason": "Руководитель смежного коммерческого подразделения, потенциально осведомлён о коллегах по развитию бизнес-направлений",
+          "email_source_url": "https://www.ipm.ru/contacts/",
+          "email_person_evidence": "Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru",
+          "public_contact_verified": true,
+          "verified_company_domains": [
+            "ipm.ru"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      },
+      "rank_score": 81,
+      "person_score": 81,
+      "persona_match_score": 75,
+      "business_problem_ownership": "high",
+      "decision_authority": "low",
+      "influence_level": "medium",
+      "confidence_score": 94,
+      "confidence_level": "confirmed",
+      "contact_availability": {
+        "has_work_email": true,
+        "has_linkedin": false,
+        "has_phone": false,
+        "has_telegram": false
+      },
+      "matched_keywords": [],
+      "reasoning": "No direct persona keyword match in available person context.",
+      "selection_reason": "Николаев Александр Анатольевич is the strongest available candidate because Заместитель коммерческого директора по работе с ключевыми клиентами no direct keyword match, compared against основатель. Persona match 75/100, ownership high, authority low, influence medium, confidence 94/100.",
+      "strengths": [
+        "Strong persona match (75/100)",
+        "Likely owner of the business problem",
+        "Has at least one usable public contact signal"
+      ],
+      "weaknesses": [
+        "No direct persona keyword match in available evidence"
+      ],
+      "why_not_other_candidates": [],
+      "recommended_next_action": "contact_primary_person"
+    },
+    "alternative_people_intelligence": [],
+    "ranked_people": [
+      {
+        "candidate": {
+          "full_name": "Николаев Александр Анатольевич",
+          "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "nik_aa@ipm.ru",
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+            "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru"
+          ],
+          "metadata": {
+            "source_url": "https://www.ipm.ru/contacts/",
+            "source_urls": [
+              "https://www.ipm.ru/contacts/"
+            ],
+            "semantic_role_relevance": 75,
+            "semantic_role_reason": "Руководитель смежного коммерческого подразделения, потенциально осведомлён о коллегах по развитию бизнес-направлений",
+            "email_source_url": "https://www.ipm.ru/contacts/",
+            "email_person_evidence": "Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru",
+            "public_contact_verified": true,
+            "verified_company_domains": [
+              "ipm.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        "rank_score": 81,
+        "person_score": 81,
+        "persona_match_score": 75,
+        "business_problem_ownership": "high",
+        "decision_authority": "low",
+        "influence_level": "medium",
+        "confidence_score": 94,
+        "confidence_level": "confirmed",
+        "contact_availability": {
+          "has_work_email": true,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Николаев Александр Анатольевич is the strongest available candidate because Заместитель коммерческого директора по работе с ключевыми клиентами no direct keyword match, compared against основатель. Persona match 75/100, ownership high, authority low, influence medium, confidence 94/100.",
+        "strengths": [
+          "Strong persona match (75/100)",
+          "Likely owner of the business problem",
+          "Has at least one usable public contact signal"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence"
+        ],
+        "why_not_other_candidates": [],
+        "recommended_next_action": "contact_primary_person"
+      }
+    ],
+    "selection_reasoning": "Николаев Александр Анатольевич is the strongest available candidate because Заместитель коммерческого директора по работе с ключевыми клиентами no direct keyword match, compared against основатель. Persona match 75/100, ownership high, authority low, influence medium, confidence 94/100.",
+    "search_status": "person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "personal_contact_evidenced"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 1,
+      "official_pages_fetched": 2,
+      "aborted_requests": 0,
+      "elapsed_ms": 23550,
+      "stop_reason": "personal_contact_evidenced",
+      "queries_executed": [
+        "\"коммерческий директор\" site:ipm.ru OR \"директор по развитию\" site:ipm.ru"
+      ],
+      "sources_checked": [
+        "https://www.ipm.ru/",
+        "https://www.ipm.ru/contacts/",
+        "https://www.ipm.ru/upload/ifz_documents/list_of_workplaces_07-11-2025.pdf",
+        "https://www.ipm.ru/contacts",
+        "https://www.ipm.ru/upload/ifz_documents/ustav-ao-imperatorskiy-farforovyy-zavod-zaregestrirovan-01-10-2015.pdf",
+        "https://www.ipm.ru/company/nashi_partnery",
+        "https://www.ipm.ru/upload/ifz_documents/Summary-statement-07-11-2025.pdf"
+      ],
+      "search_results_seen": 5,
+      "rejected_candidates": {
+        "validation_rejects": 0
+      },
+      "final_failure_reason": null
+    }
+  },
+  "contacts": [
+    {
+      "name": "Николаев Александр Анатольевич",
+      "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+      "email": null,
+      "type": "confirmed_person",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false
+    },
+    {
+      "name": "Николаев Александр Анатольевич",
+      "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+      "email": "nik_aa@ipm.ru",
+      "type": "work_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": true,
+      "intelligence": {
+        "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+        "target_responsibility": "Company leadership",
+        "target_persona": "Founder",
+        "alternative_personas": [
+          "CEO",
+          "Managing Director",
+          "COO",
+          "Head of Growth",
+          "Head of Sales"
+        ],
+        "why_this_person": "Заместитель коммерческого директора по работе с ключевыми клиентами: The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+        "person_name": "Николаев Александр Анатольевич",
+        "person_role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+        "email": "nik_aa@ipm.ru",
+        "contact_level": "A",
+        "email_classification": "VERIFIED_PERSONAL",
+        "email_type": "public_personal",
+        "verification_methods": [
+          "corporate_domain_match",
+          "mx",
+          "public_evidence"
+        ],
+        "confidence": "HIGH",
+        "readiness": "contact_ready",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Николаев Александр Анатольевич подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Роль связана с зоной ответственности: Company leadership."
+          },
+          {
+            "kind": "email",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Email опубликован в публичном профессиональном контексте."
+          },
+          {
+            "kind": "domain",
+            "source_url": "https://ipm.ru",
+            "summary": "Email относится к подтверждённому корпоративному домену."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+          },
+          {
+            "kind": "person",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "contact_ready_high_confidence"
+      },
+      "ready": true,
+      "copy": "Александр, добрый день.\n\nИмператорский фарфоровый завод объявил вакансию заместителя коммерческого директора по развитию новых направлений. Это свидетельствует о планах расширения и внедрения инноваций в коммерческую деятельность предприятия.\nВ новых направлениях возможно существуют задачи по анализу спроса и оптимизации ассортимента, где традиционно встречаются сложности с прогнозированием и адаптацией под рыночные изменения.\nМы можем провести пилотный аудит с использованием данных по продажам и клиентским предпочтениям для генерации предложений по ассортименту с помощью AI, что поможет понять перспективные сегменты и снизить риски запуска новых продуктов.\n\nЯ AI-архитектор. Если потребуется, подключим бизнес-аналитика: сначала проверим процесс, затем выберем, что автоматизировать.\n\nМогу провести короткий разбор этого участка. Обычно он стоит 9 900 ₽; если ответите в течение 24 часов после отправки письма, проведу разбор бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514"
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "info@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "ipm_shop@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "lat_ep@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "isu_ov@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "aga_ap@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": "Николаев Александр Анатольевич",
+      "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+      "email": "nik_aa@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "smi_an@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "pol_dv@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "aha_em@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "bal_vv@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "gallery@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "cha_no@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "kul_eu@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "bus_ky@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "bab_ye@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "zap_em@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://ipm.ru/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://ipm.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://ipm.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 25859
+}

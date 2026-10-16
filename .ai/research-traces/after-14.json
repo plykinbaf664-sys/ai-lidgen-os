@@ -1,0 +1,1976 @@
+{
+  "mode": "direct",
+  "name": "Сбер. IT",
+  "website": "https://rabota.sber.ru",
+  "before": {
+    "companyName": "Сбер. IT",
+    "officialWebsite": "https://rabota.sber.ru",
+    "officialDomain": "rabota.sber.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "SDET / Разработчик AI решений (HR платформа)",
+      "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+      "sourceUrl": "https://hh.ru/vacancy/138117118",
+      "confidence": 90
+    },
+    "researchConfidence": "UNVERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 6,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 23,
+      "lprMs": 15877,
+      "contactMs": 8625,
+      "totalMs": 26613,
+      "stopReason": "lpr_not_found"
+    }
+  },
+  "signal": {
+    "type": "AI_AUTOMATION_HIRING_SIGNAL",
+    "title": "SDET / Разработчик AI решений (HR платформа)",
+    "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+    "sourceUrl": "https://hh.ru/vacancy/138117118",
+    "confidence": 90
+  },
+  "index": 14,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru",
+      "status": 200,
+      "elapsedMs": 803
+    },
+    {
+      "stage": "research_open",
+      "url": "https://rabota.sber.ru",
+      "success": true,
+      "evidence": {
+        "url": "https://rabota.sber.ru",
+        "kind": "page",
+        "text": "Богдан Рощупкин ML-инженер AI-агентов",
+        "links": [
+          {
+            "url": "https://rabota.sber.ru",
+            "label": ""
+          },
+          {
+            "url": "https://rabota.sber.ru/search",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://rabota.sber.ru/media",
+            "label": "Карьерные медиа"
+          },
+          {
+            "url": "https://sbergraduate.ru",
+            "label": "Выпускникам и студентам"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/policy",
+            "label": "Политика обработки данных"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/cookies",
+            "label": "Политика использования Cookies"
+          },
+          {
+            "url": "https://www.sberbank.ru",
+            "label": "www.sberbank.ru"
+          },
+          {
+            "url": "https://t.me/careersber",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T12:33:39.869Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3661,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-06",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:33:39.869Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 10,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "Сбер. IT занимается разработкой AI-агентов и ML-инженерией, в частности по созданию и внедрению AI-моделей для автоматической генерации и оптимизации тестов UI/API с функцией самоисцеления. На сайте упоминается ML-инженер AI-агентов Богдан Рощупкин.",
+        "missing": [
+          "Подтверждённые контакты лица, связанного с разработкой AI-агентов или HR платформы",
+          "Точные роли и контакты руководителей или ответственных за AI-решения в HR платформе",
+          "Дополнительные специалисты, релевантные по AI, автоматизации тестирования, SDET"
+        ],
+        "people": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 85,
+            "reason": "На сайте rabota.sber.ru указан как ML-инженер AI-агентов, релевантен по теме AI-моделей и агентов, связанных с автоматизацией.",
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://rabota.sber.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин Sber ML engineer AI agents",
+            "focus": "поиск профилей Богдана Рощупкина, чтобы найти его публичные контакты или профили",
+            "purpose": "Найти подтвержденные личные контакты ML-инженера, упомянутого на официальном сайте, чтобы получить контакт для коммуникации по AI решениям для HR платформы"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "Сбер. IT занимается разработкой AI-агентов и ML-инженерией, в частности по созданию и внедрению AI-моделей для автоматической генерации и оптимизации тестов UI/API с функцией самоисцеления. На сайте упоминается ML-инженер AI-агентов Богдан Рощупкин.",
+        "missing": [
+          "Подтверждённые контакты лица, связанного с разработкой AI-агентов или HR платформы",
+          "Точные роли и контакты руководителей или ответственных за AI-решения в HR платформе",
+          "Дополнительные специалисты, релевантные по AI, автоматизации тестирования, SDET"
+        ],
+        "people": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 85,
+            "reason": "На сайте rabota.sber.ru указан как ML-инженер AI-агентов, релевантен по теме AI-моделей и агентов, связанных с автоматизацией.",
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://rabota.sber.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин Sber ML engineer AI agents",
+            "focus": "поиск профилей Богдана Рощупкина, чтобы найти его публичные контакты или профили",
+            "purpose": "Найти подтвержденные личные контакты ML-инженера, упомянутого на официальном сайте, чтобы получить контакт для коммуникации по AI решениям для HR платформы"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      },
+      "validationErrors": [
+        "official_domain_not_proven:rabota.sber.ru"
+      ],
+      "acceptedPeople": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "semantic_role_relevance": 85,
+            "semantic_role_reason": "На сайте rabota.sber.ru указан как ML-инженер AI-агентов, релевантен по теме AI-моделей и агентов, связанных с автоматизацией.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%20Sber%20ML%20engineer%20AI%20agents&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 411
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%20Sber%20ML%20engineer%20AI%20agents&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 348
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1652
+    },
+    {
+      "stage": "search",
+      "query": "Богдан Рощупкин Sber ML engineer AI agents",
+      "results": [
+        {
+          "title": "AI Agents Transforming Developer Workflows",
+          "url": "https://shiftmag.dev/how-ai-agents-are-changing-the-way-developers-build-software-7095",
+          "snippet": "He added that AI enables the summarization of large volumes of data by connecting various touchpoints between a brand and a user and turning them into meaningful insight far beyond classical personalization models.\n\n> Personalization means knowing the full context of the user, not just who they are.\n\n## Strong engineering fundamentals are crucial [...] He concluded that AI tools can accelerate development, but only engineers with strong fundamentals can use them to build robust solutions quickly.\n\n> subscribe shift-mag --latest\n\n## Sarcastic headline, but funny enough for engineers to sign up\n\nGet curated content twice a month [...] [](\n\nI set out to see how easily an AI agent could be manipulated by harmless-looking spreadsheets, so I kept escalating the prompt injection until it either caught on or took the bait.",
+          "source_label": "tavily",
+          "score": 0.23797458,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Build AI Agents that Never Sleep Online Workshop",
+          "url": "https://master.dev/workshops/background-agents",
+          "snippet": "The Senior Engineer Toolkit [...] Require approval for disruptive actions and handle rejection, expiry, and changed conditions before execution.\n Make retries safe with action idempotency, timeouts, run limits, and cancellation.\n Use a local event simulator and Inngest traces to reproduce failures and explain what a run did.\n Leave with a working incident-response agent and a reference architecture you can adapt for your own background workflows. [...] 1:00PM\n\nHuman in the Loop\n\n2:00PM\n\nRetries (idempotency, run limits, etc)\n\n3:00PM\n\nRun an incident drill\n\n4:00PM\n\nWrap-up, tradeoffs, and next steps\n\n## Attend Online Live and in Full HD\n\n## The Workshop is Live Now!\n\n## Watch the Replay\n\n## This Workshop Has Ended\n\nOr Join In-Person from Downtown Minneapolis\n\nCatch up on everything you missed.\n\nLive HD Stream\n\n## A Full Day of Mastery.",
+          "source_label": "tavily",
+          "score": 0.22702387,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "AI Engineering: Skill Stack, Agents, LLMOps, and How to Ship AI Products - Paul Iusztin",
+          "url": "https://www.youtube.com/watch?v=6bUO43k2lVU",
+          "snippet": "[17:49] previous company we needed both right but most of the effort was still like for data scientists one was on data preparation data analysis experiments uh\n[17:58] and so on while for ML engineers was mostly deployment right [snorts] and I'm thinking now with all these LLMs uh\n[18:07] things that data scientists were doing they became way easier so then if I'm an ML engineer I can just do all the work [...] [23:05] Yeah. Yeah. Sure. So, uh again I want to highlight that I'm an engineer startup where you have to do\n[23:12] everything. So this will probably change from company to company a lot. But for example I can describe my my daily\n[23:21] what I usually do. So we built a vertical AI agent for\n[23:27] finance which currently like contains the UI which is built in TypeScript react. It contains a fastest API back [...] Connect with DataTalks.Club:\nJoin the community - \nSubscribe to our Google calendar to have all our events in your calendar - \nCheck other upcoming events - \nGitHub: \nLinkedIn -   / datatalks-club   \nTwitter -   / datatalksclub   \nWebsite -  \n\nConnect with Alexey\nTwitter -   / al_grigor   \nLinkedin -   / agrigorev   \n\nCheck our free online courses:\nML Engineering course - \nData Engineering course - \nMLOps course -  \nLLM course -  \nOpen-source LLM course: \nAI Dev Tools course:",
+          "source_label": "tavily",
+          "score": 0.20997179,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "The future of software engineering: AI agents, smaller teams & new roles | Neubig, Shamgunov, Yangel",
+          "url": "https://www.youtube.com/watch?v=gcSLGpzPA3k",
+          "snippet": "[4:50] that even the roles of these engineers will gradually transition from like pure software engineering into something more\n[4:59] akin to engineering management. It's just that this people will be managing not other people but AIs will be\n[5:07] actually writing the code. I definitely think AI agents are the future. That's why I'm working on [...] [5:40] like issue actions observe the results of these actions and tweak its behavior accordingly to reach the desired\n[5:47] outcome. So yes, agents are obviously a natural evolution of AI because we want\n[5:55] systems that can not just advise humans how to do things but just go and do this\n[6:03] things themselves and it's not a distant future. It is almost present. How much\n[6:09] of the future are the AI agents? Um I think they are right. I think that's where we heading for for the next [...] [5:15] them. definitely think it's going to drastically reshape the process that we're working with. And you know, it will increase our velocity, allow us to\n[5:23] do more things in parallel. Um, and especially exciting is allow us to do all the things that we wanted to do but wouldn't have been able to do if they\n[5:31] didn't exist. So, yeah, for sure. So the word agent just means uh some system that can meaningfully act in the world",
+          "source_label": "tavily",
+          "score": 0.20168777,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Before Building AI Agents Watch This (Deep Agent Expertise) - Video | Agentic AI Foundation",
+          "url": "https://home.mlops.community/public/videos/before-building-ai-agents-watch-this-deep-agent-expertise",
+          "snippet": "system in a new way. And so it's almost like both with search and with this, you're doing these old tasks that we did in Predictive ML. You're just adding an extra layer on top of it to make it even more personalized and even better. [...] + Read More\n\nuser's Avatar\n\nDemetrios Brinkmann\n\nChief Happiness Engineer @ MLOps Community [...] Nishikant Dhanuka [00:11:20]: Yeah, that is context engineering. That's it. Search, Search. Search is such a, you know, so my experience has been building AI agents in E commerce, shopping, food. And search is a fundamental tool when it comes to that. It doesn't apply for all the AI agents out there. Let's say if you're building an AI agent for supplier side, you know, for a car dealer or you know, for a restaurant, search is not that important. But when you're building an E commerce agent,",
+          "source_label": "tavily",
+          "score": 0.19627139,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Богдан Рощупкин Sber ML engineer AI agents",
+      "focus": "поиск профилей Богдана Рощупкина, чтобы найти его публичные контакты или профили",
+      "purpose": "Найти подтвержденные личные контакты ML-инженера, упомянутого на официальном сайте, чтобы получить контакт для коммуникации по AI решениям для HR платформы",
+      "results": [
+        {
+          "url": "https://shiftmag.dev/how-ai-agents-are-changing-the-way-developers-build-software-7095",
+          "title": "AI Agents Transforming Developer Workflows",
+          "snippet": "He added that AI enables the summarization of large volumes of data by connecting various touchpoints between a brand and a user and turning them into meaningful insight far beyond classical personalization models.\n\n> Personalization means knowing the full context of the user, not just who they are.\n\n## Strong engineering fundamentals are crucial [...] He concluded that AI tools can accelerate development, but only engineers with strong fundamentals can use them to build robust solutions quickly",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://master.dev/workshops/background-agents",
+          "title": "Build AI Agents that Never Sleep Online Workshop",
+          "snippet": "The Senior Engineer Toolkit [...] Require approval for disruptive actions and handle rejection, expiry, and changed conditions before execution.\n Make retries safe with action idempotency, timeouts, run limits, and cancellation.\n Use a local event simulator and Inngest traces to reproduce failures and explain what a run did.\n Leave with a working incident-response agent and a reference architecture you can adapt for your own background workflows. [...] 1:00PM\n\nHuman in the Loop\n\n2:00PM\n\nRetries ",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=6bUO43k2lVU",
+          "title": "AI Engineering: Skill Stack, Agents, LLMOps, and How to Ship AI Products - Paul Iusztin",
+          "snippet": "[17:49] previous company we needed both right but most of the effort was still like for data scientists one was on data preparation data analysis experiments uh\n[17:58] and so on while for ML engineers was mostly deployment right [snorts] and I'm thinking now with all these LLMs uh\n[18:07] things that data scientists were doing they became way easier so then if I'm an ML engineer I can just do all the work [...] [23:05] Yeah. Yeah. Sure. So, uh again I want to highlight that I'm an engineer star",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=gcSLGpzPA3k",
+          "title": "The future of software engineering: AI agents, smaller teams & new roles | Neubig, Shamgunov, Yangel",
+          "snippet": "[4:50] that even the roles of these engineers will gradually transition from like pure software engineering into something more\n[4:59] akin to engineering management. It's just that this people will be managing not other people but AIs will be\n[5:07] actually writing the code. I definitely think AI agents are the future. That's why I'm working on [...] [5:40] like issue actions observe the results of these actions and tweak its behavior accordingly to reach the desired\n[5:47] outcome. So yes, ag",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://home.mlops.community/public/videos/before-building-ai-agents-watch-this-deep-agent-expertise",
+          "title": "Before Building AI Agents Watch This (Deep Agent Expertise) - Video | Agentic AI Foundation",
+          "snippet": "system in a new way. And so it's almost like both with search and with this, you're doing these old tasks that we did in Predictive ML. You're just adding an extra layer on top of it to make it even more personalized and even better. [...] + Read More\n\nuser's Avatar\n\nDemetrios Brinkmann\n\nChief Happiness Engineer @ MLOps Community [...] Nishikant Dhanuka [00:11:20]: Yeah, that is context engineering. That's it. Search, Search. Search is such a, you know, so my experience has been building AI agen",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 4249,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-06",
+        "knownPeople": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "email": null,
+            "sources": [
+              "https://rabota.sber.ru"
+            ]
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:33:39.869Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://shiftmag.dev/how-ai-agents-are-changing-the-way-developers-build-software-7095",
+            "kind": "search",
+            "text": "AI Agents Transforming Developer Workflows\nHe added that AI enables the summarization of large volumes of data by connecting various touchpoints between a brand and a user and turning them into meaningful insight far beyond classical personalization models.\n\n> Personalization means knowing the full context of the user, not just who they are.\n\n## Strong engineering fundamentals are crucial [...] He concluded that AI tools can accelerate development, but only engineers with strong fundamentals can use them to build robust solutions quickly.\n\n> subscribe shift-mag --latest\n\n## Sarcastic headline, but funny enough for engineers to sign up\n\nGet curated content twice a month [...] [](\n\nI set out to see how easily an AI agent could be manipulated by harmless-looking spreadsheets, so I kept escalating the prompt injection until it either caught on or took the bait.",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:33:46.052Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://master.dev/workshops/background-agents",
+            "kind": "search",
+            "text": "Build AI Agents that Never Sleep Online Workshop\nThe Senior Engineer Toolkit [...] Require approval for disruptive actions and handle rejection, expiry, and changed conditions before execution.\n Make retries safe with action idempotency, timeouts, run limits, and cancellation.\n Use a local event simulator and Inngest traces to reproduce failures and explain what a run did.\n Leave with a working incident-response agent and a reference architecture you can adapt for your own background workflows. [...] 1:00PM\n\nHuman in the Loop\n\n2:00PM\n\nRetries (idempotency, run limits, etc)\n\n3:00PM\n\nRun an incident drill\n\n4:00PM\n\nWrap-up, tradeoffs, and next steps\n\n## Attend Online Live and in Full HD\n\n## The Workshop is Live Now!\n\n## Watch the Replay\n\n## This Workshop Has Ended\n\nOr Join In-Person from Downtown Minneapolis\n\nCatch up on everything you missed.\n\nLive HD Stream\n\n## A Full Day of Mastery.",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:33:46.052Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=6bUO43k2lVU",
+            "kind": "search",
+            "text": "AI Engineering: Skill Stack, Agents, LLMOps, and How to Ship AI Products - Paul Iusztin\n[17:49] previous company we needed both right but most of the effort was still like for data scientists one was on data preparation data analysis experiments uh\n[17:58] and so on while for ML engineers was mostly deployment right [snorts] and I'm thinking now with all these LLMs uh\n[18:07] things that data scientists were doing they became way easier so then if I'm an ML engineer I can just do all the work [...] [23:05] Yeah. Yeah. Sure. So, uh again I want to highlight that I'm an engineer startup where you have to do\n[23:12] everything. So this will probably change from company to company a lot. But for example I can describe my my daily\n[23:21] what I usually do. So we built a vertical AI agent for\n[23:27] finance which currently like contains the UI which is built in TypeScript react. It contains a fastest API back [...] Connect with DataTalks.Club:\nJoin the community - \nSubscribe to our Google calendar to have all our events in your calendar - \nCheck other upcoming events - \nGitHub: \nLinkedIn -   / datatalks-club   \nTwitter -   / datatalksclub   \nWebsite -  \n\nConnect with Alexey\nTwitter -   / al_grigor   \nLinkedin -   / agrigorev   \n\nCheck our free online courses:\nML Engineering course - \nData Engineering course - \nMLOps course -  \nLLM course -  \nOpen-source LLM course: \nAI Dev Tools course:",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:33:46.052Z",
+            "id": "e4"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=gcSLGpzPA3k",
+            "kind": "search",
+            "text": "The future of software engineering: AI agents, smaller teams & new roles | Neubig, Shamgunov, Yangel\n[4:50] that even the roles of these engineers will gradually transition from like pure software engineering into something more\n[4:59] akin to engineering management. It's just that this people will be managing not other people but AIs will be\n[5:07] actually writing the code. I definitely think AI agents are the future. That's why I'm working on [...] [5:40] like issue actions observe the results of these actions and tweak its behavior accordingly to reach the desired\n[5:47] outcome. So yes, agents are obviously a natural evolution of AI because we want\n[5:55] systems that can not just advise humans how to do things but just go and do this\n[6:03] things themselves and it's not a distant future. It is almost present. How much\n[6:09] of the future are the AI agents? Um I think they are right. I think that's where we heading for for the next [...] [5:15] them. definitely think it's going to drastically reshape the process that we're working with. And you know, it will increase our velocity, allow us to\n[5:23] do more things in parallel. Um, and especially exciting is allow us to do all the things that we wanted to do but wouldn't have been able to do if they\n[5:31] didn't exist. So, yeah, for sure. So the word agent just means uh some system that can meaningfully act in the world",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:33:46.053Z",
+            "id": "e5"
+          },
+          {
+            "url": "https://home.mlops.community/public/videos/before-building-ai-agents-watch-this-deep-agent-expertise",
+            "kind": "search",
+            "text": "Before Building AI Agents Watch This (Deep Agent Expertise) - Video | Agentic AI Foundation\nsystem in a new way. And so it's almost like both with search and with this, you're doing these old tasks that we did in Predictive ML. You're just adding an extra layer on top of it to make it even more personalized and even better. [...] + Read More\n\nuser's Avatar\n\nDemetrios Brinkmann\n\nChief Happiness Engineer @ MLOps Community [...] Nishikant Dhanuka [00:11:20]: Yeah, that is context engineering. That's it. Search, Search. Search is such a, you know, so my experience has been building AI agents in E commerce, shopping, food. And search is a fundamental tool when it comes to that. It doesn't apply for all the AI agents out there. Let's say if you're building an AI agent for supplier side, you know, for a car dealer or you know, for a restaurant, search is not that important. But when you're building an E commerce agent,",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:33:46.053Z",
+            "id": "e6"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин Sber ML engineer AI agents",
+            "focus": "поиск профилей Богдана Рощупкина, чтобы найти его публичные контакты или профили",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:rabota.sber.ru"
+        ],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 9,
+          "searchRemaining": 7
+        }
+      },
+      "output": {
+        "companySummary": "Сбер IT занимается разработкой и внедрением AI-агентов для автоматической генерации UI/API-тестов, включая оптимизацию и self-healing. На rabota.sber.ru упоминается Богдан Рощупкин как ML-инженер AI-агентов, что релевантно вакансии SDET / Разработчик AI решений для HR платформы.",
+        "missing": [
+          "Личные контакты Богдана Рощупкина, в частности email или профиль с подтверждённым контактом",
+          "Информация о руководителе или том, кто отвечает за проект AI-агентов в Сбер IT",
+          "Официальный подтверждённый домен компании Сбер IT, связанный с rabota.sber.ru, поскольку validation error указывает на это"
+        ],
+        "people": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 95,
+            "reason": "Упомянут на официальном сайте rabota.sber.ru как ML-инженер AI-агентов, тема совпадает с вакансией AI агент разработки и тестирования",
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://rabota.sber.ru сайт с упоминанием Богдана Рощупкина ML-инженера AI-агентов"
+            }
+          },
+          {
+            "domain": "sberbank.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://www.sberbank.ru ссылка как родительский сайт"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин email",
+            "focus": "поиск личных контактов Богдана Рощупкина",
+            "purpose": "найти подтверждённый email или профиль для связи"
+          },
+          {
+            "type": "search",
+            "value": "Сбер IT команда AI агенты",
+            "focus": "поиск страницы команды или руководства по проекту AI агентов в Сбер IT",
+            "purpose": "найти других релевантных ЛПР с прямыми контактами"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "Сбер IT занимается разработкой и внедрением AI-агентов для автоматической генерации UI/API-тестов, включая оптимизацию и self-healing. На rabota.sber.ru упоминается Богдан Рощупкин как ML-инженер AI-агентов, что релевантно вакансии SDET / Разработчик AI решений для HR платформы.",
+        "missing": [
+          "Личные контакты Богдана Рощупкина, в частности email или профиль с подтверждённым контактом",
+          "Информация о руководителе или том, кто отвечает за проект AI-агентов в Сбер IT",
+          "Официальный подтверждённый домен компании Сбер IT, связанный с rabota.sber.ru, поскольку validation error указывает на это"
+        ],
+        "people": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 95,
+            "reason": "Упомянут на официальном сайте rabota.sber.ru как ML-инженер AI-агентов, тема совпадает с вакансией AI агент разработки и тестирования",
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://rabota.sber.ru сайт с упоминанием Богдана Рощупкина ML-инженера AI-агентов"
+            }
+          },
+          {
+            "domain": "sberbank.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://www.sberbank.ru ссылка как родительский сайт"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин email",
+            "focus": "поиск личных контактов Богдана Рощупкина",
+            "purpose": "найти подтверждённый email или профиль для связи"
+          },
+          {
+            "type": "search",
+            "value": "Сбер IT команда AI агенты",
+            "focus": "поиск страницы команды или руководства по проекту AI агентов в Сбер IT",
+            "purpose": "найти других релевантных ЛПР с прямыми контактами"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      },
+      "validationErrors": [
+        "official_domain_not_proven:rabota.sber.ru",
+        "official_domain_not_proven:sberbank.ru"
+      ],
+      "acceptedPeople": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "semantic_role_relevance": 95,
+            "semantic_role_reason": "Упомянут на официальном сайте rabota.sber.ru как ML-инженер AI-агентов, тема совпадает с вакансией AI агент разработки и тестирования",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%20email&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 227
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%20email&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 123
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%A1%D0%B1%D0%B5%D1%80%20IT%20%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%20AI%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D1%8B&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 223
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%A1%D0%B1%D0%B5%D1%80%20IT%20%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%20AI%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D1%8B&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 159
+    },
+    {
+      "stage": "search",
+      "query": "Сбер IT команда AI агенты",
+      "results": [
+        {
+          "title": "СберБанк - sberbank",
+          "url": "https://online.sberbank.ru/CSAFront/index.do",
+          "snippet": "Генеральная лицензия на осуществление банковских операций от 11 августа 2015 года. Регистрационный номер — 1481",
+          "source_key": "bing-rss",
+          "source_label": "public-web:bing-rss",
+          "score": 1,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "СберБанк для физических лиц — банковские услуги",
+          "url": "https://www.sberbank.ru/retail/ru/person",
+          "snippet": "СберБанк — банковские услуги для физических лиц. Кредиты и вклады, ипотека, дебетовые и кредитные карты и другие банковские услуги для частных клиентов.",
+          "source_key": "bing-rss",
+          "source_label": "public-web:bing-rss",
+          "score": 0.96,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Веб-версия СберБанк Онлайн",
+          "url": "https://www.sberbank.ru/ru/person/dist_services/inner_sbol",
+          "snippet": "Используйте все возможности СберБанк Онлайн прямо в браузере — переводы, платежи, вклады и карты доступны без установки приложения. Вход по коду, биометрии или паролю, данные надежно защищены. – СберБанк",
+          "source_key": "bing-rss",
+          "source_label": "public-web:bing-rss",
+          "score": 0.92,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "СберБанк - online.sberbank.ru",
+          "url": "https://online.sberbank.ru/CSAFront/index.do?NextService=ESK&BackUrl",
+          "snippet": "Генеральная лицензия на осуществление банковских операций от 11 августа 2015 года. Регистрационный номер — 1481",
+          "source_key": "bing-rss",
+          "source_label": "public-web:bing-rss",
+          "score": 0.88,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "СберБанк сегодня",
+          "url": "https://www.sberbank.com/ru/about",
+          "snippet": "Главные факты о СберБанке: бренд, история, ценности, миссия, команда, стратегия",
+          "source_key": "bing-rss",
+          "source_label": "public-web:bing-rss",
+          "score": 0.84,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Сбер IT команда AI агенты",
+      "focus": "поиск страницы команды или руководства по проекту AI агентов в Сбер IT",
+      "purpose": "найти других релевантных ЛПР с прямыми контактами",
+      "results": [
+        {
+          "url": "https://online.sberbank.ru/CSAFront/index.do",
+          "title": "СберБанк - sberbank",
+          "snippet": "Генеральная лицензия на осуществление банковских операций от 11 августа 2015 года. Регистрационный номер — 1481",
+          "provider": "public-web:bing-rss"
+        },
+        {
+          "url": "https://www.sberbank.ru/retail/ru/person",
+          "title": "СберБанк для физических лиц — банковские услуги",
+          "snippet": "СберБанк — банковские услуги для физических лиц. Кредиты и вклады, ипотека, дебетовые и кредитные карты и другие банковские услуги для частных клиентов.",
+          "provider": "public-web:bing-rss"
+        },
+        {
+          "url": "https://www.sberbank.ru/ru/person/dist_services/inner_sbol",
+          "title": "Веб-версия СберБанк Онлайн",
+          "snippet": "Используйте все возможности СберБанк Онлайн прямо в браузере — переводы, платежи, вклады и карты доступны без установки приложения. Вход по коду, биометрии или паролю, данные надежно защищены. – СберБанк",
+          "provider": "public-web:bing-rss"
+        },
+        {
+          "url": "https://online.sberbank.ru/CSAFront/index.do?NextService=ESK&BackUrl",
+          "title": "СберБанк - online.sberbank.ru",
+          "snippet": "Генеральная лицензия на осуществление банковских операций от 11 августа 2015 года. Регистрационный номер — 1481",
+          "provider": "public-web:bing-rss"
+        },
+        {
+          "url": "https://www.sberbank.com/ru/about",
+          "title": "СберБанк сегодня",
+          "snippet": "Главные факты о СберБанке: бренд, история, ценности, миссия, команда, стратегия",
+          "provider": "public-web:bing-rss"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1296
+    },
+    {
+      "stage": "search",
+      "query": "Богдан Рощупкин email",
+      "results": [
+        {
+          "title": "🔎 Рощупкин Богдан – Долги, Суды, Телефон, Адрес, ...",
+          "url": "https://scanbe.io/ru/people/r/l/roshchupkin/s/roshchupkin_bogdan",
+          "snippet": "email исполнителя. info@sl*****. Должник. Рощупкін Богдан Борисович. Взыскатель. ВО \"Слов'*****. ЕГРПОУ взыскателя. *****. Номер исполнительного производства.",
+          "source_label": "tavily",
+          "score": 0.73207545,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Рощупкин Богдан Игоревич",
+          "url": "https://rosdek.org/people/roshchupkin_bogdan_igorevich",
+          "snippet": "старший государственный инспектор. Полная информация о доходах, недвижимости и автомобилях. Официальный доход - 368614.5 ₽, недвижимость - 59.9 м²,",
+          "source_label": "tavily",
+          "score": 0.22020864,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "100+ \"Рощупкин\" profiles",
+          "url": "https://www.linkedin.com/pub/dir/+/%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD",
+          "snippet": "View the profiles of professionals named \"Рощупкин\" on LinkedIn. There are 100+ professionals named \"Рощупкин\", who use LinkedIn to exchange information, ideas,",
+          "source_label": "tavily",
+          "score": 0.1137077,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Рощупкин Федор Владимирович ИНН 772608692306",
+          "url": "https://www.rusprofile.ru/person/roshhupkin-fv-772608692306",
+          "snippet": "Все события\n\n## Регионы ведения бизнеса\n\nВсе   Учредитель   ИП\n\nМосква Санкт-Петербург\n\nМосква\n\n## Виды деятельности\n\nВсе   Учредитель   ИП\n\n62.01 Разработка компьютерного программного обеспечения\n\n72.19 Научные исследования и разработки в области естественных и технических наук прочие\n\n62.01 Разработка компьютерного программного обеспечения\n\n72.19 Научные исследования и разработки в области естественных и технических наук прочие\n\n62.01 Разработка компьютерного программного обеспечения [...] ## Руководитель\n\nВ ЕГРЮЛ отсутствуют сведения об организациях, руководителем (бывшим руководителем) которых является Рощупкин Федор Владимирович. [...] 06 октября 2020 г.\n\n## Деловая активность\n\nВ настоящее время В прошлом\n\nРуководитель\n\nНет организаций\n\nУчредитель\n\n2 организации\n\nИП\n\nДействующий\n\n## Факторы риска\n\nПерсональные\n\n Массовый руководитель\n Массовый учредитель\n Дисквалификация\n Нахождение под ​санкциями\n\nРиски связанных организаций\n\n Банкротство\n Блокировка счетов\n Обеспечительные меры ​на имущество\n Недостоверность ​руководителя\n\n Все факторы риска\n\n## Учредитель\n\nВ настоящее время В прошлом\n\nВсего\n\n2 организации\n\nВыручка",
+          "source_label": "tavily",
+          "score": 0.10986823,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Игорь Рощупкин (фортепиано)",
+          "url": "https://www.spdm.ru/igor-roshchupkin",
+          "snippet": "Родился в 2002 году в городе Санкт-Петербург. Обучался в Хоровом училище им. М. И. Глинки (класс преподавателя Марии Назаровой).",
+          "source_label": "tavily",
+          "score": 0.055152804,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Богдан Рощупкин email",
+      "focus": "поиск личных контактов Богдана Рощупкина",
+      "purpose": "найти подтверждённый email или профиль для связи",
+      "results": [
+        {
+          "url": "https://scanbe.io/ru/people/r/l/roshchupkin/s/roshchupkin_bogdan",
+          "title": "🔎 Рощупкин Богдан – Долги, Суды, Телефон, Адрес, ...",
+          "snippet": "email исполнителя. info@sl*****. Должник. Рощупкін Богдан Борисович. Взыскатель. ВО \"Слов'*****. ЕГРПОУ взыскателя. *****. Номер исполнительного производства.",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://rosdek.org/people/roshchupkin_bogdan_igorevich",
+          "title": "Рощупкин Богдан Игоревич",
+          "snippet": "старший государственный инспектор. Полная информация о доходах, недвижимости и автомобилях. Официальный доход - 368614.5 ₽, недвижимость - 59.9 м²,",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/pub/dir/+/%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD",
+          "title": "100+ \"Рощупкин\" profiles",
+          "snippet": "View the profiles of professionals named \"Рощупкин\" on LinkedIn. There are 100+ professionals named \"Рощупкин\", who use LinkedIn to exchange information, ideas,",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.rusprofile.ru/person/roshhupkin-fv-772608692306",
+          "title": "Рощупкин Федор Владимирович ИНН 772608692306",
+          "snippet": "Все события\n\n## Регионы ведения бизнеса\n\nВсе   Учредитель   ИП\n\nМосква Санкт-Петербург\n\nМосква\n\n## Виды деятельности\n\nВсе   Учредитель   ИП\n\n62.01 Разработка компьютерного программного обеспечения\n\n72.19 Научные исследования и разработки в области естественных и технических наук прочие\n\n62.01 Разработка компьютерного программного обеспечения\n\n72.19 Научные исследования и разработки в области естественных и технических наук прочие\n\n62.01 Разработка компьютерного программного обеспечения [...] ## ",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.spdm.ru/igor-roshchupkin",
+          "title": "Игорь Рощупкин (фортепиано)",
+          "snippet": "Родился в 2002 году в городе Санкт-Петербург. Обучался в Хоровом училище им. М. И. Глинки (класс преподавателя Марии Назаровой).",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 5160,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-06",
+        "knownPeople": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "email": null,
+            "sources": [
+              "https://rabota.sber.ru"
+            ]
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:33:39.869Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.sberbank.com/ru/about",
+            "kind": "search",
+            "text": "СберБанк сегодня\nГлавные факты о СберБанке: бренд, история, ценности, миссия, команда, стратегия",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:33:51.734Z",
+            "id": "e11"
+          },
+          {
+            "url": "https://scanbe.io/ru/people/r/l/roshchupkin/s/roshchupkin_bogdan",
+            "kind": "search",
+            "text": "🔎 Рощупкин Богдан – Долги, Суды, Телефон, Адрес, ...\nemail исполнителя. info@sl*****. Должник. Рощупкін Богдан Борисович. Взыскатель. ВО \"Слов'*****. ЕГРПОУ взыскателя. *****. Номер исполнительного производства.",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:33:52.181Z",
+            "id": "e12"
+          },
+          {
+            "url": "https://rosdek.org/people/roshchupkin_bogdan_igorevich",
+            "kind": "search",
+            "text": "Рощупкин Богдан Игоревич\nстарший государственный инспектор. Полная информация о доходах, недвижимости и автомобилях. Официальный доход - 368614.5 ₽, недвижимость - 59.9 м²,",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:33:52.182Z",
+            "id": "e13"
+          },
+          {
+            "url": "https://www.linkedin.com/pub/dir/+/%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD",
+            "kind": "search",
+            "text": "100+ \"Рощупкин\" profiles\nView the profiles of professionals named \"Рощупкин\" on LinkedIn. There are 100+ professionals named \"Рощупкин\", who use LinkedIn to exchange information, ideas,",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:33:52.182Z",
+            "id": "e14"
+          },
+          {
+            "url": "https://www.rusprofile.ru/person/roshhupkin-fv-772608692306",
+            "kind": "search",
+            "text": "Рощупкин Федор Владимирович ИНН 772608692306\nВсе события\n\n## Регионы ведения бизнеса\n\nВсе   Учредитель   ИП\n\nМосква Санкт-Петербург\n\nМосква\n\n## Виды деятельности\n\nВсе   Учредитель   ИП\n\n62.01 Разработка компьютерного программного обеспечения\n\n72.19 Научные исследования и разработки в области естественных и технических наук прочие\n\n62.01 Разработка компьютерного программного обеспечения\n\n72.19 Научные исследования и разработки в области естественных и технических наук прочие\n\n62.01 Разработка компьютерного программного обеспечения [...] ## Руководитель\n\nВ ЕГРЮЛ отсутствуют сведения об организациях, руководителем (бывшим руководителем) которых является Рощупкин Федор Владимирович. [...] 06 октября 2020 г.\n\n## Деловая активность\n\nВ настоящее время В прошлом\n\nРуководитель\n\nНет организаций\n\nУчредитель\n\n2 организации\n\nИП\n\nДействующий\n\n## Факторы риска\n\nПерсональные\n\n Массовый руководитель\n Массовый учредитель\n Дисквалификация\n Нахождение под ​санкциями\n\nРиски связанных организаций\n\n Банкротство\n Блокировка счетов\n Обеспечительные меры ​на имущество\n Недостоверность ​руководителя\n\n Все факторы риска\n\n## Учредитель\n\nВ настоящее время В прошлом\n\nВсего\n\n2 организации\n\nВыручка",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:33:52.182Z",
+            "id": "e15"
+          },
+          {
+            "url": "https://www.spdm.ru/igor-roshchupkin",
+            "kind": "search",
+            "text": "Игорь Рощупкин (фортепиано)\nРодился в 2002 году в городе Санкт-Петербург. Обучался в Хоровом училище им. М. И. Глинки (класс преподавателя Марии Назаровой).",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:33:52.182Z",
+            "id": "e16"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин Sber ML engineer AI agents",
+            "focus": "поиск профилей Богдана Рощупкина, чтобы найти его публичные контакты или профили",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин email",
+            "focus": "поиск личных контактов Богдана Рощупкина",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "Сбер IT команда AI агенты",
+            "focus": "поиск страницы команды или руководства по проекту AI агентов в Сбер IT",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:rabota.sber.ru",
+          "official_domain_not_proven:sberbank.ru"
+        ],
+        "budget": {
+          "roundsRemaining": 3,
+          "actionsRemaining": 7,
+          "searchRemaining": 5
+        }
+      },
+      "output": {
+        "companySummary": "Сбер IT — подразделение Сбербанка, занимающееся IT-разработками, включая проекты с AI-агентами и автоматизацией тестирования. Богдан Рощупкин числится как ML-инженер AI-агентов на их официальном сайте карьерного портала Сбера.",
+        "missing": [
+          "Публичный личный email Богдана Рощупкина или профиль с контактами для связи",
+          "Другие ключевые лица, ответственные за разработку AI-агентов и тестирование в Сбер IT"
+        ],
+        "people": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 95,
+            "reason": "Объявлен на официальном сайте компании как ML-инженер AI-агентов, релевантен вакансии и сигналу по AI-агентам.",
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Богдан Рощупкин ML-инженер AI-агентов на rabota.sber.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "Богдан Рощупкин",
+            "purpose": "тщательное изучение сайта для поиска контактных данных Богдана Рощупкина или страницы команды проекта AI-агентов"
+          },
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин Сбер IT LinkedIn",
+            "focus": "поиск профиля Богдана Рощупкина на LinkedIn с целью найти подтверждённый контакт или профиль",
+            "purpose": "найти публичный профиль для прямой связи"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Пока нет личного контакта Богдана Рощупкина или другого релевантного ЛПР, необходимы дальнейшие действия."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "Сбер IT — подразделение Сбербанка, занимающееся IT-разработками, включая проекты с AI-агентами и автоматизацией тестирования. Богдан Рощупкин числится как ML-инженер AI-агентов на их официальном сайте карьерного портала Сбера.",
+        "missing": [
+          "Публичный личный email Богдана Рощупкина или профиль с контактами для связи",
+          "Другие ключевые лица, ответственные за разработку AI-агентов и тестирование в Сбер IT"
+        ],
+        "people": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 95,
+            "reason": "Объявлен на официальном сайте компании как ML-инженер AI-агентов, релевантен вакансии и сигналу по AI-агентам.",
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Богдан Рощупкин ML-инженер AI-агентов на rabota.sber.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "Богдан Рощупкин",
+            "purpose": "тщательное изучение сайта для поиска контактных данных Богдана Рощупкина или страницы команды проекта AI-агентов"
+          },
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин Сбер IT LinkedIn",
+            "focus": "поиск профиля Богдана Рощупкина на LinkedIn с целью найти подтверждённый контакт или профиль",
+            "purpose": "найти публичный профиль для прямой связи"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Пока нет личного контакта Богдана Рощупкина или другого релевантного ЛПР, необходимы дальнейшие действия."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:rabota.sber.ru"
+      ],
+      "acceptedPeople": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "semantic_role_relevance": 95,
+            "semantic_role_reason": "Объявлен на официальном сайте компании как ML-инженер AI-агентов, релевантен вакансии и сигналу по AI-агентам.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://rabota.sber.ru",
+      "focus": "Богдан Рощупкин",
+      "purpose": "тщательное изучение сайта для поиска контактных данных Богдана Рощупкина или страницы команды проекта AI-агентов",
+      "success": true,
+      "evidence": {
+        "url": "https://rabota.sber.ru",
+        "kind": "page",
+        "text": "Богдан Рощупкин ML-инженер AI-агентов",
+        "links": [
+          {
+            "url": "https://rabota.sber.ru",
+            "label": ""
+          },
+          {
+            "url": "https://rabota.sber.ru/search",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://rabota.sber.ru/media",
+            "label": "Карьерные медиа"
+          },
+          {
+            "url": "https://sbergraduate.ru",
+            "label": "Выпускникам и студентам"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/policy",
+            "label": "Политика обработки данных"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/cookies",
+            "label": "Политика использования Cookies"
+          },
+          {
+            "url": "https://www.sberbank.ru",
+            "label": "www.sberbank.ru"
+          },
+          {
+            "url": "https://t.me/careersber",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T12:33:39.869Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%20%D0%A1%D0%B1%D0%B5%D1%80%20IT%20LinkedIn&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 342
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%20%D0%A1%D0%B1%D0%B5%D1%80%20IT%20LinkedIn&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 343
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1519
+    },
+    {
+      "stage": "search",
+      "query": "Богдан Рощупкин Сбер IT LinkedIn",
+      "results": [
+        {
+          "title": "Bogdan Rozhkov - Engagement manager & Energy ...",
+          "url": "https://www.linkedin.com/in/bogdan-rozhkov",
+          "snippet": "# Bogdan Rozhkov\n\nHeadline: Cleantech/Energy Consultant - Energy Solutions at McKinsey & Company\nCurrent role: Engagement Manager & Energy Solutions Leader\nSeniority: Specialist, Consulting\nLocation: Greater Boston United States\nExperience: 10 years 9 months\nLinkedIn:  · 699 followers\nDescription: Experience in strategy and operations, energy and renewables markets, and electric markets modeling. [...] Languages: English (Full professional proficiency), Ukrainian (Native or bilingual proficiency), Russian (Native or bilingual proficiency)\n\nCourses: R programming;-, Marketing;-, Game Theory;-, Financial Markets;-, Financial Engineering and Risk Management;-, Critical Thinking;-, Corporate Finance;-, Computational Investing;-, Calculus;- [...] ## Experience\n- Engagement manager & Energy Solutions Leader at McKinsey & Company (Dec 2025 to present)\n- Cleantech/Energy Consultant at McKinsey & Company (Nov 2015 to Feb 2026)\n\n## Education\n- Kyiv School of Economics, Master's degree Business and Financial Economics\n- Donetsk National University, Specialist Management and Administration",
+          "source_label": "tavily",
+          "score": 0.5524679,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Bogdan S. - Software Engineer",
+          "url": "https://www.linkedin.com/in/bogdan-stanescu",
+          "snippet": "Headline: Software Engineer\nCurrent role: Senior Software Engineer\nSeniority: Senior, Engineering and Technical\nLocation: New York City Metropolitan Area United States\nExperience: 26 years 5 months\nLinkedIn:  · 114 followers [...] ## Skills\ndeveloper, problem solving, project management, software engineering, c++, storage systems, core, research, research assistant, infrastructure, ai (artificial intelligence), teaching, storage, programming, search infrastructure [...] ## Experience\n- Senior Software Engineer at Bloomberg (Oct 2024 to present)\n- Staff Software Engineer at Google (Jun 2005 to Apr 2024)\n- Research Assistant at George Mason University (Sep 1999 to May 2005)\n\n## Education\n- George Mason University, Master of Science, Computer Science\n- University of Bucharest, Bachelor of Science, Mathematics and Computer Science",
+          "source_label": "tavily",
+          "score": 0.33378598,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Bohdan Savchuk - IoT and Cybersecurity Enthusiast",
+          "url": "https://www.linkedin.com/in/bsavchuk",
+          "snippet": "Headline: QA Lead | CTO & Founder at Anbosoft\nCurrent role: Co-Founder\nSeniority: Founder, Consulting\nLocation: Irvine, California, United States\nExperience: 13 years 10 months\nLinkedIn:  · 10,481 followers [...] - Liked By: vacationing in my natural habitat 🐒 P.S. first time hiking in Yosemite [...] ## Skills\nautomation testing, information security solutions, qa, tests, backup, regression, qa lead, penetration testing, web development, simulations, delivery, interoperability, process, set, performance reviews\n\n## Certifications\n- IBM Rational Quality Manager\n- ICP, ICAgile (2018)\n- SAFe Product Owner/Product Manager, Scaled Agile, Inc. (2018)\n- ISTQB FL, ISTQB - International Software Testing Qualifications Board (2018)\n- Practical Leadership, Udemy (2019)",
+          "source_label": "tavily",
+          "score": 0.14181568,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Bogdan Zlatkov 👈 - 🏆LinkedIn Top Voice 📊Data-backed ...",
+          "url": "https://www.linkedin.com/in/bogdan-zlatkov",
+          "snippet": "## Skills\nedited, systems management, assistant director, account-based, agency management, search strategies, marketing platform, per, teaching, interviews, led, social media, creative content, cryptocurrency, data [...] ## Recommendations (6)\n- Felicia Lorenzo: “I had the pleasure of working with Bogdan Zlatkov as our content manager, and I can’t recommend him highly enough. Bogdan has an exceptional ability to craft engaging and insightful content. He is both incredibly talented and a true team player. If there was ever a last-minute ask, Bogdan was on... [...] After a few weeks of listening to them and applying their advice I started landing interviews &amp; jobs. That first job search took me 14 months. The next job search took me 4 months. The next job search took me 3 weeks. Hi 🖐 My name is Bogdan. Today I help mid-career professionals land better jobs faster at GrowthHackYourCareer.com (GHYC). 👉 I've helped over 162,285+ job seekers through my FREE courses. 👉 I've also helped hundreds of other job seekers through my coaching program. 👉 I'm also",
+          "source_label": "tavily",
+          "score": 0.12612738,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Bogdan-Petru Pop - Software Engineer",
+          "url": "https://www.linkedin.com/in/bogdan-petru-pop-54aa04195",
+          "snippet": "# Bogdan-petru Pop\n\nHeadline: Software Engineer\nSeniority: Specialist, Engineering and Technical\nLocation: United States\nExperience: 4 years 1 month\nLinkedIn:  · 343 followers\n\n## Experience\n- Software Engineer at Stealth (Jun 2022 to Aug 2025)\n- Software Engineer at Lunchclub (Oct 2021 to Aug 2025)\n- Software Engineer Intern at Lunchclub (Jul 2021 to Sep 2021)\n- Site Reliability Engineering Intern at Google (Jul 2023 to Sep 2023)\n- Software Engineer Intern at Sector Labs (Aug 2020 to Sep 2020)",
+          "source_label": "tavily",
+          "score": 0.12155038,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Богдан Рощупкин Сбер IT LinkedIn",
+      "focus": "поиск профиля Богдана Рощупкина на LinkedIn с целью найти подтверждённый контакт или профиль",
+      "purpose": "найти публичный профиль для прямой связи",
+      "results": [
+        {
+          "url": "https://www.linkedin.com/in/bogdan-rozhkov",
+          "title": "Bogdan Rozhkov - Engagement manager & Energy ...",
+          "snippet": "# Bogdan Rozhkov\n\nHeadline: Cleantech/Energy Consultant - Energy Solutions at McKinsey & Company\nCurrent role: Engagement Manager & Energy Solutions Leader\nSeniority: Specialist, Consulting\nLocation: Greater Boston United States\nExperience: 10 years 9 months\nLinkedIn:  · 699 followers\nDescription: Experience in strategy and operations, energy and renewables markets, and electric markets modeling. [...] Languages: English (Full professional proficiency), Ukrainian (Native or bilingual proficiency",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/in/bogdan-stanescu",
+          "title": "Bogdan S. - Software Engineer",
+          "snippet": "Headline: Software Engineer\nCurrent role: Senior Software Engineer\nSeniority: Senior, Engineering and Technical\nLocation: New York City Metropolitan Area United States\nExperience: 26 years 5 months\nLinkedIn:  · 114 followers [...] ## Skills\ndeveloper, problem solving, project management, software engineering, c++, storage systems, core, research, research assistant, infrastructure, ai (artificial intelligence), teaching, storage, programming, search infrastructure [...] ## Experience\n- Senior So",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/in/bsavchuk",
+          "title": "Bohdan Savchuk - IoT and Cybersecurity Enthusiast",
+          "snippet": "Headline: QA Lead | CTO & Founder at Anbosoft\nCurrent role: Co-Founder\nSeniority: Founder, Consulting\nLocation: Irvine, California, United States\nExperience: 13 years 10 months\nLinkedIn:  · 10,481 followers [...] - Liked By: vacationing in my natural habitat 🐒 P.S. first time hiking in Yosemite [...] ## Skills\nautomation testing, information security solutions, qa, tests, backup, regression, qa lead, penetration testing, web development, simulations, delivery, interoperability, process, set, pe",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/in/bogdan-zlatkov",
+          "title": "Bogdan Zlatkov 👈 - 🏆LinkedIn Top Voice 📊Data-backed ...",
+          "snippet": "## Skills\nedited, systems management, assistant director, account-based, agency management, search strategies, marketing platform, per, teaching, interviews, led, social media, creative content, cryptocurrency, data [...] ## Recommendations (6)\n- Felicia Lorenzo: “I had the pleasure of working with Bogdan Zlatkov as our content manager, and I can’t recommend him highly enough. Bogdan has an exceptional ability to craft engaging and insightful content. He is both incredibly talented and a true te",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/in/bogdan-petru-pop-54aa04195",
+          "title": "Bogdan-Petru Pop - Software Engineer",
+          "snippet": "# Bogdan-petru Pop\n\nHeadline: Software Engineer\nSeniority: Specialist, Engineering and Technical\nLocation: United States\nExperience: 4 years 1 month\nLinkedIn:  · 343 followers\n\n## Experience\n- Software Engineer at Stealth (Jun 2022 to Aug 2025)\n- Software Engineer at Lunchclub (Oct 2021 to Aug 2025)\n- Software Engineer Intern at Lunchclub (Jul 2021 to Sep 2021)\n- Site Reliability Engineering Intern at Google (Jul 2023 to Sep 2023)\n- Software Engineer Intern at Sector Labs (Aug 2020 to Sep 2020)",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.openai.com/v1/responses",
+      "error": "TimeoutError",
+      "elapsedMs": 12006
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "model_unavailable",
+      "actions": 6,
+      "candidates": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "semantic_role_relevance": 95,
+            "semantic_role_reason": "Объявлен на официальном сайте компании как ML-инженер AI-агентов, релевантен вакансии и сигналу по AI-агентам.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "rabota.sber.ru"
+      ],
+      "elapsedMs": 32868
+    },
+    {
+      "stage": "people_ranked",
+      "people": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "semantic_role_relevance": 95,
+            "semantic_role_reason": "Объявлен на официальном сайте компании как ML-инженер AI-агентов, релевантен вакансии и сигналу по AI-агентам.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/",
+      "status": 403,
+      "elapsedMs": 447
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/sitemap.xml",
+      "status": 403,
+      "elapsedMs": 276
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/robots.txt",
+      "status": 403,
+      "elapsedMs": 308
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/contacts",
+      "status": 403,
+      "elapsedMs": 93
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/contact",
+      "status": 403,
+      "elapsedMs": 93
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/contact-us",
+      "status": 403,
+      "elapsedMs": 284
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/kontakty",
+      "status": 403,
+      "elapsedMs": 299
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/kontakti",
+      "status": 403,
+      "elapsedMs": 308
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/company",
+      "status": 403,
+      "elapsedMs": 306
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/o-kompanii",
+      "status": 403,
+      "elapsedMs": 320
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/about",
+      "status": 403,
+      "elapsedMs": 324
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/about-us",
+      "status": 403,
+      "elapsedMs": 324
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B%20rabota.sber.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 292
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.yahoo.com/search?p=%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B%20rabota.sber.ru&ei=UTF-8&b=1",
+      "status": 500,
+      "elapsedMs": 1421
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B%20rabota.sber.ru&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 2307
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 2667
+    },
+    {
+      "stage": "search",
+      "query": "site:rabota.sber.ru контакты",
+      "results": [
+        {
+          "title": "Как работается в ИТ-офисе Сбера в Самаре",
+          "url": "https://rabota.sber.ru/media/rabota-v-it-ofise-sbera-v-samare",
+          "snippet": "Как уже писал выше – мы постоянно находимся в контакте. Какие-то вопросы обсуждаем персонально, какие-то на встречах в переговорках. Для этого созданы все условия.\n\nВы проводите тимбилдинги, обучение и т.д.? Встречаетесь ли с командой в нерабочее время? [...] Сбер – это организация, которая предоставляет беспрецедентные возможности для развития, набора компетенций и карьерного роста. Путь с позиции инженера, на которую я пришел сразу после окончания университета, до исполнительного директора для меня составил всего 7 лет.\n\nКакое твоё самое любимое место для работы в офисе и почему?\n\nМое место работы – среди сотрудников. Мы постоянно находимся в контакте, взаимодействуем по любым вопросам, сложные вопросы разрешаем на месте. [...] SBER\n\nПолитика обработки данныхПолитика использования Cookies\n\n© 2026ПАО «Сбербанк»\n\ntelegram vkontakte\n\nкарьерные медиавыпускникам и студентам",
+          "source_label": "tavily",
+          "score": 0.117420465,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Точки контакта с аудиторией",
+          "url": "https://rabota.sber.ru/media/tochki-kontakta-s-auditoriej",
+          "snippet": "Top.Mail.Ru\nSBER\nфоновое изображение\n\n## Говори и будешь услышан. 10 серия. Точки контакта с аудиторией.\n\nГовори и будешь услышан.   \n10 серия. Точки контакта с аудиторией.\n\nВернуться к подкасту\n\nSBER\ntelegram\nvkontakte",
+          "source_label": "tavily",
+          "score": 0.116754174,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Специалист контактного центра",
+          "url": "https://rabota.sber.ru/vacancy/specialist-kontaktnogo-centra",
+          "snippet": "Что нужно делать:\n\nпомогать клиентам Сбера по телефону или в чатах по продуктам и сервисам Сбера\n\nнаходить для каждого клиента индивидуальное решение.\n\nМы ждем, что ты:\n\nспециалист со средним образованием и выше\n\nграмотно пишешь и говоришь.\n\nПрисоединяйся   \nк команде Сбера!\n\nВыбери свой город\n\nАстрахань\n\nВолгоград\n\nЕкатеринбург\n\nКазань\n\nСамара\n\nСаранск\n\nЧебоксары\n\nfile.extension\n\nSBER\n\nПолитика обработки данныхПолитика использования Cookies\n\n© 2026ПАО «Сбербанк»\n\ntelegram vkontakte [...] у каждого в команде расширенный ДМС и льготное страхование для семьи\n\nмы дарим сотрудникам бесплатную подписку СберПрайм+, льготные условия кредитования и много скидок на продукты компаний-партнеров\n\nмы платим вознаграждение за рекомендацию друзей в команду Сбера\n\nс тобой на связи всегда будут наставник и руководитель, который помогут освоить новую профессию\n\nу нас современный офис с массажными креслами и зонами отдыха.\n\nЧто нужно делать: [...] telegram vkontakte\n\nкарьерные медиавыпускникам и студентам",
+          "source_label": "tavily",
+          "score": 0.114358865,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Секреты успешной карьеры - истории руководителей Сбера",
+          "url": "https://rabota.sber.ru/media/istoriya-uspekha-top-menedzhera-sbera-kostarev",
+          "snippet": "много новых знаний и полезных контактов. [...] Строить свой карьерный путь – нелегко, но очень интересно!   \nМы надеемся, что история Сергея вдохновит вас на развитие своего карьерного трека  \n. В Сбере каждый имеет шанс реализовать свой потенциал и достичь высоких вершин.   \nА если у вас будут сомнения и вопросы, карьерные консультанты   \nвсегда придут к вам на помощь!\n\nSBER\n\nПолитика обработки данныхПолитика использования Cookies\n\n© 2026ПАО «Сбербанк»\n\ntelegram vkontakte\n\nкарьерные медиавыпускникам и студентам [...] Не могу сказать, что совершал какие-то откровенные безумства. Были решения, которые в моменте ухудшали качество жизни и нарушали баланс между работой и домом. Например, по просьбе руководителя перешёл в Пермское ГОСБ из отдела УФН аппарата Западно-Уральского банка. На тот момент в головном отделении была непростая ситуация, чтобы её исправить, приходилось очень много работать, решать сложные кейсы при том, что доход мой сократился. В том году времени на сон не было, зато появилось много новых",
+          "source_label": "tavily",
+          "score": 0.09715906,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Работа в Сбере",
+          "url": "https://rabota.sber.ru",
+          "snippet": "© 2026ПАО «Сбербанк»\n\ntelegram vkontakte\n\nкарьерные медиавыпускникам и студентам [...] Делают   \n  зелёными   \n  цифры на счетах 113 миллионов клиентов\n kid\n\n  Помогают подружиться с финансами даже самым   \n  зелёным\n\nРабочие стороны у всех разные – но в них легко заметить общий цвет\n\nБыть полными идей\n\nВ юбилейный год Сбера мы напоминаем себе и другим, как важно оставаться зелёными на все 185 – и вдохновлять на это тех, кто рядом\n\nЕсли это про тебя – прояви свою рабочую сторону в команде Сбера\n\nSBER\n\nПолитика обработки данныхПолитика использования Cookieswww.sberbank.ru [...] SBER\n\nКарьерные медиа\n\nВыпускникам и студентам\n\n# Моя рабочая сторона\n\nучить нейросети думать дальше промпта\n\nБогдан Рощупкин\n\nML-инженер AI-агентов\n\nУ каждого сотрудника Сбера есть своя рабочая сторона\n\n car\n\n  Они дают   \n  зелёный   \n  свет автономному транспорту\n marathon\n\n  Выводят на старт   \n  зелёного   \n  марафона тысячи бегунов по всей стране\n robot\n\n  Учат робота   \n  Грина   \n  работать в одной команде с людьми\n manager",
+          "source_label": "tavily",
+          "score": 0.07964606,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Менеджер по корпоративным продажам страхования в г Краснодар | Сбер",
+          "url": "https://rabota.sber.ru/search/menedzher-po-korporativnym-prodazham-strahovaniya-4565257",
+          "snippet": "высшее образование\n успешный опыт работы не менее 2-х лет в активных B2B-продажах с клиентами сегмента средний и крупный бизнес\n наличие собственной базы контактов ЛПР\n навыки продаж: готовность вести сложные переговоры, работать с возражениями и дожимать сделку до результата\n опыт использования нейросетей и ИИ-инструментов для подготовки аналитики рынка, генерации текстов писем, скоринга клиентской базы и автоматизации рутины [...] SBER\n\nПолитика обработки данныхПолитика использования Cookieswww.sberbank.ru\n\n© 2026ПАО «Сбербанк»\n\ntelegram vkontakte\n\nкарьерные медиавыпускникам и студентам [...] Обязанности\n\n активные продажи продуктов страхования корпоративным клиентам\n полный цикл сделки: от первого контакта до заключения договора и пост-продажного сопровождения клиентов включая участие в урегулировании убытков\n взаимодействие с партнерами в рамках развития продаж и страховыми компаниями в рамках согласования условий размещения рисков\n работа с воронкой и прямым рынком в корпоративной AC CRM.\n\nТребования",
+          "source_label": "tavily",
+          "score": 0.070540525,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Оператор по наследственному праву и задолженности в г Дзержинск | Сбер",
+          "url": "https://rabota.sber.ru/search/v-4560527",
+          "snippet": "установление контакта и построение доверительного диалога с наследниками умерших клиентов банка\n проведение переговоров, направленных на поиск и оформление договоренностей по погашению и урегулированию задолженности\n анализ положения наследников, оценка возможности погашения\n грамотное разъяснение прав и обязанностей наследников в отношении долгов наследодателя, включая не аннулированную задолженность\n качественное фиксирование этапов взаимодействия в банковских системах [...] SBER\n\nПолитика обработки данныхПолитика использования Cookieswww.sberbank.ru\n\n© 2026ПАО «Сбербанк»\n\ntelegram vkontakte\n\nкарьерные медиавыпускникам и студентам [...] ### Требования:\n\n образование: от среднего специального и выше\n опыт работы: в банковской сфере, клиентском сервисе, во взыскании, в контактном центре, в КА\n тактичность, эмпатия и умение общаться на деликатные темы\n навыки убеждения и ведения переговоров\n четкая дикция, грамотная устная и письменная речь\n уверенное владение ПК (MS Office, опыт работы с CRM системами)\n базовые знания работы с искусственным интеллектом (например, Гигачат).\n\n### Преимущества:",
+          "source_label": "tavily",
+          "score": 0.067898266,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Сбер открывает пятый сезон программы «Амбассадоры в вузах»",
+          "url": "https://rabota.sber.ru/media/pyatyj-sezon-programmy-ambassadory-v-vuzakh",
+          "snippet": "В задачи амбассадора входят продвижение карьерных и образовательных проектов компании в своем вузе, ведение контента в социальных сетях и помощь команде Сбера в проведении мероприятий\n\nПодать заявку на программу «Амбассадоры Сбера в вузах» можно до 20 июля 2025 года, а первые амбассадоры приступят к работе уже в сентябре\n\nSBER\n\nПолитика обработки данныхПолитика использования Cookies\n\n© 2026ПАО «Сбербанк»\n\ntelegram vkontakte\n\nкарьерные медиавыпускникам и студентам [...] Программа рассчитана на студентов 2-го курса бакалавриата и старше, включая магистрантов и аспирантов.\n\nКлючевые критерии отбора — активная жизненная позиция, навыки организации мероприятий, умение создавать контент и презентовать идеи.\n\nАмбассадоров ожидают: ежемесячная стипендия, фирменный мерч, доступ к обучающим курсам Сбера и наставничество от экспертов компании, возможность посещать закрытые и внутренние мероприятия и расширять профессиональные контакты.\n\nНаталья Дудина [...] В этом году программа охватит 19 городов: Москву, Санкт-Петербург, Новосибирск, Екатеринбург, Казань, Нижний Новгород, Красноярск, Самару, Ростов-на-Дону, Омск, Краснодар, Воронеж, Пермь, Владивосток, Хабаровск, Иркутск, Кемерово, Рязань и Иннополис.\n\nЧтобы стать участником, нужно подать онлайн-заявку, выполнить творческое задание (видеопрезентация до 1,5 минут и пост для соцсетей) и пройти финальное интервью с экспертами Сбера — обсуждение мотивации и плана работы.",
+          "source_label": "tavily",
+          "score": 0.06694044,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%A1%D0%B1%D0%B5%D1%80.%20IT%22%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 223
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%A1%D0%B1%D0%B5%D1%80.%20IT%22%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 191
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.yahoo.com/search?p=%22%D0%A1%D0%B1%D0%B5%D1%80.%20IT%22%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B&ei=UTF-8&b=1",
+      "status": 500,
+      "elapsedMs": 1270
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1434
+    },
+    {
+      "stage": "search",
+      "query": "\"Сбер. IT\" контакты",
+      "results": [
+        {
+          "title": "Контакты Сбер Банка — телефоны, адрес и реквизиты",
+          "url": "https://www.sber-bank.by/page/contact-center",
+          "snippet": "+375 (33) 348-99-11 А1: +375 (29) 359-99-11 Городской: (17) 359-99-11 Телефон для международных звонков. E-mail inbox@sber-bank.by",
+          "source_label": "tavily",
+          "score": 0.70287734,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Единый номер Контактного центра Сбербанка России",
+          "url": "https://www.sberbank.ru/ru/sberpress/tb_all/article?newsID=11007748-1-1&blockID=11000212&regionID=47&lang=ru",
+          "snippet": "8(800)555-5550, Обслуживание по номерам (812)329-2929 и 8(800)333-0088 … обращаться по телефону 8(800)555 5550.",
+          "source_label": "tavily",
+          "score": 0.6466616,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Контактный центр СберБизнеса",
+          "url": "https://www.sberbank.com/ru/s_m_business/call_center",
+          "snippet": "По телефону. Можно позвонить по номеру 0321 или 8 800 555-57-77. Клиентам ... 6 — с мобильного телефона. 8 800 555-57-77, доб. 6 — с городского телефона.",
+          "source_label": "tavily",
+          "score": 0.61779,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Реквизиты СберБанка",
+          "url": "http://www.sberbank.ru/ru/about/today/requisites",
+          "snippet": "(800) 200-8-200 (800) 555-55-50 E-mail: umb.szb@sberbank.ru … zb@sberbank.ru",
+          "source_label": "tavily",
+          "score": 0.5917474,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Компания Сбер — о компании, фотографии офиса, контакты — Хабр Карьера",
+          "url": "https://career.habr.com/companies/sber",
+          "snippet": "Все сервисы Хабра\n\nСообщество IT-специалистовОтветы на любые вопросы об ITПрофессиональное развитие в ITОбучение для смены профессии, роста в карьере и саморазвития\n\nВойти через Хабр АккаунтЗарегистрироваться\n\nВойти через Хабр АккаунтЗарегистрироваться\n\nВакансииСпециалистыКурсы и обучениеЭкспертыКомпанииРейтингЗарплатыЖурнал\n\n# О компании «Сбер»\n\n## Востребованные в компании навыки [...] #19\n +69 наград\n\nВсе награды (79)\n\nСотрудники компании\n\nhelen_rilitandevilz1aleksandr-chertovskihcatisdesigna-satskov04pyatkaalexrazhnatalia-nedosypchukengem+6630 работают здесь\n\nВсе, кто здесь работал (14467)\n\nОткуда приходят в компанию\n\nСберТех\n\n326 сотрудников\n\nФриланс\n\n156 сотрудников\n\nЯндекс\n\n117 сотрудников\n\nМТС Web Services\n\n108 сотрудников\n\nБанк ВТБ\n\n106 сотрудников\n\nВ какие компании уходят\n\nИТ-Холдинг Т1\n\n241 сотрудник\n\nАльфа-Банк\n\n212 сотрудников\n\nЯндекс\n\n182 сотрудника\n\nТ-Банк [...] Машинное обучение • Искусственный интеллект • Программирование • Научно-популярное • Тестирование IT-систем • Анализ и проектирование систем • Java • Управление разработкой • Алгоритмы • Карьера в IT-индустрии\n\n## Вакансии компании «Сбер»\n\nНет вакансий\n\nУ компании нет открытых вакансий\n\nОценки и отзывы сотрудников о компании «Сбер»\n\nОценить\n\n2018)\n\n2019)\n\n2020)\n\n2021)\n\n2022)\n\n2023)\n\n2024)\n\n2025)\n\n2026)\n\n3.54\n\nСредняя оценка\n\n69%\n\nСредняя рекомендация",
+          "source_label": "tavily",
+          "score": 0.4391465,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Сберлабс — исследования и разработки Сбера",
+          "url": "https://sberlabs.com",
+          "snippet": "Центр ИИ для науки\n\nВсе лабораторииВсе лабораторииВсе лаборатории\n\nПроекты\n\nМероприятия\n\nНовости\n\nКарьера\n\nПартнерства с университетами\n\nЛаборатории\n\nГенеральная лицензия Банка России на осуществление банковских операций №1481 от 11.08.2015 г.\n\nПодписаться на новости\n\nПолитика обработки данных\n\nКарта сайта\n\nРоссия, Москва, 117997, ул. Вавилова, 19\n\n© 1997—2026 ПАО Сбербанк [...] завтра\n\nтехнологии\n\nСегодня лидерами становятся те компании, которые быстро реагируют на большие вызовы, разрабатывают и внедряют собственные технологии и инновации\n\nЛаборатории Сбера\n\nЦентр практического искусственного интеллекта\n\nЦентр развития блокчейн\n\nЛаборатория кибербезопасности\n\nЛаборатория нейронаук и поведения человека\n\nЛаборатория интернета вещей\n\nЦентр квантовых технологий\n\nУправление экспериментальных систем машинного обучения\n\nЦентр ИИ для науки [...] РУСРУСРУС\n\nENGENGENG\n\nНаучная премия\n\nПроекты\n\nЛаборатории\n\nАкадемические партнеры\n\nДень науки  со Сбером\n\nИсследуйте, творите, открывайте новое\n\nПодробнееПодробнееПодробнее\n\nНаучная премия Сбера\n\nПодробнееПодробнееПодробнее\n\nЛекции  лауреатов\n\nЦикл лекций лауреатов Научной премии Сбера в ведущих университетах России\n\nУзнать большеУзнать большеУзнать больше\n\nРазвиваем науку\n\nПроводим прикладные исследования и создаем инновации\n\nПодробнееПодробнееПодробнее\n\nСегодня наука\n\nзавтра\n\nтехнологии",
+          "source_label": "tavily",
+          "score": 0.28360325,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "горячая линия, номера телефонов, задать вопрос онлайн",
+          "url": "http://www.sberbank.ru/ru/person/call_center",
+          "snippet": "Как позвонить в контактный центр СберБанка ✓ Обратная связь с банком ✓ Контакты территориальных банков СберБанка ✓ Пожаловаться на СберБанк.",
+          "source_label": "tavily",
+          "score": 0.26684582,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Работа в Сбере",
+          "url": "https://rabota.sber.ru",
+          "snippet": "Делают   \n  зелёными   \n  цифры на счетах 113 миллионов клиентов\n kid\n\n  Помогают подружиться с финансами даже самым   \n  зелёным\n\nРабочие стороны у всех разные – но в них легко заметить общий цвет\n\nБыть полными идей\n\nВ юбилейный год Сбера мы напоминаем себе и другим, как важно оставаться зелёными на все 185 – и вдохновлять на это тех, кто рядом\n\nЕсли это про тебя – прояви свою рабочую сторону в команде Сбера\n\nSBER\n\nПолитика обработки данныхПолитика использования Cookieswww.sberbank.ru [...] SBER\n\nКарьерные медиа\n\nВыпускникам и студентам\n\n# Моя рабочая сторона\n\nучить нейросети думать дальше промпта\n\nБогдан Рощупкин\n\nML-инженер AI-агентов\n\nУ каждого сотрудника Сбера есть своя рабочая сторона\n\n car\n\n  Они дают   \n  зелёный   \n  свет автономному транспорту\n marathon\n\n  Выводят на старт   \n  зелёного   \n  марафона тысячи бегунов по всей стране\n robot\n\n  Учат робота   \n  Грина   \n  работать в одной команде с людьми\n manager [...] © 2026ПАО «Сбербанк»\n\ntelegram vkontakte\n\nкарьерные медиавыпускникам и студентам",
+          "source_label": "tavily",
+          "score": 0.10183054,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/search/menedzher-po-korporativnym-prodazham-strahovaniya-4565257",
+      "status": 403,
+      "elapsedMs": 424
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/vacancy/specialist-kontaktnogo-centra",
+      "status": 403,
+      "elapsedMs": 435
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/media/rabota-v-it-ofise-sbera-v-samare",
+      "status": 403,
+      "elapsedMs": 443
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/media/tochki-kontakta-s-auditoriej",
+      "status": 403,
+      "elapsedMs": 444
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru",
+      "status": 403,
+      "elapsedMs": 441
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/media/istoriya-uspekha-top-menedzhera-sbera-kostarev",
+      "status": 403,
+      "elapsedMs": 444
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%22%20%22%40rabota.sber.ru%22&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 227
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%22%20%22%40rabota.sber.ru%22&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 203
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.yahoo.com/search?p=%22%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%22%20%22%40rabota.sber.ru%22&ei=UTF-8&b=1",
+      "status": 500,
+      "elapsedMs": 1325
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%22%20rabota.sber.ru%20email%20OR%20e-mail&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 223
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%22%20rabota.sber.ru%20email%20OR%20e-mail&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 122
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.yahoo.com/search?p=%22%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%22%20rabota.sber.ru%20email%20OR%20e-mail&ei=UTF-8&b=1",
+      "status": 500,
+      "elapsedMs": 1271
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1212
+    },
+    {
+      "stage": "search",
+      "query": "\"Богдан Рощупкин\" \"@rabota.sber.ru\"",
+      "results": [
+        {
+          "title": "Работа в Сбере",
+          "url": "https://rabota.sber.ru",
+          "snippet": "SBER\n\nКарьерные медиа\n\nВыпускникам и студентам\n\n# Моя рабочая сторона\n\nучить нейросети думать дальше промпта\n\nБогдан Рощупкин\n\nML-инженер AI-агентов\n\nУ каждого сотрудника Сбера есть своя рабочая сторона\n\n car\n\n  Они дают   \n  зелёный   \n  свет автономному транспорту\n marathon\n\n  Выводят на старт   \n  зелёного   \n  марафона тысячи бегунов по всей стране\n robot\n\n  Учат робота   \n  Грина   \n  работать в одной команде с людьми\n manager [...] Делают   \n  зелёными   \n  цифры на счетах 113 миллионов клиентов\n kid\n\n  Помогают подружиться с финансами даже самым   \n  зелёным\n\nРабочие стороны у всех разные – но в них легко заметить общий цвет\n\nБыть полными идей\n\nВ юбилейный год Сбера мы напоминаем себе и другим, как важно оставаться зелёными на все 185 – и вдохновлять на это тех, кто рядом\n\nЕсли это про тебя – прояви свою рабочую сторону в команде Сбера\n\nSBER\n\nПолитика обработки данныхПолитика использования Cookieswww.sberbank.ru [...] © 2026ПАО «Сбербанк»\n\ntelegram vkontakte\n\nкарьерные медиавыпускникам и студентам",
+          "source_label": "tavily",
+          "score": 0.6399392,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Работа в компании СБЕР в Москве — 980 вакансий на hh.ru",
+          "url": "https://hh.ru/employer/3529",
+          "snippet": "С утра я в форме — работаю охранником в главном\nофисе Сбера на Кутузовском. А после — веду телеграм-канал,\nучаствую в проектах амбассадоров и в мероприятиях. В этом,\nнаверное, и есть суть Сбера: ты можешь быть серьёзным профессионалом\nи при этом — увлечённым, интересующимся человеком. И в компании\nэто не просто допускается — это приветствуется.\n\nКогда-то я работала библиотекарем. Сейчас — в ИТ [...] Выступаем на фестивалях, записываем треки — все внутри компании.\nРабота вдохновляет, репетируем прямо в офисе. Это не просто\nхобби — это атмосфера, где ты можешь быть собой.\n\nПоверила в себя и подала документы в Школу Останкино!\n\nЯ прошла Академию амбассадоров, и это стало поворотной\nточкой. Теперь я учусь публичным выступлениям и телевидению,\nа еще продолжаю активно участвовать в проектах Сбера. Когда есть\nподдержка — возможны самые неожиданные переходы.\n\nОхранник,\n  \nкоторый стал блогером [...] Когда стоишь на вершине вулкана с флагом Сбера, понимаешь, что границы —\nтолько в голове. Мне всегда было важно развиваться и преодолевать\nпрепятствия. В горах, в профессии, в жизни. Сбер поддерживает\nне только проекты — он поддерживает людей. И это чувствуется\nна каждом шаге.\n\nСбер рядом, когда ты делаешь\nчто-товажное",
+          "source_label": "tavily",
+          "score": 0.26093805,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Присоединяйтесь к команде — создаем технологии будущего",
+          "url": "https://sberlabs.com/career",
+          "snippet": "12+\n\nтехнологических направлений\n\n60+\n\nпродуктов с использованием разработанных технологий\n\nПолный и актуальный список вакансий на rabota.sber.ru и стажировок на sbergraduate.ru\n\nБренд\n\nВ рейтинге работодателей одного из влиятельнейших изданий — Forbes, Сбер по итогам 2024 года получил платиновый статус в таких категориях, как «Сотрудники и общество», «Экология» и «Корпоративное управление».\n\n3 высшие награды [...] 3 высшие награды\n\nСбер — единственный работодатель, который получил сразу три высшие награды в 2022 и 2024 году.\n\nРейтинг Forbes\n\nРейтинг Forbes учитывает всё — заработные платы, социальный пакет и условия труда, а также экологический след и социальную ответственность компании.\n\nПроекты\n\nМероприятия\n\nНовости\n\nКарьера\n\nПартнерства с университетами\n\nЛаборатории\n\nГенеральная лицензия Банка России на осуществление банковских операций №1481 от 11.08.2015 г.\n\nПодписаться на новости",
+          "source_label": "tavily",
+          "score": 0.22220221,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Клиентская поддержка и обслуживание отделений",
+          "url": "https://rabota.sber.ru/customer-service",
+          "snippet": "развитие\n\nВозможность карьерного развития внутри компании и корпоративное обучение\n\nзабота\n\nДМС с первого дня\n\nи льготное страхование для близких\n\nбонусы\n\nБесплатная подписка СберПрайм+, скидки   \nна продукты партнеров\n\nВакансии для тебя\n\nСтарший менеджер\n\nпо работе с клиентами\n\nКонсультирует клиентов по всем продуктам и услугам Сбера, включая ипотеку, продает банковские продукты и обучает клиентов пользоваться сервисами Сбера.\n\nМенеджер выездного сервиса [...] SBER\n\nКарьерные медиа\n\nВыпускникам и студентам\n\nСбер — это место, где каждый день для тебя открываются новые возможности.\n\nМы слишком большие, слишком разные и слишком смелые, чтобы быть просто банком. Нас уже больше 290 тысяч, и каждый помогает 111 миллионам клиентов жить проще, свободнее и увереннее.\n\nМы не ограничиваем и не загоняем в рамки — наоборот, даём шанс раскрыть себя.\n\nЕсли ты тоже хочешь быть частью команды, которая меняет будущее каждый день, — добро пожаловать в Сбер!\n\n290 000+ [...] Старший менеджер\n\nпо обслуживанию\n\nПроводит операции клиентов в отделении   \nбанка и консультирует по возникающим\n\nвопросам.\n\nСпециалист по телемаркетингу\n\nОбщается с клиентами Сбера по телефону и предлагает специально подобранные продукты, услуги и банковские сервисы.\n\nМенеджер по работе с ключевыми клиентами\n\nмалого бизнеса\n\nОбщается с предпринимателями и руководителями компаний малого бизнеса и предлагает лучшие продуктовые решения.\n\nКлиентский менеджер  \nудаленных продаж",
+          "source_label": "tavily",
+          "score": 0.18594754,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Работа.ру",
+          "url": "https://sber.rabota.ru",
+          "snippet": "## Забота\n\nСоциальные гарантии, поддержка в сложных жизненных ситуациях, обучение и скидки на кредиты — можно прилично сэкономить на ипотеке.\n\n# Экосистема Сбербанка\n\n> 50\n\nузнать подробнее > 2 000\n\nпродуктовых IT команд\n\nузнать подробнее\n\n \n\n  СберЛизинг\n \n\n  2ГИС\n \n\n  Самокат\n \n\n  СберСервис\n \n\n  Союзмультфильм\n\n# Наша экосистема\n\n- СберБанк logo\n\n  СберБанк\n\n  1977 вакансий [...] Деловая среда\n\n  Деловая среда — дочерняя компания Сбера, созданная с целью развития малого и среднего бизнеса. Миссия компании — развитие предпринимательства.\n\nПоказать больше\n\n# Работа с нами — это:\n\nРабота в масштабе всей страны\n\nОфициальное оформление с первого дня\n\nВозможность выбрать удобный график: удаленка, офис или смешанный\n\nКорпоративное обучение и возможность получить новую квалификацию\n\nНадежность и поддержка компании-работодателя\n\nБолее 40 компаний-работодателей [...] 2ГИС\n\n  2ГИС — ведущая российская компания в сфере разработки цифровых карт и справочников городов. Картографический сервис охватывает 426 городов в 11 странах мира.\n- Sber Tax Free logo\n\n  Sber Tax Free\n\n  Sber Tax Free - это 100% дочерняя компания ПАО Сбербанк. Является оператором по возврату Tax Free иностранным покупателям, совершившим покупку в розничных торговых точках на территории России.\n- Деловая среда logo\n\n  Деловая среда",
+          "source_label": "tavily",
+          "score": 0.18528324,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1904
+    },
+    {
+      "stage": "search",
+      "query": "\"Богдан Рощупкин\" rabota.sber.ru email OR e-mail",
+      "results": [
+        {
+          "title": "9 Ways to Find Someone's Email Address - wikiHow",
+          "url": "https://www.wikihow.com/Find-Someone's-Email-Address",
+          "snippet": "1. If you know the person's full name and where they work, you may be able to infer their email address based on that information. Try to find a public email address for an employee at the same company, and then plug in the name of the person you're looking for.\n    For example, firstnamelastname@company.com or firstname.lastname@company.com. Some other variations:\n     + `first_last@company.com`\n     + `firstinitialLast@company.com` (e.g. `brubble@company.com` for Barney Rubble) [...] Advertisement\n\n4\n\n### Perform a Whois search on their domain name.\n\n PDF download Download Article\n\n1. If the person you're looking has a domain name, search for it at  If the person's domain registration information is public, you will find the owner's email address in their contact information.\n    Many domain owners hide their contact information from their domain registration for privacy reasons, so this won't work for all domains.\n\n5\n\n### Find them on social media. [...] + `last@company.com`\n     + `FirstMiddleinitialLast@company.com`\n    Many people have email addresses @gmail.com and @outlook.com, so you can use the same logic there—just replace their company domain with @gmail.com or @outlook.com.\n    Perform a web search for the email you come up with. This can help you determine if the address is legitimate before you test it out. You may find links to their social networks, in which case you'll know you have the right email address.",
+          "source_label": "tavily",
+          "score": 0.09411855,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Reverse Email Lookup: Who’s Behind That Email? - Mailmeteor",
+          "url": "https://mailmeteor.com/tools/reverse-email-lookup",
+          "snippet": "REVERSE EMAIL LOOKUP\n\n# Find out who's behind any email address\n\nInstantly get details like name and company from any professional email. No sign-up required.\n\n{{ initials }} \n\nError\n\nEmail not found\n\n##### Searching... Searching harder for better results... {{ result.firstName }} {{ result.lastName }} Oops, it didn't work{{ result.error?.code && ' (' + result.error.code + ')' }} No results found [...] {{ result.email }}   {{ result.error.message || 'An unexpected error occurred. Please try again.' }}   We couldn't find an email address for that person. Try another search.\n\n {{ result.position || result.company || result.domain }}\n\nGive it a try with (?email=snadella@microsoft.com). It's free!\n\n## Get names, job titles, and company info in seconds [...] The person’s full name\n Their current company and position\n Professional social media profiles (LinkedIn, Twitter/X, etc.)\n Company domain and website\n Other publicly available professional information\n\n### Is reverse email lookup legal?\n\nYes, reverse email lookup is legal when it accesses publicly available information. Our tool only retrieves data that is already public and complies with privacy laws like GDPR. Always use the information responsibly and respect privacy.",
+          "source_label": "tavily",
+          "score": 0.079560205,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Email Finder: Free email search by name • Hunter",
+          "url": "https://hunter.io/email-finder",
+          "snippet": "The full name of the person you would like to contact;\n The domain name used for emails by the company, organization, or website to which this professional belongs. When you type the company name into the Email Finder, Hunter will automatically suggest the closest domain name.\n\n### \n\nThe Email Finder uses the most complete database of public email addresses to find the right contact information. [...] ### \n\nThe Domain Search lets you search for email addresses related to a website or company and identify the right people to contact.\n\n### \n\nThe two tools work in opposite directions:\n\n The Email Finder starts with a person's name and company, and returns their email address.\n The Reverse Email Lookup starts with an email address, and returns the person behind it: their full name, job title, company, location, and social profiles. [...] Is the company or organization using the domain name you entered for emails? In some cases, the domain name used for emails is different from the domain name used for the website.\n Is the person you want to contact still in the company or organization?\n Has the person's name been misspelled?\n\nIf the Email Finder still can't find any result after verifying these elements, a manual search is likely needed.\n\n###",
+          "source_label": "tavily",
+          "score": 0.0767739,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Email Finder by ContactOut | Email Lookup",
+          "url": "https://contactout.com",
+          "snippet": "\"Find personal mails seamlessly. Thanks for this tool!\"\n\nEkin Bayildiran\n\nExecutive Search, Tenstorrent\n\n\"Very easy to use, and it gives contact details that are not available on others I have used.\"\n\nBarbara Ball\n\nSociete Generale\n\n\"Love it! I use it every day.\"\n\nCamille Verdier\n\nCNN\n\n\"Great email tool. I've used a few other services and ContactOut is the easiest one to use.\"\n\nJon Nowakowski\n\nRobert Half\n\n\"Excellent product, very small chance of error.\"\n\nFarida Charania\n\nHSBC [...] Unlock the world's most accurate   \n contact data\n\n# Find emails & phone for 350M professionals\n\n4.6 stars\n\n4.4 stars\n\n## Trusted by 1.4M recruiters and sales reps from Fortune 500 companies\n\nChrome Extension \n\n## Supercharge your prospecting\n\nGet email and phone numbers for 75% of people online. Add prospects to an email campaign in one click.\n\nLearn more\n\nSearch Portal \n\n## Find countless prospects on our search portal [...] Accelerate prospecting with instant access to 350M professionals from 40M companies with the right contact details.\n\nDiscover the source of our data\n\nLearn more\n\nAPI \n\n## 350M contact details updated hourly via API\n\n200M emails, 100M phone, 40M company records.\n\nLearn more\n\nGet an API key\n\nAI Personalizer \n\n## Personalize emails automatically with AI\n\nGet 4x your response rate by generating hyper-personalized emails with the click of a button. Save hours on manual research.\n\nTry it out",
+          "source_label": "tavily",
+          "score": 0.059718315,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Email Checker: Verify any Email Address Online (Free) - Mailmeteor",
+          "url": "https://mailmeteor.com/email-checker",
+          "snippet": "1. Syntax — the address must follow a valid format (local part + domain).\n2. Disposable domain — we flag throwaway services (Mailinator, Yopmail, etc.).\n3. Role-based — addresses like `info@` or `support@` are marked accordingly.\n4. DNS & MX records — the domain must be configured to receive mail.\n5. SMTP handshake — we ping the mailbox to confirm it accepts incoming mail.\n6. Catch-all detection — we test whether the domain accepts any address. [...] Valid — the mailbox exists and is accepting mail. Safe to send.\n Risky — the address responds but shows warning signs (catch-all domain, role-based, low-reputation provider). Send with caution; avoid for cold outreach at scale.\n Invalid — the mailbox doesn't exist, the domain has no MX, or the provider rejects the handshake. Don't send — it will bounce.\n Unknown — the provider blocks verification (common with large mailbox hosts). Results are inconclusive. [...] A catch-all domain accepts mail to any address at that domain, even if no mailbox exists. Email servers return \"accepted\" for the handshake, so we can't confirm whether a specific person reads that inbox. Catch-all addresses are marked as risky — safe for occasional outreach, but risky for large campaigns since some of them silently drop.\n\n### Can I verify emails in bulk?",
+          "source_label": "tavily",
+          "score": 0.05613807,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru",
+      "status": 200,
+      "elapsedMs": 969
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.yahoo.com/search?p=%22%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%22%20%22%D0%A1%D0%B1%D0%B5%D1%80.%20IT%22%20email%20OR%20e-mail&ei=UTF-8&b=1",
+      "error": "TimeoutError",
+      "elapsedMs": 5
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "error": "TimeoutError",
+      "elapsedMs": 1
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "error": "TimeoutError",
+      "elapsedMs": 1
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "error": "TimeoutError",
+      "elapsedMs": 1
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "error": "TimeoutError",
+      "elapsedMs": 1
+    }
+  ],
+  "startedAt": "2026-10-06T12:33:38.884Z",
+  "error": "TimeoutError: The operation was aborted due to timeout",
+  "runtimeMs": 215927
+}

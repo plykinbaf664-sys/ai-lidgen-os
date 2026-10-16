@@ -1,0 +1,2779 @@
+{
+  "mode": "direct",
+  "startedAt": "2026-10-16T11:39:33.169Z",
+  "isolated": "C:\\Users\\User\\AppData\\Local\\Temp\\leadgen-final-direct-TYIM2L",
+  "productionSmtpCalls": 0,
+  "discovery": {
+    "mode": "LIVE_READ_ONLY",
+    "verticalId": null,
+    "planner": {
+      "status": "AI",
+      "reason": "configured",
+      "intentHypotheses": [
+        "Прямой найм специалистов по внедрению LLM и агентных систем",
+        "Публичные объявления о запуске пилотных проектов с ИИ",
+        "Закупки и тендеры на разработку корпоративных AI-решений"
+      ],
+      "terminology": [
+        "LLM",
+        "агентная автоматизация",
+        "корпоративный ИИ",
+        "генеративный дизайн",
+        "RAG система",
+        "AI-ассистент"
+      ],
+      "sourceHypotheses": [
+        "ru_job_board",
+        "market_news",
+        "tender_platforms",
+        "corporate_press_releases"
+      ],
+      "queries": [
+        "внедрение LLM инженер",
+        "агентная автоматизация разработка",
+        "корпоративный ИИ архитектор",
+        "запуск пилота генеративный ИИ компания",
+        "тендер разработка AI ассистента бизнес процессы",
+        "поиск подрядчика внедрение больших языковых моделей",
+        "автоматизация документооборота нейросети закупка",
+        "разработка RAG системы корпоративные данные контракт",
+        "интеграция ИИ в CRM поиск исполнителя",
+        "пилотный проект машинное обучение производство анонс"
+      ],
+      "queryAngles": [
+        "ru_job_board",
+        "ru_job_board",
+        "ru_job_board",
+        "market_news",
+        "market_news",
+        "market_news",
+        "market_news",
+        "market_news",
+        "market_news",
+        "market_news"
+      ],
+      "execution": "ai_semantic",
+      "refinementQueries": [
+        "подрядчик разработка RAG корпоративные знания",
+        "тендер закупка лицензий Copilot разработчикам"
+      ]
+    },
+    "metrics": {
+      "jobsScanned": 42,
+      "assessed": 24,
+      "hhAssessed": 9,
+      "nonHhAssessed": 15,
+      "semanticDirect": 6,
+      "aiRoleCandidates": 24,
+      "automationIntentPass": 5,
+      "companiesExtracted": 5,
+      "hhCompanies": 5,
+      "nonHhCompanies": 0,
+      "officialDomainsConfirmed": 5,
+      "icpMatch": 0,
+      "icpUncertain": 0,
+      "icpMismatch": 0,
+      "segmentNotApplied": 5,
+      "contactsFound": 2,
+      "ready": 2,
+      "falsePositives": 0,
+      "runtimeMs": 114095,
+      "requests": 110,
+      "companyIdentityQueries": 0,
+      "timeouts": 0,
+      "abortedRequests": 0,
+      "orphanRequests": 0
+    },
+    "accepted": [
+      {
+        "company": "Лига Цифровой Экономики",
+        "vacancyTitle": "NLP/LLM инженер",
+        "sourceUrl": "https://hh.ru/vacancy/138530373",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "Мы ищем middle NLP/LLM инженера в команду, которая занимается разработкой инновационных решений на основе искусственного интеллекта для поддержки корпоративных клиентов. Проект Сбера.",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Активная вакансия на роль NLP/LLM инженера с четким описанием задач по разработке и обучению ML-моделей.",
+        "officialWebsite": "https://digitalleague.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": false
+      },
+      {
+        "company": "Детский мир. ДМ-тех",
+        "vacancyTitle": "AI-инженер (автоматизация бизнес-процессов)",
+        "sourceUrl": "https://hh.ru/vacancy/137589737",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "Ищем инженера отдела внедрения, который будет переводить процессы заказчиков (финансы, логистика, ecom, HR) в работающие автоматизации на базе LLM/VLM/OCR — от брифинга до эксплуатации.",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Активная вакансия на позицию AI-инженера с задачами по внедрению LLM-автоматизации.",
+        "officialWebsite": "https://detmir.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": false
+      },
+      {
+        "company": "Группа компаний TRAPEZA",
+        "vacancyTitle": "Forward Deployed Engineer / Инженер по развитию бизнес-процессов",
+        "sourceUrl": "https://hh.ru/vacancy/138526837",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "Задача роли — повышать эффективность и управляемость бизнеса через изменения в организации работы, развитие систем и применение ИИ.",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Активная вакансия с явным указанием применения ИИ для автоматизации внутренних процессов компании.",
+        "officialWebsite": "https://trapeza.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 1,
+        "contactEmail": "trapeza@trapeza.ru",
+        "contactKind": "unknown",
+        "contactSourceUrl": "https://www.trapeza.ru/contacts/",
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": true
+      },
+      {
+        "company": "Группа компаний Агротек",
+        "vacancyTitle": "Инженер по AI-автоматизации",
+        "sourceUrl": "https://hh.ru/vacancy/137223578",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "Мы приглашаем Инженер по AI-автоматизации",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Активная вакансия с прямым указанием роли, связанной с AI-автоматизацией внутри компании.",
+        "officialWebsite": "https://agrotek.com",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 1,
+        "contactEmail": "info@agrotek.com",
+        "contactKind": "general",
+        "contactSourceUrl": "https://agrotek.com/",
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": true
+      },
+      {
+        "company": "ТРАНСКАПИТАЛБАНК",
+        "vacancyTitle": "ML-инженер",
+        "sourceUrl": "https://hh.ru/vacancy/138264765",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "Разработка AI-агентов и мультиагентных систем (оркестрация агентов, управление памятью, планирование и декомпозиция задач, умная маршрутизация) Построение RAG-систем",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Активная вакансия банка на роль, связанную с внедрением LLM и AI-агентов в продакшен.",
+        "officialWebsite": "https://tkbbank.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": false
+      }
+    ],
+    "sourceClasses": {
+      "hh": {
+        "results": 21,
+        "assessed": 9,
+        "direct": 6,
+        "companies": 5,
+        "rejected": {
+          "direct_intent_likely_not_confirmed": 1,
+          "direct_intent_not_relevant": 2,
+          "organization_kind_public_sector": 1,
+          "bounded_sample_not_assessed": 12
+        }
+      },
+      "news": {
+        "results": 3,
+        "assessed": 3,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "direct_intent_stale": 3
+        }
+      },
+      "company_site": {
+        "results": 18,
+        "assessed": 12,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "direct_intent_likely_not_confirmed": 6,
+          "direct_intent_not_relevant": 6,
+          "bounded_sample_not_assessed": 6
+        }
+      }
+    },
+    "rejected": [
+      {
+        "company": null,
+        "vacancyTitle": "OpenAI launches Operator, an AI agent that performs tasks autonomously | TechCrunch",
+        "sourceUrl": "https://techcrunch.com/2025/01/23/openai-launches-operator-an-ai-agent-that-performs-tasks-autonomously/?trk=article-ssr-frontend-pulse_little-text-block",
+        "status": "REJECTED",
+        "reason": "direct_intent_stale",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Тендер на услуги по технической поддержке и доработке системы СОУ (Система операционного учета рекламных проектов), а также разработке, интеграции и сопровождению ИИ-ассистентов для автоматизации бизнес-процессов | Москва город | 93126760 | РосТендер",
+        "sourceUrl": "https://rostender.info/region/moskva-gorod/93126760-tender-uslugi-po-tehnicheskoj-podderjke-i-dorabotke-sistemy-sou-sistema-operacionnogo-ucheta-reklamnyh-proektov-a-takje-razrabotke-integracii-i",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Корпоративный архитектор управления доступом",
+        "sourceUrl": "https://hh.ru/vacancy/138512145",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "LLM Studio - внедрение LLM и искусственного интеллекта | LLM Studio - применение Искусственного Интеллекта в бизнесе",
+        "sourceUrl": "https://llmstudio.ru",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Doba Launches Beta of Doba Pilot, the Industry's First AI Dropshipping Agent",
+        "sourceUrl": "https://www.prnewswire.com/news-releases/doba-launches-beta-of-doba-pilot-the-industrys-first-ai-dropshipping-agent-302714638.html",
+        "status": "REJECTED",
+        "reason": "direct_intent_stale",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Архитектор решений LLM",
+        "sourceUrl": "https://hh.ru/vacancy/138444253",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Тендер 297-738 — Закупка AI-ассистента для разработки программного обеспечения | Bidzaar",
+        "sourceUrl": "https://bidzaar.com/app/process/light/019c6b22-92c4-7a12-8e73-6ee862d8c46b",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "GDE AI — Внедрение ИИ и LLM в бизнес-процессы",
+        "sourceUrl": "https://gde-ai.com",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Ведущий архитектор 3d, Архитектурно-градостроительные концепции ( АГК )",
+        "sourceUrl": "https://hh.ru/vacancy/138279188",
+        "status": "REJECTED",
+        "reason": "organization_kind_public_sector",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "ChainOpera Emerges from Stealth to Launch its Decentralized AI Platform and Generative AI Application Ecosystem",
+        "sourceUrl": "https://www.prnewswire.com/news-releases/chainopera-emerges-from-stealth-to-launch-the-worlds-first-decentralized-ai-platform-and-generative-ai-application-ecosystem-302250967.html",
+        "status": "REJECTED",
+        "reason": "direct_intent_stale",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Тендер 381-361 — Закупка «Внедрение и сопровождение Voice-to-Voice AI-ассистента для обработки входящих звонков контакт-центра для ООО Факел (MAYTONI)» г. Москва | Bidzaar",
+        "sourceUrl": "https://bidzaar.com/app/process/light/01a0fd00-d8c3-7abd-9c25-1b149c2a3fb3",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Главный архитектор проекта",
+        "sourceUrl": "https://hh.ru/vacancy/138215117",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "LLM-интеграция: подрядчики для внедрения моделей",
+        "sourceUrl": "https://ai-rate.ru/services/llm-integration",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Corporate knowledge bases (rag systems) | Ople Agency",
+        "sourceUrl": "https://ople.agency/en/services/ai/rag",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Closed: Sasria microsoft copilot licenses tender - gauteng bid",
+        "sourceUrl": "https://www.tenders-sa.org/sa-tenders/tender/rfp-2026-10-procurement-of-microsoft-copilot-productivity-licenses-cmo8wbwke11f9kn31f1ztue1h",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "RAG Development Services | Lytvynov Production",
+        "sourceUrl": "https://lytvynov-production.com/en/services/rag-development",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Contract: Supply of Microsoft Copilot Licenses to the Canadian Space Agency – Microsoft Canada Inc. | IT & Software | GovMarket",
+        "sourceUrl": "https://govmarket.ca/contract/supply-of-microsoft-copilot-licenses-to-the-canadian-space-agency-1260",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "RAG Development Services & RAG Chatbots | Ryven Global",
+        "sourceUrl": "https://ryven.agency/our-services/rag-development",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Лот 268945 \"Разовая закупка 160 лицензий Microsoft 365 Copilot сроком действия 12 месяцев с поставкой в действующий тенант Microsoft 365 Заказчика\" - подача предложения - ЭТП",
+        "sourceUrl": "https://web.mp.kz/tender/268945-%D0%A0%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%B7%D0%B0%D0%BA%D1%83%D0%BF%D0%BA%D0%B0%20160%20%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D0%B9%20Microsoft%20365%20Copilot%20%D1%81%D1%80%D0%BE%D0%BA%D0%BE%D0%BC%20%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%8F%2012%20%D0%BC%D0%B5%D1%81%D1%8F%D1%86%D0%B5%D0%B2%20%D1%81%20%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%BE%D0%B9%20%D0%B2%20%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D1%83%D1%8E%D1%89%D0%B8%D0%B9%20%D1%82%D0%B5%D0%BD%D0%B0%D0%BD%D1%82%20Microsoft%20365%20%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%D1%87%D0%B8%D0%BA%D0%B0",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      }
+    ],
+    "rejectionReasons": {
+      "direct_intent_stale": 3,
+      "direct_intent_likely_not_confirmed": 7,
+      "direct_intent_not_relevant": 8,
+      "organization_kind_public_sector": 1
+    },
+    "mutated": false,
+    "smtpCalls": 0
+  },
+  "campaign": {
+    "id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+    "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+    "name": "Controlled Direct AI Need",
+    "requested_by": "isolated-live",
+    "status": "completed",
+    "icp_label": "Прямой подтверждённый спрос на AI",
+    "offer_label": "разобрать конкретную AI-задачу и быстро проверить решение через аудит или MVP",
+    "created_at": "2026-10-16T11:41:29.154Z"
+  },
+  "companies": [
+    {
+      "id": "company-3116157c58f5a745578b92938edb",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_name": "Лига Цифровой Экономики",
+      "company_domain": "digitalleague.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/138530373",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "Лига Цифровой Экономики",
+          "officialWebsite": "https://digitalleague.ru",
+          "officialDomain": "digitalleague.ru",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [],
+            "inferred": []
+          },
+          "bestOutreachContact": null,
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "NLP/LLM инженер",
+            "detail": "Мы ищем middle NLP/LLM инженера в команду, которая занимается разработкой инновационных решений на основе искусственного интеллекта для поддержки корпоративных клиентов. Проект Сбера.",
+            "sourceUrl": "https://hh.ru/vacancy/138530373",
+            "confidence": 90
+          },
+          "researchConfidence": "UNVERIFIED",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 0,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 10,
+            "lprMs": 5476,
+            "contactMs": 105,
+            "totalMs": 5586,
+            "stopReason": "no_useful_action"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/138530373",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-16T11:41:29.154Z",
+      "updated_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "company-a4a4d8021409f8f4ca84ce07b391",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_name": "Детский мир. ДМ-тех",
+      "company_domain": "detmir.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/137589737",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "Детский мир. ДМ-тех",
+          "officialWebsite": "https://detmir.ru",
+          "officialDomain": "detmir.ru",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [
+              {
+                "email": "job@detmir.ru",
+                "personName": null,
+                "classification": "DEPARTMENT",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://corp.detmir.ru/contacts/",
+                    "sourceType": "official",
+                    "excerpt": "job@detmir.ru — public email parser",
+                    "capturedAt": "2026-10-16T11:41:29.154Z",
+                    "confidence": 72
+                  }
+                ]
+              }
+            ],
+            "general": [
+              {
+                "email": "marketplace_dm@detmir.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://corp.detmir.ru/contacts/",
+                    "sourceType": "official",
+                    "excerpt": "marketplace_dm@detmir.ru — public email parser",
+                    "capturedAt": "2026-10-16T11:41:29.154Z",
+                    "confidence": 99
+                  }
+                ]
+              },
+              {
+                "email": "pressa@detmir.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://corp.detmir.ru/contacts/",
+                    "sourceType": "official",
+                    "excerpt": "pressa@detmir.ru — public email parser",
+                    "capturedAt": "2026-10-16T11:41:29.154Z",
+                    "confidence": 99
+                  }
+                ]
+              },
+              {
+                "email": "ur@detmir.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://corp.detmir.ru/contacts/",
+                    "sourceType": "official",
+                    "excerpt": "ur@detmir.ru — public email parser",
+                    "capturedAt": "2026-10-16T11:41:29.154Z",
+                    "confidence": 99
+                  }
+                ]
+              },
+              {
+                "email": "shop@detmir.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://corp.detmir.ru/contacts/",
+                    "sourceType": "official",
+                    "excerpt": "shop@detmir.ru — public email parser",
+                    "capturedAt": "2026-10-16T11:41:29.154Z",
+                    "confidence": 99
+                  }
+                ]
+              },
+              {
+                "email": "security_hotline@detmir.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://corp.detmir.ru/contacts/",
+                    "sourceType": "official",
+                    "excerpt": "security_hotline@detmir.ru — public email parser",
+                    "capturedAt": "2026-10-16T11:41:29.154Z",
+                    "confidence": 99
+                  }
+                ]
+              }
+            ],
+            "inferred": []
+          },
+          "bestOutreachContact": {
+            "email": "job@detmir.ru",
+            "personName": null,
+            "role": null,
+            "classification": "DEPARTMENT",
+            "contactLevel": "E",
+            "sourceUrl": "https://corp.detmir.ru/contacts/"
+          },
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "AI-инженер (автоматизация бизнес-процессов)",
+            "detail": "Ищем инженера отдела внедрения, который будет переводить процессы заказчиков (финансы, логистика, ecom, HR) в работающие автоматизации на базе LLM/VLM/OCR — от брифинга до эксплуатации.",
+            "sourceUrl": "https://hh.ru/vacancy/137589737",
+            "confidence": 90
+          },
+          "researchConfidence": "HIGH_CONFIDENCE",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 6,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 26,
+            "lprMs": 67405,
+            "contactMs": 14094,
+            "totalMs": 87053,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/137589737",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-16T11:41:29.154Z",
+      "updated_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "company-ccfeddc16a82ff056b9fff435526",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_name": "Группа компаний TRAPEZA",
+      "company_domain": "trapeza.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/138526837",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "Группа компаний TRAPEZA",
+          "officialWebsite": "https://trapeza.ru",
+          "officialDomain": "trapeza.ru",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [
+              {
+                "email": "trapeza@trapeza.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://team.trapeza.ru",
+                    "sourceType": "official",
+                    "excerpt": "trapeza@trapeza.ru — public email parser",
+                    "capturedAt": "2026-10-16T11:41:29.154Z",
+                    "confidence": 99
+                  }
+                ]
+              }
+            ],
+            "inferred": []
+          },
+          "bestOutreachContact": {
+            "email": "trapeza@trapeza.ru",
+            "personName": null,
+            "role": null,
+            "classification": "GENERAL",
+            "contactLevel": "E",
+            "sourceUrl": "https://team.trapeza.ru"
+          },
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Forward Deployed Engineer / Инженер по развитию бизнес-процессов",
+            "detail": "Задача роли — повышать эффективность и управляемость бизнеса через изменения в организации работы, развитие систем и применение ИИ.",
+            "sourceUrl": "https://hh.ru/vacancy/138526837",
+            "confidence": 90
+          },
+          "researchConfidence": "HIGH_CONFIDENCE",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 4,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 16,
+            "lprMs": 49320,
+            "contactMs": 13,
+            "totalMs": 54547,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/138526837",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-16T11:41:29.154Z",
+      "updated_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "company-56ab107a4bab7b695c2c79f2c22b",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_name": "Группа компаний Агротек",
+      "company_domain": "agrotek.com",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/137223578",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "Группа компаний Агротек",
+          "officialWebsite": "https://agrotek.com",
+          "officialDomain": "agrotek.com",
+          "people": [
+            {
+              "fullName": "Сергей Владимирович Тимошенко",
+              "role": "Генеральный директор «Агротек Альянс»",
+              "confidence": "VERIFIED",
+              "evidence": [
+                {
+                  "sourceUrl": "https://agrotek.com",
+                  "sourceType": "official",
+                  "excerpt": "Тимошенко Сергей Владимирович Генеральный директор «Агротек Альянс» ГК «Агротек» сегодня развивается не только как дистрибьютор, но и начинает двигаться по пути собственного производства.",
+                  "capturedAt": "2026-10-16T11:41:29.154Z",
+                  "confidence": 90
+                },
+                {
+                  "sourceUrl": "https://agrotek.com",
+                  "sourceType": "official",
+                  "excerpt": "Тимошенко Сергей Владимирович Генеральный директор «Агротек Альянс»",
+                  "capturedAt": "2026-10-16T11:41:29.154Z",
+                  "confidence": 90
+                },
+                {
+                  "sourceUrl": "https://agrotek.com",
+                  "sourceType": "official",
+                  "excerpt": "Тимошенко Сергей Владимирович Генеральный директор «Агротек Альянс»",
+                  "capturedAt": "2026-10-16T11:41:29.154Z",
+                  "confidence": 90
+                }
+              ],
+              "profiles": {
+                "tenchat": null,
+                "telegram": null,
+                "instagram": null,
+                "vk": null,
+                "other": []
+              },
+              "phone": null
+            },
+            {
+              "fullName": "Геннадий Николаевич Грушко",
+              "role": "Президент ГК «Агротек»",
+              "confidence": "VERIFIED",
+              "evidence": [
+                {
+                  "sourceUrl": "https://agrotek.com",
+                  "sourceType": "official",
+                  "excerpt": "Грушко Геннадий Николаевич Президент ГК «Агротек»",
+                  "capturedAt": "2026-10-16T11:41:29.154Z",
+                  "confidence": 90
+                }
+              ],
+              "profiles": {
+                "tenchat": null,
+                "telegram": null,
+                "instagram": null,
+                "vk": null,
+                "other": []
+              },
+              "phone": null
+            },
+            {
+              "fullName": "Константин Андреевич Бердутин",
+              "role": "Коммерческий директор «Агротек Альянс»",
+              "confidence": "VERIFIED",
+              "evidence": [
+                {
+                  "sourceUrl": "https://agrotek.com",
+                  "sourceType": "official",
+                  "excerpt": "Бердутин Константин Андреевич Коммерческий директор «Агротек Альянс» У наших специалистов высокий уровень знаний агрономии, они могут посоветовать правильные сорта, гибриды, защиту, подобрать питание.",
+                  "capturedAt": "2026-10-16T11:41:29.154Z",
+                  "confidence": 90
+                }
+              ],
+              "profiles": {
+                "tenchat": null,
+                "telegram": null,
+                "instagram": null,
+                "vk": null,
+                "other": []
+              },
+              "phone": null
+            }
+          ],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [
+              {
+                "email": "info@agrotek.com",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://agrotek.com",
+                    "sourceType": "official",
+                    "excerpt": "info@agrotek.com — public email parser",
+                    "capturedAt": "2026-10-16T11:41:29.154Z",
+                    "confidence": 99
+                  }
+                ]
+              },
+              {
+                "email": "office@agrotek.com",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://agrotek.com/contacts",
+                    "sourceType": "official",
+                    "excerpt": "office@agrotek.com — public email parser",
+                    "capturedAt": "2026-10-16T11:41:29.154Z",
+                    "confidence": 99
+                  }
+                ]
+              }
+            ],
+            "inferred": [
+              {
+                "email": "sergei.timoshenko@agrotek.com",
+                "personName": "Сергей Владимирович Тимошенко",
+                "classification": "INFERRED_PERSONAL",
+                "evidence": [],
+                "verification": {
+                  "email": "sergei.timoshenko@agrotek.com",
+                  "personName": "Сергей Владимирович Тимошенко",
+                  "status": "PREDICTED",
+                  "pattern": "{given}.{family}",
+                  "patternSupport": 0,
+                  "mx": "unavailable",
+                  "catchAll": "unknown",
+                  "sourceUrls": [],
+                  "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+                }
+              },
+              {
+                "email": "s.timoshenko@agrotek.com",
+                "personName": "Сергей Владимирович Тимошенко",
+                "classification": "INFERRED_PERSONAL",
+                "evidence": [],
+                "verification": {
+                  "email": "s.timoshenko@agrotek.com",
+                  "personName": "Сергей Владимирович Тимошенко",
+                  "status": "PREDICTED",
+                  "pattern": "{g}.{family}",
+                  "patternSupport": 0,
+                  "mx": "unavailable",
+                  "catchAll": "unknown",
+                  "sourceUrls": [],
+                  "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+                }
+              },
+              {
+                "email": "timoshenko@agrotek.com",
+                "personName": "Сергей Владимирович Тимошенко",
+                "classification": "INFERRED_PERSONAL",
+                "evidence": [],
+                "verification": {
+                  "email": "timoshenko@agrotek.com",
+                  "personName": "Сергей Владимирович Тимошенко",
+                  "status": "PREDICTED",
+                  "pattern": "{family}",
+                  "patternSupport": 0,
+                  "mx": "unavailable",
+                  "catchAll": "unknown",
+                  "sourceUrls": [],
+                  "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+                }
+              },
+              {
+                "email": "stimoshenko@agrotek.com",
+                "personName": "Сергей Владимирович Тимошенко",
+                "classification": "INFERRED_PERSONAL",
+                "evidence": [],
+                "verification": {
+                  "email": "stimoshenko@agrotek.com",
+                  "personName": "Сергей Владимирович Тимошенко",
+                  "status": "PREDICTED",
+                  "pattern": "{g}{family}",
+                  "patternSupport": 0,
+                  "mx": "unavailable",
+                  "catchAll": "unknown",
+                  "sourceUrls": [],
+                  "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+                }
+              },
+              {
+                "email": "sergey.timoshenko@agrotek.com",
+                "personName": "Сергей Владимирович Тимошенко",
+                "classification": "INFERRED_PERSONAL",
+                "evidence": [],
+                "verification": {
+                  "email": "sergey.timoshenko@agrotek.com",
+                  "personName": "Сергей Владимирович Тимошенко",
+                  "status": "PREDICTED",
+                  "pattern": "{given}.{family}",
+                  "patternSupport": 0,
+                  "mx": "unavailable",
+                  "catchAll": "unknown",
+                  "sourceUrls": [],
+                  "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+                }
+              }
+            ]
+          },
+          "bestOutreachContact": {
+            "email": "info@agrotek.com",
+            "personName": null,
+            "role": null,
+            "classification": "GENERAL",
+            "contactLevel": "E",
+            "sourceUrl": "https://agrotek.com"
+          },
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Инженер по AI-автоматизации",
+            "detail": "Мы приглашаем Инженер по AI-автоматизации",
+            "sourceUrl": "https://hh.ru/vacancy/137223578",
+            "confidence": 90
+          },
+          "researchConfidence": "VERIFIED",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 8,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 12,
+            "lprMs": 75041,
+            "contactMs": 17,
+            "totalMs": 80607,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/137223578",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-16T11:41:29.154Z",
+      "updated_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "company-31fc6a8dff6b5af097b27c122e54",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_name": "ТРАНСКАПИТАЛБАНК",
+      "company_domain": "tkbbank.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/138264765",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "ТРАНСКАПИТАЛБАНК",
+          "officialWebsite": "https://tkbbank.ru",
+          "officialDomain": "tkbbank.ru",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [],
+            "inferred": []
+          },
+          "bestOutreachContact": null,
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "ML-инженер",
+            "detail": "Разработка AI-агентов и мультиагентных систем (оркестрация агентов, управление памятью, планирование и декомпозиция задач, умная маршрутизация) Построение RAG-систем",
+            "sourceUrl": "https://hh.ru/vacancy/138264765",
+            "confidence": 90
+          },
+          "researchConfidence": "UNVERIFIED",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 4,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 9,
+            "lprMs": 42096,
+            "contactMs": 98,
+            "totalMs": 42195,
+            "stopReason": "research_budget"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/138264765",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-16T11:41:29.154Z",
+      "updated_at": "2026-10-16T11:41:29.154Z"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "contact-lead-7be458768553f281302f1f0a0b9d-website-form-1",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-3116157c58f5a745578b92938edb",
+      "lead_id": "lead-7be458768553f281302f1f0a0b9d",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://digitalleague.ru/contacts",
+      "source_url": "https://digitalleague.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": true,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-7be458768553f281302f1f0a0b9d-website-form-2",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-3116157c58f5a745578b92938edb",
+      "lead_id": "lead-7be458768553f281302f1f0a0b9d",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://digitalleague.ru/contact",
+      "source_url": "https://digitalleague.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-7be458768553f281302f1f0a0b9d-company-website-3",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-3116157c58f5a745578b92938edb",
+      "lead_id": "lead-7be458768553f281302f1f0a0b9d",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://digitalleague.ru",
+      "source_url": "https://digitalleague.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-f7a1e5bc9142994f41d8fa389d08-website-form-10",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-a4a4d8021409f8f4ca84ce07b391",
+      "lead_id": "lead-f7a1e5bc9142994f41d8fa389d08",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://detmir.ru/contacts",
+      "source_url": "https://detmir.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-f7a1e5bc9142994f41d8fa389d08-website-form-11",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-a4a4d8021409f8f4ca84ce07b391",
+      "lead_id": "lead-f7a1e5bc9142994f41d8fa389d08",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://detmir.ru/contact",
+      "source_url": "https://detmir.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-f7a1e5bc9142994f41d8fa389d08-website-form-12",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-a4a4d8021409f8f4ca84ce07b391",
+      "lead_id": "lead-f7a1e5bc9142994f41d8fa389d08",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://www.detmir.ru/contact/",
+      "source_url": "https://www.detmir.ru/contact/",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-f7a1e5bc9142994f41d8fa389d08-website-form-13",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-a4a4d8021409f8f4ca84ce07b391",
+      "lead_id": "lead-f7a1e5bc9142994f41d8fa389d08",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://www.detmir.ru/contacts/",
+      "source_url": "https://www.detmir.ru/contacts/",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-f7a1e5bc9142994f41d8fa389d08-website-form-14",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-a4a4d8021409f8f4ca84ce07b391",
+      "lead_id": "lead-f7a1e5bc9142994f41d8fa389d08",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://www.detmir.ru/contact-us/",
+      "source_url": "https://www.detmir.ru/contact-us/",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-f7a1e5bc9142994f41d8fa389d08-website-form-15",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-a4a4d8021409f8f4ca84ce07b391",
+      "lead_id": "lead-f7a1e5bc9142994f41d8fa389d08",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://corp.detmir.ru/contacts/",
+      "source_url": "https://corp.detmir.ru/contacts/",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-f7a1e5bc9142994f41d8fa389d08-company-website-16",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-a4a4d8021409f8f4ca84ce07b391",
+      "lead_id": "lead-f7a1e5bc9142994f41d8fa389d08",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://detmir.ru",
+      "source_url": "https://detmir.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-f7a1e5bc9142994f41d8fa389d08-generic-email-9",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-a4a4d8021409f8f4ca84ce07b391",
+      "lead_id": "lead-f7a1e5bc9142994f41d8fa389d08",
+      "contact_type": "generic_email",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": "job@detmir.ru",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://corp.detmir.ru/contacts/",
+      "source_label": "public email parser",
+      "confidence_score": 72,
+      "is_primary": false,
+      "metadata": {
+        "email_status": "department_email_ready",
+        "email_mx_verified": true,
+        "email_domain_match_reason": "official_domain",
+        "email_subject": "Детский мир. ДМ-тех: быстрый контур AI-задачи",
+        "email_body": "Добрый день.\n\nВ публичном источнике Детский мир. ДМ-тех обратил внимание на задачу: «Ищем инженера отдела внедрения, который будет переводить процессы заказчиков (финансы, логистика, ecom, HR) в работающие автоматизации на базе LLM/VLM/OCR — от брифинга до эксплуатации.».\n\nКогда такая инициатива уже сформулирована, найм специалиста и запуск самой задачи часто идут с разной скоростью. Это не означает, что сотрудник не нужен: отдельный ограниченный участок можно проверить раньше, чтобы к выходу человека у команды уже были подтверждённые требования и рабочий прототип.\n\nПолезно отделить архитектурные решения, которые требуют постоянного владельца внутри компании, от короткого пилота, который быстро проверяет данные, интеграции и реальную ценность сценария.\n\nЯ AI-архитектор. Могу независимо разобрать задачу, собрать ограниченный прототип или реализовать отдельный AI-блок, не подменяя будущего сотрудника и не меняя выбранную вами кадровую стратегию.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": false,
+        "outreach_selected": true,
+        "email_generation_source": "template",
+        "email_generation_fallback_reason": "Необоснованные английские слова: LLM, ecom, VLM, OCR."
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-3a9aa88f451c980b27f635c584ae-website-form-2",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-ccfeddc16a82ff056b9fff435526",
+      "lead_id": "lead-3a9aa88f451c980b27f635c584ae",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://trapeza.ru/contacts",
+      "source_url": "https://trapeza.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-3a9aa88f451c980b27f635c584ae-website-form-3",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-ccfeddc16a82ff056b9fff435526",
+      "lead_id": "lead-3a9aa88f451c980b27f635c584ae",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://trapeza.ru/contact",
+      "source_url": "https://trapeza.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-3a9aa88f451c980b27f635c584ae-website-form-4",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-ccfeddc16a82ff056b9fff435526",
+      "lead_id": "lead-3a9aa88f451c980b27f635c584ae",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://www.trapeza.ru/contacts/",
+      "source_url": "https://www.trapeza.ru/contacts/",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-3a9aa88f451c980b27f635c584ae-company-website-5",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-ccfeddc16a82ff056b9fff435526",
+      "lead_id": "lead-3a9aa88f451c980b27f635c584ae",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://trapeza.ru",
+      "source_url": "https://trapeza.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-3a9aa88f451c980b27f635c584ae-generic-email-1",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-ccfeddc16a82ff056b9fff435526",
+      "lead_id": "lead-3a9aa88f451c980b27f635c584ae",
+      "contact_type": "generic_email",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": "trapeza@trapeza.ru",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://team.trapeza.ru",
+      "source_label": "public email parser",
+      "confidence_score": 99,
+      "is_primary": true,
+      "metadata": {
+        "email_status": "company_email_ready",
+        "email_mx_verified": true,
+        "email_domain_match_reason": "official_domain",
+        "email_subject": "Группа компаний TRAPEZA: быстрый контур AI-задачи",
+        "email_body": "Добрый день.\n\nВ публичном источнике Группа компаний TRAPEZA обратил внимание на задачу: «Задача роли — повышать эффективность и управляемость бизнеса через изменения в организации работы, развитие систем и применение ИИ.».\n\nКогда такая инициатива уже сформулирована, найм специалиста и запуск самой задачи часто идут с разной скоростью. Это не означает, что сотрудник не нужен: отдельный ограниченный участок можно проверить раньше, чтобы к выходу человека у команды уже были подтверждённые требования и рабочий прототип.\n\nПолезно отделить архитектурные решения, которые требуют постоянного владельца внутри компании, от короткого пилота, который быстро проверяет данные, интеграции и реальную ценность сценария.\n\nЯ AI-архитектор. Могу независимо разобрать задачу, собрать ограниченный прототип или реализовать отдельный AI-блок, не подменяя будущего сотрудника и не меняя выбранную вами кадровую стратегию.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": false,
+        "outreach_selected": true,
+        "email_generation_source": "template",
+        "email_generation_fallback_reason": "Необоснованные английские слова: LLM."
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-56ab107a4bab7b695c2c79f2c22b",
+      "lead_id": "lead-9d72c51c467e2edb968be9309e33",
+      "full_name": "Сергей Владимирович Тимошенко",
+      "role_title": "Генеральный директор «Агротек Альянс»",
+      "department": null,
+      "source_url": "https://agrotek.com",
+      "source_label": "Iterative public research",
+      "confidence_score": 85,
+      "is_primary": false,
+      "created_at": "2026-10-16T11:41:29.154Z",
+      "id": "contact-lead-9d72c51c467e2edb968be9309e33-primary-person-confirmed",
+      "contact_type": "confirmed_person",
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "metadata": {
+        "outreach_selected": false
+      }
+    },
+    {
+      "id": "contact-lead-9d72c51c467e2edb968be9309e33-website-form-3",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-56ab107a4bab7b695c2c79f2c22b",
+      "lead_id": "lead-9d72c51c467e2edb968be9309e33",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://agrotek.com/contacts",
+      "source_url": "https://agrotek.com/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-9d72c51c467e2edb968be9309e33-website-form-4",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-56ab107a4bab7b695c2c79f2c22b",
+      "lead_id": "lead-9d72c51c467e2edb968be9309e33",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://agrotek.com/contact",
+      "source_url": "https://agrotek.com/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-9d72c51c467e2edb968be9309e33-company-website-5",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-56ab107a4bab7b695c2c79f2c22b",
+      "lead_id": "lead-9d72c51c467e2edb968be9309e33",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://agrotek.com",
+      "source_url": "https://agrotek.com",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-9d72c51c467e2edb968be9309e33-generic-email-1",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-56ab107a4bab7b695c2c79f2c22b",
+      "lead_id": "lead-9d72c51c467e2edb968be9309e33",
+      "contact_type": "generic_email",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": "info@agrotek.com",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://agrotek.com",
+      "source_label": "public email parser",
+      "confidence_score": 99,
+      "is_primary": true,
+      "metadata": {
+        "email_status": "company_email_ready",
+        "email_mx_verified": true,
+        "email_domain_match_reason": "official_domain",
+        "email_subject": "Группа компаний Агротек: быстрый контур AI-задачи",
+        "email_body": "Добрый день.\n\nВ публичном источнике Группа компаний Агротек обратил внимание на задачу: «Мы приглашаем Инженер по AI-автоматизации».\n\nКогда такая инициатива уже сформулирована, найм специалиста и запуск самой задачи часто идут с разной скоростью. Это не означает, что сотрудник не нужен: отдельный ограниченный участок можно проверить раньше, чтобы к выходу человека у команды уже были подтверждённые требования и рабочий прототип.\n\nПолезно отделить архитектурные решения, которые требуют постоянного владельца внутри компании, от короткого пилота, который быстро проверяет данные, интеграции и реальную ценность сценария.\n\nЯ AI-архитектор. Могу независимо разобрать задачу, собрать ограниченный прототип или реализовать отдельный AI-блок, не подменяя будущего сотрудника и не меняя выбранную вами кадровую стратегию.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": true,
+        "outreach_selected": true,
+        "email_generation_source": "template",
+        "email_generation_fallback_reason": "Необоснованные английские слова: LLM."
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-088bf2855aeb44ff4c19c8a05662-website-form-1",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-31fc6a8dff6b5af097b27c122e54",
+      "lead_id": "lead-088bf2855aeb44ff4c19c8a05662",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://tkbbank.ru/contacts",
+      "source_url": "https://tkbbank.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": true,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-088bf2855aeb44ff4c19c8a05662-website-form-2",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-31fc6a8dff6b5af097b27c122e54",
+      "lead_id": "lead-088bf2855aeb44ff4c19c8a05662",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://tkbbank.ru/contact",
+      "source_url": "https://tkbbank.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "contact-lead-088bf2855aeb44ff4c19c8a05662-company-website-3",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "company_id": "company-31fc6a8dff6b5af097b27c122e54",
+      "lead_id": "lead-088bf2855aeb44ff4c19c8a05662",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://tkbbank.ru",
+      "source_url": "https://tkbbank.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T11:41:29.154Z"
+    }
+  ],
+  "signals": [
+    {
+      "id": "signal-cfa604c53d5ad5a15903aecb1d17",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "lead_id": "lead-7be458768553f281302f1f0a0b9d",
+      "company_id": "company-3116157c58f5a745578b92938edb",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "NLP/LLM инженер",
+      "signal_detail": "Мы ищем middle NLP/LLM инженера в команду, которая занимается разработкой инновационных решений на основе искусственного интеллекта для поддержки корпоративных клиентов. Проект Сбера.",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/138530373",
+      "confidence_score": 90,
+      "found_at": "2026-10-16T11:41:29.154Z",
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "signal-5fcb4ef24b42a901d768af6c15f4",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "lead_id": "lead-f7a1e5bc9142994f41d8fa389d08",
+      "company_id": "company-a4a4d8021409f8f4ca84ce07b391",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "AI-инженер (автоматизация бизнес-процессов)",
+      "signal_detail": "Ищем инженера отдела внедрения, который будет переводить процессы заказчиков (финансы, логистика, ecom, HR) в работающие автоматизации на базе LLM/VLM/OCR — от брифинга до эксплуатации.",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/137589737",
+      "confidence_score": 90,
+      "found_at": "2026-10-16T11:41:29.154Z",
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "signal-6c3eacc7e8e205e4ef899d97d843",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "lead_id": "lead-3a9aa88f451c980b27f635c584ae",
+      "company_id": "company-ccfeddc16a82ff056b9fff435526",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Forward Deployed Engineer / Инженер по развитию бизнес-процессов",
+      "signal_detail": "Задача роли — повышать эффективность и управляемость бизнеса через изменения в организации работы, развитие систем и применение ИИ.",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/138526837",
+      "confidence_score": 90,
+      "found_at": "2026-10-16T11:41:29.154Z",
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "signal-78edfd1b777b68d4538ce2b6811b",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "lead_id": "lead-9d72c51c467e2edb968be9309e33",
+      "company_id": "company-56ab107a4bab7b695c2c79f2c22b",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Инженер по AI-автоматизации",
+      "signal_detail": "Мы приглашаем Инженер по AI-автоматизации",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/137223578",
+      "confidence_score": 90,
+      "found_at": "2026-10-16T11:41:29.154Z",
+      "created_at": "2026-10-16T11:41:29.154Z"
+    },
+    {
+      "id": "signal-36d4fc24faeba95e14a71aab9171",
+      "pipeline_run_id": "pipeline-8d2781bf265f3e048dfebacde5e3",
+      "campaign_id": "campaign-ai-hiring-6c676070c33c218b2b89abd402b1",
+      "lead_id": "lead-088bf2855aeb44ff4c19c8a05662",
+      "company_id": "company-31fc6a8dff6b5af097b27c122e54",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "ML-инженер",
+      "signal_detail": "Разработка AI-агентов и мультиагентных систем (оркестрация агентов, управление памятью, планирование и декомпозиция задач, умная маршрутизация) Построение RAG-систем",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/138264765",
+      "confidence_score": 90,
+      "found_at": "2026-10-16T11:41:29.154Z",
+      "created_at": "2026-10-16T11:41:29.154Z"
+    }
+  ],
+  "queueBefore": [
+    {
+      "id": "outreach-contact-lead-f7a1e5bc9142994f41d8fa389d08-generic-email-9",
+      "company_name": "Детский мир. ДМ-тех",
+      "status": "needs_review",
+      "quality_gate_passed": false
+    },
+    {
+      "id": "outreach-contact-lead-3a9aa88f451c980b27f635c584ae-generic-email-1",
+      "company_name": "Группа компаний TRAPEZA",
+      "status": "needs_review",
+      "quality_gate_passed": false
+    },
+    {
+      "id": "outreach-contact-lead-9d72c51c467e2edb968be9309e33-generic-email-1",
+      "company_name": "Группа компаний Агротек",
+      "status": "needs_review",
+      "quality_gate_passed": true
+    }
+  ],
+  "metrics": {
+    "companies": 5,
+    "people": 3,
+    "personalEmails": 0,
+    "emailContacts": 3,
+    "ready": 1,
+    "manualReview": 2
+  },
+  "lifecycle": {
+    "single": "approved",
+    "bulk": 0,
+    "queued": 1,
+    "senderDryRun": "sent",
+    "sinkCalls": 1,
+    "followup": {
+      "generated": 1,
+      "skipped": {}
+    },
+    "followupNote": "Elapsed time and no-reply status simulated in isolated storage; no IMAP calls"
+  },
+  "orphanRequests": 0,
+  "requests": {
+    "ws-0k3rkeh9pgddyrz7.ap-southeast-1.maas.aliyuncs.com": 30,
+    "api.hh.ru": 3,
+    "hh.ru": 21,
+    "www.bing.com": 25,
+    "api.tavily.com": 1,
+    "api.openai.com": 26,
+    "techcrunch.com": 1,
+    "rostender.info": 1,
+    "llmstudio.ru": 1,
+    "www.prnewswire.com": 2,
+    "bidzaar.com": 2,
+    "gde-ai.com": 1,
+    "ai-rate.ru": 1,
+    "ople.agency": 1,
+    "www.tenders-sa.org": 1,
+    "lytvynov-production.com": 1,
+    "govmarket.ca": 1,
+    "ryven.agency": 1,
+    "web.mp.kz": 1,
+    "digitalleague.ru": 14,
+    "detmir.ru": 27,
+    "trapeza.ru": 13,
+    "methods.trapeza.ru": 1,
+    "agrotek.com": 15,
+    "tkbbank.ru": 14,
+    "www.detmir.ru": 3,
+    "search.brave.com": 22,
+    "corp.detmir.ru": 4,
+    "about.detmir.ru": 1,
+    "search.yahoo.com": 2,
+    "www.trapeza.ru": 3,
+    "team.trapeza.ru": 3
+  },
+  "modelCalls": [
+    {
+      "schema": "direct_ai_need_search_plan",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 639,
+        "output_tokens": 416,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 639
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8691,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 573,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9264
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8709,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 506,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9215
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8727,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 379,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9106
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 4097,
+        "output_tokens": 985,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 4097
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 5448,
+        "output_tokens": 1123,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 5448
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 4034,
+        "output_tokens": 1082,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 4034
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "direct_ai_need_search_plan",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 2601,
+        "output_tokens": 292,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 2601
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8692,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 800,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9492
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8703,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 377,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9080
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 5926,
+        "output_tokens": 1236,
+        "input_tokens_details": {
+          "cached_tokens": 512,
+          "text_tokens": 5926
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 1688,
+        "output_tokens": 130,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 1688
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 4907,
+        "output_tokens": 253,
+        "input_tokens_details": {
+          "cached_tokens": 1152,
+          "text_tokens": 4907
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8707,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 410,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9117
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8654,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 240,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8894
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "people_evidence",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 5214,
+        "output_tokens": 611,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 5214
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8669,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 278,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8947
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8694,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 329,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9023
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8610,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 444,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9054
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8664,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 276,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8940
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "leadgen_outreach_v4",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 608,
+        "output_tokens": 211,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 608
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 3545,
+        "output_tokens": 190,
+        "input_tokens_details": {
+          "cached_tokens": 1152,
+          "text_tokens": 3545
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 5633,
+        "output_tokens": 326,
+        "input_tokens_details": {
+          "cached_tokens": 3456,
+          "text_tokens": 5633
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8668,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 88,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8756
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 5770,
+        "output_tokens": 334,
+        "input_tokens_details": {
+          "cached_tokens": 5120,
+          "text_tokens": 5770
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8772,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 65,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8837
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8848,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 80,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8928
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 5993,
+        "output_tokens": 415,
+        "input_tokens_details": {
+          "cached_tokens": 5120,
+          "text_tokens": 5993
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8786,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 63,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8849
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 7641,
+        "output_tokens": 351,
+        "input_tokens_details": {
+          "cached_tokens": 5120,
+          "text_tokens": 7641
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "leadgen_outreach_v4",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 576,
+        "output_tokens": 233,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 576
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 3178,
+        "output_tokens": 247,
+        "input_tokens_details": {
+          "cached_tokens": 1152,
+          "text_tokens": 3178
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8768,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 383,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9151
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 6346,
+        "output_tokens": 275,
+        "input_tokens_details": {
+          "cached_tokens": 2816,
+          "text_tokens": 6346
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8772,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 72,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8844
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8810,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 69,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8879
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 6557,
+        "output_tokens": 254,
+        "input_tokens_details": {
+          "cached_tokens": 2816,
+          "text_tokens": 6557
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8801,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 238,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9039
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 6763,
+        "output_tokens": 590,
+        "input_tokens_details": {
+          "cached_tokens": 5760,
+          "text_tokens": 6763
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8794,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 82,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8876
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 7440,
+        "output_tokens": 552,
+        "input_tokens_details": {
+          "cached_tokens": 1152,
+          "text_tokens": 7440
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8750,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 278,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9028
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8717,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 215,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8932
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 7680,
+        "output_tokens": 317,
+        "input_tokens_details": {
+          "cached_tokens": 1152,
+          "text_tokens": 7680
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "leadgen_outreach_v4",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 569,
+        "output_tokens": 246,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 569
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 1635,
+        "output_tokens": 167,
+        "input_tokens_details": {
+          "cached_tokens": 1152,
+          "text_tokens": 1635
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8788,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 134,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8922
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 1861,
+        "output_tokens": 197,
+        "input_tokens_details": {
+          "cached_tokens": 1152,
+          "text_tokens": 1861
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8671,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 116,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8787
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 1926,
+        "output_tokens": 186,
+        "input_tokens_details": {
+          "cached_tokens": 1152,
+          "text_tokens": 1926
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8664,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 378,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9042
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 2266,
+        "output_tokens": 234,
+        "input_tokens_details": {
+          "cached_tokens": 1664,
+          "text_tokens": 2266
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8856,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 256,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9112
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 2663,
+        "output_tokens": 250,
+        "input_tokens_details": {
+          "cached_tokens": 1664,
+          "text_tokens": 2663
+        }
+      },
+      "webSearchCalls": 0
+    }
+  ],
+  "finishedAt": "2026-10-16T11:45:59.806Z"
+}

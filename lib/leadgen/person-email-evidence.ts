@@ -5,7 +5,7 @@ const RU_TO_LATIN: Record<string, string> = {
   ч: "ch", ш: "sh", щ: "shch", ъ: "", ы: "y", ь: "", э: "e", ю: "yu", я: "ya",
 };
 
-function transliterate(value: string): string {
+export function transliterate(value: string): string {
   return value.toLowerCase().split("")
     .map((character) => RU_TO_LATIN[character] ?? character)
     .join("")

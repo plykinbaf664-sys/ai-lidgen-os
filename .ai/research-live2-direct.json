@@ -1,0 +1,1908 @@
+{
+  "mode": "direct",
+  "startedAt": "2026-10-06T20:11:41.412Z",
+  "isolated": "C:\\Users\\User\\AppData\\Local\\Temp\\leadgen-final-direct-fTmDD1",
+  "productionSmtpCalls": 0,
+  "discovery": {
+    "mode": "LIVE_READ_ONLY",
+    "verticalId": null,
+    "planner": {
+      "status": "AI",
+      "reason": "configured",
+      "intentHypotheses": [
+        "Найм специалистов для проектов с ИИ и агентной автоматизацией",
+        "Поиск подрядчиков и публикация закупок на AI-решения",
+        "Объявления компаний о пилотных проектах с LLM и ИИ в 2026 году"
+      ],
+      "terminology": [
+        "искусственный интеллект",
+        "ИИ",
+        "AI",
+        "LLM",
+        "агентная автоматизация",
+        "пилотный проект",
+        "внедрение",
+        "поиск подрядчика",
+        "закупка",
+        "найм специалистов",
+        "автоматизация бизнес-процессов"
+      ],
+      "sourceHypotheses": [
+        "работные сайты (hh.ru, superjob.ru)",
+        "официальные сайты компаний",
+        "новостные ресурсы и пресс-релизы компаний",
+        "информационные порталы о закупках"
+      ],
+      "queries": [
+        "ИИ автоматизация бизнес-процессов",
+        "AI агентная автоматизация задач",
+        "LLM интеграция бизнес-систем",
+        "компания объявила поиск подрядчика AI 2026",
+        "организация публикует закупку на внедрение ИИ",
+        "компания запустила пилот AI проекта 2026"
+      ],
+      "queryAngles": [
+        "ru_job_board",
+        "ru_job_board",
+        "ru_job_board",
+        "market_news",
+        "market_news",
+        "market_news"
+      ],
+      "execution": "ai_semantic",
+      "refinementQueries": [
+        "интеллектуальная автоматизация логистика подрядчик",
+        "финансовый контроль пилот генеративный AI"
+      ]
+    },
+    "metrics": {
+      "jobsScanned": 54,
+      "assessed": 24,
+      "hhAssessed": 9,
+      "nonHhAssessed": 15,
+      "semanticDirect": 6,
+      "aiRoleCandidates": 24,
+      "automationIntentPass": 6,
+      "companiesExtracted": 6,
+      "hhCompanies": 6,
+      "nonHhCompanies": 0,
+      "officialDomainsConfirmed": 6,
+      "icpMatch": 0,
+      "icpUncertain": 0,
+      "icpMismatch": 0,
+      "segmentNotApplied": 6,
+      "contactsFound": 3,
+      "ready": 3,
+      "falsePositives": 0,
+      "runtimeMs": 91334,
+      "requests": 123,
+      "companyIdentityQueries": 0,
+      "timeouts": 0,
+      "abortedRequests": 0,
+      "orphanRequests": 0
+    },
+    "accepted": [
+      {
+        "company": "Аптеки Плюс",
+        "vacancyTitle": "Специалист по автоматизации и оптимизации процессов",
+        "sourceUrl": "https://hh.ru/vacancy/138115864",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "Поиск и внедрение улучшений в процессы, использование ИИ и цифровых инструментов в ежедневной работе",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "В описании вакансии для внутренней команды прямое требование внедрять AI в процессы.",
+        "officialWebsite": "https://aptekiplus.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": false
+      },
+      {
+        "company": "Предприятие ФЭСТ",
+        "vacancyTitle": "Специалист по внедрению ИИ/AI-бизнес-процессов",
+        "sourceUrl": "https://hh.ru/vacancy/138055036",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "В производственную компанию требуется специалист для внедрения ИИ... Разработка и внедрение ИИ-ассистентов ,агентов— создавать, настраивать и интегрировать в рабочие процессы ИИ-агентов и чат-ботов...",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Вакансия требует внедрения и поддержки AI-решений для внутренних нужд компании.",
+        "officialWebsite": "https://fest-k.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": false
+      },
+      {
+        "company": "УМНЫЙ СЕРВИС",
+        "vacancyTitle": "Бизнес‑аналитик процессной эффективности (оптимизация бизнес-процессов/автоматизация с помощью ИИ)",
+        "sourceUrl": "https://hh.ru/vacancy/137328917",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "Оптимизация и выбор автоматизации: формировать предложения по оптимизации с целевым эффектом, оценивать потенциал автоматизации: подбирать классические ИТ‑решения (RPA, CRM, ERP и др.) и ИИ‑инструменты (OCR, чат‑боты, прогнозирование). Внедрение решений: формировать ТЗ и функциональные требования, ставить задачи команде разработки, участвовать во внедрении, проводить пилоты и тестировать результаты.",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "В вакансии прямо указаны задачи по внедрению и пилотированию AI в бизнес-процессах.",
+        "officialWebsite": "https://umserv.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 1,
+        "contactEmail": "zakaz@umserv.ru",
+        "contactKind": "sales",
+        "contactSourceUrl": "https://umserv.ru/",
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": true
+      },
+      {
+        "company": "UNICA engineering",
+        "vacancyTitle": "Бизнес-аналитик по AI-автоматизации",
+        "sourceUrl": "https://hh.ru/vacancy/138013449",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "Ищем начинающего аналитика, который хочет решать реальные задачи бизнеса с помощью AI. Основной инструмент — Claude Code / Codex. ... Разрабатывать автоматизации реальных бизнес-процессов с помощью Claude Code и других AI-инструментов.",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Активная вакансия на HH с функциями внедрения AI-автоматизации для собственных нужд.",
+        "officialWebsite": "https://unica-eng.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 1,
+        "contactEmail": "info@unica-eng.ru",
+        "contactKind": "general",
+        "contactSourceUrl": "https://unica-eng.ru/",
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": true
+      },
+      {
+        "company": "КРЕДИТ ЕВРОПА БАНК",
+        "vacancyTitle": "Разработчик систем интеграции с LLM",
+        "sourceUrl": "https://hh.ru/vacancy/135928554",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "Ведение проекта интеграции с LLM от идеи до продакшн-деплоя: проектирование, разработка, тестирование, мониторинг и поддержка... интеграция LLM и RAG-модулей, построение API для бизнес-приложений банка.",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Явное описание задачи по интеграции LLM/AI в рабочие бизнес-решения банка.",
+        "officialWebsite": "https://crediteurope.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": false
+      },
+      {
+        "company": "Прометей",
+        "vacancyTitle": "Специалист по внедрению ИИ и оптимизации бизнес-процессов",
+        "sourceUrl": "https://hh.ru/vacancy/138132718",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "искать возможности применения ИИ в продажах, закупках, логистике, маркетинге, документообороте, аналитике и других направлениях; тестировать ИИ-сервисы и выбирать решения, которые дают измеримый результат для бизнеса; проектировать и внедрять ИИ-ассистентов...",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Роль подразумевает прямое выполнение действий по внедрению ИИ в бизнес-процессы.",
+        "officialWebsite": "https://prometheusenergy.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 1,
+        "contactEmail": "info@prometheusenergy.ru",
+        "contactKind": "general",
+        "contactSourceUrl": "https://prometheusenergy.ru/",
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": true
+      }
+    ],
+    "sourceClasses": {
+      "hh": {
+        "results": 14,
+        "assessed": 9,
+        "direct": 6,
+        "companies": 6,
+        "rejected": {
+          "direct_intent_not_relevant": 2,
+          "direct_intent_likely_not_confirmed": 1,
+          "bounded_sample_not_assessed": 5
+        }
+      },
+      "social": {
+        "results": 1,
+        "assessed": 1,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "direct_intent_likely_not_confirmed": 1
+        }
+      },
+      "job_board": {
+        "results": 2,
+        "assessed": 2,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "direct_intent_not_relevant": 2
+        }
+      },
+      "directory": {
+        "results": 2,
+        "assessed": 2,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "direct_intent_not_relevant": 2
+        }
+      },
+      "company_site": {
+        "results": 23,
+        "assessed": 7,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "direct_intent_not_relevant": 5,
+          "direct_intent_stale": 2,
+          "bounded_sample_not_assessed": 16
+        }
+      },
+      "news": {
+        "results": 7,
+        "assessed": 2,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "direct_intent_likely_not_confirmed": 2,
+          "bounded_sample_not_assessed": 5
+        }
+      },
+      "blog": {
+        "results": 5,
+        "assessed": 1,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "bounded_sample_not_assessed": 4,
+          "direct_intent_not_relevant": 1
+        }
+      }
+    },
+    "rejected": [
+      {
+        "company": null,
+        "vacancyTitle": "AI, частные подрядчики и риски Иммиграционный ...",
+        "sourceUrl": "https://www.facebook.com/kolyadalaw/posts/-%D0%BA%D0%B0%D0%BA-ice-%D1%82%D0%B5%D0%BF%D0%B5%D1%80%D1%8C-%D0%B8%D1%89%D0%B5%D1%82-%D0%B8%D0%BC%D0%BC%D0%B8%D0%B3%D1%80%D0%B0%D0%BD%D1%82%D0%BE%D0%B2-ai-%D1%87%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B5-%D0%BF%D0%BE%D0%B4%D1%80%D1%8F%D0%B4%D1%87%D0%B8%D0%BA%D0%B8-%D0%B8-%D1%80%D0%B8%D1%81%D0%BA%D0%B8%D0%B8%D0%BC%D0%BC%D0%B8%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9-%D0%BA%D0%BE%D0%BD/1568852488575507",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Этичный ИИ встроен в закупки, а не в плакаты",
+        "sourceUrl": "https://ru.linkedin.com/pulse/ethical-ai-built-procurement-posters-thomas-fox-c4axc?tl=ru",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Как внедрить нейросети в компании в 2026 году: пошаговый план, пилот и масштабирование",
+        "sourceUrl": "https://www.sostav.ru/blogs/287107/112126",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Большая языковая модель — Википедия",
+        "sourceUrl": "https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%B0%D1%8F_%D1%8F%D0%B7%D1%8B%D0%BA%D0%BE%D0%B2%D0%B0%D1%8F_%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Full-stack разработчик (Python / React) в AI-платформу ГигаЧат Бизнес",
+        "sourceUrl": "https://hh.ru/vacancy/138119258",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "AI, технологии, наука, бизнес и мода: что обсуждают в США утром 11 августа 2026 года — Новости Нью-Йорка",
+        "sourceUrl": "https://brightonbeachnews.com/rus/augusr-11-2026-usa-news-ai-business",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Специалист по систематизации / Бизнес-аналитик / операционный директор",
+        "sourceUrl": "https://hh.ru/vacancy/137913310",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Госзакупки ИТ в России",
+        "sourceUrl": "https://www.tadviser.ru/index.php/%D0%A1%D1%82%D0%B0%D1%82%D1%8C%D1%8F:%D0%93%D0%BE%D1%81%D0%B7%D0%B0%D0%BA%D1%83%D0%BF%D0%BA%D0%B8_%D0%98%D0%A2_%D0%B2_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8",
+        "status": "REJECTED",
+        "reason": "direct_intent_stale",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Специалист по оптимизации бизнес-процессов",
+        "sourceUrl": "https://hh.ru/vacancy/137974873",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Публикация участника Kanat Israilov",
+        "sourceUrl": "https://ru.linkedin.com/posts/kanat-israilov-441a61a5_%D0%B2-2026-%D0%B3%D0%BE%D0%B4%D1%83-%D0%BA%D0%BE%D0%BB%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE-ai-%D0%BF%D0%B8%D0%BB%D0%BE%D1%82%D0%BE%D0%B2-%D1%83%D0%B6%D0%B5-%D0%BD%D0%B5-activity-7507624193715318785-CzFL",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Агентства по GEO-продвижению в нейросетях в 2026 году",
+        "sourceUrl": "https://www.sostav.ru/blogs/291756/97070",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Участникам - Администрация городского округа «Город ...",
+        "sourceUrl": "https://www.gorodlesnoy.ru/city/economica/zakupki/uchastnikam.php",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Формирование склада завтрашнего дня: Geekplus и LPP Logistics трансформируют розничную логистику с помощью интеллектуальной автоматизации",
+        "sourceUrl": "https://www.prnewswire.com/news-releases/----geekplus--lpp-logistics--------302896135.html",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "AI Co‑Pilot Повышайте продуктивность безопасно",
+        "sourceUrl": "https://www.rackcorp.com/ru/rackcorp-ai/ai-co-pilot",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Внедрение ИИ в логистику ᐉ автоматизация маршрутов и складов",
+        "sourceUrl": "https://neurob2b.tech/service/ai-avtomatizatsiya-logistiki",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "ᐈ Возможности применения искусственного интеллекта - GoPractice",
+        "sourceUrl": "https://gopractice.ru/product/finding-potential-ai-applications",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Искусственный интеллект в логистике: как технологии меняют транспортную и складскую деятельность",
+        "sourceUrl": "https://www.1cbit.ru/blog/iskusstvennyy-intellekt-v-logistike-kak-tekhnologii-menyayut-transportnuyu-i-skladskuyu-deyatelnost",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Долина смерти: почему 95% ИИ-пилотов терпят крах",
+        "sourceUrl": "https://hightech.fm/2025/11/09/ai-fail",
+        "status": "REJECTED",
+        "reason": "direct_intent_stale",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      }
+    ],
+    "rejectionReasons": {
+      "direct_intent_likely_not_confirmed": 4,
+      "direct_intent_not_relevant": 12,
+      "direct_intent_stale": 2
+    },
+    "mutated": false,
+    "smtpCalls": 0
+  },
+  "campaign": {
+    "id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+    "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+    "name": "Controlled Direct AI Need",
+    "requested_by": "isolated-live",
+    "status": "completed",
+    "icp_label": "Прямой подтверждённый спрос на AI",
+    "offer_label": "разобрать конкретную AI-задачу и быстро проверить решение через аудит или MVP",
+    "created_at": "2026-10-06T20:13:14.229Z"
+  },
+  "companies": [
+    {
+      "id": "company-432cc6c3e6b57fe893c0c13edf35",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_name": "Аптеки Плюс",
+      "company_domain": "aptekiplus.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/138115864",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "Аптеки Плюс",
+          "officialWebsite": "https://aptekiplus.ru",
+          "officialDomain": "aptekiplus.ru",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [],
+            "inferred": []
+          },
+          "bestOutreachContact": null,
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Специалист по автоматизации и оптимизации процессов",
+            "detail": "Поиск и внедрение улучшений в процессы, использование ИИ и цифровых инструментов в ежедневной работе",
+            "sourceUrl": "https://hh.ru/vacancy/138115864",
+            "confidence": 90
+          },
+          "researchConfidence": "UNVERIFIED",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 4,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 10,
+            "lprMs": 23761,
+            "contactMs": 143,
+            "totalMs": 23908,
+            "stopReason": "research_budget"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/138115864",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-06T20:13:14.229Z",
+      "updated_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "company-b41e552e8957104a56e3d2e083c6",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_name": "Предприятие ФЭСТ",
+      "company_domain": "fest-k.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/138055036",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "Предприятие ФЭСТ",
+          "officialWebsite": "https://fest-k.ru",
+          "officialDomain": "fest-k.ru",
+          "people": [
+            {
+              "fullName": "Касаткина Эльвира Владимировна",
+              "role": "директор",
+              "confidence": "HIGH_CONFIDENCE",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.rusprofile.ru/id/3366340",
+                  "sourceType": "public_web",
+                  "excerpt": "организацию возглавляет директор Касаткина Эльвира Владимировна",
+                  "capturedAt": "2026-10-06T20:13:14.229Z",
+                  "confidence": 70
+                },
+                {
+                  "sourceUrl": "https://kontragent.vbr.ru/company/ooo-predpriyatie-fest-1024400513708",
+                  "sourceType": "public_web",
+                  "excerpt": "ФИО директора компании — КАСАТКИНА ЭЛЬВИРА ВЛАДИМИРОВНА",
+                  "capturedAt": "2026-10-06T20:13:14.229Z",
+                  "confidence": 70
+                }
+              ],
+              "profiles": {
+                "tenchat": null,
+                "telegram": null,
+                "instagram": null,
+                "vk": null,
+                "other": []
+              },
+              "phone": null
+            },
+            {
+              "fullName": "Парфёнова Наталия Витальевна",
+              "role": "первый заместитель директора",
+              "confidence": "HIGH_CONFIDENCE",
+              "evidence": [
+                {
+                  "sourceUrl": "https://festltd.ru/contacts",
+                  "sourceType": "public_web",
+                  "excerpt": "Первый заместитель директора Парфёнова Наталия Витальевна Тел.: +7 (4942) 49-32-04 E-mail: parfenova@fest-k.ru",
+                  "capturedAt": "2026-10-06T20:13:14.229Z",
+                  "confidence": 70
+                }
+              ],
+              "profiles": {
+                "tenchat": null,
+                "telegram": null,
+                "instagram": null,
+                "vk": null,
+                "other": []
+              },
+              "phone": null
+            }
+          ],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [],
+            "inferred": []
+          },
+          "bestOutreachContact": null,
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Специалист по внедрению ИИ/AI-бизнес-процессов",
+            "detail": "В производственную компанию требуется специалист для внедрения ИИ... Разработка и внедрение ИИ-ассистентов ,агентов— создавать, настраивать и интегрировать в рабочие процессы ИИ-агентов и чат-ботов...",
+            "sourceUrl": "https://hh.ru/vacancy/138055036",
+            "confidence": 90
+          },
+          "researchConfidence": "LIKELY",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 3,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 11,
+            "lprMs": 40023,
+            "contactMs": 119,
+            "totalMs": 40144,
+            "stopReason": "people_found_email_unresolved"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/138055036",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-06T20:13:14.229Z",
+      "updated_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "company-10980363d7b24d15b136c8dc385e",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_name": "УМНЫЙ СЕРВИС",
+      "company_domain": "umserv.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/137328917",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "УМНЫЙ СЕРВИС",
+          "officialWebsite": "https://umserv.ru",
+          "officialDomain": "umserv.ru",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [
+              {
+                "email": "zakaz@umserv.ru",
+                "personName": null,
+                "classification": "DEPARTMENT",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://umserv.ru",
+                    "sourceType": "official",
+                    "excerpt": "zakaz@umserv.ru — public email parser",
+                    "capturedAt": "2026-10-06T20:13:14.229Z",
+                    "confidence": 99
+                  }
+                ]
+              }
+            ],
+            "general": [],
+            "inferred": []
+          },
+          "bestOutreachContact": {
+            "email": "zakaz@umserv.ru",
+            "personName": null,
+            "role": null,
+            "classification": "DEPARTMENT",
+            "contactLevel": "E",
+            "sourceUrl": "https://umserv.ru"
+          },
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Бизнес‑аналитик процессной эффективности (оптимизация бизнес-процессов/автоматизация с помощью ИИ)",
+            "detail": "Оптимизация и выбор автоматизации: формировать предложения по оптимизации с целевым эффектом, оценивать потенциал автоматизации: подбирать классические ИТ‑решения (RPA, CRM, ERP и др.) и ИИ‑инструменты (OCR, чат‑боты, прогнозирование). Внедрение решений: формировать ТЗ и функциональные требования, ставить задачи команде разработки, участвовать во внедрении, проводить пилоты и тестировать результаты.",
+            "sourceUrl": "https://hh.ru/vacancy/137328917",
+            "confidence": 90
+          },
+          "researchConfidence": "HIGH_CONFIDENCE",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 0,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 10,
+            "lprMs": 2007,
+            "contactMs": 19,
+            "totalMs": 4497,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/137328917",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-06T20:13:14.229Z",
+      "updated_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "company-bdb57e0dabedbcf9a8c8fd65d67e",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_name": "UNICA engineering",
+      "company_domain": "unica-eng.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/138013449",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "UNICA engineering",
+          "officialWebsite": "https://unica-eng.ru",
+          "officialDomain": "unica-eng.ru",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [
+              {
+                "email": "info@unica-eng.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://unica-eng.ru",
+                    "sourceType": "official",
+                    "excerpt": "info@unica-eng.ru — public email parser",
+                    "capturedAt": "2026-10-06T20:13:14.229Z",
+                    "confidence": 99
+                  }
+                ]
+              }
+            ],
+            "inferred": []
+          },
+          "bestOutreachContact": {
+            "email": "info@unica-eng.ru",
+            "personName": null,
+            "role": null,
+            "classification": "GENERAL",
+            "contactLevel": "E",
+            "sourceUrl": "https://unica-eng.ru"
+          },
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Бизнес-аналитик по AI-автоматизации",
+            "detail": "Ищем начинающего аналитика, который хочет решать реальные задачи бизнеса с помощью AI. Основной инструмент — Claude Code / Codex. ... Разрабатывать автоматизации реальных бизнес-процессов с помощью Claude Code и других AI-инструментов.",
+            "sourceUrl": "https://hh.ru/vacancy/138013449",
+            "confidence": 90
+          },
+          "researchConfidence": "HIGH_CONFIDENCE",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 1,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 12,
+            "lprMs": 8041,
+            "contactMs": 7,
+            "totalMs": 14675,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/138013449",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-06T20:13:14.229Z",
+      "updated_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "company-5fa44d6ba7fc92853dc6203f86e7",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_name": "КРЕДИТ ЕВРОПА БАНК",
+      "company_domain": "crediteurope.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/135928554",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "КРЕДИТ ЕВРОПА БАНК",
+          "officialWebsite": "https://crediteurope.ru",
+          "officialDomain": "crediteurope.ru",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [],
+            "inferred": []
+          },
+          "bestOutreachContact": null,
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Разработчик систем интеграции с LLM",
+            "detail": "Ведение проекта интеграции с LLM от идеи до продакшн-деплоя: проектирование, разработка, тестирование, мониторинг и поддержка... интеграция LLM и RAG-модулей, построение API для бизнес-приложений банка.",
+            "sourceUrl": "https://hh.ru/vacancy/135928554",
+            "confidence": 90
+          },
+          "researchConfidence": "UNVERIFIED",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 0,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 10,
+            "lprMs": 2914,
+            "contactMs": 211,
+            "totalMs": 3125,
+            "stopReason": "model_unavailable"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/135928554",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-06T20:13:14.229Z",
+      "updated_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "company-12f6638e1c91221a36d2a5ba3906",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_name": "Прометей",
+      "company_domain": "prometheusenergy.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/138132718",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "Прометей",
+          "officialWebsite": "https://prometheusenergy.ru",
+          "officialDomain": "prometheusenergy.ru",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [
+              {
+                "email": "info@prometheusenergy.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://prometheusenergy.ru",
+                    "sourceType": "official",
+                    "excerpt": "info@prometheusenergy.ru — public email parser",
+                    "capturedAt": "2026-10-06T20:13:14.229Z",
+                    "confidence": 99
+                  }
+                ]
+              }
+            ],
+            "inferred": []
+          },
+          "bestOutreachContact": {
+            "email": "info@prometheusenergy.ru",
+            "personName": null,
+            "role": null,
+            "classification": "GENERAL",
+            "contactLevel": "E",
+            "sourceUrl": "https://prometheusenergy.ru"
+          },
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Специалист по внедрению ИИ и оптимизации бизнес-процессов",
+            "detail": "искать возможности применения ИИ в продажах, закупках, логистике, маркетинге, документообороте, аналитике и других направлениях; тестировать ИИ-сервисы и выбирать решения, которые дают измеримый результат для бизнеса; проектировать и внедрять ИИ-ассистентов...",
+            "sourceUrl": "https://hh.ru/vacancy/138132718",
+            "confidence": 90
+          },
+          "researchConfidence": "HIGH_CONFIDENCE",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 0,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 10,
+            "lprMs": 1284,
+            "contactMs": 3,
+            "totalMs": 7724,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/138132718",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-06T20:13:14.229Z",
+      "updated_at": "2026-10-06T20:13:14.229Z"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "contact-lead-f68f0f92dab1f817d456751eaf5d-website-form-1",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-432cc6c3e6b57fe893c0c13edf35",
+      "lead_id": "lead-f68f0f92dab1f817d456751eaf5d",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://aptekiplus.ru/contacts",
+      "source_url": "https://aptekiplus.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": true,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-f68f0f92dab1f817d456751eaf5d-website-form-2",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-432cc6c3e6b57fe893c0c13edf35",
+      "lead_id": "lead-f68f0f92dab1f817d456751eaf5d",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://aptekiplus.ru/contact",
+      "source_url": "https://aptekiplus.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-f68f0f92dab1f817d456751eaf5d-company-website-3",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-432cc6c3e6b57fe893c0c13edf35",
+      "lead_id": "lead-f68f0f92dab1f817d456751eaf5d",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://aptekiplus.ru",
+      "source_url": "https://aptekiplus.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-b41e552e8957104a56e3d2e083c6",
+      "lead_id": "lead-0c34e184616593e79bec8d2fe52a",
+      "full_name": "Касаткина Эльвира Владимировна",
+      "role_title": "директор",
+      "department": null,
+      "source_url": "https://www.rusprofile.ru/id/3366340",
+      "source_label": "Iterative public research",
+      "confidence_score": 73,
+      "is_primary": true,
+      "created_at": "2026-10-06T20:13:14.229Z",
+      "id": "contact-lead-0c34e184616593e79bec8d2fe52a-primary-person-confirmed",
+      "contact_type": "confirmed_person",
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "metadata": {
+        "outreach_selected": false
+      }
+    },
+    {
+      "id": "contact-lead-0c34e184616593e79bec8d2fe52a-website-form-1",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-b41e552e8957104a56e3d2e083c6",
+      "lead_id": "lead-0c34e184616593e79bec8d2fe52a",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://fest-k.ru/contacts",
+      "source_url": "https://fest-k.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-0c34e184616593e79bec8d2fe52a-website-form-2",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-b41e552e8957104a56e3d2e083c6",
+      "lead_id": "lead-0c34e184616593e79bec8d2fe52a",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://fest-k.ru/contact",
+      "source_url": "https://fest-k.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-0c34e184616593e79bec8d2fe52a-company-website-3",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-b41e552e8957104a56e3d2e083c6",
+      "lead_id": "lead-0c34e184616593e79bec8d2fe52a",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://fest-k.ru",
+      "source_url": "https://fest-k.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-1f5afa18d8eaa5046d80a90c531d-website-form-2",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-10980363d7b24d15b136c8dc385e",
+      "lead_id": "lead-1f5afa18d8eaa5046d80a90c531d",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://umserv.ru/contacts",
+      "source_url": "https://umserv.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-1f5afa18d8eaa5046d80a90c531d-website-form-3",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-10980363d7b24d15b136c8dc385e",
+      "lead_id": "lead-1f5afa18d8eaa5046d80a90c531d",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://umserv.ru/contact",
+      "source_url": "https://umserv.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-1f5afa18d8eaa5046d80a90c531d-company-website-4",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-10980363d7b24d15b136c8dc385e",
+      "lead_id": "lead-1f5afa18d8eaa5046d80a90c531d",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://umserv.ru",
+      "source_url": "https://umserv.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-1f5afa18d8eaa5046d80a90c531d-generic-email-1",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-10980363d7b24d15b136c8dc385e",
+      "lead_id": "lead-1f5afa18d8eaa5046d80a90c531d",
+      "contact_type": "generic_email",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": "zakaz@umserv.ru",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://umserv.ru",
+      "source_label": "public email parser",
+      "confidence_score": 99,
+      "is_primary": true,
+      "metadata": {
+        "email_status": "department_email_ready",
+        "email_mx_verified": true,
+        "email_domain_match_reason": "official_domain",
+        "email_subject": "Автоматизация процессов в УМНЫЙ СЕРВИС",
+        "email_body": "Добрый день.\n\nВ описании вакансии УМНЫЙ СЕРВИС указывается задача формирования предложений по оптимизации процессов с использованием ИТ и ИИ-инструментов, а также участие в пилотах и тестировании результатов. Это показатель, что сейчас компания активно работает над выбором и внедрением новых технологий. Возможно, внедрение таких проектов сопровождается сложностями с оценкой эффективности и интеграцией разных решений. Мы можем помочь провести пилотный аудит автоматизации на базе текущих процессов с использованием данных по выполнению задач, чтобы вывести конкретные показатели улучшения, например, времени обработки и точности выполнения операций.\n\nЯ AI-архитектор. Если потребуется, подключим бизнес-аналитика: сначала проверим процесс, затем выберем, что автоматизировать.\n\nМогу провести короткий разбор этого участка. Обычно он стоит 9 900 ₽; если ответите в течение 24 часов после отправки письма, проведу разбор бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": true,
+        "outreach_selected": true,
+        "email_generation_source": "ai",
+        "email_generation_fallback_reason": null
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-c4e4e7c77da9a7e871149c1d0828-website-form-2",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-bdb57e0dabedbcf9a8c8fd65d67e",
+      "lead_id": "lead-c4e4e7c77da9a7e871149c1d0828",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://unica-eng.ru/contacts",
+      "source_url": "https://unica-eng.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-c4e4e7c77da9a7e871149c1d0828-website-form-3",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-bdb57e0dabedbcf9a8c8fd65d67e",
+      "lead_id": "lead-c4e4e7c77da9a7e871149c1d0828",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://unica-eng.ru/contact",
+      "source_url": "https://unica-eng.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-c4e4e7c77da9a7e871149c1d0828-company-website-4",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-bdb57e0dabedbcf9a8c8fd65d67e",
+      "lead_id": "lead-c4e4e7c77da9a7e871149c1d0828",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://unica-eng.ru",
+      "source_url": "https://unica-eng.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-c4e4e7c77da9a7e871149c1d0828-generic-email-1",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-bdb57e0dabedbcf9a8c8fd65d67e",
+      "lead_id": "lead-c4e4e7c77da9a7e871149c1d0828",
+      "contact_type": "generic_email",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": "info@unica-eng.ru",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://unica-eng.ru",
+      "source_label": "public email parser",
+      "confidence_score": 99,
+      "is_primary": true,
+      "metadata": {
+        "email_status": "company_email_ready",
+        "email_mx_verified": true,
+        "email_domain_match_reason": "official_domain",
+        "email_subject": "UNICA engineering: быстрый контур AI-задачи",
+        "email_body": "Добрый день.\n\nВ публичном источнике UNICA engineering обратил внимание на задачу: «Ищем начинающего аналитика, который хочет решать реальные задачи бизнеса с помощью AI. Основной инструмент — Claude Code / Codex. ... Разрабатывать автоматизации реальных бизнес-процессов с помощью Claude Code и других AI-инструментов.».\n\nКогда такая инициатива уже сформулирована, найм специалиста и запуск самой задачи часто идут с разной скоростью. Это не означает, что сотрудник не нужен: отдельный ограниченный участок можно проверить раньше, чтобы к выходу человека у команды уже были подтверждённые требования и рабочий прототип.\n\nПолезно отделить архитектурные решения, которые требуют постоянного владельца внутри компании, от короткого пилота, который быстро проверяет данные, интеграции и реальную ценность сценария.\n\nЯ AI-архитектор. Могу независимо разобрать задачу, собрать ограниченный прототип или реализовать отдельный AI-блок, не подменяя будущего сотрудника и не меняя выбранную вами кадровую стратегию.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": false,
+        "outreach_selected": true,
+        "email_generation_source": "template",
+        "email_generation_fallback_reason": "Outreach LLM returned HTTP 429"
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-aee5c10451cae3a0f7a2fa783206-website-form-1",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-5fa44d6ba7fc92853dc6203f86e7",
+      "lead_id": "lead-aee5c10451cae3a0f7a2fa783206",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://crediteurope.ru/contacts",
+      "source_url": "https://crediteurope.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": true,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-aee5c10451cae3a0f7a2fa783206-website-form-2",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-5fa44d6ba7fc92853dc6203f86e7",
+      "lead_id": "lead-aee5c10451cae3a0f7a2fa783206",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://crediteurope.ru/contact",
+      "source_url": "https://crediteurope.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-aee5c10451cae3a0f7a2fa783206-company-website-3",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-5fa44d6ba7fc92853dc6203f86e7",
+      "lead_id": "lead-aee5c10451cae3a0f7a2fa783206",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://crediteurope.ru",
+      "source_url": "https://crediteurope.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-e42e01b67922224601dae0785f2c-website-form-2",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-12f6638e1c91221a36d2a5ba3906",
+      "lead_id": "lead-e42e01b67922224601dae0785f2c",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://prometheusenergy.ru/contacts",
+      "source_url": "https://prometheusenergy.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-e42e01b67922224601dae0785f2c-website-form-3",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-12f6638e1c91221a36d2a5ba3906",
+      "lead_id": "lead-e42e01b67922224601dae0785f2c",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://prometheusenergy.ru/contact",
+      "source_url": "https://prometheusenergy.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-e42e01b67922224601dae0785f2c-company-website-4",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-12f6638e1c91221a36d2a5ba3906",
+      "lead_id": "lead-e42e01b67922224601dae0785f2c",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://prometheusenergy.ru",
+      "source_url": "https://prometheusenergy.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "contact-lead-e42e01b67922224601dae0785f2c-generic-email-1",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "company_id": "company-12f6638e1c91221a36d2a5ba3906",
+      "lead_id": "lead-e42e01b67922224601dae0785f2c",
+      "contact_type": "generic_email",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": "info@prometheusenergy.ru",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://prometheusenergy.ru",
+      "source_label": "public email parser",
+      "confidence_score": 99,
+      "is_primary": true,
+      "metadata": {
+        "email_status": "company_email_ready",
+        "email_mx_verified": true,
+        "email_domain_match_reason": "official_domain",
+        "email_subject": "Прометей: быстрый контур AI-задачи",
+        "email_body": "Добрый день.\n\nВ публичном источнике Прометей обратил внимание на задачу: «искать возможности применения ИИ в продажах, закупках, логистике, маркетинге, документообороте, аналитике и других направлениях; тестировать ИИ-сервисы и выбирать решения, которые дают измеримый результат для бизнеса; проектировать и внедрять ИИ-ассистентов...».\n\nКогда такая инициатива уже сформулирована, найм специалиста и запуск самой задачи часто идут с разной скоростью. Это не означает, что сотрудник не нужен: отдельный ограниченный участок можно проверить раньше, чтобы к выходу человека у команды уже были подтверждённые требования и рабочий прототип.\n\nПолезно отделить архитектурные решения, которые требуют постоянного владельца внутри компании, от короткого пилота, который быстро проверяет данные, интеграции и реальную ценность сценария.\n\nЯ AI-архитектор. Могу независимо разобрать задачу, собрать ограниченный прототип или реализовать отдельный AI-блок, не подменяя будущего сотрудника и не меняя выбранную вами кадровую стратегию.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": false,
+        "outreach_selected": true,
+        "email_generation_source": "template",
+        "email_generation_fallback_reason": "Outreach LLM returned HTTP 429"
+      },
+      "created_at": "2026-10-06T20:13:14.229Z"
+    }
+  ],
+  "signals": [
+    {
+      "id": "signal-6a49e8576d721b45aa3a6b67be80",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "lead_id": "lead-f68f0f92dab1f817d456751eaf5d",
+      "company_id": "company-432cc6c3e6b57fe893c0c13edf35",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Специалист по автоматизации и оптимизации процессов",
+      "signal_detail": "Поиск и внедрение улучшений в процессы, использование ИИ и цифровых инструментов в ежедневной работе",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/138115864",
+      "confidence_score": 90,
+      "found_at": "2026-10-06T20:13:14.229Z",
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "signal-0765e92564c3a5c3b41d38062413",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "lead_id": "lead-0c34e184616593e79bec8d2fe52a",
+      "company_id": "company-b41e552e8957104a56e3d2e083c6",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Специалист по внедрению ИИ/AI-бизнес-процессов",
+      "signal_detail": "В производственную компанию требуется специалист для внедрения ИИ... Разработка и внедрение ИИ-ассистентов ,агентов— создавать, настраивать и интегрировать в рабочие процессы ИИ-агентов и чат-ботов...",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/138055036",
+      "confidence_score": 90,
+      "found_at": "2026-10-06T20:13:14.229Z",
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "signal-b236a0884e359401d3ffcc8a0012",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "lead_id": "lead-1f5afa18d8eaa5046d80a90c531d",
+      "company_id": "company-10980363d7b24d15b136c8dc385e",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Бизнес‑аналитик процессной эффективности (оптимизация бизнес-процессов/автоматизация с помощью ИИ)",
+      "signal_detail": "Оптимизация и выбор автоматизации: формировать предложения по оптимизации с целевым эффектом, оценивать потенциал автоматизации: подбирать классические ИТ‑решения (RPA, CRM, ERP и др.) и ИИ‑инструменты (OCR, чат‑боты, прогнозирование). Внедрение решений: формировать ТЗ и функциональные требования, ставить задачи команде разработки, участвовать во внедрении, проводить пилоты и тестировать результаты.",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/137328917",
+      "confidence_score": 90,
+      "found_at": "2026-10-06T20:13:14.229Z",
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "signal-59e5502b2602a1bc8f34232c24f0",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "lead_id": "lead-c4e4e7c77da9a7e871149c1d0828",
+      "company_id": "company-bdb57e0dabedbcf9a8c8fd65d67e",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Бизнес-аналитик по AI-автоматизации",
+      "signal_detail": "Ищем начинающего аналитика, который хочет решать реальные задачи бизнеса с помощью AI. Основной инструмент — Claude Code / Codex. ... Разрабатывать автоматизации реальных бизнес-процессов с помощью Claude Code и других AI-инструментов.",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/138013449",
+      "confidence_score": 90,
+      "found_at": "2026-10-06T20:13:14.229Z",
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "signal-e844eac3d0997b453f0c8579b964",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "lead_id": "lead-aee5c10451cae3a0f7a2fa783206",
+      "company_id": "company-5fa44d6ba7fc92853dc6203f86e7",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Разработчик систем интеграции с LLM",
+      "signal_detail": "Ведение проекта интеграции с LLM от идеи до продакшн-деплоя: проектирование, разработка, тестирование, мониторинг и поддержка... интеграция LLM и RAG-модулей, построение API для бизнес-приложений банка.",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/135928554",
+      "confidence_score": 90,
+      "found_at": "2026-10-06T20:13:14.229Z",
+      "created_at": "2026-10-06T20:13:14.229Z"
+    },
+    {
+      "id": "signal-19a4691d2749c744850b816f0922",
+      "pipeline_run_id": "pipeline-9b1991aed962681654cb5aa4b4e5",
+      "campaign_id": "campaign-ai-hiring-fa894e50137006e61bcb8dcfed4d",
+      "lead_id": "lead-e42e01b67922224601dae0785f2c",
+      "company_id": "company-12f6638e1c91221a36d2a5ba3906",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Специалист по внедрению ИИ и оптимизации бизнес-процессов",
+      "signal_detail": "искать возможности применения ИИ в продажах, закупках, логистике, маркетинге, документообороте, аналитике и других направлениях; тестировать ИИ-сервисы и выбирать решения, которые дают измеримый результат для бизнеса; проектировать и внедрять ИИ-ассистентов...",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/138132718",
+      "confidence_score": 90,
+      "found_at": "2026-10-06T20:13:14.229Z",
+      "created_at": "2026-10-06T20:13:14.229Z"
+    }
+  ],
+  "queueBefore": [
+    {
+      "id": "outreach-contact-lead-1f5afa18d8eaa5046d80a90c531d-generic-email-1",
+      "company_name": "УМНЫЙ СЕРВИС",
+      "status": "needs_review",
+      "quality_gate_passed": true
+    },
+    {
+      "id": "outreach-contact-lead-c4e4e7c77da9a7e871149c1d0828-generic-email-1",
+      "company_name": "UNICA engineering",
+      "status": "needs_review",
+      "quality_gate_passed": false
+    },
+    {
+      "id": "outreach-contact-lead-e42e01b67922224601dae0785f2c-generic-email-1",
+      "company_name": "Прометей",
+      "status": "needs_review",
+      "quality_gate_passed": false
+    }
+  ],
+  "metrics": {
+    "companies": 6,
+    "people": 2,
+    "personalEmails": 0,
+    "emailContacts": 3,
+    "ready": 1,
+    "manualReview": 2
+  },
+  "lifecycle": {
+    "single": "approved",
+    "bulk": 0,
+    "queued": 1,
+    "senderDryRun": "sent",
+    "sinkCalls": 1,
+    "followup": {
+      "generated": 1,
+      "skipped": {}
+    },
+    "followupNote": "Elapsed time and no-reply status simulated in isolated storage; no IMAP calls"
+  },
+  "orphanRequests": 0,
+  "requests": {
+    "api.openai.com": 24,
+    "api.hh.ru": 3,
+    "hh.ru": 21,
+    "www.bing.com": 11,
+    "api.tavily.com": 13,
+    "www.facebook.com": 1,
+    "ru.linkedin.com": 2,
+    "www.sostav.ru": 2,
+    "ru.wikipedia.org": 1,
+    "brightonbeachnews.com": 1,
+    "www.tadviser.ru": 1,
+    "www.gorodlesnoy.ru": 1,
+    "www.prnewswire.com": 1,
+    "www.rackcorp.com": 1,
+    "neurob2b.tech": 1,
+    "gopractice.ru": 1,
+    "www.1cbit.ru": 1,
+    "hightech.fm": 1,
+    "aptekiplus.ru": 15,
+    "fest-k.ru": 14,
+    "umserv.ru": 14,
+    "unica-eng.ru": 16,
+    "crediteurope.ru": 13,
+    "www.crediteurope.ru": 2,
+    "prometheusenergy.ru": 14,
+    "search.brave.com": 8,
+    "fest-lingerie.ru": 5
+  },
+  "modelCalls": [
+    {
+      "schema": "direct_ai_need_search_plan",
+      "status": 200
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200
+    },
+    {
+      "schema": "direct_ai_need_search_plan",
+      "status": 200
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 429,
+      "error": "{\n  \"error\": {\n    \"message\": \"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\n    \"type\": \"insufficient_quota\",\n    \"param\": null,\n    \"code\": \"credit_balance_exhausted\"\n  }\n}"
+    },
+    {
+      "schema": "leadgen_outreach_v4",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 429,
+      "error": "{\n  \"error\": {\n    \"message\": \"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\n    \"type\": \"insufficient_quota\",\n    \"param\": null,\n    \"code\": \"credit_balance_exhausted\"\n  }\n}"
+    },
+    {
+      "schema": "leadgen_outreach_v4",
+      "status": 429,
+      "error": "{\n  \"error\": {\n    \"message\": \"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\n    \"type\": \"insufficient_quota\",\n    \"param\": null,\n    \"code\": \"credit_balance_exhausted\"\n  }\n}"
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 429,
+      "error": "{\n  \"error\": {\n    \"message\": \"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\n    \"type\": \"insufficient_quota\",\n    \"param\": null,\n    \"code\": \"credit_balance_exhausted\"\n  }\n}"
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 429,
+      "error": "{\n  \"error\": {\n    \"message\": \"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\n    \"type\": \"insufficient_quota\",\n    \"param\": null,\n    \"code\": \"credit_balance_exhausted\"\n  }\n}"
+    },
+    {
+      "schema": "leadgen_outreach_v4",
+      "status": 429,
+      "error": "{\n  \"error\": {\n    \"message\": \"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\n    \"type\": \"insufficient_quota\",\n    \"param\": null,\n    \"code\": \"credit_balance_exhausted\"\n  }\n}"
+    }
+  ],
+  "finishedAt": "2026-10-06T20:14:49.769Z"
+}

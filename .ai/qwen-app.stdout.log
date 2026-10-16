@@ -1,0 +1,15 @@
+
+> ai-lidgen-os@0.1.0 dev
+> next dev --port 3000
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://10.8.1.1:3000
+- Environments: .env.local
+✓ Ready in 2.6s
+
+○ Compiling /leadgen ...
+ GET /leadgen 200 in 7.2s (next.js: 4.6s, application-code: 2.5s)
+ GET /leadgen 200 in 36.7s (next.js: 32.9s, application-code: 3.9s)
+ GET /leadgen 200 in 378ms (next.js: 29ms, application-code: 349ms)
+ POST /api/leadgen/outreach/process 200 in 861ms (next.js: 264ms, application-code: 597ms)

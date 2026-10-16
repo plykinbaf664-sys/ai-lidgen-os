@@ -1,0 +1,2332 @@
+{
+  "mode": "direct",
+  "name": "Сбер. IT",
+  "website": "https://rabota.sber.ru",
+  "before": {
+    "companyName": "Сбер. IT",
+    "officialWebsite": "https://rabota.sber.ru",
+    "officialDomain": "rabota.sber.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "SDET / Разработчик AI решений (HR платформа)",
+      "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+      "sourceUrl": "https://hh.ru/vacancy/138117118",
+      "confidence": 90
+    },
+    "researchConfidence": "UNVERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 6,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 23,
+      "lprMs": 15877,
+      "contactMs": 8625,
+      "totalMs": 26613,
+      "stopReason": "lpr_not_found"
+    }
+  },
+  "signal": {
+    "type": "AI_AUTOMATION_HIRING_SIGNAL",
+    "title": "SDET / Разработчик AI решений (HR платформа)",
+    "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+    "sourceUrl": "https://hh.ru/vacancy/138117118",
+    "confidence": 90
+  },
+  "index": 14,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru",
+      "status": 200,
+      "elapsedMs": 905
+    },
+    {
+      "stage": "research_open",
+      "url": "https://rabota.sber.ru",
+      "success": true,
+      "evidence": {
+        "url": "https://rabota.sber.ru",
+        "kind": "page",
+        "text": "Богдан Рощупкин ML-инженер AI-агентов",
+        "links": [
+          {
+            "url": "https://rabota.sber.ru",
+            "label": ""
+          },
+          {
+            "url": "https://rabota.sber.ru/search",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://rabota.sber.ru/media",
+            "label": "Карьерные медиа"
+          },
+          {
+            "url": "https://sbergraduate.ru",
+            "label": "Выпускникам и студентам"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/policy",
+            "label": "Политика обработки данных"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/cookies",
+            "label": "Политика использования Cookies"
+          },
+          {
+            "url": "https://www.sberbank.ru",
+            "label": "www.sberbank.ru"
+          },
+          {
+            "url": "https://t.me/careersber",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:18:59.107Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2502,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:18:59.107Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 7,
+          "actionsRemaining": 10,
+          "searchRemaining": 8,
+          "remainingMs": 73913
+        }
+      },
+      "usage": {
+        "input_tokens": 1922,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 329,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2251
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "companySummary": "Сбер. IT занимается разработкой технологий и решений в группе Сбер, сфокусированных на AI и IT-платформах.",
+        "missing": [
+          "Руководитель направления AI-агентов или AI-процессов в HR-платформе, владелец задачи"
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 40,
+            "reason": "Работает непосредственно над AI-агентами, связан с темой, но не подтверждён как руководитель или владелец процесса.",
+            "roleSourceText": "ML-инженер AI-агентов",
+            "nameParts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "rabota.sber.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/media",
+            "focus": "контакты, команда, руководители направления AI",
+            "purpose": "Поиск страницы с описанием команды/руководителей, чтобы установить владельца профильного бизнес-процесса"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найден владелец процесса — известен только сотрудник. Нужно изучить раздел \"Медиа\" на сайте компании на предмет информации о руководителях или команде."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "Сбер. IT занимается разработкой технологий и решений в группе Сбер, сфокусированных на AI и IT-платформах.",
+        "missing": [
+          "Руководитель направления AI-агентов или AI-процессов в HR-платформе, владелец задачи"
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 40,
+            "reason": "Работает непосредственно над AI-агентами, связан с темой, но не подтверждён как руководитель или владелец процесса.",
+            "roleSourceText": "ML-инженер AI-агентов",
+            "nameParts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "rabota.sber.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/media",
+            "focus": "контакты, команда, руководители направления AI",
+            "purpose": "Поиск страницы с описанием команды/руководителей, чтобы установить владельца профильного бизнес-процесса"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найден владелец процесса — известен только сотрудник. Нужно изучить раздел \"Медиа\" на сайте компании на предмет информации о руководителях или команде."
+      },
+      "validationErrors": [
+        "person_rejected:Богдан Рощупкин:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/media",
+      "status": 308,
+      "elapsedMs": 133
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/media/",
+      "status": 200,
+      "elapsedMs": 552
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://rabota.sber.ru/media",
+      "focus": "контакты, команда, руководители направления AI",
+      "purpose": "Поиск страницы с описанием команды/руководителей, чтобы установить владельца профильного бизнес-процесса",
+      "success": true,
+      "evidence": {
+        "url": "https://rabota.sber.ru/media/",
+        "kind": "page",
+        "text": "Работа в Сбере: Карьерные медиа Вакансии Карьерные медиа Выпускникам и студентам Почитать, послушать, посмотреть Выбери, что интересно Фильтры Загрузка... Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+        "links": [
+          {
+            "url": "https://rabota.sber.ru",
+            "label": ""
+          },
+          {
+            "url": "https://rabota.sber.ru/search",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://rabota.sber.ru/media",
+            "label": "Карьерные медиа"
+          },
+          {
+            "url": "https://sbergraduate.ru",
+            "label": "Выпускникам и студентам"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/policy",
+            "label": "Политика обработки данных"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/cookies",
+            "label": "Политика использования Cookies"
+          },
+          {
+            "url": "https://www.sberbank.ru",
+            "label": "www.sberbank.ru"
+          },
+          {
+            "url": "https://t.me/careersber",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:19:02.607Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2412,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:18:59.107Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://rabota.sber.ru/media/",
+            "kind": "page",
+            "text": "Работа в Сбере: Карьерные медиа Вакансии Карьерные медиа Выпускникам и студентам Почитать, послушать, посмотреть Выбери, что интересно Фильтры Загрузка... Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:19:02.607Z",
+            "id": "e2"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/media",
+            "focus": "контакты, команда, руководители направления AI",
+            "success": true
+          }
+        ],
+        "validationErrors": [
+          "person_rejected:Богдан Рощупкин:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+        ],
+        "budget": {
+          "roundsRemaining": 6,
+          "actionsRemaining": 9,
+          "searchRemaining": 8,
+          "remainingMs": 70413
+        }
+      },
+      "usage": {
+        "input_tokens": 2294,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 269,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2563
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "companySummary": "Сбер. IT — технологическое подразделение Сбербанка, отвечающее за цифровые решения и HR-платформы с элементами AI.",
+        "missing": [
+          "Руководитель направления AI, AI automation или HR платформы; его роль и подтверждение аффилиации."
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "sberbank.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "www.sberbank.ru © 2026 ПАО «Сбербанк»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Сбер AI директор site:rabota.sber.ru",
+            "focus": "имена руководителей AI/HR tech",
+            "purpose": "Найти руководителя направления AI или HR платформы с подтверждённой аффилиацией."
+          },
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/search",
+            "focus": "руководители, контакты, возможно фильтр по подразделениям AI или платформы HR",
+            "purpose": "Проверить наличие информации о руководителях или командах на странице вакансий; иногда там указаны нанимающие менеджеры."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого релевантного человека и личного контакта; требуется поиск руководителя направления AI или HR-платформ."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "Сбер. IT — технологическое подразделение Сбербанка, отвечающее за цифровые решения и HR-платформы с элементами AI.",
+        "missing": [
+          "Руководитель направления AI, AI automation или HR платформы; его роль и подтверждение аффилиации."
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "sberbank.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "www.sberbank.ru © 2026 ПАО «Сбербанк»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Сбер AI директор site:rabota.sber.ru",
+            "focus": "имена руководителей AI/HR tech",
+            "purpose": "Найти руководителя направления AI или HR платформы с подтверждённой аффилиацией."
+          },
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/search",
+            "focus": "руководители, контакты, возможно фильтр по подразделениям AI или платформы HR",
+            "purpose": "Проверить наличие информации о руководителях или командах на странице вакансий; иногда там указаны нанимающие менеджеры."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого релевантного человека и личного контакта; требуется поиск руководителя направления AI или HR-платформ."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:sberbank.ru"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/search",
+      "status": 308,
+      "elapsedMs": 131
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/search/",
+      "status": 200,
+      "elapsedMs": 142
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://rabota.sber.ru/search",
+      "focus": "руководители, контакты, возможно фильтр по подразделениям AI или платформы HR",
+      "purpose": "Проверить наличие информации о руководителях или командах на странице вакансий; иногда там указаны нанимающие менеджеры.",
+      "success": true,
+      "evidence": {
+        "url": "https://rabota.sber.ru/search/",
+        "kind": "page",
+        "text": "Поиск вакансий Вакансии Карьерные медиа Выпускникам и студентам Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+        "links": [
+          {
+            "url": "https://rabota.sber.ru",
+            "label": ""
+          },
+          {
+            "url": "https://rabota.sber.ru/search",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://rabota.sber.ru/media",
+            "label": "Карьерные медиа"
+          },
+          {
+            "url": "https://sbergraduate.ru",
+            "label": "Выпускникам и студентам"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/policy",
+            "label": "Политика обработки данных"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/cookies",
+            "label": "Политика использования Cookies"
+          },
+          {
+            "url": "https://www.sberbank.ru",
+            "label": "www.sberbank.ru"
+          },
+          {
+            "url": "https://t.me/careersber",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:19:05.522Z",
+        "id": "e3"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%A1%D0%B1%D0%B5%D1%80%20AI%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20rabota.sber.ru&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 420
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%A1%D0%B1%D0%B5%D1%80%20AI%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20rabota.sber.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 353
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 1899,
+      "model": "gpt-4.1-mini",
+      "input": {
+        "query": "Сбер AI директор site:rabota.sber.ru",
+        "maxResults": 5
+      },
+      "usage": {
+        "input_tokens": 8630,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 87,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8717
+      },
+      "webSearchCalls": 1,
+      "output": "К сожалению, на сайте rabota.sber.ru не найдено вакансий на должность «Директор по искусственному интеллекту» в компании Сбер. Возможно, такие вакансии размещаются на других платформах или публикуются под другими названиями. Рекомендую регулярно проверять официальный сайт Сбера и другие специализированные ресурсы для поиска актуальных вакансий в области искусственного интеллекта. "
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Сбер AI директор site:rabota.sber.ru",
+      "focus": "имена руководителей AI/HR tech",
+      "purpose": "Найти руководителя направления AI или HR платформы с подтверждённой аффилиацией.",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown | openai-web: no results"
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3493,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:18:59.107Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://rabota.sber.ru/media/",
+            "kind": "page",
+            "text": "Работа в Сбере: Карьерные медиа Вакансии Карьерные медиа Выпускникам и студентам Почитать, послушать, посмотреть Выбери, что интересно Фильтры Загрузка... Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:19:02.607Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://rabota.sber.ru/search/",
+            "kind": "page",
+            "text": "Поиск вакансий Вакансии Карьерные медиа Выпускникам и студентам Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:19:05.522Z",
+            "id": "e3"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/media",
+            "focus": "контакты, команда, руководители направления AI",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "Сбер AI директор site:rabota.sber.ru",
+            "focus": "имена руководителей AI/HR tech",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown | openai-web: no results"
+          },
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/search",
+            "focus": "руководители, контакты, возможно фильтр по подразделениям AI или платформы HR",
+            "success": true
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:sberbank.ru"
+        ],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 7,
+          "searchRemaining": 7,
+          "remainingMs": 65157
+        }
+      },
+      "usage": {
+        "input_tokens": 2669,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 1920
+        },
+        "output_tokens": 526,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3195
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "companySummary": "Сбер. IT — IT-дивизион группы Сбер, занимается цифровыми решениями и AI-платформами.",
+        "missing": [
+          "Подтверждённый руководитель направления AI или HR tech",
+          "Публичный канал связи руководителя или владельца процесса"
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 30,
+            "reason": "Известен только как ML-инженер AI-агентов на rabota.sber.ru; отсутствуют сведения о руководящей роли или владении процессом.",
+            "roleSourceText": "ML-инженер AI-агентов",
+            "nameParts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "© 2026 ПАО «Сбербанк»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "руководитель AI HR платформа site:rabota.sber.ru",
+            "focus": "руководитель или владелец AI-направления HR платформы",
+            "purpose": "Уточнить, кто отвечает за AI-решения на HR платформе, найти ФИО и публичный профиль"
+          },
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "найти ссылку на раздел 'О нас', 'Контакты', 'Команда', которые не были просмотрены",
+            "purpose": "Проверить наличие официальной страницы с руководителями или контактами для связи"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого владельца процесса среди найденных; требуется поиск более релевантного руководителя и/или публичного профиля с каналом связи."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "Сбер. IT — IT-дивизион группы Сбер, занимается цифровыми решениями и AI-платформами.",
+        "missing": [
+          "Подтверждённый руководитель направления AI или HR tech",
+          "Публичный канал связи руководителя или владельца процесса"
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 30,
+            "reason": "Известен только как ML-инженер AI-агентов на rabota.sber.ru; отсутствуют сведения о руководящей роли или владении процессом.",
+            "roleSourceText": "ML-инженер AI-агентов",
+            "nameParts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "© 2026 ПАО «Сбербанк»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "руководитель AI HR платформа site:rabota.sber.ru",
+            "focus": "руководитель или владелец AI-направления HR платформы",
+            "purpose": "Уточнить, кто отвечает за AI-решения на HR платформе, найти ФИО и публичный профиль"
+          },
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "найти ссылку на раздел 'О нас', 'Контакты', 'Команда', которые не были просмотрены",
+            "purpose": "Проверить наличие официальной страницы с руководителями или контактами для связи"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого владельца процесса среди найденных; требуется поиск более релевантного руководителя и/или публичного профиля с каналом связи."
+      },
+      "validationErrors": [
+        "person_rejected:Богдан Рощупкин:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://rabota.sber.ru",
+      "focus": "найти ссылку на раздел 'О нас', 'Контакты', 'Команда', которые не были просмотрены",
+      "purpose": "Проверить наличие официальной страницы с руководителями или контактами для связи",
+      "success": true,
+      "evidence": {
+        "url": "https://rabota.sber.ru",
+        "kind": "page",
+        "text": "Богдан Рощупкин ML-инженер AI-агентов",
+        "links": [
+          {
+            "url": "https://rabota.sber.ru",
+            "label": ""
+          },
+          {
+            "url": "https://rabota.sber.ru/search",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://rabota.sber.ru/media",
+            "label": "Карьерные медиа"
+          },
+          {
+            "url": "https://sbergraduate.ru",
+            "label": "Выпускникам и студентам"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/policy",
+            "label": "Политика обработки данных"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/cookies",
+            "label": "Политика использования Cookies"
+          },
+          {
+            "url": "https://www.sberbank.ru",
+            "label": "www.sberbank.ru"
+          },
+          {
+            "url": "https://t.me/careersber",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:18:59.107Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20AI%20HR%20%D0%BF%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D0%B0%20rabota.sber.ru&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 325
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20AI%20HR%20%D0%BF%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D0%B0%20rabota.sber.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 274
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 1663,
+      "model": "gpt-4.1-mini",
+      "input": {
+        "query": "руководитель AI HR платформа site:rabota.sber.ru",
+        "maxResults": 5
+      },
+      "usage": {
+        "input_tokens": 8661,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 63,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8724
+      },
+      "webSearchCalls": 1,
+      "output": "К сожалению, на сайте rabota.sber.ru не найдено информации о вакансии «руководитель AI HR платформа». Возможно, эта позиция больше не открыта или была удалена с сайта. Рекомендую регулярно проверять сайт для получения актуальной информации о новых вакансиях. "
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "руководитель AI HR платформа site:rabota.sber.ru",
+      "focus": "руководитель или владелец AI-направления HR платформы",
+      "purpose": "Уточнить, кто отвечает за AI-решения на HR платформе, найти ФИО и публичный профиль",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown | openai-web: no results"
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 1881,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:18:59.107Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://rabota.sber.ru/media/",
+            "kind": "page",
+            "text": "Работа в Сбере: Карьерные медиа Вакансии Карьерные медиа Выпускникам и студентам Почитать, послушать, посмотреть Выбери, что интересно Фильтры Загрузка... Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:19:02.607Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://rabota.sber.ru/search/",
+            "kind": "page",
+            "text": "Поиск вакансий Вакансии Карьерные медиа Выпускникам и студентам Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:19:05.522Z",
+            "id": "e3"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/media",
+            "focus": "контакты, команда, руководители направления AI",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "Сбер AI директор site:rabota.sber.ru",
+            "focus": "имена руководителей AI/HR tech",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown | openai-web: no results"
+          },
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/search",
+            "focus": "руководители, контакты, возможно фильтр по подразделениям AI или платформы HR",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "руководитель AI HR платформа site:rabota.sber.ru",
+            "focus": "руководитель или владелец AI-направления HR платформы",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown | openai-web: no results"
+          },
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "найти ссылку на раздел 'О нас', 'Контакты', 'Команда', которые не были просмотрены",
+            "success": true
+          }
+        ],
+        "validationErrors": [
+          "person_rejected:Богдан Рощупкин:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+        ],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 5,
+          "searchRemaining": 6,
+          "remainingMs": 59254
+        }
+      },
+      "usage": {
+        "input_tokens": 2811,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 2432
+        },
+        "output_tokens": 217,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3028
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "companySummary": "Сбер. IT — подразделение ПАО «Сбербанк», занимающееся разработкой IT-решений, включая AI для HR платформ.",
+        "missing": [
+          "Подтверждённое имя и достоверная руководящая роль владельца AI/HR платформы или подразделения, релевантный публичный контакт"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "sberbank.ru",
+            "citation": {
+              "sourceId": "e2",
+              "quote": "© 2026 ПАО «Сбербанк»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://sberbank.ru",
+            "focus": "контакты, руководство, AI или HR платформа, ссылки на профильную команду или руководителя",
+            "purpose": "Проверить основной сайт Сбера на наличие контактов и публичных руководителей подразделения, ответственного за AI в HR"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённых руководителей подразделения AI/HR платформ по текущим источникам. Следующий шаг — проверка основного сайта компании."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 3,
+      "decision": {
+        "companySummary": "Сбер. IT — подразделение ПАО «Сбербанк», занимающееся разработкой IT-решений, включая AI для HR платформ.",
+        "missing": [
+          "Подтверждённое имя и достоверная руководящая роль владельца AI/HR платформы или подразделения, релевантный публичный контакт"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "sberbank.ru",
+            "citation": {
+              "sourceId": "e2",
+              "quote": "© 2026 ПАО «Сбербанк»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://sberbank.ru",
+            "focus": "контакты, руководство, AI или HR платформа, ссылки на профильную команду или руководителя",
+            "purpose": "Проверить основной сайт Сбера на наличие контактов и публичных руководителей подразделения, ответственного за AI в HR"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённых руководителей подразделения AI/HR платформ по текущим источникам. Следующий шаг — проверка основного сайта компании."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:sberbank.ru"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3149,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:18:59.107Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://rabota.sber.ru/media/",
+            "kind": "page",
+            "text": "Работа в Сбере: Карьерные медиа Вакансии Карьерные медиа Выпускникам и студентам Почитать, послушать, посмотреть Выбери, что интересно Фильтры Загрузка... Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:19:02.607Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://rabota.sber.ru/search/",
+            "kind": "page",
+            "text": "Поиск вакансий Вакансии Карьерные медиа Выпускникам и студентам Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:19:05.522Z",
+            "id": "e3"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/media",
+            "focus": "контакты, команда, руководители направления AI",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "Сбер AI директор site:rabota.sber.ru",
+            "focus": "имена руководителей AI/HR tech",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown | openai-web: no results"
+          },
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/search",
+            "focus": "руководители, контакты, возможно фильтр по подразделениям AI или платформы HR",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "руководитель AI HR платформа site:rabota.sber.ru",
+            "focus": "руководитель или владелец AI-направления HR платформы",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown | openai-web: no results"
+          },
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "найти ссылку на раздел 'О нас', 'Контакты', 'Команда', которые не были просмотрены",
+            "success": true
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:sberbank.ru"
+        ],
+        "budget": {
+          "roundsRemaining": 3,
+          "actionsRemaining": 5,
+          "searchRemaining": 6,
+          "remainingMs": 57238
+        }
+      },
+      "usage": {
+        "input_tokens": 2793,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 440,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3233
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "companySummary": "Сайт rabota.sber.ru — карьерный портал ПАО «Сбербанк», публикующий вакансии и информацию о компании, включая AI-направления.",
+        "missing": [
+          "Руководитель или владелец AI-направления либо HR-платформы, ответственный за автоматизацию, подтверждённый по фамилии и должности",
+          "Публичный личный email или профиль такого человека"
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 45,
+            "reason": "Единственное упоминание сотрудника из AI-направления; роль техническая, не руководящая, и отсутствует подтверждение управленческих/владельческих функций.",
+            "roleSourceText": "ML-инженер AI-агентов",
+            "nameParts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "найти ссылки на 'О нас', 'Контакты', 'Про нас', 'Команда' (если есть подвал сайта или структура, пропущенные в предыдущие просмотры)",
+            "purpose": "Попытаться найти официальный раздел с руководителями направления или контактами, так как других явных ссылок не открыто."
+          },
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин Сбер",
+            "focus": "публичные профили и возможные контакты этого сотрудника в контексте AI-агентов Сбера",
+            "purpose": "Уточнить управленческий статус, найти его роль/профиль и потенциально публичный контакт."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Текущий сайт не содержит разделов с руководителями или контактами; найден один сотрудник, но без признаков ЛПР или контактов, дополнительных действий на сайте потребуется поиск извне."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 4,
+      "decision": {
+        "companySummary": "Сайт rabota.sber.ru — карьерный портал ПАО «Сбербанк», публикующий вакансии и информацию о компании, включая AI-направления.",
+        "missing": [
+          "Руководитель или владелец AI-направления либо HR-платформы, ответственный за автоматизацию, подтверждённый по фамилии и должности",
+          "Публичный личный email или профиль такого человека"
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 45,
+            "reason": "Единственное упоминание сотрудника из AI-направления; роль техническая, не руководящая, и отсутствует подтверждение управленческих/владельческих функций.",
+            "roleSourceText": "ML-инженер AI-агентов",
+            "nameParts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "найти ссылки на 'О нас', 'Контакты', 'Про нас', 'Команда' (если есть подвал сайта или структура, пропущенные в предыдущие просмотры)",
+            "purpose": "Попытаться найти официальный раздел с руководителями направления или контактами, так как других явных ссылок не открыто."
+          },
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин Сбер",
+            "focus": "публичные профили и возможные контакты этого сотрудника в контексте AI-агентов Сбера",
+            "purpose": "Уточнить управленческий статус, найти его роль/профиль и потенциально публичный контакт."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Текущий сайт не содержит разделов с руководителями или контактами; найден один сотрудник, но без признаков ЛПР или контактов, дополнительных действий на сайте потребуется поиск извне."
+      },
+      "validationErrors": [
+        "person_rejected:Богдан Рощупкин:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://rabota.sber.ru",
+      "focus": "найти ссылки на 'О нас', 'Контакты', 'Про нас', 'Команда' (если есть подвал сайта или структура, пропущенные в предыдущие просмотры)",
+      "purpose": "Попытаться найти официальный раздел с руководителями направления или контактами, так как других явных ссылок не открыто.",
+      "success": true,
+      "evidence": {
+        "url": "https://rabota.sber.ru",
+        "kind": "page",
+        "text": "Богдан Рощупкин ML-инженер AI-агентов",
+        "links": [
+          {
+            "url": "https://rabota.sber.ru",
+            "label": ""
+          },
+          {
+            "url": "https://rabota.sber.ru/search",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://rabota.sber.ru/media",
+            "label": "Карьерные медиа"
+          },
+          {
+            "url": "https://sbergraduate.ru",
+            "label": "Выпускникам и студентам"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/policy",
+            "label": "Политика обработки данных"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/cookies",
+            "label": "Политика использования Cookies"
+          },
+          {
+            "url": "https://www.sberbank.ru",
+            "label": "www.sberbank.ru"
+          },
+          {
+            "url": "https://t.me/careersber",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:18:59.107Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%20%D0%A1%D0%B1%D0%B5%D1%80&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 331
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%20%D0%A1%D0%B1%D0%B5%D1%80&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 268
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 1385,
+      "model": "gpt-4.1-mini",
+      "input": {
+        "query": "Богдан Рощупкин Сбер",
+        "maxResults": 5
+      },
+      "usage": {
+        "input_tokens": 8639,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 30,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8669
+      },
+      "webSearchCalls": 1,
+      "output": "К сожалению, в доступных источниках нет информации о человеке по имени Богдан Рощупкин, связанного со Сбером. "
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Богдан Рощупкин Сбер",
+      "focus": "публичные профили и возможные контакты этого сотрудника в контексте AI-агентов Сбера",
+      "purpose": "Уточнить управленческий статус, найти его роль/профиль и потенциально публичный контакт.",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown | openai-web: no results"
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2392,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:18:59.107Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://rabota.sber.ru/media/",
+            "kind": "page",
+            "text": "Работа в Сбере: Карьерные медиа Вакансии Карьерные медиа Выпускникам и студентам Почитать, послушать, посмотреть Выбери, что интересно Фильтры Загрузка... Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:19:02.607Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://rabota.sber.ru/search/",
+            "kind": "page",
+            "text": "Поиск вакансий Вакансии Карьерные медиа Выпускникам и студентам Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:19:05.522Z",
+            "id": "e3"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/media",
+            "focus": "контакты, команда, руководители направления AI",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "Сбер AI директор site:rabota.sber.ru",
+            "focus": "имена руководителей AI/HR tech",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown | openai-web: no results"
+          },
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/search",
+            "focus": "руководители, контакты, возможно фильтр по подразделениям AI или платформы HR",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "руководитель AI HR платформа site:rabota.sber.ru",
+            "focus": "руководитель или владелец AI-направления HR платформы",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown | openai-web: no results"
+          },
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "найти ссылку на раздел 'О нас', 'Контакты', 'Команда', которые не были просмотрены",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "найти ссылки на 'О нас', 'Контакты', 'Про нас', 'Команда' (если есть подвал сайта или структура, пропущенные в предыдущие просмотры)",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин Сбер",
+            "focus": "публичные профили и возможные контакты этого сотрудника в контексте AI-агентов Сбера",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown | openai-web: no results"
+          }
+        ],
+        "validationErrors": [
+          "person_rejected:Богдан Рощупкин:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+        ],
+        "budget": {
+          "roundsRemaining": 2,
+          "actionsRemaining": 3,
+          "searchRemaining": 5,
+          "remainingMs": 51882
+        }
+      },
+      "usage": {
+        "input_tokens": 2955,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 2560
+        },
+        "output_tokens": 294,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3249
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "companySummary": "Сбер. IT — карьерный портал IT-направлений Сбера, включает вакансии в AI и HR tech.",
+        "missing": [
+          "Подтверждённая связь Богдана Рощупкина с руководящей ролью/владелец направления AI для HR платформы",
+          "Имя руководителя или владельца направления AI или HR платформы",
+          "Публичный (личный) e-mail релевантного руководителя"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "sberbank.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "www.sberbank.ru © 2026 ПАО «Сбербанк»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "руководитель AI HR платформа сбер",
+            "focus": "имена действующих владельцев направления AI для HR платформ или SDET",
+            "purpose": "Получить перечень руководителей для проверки на сайте/контактных данных"
+          },
+          {
+            "type": "search",
+            "value": "руководитель направления AI sberbank.ru",
+            "focus": "публичные профильные лица и контакты подразделения AI/HR в Сбере",
+            "purpose": "Проверить, нет ли актуальных публичных профилей или новостей о руководителях"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённых фактов о релевантном человеке или его контактах; требуется поиск по общедоступным источникам вне rabota.sber.ru."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 5,
+      "decision": {
+        "companySummary": "Сбер. IT — карьерный портал IT-направлений Сбера, включает вакансии в AI и HR tech.",
+        "missing": [
+          "Подтверждённая связь Богдана Рощупкина с руководящей ролью/владелец направления AI для HR платформы",
+          "Имя руководителя или владельца направления AI или HR платформы",
+          "Публичный (личный) e-mail релевантного руководителя"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "sberbank.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "www.sberbank.ru © 2026 ПАО «Сбербанк»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "руководитель AI HR платформа сбер",
+            "focus": "имена действующих владельцев направления AI для HR платформ или SDET",
+            "purpose": "Получить перечень руководителей для проверки на сайте/контактных данных"
+          },
+          {
+            "type": "search",
+            "value": "руководитель направления AI sberbank.ru",
+            "focus": "публичные профильные лица и контакты подразделения AI/HR в Сбере",
+            "purpose": "Проверить, нет ли актуальных публичных профилей или новостей о руководителях"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённых фактов о релевантном человеке или его контактах; требуется поиск по общедоступным источникам вне rabota.sber.ru."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:sberbank.ru"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "research_budget",
+      "actions": 8,
+      "candidates": [],
+      "domains": [
+        "rabota.sber.ru"
+      ],
+      "elapsedMs": 25654
+    },
+    {
+      "stage": "people_ranked",
+      "people": []
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Product launches and feature releases can create coordination load between product, marketing, sales, and customer success.",
+        "target_responsibility": "Product leadership",
+        "target_persona": "Head of Product",
+        "alternative_personas": [
+          "VP Product",
+          "Product Director",
+          "Head of Product Marketing",
+          "COO",
+          "Founder / CEO"
+        ],
+        "why_this_person": "The signal includes product or release context, so product leadership may own the launch and adoption workflow. Matched context: платформа. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "no_material_next_step_available"
+      },
+      "contacts": [
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://rabota.sber.ru/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://rabota.sber.ru/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://rabota.sber.ru"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-10-07T22:18:58.019Z",
+  "bundle": {
+    "companyName": "Сбер. IT",
+    "officialWebsite": "https://rabota.sber.ru",
+    "officialDomain": "rabota.sber.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "SDET / Разработчик AI решений (HR платформа)",
+      "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+      "sourceUrl": "https://hh.ru/vacancy/138117118",
+      "confidence": 90
+    },
+    "researchConfidence": "UNVERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 3,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 16,
+      "lprMs": 25654,
+      "contactMs": 146,
+      "totalMs": 25801,
+      "stopReason": "research_budget"
+    }
+  },
+  "people": {
+    "primary_person": null,
+    "alternative_people": [],
+    "all_candidates": [],
+    "search_status": "no_person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "research_budget"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 3,
+      "official_pages_fetched": 5,
+      "aborted_requests": 0,
+      "elapsed_ms": 25654,
+      "stop_reason": "research_budget",
+      "queries_executed": [
+        "Сбер AI директор site:rabota.sber.ru",
+        "руководитель AI HR платформа site:rabota.sber.ru",
+        "Богдан Рощупкин Сбер"
+      ],
+      "sources_checked": [
+        "https://rabota.sber.ru",
+        "https://rabota.sber.ru/media/",
+        "https://rabota.sber.ru/search/"
+      ],
+      "search_results_seen": 0,
+      "rejected_candidates": {
+        "validation_rejects": 1
+      },
+      "final_failure_reason": "research_budget"
+    }
+  },
+  "contacts": [
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://rabota.sber.ru/contacts",
+      "selected": false,
+      "intelligence": {
+        "business_problem": "Product launches and feature releases can create coordination load between product, marketing, sales, and customer success.",
+        "target_responsibility": "Product leadership",
+        "target_persona": "Head of Product",
+        "alternative_personas": [
+          "VP Product",
+          "Product Director",
+          "Head of Product Marketing",
+          "COO",
+          "Founder / CEO"
+        ],
+        "why_this_person": "The signal includes product or release context, so product leadership may own the launch and adoption workflow. Matched context: платформа. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "no_material_next_step_available"
+      }
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://rabota.sber.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://rabota.sber.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 25801
+}

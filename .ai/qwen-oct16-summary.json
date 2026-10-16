@@ -1,0 +1,320 @@
+{
+  "date": "2026-10-16",
+  "note": "Latest observation per company across separate runs; not a single matched cohort. Current role confidence is system classification, not independent audit.",
+  "rows": [
+    {
+      "company": "Императорский фарфоровый завод",
+      "origin": "business",
+      "people": 2,
+      "confirmedPeople": 1,
+      "best": {
+        "email": "nik_aa@ipm.ru",
+        "personName": "Николаев Александр Анатольевич",
+        "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+        "classification": "VERIFIED_PERSONAL",
+        "contactLevel": "A",
+        "sourceUrl": "https://www.ipm.ru/contacts/"
+      },
+      "ready": true,
+      "generation": "ai",
+      "fallback": null,
+      "ms": 7081,
+      "actions": 0,
+      "cacheHits": 1
+    },
+    {
+      "company": "Спецмаш-Снг",
+      "origin": "business",
+      "people": 1,
+      "confirmedPeople": 1,
+      "best": {
+        "email": "dorzap@list.ru",
+        "personName": null,
+        "role": null,
+        "classification": "GENERAL",
+        "contactLevel": "E",
+        "sourceUrl": "https://dorzap.ru/"
+      },
+      "ready": true,
+      "generation": "not-recorded",
+      "ms": 86942,
+      "actions": 3,
+      "cacheHits": 0
+    },
+    {
+      "company": "МЕТИЗ ИМПЭКС",
+      "origin": "business",
+      "people": 1,
+      "confirmedPeople": 0,
+      "best": {
+        "email": "info@metiz-ltd.ru",
+        "personName": null,
+        "role": null,
+        "classification": "GENERAL",
+        "contactLevel": "E",
+        "sourceUrl": "https://metiz-ltd.ru"
+      },
+      "ready": true,
+      "generation": "template",
+      "fallback": "copy_quality_rejected",
+      "ms": 80778,
+      "actions": 11,
+      "cacheHits": 0
+    },
+    {
+      "company": "Лига Цифровой Экономики",
+      "origin": "direct-live",
+      "people": 0,
+      "confirmedPeople": 0,
+      "best": null,
+      "ready": false,
+      "ms": 5586
+    },
+    {
+      "company": "Детский мир. ДМ-тех",
+      "origin": "direct-live",
+      "people": 0,
+      "confirmedPeople": 0,
+      "best": {
+        "email": "job@detmir.ru",
+        "personName": null,
+        "role": null,
+        "classification": "DEPARTMENT",
+        "contactLevel": "E",
+        "sourceUrl": "https://corp.detmir.ru/contacts/"
+      },
+      "ready": false,
+      "generation": "template",
+      "fallback": "Необоснованные английские слова: LLM, ecom, VLM, OCR.",
+      "ms": 87053
+    },
+    {
+      "company": "Группа компаний TRAPEZA",
+      "origin": "direct-live",
+      "people": 0,
+      "confirmedPeople": 0,
+      "best": {
+        "email": "trapeza@trapeza.ru",
+        "personName": null,
+        "role": null,
+        "classification": "GENERAL",
+        "contactLevel": "E",
+        "sourceUrl": "https://team.trapeza.ru"
+      },
+      "ready": false,
+      "generation": "template",
+      "fallback": "Необоснованные английские слова: LLM.",
+      "ms": 54547
+    },
+    {
+      "company": "Группа компаний Агротек",
+      "origin": "direct-live",
+      "people": 3,
+      "confirmedPeople": 3,
+      "best": {
+        "email": "info@agrotek.com",
+        "personName": null,
+        "role": null,
+        "classification": "GENERAL",
+        "contactLevel": "E",
+        "sourceUrl": "https://agrotek.com"
+      },
+      "ready": true,
+      "generation": "template",
+      "fallback": "Необоснованные английские слова: LLM.",
+      "ms": 80607
+    },
+    {
+      "company": "ТРАНСКАПИТАЛБАНК",
+      "origin": "direct-live",
+      "people": 0,
+      "confirmedPeople": 0,
+      "best": null,
+      "ready": false,
+      "ms": 42195
+    },
+    {
+      "company": "Производственная Компания Контур",
+      "origin": "import-live",
+      "people": 3,
+      "confirmedPeople": 3,
+      "best": {
+        "email": "kotelnikov-dn@pk-kontur.ru",
+        "personName": "Котельников Данила Никитич",
+        "role": "Исполнительный директор",
+        "classification": "VERIFIED_PERSONAL",
+        "contactLevel": "A",
+        "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/okolelov_grigoriy_valerevich"
+      },
+      "ready": false,
+      "generation": "template",
+      "fallback": "verified_signal_missing",
+      "ms": 32684
+    }
+  ],
+  "matched": [
+    {
+      "company": "Императорский фарфоровый завод",
+      "before": {
+        "company": "Императорский фарфоровый завод",
+        "origin": "business",
+        "people": 2,
+        "confirmedPeople": 1,
+        "best": {
+          "email": "nik_aa@ipm.ru",
+          "personName": "Николаев Александр Анатольевич",
+          "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+          "classification": "VERIFIED_PERSONAL",
+          "contactLevel": "A",
+          "sourceUrl": "https://www.ipm.ru/contacts/"
+        },
+        "ready": true,
+        "generation": "not-recorded",
+        "ms": 34906,
+        "actions": 5,
+        "cacheHits": 0
+      },
+      "after": {
+        "company": "Императорский фарфоровый завод",
+        "origin": "business",
+        "people": 2,
+        "confirmedPeople": 1,
+        "best": {
+          "email": "nik_aa@ipm.ru",
+          "personName": "Николаев Александр Анатольевич",
+          "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+          "classification": "VERIFIED_PERSONAL",
+          "contactLevel": "A",
+          "sourceUrl": "https://www.ipm.ru/contacts/"
+        },
+        "ready": true,
+        "generation": "ai",
+        "fallback": null,
+        "ms": 8513,
+        "actions": 0,
+        "cacheHits": 1
+      }
+    },
+    {
+      "company": "МЕТИЗ ИМПЭКС",
+      "before": {
+        "company": "МЕТИЗ ИМПЭКС",
+        "origin": "business",
+        "people": 0,
+        "confirmedPeople": 0,
+        "best": null,
+        "ready": false,
+        "generation": "not-recorded",
+        "ms": 11898,
+        "actions": 1,
+        "cacheHits": 0
+      },
+      "after": {
+        "company": "МЕТИЗ ИМПЭКС",
+        "origin": "business",
+        "people": 1,
+        "confirmedPeople": 0,
+        "best": {
+          "email": "info@metiz-ltd.ru",
+          "personName": null,
+          "role": null,
+          "classification": "GENERAL",
+          "contactLevel": "E",
+          "sourceUrl": "https://metiz-ltd.ru"
+        },
+        "ready": true,
+        "generation": "template",
+        "fallback": "copy_quality_rejected",
+        "ms": 80778,
+        "actions": 11,
+        "cacheHits": 0
+      }
+    }
+  ],
+  "totals": {
+    "uniqueCompanies": 9,
+    "people": 10,
+    "confirmedPeople": 8,
+    "verifiedPersonalCompanies": 2,
+    "highConfidencePersonalCompanies": 0,
+    "generalOnly": 4,
+    "usableEmailCompanies": 7,
+    "ready": 4
+  },
+  "usage": {
+    "qwen3.7-plus": {
+      "calls": 49,
+      "input": 183127,
+      "output": 18129,
+      "cached": 60800,
+      "webSearchCalls": 0,
+      "estimatedUsd": 0.1022572
+    },
+    "gpt-4.1-mini": {
+      "calls": 45,
+      "input": 392557,
+      "output": 13137,
+      "cached": 0,
+      "webSearchCalls": 45,
+      "estimatedUsd": 0.6280420000000001
+    }
+  },
+  "ledger": {
+    "chargedUsd": 0.7978795999999999,
+    "requests": 100,
+    "settled": 96
+  },
+  "direct": {
+    "jobsScanned": 42,
+    "assessed": 24,
+    "hhAssessed": 9,
+    "nonHhAssessed": 15,
+    "semanticDirect": 6,
+    "aiRoleCandidates": 24,
+    "automationIntentPass": 5,
+    "companiesExtracted": 5,
+    "hhCompanies": 5,
+    "nonHhCompanies": 0,
+    "officialDomainsConfirmed": 5,
+    "icpMatch": 0,
+    "icpUncertain": 0,
+    "icpMismatch": 0,
+    "segmentNotApplied": 5,
+    "contactsFound": 2,
+    "ready": 2,
+    "falsePositives": 0,
+    "runtimeMs": 114095,
+    "requests": 110,
+    "companyIdentityQueries": 0,
+    "timeouts": 0,
+    "abortedRequests": 0,
+    "orphanRequests": 0
+  },
+  "lifecycle": {
+    "single": "approved",
+    "bulk": 0,
+    "queued": 1,
+    "senderDryRun": "sent",
+    "sinkCalls": 1,
+    "followup": {
+      "generated": 1,
+      "skipped": {}
+    },
+    "followupNote": "Elapsed time and no-reply status simulated in isolated storage; no IMAP calls"
+  },
+  "importMetrics": {
+    "companies": 1,
+    "people": 3,
+    "personalEmails": 1,
+    "emailContacts": 1,
+    "ready": 0,
+    "manualReview": 1
+  },
+  "orphanRequests": 0,
+  "productionSmtpCalls": 0,
+  "manualCopyReview": {
+    "company": "Императорский фарфоровый завод",
+    "pass": false,
+    "reason": "Infers expansion into adjacent/new markets from vacancy title and presents it as a company plan; source provides only the position title."
+  }
+}

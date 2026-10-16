@@ -1,0 +1,1987 @@
+{
+  "mode": "direct",
+  "startedAt": "2026-10-08T08:36:39.752Z",
+  "isolated": "C:\\Users\\User\\AppData\\Local\\Temp\\leadgen-final-direct-UJeUF8",
+  "productionSmtpCalls": 0,
+  "discovery": {
+    "mode": "LIVE_READ_ONLY",
+    "verticalId": null,
+    "planner": {
+      "status": "AI",
+      "reason": "configured",
+      "intentHypotheses": [
+        "Найм специалистов с навыками AI для автоматизации бизнес-процессов",
+        "Поиск подрядчиков для внедрения искусственного интеллекта",
+        "Открытие пилотных проектов и внедрение LLM в корпоративную среду",
+        "Закупка услуг по разработке агентной автоматизации",
+        "Публикация вакансий с требованиями по машинному обучению и обработке естественного языка",
+        "Сообщения о реализации проектов с использованием AI в индустрии"
+      ],
+      "terminology": [
+        "искусственный интеллект",
+        "AI",
+        "LLM",
+        "агентная автоматизация",
+        "машинное обучение",
+        "обработка естественного языка",
+        "нейросети",
+        "шифрование данных с помощью AI",
+        "digital transformation",
+        "automation"
+      ],
+      "sourceHypotheses": [
+        "российские сайты вакансий",
+        "официальные сайты компаний",
+        "новостные агрегаторы российского бизнеса",
+        "публикации о тендерах и закупках",
+        "отчеты о пилотных проектах компаний"
+      ],
+      "queries": [
+        "AI автоматизация бизнес-процессов",
+        "LLM разработка решений",
+        "ИИ обработка естественного языка",
+        "подрядчик AI проектов",
+        "пилотное внедрение AI",
+        "закупка услуг AI",
+        "machine learning автоматизация",
+        "агентная система автоматизации"
+      ],
+      "queryAngles": [
+        "ru_job_board",
+        "ru_job_board",
+        "ru_job_board",
+        "market_news",
+        "market_news",
+        "market_news",
+        "ru_job_board",
+        "market_news"
+      ],
+      "execution": "ai_semantic",
+      "refinementQueries": [
+        "компания ищет подрядчика ИИ",
+        "пилот AI решения предприятие"
+      ]
+    },
+    "metrics": {
+      "jobsScanned": 42,
+      "assessed": 24,
+      "hhAssessed": 9,
+      "nonHhAssessed": 15,
+      "semanticDirect": 5,
+      "aiRoleCandidates": 24,
+      "automationIntentPass": 3,
+      "companiesExtracted": 3,
+      "hhCompanies": 3,
+      "nonHhCompanies": 0,
+      "officialDomainsConfirmed": 3,
+      "icpMatch": 0,
+      "icpUncertain": 0,
+      "icpMismatch": 0,
+      "segmentNotApplied": 3,
+      "contactsFound": 3,
+      "ready": 3,
+      "falsePositives": 0,
+      "runtimeMs": 93667,
+      "requests": 85,
+      "companyIdentityQueries": 2,
+      "timeouts": 0,
+      "abortedRequests": 0,
+      "orphanRequests": 0
+    },
+    "accepted": [
+      {
+        "company": "UNICA engineering",
+        "vacancyTitle": "Бизнес-аналитик по AI-автоматизации",
+        "sourceUrl": "https://hh.ru/vacancy/138013449",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "Разрабатывать автоматизации реальных бизнес-процессов с помощью Claude Code и других AI-инструментов. ... Дорабатывать и развивать существующие автоматизации с помощью AI-агентов, в том числе в системах 1С и ELMA365 (ставить агенту задачу, проверять результат и доводить его до рабочего состояния).",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Опубликована активная вакансия с подтверждённой задачей автоматизации бизнес-процессов через AI-инструменты и AI-агенты.",
+        "officialWebsite": "https://unica-eng.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 1,
+        "contactEmail": "info@unica-eng.ru",
+        "contactKind": "general",
+        "contactSourceUrl": "https://unica-eng.ru/",
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": true
+      },
+      {
+        "company": "True Engineering",
+        "vacancyTitle": "LLM Разработчик",
+        "sourceUrl": "https://hh.ru/vacancy/138252398",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "R&D в области больших языковых моделей и RAG приложений ... Реализация AI инструментов и агентов для существующих и новых Enterprise продуктов для федеральных",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "В вакансии явно указана задача разработки и внедрения LLM/AI-агентов в продукты компании, вакансия активна.",
+        "officialWebsite": "https://trueengineering.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 1,
+        "contactEmail": "sales@trueengineering.ru",
+        "contactKind": "sales",
+        "contactSourceUrl": "https://www.trueengineering.ru/",
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": true
+      },
+      {
+        "company": "Национальная Транспортная Компания",
+        "vacancyTitle": "Аналитик бизнес-процессов с опытом внедрения AI",
+        "sourceUrl": "https://hh.ru/vacancy/137933485",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "НТК переходит от ручного управления и разрозненных автоматизаций к системному использованию AI в бизнес-процессах. ... Нам нужен аналитик бизнес-процессов с опытом внедрения AI — человек, который ... сам собирает прототипы AI-решений.",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Открыта вакансия по активному внедрению AI в бизнес-процессы компании.",
+        "officialWebsite": "https://ntk1.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 1,
+        "contactEmail": "zakaz@ntk1.ru",
+        "contactKind": "sales",
+        "contactSourceUrl": "https://ntk1.ru/kontakty/",
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": true
+      }
+    ],
+    "sourceClasses": {
+      "hh": {
+        "results": 21,
+        "assessed": 9,
+        "direct": 5,
+        "companies": 3,
+        "rejected": {
+          "official_domain_not_cross_checked": 2,
+          "direct_intent_not_relevant": 2,
+          "direct_intent_likely_not_confirmed": 2,
+          "bounded_sample_not_assessed": 12
+        }
+      },
+      "company_site": {
+        "results": 18,
+        "assessed": 12,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "direct_intent_not_relevant": 11,
+          "bounded_sample_not_assessed": 6,
+          "direct_intent_stale": 1
+        }
+      },
+      "news": {
+        "results": 3,
+        "assessed": 3,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "direct_intent_not_relevant": 2,
+          "direct_intent_stale": 1
+        }
+      }
+    },
+    "rejected": [
+      {
+        "company": "Авталон",
+        "vacancyTitle": "AI-специалист по автоматизации бизнес-процессов",
+        "sourceUrl": "https://hh.ru/vacancy/137342685",
+        "status": "REJECTED",
+        "reason": "official_domain_not_cross_checked",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "AI Development Company USA | Custom AI Solutions | AlgoritX",
+        "sourceUrl": "https://algoritx.com",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": "HeadHunter::Analytics/Data Science",
+        "vacancyTitle": "AI/LLM Engineer в AI Lab",
+        "sourceUrl": "https://hh.ru/vacancy/137383315",
+        "status": "REJECTED",
+        "reason": "official_domain_not_cross_checked",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "INTEGRA AI - Внедрение ИИ в бизнес",
+        "sourceUrl": "https://www.integraai.ru",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Доцент (кандидат наук /доктор наук) Факультет информационных технологий и анализа больших данных",
+        "sourceUrl": "https://hh.ru/vacancy/137596384",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "TendroBase — База тендеров и госзакупок России",
+        "sourceUrl": "https://tendrobase.ru",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "S&A - Технологические решения",
+        "sourceUrl": "https://www.s-a.pro",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Внедрение AI-агентов под ключ для бизнеса — EORA",
+        "sourceUrl": "https://eora.ru",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Аналитик бизнес-процессов",
+        "sourceUrl": "https://hh.ru/vacancy/137972453",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Тендерно.ru — тендеры по 44-ФЗ и 223-ФЗ простым языком",
+        "sourceUrl": "https://tenderno.ru",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Python Backend Developer (AI / LLM / RAG)",
+        "sourceUrl": "https://hh.ru/vacancy/138251955",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Aura — AI-продуктовая студия",
+        "sourceUrl": "https://auradev.tech",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Внедрение ИИ в бизнес под ключ на вашем сервере | Local AI",
+        "sourceUrl": "https://lokai.ru",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Системный аналитик LLM",
+        "sourceUrl": "https://hh.ru/vacancy/138247547",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "KontraktHub — поиск государственных и коммерческих контрактов 44-ФЗ и 223-ФЗ",
+        "sourceUrl": "https://kontrakthub.ru",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Рейтинг GEO-агентств: выбрать подрядчика для продвижения в ИИ — Пиксель Тулс",
+        "sourceUrl": "https://tools.pixelplus.ru/news/reyting-geo-agentstv",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Студия ИИ для бизнеса | Разработка и внедрение безопасных AI-решений для бизнеса | AIMcorp",
+        "sourceUrl": "https://aimcorp.ru",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "ИИ меняет рынок креативных услуг: агентства переходят от отдельных инструментов к бизнес-партнерству",
+        "sourceUrl": "https://www.novostiitkanala.ru/news/detail.php?ID=198435",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "EVO Profit AI — внедряем ИИ с измеримым бизнес-эффектом",
+        "sourceUrl": "https://evoai.pro",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "ВИС ищет подрядчика для завершения девятилетней стройки в ЯНАО. «Партнер Кобылкина» продолжает выкачивать из бюджета миллионы - Версия для печати - Град Петра",
+        "sourceUrl": "https://www.gradpetra.info/news/221478-vis-ischet-podrjadchika-dlja-zavershenija-devjatiletnej-strojki-v-janao-partner-kobylkina-prodolzhaet-vykachivat-iz-bjudzheta-milliony/print",
+        "status": "REJECTED",
+        "reason": "direct_intent_stale",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      }
+    ],
+    "rejectionReasons": {
+      "official_domain_not_cross_checked": 2,
+      "direct_intent_not_relevant": 15,
+      "direct_intent_likely_not_confirmed": 2,
+      "direct_intent_stale": 2
+    },
+    "mutated": false,
+    "smtpCalls": 0
+  },
+  "campaign": {
+    "id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+    "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+    "name": "Controlled Direct AI Need",
+    "requested_by": "isolated-live",
+    "status": "completed",
+    "icp_label": "Прямой подтверждённый спрос на AI",
+    "offer_label": "разобрать конкретную AI-задачу и быстро проверить решение через аудит или MVP",
+    "created_at": "2026-10-08T08:38:15.673Z"
+  },
+  "companies": [
+    {
+      "id": "company-be3d4ed97efd98d6615f98b652d3",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_name": "UNICA engineering",
+      "company_domain": "unica-eng.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/138013449",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "UNICA engineering",
+          "officialWebsite": "https://unica-eng.ru",
+          "officialDomain": "unica-eng.ru",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [
+              {
+                "email": "info@unica-eng.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://unica-eng.ru",
+                    "sourceType": "official",
+                    "excerpt": "info@unica-eng.ru — public email parser",
+                    "capturedAt": "2026-10-08T08:38:15.673Z",
+                    "confidence": 99
+                  }
+                ]
+              }
+            ],
+            "inferred": []
+          },
+          "bestOutreachContact": {
+            "email": "info@unica-eng.ru",
+            "personName": null,
+            "role": null,
+            "classification": "GENERAL",
+            "contactLevel": "E",
+            "sourceUrl": "https://unica-eng.ru"
+          },
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Бизнес-аналитик по AI-автоматизации",
+            "detail": "Разрабатывать автоматизации реальных бизнес-процессов с помощью Claude Code и других AI-инструментов. ... Дорабатывать и развивать существующие автоматизации с помощью AI-агентов, в том числе в системах 1С и ELMA365 (ставить агенту задачу, проверять результат и доводить его до рабочего состояния).",
+            "sourceUrl": "https://hh.ru/vacancy/138013449",
+            "confidence": 90
+          },
+          "researchConfidence": "HIGH_CONFIDENCE",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 6,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 14,
+            "lprMs": 46652,
+            "contactMs": 62,
+            "totalMs": 49099,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/138013449",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-08T08:38:15.673Z",
+      "updated_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "company-834c2bbe8b7d855eff153409d7e1",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_name": "True Engineering",
+      "company_domain": "trueengineering.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/138252398",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "True Engineering",
+          "officialWebsite": "https://trueengineering.ru",
+          "officialDomain": "trueengineering.ru",
+          "people": [
+            {
+              "fullName": "Дмитрий Талочкин",
+              "role": "Генеральный директор",
+              "confidence": "HIGH_CONFIDENCE",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.trueengineering.ru/about",
+                  "sourceType": "official",
+                  "excerpt": "Дмитрий Талочкин — Генеральный директор.",
+                  "capturedAt": "2026-10-08T08:38:15.673Z",
+                  "confidence": 70
+                }
+              ],
+              "profiles": {
+                "tenchat": null,
+                "telegram": null,
+                "instagram": null,
+                "vk": null,
+                "other": []
+              },
+              "phone": null
+            }
+          ],
+          "emails": {
+            "personal": [],
+            "department": [
+              {
+                "email": "sales@trueengineering.ru",
+                "personName": null,
+                "classification": "DEPARTMENT",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://www.trueengineering.ru/ourContacts",
+                    "sourceType": "official",
+                    "excerpt": "sales@trueengineering.ru — public email parser",
+                    "capturedAt": "2026-10-08T08:38:15.673Z",
+                    "confidence": 99
+                  }
+                ]
+              }
+            ],
+            "general": [
+              {
+                "email": "info@trueengineering.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://www.trueengineering.ru/about",
+                    "sourceType": "official",
+                    "excerpt": "info@trueengineering.ru — public email parser",
+                    "capturedAt": "2026-10-08T08:38:15.673Z",
+                    "confidence": 99
+                  }
+                ]
+              }
+            ],
+            "inferred": [
+              {
+                "email": "dmitrii.talochkin@trueengineering.ru",
+                "personName": "Дмитрий Талочкин",
+                "classification": "INFERRED_PERSONAL",
+                "evidence": [],
+                "verification": {
+                  "email": "dmitrii.talochkin@trueengineering.ru",
+                  "personName": "Дмитрий Талочкин",
+                  "status": "PREDICTED",
+                  "pattern": "{given}.{family}",
+                  "patternSupport": 0,
+                  "mx": "present",
+                  "catchAll": "unknown",
+                  "sourceUrls": [],
+                  "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+                }
+              },
+              {
+                "email": "d.talochkin@trueengineering.ru",
+                "personName": "Дмитрий Талочкин",
+                "classification": "INFERRED_PERSONAL",
+                "evidence": [],
+                "verification": {
+                  "email": "d.talochkin@trueengineering.ru",
+                  "personName": "Дмитрий Талочкин",
+                  "status": "PREDICTED",
+                  "pattern": "{g}.{family}",
+                  "patternSupport": 0,
+                  "mx": "present",
+                  "catchAll": "unknown",
+                  "sourceUrls": [],
+                  "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+                }
+              },
+              {
+                "email": "talochkin@trueengineering.ru",
+                "personName": "Дмитрий Талочкин",
+                "classification": "INFERRED_PERSONAL",
+                "evidence": [],
+                "verification": {
+                  "email": "talochkin@trueengineering.ru",
+                  "personName": "Дмитрий Талочкин",
+                  "status": "PREDICTED",
+                  "pattern": "{family}",
+                  "patternSupport": 0,
+                  "mx": "present",
+                  "catchAll": "unknown",
+                  "sourceUrls": [],
+                  "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+                }
+              },
+              {
+                "email": "dtalochkin@trueengineering.ru",
+                "personName": "Дмитрий Талочкин",
+                "classification": "INFERRED_PERSONAL",
+                "evidence": [],
+                "verification": {
+                  "email": "dtalochkin@trueengineering.ru",
+                  "personName": "Дмитрий Талочкин",
+                  "status": "PREDICTED",
+                  "pattern": "{g}{family}",
+                  "patternSupport": 0,
+                  "mx": "present",
+                  "catchAll": "unknown",
+                  "sourceUrls": [],
+                  "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+                }
+              },
+              {
+                "email": "dmitriy.talochkin@trueengineering.ru",
+                "personName": "Дмитрий Талочкин",
+                "classification": "INFERRED_PERSONAL",
+                "evidence": [],
+                "verification": {
+                  "email": "dmitriy.talochkin@trueengineering.ru",
+                  "personName": "Дмитрий Талочкин",
+                  "status": "PREDICTED",
+                  "pattern": "{given}.{family}",
+                  "patternSupport": 0,
+                  "mx": "present",
+                  "catchAll": "unknown",
+                  "sourceUrls": [],
+                  "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+                }
+              }
+            ]
+          },
+          "bestOutreachContact": {
+            "email": "sales@trueengineering.ru",
+            "personName": null,
+            "role": null,
+            "classification": "DEPARTMENT",
+            "contactLevel": "E",
+            "sourceUrl": "https://www.trueengineering.ru/ourContacts"
+          },
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "LLM Разработчик",
+            "detail": "R&D в области больших языковых моделей и RAG приложений ... Реализация AI инструментов и агентов для существующих и новых Enterprise продуктов для федеральных",
+            "sourceUrl": "https://hh.ru/vacancy/138252398",
+            "confidence": 90
+          },
+          "researchConfidence": "HIGH_CONFIDENCE",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 3,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 16,
+            "lprMs": 25526,
+            "contactMs": 14,
+            "totalMs": 25545,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/138252398",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-08T08:38:15.673Z",
+      "updated_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "company-e13d18de455bee623e2040495b0d",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_name": "Национальная Транспортная Компания",
+      "company_domain": "ntk1.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/137933485",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "Национальная Транспортная Компания",
+          "officialWebsite": "https://ntk1.ru",
+          "officialDomain": "ntk1.ru",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [
+              {
+                "email": "zakaz@ntk1.ru",
+                "personName": null,
+                "classification": "DEPARTMENT",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://ntk1.ru/kontakty/",
+                    "sourceType": "official",
+                    "excerpt": "zakaz@ntk1.ru — public email parser",
+                    "capturedAt": "2026-10-08T08:38:15.673Z",
+                    "confidence": 99
+                  }
+                ]
+              }
+            ],
+            "general": [],
+            "inferred": []
+          },
+          "bestOutreachContact": {
+            "email": "zakaz@ntk1.ru",
+            "personName": null,
+            "role": null,
+            "classification": "DEPARTMENT",
+            "contactLevel": "E",
+            "sourceUrl": "https://ntk1.ru/kontakty/"
+          },
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Аналитик бизнес-процессов с опытом внедрения AI",
+            "detail": "НТК переходит от ручного управления и разрозненных автоматизаций к системному использованию AI в бизнес-процессах. ... Нам нужен аналитик бизнес-процессов с опытом внедрения AI — человек, который ... сам собирает прототипы AI-решений.",
+            "sourceUrl": "https://hh.ru/vacancy/137933485",
+            "confidence": 90
+          },
+          "researchConfidence": "HIGH_CONFIDENCE",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 3,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 26,
+            "lprMs": 4426,
+            "contactMs": 1265,
+            "totalMs": 5699,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/137933485",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-08T08:38:15.673Z",
+      "updated_at": "2026-10-08T08:38:15.673Z"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "contact-lead-7e4f90c96182fd23d4a72d0d49a3-website-form-2",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_id": "company-be3d4ed97efd98d6615f98b652d3",
+      "lead_id": "lead-7e4f90c96182fd23d4a72d0d49a3",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://unica-eng.ru/contacts",
+      "source_url": "https://unica-eng.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "contact-lead-7e4f90c96182fd23d4a72d0d49a3-website-form-3",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_id": "company-be3d4ed97efd98d6615f98b652d3",
+      "lead_id": "lead-7e4f90c96182fd23d4a72d0d49a3",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://unica-eng.ru/contact",
+      "source_url": "https://unica-eng.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "contact-lead-7e4f90c96182fd23d4a72d0d49a3-company-website-4",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_id": "company-be3d4ed97efd98d6615f98b652d3",
+      "lead_id": "lead-7e4f90c96182fd23d4a72d0d49a3",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://unica-eng.ru",
+      "source_url": "https://unica-eng.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "contact-lead-7e4f90c96182fd23d4a72d0d49a3-generic-email-1",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_id": "company-be3d4ed97efd98d6615f98b652d3",
+      "lead_id": "lead-7e4f90c96182fd23d4a72d0d49a3",
+      "contact_type": "generic_email",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": "info@unica-eng.ru",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://unica-eng.ru",
+      "source_label": "public email parser",
+      "confidence_score": 99,
+      "is_primary": true,
+      "metadata": {
+        "email_status": "company_email_ready",
+        "email_mx_verified": true,
+        "email_domain_match_reason": "official_domain",
+        "email_subject": "UNICA engineering: быстрый контур AI-задачи",
+        "email_body": "Добрый день.\n\nВ публичном источнике UNICA engineering обратил внимание на задачу: «Разрабатывать автоматизации реальных бизнес-процессов с помощью Claude Code и других AI-инструментов. ... Дорабатывать и развивать существующие автоматизации с помощью AI-агентов, в том числе в системах 1С и ELMA365 (ставить агенту задачу, проверять результат и доводить его до рабочего состояния).».\n\nКогда такая инициатива уже сформулирована, найм специалиста и запуск самой задачи часто идут с разной скоростью. Это не означает, что сотрудник не нужен: отдельный ограниченный участок можно проверить раньше, чтобы к выходу человека у команды уже были подтверждённые требования и рабочий прототип.\n\nПолезно отделить архитектурные решения, которые требуют постоянного владельца внутри компании, от короткого пилота, который быстро проверяет данные, интеграции и реальную ценность сценария.\n\nЯ AI-архитектор. Могу независимо разобрать задачу, собрать ограниченный прототип или реализовать отдельный AI-блок, не подменяя будущего сотрудника и не меняя выбранную вами кадровую стратегию.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": false,
+        "outreach_selected": true,
+        "email_generation_source": "template",
+        "email_generation_fallback_reason": "Необоснованные английские слова: Claude, Code."
+      },
+      "created_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_id": "company-834c2bbe8b7d855eff153409d7e1",
+      "lead_id": "lead-93b4cc127aeef3c38dc748baf223",
+      "full_name": "Дмитрий Талочкин",
+      "role_title": "Генеральный директор",
+      "department": null,
+      "source_url": "https://www.trueengineering.ru/about",
+      "source_label": "Iterative public research",
+      "confidence_score": 68,
+      "is_primary": false,
+      "created_at": "2026-10-08T08:38:15.673Z",
+      "id": "contact-lead-93b4cc127aeef3c38dc748baf223-primary-person-confirmed",
+      "contact_type": "confirmed_person",
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "metadata": {
+        "outreach_selected": false
+      }
+    },
+    {
+      "id": "contact-lead-93b4cc127aeef3c38dc748baf223-website-form-3",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_id": "company-834c2bbe8b7d855eff153409d7e1",
+      "lead_id": "lead-93b4cc127aeef3c38dc748baf223",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://trueengineering.ru/contacts",
+      "source_url": "https://trueengineering.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "contact-lead-93b4cc127aeef3c38dc748baf223-website-form-4",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_id": "company-834c2bbe8b7d855eff153409d7e1",
+      "lead_id": "lead-93b4cc127aeef3c38dc748baf223",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://trueengineering.ru/contact",
+      "source_url": "https://trueengineering.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "contact-lead-93b4cc127aeef3c38dc748baf223-company-website-5",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_id": "company-834c2bbe8b7d855eff153409d7e1",
+      "lead_id": "lead-93b4cc127aeef3c38dc748baf223",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://trueengineering.ru",
+      "source_url": "https://trueengineering.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "contact-lead-93b4cc127aeef3c38dc748baf223-generic-email-1",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_id": "company-834c2bbe8b7d855eff153409d7e1",
+      "lead_id": "lead-93b4cc127aeef3c38dc748baf223",
+      "contact_type": "generic_email",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": "sales@trueengineering.ru",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://www.trueengineering.ru/ourContacts",
+      "source_label": "public email parser",
+      "confidence_score": 99,
+      "is_primary": true,
+      "metadata": {
+        "email_status": "department_email_ready",
+        "email_mx_verified": true,
+        "email_domain_match_reason": "official_domain",
+        "email_subject": "True Engineering: быстрый контур AI-задачи",
+        "email_body": "Добрый день.\n\nВ публичном источнике True Engineering обратил внимание на задачу: «R&D в области больших языковых моделей и RAG приложений ... Реализация AI инструментов и агентов для существующих и новых Enterprise продуктов для федеральных».\n\nКогда такая инициатива уже сформулирована, найм специалиста и запуск самой задачи часто идут с разной скоростью. Это не означает, что сотрудник не нужен: отдельный ограниченный участок можно проверить раньше, чтобы к выходу человека у команды уже были подтверждённые требования и рабочий прототип.\n\nПолезно отделить архитектурные решения, которые требуют постоянного владельца внутри компании, от короткого пилота, который быстро проверяет данные, интеграции и реальную ценность сценария.\n\nЯ AI-архитектор. Могу независимо разобрать задачу, собрать ограниченный прототип или реализовать отдельный AI-блок, не подменяя будущего сотрудника и не меняя выбранную вами кадровую стратегию.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": false,
+        "outreach_selected": true,
+        "email_generation_source": "template",
+        "email_generation_fallback_reason": "provider_credit_exhausted"
+      },
+      "created_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "contact-lead-a91401e15b6b48b3abb4ab0d0538-website-form-2",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_id": "company-e13d18de455bee623e2040495b0d",
+      "lead_id": "lead-a91401e15b6b48b3abb4ab0d0538",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://ntk1.ru/contacts",
+      "source_url": "https://ntk1.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "contact-lead-a91401e15b6b48b3abb4ab0d0538-website-form-3",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_id": "company-e13d18de455bee623e2040495b0d",
+      "lead_id": "lead-a91401e15b6b48b3abb4ab0d0538",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://ntk1.ru/contact",
+      "source_url": "https://ntk1.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "contact-lead-a91401e15b6b48b3abb4ab0d0538-website-form-4",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_id": "company-e13d18de455bee623e2040495b0d",
+      "lead_id": "lead-a91401e15b6b48b3abb4ab0d0538",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://ntk1.ru/contact/",
+      "source_url": "https://ntk1.ru/contact/",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "contact-lead-a91401e15b6b48b3abb4ab0d0538-website-form-5",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_id": "company-e13d18de455bee623e2040495b0d",
+      "lead_id": "lead-a91401e15b6b48b3abb4ab0d0538",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://ntk1.ru/contacts/",
+      "source_url": "https://ntk1.ru/contacts/",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "contact-lead-a91401e15b6b48b3abb4ab0d0538-website-form-6",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_id": "company-e13d18de455bee623e2040495b0d",
+      "lead_id": "lead-a91401e15b6b48b3abb4ab0d0538",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://ntk1.ru/contact-us/",
+      "source_url": "https://ntk1.ru/contact-us/",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "contact-lead-a91401e15b6b48b3abb4ab0d0538-company-website-7",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_id": "company-e13d18de455bee623e2040495b0d",
+      "lead_id": "lead-a91401e15b6b48b3abb4ab0d0538",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://ntk1.ru",
+      "source_url": "https://ntk1.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "contact-lead-a91401e15b6b48b3abb4ab0d0538-generic-email-1",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "company_id": "company-e13d18de455bee623e2040495b0d",
+      "lead_id": "lead-a91401e15b6b48b3abb4ab0d0538",
+      "contact_type": "generic_email",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": "zakaz@ntk1.ru",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://ntk1.ru/kontakty/",
+      "source_label": "public email parser",
+      "confidence_score": 99,
+      "is_primary": true,
+      "metadata": {
+        "email_status": "department_email_ready",
+        "email_mx_verified": true,
+        "email_domain_match_reason": "official_domain",
+        "email_subject": "Национальная Транспортная Компания: быстрый контур AI-задачи",
+        "email_body": "Добрый день.\n\nВ публичном источнике Национальная Транспортная Компания обратил внимание на задачу: «НТК переходит от ручного управления и разрозненных автоматизаций к системному использованию AI в бизнес-процессах. ... Нам нужен аналитик бизнес-процессов с опытом внедрения AI — человек, который ... сам собирает прототипы AI-решений.».\n\nКогда такая инициатива уже сформулирована, найм специалиста и запуск самой задачи часто идут с разной скоростью. Это не означает, что сотрудник не нужен: отдельный ограниченный участок можно проверить раньше, чтобы к выходу человека у команды уже были подтверждённые требования и рабочий прототип.\n\nПолезно отделить архитектурные решения, которые требуют постоянного владельца внутри компании, от короткого пилота, который быстро проверяет данные, интеграции и реальную ценность сценария.\n\nЯ AI-архитектор. Могу независимо разобрать задачу, собрать ограниченный прототип или реализовать отдельный AI-блок, не подменяя будущего сотрудника и не меняя выбранную вами кадровую стратегию.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": false,
+        "outreach_selected": true,
+        "email_generation_source": "template",
+        "email_generation_fallback_reason": "provider_credit_exhausted"
+      },
+      "created_at": "2026-10-08T08:38:15.673Z"
+    }
+  ],
+  "signals": [
+    {
+      "id": "signal-479b20f322247571aee42cdd0abf",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "lead_id": "lead-7e4f90c96182fd23d4a72d0d49a3",
+      "company_id": "company-be3d4ed97efd98d6615f98b652d3",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Бизнес-аналитик по AI-автоматизации",
+      "signal_detail": "Разрабатывать автоматизации реальных бизнес-процессов с помощью Claude Code и других AI-инструментов. ... Дорабатывать и развивать существующие автоматизации с помощью AI-агентов, в том числе в системах 1С и ELMA365 (ставить агенту задачу, проверять результат и доводить его до рабочего состояния).",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/138013449",
+      "confidence_score": 90,
+      "found_at": "2026-10-08T08:38:15.673Z",
+      "created_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "signal-d1ec08659fec878df230eadce69a",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "lead_id": "lead-93b4cc127aeef3c38dc748baf223",
+      "company_id": "company-834c2bbe8b7d855eff153409d7e1",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "LLM Разработчик",
+      "signal_detail": "R&D в области больших языковых моделей и RAG приложений ... Реализация AI инструментов и агентов для существующих и новых Enterprise продуктов для федеральных",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/138252398",
+      "confidence_score": 90,
+      "found_at": "2026-10-08T08:38:15.673Z",
+      "created_at": "2026-10-08T08:38:15.673Z"
+    },
+    {
+      "id": "signal-06090ec056b81355bfea7127b1b3",
+      "pipeline_run_id": "pipeline-b88a311803ee2edff16fc61ed268",
+      "campaign_id": "campaign-ai-hiring-449f5f56f076427ba63a4c7a88d5",
+      "lead_id": "lead-a91401e15b6b48b3abb4ab0d0538",
+      "company_id": "company-e13d18de455bee623e2040495b0d",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Аналитик бизнес-процессов с опытом внедрения AI",
+      "signal_detail": "НТК переходит от ручного управления и разрозненных автоматизаций к системному использованию AI в бизнес-процессах. ... Нам нужен аналитик бизнес-процессов с опытом внедрения AI — человек, который ... сам собирает прототипы AI-решений.",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/137933485",
+      "confidence_score": 90,
+      "found_at": "2026-10-08T08:38:15.673Z",
+      "created_at": "2026-10-08T08:38:15.673Z"
+    }
+  ],
+  "queueBefore": [
+    {
+      "id": "outreach-contact-lead-7e4f90c96182fd23d4a72d0d49a3-generic-email-1",
+      "company_name": "UNICA engineering",
+      "status": "needs_review",
+      "quality_gate_passed": false
+    },
+    {
+      "id": "outreach-contact-lead-93b4cc127aeef3c38dc748baf223-generic-email-1",
+      "company_name": "True Engineering",
+      "status": "needs_review",
+      "quality_gate_passed": false
+    },
+    {
+      "id": "outreach-contact-lead-a91401e15b6b48b3abb4ab0d0538-generic-email-1",
+      "company_name": "Национальная Транспортная Компания",
+      "status": "needs_review",
+      "quality_gate_passed": false
+    }
+  ],
+  "metrics": {
+    "companies": 3,
+    "people": 1,
+    "personalEmails": 0,
+    "emailContacts": 3,
+    "ready": 0,
+    "manualReview": 3
+  },
+  "orphanRequests": 0,
+  "requests": {
+    "api.openai.com": 32,
+    "api.hh.ru": 3,
+    "hh.ru": 21,
+    "www.bing.com": 18,
+    "api.tavily.com": 1,
+    "algoritx.com": 1,
+    "www.integraai.ru": 1,
+    "tendrobase.ru": 1,
+    "www.s-a.pro": 1,
+    "eora.ru": 1,
+    "tenderno.ru": 1,
+    "auradev.tech": 1,
+    "lokai.ru": 1,
+    "kontrakthub.ru": 1,
+    "tools.pixelplus.ru": 1,
+    "aimcorp.ru": 1,
+    "www.novostiitkanala.ru": 1,
+    "evoai.pro": 1,
+    "www.gradpetra.info": 1,
+    "finance.bigmir.net": 1,
+    "search.yahoo.com": 2,
+    "search.brave.com": 14,
+    "atln.com": 1,
+    "unica-eng.ru": 18,
+    "trueengineering.ru": 13,
+    "www.trueengineering.ru": 5,
+    "ntk1.ru": 33
+  },
+  "modelCalls": [
+    {
+      "schema": "direct_ai_need_search_plan",
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 754,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 292,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1046
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8634,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 491,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9125
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8632,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 445,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9077
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8617,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 527,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9144
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 5088,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 1096,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 6184
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 4430,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 1354,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5784
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 4603,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 1450,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 6053
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "direct_ai_need_search_plan",
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 1493,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 250,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1743
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8653,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 331,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8984
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8657,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 611,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9268
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 5900,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 982,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 6882
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8652,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 274,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8926
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8640,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 254,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8894
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 3330,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 375,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3705
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 4531,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 2944
+        },
+        "output_tokens": 403,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4934
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8728,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8846
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8652,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 290,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8942
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 4963,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 3968
+        },
+        "output_tokens": 331,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5294
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8758,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 177,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8935
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8776,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 145,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8921
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 5372,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 3968
+        },
+        "output_tokens": 427,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5799
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8751,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 80,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8831
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8772,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 478,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9250
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 6072,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 3968
+        },
+        "output_tokens": 458,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 6530
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "leadgen_outreach_v4",
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 681,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 252,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 933
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 3428,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 351,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3779
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 4687,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 3200
+        },
+        "output_tokens": 608,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5295
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8672,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 597,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9269
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 6716,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 604,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 7320
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8747,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 265,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9012
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8890,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 38,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8928
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 429,
+      "model": "gpt-4.1",
+      "webSearchCalls": 0,
+      "error": "{\n  \"error\": {\n    \"message\": \"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\n    \"type\": \"insufficient_quota\",\n    \"param\": null,\n    \"code\": \"credit_balance_exhausted\"\n  }\n}"
+    }
+  ],
+  "finishedAt": "2026-10-08T08:39:36.642Z"
+}

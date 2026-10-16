@@ -1,0 +1,3619 @@
+{
+  "mode": "business",
+  "name": "БКК Коломенский",
+  "website": "https://kolomenskoe.ru",
+  "before": {
+    "companyName": "БКК Коломенский",
+    "officialWebsite": "https://kolomenskoe.ru",
+    "officialDomain": "kolomenskoe.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: БКК Коломенский; открыта вакансия: Старший бизнес-партнер по работе с персоналом (департамент логистики).",
+      "sourceUrl": "https://hh.ru/vacancy/135816113",
+      "confidence": 100
+    },
+    "researchConfidence": "UNVERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 24,
+      "lprMs": 20968,
+      "contactMs": 2667,
+      "totalMs": 25985,
+      "stopReason": "lpr_not_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: БКК Коломенский; открыта вакансия: Старший бизнес-партнер по работе с персоналом (департамент логистики).",
+    "sourceUrl": "https://hh.ru/vacancy/135816113",
+    "confidence": 100
+  },
+  "index": 1,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://kolomenskoe.ru",
+      "status": 301,
+      "elapsedMs": 669
+    },
+    {
+      "stage": "fetch",
+      "url": "https://khleb.ru/",
+      "status": 200,
+      "elapsedMs": 829
+    },
+    {
+      "stage": "research_open",
+      "url": "https://kolomenskoe.ru",
+      "success": true,
+      "evidence": {
+        "url": "https://khleb.ru/",
+        "kind": "page",
+        "text": "Натуральный и вкусный хлеб Узнать больше Узнать больше Сдоба на любой вкус Узнать больше Узнать больше Готовые решения для пекарен Узнать больше Узнать больше Делаем мир вкуснее Узнать больше Узнать больше Торговые марки Продукция Свежий хлеб Кондитерские изделия Замороженная продукция Производственные мощности В холдинг входит 16 производственных площадок Подробнее Мы производим вкусные продукты в лучших традициях «Коломенского» Мы производим вкусные продукты в лучших традициях «Коломенского» Работаем ответственно, с душой, для вас! Задать вопрос генеральному директору Козлову Дмитрию Владимировичу ФИО* Телефон E-mail* Ваш вопрос Введите код с картинки Даю согласие на обработку персональных данных Отправить 8 800 234 14 67 kachestvo@khleb.ru Горячая линия по вопросам качества продукции О холдинге БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты Покупателю Где купить Каталог продукции Партнерам и бизнесу Клиентам Поставщикам For export clients Задать вопрос директору Наверх © 2026 ЗАО БКК «Коломенский» Сделано в Клаудмил",
+        "links": [
+          {
+            "url": "https://khleb.ru/export/about-holding",
+            "label": "For export clients"
+          },
+          {
+            "url": "https://khleb.ru/catalog/svezhiy-khleb",
+            "label": "Узнать больше"
+          },
+          {
+            "url": "https://khleb.ru/catalog/svezhiy-khleb/sdoba",
+            "label": "Узнать больше"
+          },
+          {
+            "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya",
+            "label": "Узнать больше"
+          },
+          {
+            "url": "https://khleb.ru/about-holding",
+            "label": "Подробнее"
+          },
+          {
+            "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+            "label": "персональных данных"
+          },
+          {
+            "url": "https://khleb.ru/about-holding/events",
+            "label": "События"
+          },
+          {
+            "url": "https://khleb.ru/about-holding/docs",
+            "label": "Реквизиты компаний"
+          },
+          {
+            "url": "https://khleb.ru/where-buy",
+            "label": "Где купить"
+          },
+          {
+            "url": "https://khleb.ru/clients",
+            "label": "Клиентам"
+          },
+          {
+            "url": "https://khleb.ru/providers",
+            "label": "Поставщикам"
+          },
+          {
+            "url": "https://cloudmill.ru",
+            "label": "Клаудмил"
+          }
+        ],
+        "fetchedAt": "2026-10-08T08:38:58.659Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3390,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "БКК Коломенский",
+        "domain": "kolomenskoe.ru",
+        "confirmedDomains": [
+          "kolomenskoe.ru",
+          "khleb.ru"
+        ],
+        "siteNavigation": {
+          "url": "https://khleb.ru/",
+          "links": [
+            {
+              "url": "https://khleb.ru/export/about-holding",
+              "label": "For export clients"
+            },
+            {
+              "url": "https://khleb.ru/catalog/svezhiy-khleb",
+              "label": "Узнать больше"
+            },
+            {
+              "url": "https://khleb.ru/catalog/svezhiy-khleb/sdoba",
+              "label": "Узнать больше"
+            },
+            {
+              "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya",
+              "label": "Узнать больше"
+            },
+            {
+              "url": "https://khleb.ru/about-holding",
+              "label": "Подробнее"
+            },
+            {
+              "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+              "label": "персональных данных"
+            },
+            {
+              "url": "https://khleb.ru/about-holding/events",
+              "label": "События"
+            },
+            {
+              "url": "https://khleb.ru/about-holding/docs",
+              "label": "Реквизиты компаний"
+            },
+            {
+              "url": "https://khleb.ru/where-buy",
+              "label": "Где купить"
+            },
+            {
+              "url": "https://khleb.ru/clients",
+              "label": "Клиентам"
+            },
+            {
+              "url": "https://khleb.ru/providers",
+              "label": "Поставщикам"
+            },
+            {
+              "url": "https://cloudmill.ru",
+              "label": "Клаудмил"
+            }
+          ]
+        },
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: БКК Коломенский; открыта вакансия: Старший бизнес-партнер по работе с персоналом (департамент логистики).",
+            "sourceUrl": "https://hh.ru/vacancy/135816113",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-08",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://khleb.ru/",
+            "kind": "page",
+            "text": "Натуральный и вкусный хлеб Узнать больше Узнать больше Сдоба на любой вкус Узнать больше Узнать больше Готовые решения для пекарен Узнать больше Узнать больше Делаем мир вкуснее Узнать больше Узнать больше Торговые марки Продукция Свежий хлеб Кондитерские изделия Замороженная продукция Производственные мощности В холдинг входит 16 производственных площадок Подробнее Мы производим вкусные продукты в лучших традициях «Коломенского» Мы производим вкусные продукты в лучших традициях «Коломенского» Работаем ответственно, с душой, для вас! Задать вопрос генеральному директору Козлову Дмитрию Владимировичу ФИО* Телефон E-mail* Ваш вопрос Введите код с картинки Даю согласие на обработку персональных данных Отправить 8 800 234 14 67 kachestvo@khleb.ru Горячая линия по вопросам качества продукции О холдинге БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты Покупателю Где купить Каталог продукции Партнерам и бизнесу Клиентам Поставщикам For export clients Задать вопрос директору Наверх © 2026 ЗАО БКК «Коломенский» Сделано в Клаудмил",
+            "links": [
+              {
+                "url": "https://khleb.ru/export/about-holding",
+                "label": "For export clients"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/sdoba",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/about-holding",
+                "label": "Подробнее"
+              },
+              {
+                "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+                "label": "персональных данных"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/events",
+                "label": "События"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/docs",
+                "label": "Реквизиты компаний"
+              },
+              {
+                "url": "https://khleb.ru/where-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://khleb.ru/clients",
+                "label": "Клиентам"
+              },
+              {
+                "url": "https://khleb.ru/providers",
+                "label": "Поставщикам"
+              },
+              {
+                "url": "https://cloudmill.ru",
+                "label": "Клаудмил"
+              }
+            ],
+            "fetchedAt": "2026-10-08T08:38:58.659Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 7,
+          "actionsRemaining": 10,
+          "searchRemaining": 8,
+          "remainingMs": 73450
+        }
+      },
+      "usage": {
+        "input_tokens": 2644,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 592,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3236
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "companySummary": "БКК Коломенский — крупный российский производитель хлебобулочных изделий и сдобы.",
+        "missing": [
+          "Публичная информация о руководителе департамента логистики или HR/персонала (бизнес-партнер, директор, начальник) с подтверждённой ролью и контактом",
+          "Страница команды, структуры или управленцев на сайте"
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Козлов Дмитрий Владимирович",
+            "role": "генеральный директор",
+            "relevance": 70,
+            "reason": "На сайте есть форма обращения к генеральному директору; нет признаков, что он связан с логистикой или HR-процессом, однако в малых/средних компаниях CEO может быть релевантен.",
+            "roleSourceText": "генеральному директору Козлову Дмитрию Владимировичу",
+            "nameParts": {
+              "given": "Дмитрий",
+              "family": "Козлов"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "kolomenskoe.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "БКК Коломенский"
+            }
+          },
+          {
+            "domain": "khleb.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "БКК Коломенский"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://khleb.ru/about-holding",
+            "focus": "руководство",
+            "purpose": "Проверить наличие информации о руководителях подразделений, особенно логистики или HR-команды; найти профильного ЛПР"
+          },
+          {
+            "type": "open",
+            "value": "https://khleb.ru/about-holding/docs",
+            "focus": "структура, контакты",
+            "purpose": "Проверить есть ли выложенная структура или именные контакты подразделений"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Пока обнаружен только генеральный директор без именного публичного контакта; необходима проверка страниц о компании и документов на предмет руководителей департамента логистики или HR/бизнес-партнёра."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "БКК Коломенский — крупный российский производитель хлебобулочных изделий и сдобы.",
+        "missing": [
+          "Публичная информация о руководителе департамента логистики или HR/персонала (бизнес-партнер, директор, начальник) с подтверждённой ролью и контактом",
+          "Страница команды, структуры или управленцев на сайте"
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Козлов Дмитрий Владимирович",
+            "role": "генеральный директор",
+            "relevance": 70,
+            "reason": "На сайте есть форма обращения к генеральному директору; нет признаков, что он связан с логистикой или HR-процессом, однако в малых/средних компаниях CEO может быть релевантен.",
+            "roleSourceText": "генеральному директору Козлову Дмитрию Владимировичу",
+            "nameParts": {
+              "given": "Дмитрий",
+              "family": "Козлов"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "kolomenskoe.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "БКК Коломенский"
+            }
+          },
+          {
+            "domain": "khleb.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "БКК Коломенский"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://khleb.ru/about-holding",
+            "focus": "руководство",
+            "purpose": "Проверить наличие информации о руководителях подразделений, особенно логистики или HR-команды; найти профильного ЛПР"
+          },
+          {
+            "type": "open",
+            "value": "https://khleb.ru/about-holding/docs",
+            "focus": "структура, контакты",
+            "purpose": "Проверить есть ли выложенная структура или именные контакты подразделений"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Пока обнаружен только генеральный директор без именного публичного контакта; необходима проверка страниц о компании и документов на предмет руководителей департамента логистики или HR/бизнес-партнёра."
+      },
+      "validationErrors": [
+        "person_rejected:Козлов Дмитрий Владимирович:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "kolomenskoe.ru",
+        "khleb.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://khleb.ru/about-holding",
+      "status": 301,
+      "elapsedMs": 127
+    },
+    {
+      "stage": "fetch",
+      "url": "https://khleb.ru/about-holding/docs",
+      "status": 200,
+      "elapsedMs": 506
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://khleb.ru/about-holding/docs",
+      "focus": "структура, контакты",
+      "purpose": "Проверить есть ли выложенная структура или именные контакты подразделений",
+      "success": true,
+      "evidence": {
+        "url": "https://khleb.ru/about-holding/docs",
+        "kind": "page",
+        "text": "Главная О холдинге Реквизиты компаний Реквизиты компаний БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты ООО БКХ «Коломенский» Скачать архивом Скачать архивом ООО «БКХ Коломенский».pdf 685.7 КБ ООО «Коломенский торговый дом» Скачать архивом Скачать архивом ООО «Коломенский торговый дом».pdf 153.4 КБ ЗАО БКК «Коломенский» Скачать архивом Скачать архивом ЗАО БКК «Коломенский».pdf 119.2 КБ ООО «Хлебный дом» Скачать архивом Скачать архивом ООО «Хлебный дом».pdf 113.4 КБ ЗАО «Дедовский хлеб» Скачать архивом Скачать архивом ЗАО «Дедовский хлеб».pdf 135.6 КБ АО «Волжский пекарь» Скачать архивом Скачать архивом АО «Волжский пекарь».pdf 119.7 КБ ООО «ГК «Дарница»» Скачать архивом Скачать архивом ООО «Группа компаний «Дарница».pdf 144.6 КБ ООО «Коломенское поле» Скачать архивом Скачать архивом ООО «Коломенское поле» .pdf 219.1 КБ ООО «Хлебозавод Балашихи» Скачать архивом Скачать архивом ООО «Хлебозавод Балашихи».pdf 127.6 КБ 8 800 234 14 67 kachestvo@khleb.ru Горячая линия по вопросам качества продукции О холдинге БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты Покупателю Где купить Каталог продукции Партнерам и бизнесу Клиентам Поставщикам For export clients Задать вопрос директору Наверх © 2026 ЗАО БКК «Коломенский» Сделано в Клаудмил",
+        "links": [
+          {
+            "url": "https://khleb.ru",
+            "label": ""
+          },
+          {
+            "url": "https://khleb.ru/export/about-holding",
+            "label": "For export clients"
+          },
+          {
+            "url": "https://khleb.ru/about-holding",
+            "label": "О холдинге"
+          },
+          {
+            "url": "https://khleb.ru/about-holding/events",
+            "label": "События"
+          },
+          {
+            "url": "https://khleb.ru/about-holding/disclosure",
+            "label": "Раскрытие информации"
+          },
+          {
+            "url": "https://khleb.ru/upload/iblock/b3b/vb4necld35sjx79yf45zt6tnefsx94fv.zip",
+            "label": "Скачать архивом"
+          },
+          {
+            "url": "https://khleb.ru/upload/iblock/71e/wo0g8u1z5rmyf3gatyc8jgb2r73dbhyr.pdf",
+            "label": "ООО «БКХ Коломенский».pdf 685.7 КБ"
+          },
+          {
+            "url": "https://khleb.ru/upload/iblock/20b/jmg2dw9hrsk4zw3ty0tl9gkgcwik9nhn.zip",
+            "label": "Скачать архивом"
+          },
+          {
+            "url": "https://khleb.ru/where-buy",
+            "label": "Где купить"
+          },
+          {
+            "url": "https://khleb.ru/catalog/svezhiy-khleb",
+            "label": "Каталог продукции"
+          },
+          {
+            "url": "https://khleb.ru/clients",
+            "label": "Клиентам"
+          },
+          {
+            "url": "https://khleb.ru/providers",
+            "label": "Поставщикам"
+          },
+          {
+            "url": "https://cloudmill.ru",
+            "label": "Клаудмил"
+          },
+          {
+            "url": "https://khleb.ru/catalog/svezhiy-khleb/chernyy-khleb",
+            "label": "Черный хлеб"
+          },
+          {
+            "url": "https://khleb.ru/catalog/svezhiy-khleb/belyy-khleb",
+            "label": "Белый хлеб"
+          }
+        ],
+        "fetchedAt": "2026-10-08T08:39:02.753Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://khleb.ru/about-holding/",
+      "status": 200,
+      "elapsedMs": 574
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://khleb.ru/about-holding",
+      "focus": "руководство",
+      "purpose": "Проверить наличие информации о руководителях подразделений, особенно логистики или HR-команды; найти профильного ЛПР",
+      "success": true,
+      "evidence": {
+        "url": "https://khleb.ru/about-holding/",
+        "kind": "page",
+        "text": "Главная О холдинге БКХ Коломенский БКХ Коломенский БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты Производитель №1 хлеба в России *по данным Потребительской панели NTech в 2024г. Смотреть видео Наши ценности Натуральность и вкус с гарантией качества Результативность и эффективность Честность и ответственность Лидерство и драйв Производственные мощности 1900 тонн сутки Производственные мощности ХБИ 333 тонн сутки Производственные мощности КИ 460 тонн сутки Производственные мощности БЗП 175 тыс м 2 Суммарная площадь цехов 79 тыс м 2 Площадь складских зон 10 тыс человек Численность персонала История компании 1956 24 декабря 1956 года Приказом № 596 Министра промышленности продовольственных товаров РСФСР был пущен в эксплуатацию Хлебозавод №15. От аналогичных предприятий города Москвы предприятие отличалось высоким уровнем технического оснащения и производственной мощностью 80 тонн в сутки. Тогда же улица, на которой находился завод, получила название Хлебозаводский проезд. ОТКРЫТИЕ ХЛЕБОЗАВОДА №15 Подробнее 1991 Хлебозавод №15 переименован в Булочно-кондитерски\n[excerpt boundary]\nинат «ПЕКО». Запускается инвестиционный проект по реконструкции и модернизации завода. «Коломенский» усиливает позиции на рынке ЦФО и в каналах несетевой розницы. НОВЫЕ МОЩНОСТИ И УСИЛЕНИЕ ПОЗИЦИЙ В ЦФО. ПОКУПКА «ПЕКО» Подробнее География поставок продукции Свежий хлеб Кондитерские изделия Замороженная продукция 8 800 234 14 67 kachestvo@khleb.ru Горячая линия по вопросам качества продукции О холдинге БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты По",
+        "links": [
+          {
+            "url": "https://khleb.ru",
+            "label": ""
+          },
+          {
+            "url": "https://khleb.ru/export/about-holding",
+            "label": "For export clients"
+          },
+          {
+            "url": "https://khleb.ru/about-holding",
+            "label": "О холдинге"
+          },
+          {
+            "url": "https://khleb.ru/about-holding/events",
+            "label": "События"
+          },
+          {
+            "url": "https://khleb.ru/about-holding/docs",
+            "label": "Реквизиты компаний"
+          },
+          {
+            "url": "https://khleb.ru/where-buy",
+            "label": "Где купить"
+          },
+          {
+            "url": "https://khleb.ru/catalog/svezhiy-khleb",
+            "label": "Каталог продукции"
+          },
+          {
+            "url": "https://khleb.ru/clients",
+            "label": "Клиентам"
+          },
+          {
+            "url": "https://khleb.ru/providers",
+            "label": "Поставщикам"
+          },
+          {
+            "url": "https://cloudmill.ru",
+            "label": "Клаудмил"
+          },
+          {
+            "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+            "label": "персональных данных"
+          },
+          {
+            "url": "https://khleb.ru/catalog/svezhiy-khleb/chernyy-khleb",
+            "label": "Черный хлеб"
+          },
+          {
+            "url": "https://khleb.ru/catalog/svezhiy-khleb/belyy-khleb",
+            "label": "Белый хлеб"
+          }
+        ],
+        "fetchedAt": "2026-10-08T08:39:03.061Z",
+        "id": "e3"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2169,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "БКК Коломенский",
+        "domain": "kolomenskoe.ru",
+        "confirmedDomains": [
+          "kolomenskoe.ru",
+          "khleb.ru"
+        ],
+        "siteNavigation": {
+          "url": "https://khleb.ru/",
+          "links": [
+            {
+              "url": "https://khleb.ru/export/about-holding",
+              "label": "For export clients"
+            },
+            {
+              "url": "https://khleb.ru/catalog/svezhiy-khleb",
+              "label": "Узнать больше"
+            },
+            {
+              "url": "https://khleb.ru/catalog/svezhiy-khleb/sdoba",
+              "label": "Узнать больше"
+            },
+            {
+              "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya",
+              "label": "Узнать больше"
+            },
+            {
+              "url": "https://khleb.ru/about-holding",
+              "label": "Подробнее"
+            },
+            {
+              "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+              "label": "персональных данных"
+            },
+            {
+              "url": "https://khleb.ru/about-holding/events",
+              "label": "События"
+            },
+            {
+              "url": "https://khleb.ru/about-holding/docs",
+              "label": "Реквизиты компаний"
+            },
+            {
+              "url": "https://khleb.ru/where-buy",
+              "label": "Где купить"
+            },
+            {
+              "url": "https://khleb.ru/clients",
+              "label": "Клиентам"
+            },
+            {
+              "url": "https://khleb.ru/providers",
+              "label": "Поставщикам"
+            },
+            {
+              "url": "https://cloudmill.ru",
+              "label": "Клаудмил"
+            }
+          ]
+        },
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: БКК Коломенский; открыта вакансия: Старший бизнес-партнер по работе с персоналом (департамент логистики).",
+            "sourceUrl": "https://hh.ru/vacancy/135816113",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-08",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://khleb.ru/",
+            "kind": "page",
+            "text": "Натуральный и вкусный хлеб Узнать больше Узнать больше Сдоба на любой вкус Узнать больше Узнать больше Готовые решения для пекарен Узнать больше Узнать больше Делаем мир вкуснее Узнать больше Узнать больше Торговые марки Продукция Свежий хлеб Кондитерские изделия Замороженная продукция Производственные мощности В холдинг входит 16 производственных площадок Подробнее Мы производим вкусные продукты в лучших традициях «Коломенского» Мы производим вкусные продукты в лучших традициях «Коломенского» Работаем ответственно, с душой, для вас! Задать вопрос генеральному директору Козлову Дмитрию Владимировичу ФИО* Телефон E-mail* Ваш вопрос Введите код с картинки Даю согласие на обработку персональных данных Отправить 8 800 234 14 67 kachestvo@khleb.ru Горячая линия по вопросам качества продукции О холдинге БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты Покупателю Где купить Каталог продукции Партнерам и бизнесу Клиентам Поставщикам For export clients Задать вопрос директору Наверх © 2026 ЗАО БКК «Коломенский» Сделано в Клаудмил",
+            "links": [
+              {
+                "url": "https://khleb.ru/export/about-holding",
+                "label": "For export clients"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/sdoba",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/about-holding",
+                "label": "Подробнее"
+              },
+              {
+                "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+                "label": "персональных данных"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/events",
+                "label": "События"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/docs",
+                "label": "Реквизиты компаний"
+              },
+              {
+                "url": "https://khleb.ru/where-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://khleb.ru/clients",
+                "label": "Клиентам"
+              },
+              {
+                "url": "https://khleb.ru/providers",
+                "label": "Поставщикам"
+              },
+              {
+                "url": "https://cloudmill.ru",
+                "label": "Клаудмил"
+              }
+            ],
+            "fetchedAt": "2026-10-08T08:38:58.659Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://khleb.ru/about-holding/docs",
+            "kind": "page",
+            "text": "Главная О холдинге Реквизиты компаний Реквизиты компаний БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты ООО БКХ «Коломенский» Скачать архивом Скачать архивом ООО «БКХ Коломенский».pdf 685.7 КБ ООО «Коломенский торговый дом» Скачать архивом Скачать архивом ООО «Коломенский торговый дом».pdf 153.4 КБ ЗАО БКК «Коломенский» Скачать архивом Скачать архивом ЗАО БКК «Коломенский».pdf 119.2 КБ ООО «Хлебный дом» Скачать архивом Скачать архивом ООО «Хлебный дом».pdf 113.4 КБ ЗАО «Дедовский хлеб» Скачать архивом Скачать архивом ЗАО «Дедовский хлеб».pdf 135.6 КБ АО «Волжский пекарь» Скачать архивом Скачать архивом АО «Волжский пекарь».pdf 119.7 КБ ООО «ГК «Дарница»» Скачать архивом Скачать архивом ООО «Группа компаний «Дарница».pdf 144.6 КБ ООО «Коломенское поле» Скачать архивом Скачать архивом ООО «Коломенское поле» .pdf 219.1 КБ ООО «Хлебозавод Балашихи» Скачать архивом Скачать архивом ООО «Хлебозавод Балашихи».pdf 127.6 КБ 8 800 234 14 67 kachestvo@khleb.ru Горячая линия по вопросам качества продукции О холдинге БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты Покупателю Где купить Каталог продукции Партнерам и бизнесу Клиентам Поставщикам For export clients Задать вопрос директору Наверх © 2026 ЗАО БКК «Коломенский» Сделано в Клаудмил",
+            "links": [
+              {
+                "url": "https://khleb.ru",
+                "label": ""
+              },
+              {
+                "url": "https://khleb.ru/export/about-holding",
+                "label": "For export clients"
+              },
+              {
+                "url": "https://khleb.ru/about-holding",
+                "label": "О холдинге"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/events",
+                "label": "События"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/disclosure",
+                "label": "Раскрытие информации"
+              },
+              {
+                "url": "https://khleb.ru/upload/iblock/b3b/vb4necld35sjx79yf45zt6tnefsx94fv.zip",
+                "label": "Скачать архивом"
+              },
+              {
+                "url": "https://khleb.ru/upload/iblock/71e/wo0g8u1z5rmyf3gatyc8jgb2r73dbhyr.pdf",
+                "label": "ООО «БКХ Коломенский».pdf 685.7 КБ"
+              },
+              {
+                "url": "https://khleb.ru/upload/iblock/20b/jmg2dw9hrsk4zw3ty0tl9gkgcwik9nhn.zip",
+                "label": "Скачать архивом"
+              },
+              {
+                "url": "https://khleb.ru/where-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb",
+                "label": "Каталог продукции"
+              },
+              {
+                "url": "https://khleb.ru/clients",
+                "label": "Клиентам"
+              },
+              {
+                "url": "https://khleb.ru/providers",
+                "label": "Поставщикам"
+              },
+              {
+                "url": "https://cloudmill.ru",
+                "label": "Клаудмил"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/chernyy-khleb",
+                "label": "Черный хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/belyy-khleb",
+                "label": "Белый хлеб"
+              }
+            ],
+            "fetchedAt": "2026-10-08T08:39:02.753Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://khleb.ru/about-holding/",
+            "kind": "page",
+            "text": "Главная О холдинге БКХ Коломенский БКХ Коломенский БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты Производитель №1 хлеба в России *по данным Потребительской панели NTech в 2024г. Смотреть видео Наши ценности Натуральность и вкус с гарантией качества Результативность и эффективность Честность и ответственность Лидерство и драйв Производственные мощности 1900 тонн сутки Производственные мощности ХБИ 333 тонн сутки Производственные мощности КИ 460 тонн сутки Производственные мощности БЗП 175 тыс м 2 Суммарная площадь цехов 79 тыс м 2 Площадь складских зон 10 тыс человек Численность персонала История компании 1956 24 декабря 1956 года Приказом № 596 Министра промышленности продовольственных товаров РСФСР был пущен в эксплуатацию Хлебозавод №15. От аналогичных предприятий города Москвы предприятие отличалось высоким уровнем технического оснащения и производственной мощностью 80 тонн в сутки. Тогда же улица, на которой находился завод, получила название Хлебозаводский проезд. ОТКРЫТИЕ ХЛЕБОЗАВОДА №15 Подробнее 1991 Хлебозавод №15 переименован в Булочно-кондитерски\n[excerpt boundary]\nинат «ПЕКО». Запускается инвестиционный проект по реконструкции и модернизации завода. «Коломенский» усиливает позиции на рынке ЦФО и в каналах несетевой розницы. НОВЫЕ МОЩНОСТИ И УСИЛЕНИЕ ПОЗИЦИЙ В ЦФО. ПОКУПКА «ПЕКО» Подробнее География поставок продукции Свежий хлеб Кондитерские изделия Замороженная продукция 8 800 234 14 67 kachestvo@khleb.ru Горячая линия по вопросам качества продукции О холдинге БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты По",
+            "links": [
+              {
+                "url": "https://khleb.ru",
+                "label": ""
+              },
+              {
+                "url": "https://khleb.ru/export/about-holding",
+                "label": "For export clients"
+              },
+              {
+                "url": "https://khleb.ru/about-holding",
+                "label": "О холдинге"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/events",
+                "label": "События"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/docs",
+                "label": "Реквизиты компаний"
+              },
+              {
+                "url": "https://khleb.ru/where-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb",
+                "label": "Каталог продукции"
+              },
+              {
+                "url": "https://khleb.ru/clients",
+                "label": "Клиентам"
+              },
+              {
+                "url": "https://khleb.ru/providers",
+                "label": "Поставщикам"
+              },
+              {
+                "url": "https://cloudmill.ru",
+                "label": "Клаудмил"
+              },
+              {
+                "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+                "label": "персональных данных"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/chernyy-khleb",
+                "label": "Черный хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/belyy-khleb",
+                "label": "Белый хлеб"
+              }
+            ],
+            "fetchedAt": "2026-10-08T08:39:03.061Z",
+            "id": "e3"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://khleb.ru/about-holding",
+            "focus": "руководство",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://khleb.ru/about-holding/docs",
+            "focus": "структура, контакты",
+            "success": true
+          }
+        ],
+        "validationErrors": [
+          "person_rejected:Козлов Дмитрий Владимирович:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+        ],
+        "budget": {
+          "roundsRemaining": 6,
+          "actionsRemaining": 8,
+          "searchRemaining": 8,
+          "remainingMs": 69050
+        }
+      },
+      "usage": {
+        "input_tokens": 4336,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 273,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4609
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "companySummary": "БКК Коломенский — ведущий российский производитель хлеба и кондитерских изделий, входит в холдинг с несколькими компаниями, обслуживающими различные регионы и функции.",
+        "missing": [
+          "Публичная структура управленческой или HR-команды",
+          "Персональный публичный контакт руководителя логистики или HR со связью с департаментом логистики"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "kolomenskoe.ru",
+            "citation": {
+              "sourceId": "e2",
+              "quote": "ЗАО БКК «Коломенский»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "БКК Коломенский руководитель отдела логистики",
+            "focus": "HR, логистика, директор, начальник, контакты",
+            "purpose": "Поиск упоминаний публичных руководителей департамента логистики или связанного HR-блока."
+          },
+          {
+            "type": "search",
+            "value": "БКК Коломенский директор по персоналу",
+            "focus": "HR, контакты, бизнес-партнер",
+            "purpose": "Поиск публичных HR-руководителей или бизнес-партнёров, курирующих логистику."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённых людей; необходим поиск руководителей логистики или HR c релевантными контактами."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "БКК Коломенский — ведущий российский производитель хлеба и кондитерских изделий, входит в холдинг с несколькими компаниями, обслуживающими различные регионы и функции.",
+        "missing": [
+          "Публичная структура управленческой или HR-команды",
+          "Персональный публичный контакт руководителя логистики или HR со связью с департаментом логистики"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "kolomenskoe.ru",
+            "citation": {
+              "sourceId": "e2",
+              "quote": "ЗАО БКК «Коломенский»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "БКК Коломенский руководитель отдела логистики",
+            "focus": "HR, логистика, директор, начальник, контакты",
+            "purpose": "Поиск упоминаний публичных руководителей департамента логистики или связанного HR-блока."
+          },
+          {
+            "type": "search",
+            "value": "БКК Коломенский директор по персоналу",
+            "focus": "HR, контакты, бизнес-партнер",
+            "purpose": "Поиск публичных HR-руководителей или бизнес-партнёров, курирующих логистику."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённых людей; необходим поиск руководителей логистики или HR c релевантными контактами."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "kolomenskoe.ru",
+        "khleb.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%91%D0%9A%D0%9A%20%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%B0%20%D0%BB%D0%BE%D0%B3%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B8&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 385
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%91%D0%9A%D0%9A%20%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%B0%20%D0%BB%D0%BE%D0%B3%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B8&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 353
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%91%D0%9A%D0%9A%20%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%BB%D1%83&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 215
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 432,
+      "elapsedMs": 515
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%91%D0%9A%D0%9A%20%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%BB%D1%83&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 143
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2700,
+      "model": "gpt-4.1-mini",
+      "input": {
+        "query": "БКК Коломенский директор по персоналу",
+        "maxResults": 5
+      },
+      "usage": {
+        "input_tokens": 8687,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 305,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8992
+      },
+      "webSearchCalls": 1,
+      "output": "\n## [ЗАО БКК «Коломенский»](https://www.google.com/maps/search/%D0%97%D0%90%D0%9E+%D0%91%D0%9A%D0%9A+%C2%AB%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%C2%BB?utm_source=openai)\n\n\nВ ЗАО БКК «Коломенский» генеральным директором является Козлов Дмитрий Владимирович. ([check.tochka.com](https://check.tochka.com/company/1107746913845/?utm_source=openai)) Контактный телефон компании: +7 (495) 937-9776. ([my-ki.ru](https://www.my-ki.ru/companies/bkkkolomenskiy.html?utm_source=openai)) Электронная почта: info@mbkk.ru. ([my-ki.ru](https://www.my-ki.ru/companies/bkkkolomenskiy.html?utm_source=openai)) Юридический адрес: 115230, г. Москва, Хлебозаводский проезд, д. 7. ([my-ki.ru](https://www.my-ki.ru/companies/bkkkolomenskiy.html?utm_source=openai)) "
+    },
+    {
+      "stage": "search",
+      "query": "БКК Коломенский директор по персоналу",
+      "results": [
+        {
+          "url": "https://www.google.com/maps/search/%D0%97%D0%90%D0%9E+%D0%91%D0%9A%D0%9A+%C2%AB%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%C2%BB",
+          "title": "ЗАО БКК «Коломенский»",
+          "snippet": "[Search summary; fetch source before confirming facts] ##",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "url": "https://check.tochka.com/company/1107746913845",
+          "title": "ЗАО БКК \"КОЛОМЕНСКИЙ\", Москва, ИНН 7724766868, ОГРН 1107746913845 — Досье контрагента",
+          "snippet": "[Search summary; fetch source before confirming facts] В ЗАО БКК «Коломенский» генеральным директором является Козлов Дмитрий Владимирович.",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "url": "https://www.my-ki.ru/companies/bkkkolomenskiy.html",
+          "title": "БКК «Коломенский». АССОРТИМЕНТ: Вафли, вафельные торты, зефир",
+          "snippet": "[Search summary; fetch source before confirming facts] Контактный телефон компании: +7 (495) 937-9776.",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "БКК Коломенский директор по персоналу",
+      "focus": "HR, контакты, бизнес-партнер",
+      "purpose": "Поиск публичных HR-руководителей или бизнес-партнёров, курирующих логистику.",
+      "results": [
+        {
+          "url": "https://www.google.com/maps/search/%D0%97%D0%90%D0%9E+%D0%91%D0%9A%D0%9A+%C2%AB%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%C2%BB",
+          "title": "ЗАО БКК «Коломенский»",
+          "snippet": "[Search summary; fetch source before confirming facts] ##",
+          "provider": "openai-web-search"
+        },
+        {
+          "url": "https://check.tochka.com/company/1107746913845",
+          "title": "ЗАО БКК \"КОЛОМЕНСКИЙ\", Москва, ИНН 7724766868, ОГРН 1107746913845 — Досье контрагента",
+          "snippet": "[Search summary; fetch source before confirming facts] В ЗАО БКК «Коломенский» генеральным директором является Козлов Дмитрий Владимирович.",
+          "provider": "openai-web-search"
+        },
+        {
+          "url": "https://www.my-ki.ru/companies/bkkkolomenskiy.html",
+          "title": "БКК «Коломенский». АССОРТИМЕНТ: Вафли, вафельные торты, зефир",
+          "snippet": "[Search summary; fetch source before confirming facts] Контактный телефон компании: +7 (495) 937-9776.",
+          "provider": "openai-web-search"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 4620,
+      "model": "gpt-4.1-mini",
+      "input": {
+        "query": "БКК Коломенский руководитель отдела логистики",
+        "maxResults": 5
+      },
+      "usage": {
+        "input_tokens": 8713,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 544,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9257
+      },
+      "webSearchCalls": 1,
+      "output": "В компании БКК «Коломенский» в Москве в сентябре 2026 года открыта вакансия на должность руководителя по операционной деятельности складов 3PL. Обязанности включают стратегическое управление взаимоотношениями с 3PL-провайдерами, обеспечение бесперебойной работы складских операций в Москве и ЦФО, а также повышение эффективности складских комплексов. Требования: опыт работы в аналогичной должности от 3 до 6 лет. ([svoevagro.ru](https://svoevagro.ru/vacancies/2137839220?utm_source=openai))\n\nВ сентябре 2026 года также открыта вакансия на должность руководителя группы по координации транспорта в Санкт-Петербурге. Обязанности включают руководство отделом транспортной логистики, организацию, развитие и мотивацию команды, а также координацию работы подразделений для своевременной и качественной доставки продукции категории fresh и ultra fresh. Требования: опыт работы в аналогичной должности от 3 до 6 лет. ([svoevagro.ru](https://svoevagro.ru/vacancies/2137096209?utm_source=openai))\n\nРанее, в феврале 2022 года, на сайте Dream Job был размещен отзыв о работе на должности начальника отдела транспортной логистики в БКК «Коломенский» в Москве. Сотрудник оценил компанию на 4,8 из 5, отметив системный подход, отношение к сотрудникам и соответствие уровня дохода рыночным условиям. Однако социальный пакет для сотрудников был отмечен как требующий улучшения. ([dreamjob.ru](https://dreamjob.ru/employers/29487/city-moskva/vacancy-rukovoditel-otdela-logistiki?utm_source=openai))\n\nКомпания БКК «Коломенский» зарегистрирована 10 ноября 2010 года, генеральным директором с 23 декабря 2022 года является Козлов Дмитрий Владимирович. Юридический адрес: 115230, г. Москва, пр-д Хлебозаводский, д.7. ([checkspot.ru](https://checkspot.ru/company/1107746913845?utm_source=openai))\n\nВакансии на должности, связанные с логистикой, регулярно публикуются на различных платформах, таких как BeBee и Svoevagro. Рекомендуется регулярно проверять эти ресурсы для получения актуальной информации о доступных позициях. "
+    },
+    {
+      "stage": "search",
+      "query": "БКК Коломенский руководитель отдела логистики",
+      "results": [
+        {
+          "url": "https://svoevagro.ru/vacancies/2137839220",
+          "title": "Руководитель по операционной деятельности складов 3PL - работа в компании БКК Коломенский в Москве | id2137839220",
+          "snippet": "[Search summary; fetch source before confirming facts] В компании БКК «Коломенский» в Москве в сентябре 2026 года открыта вакансия на должность руководителя по операционной деятельности складов 3PL. Обязанности включают стратегическое управление взаимоотношениями с 3PL-провайдерами, обеспечение бесперебойной работы складских операций в Москве и ЦФО, а также повышение эффективности складских комплексов. Требования: опыт работы в аналогичной должности от 3 до 6 лет.",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "url": "https://svoevagro.ru/vacancies/2137096209",
+          "title": "Руководитель группы по координации транспорта - работа в компании БКК Коломенский в Санкт-петербурге | id2137096209",
+          "snippet": "[Search summary; fetch source before confirming facts] В сентябре 2026 года также открыта вакансия на должность руководителя группы по координации транспорта в Санкт-Петербурге. Обязанности включают руководство отделом транспортной логистики, организацию, развитие и мотивацию команды, а также координацию работы подразделений для своевременной и качественной доставки продукции категории fresh и ultra fresh. Требования: опыт работы в аналогичной должности от 3 до 6 лет.",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "url": "https://dreamjob.ru/employers/29487/city-moskva/vacancy-rukovoditel-otdela-logistiki",
+          "title": "Отзывы сотрудников на должности Руководитель отдела логистики в БКК Коломенский - Москва | Dream Job",
+          "snippet": "[Search summary; fetch source before confirming facts] Ранее, в феврале 2022 года, на сайте Dream Job был размещен отзыв о работе на должности начальника отдела транспортной логистики в БКК «Коломенский» в Москве. Сотрудник оценил компанию на 4,8 из 5, отметив системный подход, отношение к сотрудникам и соответствие уровня дохода рыночным условиям. Однако социальный пакет для сотрудников был отмечен как требующий улучшения.",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "url": "https://checkspot.ru/company/1107746913845",
+          "title": "ЗАО БКК КОЛОМЕНСКИЙ, Москва, ИНН 7724766868 / ОГРН 1107746913845 адрес и телефон",
+          "snippet": "[Search summary; fetch source before confirming facts] Компания БКК «Коломенский» зарегистрирована 10 ноября 2010 года, генеральным директором с 23 декабря 2022 года является Козлов Дмитрий Владимирович. Юридический адрес: 115230, г. Москва, пр-д Хлебозаводский, д.7.",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "БКК Коломенский руководитель отдела логистики",
+      "focus": "HR, логистика, директор, начальник, контакты",
+      "purpose": "Поиск упоминаний публичных руководителей департамента логистики или связанного HR-блока.",
+      "results": [
+        {
+          "url": "https://svoevagro.ru/vacancies/2137839220",
+          "title": "Руководитель по операционной деятельности складов 3PL - работа в компании БКК Коломенский в Москве | id2137839220",
+          "snippet": "[Search summary; fetch source before confirming facts] В компании БКК «Коломенский» в Москве в сентябре 2026 года открыта вакансия на должность руководителя по операционной деятельности складов 3PL. Обязанности включают стратегическое управление взаимоотношениями с 3PL-провайдерами, обеспечение бесперебойной работы складских операций в Москве и ЦФО, а также повышение эффективности складских комплексов. Требования: опыт работы в аналогичной должности от 3 до 6 лет.",
+          "provider": "openai-web-search"
+        },
+        {
+          "url": "https://svoevagro.ru/vacancies/2137096209",
+          "title": "Руководитель группы по координации транспорта - работа в компании БКК Коломенский в Санкт-петербурге | id2137096209",
+          "snippet": "[Search summary; fetch source before confirming facts] В сентябре 2026 года также открыта вакансия на должность руководителя группы по координации транспорта в Санкт-Петербурге. Обязанности включают руководство отделом транспортной логистики, организацию, развитие и мотивацию команды, а также координацию работы подразделений для своевременной и качественной доставки продукции категории fresh и ultra fresh. Требования: опыт работы в аналогичной должности от 3 до 6 лет.",
+          "provider": "openai-web-search"
+        },
+        {
+          "url": "https://dreamjob.ru/employers/29487/city-moskva/vacancy-rukovoditel-otdela-logistiki",
+          "title": "Отзывы сотрудников на должности Руководитель отдела логистики в БКК Коломенский - Москва | Dream Job",
+          "snippet": "[Search summary; fetch source before confirming facts] Ранее, в феврале 2022 года, на сайте Dream Job был размещен отзыв о работе на должности начальника отдела транспортной логистики в БКК «Коломенский» в Москве. Сотрудник оценил компанию на 4,8 из 5, отметив системный подход, отношение к сотрудникам и соответствие уровня дохода рыночным условиям. Однако социальный пакет для сотрудников был отмечен как требующий улучшения.",
+          "provider": "openai-web-search"
+        },
+        {
+          "url": "https://checkspot.ru/company/1107746913845",
+          "title": "ЗАО БКК КОЛОМЕНСКИЙ, Москва, ИНН 7724766868 / ОГРН 1107746913845 адрес и телефон",
+          "snippet": "[Search summary; fetch source before confirming facts] Компания БКК «Коломенский» зарегистрирована 10 ноября 2010 года, генеральным директором с 23 декабря 2022 года является Козлов Дмитрий Владимирович. Юридический адрес: 115230, г. Москва, пр-д Хлебозаводский, д.7.",
+          "provider": "openai-web-search"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 4064,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "БКК Коломенский",
+        "domain": "kolomenskoe.ru",
+        "confirmedDomains": [
+          "kolomenskoe.ru",
+          "khleb.ru"
+        ],
+        "siteNavigation": {
+          "url": "https://khleb.ru/",
+          "links": [
+            {
+              "url": "https://khleb.ru/export/about-holding",
+              "label": "For export clients"
+            },
+            {
+              "url": "https://khleb.ru/catalog/svezhiy-khleb",
+              "label": "Узнать больше"
+            },
+            {
+              "url": "https://khleb.ru/catalog/svezhiy-khleb/sdoba",
+              "label": "Узнать больше"
+            },
+            {
+              "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya",
+              "label": "Узнать больше"
+            },
+            {
+              "url": "https://khleb.ru/about-holding",
+              "label": "Подробнее"
+            },
+            {
+              "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+              "label": "персональных данных"
+            },
+            {
+              "url": "https://khleb.ru/about-holding/events",
+              "label": "События"
+            },
+            {
+              "url": "https://khleb.ru/about-holding/docs",
+              "label": "Реквизиты компаний"
+            },
+            {
+              "url": "https://khleb.ru/where-buy",
+              "label": "Где купить"
+            },
+            {
+              "url": "https://khleb.ru/clients",
+              "label": "Клиентам"
+            },
+            {
+              "url": "https://khleb.ru/providers",
+              "label": "Поставщикам"
+            },
+            {
+              "url": "https://cloudmill.ru",
+              "label": "Клаудмил"
+            }
+          ]
+        },
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: БКК Коломенский; открыта вакансия: Старший бизнес-партнер по работе с персоналом (департамент логистики).",
+            "sourceUrl": "https://hh.ru/vacancy/135816113",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-08",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://khleb.ru/",
+            "kind": "page",
+            "text": "Натуральный и вкусный хлеб Узнать больше Узнать больше Сдоба на любой вкус Узнать больше Узнать больше Готовые решения для пекарен Узнать больше Узнать больше Делаем мир вкуснее Узнать больше Узнать больше Торговые марки Продукция Свежий хлеб Кондитерские изделия Замороженная продукция Производственные мощности В холдинг входит 16 производственных площадок Подробнее Мы производим вкусные продукты в лучших традициях «Коломенского» Мы производим вкусные продукты в лучших традициях «Коломенского» Работаем ответственно, с душой, для вас! Задать вопрос генеральному директору Козлову Дмитрию Владимировичу ФИО* Телефон E-mail* Ваш вопрос Введите код с картинки Даю согласие на обработку персональных данных Отправить 8 800 234 14 67 kachestvo@khleb.ru Горячая линия по вопросам качества продукции О холдинге БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты Покупателю Где купить Каталог продукции Партнерам и бизнесу Клиентам Поставщикам For export clients Задать вопрос директору Наверх © 2026 ЗАО БКК «Коломенский» Сделано в Клаудмил",
+            "links": [
+              {
+                "url": "https://khleb.ru/export/about-holding",
+                "label": "For export clients"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/sdoba",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/about-holding",
+                "label": "Подробнее"
+              },
+              {
+                "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+                "label": "персональных данных"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/events",
+                "label": "События"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/docs",
+                "label": "Реквизиты компаний"
+              },
+              {
+                "url": "https://khleb.ru/where-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://khleb.ru/clients",
+                "label": "Клиентам"
+              },
+              {
+                "url": "https://khleb.ru/providers",
+                "label": "Поставщикам"
+              },
+              {
+                "url": "https://cloudmill.ru",
+                "label": "Клаудмил"
+              }
+            ],
+            "fetchedAt": "2026-10-08T08:38:58.659Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://khleb.ru/about-holding/docs",
+            "kind": "page",
+            "text": "Главная О холдинге Реквизиты компаний Реквизиты компаний БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты ООО БКХ «Коломенский» Скачать архивом Скачать архивом ООО «БКХ Коломенский».pdf 685.7 КБ ООО «Коломенский торговый дом» Скачать архивом Скачать архивом ООО «Коломенский торговый дом».pdf 153.4 КБ ЗАО БКК «Коломенский» Скачать архивом Скачать архивом ЗАО БКК «Коломенский».pdf 119.2 КБ ООО «Хлебный дом» Скачать архивом Скачать архивом ООО «Хлебный дом».pdf 113.4 КБ ЗАО «Дедовский хлеб» Скачать архивом Скачать архивом ЗАО «Дедовский хлеб».pdf 135.6 КБ АО «Волжский пекарь» Скачать архивом Скачать архивом АО «Волжский пекарь».pdf 119.7 КБ ООО «ГК «Дарница»» Скачать архивом Скачать архивом ООО «Группа компаний «Дарница».pdf 144.6 КБ ООО «Коломенское поле» Скачать архивом Скачать архивом ООО «Коломенское поле» .pdf 219.1 КБ ООО «Хлебозавод Балашихи» Скачать архивом Скачать архивом ООО «Хлебозавод Балашихи».pdf 127.6 КБ 8 800 234 14 67 kachestvo@khleb.ru Горячая линия по вопросам качества продукции О холдинге БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты Покупателю Где купить Каталог продукции Партнерам и бизнесу Клиентам Поставщикам For export clients Задать вопрос директору Наверх © 2026 ЗАО БКК «Коломенский» Сделано в Клаудмил",
+            "links": [
+              {
+                "url": "https://khleb.ru",
+                "label": ""
+              },
+              {
+                "url": "https://khleb.ru/export/about-holding",
+                "label": "For export clients"
+              },
+              {
+                "url": "https://khleb.ru/about-holding",
+                "label": "О холдинге"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/events",
+                "label": "События"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/disclosure",
+                "label": "Раскрытие информации"
+              },
+              {
+                "url": "https://khleb.ru/upload/iblock/b3b/vb4necld35sjx79yf45zt6tnefsx94fv.zip",
+                "label": "Скачать архивом"
+              },
+              {
+                "url": "https://khleb.ru/upload/iblock/71e/wo0g8u1z5rmyf3gatyc8jgb2r73dbhyr.pdf",
+                "label": "ООО «БКХ Коломенский».pdf 685.7 КБ"
+              },
+              {
+                "url": "https://khleb.ru/upload/iblock/20b/jmg2dw9hrsk4zw3ty0tl9gkgcwik9nhn.zip",
+                "label": "Скачать архивом"
+              },
+              {
+                "url": "https://khleb.ru/where-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb",
+                "label": "Каталог продукции"
+              },
+              {
+                "url": "https://khleb.ru/clients",
+                "label": "Клиентам"
+              },
+              {
+                "url": "https://khleb.ru/providers",
+                "label": "Поставщикам"
+              },
+              {
+                "url": "https://cloudmill.ru",
+                "label": "Клаудмил"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/chernyy-khleb",
+                "label": "Черный хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/belyy-khleb",
+                "label": "Белый хлеб"
+              }
+            ],
+            "fetchedAt": "2026-10-08T08:39:02.753Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://khleb.ru/about-holding/",
+            "kind": "page",
+            "text": "Главная О холдинге БКХ Коломенский БКХ Коломенский БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты Производитель №1 хлеба в России *по данным Потребительской панели NTech в 2024г. Смотреть видео Наши ценности Натуральность и вкус с гарантией качества Результативность и эффективность Честность и ответственность Лидерство и драйв Производственные мощности 1900 тонн сутки Производственные мощности ХБИ 333 тонн сутки Производственные мощности КИ 460 тонн сутки Производственные мощности БЗП 175 тыс м 2 Суммарная площадь цехов 79 тыс м 2 Площадь складских зон 10 тыс человек Численность персонала История компании 1956 24 декабря 1956 года Приказом № 596 Министра промышленности продовольственных товаров РСФСР был пущен в эксплуатацию Хлебозавод №15. От аналогичных предприятий города Москвы предприятие отличалось высоким уровнем технического оснащения и производственной мощностью 80 тонн в сутки. Тогда же улица, на которой находился завод, получила название Хлебозаводский проезд. ОТКРЫТИЕ ХЛЕБОЗАВОДА №15 Подробнее 1991 Хлебозавод №15 переименован в Булочно-кондитерски\n[excerpt boundary]\nинат «ПЕКО». Запускается инвестиционный проект по реконструкции и модернизации завода. «Коломенский» усиливает позиции на рынке ЦФО и в каналах несетевой розницы. НОВЫЕ МОЩНОСТИ И УСИЛЕНИЕ ПОЗИЦИЙ В ЦФО. ПОКУПКА «ПЕКО» Подробнее География поставок продукции Свежий хлеб Кондитерские изделия Замороженная продукция 8 800 234 14 67 kachestvo@khleb.ru Горячая линия по вопросам качества продукции О холдинге БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты По",
+            "links": [
+              {
+                "url": "https://khleb.ru",
+                "label": ""
+              },
+              {
+                "url": "https://khleb.ru/export/about-holding",
+                "label": "For export clients"
+              },
+              {
+                "url": "https://khleb.ru/about-holding",
+                "label": "О холдинге"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/events",
+                "label": "События"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/docs",
+                "label": "Реквизиты компаний"
+              },
+              {
+                "url": "https://khleb.ru/where-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb",
+                "label": "Каталог продукции"
+              },
+              {
+                "url": "https://khleb.ru/clients",
+                "label": "Клиентам"
+              },
+              {
+                "url": "https://khleb.ru/providers",
+                "label": "Поставщикам"
+              },
+              {
+                "url": "https://cloudmill.ru",
+                "label": "Клаудмил"
+              },
+              {
+                "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+                "label": "персональных данных"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/chernyy-khleb",
+                "label": "Черный хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/belyy-khleb",
+                "label": "Белый хлеб"
+              }
+            ],
+            "fetchedAt": "2026-10-08T08:39:03.061Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://www.google.com/maps/search/%D0%97%D0%90%D0%9E+%D0%91%D0%9A%D0%9A+%C2%AB%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%C2%BB",
+            "kind": "search",
+            "text": "ЗАО БКК «Коломенский»\n[Search summary; fetch source before confirming facts] ##",
+            "links": [],
+            "fetchedAt": "2026-10-08T08:39:09.494Z",
+            "id": "e4"
+          },
+          {
+            "url": "https://check.tochka.com/company/1107746913845",
+            "kind": "search",
+            "text": "ЗАО БКК \"КОЛОМЕНСКИЙ\", Москва, ИНН 7724766868, ОГРН 1107746913845 — Досье контрагента\n[Search summary; fetch source before confirming facts] В ЗАО БКК «Коломенский» генеральным директором является Козлов Дмитрий Владимирович.",
+            "links": [],
+            "fetchedAt": "2026-10-08T08:39:09.494Z",
+            "id": "e5"
+          },
+          {
+            "url": "https://www.my-ki.ru/companies/bkkkolomenskiy.html",
+            "kind": "search",
+            "text": "БКК «Коломенский». АССОРТИМЕНТ: Вафли, вафельные торты, зефир\n[Search summary; fetch source before confirming facts] Контактный телефон компании: +7 (495) 937-9776.",
+            "links": [],
+            "fetchedAt": "2026-10-08T08:39:09.494Z",
+            "id": "e6"
+          },
+          {
+            "url": "https://svoevagro.ru/vacancies/2137839220",
+            "kind": "search",
+            "text": "Руководитель по операционной деятельности складов 3PL - работа в компании БКК Коломенский в Москве | id2137839220\n[Search summary; fetch source before confirming facts] В компании БКК «Коломенский» в Москве в сентябре 2026 года открыта вакансия на должность руководителя по операционной деятельности складов 3PL. Обязанности включают стратегическое управление взаимоотношениями с 3PL-провайдерами, обеспечение бесперебойной работы складских операций в Москве и ЦФО, а также повышение эффективности складских комплексов. Требования: опыт работы в аналогичной должности от 3 до 6 лет.",
+            "links": [],
+            "fetchedAt": "2026-10-08T08:39:11.395Z",
+            "id": "e7"
+          },
+          {
+            "url": "https://svoevagro.ru/vacancies/2137096209",
+            "kind": "search",
+            "text": "Руководитель группы по координации транспорта - работа в компании БКК Коломенский в Санкт-петербурге | id2137096209\n[Search summary; fetch source before confirming facts] В сентябре 2026 года также открыта вакансия на должность руководителя группы по координации транспорта в Санкт-Петербурге. Обязанности включают руководство отделом транспортной логистики, организацию, развитие и мотивацию команды, а также координацию работы подразделений для своевременной и качественной доставки продукции категории fresh и ultra fresh. Требования: опыт работы в аналогичной должности от 3 до 6 лет.",
+            "links": [],
+            "fetchedAt": "2026-10-08T08:39:11.395Z",
+            "id": "e8"
+          },
+          {
+            "url": "https://dreamjob.ru/employers/29487/city-moskva/vacancy-rukovoditel-otdela-logistiki",
+            "kind": "search",
+            "text": "Отзывы сотрудников на должности Руководитель отдела логистики в БКК Коломенский - Москва | Dream Job\n[Search summary; fetch source before confirming facts] Ранее, в феврале 2022 года, на сайте Dream Job был размещен отзыв о работе на должности начальника отдела транспортной логистики в БКК «Коломенский» в Москве. Сотрудник оценил компанию на 4,8 из 5, отметив системный подход, отношение к сотрудникам и соответствие уровня дохода рыночным условиям. Однако социальный пакет для сотрудников был отмечен как требующий улучшения.",
+            "links": [],
+            "fetchedAt": "2026-10-08T08:39:11.395Z",
+            "id": "e9"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://khleb.ru/about-holding",
+            "focus": "руководство",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://khleb.ru/about-holding/docs",
+            "focus": "структура, контакты",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "БКК Коломенский руководитель отдела логистики",
+            "focus": "HR, логистика, директор, начальник, контакты",
+            "resultCount": 4
+          },
+          {
+            "type": "search",
+            "value": "БКК Коломенский директор по персоналу",
+            "focus": "HR, контакты, бизнес-партнер",
+            "resultCount": 3
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 6,
+          "searchRemaining": 6,
+          "remainingMs": 60716
+        }
+      },
+      "usage": {
+        "input_tokens": 5361,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 3968
+        },
+        "output_tokens": 649,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 6010
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "companySummary": "БКК Коломенский — ведущий российский производитель хлеба и кондитерских изделий с большим штатом и подразделением логистики.",
+        "missing": [
+          "Подтверждённое ФИО и роль руководителя департамента логистики или HR/HRBP, ответственного за департамент логистики.",
+          "Личный публичный контакт (email или профиль) ЛПР по логистике или HR."
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Козлов Дмитрий Владимирович",
+            "role": "генеральный директор",
+            "relevance": 70,
+            "reason": "Исполнительный директор публично указан на сайте компании; при отсутствии директора профильного логистического или HR подразделения — формальный владелец всех внутренних процессов.",
+            "roleSourceText": "генеральному директору Козлову Дмитрию Владимировичу",
+            "nameParts": {
+              "given": "Дмитрий",
+              "family": "Козлов"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+              },
+              {
+                "sourceId": "e5",
+                "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "khleb.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ЗАО БКК «Коломенский»"
+            }
+          },
+          {
+            "domain": "kolomenskoe.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "В холдинг входит 16 производственных площадок"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Козлов Дмитрий Владимирович\" БКК Коломенский email",
+            "focus": "личный прямой email или публичный профиль",
+            "purpose": "Проверить наличие публичного контакта ЛПР — генерального директора, если не удается найти владельца департамента логистики/HR."
+          },
+          {
+            "type": "search",
+            "value": "БКК Коломенский руководитель департамента логистики имя email",
+            "focus": "руководитель логистики ФИО и личный контакт",
+            "purpose": "Проверить, можно ли найти подтверждённого текущего руководителя логистики или профильного HRBP по открытым источникам."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого имени и контакта руководителя департамента логистики или профильного HR."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "БКК Коломенский — ведущий российский производитель хлеба и кондитерских изделий с большим штатом и подразделением логистики.",
+        "missing": [
+          "Подтверждённое ФИО и роль руководителя департамента логистики или HR/HRBP, ответственного за департамент логистики.",
+          "Личный публичный контакт (email или профиль) ЛПР по логистике или HR."
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Козлов Дмитрий Владимирович",
+            "role": "генеральный директор",
+            "relevance": 70,
+            "reason": "Исполнительный директор публично указан на сайте компании; при отсутствии директора профильного логистического или HR подразделения — формальный владелец всех внутренних процессов.",
+            "roleSourceText": "генеральному директору Козлову Дмитрию Владимировичу",
+            "nameParts": {
+              "given": "Дмитрий",
+              "family": "Козлов"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+              },
+              {
+                "sourceId": "e5",
+                "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "khleb.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ЗАО БКК «Коломенский»"
+            }
+          },
+          {
+            "domain": "kolomenskoe.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "В холдинг входит 16 производственных площадок"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Козлов Дмитрий Владимирович\" БКК Коломенский email",
+            "focus": "личный прямой email или публичный профиль",
+            "purpose": "Проверить наличие публичного контакта ЛПР — генерального директора, если не удается найти владельца департамента логистики/HR."
+          },
+          {
+            "type": "search",
+            "value": "БКК Коломенский руководитель департамента логистики имя email",
+            "focus": "руководитель логистики ФИО и личный контакт",
+            "purpose": "Проверить, можно ли найти подтверждённого текущего руководителя логистики или профильного HRBP по открытым источникам."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого имени и контакта руководителя департамента логистики или профильного HR."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [
+        {
+          "full_name": "Козлов Дмитрий Владимирович",
+          "role_title": "генеральному директору Козлову Дмитрию Владимировичу",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу",
+            "генеральным директором является Козлов Дмитрий Владимирович"
+          ],
+          "metadata": {
+            "source_url": "https://khleb.ru/",
+            "source_urls": [
+              "https://khleb.ru/",
+              "https://check.tochka.com/company/1107746913845"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+              },
+              {
+                "sourceId": "e5",
+                "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://khleb.ru/",
+                "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+              },
+              {
+                "sourceUrl": "https://check.tochka.com/company/1107746913845",
+                "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+              }
+            ],
+            "semantic_role_relevance": 70,
+            "semantic_role_reason": "Исполнительный директор публично указан на сайте компании; при отсутствии директора профильного логистического или HR подразделения — формальный владелец всех внутренних процессов.",
+            "name_parts": {
+              "given": "Дмитрий",
+              "family": "Козлов"
+            },
+            "current_role_confirmed": true,
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "kolomenskoe.ru",
+              "khleb.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "kolomenskoe.ru",
+        "khleb.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%9A%D0%BE%D0%B7%D0%BB%D0%BE%D0%B2%20%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B8%D1%87%22%20%D0%91%D0%9A%D0%9A%20%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20email&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 326
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%9A%D0%BE%D0%B7%D0%BB%D0%BE%D0%B2%20%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B8%D1%87%22%20%D0%91%D0%9A%D0%9A%20%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20email&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 301
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%91%D0%9A%D0%9A%20%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%B4%D0%B5%D0%BF%D0%B0%D1%80%D1%82%D0%B0%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%20%D0%BB%D0%BE%D0%B3%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B8%20%D0%B8%D0%BC%D1%8F%20email&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 222
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%91%D0%9A%D0%9A%20%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%B4%D0%B5%D0%BF%D0%B0%D1%80%D1%82%D0%B0%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%20%D0%BB%D0%BE%D0%B3%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B8%20%D0%B8%D0%BC%D1%8F%20email&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 126
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2608,
+      "model": "gpt-4.1-mini",
+      "input": {
+        "query": "БКК Коломенский руководитель департамента логистики имя email",
+        "maxResults": 5
+      },
+      "usage": {
+        "input_tokens": 8746,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 142,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8888
+      },
+      "webSearchCalls": 1,
+      "output": "К сожалению, в доступных источниках не указано имя и контактный адрес электронной почты руководителя департамента логистики ЗАО БКК «Коломенский». Однако, согласно информации, Олег Никонов занимает должность менеджера по логистике в компании. ([tenchat.ru](https://tenchat.ru/1107746913845/contacts?utm_source=openai))\n\nДля получения более точной информации рекомендуется обратиться напрямую в компанию по телефону +7 (499) 613-85-44 или по электронной почте pr@mbkk.ru. ([tenchat.ru](https://tenchat.ru/1107746913845/contacts?utm_source=openai)) "
+    },
+    {
+      "stage": "search",
+      "query": "БКК Коломенский руководитель департамента логистики имя email",
+      "results": [
+        {
+          "url": "https://tenchat.ru/1107746913845/contacts",
+          "title": "ЗАО БКК \"КОЛОМЕНСКИЙ\" — Контакты: адрес, телефон, e-mail, сайт",
+          "snippet": "[Search summary; fetch source before confirming facts] К сожалению, в доступных источниках не указано имя и контактный адрес электронной почты руководителя департамента логистики ЗАО БКК «Коломенский». Однако, согласно информации, Олег Никонов занимает должность менеджера по логистике в компании.",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "БКК Коломенский руководитель департамента логистики имя email",
+      "focus": "руководитель логистики ФИО и личный контакт",
+      "purpose": "Проверить, можно ли найти подтверждённого текущего руководителя логистики или профильного HRBP по открытым источникам.",
+      "results": [
+        {
+          "url": "https://tenchat.ru/1107746913845/contacts",
+          "title": "ЗАО БКК \"КОЛОМЕНСКИЙ\" — Контакты: адрес, телефон, e-mail, сайт",
+          "snippet": "[Search summary; fetch source before confirming facts] К сожалению, в доступных источниках не указано имя и контактный адрес электронной почты руководителя департамента логистики ЗАО БКК «Коломенский». Однако, согласно информации, Олег Никонов занимает должность менеджера по логистике в компании.",
+          "provider": "openai-web-search"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 13294,
+      "model": "gpt-4.1-mini",
+      "input": {
+        "query": "\"Козлов Дмитрий Владимирович\" БКК Коломенский email",
+        "maxResults": 5
+      },
+      "usage": {
+        "input_tokens": 8716,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 194,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8910
+      },
+      "webSearchCalls": 1,
+      "output": "\n## [БКК «Коломенский»](https://www.google.com/maps/search/%D0%91%D0%9A%D0%9A+%C2%AB%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%C2%BB?utm_source=openai)\n\n\nГенеральный директор БКК «Коломенский» — Козлов Дмитрий Владимирович. Контактный адрес электронной почты: info@mbkk.ru. Юридический адрес компании: 115230, г. Москва, Хлебозаводский проезд, д. 7. ([ki.snkigb.ru](https://www.ki.snkigb.ru/companies/bkkkolomenskiy.html?utm_source=openai)) "
+    },
+    {
+      "stage": "search",
+      "query": "\"Козлов Дмитрий Владимирович\" БКК Коломенский email",
+      "results": [
+        {
+          "url": "https://www.google.com/maps/search/%D0%91%D0%9A%D0%9A+%C2%AB%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%C2%BB",
+          "title": "БКК «Коломенский»",
+          "snippet": "[Search summary; fetch source before confirming facts] ##",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "url": "https://www.ki.snkigb.ru/companies/bkkkolomenskiy.html",
+          "title": "БКК «Коломенский». АССОРТИМЕНТ: Вафли, вафельные торты, зефир",
+          "snippet": "[Search summary; fetch source before confirming facts] Генеральный директор БКК «Коломенский» — Козлов Дмитрий Владимирович. Контактный адрес электронной почты: info@mbkk.ru. Юридический адрес компании: 115230, г. Москва, Хлебозаводский проезд, д. 7.",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"Козлов Дмитрий Владимирович\" БКК Коломенский email",
+      "focus": "личный прямой email или публичный профиль",
+      "purpose": "Проверить наличие публичного контакта ЛПР — генерального директора, если не удается найти владельца департамента логистики/HR.",
+      "results": [
+        {
+          "url": "https://www.google.com/maps/search/%D0%91%D0%9A%D0%9A+%C2%AB%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%C2%BB",
+          "title": "БКК «Коломенский»",
+          "snippet": "[Search summary; fetch source before confirming facts] ##",
+          "provider": "openai-web-search"
+        },
+        {
+          "url": "https://www.ki.snkigb.ru/companies/bkkkolomenskiy.html",
+          "title": "БКК «Коломенский». АССОРТИМЕНТ: Вафли, вафельные торты, зефир",
+          "snippet": "[Search summary; fetch source before confirming facts] Генеральный директор БКК «Коломенский» — Козлов Дмитрий Владимирович. Контактный адрес электронной почты: info@mbkk.ru. Юридический адрес компании: 115230, г. Москва, Хлебозаводский проезд, д. 7.",
+          "provider": "openai-web-search"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 429,
+      "elapsedMs": 723,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "БКК Коломенский",
+        "domain": "kolomenskoe.ru",
+        "confirmedDomains": [
+          "kolomenskoe.ru",
+          "khleb.ru"
+        ],
+        "siteNavigation": {
+          "url": "https://khleb.ru/",
+          "links": [
+            {
+              "url": "https://khleb.ru/export/about-holding",
+              "label": "For export clients"
+            },
+            {
+              "url": "https://khleb.ru/catalog/svezhiy-khleb",
+              "label": "Узнать больше"
+            },
+            {
+              "url": "https://khleb.ru/catalog/svezhiy-khleb/sdoba",
+              "label": "Узнать больше"
+            },
+            {
+              "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya",
+              "label": "Узнать больше"
+            },
+            {
+              "url": "https://khleb.ru/about-holding",
+              "label": "Подробнее"
+            },
+            {
+              "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+              "label": "персональных данных"
+            },
+            {
+              "url": "https://khleb.ru/about-holding/events",
+              "label": "События"
+            },
+            {
+              "url": "https://khleb.ru/about-holding/docs",
+              "label": "Реквизиты компаний"
+            },
+            {
+              "url": "https://khleb.ru/where-buy",
+              "label": "Где купить"
+            },
+            {
+              "url": "https://khleb.ru/clients",
+              "label": "Клиентам"
+            },
+            {
+              "url": "https://khleb.ru/providers",
+              "label": "Поставщикам"
+            },
+            {
+              "url": "https://cloudmill.ru",
+              "label": "Клаудмил"
+            }
+          ]
+        },
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: БКК Коломенский; открыта вакансия: Старший бизнес-партнер по работе с персоналом (департамент логистики).",
+            "sourceUrl": "https://hh.ru/vacancy/135816113",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-08",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [
+          {
+            "name": "Козлов Дмитрий Владимирович",
+            "role": "генеральному директору Козлову Дмитрию Владимировичу",
+            "email": null,
+            "profiles": [],
+            "sources": [
+              "https://khleb.ru/",
+              "https://check.tochka.com/company/1107746913845"
+            ],
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+              },
+              {
+                "sourceId": "e5",
+                "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+              }
+            ]
+          }
+        ],
+        "emailCandidates": [
+          {
+            "email": "dmitrii.kozlov@kolomenskoe.ru",
+            "personName": "Козлов Дмитрий Владимирович",
+            "status": "PREDICTED",
+            "pattern": "{given}.{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "d.kozlov@kolomenskoe.ru",
+            "personName": "Козлов Дмитрий Владимирович",
+            "status": "PREDICTED",
+            "pattern": "{g}.{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "kozlov@kolomenskoe.ru",
+            "personName": "Козлов Дмитрий Владимирович",
+            "status": "PREDICTED",
+            "pattern": "{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "dkozlov@kolomenskoe.ru",
+            "personName": "Козлов Дмитрий Владимирович",
+            "status": "PREDICTED",
+            "pattern": "{g}{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "dmitriy.kozlov@kolomenskoe.ru",
+            "personName": "Козлов Дмитрий Владимирович",
+            "status": "PREDICTED",
+            "pattern": "{given}.{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://khleb.ru/about-holding/docs",
+            "kind": "page",
+            "text": "Главная О холдинге Реквизиты компаний Реквизиты компаний БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты ООО БКХ «Коломенский» Скачать архивом Скачать архивом ООО «БКХ Коломенский».pdf 685.7 КБ ООО «Коломенский торговый дом» Скачать архивом Скачать архивом ООО «Коломенский торговый дом».pdf 153.4 КБ ЗАО БКК «Коломенский» Скачать архивом Скачать архивом ЗАО БКК «Коломенский».pdf 119.2 КБ ООО «Хлебный дом» Скачать архивом Скачать архивом ООО «Хлебный дом».pdf 113.4 КБ ЗАО «Дедовский хлеб» Скачать архивом Скачать архивом ЗАО «Дедовский хлеб».pdf 135.6 КБ АО «Волжский пекарь» Скачать архивом Скачать архивом АО «Волжский пекарь».pdf 119.7 КБ ООО «ГК «Дарница»» Скачать архивом Скачать архивом ООО «Группа компаний «Дарница».pdf 144.6 КБ ООО «Коломенское поле» Скачать архивом Скачать архивом ООО «Коломенское поле» .pdf 219.1 КБ ООО «Хлебозавод Балашихи» Скачать архивом Скачать архивом ООО «Хлебозавод Балашихи».pdf 127.6 КБ 8 800 234 14 67 kachestvo@khleb.ru Горячая линия по вопросам качества продукции О холдинге БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты Покупателю Где купить Каталог продукции Партнерам и бизнесу Клиентам Поставщикам For export clients Задать вопрос директору Наверх © 2026 ЗАО БКК «Коломенский» Сделано в Клаудмил",
+            "links": [
+              {
+                "url": "https://khleb.ru",
+                "label": ""
+              },
+              {
+                "url": "https://khleb.ru/export/about-holding",
+                "label": "For export clients"
+              },
+              {
+                "url": "https://khleb.ru/about-holding",
+                "label": "О холдинге"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/events",
+                "label": "События"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/disclosure",
+                "label": "Раскрытие информации"
+              },
+              {
+                "url": "https://khleb.ru/upload/iblock/b3b/vb4necld35sjx79yf45zt6tnefsx94fv.zip",
+                "label": "Скачать архивом"
+              },
+              {
+                "url": "https://khleb.ru/upload/iblock/71e/wo0g8u1z5rmyf3gatyc8jgb2r73dbhyr.pdf",
+                "label": "ООО «БКХ Коломенский».pdf 685.7 КБ"
+              },
+              {
+                "url": "https://khleb.ru/upload/iblock/20b/jmg2dw9hrsk4zw3ty0tl9gkgcwik9nhn.zip",
+                "label": "Скачать архивом"
+              },
+              {
+                "url": "https://khleb.ru/where-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb",
+                "label": "Каталог продукции"
+              },
+              {
+                "url": "https://khleb.ru/clients",
+                "label": "Клиентам"
+              },
+              {
+                "url": "https://khleb.ru/providers",
+                "label": "Поставщикам"
+              },
+              {
+                "url": "https://cloudmill.ru",
+                "label": "Клаудмил"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/chernyy-khleb",
+                "label": "Черный хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/belyy-khleb",
+                "label": "Белый хлеб"
+              }
+            ],
+            "fetchedAt": "2026-10-08T08:39:02.753Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://khleb.ru/about-holding/",
+            "kind": "page",
+            "text": "Главная О холдинге БКХ Коломенский БКХ Коломенский БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты Производитель №1 хлеба в России *по данным Потребительской панели NTech в 2024г. Смотреть видео Наши ценности Натуральность и вкус с гарантией качества Результативность и эффективность Честность и ответственность Лидерство и драйв Производственные мощности 1900 тонн сутки Производственные мощности ХБИ 333 тонн сутки Производственные мощности КИ 460 тонн сутки Производственные мощности БЗП 175 тыс м 2 Суммарная площадь цехов 79 тыс м 2 Площадь складских зон 10 тыс человек Численность персонала История компании 1956 24 декабря 1956 года Приказом № 596 Министра промышленности продовольственных товаров РСФСР был пущен в эксплуатацию Хлебозавод №15. От аналогичных предприятий города Москвы предприятие отличалось высоким уровнем технического оснащения и производственной мощностью 80 тонн в сутки. Тогда же улица, на которой находился завод, получила название Хлебозаводский проезд. ОТКРЫТИЕ ХЛЕБОЗАВОДА №15 Подробнее 1991 Хлебозавод №15 переименован в Булочно-кондитерски\n[excerpt boundary]\nинат «ПЕКО». Запускается инвестиционный проект по реконструкции и модернизации завода. «Коломенский» усиливает позиции на рынке ЦФО и в каналах несетевой розницы. НОВЫЕ МОЩНОСТИ И УСИЛЕНИЕ ПОЗИЦИЙ В ЦФО. ПОКУПКА «ПЕКО» Подробнее География поставок продукции Свежий хлеб Кондитерские изделия Замороженная продукция 8 800 234 14 67 kachestvo@khleb.ru Горячая линия по вопросам качества продукции О холдинге БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты По",
+            "links": [
+              {
+                "url": "https://khleb.ru",
+                "label": ""
+              },
+              {
+                "url": "https://khleb.ru/export/about-holding",
+                "label": "For export clients"
+              },
+              {
+                "url": "https://khleb.ru/about-holding",
+                "label": "О холдинге"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/events",
+                "label": "События"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/docs",
+                "label": "Реквизиты компаний"
+              },
+              {
+                "url": "https://khleb.ru/where-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb",
+                "label": "Каталог продукции"
+              },
+              {
+                "url": "https://khleb.ru/clients",
+                "label": "Клиентам"
+              },
+              {
+                "url": "https://khleb.ru/providers",
+                "label": "Поставщикам"
+              },
+              {
+                "url": "https://cloudmill.ru",
+                "label": "Клаудмил"
+              },
+              {
+                "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+                "label": "персональных данных"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/chernyy-khleb",
+                "label": "Черный хлеб"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/belyy-khleb",
+                "label": "Белый хлеб"
+              }
+            ],
+            "fetchedAt": "2026-10-08T08:39:03.061Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://svoevagro.ru/vacancies/2137839220",
+            "kind": "search",
+            "text": "Руководитель по операционной деятельности складов 3PL - работа в компании БКК Коломенский в Москве | id2137839220\n[Search summary; fetch source before confirming facts] В компании БКК «Коломенский» в Москве в сентябре 2026 года открыта вакансия на должность руководителя по операционной деятельности складов 3PL. Обязанности включают стратегическое управление взаимоотношениями с 3PL-провайдерами, обеспечение бесперебойной работы складских операций в Москве и ЦФО, а также повышение эффективности складских комплексов. Требования: опыт работы в аналогичной должности от 3 до 6 лет.",
+            "links": [],
+            "fetchedAt": "2026-10-08T08:39:11.395Z",
+            "id": "e7"
+          },
+          {
+            "url": "https://svoevagro.ru/vacancies/2137096209",
+            "kind": "search",
+            "text": "Руководитель группы по координации транспорта - работа в компании БКК Коломенский в Санкт-петербурге | id2137096209\n[Search summary; fetch source before confirming facts] В сентябре 2026 года также открыта вакансия на должность руководителя группы по координации транспорта в Санкт-Петербурге. Обязанности включают руководство отделом транспортной логистики, организацию, развитие и мотивацию команды, а также координацию работы подразделений для своевременной и качественной доставки продукции категории fresh и ultra fresh. Требования: опыт работы в аналогичной должности от 3 до 6 лет.",
+            "links": [],
+            "fetchedAt": "2026-10-08T08:39:11.395Z",
+            "id": "e8"
+          },
+          {
+            "url": "https://dreamjob.ru/employers/29487/city-moskva/vacancy-rukovoditel-otdela-logistiki",
+            "kind": "search",
+            "text": "Отзывы сотрудников на должности Руководитель отдела логистики в БКК Коломенский - Москва | Dream Job\n[Search summary; fetch source before confirming facts] Ранее, в феврале 2022 года, на сайте Dream Job был размещен отзыв о работе на должности начальника отдела транспортной логистики в БКК «Коломенский» в Москве. Сотрудник оценил компанию на 4,8 из 5, отметив системный подход, отношение к сотрудникам и соответствие уровня дохода рыночным условиям. Однако социальный пакет для сотрудников был отмечен как требующий улучшения.",
+            "links": [],
+            "fetchedAt": "2026-10-08T08:39:11.395Z",
+            "id": "e9"
+          },
+          {
+            "url": "https://tenchat.ru/1107746913845/contacts",
+            "kind": "search",
+            "text": "ЗАО БКК \"КОЛОМЕНСКИЙ\" — Контакты: адрес, телефон, e-mail, сайт\n[Search summary; fetch source before confirming facts] К сожалению, в доступных источниках не указано имя и контактный адрес электронной почты руководителя департамента логистики ЗАО БКК «Коломенский». Однако, согласно информации, Олег Никонов занимает должность менеджера по логистике в компании.",
+            "links": [],
+            "fetchedAt": "2026-10-08T08:39:19.605Z",
+            "id": "e11"
+          },
+          {
+            "url": "https://www.google.com/maps/search/%D0%91%D0%9A%D0%9A+%C2%AB%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%C2%BB",
+            "kind": "search",
+            "text": "БКК «Коломенский»\n[Search summary; fetch source before confirming facts] ##",
+            "links": [],
+            "fetchedAt": "2026-10-08T08:39:29.675Z",
+            "id": "e12"
+          },
+          {
+            "url": "https://www.ki.snkigb.ru/companies/bkkkolomenskiy.html",
+            "kind": "search",
+            "text": "БКК «Коломенский». АССОРТИМЕНТ: Вафли, вафельные торты, зефир\n[Search summary; fetch source before confirming facts] Генеральный директор БКК «Коломенский» — Козлов Дмитрий Владимирович. Контактный адрес электронной почты: info@mbkk.ru. Юридический адрес компании: 115230, г. Москва, Хлебозаводский проезд, д. 7.",
+            "links": [],
+            "fetchedAt": "2026-10-08T08:39:29.675Z",
+            "id": "e13"
+          },
+          {
+            "url": "https://khleb.ru/",
+            "kind": "page",
+            "text": "Натуральный и вкусный хлеб Узнать больше Узнать больше Сдоба на любой вкус Узнать больше Узнать больше Готовые решения для пекарен Узнать больше Узнать больше Делаем мир вкуснее Узнать больше Узнать больше Торговые марки Продукция Свежий хлеб Кондитерские изделия Замороженная продукция Производственные мощности В холдинг входит 16 производственных площадок Подробнее Мы производим вкусные продукты в лучших традициях «Коломенского» Мы производим вкусные продукты в лучших традициях «Коломенского» Работаем ответственно, с душой, для вас! Задать вопрос генеральному директору Козлову Дмитрию Владимировичу ФИО* Телефон E-mail* Ваш вопрос Введите код с картинки Даю согласие на обработку персональных данных Отправить 8 800 234 14 67 kachestvo@khleb.ru Горячая линия по вопросам качества продукции О холдинге БКХ Коломенский События Реквизиты компаний Раскрытие информации Контакты Покупателю Где купить Каталог продукции Партнерам и бизнесу Клиентам Поставщикам For export clients Задать вопрос директору Наверх © 2026 ЗАО БКК «Коломенский» Сделано в Клаудмил",
+            "links": [
+              {
+                "url": "https://khleb.ru/export/about-holding",
+                "label": "For export clients"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/svezhiy-khleb/sdoba",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/catalog/zamorozhennaya-produktsiya",
+                "label": "Узнать больше"
+              },
+              {
+                "url": "https://khleb.ru/about-holding",
+                "label": "Подробнее"
+              },
+              {
+                "url": "https://khleb.ru/upload/politica/Feedback%20Policy.pdf",
+                "label": "персональных данных"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/events",
+                "label": "События"
+              },
+              {
+                "url": "https://khleb.ru/about-holding/docs",
+                "label": "Реквизиты компаний"
+              },
+              {
+                "url": "https://khleb.ru/where-buy",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://khleb.ru/clients",
+                "label": "Клиентам"
+              },
+              {
+                "url": "https://khleb.ru/providers",
+                "label": "Поставщикам"
+              },
+              {
+                "url": "https://cloudmill.ru",
+                "label": "Клаудмил"
+              }
+            ],
+            "fetchedAt": "2026-10-08T08:38:58.659Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://check.tochka.com/company/1107746913845",
+            "kind": "search",
+            "text": "ЗАО БКК \"КОЛОМЕНСКИЙ\", Москва, ИНН 7724766868, ОГРН 1107746913845 — Досье контрагента\n[Search summary; fetch source before confirming facts] В ЗАО БКК «Коломенский» генеральным директором является Козлов Дмитрий Владимирович.",
+            "links": [],
+            "fetchedAt": "2026-10-08T08:39:09.494Z",
+            "id": "e5"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://khleb.ru/about-holding",
+            "focus": "руководство",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://khleb.ru/about-holding/docs",
+            "focus": "структура, контакты",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "БКК Коломенский руководитель отдела логистики",
+            "focus": "HR, логистика, директор, начальник, контакты",
+            "resultCount": 4
+          },
+          {
+            "type": "search",
+            "value": "БКК Коломенский директор по персоналу",
+            "focus": "HR, контакты, бизнес-партнер",
+            "resultCount": 3
+          },
+          {
+            "type": "search",
+            "value": "\"Козлов Дмитрий Владимирович\" БКК Коломенский email",
+            "focus": "личный прямой email или публичный профиль",
+            "resultCount": 2
+          },
+          {
+            "type": "search",
+            "value": "БКК Коломенский руководитель департамента логистики имя email",
+            "focus": "руководитель логистики ФИО и личный контакт",
+            "resultCount": 1
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 4,
+          "searchRemaining": 4,
+          "remainingMs": 42436
+        }
+      },
+      "webSearchCalls": 0,
+      "error": {
+        "type": "insufficient_quota",
+        "code": "credit_balance_exhausted",
+        "message": "You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+      },
+      "output": null
+    },
+    {
+      "stage": "research_provider_error",
+      "reason": "provider_credit_exhausted"
+    },
+    {
+      "stage": "email_candidates",
+      "candidates": [
+        {
+          "email": "dmitrii.kozlov@kolomenskoe.ru",
+          "personName": "Козлов Дмитрий Владимирович",
+          "status": "PREDICTED",
+          "pattern": "{given}.{family}",
+          "patternSupport": 0,
+          "mx": "present",
+          "catchAll": "unknown",
+          "sourceUrls": [],
+          "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+        },
+        {
+          "email": "d.kozlov@kolomenskoe.ru",
+          "personName": "Козлов Дмитрий Владимирович",
+          "status": "PREDICTED",
+          "pattern": "{g}.{family}",
+          "patternSupport": 0,
+          "mx": "present",
+          "catchAll": "unknown",
+          "sourceUrls": [],
+          "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+        },
+        {
+          "email": "kozlov@kolomenskoe.ru",
+          "personName": "Козлов Дмитрий Владимирович",
+          "status": "PREDICTED",
+          "pattern": "{family}",
+          "patternSupport": 0,
+          "mx": "present",
+          "catchAll": "unknown",
+          "sourceUrls": [],
+          "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+        },
+        {
+          "email": "dkozlov@kolomenskoe.ru",
+          "personName": "Козлов Дмитрий Владимирович",
+          "status": "PREDICTED",
+          "pattern": "{g}{family}",
+          "patternSupport": 0,
+          "mx": "present",
+          "catchAll": "unknown",
+          "sourceUrls": [],
+          "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+        },
+        {
+          "email": "dmitriy.kozlov@kolomenskoe.ru",
+          "personName": "Козлов Дмитрий Владимирович",
+          "status": "PREDICTED",
+          "pattern": "{given}.{family}",
+          "patternSupport": 0,
+          "mx": "present",
+          "catchAll": "unknown",
+          "sourceUrls": [],
+          "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+        }
+      ]
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "provider_credit_exhausted",
+      "actions": 7,
+      "candidates": [
+        {
+          "full_name": "Козлов Дмитрий Владимирович",
+          "role_title": "генеральному директору Козлову Дмитрию Владимировичу",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу",
+            "генеральным директором является Козлов Дмитрий Владимирович"
+          ],
+          "metadata": {
+            "source_url": "https://khleb.ru/",
+            "source_urls": [
+              "https://khleb.ru/",
+              "https://check.tochka.com/company/1107746913845"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+              },
+              {
+                "sourceId": "e5",
+                "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://khleb.ru/",
+                "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+              },
+              {
+                "sourceUrl": "https://check.tochka.com/company/1107746913845",
+                "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+              }
+            ],
+            "semantic_role_relevance": 70,
+            "semantic_role_reason": "Исполнительный директор публично указан на сайте компании; при отсутствии директора профильного логистического или HR подразделения — формальный владелец всех внутренних процессов.",
+            "name_parts": {
+              "given": "Дмитрий",
+              "family": "Козлов"
+            },
+            "current_role_confirmed": true,
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "kolomenskoe.ru",
+              "khleb.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true,
+            "email_candidates": [
+              {
+                "email": "dmitrii.kozlov@kolomenskoe.ru",
+                "personName": "Козлов Дмитрий Владимирович",
+                "status": "PREDICTED",
+                "pattern": "{given}.{family}",
+                "patternSupport": 0,
+                "mx": "present",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+              },
+              {
+                "email": "d.kozlov@kolomenskoe.ru",
+                "personName": "Козлов Дмитрий Владимирович",
+                "status": "PREDICTED",
+                "pattern": "{g}.{family}",
+                "patternSupport": 0,
+                "mx": "present",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+              },
+              {
+                "email": "kozlov@kolomenskoe.ru",
+                "personName": "Козлов Дмитрий Владимирович",
+                "status": "PREDICTED",
+                "pattern": "{family}",
+                "patternSupport": 0,
+                "mx": "present",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+              },
+              {
+                "email": "dkozlov@kolomenskoe.ru",
+                "personName": "Козлов Дмитрий Владимирович",
+                "status": "PREDICTED",
+                "pattern": "{g}{family}",
+                "patternSupport": 0,
+                "mx": "present",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+              },
+              {
+                "email": "dmitriy.kozlov@kolomenskoe.ru",
+                "personName": "Козлов Дмитрий Владимирович",
+                "status": "PREDICTED",
+                "pattern": "{given}.{family}",
+                "patternSupport": 0,
+                "mx": "present",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+              }
+            ]
+          }
+        }
+      ],
+      "domains": [
+        "kolomenskoe.ru",
+        "khleb.ru"
+      ],
+      "elapsedMs": 33488
+    },
+    {
+      "stage": "people_ranked",
+      "people": [
+        {
+          "full_name": "Козлов Дмитрий Владимирович",
+          "role_title": "генеральному директору Козлову Дмитрию Владимировичу",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу",
+            "генеральным директором является Козлов Дмитрий Владимирович"
+          ],
+          "metadata": {
+            "source_url": "https://khleb.ru/",
+            "source_urls": [
+              "https://khleb.ru/",
+              "https://check.tochka.com/company/1107746913845"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+              },
+              {
+                "sourceId": "e5",
+                "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://khleb.ru/",
+                "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+              },
+              {
+                "sourceUrl": "https://check.tochka.com/company/1107746913845",
+                "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+              }
+            ],
+            "semantic_role_relevance": 70,
+            "semantic_role_reason": "Исполнительный директор публично указан на сайте компании; при отсутствии директора профильного логистического или HR подразделения — формальный владелец всех внутренних процессов.",
+            "name_parts": {
+              "given": "Дмитрий",
+              "family": "Козлов"
+            },
+            "current_role_confirmed": true,
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "kolomenskoe.ru",
+              "khleb.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true,
+            "email_candidates": [
+              {
+                "email": "dmitrii.kozlov@kolomenskoe.ru",
+                "personName": "Козлов Дмитрий Владимирович",
+                "status": "PREDICTED",
+                "pattern": "{given}.{family}",
+                "patternSupport": 0,
+                "mx": "present",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+              },
+              {
+                "email": "d.kozlov@kolomenskoe.ru",
+                "personName": "Козлов Дмитрий Владимирович",
+                "status": "PREDICTED",
+                "pattern": "{g}.{family}",
+                "patternSupport": 0,
+                "mx": "present",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+              },
+              {
+                "email": "kozlov@kolomenskoe.ru",
+                "personName": "Козлов Дмитрий Владимирович",
+                "status": "PREDICTED",
+                "pattern": "{family}",
+                "patternSupport": 0,
+                "mx": "present",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+              },
+              {
+                "email": "dkozlov@kolomenskoe.ru",
+                "personName": "Козлов Дмитрий Владимирович",
+                "status": "PREDICTED",
+                "pattern": "{g}{family}",
+                "patternSupport": 0,
+                "mx": "present",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+              },
+              {
+                "email": "dmitriy.kozlov@kolomenskoe.ru",
+                "personName": "Козлов Дмитрий Владимирович",
+                "status": "PREDICTED",
+                "pattern": "{given}.{family}",
+                "patternSupport": 0,
+                "mx": "present",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+        "target_responsibility": "Company leadership",
+        "target_persona": "Founder",
+        "alternative_personas": [
+          "CEO",
+          "Managing Director",
+          "COO",
+          "Head of Growth",
+          "Head of Sales"
+        ],
+        "why_this_person": "генеральному директору Козлову Дмитрию Владимировичу: The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+        "person_name": "Козлов Дмитрий Владимирович",
+        "person_role": "генеральному директору Козлову Дмитрию Владимировичу",
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Козлов Дмитрий Владимирович подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": null,
+            "summary": "Роль связана с зоной ответственности: Company leadership."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+          },
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "генеральным директором является Козлов Дмитрий Владимирович"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [
+          "dmitrii.kozlov@kolomenskoe.ru",
+          "d.kozlov@kolomenskoe.ru",
+          "kozlov@kolomenskoe.ru",
+          "dkozlov@kolomenskoe.ru",
+          "dmitriy.kozlov@kolomenskoe.ru"
+        ],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "person_found_personal_email_unresolved"
+      },
+      "contacts": [
+        {
+          "name": "Козлов Дмитрий Владимирович",
+          "email": null,
+          "type": "confirmed_person",
+          "source": "https://khleb.ru/"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://kolomenskoe.ru/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://kolomenskoe.ru/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://kolomenskoe.ru"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-10-08T08:38:57.109Z",
+  "bundle": {
+    "companyName": "БКК Коломенский",
+    "officialWebsite": "https://kolomenskoe.ru",
+    "officialDomain": "kolomenskoe.ru",
+    "people": [
+      {
+        "fullName": "Козлов Дмитрий Владимирович",
+        "role": "генеральному директору Козлову Дмитрию Владимировичу",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://khleb.ru/",
+            "sourceType": "public_web",
+            "excerpt": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу",
+            "capturedAt": "2026-10-08T08:38:57.109Z",
+            "confidence": 90
+          },
+          {
+            "sourceUrl": "https://check.tochka.com/company/1107746913845",
+            "sourceType": "public_web",
+            "excerpt": "генеральным директором является Козлов Дмитрий Владимирович",
+            "capturedAt": "2026-10-08T08:38:57.109Z",
+            "confidence": 90
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": [
+        {
+          "email": "dmitrii.kozlov@kolomenskoe.ru",
+          "personName": "Козлов Дмитрий Владимирович",
+          "classification": "INFERRED_PERSONAL",
+          "evidence": [],
+          "verification": {
+            "email": "dmitrii.kozlov@kolomenskoe.ru",
+            "personName": "Козлов Дмитрий Владимирович",
+            "status": "PREDICTED",
+            "pattern": "{given}.{family}",
+            "patternSupport": 0,
+            "mx": "present",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+          }
+        },
+        {
+          "email": "d.kozlov@kolomenskoe.ru",
+          "personName": "Козлов Дмитрий Владимирович",
+          "classification": "INFERRED_PERSONAL",
+          "evidence": [],
+          "verification": {
+            "email": "d.kozlov@kolomenskoe.ru",
+            "personName": "Козлов Дмитрий Владимирович",
+            "status": "PREDICTED",
+            "pattern": "{g}.{family}",
+            "patternSupport": 0,
+            "mx": "present",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+          }
+        },
+        {
+          "email": "kozlov@kolomenskoe.ru",
+          "personName": "Козлов Дмитрий Владимирович",
+          "classification": "INFERRED_PERSONAL",
+          "evidence": [],
+          "verification": {
+            "email": "kozlov@kolomenskoe.ru",
+            "personName": "Козлов Дмитрий Владимирович",
+            "status": "PREDICTED",
+            "pattern": "{family}",
+            "patternSupport": 0,
+            "mx": "present",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+          }
+        },
+        {
+          "email": "dkozlov@kolomenskoe.ru",
+          "personName": "Козлов Дмитрий Владимирович",
+          "classification": "INFERRED_PERSONAL",
+          "evidence": [],
+          "verification": {
+            "email": "dkozlov@kolomenskoe.ru",
+            "personName": "Козлов Дмитрий Владимирович",
+            "status": "PREDICTED",
+            "pattern": "{g}{family}",
+            "patternSupport": 0,
+            "mx": "present",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+          }
+        },
+        {
+          "email": "dmitriy.kozlov@kolomenskoe.ru",
+          "personName": "Козлов Дмитрий Владимирович",
+          "classification": "INFERRED_PERSONAL",
+          "evidence": [],
+          "verification": {
+            "email": "dmitriy.kozlov@kolomenskoe.ru",
+            "personName": "Козлов Дмитрий Владимирович",
+            "status": "PREDICTED",
+            "pattern": "{given}.{family}",
+            "patternSupport": 0,
+            "mx": "present",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+          }
+        }
+      ]
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: БКК Коломенский; открыта вакансия: Старший бизнес-партнер по работе с персоналом (департамент логистики).",
+      "sourceUrl": "https://hh.ru/vacancy/135816113",
+      "confidence": 100
+    },
+    "researchConfidence": "LIKELY",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 11,
+      "lprMs": 33499,
+      "contactMs": 22,
+      "totalMs": 33528,
+      "stopReason": "people_found_email_unresolved"
+    }
+  },
+  "people": {
+    "primary_person": {
+      "full_name": "Козлов Дмитрий Владимирович",
+      "role_title": "генеральному директору Козлову Дмитрию Владимировичу",
+      "department": null,
+      "linkedin_url": null,
+      "work_email": null,
+      "phone": null,
+      "source": "Iterative public research",
+      "confidence_score": 90,
+      "evidence": [
+        "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу",
+        "генеральным директором является Козлов Дмитрий Владимирович"
+      ],
+      "metadata": {
+        "source_url": "https://khleb.ru/",
+        "source_urls": [
+          "https://khleb.ru/",
+          "https://check.tochka.com/company/1107746913845"
+        ],
+        "research_citations": [
+          {
+            "sourceId": "e1",
+            "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+          },
+          {
+            "sourceId": "e5",
+            "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+          }
+        ],
+        "research_evidence": [
+          {
+            "sourceUrl": "https://khleb.ru/",
+            "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+          },
+          {
+            "sourceUrl": "https://check.tochka.com/company/1107746913845",
+            "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+          }
+        ],
+        "semantic_role_relevance": 70,
+        "semantic_role_reason": "Исполнительный директор публично указан на сайте компании; при отсутствии директора профильного логистического или HR подразделения — формальный владелец всех внутренних процессов.",
+        "name_parts": {
+          "given": "Дмитрий",
+          "family": "Козлов"
+        },
+        "current_role_confirmed": true,
+        "email_source_url": null,
+        "email_person_evidence": null,
+        "public_contact_verified": false,
+        "verified_company_domains": [
+          "kolomenskoe.ru",
+          "khleb.ru"
+        ],
+        "verified_public_profiles": [],
+        "tenchat_url": null,
+        "telegram_url": null,
+        "vk_url": null,
+        "instagram_url": null,
+        "contact_route": "target_persona",
+        "company_verified": true,
+        "role_verified": true,
+        "email_candidates": [
+          {
+            "email": "dmitrii.kozlov@kolomenskoe.ru",
+            "personName": "Козлов Дмитрий Владимирович",
+            "status": "PREDICTED",
+            "pattern": "{given}.{family}",
+            "patternSupport": 0,
+            "mx": "present",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+          },
+          {
+            "email": "d.kozlov@kolomenskoe.ru",
+            "personName": "Козлов Дмитрий Владимирович",
+            "status": "PREDICTED",
+            "pattern": "{g}.{family}",
+            "patternSupport": 0,
+            "mx": "present",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+          },
+          {
+            "email": "kozlov@kolomenskoe.ru",
+            "personName": "Козлов Дмитрий Владимирович",
+            "status": "PREDICTED",
+            "pattern": "{family}",
+            "patternSupport": 0,
+            "mx": "present",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+          },
+          {
+            "email": "dkozlov@kolomenskoe.ru",
+            "personName": "Козлов Дмитрий Владимирович",
+            "status": "PREDICTED",
+            "pattern": "{g}{family}",
+            "patternSupport": 0,
+            "mx": "present",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+          },
+          {
+            "email": "dmitriy.kozlov@kolomenskoe.ru",
+            "personName": "Козлов Дмитрий Владимирович",
+            "status": "PREDICTED",
+            "pattern": "{given}.{family}",
+            "patternSupport": 0,
+            "mx": "present",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+          }
+        ]
+      }
+    },
+    "alternative_people": [],
+    "all_candidates": [
+      {
+        "full_name": "Козлов Дмитрий Владимирович",
+        "role_title": "генеральному директору Козлову Дмитрию Владимировичу",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу",
+          "генеральным директором является Козлов Дмитрий Владимирович"
+        ],
+        "metadata": {
+          "source_url": "https://khleb.ru/",
+          "source_urls": [
+            "https://khleb.ru/",
+            "https://check.tochka.com/company/1107746913845"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e1",
+              "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+            },
+            {
+              "sourceId": "e5",
+              "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+            }
+          ],
+          "research_evidence": [
+            {
+              "sourceUrl": "https://khleb.ru/",
+              "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+            },
+            {
+              "sourceUrl": "https://check.tochka.com/company/1107746913845",
+              "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+            }
+          ],
+          "semantic_role_relevance": 70,
+          "semantic_role_reason": "Исполнительный директор публично указан на сайте компании; при отсутствии директора профильного логистического или HR подразделения — формальный владелец всех внутренних процессов.",
+          "name_parts": {
+            "given": "Дмитрий",
+            "family": "Козлов"
+          },
+          "current_role_confirmed": true,
+          "email_source_url": null,
+          "email_person_evidence": null,
+          "public_contact_verified": false,
+          "verified_company_domains": [
+            "kolomenskoe.ru",
+            "khleb.ru"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true,
+          "email_candidates": [
+            {
+              "email": "dmitrii.kozlov@kolomenskoe.ru",
+              "personName": "Козлов Дмитрий Владимирович",
+              "status": "PREDICTED",
+              "pattern": "{given}.{family}",
+              "patternSupport": 0,
+              "mx": "present",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+            },
+            {
+              "email": "d.kozlov@kolomenskoe.ru",
+              "personName": "Козлов Дмитрий Владимирович",
+              "status": "PREDICTED",
+              "pattern": "{g}.{family}",
+              "patternSupport": 0,
+              "mx": "present",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+            },
+            {
+              "email": "kozlov@kolomenskoe.ru",
+              "personName": "Козлов Дмитрий Владимирович",
+              "status": "PREDICTED",
+              "pattern": "{family}",
+              "patternSupport": 0,
+              "mx": "present",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+            },
+            {
+              "email": "dkozlov@kolomenskoe.ru",
+              "personName": "Козлов Дмитрий Владимирович",
+              "status": "PREDICTED",
+              "pattern": "{g}{family}",
+              "patternSupport": 0,
+              "mx": "present",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+            },
+            {
+              "email": "dmitriy.kozlov@kolomenskoe.ru",
+              "personName": "Козлов Дмитрий Владимирович",
+              "status": "PREDICTED",
+              "pattern": "{given}.{family}",
+              "patternSupport": 0,
+              "mx": "present",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+            }
+          ]
+        }
+      }
+    ],
+    "primary_person_intelligence": {
+      "candidate": {
+        "full_name": "Козлов Дмитрий Владимирович",
+        "role_title": "генеральному директору Козлову Дмитрию Владимировичу",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу",
+          "генеральным директором является Козлов Дмитрий Владимирович"
+        ],
+        "metadata": {
+          "source_url": "https://khleb.ru/",
+          "source_urls": [
+            "https://khleb.ru/",
+            "https://check.tochka.com/company/1107746913845"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e1",
+              "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+            },
+            {
+              "sourceId": "e5",
+              "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+            }
+          ],
+          "research_evidence": [
+            {
+              "sourceUrl": "https://khleb.ru/",
+              "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+            },
+            {
+              "sourceUrl": "https://check.tochka.com/company/1107746913845",
+              "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+            }
+          ],
+          "semantic_role_relevance": 70,
+          "semantic_role_reason": "Исполнительный директор публично указан на сайте компании; при отсутствии директора профильного логистического или HR подразделения — формальный владелец всех внутренних процессов.",
+          "name_parts": {
+            "given": "Дмитрий",
+            "family": "Козлов"
+          },
+          "current_role_confirmed": true,
+          "email_source_url": null,
+          "email_person_evidence": null,
+          "public_contact_verified": false,
+          "verified_company_domains": [
+            "kolomenskoe.ru",
+            "khleb.ru"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true,
+          "email_candidates": [
+            {
+              "email": "dmitrii.kozlov@kolomenskoe.ru",
+              "personName": "Козлов Дмитрий Владимирович",
+              "status": "PREDICTED",
+              "pattern": "{given}.{family}",
+              "patternSupport": 0,
+              "mx": "present",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+            },
+            {
+              "email": "d.kozlov@kolomenskoe.ru",
+              "personName": "Козлов Дмитрий Владимирович",
+              "status": "PREDICTED",
+              "pattern": "{g}.{family}",
+              "patternSupport": 0,
+              "mx": "present",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+            },
+            {
+              "email": "kozlov@kolomenskoe.ru",
+              "personName": "Козлов Дмитрий Владимирович",
+              "status": "PREDICTED",
+              "pattern": "{family}",
+              "patternSupport": 0,
+              "mx": "present",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+            },
+            {
+              "email": "dkozlov@kolomenskoe.ru",
+              "personName": "Козлов Дмитрий Владимирович",
+              "status": "PREDICTED",
+              "pattern": "{g}{family}",
+              "patternSupport": 0,
+              "mx": "present",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+            },
+            {
+              "email": "dmitriy.kozlov@kolomenskoe.ru",
+              "personName": "Козлов Дмитрий Владимирович",
+              "status": "PREDICTED",
+              "pattern": "{given}.{family}",
+              "patternSupport": 0,
+              "mx": "present",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+            }
+          ]
+        }
+      },
+      "rank_score": 60,
+      "person_score": 60,
+      "persona_match_score": 70,
+      "business_problem_ownership": "medium",
+      "decision_authority": "low",
+      "influence_level": "medium",
+      "confidence_score": 81,
+      "confidence_level": "high_confidence",
+      "contact_availability": {
+        "has_work_email": false,
+        "has_linkedin": false,
+        "has_phone": false,
+        "has_telegram": false
+      },
+      "matched_keywords": [],
+      "reasoning": "No direct persona keyword match in available person context.",
+      "selection_reason": "Козлов Дмитрий Владимирович is the strongest available candidate because генеральному директору Козлову Дмитрию Владимировичу no direct keyword match, compared against основатель. Persona match 70/100, ownership medium, authority low, influence medium, confidence 81/100.",
+      "strengths": [
+        "Strong persona match (70/100)"
+      ],
+      "weaknesses": [
+        "No direct persona keyword match in available evidence",
+        "No direct personal contact channel found"
+      ],
+      "why_not_other_candidates": [],
+      "recommended_next_action": "run_enrichment"
+    },
+    "alternative_people_intelligence": [],
+    "ranked_people": [
+      {
+        "candidate": {
+          "full_name": "Козлов Дмитрий Владимирович",
+          "role_title": "генеральному директору Козлову Дмитрию Владимировичу",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу",
+            "генеральным директором является Козлов Дмитрий Владимирович"
+          ],
+          "metadata": {
+            "source_url": "https://khleb.ru/",
+            "source_urls": [
+              "https://khleb.ru/",
+              "https://check.tochka.com/company/1107746913845"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+              },
+              {
+                "sourceId": "e5",
+                "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://khleb.ru/",
+                "quote": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+              },
+              {
+                "sourceUrl": "https://check.tochka.com/company/1107746913845",
+                "quote": "генеральным директором является Козлов Дмитрий Владимирович"
+              }
+            ],
+            "semantic_role_relevance": 70,
+            "semantic_role_reason": "Исполнительный директор публично указан на сайте компании; при отсутствии директора профильного логистического или HR подразделения — формальный владелец всех внутренних процессов.",
+            "name_parts": {
+              "given": "Дмитрий",
+              "family": "Козлов"
+            },
+            "current_role_confirmed": true,
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "kolomenskoe.ru",
+              "khleb.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true,
+            "email_candidates": [
+              {
+                "email": "dmitrii.kozlov@kolomenskoe.ru",
+                "personName": "Козлов Дмитрий Владимирович",
+                "status": "PREDICTED",
+                "pattern": "{given}.{family}",
+                "patternSupport": 0,
+                "mx": "present",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+              },
+              {
+                "email": "d.kozlov@kolomenskoe.ru",
+                "personName": "Козлов Дмитрий Владимирович",
+                "status": "PREDICTED",
+                "pattern": "{g}.{family}",
+                "patternSupport": 0,
+                "mx": "present",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+              },
+              {
+                "email": "kozlov@kolomenskoe.ru",
+                "personName": "Козлов Дмитрий Владимирович",
+                "status": "PREDICTED",
+                "pattern": "{family}",
+                "patternSupport": 0,
+                "mx": "present",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+              },
+              {
+                "email": "dkozlov@kolomenskoe.ru",
+                "personName": "Козлов Дмитрий Владимирович",
+                "status": "PREDICTED",
+                "pattern": "{g}{family}",
+                "patternSupport": 0,
+                "mx": "present",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+              },
+              {
+                "email": "dmitriy.kozlov@kolomenskoe.ru",
+                "personName": "Козлов Дмитрий Владимирович",
+                "status": "PREDICTED",
+                "pattern": "{given}.{family}",
+                "patternSupport": 0,
+                "mx": "present",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+              }
+            ]
+          }
+        },
+        "rank_score": 60,
+        "person_score": 60,
+        "persona_match_score": 70,
+        "business_problem_ownership": "medium",
+        "decision_authority": "low",
+        "influence_level": "medium",
+        "confidence_score": 81,
+        "confidence_level": "high_confidence",
+        "contact_availability": {
+          "has_work_email": false,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Козлов Дмитрий Владимирович is the strongest available candidate because генеральному директору Козлову Дмитрию Владимировичу no direct keyword match, compared against основатель. Persona match 70/100, ownership medium, authority low, influence medium, confidence 81/100.",
+        "strengths": [
+          "Strong persona match (70/100)"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence",
+          "No direct personal contact channel found"
+        ],
+        "why_not_other_candidates": [],
+        "recommended_next_action": "run_enrichment"
+      }
+    ],
+    "selection_reasoning": "Козлов Дмитрий Владимирович is the strongest available candidate because генеральному директору Козлову Дмитрию Владимировичу no direct keyword match, compared against основатель. Persona match 70/100, ownership medium, authority low, influence medium, confidence 81/100.",
+    "search_status": "person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "provider_credit_exhausted"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 4,
+      "official_pages_fetched": 3,
+      "aborted_requests": 0,
+      "elapsed_ms": 33488,
+      "stop_reason": "provider_credit_exhausted",
+      "queries_executed": [
+        "БКК Коломенский руководитель отдела логистики",
+        "БКК Коломенский директор по персоналу",
+        "\"Козлов Дмитрий Владимирович\" БКК Коломенский email",
+        "БКК Коломенский руководитель департамента логистики имя email"
+      ],
+      "sources_checked": [
+        "https://khleb.ru/",
+        "https://khleb.ru/about-holding/docs",
+        "https://khleb.ru/about-holding/",
+        "https://www.google.com/maps/search/%D0%97%D0%90%D0%9E+%D0%91%D0%9A%D0%9A+%C2%AB%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%C2%BB",
+        "https://check.tochka.com/company/1107746913845",
+        "https://www.my-ki.ru/companies/bkkkolomenskiy.html",
+        "https://svoevagro.ru/vacancies/2137839220",
+        "https://svoevagro.ru/vacancies/2137096209",
+        "https://dreamjob.ru/employers/29487/city-moskva/vacancy-rukovoditel-otdela-logistiki",
+        "https://checkspot.ru/company/1107746913845",
+        "https://tenchat.ru/1107746913845/contacts",
+        "https://www.google.com/maps/search/%D0%91%D0%9A%D0%9A+%C2%AB%D0%9A%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%C2%BB",
+        "https://www.ki.snkigb.ru/companies/bkkkolomenskiy.html"
+      ],
+      "search_results_seen": 10,
+      "rejected_candidates": {
+        "validation_rejects": 0
+      },
+      "final_failure_reason": null
+    }
+  },
+  "contacts": [
+    {
+      "name": "Козлов Дмитрий Владимирович",
+      "role": "генеральному директору Козлову Дмитрию Владимировичу",
+      "email": null,
+      "type": "confirmed_person",
+      "source": "https://khleb.ru/",
+      "selected": false,
+      "intelligence": {
+        "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+        "target_responsibility": "Company leadership",
+        "target_persona": "Founder",
+        "alternative_personas": [
+          "CEO",
+          "Managing Director",
+          "COO",
+          "Head of Growth",
+          "Head of Sales"
+        ],
+        "why_this_person": "генеральному директору Козлову Дмитрию Владимировичу: The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+        "person_name": "Козлов Дмитрий Владимирович",
+        "person_role": "генеральному директору Козлову Дмитрию Владимировичу",
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Козлов Дмитрий Владимирович подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": null,
+            "summary": "Роль связана с зоной ответственности: Company leadership."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Задать вопрос генеральному директору Козлову Дмитрию Владимировичу"
+          },
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "генеральным директором является Козлов Дмитрий Владимирович"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [
+          "dmitrii.kozlov@kolomenskoe.ru",
+          "d.kozlov@kolomenskoe.ru",
+          "kozlov@kolomenskoe.ru",
+          "dkozlov@kolomenskoe.ru",
+          "dmitriy.kozlov@kolomenskoe.ru"
+        ],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "person_found_personal_email_unresolved"
+      }
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://kolomenskoe.ru/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://kolomenskoe.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://kolomenskoe.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 33529
+}

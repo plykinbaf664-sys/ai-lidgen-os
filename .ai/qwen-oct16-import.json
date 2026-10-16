@@ -1,0 +1,515 @@
+{
+  "mode": "import",
+  "startedAt": "2026-10-16T15:24:32.103Z",
+  "isolated": "C:\\Users\\User\\AppData\\Local\\Temp\\leadgen-final-import-Ru83gb",
+  "productionSmtpCalls": 0,
+  "importSummary": {
+    "rows": 1,
+    "candidates": 1,
+    "qualified": 1,
+    "contacts": 7,
+    "ready": 1
+  },
+  "campaign": {
+    "id": "campaign-imported-cbc33950248b8adba4258f4dfbf7",
+    "pipeline_run_id": "pipeline-46ecbab23a71623939ca4df4b606",
+    "name": "Controlled Imported Base",
+    "requested_by": "isolated-live",
+    "status": "completed",
+    "icp_label": "ICP: Производственные компании",
+    "offer_label": "ускоряем разбор входящих запросов, дилерских заявок и подготовку первого ответа",
+    "created_at": "2026-10-16T15:24:57.730Z",
+    "vertical_id": "manufacturing"
+  },
+  "companies": [
+    {
+      "id": "company-b6cd36585b5832abd7126e3c31b0",
+      "pipeline_run_id": "pipeline-46ecbab23a71623939ca4df4b606",
+      "campaign_id": "campaign-imported-cbc33950248b8adba4258f4dfbf7",
+      "company_name": "Производственная Компания Контур",
+      "company_domain": "xn--j1agcjjg.xn--p1ai",
+      "company_segment": "manufacturing",
+      "source": "imported_base",
+      "source_url": "https://xn--j1agcjjg.xn--p1ai",
+      "source_label": "Собственная база",
+      "signal_type": "IMPORTED_CONTEXT",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 40,
+      "icp_fit_score": 100,
+      "confidence_score": 40,
+      "country": "Россия",
+      "industry": "manufacturing",
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "Производственная Компания Контур",
+          "officialWebsite": "https://xn--j1agcjjg.xn--p1ai",
+          "officialDomain": "xn--j1agcjjg.xn--p1ai",
+          "people": [
+            {
+              "fullName": "Околелов Григорий Валерьевич",
+              "role": "Генеральный директор",
+              "confidence": "VERIFIED",
+              "evidence": [
+                {
+                  "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "Околелов Григорий Валерьевич Генеральный директор",
+                  "capturedAt": "2026-10-16T15:24:57.730Z",
+                  "confidence": 90
+                },
+                {
+                  "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "Околелов Григорий Валерьевич Генеральный директор",
+                  "capturedAt": "2026-10-16T15:24:57.730Z",
+                  "confidence": 90
+                }
+              ],
+              "profiles": {
+                "tenchat": null,
+                "telegram": null,
+                "instagram": null,
+                "vk": null,
+                "other": []
+              },
+              "phone": null
+            },
+            {
+              "fullName": "Котельников Данила Никитич",
+              "role": "Исполнительный директор",
+              "confidence": "VERIFIED",
+              "evidence": [
+                {
+                  "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/okolelov_grigoriy_valerevich",
+                  "sourceType": "official",
+                  "excerpt": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru",
+                  "capturedAt": "2026-10-16T15:24:57.730Z",
+                  "confidence": 90
+                }
+              ],
+              "profiles": {
+                "tenchat": null,
+                "telegram": null,
+                "instagram": null,
+                "vk": null,
+                "other": [
+                  "https://xn--j1agcjjg.xn--p1ai/contacts/kotelnikov_danila_nikitich"
+                ]
+              },
+              "phone": null
+            },
+            {
+              "fullName": "Бушуев Сергей Анатольевич",
+              "role": "Финансовый директор",
+              "confidence": "VERIFIED",
+              "evidence": [
+                {
+                  "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/okolelov_grigoriy_valerevich",
+                  "sourceType": "official",
+                  "excerpt": "Бушуев Сергей Анатольевич Финансовый директор +7 (343) 298-00-58 доб.211 SergeyB@pk-kontur.ru",
+                  "capturedAt": "2026-10-16T15:24:57.730Z",
+                  "confidence": 90
+                }
+              ],
+              "profiles": {
+                "tenchat": null,
+                "telegram": null,
+                "instagram": null,
+                "vk": null,
+                "other": []
+              },
+              "phone": null
+            }
+          ],
+          "emails": {
+            "personal": [
+              {
+                "email": "sergeyb@pk-kontur.ru",
+                "personName": "Бушуев Сергей Анатольевич",
+                "classification": "VERIFIED_PERSONAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/okolelov_grigoriy_valerevich",
+                    "sourceType": "official",
+                    "excerpt": "sergeyb@pk-kontur.ru — Iterative public research",
+                    "capturedAt": "2026-10-16T15:24:57.730Z",
+                    "confidence": 94
+                  }
+                ]
+              },
+              {
+                "email": "kotelnikov-dn@pk-kontur.ru",
+                "personName": "Котельников Данила Никитич",
+                "classification": "VERIFIED_PERSONAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/okolelov_grigoriy_valerevich",
+                    "sourceType": "official",
+                    "excerpt": "kotelnikov-dn@pk-kontur.ru — Iterative public research",
+                    "capturedAt": "2026-10-16T15:24:57.730Z",
+                    "confidence": 97
+                  }
+                ]
+              }
+            ],
+            "department": [],
+            "general": [],
+            "inferred": []
+          },
+          "bestOutreachContact": {
+            "email": "kotelnikov-dn@pk-kontur.ru",
+            "personName": "Котельников Данила Никитич",
+            "role": "Исполнительный директор",
+            "classification": "VERIFIED_PERSONAL",
+            "contactLevel": "A",
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/okolelov_grigoriy_valerevich"
+          },
+          "signal": {
+            "type": "IMPORTED_CONTEXT",
+            "title": "Контакт из собственной базы",
+            "detail": "Компания предоставлена пользователем; коммерческий сигнал не подтверждён.",
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai",
+            "confidence": 40
+          },
+          "researchConfidence": "VERIFIED",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 0,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 16,
+            "lprMs": 32104,
+            "contactMs": 560,
+            "totalMs": 32684,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "IMPORTED"
+        ],
+        "source_provider": "contact_import",
+        "source_url": "https://xn--j1agcjjg.xn--p1ai",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-16T15:24:57.730Z",
+      "updated_at": "2026-10-16T15:24:57.730Z"
+    }
+  ],
+  "contacts": [
+    {
+      "pipeline_run_id": "pipeline-46ecbab23a71623939ca4df4b606",
+      "campaign_id": "campaign-imported-cbc33950248b8adba4258f4dfbf7",
+      "company_id": "company-b6cd36585b5832abd7126e3c31b0",
+      "lead_id": "lead-76166554a58531ca992f55dc804c",
+      "full_name": "Околелов Григорий Валерьевич",
+      "role_title": "Генеральный директор",
+      "department": null,
+      "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "source_label": "Iterative public research",
+      "confidence_score": 86,
+      "is_primary": false,
+      "created_at": "2026-10-16T15:24:57.730Z",
+      "id": "contact-lead-76166554a58531ca992f55dc804c-primary-person-confirmed",
+      "contact_type": "confirmed_person",
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "metadata": {
+        "outreach_selected": false
+      }
+    },
+    {
+      "id": "contact-lead-76166554a58531ca992f55dc804c-website-form-3",
+      "pipeline_run_id": "pipeline-46ecbab23a71623939ca4df4b606",
+      "campaign_id": "campaign-imported-cbc33950248b8adba4258f4dfbf7",
+      "company_id": "company-b6cd36585b5832abd7126e3c31b0",
+      "lead_id": "lead-76166554a58531ca992f55dc804c",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://xn--j1agcjjg.xn--p1ai/contacts",
+      "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T15:24:57.730Z"
+    },
+    {
+      "id": "contact-lead-76166554a58531ca992f55dc804c-website-form-4",
+      "pipeline_run_id": "pipeline-46ecbab23a71623939ca4df4b606",
+      "campaign_id": "campaign-imported-cbc33950248b8adba4258f4dfbf7",
+      "company_id": "company-b6cd36585b5832abd7126e3c31b0",
+      "lead_id": "lead-76166554a58531ca992f55dc804c",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://xn--j1agcjjg.xn--p1ai/contact",
+      "source_url": "https://xn--j1agcjjg.xn--p1ai/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T15:24:57.730Z"
+    },
+    {
+      "id": "contact-lead-76166554a58531ca992f55dc804c-website-form-5",
+      "pipeline_run_id": "pipeline-46ecbab23a71623939ca4df4b606",
+      "campaign_id": "campaign-imported-cbc33950248b8adba4258f4dfbf7",
+      "company_id": "company-b6cd36585b5832abd7126e3c31b0",
+      "lead_id": "lead-76166554a58531ca992f55dc804c",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T15:24:57.730Z"
+    },
+    {
+      "id": "contact-lead-76166554a58531ca992f55dc804c-website-form-6",
+      "pipeline_run_id": "pipeline-46ecbab23a71623939ca4df4b606",
+      "campaign_id": "campaign-imported-cbc33950248b8adba4258f4dfbf7",
+      "company_id": "company-b6cd36585b5832abd7126e3c31b0",
+      "lead_id": "lead-76166554a58531ca992f55dc804c",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://xn--j1agcjjg.xn--p1ai/contacts/okolelov_grigoriy_valerevich",
+      "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/okolelov_grigoriy_valerevich",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T15:24:57.730Z"
+    },
+    {
+      "id": "contact-lead-76166554a58531ca992f55dc804c-company-website-7",
+      "pipeline_run_id": "pipeline-46ecbab23a71623939ca4df4b606",
+      "campaign_id": "campaign-imported-cbc33950248b8adba4258f4dfbf7",
+      "company_id": "company-b6cd36585b5832abd7126e3c31b0",
+      "lead_id": "lead-76166554a58531ca992f55dc804c",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://xn--j1agcjjg.xn--p1ai",
+      "source_url": "https://xn--j1agcjjg.xn--p1ai",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-16T15:24:57.730Z"
+    },
+    {
+      "id": "contact-lead-76166554a58531ca992f55dc804c-work-email-1",
+      "pipeline_run_id": "pipeline-46ecbab23a71623939ca4df4b606",
+      "campaign_id": "campaign-imported-cbc33950248b8adba4258f4dfbf7",
+      "company_id": "company-b6cd36585b5832abd7126e3c31b0",
+      "lead_id": "lead-76166554a58531ca992f55dc804c",
+      "contact_type": "work_email",
+      "full_name": "Котельников Данила Никитич",
+      "role_title": "Исполнительный директор",
+      "department": null,
+      "email": "kotelnikov-dn@pk-kontur.ru",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/okolelov_grigoriy_valerevich",
+      "source_label": "Iterative public research",
+      "confidence_score": 97,
+      "is_primary": true,
+      "metadata": {
+        "normalized_email_classification": "VERIFIED_PERSONAL",
+        "email_status": "work_email_ready",
+        "email_subject": "Производственная Компания Контур: где теряется скорость",
+        "email_body": "Данила, добрый день.\n\nИзучил открытые материалы Производственная Компания Контур и обратил внимание на текущую активность компании.\n\nВ такой ситуации одна из типичных проблем — ручной разбор повторяющихся запросов и передача информации между сотрудниками. Это может замедлять ответ и забирать время у людей, которые должны решать более сложные задачи.\n\nНачинать стоит не с выбора нейросети, а с одного измеримого участка, где ручное действие повторяется и ограничивает скорость.\n\nЯ AI-архитектор. Нахожу такие участки и собираю решения, которые забирают повторяющиеся шаги, собирают данные и вовремя подключают человека.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nЕсть смысл посмотреть этот участок на вашей компании?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": false,
+        "outreach_selected": true,
+        "email_generation_source": "template",
+        "email_generation_fallback_reason": "verified_signal_missing"
+      },
+      "created_at": "2026-10-16T15:24:57.730Z"
+    }
+  ],
+  "signals": [
+    {
+      "id": "signal-e1f78eb507f00d152fc86c56e726",
+      "pipeline_run_id": "pipeline-46ecbab23a71623939ca4df4b606",
+      "campaign_id": "campaign-imported-cbc33950248b8adba4258f4dfbf7",
+      "lead_id": "lead-76166554a58531ca992f55dc804c",
+      "company_id": "company-b6cd36585b5832abd7126e3c31b0",
+      "signal_type": "IMPORTED_CONTEXT",
+      "signal_title": "Контакт из собственной базы",
+      "signal_detail": "Компания предоставлена пользователем; коммерческий сигнал не подтверждён.",
+      "signal_source_label": "Контекст собственной базы",
+      "source_url": "https://xn--j1agcjjg.xn--p1ai",
+      "confidence_score": 40,
+      "found_at": "2026-10-16T15:24:57.730Z",
+      "created_at": "2026-10-16T15:24:57.730Z"
+    }
+  ],
+  "queueBefore": [
+    {
+      "id": "outreach-contact-lead-76166554a58531ca992f55dc804c-work-email-1",
+      "company_name": "Производственная Компания Контур",
+      "status": "needs_review",
+      "quality_gate_passed": false
+    }
+  ],
+  "metrics": {
+    "companies": 1,
+    "people": 3,
+    "personalEmails": 1,
+    "emailContacts": 1,
+    "ready": 0,
+    "manualReview": 1
+  },
+  "orphanRequests": 0,
+  "requests": {
+    "xn--j1agcjjg.xn--p1ai": 9,
+    "ws-0k3rkeh9pgddyrz7.ap-southeast-1.maas.aliyuncs.com": 4,
+    "search.yahoo.com": 2,
+    "search.brave.com": 2,
+    "www.bing.com": 2,
+    "api.tavily.com": 1,
+    "api.openai.com": 2,
+    "hirify.me": 1,
+    "datasecrets.ru": 1,
+    "inviterr.ru": 1,
+    "h.careers": 1
+  },
+  "modelCalls": [
+    {
+      "schema": "direct_ai_need_search_plan",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 645,
+        "output_tokens": 514,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 645
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8771,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 445,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9216
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8708,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 457,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9165
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 3827,
+        "output_tokens": 201,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 3827
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 6305,
+        "output_tokens": 265,
+        "input_tokens_details": {
+          "cached_tokens": 3456,
+          "text_tokens": 6305
+        }
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "qwen3.7-plus",
+      "usage": {
+        "input_tokens": 7686,
+        "output_tokens": 782,
+        "input_tokens_details": {
+          "cached_tokens": 1152,
+          "text_tokens": 7686
+        }
+      },
+      "webSearchCalls": 0
+    }
+  ],
+  "finishedAt": "2026-10-16T15:25:33.101Z"
+}

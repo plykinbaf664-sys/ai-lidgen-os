@@ -47,6 +47,8 @@ export type FirstEmailContext = {
 };
 
 export type FirstEmailCopy = {
+  generationSource?: "ai" | "template";
+  fallbackReason?: string | null;
   subject: string;
   body: string;
   blocks: {
@@ -105,6 +107,8 @@ const ALLOWED_LATIN_WORDS = new Set([
   "b2b",
   "crm",
   "erp",
+  "llm",
+  "mvp",
   "api",
   "it",
   "hr",
@@ -128,11 +132,14 @@ function getFirstName(value: string | null | undefined): string | null {
   const parts = normalized.split(" ").map((part) => part.replace(/[^\p{L}-]/gu, "")).filter(Boolean);
   if (parts.length < 2 || parts.some((part) => part.length < 2)) return null;
   if (/директор|руководитель|менеджер|отдел|компан|контакт|ваканс/i.test(normalized)) return null;
+  // Published Russian names may use surname/given-name/patronymic order.
+  if (parts.length === 3 && /(?:ич|овна|евна|ична)$/iu.test(parts[2])) return parts[1];
   return parts[0];
 }
 
 function hasVerifiedSignal(context: FirstEmailContext): boolean {
   const type = cleanText(context.signalType).toLowerCase();
+  if (type === "imported_context") return false;
   return Boolean(cleanText(context.signalEvidence || context.growthSignal) && cleanText(context.signalSourceUrl) && type && type !== "none");
 }
 

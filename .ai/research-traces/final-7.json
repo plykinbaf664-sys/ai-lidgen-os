@@ -1,0 +1,1988 @@
+{
+  "mode": "business",
+  "name": "PolyOn",
+  "website": "https://polyon.us",
+  "before": {
+    "companyName": "PolyOn",
+    "officialWebsite": "https://polyon.us",
+    "officialDomain": "polyon.us",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "info@polyon.us",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.polyon.us/",
+              "sourceType": "official",
+              "excerpt": "info@polyon.us — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "info@polyon.us",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://www.polyon.us/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+      "sourceUrl": "https://hh.ru/vacancy/137434617",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 23,
+      "lprMs": 14452,
+      "contactMs": 3660,
+      "totalMs": 23064,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+    "sourceUrl": "https://hh.ru/vacancy/137434617",
+    "confidence": 100
+  },
+  "index": 7,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us",
+      "status": 301,
+      "elapsedMs": 362
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.polyon.us/",
+      "status": 200,
+      "elapsedMs": 450
+    },
+    {
+      "stage": "research_open",
+      "url": "https://polyon.us",
+      "success": true,
+      "evidence": {
+        "url": "https://www.polyon.us/",
+        "kind": "page",
+        "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE",
+        "links": [
+          {
+            "url": "https://www.polyon.us",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.mx",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.us/products",
+            "label": "Products"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "label": "Our Company"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "label": "Contact"
+          },
+          {
+            "url": "https://www.facebook.com/polyon1",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:06:53.810Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2350,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us/",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:06:53.810Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 10,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company headquartered at polyon.us. They supply LDPE, HDPE, LLDPE, and PP resins. There is a hiring signal for a Sales Manager role, indicating a potential owner in sales or business development leadership.",
+        "missing": [
+          "Руководитель профильного подразделения (sales/business development), имя и контакт",
+          "Публичные управленческие контакты"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          },
+          {
+            "domain": "polyon.mx",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://www.polyon.mx"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "contact section",
+            "purpose": "Найти прямой управленческий/персонифицированный контакт или подсказку для поиска руководителя"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет персонифицированного бизнес-контакта; требуется проверить страницу контактов."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company headquartered at polyon.us. They supply LDPE, HDPE, LLDPE, and PP resins. There is a hiring signal for a Sales Manager role, indicating a potential owner in sales or business development leadership.",
+        "missing": [
+          "Руководитель профильного подразделения (sales/business development), имя и контакт",
+          "Публичные управленческие контакты"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          },
+          {
+            "domain": "polyon.mx",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://www.polyon.mx"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "contact section",
+            "purpose": "Найти прямой управленческий/персонифицированный контакт или подсказку для поиска руководителя"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет персонифицированного бизнес-контакта; требуется проверить страницу контактов."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:polyon.mx"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.polyon.us/contact-us",
+      "status": 200,
+      "elapsedMs": 188
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://www.polyon.us/contact-us",
+      "focus": "contact section",
+      "purpose": "Найти прямой управленческий/персонифицированный контакт или подсказку для поиска руководителя",
+      "success": true,
+      "evidence": {
+        "url": "https://www.polyon.us/contact-us",
+        "kind": "page",
+        "text": "contact us Contact Form: Send Success! Message received.",
+        "links": [
+          {
+            "url": "https://www.polyon.us",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.mx",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.us/products",
+            "label": "Products"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "label": "Our Company"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "label": "Contact"
+          },
+          {
+            "url": "https://www.facebook.com/polyon1",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:06:56.501Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3582,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us/",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:06:53.810Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "kind": "page",
+            "text": "contact us Contact Form: Send Success! Message received.",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:06:56.501Z",
+            "id": "e2"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "contact section",
+            "success": true
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:polyon.mx"
+        ],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 9,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company focused on LDPE, HDPE, LLDPE, and PP, with its primary web presence at polyon.us. The company is currently hiring a Sales Manager per a recent vacancy listing. Their website provides general information and a contact form, but does not list specific staff members or personal contacts. No explicit emails or names of decision-makers are published at this stage, nor does the site display a team or leadership section.",
+        "missing": [
+          "Ни один сотрудник не упомянут по имени или роли.",
+          "Нет публичных индивидуальных контактов или имен руководителей подразделения продаж или общего руководства."
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "PolyOn company leadership OR team OR CEO site:polyon.us",
+            "focus": "find named leaders or decision makers",
+            "purpose": "Выявить имена и должности руководителей или публичных представителей, которые не указаны на сайте."
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales director OR sales manager OR executive",
+            "focus": "external profiles (LinkedIn, press, industry news)",
+            "purpose": "Найти руководителя подразделения продаж или LPR по внешним источникам, если они отсутствуют на собственном сайте."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет данных о сотрудниках или их контактах на сайте; требуются внешние источники для установления ЛПР."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company focused on LDPE, HDPE, LLDPE, and PP, with its primary web presence at polyon.us. The company is currently hiring a Sales Manager per a recent vacancy listing. Their website provides general information and a contact form, but does not list specific staff members or personal contacts. No explicit emails or names of decision-makers are published at this stage, nor does the site display a team or leadership section.",
+        "missing": [
+          "Ни один сотрудник не упомянут по имени или роли.",
+          "Нет публичных индивидуальных контактов или имен руководителей подразделения продаж или общего руководства."
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "PolyOn company leadership OR team OR CEO site:polyon.us",
+            "focus": "find named leaders or decision makers",
+            "purpose": "Выявить имена и должности руководителей или публичных представителей, которые не указаны на сайте."
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales director OR sales manager OR executive",
+            "focus": "external profiles (LinkedIn, press, industry news)",
+            "purpose": "Найти руководителя подразделения продаж или LPR по внешним источникам, если они отсутствуют на собственном сайте."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет данных о сотрудниках или их контактах на сайте; требуются внешние источники для установления ЛПР."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=PolyOn%20company%20leadership%20OR%20team%20OR%20CEO%20polyon.us&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 474
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=PolyOn%20company%20leadership%20OR%20team%20OR%20CEO%20polyon.us&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 444
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=PolyOn%20sales%20director%20OR%20sales%20manager%20OR%20executive&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 410
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=PolyOn%20sales%20director%20OR%20sales%20manager%20OR%20executive&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 193
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1854
+    },
+    {
+      "stage": "search",
+      "query": "PolyOn sales director OR sales manager OR executive",
+      "results": [
+        {
+          "title": "Job Application for Regional Sales Leader - West at Polygon US",
+          "url": "https://job-boards.greenhouse.io/polygonus/jobs/5182214007",
+          "snippet": "At the direction of the Head of National Sales and in close collaboration with the Business Unit Manager, the Regional Sales Leader (RSL) is responsible for leading the region’s sales team to achieve budgeted sales forecasts and revenue growth. This role includes direct sales engagement and day-to-day leadership of Business Development Specialists (BDS), while building their own regional C-level client relationships. The RSL is accountable for pipeline ownership, proposal delivery, sales [...] • Drive consistent sales accountability and ensure team meets or exceeds sales objectives  \n• Owns monthly sales reporting and analytics for the region  \n• Develop and coach a high-performing sales team, lead by example  \n• Design and implement regional sales and marketing campaigns in line with national strategies  \n• Drive a customer success culture with a focus on increasing share of wallet and expanding client relationships [...] Job Qualifications:  \n• 10–15 years of progressive sales experience with a strong track record of exceeding sales goals  \n• 5–10 years of successful experience leading and developing sales teams  \n• Minimum 5 years experience in application engineering or technical sales  \n• Proven expertise in developing and executing sales strategies focused on both growth and efficiency  \n• Strong capability in building and managing a robust sales pipeline",
+          "source_label": "tavily",
+          "score": 0.4635177,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Group Management - Polygon Group",
+          "url": "https://www.polygongroup.com/about-us/organisation/management-group",
+          "snippet": "Born1967  \nJoined Polygon 2025  \nBackground: Senior executive with experience as Managing Director, CFO, and in performance and restructuring management within industrial manufacturing, industrial services, and facility services, including PE-owned companies.  \nEducation: Diploma in Business Administration; Military officer training; vocational training and degree in Industrial Business.\n\n### About [...] Born1989  \nJoined Polygon 2018  \nBackground: 15 years of experience in strategy, business development, operations and M&A from various roles in Polygon Group as well as in management consulting and investment advisory.  \nEducation: B.Sc. in Business Administration; M.Sc. in Corporate Finance, Stockholm School of Economics and Queen’s University.\n\n#### Michael Heinze [...] Born1974  \nJoined Polygon 2026  \nBackground: Extensive CFO experience with more than 20 years in international management across multiple industries. Global CFO of Maersk Logistics & Services, CFO of Maersk Strategic Brands, CFO of Seago Line, and various board and advisory board roles.  \nEducation:Executive MBA with honors, IMD Switzerland, M.Sc. in Business and Economics, Copenhagen Business School and executive programs at IMD Switzerland and Management Centre Europe.\n\n#### Caroline Finslo",
+          "source_label": "tavily",
+          "score": 0.3233165,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Sales Director - Atlanta, GA | MSI Careers",
+          "url": "https://www.msisurfaces.com/careers/jobpost/104185",
+          "snippet": "Proven ability to grow sales while managing profitability, forecasting, inventory, and operational execution.\n Experience leading customer negotiations, product line reviews, program launches, and annual business planning.\n Strong financial and analytical skills, including analysis of sales, POS, margins, pricing, forecasts, inventory, and business performance.\n Strong executive-level communication, presentation, negotiation, and relationship-management skills. [...] Summary:  The Sales Director will lead and expand MSI’s portfolio of major national retail accounts across the United States and Canada. In this senior, customer-facing position, you will drive profitable sales growth, deepen strategic client relationships, and identify new business opportunities. Working in close collaboration with senior leadership, the role ensures seamless cross-functional execution across account strategy, product development, forecasting, inventory planning, pricing, [...] Bachelor’s degree in business, sales, marketing, finance, supply chain, or a related field.\n 7 or more years of progressive sales, national account management, or business development experience.\n Five or more years of experience managing complex national accounts and/or leading sales teams.\n Demonstrated experience working with large retailers, distributors, or multi-location national accounts.",
+          "source_label": "tavily",
+          "score": 0.1548358,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "500 Director of Sales Jobs in Atlanta, GA",
+          "url": "https://www.indeed.com/q-director-of-sales-l-atlanta,-ga-jobs.html",
+          "snippet": "This role manages the sales team and works with other departments to ensure the successful execution of sales and marketing plans.",
+          "source_label": "tavily",
+          "score": 0.12703429,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Regional Sales Director Jobs in Atlanta (749 Open Roles)",
+          "url": "https://www.linkedin.com/jobs/regional-sales-director-jobs-atlanta-ga",
+          "snippet": "Today's top 749 Regional Sales Director jobs in Atlanta. Leverage your professional network, and get hired. New Regional Sales Director jobs added daily.",
+          "source_label": "tavily",
+          "score": 0.052819017,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "PolyOn sales director OR sales manager OR executive",
+      "focus": "external profiles (LinkedIn, press, industry news)",
+      "purpose": "Найти руководителя подразделения продаж или LPR по внешним источникам, если они отсутствуют на собственном сайте.",
+      "results": [
+        {
+          "url": "https://job-boards.greenhouse.io/polygonus/jobs/5182214007",
+          "title": "Job Application for Regional Sales Leader - West at Polygon US",
+          "snippet": "At the direction of the Head of National Sales and in close collaboration with the Business Unit Manager, the Regional Sales Leader (RSL) is responsible for leading the region’s sales team to achieve budgeted sales forecasts and revenue growth. This role includes direct sales engagement and day-to-day leadership of Business Development Specialists (BDS), while building their own regional C-level client relationships. The RSL is accountable for pipeline ownership, proposal delivery, sales [...] •",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.polygongroup.com/about-us/organisation/management-group",
+          "title": "Group Management - Polygon Group",
+          "snippet": "Born1967  \nJoined Polygon 2025  \nBackground: Senior executive with experience as Managing Director, CFO, and in performance and restructuring management within industrial manufacturing, industrial services, and facility services, including PE-owned companies.  \nEducation: Diploma in Business Administration; Military officer training; vocational training and degree in Industrial Business.\n\n### About [...] Born1989  \nJoined Polygon 2018  \nBackground: 15 years of experience in strategy, business de",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.msisurfaces.com/careers/jobpost/104185",
+          "title": "Sales Director - Atlanta, GA | MSI Careers",
+          "snippet": "Proven ability to grow sales while managing profitability, forecasting, inventory, and operational execution.\n Experience leading customer negotiations, product line reviews, program launches, and annual business planning.\n Strong financial and analytical skills, including analysis of sales, POS, margins, pricing, forecasts, inventory, and business performance.\n Strong executive-level communication, presentation, negotiation, and relationship-management skills. [...] Summary:  The Sales Director",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.indeed.com/q-director-of-sales-l-atlanta,-ga-jobs.html",
+          "title": "500 Director of Sales Jobs in Atlanta, GA",
+          "snippet": "This role manages the sales team and works with other departments to ensure the successful execution of sales and marketing plans.",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/jobs/regional-sales-director-jobs-atlanta-ga",
+          "title": "Regional Sales Director Jobs in Atlanta (749 Open Roles)",
+          "snippet": "Today's top 749 Regional Sales Director jobs in Atlanta. Leverage your professional network, and get hired. New Regional Sales Director jobs added daily.",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 3853
+    },
+    {
+      "stage": "search",
+      "query": "PolyOn company leadership OR team OR CEO site:polyon.us",
+      "results": [
+        {
+          "title": "Leadership Team | Visier",
+          "url": "https://www.visier.com/company/leadership",
+          "snippet": "###### Matt Weaver\n\nSVP, America Sales\n\n###### Boon Huat Lee\n\nSVP, APAC Strategy and Growth\n\n###### Ben Harris\n\nVP, EMEA Sales\n\n## Board & Investors\n\n###### John Schwarz\n\nCo-founder & Chairman\n\n###### Greg S. Goldfarb\n\nManaging Director, Summit Partners\n\n###### Michael Kondoleon\n\nManaging Director, Late Stage Growth & Hybrid, Goldman Sachs\n\n###### Ryan Wong\n\nCo-founder & CEO\n\n###### Tina Jones\n\nSenior Vice President, Global Human Resources at Cadence Design Systems\n\n###### Darryl Robinson [...] Contact\n\nSupport PortalOpen a TicketKnowledge BaseVisier University\n\nLog in\n\nTake a Tour\n\nGet a Demo\n\n# Executive Leadership Team\n\n###### Ryan Wong\n\nCo-founder & Chief Executive Officer\n\n###### Fionna Song\n\nChief Financial Officer\n\n###### Pramukh Jeyathilak\n\nChief People Officer\n\n###### Dave Weisbeck\n\nChief Product Officer\n\n###### Jen Glass\n\nVice President, Customer Solutions\n\n###### Steve Holder\n\nChief Operating Officer\n\n###### Bryan Nielson\n\nChief Marketing Officer\n\n###### Matt Weaver [...] Retired: SEVP/Chief Human Resources Officer, CommonSpirit Health\n\n###### Robin Murray\n\nGeneral Partner, Adams Street Partners\n\n###### Rob Rueckert\n\nManaging Partner, Sorenson Capital\n\n###### Warren Weiss\n\nGeneral Partner, Foundation Capital\n\n### Looking for a career with purpose?\n\nSee open roles",
+          "source_label": "tavily",
+          "score": 0.14011282,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Executive Team",
+          "url": "https://pditechnologies.com/our-story/executive-team",
+          "snippet": "Read Bio\n\n### Douglas Henderson\n\nChief Strategy Officer\n\nRead Bio\n\n### Linnea Geiss\n\nChief Operating Officer\n\nRead Bio\n\n### Nicole Wu\n\nChief Financial Officer\n\nRead Bio\n\n### Beth Strickland\n\nChief Human Resources Officer\n\nRead Bio\n\n### Drew Mize\n\nEVP and GM, North America Enterprise Productivity\n\nRead Bio\n\n### Frank Brennan\n\nSVP and GM, Global Services\n\nRead Bio\n\n### Dawn Desai\n\nSVP & GM, International Solutions\n\nRead Bio\n\n### Sin Hin Wong\n\nGM & VP Sales, APAC\n\nRead Bio [...] ### Connections Live 2026 Showcases How Modernized Platforms, Connected Workflows, and AI Are Reshaping Convenience Retail\n\n  Read More\n\n  2026 European Female Leaders in Convenience Award recipients announced by The Retail Marketeers and PDI Technologies \n\n  ### The Retail Marketeers and PDI Announce 2026 European Female Leaders in Convenience Awards\n\n  Read More\n\n  View All Press\n PDI Connections\n Support\n Search\n Get in Touch\n\n# Leadership Team\n\n### Jimmy Frangis\n\nChief Executive Officer [...] []( \n\n  ### PDI Human Capital Management: One Platform for Payroll, Scheduling, and HR\n\n  Read More\n\n  []( \n\n  ### 2025 ESG Report\n\n  Read More\n\n  []( \n\n  ### PDI Mobile Experience Manager: Control Your Mobile App without Code\n\n  Read More\n\n  []( \n\n  ### PDI Loyalty: Turn Everyday Visitors into Lifelong Customers\n\n  Read More\n\n  View All Resources\n About \n\n  Our Story\n\n  Awards\n\n  Leadership Team\n\n  Board of Directors\n\n  Partners\n\n  Newsroom\n\n  Events\n\n  Careers\n\n  [](",
+          "source_label": "tavily",
+          "score": 0.12092612,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Meet the Executive Team | Ooma, Inc",
+          "url": "https://www.ooma.com/company-team",
+          "snippet": "million before its acquisition by Micron Technology. He also served as the founding Vice President of Marketing for Ofoto, an online photography service, acquired by Eastman Kodak in 2001. A pioneer in Internet marketing, he joined America Online in 1996 as the marketing leader for GNN, the company’s first Internet Service Provider, and in 1995 as a marketing manager at Polaroid Corporation he led the team that launched the company’s first corporate web site. [...] Eric B. Stang has served as our President, Chief Executive Officer, and Board of Directors member since January 2009. He has been Chairman of our board of directors since December 2014. Mr. Stang is also a member of the Board of Directors of Rambus Inc., a publicly traded company providing industry-leading chips, silicon IP, and technology licensing, where he serves as the Chair of its Compensation and Human Resources Committee and a member of its Corporate Governance/Nominating Committee. Mr. [...] Prior to her current role, Kerrin served as CEO of FluentStream, leading the cloud communications provider through its 2025 acquisition by Ooma. Her extensive executive history also includes senior leadership positions at ShoreTel and M5 Networks.",
+          "source_label": "tavily",
+          "score": 0.09223726,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Management Team | Snap-on Incorporated",
+          "url": "https://www.snapon.com/EN/Investors/Corporate-Governance/Management-Team",
+          "snippet": "# Corporate Governance\n\n## Management Team\n\nBoard of Directors\n\nNicholas T. Pinchuk  \nChairman and Chief Executive Officer\n\nEugenio Amador  \nPresident – Equipment\n\nJesus Arregui  \nSenior Vice President and President – Commercial Group\n\nMary E. Bauerschmidt  \nSenior Vice President – Human Resources and Chief Development Officer\n\nSamuel E. Bottum  \nVice President and Chief Marketing Officer\n\nIain Boyd  \nVice President – Operations Development\n\nJoseph J. Burger  \nPresident – Snap-on Credit [...] Brett A. Mitchell  \nDirector – Rapid Continuous Improvement\n\nJames Ng  \nPresident – Snap-on Asia-Pacific\n\nBenny Oh  \nChairman – Snap-on Asia-Pacific\n\nMarty V. Ozolins  \nVice President and Controller\n\nAldo J. Pagliari  \nSenior Vice President – Finance and Chief Financial Officer\n\nScott R. Rugg  \nVice President – Corporate Tax\n\nBrian L. Spikes  \nVice President – Manufacturing Operations, Snap-on Tools Group\n\nKevin L. Thatcher  \nVice President – Business Development [...] Timothy L. Chambers  \nSenior Vice President and President – Snap-on Tools Group\n\nRaul Colon  \nVice President – ESG and Strategic Sourcing\n\nMark Gapinski  \nVice President – Finance, Snap-on Tools Group\n\nMichael G. Gentile  \nPresident – Power Tools\n\nDavid T. Hietpas  \nPresident – Torque Tools\n\nJeffrey W. Howe  \nVice President – North American Sales and Franchising, Snap-on Tools Group\n\nHolly J. Judt  \nVice President – Finance, Repair Systems & Information Group",
+          "source_label": "tavily",
+          "score": 0.087634265,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Leadership Team | Qlik",
+          "url": "https://www.qlik.com/us/company/leadership",
+          "snippet": "View Bio\n\n### Mohnish Gandhi\n\nVice President\n\nView Bio\n\n### Jitesh S. Ghai\n\nPresident and Chief Executive Officer\n\nView Bio\n\n### James (Jim) Lines\n\nSenior Operating Partner\n\nView Bio\n\n### Mike Lipps\n\nChairman, Qlik Board of Directors\n\nView Bio\n\n### Chip Virnig\n\nPartner\n\nView Bio [...] Support\n + Company\n  + Leadership\n  + Corporate Responsibility\n  + Access and Belonging\n  + Academic Program\n  + Partners\n  + Careers\n  + Newsroom\n  + Global Offices\n Login\n + English\n  + Deutsch\n  + Español\n  + Français\n  + Italiano\n  + Português\n  + 日本語\n\n Try for Free\n Contact Us\n\n# Qlik Leadership\n\nQlik’s accomplished leadership team is comprised of some of the top minds in the industry, guiding the company with a steadfast commitment to excellence and our core operating principles. [...] View Bio\n\n### Pete Leddy\n\nChief of Staff & SVP, Strategic Programs\n\nView Bio\n\n### Deborah Lofton\n\nChief Legal Officer & Corporate Secretary\n\nView Bio\n\n### Sam Pierson\n\nChief Technology Officer\n\nView Bio\n\n### Roberto Sigona\n\nChief Operating Officer & Interim Sales Leader\n\nView Bio\n\n### Ruthann Wry\n\nChief People Officer\n\nView Bio\n\n## Qlik AI Council",
+          "source_label": "tavily",
+          "score": 0.06393101,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "PolyOn company leadership OR team OR CEO site:polyon.us",
+      "focus": "find named leaders or decision makers",
+      "purpose": "Выявить имена и должности руководителей или публичных представителей, которые не указаны на сайте.",
+      "results": [
+        {
+          "url": "https://www.visier.com/company/leadership",
+          "title": "Leadership Team | Visier",
+          "snippet": "###### Matt Weaver\n\nSVP, America Sales\n\n###### Boon Huat Lee\n\nSVP, APAC Strategy and Growth\n\n###### Ben Harris\n\nVP, EMEA Sales\n\n## Board & Investors\n\n###### John Schwarz\n\nCo-founder & Chairman\n\n###### Greg S. Goldfarb\n\nManaging Director, Summit Partners\n\n###### Michael Kondoleon\n\nManaging Director, Late Stage Growth & Hybrid, Goldman Sachs\n\n###### Ryan Wong\n\nCo-founder & CEO\n\n###### Tina Jones\n\nSenior Vice President, Global Human Resources at Cadence Design Systems\n\n###### Darryl Robinson [...] ",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://pditechnologies.com/our-story/executive-team",
+          "title": "Executive Team",
+          "snippet": "Read Bio\n\n### Douglas Henderson\n\nChief Strategy Officer\n\nRead Bio\n\n### Linnea Geiss\n\nChief Operating Officer\n\nRead Bio\n\n### Nicole Wu\n\nChief Financial Officer\n\nRead Bio\n\n### Beth Strickland\n\nChief Human Resources Officer\n\nRead Bio\n\n### Drew Mize\n\nEVP and GM, North America Enterprise Productivity\n\nRead Bio\n\n### Frank Brennan\n\nSVP and GM, Global Services\n\nRead Bio\n\n### Dawn Desai\n\nSVP & GM, International Solutions\n\nRead Bio\n\n### Sin Hin Wong\n\nGM & VP Sales, APAC\n\nRead Bio [...] ### Connections Liv",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.ooma.com/company-team",
+          "title": "Meet the Executive Team | Ooma, Inc",
+          "snippet": "million before its acquisition by Micron Technology. He also served as the founding Vice President of Marketing for Ofoto, an online photography service, acquired by Eastman Kodak in 2001. A pioneer in Internet marketing, he joined America Online in 1996 as the marketing leader for GNN, the company’s first Internet Service Provider, and in 1995 as a marketing manager at Polaroid Corporation he led the team that launched the company’s first corporate web site. [...] Eric B. Stang has served as ou",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.snapon.com/EN/Investors/Corporate-Governance/Management-Team",
+          "title": "Management Team | Snap-on Incorporated",
+          "snippet": "# Corporate Governance\n\n## Management Team\n\nBoard of Directors\n\nNicholas T. Pinchuk  \nChairman and Chief Executive Officer\n\nEugenio Amador  \nPresident – Equipment\n\nJesus Arregui  \nSenior Vice President and President – Commercial Group\n\nMary E. Bauerschmidt  \nSenior Vice President – Human Resources and Chief Development Officer\n\nSamuel E. Bottum  \nVice President and Chief Marketing Officer\n\nIain Boyd  \nVice President – Operations Development\n\nJoseph J. Burger  \nPresident – Snap-on Credit [...] Br",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.qlik.com/us/company/leadership",
+          "title": "Leadership Team | Qlik",
+          "snippet": "View Bio\n\n### Mohnish Gandhi\n\nVice President\n\nView Bio\n\n### Jitesh S. Ghai\n\nPresident and Chief Executive Officer\n\nView Bio\n\n### James (Jim) Lines\n\nSenior Operating Partner\n\nView Bio\n\n### Mike Lipps\n\nChairman, Qlik Board of Directors\n\nView Bio\n\n### Chip Virnig\n\nPartner\n\nView Bio [...] Support\n + Company\n  + Leadership\n  + Corporate Responsibility\n  + Access and Belonging\n  + Academic Program\n  + Partners\n  + Careers\n  + Newsroom\n  + Global Offices\n Login\n + English\n  + Deutsch\n  + Español\n  + Fr",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3257,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us/",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:06:53.810Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "kind": "page",
+            "text": "contact us Contact Form: Send Success! Message received.",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:06:56.501Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://www.linkedin.com/jobs/regional-sales-director-jobs-atlanta-ga",
+            "kind": "search",
+            "text": "Regional Sales Director Jobs in Atlanta (749 Open Roles)\nToday's top 749 Regional Sales Director jobs in Atlanta. Leverage your professional network, and get hired. New Regional Sales Director jobs added daily.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:03.489Z",
+            "id": "e7"
+          },
+          {
+            "url": "https://www.visier.com/company/leadership",
+            "kind": "search",
+            "text": "Leadership Team | Visier\n###### Matt Weaver\n\nSVP, America Sales\n\n###### Boon Huat Lee\n\nSVP, APAC Strategy and Growth\n\n###### Ben Harris\n\nVP, EMEA Sales\n\n## Board & Investors\n\n###### John Schwarz\n\nCo-founder & Chairman\n\n###### Greg S. Goldfarb\n\nManaging Director, Summit Partners\n\n###### Michael Kondoleon\n\nManaging Director, Late Stage Growth & Hybrid, Goldman Sachs\n\n###### Ryan Wong\n\nCo-founder & CEO\n\n###### Tina Jones\n\nSenior Vice President, Global Human Resources at Cadence Design Systems\n\n###### Darryl Robinson [...] Contact\n\nSupport PortalOpen a TicketKnowledge BaseVisier University\n\nLog in\n\nTake a Tour\n\nGet a Demo\n\n# Executive Leadership Team\n\n###### Ryan Wong\n\nCo-founder & Chief Executive Officer\n\n###### Fionna Song\n\nChief Financial Officer\n\n###### Pramukh Jeyathilak\n\nChief People Officer\n\n###### Dave Weisbeck\n\nChief Product Officer\n\n###### Jen Glass\n\nVice President, Customer Solutions\n\n###### Steve Holder\n\nChief Operating Officer\n\n###### Bryan Nielson\n\nChief Marketing Officer\n\n###### Matt Weaver [...] Retired: SEVP/Chief Human Resources Officer, CommonSpirit Health\n\n###### Robin Murray\n\nGeneral Partner, Adams Street Partners\n\n###### Rob Rueckert\n\nManaging Partner, Sorenson Capital\n\n###### Warren Weiss\n\nGeneral Partner, Foundation Capital\n\n### Looking for a career with purpose?\n\nSee open roles",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:04.922Z",
+            "id": "e8"
+          },
+          {
+            "url": "https://pditechnologies.com/our-story/executive-team",
+            "kind": "search",
+            "text": "Executive Team\nRead Bio\n\n### Douglas Henderson\n\nChief Strategy Officer\n\nRead Bio\n\n### Linnea Geiss\n\nChief Operating Officer\n\nRead Bio\n\n### Nicole Wu\n\nChief Financial Officer\n\nRead Bio\n\n### Beth Strickland\n\nChief Human Resources Officer\n\nRead Bio\n\n### Drew Mize\n\nEVP and GM, North America Enterprise Productivity\n\nRead Bio\n\n### Frank Brennan\n\nSVP and GM, Global Services\n\nRead Bio\n\n### Dawn Desai\n\nSVP & GM, International Solutions\n\nRead Bio\n\n### Sin Hin Wong\n\nGM & VP Sales, APAC\n\nRead Bio [...] ### Connections Live 2026 Showcases How Modernized Platforms, Connected Workflows, and AI Are Reshaping Convenience Retail\n\n  Read More\n\n  2026 European Female Leaders in Convenience Award recipients announced by The Retail Marketeers and PDI Technologies \n\n  ### The Retail Marketeers and PDI Announce 2026 European Female Leaders in Convenience Awards\n\n  Read More\n\n  View All Press\n PDI Connections\n Support\n Search\n Get in Touch\n\n# Leadership Team\n\n### Jimmy Frangis\n\nChief Executive Officer [...] []( \n\n  ### PDI Human Capital Management: One Platform for Payroll, Scheduling, and HR\n\n  Read More\n\n  []( \n\n  ### 2025 ESG Report\n\n  Read More\n\n  []( \n\n  ### PDI Mobile Experience Manager: Control Your Mobile App without Code\n\n  Read More\n\n  []( \n\n  ### PDI Loyalty: Turn Everyday Visitors into Lifelong Customers\n\n  Read More\n\n  View All Resources\n About \n\n  Our Story\n\n  Awards\n\n  Leadership Team\n\n  Board of Directors\n\n  Partners\n\n  Newsroom\n\n  Events\n\n  Careers\n\n  [](",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:04.923Z",
+            "id": "e9"
+          },
+          {
+            "url": "https://www.ooma.com/company-team",
+            "kind": "search",
+            "text": "Meet the Executive Team | Ooma, Inc\nmillion before its acquisition by Micron Technology. He also served as the founding Vice President of Marketing for Ofoto, an online photography service, acquired by Eastman Kodak in 2001. A pioneer in Internet marketing, he joined America Online in 1996 as the marketing leader for GNN, the company’s first Internet Service Provider, and in 1995 as a marketing manager at Polaroid Corporation he led the team that launched the company’s first corporate web site. [...] Eric B. Stang has served as our President, Chief Executive Officer, and Board of Directors member since January 2009. He has been Chairman of our board of directors since December 2014. Mr. Stang is also a member of the Board of Directors of Rambus Inc., a publicly traded company providing industry-leading chips, silicon IP, and technology licensing, where he serves as the Chair of its Compensation and Human Resources Committee and a member of its Corporate Governance/Nominating Committee. Mr. [...] Prior to her current role, Kerrin served as CEO of FluentStream, leading the cloud communications provider through its 2025 acquisition by Ooma. Her extensive executive history also includes senior leadership positions at ShoreTel and M5 Networks.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:04.923Z",
+            "id": "e10"
+          },
+          {
+            "url": "https://www.snapon.com/EN/Investors/Corporate-Governance/Management-Team",
+            "kind": "search",
+            "text": "Management Team | Snap-on Incorporated\n# Corporate Governance\n\n## Management Team\n\nBoard of Directors\n\nNicholas T. Pinchuk  \nChairman and Chief Executive Officer\n\nEugenio Amador  \nPresident – Equipment\n\nJesus Arregui  \nSenior Vice President and President – Commercial Group\n\nMary E. Bauerschmidt  \nSenior Vice President – Human Resources and Chief Development Officer\n\nSamuel E. Bottum  \nVice President and Chief Marketing Officer\n\nIain Boyd  \nVice President – Operations Development\n\nJoseph J. Burger  \nPresident – Snap-on Credit [...] Brett A. Mitchell  \nDirector – Rapid Continuous Improvement\n\nJames Ng  \nPresident – Snap-on Asia-Pacific\n\nBenny Oh  \nChairman – Snap-on Asia-Pacific\n\nMarty V. Ozolins  \nVice President and Controller\n\nAldo J. Pagliari  \nSenior Vice President – Finance and Chief Financial Officer\n\nScott R. Rugg  \nVice President – Corporate Tax\n\nBrian L. Spikes  \nVice President – Manufacturing Operations, Snap-on Tools Group\n\nKevin L. Thatcher  \nVice President – Business Development [...] Timothy L. Chambers  \nSenior Vice President and President – Snap-on Tools Group\n\nRaul Colon  \nVice President – ESG and Strategic Sourcing\n\nMark Gapinski  \nVice President – Finance, Snap-on Tools Group\n\nMichael G. Gentile  \nPresident – Power Tools\n\nDavid T. Hietpas  \nPresident – Torque Tools\n\nJeffrey W. Howe  \nVice President – North American Sales and Franchising, Snap-on Tools Group\n\nHolly J. Judt  \nVice President – Finance, Repair Systems & Information Group",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:04.923Z",
+            "id": "e11"
+          },
+          {
+            "url": "https://www.qlik.com/us/company/leadership",
+            "kind": "search",
+            "text": "Leadership Team | Qlik\nView Bio\n\n### Mohnish Gandhi\n\nVice President\n\nView Bio\n\n### Jitesh S. Ghai\n\nPresident and Chief Executive Officer\n\nView Bio\n\n### James (Jim) Lines\n\nSenior Operating Partner\n\nView Bio\n\n### Mike Lipps\n\nChairman, Qlik Board of Directors\n\nView Bio\n\n### Chip Virnig\n\nPartner\n\nView Bio [...] Support\n + Company\n  + Leadership\n  + Corporate Responsibility\n  + Access and Belonging\n  + Academic Program\n  + Partners\n  + Careers\n  + Newsroom\n  + Global Offices\n Login\n + English\n  + Deutsch\n  + Español\n  + Français\n  + Italiano\n  + Português\n  + 日本語\n\n Try for Free\n Contact Us\n\n# Qlik Leadership\n\nQlik’s accomplished leadership team is comprised of some of the top minds in the industry, guiding the company with a steadfast commitment to excellence and our core operating principles. [...] View Bio\n\n### Pete Leddy\n\nChief of Staff & SVP, Strategic Programs\n\nView Bio\n\n### Deborah Lofton\n\nChief Legal Officer & Corporate Secretary\n\nView Bio\n\n### Sam Pierson\n\nChief Technology Officer\n\nView Bio\n\n### Roberto Sigona\n\nChief Operating Officer & Interim Sales Leader\n\nView Bio\n\n### Ruthann Wry\n\nChief People Officer\n\nView Bio\n\n## Qlik AI Council",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:04.924Z",
+            "id": "e12"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "contact section",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "PolyOn company leadership OR team OR CEO site:polyon.us",
+            "focus": "find named leaders or decision makers",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales director OR sales manager OR executive",
+            "focus": "external profiles (LinkedIn, press, industry news)",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 3,
+          "actionsRemaining": 7,
+          "searchRemaining": 6
+        }
+      },
+      "output": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company, operating through polyon.us and polyon.mx. There is a recent hiring signal for a Sales Manager, suggesting active business expansion and a need for decision-makers in the sales department. The company website offers general contact forms but does not list team or leadership members.",
+        "missing": [
+          "No named executives or sales leadership found on official pages.",
+          "No direct contacts for decision makers or anyone tied to hiring/sales functions."
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.mx",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "PolyOn CEO OR founder OR owner site:polyon.us OR site:polyon.mx",
+            "focus": "find named executives or owners on official resources and adjacent markets",
+            "purpose": "Identify public leaders on official/related company platforms for direct outreach."
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales director OR head of sales OR VP sales",
+            "focus": "external business networks, press",
+            "purpose": "Find public sales leadership tied to PolyOn for targeted contact."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "No named decision makers with contact found yet; further search for public leadership necessary."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company, operating through polyon.us and polyon.mx. There is a recent hiring signal for a Sales Manager, suggesting active business expansion and a need for decision-makers in the sales department. The company website offers general contact forms but does not list team or leadership members.",
+        "missing": [
+          "No named executives or sales leadership found on official pages.",
+          "No direct contacts for decision makers or anyone tied to hiring/sales functions."
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.mx",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "PolyOn CEO OR founder OR owner site:polyon.us OR site:polyon.mx",
+            "focus": "find named executives or owners on official resources and adjacent markets",
+            "purpose": "Identify public leaders on official/related company platforms for direct outreach."
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales director OR head of sales OR VP sales",
+            "focus": "external business networks, press",
+            "purpose": "Find public sales leadership tied to PolyOn for targeted contact."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "No named decision makers with contact found yet; further search for public leadership necessary."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:polyon.mx"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=PolyOn%20CEO%20OR%20founder%20OR%20owner%20OR%20polyon.us&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 389
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=PolyOn%20CEO%20OR%20founder%20OR%20owner%20OR%20polyon.us&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 457
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=PolyOn%20sales%20director%20OR%20head%20of%20sales%20OR%20VP%20sales&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 253
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=PolyOn%20sales%20director%20OR%20head%20of%20sales%20OR%20VP%20sales&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 226
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 2697
+    },
+    {
+      "stage": "search",
+      "query": "PolyOn sales director OR head of sales OR VP sales",
+      "results": [
+        {
+          "title": "Director of Sales Job Description [Updated 2026]",
+          "url": "https://www.indeed.com/hire/job-description/director-of-sales",
+          "snippet": "Your duties will include motivating our sales team, designing strategic sales plans, and assessing costs and competition. In addition to being an excellent communicator, our ideal candidate will also demonstrate exceptional negotiation and leadership skills.  \n  \n\\Experience: Must have 5 plus years of combined exp. in a senior capacity and role like Sr. Sales Manager / Asst DOS / DOS in a HOTEL.  \n  \n\\Important Note:This job is totally remote-based. (Work From Home) [...] - Working with customers to better understand their business needs and goals.\n- Assessing costs, competition, and supply and demand to identify selling prices.\n- Estimating sales volume and profit for current and new products.\n- Establishing a sales training program to train new employees.\n- Meeting with sales managers to assess company performance.  \n    \n  Director of Sales Requirements:\\\n- Bachelor’s degree in marketing, business administration, or a relevant field. [...] \\Canada Shift Timing:10:00 AM to 8:00 PM (India timing - 7:30 PM to 5:30 AM)  \n  \nDirector of Sales Responsibilities:\\  \n  \n- Leading and motivating staff to improve customer service with clients.\n- Designing and implementing strategic plans to reach sales targets.\n- Cultivating lasting relationships with customers to grow customer loyalty.\n- Developing and promoting weekly, monthly, and quarterly sales objectives.\n- Drafting detailed and accurate sales reports.",
+          "source_label": "tavily",
+          "score": 0.4338141,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "What Is a Head of Sales? Role, Salary & How to Hire (2026)",
+          "url": "https://www.gofractional.com/blog/what-is-a-head-of-sales",
+          "snippet": "Sometimes they may be called VP of Sales, Sales Director, or Sales Lead, but the scope is largely the same: They build and manage strategies and teams to meet your bottom line. And they're responsible for ensuring sales outcomes are tied directly to company goals. [...] Head of Sales: As a strategist and manager, they are primarily focused on overseeing sales operations, team performance, and quota attainment. They might also be responsible for managing a specific sales function and ensuring strategy execution.\n Chief Revenue Officer (CRO): As a C-level executive, they oversee all revenue streams---sales, marketing, partnerships, and customer success. They also work with the C-suite to develop the sales strategy for the entire organization. [...] ## What is the Head of Sales?\n\nThe Head of Sales is the executive responsible for overseeing all revenue-generating efforts for a company---whether that's outbound prospecting, inbound qualification, partnerships, or enterprise deal-making.",
+          "source_label": "tavily",
+          "score": 0.43065065,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "What is the Sales Director / Head of Sales role in a SaaS Company?",
+          "url": "https://bluebirdrecruitment.com/what-is-the-sales-director-head-of-sales-role-in-a-saas-company",
+          "snippet": "In general, a Sales Director is a company executive who is responsible for the organization’s regional and national sales force. They are the top managers responsible for selling certain services and products to potent clients on behalf of the enterprise. They are directly responsible for sales that fall within their designated area. [...] Sales Directors are entrusted with the duty to manage important relationships on behalf of the company. You build a robust relationship with external partners and customers. You interact with them through seminars, events, workshops, etc. for the SaaS services.\n\nAn infographic describing the key responsibilities of a sales director / head of sales: leadership, analytics, strategy, collaboration and building relationships. [...] The main purpose of the Sales Director is to increase the overall sales of services and products. Moreover, they coordinate and manage the marketing and sales departments of the company. Other roles include human resource management, sales planning, employee development, leadership control, working on strategies for high-quality service, and so on.",
+          "source_label": "tavily",
+          "score": 0.40839532,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Kentara McKinney - Head of Sales, US Oncology - LinkedIn",
+          "url": "https://www.linkedin.com/in/kentara-mckinney-a6a98350",
+          "snippet": "strong work ethic. I thrive when I can mentor and develop people to reach their full potential. [...] # Kentara Mckinney [...] ## Skills\ngastroenterology, develop people, sales, metabolics, core, senior sales, sales leadership, district sales, brand management, training, neuroscience, mentoring, national sales, oncology, sales management",
+          "source_label": "tavily",
+          "score": 0.1366893,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Kristin Fink - VP, Head of Sales US at ViiV Healthcare | LinkedIn",
+          "url": "https://www.linkedin.com/in/kristin-fink-6a770010",
+          "snippet": "Headline: VP, Head of Sales US at ViiV Healthcare\nCurrent role: VP, Head Of Sales US\nSeniority: President/Vice President, Sales\nLocation: Philadelphia, Pennsylvania, United States\nExperience: 27 years 8 months\nLinkedIn:  · 2,336 followers [...] ## Skills\nvps, hematology, vendor management, senior sales, product launch, scaled, domestic sales, go-to-market, incentive compensation, operating budget, p&l, sales, operations management, delivering results, strategic direction\n\nLanguages: English [...] practiced in recruiting, hiring and developing top national sales team that outpaces the competition in all sales force quality and effectiveness metrics for new and established brands. Skilled Collaborator known for cultivating strong alliances at all levels of organization to ensure successful product launches, optimize sales force performance across geographies and lead change in dynamic industry.",
+          "source_label": "tavily",
+          "score": 0.08332938,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "PolyOn sales director OR head of sales OR VP sales",
+      "focus": "external business networks, press",
+      "purpose": "Find public sales leadership tied to PolyOn for targeted contact.",
+      "results": [
+        {
+          "url": "https://www.indeed.com/hire/job-description/director-of-sales",
+          "title": "Director of Sales Job Description [Updated 2026]",
+          "snippet": "Your duties will include motivating our sales team, designing strategic sales plans, and assessing costs and competition. In addition to being an excellent communicator, our ideal candidate will also demonstrate exceptional negotiation and leadership skills.  \n  \n\\Experience: Must have 5 plus years of combined exp. in a senior capacity and role like Sr. Sales Manager / Asst DOS / DOS in a HOTEL.  \n  \n\\Important Note:This job is totally remote-based. (Work From Home) [...] - Working with customer",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.gofractional.com/blog/what-is-a-head-of-sales",
+          "title": "What Is a Head of Sales? Role, Salary & How to Hire (2026)",
+          "snippet": "Sometimes they may be called VP of Sales, Sales Director, or Sales Lead, but the scope is largely the same: They build and manage strategies and teams to meet your bottom line. And they're responsible for ensuring sales outcomes are tied directly to company goals. [...] Head of Sales: As a strategist and manager, they are primarily focused on overseeing sales operations, team performance, and quota attainment. They might also be responsible for managing a specific sales function and ensuring str",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://bluebirdrecruitment.com/what-is-the-sales-director-head-of-sales-role-in-a-saas-company",
+          "title": "What is the Sales Director / Head of Sales role in a SaaS Company?",
+          "snippet": "In general, a Sales Director is a company executive who is responsible for the organization’s regional and national sales force. They are the top managers responsible for selling certain services and products to potent clients on behalf of the enterprise. They are directly responsible for sales that fall within their designated area. [...] Sales Directors are entrusted with the duty to manage important relationships on behalf of the company. You build a robust relationship with external partners",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/in/kentara-mckinney-a6a98350",
+          "title": "Kentara McKinney - Head of Sales, US Oncology - LinkedIn",
+          "snippet": "strong work ethic. I thrive when I can mentor and develop people to reach their full potential. [...] # Kentara Mckinney [...] ## Skills\ngastroenterology, develop people, sales, metabolics, core, senior sales, sales leadership, district sales, brand management, training, neuroscience, mentoring, national sales, oncology, sales management",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/in/kristin-fink-6a770010",
+          "title": "Kristin Fink - VP, Head of Sales US at ViiV Healthcare | LinkedIn",
+          "snippet": "Headline: VP, Head of Sales US at ViiV Healthcare\nCurrent role: VP, Head Of Sales US\nSeniority: President/Vice President, Sales\nLocation: Philadelphia, Pennsylvania, United States\nExperience: 27 years 8 months\nLinkedIn:  · 2,336 followers [...] ## Skills\nvps, hematology, vendor management, senior sales, product launch, scaled, domestic sales, go-to-market, incentive compensation, operating budget, p&l, sales, operations management, delivering results, strategic direction\n\nLanguages: English [...",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 3750
+    },
+    {
+      "stage": "search",
+      "query": "PolyOn CEO OR founder OR owner site:polyon.us OR site:polyon.mx",
+      "results": [
+        {
+          "title": "Polyon - Our Company - Plastic Resin Distributor",
+          "url": "https://www.polyon.us/our-company",
+          "snippet": "top of page\n\n[](\n\n## global PLASTIC RESIN DISTRIBUTion\n\n[](\n\n## OUR COMPANY\n\nOver 17 years serving the plastic industry worldwide! \n\nPolyon is a global plastic resin distribution company.\n\n​\n\nWe supply virgin and off grade polymer resin from top brand petrochemical companies.\n\n​\n\nWith presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive.\n\n​ [...] ​\n\nWe supply plastic manufacturers worldwide with the best product quality on the market.\n\n​\n\nOnly Premium Quality LDPE - LLDPE - HDPE - PP Products!\n\nPP Plastic Resin Colors\n\nbottom of page",
+          "source_label": "tavily",
+          "score": 0.23654312,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Distribuidor de resina plastica | Polyon | México",
+          "url": "https://www.polyon.mx",
+          "snippet": "Title: Distribuidor de resina plastica | Polyon | México\n## DISTIBUIDOR GLOBAL DE RESINAS PLASTICAS! #### PRODUCTOS. ## SUMINiSTRO. ## CONFIABLE! ## QUIENES SOMOS. Polyon SA de CV, es una empresa distribuidora y comercializadora de resinas plásticas a nivel mundial!",
+          "source_label": "tavily",
+          "score": 0.22008291,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Polyon | Plastic Resin Distributor | United States",
+          "url": "https://www.polyon.us",
+          "snippet": "top of page\n\n[](\n\n## global PLASTIC RESIN DISTRIBUTion\n\n[](\n\n## PRODUCTS\n\nLDPE Plastic Roll\n\nLDPE\n\nHDPE Plastic Resin Granules\n\nHDPE\n\nLLDPE Virgin Plastic Resin\n\nLLDPE\n\n[](\n\nPP\n\n## reliable\n\n## supply\n\n## aboutus\n\nPolyon is a global plastic resin procurement and distribution company.\n\nLEARN MORE\n\nbottom of page",
+          "source_label": "tavily",
+          "score": 0.1867916,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "PolyOn CEO OR founder OR owner site:polyon.us OR site:polyon.mx",
+      "focus": "find named executives or owners on official resources and adjacent markets",
+      "purpose": "Identify public leaders on official/related company platforms for direct outreach.",
+      "results": [
+        {
+          "url": "https://www.polyon.us/our-company",
+          "title": "Polyon - Our Company - Plastic Resin Distributor",
+          "snippet": "top of page\n\n[](\n\n## global PLASTIC RESIN DISTRIBUTion\n\n[](\n\n## OUR COMPANY\n\nOver 17 years serving the plastic industry worldwide! \n\nPolyon is a global plastic resin distribution company.\n\n​\n\nWe supply virgin and off grade polymer resin from top brand petrochemical companies.\n\n​\n\nWith presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive.\n\n​ [...] ​\n\nWe supply plastic manufacturers worldwide with the best product",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.polyon.mx",
+          "title": "Distribuidor de resina plastica | Polyon | México",
+          "snippet": "Title: Distribuidor de resina plastica | Polyon | México\n## DISTIBUIDOR GLOBAL DE RESINAS PLASTICAS! #### PRODUCTOS. ## SUMINiSTRO. ## CONFIABLE! ## QUIENES SOMOS. Polyon SA de CV, es una empresa distribuidora y comercializadora de resinas plásticas a nivel mundial!",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.polyon.us",
+          "title": "Polyon | Plastic Resin Distributor | United States",
+          "snippet": "top of page\n\n[](\n\n## global PLASTIC RESIN DISTRIBUTion\n\n[](\n\n## PRODUCTS\n\nLDPE Plastic Roll\n\nLDPE\n\nHDPE Plastic Resin Granules\n\nHDPE\n\nLLDPE Virgin Plastic Resin\n\nLLDPE\n\n[](\n\nPP\n\n## reliable\n\n## supply\n\n## aboutus\n\nPolyon is a global plastic resin procurement and distribution company.\n\nLEARN MORE\n\nbottom of page",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2441,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us/",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:06:53.810Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "kind": "page",
+            "text": "contact us Contact Form: Send Success! Message received.",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:06:56.501Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://bluebirdrecruitment.com/what-is-the-sales-director-head-of-sales-role-in-a-saas-company",
+            "kind": "search",
+            "text": "What is the Sales Director / Head of Sales role in a SaaS Company?\nIn general, a Sales Director is a company executive who is responsible for the organization’s regional and national sales force. They are the top managers responsible for selling certain services and products to potent clients on behalf of the enterprise. They are directly responsible for sales that fall within their designated area. [...] Sales Directors are entrusted with the duty to manage important relationships on behalf of the company. You build a robust relationship with external partners and customers. You interact with them through seminars, events, workshops, etc. for the SaaS services.\n\nAn infographic describing the key responsibilities of a sales director / head of sales: leadership, analytics, strategy, collaboration and building relationships. [...] The main purpose of the Sales Director is to increase the overall sales of services and products. Moreover, they coordinate and manage the marketing and sales departments of the company. Other roles include human resource management, sales planning, employee development, leadership control, working on strategies for high-quality service, and so on.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:12.384Z",
+            "id": "e15"
+          },
+          {
+            "url": "https://www.linkedin.com/in/kentara-mckinney-a6a98350",
+            "kind": "search",
+            "text": "Kentara McKinney - Head of Sales, US Oncology - LinkedIn\nstrong work ethic. I thrive when I can mentor and develop people to reach their full potential. [...] # Kentara Mckinney [...] ## Skills\ngastroenterology, develop people, sales, metabolics, core, senior sales, sales leadership, district sales, brand management, training, neuroscience, mentoring, national sales, oncology, sales management",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:12.385Z",
+            "id": "e16"
+          },
+          {
+            "url": "https://www.linkedin.com/in/kristin-fink-6a770010",
+            "kind": "search",
+            "text": "Kristin Fink - VP, Head of Sales US at ViiV Healthcare | LinkedIn\nHeadline: VP, Head of Sales US at ViiV Healthcare\nCurrent role: VP, Head Of Sales US\nSeniority: President/Vice President, Sales\nLocation: Philadelphia, Pennsylvania, United States\nExperience: 27 years 8 months\nLinkedIn:  · 2,336 followers [...] ## Skills\nvps, hematology, vendor management, senior sales, product launch, scaled, domestic sales, go-to-market, incentive compensation, operating budget, p&l, sales, operations management, delivering results, strategic direction\n\nLanguages: English [...] practiced in recruiting, hiring and developing top national sales team that outpaces the competition in all sales force quality and effectiveness metrics for new and established brands. Skilled Collaborator known for cultivating strong alliances at all levels of organization to ensure successful product launches, optimize sales force performance across geographies and lead change in dynamic industry.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:12.385Z",
+            "id": "e17"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "kind": "search",
+            "text": "Polyon - Our Company - Plastic Resin Distributor\ntop of page\n\n[](\n\n## global PLASTIC RESIN DISTRIBUTion\n\n[](\n\n## OUR COMPANY\n\nOver 17 years serving the plastic industry worldwide! \n\nPolyon is a global plastic resin distribution company.\n\n​\n\nWe supply virgin and off grade polymer resin from top brand petrochemical companies.\n\n​\n\nWith presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive.\n\n​ [...] ​\n\nWe supply plastic manufacturers worldwide with the best product quality on the market.\n\n​\n\nOnly Premium Quality LDPE - LLDPE - HDPE - PP Products!\n\nPP Plastic Resin Colors\n\nbottom of page",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:12.841Z",
+            "id": "e18"
+          },
+          {
+            "url": "https://www.polyon.mx",
+            "kind": "search",
+            "text": "Distribuidor de resina plastica | Polyon | México\nTitle: Distribuidor de resina plastica | Polyon | México\n## DISTIBUIDOR GLOBAL DE RESINAS PLASTICAS! #### PRODUCTOS. ## SUMINiSTRO. ## CONFIABLE! ## QUIENES SOMOS. Polyon SA de CV, es una empresa distribuidora y comercializadora de resinas plásticas a nivel mundial!",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:12.842Z",
+            "id": "e19"
+          },
+          {
+            "url": "https://www.polyon.us",
+            "kind": "search",
+            "text": "Polyon | Plastic Resin Distributor | United States\ntop of page\n\n[](\n\n## global PLASTIC RESIN DISTRIBUTion\n\n[](\n\n## PRODUCTS\n\nLDPE Plastic Roll\n\nLDPE\n\nHDPE Plastic Resin Granules\n\nHDPE\n\nLLDPE Virgin Plastic Resin\n\nLLDPE\n\n[](\n\nPP\n\n## reliable\n\n## supply\n\n## aboutus\n\nPolyon is a global plastic resin procurement and distribution company.\n\nLEARN MORE\n\nbottom of page",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:12.842Z",
+            "id": "e20"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "contact section",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "PolyOn company leadership OR team OR CEO site:polyon.us",
+            "focus": "find named leaders or decision makers",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales director OR sales manager OR executive",
+            "focus": "external profiles (LinkedIn, press, industry news)",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "PolyOn CEO OR founder OR owner site:polyon.us OR site:polyon.mx",
+            "focus": "find named executives or owners on official resources and adjacent markets",
+            "resultCount": 3
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales director OR head of sales OR VP sales",
+            "focus": "external business networks, press",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:polyon.mx"
+        ],
+        "budget": {
+          "roundsRemaining": 2,
+          "actionsRemaining": 5,
+          "searchRemaining": 4
+        }
+      },
+      "output": {
+        "companySummary": "PolyOn (polyon.us) is a global plastic resin procurement and distribution company operating in the US, Mexico, and internationally. It supplies various types of polymer resins (LDPE, HDPE, LLDPE, PP) to manufacturers worldwide. There is a confirmed hiring signal for a Sales Manager position, indicating active sales operations. However, there is no public information about ownership or specific leadership; the company website only provides a general contact form.",
+        "missing": [
+          "Ни одного публично подтверждённого имени связанного с руководством или отделом продаж PolyOn на полион.us"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "find executive names or leadership structure",
+            "purpose": "This page may reveal company leadership, owners, or key managers not listed on the contact page, crucial for identifying a process owner for sales and automation discussions."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет именованных руководителей или сотрудников на текущих страницах; дальше логично открыть раздел 'Our Company' для поиска сведений о владельцах или руководителях."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 3,
+      "decision": {
+        "companySummary": "PolyOn (polyon.us) is a global plastic resin procurement and distribution company operating in the US, Mexico, and internationally. It supplies various types of polymer resins (LDPE, HDPE, LLDPE, PP) to manufacturers worldwide. There is a confirmed hiring signal for a Sales Manager position, indicating active sales operations. However, there is no public information about ownership or specific leadership; the company website only provides a general contact form.",
+        "missing": [
+          "Ни одного публично подтверждённого имени связанного с руководством или отделом продаж PolyOn на полион.us"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "find executive names or leadership structure",
+            "purpose": "This page may reveal company leadership, owners, or key managers not listed on the contact page, crucial for identifying a process owner for sales and automation discussions."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет именованных руководителей или сотрудников на текущих страницах; дальше логично открыть раздел 'Our Company' для поиска сведений о владельцах или руководителях."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.polyon.us/our-company",
+      "status": 200,
+      "elapsedMs": 411
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://www.polyon.us/our-company",
+      "focus": "find executive names or leadership structure",
+      "purpose": "This page may reveal company leadership, owners, or key managers not listed on the contact page, crucial for identifying a process owner for sales and automation discussions.",
+      "success": true,
+      "evidence": {
+        "url": "https://www.polyon.us/our-company",
+        "kind": "page",
+        "text": "OUR COMPANY Over 17 years serving the plastic industry worldwide! Polyon is a global plastic resin distribution company. ​ We supply virgin and off grade polymer resin from top brand petrochemical companies. ​ With presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive. ​ We supply plastic manufacturers worldwide with the best product quality on the market. ​ Only Premium Quality LDPE - LLDPE - HDPE - PP Products!",
+        "links": [
+          {
+            "url": "https://www.polyon.us",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.mx",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.us/products",
+            "label": "Products"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "label": "Our Company"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "label": "Contact"
+          },
+          {
+            "url": "https://www.facebook.com/polyon1",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:07:15.819Z",
+        "id": "e21"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 10934,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us/",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:06:53.810Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "kind": "page",
+            "text": "contact us Contact Form: Send Success! Message received.",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:06:56.501Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "kind": "page",
+            "text": "OUR COMPANY Over 17 years serving the plastic industry worldwide! Polyon is a global plastic resin distribution company. ​ We supply virgin and off grade polymer resin from top brand petrochemical companies. ​ With presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive. ​ We supply plastic manufacturers worldwide with the best product quality on the market. ​ Only Premium Quality LDPE - LLDPE - HDPE - PP Products!",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:07:15.819Z",
+            "id": "e21"
+          },
+          {
+            "url": "https://bluebirdrecruitment.com/what-is-the-sales-director-head-of-sales-role-in-a-saas-company",
+            "kind": "search",
+            "text": "What is the Sales Director / Head of Sales role in a SaaS Company?\nIn general, a Sales Director is a company executive who is responsible for the organization’s regional and national sales force. They are the top managers responsible for selling certain services and products to potent clients on behalf of the enterprise. They are directly responsible for sales that fall within their designated area. [...] Sales Directors are entrusted with the duty to manage important relationships on behalf of the company. You build a robust relationship with external partners and customers. You interact with them through seminars, events, workshops, etc. for the SaaS services.\n\nAn infographic describing the key responsibilities of a sales director / head of sales: leadership, analytics, strategy, collaboration and building relationships. [...] The main purpose of the Sales Director is to increase the overall sales of services and products. Moreover, they coordinate and manage the marketing and sales departments of the company. Other roles include human resource management, sales planning, employee development, leadership control, working on strategies for high-quality service, and so on.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:12.384Z",
+            "id": "e15"
+          },
+          {
+            "url": "https://www.linkedin.com/in/kentara-mckinney-a6a98350",
+            "kind": "search",
+            "text": "Kentara McKinney - Head of Sales, US Oncology - LinkedIn\nstrong work ethic. I thrive when I can mentor and develop people to reach their full potential. [...] # Kentara Mckinney [...] ## Skills\ngastroenterology, develop people, sales, metabolics, core, senior sales, sales leadership, district sales, brand management, training, neuroscience, mentoring, national sales, oncology, sales management",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:12.385Z",
+            "id": "e16"
+          },
+          {
+            "url": "https://www.linkedin.com/in/kristin-fink-6a770010",
+            "kind": "search",
+            "text": "Kristin Fink - VP, Head of Sales US at ViiV Healthcare | LinkedIn\nHeadline: VP, Head of Sales US at ViiV Healthcare\nCurrent role: VP, Head Of Sales US\nSeniority: President/Vice President, Sales\nLocation: Philadelphia, Pennsylvania, United States\nExperience: 27 years 8 months\nLinkedIn:  · 2,336 followers [...] ## Skills\nvps, hematology, vendor management, senior sales, product launch, scaled, domestic sales, go-to-market, incentive compensation, operating budget, p&l, sales, operations management, delivering results, strategic direction\n\nLanguages: English [...] practiced in recruiting, hiring and developing top national sales team that outpaces the competition in all sales force quality and effectiveness metrics for new and established brands. Skilled Collaborator known for cultivating strong alliances at all levels of organization to ensure successful product launches, optimize sales force performance across geographies and lead change in dynamic industry.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:12.385Z",
+            "id": "e17"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "kind": "search",
+            "text": "Polyon - Our Company - Plastic Resin Distributor\ntop of page\n\n[](\n\n## global PLASTIC RESIN DISTRIBUTion\n\n[](\n\n## OUR COMPANY\n\nOver 17 years serving the plastic industry worldwide! \n\nPolyon is a global plastic resin distribution company.\n\n​\n\nWe supply virgin and off grade polymer resin from top brand petrochemical companies.\n\n​\n\nWith presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive.\n\n​ [...] ​\n\nWe supply plastic manufacturers worldwide with the best product quality on the market.\n\n​\n\nOnly Premium Quality LDPE - LLDPE - HDPE - PP Products!\n\nPP Plastic Resin Colors\n\nbottom of page",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:12.841Z",
+            "id": "e18"
+          },
+          {
+            "url": "https://www.polyon.mx",
+            "kind": "search",
+            "text": "Distribuidor de resina plastica | Polyon | México\nTitle: Distribuidor de resina plastica | Polyon | México\n## DISTIBUIDOR GLOBAL DE RESINAS PLASTICAS! #### PRODUCTOS. ## SUMINiSTRO. ## CONFIABLE! ## QUIENES SOMOS. Polyon SA de CV, es una empresa distribuidora y comercializadora de resinas plásticas a nivel mundial!",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:12.842Z",
+            "id": "e19"
+          },
+          {
+            "url": "https://www.polyon.us",
+            "kind": "search",
+            "text": "Polyon | Plastic Resin Distributor | United States\ntop of page\n\n[](\n\n## global PLASTIC RESIN DISTRIBUTion\n\n[](\n\n## PRODUCTS\n\nLDPE Plastic Roll\n\nLDPE\n\nHDPE Plastic Resin Granules\n\nHDPE\n\nLLDPE Virgin Plastic Resin\n\nLLDPE\n\n[](\n\nPP\n\n## reliable\n\n## supply\n\n## aboutus\n\nPolyon is a global plastic resin procurement and distribution company.\n\nLEARN MORE\n\nbottom of page",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:07:12.842Z",
+            "id": "e20"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "contact section",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "PolyOn company leadership OR team OR CEO site:polyon.us",
+            "focus": "find named leaders or decision makers",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales director OR sales manager OR executive",
+            "focus": "external profiles (LinkedIn, press, industry news)",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "PolyOn CEO OR founder OR owner site:polyon.us OR site:polyon.mx",
+            "focus": "find named executives or owners on official resources and adjacent markets",
+            "resultCount": 3
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales director OR head of sales OR VP sales",
+            "focus": "external business networks, press",
+            "resultCount": 5
+          },
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "find executive names or leadership structure",
+            "success": true
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 1,
+          "actionsRemaining": 4,
+          "searchRemaining": 4
+        }
+      },
+      "output": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company with operations in three countries. It supplies virgin and off-grade polymer resin to plastic manufacturers worldwide, specializing in LDPE, HDPE, LLDPE, and PP products. The website provides information about its history and product range, but does not list any team members or executives.",
+        "missing": [
+          "Имя и роль руководителя либо владельца клиентской/продажной функции PolyOn",
+          "Прямой публичный контакт (email или профиль) данного человека"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          },
+          {
+            "domain": "polyon.mx",
+            "citation": {
+              "sourceId": "e19",
+              "quote": "Distribuidor de resina plastica | Polyon | México"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Polyon\" CEO OR founder OR director OR owner -site:polyon.us -site:polyon.mx",
+            "focus": "external listings for named PolyOn executives",
+            "purpose": "Найти имя и публичный профиль руководителя или владельца PolyOn через сторонние бизнес-каталоги, прессу или публичные профили, так как на официальном сайте нет имён."
+          },
+          {
+            "type": "search",
+            "value": "\"Polyon\" \"sales director\" OR \"head of sales\" OR \"VP sales\" OR \"sales manager\"",
+            "focus": "find any public profile of the person in charge of sales",
+            "purpose": "Попытаться выявить руководителя по продажам или контакты топ-менеджмента продаж PolyOn по внешним источникам, что критично для дальнейшего контакта по процессу найма и продаже нашей услуги."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не обнаружено ни одного имени или прямого контакта руководителя или владельца PolyOn; необходим допоиск по внешним источникам."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 4,
+      "decision": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company with operations in three countries. It supplies virgin and off-grade polymer resin to plastic manufacturers worldwide, specializing in LDPE, HDPE, LLDPE, and PP products. The website provides information about its history and product range, but does not list any team members or executives.",
+        "missing": [
+          "Имя и роль руководителя либо владельца клиентской/продажной функции PolyOn",
+          "Прямой публичный контакт (email или профиль) данного человека"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          },
+          {
+            "domain": "polyon.mx",
+            "citation": {
+              "sourceId": "e19",
+              "quote": "Distribuidor de resina plastica | Polyon | México"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Polyon\" CEO OR founder OR director OR owner -site:polyon.us -site:polyon.mx",
+            "focus": "external listings for named PolyOn executives",
+            "purpose": "Найти имя и публичный профиль руководителя или владельца PolyOn через сторонние бизнес-каталоги, прессу или публичные профили, так как на официальном сайте нет имён."
+          },
+          {
+            "type": "search",
+            "value": "\"Polyon\" \"sales director\" OR \"head of sales\" OR \"VP sales\" OR \"sales manager\"",
+            "focus": "find any public profile of the person in charge of sales",
+            "purpose": "Попытаться выявить руководителя по продажам или контакты топ-менеджмента продаж PolyOn по внешним источникам, что критично для дальнейшего контакта по процессу найма и продаже нашей услуги."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не обнаружено ни одного имени или прямого контакта руководителя или владельца PolyOn; необходим допоиск по внешним источникам."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:polyon.mx"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "research_budget",
+      "actions": 7,
+      "candidates": [],
+      "domains": [
+        "polyon.us"
+      ],
+      "elapsedMs": 33903
+    },
+    {
+      "stage": "people_ranked",
+      "people": []
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "no_material_next_step_available"
+      },
+      "contacts": [
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://polyon.us/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://polyon.us/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://www.polyon.us/contact-us"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://polyon.us"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-10-06T20:06:52.917Z",
+  "bundle": {
+    "companyName": "PolyOn",
+    "officialWebsite": "https://polyon.us",
+    "officialDomain": "polyon.us",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+      "sourceUrl": "https://hh.ru/vacancy/137434617",
+      "confidence": 100
+    },
+    "researchConfidence": "UNVERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 14,
+      "lprMs": 33903,
+      "contactMs": 89,
+      "totalMs": 33993,
+      "stopReason": "research_budget"
+    }
+  },
+  "people": {
+    "primary_person": null,
+    "alternative_people": [],
+    "all_candidates": [],
+    "search_status": "no_person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "research_budget"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 4,
+      "official_pages_fetched": 3,
+      "aborted_requests": 0,
+      "elapsed_ms": 33903,
+      "stop_reason": "research_budget",
+      "queries_executed": [
+        "PolyOn company leadership OR team OR CEO site:polyon.us",
+        "PolyOn sales director OR sales manager OR executive",
+        "PolyOn CEO OR founder OR owner site:polyon.us OR site:polyon.mx",
+        "PolyOn sales director OR head of sales OR VP sales"
+      ],
+      "sources_checked": [
+        "https://www.polyon.us/",
+        "https://www.polyon.us/contact-us",
+        "https://job-boards.greenhouse.io/polygonus/jobs/5182214007",
+        "https://www.polygongroup.com/about-us/organisation/management-group",
+        "https://www.msisurfaces.com/careers/jobpost/104185",
+        "https://www.indeed.com/q-director-of-sales-l-atlanta,-ga-jobs.html",
+        "https://www.linkedin.com/jobs/regional-sales-director-jobs-atlanta-ga",
+        "https://www.visier.com/company/leadership",
+        "https://pditechnologies.com/our-story/executive-team",
+        "https://www.ooma.com/company-team",
+        "https://www.snapon.com/EN/Investors/Corporate-Governance/Management-Team",
+        "https://www.qlik.com/us/company/leadership",
+        "https://www.indeed.com/hire/job-description/director-of-sales",
+        "https://www.gofractional.com/blog/what-is-a-head-of-sales",
+        "https://bluebirdrecruitment.com/what-is-the-sales-director-head-of-sales-role-in-a-saas-company",
+        "https://www.linkedin.com/in/kentara-mckinney-a6a98350",
+        "https://www.linkedin.com/in/kristin-fink-6a770010",
+        "https://www.polyon.us/our-company",
+        "https://www.polyon.mx",
+        "https://www.polyon.us"
+      ],
+      "search_results_seen": 18,
+      "rejected_candidates": {
+        "validation_rejects": 1
+      },
+      "final_failure_reason": "research_budget"
+    }
+  },
+  "contacts": [
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://polyon.us/contacts",
+      "selected": false,
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "no_material_next_step_available"
+      }
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://polyon.us/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://www.polyon.us/contact-us",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://polyon.us",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 33994
+}

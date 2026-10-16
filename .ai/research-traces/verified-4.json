@@ -1,0 +1,4068 @@
+{
+  "mode": "business",
+  "name": "Спецмаш-Снг",
+  "website": "https://dorzap.ru",
+  "before": {
+    "companyName": "Спецмаш-Снг",
+    "officialWebsite": "https://dorzap.ru",
+    "officialDomain": "dorzap.ru",
+    "people": [
+      {
+        "fullName": "Полькин Дмитрий Геннадьевич",
+        "role": "коммерческий директор",
+        "confidence": "HIGH_CONFIDENCE",
+        "evidence": [
+          {
+            "sourceUrl": "https://smsng.ru/otdel-prodazh",
+            "sourceType": "public_web",
+            "excerpt": "Public search result: Отдел продаж │ СПЕЦМАШ-СНГ",
+            "capturedAt": "2026-10-06T08:03:13.373Z",
+            "confidence": 80
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "dorzap@list.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://dorzap.ru/",
+              "sourceType": "official",
+              "excerpt": "dorzap@list.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 70
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "dorzap@list.ru",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://dorzap.ru/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+      "sourceUrl": "https://hh.ru/vacancy/137988890",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 1,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 16,
+      "lprMs": 6330,
+      "contactMs": 8831,
+      "totalMs": 20721,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+    "sourceUrl": "https://hh.ru/vacancy/137988890",
+    "confidence": 100
+  },
+  "index": 4,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru",
+      "status": 200,
+      "elapsedMs": 1635
+    },
+    {
+      "stage": "research_open",
+      "url": "https://dorzap.ru",
+      "success": true,
+      "evidence": {
+        "url": "https://dorzap.ru",
+        "kind": "page",
+        "text": "Мы с Вами: ЗАПАСНЫЕ ЧАСТИ И КОМПЛЕКТУЮЩИЕ ДЛЯ СПЕЦТЕХНИКИ КАТАЛОГ ЗАПЧАСТЕЙ Искать × ЗАПЧАСТИ ДЛЯ КОММУНАЛЬНЫХ МАШИН КОМБИНИРОВАННЫХ ДОРОЖНЫХ МАШИН ВАКУУМНЫХ МАШИН ИЛОСОСНЫХ МАШИН КАНАЛОПРОМЫВОЧНЫХ МАШИН ПОДМЕТАЛЬНО-УБОРОЧНЫХ МАШИН МУСОРОВОЗОВ СНЕГОПОГРУЗЧИКОВ ЗАПЧАСТИ ДЛЯ ДОРОЖНО-СТРОИТЕЛЬНЫХ МАШИН АВТОГУДРОНАТОРОВ ГРЕЙДЕРОВ МКСМ ДОРОЖНЫХ КАТКОВ БОЛЬШИХ ДОРОЖНЫХ ФРЕЗ БЕЦЕМА АСФАЛЬТОУКЛАДЧИКОВ РЕСАЙКЛЕРОВ ЗАПЧАСТИ ДЛЯ НАВЕСНОГО ОБОРУДОВАНИЯ НА МТЗ ЩЕТОЧНОГО ОБОРУДОВАНИЯ ДОРОЖНЫХ ФРЕЗ КОСИЛОК, МУЛЬЧЕРОВ БАРОВЫХ МАШИН СНЕГООЧИСТИТЕЛЕЙ ИЗМЕЛЬЧИТЕЛЕЙ ВЕТОК ОТВАЛЫ МТЗ ГИДРОХОДОУМЕНЬШИТЕЛИ (ГХУ) ПОЛИВОМОЕЧНЫЕ ПРИЦЕПЫ РАСХОДНЫЕ КОМПЛЕКТУЮЩИЕ ДИСКИ ЩЕТОЧНЫЕ, ЛОТКОВЫЕ И ПРОЧЕЕ ГРЕЙДЕРНЫЕ НОЖИ ТЕХПЛАСТИНЫ ДОРОЖНЫЕ РЕЗЦЫ ПОДШИПНИКИ МАТЫ ЖИВОТНОВОДЧЕСКИЕ НОЖИ НА КОВШИ ПОГРУЗЧИКОВ ГИДРАВЛИКА ГИДРОВРАЩАТЕЛИ ГИДРОМОТОРЫ, ГИДРОНАСОСЫ ГИДРОРАСПРЕДЕЛИТЕЛИ ГИДРОЗАМКИ, БРС ДЕЛИТЕЛИ, РЕГУЛЯТОРЫ, КЛАПАНА, ГИДРАВЛИЧЕСКИЕ КРАНЫ ЗАПЧАСТИ ДЛЯ ШНЕКОРОТОРНОГО СНЕГООЧИСТИТЕЛЯ ДЭ-226 (АМКОДОР 9531) ЗАПЧАСТИ ДЛЯ ШНЕКОРОТОРНОГО СНЕГООЧИСТИТЕЛЯ ДЭ-226 (АМКОДОР 9531) ГАРАНТИЯ Мы предоставляем на всю продукцию гарантию от производителей БЫСТРАЯ ДОСТАВКА Осуществим оперативно быструю доставку в любой регион РФ и СНГ НАШИ СПЕЦИАЛИСТЫ Наши специалисты помогут подобрать запчасти для Вашей спецтехники СКЛАД На нашем складе всегда есть необходимые запчасти для Вашего заказа Цепь со скребками ДМК (А-16х48, L-12 м.; 24 усиленных скребков L=450) Запасные части ДМК-40, ДМК-70, ДМК-65 ОАО \"КОРМЗ\" Кемерово Оценка 0 из 5 Вал ведомый ПС-51.03.002 (голый вал L=800) (под ПР-50.8 с удлиненными осями, под пластинчатую цепь) Запасные части ЭД-405, ЭД-226, ЭД-224, КДМ-130, Пескоразбрасыватели ПС-90 ОАО \"Завод КДМ им. М.И. Калинина (Смоленск) Оценка 0 из 5 Гидроцилиндр бокового отвала КГС-80.50.590.1450.11.000 Запасные части МД-433, МД-532, МД-43253, МД-651 Кургандормаш Оценка 0 из 5 Подшипниковый узел UCPA-208 FBC ПОДШИПНИКИ Оценка 0 из 5 Установка цистерны КО-512.73.00.000Z Запасные части на каналопромывочные машины КО-514, КО-512, КО-502 Оценка 0 из 5 Крышка ролика КО-105.08.00.001 Запасные части КО-713, КО-823, КО-806 Мценск Оценка 0 из 5 НАШ ДЗЕН КАНАЛ ПЕРЕЙТИ ЗАКАЗАТЬ ЗАПЧАСТИ ДЛЯ СПЕЦТЕХНИКИ Ваше имя E-mail Ваш номер телефона Сообщение Отправляя данную форму, вы соглашаетесь с политикой конфиденциальности и пользовательским соглашением © 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта",
+        "links": [
+          {
+            "url": "https://dorzap.ru",
+            "label": "Перейти к содержимому"
+          },
+          {
+            "url": "https://dorzap.ru/lichnyj-kabinet",
+            "label": ""
+          },
+          {
+            "url": "https://dorzap.ru/korzina",
+            "label": ""
+          },
+          {
+            "url": "https://dorzap.ru/category/catalog",
+            "label": "КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ"
+          },
+          {
+            "url": "https://dorzap.ru/category/catalog/gidravlika",
+            "label": "ГИДРАВЛИЧЕСКОЕ ОБОРУДОВАНИЕ"
+          },
+          {
+            "url": "https://dorzap.ru/category/catalog/gidravlika/gidrovraschateli",
+            "label": "ГИДРОВРАЩАТЕЛИ"
+          },
+          {
+            "url": "https://smsng.ru",
+            "label": "ОБОРУДОВАНИЕ"
+          },
+          {
+            "url": "https://dorzap.ru/eskizi",
+            "label": "Эскизы для заказа нестандартных изделий"
+          },
+          {
+            "url": "https://dorzap.ru/contacts",
+            "label": "КОНТАКТЫ"
+          },
+          {
+            "url": "https://dorzap.ru/promo",
+            "label": "АКЦИИ"
+          },
+          {
+            "url": "https://dorzap.ru/o-kompanii",
+            "label": "О КОМПАНИИ"
+          },
+          {
+            "url": "https://dorzap.ru/oplata-dostavka",
+            "label": "Оплата и доставка"
+          },
+          {
+            "url": "https://dorzap.ru/faq",
+            "label": "Вопрос-ответ"
+          },
+          {
+            "url": "https://dorzap.ru/otzyvy",
+            "label": "Отзывы"
+          },
+          {
+            "url": "https://dorzap.ru/licenzii",
+            "label": "Сертификаты и лицензии"
+          },
+          {
+            "url": "https://dorzap.ru/partnery",
+            "label": "Заказчики и партнеры"
+          },
+          {
+            "url": "https://dorzap.ru/garantija",
+            "label": "Гарантия"
+          },
+          {
+            "url": "https://dorzap.ru/reqvizity",
+            "label": "Реквизиты компании"
+          },
+          {
+            "url": "https://sm-k.clientbase.ru/fields.php?table=830&sort_by=14430",
+            "label": "Информация для аукционов"
+          },
+          {
+            "url": "https://dorzap.ru/vakansii",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://wa.me/79924245579",
+            "label": "Whatsapp"
+          },
+          {
+            "url": "https://dorzap.ru/product/czep-so-skrebkami-dmk-a-16h48-l-12-m-24-usilennyh-skrebkov-l450",
+            "label": ""
+          },
+          {
+            "url": "https://dorzap.ru/product/val-vedomyj-ps-51-03-002-golyj-val-l800",
+            "label": ""
+          },
+          {
+            "url": "https://dorzap.ru/product/gidroczilindr-bokovogo-otvala-kgs-80-50-590-1450-11-000",
+            "label": ""
+          },
+          {
+            "url": "https://dzen.ru/id/6237f5700ee50c7a0288b7af?ysclid=m521q0nmmx741067455",
+            "label": "НАШ ДЗЕН КАНАЛ ПЕРЕЙТИ"
+          },
+          {
+            "url": "https://dorzap.ru/politika",
+            "label": "политикой конфиденциальности"
+          },
+          {
+            "url": "http://dorzap.ru/wp-content/uploads/2023/01/polzovatelskoe-soglashenie.docx",
+            "label": "пользовательским соглашением"
+          },
+          {
+            "url": "https://dorzap.ru/sitemap",
+            "label": "Карта сайта"
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:12:38.418Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 4146,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Спецмаш-Снг",
+        "domain": "dorzap.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137988890",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://dorzap.ru",
+            "kind": "page",
+            "text": "Мы с Вами: ЗАПАСНЫЕ ЧАСТИ И КОМПЛЕКТУЮЩИЕ ДЛЯ СПЕЦТЕХНИКИ КАТАЛОГ ЗАПЧАСТЕЙ Искать × ЗАПЧАСТИ ДЛЯ КОММУНАЛЬНЫХ МАШИН КОМБИНИРОВАННЫХ ДОРОЖНЫХ МАШИН ВАКУУМНЫХ МАШИН ИЛОСОСНЫХ МАШИН КАНАЛОПРОМЫВОЧНЫХ МАШИН ПОДМЕТАЛЬНО-УБОРОЧНЫХ МАШИН МУСОРОВОЗОВ СНЕГОПОГРУЗЧИКОВ ЗАПЧАСТИ ДЛЯ ДОРОЖНО-СТРОИТЕЛЬНЫХ МАШИН АВТОГУДРОНАТОРОВ ГРЕЙДЕРОВ МКСМ ДОРОЖНЫХ КАТКОВ БОЛЬШИХ ДОРОЖНЫХ ФРЕЗ БЕЦЕМА АСФАЛЬТОУКЛАДЧИКОВ РЕСАЙКЛЕРОВ ЗАПЧАСТИ ДЛЯ НАВЕСНОГО ОБОРУДОВАНИЯ НА МТЗ ЩЕТОЧНОГО ОБОРУДОВАНИЯ ДОРОЖНЫХ ФРЕЗ КОСИЛОК, МУЛЬЧЕРОВ БАРОВЫХ МАШИН СНЕГООЧИСТИТЕЛЕЙ ИЗМЕЛЬЧИТЕЛЕЙ ВЕТОК ОТВАЛЫ МТЗ ГИДРОХОДОУМЕНЬШИТЕЛИ (ГХУ) ПОЛИВОМОЕЧНЫЕ ПРИЦЕПЫ РАСХОДНЫЕ КОМПЛЕКТУЮЩИЕ ДИСКИ ЩЕТОЧНЫЕ, ЛОТКОВЫЕ И ПРОЧЕЕ ГРЕЙДЕРНЫЕ НОЖИ ТЕХПЛАСТИНЫ ДОРОЖНЫЕ РЕЗЦЫ ПОДШИПНИКИ МАТЫ ЖИВОТНОВОДЧЕСКИЕ НОЖИ НА КОВШИ ПОГРУЗЧИКОВ ГИДРАВЛИКА ГИДРОВРАЩАТЕЛИ ГИДРОМОТОРЫ, ГИДРОНАСОСЫ ГИДРОРАСПРЕДЕЛИТЕЛИ ГИДРОЗАМКИ, БРС ДЕЛИТЕЛИ, РЕГУЛЯТОРЫ, КЛАПАНА, ГИДРАВЛИЧЕСКИЕ КРАНЫ ЗАПЧАСТИ ДЛЯ ШНЕКОРОТОРНОГО СНЕГООЧИСТИТЕЛЯ ДЭ-226 (АМКОДОР 9531) ЗАПЧАСТИ ДЛЯ ШНЕКОРОТОРНОГО СНЕГООЧИСТИТЕЛЯ ДЭ-226 (АМКОДОР 9531) ГАРАНТИЯ Мы предоставляем на всю продукцию гарантию от производителей БЫСТРАЯ ДОСТАВКА Осуществим оперативно быструю доставку в любой регион РФ и СНГ НАШИ СПЕЦИАЛИСТЫ Наши специалисты помогут подобрать запчасти для Вашей спецтехники СКЛАД На нашем складе всегда есть необходимые запчасти для Вашего заказа Цепь со скребками ДМК (А-16х48, L-12 м.; 24 усиленных скребков L=450) Запасные части ДМК-40, ДМК-70, ДМК-65 ОАО \"КОРМЗ\" Кемерово Оценка 0 из 5 Вал ведомый ПС-51.03.002 (голый вал L=800) (под ПР-50.8 с удлиненными осями, под пластинчатую цепь) Запасные части ЭД-405, ЭД-226, ЭД-224, КДМ-130, Пескоразбрасыватели ПС-90 ОАО \"Завод КДМ им. М.И. Калинина (Смоленск) Оценка 0 из 5 Гидроцилиндр бокового отвала КГС-80.50.590.1450.11.000 Запасные части МД-433, МД-532, МД-43253, МД-651 Кургандормаш Оценка 0 из 5 Подшипниковый узел UCPA-208 FBC ПОДШИПНИКИ Оценка 0 из 5 Установка цистерны КО-512.73.00.000Z Запасные части на каналопромывочные машины КО-514, КО-512, КО-502 Оценка 0 из 5 Крышка ролика КО-105.08.00.001 Запасные части КО-713, КО-823, КО-806 Мценск Оценка 0 из 5 НАШ ДЗЕН КАНАЛ ПЕРЕЙТИ ЗАКАЗАТЬ ЗАПЧАСТИ ДЛЯ СПЕЦТЕХНИКИ Ваше имя E-mail Ваш номер телефона Сообщение Отправляя данную форму, вы соглашаетесь с политикой конфиденциальности и пользовательским соглашением © 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта",
+            "links": [
+              {
+                "url": "https://dorzap.ru",
+                "label": "Перейти к содержимому"
+              },
+              {
+                "url": "https://dorzap.ru/lichnyj-kabinet",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/korzina",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog",
+                "label": "КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika",
+                "label": "ГИДРАВЛИЧЕСКОЕ ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika/gidrovraschateli",
+                "label": "ГИДРОВРАЩАТЕЛИ"
+              },
+              {
+                "url": "https://smsng.ru",
+                "label": "ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/eskizi",
+                "label": "Эскизы для заказа нестандартных изделий"
+              },
+              {
+                "url": "https://dorzap.ru/contacts",
+                "label": "КОНТАКТЫ"
+              },
+              {
+                "url": "https://dorzap.ru/promo",
+                "label": "АКЦИИ"
+              },
+              {
+                "url": "https://dorzap.ru/o-kompanii",
+                "label": "О КОМПАНИИ"
+              },
+              {
+                "url": "https://dorzap.ru/oplata-dostavka",
+                "label": "Оплата и доставка"
+              },
+              {
+                "url": "https://dorzap.ru/faq",
+                "label": "Вопрос-ответ"
+              },
+              {
+                "url": "https://dorzap.ru/otzyvy",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://dorzap.ru/licenzii",
+                "label": "Сертификаты и лицензии"
+              },
+              {
+                "url": "https://dorzap.ru/partnery",
+                "label": "Заказчики и партнеры"
+              },
+              {
+                "url": "https://dorzap.ru/garantija",
+                "label": "Гарантия"
+              },
+              {
+                "url": "https://dorzap.ru/reqvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://sm-k.clientbase.ru/fields.php?table=830&sort_by=14430",
+                "label": "Информация для аукционов"
+              },
+              {
+                "url": "https://dorzap.ru/vakansii",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://wa.me/79924245579",
+                "label": "Whatsapp"
+              },
+              {
+                "url": "https://dorzap.ru/product/czep-so-skrebkami-dmk-a-16h48-l-12-m-24-usilennyh-skrebkov-l450",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/product/val-vedomyj-ps-51-03-002-golyj-val-l800",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/product/gidroczilindr-bokovogo-otvala-kgs-80-50-590-1450-11-000",
+                "label": ""
+              },
+              {
+                "url": "https://dzen.ru/id/6237f5700ee50c7a0288b7af?ysclid=m521q0nmmx741067455",
+                "label": "НАШ ДЗЕН КАНАЛ ПЕРЕЙТИ"
+              },
+              {
+                "url": "https://dorzap.ru/politika",
+                "label": "политикой конфиденциальности"
+              },
+              {
+                "url": "http://dorzap.ru/wp-content/uploads/2023/01/polzovatelskoe-soglashenie.docx",
+                "label": "пользовательским соглашением"
+              },
+              {
+                "url": "https://dorzap.ru/sitemap",
+                "label": "Карта сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:12:38.418Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 10,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "ООО «СПЕЦМАШ-СНГ» — поставщик запасных частей и комплектующих для спецтехники, работающий по всей России и странам СНГ. На сайте dorzap.ru подтверждено юридическое имя компании, ассортимент, география работы, а также предлагаются контактные формы и вакансии.",
+        "missing": [
+          "Нет информации о руководителе или менеджере отдела продаж.",
+          "Пока нет публичных личных контактов сотрудников."
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "dorzap.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "© 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://dorzap.ru/contacts",
+            "focus": "контактные данные или сотрудники",
+            "purpose": "Изучить наличие публичных личных контактов и/или информации о руководителе/ответственном лице."
+          },
+          {
+            "type": "open",
+            "value": "https://dorzap.ru/o-kompanii",
+            "focus": "описание компании, команда",
+            "purpose": "Проверить, указан ли владелец/руководитель бизнес-процесса, роль лидера или менеджера продаж."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённых релевантных людей или контактов — требуется изучить разделы «Контакты» и «О компании»."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "ООО «СПЕЦМАШ-СНГ» — поставщик запасных частей и комплектующих для спецтехники, работающий по всей России и странам СНГ. На сайте dorzap.ru подтверждено юридическое имя компании, ассортимент, география работы, а также предлагаются контактные формы и вакансии.",
+        "missing": [
+          "Нет информации о руководителе или менеджере отдела продаж.",
+          "Пока нет публичных личных контактов сотрудников."
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "dorzap.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "© 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://dorzap.ru/contacts",
+            "focus": "контактные данные или сотрудники",
+            "purpose": "Изучить наличие публичных личных контактов и/или информации о руководителе/ответственном лице."
+          },
+          {
+            "type": "open",
+            "value": "https://dorzap.ru/o-kompanii",
+            "focus": "описание компании, команда",
+            "purpose": "Проверить, указан ли владелец/руководитель бизнес-процесса, роль лидера или менеджера продаж."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённых релевантных людей или контактов — требуется изучить разделы «Контакты» и «О компании»."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "dorzap.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/contacts",
+      "status": 301,
+      "elapsedMs": 1053
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/o-kompanii",
+      "status": 301,
+      "elapsedMs": 1066
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/o-kompanii/",
+      "status": 200,
+      "elapsedMs": 939
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://dorzap.ru/o-kompanii",
+      "focus": "описание компании, команда",
+      "purpose": "Проверить, указан ли владелец/руководитель бизнес-процесса, роль лидера или менеджера продаж.",
+      "success": true,
+      "evidence": {
+        "url": "https://dorzap.ru/o-kompanii/",
+        "kind": "page",
+        "text": "ООО «СПЕЦМАШ-СНГ» — Надежный поставщик запчастей и оборудования для коммунальной, дорожно-строительной техники. Осуществляем поставку по всей РФ и СНГ. Имеются собственные склады в г. Кургане и в г. Тюмени. Широкий выбор расходных комплектующих. В том осуществляем продажу навесного и прицепного оборудования для тракторов МТЗ («Беларус»). Большой опыт участия в государственных контрактах. В числе наших контрагентов есть такие крупные предприятия, как «Сургутнефтегаз», АО «ТОДЭП», АО «Свердловскавтодор», АО «ГК Северавтодор» и многие другие от Калининграда до Камчатки. © 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта",
+        "links": [
+          {
+            "url": "https://dorzap.ru/o-kompanii",
+            "label": "Перейти к содержимому"
+          },
+          {
+            "url": "https://dorzap.ru/lichnyj-kabinet",
+            "label": ""
+          },
+          {
+            "url": "https://dorzap.ru/korzina",
+            "label": ""
+          },
+          {
+            "url": "https://dorzap.ru",
+            "label": "ГЛАВНАЯ"
+          },
+          {
+            "url": "https://dorzap.ru/category/catalog",
+            "label": "КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ"
+          },
+          {
+            "url": "https://dorzap.ru/category/catalog/gidravlika",
+            "label": "ГИДРАВЛИЧЕСКОЕ ОБОРУДОВАНИЕ"
+          },
+          {
+            "url": "https://dorzap.ru/category/catalog/gidravlika/gidrovraschateli",
+            "label": "ГИДРОВРАЩАТЕЛИ"
+          },
+          {
+            "url": "https://smsng.ru",
+            "label": "ОБОРУДОВАНИЕ"
+          },
+          {
+            "url": "https://dorzap.ru/eskizi",
+            "label": "Эскизы для заказа нестандартных изделий"
+          },
+          {
+            "url": "https://dorzap.ru/contacts",
+            "label": "КОНТАКТЫ"
+          },
+          {
+            "url": "https://dorzap.ru/promo",
+            "label": "АКЦИИ"
+          },
+          {
+            "url": "https://dorzap.ru/oplata-dostavka",
+            "label": "Оплата и доставка"
+          },
+          {
+            "url": "https://dorzap.ru/faq",
+            "label": "Вопрос-ответ"
+          },
+          {
+            "url": "https://dorzap.ru/otzyvy",
+            "label": "Отзывы"
+          },
+          {
+            "url": "https://dorzap.ru/licenzii",
+            "label": "Сертификаты и лицензии"
+          },
+          {
+            "url": "https://dorzap.ru/partnery",
+            "label": "Заказчики и партнеры"
+          },
+          {
+            "url": "https://dorzap.ru/garantija",
+            "label": "Гарантия"
+          },
+          {
+            "url": "https://dorzap.ru/reqvizity",
+            "label": "Реквизиты компании"
+          },
+          {
+            "url": "https://sm-k.clientbase.ru/fields.php?table=830&sort_by=14430",
+            "label": "Информация для аукционов"
+          },
+          {
+            "url": "https://dorzap.ru/vakansii",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://wa.me/79924245579",
+            "label": "Whatsapp"
+          },
+          {
+            "url": "https://dorzap.ru/sitemap",
+            "label": "Карта сайта"
+          },
+          {
+            "url": "https://dorzap.ru/politika",
+            "label": "политикой конфиденциальности"
+          },
+          {
+            "url": "http://dorzap.ru/wp-content/uploads/2023/01/polzovatelskoe-soglashenie.docx",
+            "label": "пользовательским соглашением"
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:12:44.738Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/contacts/",
+      "status": 200,
+      "elapsedMs": 1101
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://dorzap.ru/contacts",
+      "focus": "контактные данные или сотрудники",
+      "purpose": "Изучить наличие публичных личных контактов и/или информации о руководителе/ответственном лице.",
+      "success": true,
+      "evidence": {
+        "url": "https://dorzap.ru/contacts/",
+        "kind": "page",
+        "text": "КОНТАКТЫ Адрес ЗАПАСНЫЕ ЧАСТИ И КОМПЛЕКТУЮЩИЕ ДЛЯ СПЕЦТЕХНИКИ 625019, г. Тюмень, ул. Новаторов, д.3а, оф.206 640007, г. Курган, ул. Омская, д.145/1, оф.305 690030, г. Владивосток, ул. Кочубея, д.1, оф.6 141108, Московская область, г. Щёлково, ул. Фабричная, д. 1, корпус 1. офис 307 Время работы С понедельника по пятницу с 08:00 — 17:00 Выходной: суббота, воскресенье Контакты для связи сот.: +7 908 835-12-22 (г. Курган) тел.: 8(3452)51-87-70 (г. Тюмень) сот.: 8(994)00-47-088 (г. Владивосток) сот.: 8(996)146-23-51 (г. Щёлково) Оставить Вашу заявку можете на эл. почту: dorzap@list.ru Vk Youtube ФОРМА ОБРАТНОЙ СВЯЗИ Ваше имя E-mail Ваш номер телефона Сообщение Отправляя данную форму, вы соглашаетесь с политикой конфиденциальности и пользовательским соглашением ЗАПАСНЫЕ ЧАСТИ И КОМПЛЕКТУЮЩИЕ ДЛЯ СПЕЦТЕХНИКИ 625019 , г. Тюмень , ул. Новаторов, д.3а, оф.206 640007 , г. Курган , ул. Омская, д.145/1, оф.305 +7 992 427-73-27 , +7 909 191-14-27 , 8(3452)51-87-70 dorzap@list.ru © 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта",
+        "links": [
+          {
+            "url": "https://dorzap.ru/contacts",
+            "label": "Перейти к содержимому"
+          },
+          {
+            "url": "https://dorzap.ru/lichnyj-kabinet",
+            "label": ""
+          },
+          {
+            "url": "https://dorzap.ru/korzina",
+            "label": ""
+          },
+          {
+            "url": "https://dorzap.ru",
+            "label": "ГЛАВНАЯ"
+          },
+          {
+            "url": "https://dorzap.ru/category/catalog",
+            "label": "КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ"
+          },
+          {
+            "url": "https://dorzap.ru/category/catalog/gidravlika",
+            "label": "ГИДРАВЛИЧЕСКОЕ ОБОРУДОВАНИЕ"
+          },
+          {
+            "url": "https://dorzap.ru/category/catalog/gidravlika/gidrovraschateli",
+            "label": "ГИДРОВРАЩАТЕЛИ"
+          },
+          {
+            "url": "https://smsng.ru",
+            "label": "ОБОРУДОВАНИЕ"
+          },
+          {
+            "url": "https://dorzap.ru/eskizi",
+            "label": "Эскизы для заказа нестандартных изделий"
+          },
+          {
+            "url": "https://dorzap.ru/promo",
+            "label": "АКЦИИ"
+          },
+          {
+            "url": "https://dorzap.ru/o-kompanii",
+            "label": "О КОМПАНИИ"
+          },
+          {
+            "url": "https://dorzap.ru/oplata-dostavka",
+            "label": "Оплата и доставка"
+          },
+          {
+            "url": "https://dorzap.ru/faq",
+            "label": "Вопрос-ответ"
+          },
+          {
+            "url": "https://dorzap.ru/otzyvy",
+            "label": "Отзывы"
+          },
+          {
+            "url": "https://dorzap.ru/licenzii",
+            "label": "Сертификаты и лицензии"
+          },
+          {
+            "url": "https://dorzap.ru/partnery",
+            "label": "Заказчики и партнеры"
+          },
+          {
+            "url": "https://dorzap.ru/garantija",
+            "label": "Гарантия"
+          },
+          {
+            "url": "https://dorzap.ru/reqvizity",
+            "label": "Реквизиты компании"
+          },
+          {
+            "url": "https://sm-k.clientbase.ru/fields.php?table=830&sort_by=14430",
+            "label": "Информация для аукционов"
+          },
+          {
+            "url": "https://dorzap.ru/vakansii",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://wa.me/79924245579",
+            "label": "Whatsapp"
+          },
+          {
+            "url": "https://vk.com/ooospecmashsng",
+            "label": "Vk"
+          },
+          {
+            "url": "https://www.youtube.com/channel/UCs4ETN8epUV_qwFkyPPKg3g/videos",
+            "label": "Youtube"
+          },
+          {
+            "url": "https://dorzap.ru/politika",
+            "label": "политикой конфиденциальности"
+          },
+          {
+            "url": "http://dorzap.ru/wp-content/uploads/2023/01/polzovatelskoe-soglashenie.docx",
+            "label": "пользовательским соглашением"
+          },
+          {
+            "url": "https://dorzap.ru/sitemap",
+            "label": "Карта сайта"
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:12:44.875Z",
+        "id": "e3"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 5049,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Спецмаш-Снг",
+        "domain": "dorzap.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137988890",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://dorzap.ru",
+            "kind": "page",
+            "text": "Мы с Вами: ЗАПАСНЫЕ ЧАСТИ И КОМПЛЕКТУЮЩИЕ ДЛЯ СПЕЦТЕХНИКИ КАТАЛОГ ЗАПЧАСТЕЙ Искать × ЗАПЧАСТИ ДЛЯ КОММУНАЛЬНЫХ МАШИН КОМБИНИРОВАННЫХ ДОРОЖНЫХ МАШИН ВАКУУМНЫХ МАШИН ИЛОСОСНЫХ МАШИН КАНАЛОПРОМЫВОЧНЫХ МАШИН ПОДМЕТАЛЬНО-УБОРОЧНЫХ МАШИН МУСОРОВОЗОВ СНЕГОПОГРУЗЧИКОВ ЗАПЧАСТИ ДЛЯ ДОРОЖНО-СТРОИТЕЛЬНЫХ МАШИН АВТОГУДРОНАТОРОВ ГРЕЙДЕРОВ МКСМ ДОРОЖНЫХ КАТКОВ БОЛЬШИХ ДОРОЖНЫХ ФРЕЗ БЕЦЕМА АСФАЛЬТОУКЛАДЧИКОВ РЕСАЙКЛЕРОВ ЗАПЧАСТИ ДЛЯ НАВЕСНОГО ОБОРУДОВАНИЯ НА МТЗ ЩЕТОЧНОГО ОБОРУДОВАНИЯ ДОРОЖНЫХ ФРЕЗ КОСИЛОК, МУЛЬЧЕРОВ БАРОВЫХ МАШИН СНЕГООЧИСТИТЕЛЕЙ ИЗМЕЛЬЧИТЕЛЕЙ ВЕТОК ОТВАЛЫ МТЗ ГИДРОХОДОУМЕНЬШИТЕЛИ (ГХУ) ПОЛИВОМОЕЧНЫЕ ПРИЦЕПЫ РАСХОДНЫЕ КОМПЛЕКТУЮЩИЕ ДИСКИ ЩЕТОЧНЫЕ, ЛОТКОВЫЕ И ПРОЧЕЕ ГРЕЙДЕРНЫЕ НОЖИ ТЕХПЛАСТИНЫ ДОРОЖНЫЕ РЕЗЦЫ ПОДШИПНИКИ МАТЫ ЖИВОТНОВОДЧЕСКИЕ НОЖИ НА КОВШИ ПОГРУЗЧИКОВ ГИДРАВЛИКА ГИДРОВРАЩАТЕЛИ ГИДРОМОТОРЫ, ГИДРОНАСОСЫ ГИДРОРАСПРЕДЕЛИТЕЛИ ГИДРОЗАМКИ, БРС ДЕЛИТЕЛИ, РЕГУЛЯТОРЫ, КЛАПАНА, ГИДРАВЛИЧЕСКИЕ КРАНЫ ЗАПЧАСТИ ДЛЯ ШНЕКОРОТОРНОГО СНЕГООЧИСТИТЕЛЯ ДЭ-226 (АМКОДОР 9531) ЗАПЧАСТИ ДЛЯ ШНЕКОРОТОРНОГО СНЕГООЧИСТИТЕЛЯ ДЭ-226 (АМКОДОР 9531) ГАРАНТИЯ Мы предоставляем на всю продукцию гарантию от производителей БЫСТРАЯ ДОСТАВКА Осуществим оперативно быструю доставку в любой регион РФ и СНГ НАШИ СПЕЦИАЛИСТЫ Наши специалисты помогут подобрать запчасти для Вашей спецтехники СКЛАД На нашем складе всегда есть необходимые запчасти для Вашего заказа Цепь со скребками ДМК (А-16х48, L-12 м.; 24 усиленных скребков L=450) Запасные части ДМК-40, ДМК-70, ДМК-65 ОАО \"КОРМЗ\" Кемерово Оценка 0 из 5 Вал ведомый ПС-51.03.002 (голый вал L=800) (под ПР-50.8 с удлиненными осями, под пластинчатую цепь) Запасные части ЭД-405, ЭД-226, ЭД-224, КДМ-130, Пескоразбрасыватели ПС-90 ОАО \"Завод КДМ им. М.И. Калинина (Смоленск) Оценка 0 из 5 Гидроцилиндр бокового отвала КГС-80.50.590.1450.11.000 Запасные части МД-433, МД-532, МД-43253, МД-651 Кургандормаш Оценка 0 из 5 Подшипниковый узел UCPA-208 FBC ПОДШИПНИКИ Оценка 0 из 5 Установка цистерны КО-512.73.00.000Z Запасные части на каналопромывочные машины КО-514, КО-512, КО-502 Оценка 0 из 5 Крышка ролика КО-105.08.00.001 Запасные части КО-713, КО-823, КО-806 Мценск Оценка 0 из 5 НАШ ДЗЕН КАНАЛ ПЕРЕЙТИ ЗАКАЗАТЬ ЗАПЧАСТИ ДЛЯ СПЕЦТЕХНИКИ Ваше имя E-mail Ваш номер телефона Сообщение Отправляя данную форму, вы соглашаетесь с политикой конфиденциальности и пользовательским соглашением © 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта",
+            "links": [
+              {
+                "url": "https://dorzap.ru",
+                "label": "Перейти к содержимому"
+              },
+              {
+                "url": "https://dorzap.ru/lichnyj-kabinet",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/korzina",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog",
+                "label": "КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika",
+                "label": "ГИДРАВЛИЧЕСКОЕ ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika/gidrovraschateli",
+                "label": "ГИДРОВРАЩАТЕЛИ"
+              },
+              {
+                "url": "https://smsng.ru",
+                "label": "ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/eskizi",
+                "label": "Эскизы для заказа нестандартных изделий"
+              },
+              {
+                "url": "https://dorzap.ru/contacts",
+                "label": "КОНТАКТЫ"
+              },
+              {
+                "url": "https://dorzap.ru/promo",
+                "label": "АКЦИИ"
+              },
+              {
+                "url": "https://dorzap.ru/o-kompanii",
+                "label": "О КОМПАНИИ"
+              },
+              {
+                "url": "https://dorzap.ru/oplata-dostavka",
+                "label": "Оплата и доставка"
+              },
+              {
+                "url": "https://dorzap.ru/faq",
+                "label": "Вопрос-ответ"
+              },
+              {
+                "url": "https://dorzap.ru/otzyvy",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://dorzap.ru/licenzii",
+                "label": "Сертификаты и лицензии"
+              },
+              {
+                "url": "https://dorzap.ru/partnery",
+                "label": "Заказчики и партнеры"
+              },
+              {
+                "url": "https://dorzap.ru/garantija",
+                "label": "Гарантия"
+              },
+              {
+                "url": "https://dorzap.ru/reqvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://sm-k.clientbase.ru/fields.php?table=830&sort_by=14430",
+                "label": "Информация для аукционов"
+              },
+              {
+                "url": "https://dorzap.ru/vakansii",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://wa.me/79924245579",
+                "label": "Whatsapp"
+              },
+              {
+                "url": "https://dorzap.ru/product/czep-so-skrebkami-dmk-a-16h48-l-12-m-24-usilennyh-skrebkov-l450",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/product/val-vedomyj-ps-51-03-002-golyj-val-l800",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/product/gidroczilindr-bokovogo-otvala-kgs-80-50-590-1450-11-000",
+                "label": ""
+              },
+              {
+                "url": "https://dzen.ru/id/6237f5700ee50c7a0288b7af?ysclid=m521q0nmmx741067455",
+                "label": "НАШ ДЗЕН КАНАЛ ПЕРЕЙТИ"
+              },
+              {
+                "url": "https://dorzap.ru/politika",
+                "label": "политикой конфиденциальности"
+              },
+              {
+                "url": "http://dorzap.ru/wp-content/uploads/2023/01/polzovatelskoe-soglashenie.docx",
+                "label": "пользовательским соглашением"
+              },
+              {
+                "url": "https://dorzap.ru/sitemap",
+                "label": "Карта сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:12:38.418Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://dorzap.ru/o-kompanii/",
+            "kind": "page",
+            "text": "ООО «СПЕЦМАШ-СНГ» — Надежный поставщик запчастей и оборудования для коммунальной, дорожно-строительной техники. Осуществляем поставку по всей РФ и СНГ. Имеются собственные склады в г. Кургане и в г. Тюмени. Широкий выбор расходных комплектующих. В том осуществляем продажу навесного и прицепного оборудования для тракторов МТЗ («Беларус»). Большой опыт участия в государственных контрактах. В числе наших контрагентов есть такие крупные предприятия, как «Сургутнефтегаз», АО «ТОДЭП», АО «Свердловскавтодор», АО «ГК Северавтодор» и многие другие от Калининграда до Камчатки. © 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта",
+            "links": [
+              {
+                "url": "https://dorzap.ru/o-kompanii",
+                "label": "Перейти к содержимому"
+              },
+              {
+                "url": "https://dorzap.ru/lichnyj-kabinet",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/korzina",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru",
+                "label": "ГЛАВНАЯ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog",
+                "label": "КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika",
+                "label": "ГИДРАВЛИЧЕСКОЕ ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika/gidrovraschateli",
+                "label": "ГИДРОВРАЩАТЕЛИ"
+              },
+              {
+                "url": "https://smsng.ru",
+                "label": "ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/eskizi",
+                "label": "Эскизы для заказа нестандартных изделий"
+              },
+              {
+                "url": "https://dorzap.ru/contacts",
+                "label": "КОНТАКТЫ"
+              },
+              {
+                "url": "https://dorzap.ru/promo",
+                "label": "АКЦИИ"
+              },
+              {
+                "url": "https://dorzap.ru/oplata-dostavka",
+                "label": "Оплата и доставка"
+              },
+              {
+                "url": "https://dorzap.ru/faq",
+                "label": "Вопрос-ответ"
+              },
+              {
+                "url": "https://dorzap.ru/otzyvy",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://dorzap.ru/licenzii",
+                "label": "Сертификаты и лицензии"
+              },
+              {
+                "url": "https://dorzap.ru/partnery",
+                "label": "Заказчики и партнеры"
+              },
+              {
+                "url": "https://dorzap.ru/garantija",
+                "label": "Гарантия"
+              },
+              {
+                "url": "https://dorzap.ru/reqvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://sm-k.clientbase.ru/fields.php?table=830&sort_by=14430",
+                "label": "Информация для аукционов"
+              },
+              {
+                "url": "https://dorzap.ru/vakansii",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://wa.me/79924245579",
+                "label": "Whatsapp"
+              },
+              {
+                "url": "https://dorzap.ru/sitemap",
+                "label": "Карта сайта"
+              },
+              {
+                "url": "https://dorzap.ru/politika",
+                "label": "политикой конфиденциальности"
+              },
+              {
+                "url": "http://dorzap.ru/wp-content/uploads/2023/01/polzovatelskoe-soglashenie.docx",
+                "label": "пользовательским соглашением"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:12:44.738Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://dorzap.ru/contacts/",
+            "kind": "page",
+            "text": "КОНТАКТЫ Адрес ЗАПАСНЫЕ ЧАСТИ И КОМПЛЕКТУЮЩИЕ ДЛЯ СПЕЦТЕХНИКИ 625019, г. Тюмень, ул. Новаторов, д.3а, оф.206 640007, г. Курган, ул. Омская, д.145/1, оф.305 690030, г. Владивосток, ул. Кочубея, д.1, оф.6 141108, Московская область, г. Щёлково, ул. Фабричная, д. 1, корпус 1. офис 307 Время работы С понедельника по пятницу с 08:00 — 17:00 Выходной: суббота, воскресенье Контакты для связи сот.: +7 908 835-12-22 (г. Курган) тел.: 8(3452)51-87-70 (г. Тюмень) сот.: 8(994)00-47-088 (г. Владивосток) сот.: 8(996)146-23-51 (г. Щёлково) Оставить Вашу заявку можете на эл. почту: dorzap@list.ru Vk Youtube ФОРМА ОБРАТНОЙ СВЯЗИ Ваше имя E-mail Ваш номер телефона Сообщение Отправляя данную форму, вы соглашаетесь с политикой конфиденциальности и пользовательским соглашением ЗАПАСНЫЕ ЧАСТИ И КОМПЛЕКТУЮЩИЕ ДЛЯ СПЕЦТЕХНИКИ 625019 , г. Тюмень , ул. Новаторов, д.3а, оф.206 640007 , г. Курган , ул. Омская, д.145/1, оф.305 +7 992 427-73-27 , +7 909 191-14-27 , 8(3452)51-87-70 dorzap@list.ru © 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта",
+            "links": [
+              {
+                "url": "https://dorzap.ru/contacts",
+                "label": "Перейти к содержимому"
+              },
+              {
+                "url": "https://dorzap.ru/lichnyj-kabinet",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/korzina",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru",
+                "label": "ГЛАВНАЯ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog",
+                "label": "КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika",
+                "label": "ГИДРАВЛИЧЕСКОЕ ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika/gidrovraschateli",
+                "label": "ГИДРОВРАЩАТЕЛИ"
+              },
+              {
+                "url": "https://smsng.ru",
+                "label": "ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/eskizi",
+                "label": "Эскизы для заказа нестандартных изделий"
+              },
+              {
+                "url": "https://dorzap.ru/promo",
+                "label": "АКЦИИ"
+              },
+              {
+                "url": "https://dorzap.ru/o-kompanii",
+                "label": "О КОМПАНИИ"
+              },
+              {
+                "url": "https://dorzap.ru/oplata-dostavka",
+                "label": "Оплата и доставка"
+              },
+              {
+                "url": "https://dorzap.ru/faq",
+                "label": "Вопрос-ответ"
+              },
+              {
+                "url": "https://dorzap.ru/otzyvy",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://dorzap.ru/licenzii",
+                "label": "Сертификаты и лицензии"
+              },
+              {
+                "url": "https://dorzap.ru/partnery",
+                "label": "Заказчики и партнеры"
+              },
+              {
+                "url": "https://dorzap.ru/garantija",
+                "label": "Гарантия"
+              },
+              {
+                "url": "https://dorzap.ru/reqvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://sm-k.clientbase.ru/fields.php?table=830&sort_by=14430",
+                "label": "Информация для аукционов"
+              },
+              {
+                "url": "https://dorzap.ru/vakansii",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://wa.me/79924245579",
+                "label": "Whatsapp"
+              },
+              {
+                "url": "https://vk.com/ooospecmashsng",
+                "label": "Vk"
+              },
+              {
+                "url": "https://www.youtube.com/channel/UCs4ETN8epUV_qwFkyPPKg3g/videos",
+                "label": "Youtube"
+              },
+              {
+                "url": "https://dorzap.ru/politika",
+                "label": "политикой конфиденциальности"
+              },
+              {
+                "url": "http://dorzap.ru/wp-content/uploads/2023/01/polzovatelskoe-soglashenie.docx",
+                "label": "пользовательским соглашением"
+              },
+              {
+                "url": "https://dorzap.ru/sitemap",
+                "label": "Карта сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:12:44.875Z",
+            "id": "e3"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://dorzap.ru/contacts",
+            "focus": "контактные данные или сотрудники",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://dorzap.ru/o-kompanii",
+            "focus": "описание компании, команда",
+            "success": true
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 8,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "ООО «СПЕЦМАШ-СНГ» — поставщик запчастей и оборудования для коммунальной и дорожно-строительной техники. География: Россия и СНГ. Офисы и склады: Тюмень, Курган, Владивосток, Московская область. Выполняет госзаказы, среди клиентов — Сургутнефтегаз, крупные дорожные предприятия. Сайт dorzap.ru, официальный юридический адрес и контакты подтверждены.",
+        "missing": [
+          "ФИО и должности руководителя отдела продаж или иного профильного ЛПР",
+          "Личные (необщие) контактные данные явного владельца процесса продаж"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "smsng.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "\"https://smsng.ru\",\"label\":\"ОБОРУДОВАНИЕ\""
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://dorzap.ru/vakansii",
+            "focus": "имена нанимающих менеджеров или контакты в разделе Вакансии",
+            "purpose": "Проверить, указаны ли контактные лица или руководители направления продаж"
+          },
+          {
+            "type": "search",
+            "value": "\"Спецмаш-Снг\" директор OR коммерческий директор OR руководитель отдела продаж site:dorzap.ru OR site:smsng.ru",
+            "focus": "руководящие лица компании",
+            "purpose": "Прямой поиск ФИО и должностей, связанных с управлением продажами или компанией"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет публично подтверждённого ЛПР или его личного контакта; требуется узнать ФИО/должность ЛПР по продажам"
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "ООО «СПЕЦМАШ-СНГ» — поставщик запчастей и оборудования для коммунальной и дорожно-строительной техники. География: Россия и СНГ. Офисы и склады: Тюмень, Курган, Владивосток, Московская область. Выполняет госзаказы, среди клиентов — Сургутнефтегаз, крупные дорожные предприятия. Сайт dorzap.ru, официальный юридический адрес и контакты подтверждены.",
+        "missing": [
+          "ФИО и должности руководителя отдела продаж или иного профильного ЛПР",
+          "Личные (необщие) контактные данные явного владельца процесса продаж"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "smsng.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "\"https://smsng.ru\",\"label\":\"ОБОРУДОВАНИЕ\""
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://dorzap.ru/vakansii",
+            "focus": "имена нанимающих менеджеров или контакты в разделе Вакансии",
+            "purpose": "Проверить, указаны ли контактные лица или руководители направления продаж"
+          },
+          {
+            "type": "search",
+            "value": "\"Спецмаш-Снг\" директор OR коммерческий директор OR руководитель отдела продаж site:dorzap.ru OR site:smsng.ru",
+            "focus": "руководящие лица компании",
+            "purpose": "Прямой поиск ФИО и должностей, связанных с управлением продажами или компанией"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет публично подтверждённого ЛПР или его личного контакта; требуется узнать ФИО/должность ЛПР по продажам"
+      },
+      "validationErrors": [
+        "official_domain_not_proven:smsng.ru"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "dorzap.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%A1%D0%BF%D0%B5%D1%86%D0%BC%D0%B0%D1%88-%D0%A1%D0%BD%D0%B3%22%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%BA%D0%BE%D0%BC%D0%BC%D0%B5%D1%80%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%B0%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%20OR%20dorzap.ru&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 410
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%A1%D0%BF%D0%B5%D1%86%D0%BC%D0%B0%D1%88-%D0%A1%D0%BD%D0%B3%22%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%BA%D0%BE%D0%BC%D0%BC%D0%B5%D1%80%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%B0%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%20OR%20dorzap.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 483
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/vakansii",
+      "status": 301,
+      "elapsedMs": 1115
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/vakansii/",
+      "status": 200,
+      "elapsedMs": 1056
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://dorzap.ru/vakansii",
+      "focus": "имена нанимающих менеджеров или контакты в разделе Вакансии",
+      "purpose": "Проверить, указаны ли контактные лица или руководители направления продаж",
+      "success": true,
+      "evidence": {
+        "url": "https://dorzap.ru/vakansii/",
+        "kind": "page",
+        "text": "Привет! Нам требуется менеджер активных продаж Дорожного и Коммунального оборудования, а также запчастей. У тебя будет возможность зарабатывать столько, сколько нужно, у нас нет «потолка» по заработной плате. Что тебя ждет? Система обучения : видео обучение + наставники + коллеги. Результат — отличное знание продукта и техники продаж Комфортный офис, оплачиваемая связь, работа в дружном коллективе с адекватным руководством. Заработная плата два раза в месяц, график 5/2 с 8,00- до 17,00 Что нужно делать: Работать с уже существующими клиентами (юридические лица, индивидуальные предприниматели) + обработка входящего трафика. Совершение звонков по готовой базе клиентов; Отслеживание дебиторской задолженности. Подготовка коммерческих предложение, выставление счетов, заключение договоров Требования: Стабильность на рабочем месте Работать в режиме многозадачности Изучение рекламного материала компании Работа в почте , мессенджерах , деловая переписка Не сомневайся, оставь свой отклик! Поговорим! © 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта",
+        "links": [
+          {
+            "url": "https://dorzap.ru/vakansii",
+            "label": "Перейти к содержимому"
+          },
+          {
+            "url": "https://dorzap.ru/lichnyj-kabinet",
+            "label": ""
+          },
+          {
+            "url": "https://dorzap.ru/korzina",
+            "label": ""
+          },
+          {
+            "url": "https://dorzap.ru",
+            "label": "ГЛАВНАЯ"
+          },
+          {
+            "url": "https://dorzap.ru/category/catalog",
+            "label": "КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ"
+          },
+          {
+            "url": "https://dorzap.ru/category/catalog/gidravlika",
+            "label": "ГИДРАВЛИЧЕСКОЕ ОБОРУДОВАНИЕ"
+          },
+          {
+            "url": "https://dorzap.ru/category/catalog/gidravlika/gidrovraschateli",
+            "label": "ГИДРОВРАЩАТЕЛИ"
+          },
+          {
+            "url": "https://smsng.ru",
+            "label": "ОБОРУДОВАНИЕ"
+          },
+          {
+            "url": "https://dorzap.ru/eskizi",
+            "label": "Эскизы для заказа нестандартных изделий"
+          },
+          {
+            "url": "https://dorzap.ru/contacts",
+            "label": "КОНТАКТЫ"
+          },
+          {
+            "url": "https://dorzap.ru/promo",
+            "label": "АКЦИИ"
+          },
+          {
+            "url": "https://dorzap.ru/o-kompanii",
+            "label": "О КОМПАНИИ"
+          },
+          {
+            "url": "https://dorzap.ru/oplata-dostavka",
+            "label": "Оплата и доставка"
+          },
+          {
+            "url": "https://dorzap.ru/faq",
+            "label": "Вопрос-ответ"
+          },
+          {
+            "url": "https://dorzap.ru/otzyvy",
+            "label": "Отзывы"
+          },
+          {
+            "url": "https://dorzap.ru/licenzii",
+            "label": "Сертификаты и лицензии"
+          },
+          {
+            "url": "https://dorzap.ru/partnery",
+            "label": "Заказчики и партнеры"
+          },
+          {
+            "url": "https://dorzap.ru/garantija",
+            "label": "Гарантия"
+          },
+          {
+            "url": "https://dorzap.ru/reqvizity",
+            "label": "Реквизиты компании"
+          },
+          {
+            "url": "https://sm-k.clientbase.ru/fields.php?table=830&sort_by=14430",
+            "label": "Информация для аукционов"
+          },
+          {
+            "url": "https://wa.me/79924245579",
+            "label": "Whatsapp"
+          },
+          {
+            "url": "https://dorzap.ru/sitemap",
+            "label": "Карта сайта"
+          },
+          {
+            "url": "https://dorzap.ru/politika",
+            "label": "политикой конфиденциальности"
+          },
+          {
+            "url": "http://dorzap.ru/wp-content/uploads/2023/01/polzovatelskoe-soglashenie.docx",
+            "label": "пользовательским соглашением"
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:12:52.154Z",
+        "id": "e4"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 4298
+    },
+    {
+      "stage": "search",
+      "query": "\"Спецмаш-Снг\" директор OR коммерческий директор OR руководитель отдела продаж site:dorzap.ru OR site:smsng.ru",
+      "results": [
+        {
+          "title": "Отдел продаж │ СПЕЦМАШ-СНГ",
+          "url": "https://smsng.ru/otdel-prodazh",
+          "snippet": "Перейти к содержимому\n\nтел.: 8(3452)51-87-70 г. Тюмень, тел.: 8(3522)44-35-54 г. Курган, сот.: 8(994)004-7088 г. Владивосток, сот.: 8(996)146-23-51 г. Щёлково\n\nлого спецмаш-снг\n\n# Отдел продаж\n\nОСНОВНАЯ ИНФОРМАЦИЯ\n\nКОММЕРЧЕСКИЙ ОТДЕЛ\n\nОТДЕЛ ЛОГИСТИКИ\n\nОТДЕЛ БУХГАЛТЕРИИ\n\n## Руководители отдела продаж\n\nПолькин Дмитрий Геннадьевич\n\nКоммерческий директор\n\ndm.polkin@ooospecmash.ru  \n тел.: 8(3522)44-35-54 (вн.121)  \n сот.: 8(908)835-12-22\n\nБухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень [...] tumen1@ooospecmash.ru  \n тел.: 8(3452)51-87-70  \n сот.: 8(909)191-14-27\n\nСолдатенков Илья Михайлович\n\nРуководитель ОП г. Владивосток\n\nvladivostok1@ooospecmash.ru  \n сот.: 8(994)004-70-88\n\nЧерных Александр Владимирович\n\nРуководитель ОП г. Щёлково (Московская область)\n\nmoscow@ooospecmash.ru сот.: 8(996)146-23-51\n\n## Менеджеры (офис г. Курган)\n\nНеугодников Сергей Михайлович\n\nМенеджер по продажам\n\nkdm8@ooospecmash.ru  \n тел.: 8(3522)44-35-54   \n сот.: 8(992)428-03-78\n\nБеляева Анастасия Викторовна [...] ## Маркетинг\n\nБазанов Александр Андреевич\n\nИнтернет-маркетолог\n\nmarketing@ooospecmash.ru  \n тел.: 8(3522)44-35-54\n\n## Отдел снабжения\n\nБаранов Иван Вадимович\n\nЗаведующий складским хозяйством\n\nsnab@ooospecmash.ru  \n тел.: 8(3522)44-35-54   \n сот.: 8(992)427-88-67\n\nЗапросить цену\n\n×",
+          "source_label": "tavily",
+          "score": 0.8565368,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "ООО \"СПЕЦМАШ-СНГ\" - Курган ИНН ░░░░░░░░░░",
+          "url": "https://vsem-podryad.ru/company/d37abc5b-8e9b-4418-aa05-2e06098f4983?backUrl=%2Fpurchases%2F%25D0%25A5%25D0%25B0%25D0%25BD%25D1%2582%25D1%258B-%25D0%259C%25D0%25B0%25D0%25BD%25D1%2581%25D0%25B8%25D0%25B9%25D1%2581%25D0%25BA%25D0%25B8%25D0%25B9%2520%25D0%25B0%25D0%25B2%25D1%2582%25D0%25BE%25D0%25BD%25D0%25BE%25D0%25BC%25D0%25BD%25D1%258B%25D0%25B9%2520%25D0%25BE%25D0%25BA%25D1%2580%25D1%2583%25D0%25B3%2F%25D0%259F%25D0%25BE%25D1%2581%25D1%2582%25D0%25B0%25D0%25B2%25D0%25BA%25D0%25B0%2520%25D1%2581%25D1%2582%25D1%2580%25D0%25BE%25D0%25B8%25D1%2582%25D0%25B5%25D0%25BB%25D1%258C%25D0%25BD%25D1%258B%25D1%2585%2520%25D0%25BC%25D0%25B0%25D1%2582%25D0%25B5%25D1%2580%25D0%25B8%25D0%25B0%25D0%25BB%25D0%25BE%25D0%25B2%2F",
+          "snippet": "ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ \"СПЕЦМАШ-СНГ\" находится в Курганской области по адресу 6░░░░░, ░░░░░░░░░░ ░░░░░░░, ░. ░░░░░░, ░░. ░░░░░░, ░░░. ░░░░/░, ░░░░ ░░2. Статус организации: Действующая. Руководитель: Казанцев Пётр Юрьевич. Основной вид деятельности организации - Торговля оптовая автомобильными деталями, узлами и принадлежностями, также ООО \"СПЕЦМАШ-СНГ\" работает по следующим направлениям: Производство прочих комплектующих и принадлежностей для автотранспортных средств, Торговля [...] Юридический адрес\n\n6░░░░░, ░░░░░░░░░░ ░░░░░░░, ░. ░░░░░░, ░░. ░░░░░░, ░░░. ░░░░/░, ░░░░ ░░2\n\nСтатус\n\nДействующая\n\nУставный капитал\n\n25 000,00 ₽\n\nАватар\n\nГенеральный Директор\n\nКазанцев Пётр Юрьевич\n\nПросмотр контактов компании\n\n#### Проверка рисков\n\nЭтот функционал готовится к запуску! Помогите нам сделать его максимально полезным для вас.\n\n## Показатели надежности\n\n ### Негативные\n 1\n\n  ### Требуют внимания\n ### Благоприятные\n\n1 [...] Отсутствует информация о записях в реестре недобросовестных поставщиков.\n\n### Реестр квалифицированных подрядных организаций Не числится\n\nОтсутствует информация о записях в реестре квалифицированных подрядных организаций.\n\n## Контакты\n\nОбщие контакты \n\n15  контактов\n\n8352░░░░░░░\n\n44░░░░\n\n7352░░░░░░░\n\n7963░░░░░░░\n\n7352░░░░░░░\n\n7908░░░░░░░\n\nt░░░░@o░░░░░░░░░h.ru\n\n4░░░░░@l░░t.ru\n\nk░░░@o░░░░░░░░░h.ru\n\ns░░░░░░░░@m░░l.ru\n\nl░░░░░@o░░░░░░░░░h.ru\n\n4░░░░░@m░░l.ru\n\nd░░░░░░░░@o░░░░░░░░░h.ru",
+          "source_label": "tavily",
+          "score": 0.77137923,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "РЕКВИЗИТЫ │ СПЕЦМАШ-СНГ",
+          "url": "https://smsng.ru/%D1%80%D0%B5%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%82%D1%8B",
+          "snippet": "#### Адрес:\n\n##### 690034, Приморский край, г. Владивосток, ул. Кочубея, 1\n\n#### Телефон:\n\n##### 8(994)004-7088\n\n#### Офис СПЕЦМАШ-СНГ г. Щёлково\n\n#### Адрес:\n\n##### 141108, Московская область, г. Щёлково, ул. Фабричная, д. 1, корпус 1. офис 307\n\n#### Телефон:\n\n##### +7 996 146 23 51\n\n#### Генеральный директор\n\n##### Казанцев Петр Юрьевич, действующий на основании Устава\n\n#### Главный бухгалтер\n\n##### Мальцева Марина Сергеевна\n\nСкачать карточку предприятия в файле Word [...] #### Телефон\n\n##### 8(3522)44-35-54\n\n#### E-mail\n\n##### 443554@list.ru\n\n#### Почтовый адрес\n\n##### 640011 г. Курган а/я 1660\n\n#### Обособленное подразделение СПЕЦМАШ-СНГ г. Тюмень\n\n#### ИНН / КПП\n\n##### 4501211063 / 720345001\n\n#### Адрес:\n\n##### 625019, г. Тюмень, ул. Новаторов, д.3А, оф.206\n\n#### Телефон\n\n##### 8(3452)51-87-70\n\n#### Обособленное подразделение СПЕЦМАШ-СНГ г. Владивосток\n\n#### ИНН / КПП\n\n##### 4501211063 / 253645001\n\n#### Адрес: [...] Перейти к содержимому\n\nтел.: 8(3452)51-87-70 г. Тюмень, тел.: 8(3522)44-35-54 г. Курган, сот.: 8(994)004-7088 г. Владивосток, сот.: 8(996)146-23-51 г. Щёлково\n\nлого спецмаш-снг\n\n# РЕКВИЗИТЫ КОМПАНИИ ООО \"СПЕЦМАШ-СНГ\"\n\n## При оформлении документов и оплаты счетов использовать следующие реквизиты:\n\n#### Полное наименование:\n\n##### Общество с ограниченной ответственностью \"СПЕЦМАШ-СНГ\"\n\n#### Сокращенное наименование:\n\n##### ООО \"СПЕЦМАШ-СНГ\"\n\n#### Юридический адрес:",
+          "source_label": "tavily",
+          "score": 0.6994397,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Отдел логистики │ СПЕЦМАШ-СНГ",
+          "url": "https://smsng.ru/otdel-logistiki",
+          "snippet": "Перейти к содержимому\n\nтел.: 8(3452)51-87-70 г. Тюмень, тел.: 8(3522)44-35-54 г. Курган, сот.: 8(994)004-7088 г. Владивосток, сот.: 8(996)146-23-51 г. Щёлково\n\nлого спецмаш-снг\n\n# Отдел логистики\n\nОСНОВНАЯ ИНФОРМАЦИЯ\n\nКОММЕРЧЕСКИЙ ОТДЕЛ\n\nОТДЕЛ ЛОГИСТИКИ\n\nОТДЕЛ БУХГАЛТЕРИИ\n\n## Руководитель отдела логистики\n\nИванова Олеся Евгеньевна\n\nРуководитель отдела логистики\n\nlogist@ooospecmash.ru  \n тел.: 8(3522)44-35-54 (вн.106)  \n сот.: 8(996)141-54-05\n\n## Логисты\n\nМенщикова Екатерина Сергеевна\n\nЛогист",
+          "source_label": "tavily",
+          "score": 0.6083387,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "КОНТАКТЫ │ СПЕЦМАШ-СНГ",
+          "url": "https://smsng.ru/contact-us",
+          "snippet": "Перейти к содержимому\n\nтел.: 8(3452)51-87-70 г. Тюмень, тел.: 8(3522)44-35-54 г. Курган, сот.: 8(994)004-7088 г. Владивосток, сот.: 8(996)146-23-51 г. Щёлково\n\nлого спецмаш-снг\n\n# Контакты\n\nОСНОВНАЯ ИНФОРМАЦИЯ\n\nКОММЕРЧЕСКИЙ ОТДЕЛ\n\nОТДЕЛ ЛОГИСТИКИ\n\nОТДЕЛ БУХГАЛТЕРИИ\n\n## КОНТАКТЫ ДЛЯ СВЯЗИ\n\nТел.: 8(3522)44-35-54, г. Курган\n\nТел.: 8(3452)51-87-70, г. Тюмень\n\nТел. сот.: 8-994-004-70-88, г. Владивосток\n\nТел. сот.: 8-996-146-23-51 , г. Щёлково\n\nE-mail: 443554@list.ru\n\nКазанцев Петр Юрьевич [...] Генеральный директор\n\nТел.: 8(3522)44-35-54 (вн.102)\n\nE-mail: 600856@ooospecmash.ru\n\n## ВРЕМЯ РАБОТЫ\n\nc 08:00 — 17:00, выходной: сб — вс\n\n## Схемы проезда\n\n640007, г. Курган, ул. Омская, стр. 145В/1, офис 312\n\n625014, г. Тюмень, ул. Новаторов, д.3-А, офис 206\n\n690034, г. Владивосток, ул. Кочубея, д.1, офис 6\n\n141108, Московская область, г. Щёлково, ул. Фабричная, д. 1, корпус 1. офис 307\n\nкурган\n\nадрес\n\nмосква\n\nРаспечатать контакты\n\nЗапросить цену\n\n×",
+          "source_label": "tavily",
+          "score": 0.5973971,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"Спецмаш-Снг\" директор OR коммерческий директор OR руководитель отдела продаж site:dorzap.ru OR site:smsng.ru",
+      "focus": "руководящие лица компании",
+      "purpose": "Прямой поиск ФИО и должностей, связанных с управлением продажами или компанией",
+      "results": [
+        {
+          "url": "https://smsng.ru/otdel-prodazh",
+          "title": "Отдел продаж │ СПЕЦМАШ-СНГ",
+          "snippet": "Перейти к содержимому\n\nтел.: 8(3452)51-87-70 г. Тюмень, тел.: 8(3522)44-35-54 г. Курган, сот.: 8(994)004-7088 г. Владивосток, сот.: 8(996)146-23-51 г. Щёлково\n\nлого спецмаш-снг\n\n# Отдел продаж\n\nОСНОВНАЯ ИНФОРМАЦИЯ\n\nКОММЕРЧЕСКИЙ ОТДЕЛ\n\nОТДЕЛ ЛОГИСТИКИ\n\nОТДЕЛ БУХГАЛТЕРИИ\n\n## Руководители отдела продаж\n\nПолькин Дмитрий Геннадьевич\n\nКоммерческий директор\n\ndm.polkin@ooospecmash.ru  \n тел.: 8(3522)44-35-54 (вн.121)  \n сот.: 8(908)835-12-22\n\nБухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень [...] t",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://vsem-podryad.ru/company/d37abc5b-8e9b-4418-aa05-2e06098f4983?backUrl=%2Fpurchases%2F%25D0%25A5%25D0%25B0%25D0%25BD%25D1%2582%25D1%258B-%25D0%259C%25D0%25B0%25D0%25BD%25D1%2581%25D0%25B8%25D0%25B9%25D1%2581%25D0%25BA%25D0%25B8%25D0%25B9%2520%25D0%25B0%25D0%25B2%25D1%2582%25D0%25BE%25D0%25BD%25D0%25BE%25D0%25BC%25D0%25BD%25D1%258B%25D0%25B9%2520%25D0%25BE%25D0%25BA%25D1%2580%25D1%2583%25D0%25B3%2F%25D0%259F%25D0%25BE%25D1%2581%25D1%2582%25D0%25B0%25D0%25B2%25D0%25BA%25D0%25B0%2520%25D1%2581%25D1%2582%25D1%2580%25D0%25BE%25D0%25B8%25D1%2582%25D0%25B5%25D0%25BB%25D1%258C%25D0%25BD%25D1%258B%25D1%2585%2520%25D0%25BC%25D0%25B0%25D1%2582%25D0%25B5%25D1%2580%25D0%25B8%25D0%25B0%25D0%25BB%25D0%25BE%25D0%25B2%2F",
+          "title": "ООО \"СПЕЦМАШ-СНГ\" - Курган ИНН ░░░░░░░░░░",
+          "snippet": "ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ \"СПЕЦМАШ-СНГ\" находится в Курганской области по адресу 6░░░░░, ░░░░░░░░░░ ░░░░░░░, ░. ░░░░░░, ░░. ░░░░░░, ░░░. ░░░░/░, ░░░░ ░░2. Статус организации: Действующая. Руководитель: Казанцев Пётр Юрьевич. Основной вид деятельности организации - Торговля оптовая автомобильными деталями, узлами и принадлежностями, также ООО \"СПЕЦМАШ-СНГ\" работает по следующим направлениям: Производство прочих комплектующих и принадлежностей для автотранспортных средств, Торговля ",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://smsng.ru/%D1%80%D0%B5%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%82%D1%8B",
+          "title": "РЕКВИЗИТЫ │ СПЕЦМАШ-СНГ",
+          "snippet": "#### Адрес:\n\n##### 690034, Приморский край, г. Владивосток, ул. Кочубея, 1\n\n#### Телефон:\n\n##### 8(994)004-7088\n\n#### Офис СПЕЦМАШ-СНГ г. Щёлково\n\n#### Адрес:\n\n##### 141108, Московская область, г. Щёлково, ул. Фабричная, д. 1, корпус 1. офис 307\n\n#### Телефон:\n\n##### +7 996 146 23 51\n\n#### Генеральный директор\n\n##### Казанцев Петр Юрьевич, действующий на основании Устава\n\n#### Главный бухгалтер\n\n##### Мальцева Марина Сергеевна\n\nСкачать карточку предприятия в файле Word [...] #### Телефон\n\n##### ",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://smsng.ru/otdel-logistiki",
+          "title": "Отдел логистики │ СПЕЦМАШ-СНГ",
+          "snippet": "Перейти к содержимому\n\nтел.: 8(3452)51-87-70 г. Тюмень, тел.: 8(3522)44-35-54 г. Курган, сот.: 8(994)004-7088 г. Владивосток, сот.: 8(996)146-23-51 г. Щёлково\n\nлого спецмаш-снг\n\n# Отдел логистики\n\nОСНОВНАЯ ИНФОРМАЦИЯ\n\nКОММЕРЧЕСКИЙ ОТДЕЛ\n\nОТДЕЛ ЛОГИСТИКИ\n\nОТДЕЛ БУХГАЛТЕРИИ\n\n## Руководитель отдела логистики\n\nИванова Олеся Евгеньевна\n\nРуководитель отдела логистики\n\nlogist@ooospecmash.ru  \n тел.: 8(3522)44-35-54 (вн.106)  \n сот.: 8(996)141-54-05\n\n## Логисты\n\nМенщикова Екатерина Сергеевна\n\nЛогист",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://smsng.ru/contact-us",
+          "title": "КОНТАКТЫ │ СПЕЦМАШ-СНГ",
+          "snippet": "Перейти к содержимому\n\nтел.: 8(3452)51-87-70 г. Тюмень, тел.: 8(3522)44-35-54 г. Курган, сот.: 8(994)004-7088 г. Владивосток, сот.: 8(996)146-23-51 г. Щёлково\n\nлого спецмаш-снг\n\n# Контакты\n\nОСНОВНАЯ ИНФОРМАЦИЯ\n\nКОММЕРЧЕСКИЙ ОТДЕЛ\n\nОТДЕЛ ЛОГИСТИКИ\n\nОТДЕЛ БУХГАЛТЕРИИ\n\n## КОНТАКТЫ ДЛЯ СВЯЗИ\n\nТел.: 8(3522)44-35-54, г. Курган\n\nТел.: 8(3452)51-87-70, г. Тюмень\n\nТел. сот.: 8-994-004-70-88, г. Владивосток\n\nТел. сот.: 8-996-146-23-51 , г. Щёлково\n\nE-mail: 443554@list.ru\n\nКазанцев Петр Юрьевич [...] Генер",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 6944,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Спецмаш-Снг",
+        "domain": "dorzap.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137988890",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://dorzap.ru",
+            "kind": "page",
+            "text": "Мы с Вами: ЗАПАСНЫЕ ЧАСТИ И КОМПЛЕКТУЮЩИЕ ДЛЯ СПЕЦТЕХНИКИ КАТАЛОГ ЗАПЧАСТЕЙ Искать × ЗАПЧАСТИ ДЛЯ КОММУНАЛЬНЫХ МАШИН КОМБИНИРОВАННЫХ ДОРОЖНЫХ МАШИН ВАКУУМНЫХ МАШИН ИЛОСОСНЫХ МАШИН КАНАЛОПРОМЫВОЧНЫХ МАШИН ПОДМЕТАЛЬНО-УБОРОЧНЫХ МАШИН МУСОРОВОЗОВ СНЕГОПОГРУЗЧИКОВ ЗАПЧАСТИ ДЛЯ ДОРОЖНО-СТРОИТЕЛЬНЫХ МАШИН АВТОГУДРОНАТОРОВ ГРЕЙДЕРОВ МКСМ ДОРОЖНЫХ КАТКОВ БОЛЬШИХ ДОРОЖНЫХ ФРЕЗ БЕЦЕМА АСФАЛЬТОУКЛАДЧИКОВ РЕСАЙКЛЕРОВ ЗАПЧАСТИ ДЛЯ НАВЕСНОГО ОБОРУДОВАНИЯ НА МТЗ ЩЕТОЧНОГО ОБОРУДОВАНИЯ ДОРОЖНЫХ ФРЕЗ КОСИЛОК, МУЛЬЧЕРОВ БАРОВЫХ МАШИН СНЕГООЧИСТИТЕЛЕЙ ИЗМЕЛЬЧИТЕЛЕЙ ВЕТОК ОТВАЛЫ МТЗ ГИДРОХОДОУМЕНЬШИТЕЛИ (ГХУ) ПОЛИВОМОЕЧНЫЕ ПРИЦЕПЫ РАСХОДНЫЕ КОМПЛЕКТУЮЩИЕ ДИСКИ ЩЕТОЧНЫЕ, ЛОТКОВЫЕ И ПРОЧЕЕ ГРЕЙДЕРНЫЕ НОЖИ ТЕХПЛАСТИНЫ ДОРОЖНЫЕ РЕЗЦЫ ПОДШИПНИКИ МАТЫ ЖИВОТНОВОДЧЕСКИЕ НОЖИ НА КОВШИ ПОГРУЗЧИКОВ ГИДРАВЛИКА ГИДРОВРАЩАТЕЛИ ГИДРОМОТОРЫ, ГИДРОНАСОСЫ ГИДРОРАСПРЕДЕЛИТЕЛИ ГИДРОЗАМКИ, БРС ДЕЛИТЕЛИ, РЕГУЛЯТОРЫ, КЛАПАНА, ГИДРАВЛИЧЕСКИЕ КРАНЫ ЗАПЧАСТИ ДЛЯ ШНЕКОРОТОРНОГО СНЕГООЧИСТИТЕЛЯ ДЭ-226 (АМКОДОР 9531) ЗАПЧАСТИ ДЛЯ ШНЕКОРОТОРНОГО СНЕГООЧИСТИТЕЛЯ ДЭ-226 (АМКОДОР 9531) ГАРАНТИЯ Мы предоставляем на всю продукцию гарантию от производителей БЫСТРАЯ ДОСТАВКА Осуществим оперативно быструю доставку в любой регион РФ и СНГ НАШИ СПЕЦИАЛИСТЫ Наши специалисты помогут подобрать запчасти для Вашей спецтехники СКЛАД На нашем складе всегда есть необходимые запчасти для Вашего заказа Цепь со скребками ДМК (А-16х48, L-12 м.; 24 усиленных скребков L=450) Запасные части ДМК-40, ДМК-70, ДМК-65 ОАО \"КОРМЗ\" Кемерово Оценка 0 из 5 Вал ведомый ПС-51.03.002 (голый вал L=800) (под ПР-50.8 с удлиненными осями, под пластинчатую цепь) Запасные части ЭД-405, ЭД-226, ЭД-224, КДМ-130, Пескоразбрасыватели ПС-90 ОАО \"Завод КДМ им. М.И. Калинина (Смоленск) Оценка 0 из 5 Гидроцилиндр бокового отвала КГС-80.50.590.1450.11.000 Запасные части МД-433, МД-532, МД-43253, МД-651 Кургандормаш Оценка 0 из 5 Подшипниковый узел UCPA-208 FBC ПОДШИПНИКИ Оценка 0 из 5 Установка цистерны КО-512.73.00.000Z Запасные части на каналопромывочные машины КО-514, КО-512, КО-502 Оценка 0 из 5 Крышка ролика КО-105.08.00.001 Запасные части КО-713, КО-823, КО-806 Мценск Оценка 0 из 5 НАШ ДЗЕН КАНАЛ ПЕРЕЙТИ ЗАКАЗАТЬ ЗАПЧАСТИ ДЛЯ СПЕЦТЕХНИКИ Ваше имя E-mail Ваш номер телефона Сообщение Отправляя данную форму, вы соглашаетесь с политикой конфиденциальности и пользовательским соглашением © 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта",
+            "links": [
+              {
+                "url": "https://dorzap.ru",
+                "label": "Перейти к содержимому"
+              },
+              {
+                "url": "https://dorzap.ru/lichnyj-kabinet",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/korzina",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog",
+                "label": "КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika",
+                "label": "ГИДРАВЛИЧЕСКОЕ ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika/gidrovraschateli",
+                "label": "ГИДРОВРАЩАТЕЛИ"
+              },
+              {
+                "url": "https://smsng.ru",
+                "label": "ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/eskizi",
+                "label": "Эскизы для заказа нестандартных изделий"
+              },
+              {
+                "url": "https://dorzap.ru/contacts",
+                "label": "КОНТАКТЫ"
+              },
+              {
+                "url": "https://dorzap.ru/promo",
+                "label": "АКЦИИ"
+              },
+              {
+                "url": "https://dorzap.ru/o-kompanii",
+                "label": "О КОМПАНИИ"
+              },
+              {
+                "url": "https://dorzap.ru/oplata-dostavka",
+                "label": "Оплата и доставка"
+              },
+              {
+                "url": "https://dorzap.ru/faq",
+                "label": "Вопрос-ответ"
+              },
+              {
+                "url": "https://dorzap.ru/otzyvy",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://dorzap.ru/licenzii",
+                "label": "Сертификаты и лицензии"
+              },
+              {
+                "url": "https://dorzap.ru/partnery",
+                "label": "Заказчики и партнеры"
+              },
+              {
+                "url": "https://dorzap.ru/garantija",
+                "label": "Гарантия"
+              },
+              {
+                "url": "https://dorzap.ru/reqvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://sm-k.clientbase.ru/fields.php?table=830&sort_by=14430",
+                "label": "Информация для аукционов"
+              },
+              {
+                "url": "https://dorzap.ru/vakansii",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://wa.me/79924245579",
+                "label": "Whatsapp"
+              },
+              {
+                "url": "https://dorzap.ru/product/czep-so-skrebkami-dmk-a-16h48-l-12-m-24-usilennyh-skrebkov-l450",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/product/val-vedomyj-ps-51-03-002-golyj-val-l800",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/product/gidroczilindr-bokovogo-otvala-kgs-80-50-590-1450-11-000",
+                "label": ""
+              },
+              {
+                "url": "https://dzen.ru/id/6237f5700ee50c7a0288b7af?ysclid=m521q0nmmx741067455",
+                "label": "НАШ ДЗЕН КАНАЛ ПЕРЕЙТИ"
+              },
+              {
+                "url": "https://dorzap.ru/politika",
+                "label": "политикой конфиденциальности"
+              },
+              {
+                "url": "http://dorzap.ru/wp-content/uploads/2023/01/polzovatelskoe-soglashenie.docx",
+                "label": "пользовательским соглашением"
+              },
+              {
+                "url": "https://dorzap.ru/sitemap",
+                "label": "Карта сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:12:38.418Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://dorzap.ru/o-kompanii/",
+            "kind": "page",
+            "text": "ООО «СПЕЦМАШ-СНГ» — Надежный поставщик запчастей и оборудования для коммунальной, дорожно-строительной техники. Осуществляем поставку по всей РФ и СНГ. Имеются собственные склады в г. Кургане и в г. Тюмени. Широкий выбор расходных комплектующих. В том осуществляем продажу навесного и прицепного оборудования для тракторов МТЗ («Беларус»). Большой опыт участия в государственных контрактах. В числе наших контрагентов есть такие крупные предприятия, как «Сургутнефтегаз», АО «ТОДЭП», АО «Свердловскавтодор», АО «ГК Северавтодор» и многие другие от Калининграда до Камчатки. © 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта",
+            "links": [
+              {
+                "url": "https://dorzap.ru/o-kompanii",
+                "label": "Перейти к содержимому"
+              },
+              {
+                "url": "https://dorzap.ru/lichnyj-kabinet",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/korzina",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru",
+                "label": "ГЛАВНАЯ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog",
+                "label": "КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika",
+                "label": "ГИДРАВЛИЧЕСКОЕ ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika/gidrovraschateli",
+                "label": "ГИДРОВРАЩАТЕЛИ"
+              },
+              {
+                "url": "https://smsng.ru",
+                "label": "ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/eskizi",
+                "label": "Эскизы для заказа нестандартных изделий"
+              },
+              {
+                "url": "https://dorzap.ru/contacts",
+                "label": "КОНТАКТЫ"
+              },
+              {
+                "url": "https://dorzap.ru/promo",
+                "label": "АКЦИИ"
+              },
+              {
+                "url": "https://dorzap.ru/oplata-dostavka",
+                "label": "Оплата и доставка"
+              },
+              {
+                "url": "https://dorzap.ru/faq",
+                "label": "Вопрос-ответ"
+              },
+              {
+                "url": "https://dorzap.ru/otzyvy",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://dorzap.ru/licenzii",
+                "label": "Сертификаты и лицензии"
+              },
+              {
+                "url": "https://dorzap.ru/partnery",
+                "label": "Заказчики и партнеры"
+              },
+              {
+                "url": "https://dorzap.ru/garantija",
+                "label": "Гарантия"
+              },
+              {
+                "url": "https://dorzap.ru/reqvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://sm-k.clientbase.ru/fields.php?table=830&sort_by=14430",
+                "label": "Информация для аукционов"
+              },
+              {
+                "url": "https://dorzap.ru/vakansii",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://wa.me/79924245579",
+                "label": "Whatsapp"
+              },
+              {
+                "url": "https://dorzap.ru/sitemap",
+                "label": "Карта сайта"
+              },
+              {
+                "url": "https://dorzap.ru/politika",
+                "label": "политикой конфиденциальности"
+              },
+              {
+                "url": "http://dorzap.ru/wp-content/uploads/2023/01/polzovatelskoe-soglashenie.docx",
+                "label": "пользовательским соглашением"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:12:44.738Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://dorzap.ru/contacts/",
+            "kind": "page",
+            "text": "КОНТАКТЫ Адрес ЗАПАСНЫЕ ЧАСТИ И КОМПЛЕКТУЮЩИЕ ДЛЯ СПЕЦТЕХНИКИ 625019, г. Тюмень, ул. Новаторов, д.3а, оф.206 640007, г. Курган, ул. Омская, д.145/1, оф.305 690030, г. Владивосток, ул. Кочубея, д.1, оф.6 141108, Московская область, г. Щёлково, ул. Фабричная, д. 1, корпус 1. офис 307 Время работы С понедельника по пятницу с 08:00 — 17:00 Выходной: суббота, воскресенье Контакты для связи сот.: +7 908 835-12-22 (г. Курган) тел.: 8(3452)51-87-70 (г. Тюмень) сот.: 8(994)00-47-088 (г. Владивосток) сот.: 8(996)146-23-51 (г. Щёлково) Оставить Вашу заявку можете на эл. почту: dorzap@list.ru Vk Youtube ФОРМА ОБРАТНОЙ СВЯЗИ Ваше имя E-mail Ваш номер телефона Сообщение Отправляя данную форму, вы соглашаетесь с политикой конфиденциальности и пользовательским соглашением ЗАПАСНЫЕ ЧАСТИ И КОМПЛЕКТУЮЩИЕ ДЛЯ СПЕЦТЕХНИКИ 625019 , г. Тюмень , ул. Новаторов, д.3а, оф.206 640007 , г. Курган , ул. Омская, д.145/1, оф.305 +7 992 427-73-27 , +7 909 191-14-27 , 8(3452)51-87-70 dorzap@list.ru © 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта",
+            "links": [
+              {
+                "url": "https://dorzap.ru/contacts",
+                "label": "Перейти к содержимому"
+              },
+              {
+                "url": "https://dorzap.ru/lichnyj-kabinet",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/korzina",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru",
+                "label": "ГЛАВНАЯ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog",
+                "label": "КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika",
+                "label": "ГИДРАВЛИЧЕСКОЕ ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika/gidrovraschateli",
+                "label": "ГИДРОВРАЩАТЕЛИ"
+              },
+              {
+                "url": "https://smsng.ru",
+                "label": "ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/eskizi",
+                "label": "Эскизы для заказа нестандартных изделий"
+              },
+              {
+                "url": "https://dorzap.ru/promo",
+                "label": "АКЦИИ"
+              },
+              {
+                "url": "https://dorzap.ru/o-kompanii",
+                "label": "О КОМПАНИИ"
+              },
+              {
+                "url": "https://dorzap.ru/oplata-dostavka",
+                "label": "Оплата и доставка"
+              },
+              {
+                "url": "https://dorzap.ru/faq",
+                "label": "Вопрос-ответ"
+              },
+              {
+                "url": "https://dorzap.ru/otzyvy",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://dorzap.ru/licenzii",
+                "label": "Сертификаты и лицензии"
+              },
+              {
+                "url": "https://dorzap.ru/partnery",
+                "label": "Заказчики и партнеры"
+              },
+              {
+                "url": "https://dorzap.ru/garantija",
+                "label": "Гарантия"
+              },
+              {
+                "url": "https://dorzap.ru/reqvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://sm-k.clientbase.ru/fields.php?table=830&sort_by=14430",
+                "label": "Информация для аукционов"
+              },
+              {
+                "url": "https://dorzap.ru/vakansii",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://wa.me/79924245579",
+                "label": "Whatsapp"
+              },
+              {
+                "url": "https://vk.com/ooospecmashsng",
+                "label": "Vk"
+              },
+              {
+                "url": "https://www.youtube.com/channel/UCs4ETN8epUV_qwFkyPPKg3g/videos",
+                "label": "Youtube"
+              },
+              {
+                "url": "https://dorzap.ru/politika",
+                "label": "политикой конфиденциальности"
+              },
+              {
+                "url": "http://dorzap.ru/wp-content/uploads/2023/01/polzovatelskoe-soglashenie.docx",
+                "label": "пользовательским соглашением"
+              },
+              {
+                "url": "https://dorzap.ru/sitemap",
+                "label": "Карта сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:12:44.875Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://dorzap.ru/vakansii/",
+            "kind": "page",
+            "text": "Привет! Нам требуется менеджер активных продаж Дорожного и Коммунального оборудования, а также запчастей. У тебя будет возможность зарабатывать столько, сколько нужно, у нас нет «потолка» по заработной плате. Что тебя ждет? Система обучения : видео обучение + наставники + коллеги. Результат — отличное знание продукта и техники продаж Комфортный офис, оплачиваемая связь, работа в дружном коллективе с адекватным руководством. Заработная плата два раза в месяц, график 5/2 с 8,00- до 17,00 Что нужно делать: Работать с уже существующими клиентами (юридические лица, индивидуальные предприниматели) + обработка входящего трафика. Совершение звонков по готовой базе клиентов; Отслеживание дебиторской задолженности. Подготовка коммерческих предложение, выставление счетов, заключение договоров Требования: Стабильность на рабочем месте Работать в режиме многозадачности Изучение рекламного материала компании Работа в почте , мессенджерах , деловая переписка Не сомневайся, оставь свой отклик! Поговорим! © 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта",
+            "links": [
+              {
+                "url": "https://dorzap.ru/vakansii",
+                "label": "Перейти к содержимому"
+              },
+              {
+                "url": "https://dorzap.ru/lichnyj-kabinet",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/korzina",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru",
+                "label": "ГЛАВНАЯ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog",
+                "label": "КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika",
+                "label": "ГИДРАВЛИЧЕСКОЕ ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika/gidrovraschateli",
+                "label": "ГИДРОВРАЩАТЕЛИ"
+              },
+              {
+                "url": "https://smsng.ru",
+                "label": "ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/eskizi",
+                "label": "Эскизы для заказа нестандартных изделий"
+              },
+              {
+                "url": "https://dorzap.ru/contacts",
+                "label": "КОНТАКТЫ"
+              },
+              {
+                "url": "https://dorzap.ru/promo",
+                "label": "АКЦИИ"
+              },
+              {
+                "url": "https://dorzap.ru/o-kompanii",
+                "label": "О КОМПАНИИ"
+              },
+              {
+                "url": "https://dorzap.ru/oplata-dostavka",
+                "label": "Оплата и доставка"
+              },
+              {
+                "url": "https://dorzap.ru/faq",
+                "label": "Вопрос-ответ"
+              },
+              {
+                "url": "https://dorzap.ru/otzyvy",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://dorzap.ru/licenzii",
+                "label": "Сертификаты и лицензии"
+              },
+              {
+                "url": "https://dorzap.ru/partnery",
+                "label": "Заказчики и партнеры"
+              },
+              {
+                "url": "https://dorzap.ru/garantija",
+                "label": "Гарантия"
+              },
+              {
+                "url": "https://dorzap.ru/reqvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://sm-k.clientbase.ru/fields.php?table=830&sort_by=14430",
+                "label": "Информация для аукционов"
+              },
+              {
+                "url": "https://wa.me/79924245579",
+                "label": "Whatsapp"
+              },
+              {
+                "url": "https://dorzap.ru/sitemap",
+                "label": "Карта сайта"
+              },
+              {
+                "url": "https://dorzap.ru/politika",
+                "label": "политикой конфиденциальности"
+              },
+              {
+                "url": "http://dorzap.ru/wp-content/uploads/2023/01/polzovatelskoe-soglashenie.docx",
+                "label": "пользовательским соглашением"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:12:52.154Z",
+            "id": "e4"
+          },
+          {
+            "url": "https://smsng.ru/otdel-prodazh",
+            "kind": "search",
+            "text": "Отдел продаж │ СПЕЦМАШ-СНГ\nПерейти к содержимому\n\nтел.: 8(3452)51-87-70 г. Тюмень, тел.: 8(3522)44-35-54 г. Курган, сот.: 8(994)004-7088 г. Владивосток, сот.: 8(996)146-23-51 г. Щёлково\n\nлого спецмаш-снг\n\n# Отдел продаж\n\nОСНОВНАЯ ИНФОРМАЦИЯ\n\nКОММЕРЧЕСКИЙ ОТДЕЛ\n\nОТДЕЛ ЛОГИСТИКИ\n\nОТДЕЛ БУХГАЛТЕРИИ\n\n## Руководители отдела продаж\n\nПолькин Дмитрий Геннадьевич\n\nКоммерческий директор\n\ndm.polkin@ooospecmash.ru  \n тел.: 8(3522)44-35-54 (вн.121)  \n сот.: 8(908)835-12-22\n\nБухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень [...] tumen1@ooospecmash.ru  \n тел.: 8(3452)51-87-70  \n сот.: 8(909)191-14-27\n\nСолдатенков Илья Михайлович\n\nРуководитель ОП г. Владивосток\n\nvladivostok1@ooospecmash.ru  \n сот.: 8(994)004-70-88\n\nЧерных Александр Владимирович\n\nРуководитель ОП г. Щёлково (Московская область)\n\nmoscow@ooospecmash.ru сот.: 8(996)146-23-51\n\n## Менеджеры (офис г. Курган)\n\nНеугодников Сергей Михайлович\n\nМенеджер по продажам\n\nkdm8@ooospecmash.ru  \n тел.: 8(3522)44-35-54   \n сот.: 8(992)428-03-78\n\nБеляева Анастасия Викторовна [...] ## Маркетинг\n\nБазанов Александр Андреевич\n\nИнтернет-маркетолог\n\nmarketing@ooospecmash.ru  \n тел.: 8(3522)44-35-54\n\n## Отдел снабжения\n\nБаранов Иван Вадимович\n\nЗаведующий складским хозяйством\n\nsnab@ooospecmash.ru  \n тел.: 8(3522)44-35-54   \n сот.: 8(992)427-88-67\n\nЗапросить цену\n\n×",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:12:55.162Z",
+            "id": "e5"
+          },
+          {
+            "url": "https://vsem-podryad.ru/company/d37abc5b-8e9b-4418-aa05-2e06098f4983?backUrl=%2Fpurchases%2F%25D0%25A5%25D0%25B0%25D0%25BD%25D1%2582%25D1%258B-%25D0%259C%25D0%25B0%25D0%25BD%25D1%2581%25D0%25B8%25D0%25B9%25D1%2581%25D0%25BA%25D0%25B8%25D0%25B9%2520%25D0%25B0%25D0%25B2%25D1%2582%25D0%25BE%25D0%25BD%25D0%25BE%25D0%25BC%25D0%25BD%25D1%258B%25D0%25B9%2520%25D0%25BE%25D0%25BA%25D1%2580%25D1%2583%25D0%25B3%2F%25D0%259F%25D0%25BE%25D1%2581%25D1%2582%25D0%25B0%25D0%25B2%25D0%25BA%25D0%25B0%2520%25D1%2581%25D1%2582%25D1%2580%25D0%25BE%25D0%25B8%25D1%2582%25D0%25B5%25D0%25BB%25D1%258C%25D0%25BD%25D1%258B%25D1%2585%2520%25D0%25BC%25D0%25B0%25D1%2582%25D0%25B5%25D1%2580%25D0%25B8%25D0%25B0%25D0%25BB%25D0%25BE%25D0%25B2%2F",
+            "kind": "search",
+            "text": "ООО \"СПЕЦМАШ-СНГ\" - Курган ИНН ░░░░░░░░░░\nОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ \"СПЕЦМАШ-СНГ\" находится в Курганской области по адресу 6░░░░░, ░░░░░░░░░░ ░░░░░░░, ░. ░░░░░░, ░░. ░░░░░░, ░░░. ░░░░/░, ░░░░ ░░2. Статус организации: Действующая. Руководитель: Казанцев Пётр Юрьевич. Основной вид деятельности организации - Торговля оптовая автомобильными деталями, узлами и принадлежностями, также ООО \"СПЕЦМАШ-СНГ\" работает по следующим направлениям: Производство прочих комплектующих и принадлежностей для автотранспортных средств, Торговля [...] Юридический адрес\n\n6░░░░░, ░░░░░░░░░░ ░░░░░░░, ░. ░░░░░░, ░░. ░░░░░░, ░░░. ░░░░/░, ░░░░ ░░2\n\nСтатус\n\nДействующая\n\nУставный капитал\n\n25 000,00 ₽\n\nАватар\n\nГенеральный Директор\n\nКазанцев Пётр Юрьевич\n\nПросмотр контактов компании\n\n#### Проверка рисков\n\nЭтот функционал готовится к запуску! Помогите нам сделать его максимально полезным для вас.\n\n## Показатели надежности\n\n ### Негативные\n 1\n\n  ### Требуют внимания\n ### Благоприятные\n\n1 [...] Отсутствует информация о записях в реестре недобросовестных поставщиков.\n\n### Реестр квалифицированных подрядных организаций Не числится\n\nОтсутствует информация о записях в реестре квалифицированных подрядных организаций.\n\n## Контакты\n\nОбщие контакты \n\n15  контактов\n\n8352░░░░░░░\n\n44░░░░\n\n7352░░░░░░░\n\n7963░░░░░░░\n\n7352░░░░░░░\n\n7908░░░░░░░\n\nt░░░░@o░░░░░░░░░h.ru\n\n4░░░░░@l░░t.ru\n\nk░░░@o░░░░░░░░░h.ru\n\ns░░░░░░░░@m░░l.ru\n\nl░░░░░@o░░░░░░░░░h.ru\n\n4░░░░░@m░░l.ru\n\nd░░░░░░░░@o░░░░░░░░░h.ru",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:12:55.162Z",
+            "id": "e6"
+          },
+          {
+            "url": "https://smsng.ru/%D1%80%D0%B5%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%82%D1%8B",
+            "kind": "search",
+            "text": "РЕКВИЗИТЫ │ СПЕЦМАШ-СНГ\n#### Адрес:\n\n##### 690034, Приморский край, г. Владивосток, ул. Кочубея, 1\n\n#### Телефон:\n\n##### 8(994)004-7088\n\n#### Офис СПЕЦМАШ-СНГ г. Щёлково\n\n#### Адрес:\n\n##### 141108, Московская область, г. Щёлково, ул. Фабричная, д. 1, корпус 1. офис 307\n\n#### Телефон:\n\n##### +7 996 146 23 51\n\n#### Генеральный директор\n\n##### Казанцев Петр Юрьевич, действующий на основании Устава\n\n#### Главный бухгалтер\n\n##### Мальцева Марина Сергеевна\n\nСкачать карточку предприятия в файле Word [...] #### Телефон\n\n##### 8(3522)44-35-54\n\n#### E-mail\n\n##### 443554@list.ru\n\n#### Почтовый адрес\n\n##### 640011 г. Курган а/я 1660\n\n#### Обособленное подразделение СПЕЦМАШ-СНГ г. Тюмень\n\n#### ИНН / КПП\n\n##### 4501211063 / 720345001\n\n#### Адрес:\n\n##### 625019, г. Тюмень, ул. Новаторов, д.3А, оф.206\n\n#### Телефон\n\n##### 8(3452)51-87-70\n\n#### Обособленное подразделение СПЕЦМАШ-СНГ г. Владивосток\n\n#### ИНН / КПП\n\n##### 4501211063 / 253645001\n\n#### Адрес: [...] Перейти к содержимому\n\nтел.: 8(3452)51-87-70 г. Тюмень, тел.: 8(3522)44-35-54 г. Курган, сот.: 8(994)004-7088 г. Владивосток, сот.: 8(996)146-23-51 г. Щёлково\n\nлого спецмаш-снг\n\n# РЕКВИЗИТЫ КОМПАНИИ ООО \"СПЕЦМАШ-СНГ\"\n\n## При оформлении документов и оплаты счетов использовать следующие реквизиты:\n\n#### Полное наименование:\n\n##### Общество с ограниченной ответственностью \"СПЕЦМАШ-СНГ\"\n\n#### Сокращенное наименование:\n\n##### ООО \"СПЕЦМАШ-СНГ\"\n\n#### Юридический адрес:",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:12:55.162Z",
+            "id": "e7"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://dorzap.ru/contacts",
+            "focus": "контактные данные или сотрудники",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://dorzap.ru/o-kompanii",
+            "focus": "описание компании, команда",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://dorzap.ru/vakansii",
+            "focus": "имена нанимающих менеджеров или контакты в разделе Вакансии",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "\"Спецмаш-Снг\" директор OR коммерческий директор OR руководитель отдела продаж site:dorzap.ru OR site:smsng.ru",
+            "focus": "руководящие лица компании",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:smsng.ru"
+        ],
+        "budget": {
+          "roundsRemaining": 3,
+          "actionsRemaining": 6,
+          "searchRemaining": 7
+        }
+      },
+      "output": {
+        "companySummary": "ООО «СПЕЦМАШ-СНГ» — российская компания, крупный поставщик запчастей и оборудования для коммунальной и дорожно-строительной техники, работающая по всей РФ и СНГ. Основные офисы: Курган, Тюмень, Владивосток, Московская область. Подтвержден руководитель и профессиональный коммерческий блок. Явно занимаются активными продажами и регулярно нанимают продавцов.",
+        "missing": [
+          "Прямо на dorzap.ru не найдено имён руководства или владельца процесса найма/продаж.",
+          "Требуется подтвердить принадлежность e-mail к конкретному человеку (предпочтительно руководителю)."
+        ],
+        "people": [
+          {
+            "name": "Полькин Дмитрий Геннадьевич",
+            "role": "Коммерческий директор",
+            "relevance": 95,
+            "reason": "Коммерческий директор, отвечает за бизнес-процессы продаж на всей территории деятельности. В отрытом источнике прямо указан как руководитель отдела продаж.",
+            "citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "email",
+                "value": "dm.polkin@ooospecmash.ru",
+                "citation": {
+                  "sourceId": "e5",
+                  "quote": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор\n\ndm.polkin@ooospecmash.ru"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Бухвал Александр Сергеевич",
+            "role": "Руководитель ОП г. Тюмень",
+            "relevance": 75,
+            "reason": "Руководит обособленным подразделением в Тюмени. Может быть ЛПР для набора сотрудников в данном регионе.",
+            "citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "email",
+                "value": "tumen1@ooospecmash.ru",
+                "citation": {
+                  "sourceId": "e5",
+                  "quote": "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень [...] tumen1@ooospecmash.ru"
+                }
+              }
+            ]
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "dorzap.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники"
+            }
+          }
+        ],
+        "actions": [],
+        "sufficient": true,
+        "stopReason": "Есть подтверждённый руководитель коммерческого подразделения с личным e-mail, а также региональный руководитель с именным адресом — доступ достаточен для ЛПР по процессу продаж и найма."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "ООО «СПЕЦМАШ-СНГ» — российская компания, крупный поставщик запчастей и оборудования для коммунальной и дорожно-строительной техники, работающая по всей РФ и СНГ. Основные офисы: Курган, Тюмень, Владивосток, Московская область. Подтвержден руководитель и профессиональный коммерческий блок. Явно занимаются активными продажами и регулярно нанимают продавцов.",
+        "missing": [
+          "Прямо на dorzap.ru не найдено имён руководства или владельца процесса найма/продаж.",
+          "Требуется подтвердить принадлежность e-mail к конкретному человеку (предпочтительно руководителю)."
+        ],
+        "people": [
+          {
+            "name": "Полькин Дмитрий Геннадьевич",
+            "role": "Коммерческий директор",
+            "relevance": 95,
+            "reason": "Коммерческий директор, отвечает за бизнес-процессы продаж на всей территории деятельности. В отрытом источнике прямо указан как руководитель отдела продаж.",
+            "citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "email",
+                "value": "dm.polkin@ooospecmash.ru",
+                "citation": {
+                  "sourceId": "e5",
+                  "quote": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор\n\ndm.polkin@ooospecmash.ru"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Бухвал Александр Сергеевич",
+            "role": "Руководитель ОП г. Тюмень",
+            "relevance": 75,
+            "reason": "Руководит обособленным подразделением в Тюмени. Может быть ЛПР для набора сотрудников в данном регионе.",
+            "citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "email",
+                "value": "tumen1@ooospecmash.ru",
+                "citation": {
+                  "sourceId": "e5",
+                  "quote": "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень [...] tumen1@ooospecmash.ru"
+                }
+              }
+            ]
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "dorzap.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники"
+            }
+          }
+        ],
+        "actions": [],
+        "sufficient": true,
+        "stopReason": "Есть подтверждённый руководитель коммерческого подразделения с личным e-mail, а также региональный руководитель с именным адресом — доступ достаточен для ЛПР по процессу продаж и найма."
+      },
+      "validationErrors": [
+        "email_needs_fetched_page:Полькин Дмитрий Геннадьевич:dm.polkin@ooospecmash.ru",
+        "email_needs_fetched_page:Бухвал Александр Сергеевич:tumen1@ooospecmash.ru"
+      ],
+      "acceptedPeople": [
+        {
+          "full_name": "Полькин Дмитрий Геннадьевич",
+          "role_title": "Коммерческий директор",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 70,
+          "evidence": [
+            "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+          ],
+          "metadata": {
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "source_urls": [
+              "https://smsng.ru/otdel-prodazh"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+              }
+            ],
+            "semantic_role_relevance": 95,
+            "semantic_role_reason": "Коммерческий директор, отвечает за бизнес-процессы продаж на всей территории деятельности. В отрытом источнике прямо указан как руководитель отдела продаж.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "dorzap.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        {
+          "full_name": "Бухвал Александр Сергеевич",
+          "role_title": "Руководитель ОП г. Тюмень",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 70,
+          "evidence": [
+            "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+          ],
+          "metadata": {
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "source_urls": [
+              "https://smsng.ru/otdel-prodazh"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+              }
+            ],
+            "semantic_role_relevance": 75,
+            "semantic_role_reason": "Руководит обособленным подразделением в Тюмени. Может быть ЛПР для набора сотрудников в данном регионе.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "dorzap.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "dorzap.ru"
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 10768,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Спецмаш-Снг",
+        "domain": "dorzap.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137988890",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [
+          {
+            "name": "Полькин Дмитрий Геннадьевич",
+            "role": "Коммерческий директор",
+            "email": null,
+            "sources": [
+              "https://smsng.ru/otdel-prodazh"
+            ],
+            "citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+              }
+            ]
+          },
+          {
+            "name": "Бухвал Александр Сергеевич",
+            "role": "Руководитель ОП г. Тюмень",
+            "email": null,
+            "sources": [
+              "https://smsng.ru/otdel-prodazh"
+            ],
+            "citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+              }
+            ]
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://dorzap.ru",
+            "kind": "page",
+            "text": "Мы с Вами: ЗАПАСНЫЕ ЧАСТИ И КОМПЛЕКТУЮЩИЕ ДЛЯ СПЕЦТЕХНИКИ КАТАЛОГ ЗАПЧАСТЕЙ Искать × ЗАПЧАСТИ ДЛЯ КОММУНАЛЬНЫХ МАШИН КОМБИНИРОВАННЫХ ДОРОЖНЫХ МАШИН ВАКУУМНЫХ МАШИН ИЛОСОСНЫХ МАШИН КАНАЛОПРОМЫВОЧНЫХ МАШИН ПОДМЕТАЛЬНО-УБОРОЧНЫХ МАШИН МУСОРОВОЗОВ СНЕГОПОГРУЗЧИКОВ ЗАПЧАСТИ ДЛЯ ДОРОЖНО-СТРОИТЕЛЬНЫХ МАШИН АВТОГУДРОНАТОРОВ ГРЕЙДЕРОВ МКСМ ДОРОЖНЫХ КАТКОВ БОЛЬШИХ ДОРОЖНЫХ ФРЕЗ БЕЦЕМА АСФАЛЬТОУКЛАДЧИКОВ РЕСАЙКЛЕРОВ ЗАПЧАСТИ ДЛЯ НАВЕСНОГО ОБОРУДОВАНИЯ НА МТЗ ЩЕТОЧНОГО ОБОРУДОВАНИЯ ДОРОЖНЫХ ФРЕЗ КОСИЛОК, МУЛЬЧЕРОВ БАРОВЫХ МАШИН СНЕГООЧИСТИТЕЛЕЙ ИЗМЕЛЬЧИТЕЛЕЙ ВЕТОК ОТВАЛЫ МТЗ ГИДРОХОДОУМЕНЬШИТЕЛИ (ГХУ) ПОЛИВОМОЕЧНЫЕ ПРИЦЕПЫ РАСХОДНЫЕ КОМПЛЕКТУЮЩИЕ ДИСКИ ЩЕТОЧНЫЕ, ЛОТКОВЫЕ И ПРОЧЕЕ ГРЕЙДЕРНЫЕ НОЖИ ТЕХПЛАСТИНЫ ДОРОЖНЫЕ РЕЗЦЫ ПОДШИПНИКИ МАТЫ ЖИВОТНОВОДЧЕСКИЕ НОЖИ НА КОВШИ ПОГРУЗЧИКОВ ГИДРАВЛИКА ГИДРОВРАЩАТЕЛИ ГИДРОМОТОРЫ, ГИДРОНАСОСЫ ГИДРОРАСПРЕДЕЛИТЕЛИ ГИДРОЗАМКИ, БРС ДЕЛИТЕЛИ, РЕГУЛЯТОРЫ, КЛАПАНА, ГИДРАВЛИЧЕСКИЕ КРАНЫ ЗАПЧАСТИ ДЛЯ ШНЕКОРОТОРНОГО СНЕГООЧИСТИТЕЛЯ ДЭ-226 (АМКОДОР 9531) ЗАПЧАСТИ ДЛЯ ШНЕКОРОТОРНОГО СНЕГООЧИСТИТЕЛЯ ДЭ-226 (АМКОДОР 9531) ГАРАНТИЯ Мы предоставляем на всю продукцию гарантию от производителей БЫСТРАЯ ДОСТАВКА Осуществим оперативно быструю доставку в любой регион РФ и СНГ НАШИ СПЕЦИАЛИСТЫ Наши специалисты помогут подобрать запчасти для Вашей спецтехники СКЛАД На нашем складе всегда есть необходимые запчасти для Вашего заказа Цепь со скребками ДМК (А-16х48, L-12 м.; 24 усиленных скребков L=450) Запасные части ДМК-40, ДМК-70, ДМК-65 ОАО \"КОРМЗ\" Кемерово Оценка 0 из 5 Вал ведомый ПС-51.03.002 (голый вал L=800) (под ПР-50.8 с удлиненными осями, под пластинчатую цепь) Запасные части ЭД-405, ЭД-226, ЭД-224, КДМ-130, Пескоразбрасыватели ПС-90 ОАО \"Завод КДМ им. М.И. Калинина (Смоленск) Оценка 0 из 5 Гидроцилиндр бокового отвала КГС-80.50.590.1450.11.000 Запасные части МД-433, МД-532, МД-43253, МД-651 Кургандормаш Оценка 0 из 5 Подшипниковый узел UCPA-208 FBC ПОДШИПНИКИ Оценка 0 из 5 Установка цистерны КО-512.73.00.000Z Запасные части на каналопромывочные машины КО-514, КО-512, КО-502 Оценка 0 из 5 Крышка ролика КО-105.08.00.001 Запасные части КО-713, КО-823, КО-806 Мценск Оценка 0 из 5 НАШ ДЗЕН КАНАЛ ПЕРЕЙТИ ЗАКАЗАТЬ ЗАПЧАСТИ ДЛЯ СПЕЦТЕХНИКИ Ваше имя E-mail Ваш номер телефона Сообщение Отправляя данную форму, вы соглашаетесь с политикой конфиденциальности и пользовательским соглашением © 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта",
+            "links": [
+              {
+                "url": "https://dorzap.ru",
+                "label": "Перейти к содержимому"
+              },
+              {
+                "url": "https://dorzap.ru/lichnyj-kabinet",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/korzina",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog",
+                "label": "КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika",
+                "label": "ГИДРАВЛИЧЕСКОЕ ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika/gidrovraschateli",
+                "label": "ГИДРОВРАЩАТЕЛИ"
+              },
+              {
+                "url": "https://smsng.ru",
+                "label": "ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/eskizi",
+                "label": "Эскизы для заказа нестандартных изделий"
+              },
+              {
+                "url": "https://dorzap.ru/contacts",
+                "label": "КОНТАКТЫ"
+              },
+              {
+                "url": "https://dorzap.ru/promo",
+                "label": "АКЦИИ"
+              },
+              {
+                "url": "https://dorzap.ru/o-kompanii",
+                "label": "О КОМПАНИИ"
+              },
+              {
+                "url": "https://dorzap.ru/oplata-dostavka",
+                "label": "Оплата и доставка"
+              },
+              {
+                "url": "https://dorzap.ru/faq",
+                "label": "Вопрос-ответ"
+              },
+              {
+                "url": "https://dorzap.ru/otzyvy",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://dorzap.ru/licenzii",
+                "label": "Сертификаты и лицензии"
+              },
+              {
+                "url": "https://dorzap.ru/partnery",
+                "label": "Заказчики и партнеры"
+              },
+              {
+                "url": "https://dorzap.ru/garantija",
+                "label": "Гарантия"
+              },
+              {
+                "url": "https://dorzap.ru/reqvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://sm-k.clientbase.ru/fields.php?table=830&sort_by=14430",
+                "label": "Информация для аукционов"
+              },
+              {
+                "url": "https://dorzap.ru/vakansii",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://wa.me/79924245579",
+                "label": "Whatsapp"
+              },
+              {
+                "url": "https://dorzap.ru/product/czep-so-skrebkami-dmk-a-16h48-l-12-m-24-usilennyh-skrebkov-l450",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/product/val-vedomyj-ps-51-03-002-golyj-val-l800",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/product/gidroczilindr-bokovogo-otvala-kgs-80-50-590-1450-11-000",
+                "label": ""
+              },
+              {
+                "url": "https://dzen.ru/id/6237f5700ee50c7a0288b7af?ysclid=m521q0nmmx741067455",
+                "label": "НАШ ДЗЕН КАНАЛ ПЕРЕЙТИ"
+              },
+              {
+                "url": "https://dorzap.ru/politika",
+                "label": "политикой конфиденциальности"
+              },
+              {
+                "url": "http://dorzap.ru/wp-content/uploads/2023/01/polzovatelskoe-soglashenie.docx",
+                "label": "пользовательским соглашением"
+              },
+              {
+                "url": "https://dorzap.ru/sitemap",
+                "label": "Карта сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:12:38.418Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://dorzap.ru/o-kompanii/",
+            "kind": "page",
+            "text": "ООО «СПЕЦМАШ-СНГ» — Надежный поставщик запчастей и оборудования для коммунальной, дорожно-строительной техники. Осуществляем поставку по всей РФ и СНГ. Имеются собственные склады в г. Кургане и в г. Тюмени. Широкий выбор расходных комплектующих. В том осуществляем продажу навесного и прицепного оборудования для тракторов МТЗ («Беларус»). Большой опыт участия в государственных контрактах. В числе наших контрагентов есть такие крупные предприятия, как «Сургутнефтегаз», АО «ТОДЭП», АО «Свердловскавтодор», АО «ГК Северавтодор» и многие другие от Калининграда до Камчатки. © 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта",
+            "links": [
+              {
+                "url": "https://dorzap.ru/o-kompanii",
+                "label": "Перейти к содержимому"
+              },
+              {
+                "url": "https://dorzap.ru/lichnyj-kabinet",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/korzina",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru",
+                "label": "ГЛАВНАЯ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog",
+                "label": "КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika",
+                "label": "ГИДРАВЛИЧЕСКОЕ ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika/gidrovraschateli",
+                "label": "ГИДРОВРАЩАТЕЛИ"
+              },
+              {
+                "url": "https://smsng.ru",
+                "label": "ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/eskizi",
+                "label": "Эскизы для заказа нестандартных изделий"
+              },
+              {
+                "url": "https://dorzap.ru/contacts",
+                "label": "КОНТАКТЫ"
+              },
+              {
+                "url": "https://dorzap.ru/promo",
+                "label": "АКЦИИ"
+              },
+              {
+                "url": "https://dorzap.ru/oplata-dostavka",
+                "label": "Оплата и доставка"
+              },
+              {
+                "url": "https://dorzap.ru/faq",
+                "label": "Вопрос-ответ"
+              },
+              {
+                "url": "https://dorzap.ru/otzyvy",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://dorzap.ru/licenzii",
+                "label": "Сертификаты и лицензии"
+              },
+              {
+                "url": "https://dorzap.ru/partnery",
+                "label": "Заказчики и партнеры"
+              },
+              {
+                "url": "https://dorzap.ru/garantija",
+                "label": "Гарантия"
+              },
+              {
+                "url": "https://dorzap.ru/reqvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://sm-k.clientbase.ru/fields.php?table=830&sort_by=14430",
+                "label": "Информация для аукционов"
+              },
+              {
+                "url": "https://dorzap.ru/vakansii",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://wa.me/79924245579",
+                "label": "Whatsapp"
+              },
+              {
+                "url": "https://dorzap.ru/sitemap",
+                "label": "Карта сайта"
+              },
+              {
+                "url": "https://dorzap.ru/politika",
+                "label": "политикой конфиденциальности"
+              },
+              {
+                "url": "http://dorzap.ru/wp-content/uploads/2023/01/polzovatelskoe-soglashenie.docx",
+                "label": "пользовательским соглашением"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:12:44.738Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://dorzap.ru/contacts/",
+            "kind": "page",
+            "text": "КОНТАКТЫ Адрес ЗАПАСНЫЕ ЧАСТИ И КОМПЛЕКТУЮЩИЕ ДЛЯ СПЕЦТЕХНИКИ 625019, г. Тюмень, ул. Новаторов, д.3а, оф.206 640007, г. Курган, ул. Омская, д.145/1, оф.305 690030, г. Владивосток, ул. Кочубея, д.1, оф.6 141108, Московская область, г. Щёлково, ул. Фабричная, д. 1, корпус 1. офис 307 Время работы С понедельника по пятницу с 08:00 — 17:00 Выходной: суббота, воскресенье Контакты для связи сот.: +7 908 835-12-22 (г. Курган) тел.: 8(3452)51-87-70 (г. Тюмень) сот.: 8(994)00-47-088 (г. Владивосток) сот.: 8(996)146-23-51 (г. Щёлково) Оставить Вашу заявку можете на эл. почту: dorzap@list.ru Vk Youtube ФОРМА ОБРАТНОЙ СВЯЗИ Ваше имя E-mail Ваш номер телефона Сообщение Отправляя данную форму, вы соглашаетесь с политикой конфиденциальности и пользовательским соглашением ЗАПАСНЫЕ ЧАСТИ И КОМПЛЕКТУЮЩИЕ ДЛЯ СПЕЦТЕХНИКИ 625019 , г. Тюмень , ул. Новаторов, д.3а, оф.206 640007 , г. Курган , ул. Омская, д.145/1, оф.305 +7 992 427-73-27 , +7 909 191-14-27 , 8(3452)51-87-70 dorzap@list.ru © 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта",
+            "links": [
+              {
+                "url": "https://dorzap.ru/contacts",
+                "label": "Перейти к содержимому"
+              },
+              {
+                "url": "https://dorzap.ru/lichnyj-kabinet",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/korzina",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru",
+                "label": "ГЛАВНАЯ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog",
+                "label": "КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika",
+                "label": "ГИДРАВЛИЧЕСКОЕ ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika/gidrovraschateli",
+                "label": "ГИДРОВРАЩАТЕЛИ"
+              },
+              {
+                "url": "https://smsng.ru",
+                "label": "ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/eskizi",
+                "label": "Эскизы для заказа нестандартных изделий"
+              },
+              {
+                "url": "https://dorzap.ru/promo",
+                "label": "АКЦИИ"
+              },
+              {
+                "url": "https://dorzap.ru/o-kompanii",
+                "label": "О КОМПАНИИ"
+              },
+              {
+                "url": "https://dorzap.ru/oplata-dostavka",
+                "label": "Оплата и доставка"
+              },
+              {
+                "url": "https://dorzap.ru/faq",
+                "label": "Вопрос-ответ"
+              },
+              {
+                "url": "https://dorzap.ru/otzyvy",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://dorzap.ru/licenzii",
+                "label": "Сертификаты и лицензии"
+              },
+              {
+                "url": "https://dorzap.ru/partnery",
+                "label": "Заказчики и партнеры"
+              },
+              {
+                "url": "https://dorzap.ru/garantija",
+                "label": "Гарантия"
+              },
+              {
+                "url": "https://dorzap.ru/reqvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://sm-k.clientbase.ru/fields.php?table=830&sort_by=14430",
+                "label": "Информация для аукционов"
+              },
+              {
+                "url": "https://dorzap.ru/vakansii",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://wa.me/79924245579",
+                "label": "Whatsapp"
+              },
+              {
+                "url": "https://vk.com/ooospecmashsng",
+                "label": "Vk"
+              },
+              {
+                "url": "https://www.youtube.com/channel/UCs4ETN8epUV_qwFkyPPKg3g/videos",
+                "label": "Youtube"
+              },
+              {
+                "url": "https://dorzap.ru/politika",
+                "label": "политикой конфиденциальности"
+              },
+              {
+                "url": "http://dorzap.ru/wp-content/uploads/2023/01/polzovatelskoe-soglashenie.docx",
+                "label": "пользовательским соглашением"
+              },
+              {
+                "url": "https://dorzap.ru/sitemap",
+                "label": "Карта сайта"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:12:44.875Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://dorzap.ru/vakansii/",
+            "kind": "page",
+            "text": "Привет! Нам требуется менеджер активных продаж Дорожного и Коммунального оборудования, а также запчастей. У тебя будет возможность зарабатывать столько, сколько нужно, у нас нет «потолка» по заработной плате. Что тебя ждет? Система обучения : видео обучение + наставники + коллеги. Результат — отличное знание продукта и техники продаж Комфортный офис, оплачиваемая связь, работа в дружном коллективе с адекватным руководством. Заработная плата два раза в месяц, график 5/2 с 8,00- до 17,00 Что нужно делать: Работать с уже существующими клиентами (юридические лица, индивидуальные предприниматели) + обработка входящего трафика. Совершение звонков по готовой базе клиентов; Отслеживание дебиторской задолженности. Подготовка коммерческих предложение, выставление счетов, заключение договоров Требования: Стабильность на рабочем месте Работать в режиме многозадачности Изучение рекламного материала компании Работа в почте , мессенджерах , деловая переписка Не сомневайся, оставь свой отклик! Поговорим! © 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта",
+            "links": [
+              {
+                "url": "https://dorzap.ru/vakansii",
+                "label": "Перейти к содержимому"
+              },
+              {
+                "url": "https://dorzap.ru/lichnyj-kabinet",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru/korzina",
+                "label": ""
+              },
+              {
+                "url": "https://dorzap.ru",
+                "label": "ГЛАВНАЯ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog",
+                "label": "КАТАЛОГ ЗАПАСНЫХ ЧАСТЕЙ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika",
+                "label": "ГИДРАВЛИЧЕСКОЕ ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/category/catalog/gidravlika/gidrovraschateli",
+                "label": "ГИДРОВРАЩАТЕЛИ"
+              },
+              {
+                "url": "https://smsng.ru",
+                "label": "ОБОРУДОВАНИЕ"
+              },
+              {
+                "url": "https://dorzap.ru/eskizi",
+                "label": "Эскизы для заказа нестандартных изделий"
+              },
+              {
+                "url": "https://dorzap.ru/contacts",
+                "label": "КОНТАКТЫ"
+              },
+              {
+                "url": "https://dorzap.ru/promo",
+                "label": "АКЦИИ"
+              },
+              {
+                "url": "https://dorzap.ru/o-kompanii",
+                "label": "О КОМПАНИИ"
+              },
+              {
+                "url": "https://dorzap.ru/oplata-dostavka",
+                "label": "Оплата и доставка"
+              },
+              {
+                "url": "https://dorzap.ru/faq",
+                "label": "Вопрос-ответ"
+              },
+              {
+                "url": "https://dorzap.ru/otzyvy",
+                "label": "Отзывы"
+              },
+              {
+                "url": "https://dorzap.ru/licenzii",
+                "label": "Сертификаты и лицензии"
+              },
+              {
+                "url": "https://dorzap.ru/partnery",
+                "label": "Заказчики и партнеры"
+              },
+              {
+                "url": "https://dorzap.ru/garantija",
+                "label": "Гарантия"
+              },
+              {
+                "url": "https://dorzap.ru/reqvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://sm-k.clientbase.ru/fields.php?table=830&sort_by=14430",
+                "label": "Информация для аукционов"
+              },
+              {
+                "url": "https://wa.me/79924245579",
+                "label": "Whatsapp"
+              },
+              {
+                "url": "https://dorzap.ru/sitemap",
+                "label": "Карта сайта"
+              },
+              {
+                "url": "https://dorzap.ru/politika",
+                "label": "политикой конфиденциальности"
+              },
+              {
+                "url": "http://dorzap.ru/wp-content/uploads/2023/01/polzovatelskoe-soglashenie.docx",
+                "label": "пользовательским соглашением"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:12:52.154Z",
+            "id": "e4"
+          },
+          {
+            "url": "https://smsng.ru/otdel-prodazh",
+            "kind": "search",
+            "text": "Отдел продаж │ СПЕЦМАШ-СНГ\nПерейти к содержимому\n\nтел.: 8(3452)51-87-70 г. Тюмень, тел.: 8(3522)44-35-54 г. Курган, сот.: 8(994)004-7088 г. Владивосток, сот.: 8(996)146-23-51 г. Щёлково\n\nлого спецмаш-снг\n\n# Отдел продаж\n\nОСНОВНАЯ ИНФОРМАЦИЯ\n\nКОММЕРЧЕСКИЙ ОТДЕЛ\n\nОТДЕЛ ЛОГИСТИКИ\n\nОТДЕЛ БУХГАЛТЕРИИ\n\n## Руководители отдела продаж\n\nПолькин Дмитрий Геннадьевич\n\nКоммерческий директор\n\ndm.polkin@ooospecmash.ru  \n тел.: 8(3522)44-35-54 (вн.121)  \n сот.: 8(908)835-12-22\n\nБухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень [...] tumen1@ooospecmash.ru  \n тел.: 8(3452)51-87-70  \n сот.: 8(909)191-14-27\n\nСолдатенков Илья Михайлович\n\nРуководитель ОП г. Владивосток\n\nvladivostok1@ooospecmash.ru  \n сот.: 8(994)004-70-88\n\nЧерных Александр Владимирович\n\nРуководитель ОП г. Щёлково (Московская область)\n\nmoscow@ooospecmash.ru сот.: 8(996)146-23-51\n\n## Менеджеры (офис г. Курган)\n\nНеугодников Сергей Михайлович\n\nМенеджер по продажам\n\nkdm8@ooospecmash.ru  \n тел.: 8(3522)44-35-54   \n сот.: 8(992)428-03-78\n\nБеляева Анастасия Викторовна [...] ## Маркетинг\n\nБазанов Александр Андреевич\n\nИнтернет-маркетолог\n\nmarketing@ooospecmash.ru  \n тел.: 8(3522)44-35-54\n\n## Отдел снабжения\n\nБаранов Иван Вадимович\n\nЗаведующий складским хозяйством\n\nsnab@ooospecmash.ru  \n тел.: 8(3522)44-35-54   \n сот.: 8(992)427-88-67\n\nЗапросить цену\n\n×",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:12:55.162Z",
+            "id": "e5"
+          },
+          {
+            "url": "https://vsem-podryad.ru/company/d37abc5b-8e9b-4418-aa05-2e06098f4983?backUrl=%2Fpurchases%2F%25D0%25A5%25D0%25B0%25D0%25BD%25D1%2582%25D1%258B-%25D0%259C%25D0%25B0%25D0%25BD%25D1%2581%25D0%25B8%25D0%25B9%25D1%2581%25D0%25BA%25D0%25B8%25D0%25B9%2520%25D0%25B0%25D0%25B2%25D1%2582%25D0%25BE%25D0%25BD%25D0%25BE%25D0%25BC%25D0%25BD%25D1%258B%25D0%25B9%2520%25D0%25BE%25D0%25BA%25D1%2580%25D1%2583%25D0%25B3%2F%25D0%259F%25D0%25BE%25D1%2581%25D1%2582%25D0%25B0%25D0%25B2%25D0%25BA%25D0%25B0%2520%25D1%2581%25D1%2582%25D1%2580%25D0%25BE%25D0%25B8%25D1%2582%25D0%25B5%25D0%25BB%25D1%258C%25D0%25BD%25D1%258B%25D1%2585%2520%25D0%25BC%25D0%25B0%25D1%2582%25D0%25B5%25D1%2580%25D0%25B8%25D0%25B0%25D0%25BB%25D0%25BE%25D0%25B2%2F",
+            "kind": "search",
+            "text": "ООО \"СПЕЦМАШ-СНГ\" - Курган ИНН ░░░░░░░░░░\nОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ \"СПЕЦМАШ-СНГ\" находится в Курганской области по адресу 6░░░░░, ░░░░░░░░░░ ░░░░░░░, ░. ░░░░░░, ░░. ░░░░░░, ░░░. ░░░░/░, ░░░░ ░░2. Статус организации: Действующая. Руководитель: Казанцев Пётр Юрьевич. Основной вид деятельности организации - Торговля оптовая автомобильными деталями, узлами и принадлежностями, также ООО \"СПЕЦМАШ-СНГ\" работает по следующим направлениям: Производство прочих комплектующих и принадлежностей для автотранспортных средств, Торговля [...] Юридический адрес\n\n6░░░░░, ░░░░░░░░░░ ░░░░░░░, ░. ░░░░░░, ░░. ░░░░░░, ░░░. ░░░░/░, ░░░░ ░░2\n\nСтатус\n\nДействующая\n\nУставный капитал\n\n25 000,00 ₽\n\nАватар\n\nГенеральный Директор\n\nКазанцев Пётр Юрьевич\n\nПросмотр контактов компании\n\n#### Проверка рисков\n\nЭтот функционал готовится к запуску! Помогите нам сделать его максимально полезным для вас.\n\n## Показатели надежности\n\n ### Негативные\n 1\n\n  ### Требуют внимания\n ### Благоприятные\n\n1 [...] Отсутствует информация о записях в реестре недобросовестных поставщиков.\n\n### Реестр квалифицированных подрядных организаций Не числится\n\nОтсутствует информация о записях в реестре квалифицированных подрядных организаций.\n\n## Контакты\n\nОбщие контакты \n\n15  контактов\n\n8352░░░░░░░\n\n44░░░░\n\n7352░░░░░░░\n\n7963░░░░░░░\n\n7352░░░░░░░\n\n7908░░░░░░░\n\nt░░░░@o░░░░░░░░░h.ru\n\n4░░░░░@l░░t.ru\n\nk░░░@o░░░░░░░░░h.ru\n\ns░░░░░░░░@m░░l.ru\n\nl░░░░░@o░░░░░░░░░h.ru\n\n4░░░░░@m░░l.ru\n\nd░░░░░░░░@o░░░░░░░░░h.ru",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:12:55.162Z",
+            "id": "e6"
+          },
+          {
+            "url": "https://smsng.ru/%D1%80%D0%B5%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%82%D1%8B",
+            "kind": "search",
+            "text": "РЕКВИЗИТЫ │ СПЕЦМАШ-СНГ\n#### Адрес:\n\n##### 690034, Приморский край, г. Владивосток, ул. Кочубея, 1\n\n#### Телефон:\n\n##### 8(994)004-7088\n\n#### Офис СПЕЦМАШ-СНГ г. Щёлково\n\n#### Адрес:\n\n##### 141108, Московская область, г. Щёлково, ул. Фабричная, д. 1, корпус 1. офис 307\n\n#### Телефон:\n\n##### +7 996 146 23 51\n\n#### Генеральный директор\n\n##### Казанцев Петр Юрьевич, действующий на основании Устава\n\n#### Главный бухгалтер\n\n##### Мальцева Марина Сергеевна\n\nСкачать карточку предприятия в файле Word [...] #### Телефон\n\n##### 8(3522)44-35-54\n\n#### E-mail\n\n##### 443554@list.ru\n\n#### Почтовый адрес\n\n##### 640011 г. Курган а/я 1660\n\n#### Обособленное подразделение СПЕЦМАШ-СНГ г. Тюмень\n\n#### ИНН / КПП\n\n##### 4501211063 / 720345001\n\n#### Адрес:\n\n##### 625019, г. Тюмень, ул. Новаторов, д.3А, оф.206\n\n#### Телефон\n\n##### 8(3452)51-87-70\n\n#### Обособленное подразделение СПЕЦМАШ-СНГ г. Владивосток\n\n#### ИНН / КПП\n\n##### 4501211063 / 253645001\n\n#### Адрес: [...] Перейти к содержимому\n\nтел.: 8(3452)51-87-70 г. Тюмень, тел.: 8(3522)44-35-54 г. Курган, сот.: 8(994)004-7088 г. Владивосток, сот.: 8(996)146-23-51 г. Щёлково\n\nлого спецмаш-снг\n\n# РЕКВИЗИТЫ КОМПАНИИ ООО \"СПЕЦМАШ-СНГ\"\n\n## При оформлении документов и оплаты счетов использовать следующие реквизиты:\n\n#### Полное наименование:\n\n##### Общество с ограниченной ответственностью \"СПЕЦМАШ-СНГ\"\n\n#### Сокращенное наименование:\n\n##### ООО \"СПЕЦМАШ-СНГ\"\n\n#### Юридический адрес:",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:12:55.162Z",
+            "id": "e7"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://dorzap.ru/contacts",
+            "focus": "контактные данные или сотрудники",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://dorzap.ru/o-kompanii",
+            "focus": "описание компании, команда",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://dorzap.ru/vakansii",
+            "focus": "имена нанимающих менеджеров или контакты в разделе Вакансии",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "\"Спецмаш-Снг\" директор OR коммерческий директор OR руководитель отдела продаж site:dorzap.ru OR site:smsng.ru",
+            "focus": "руководящие лица компании",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [
+          "email_needs_fetched_page:Полькин Дмитрий Геннадьевич:dm.polkin@ooospecmash.ru",
+          "email_needs_fetched_page:Бухвал Александр Сергеевич:tumen1@ooospecmash.ru"
+        ],
+        "budget": {
+          "roundsRemaining": 2,
+          "actionsRemaining": 6,
+          "searchRemaining": 7
+        }
+      },
+      "output": {
+        "companySummary": "ООО «СПЕЦМАШ-СНГ» — поставщик запасных частей и оборудования для дорожно-строительной и коммунальной техники, работает по всей РФ и СНГ. Основные подразделения и руководители оперируют в Кургане, Тюмени, Владивостоке и Щёлково. Явно публичный сигнал найма — менеджер по продажам. Выделены руководители отдела продаж и коммерческий директор с релевантными функциями по продажам.",
+        "missing": [
+          "Нужно подтвердить персональные email для Полькин Дмитрий Геннадьевич и Бухвал Александр Сергеевич через загрузку конкретной страницы с их контактами."
+        ],
+        "people": [
+          {
+            "name": "Полькин Дмитрий Геннадьевич",
+            "role": "Коммерческий директор",
+            "relevance": 95,
+            "reason": "Руководитель коммерческого подразделения, отвечает за продажи, наиболее релевантен владельцу процесса продажи и найма менеджера по продажам.",
+            "citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+              }
+            ],
+            "contacts": []
+          },
+          {
+            "name": "Бухвал Александр Сергеевич",
+            "role": "Руководитель ОП г. Тюмень",
+            "relevance": 75,
+            "reason": "Руководитель обособленного подразделения в Тюмени, релевантен для вопросов локальных продаж и подбора персонала по данному направлению.",
+            "citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "dorzap.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "© 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта"
+            }
+          },
+          {
+            "domain": "smsng.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ОБОРУДОВАНИЕ"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://smsng.ru/otdel-prodazh",
+            "focus": "контактный email и детали по роли Полькин Дмитрий Геннадьевич и Бухвал Александр Сергеевич",
+            "purpose": "Подтвердить и получить личный email упомянутых руководителей отдела продаж с поиском по их именам на странице."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Есть подтвержденные релевантные лица, но нет верифицированных персональных контактов. Следующий шаг – верифицировать контактные email по осмысленным публичным источникам."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 3,
+      "decision": {
+        "companySummary": "ООО «СПЕЦМАШ-СНГ» — поставщик запасных частей и оборудования для дорожно-строительной и коммунальной техники, работает по всей РФ и СНГ. Основные подразделения и руководители оперируют в Кургане, Тюмени, Владивостоке и Щёлково. Явно публичный сигнал найма — менеджер по продажам. Выделены руководители отдела продаж и коммерческий директор с релевантными функциями по продажам.",
+        "missing": [
+          "Нужно подтвердить персональные email для Полькин Дмитрий Геннадьевич и Бухвал Александр Сергеевич через загрузку конкретной страницы с их контактами."
+        ],
+        "people": [
+          {
+            "name": "Полькин Дмитрий Геннадьевич",
+            "role": "Коммерческий директор",
+            "relevance": 95,
+            "reason": "Руководитель коммерческого подразделения, отвечает за продажи, наиболее релевантен владельцу процесса продажи и найма менеджера по продажам.",
+            "citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+              }
+            ],
+            "contacts": []
+          },
+          {
+            "name": "Бухвал Александр Сергеевич",
+            "role": "Руководитель ОП г. Тюмень",
+            "relevance": 75,
+            "reason": "Руководитель обособленного подразделения в Тюмени, релевантен для вопросов локальных продаж и подбора персонала по данному направлению.",
+            "citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "dorzap.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "© 2026 ООО «СПЕЦМАШ-СНГ» — Запчасти для спецтехники Карта сайта"
+            }
+          },
+          {
+            "domain": "smsng.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ОБОРУДОВАНИЕ"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://smsng.ru/otdel-prodazh",
+            "focus": "контактный email и детали по роли Полькин Дмитрий Геннадьевич и Бухвал Александр Сергеевич",
+            "purpose": "Подтвердить и получить личный email упомянутых руководителей отдела продаж с поиском по их именам на странице."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Есть подтвержденные релевантные лица, но нет верифицированных персональных контактов. Следующий шаг – верифицировать контактные email по осмысленным публичным источникам."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:smsng.ru"
+      ],
+      "acceptedPeople": [
+        {
+          "full_name": "Полькин Дмитрий Геннадьевич",
+          "role_title": "Коммерческий директор",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 70,
+          "evidence": [
+            "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+          ],
+          "metadata": {
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "source_urls": [
+              "https://smsng.ru/otdel-prodazh"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+              }
+            ],
+            "semantic_role_relevance": 95,
+            "semantic_role_reason": "Руководитель коммерческого подразделения, отвечает за продажи, наиболее релевантен владельцу процесса продажи и найма менеджера по продажам.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "dorzap.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        {
+          "full_name": "Бухвал Александр Сергеевич",
+          "role_title": "Руководитель ОП г. Тюмень",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 70,
+          "evidence": [
+            "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+          ],
+          "metadata": {
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "source_urls": [
+              "https://smsng.ru/otdel-prodazh"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+              }
+            ],
+            "semantic_role_relevance": 75,
+            "semantic_role_reason": "Руководитель обособленного подразделения в Тюмени, релевантен для вопросов локальных продаж и подбора персонала по данному направлению.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "dorzap.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "dorzap.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://smsng.ru/otdel-prodazh",
+      "status": 301,
+      "elapsedMs": 929
+    },
+    {
+      "stage": "fetch",
+      "url": "https://smsng.ru/otdel-prodazh/",
+      "status": 200,
+      "elapsedMs": 2224
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://smsng.ru/otdel-prodazh",
+      "focus": "контактный email и детали по роли Полькин Дмитрий Геннадьевич и Бухвал Александр Сергеевич",
+      "purpose": "Подтвердить и получить личный email упомянутых руководителей отдела продаж с поиском по их именам на странице.",
+      "success": true,
+      "evidence": {
+        "url": "https://smsng.ru/otdel-prodazh/",
+        "kind": "page",
+        "text": "Отдел продаж ОСНОВНАЯ ИНФОРМАЦИЯ КОММЕРЧЕСКИЙ ОТДЕЛ ОТДЕЛ ЛОГИСТИКИ ОТДЕЛ БУХГАЛТЕРИИ Руководители отдела продаж Полькин Дмитрий Геннадьевич Коммерческий директор dm.polkin@ooospecmash.ru тел.: 8(3522)44-35-54 (вн.121) сот.: 8(908)835-12-22 Бухвал Александр Сергеевич Руководитель ОП г. Тюмень tumen1@ooospecmash.ru тел.: 8(3452)51-87-70 сот.: 8(909)191-14-27 Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88 Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51 Менеджеры (офис г. Курган) Неугодников Сергей Михайлович Менеджер по продажам kdm8@ooospecmash.ru тел.: 8(3522)44-35-54 сот.: 8(992)428-03-78 Беляева Анастасия Викторовна Менеджер по продажам kdm5@ooospecmash.ru тел.: 8(3522)44-35-54 сот.: 8(992)422-07-02 Лещев Роман Николаевич Менеджер по продажам kdm6@ooospecmash.ru тел.: 8(3522)44-35-54 сот.: 8(992)425-15-41 Розин Владислав Валериевич Менеджер по продажам kdm2@ooospecmash.ru тел.: 8(3522)44-35-54 сот.: 8(908)835-12-21 Александрова Дарья Викторовна Менеджер по продажам kdm1@ooospecmash.ru тел.: 8(3522)44-35-54 (вн.124) сот.: 8(908)835-21-21 Башкинов Виктор Сергеевич Менеджер по продажам kdm4@ooospecmash.ru тел.: 8(3522)44-35-54 (вн.127) сот.: 8(951)275-64-83 Демчук Денис Дмитриевич Менеджер по продажам kdm9@ooospecmash.ru тел.: 8(3522)44-35-54 сот.: 8(992)428-74-80 Менеджеры (Обособленное подразделение г. Тюмень) Верещагин Дмитрий Игоревич Менеджер по продажам tum2@ooospecmash.ru сот.: 8(3452)51-87-70 сот.: 8(901)156-40-48 Шкляр Кирилл Михайлович Менеджер по продажам tum5@ooospecmash.ru сот.: 8(3452)51-87-70 сот.: 8(904)494-97-20 Рожин Николай Никитович Менеджер по продажам tum6@ooospecmash.ru сот.: 8(3452)51-87-70 сот.: 8(952)684-00-87 Белахонов Александр Сергеевич Менеджер по продажам tum4@ooospecmash.ru тел.: 8(3452)51-87-70 сот.: 8(901)156-70-76 Попов Николай Леонидович Менеджер по продажам tum3@ooospecmash.ru тел.: 8(3452)51-87-70 сот.: 8(969)808-03-87 Менеджеры (Обособленное подразделение г. Владивосток) Мирошников Арсений Геннадьевич Менеджер по продажам vladivostok2@ooospecmash.ru сот.: 8(994)996-88-09 Бастин Егор Владимирович Менеджер по продажам vladivostok3@ooospecmash.ru сот.: 8(994)997-39-18 Отдел электронных торгов Бондарь Станислав Сергеевич Контрактный управляющий torgi@ooospecmash.ru сот.: 8(908)002-79-33 сот.: 8(992)425-18-60 Морозова Александра Юрьевна Помощник контр. управ. torgi2@ooospecmash.ru тел.: 8(3522)44-35-54 (вн.101) сот.: 8(905)850-03-30 Бондарь Юрий Сергеевич Специалист по электронным торгам zakupki@ooospecmash.ru тел.: 8(3522)44-35-54 сот.: 8(992)423-49-65 Макаренко Евгений Михайлович Специалист по элект. торгам zakupki2@ooospecmash.ru тел.: 8(3522)44-35-54 сот.: 8(951)275-55-93 Маркетинг Базанов Александр Андреевич Интернет-маркетолог marketing@ooospecmash.ru тел.: 8(3522)44-35-54 Отдел снабжения Баранов Иван Вадимович Заведующий складским хозяйством snab@ooospecmash.ru тел.: 8(3522)44-35-54 сот.: 8(992)427-88-67 КАТАЛОГ ▷ Подметально-уборочная спецтехника и оборудование ▷ Комбинированные дорожные машины ▷ Оборудование для КДМ ▷ Строительство и ремонт дорог ▷ Навесное и прицепное для тракторов ▷ Навесное для погрузчиков ▷ Снегоуборочная спецтехника и оборудование ▷ Оборудование для газона ▷ Расчистка земель и леса ▷ Спецтехника для разметки на дорогах О КОМПАНИИ ▷ Вакансии ▷ Реквизиты ▷ Документы НА ЗАКАЗ УСЛУГИ НАШИ САЙТЫ Помощь ▷ Отзывы ▷ Вопрос - ответ ▷ Как сделать заказ ▷ Доставка и оплата Конфигуратор Адрес: 690034, г. Владивосток, ул. Кочубея, д.1, офис 6 Телефон: 8(994)00-47-088 Адрес: 625014, г. Тюмень, ул. Новаторов, д.3-А, офис 206 Телефон: 8(3452)51-87-70 Адрес: 640021, г.Курган, ул. Омская, д.145, стр.1, оф.312 Телефон: 8(3522)44-35-54 Мобильный телефон: +7 992-427-73-27 ( WhatsApp, Viber) E-mail: 443554@list.ru Режим работы офиса: пн. - пт. с 8.00 до 17.00 часов © 2018-2022 ООО \"СПЕЦМАШ-СНГ\" ИНН 4501211063, ОГРН 1164501057280 Политика конфиденциальности персональных данных",
+        "links": [
+          {
+            "url": "https://smsng.ru/otdel-prodazh",
+            "label": "Перейти к содержимому"
+          },
+          {
+            "url": "https://vk.com/ooospecmashsng",
+            "label": ""
+          },
+          {
+            "url": "https://www.instagram.com/specmashsng",
+            "label": ""
+          },
+          {
+            "url": "https://www.youtube.com/channel/UCs4ETN8epUV_qwFkyPPKg3g",
+            "label": ""
+          },
+          {
+            "url": "https://smsng.ru",
+            "label": ""
+          },
+          {
+            "url": "https://smsng.ru/videoobzor-otzivi",
+            "label": "ВИДЕООБЗОРЫ И ОТЗЫВЫ"
+          },
+          {
+            "url": "https://smsng.ru/%d0%be-%d0%ba%d0%be%d0%bc%d0%bf%d0%b0%d0%bd%d0%b8%d0%b8",
+            "label": "О КОМПАНИИ"
+          },
+          {
+            "url": "https://smsng.ru/%d0%b2%d0%b0%d0%ba%d0%b0%d0%bd%d1%81%d0%b8%d0%b8",
+            "label": "ВАКАНСИИ"
+          },
+          {
+            "url": "https://smsng.ru/%d1%80%d0%b5%d0%ba%d0%b2%d0%b8%d0%b7%d0%b8%d1%82%d1%8b",
+            "label": "РЕКВИЗИТЫ"
+          },
+          {
+            "url": "https://smsng.ru/%d0%b4%d0%be%d0%ba%d1%83%d0%bc%d0%b5%d0%bd%d1%82%d1%8b-%d0%be%d1%80%d0%b3%d0%b0%d0%bd%d0%b8%d0%b7%d0%b0%d1%86%d0%b8%d0%b8",
+            "label": "ДОКУМЕНТЫ ОРГАНИЗАЦИИ"
+          },
+          {
+            "url": "https://sm-k.clientbase.ru/fields.php?table=830",
+            "label": "ИНФОРМАЦИЯ ДЛЯ АУКЦИОНОВ"
+          },
+          {
+            "url": "https://smsng.ru/%d0%bd%d0%b0%d1%88%d0%b8-%d1%81%d0%b0%d0%b9%d1%82%d1%8b",
+            "label": "НАШИ САЙТЫ"
+          },
+          {
+            "url": "https://smsng.ru/%d0%bd%d0%be%d0%b2%d0%be%d1%81%d1%82%d0%b8",
+            "label": "НОВОСТИ"
+          },
+          {
+            "url": "https://smsng.ru/faq",
+            "label": "FAQ"
+          },
+          {
+            "url": "https://smsng.ru/%d1%81%d0%b5%d1%80%d1%82%d0%b8%d1%84%d0%b8%d0%ba%d0%b0%d1%82%d1%8b",
+            "label": "ДЕКЛАРАЦИИ, СЕРТИФИКАТЫ"
+          },
+          {
+            "url": "https://smsng.ru/dostavka-i-oplata",
+            "label": "ДОСТАВКА И ОПЛАТА"
+          },
+          {
+            "url": "https://smsng.ru/kak-zakazat",
+            "label": "КАК ЗАКАЗАТЬ"
+          },
+          {
+            "url": "https://smsng.ru/category/action",
+            "label": "АКЦИИ"
+          },
+          {
+            "url": "https://smsng.ru/otzyvy",
+            "label": "ОТЗЫВЫ"
+          },
+          {
+            "url": "https://smsng.ru/garantiya",
+            "label": "ГАРАНТИЯ"
+          },
+          {
+            "url": "https://smsng.ru/shop-2",
+            "label": "КАТАЛОГ"
+          },
+          {
+            "url": "https://smsng.ru/product-category/%d0%ba%d0%be%d0%bc%d0%b1%d0%b8%d0%bd%d0%b8%d1%80%d0%be%d0%b2%d0%b0%d0%bd%d0%bd%d1%8b%d0%b5-%d0%b4%d0%be%d1%80%d0%be%d0%b6%d0%bd%d1%8b%d0%b5-%d0%bc%d0%b0%d1%88%d0%b8%d0%bd%d1%8b",
+            "label": "КОМБИНИРОВАННЫЕ ДОРОЖНЫЕ МАШИНЫ"
+          },
+          {
+            "url": "https://smsng.ru/product-category/%d0%bf%d0%be%d0%b4%d0%bc%d0%b5%d1%82%d0%b0%d0%bb%d1%8c%d0%bd%d0%be-%d1%83%d0%b1%d0%be%d1%80%d0%be%d1%87%d0%bd%d0%b0%d1%8f-%d1%81%d0%bf%d0%b5%d1%86%d1%82%d0%b5%d1%85%d0%bd%d0%b8%d0%ba%d0%b0",
+            "label": "ПОДМЕТАЛЬНО-УБОРОЧНАЯ СПЕЦТЕХНИКА И ОБОРУДОВАНИЕ"
+          },
+          {
+            "url": "https://smsng.ru/product-category/%d0%be%d0%b1%d0%be%d1%80%d1%83%d0%b4%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%b5-%d0%b4%d0%bb%d1%8f-%d0%ba%d0%b4%d0%bc",
+            "label": "ОБОРУДОВАНИЕ ДЛЯ КОМБИНИРОВАННЫХ ДОРОЖНЫХ МАШИН"
+          },
+          {
+            "url": "https://dorzap.ru",
+            "label": "ЗАПЧАСТИ"
+          },
+          {
+            "url": "https://smsng.ru/contact-us",
+            "label": "КОНТАКТЫ"
+          },
+          {
+            "url": "https://smsng.ru/otdel-logistiki",
+            "label": "ОТДЕЛ ЛОГИСТИКИ"
+          },
+          {
+            "url": "https://smsng.ru/buhgalteriya",
+            "label": "ОТДЕЛ БУХГАЛТЕРИИ"
+          },
+          {
+            "url": "https://smsng.ru/%d0%ba%d0%be%d0%bc%d0%b1%d0%b8%d0%bd%d0%b8%d1%80%d0%be%d0%b2%d0%b0%d0%bd%d0%bd%d1%8b%d0%b5-%d0%b4%d0%be%d1%80%d0%be%d0%b6%d0%bd%d1%8b%d0%b5-%d0%bc%d0%b0%d1%88%d0%b8%d0%bd%d1%8b",
+            "label": "Комбинированные дорожные машины"
+          },
+          {
+            "url": "https://smsng.ru/%d0%bd%d0%b0-%d0%b7%d0%b0%d0%ba%d0%b0%d0%b7",
+            "label": "НА ЗАКАЗ"
+          },
+          {
+            "url": "https://smsng.ru/%d1%83%d1%81%d0%bb%d1%83%d0%b3%d0%b8",
+            "label": "УСЛУГИ"
+          },
+          {
+            "url": "https://zen.yandex.ru/id/6237f5700ee50c7a0288b7af",
+            "label": ""
+          },
+          {
+            "url": "https://smsng.ru/%d0%ba%d0%be%d0%bd%d1%84%d0%b8%d0%b3%d1%83%d1%80%d0%b0%d1%82%d0%be%d1%80",
+            "label": ""
+          },
+          {
+            "url": "https://smsng.ru/privacy-policy",
+            "label": "Политика конфиденциальности персональных данных"
+          },
+          {
+            "url": "https://smsng.ru/wp-content/uploads/2023/01/%D0%9F%D0%9E%D0%9B%D0%AC%D0%97%D0%9E%D0%92%D0%90%D0%A2%D0%95%D0%9B%D0%AC%D0%A1%D0%9A%D0%9E%D0%95-%D0%A1%D0%9E%D0%93%D0%9B%D0%90%D0%A8%D0%95%D0%9D%D0%98%D0%95.docx",
+            "label": "пользовательским соглашением"
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:13:16.376Z",
+        "id": "e10"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.openai.com/v1/responses",
+      "error": "TimeoutError",
+      "elapsedMs": 407
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "research_deadline",
+      "actions": 6,
+      "candidates": [
+        {
+          "full_name": "Полькин Дмитрий Геннадьевич",
+          "role_title": "Коммерческий директор",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 70,
+          "evidence": [
+            "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+          ],
+          "metadata": {
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "source_urls": [
+              "https://smsng.ru/otdel-prodazh"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+              }
+            ],
+            "semantic_role_relevance": 95,
+            "semantic_role_reason": "Руководитель коммерческого подразделения, отвечает за продажи, наиболее релевантен владельцу процесса продажи и найма менеджера по продажам.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "dorzap.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        {
+          "full_name": "Бухвал Александр Сергеевич",
+          "role_title": "Руководитель ОП г. Тюмень",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 70,
+          "evidence": [
+            "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+          ],
+          "metadata": {
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "source_urls": [
+              "https://smsng.ru/otdel-prodazh"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+              }
+            ],
+            "semantic_role_relevance": 75,
+            "semantic_role_reason": "Руководитель обособленного подразделения в Тюмени, релевантен для вопросов локальных продаж и подбора персонала по данному направлению.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "dorzap.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "dorzap.ru"
+      ],
+      "elapsedMs": 40013
+    },
+    {
+      "stage": "people_ranked",
+      "people": [
+        {
+          "full_name": "Полькин Дмитрий Геннадьевич",
+          "role_title": "Коммерческий директор",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 70,
+          "evidence": [
+            "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+          ],
+          "metadata": {
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "source_urls": [
+              "https://smsng.ru/otdel-prodazh"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+              }
+            ],
+            "semantic_role_relevance": 95,
+            "semantic_role_reason": "Руководитель коммерческого подразделения, отвечает за продажи, наиболее релевантен владельцу процесса продажи и найма менеджера по продажам.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "dorzap.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        {
+          "full_name": "Бухвал Александр Сергеевич",
+          "role_title": "Руководитель ОП г. Тюмень",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 70,
+          "evidence": [
+            "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+          ],
+          "metadata": {
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "source_urls": [
+              "https://smsng.ru/otdel-prodazh"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+              }
+            ],
+            "semantic_role_relevance": 75,
+            "semantic_role_reason": "Руководитель обособленного подразделения в Тюмени, релевантен для вопросов локальных продаж и подбора персонала по данному направлению.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "dorzap.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ]
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "Коммерческий директор: The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+        "person_name": "Полькин Дмитрий Геннадьевич",
+        "person_role": "Коммерческий директор",
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Полькин Дмитрий Геннадьевич подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": null,
+            "summary": "Роль связана с зоной ответственности: Sales and revenue leadership."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "person_found_personal_email_unresolved"
+      },
+      "contacts": [
+        {
+          "name": "Полькин Дмитрий Геннадьевич",
+          "email": null,
+          "type": "confirmed_person",
+          "source": "https://smsng.ru/otdel-prodazh"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://dorzap.ru/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://dorzap.ru/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://dorzap.ru/contacts/"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://dorzap.ru"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-10-06T20:12:36.772Z",
+  "bundle": {
+    "companyName": "Спецмаш-Снг",
+    "officialWebsite": "https://dorzap.ru",
+    "officialDomain": "dorzap.ru",
+    "people": [
+      {
+        "fullName": "Полькин Дмитрий Геннадьевич",
+        "role": "Коммерческий директор",
+        "confidence": "HIGH_CONFIDENCE",
+        "evidence": [
+          {
+            "sourceUrl": "https://smsng.ru/otdel-prodazh",
+            "sourceType": "public_web",
+            "excerpt": "Полькин Дмитрий Геннадьевич Коммерческий директор",
+            "capturedAt": "2026-10-06T20:12:36.772Z",
+            "confidence": 70
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      },
+      {
+        "fullName": "Бухвал Александр Сергеевич",
+        "role": "Руководитель ОП г. Тюмень",
+        "confidence": "HIGH_CONFIDENCE",
+        "evidence": [
+          {
+            "sourceUrl": "https://smsng.ru/otdel-prodazh",
+            "sourceType": "public_web",
+            "excerpt": "Бухвал Александр Сергеевич Руководитель ОП г. Тюмень",
+            "capturedAt": "2026-10-06T20:12:36.772Z",
+            "confidence": 70
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+      "sourceUrl": "https://hh.ru/vacancy/137988890",
+      "confidence": 100
+    },
+    "researchConfidence": "LIKELY",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 1,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 17,
+      "lprMs": 40014,
+      "contactMs": 375,
+      "totalMs": 40391,
+      "stopReason": "people_found_email_unresolved"
+    }
+  },
+  "people": {
+    "primary_person": {
+      "full_name": "Полькин Дмитрий Геннадьевич",
+      "role_title": "Коммерческий директор",
+      "department": null,
+      "linkedin_url": null,
+      "work_email": null,
+      "phone": null,
+      "source": "Iterative public research",
+      "confidence_score": 70,
+      "evidence": [
+        "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+      ],
+      "metadata": {
+        "source_url": "https://smsng.ru/otdel-prodazh",
+        "source_urls": [
+          "https://smsng.ru/otdel-prodazh"
+        ],
+        "research_citations": [
+          {
+            "sourceId": "e5",
+            "quote": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+          }
+        ],
+        "semantic_role_relevance": 95,
+        "semantic_role_reason": "Руководитель коммерческого подразделения, отвечает за продажи, наиболее релевантен владельцу процесса продажи и найма менеджера по продажам.",
+        "email_source_url": null,
+        "email_person_evidence": null,
+        "public_contact_verified": false,
+        "verified_company_domains": [
+          "dorzap.ru"
+        ],
+        "verified_public_profiles": [],
+        "tenchat_url": null,
+        "telegram_url": null,
+        "vk_url": null,
+        "instagram_url": null,
+        "contact_route": "target_persona",
+        "company_verified": true,
+        "role_verified": true
+      }
+    },
+    "alternative_people": [
+      {
+        "full_name": "Бухвал Александр Сергеевич",
+        "role_title": "Руководитель ОП г. Тюмень",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 70,
+        "evidence": [
+          "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+        ],
+        "metadata": {
+          "source_url": "https://smsng.ru/otdel-prodazh",
+          "source_urls": [
+            "https://smsng.ru/otdel-prodazh"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e5",
+              "quote": "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+            }
+          ],
+          "semantic_role_relevance": 75,
+          "semantic_role_reason": "Руководитель обособленного подразделения в Тюмени, релевантен для вопросов локальных продаж и подбора персонала по данному направлению.",
+          "email_source_url": null,
+          "email_person_evidence": null,
+          "public_contact_verified": false,
+          "verified_company_domains": [
+            "dorzap.ru"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      }
+    ],
+    "all_candidates": [
+      {
+        "full_name": "Полькин Дмитрий Геннадьевич",
+        "role_title": "Коммерческий директор",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 70,
+        "evidence": [
+          "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+        ],
+        "metadata": {
+          "source_url": "https://smsng.ru/otdel-prodazh",
+          "source_urls": [
+            "https://smsng.ru/otdel-prodazh"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e5",
+              "quote": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+            }
+          ],
+          "semantic_role_relevance": 95,
+          "semantic_role_reason": "Руководитель коммерческого подразделения, отвечает за продажи, наиболее релевантен владельцу процесса продажи и найма менеджера по продажам.",
+          "email_source_url": null,
+          "email_person_evidence": null,
+          "public_contact_verified": false,
+          "verified_company_domains": [
+            "dorzap.ru"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      },
+      {
+        "full_name": "Бухвал Александр Сергеевич",
+        "role_title": "Руководитель ОП г. Тюмень",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 70,
+        "evidence": [
+          "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+        ],
+        "metadata": {
+          "source_url": "https://smsng.ru/otdel-prodazh",
+          "source_urls": [
+            "https://smsng.ru/otdel-prodazh"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e5",
+              "quote": "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+            }
+          ],
+          "semantic_role_relevance": 75,
+          "semantic_role_reason": "Руководитель обособленного подразделения в Тюмени, релевантен для вопросов локальных продаж и подбора персонала по данному направлению.",
+          "email_source_url": null,
+          "email_person_evidence": null,
+          "public_contact_verified": false,
+          "verified_company_domains": [
+            "dorzap.ru"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      }
+    ],
+    "primary_person_intelligence": {
+      "candidate": {
+        "full_name": "Полькин Дмитрий Геннадьевич",
+        "role_title": "Коммерческий директор",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 70,
+        "evidence": [
+          "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+        ],
+        "metadata": {
+          "source_url": "https://smsng.ru/otdel-prodazh",
+          "source_urls": [
+            "https://smsng.ru/otdel-prodazh"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e5",
+              "quote": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+            }
+          ],
+          "semantic_role_relevance": 95,
+          "semantic_role_reason": "Руководитель коммерческого подразделения, отвечает за продажи, наиболее релевантен владельцу процесса продажи и найма менеджера по продажам.",
+          "email_source_url": null,
+          "email_person_evidence": null,
+          "public_contact_verified": false,
+          "verified_company_domains": [
+            "dorzap.ru"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      },
+      "rank_score": 90,
+      "person_score": 90,
+      "persona_match_score": 95,
+      "business_problem_ownership": "high",
+      "decision_authority": "high",
+      "influence_level": "high",
+      "confidence_score": 73,
+      "confidence_level": "high_confidence",
+      "contact_availability": {
+        "has_work_email": false,
+        "has_linkedin": false,
+        "has_phone": false,
+        "has_telegram": false
+      },
+      "matched_keywords": [
+        "коммерческий директор"
+      ],
+      "reasoning": "Matched person context: коммерческий директор.",
+      "selection_reason": "Полькин Дмитрий Геннадьевич is the strongest available candidate because Коммерческий директор matched коммерческий директор. Persona match 95/100, ownership high, authority high, influence high, confidence 73/100.",
+      "strengths": [
+        "Matched context: коммерческий директор",
+        "Strong persona match (95/100)",
+        "Likely owner of the business problem",
+        "High decision authority",
+        "High influence in the buying process"
+      ],
+      "weaknesses": [
+        "No direct personal contact channel found"
+      ],
+      "why_not_other_candidates": [
+        "Бухвал Александр Сергеевич: lower person score (72/100 vs 90/100); weaker persona match; no direct persona keyword match in available evidence."
+      ],
+      "recommended_next_action": "run_enrichment"
+    },
+    "alternative_people_intelligence": [
+      {
+        "candidate": {
+          "full_name": "Бухвал Александр Сергеевич",
+          "role_title": "Руководитель ОП г. Тюмень",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 70,
+          "evidence": [
+            "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+          ],
+          "metadata": {
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "source_urls": [
+              "https://smsng.ru/otdel-prodazh"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+              }
+            ],
+            "semantic_role_relevance": 75,
+            "semantic_role_reason": "Руководитель обособленного подразделения в Тюмени, релевантен для вопросов локальных продаж и подбора персонала по данному направлению.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "dorzap.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        "rank_score": 72,
+        "person_score": 72,
+        "persona_match_score": 75,
+        "business_problem_ownership": "high",
+        "decision_authority": "medium",
+        "influence_level": "medium",
+        "confidence_score": 69,
+        "confidence_level": "high_confidence",
+        "contact_availability": {
+          "has_work_email": false,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Бухвал Александр Сергеевич is the best available hypothesis because Руководитель ОП г. Тюмень no direct keyword match, compared against РОП. Persona match 75/100, ownership high, authority medium, influence medium, confidence 69/100.",
+        "strengths": [
+          "Strong persona match (75/100)",
+          "Likely owner of the business problem"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence",
+          "No direct personal contact channel found"
+        ],
+        "why_not_other_candidates": [
+          "Бухвал Александр Сергеевич: lower person score (72/100 vs 90/100); weaker persona match; no direct persona keyword match in available evidence."
+        ],
+        "recommended_next_action": "run_enrichment"
+      }
+    ],
+    "ranked_people": [
+      {
+        "candidate": {
+          "full_name": "Полькин Дмитрий Геннадьевич",
+          "role_title": "Коммерческий директор",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 70,
+          "evidence": [
+            "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+          ],
+          "metadata": {
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "source_urls": [
+              "https://smsng.ru/otdel-prodazh"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+              }
+            ],
+            "semantic_role_relevance": 95,
+            "semantic_role_reason": "Руководитель коммерческого подразделения, отвечает за продажи, наиболее релевантен владельцу процесса продажи и найма менеджера по продажам.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "dorzap.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        "rank_score": 90,
+        "person_score": 90,
+        "persona_match_score": 95,
+        "business_problem_ownership": "high",
+        "decision_authority": "high",
+        "influence_level": "high",
+        "confidence_score": 73,
+        "confidence_level": "high_confidence",
+        "contact_availability": {
+          "has_work_email": false,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [
+          "коммерческий директор"
+        ],
+        "reasoning": "Matched person context: коммерческий директор.",
+        "selection_reason": "Полькин Дмитрий Геннадьевич is the strongest available candidate because Коммерческий директор matched коммерческий директор. Persona match 95/100, ownership high, authority high, influence high, confidence 73/100.",
+        "strengths": [
+          "Matched context: коммерческий директор",
+          "Strong persona match (95/100)",
+          "Likely owner of the business problem",
+          "High decision authority",
+          "High influence in the buying process"
+        ],
+        "weaknesses": [
+          "No direct personal contact channel found"
+        ],
+        "why_not_other_candidates": [
+          "Бухвал Александр Сергеевич: lower person score (72/100 vs 90/100); weaker persona match; no direct persona keyword match in available evidence."
+        ],
+        "recommended_next_action": "run_enrichment"
+      },
+      {
+        "candidate": {
+          "full_name": "Бухвал Александр Сергеевич",
+          "role_title": "Руководитель ОП г. Тюмень",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 70,
+          "evidence": [
+            "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+          ],
+          "metadata": {
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "source_urls": [
+              "https://smsng.ru/otdel-prodazh"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e5",
+                "quote": "Бухвал Александр Сергеевич\n\nРуководитель ОП г. Тюмень"
+              }
+            ],
+            "semantic_role_relevance": 75,
+            "semantic_role_reason": "Руководитель обособленного подразделения в Тюмени, релевантен для вопросов локальных продаж и подбора персонала по данному направлению.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "dorzap.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        "rank_score": 72,
+        "person_score": 72,
+        "persona_match_score": 75,
+        "business_problem_ownership": "high",
+        "decision_authority": "medium",
+        "influence_level": "medium",
+        "confidence_score": 69,
+        "confidence_level": "high_confidence",
+        "contact_availability": {
+          "has_work_email": false,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Бухвал Александр Сергеевич is the best available hypothesis because Руководитель ОП г. Тюмень no direct keyword match, compared against РОП. Persona match 75/100, ownership high, authority medium, influence medium, confidence 69/100.",
+        "strengths": [
+          "Strong persona match (75/100)",
+          "Likely owner of the business problem"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence",
+          "No direct personal contact channel found"
+        ],
+        "why_not_other_candidates": [
+          "Бухвал Александр Сергеевич: lower person score (72/100 vs 90/100); weaker persona match; no direct persona keyword match in available evidence."
+        ],
+        "recommended_next_action": "run_enrichment"
+      }
+    ],
+    "selection_reasoning": "Полькин Дмитрий Геннадьевич is the strongest available candidate because Коммерческий директор matched коммерческий директор. Persona match 95/100, ownership high, authority high, influence high, confidence 73/100.",
+    "search_status": "person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "research_deadline"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 1,
+      "official_pages_fetched": 5,
+      "aborted_requests": 1,
+      "elapsed_ms": 40013,
+      "stop_reason": "research_deadline",
+      "queries_executed": [
+        "\"Спецмаш-Снг\" директор OR коммерческий директор OR руководитель отдела продаж site:dorzap.ru OR site:smsng.ru"
+      ],
+      "sources_checked": [
+        "https://dorzap.ru",
+        "https://dorzap.ru/o-kompanii/",
+        "https://dorzap.ru/contacts/",
+        "https://dorzap.ru/vakansii/",
+        "https://smsng.ru/otdel-prodazh",
+        "https://vsem-podryad.ru/company/d37abc5b-8e9b-4418-aa05-2e06098f4983?backUrl=%2Fpurchases%2F%25D0%25A5%25D0%25B0%25D0%25BD%25D1%2582%25D1%258B-%25D0%259C%25D0%25B0%25D0%25BD%25D1%2581%25D0%25B8%25D0%25B9%25D1%2581%25D0%25BA%25D0%25B8%25D0%25B9%2520%25D0%25B0%25D0%25B2%25D1%2582%25D0%25BE%25D0%25BD%25D0%25BE%25D0%25BC%25D0%25BD%25D1%258B%25D0%25B9%2520%25D0%25BE%25D0%25BA%25D1%2580%25D1%2583%25D0%25B3%2F%25D0%259F%25D0%25BE%25D1%2581%25D1%2582%25D0%25B0%25D0%25B2%25D0%25BA%25D0%25B0%2520%25D1%2581%25D1%2582%25D1%2580%25D0%25BE%25D0%25B8%25D1%2582%25D0%25B5%25D0%25BB%25D1%258C%25D0%25BD%25D1%258B%25D1%2585%2520%25D0%25BC%25D0%25B0%25D1%2582%25D0%25B5%25D1%2580%25D0%25B8%25D0%25B0%25D0%25BB%25D0%25BE%25D0%25B2%2F",
+        "https://smsng.ru/%D1%80%D0%B5%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%82%D1%8B",
+        "https://smsng.ru/otdel-logistiki",
+        "https://smsng.ru/contact-us",
+        "https://smsng.ru/otdel-prodazh/"
+      ],
+      "search_results_seen": 5,
+      "rejected_candidates": {
+        "validation_rejects": 1
+      },
+      "final_failure_reason": null
+    }
+  },
+  "contacts": [
+    {
+      "name": "Полькин Дмитрий Геннадьевич",
+      "role": "Коммерческий директор",
+      "email": null,
+      "type": "confirmed_person",
+      "source": "https://smsng.ru/otdel-prodazh",
+      "selected": false,
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "Коммерческий директор: The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+        "person_name": "Полькин Дмитрий Геннадьевич",
+        "person_role": "Коммерческий директор",
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Полькин Дмитрий Геннадьевич подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": null,
+            "summary": "Роль связана с зоной ответственности: Sales and revenue leadership."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Полькин Дмитрий Геннадьевич\n\nКоммерческий директор"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "person_found_personal_email_unresolved"
+      }
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://dorzap.ru/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://dorzap.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://dorzap.ru/contacts/",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://dorzap.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 40391
+}

@@ -1,0 +1,2368 @@
+{
+  "mode": "direct",
+  "name": "Сбер. IT",
+  "website": "https://rabota.sber.ru",
+  "before": {
+    "companyName": "Сбер. IT",
+    "officialWebsite": "https://rabota.sber.ru",
+    "officialDomain": "rabota.sber.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "SDET / Разработчик AI решений (HR платформа)",
+      "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+      "sourceUrl": "https://hh.ru/vacancy/138117118",
+      "confidence": 90
+    },
+    "researchConfidence": "UNVERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 6,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 23,
+      "lprMs": 15877,
+      "contactMs": 8625,
+      "totalMs": 26613,
+      "stopReason": "lpr_not_found"
+    }
+  },
+  "signal": {
+    "type": "AI_AUTOMATION_HIRING_SIGNAL",
+    "title": "SDET / Разработчик AI решений (HR платформа)",
+    "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+    "sourceUrl": "https://hh.ru/vacancy/138117118",
+    "confidence": 90
+  },
+  "index": 14,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru",
+      "status": 200,
+      "elapsedMs": 955
+    },
+    {
+      "stage": "research_open",
+      "url": "https://rabota.sber.ru",
+      "success": true,
+      "evidence": {
+        "url": "https://rabota.sber.ru",
+        "kind": "page",
+        "text": "Богдан Рощупкин ML-инженер AI-агентов",
+        "links": [
+          {
+            "url": "https://rabota.sber.ru",
+            "label": ""
+          },
+          {
+            "url": "https://rabota.sber.ru/search",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://rabota.sber.ru/media",
+            "label": "Карьерные медиа"
+          },
+          {
+            "url": "https://sbergraduate.ru",
+            "label": "Выпускникам и студентам"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/policy",
+            "label": "Политика обработки данных"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/cookies",
+            "label": "Политика использования Cookies"
+          },
+          {
+            "url": "https://www.sberbank.ru",
+            "label": "www.sberbank.ru"
+          },
+          {
+            "url": "https://t.me/careersber",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:02:27.331Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2993,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-06",
+        "target": {
+          "owner": "Product leadership",
+          "primaryRole": "руководитель продукта",
+          "alternativeRoles": [
+            "Head of Product Marketing",
+            "COO"
+          ]
+        },
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:02:27.331Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 10,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "Сбер. IT — подразделение Сбербанка, фокусируется на IT-разработке и инновациях, включая создание AI-агентов для автоматизации тестирования и других AI-решений. Ведутся проекты с применением AI для автоматической генерации UI/API тестов и их оптимизации.",
+        "missing": [
+          "Имя руководителя продукта по AI-агентам или HR платформе",
+          "Контактные данные лидера продукта или COO"
+        ],
+        "people": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 60,
+            "reason": "Персонаж упомянут на сайте как ML-инженер в AI-агентах, связан с AI проектами, но не руководитель продукта",
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://rabota.sber.ru — официальный сайт карьерного портала Сбер. IT"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "Контакты или команда",
+            "purpose": "Найти раздел с контактами или информацией о руководстве продукта или HR платформы"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "Сбер. IT — подразделение Сбербанка, фокусируется на IT-разработке и инновациях, включая создание AI-агентов для автоматизации тестирования и других AI-решений. Ведутся проекты с применением AI для автоматической генерации UI/API тестов и их оптимизации.",
+        "missing": [
+          "Имя руководителя продукта по AI-агентам или HR платформе",
+          "Контактные данные лидера продукта или COO"
+        ],
+        "people": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 60,
+            "reason": "Персонаж упомянут на сайте как ML-инженер в AI-агентах, связан с AI проектами, но не руководитель продукта",
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://rabota.sber.ru — официальный сайт карьерного портала Сбер. IT"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "Контакты или команда",
+            "purpose": "Найти раздел с контактами или информацией о руководстве продукта или HR платформы"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      },
+      "validationErrors": [],
+      "acceptedPeople": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "semantic_role_relevance": 60,
+            "semantic_role_reason": "Персонаж упомянут на сайте как ML-инженер в AI-агентах, связан с AI проектами, но не руководитель продукта",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://rabota.sber.ru",
+      "focus": "Контакты или команда",
+      "purpose": "Найти раздел с контактами или информацией о руководстве продукта или HR платформы",
+      "success": true,
+      "evidence": {
+        "url": "https://rabota.sber.ru",
+        "kind": "page",
+        "text": "Богдан Рощупкин ML-инженер AI-агентов",
+        "links": [
+          {
+            "url": "https://rabota.sber.ru",
+            "label": ""
+          },
+          {
+            "url": "https://rabota.sber.ru/search",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://rabota.sber.ru/media",
+            "label": "Карьерные медиа"
+          },
+          {
+            "url": "https://sbergraduate.ru",
+            "label": "Выпускникам и студентам"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/policy",
+            "label": "Политика обработки данных"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/cookies",
+            "label": "Политика использования Cookies"
+          },
+          {
+            "url": "https://www.sberbank.ru",
+            "label": "www.sberbank.ru"
+          },
+          {
+            "url": "https://t.me/careersber",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:02:27.331Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3237,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-06",
+        "target": {
+          "owner": "Product leadership",
+          "primaryRole": "руководитель продукта",
+          "alternativeRoles": [
+            "Head of Product Marketing",
+            "COO"
+          ]
+        },
+        "knownPeople": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "email": null,
+            "sources": [
+              "https://rabota.sber.ru"
+            ]
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:02:27.331Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "Контакты или команда",
+            "success": true
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 9,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "Сбер IT представляет собой подразделение Сбербанка, занимающееся разработкой IT-решений, включая искусственный интеллект и автоматизацию. Они ищут специалистов для разработки AI-агентов, связанных с автоматической генерацией тестов и оптимизацией UI/API-тестирования, что указывает на ориентированность на инновационные AI-технологии в своих продуктах.",
+        "missing": [
+          "информация о руководителе продукта или head of product marketing",
+          "публичные контакты руководства продукта или руководителей подразделений AI/HR платформы"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://rabota.sber.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Product руководитель Сбер IT AI HR платформа",
+            "focus": "Найти информацию о руководителе продукта или аналогичной роли, относящейся к вакансии AI-агентов в Сбере",
+            "purpose": "Выяснить, кто отвечает за продукт AI-агентов или HR платформы для предложенного сигнала."
+          },
+          {
+            "type": "search",
+            "value": "Сбер IT руководство команда",
+            "focus": "Поиск страницы команды или раздела с руководством",
+            "purpose": "Найти официальную страницу с ключевыми сотрудниками, чтобы проверить наличие релевантных лиц, руководящих продуктами AI и HR."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "Сбер IT представляет собой подразделение Сбербанка, занимающееся разработкой IT-решений, включая искусственный интеллект и автоматизацию. Они ищут специалистов для разработки AI-агентов, связанных с автоматической генерацией тестов и оптимизацией UI/API-тестирования, что указывает на ориентированность на инновационные AI-технологии в своих продуктах.",
+        "missing": [
+          "информация о руководителе продукта или head of product marketing",
+          "публичные контакты руководства продукта или руководителей подразделений AI/HR платформы"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://rabota.sber.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Product руководитель Сбер IT AI HR платформа",
+            "focus": "Найти информацию о руководителе продукта или аналогичной роли, относящейся к вакансии AI-агентов в Сбере",
+            "purpose": "Выяснить, кто отвечает за продукт AI-агентов или HR платформы для предложенного сигнала."
+          },
+          {
+            "type": "search",
+            "value": "Сбер IT руководство команда",
+            "focus": "Поиск страницы команды или раздела с руководством",
+            "purpose": "Найти официальную страницу с ключевыми сотрудниками, чтобы проверить наличие релевантных лиц, руководящих продуктами AI и HR."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      },
+      "validationErrors": [],
+      "acceptedPeople": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "semantic_role_relevance": 60,
+            "semantic_role_reason": "Персонаж упомянут на сайте как ML-инженер в AI-агентах, связан с AI проектами, но не руководитель продукта",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=Product%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%A1%D0%B1%D0%B5%D1%80%20IT%20AI%20HR%20%D0%BF%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D0%B0&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 407
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=Product%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%A1%D0%B1%D0%B5%D1%80%20IT%20AI%20HR%20%D0%BF%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D0%B0&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 458
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%A1%D0%B1%D0%B5%D1%80%20IT%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE%20%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 244
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%A1%D0%B1%D0%B5%D1%80%20IT%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE%20%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 172
+    },
+    {
+      "stage": "search",
+      "query": "Сбер IT руководство команда",
+      "results": [
+        {
+          "title": "СберБанк - sberbank",
+          "url": "https://online.sberbank.ru/CSAFront/index.do",
+          "snippet": "Генеральная лицензия на осуществление банковских операций от 11 августа 2015 года. Регистрационный номер — 1481",
+          "source_key": "bing-rss",
+          "source_label": "public-web:bing-rss",
+          "score": 1,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "СберБанк для физических лиц — банковские услуги",
+          "url": "https://www.sberbank.ru/retail/ru/person",
+          "snippet": "СберБанк — банковские услуги для физических лиц. Кредиты и вклады, ипотека, дебетовые и кредитные карты и другие банковские услуги для частных клиентов.",
+          "source_key": "bing-rss",
+          "source_label": "public-web:bing-rss",
+          "score": 0.96,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Веб-версия СберБанк Онлайн",
+          "url": "https://www.sberbank.ru/ru/person/dist_services/inner_sbol",
+          "snippet": "Используйте все возможности СберБанк Онлайн прямо в браузере — переводы, платежи, вклады и карты доступны без установки приложения. Вход по коду, биометрии или паролю, данные надежно защищены. – СберБанк",
+          "source_key": "bing-rss",
+          "source_label": "public-web:bing-rss",
+          "score": 0.92,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "СберБанк - online.sberbank.ru",
+          "url": "https://online.sberbank.ru/CSAFront/index.do?NextService=ESK&BackUrl",
+          "snippet": "Генеральная лицензия на осуществление банковских операций от 11 августа 2015 года. Регистрационный номер — 1481",
+          "source_key": "bing-rss",
+          "source_label": "public-web:bing-rss",
+          "score": 0.88,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "СберБанк сегодня",
+          "url": "https://www.sberbank.com/ru/about",
+          "snippet": "Главные факты о СберБанке: бренд, история, ценности, миссия, команда, стратегия",
+          "source_key": "bing-rss",
+          "source_label": "public-web:bing-rss",
+          "score": 0.84,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Сбер IT руководство команда",
+      "focus": "Поиск страницы команды или раздела с руководством",
+      "purpose": "Найти официальную страницу с ключевыми сотрудниками, чтобы проверить наличие релевантных лиц, руководящих продуктами AI и HR.",
+      "results": [
+        {
+          "url": "https://online.sberbank.ru/CSAFront/index.do",
+          "title": "СберБанк - sberbank",
+          "snippet": "Генеральная лицензия на осуществление банковских операций от 11 августа 2015 года. Регистрационный номер — 1481",
+          "provider": "public-web:bing-rss"
+        },
+        {
+          "url": "https://www.sberbank.ru/retail/ru/person",
+          "title": "СберБанк для физических лиц — банковские услуги",
+          "snippet": "СберБанк — банковские услуги для физических лиц. Кредиты и вклады, ипотека, дебетовые и кредитные карты и другие банковские услуги для частных клиентов.",
+          "provider": "public-web:bing-rss"
+        },
+        {
+          "url": "https://www.sberbank.ru/ru/person/dist_services/inner_sbol",
+          "title": "Веб-версия СберБанк Онлайн",
+          "snippet": "Используйте все возможности СберБанк Онлайн прямо в браузере — переводы, платежи, вклады и карты доступны без установки приложения. Вход по коду, биометрии или паролю, данные надежно защищены. – СберБанк",
+          "provider": "public-web:bing-rss"
+        },
+        {
+          "url": "https://online.sberbank.ru/CSAFront/index.do?NextService=ESK&BackUrl",
+          "title": "СберБанк - online.sberbank.ru",
+          "snippet": "Генеральная лицензия на осуществление банковских операций от 11 августа 2015 года. Регистрационный номер — 1481",
+          "provider": "public-web:bing-rss"
+        },
+        {
+          "url": "https://www.sberbank.com/ru/about",
+          "title": "СберБанк сегодня",
+          "snippet": "Главные факты о СберБанке: бренд, история, ценности, миссия, команда, стратегия",
+          "provider": "public-web:bing-rss"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1483
+    },
+    {
+      "stage": "search",
+      "query": "Product руководитель Сбер IT AI HR платформа",
+      "results": [
+        {
+          "title": "Руководитель направления по развитию продукта для HR-платформа",
+          "url": "https://talent-move.ru/jobs/rukovoditel-napravleniya-razvitiya-produkta-sber-200726-235752",
+          "snippet": "Jul 21, 2026 · Ищем Руководителя направления по развитию продукта для HR-платформы «Пульс» в Сбер. Опыт от 3 лет в управлении продуктами, UX и AI/ML-решения!",
+          "source_label": "tavily",
+          "score": 0.7734393,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Владелец продукта (HR-платформа Пульс), в компании СБЕР",
+          "url": "https://dreamjob.ru/employers/25583/vakansii/138145915",
+          "snippet": "Требования опыт работы Product Owner в топ-бигтехах от 3 лет опыт в B2C-продукте с управлением воронкой опыт разработки стратегии и вижена продукта опыт управления командой разработки",
+          "source_label": "tavily",
+          "score": 0.7060491,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Руководитель продукта (SberAI) в г Москва | Сбер",
+          "url": "https://rabota.sber.ru/search/rukovoditel-produkta-sberai-4555257",
+          "snippet": "⭐ Руководитель продукта (SberAI) - работа в Сбере - г Москва. Достойная зарплата . ️ ДМС и корпоративное обучение. 📈 Карьерный рост. Стань частью крупной команды!",
+          "source_label": "tavily",
+          "score": 0.6892434,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Product Manager (ML\\AI) в Москве, работа в компании ...",
+          "url": "https://hh.ru/vacancy/133446354",
+          "snippet": "May 25, 2026 · Требования Опыт продакт-менеджера от 3 лет, из них не менее 1 года — с AI/ML-продуктами или автоматизацией. Важно именно внедрение: продукт должен был жить в production.",
+          "source_label": "tavily",
+          "score": 0.21915402,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Product Owner / Руководитель платформенной backend ...",
+          "url": "https://hh.ru/vacancy/137208353",
+          "snippet": "Sep 15, 2026 · Product Owner / Руководитель платформенной backend-команды В архиве с 15 сентября 2026 Уровень дохода не указан Опыт работы: более 6 лет",
+          "source_label": "tavily",
+          "score": 0.21133581,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Product руководитель Сбер IT AI HR платформа",
+      "focus": "Найти информацию о руководителе продукта или аналогичной роли, относящейся к вакансии AI-агентов в Сбере",
+      "purpose": "Выяснить, кто отвечает за продукт AI-агентов или HR платформы для предложенного сигнала.",
+      "results": [
+        {
+          "url": "https://talent-move.ru/jobs/rukovoditel-napravleniya-razvitiya-produkta-sber-200726-235752",
+          "title": "Руководитель направления по развитию продукта для HR-платформа",
+          "snippet": "Jul 21, 2026 · Ищем Руководителя направления по развитию продукта для HR-платформы «Пульс» в Сбер. Опыт от 3 лет в управлении продуктами, UX и AI/ML-решения!",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://dreamjob.ru/employers/25583/vakansii/138145915",
+          "title": "Вакансия Владелец продукта (HR-платформа Пульс), в компании СБЕР",
+          "snippet": "Требования опыт работы Product Owner в топ-бигтехах от 3 лет опыт в B2C-продукте с управлением воронкой опыт разработки стратегии и вижена продукта опыт управления командой разработки",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://rabota.sber.ru/search/rukovoditel-produkta-sberai-4555257",
+          "title": "Вакансия Руководитель продукта (SberAI) в г Москва | Сбер",
+          "snippet": "⭐ Руководитель продукта (SberAI) - работа в Сбере - г Москва. Достойная зарплата . ️ ДМС и корпоративное обучение. 📈 Карьерный рост. Стань частью крупной команды!",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://hh.ru/vacancy/133446354",
+          "title": "Вакансия Product Manager (ML\\AI) в Москве, работа в компании ...",
+          "snippet": "May 25, 2026 · Требования Опыт продакт-менеджера от 3 лет, из них не менее 1 года — с AI/ML-продуктами или автоматизацией. Важно именно внедрение: продукт должен был жить в production.",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://hh.ru/vacancy/137208353",
+          "title": "Вакансия Product Owner / Руководитель платформенной backend ...",
+          "snippet": "Sep 15, 2026 · Product Owner / Руководитель платформенной backend-команды В архиве с 15 сентября 2026 Уровень дохода не указан Опыт работы: более 6 лет",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 4404,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-06",
+        "target": {
+          "owner": "Product leadership",
+          "primaryRole": "руководитель продукта",
+          "alternativeRoles": [
+            "Head of Product Marketing",
+            "COO"
+          ]
+        },
+        "knownPeople": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "email": null,
+            "sources": [
+              "https://rabota.sber.ru"
+            ]
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:02:27.331Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.sberbank.com/ru/about",
+            "kind": "search",
+            "text": "СберБанк сегодня\nГлавные факты о СберБанке: бренд, история, ценности, миссия, команда, стратегия",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:02:35.224Z",
+            "id": "e6"
+          },
+          {
+            "url": "https://talent-move.ru/jobs/rukovoditel-napravleniya-razvitiya-produkta-sber-200726-235752",
+            "kind": "search",
+            "text": "Руководитель направления по развитию продукта для HR-платформа\nJul 21, 2026 · Ищем Руководителя направления по развитию продукта для HR-платформы «Пульс» в Сбер. Опыт от 3 лет в управлении продуктами, UX и AI/ML-решения!",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:02:36.166Z",
+            "id": "e7"
+          },
+          {
+            "url": "https://dreamjob.ru/employers/25583/vakansii/138145915",
+            "kind": "search",
+            "text": "Вакансия Владелец продукта (HR-платформа Пульс), в компании СБЕР\nТребования опыт работы Product Owner в топ-бигтехах от 3 лет опыт в B2C-продукте с управлением воронкой опыт разработки стратегии и вижена продукта опыт управления командой разработки",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:02:36.166Z",
+            "id": "e8"
+          },
+          {
+            "url": "https://rabota.sber.ru/search/rukovoditel-produkta-sberai-4555257",
+            "kind": "search",
+            "text": "Вакансия Руководитель продукта (SberAI) в г Москва | Сбер\n⭐ Руководитель продукта (SberAI) - работа в Сбере - г Москва. Достойная зарплата . ️ ДМС и корпоративное обучение. 📈 Карьерный рост. Стань частью крупной команды!",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:02:36.166Z",
+            "id": "e9"
+          },
+          {
+            "url": "https://hh.ru/vacancy/133446354",
+            "kind": "search",
+            "text": "Вакансия Product Manager (ML\\AI) в Москве, работа в компании ...\nMay 25, 2026 · Требования Опыт продакт-менеджера от 3 лет, из них не менее 1 года — с AI/ML-продуктами или автоматизацией. Важно именно внедрение: продукт должен был жить в production.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:02:36.166Z",
+            "id": "e10"
+          },
+          {
+            "url": "https://hh.ru/vacancy/137208353",
+            "kind": "search",
+            "text": "Вакансия Product Owner / Руководитель платформенной backend ...\nSep 15, 2026 · Product Owner / Руководитель платформенной backend-команды В архиве с 15 сентября 2026 Уровень дохода не указан Опыт работы: более 6 лет",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:02:36.167Z",
+            "id": "e11"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "Контакты или команда",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "Product руководитель Сбер IT AI HR платформа",
+            "focus": "Найти информацию о руководителе продукта или аналогичной роли, относящейся к вакансии AI-агентов в Сбере",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "Сбер IT руководство команда",
+            "focus": "Поиск страницы команды или раздела с руководством",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 3,
+          "actionsRemaining": 7,
+          "searchRemaining": 6
+        }
+      },
+      "output": {
+        "companySummary": "Сбер IT — подразделение Сбера, занимающееся IT-разработками и инновациями, включая AI-решения для HR-платформ. В компании развиваются проекты с AI-агентами, автоматизацией тестирования и self-healing.",
+        "missing": [
+          "имя руководителя продукта для AI решений в HR платформе",
+          "контакт руководителя продукта или аналогичной роли"
+        ],
+        "people": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 40,
+            "reason": "Инженер AI-агентов в Сбере; релевантен тематике AI, но не руководитель продукта",
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://rabota.sber.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Руководитель продукта Сбер AI HR платформа",
+            "focus": "Поиск точного имени руководителя продукта или менеджера по работе с AI HR платформой в Сбере",
+            "purpose": "Выяснить имя и контакты релевантного руководителя продукта по AI решениям для HR платформы Сбера"
+          },
+          {
+            "type": "open",
+            "value": "https://talent-move.ru/jobs/rukovoditel-napravleniya-razvitiya-produkta-sber-200726-235752",
+            "focus": "Руководитель направления по развитию продукта для HR-платформы Пульс",
+            "purpose": "Проверить описание вакансии и возможное имя или контакт руководителя продукта HR платформы"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найден руководитель продукта по AI для HR платформы; требуется дополнительный поиск имени и контактов руководителя продукта/руководства Пульса или AI HR решений в Сбере."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "Сбер IT — подразделение Сбера, занимающееся IT-разработками и инновациями, включая AI-решения для HR-платформ. В компании развиваются проекты с AI-агентами, автоматизацией тестирования и self-healing.",
+        "missing": [
+          "имя руководителя продукта для AI решений в HR платформе",
+          "контакт руководителя продукта или аналогичной роли"
+        ],
+        "people": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 40,
+            "reason": "Инженер AI-агентов в Сбере; релевантен тематике AI, но не руководитель продукта",
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://rabota.sber.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Руководитель продукта Сбер AI HR платформа",
+            "focus": "Поиск точного имени руководителя продукта или менеджера по работе с AI HR платформой в Сбере",
+            "purpose": "Выяснить имя и контакты релевантного руководителя продукта по AI решениям для HR платформы Сбера"
+          },
+          {
+            "type": "open",
+            "value": "https://talent-move.ru/jobs/rukovoditel-napravleniya-razvitiya-produkta-sber-200726-235752",
+            "focus": "Руководитель направления по развитию продукта для HR-платформы Пульс",
+            "purpose": "Проверить описание вакансии и возможное имя или контакт руководителя продукта HR платформы"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найден руководитель продукта по AI для HR платформы; требуется дополнительный поиск имени и контактов руководителя продукта/руководства Пульса или AI HR решений в Сбере."
+      },
+      "validationErrors": [
+        "person_rejected:Богдан Рощупкин:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+      ],
+      "acceptedPeople": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "semantic_role_relevance": 60,
+            "semantic_role_reason": "Персонаж упомянут на сайте как ML-инженер в AI-агентах, связан с AI проектами, но не руководитель продукта",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%A0%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%B0%20%D0%A1%D0%B1%D0%B5%D1%80%20AI%20HR%20%D0%BF%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D0%B0&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 616
+    },
+    {
+      "stage": "fetch",
+      "url": "https://talent-move.ru/jobs/rukovoditel-napravleniya-razvitiya-produkta-sber-200726-235752",
+      "status": 301,
+      "elapsedMs": 793
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%A0%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%B0%20%D0%A1%D0%B1%D0%B5%D1%80%20AI%20HR%20%D0%BF%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D0%B0&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 476
+    },
+    {
+      "stage": "fetch",
+      "url": "https://talent-move.ru/jobs/rukovoditel-napravleniya-razvitiya-produkta-sber-200726-235752/",
+      "status": 200,
+      "elapsedMs": 531
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://talent-move.ru/jobs/rukovoditel-napravleniya-razvitiya-produkta-sber-200726-235752",
+      "focus": "Руководитель направления по развитию продукта для HR-платформы Пульс",
+      "purpose": "Проверить описание вакансии и возможное имя или контакт руководителя продукта HR платформы",
+      "success": true,
+      "evidence": {
+        "url": "https://talent-move.ru/jobs/rukovoditel-napravleniya-razvitiya-produkta-sber-200726-235752/",
+        "kind": "page",
+        "text": "На главную Что за роль В этой роли вы будете отвечать за управление продуктами HR-платформы «Пульс», фокусируясь на развитии цифровых решений для подбора, адаптации и развития карьеры сотрудников. Ваша задача – формировать UX-подход и устранять барьеры при переходе между площадками. Что предстоит делать: — Формирование UX-подхода и визуального языка — Устранение барьеров при переходе между площадками — Построение системы бесшовных коммуникаций — Приоритизация задач и управление бэклогом — Разработка и актуализация Customer Journey Map и Service Blueprint — Проведение пользовательских исследований — Выстраивание отношений со стейкхолдерами — Управление ключевыми метриками Что важно знать Вы будете работать в комфортном офисе рядом с м. Кутузовская в гибридном режиме. Эта позиция требует от вас сильных коммуникативных навыков и системного мышления, так как вы будете взаимодействовать с различными стейкхолдерами и управлять ключевыми метриками продукта. Оценка вакансии 8 / 10 Вакансия предлагает интересные задачи в управлении продуктами HR-платформы с акцентом на UX и AI/ML. Условия гибридного формата работы и комфортный офис создают привлекательные условия для кандидатов. Подписка TalentMove Больше, чем вакансии → TalentScanAI Узнайте стоимость вашего опыта на рынке → Закрытое сообщество Нетворкинг и инсайды рынка труда → Топ вакансии Лучшие вакансии с доставкой в Telegram Разблокировать функции -&gt; от 390 ₽/мес · отмена в любой момент",
+        "links": [
+          {
+            "url": "https://talent-move.ru/b2b/?from=tm_topbar",
+            "label": "Добавить вакансию"
+          },
+          {
+            "url": "https://cv.talent-move.ru/?from=talentmove_top_new",
+            "label": "ИИ резюме"
+          },
+          {
+            "url": "https://talent-move.ru/pricing/?from=tm_topbar",
+            "label": "Премиум"
+          },
+          {
+            "url": "https://talent-move.ru",
+            "label": "TalentMove"
+          },
+          {
+            "url": "https://talent-move.ru/?s=",
+            "label": "Поиск"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/product",
+            "label": "Все вакансии"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/product-manager",
+            "label": "Продакт"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/project-manager",
+            "label": "Проджект"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/analytics",
+            "label": "Аналитика"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/marketing",
+            "label": "Все вакансии"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/pr-brand",
+            "label": "PR / Brand"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/smm",
+            "label": "SMM"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/seo",
+            "label": "SEO"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/content",
+            "label": "Контент"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/crm-email",
+            "label": "CRM / Email"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/dev",
+            "label": "Код"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/design-3d-cg",
+            "label": "Визуал"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/hr",
+            "label": "HR"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/business-development-strategy-and-analytics",
+            "label": "Биздев"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/gamedev",
+            "label": "Геймдев"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/crypto",
+            "label": "Крипто"
+          },
+          {
+            "url": "https://talent-move.ru/job-category/ai",
+            "label": "AI"
+          },
+          {
+            "url": "https://talent-move.ru/login",
+            "label": ""
+          },
+          {
+            "url": "https://telegram.me/+GRhMzfZ_52sxNDAy",
+            "label": "Telegram-канал →"
+          },
+          {
+            "url": "https://cv.talent-move.ru/?from=tm_mm",
+            "label": "ИИ резюме →"
+          },
+          {
+            "url": "https://talent-move.ru/pricing/?from=tm_mm",
+            "label": "Подписка →"
+          },
+          {
+            "url": "https://talent-move.ru/seniority/junior",
+            "label": "Junior"
+          },
+          {
+            "url": "https://talent-move.ru/seniority/middle",
+            "label": "Middle"
+          },
+          {
+            "url": "https://talent-move.ru/seniority/senior",
+            "label": "Senior"
+          },
+          {
+            "url": "https://talent-move.ru/seniority/c-level",
+            "label": "C-level"
+          },
+          {
+            "url": "https://talent-move.ru/industry/fintech",
+            "label": "FinTech"
+          },
+          {
+            "url": "https://talent-move.ru/industry/adtech",
+            "label": "AdTech"
+          },
+          {
+            "url": "https://talent-move.ru/industry/edtech",
+            "label": "EdTech"
+          },
+          {
+            "url": "https://talent-move.ru/industry/b2b-saas",
+            "label": "B2B SaaS"
+          },
+          {
+            "url": "https://talent-move.ru/industry/adtech-martech",
+            "label": "AdTech / MarTech"
+          },
+          {
+            "url": "https://talent-move.ru/industry/ai",
+            "label": "AI"
+          },
+          {
+            "url": "https://talent-move.ru/industry/ai-big-data-ml",
+            "label": "AI / Big Data / ML"
+          },
+          {
+            "url": "https://talent-move.ru/industry/b2c",
+            "label": "B2C"
+          },
+          {
+            "url": "https://talent-move.ru/industry/beauty",
+            "label": "Beauty"
+          },
+          {
+            "url": "https://talent-move.ru/industry/cloud",
+            "label": "Cloud"
+          },
+          {
+            "url": "https://talent-move.ru/industry/crypto",
+            "label": "Crypto"
+          },
+          {
+            "url": "https://talent-move.ru/industry/customer-service",
+            "label": "Customer Service"
+          },
+          {
+            "url": "https://talent-move.ru/industry/cybersecurity",
+            "label": "Cybersecurity"
+          },
+          {
+            "url": "https://talent-move.ru/industry/design",
+            "label": "Design"
+          },
+          {
+            "url": "https://talent-move.ru/industry/e-commerce",
+            "label": "E-commerce"
+          },
+          {
+            "url": "https://talent-move.ru/industry/b2c-e-commerce",
+            "label": "B2C E-commerce"
+          },
+          {
+            "url": "https://talent-move.ru/industry/education",
+            "label": "Education"
+          },
+          {
+            "url": "https://talent-move.ru/industry/entertainment",
+            "label": "Entertainment"
+          },
+          {
+            "url": "https://talent-move.ru/industry/fashion",
+            "label": "Fashion"
+          },
+          {
+            "url": "https://talent-move.ru/industry/fashion-tech",
+            "label": "Fashion Tech"
+          },
+          {
+            "url": "https://talent-move.ru/industry/finance",
+            "label": "Finance"
+          },
+          {
+            "url": "https://talent-move.ru/format/fully-remote",
+            "label": "Удаленка в IT"
+          },
+          {
+            "url": "https://talent-move.ru/format/hybrid",
+            "label": "Гибридная работа"
+          },
+          {
+            "url": "https://talent-move.ru/location/rossiya",
+            "label": "Вакансии в России"
+          },
+          {
+            "url": "https://talent-move.ru/location/moskva",
+            "label": "Работа в Москве"
+          },
+          {
+            "url": "https://talent-move.ru/location/sng",
+            "label": "Позиции в СНГ"
+          },
+          {
+            "url": "https://talent-move.ru/location/evropa",
+            "label": "Работа в Европе"
+          },
+          {
+            "url": "https://talent-move.ru/location/dubaj",
+            "label": "Вакансии в Дубае"
+          },
+          {
+            "url": "https://talent-move.ru/location/kipr",
+            "label": "Работа на Кипре"
+          },
+          {
+            "url": "https://talent-move.ru/agreement",
+            "label": "Соглашение"
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:02:42.023Z",
+        "id": "e12"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 4483
+    },
+    {
+      "stage": "search",
+      "query": "Руководитель продукта Сбер AI HR платформа",
+      "results": [
+        {
+          "title": "Владелец продукта | Сбер | HR-платформа • до 350k ₽",
+          "url": "https://talent-move.ru/jobs/vladelecz-produkta-sber-hr-platforma-220126-102897",
+          "snippet": "Title: Владелец продукта | Сбер | HR-платформа • до 350k ₽\n# Владелец продукта для HR-платформы. На позиции Владелец продукта в компании Сбер вы будете ключевым игроком в создании и развитии продукта «Профиль сотрудника», который является важной частью корпоративной HR-платформы. Ваша основная задача заключается в формировании единого профиля сотрудника, который будет интегрировать всю необходимую информацию. Эта роль требует не только управления проектами, но и глубокого понимания потребностей пользователей, чтобы обеспечить максимальную ценность продукта. Вы будете работать в тесном взаимодействии с кросс-функциональными командами, включая разработки, маркетинг и HR, что позволит вам непосредственно влиять на стратегическое развитие продукта и его успешность на рынке. — Определение ключевых целей и стратегий развития продукта для создания единого профиля сотрудника. — Проведение исследований рынка и анализ конкурентов для выявления лучших практик и трендов в HR-технологиях. — Контроль выполнения задач и соблюдения сроков по проектам, работа с командами разработчиков и дизайнеров. — Координация внедрения нового модуля в HR-платформу, включая проведение тестирования и обучение пользователей. ### Уникальность вакансии. Работа в Сбер предоставляет уникальные возможности для профессионального роста и развития в динамичной среде. Вы будете частью команды, которая создает инновационные решения для HR, используя передовые технологии и подходы. В компании активно внедряются Agile-методологии, что позволяет быстро адаптироваться к изменениям и внедрять новые идеи. Система обучения ",
+          "source_label": "tavily",
+          "score": 0.80070794,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Руководитель направления по развитию продукта (HR-платформа Пульс) — СБЕР | AFK Offer",
+          "url": "https://afkoffer.com/vacancies/product/135182317",
+          "snippet": "AFK OFFER\n\nВакансии/Product Manager/Руководитель направления по развитию продукта (HR-платформа Пульс)\n\nСБЕР\n\nСБЕР\n\n4 дн. назад\n\n# Руководитель направления по развитию продукта (HR-платформа Пульс)\n\nОт 3 до 6 летПолный деньМосква14 июля 2026 г.\n\n## Требования\n\nОпыт управления продуктами (Product Owner / Product Manager) от 3-х лет, желательно в HR-Tech, B2C-сервисах или...\n\n## Обязанности [...] ## Обязанности\n\nФормирование единого UX-подхода и визуального языка для всех цифровых поверхностей. Устранение барьеров и проблем кандидата при переходе между площадками...\n\nОткликнутьсяАвтоотклик с ИИ\n\n### Отправляйте отклики быстрее\n\nAFK Offer помогает отправлять отклики на подходящие вакансии с персонализированными сопроводительными письмами. Попробуйте 24 часа бесплатно.\n\nНачать бесплатно\n\nНазад к вакансиям «Product Manager» [...] Руководитель направления по развитию продукта (HR-платформа Пульс) — СБЕР | AFK Offer",
+          "source_label": "tavily",
+          "score": 0.76554126,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Руководитель направления по развитию продукта (HR-платформа Пульс) в городе Москва | Get-Works.ru",
+          "url": "https://get-works.ru/job-detail.php?vac=135182317",
+          "snippet": "# Руководитель направления по развитию продукта (HR-платформа Пульс)\n\nСБЕР\n\n#### Руководитель направления по развитию продукта (HR-платформа Пульс)\n\nПоказать контакты\n\n## Описание вакансии\n\nМы являемся частью HR-платформы полного цикла «Пульс», которая развивается не только для Сбера, но и для внешних клиентов.\n\nВ нашем направлении — 6 продуктовых команд, которые отвечают за все цифровые продукты для подбора, адаптации и развития карьеры сотрудников Сбера и внешних клиентов. [...] Рекомендуем\n\nСБЕР\n\n### Руководитель проектов в Управление ИИ-сценариев и комплексных решений\n\nСБЕР\n\n Москва\n Не указана\n\nРекомендуем\n\nSwordfish Security\n\n### Владелец продукта / Product owner (Продукт класса AppSec)\n\nSwordfish Security\n\n Москва\n Не указана\n\nVVP Group\n\n### Руководитель продукта Найм / Product owner Recruitment\n\nVVP Group\n\n Москва\n Не указана\n\nOzon\n\n### Руководитель группы (мобильное приложение Ozon Job)\n\nOzon\n\n Москва\n Не указана\n\nДЕФАН [...] ДЕФАН\n\n### Руководитель продукта (Product Manager)\n\nДЕФАН\n\n Москва\n Не указана\n\nШкола 21\n\n### Менеджер по продукту\n\nШкола 21\n\n Москва\n Не указана\n\nСБЕР\n\n### Руководитель проекта/CJE в Дивизион \"Малый и Микро Бизнес\"\n\nСБЕР\n\n Москва\n Не указана\n\nДомклик\n\n### Руководитель направления продуктового маркетинга\n\nДомклик\n\n Москва\n Не указана\n\n### Руководитель IT проектов по маркетплейсам (E-commerce)\n\nТаурус\n\n Москва\n Не указана\n\nGrand Line\n\n### Руководитель по внедрению AI\n\nGrand Line",
+          "source_label": "tavily",
+          "score": 0.7395922,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Сбер - Сбербанк Пульс рынка - HR-платформа - CNews",
+          "url": "https://www.cnews.ru/book/%D0%A1%D0%B1%D0%B5%D1%80_-_%D0%A1%D0%B1%D0%B5%D1%80%D0%B1%D0%B0%D0%BD%D0%BA_%D0%9F%D1%83%D0%BB%D1%8C%D1%81_%D1%80%D1%8B%D0%BD%D0%BA%D0%B0_-_HR-%D0%BF%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D0%B0",
+          "snippet": "Title: Сбер - Сбербанк Пульс рынка - HR-платформа - CNews\n# Сбер Сбербанк Пульс рынка HR-платформа. Особой ценностью «Пульса» для компаний является автоматизация полного цикла ключевых HR-процессов: привлечение, оформление, адаптация, обучение, целеполагание, обратная связь, оценка персонала, карьера и развитие, электронные кадровые сервисы, сквозная HR-аналитика, отчётность, внутренние коммуникации и др. «Пульс» — на 100% отечественное ПО, аттестованное ФСТЭК на соответствие требованиям приказа о защите персональных данных №21 от 18 февраля 2013 г., аттестат получен 15 апреля 2022 г. Опубликовать/исправить описание системы — book@cnews.ru. | 22.11.2024 |  | Ярослав Третьяков - Ярослав Третьяков, «Пульс»: Для HR цифровизация означает меньше бумажной рутины и больше фокуса на развитии сотрудников    1 |. | 04.07.2024 |  | Сбербанк создал особую ИТ-компанию для развития своей кадровой платформы   1 |. | 21.08.2019 |  | Сбербанк создал и тут же спрятал сервис для проверки сотрудников перед наймом   1 |. | 21.12.2018 |  | Сбербанк разрешил клиентам бесплатно пользоваться бухучетом «1С» для малого бизнеса   1 |. | 16.07.2018 |  | Сбербанк создал B2B-площадку для проведения закупок   1 |. | 05.06.2018 |  | Сбербанк презентовал экосистему для корпоративных клиентов   1 |. | 05.06.2018 |  | Сбербанк построил «уникальную» систему онлайн-услуг для малого и среднего бизнеса   1 |. | 23.05.2018 |  | Сбербанк предложил бизнесу сервис по подбору тендеров на основе ИИ   1 |. \\* Страница-профиль компании, системы (продукта или услуги), технологии, персоны и т.п. создается редактором на осн",
+          "source_label": "tavily",
+          "score": 0.63397753,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "СБЕР - JobFilter",
+          "url": "https://sankt-peterburg-region.jobfilter.ru/%D0%BA%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D1%8F/%D1%81%D0%B1%D0%B5%D1%80-33/%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80-%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%B0-%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C-%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F",
+          "snippet": "Санкт-Петербург JobFilter.ru logo image Санкт-Петербург JobFilter.ru logo text вакансии и работа в компании СБЕР # СБЕР ## Проектный менеджер по направлению инноваций / AI-технологий, цифровой трансформации ## Тимлид по машиному обучению со знанием английского языка Оставьте контакты и работодатели сами с вами свяжутся Создавая Микро-резюме вы соглашаетесь с Пользовательским соглашением. ## Редактор текстов/руководитель группы ## Проектный менеджер по направлению инноваций, AI-технологий, цифровой трансформации ## Шеф-редактор/Руководитель команды AI-тренеров со знанием английского языка ## Специалист по подбору персонала ## Менеджер по управлению ИТ-метриками ## Менеджер по инвестиционным и страховым продуктам в канале Премьер ## Проектный менеджер по направлению инноваций, AI-технологий, цифровой трансформации ## Менеджер по инвестиционным и страховым продуктам в канале Премьер ## Менеджер по инвестиционным и страховым продуктам в канале Премьер Измените запрос, чтобы мы могли вам предложить свежие вакансии. Узнать больше о работе \"менеджер-продукта-руководитель-направления\" в Санкт-Петербурге вы можете в разделе Карьера — менеджер-продукта-руководитель-направления. Также там представлена информация по другим профессиям, уровню зарплаты, работодателям и многое другое. ### HR-отдел под ключ Построение HR-отделов компаний под ключ от профессионалов Подписавшись на вакансии вы будете в числе первых узнавать о новых предложениях работы по текущему поисковому запросу",
+          "source_label": "tavily",
+          "score": 0.61668247,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Руководитель продукта Сбер AI HR платформа",
+      "focus": "Поиск точного имени руководителя продукта или менеджера по работе с AI HR платформой в Сбере",
+      "purpose": "Выяснить имя и контакты релевантного руководителя продукта по AI решениям для HR платформы Сбера",
+      "results": [
+        {
+          "url": "https://talent-move.ru/jobs/vladelecz-produkta-sber-hr-platforma-220126-102897",
+          "title": "Владелец продукта | Сбер | HR-платформа • до 350k ₽",
+          "snippet": "Title: Владелец продукта | Сбер | HR-платформа • до 350k ₽\n# Владелец продукта для HR-платформы. На позиции Владелец продукта в компании Сбер вы будете ключевым игроком в создании и развитии продукта «Профиль сотрудника», который является важной частью корпоративной HR-платформы. Ваша основная задача заключается в формировании единого профиля сотрудника, который будет интегрировать всю необходимую информацию. Эта роль требует не только управления проектами, но и глубокого понимания потребностей ",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://afkoffer.com/vacancies/product/135182317",
+          "title": "Руководитель направления по развитию продукта (HR-платформа Пульс) — СБЕР | AFK Offer",
+          "snippet": "AFK OFFER\n\nВакансии/Product Manager/Руководитель направления по развитию продукта (HR-платформа Пульс)\n\nСБЕР\n\nСБЕР\n\n4 дн. назад\n\n# Руководитель направления по развитию продукта (HR-платформа Пульс)\n\nОт 3 до 6 летПолный деньМосква14 июля 2026 г.\n\n## Требования\n\nОпыт управления продуктами (Product Owner / Product Manager) от 3-х лет, желательно в HR-Tech, B2C-сервисах или...\n\n## Обязанности [...] ## Обязанности\n\nФормирование единого UX-подхода и визуального языка для всех цифровых поверхностей. Ус",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://get-works.ru/job-detail.php?vac=135182317",
+          "title": "Вакансия Руководитель направления по развитию продукта (HR-платформа Пульс) в городе Москва | Get-Works.ru",
+          "snippet": "# Руководитель направления по развитию продукта (HR-платформа Пульс)\n\nСБЕР\n\n#### Руководитель направления по развитию продукта (HR-платформа Пульс)\n\nПоказать контакты\n\n## Описание вакансии\n\nМы являемся частью HR-платформы полного цикла «Пульс», которая развивается не только для Сбера, но и для внешних клиентов.\n\nВ нашем направлении — 6 продуктовых команд, которые отвечают за все цифровые продукты для подбора, адаптации и развития карьеры сотрудников Сбера и внешних клиентов. [...] Рекомендуем\n\nС",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.cnews.ru/book/%D0%A1%D0%B1%D0%B5%D1%80_-_%D0%A1%D0%B1%D0%B5%D1%80%D0%B1%D0%B0%D0%BD%D0%BA_%D0%9F%D1%83%D0%BB%D1%8C%D1%81_%D1%80%D1%8B%D0%BD%D0%BA%D0%B0_-_HR-%D0%BF%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D0%B0",
+          "title": "Сбер - Сбербанк Пульс рынка - HR-платформа - CNews",
+          "snippet": "Title: Сбер - Сбербанк Пульс рынка - HR-платформа - CNews\n# Сбер Сбербанк Пульс рынка HR-платформа. Особой ценностью «Пульса» для компаний является автоматизация полного цикла ключевых HR-процессов: привлечение, оформление, адаптация, обучение, целеполагание, обратная связь, оценка персонала, карьера и развитие, электронные кадровые сервисы, сквозная HR-аналитика, отчётность, внутренние коммуникации и др. «Пульс» — на 100% отечественное ПО, аттестованное ФСТЭК на соответствие требованиям приказа",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://sankt-peterburg-region.jobfilter.ru/%D0%BA%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D1%8F/%D1%81%D0%B1%D0%B5%D1%80-33/%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80-%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%B0-%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C-%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F",
+          "title": "СБЕР - JobFilter",
+          "snippet": "Санкт-Петербург JobFilter.ru logo image Санкт-Петербург JobFilter.ru logo text вакансии и работа в компании СБЕР # СБЕР ## Проектный менеджер по направлению инноваций / AI-технологий, цифровой трансформации ## Тимлид по машиному обучению со знанием английского языка Оставьте контакты и работодатели сами с вами свяжутся Создавая Микро-резюме вы соглашаетесь с Пользовательским соглашением. ## Редактор текстов/руководитель группы ## Проектный менеджер по направлению инноваций, AI-технологий, цифров",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.openai.com/v1/responses",
+      "error": "TimeoutError",
+      "elapsedMs": 12012
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "model_unavailable",
+      "actions": 6,
+      "candidates": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "semantic_role_relevance": 60,
+            "semantic_role_reason": "Персонаж упомянут на сайте как ML-инженер в AI-агентах, связан с AI проектами, но не руководитель продукта",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "rabota.sber.ru"
+      ],
+      "elapsedMs": 31983
+    },
+    {
+      "stage": "people_ranked",
+      "people": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "semantic_role_relevance": 60,
+            "semantic_role_reason": "Персонаж упомянут на сайте как ML-инженер в AI-агентах, связан с AI проектами, но не руководитель продукта",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/",
+      "status": 403,
+      "elapsedMs": 520
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/robots.txt",
+      "status": 403,
+      "elapsedMs": 353
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/sitemap.xml",
+      "status": 403,
+      "elapsedMs": 387
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/contact",
+      "status": 403,
+      "elapsedMs": 110
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/contacts",
+      "status": 403,
+      "elapsedMs": 110
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/contact-us",
+      "status": 403,
+      "elapsedMs": 352
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/company",
+      "status": 403,
+      "elapsedMs": 377
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/kontakti",
+      "status": 403,
+      "elapsedMs": 390
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/o-kompanii",
+      "status": 403,
+      "elapsedMs": 382
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/about",
+      "status": 403,
+      "elapsedMs": 391
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/about-us",
+      "status": 403,
+      "elapsedMs": 390
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/kontakty",
+      "status": 403,
+      "elapsedMs": 399
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B%20rabota.sber.ru&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 518
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B%20rabota.sber.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 860
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.yahoo.com/search?p=%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B%20rabota.sber.ru&ei=UTF-8&b=1",
+      "status": 500,
+      "elapsedMs": 1689
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 2769
+    },
+    {
+      "stage": "search",
+      "query": "site:rabota.sber.ru контакты",
+      "results": [
+        {
+          "title": "Вакансия Руководитель группы методологии и обработки ...",
+          "url": "https://rabota.sber.ru/search/4469462",
+          "snippet": "Первый этап отбора на эту вакансию – общение с AI-рекрутером. После отклика ждите сообщение от него в телеграмме, диалог займёт примерно 10 минут. Задача AI- ...Read more",
+          "source_label": "tavily",
+          "score": 0.04345105,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Стажер-студент в г Москва | Сбер - SBER",
+          "url": "https://rabota.sber.ru/search/4553488",
+          "snippet": "Jul 28, 2026 — Первый этап отбора на эту вакансию – общение с AI-рекрутером. После отклика ждите сообщение от него в мессенджере, диалог займёт примерно 10 ...Read more",
+          "source_label": "tavily",
+          "score": 0.038181942,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Team Lead в рекомендательных системах e-commerce ...",
+          "url": "https://rabota.sber.ru/search/4497728",
+          "snippet": "Ждем именно тебя! Дорогой кандидат, мы – команда экспертов, объединенных общей страстью к искусственному интеллекту и рекомендательным системам (RecSys). Нашей ...Read more",
+          "source_label": "tavily",
+          "score": 0.03809596,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Senior Golang Developer (Global Trading Platform)",
+          "url": "https://rabota.sber.ru/search/4537193",
+          "snippet": "Aug 5, 2026 — Мы - команда Global Trading Platform, которая строит распределенные высоконагруженные системы для мира трейдинга.Read more",
+          "source_label": "tavily",
+          "score": 0.03733048,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Разработчик AI-решений в г Екатеринбург",
+          "url": "https://rabota.sber.ru/search/4554068",
+          "snippet": "Jul 29, 2026 — Мы ищем опытного разработчика для участия в создании и внедрении решений на базе искусственного интеллекта и ИИ-агентов.Read more",
+          "source_label": "tavily",
+          "score": 0.036869973,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Reinforcement Learning Engineer в г Москва",
+          "url": "https://rabota.sber.ru/search/4527517",
+          "snippet": "Sep 4, 2026 — Reinforcement Learning Engineer - работа в Сбере - г Москва. ✓ Достойная зарплата . ➡️ ДМС и корпоративное обучение. Карьерный рост.",
+          "source_label": "tavily",
+          "score": 0.036828384,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Product manager в г Нижний Новгород | Сбер",
+          "url": "https://rabota.sber.ru/search/4562347",
+          "snippet": "Aug 20, 2026 — Product manager - работа в Сбере - г Нижний Новгород. ✓ Достойная зарплата . ➡️ ДМС и корпоративное обучение. Карьерный рост.",
+          "source_label": "tavily",
+          "score": 0.035201255,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "SRE-инженер (платформа кибербезопасности)",
+          "url": "https://rabota.sber.ru/search/4563240",
+          "snippet": "Aug 26, 2026 — Мы развиваем Автоматизированную систему «Платформа Кибербезопасности» — высоконагруженное решение для обработки и хранения больших данных.Read more",
+          "source_label": "tavily",
+          "score": 0.035082057,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%A1%D0%B1%D0%B5%D1%80.%20IT%22%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 249
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%A1%D0%B1%D0%B5%D1%80.%20IT%22%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 158
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.yahoo.com/search?p=%22%D0%A1%D0%B1%D0%B5%D1%80.%20IT%22%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B&ei=UTF-8&b=1",
+      "status": 500,
+      "elapsedMs": 1725
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1463
+    },
+    {
+      "stage": "search",
+      "query": "\"Сбер. IT\" контакты",
+      "results": [
+        {
+          "title": "Контактный центр СберБизнеса",
+          "url": "https://www.sberbank.com/ru/s_m_business/call_center",
+          "snippet": "с мобильного телефона. 8 800 555-57-77, доб. 6 — с городского телефона. Наберите добавочный номер сразу, как только услышите голосового",
+          "source_label": "tavily",
+          "score": 0.6388584,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Контакты Сбер Банка — телефоны, адрес и реквизиты",
+          "url": "https://www.sber-bank.by/page/contact-center",
+          "snippet": "Вы можете предварительно проконсультироваться по своему вопросу, обратившись в Центр клиентской поддержки по телефону 148. Наши специалисты помогут определить",
+          "source_label": "tavily",
+          "score": 0.62824833,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Единый номер Контактного центра Сбербанка России",
+          "url": "https://www.sberbank.ru/ru/sberpress/tb_all/article?newsID=11007748-1-1&blockID=11000212&regionID=47&lang=ru",
+          "snippet": "Обслуживание по номерам (812)329-2929 и 8(800)333-0088 будет прекращено. Начиная с 27.12.10, по всем вопросам просим Вас обращаться по телефону 8(800)555 5550.",
+          "source_label": "tavily",
+          "score": 0.6266047,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Компания Сбер — о компании, фотографии офиса, контакты — Хабр Карьера",
+          "url": "https://career.habr.com/companies/sber",
+          "snippet": "Все сервисы Хабра\n\nСообщество IT-специалистовОтветы на любые вопросы об ITПрофессиональное развитие в ITОбучение для смены профессии, роста в карьере и саморазвития\n\nВойти через Хабр АккаунтЗарегистрироваться\n\nВойти через Хабр АккаунтЗарегистрироваться\n\nВакансииСпециалистыКурсы и обучениеЭкспертыКомпанииРейтингЗарплатыЖурнал\n\n# О компании «Сбер»\n\n## Востребованные в компании навыки [...] #19\n +69 наград\n\nВсе награды (79)\n\nСотрудники компании\n\nhelen_rilitandevilz1aleksandr-chertovskihcatisdesigna-satskov04pyatkaalexrazhnatalia-nedosypchukengem+6630 работают здесь\n\nВсе, кто здесь работал (14467)\n\nОткуда приходят в компанию\n\nСберТех\n\n326 сотрудников\n\nФриланс\n\n156 сотрудников\n\nЯндекс\n\n117 сотрудников\n\nМТС Web Services\n\n108 сотрудников\n\nБанк ВТБ\n\n106 сотрудников\n\nВ какие компании уходят\n\nИТ-Холдинг Т1\n\n241 сотрудник\n\nАльфа-Банк\n\n212 сотрудников\n\nЯндекс\n\n182 сотрудника\n\nТ-Банк [...] Машинное обучение • Искусственный интеллект • Программирование • Научно-популярное • Тестирование IT-систем • Анализ и проектирование систем • Java • Управление разработкой • Алгоритмы • Карьера в IT-индустрии\n\n## Вакансии компании «Сбер»\n\nНет вакансий\n\nУ компании нет открытых вакансий\n\nОценки и отзывы сотрудников о компании «Сбер»\n\nОценить\n\n2018)\n\n2019)\n\n2020)\n\n2021)\n\n2022)\n\n2023)\n\n2024)\n\n2025)\n\n2026)\n\n3.54\n\nСредняя оценка\n\n69%\n\nСредняя рекомендация",
+          "source_label": "tavily",
+          "score": 0.4391465,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Сберлабс — исследования и разработки Сбера",
+          "url": "https://sberlabs.com",
+          "snippet": "Центр ИИ для науки\n\nВсе лабораторииВсе лабораторииВсе лаборатории\n\nПроекты\n\nМероприятия\n\nНовости\n\nКарьера\n\nПартнерства с университетами\n\nЛаборатории\n\nГенеральная лицензия Банка России на осуществление банковских операций №1481 от 11.08.2015 г.\n\nПодписаться на новости\n\nПолитика обработки данных\n\nКарта сайта\n\nРоссия, Москва, 117997, ул. Вавилова, 19\n\n© 1997—2026 ПАО Сбербанк [...] завтра\n\nтехнологии\n\nСегодня лидерами становятся те компании, которые быстро реагируют на большие вызовы, разрабатывают и внедряют собственные технологии и инновации\n\nЛаборатории Сбера\n\nЦентр практического искусственного интеллекта\n\nЦентр развития блокчейн\n\nЛаборатория кибербезопасности\n\nЛаборатория нейронаук и поведения человека\n\nЛаборатория интернета вещей\n\nЦентр квантовых технологий\n\nУправление экспериментальных систем машинного обучения\n\nЦентр ИИ для науки [...] РУСРУСРУС\n\nENGENGENG\n\nНаучная премия\n\nПроекты\n\nЛаборатории\n\nАкадемические партнеры\n\nДень науки  со Сбером\n\nИсследуйте, творите, открывайте новое\n\nПодробнееПодробнееПодробнее\n\nНаучная премия Сбера\n\nПодробнееПодробнееПодробнее\n\nЛекции  лауреатов\n\nЦикл лекций лауреатов Научной премии Сбера в ведущих университетах России\n\nУзнать большеУзнать большеУзнать больше\n\nРазвиваем науку\n\nПроводим прикладные исследования и создаем инновации\n\nПодробнееПодробнееПодробнее\n\nСегодня наука\n\nзавтра\n\nтехнологии",
+          "source_label": "tavily",
+          "score": 0.28360325,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "горячая линия, номера телефонов, задать вопрос онлайн",
+          "url": "http://www.sberbank.ru/ru/person/call_center",
+          "snippet": "Как позвонить в контактный центр СберБанка ✓ Обратная связь с банком ✓ Контакты территориальных банков СберБанка ✓ Пожаловаться на СберБанк.",
+          "source_label": "tavily",
+          "score": 0.26684582,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Реквизиты СберБанка",
+          "url": "http://www.sberbank.ru/ru/about/today/requisites",
+          "snippet": "Юридический адрес. Россия, Москва, 117312, ул. Вавилова, д. 19 ; Почтовый адрес. Москва, 117997, ул. Вавилова, д. 19 ; Телеграфный адрес. г. Москва, В-312,",
+          "source_label": "tavily",
+          "score": 0.2389322,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Работа в Сбере",
+          "url": "https://rabota.sber.ru",
+          "snippet": "Делают   \n  зелёными   \n  цифры на счетах 113 миллионов клиентов\n kid\n\n  Помогают подружиться с финансами даже самым   \n  зелёным\n\nРабочие стороны у всех разные – но в них легко заметить общий цвет\n\nБыть полными идей\n\nВ юбилейный год Сбера мы напоминаем себе и другим, как важно оставаться зелёными на все 185 – и вдохновлять на это тех, кто рядом\n\nЕсли это про тебя – прояви свою рабочую сторону в команде Сбера\n\nSBER\n\nПолитика обработки данныхПолитика использования Cookieswww.sberbank.ru [...] SBER\n\nКарьерные медиа\n\nВыпускникам и студентам\n\n# Моя рабочая сторона\n\nучить нейросети думать дальше промпта\n\nБогдан Рощупкин\n\nML-инженер AI-агентов\n\nУ каждого сотрудника Сбера есть своя рабочая сторона\n\n car\n\n  Они дают   \n  зелёный   \n  свет автономному транспорту\n marathon\n\n  Выводят на старт   \n  зелёного   \n  марафона тысячи бегунов по всей стране\n robot\n\n  Учат робота   \n  Грина   \n  работать в одной команде с людьми\n manager [...] © 2026ПАО «Сбербанк»\n\ntelegram vkontakte\n\nкарьерные медиавыпускникам и студентам",
+          "source_label": "tavily",
+          "score": 0.10183054,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/search/4553488",
+      "status": 403,
+      "elapsedMs": 505
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/search/4497728",
+      "status": 403,
+      "elapsedMs": 509
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/search/4469462",
+      "status": 403,
+      "elapsedMs": 527
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/search/4554068",
+      "status": 403,
+      "elapsedMs": 525
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/search/4527517",
+      "status": 403,
+      "elapsedMs": 527
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/search/4537193",
+      "status": 403,
+      "elapsedMs": 544
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Product launches and feature releases can create coordination load between product, marketing, sales, and customer success.",
+        "target_responsibility": "Product leadership",
+        "target_persona": "Head of Product",
+        "alternative_personas": [
+          "VP Product",
+          "Product Director",
+          "Head of Product Marketing",
+          "COO",
+          "Founder / CEO"
+        ],
+        "why_this_person": "ML-инженер AI-агентов: The signal includes product or release context, so product leadership may own the launch and adoption workflow. Matched context: платформа. Company scale: unknown.",
+        "person_name": "Богдан Рощупкин",
+        "person_role": "ML-инженер AI-агентов",
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Богдан Рощупкин подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": null,
+            "summary": "Роль связана с зоной ответственности: Product leadership."
+          },
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Богдан Рощупкин ML-инженер AI-агентов"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "person_found_personal_email_unresolved"
+      },
+      "contacts": [
+        {
+          "name": "Богдан Рощупкин",
+          "email": null,
+          "type": "confirmed_person",
+          "source": "https://rabota.sber.ru"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://rabota.sber.ru/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://rabota.sber.ru/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://rabota.sber.ru/contact-us"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://rabota.sber.ru"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-10-06T20:02:26.156Z",
+  "bundle": {
+    "companyName": "Сбер. IT",
+    "officialWebsite": "https://rabota.sber.ru",
+    "officialDomain": "rabota.sber.ru",
+    "people": [
+      {
+        "fullName": "Богдан Рощупкин",
+        "role": "ML-инженер AI-агентов",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://rabota.sber.ru",
+            "sourceType": "official",
+            "excerpt": "Богдан Рощупкин ML-инженер AI-агентов",
+            "capturedAt": "2026-10-06T20:02:26.156Z",
+            "confidence": 90
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "SDET / Разработчик AI решений (HR платформа)",
+      "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+      "sourceUrl": "https://hh.ru/vacancy/138117118",
+      "confidence": 90
+    },
+    "researchConfidence": "LIKELY",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 5,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 23,
+      "lprMs": 31984,
+      "contactMs": 9597,
+      "totalMs": 41582,
+      "stopReason": "people_found_email_unresolved"
+    }
+  },
+  "people": {
+    "primary_person": {
+      "full_name": "Богдан Рощупкин",
+      "role_title": "ML-инженер AI-агентов",
+      "department": null,
+      "linkedin_url": null,
+      "work_email": null,
+      "phone": null,
+      "source": "Iterative public research",
+      "confidence_score": 90,
+      "evidence": [
+        "Богдан Рощупкин ML-инженер AI-агентов"
+      ],
+      "metadata": {
+        "source_url": "https://rabota.sber.ru",
+        "source_urls": [
+          "https://rabota.sber.ru"
+        ],
+        "semantic_role_relevance": 60,
+        "semantic_role_reason": "Персонаж упомянут на сайте как ML-инженер в AI-агентах, связан с AI проектами, но не руководитель продукта",
+        "email_source_url": null,
+        "email_person_evidence": null,
+        "public_contact_verified": false,
+        "verified_company_domains": [
+          "rabota.sber.ru"
+        ],
+        "verified_public_profiles": [],
+        "tenchat_url": null,
+        "telegram_url": null,
+        "vk_url": null,
+        "instagram_url": null,
+        "contact_route": "target_persona",
+        "company_verified": true,
+        "role_verified": true
+      }
+    },
+    "alternative_people": [],
+    "all_candidates": [
+      {
+        "full_name": "Богдан Рощупкин",
+        "role_title": "ML-инженер AI-агентов",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Богдан Рощупкин ML-инженер AI-агентов"
+        ],
+        "metadata": {
+          "source_url": "https://rabota.sber.ru",
+          "source_urls": [
+            "https://rabota.sber.ru"
+          ],
+          "semantic_role_relevance": 60,
+          "semantic_role_reason": "Персонаж упомянут на сайте как ML-инженер в AI-агентах, связан с AI проектами, но не руководитель продукта",
+          "email_source_url": null,
+          "email_person_evidence": null,
+          "public_contact_verified": false,
+          "verified_company_domains": [
+            "rabota.sber.ru"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      }
+    ],
+    "primary_person_intelligence": {
+      "candidate": {
+        "full_name": "Богдан Рощупкин",
+        "role_title": "ML-инженер AI-агентов",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Богдан Рощупкин ML-инженер AI-агентов"
+        ],
+        "metadata": {
+          "source_url": "https://rabota.sber.ru",
+          "source_urls": [
+            "https://rabota.sber.ru"
+          ],
+          "semantic_role_relevance": 60,
+          "semantic_role_reason": "Персонаж упомянут на сайте как ML-инженер в AI-агентах, связан с AI проектами, но не руководитель продукта",
+          "email_source_url": null,
+          "email_person_evidence": null,
+          "public_contact_verified": false,
+          "verified_company_domains": [
+            "rabota.sber.ru"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      },
+      "rank_score": 57,
+      "person_score": 57,
+      "persona_match_score": 60,
+      "business_problem_ownership": "medium",
+      "decision_authority": "low",
+      "influence_level": "medium",
+      "confidence_score": 79,
+      "confidence_level": "high_confidence",
+      "contact_availability": {
+        "has_work_email": false,
+        "has_linkedin": false,
+        "has_phone": false,
+        "has_telegram": false
+      },
+      "matched_keywords": [],
+      "reasoning": "No direct persona keyword match in available person context.",
+      "selection_reason": "Богдан Рощупкин is the strongest available candidate because ML-инженер AI-агентов no direct keyword match, compared against руководитель продукта. Persona match 60/100, ownership medium, authority low, influence medium, confidence 79/100.",
+      "strengths": [
+        "Strong persona match (60/100)"
+      ],
+      "weaknesses": [
+        "No direct persona keyword match in available evidence",
+        "No direct personal contact channel found"
+      ],
+      "why_not_other_candidates": [],
+      "recommended_next_action": "run_enrichment"
+    },
+    "alternative_people_intelligence": [],
+    "ranked_people": [
+      {
+        "candidate": {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "semantic_role_relevance": 60,
+            "semantic_role_reason": "Персонаж упомянут на сайте как ML-инженер в AI-агентах, связан с AI проектами, но не руководитель продукта",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        "rank_score": 57,
+        "person_score": 57,
+        "persona_match_score": 60,
+        "business_problem_ownership": "medium",
+        "decision_authority": "low",
+        "influence_level": "medium",
+        "confidence_score": 79,
+        "confidence_level": "high_confidence",
+        "contact_availability": {
+          "has_work_email": false,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Богдан Рощупкин is the strongest available candidate because ML-инженер AI-агентов no direct keyword match, compared against руководитель продукта. Persona match 60/100, ownership medium, authority low, influence medium, confidence 79/100.",
+        "strengths": [
+          "Strong persona match (60/100)"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence",
+          "No direct personal contact channel found"
+        ],
+        "why_not_other_candidates": [],
+        "recommended_next_action": "run_enrichment"
+      }
+    ],
+    "selection_reasoning": "Богдан Рощупкин is the strongest available candidate because ML-инженер AI-агентов no direct keyword match, compared against руководитель продукта. Persona match 60/100, ownership medium, authority low, influence medium, confidence 79/100.",
+    "search_status": "person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "model_unavailable"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 3,
+      "official_pages_fetched": 3,
+      "aborted_requests": 0,
+      "elapsed_ms": 31983,
+      "stop_reason": "model_unavailable",
+      "queries_executed": [
+        "Product руководитель Сбер IT AI HR платформа",
+        "Сбер IT руководство команда",
+        "Руководитель продукта Сбер AI HR платформа"
+      ],
+      "sources_checked": [
+        "https://rabota.sber.ru",
+        "https://online.sberbank.ru/CSAFront/index.do",
+        "https://www.sberbank.ru/retail/ru/person",
+        "https://www.sberbank.ru/ru/person/dist_services/inner_sbol",
+        "https://online.sberbank.ru/CSAFront/index.do?NextService=ESK&BackUrl",
+        "https://www.sberbank.com/ru/about",
+        "https://talent-move.ru/jobs/rukovoditel-napravleniya-razvitiya-produkta-sber-200726-235752",
+        "https://dreamjob.ru/employers/25583/vakansii/138145915",
+        "https://rabota.sber.ru/search/rukovoditel-produkta-sberai-4555257",
+        "https://hh.ru/vacancy/133446354",
+        "https://hh.ru/vacancy/137208353",
+        "https://talent-move.ru/jobs/rukovoditel-napravleniya-razvitiya-produkta-sber-200726-235752/",
+        "https://talent-move.ru/jobs/vladelecz-produkta-sber-hr-platforma-220126-102897",
+        "https://afkoffer.com/vacancies/product/135182317",
+        "https://get-works.ru/job-detail.php?vac=135182317",
+        "https://www.cnews.ru/book/%D0%A1%D0%B1%D0%B5%D1%80_-_%D0%A1%D0%B1%D0%B5%D1%80%D0%B1%D0%B0%D0%BD%D0%BA_%D0%9F%D1%83%D0%BB%D1%8C%D1%81_%D1%80%D1%8B%D0%BD%D0%BA%D0%B0_-_HR-%D0%BF%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D0%B0",
+        "https://sankt-peterburg-region.jobfilter.ru/%D0%BA%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D1%8F/%D1%81%D0%B1%D0%B5%D1%80-33/%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80-%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%B0-%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C-%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F"
+      ],
+      "search_results_seen": 15,
+      "rejected_candidates": {
+        "validation_rejects": 1
+      },
+      "final_failure_reason": null
+    }
+  },
+  "contacts": [
+    {
+      "name": "Богдан Рощупкин",
+      "role": "ML-инженер AI-агентов",
+      "email": null,
+      "type": "confirmed_person",
+      "source": "https://rabota.sber.ru",
+      "selected": false,
+      "intelligence": {
+        "business_problem": "Product launches and feature releases can create coordination load between product, marketing, sales, and customer success.",
+        "target_responsibility": "Product leadership",
+        "target_persona": "Head of Product",
+        "alternative_personas": [
+          "VP Product",
+          "Product Director",
+          "Head of Product Marketing",
+          "COO",
+          "Founder / CEO"
+        ],
+        "why_this_person": "ML-инженер AI-агентов: The signal includes product or release context, so product leadership may own the launch and adoption workflow. Matched context: платформа. Company scale: unknown.",
+        "person_name": "Богдан Рощупкин",
+        "person_role": "ML-инженер AI-агентов",
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Богдан Рощупкин подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": null,
+            "summary": "Роль связана с зоной ответственности: Product leadership."
+          },
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Богдан Рощупкин ML-инженер AI-агентов"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "person_found_personal_email_unresolved"
+      }
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://rabota.sber.ru/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://rabota.sber.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://rabota.sber.ru/contact-us",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://rabota.sber.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 41582
+}

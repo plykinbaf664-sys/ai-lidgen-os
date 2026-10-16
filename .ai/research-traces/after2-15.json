@@ -1,0 +1,3619 @@
+{
+  "mode": "person",
+  "name": "Производственная Компания Контур",
+  "website": "https://xn--j1agcjjg.xn--p1ai",
+  "before": {
+    "companyName": "Производственная Компания Контур",
+    "officialWebsite": "https://xn--j1agcjjg.xn--p1ai",
+    "officialDomain": "xn--j1agcjjg.xn--p1ai",
+    "people": [
+      {
+        "fullName": "Котельников Данила Никитич",
+        "role": "генеральный директор",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts",
+            "sourceType": "official",
+            "excerpt": "Public search result: Сотрудники",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          },
+          {
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/kotelnikov_danila_nikitich",
+            "sourceType": "official",
+            "excerpt": "Source URL: https://xn--j1agcjjg.xn--p1ai/contacts",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      },
+      {
+        "fullName": "Околелов Григорий Валерьевич",
+        "role": "Генеральный директор",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts",
+            "sourceType": "official",
+            "excerpt": "Околелов Григорий Валерьевич Генеральный директор",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          },
+          {
+            "sourceUrl": "https://www.rusprofile.ru/id/4158145",
+            "sourceType": "public_web",
+            "excerpt": "Околелов Григорий Валерьевич является генеральным директором Производственной Компании Контур, что соответствует роли COO с высокой властью для решения стратегических вопросов по внедрению решений и автоматизации.",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          },
+          {
+            "sourceUrl": "https://checko.ru/company/pk-kontur-1036600430822",
+            "sourceType": "public_web",
+            "excerpt": "Contact search result: ООО \"ПК Контур\" Заречный (ИНН 6609010359) адрес, официальный сайт и телефон",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          },
+          {
+            "sourceUrl": "https://www.rusprofile.ru/person/okolelov-gv-667008981708",
+            "sourceType": "public_web",
+            "excerpt": "Contact source URL: https://www.rusprofile.ru/id/4158145",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [
+        {
+          "email": "kotelnikov-dn@pk-kontur.ru",
+          "personName": "Котельников Данила Никитич",
+          "classification": "VERIFIED_PERSONAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "kotelnikov-dn@pk-kontur.ru — official company website",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 88
+            }
+          ]
+        }
+      ],
+      "department": [],
+      "general": [
+        {
+          "email": "info@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/",
+              "sourceType": "official",
+              "excerpt": "info@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "sergeyb@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "sergeyb@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 88
+            }
+          ]
+        },
+        {
+          "email": "konoplev-ea@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "konoplev-ea@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 88
+            }
+          ]
+        },
+        {
+          "email": "bykova-rr@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "bykova-rr@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 88
+            }
+          ]
+        },
+        {
+          "email": "alekseir@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "alekseir@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 88
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "kotelnikov-dn@pk-kontur.ru",
+      "personName": "Котельников Данила Никитич",
+      "role": "генеральный директор",
+      "classification": "VERIFIED_PERSONAL",
+      "contactLevel": "A",
+      "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/"
+    },
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "Инженер (Специалист) по автоматизации бизнес-процессов",
+      "detail": "искать и внедрять современные решения в бизнес-процессы и ИИ-технологии",
+      "sourceUrl": "https://hh.ru/vacancy/137520507",
+      "confidence": 85
+    },
+    "researchConfidence": "VERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 8,
+      "duplicateQueriesSkipped": 1,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 17,
+      "lprMs": 27509,
+      "contactMs": 10163,
+      "totalMs": 42298,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "AI_AUTOMATION_HIRING_SIGNAL",
+    "title": "Инженер (Специалист) по автоматизации бизнес-процессов",
+    "detail": "искать и внедрять современные решения в бизнес-процессы и ИИ-технологии",
+    "sourceUrl": "https://hh.ru/vacancy/137520507",
+    "confidence": 85
+  },
+  "index": 15,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://xn--j1agcjjg.xn--p1ai",
+      "status": 200,
+      "elapsedMs": 1315
+    },
+    {
+      "stage": "research_open",
+      "url": "https://xn--j1agcjjg.xn--p1ai",
+      "success": true,
+      "evidence": {
+        "url": "https://xn--j1agcjjg.xn--p1ai",
+        "kind": "page",
+        "text": "ПК \"Контур\" – производство труб и фитингов Меню 8 (343) 298-00-58 info@pk-kontur.ru Заказать звонок 8 (343) 298-00-58 info@pk-kontur.ru С 8:30 до 17:30 info@pk-kontur.ru 624250, Свердловская область, г. Заречный, ул. Попова, 57, а/я 111 Заказать звонок Войти Личный кабинет Каталог Напорный полипропилен Полипропиленовые трубы Муфты полипропиленовые Муфты полипропиленовые комбинированные Муфты полипропиленовые комбинированные разъемные Соединения полипропиленовые разъемные Угольники полипропиленовые Угольники полипропиленовые комбинированные Тройники полипропиленовые Тройники полипропиленовые комбинированные Фитинги полипропиленовые специальные Полипропиленовые шаровые краны Полипропиленовые шаровые краны комбинированные Полипропиленовая запорная арматура для радиаторов Вентиля полипропиленовые Канализация Трубы для внутренней канализации Трубы для наружной канализации Муфты для внутренней канализации Тройники для внутренней канализации Отводы для внутренней канализации Отводы с выходом для внутренней канализации Крестовины для внутренней канализации Специальные фитинги для внутренней канализации Переходы для внутренней канализации Муфты для наружной канализации Специальные фитинги для наружной канализации Отводы для наружной канализации Тройники для наружной канализации Крестовины для внешней канализации Материалы для монтажа канализации Гибкий трубопровод Трубы гофрированные Трубы для теплого пола Трубы PEX, PERT Муфты для PEX, PERT Муфты для PEX, PERT с резьбой Угольники для PEX, PERT Угольники для PEX, PERT с резьбой Тройники для PEX, PERT Специальные фитинги для PEX, PERT Комплектующие для теплого пола Инструмент Сварочные аппараты и комплектующие Ножницы для труб Инструмент для сшитого полиэтилена Крепеж Хомуты металлические О Компании Вакансии Фотогалерея Видео Политика качества Контакты Реверс Инжиниринг Новости Техническая информация Сертификаты, свидетельства, паспорта Гарантия ГОСТы и СНиПы Условия хранения и транспортировки продукции Реестр производителей Типоразмеры продукции Каталог Референс-лист Чертежи Autodesk BIM моделирование Программы онлайн расчетов Инструкции по монтажу Рекламные материалы Статьи Лаборатория Распродажа Где купить Интернет-заказ Развитая сеть дистрибьюторов доставка в регионы РФ и страны СНГ Инновационные технологии применение современных материалов Техническая поддержка консультации инженеров Страхование ответственности продукция застрахована на 10 млн.руб О компании Производственная компания КОНТУР «ПК КОНТУР» это современное российское производственное предприятие, производящее полимерные системы трубопроводов для холодного и горячего водоснабжения, отопления и водоотведения. Вся продукция производится под торговой маркой «КОНТУР». Располагается компания в городе Заречном Свердловской области. Производственную деятельность компания начала в 2007г. С самого начала производства главной целью стало производство высококачественной продукции. В основу деятельности компании был взят девиз: «Качество – единственная гарантия развития и процветания в условиях жесткой конкуренции на рынке товаров и услуг». В компании была внедрена и действует международная система менеджмента качества ISO 9001 с целью формирования политики и целей в области качества, а также для достижения этих целей. Мы стремимся быть лидерами в своей области производства, предлагаем своим потребителям широчайший ассортимент высококачественной продукции, постоянно осваиваем производство новых самых современных видов продукции. Уровень, темпы нашего развития и компетентность позволяют нам достигать высоких результатов. Узнать больше Новости Все новости Выставка AКВАТЕРМ Ташкент 2026 17 сентября 2026 Выставка АКВАТЕРМ 2026 18 августа 2026 Профессиональное развитие команды ПК КОНТУР 12 августа 2026 Стать дистрибьютором Юридическое название компании Имя Должность Телефон * Регион * Ваш e-mail Ваш комментарий Я согласен с условиями обработки персональных данных ООО \"ПК КОНТУР\" ИНН: 6609010359 ОГРН: 1036600430822 КПП: 668301001 624250, Свердловская область, г. Заречный, ул. Попова, 57, а/я 111 info@pk-kontur.ru 8 (343) 298-00-58 Заказать звонок Каталог Напорный полипропилен Канализация Гибкий трубопровод Инструмент Крепеж О компании Вакансии Политика качества Дистрибьюторам Тех.поддержка Где купить Контакты Конфиденциальность Клуб проектировщиков Подписаться на нас Мы в соц. сетях © 2026 Производственная компания КОНТУР",
+        "links": [
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog",
+            "label": "Каталог"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen",
+            "label": "Напорный полипропилен"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_truby",
+            "label": "Полипропиленовые трубы"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/mufty_polipropilenovye",
+            "label": "Муфты полипропиленовые"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/mufty_polipropilenovye_kombinirovannye",
+            "label": "Муфты полипропиленовые комбинированные"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/mufty_polipropilenovye_kombinirovannye_razemnye",
+            "label": "Муфты полипропиленовые комбинированные разъемные"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/soedineniya_polipropilenovye_razemnye",
+            "label": "Соединения полипропиленовые разъемные"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/ugolniki_polipropilenovye",
+            "label": "Угольники полипропиленовые"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/ugolniki_polipropilenovye_kombinirovannye",
+            "label": "Угольники полипропиленовые комбинированные"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/troyniki_polipropilenovye",
+            "label": "Тройники полипропиленовые"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/troyniki_polipropilenovye_kombinirovannye",
+            "label": "Тройники полипропиленовые комбинированные"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/fitingi_polipropilenovye_spetsialnye",
+            "label": "Фитинги полипропиленовые специальные"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_sharovye_krany",
+            "label": "Полипропиленовые шаровые краны"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_sharovye_krany_kombinirovannye",
+            "label": "Полипропиленовые шаровые краны комбинированные"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovaya_zapornaya_armatura_dlya_radiatorov",
+            "label": "Полипропиленовая запорная арматура для радиаторов"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/ventilya_polipropilenovye_",
+            "label": "Вентиля полипропиленовые"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya",
+            "label": "Канализация"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/truby_dlya_vnutrenney_kanalizatsii",
+            "label": "Трубы для внутренней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/truby_dlya_naruzhnoy_kanalizatsii",
+            "label": "Трубы для наружной канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/mufty_dlya_vnutrenney_kanalizatsii",
+            "label": "Муфты для внутренней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/troyniki_dlya_vnutrenney_kanalizatsii",
+            "label": "Тройники для внутренней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/otvody_dlya_vnutrenney_kanalizatsii",
+            "label": "Отводы для внутренней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/otvody_s_vykhodom_dlya_vnutrenney_kanalizatsii",
+            "label": "Отводы с выходом для внутренней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/krestoviny_dlya_vnutrenney_kanalizatsii",
+            "label": "Крестовины для внутренней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/spetsialnye_fitingi_dlya_vnutrenney_kanalizatsii",
+            "label": "Специальные фитинги для внутренней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/perekhody_dlya_vnutrenney_kanalizatsii",
+            "label": "Переходы для внутренней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/mufty_dlya_naruzhnoy_kanalizatsii",
+            "label": "Муфты для наружной канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/spetsialnye_fitingi_dlya_naruzhnoy_kanalizatsii",
+            "label": "Специальные фитинги для наружной канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/otvody_dlya_naruzhnoy_kanalizatsii",
+            "label": "Отводы для наружной канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/troyniki_dlya_naruzhnoy_kanalizatsii",
+            "label": "Тройники для наружной канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/krestoviny_dlya_vneshney_kanalizatsii",
+            "label": "Крестовины для внешней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/materialy_dlya_montazha_kanalizatsii",
+            "label": "Материалы для монтажа канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod",
+            "label": "Гибкий трубопровод"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/truby_gofrirovannye",
+            "label": "Трубы гофрированные"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/truby_dlya_teplogo_pola",
+            "label": "Трубы для теплого пола"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/truby_pex_pert",
+            "label": "Трубы PEX, PERT"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/mufty_dlya_pex_pert",
+            "label": "Муфты для PEX, PERT"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/mufty_dlya_pex_pert_s_rezboy",
+            "label": "Муфты для PEX, PERT с резьбой"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/ugolniki_dlya_pex_pert",
+            "label": "Угольники для PEX, PERT"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/ugolniki_dlya_pex_pert_s_rezboy",
+            "label": "Угольники для PEX, PERT с резьбой"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/troyniki_dlya_pex_pert",
+            "label": "Тройники для PEX, PERT"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/spetsialnye_fitingi_dlya_pex_pert",
+            "label": "Специальные фитинги для PEX, PERT"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/komplektuyushchie_dlya_teplogo_pola",
+            "label": "Комплектующие для теплого пола"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument",
+            "label": "Инструмент"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument/svarochnye_apparaty_i_komplektuyushchie",
+            "label": "Сварочные аппараты и комплектующие"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument/nozhnitsy_dlya_trub",
+            "label": "Ножницы для труб"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument/instrument_dlya_sshitogo_polietilena",
+            "label": "Инструмент для сшитого полиэтилена"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/krepezh",
+            "label": "Крепеж"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/krepezh/khomuty_metallicheskie",
+            "label": "Хомуты металлические"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/about",
+            "label": "О Компании"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/about/vakansii",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/about/foto",
+            "label": "Фотогалерея"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/about/video",
+            "label": "Видео"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/about/politika-kachestva",
+            "label": "Политика качества"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/contacts",
+            "label": "Контакты"
+          },
+          {
+            "url": "https://xn--f1adp.xn--j1agcjjg.xn--p1ai",
+            "label": "Реверс Инжиниринг"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/news",
+            "label": "Новости"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/dokumenty",
+            "label": "Техническая информация"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/dokumenty/sertifikaty",
+            "label": "Сертификаты, свидетельства, паспорта"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/chastnym-litsam/poryadok-rassmotreniya-pretenzij",
+            "label": "Гарантия"
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:02:42.609Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 5228,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Производственная Компания Контур",
+        "domain": "xn--j1agcjjg.xn--p1ai",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Инженер (Специалист) по автоматизации бизнес-процессов",
+            "detail": "искать и внедрять современные решения в бизнес-процессы и ИИ-технологии",
+            "sourceUrl": "https://hh.ru/vacancy/137520507",
+            "confidence": 85
+          }
+        },
+        "currentDate": "2026-10-06",
+        "target": {
+          "owner": "Operations leadership",
+          "primaryRole": "операционный директор",
+          "alternativeRoles": [
+            "Operations Director",
+            "Head of Business Operations"
+          ]
+        },
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai",
+            "kind": "page",
+            "text": "ПК \"Контур\" – производство труб и фитингов Меню 8 (343) 298-00-58 info@pk-kontur.ru Заказать звонок 8 (343) 298-00-58 info@pk-kontur.ru С 8:30 до 17:30 info@pk-kontur.ru 624250, Свердловская область, г. Заречный, ул. Попова, 57, а/я 111 Заказать звонок Войти Личный кабинет Каталог Напорный полипропилен Полипропиленовые трубы Муфты полипропиленовые Муфты полипропиленовые комбинированные Муфты полипропиленовые комбинированные разъемные Соединения полипропиленовые разъемные Угольники полипропиленовые Угольники полипропиленовые комбинированные Тройники полипропиленовые Тройники полипропиленовые комбинированные Фитинги полипропиленовые специальные Полипропиленовые шаровые краны Полипропиленовые шаровые краны комбинированные Полипропиленовая запорная арматура для радиаторов Вентиля полипропиленовые Канализация Трубы для внутренней канализации Трубы для наружной канализации Муфты для внутренней канализации Тройники для внутренней канализации Отводы для внутренней канализации Отводы с выходом для внутренней канализации Крестовины для внутренней канализации Специальные фитинги для внутренней канализации Переходы для внутренней канализации Муфты для наружной канализации Специальные фитинги для наружной канализации Отводы для наружной канализации Тройники для наружной канализации Крестовины для внешней канализации Материалы для монтажа канализации Гибкий трубопровод Трубы гофрированные Трубы для теплого пола Трубы PEX, PERT Муфты для PEX, PERT Муфты для PEX, PERT с резьбой Угольники для PEX, PERT Угольники для PEX, PERT с резьбой Тройники для PEX, PERT Специальные фитинги для PEX, PERT Комплектующие для теплого пола Инструмент Сварочные аппараты и комплектующие Ножницы для труб Инструмент для сшитого полиэтилена Крепеж Хомуты металлические О Компании Вакансии Фотогалерея Видео Политика качества Контакты Реверс Инжиниринг Новости Техническая информация Сертификаты, свидетельства, паспорта Гарантия ГОСТы и СНиПы Условия хранения и транспортировки продукции Реестр производителей Типоразмеры продукции Каталог Референс-лист Чертежи Autodesk BIM моделирование Программы онлайн расчетов Инструкции по монтажу Рекламные материалы Статьи Лаборатория Распродажа Где купить Интернет-заказ Развитая сеть дистрибьюторов доставка в регионы РФ и страны СНГ Инновационные технологии применение современных материалов Техническая поддержка консультации инженеров Страхование ответственности продукция застрахована на 10 млн.руб О компании Производственная компания КОНТУР «ПК КОНТУР» это современное российское производственное предприятие, производящее полимерные системы трубопроводов для холодного и горячего водоснабжения, отопления и водоотведения. Вся продукция производится под торговой маркой «КОНТУР». Располагается компания в городе Заречном Свердловской области. Производственную деятельность компания начала в 2007г. С самого начала производства главной целью стало производство высококачественной продукции. В основу деятельности компании был взят девиз: «Качество – единственная гарантия развития и процветания в условиях жесткой конкуренции на рынке товаров и услуг». В компании была внедрена и действует международная система менеджмента качества ISO 9001 с целью формирования политики и целей в области качества, а также для достижения этих целей. Мы стремимся быть лидерами в своей области производства, предлагаем своим потребителям широчайший ассортимент высококачественной продукции, постоянно осваиваем производство новых самых современных видов продукции. Уровень, темпы нашего развития и компетентность позволяют нам достигать высоких результатов. Узнать больше Новости Все новости Выставка AКВАТЕРМ Ташкент 2026 17 сентября 2026 Выставка АКВАТЕРМ 2026 18 августа 2026 Профессиональное развитие команды ПК КОНТУР 12 августа 2026 Стать дистрибьютором Юридическое название компании Имя Должность Телефон * Регион * Ваш e-mail Ваш комментарий Я согласен с условиями обработки персональных данных ООО \"ПК КОНТУР\" ИНН: 6609010359 ОГРН: 1036600430822 КПП: 668301001 624250, Свердловская область, г. Заречный, ул. Попова, 57, а/я 111 info@pk-kontur.ru 8 (343) 298-00-58 Заказать звонок Каталог Напорный полипропилен Канализация Гибкий трубопровод Инструмент Крепеж О компании Вакансии Политика качества Дистрибьюторам Тех.поддержка Где купить Контакты Конфиденциальность Клуб проектировщиков Подписаться на нас Мы в соц. сетях © 2026 Производственная компания КОНТУР",
+            "links": [
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog",
+                "label": "Каталог"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen",
+                "label": "Напорный полипропилен"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_truby",
+                "label": "Полипропиленовые трубы"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/mufty_polipropilenovye",
+                "label": "Муфты полипропиленовые"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/mufty_polipropilenovye_kombinirovannye",
+                "label": "Муфты полипропиленовые комбинированные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/mufty_polipropilenovye_kombinirovannye_razemnye",
+                "label": "Муфты полипропиленовые комбинированные разъемные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/soedineniya_polipropilenovye_razemnye",
+                "label": "Соединения полипропиленовые разъемные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/ugolniki_polipropilenovye",
+                "label": "Угольники полипропиленовые"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/ugolniki_polipropilenovye_kombinirovannye",
+                "label": "Угольники полипропиленовые комбинированные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/troyniki_polipropilenovye",
+                "label": "Тройники полипропиленовые"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/troyniki_polipropilenovye_kombinirovannye",
+                "label": "Тройники полипропиленовые комбинированные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/fitingi_polipropilenovye_spetsialnye",
+                "label": "Фитинги полипропиленовые специальные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_sharovye_krany",
+                "label": "Полипропиленовые шаровые краны"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_sharovye_krany_kombinirovannye",
+                "label": "Полипропиленовые шаровые краны комбинированные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovaya_zapornaya_armatura_dlya_radiatorov",
+                "label": "Полипропиленовая запорная арматура для радиаторов"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/ventilya_polipropilenovye_",
+                "label": "Вентиля полипропиленовые"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya",
+                "label": "Канализация"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/truby_dlya_vnutrenney_kanalizatsii",
+                "label": "Трубы для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/truby_dlya_naruzhnoy_kanalizatsii",
+                "label": "Трубы для наружной канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/mufty_dlya_vnutrenney_kanalizatsii",
+                "label": "Муфты для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/troyniki_dlya_vnutrenney_kanalizatsii",
+                "label": "Тройники для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/otvody_dlya_vnutrenney_kanalizatsii",
+                "label": "Отводы для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/otvody_s_vykhodom_dlya_vnutrenney_kanalizatsii",
+                "label": "Отводы с выходом для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/krestoviny_dlya_vnutrenney_kanalizatsii",
+                "label": "Крестовины для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/spetsialnye_fitingi_dlya_vnutrenney_kanalizatsii",
+                "label": "Специальные фитинги для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/perekhody_dlya_vnutrenney_kanalizatsii",
+                "label": "Переходы для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/mufty_dlya_naruzhnoy_kanalizatsii",
+                "label": "Муфты для наружной канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/spetsialnye_fitingi_dlya_naruzhnoy_kanalizatsii",
+                "label": "Специальные фитинги для наружной канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/otvody_dlya_naruzhnoy_kanalizatsii",
+                "label": "Отводы для наружной канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/troyniki_dlya_naruzhnoy_kanalizatsii",
+                "label": "Тройники для наружной канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/krestoviny_dlya_vneshney_kanalizatsii",
+                "label": "Крестовины для внешней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/materialy_dlya_montazha_kanalizatsii",
+                "label": "Материалы для монтажа канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod",
+                "label": "Гибкий трубопровод"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/truby_gofrirovannye",
+                "label": "Трубы гофрированные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/truby_dlya_teplogo_pola",
+                "label": "Трубы для теплого пола"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/truby_pex_pert",
+                "label": "Трубы PEX, PERT"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/mufty_dlya_pex_pert",
+                "label": "Муфты для PEX, PERT"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/mufty_dlya_pex_pert_s_rezboy",
+                "label": "Муфты для PEX, PERT с резьбой"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/ugolniki_dlya_pex_pert",
+                "label": "Угольники для PEX, PERT"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/ugolniki_dlya_pex_pert_s_rezboy",
+                "label": "Угольники для PEX, PERT с резьбой"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/troyniki_dlya_pex_pert",
+                "label": "Тройники для PEX, PERT"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/spetsialnye_fitingi_dlya_pex_pert",
+                "label": "Специальные фитинги для PEX, PERT"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/komplektuyushchie_dlya_teplogo_pola",
+                "label": "Комплектующие для теплого пола"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument",
+                "label": "Инструмент"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument/svarochnye_apparaty_i_komplektuyushchie",
+                "label": "Сварочные аппараты и комплектующие"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument/nozhnitsy_dlya_trub",
+                "label": "Ножницы для труб"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument/instrument_dlya_sshitogo_polietilena",
+                "label": "Инструмент для сшитого полиэтилена"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/krepezh",
+                "label": "Крепеж"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/krepezh/khomuty_metallicheskie",
+                "label": "Хомуты металлические"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about",
+                "label": "О Компании"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about/vakansii",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about/foto",
+                "label": "Фотогалерея"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about/video",
+                "label": "Видео"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about/politika-kachestva",
+                "label": "Политика качества"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://xn--f1adp.xn--j1agcjjg.xn--p1ai",
+                "label": "Реверс Инжиниринг"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/dokumenty",
+                "label": "Техническая информация"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/dokumenty/sertifikaty",
+                "label": "Сертификаты, свидетельства, паспорта"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/chastnym-litsam/poryadok-rassmotreniya-pretenzij",
+                "label": "Гарантия"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:02:42.609Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 10,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "Производственная компания КОНТУР (ПК КОНТУР) из Заречного, Свердловская область, выпускает полимерные системы трубопроводов для различных нужд. Компания работает с 2007 года и ориентирована на высокое качество продукции с международной системой менеджмента ISO 9001. Веб-сайт имеет разделы 'О компании', 'Вакансии', 'Контакты'. Контактные данные включают общий email info@pk-kontur.ru и телефон (343) 298-00-58.",
+        "missing": [
+          "имена и должности руководителей, особенно операционного директора или аналогичных"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "xn--j1agcjjg.xn--p1ai",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ПК \"Контур\" – производство труб и фитингов ... ООО \"ПК КОНТУР\" ИНН: 6609010359 ОГРН: 1036600430822 ... info@pk-kontur.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://xn--j1agcjjg.xn--p1ai/contacts",
+            "focus": "operations leadership contacts",
+            "purpose": "Поиск имен и контактов ключевых руководителей, в частности оперативного директора"
+          },
+          {
+            "type": "search",
+            "value": "Производственная Компания Контур операционный директор site:xn--j1agcjjg.xn--p1ai",
+            "focus": "key personnel identification",
+            "purpose": "Поиск информации об операционном директоре на корпоративном сайте"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "Производственная компания КОНТУР (ПК КОНТУР) из Заречного, Свердловская область, выпускает полимерные системы трубопроводов для различных нужд. Компания работает с 2007 года и ориентирована на высокое качество продукции с международной системой менеджмента ISO 9001. Веб-сайт имеет разделы 'О компании', 'Вакансии', 'Контакты'. Контактные данные включают общий email info@pk-kontur.ru и телефон (343) 298-00-58.",
+        "missing": [
+          "имена и должности руководителей, особенно операционного директора или аналогичных"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "xn--j1agcjjg.xn--p1ai",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ПК \"Контур\" – производство труб и фитингов ... ООО \"ПК КОНТУР\" ИНН: 6609010359 ОГРН: 1036600430822 ... info@pk-kontur.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://xn--j1agcjjg.xn--p1ai/contacts",
+            "focus": "operations leadership contacts",
+            "purpose": "Поиск имен и контактов ключевых руководителей, в частности оперативного директора"
+          },
+          {
+            "type": "search",
+            "value": "Производственная Компания Контур операционный директор site:xn--j1agcjjg.xn--p1ai",
+            "focus": "key personnel identification",
+            "purpose": "Поиск информации об операционном директоре на корпоративном сайте"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "xn--j1agcjjg.xn--p1ai"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%9F%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F%20%D0%9A%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D1%8F%20%D0%9A%D0%BE%D0%BD%D1%82%D1%83%D1%80%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20xn--j1agcjjg.xn--p1ai&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 520
+    },
+    {
+      "stage": "fetch",
+      "url": "https://xn--j1agcjjg.xn--p1ai/contacts",
+      "status": 301,
+      "elapsedMs": 863
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%9F%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F%20%D0%9A%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D1%8F%20%D0%9A%D0%BE%D0%BD%D1%82%D1%83%D1%80%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20xn--j1agcjjg.xn--p1ai&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 492
+    },
+    {
+      "stage": "fetch",
+      "url": "http://xn--j1agcjjg.xn--p1ai/contacts/",
+      "status": 301,
+      "elapsedMs": 264
+    },
+    {
+      "stage": "fetch",
+      "url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "status": 200,
+      "elapsedMs": 606
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://xn--j1agcjjg.xn--p1ai/contacts",
+      "focus": "operations leadership contacts",
+      "purpose": "Поиск имен и контактов ключевых руководителей, в частности оперативного директора",
+      "success": true,
+      "evidence": {
+        "url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+        "kind": "page",
+        "text": "Сотрудники Меню 8 (343) 298-00-58 info@pk-kontur.ru Заказать звонок 8 (343) 298-00-58 info@pk-kontur.ru С 8:30 до 17:30 info@pk-kontur.ru 624250, Свердловская область, г. Заречный, ул. Попова, 57, а/я 111 Заказать звонок Войти Личный кабинет Каталог Напорный полипропилен Полипропиленовые трубы Муфты полипропиленовые Муфты полипропиленовые комбинированные Муфты полипропиленовые комбинированные разъемные Соединения полипропиленовые разъемные Угольники полипропиленовые Угольники полипропиленовые комбинированные Тройники полипропиленовые Тройники полипропиленовые комбинированные Фитинги полипропиленовые специальные Полипропиленовые шаровые краны Полипропиленовые шаровые краны комбинированные Полипропиленовая запорная арматура для радиаторов Вентиля полипропиленовые Канализация Трубы для внутренней канализации Трубы для наружной канализации Муфты для внутренней канализации Тройники для внутренней канализации Отводы для внутренней канализации Отводы с выходом для внутренней канализации Крестовины для внутренней канализации Специальные фитинги для внутренней канализации Переходы для внутрен\n[excerpt boundary]\nст Чертежи Autodesk BIM моделирование Программы онлайн расчетов Инструкции по монтажу Рекламные материалы Статьи Лаборатория Распродажа Где купить Интернет-заказ Главная Контакты Сотрудники Руководство Околелов Григорий Валерьевич Генеральный директор Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru Бушуев Сергей Анатольевич Финансовый директор +7 (343) 298-00-58 доб.211 SergeyB@pk-kontur.ru Отдел продаж Коноплев Егор Алексеевич Начальник отдела продаж +7 (343) 298-00-58 доб.231 Konoplev-EA@pk-kontur.ru Быкова Рамиля Ромельевна Зам. начальника отдела продаж +7 (343) 298-00-58 доб.242 Bykova-RR@pk-kontur.ru Румянцев Алексей Владимирович Территориальный менеджер +7 (343) 298-00-58 доб.239 AlekseiR@pk-kontur.ru Омутов Николай Васильевич Территориальный менеджер +7 (343) 298-00-58 доб.302 Omutov-NV@pk-kontur.ru Наумова Яна Рафаэльевна Менеджер по продажам +7 (343) 298-00-58 доб.241 Naumova-YAR@pk-kontur.ru Пинжанина Ольга Анатольевна Менеджер по продажам +7 (343) 298-00-58 доб.238 OlgaA@pk-kontur.ru Соколова Ольга Сергеевна Менеджер по работе с торговыми сетями +7 (343) 298-00-58 доб.226 Sokolova-OS@pk-kontur.ru Бычкова Алена Александровна Менеджер по продажам +7 (343) 298-00-58 доб.308 Annenkova-EA@pk-kontur.ru Алексанян Инна Николаевна Менеджер по продажам +7 (343) 298-00-58 доб.232 Aleksanyan-IN@pk-kontur.ru Меркулова Алена Эдуардовна Территориальный менеджер +7 (343) 298-00-58, доб.254 Merkulova-AE@pk-kontur.ru Матвеева Мая Васильевна Менеджер по мелкооптовым продажам +7 (343) 298-00-58 доб.225 Matveeva-MV@pk-kontur.ru Отдел по работе с СМО Кривопалов Вячеслав Владимирович Начальник по работе с СМО +7 (343) 298-00-58 доб.300 Krivopalov-VV@pk-",
+        "links": [
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog",
+            "label": "Каталог"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen",
+            "label": "Напорный полипропилен"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_truby",
+            "label": "Полипропиленовые трубы"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/mufty_polipropilenovye",
+            "label": "Муфты полипропиленовые"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/mufty_polipropilenovye_kombinirovannye",
+            "label": "Муфты полипропиленовые комбинированные"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/mufty_polipropilenovye_kombinirovannye_razemnye",
+            "label": "Муфты полипропиленовые комбинированные разъемные"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/soedineniya_polipropilenovye_razemnye",
+            "label": "Соединения полипропиленовые разъемные"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/ugolniki_polipropilenovye",
+            "label": "Угольники полипропиленовые"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/ugolniki_polipropilenovye_kombinirovannye",
+            "label": "Угольники полипропиленовые комбинированные"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/troyniki_polipropilenovye",
+            "label": "Тройники полипропиленовые"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/troyniki_polipropilenovye_kombinirovannye",
+            "label": "Тройники полипропиленовые комбинированные"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/fitingi_polipropilenovye_spetsialnye",
+            "label": "Фитинги полипропиленовые специальные"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_sharovye_krany",
+            "label": "Полипропиленовые шаровые краны"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_sharovye_krany_kombinirovannye",
+            "label": "Полипропиленовые шаровые краны комбинированные"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovaya_zapornaya_armatura_dlya_radiatorov",
+            "label": "Полипропиленовая запорная арматура для радиаторов"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/ventilya_polipropilenovye_",
+            "label": "Вентиля полипропиленовые"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya",
+            "label": "Канализация"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/truby_dlya_vnutrenney_kanalizatsii",
+            "label": "Трубы для внутренней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/truby_dlya_naruzhnoy_kanalizatsii",
+            "label": "Трубы для наружной канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/mufty_dlya_vnutrenney_kanalizatsii",
+            "label": "Муфты для внутренней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/troyniki_dlya_vnutrenney_kanalizatsii",
+            "label": "Тройники для внутренней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/otvody_dlya_vnutrenney_kanalizatsii",
+            "label": "Отводы для внутренней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/otvody_s_vykhodom_dlya_vnutrenney_kanalizatsii",
+            "label": "Отводы с выходом для внутренней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/krestoviny_dlya_vnutrenney_kanalizatsii",
+            "label": "Крестовины для внутренней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/spetsialnye_fitingi_dlya_vnutrenney_kanalizatsii",
+            "label": "Специальные фитинги для внутренней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/perekhody_dlya_vnutrenney_kanalizatsii",
+            "label": "Переходы для внутренней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/mufty_dlya_naruzhnoy_kanalizatsii",
+            "label": "Муфты для наружной канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/spetsialnye_fitingi_dlya_naruzhnoy_kanalizatsii",
+            "label": "Специальные фитинги для наружной канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/otvody_dlya_naruzhnoy_kanalizatsii",
+            "label": "Отводы для наружной канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/troyniki_dlya_naruzhnoy_kanalizatsii",
+            "label": "Тройники для наружной канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/krestoviny_dlya_vneshney_kanalizatsii",
+            "label": "Крестовины для внешней канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/materialy_dlya_montazha_kanalizatsii",
+            "label": "Материалы для монтажа канализации"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod",
+            "label": "Гибкий трубопровод"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/truby_gofrirovannye",
+            "label": "Трубы гофрированные"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/truby_dlya_teplogo_pola",
+            "label": "Трубы для теплого пола"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/truby_pex_pert",
+            "label": "Трубы PEX, PERT"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/mufty_dlya_pex_pert",
+            "label": "Муфты для PEX, PERT"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/mufty_dlya_pex_pert_s_rezboy",
+            "label": "Муфты для PEX, PERT с резьбой"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/ugolniki_dlya_pex_pert",
+            "label": "Угольники для PEX, PERT"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/ugolniki_dlya_pex_pert_s_rezboy",
+            "label": "Угольники для PEX, PERT с резьбой"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/troyniki_dlya_pex_pert",
+            "label": "Тройники для PEX, PERT"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/spetsialnye_fitingi_dlya_pex_pert",
+            "label": "Специальные фитинги для PEX, PERT"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/komplektuyushchie_dlya_teplogo_pola",
+            "label": "Комплектующие для теплого пола"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument",
+            "label": "Инструмент"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument/svarochnye_apparaty_i_komplektuyushchie",
+            "label": "Сварочные аппараты и комплектующие"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument/nozhnitsy_dlya_trub",
+            "label": "Ножницы для труб"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument/instrument_dlya_sshitogo_polietilena",
+            "label": "Инструмент для сшитого полиэтилена"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/krepezh",
+            "label": "Крепеж"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/krepezh/khomuty_metallicheskie",
+            "label": "Хомуты металлические"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/about",
+            "label": "О Компании"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/about/vakansii",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/about/foto",
+            "label": "Фотогалерея"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/about/video",
+            "label": "Видео"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/about/politika-kachestva",
+            "label": "Политика качества"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/contacts",
+            "label": "Контакты"
+          },
+          {
+            "url": "https://xn--f1adp.xn--j1agcjjg.xn--p1ai",
+            "label": "Реверс Инжиниринг"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/news",
+            "label": "Новости"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/dokumenty",
+            "label": "Техническая информация"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/dokumenty/sertifikaty",
+            "label": "Сертификаты, свидетельства, паспорта"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/chastnym-litsam/poryadok-rassmotreniya-pretenzij",
+            "label": "Гарантия"
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:02:49.669Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 2543
+    },
+    {
+      "stage": "search",
+      "query": "Производственная Компания Контур операционный директор site:xn--j1agcjjg.xn--p1ai",
+      "results": [
+        {
+          "title": "Завод ПК КОНТУР вновь открыл двери для наших ...",
+          "url": "https://xn--j1agcjjg.xn--p1ai/news/zavod_pk_kontur_vnov_otkryl_dveri_dlya_nashikh_partnerov_moskovskikh_kompaniy_zastroyshchikov",
+          "snippet": "Экскурсию для гостей провел исполнительный директор компании Данила Котельников. ... Производственная компания КОНТУР. Данный веб-сайт использует cookie",
+          "source_label": "tavily",
+          "score": 0.60694176,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Сотрудники",
+          "url": "https://xn--j1agcjjg.xn--p1ai/contacts",
+          "snippet": "Главная\n\nКонтакты\n\n# Сотрудники\n\n## Руководство\n\nОколелов Григорий Валерьевич\n\nОколелов Григорий Валерьевич Генеральный директор\n\nКотельников Данила Никитич\n\nКотельников Данила Никитич Исполнительный директор\n\n+7 (343) 298-00-58 доб.214 298-00-58 доб.214)\n\nKotelnikov-DN@pk-kontur.ru\n\nБушуев Сергей Анатольевич\n\nБушуев Сергей Анатольевич Финансовый директор\n\n+7 (343) 298-00-58 доб.211 298-00-58 доб.211)\n\nSergeyB@pk-kontur.ru\n\n## Отдел продаж\n\nКоноплев Егор Алексеевич [...] Пыхова Евгения Сергеевна Ведущий специалист по маркетингу\n\n+7 (343) 298-00-58 доб.307 298-00-58 доб.307)\n\nСуханова София Раифовна\n\nСуханова София Раифовна Секретарь-референт\n\n+7 (343) 298-00-58 доб.201 298-00-58 доб.201)\n\nЧумак Михаил Николаевич\n\nЧумак Михаил Николаевич Начальник складского комплекса\n\n+7 (343) 298-00-58 доб.209 298-00-58 доб.209)\n\nООО \"ПК КОНТУР\"  \n   \n          ИНН:  6609010359  \n          ОГРН: 1036600430822  \n          КПП:  668301001 [...] Болотов Сергей Вячеславович Менеджер по ВЭД логистике\n\n+7 (343) 298-00-58 доб.205 298-00-58 доб.205)\n\nsvbolotov@pk-kontur.ru\n\nМаклыгин Тимур Шаухатович\n\nМаклыгин Тимур Шаухатович Специалист по грузоперевозкам\n\n+7 (343) 298-00-58 доб.246 298-00-58 доб.246)\n\nlogist@pk-kontur.ru\n\n## Производство\n\nМаклыгин Константин Андреевич \n\nМаклыгин Константин Андреевич  Начальник производства\n\n+7 (343) 298-00-58 доб.274 298-00-58 доб.274)\n\nMaklygin-KA@pk-kontur.ru\n\nБлинков Сергей Владимирович",
+          "source_label": "tavily",
+          "score": 0.5582553,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Сотрудники",
+          "url": "https://www.xn--j1agcjjg.xn--p1ai/contacts/okolelov_grigoriy_valerevich",
+          "snippet": "Главная\n\nКонтакты\n\n# Сотрудники\n\n## Руководство\n\nОколелов Григорий Валерьевич\n\nОколелов Григорий Валерьевич Генеральный директор\n\nКотельников Данила Никитич\n\nКотельников Данила Никитич Исполнительный директор\n\n+7 (343) 298-00-58 доб.214 298-00-58 доб.214)\n\nKotelnikov-DN@pk-kontur.ru\n\nБушуев Сергей Анатольевич\n\nБушуев Сергей Анатольевич Финансовый директор\n\n+7 (343) 298-00-58 доб.211 298-00-58 доб.211)\n\nSergeyB@pk-kontur.ru\n\n## Отдел продаж\n\nКоноплев Егор Алексеевич [...] Пыхова Евгения Сергеевна Ведущий специалист по маркетингу\n\n+7 (343) 298-00-58 доб.307 298-00-58 доб.307)\n\nСуханова София Раифовна\n\nСуханова София Раифовна Секретарь-референт\n\n+7 (343) 298-00-58 доб.201 298-00-58 доб.201)\n\nЧумак Михаил Николаевич\n\nЧумак Михаил Николаевич Начальник складского комплекса\n\n+7 (343) 298-00-58 доб.209 298-00-58 доб.209)\n\nООО \"ПК КОНТУР\"  \n   \n          ИНН:  6609010359  \n          ОГРН: 1036600430822  \n          КПП:  668301001 [...] Болотов Сергей Вячеславович Менеджер по ВЭД логистике\n\n+7 (343) 298-00-58 доб.205 298-00-58 доб.205)\n\nsvbolotov@pk-kontur.ru\n\nМаклыгин Тимур Шаухатович\n\nМаклыгин Тимур Шаухатович Специалист по грузоперевозкам\n\n+7 (343) 298-00-58 доб.246 298-00-58 доб.246)\n\nlogist@pk-kontur.ru\n\n## Производство\n\nМаклыгин Константин Андреевич \n\nМаклыгин Константин Андреевич  Начальник производства\n\n+7 (343) 298-00-58 доб.274 298-00-58 доб.274)\n\nMaklygin-KA@pk-kontur.ru\n\nБлинков Сергей Владимирович",
+          "source_label": "tavily",
+          "score": 0.5582553,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Сотрудники",
+          "url": "https://xn--j1agcjjg.xn--p1ai/contacts/kotelnikov_danila_nikitich",
+          "snippet": "Главная\n\nКонтакты\n\n# Сотрудники\n\n## Руководство\n\nОколелов Григорий Валерьевич\n\nОколелов Григорий Валерьевич Генеральный директор\n\nКотельников Данила Никитич\n\nКотельников Данила Никитич Исполнительный директор\n\n+7 (343) 298-00-58 доб.214 298-00-58 доб.214)\n\nKotelnikov-DN@pk-kontur.ru\n\nБушуев Сергей Анатольевич\n\nБушуев Сергей Анатольевич Финансовый директор\n\n+7 (343) 298-00-58 доб.211 298-00-58 доб.211)\n\nSergeyB@pk-kontur.ru\n\n## Отдел продаж\n\nКоноплев Егор Алексеевич [...] Пыхова Евгения Сергеевна Ведущий специалист по маркетингу\n\n+7 (343) 298-00-58 доб.307 298-00-58 доб.307)\n\nСуханова София Раифовна\n\nСуханова София Раифовна Секретарь-референт\n\n+7 (343) 298-00-58 доб.201 298-00-58 доб.201)\n\nЧумак Михаил Николаевич\n\nЧумак Михаил Николаевич Начальник складского комплекса\n\n+7 (343) 298-00-58 доб.209 298-00-58 доб.209)\n\nООО \"ПК КОНТУР\"  \n   \n          ИНН:  6609010359  \n          ОГРН: 1036600430822  \n          КПП:  668301001 [...] Болотов Сергей Вячеславович Менеджер по ВЭД логистике\n\n+7 (343) 298-00-58 доб.205 298-00-58 доб.205)\n\nsvbolotov@pk-kontur.ru\n\nМаклыгин Тимур Шаухатович\n\nМаклыгин Тимур Шаухатович Специалист по грузоперевозкам\n\n+7 (343) 298-00-58 доб.246 298-00-58 доб.246)\n\nlogist@pk-kontur.ru\n\n## Производство\n\nМаклыгин Константин Андреевич \n\nМаклыгин Константин Андреевич  Начальник производства\n\n+7 (343) 298-00-58 доб.274 298-00-58 доб.274)\n\nMaklygin-KA@pk-kontur.ru\n\nБлинков Сергей Владимирович",
+          "source_label": "tavily",
+          "score": 0.5582553,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "ПК \"Контур\" – производство труб и фитингов",
+          "url": "https://xn--j1agcjjg.xn--p1ai",
+          "snippet": "|  |\n\n| info@pk-kontur.ru |\n\n8 (343) 298-00-58298-00-58)\n\nЗаказать звонок\n\n Напорный полипропилен\n Канализация\n Гибкий трубопровод\n Инструмент\n Крепеж\n\nО компании\n\n Вакансии\n Политика качества\n Дистрибьюторам\n Тех.поддержка\n Где купить\n Контакты\n Конфиденциальность\n Клуб проектировщиков\n\nПодписаться на нас\n\nМы в соц. сетях\n\n  © 2026 Производственная компания КОНТУР [...] KONTUR_LOGO.png \n\n8 (343) 298-00-58298-00-58)   info@pk-kontur.ru\n\n Заказать звонок \n\n8 (343) 298-00-58298-00-58)   info@pk-kontur.ru\n\nС 8:30 до 17:30\n\n|  |\n\n| info@pk-kontur.ru |\n\n624250, Свердловская область, г. Заречный, ул. Попова, 57, а/я 111\n\nЗаказать звонок\n\nВойти \n\nЛичный кабинет\n\nКаталог \n\nНапорный полипропилен\n\nНапорный полипропилен\n\nПолипропиленовые трубы\n\nМуфты полипропиленовые\n\nМуфты полипропиленовые комбинированные\n\nМуфты полипропиленовые комбинированные разъемные [...] Тёплый пол контур - энергоэффективность и безопасность\n\nPE-XA/PE-RT трубы КОНТУР - новое поколение трубопроводов\n\n100% контроль качества\n\nМалошумная канализация контур уют\n\nО компании\n\n# Производственная компания КОНТУР",
+          "source_label": "tavily",
+          "score": 0.32325244,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Производственная Компания Контур операционный директор site:xn--j1agcjjg.xn--p1ai",
+      "focus": "key personnel identification",
+      "purpose": "Поиск информации об операционном директоре на корпоративном сайте",
+      "results": [
+        {
+          "url": "https://xn--j1agcjjg.xn--p1ai/news/zavod_pk_kontur_vnov_otkryl_dveri_dlya_nashikh_partnerov_moskovskikh_kompaniy_zastroyshchikov",
+          "title": "Завод ПК КОНТУР вновь открыл двери для наших ...",
+          "snippet": "Экскурсию для гостей провел исполнительный директор компании Данила Котельников. ... Производственная компания КОНТУР. Данный веб-сайт использует cookie",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://xn--j1agcjjg.xn--p1ai/contacts",
+          "title": "Сотрудники",
+          "snippet": "Главная\n\nКонтакты\n\n# Сотрудники\n\n## Руководство\n\nОколелов Григорий Валерьевич\n\nОколелов Григорий Валерьевич Генеральный директор\n\nКотельников Данила Никитич\n\nКотельников Данила Никитич Исполнительный директор\n\n+7 (343) 298-00-58 доб.214 298-00-58 доб.214)\n\nKotelnikov-DN@pk-kontur.ru\n\nБушуев Сергей Анатольевич\n\nБушуев Сергей Анатольевич Финансовый директор\n\n+7 (343) 298-00-58 доб.211 298-00-58 доб.211)\n\nSergeyB@pk-kontur.ru\n\n## Отдел продаж\n\nКоноплев Егор Алексеевич [...] Пыхова Евгения Сергеевна",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.xn--j1agcjjg.xn--p1ai/contacts/okolelov_grigoriy_valerevich",
+          "title": "Сотрудники",
+          "snippet": "Главная\n\nКонтакты\n\n# Сотрудники\n\n## Руководство\n\nОколелов Григорий Валерьевич\n\nОколелов Григорий Валерьевич Генеральный директор\n\nКотельников Данила Никитич\n\nКотельников Данила Никитич Исполнительный директор\n\n+7 (343) 298-00-58 доб.214 298-00-58 доб.214)\n\nKotelnikov-DN@pk-kontur.ru\n\nБушуев Сергей Анатольевич\n\nБушуев Сергей Анатольевич Финансовый директор\n\n+7 (343) 298-00-58 доб.211 298-00-58 доб.211)\n\nSergeyB@pk-kontur.ru\n\n## Отдел продаж\n\nКоноплев Егор Алексеевич [...] Пыхова Евгения Сергеевна",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://xn--j1agcjjg.xn--p1ai/contacts/kotelnikov_danila_nikitich",
+          "title": "Сотрудники",
+          "snippet": "Главная\n\nКонтакты\n\n# Сотрудники\n\n## Руководство\n\nОколелов Григорий Валерьевич\n\nОколелов Григорий Валерьевич Генеральный директор\n\nКотельников Данила Никитич\n\nКотельников Данила Никитич Исполнительный директор\n\n+7 (343) 298-00-58 доб.214 298-00-58 доб.214)\n\nKotelnikov-DN@pk-kontur.ru\n\nБушуев Сергей Анатольевич\n\nБушуев Сергей Анатольевич Финансовый директор\n\n+7 (343) 298-00-58 доб.211 298-00-58 доб.211)\n\nSergeyB@pk-kontur.ru\n\n## Отдел продаж\n\nКоноплев Егор Алексеевич [...] Пыхова Евгения Сергеевна",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://xn--j1agcjjg.xn--p1ai",
+          "title": "ПК \"Контур\" – производство труб и фитингов",
+          "snippet": "|  |\n\n| info@pk-kontur.ru |\n\n8 (343) 298-00-58298-00-58)\n\nЗаказать звонок\n\n Напорный полипропилен\n Канализация\n Гибкий трубопровод\n Инструмент\n Крепеж\n\nО компании\n\n Вакансии\n Политика качества\n Дистрибьюторам\n Тех.поддержка\n Где купить\n Контакты\n Конфиденциальность\n Клуб проектировщиков\n\nПодписаться на нас\n\nМы в соц. сетях\n\n  © 2026 Производственная компания КОНТУР [...] KONTUR_LOGO.png \n\n8 (343) 298-00-58298-00-58)   info@pk-kontur.ru\n\n Заказать звонок \n\n8 (343) 298-00-58298-00-58)   info@pk-ko",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 6668,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Производственная Компания Контур",
+        "domain": "xn--j1agcjjg.xn--p1ai",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Инженер (Специалист) по автоматизации бизнес-процессов",
+            "detail": "искать и внедрять современные решения в бизнес-процессы и ИИ-технологии",
+            "sourceUrl": "https://hh.ru/vacancy/137520507",
+            "confidence": 85
+          }
+        },
+        "currentDate": "2026-10-06",
+        "target": {
+          "owner": "Operations leadership",
+          "primaryRole": "операционный директор",
+          "alternativeRoles": [
+            "Operations Director",
+            "Head of Business Operations"
+          ]
+        },
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai",
+            "kind": "page",
+            "text": "ПК \"Контур\" – производство труб и фитингов Меню 8 (343) 298-00-58 info@pk-kontur.ru Заказать звонок 8 (343) 298-00-58 info@pk-kontur.ru С 8:30 до 17:30 info@pk-kontur.ru 624250, Свердловская область, г. Заречный, ул. Попова, 57, а/я 111 Заказать звонок Войти Личный кабинет Каталог Напорный полипропилен Полипропиленовые трубы Муфты полипропиленовые Муфты полипропиленовые комбинированные Муфты полипропиленовые комбинированные разъемные Соединения полипропиленовые разъемные Угольники полипропиленовые Угольники полипропиленовые комбинированные Тройники полипропиленовые Тройники полипропиленовые комбинированные Фитинги полипропиленовые специальные Полипропиленовые шаровые краны Полипропиленовые шаровые краны комбинированные Полипропиленовая запорная арматура для радиаторов Вентиля полипропиленовые Канализация Трубы для внутренней канализации Трубы для наружной канализации Муфты для внутренней канализации Тройники для внутренней канализации Отводы для внутренней канализации Отводы с выходом для внутренней канализации Крестовины для внутренней канализации Специальные фитинги для внутренней канализации Переходы для внутренней канализации Муфты для наружной канализации Специальные фитинги для наружной канализации Отводы для наружной канализации Тройники для наружной канализации Крестовины для внешней канализации Материалы для монтажа канализации Гибкий трубопровод Трубы гофрированные Трубы для теплого пола Трубы PEX, PERT Муфты для PEX, PERT Муфты для PEX, PERT с резьбой Угольники для PEX, PERT Угольники для PEX, PERT с резьбой Тройники для PEX, PERT Специальные фитинги для PEX, PERT Комплектующие для теплого пола Инструмент Сварочные аппараты и комплектующие Ножницы для труб Инструмент для сшитого полиэтилена Крепеж Хомуты металлические О Компании Вакансии Фотогалерея Видео Политика качества Контакты Реверс Инжиниринг Новости Техническая информация Сертификаты, свидетельства, паспорта Гарантия ГОСТы и СНиПы Условия хранения и транспортировки продукции Реестр производителей Типоразмеры продукции Каталог Референс-лист Чертежи Autodesk BIM моделирование Программы онлайн расчетов Инструкции по монтажу Рекламные материалы Статьи Лаборатория Распродажа Где купить Интернет-заказ Развитая сеть дистрибьюторов доставка в регионы РФ и страны СНГ Инновационные технологии применение современных материалов Техническая поддержка консультации инженеров Страхование ответственности продукция застрахована на 10 млн.руб О компании Производственная компания КОНТУР «ПК КОНТУР» это современное российское производственное предприятие, производящее полимерные системы трубопроводов для холодного и горячего водоснабжения, отопления и водоотведения. Вся продукция производится под торговой маркой «КОНТУР». Располагается компания в городе Заречном Свердловской области. Производственную деятельность компания начала в 2007г. С самого начала производства главной целью стало производство высококачественной продукции. В основу деятельности компании был взят девиз: «Качество – единственная гарантия развития и процветания в условиях жесткой конкуренции на рынке товаров и услуг». В компании была внедрена и действует международная система менеджмента качества ISO 9001 с целью формирования политики и целей в области качества, а также для достижения этих целей. Мы стремимся быть лидерами в своей области производства, предлагаем своим потребителям широчайший ассортимент высококачественной продукции, постоянно осваиваем производство новых самых современных видов продукции. Уровень, темпы нашего развития и компетентность позволяют нам достигать высоких результатов. Узнать больше Новости Все новости Выставка AКВАТЕРМ Ташкент 2026 17 сентября 2026 Выставка АКВАТЕРМ 2026 18 августа 2026 Профессиональное развитие команды ПК КОНТУР 12 августа 2026 Стать дистрибьютором Юридическое название компании Имя Должность Телефон * Регион * Ваш e-mail Ваш комментарий Я согласен с условиями обработки персональных данных ООО \"ПК КОНТУР\" ИНН: 6609010359 ОГРН: 1036600430822 КПП: 668301001 624250, Свердловская область, г. Заречный, ул. Попова, 57, а/я 111 info@pk-kontur.ru 8 (343) 298-00-58 Заказать звонок Каталог Напорный полипропилен Канализация Гибкий трубопровод Инструмент Крепеж О компании Вакансии Политика качества Дистрибьюторам Тех.поддержка Где купить Контакты Конфиденциальность Клуб проектировщиков Подписаться на нас Мы в соц. сетях © 2026 Производственная компания КОНТУР",
+            "links": [
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog",
+                "label": "Каталог"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen",
+                "label": "Напорный полипропилен"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_truby",
+                "label": "Полипропиленовые трубы"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/mufty_polipropilenovye",
+                "label": "Муфты полипропиленовые"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/mufty_polipropilenovye_kombinirovannye",
+                "label": "Муфты полипропиленовые комбинированные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/mufty_polipropilenovye_kombinirovannye_razemnye",
+                "label": "Муфты полипропиленовые комбинированные разъемные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/soedineniya_polipropilenovye_razemnye",
+                "label": "Соединения полипропиленовые разъемные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/ugolniki_polipropilenovye",
+                "label": "Угольники полипропиленовые"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/ugolniki_polipropilenovye_kombinirovannye",
+                "label": "Угольники полипропиленовые комбинированные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/troyniki_polipropilenovye",
+                "label": "Тройники полипропиленовые"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/troyniki_polipropilenovye_kombinirovannye",
+                "label": "Тройники полипропиленовые комбинированные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/fitingi_polipropilenovye_spetsialnye",
+                "label": "Фитинги полипропиленовые специальные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_sharovye_krany",
+                "label": "Полипропиленовые шаровые краны"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_sharovye_krany_kombinirovannye",
+                "label": "Полипропиленовые шаровые краны комбинированные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovaya_zapornaya_armatura_dlya_radiatorov",
+                "label": "Полипропиленовая запорная арматура для радиаторов"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/ventilya_polipropilenovye_",
+                "label": "Вентиля полипропиленовые"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya",
+                "label": "Канализация"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/truby_dlya_vnutrenney_kanalizatsii",
+                "label": "Трубы для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/truby_dlya_naruzhnoy_kanalizatsii",
+                "label": "Трубы для наружной канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/mufty_dlya_vnutrenney_kanalizatsii",
+                "label": "Муфты для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/troyniki_dlya_vnutrenney_kanalizatsii",
+                "label": "Тройники для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/otvody_dlya_vnutrenney_kanalizatsii",
+                "label": "Отводы для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/otvody_s_vykhodom_dlya_vnutrenney_kanalizatsii",
+                "label": "Отводы с выходом для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/krestoviny_dlya_vnutrenney_kanalizatsii",
+                "label": "Крестовины для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/spetsialnye_fitingi_dlya_vnutrenney_kanalizatsii",
+                "label": "Специальные фитинги для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/perekhody_dlya_vnutrenney_kanalizatsii",
+                "label": "Переходы для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/mufty_dlya_naruzhnoy_kanalizatsii",
+                "label": "Муфты для наружной канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/spetsialnye_fitingi_dlya_naruzhnoy_kanalizatsii",
+                "label": "Специальные фитинги для наружной канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/otvody_dlya_naruzhnoy_kanalizatsii",
+                "label": "Отводы для наружной канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/troyniki_dlya_naruzhnoy_kanalizatsii",
+                "label": "Тройники для наружной канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/krestoviny_dlya_vneshney_kanalizatsii",
+                "label": "Крестовины для внешней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/materialy_dlya_montazha_kanalizatsii",
+                "label": "Материалы для монтажа канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod",
+                "label": "Гибкий трубопровод"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/truby_gofrirovannye",
+                "label": "Трубы гофрированные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/truby_dlya_teplogo_pola",
+                "label": "Трубы для теплого пола"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/truby_pex_pert",
+                "label": "Трубы PEX, PERT"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/mufty_dlya_pex_pert",
+                "label": "Муфты для PEX, PERT"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/mufty_dlya_pex_pert_s_rezboy",
+                "label": "Муфты для PEX, PERT с резьбой"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/ugolniki_dlya_pex_pert",
+                "label": "Угольники для PEX, PERT"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/ugolniki_dlya_pex_pert_s_rezboy",
+                "label": "Угольники для PEX, PERT с резьбой"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/troyniki_dlya_pex_pert",
+                "label": "Тройники для PEX, PERT"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/spetsialnye_fitingi_dlya_pex_pert",
+                "label": "Специальные фитинги для PEX, PERT"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/komplektuyushchie_dlya_teplogo_pola",
+                "label": "Комплектующие для теплого пола"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument",
+                "label": "Инструмент"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument/svarochnye_apparaty_i_komplektuyushchie",
+                "label": "Сварочные аппараты и комплектующие"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument/nozhnitsy_dlya_trub",
+                "label": "Ножницы для труб"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument/instrument_dlya_sshitogo_polietilena",
+                "label": "Инструмент для сшитого полиэтилена"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/krepezh",
+                "label": "Крепеж"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/krepezh/khomuty_metallicheskie",
+                "label": "Хомуты металлические"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about",
+                "label": "О Компании"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about/vakansii",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about/foto",
+                "label": "Фотогалерея"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about/video",
+                "label": "Видео"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about/politika-kachestva",
+                "label": "Политика качества"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://xn--f1adp.xn--j1agcjjg.xn--p1ai",
+                "label": "Реверс Инжиниринг"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/dokumenty",
+                "label": "Техническая информация"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/dokumenty/sertifikaty",
+                "label": "Сертификаты, свидетельства, паспорта"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/chastnym-litsam/poryadok-rassmotreniya-pretenzij",
+                "label": "Гарантия"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:02:42.609Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "kind": "page",
+            "text": "Сотрудники Меню 8 (343) 298-00-58 info@pk-kontur.ru Заказать звонок 8 (343) 298-00-58 info@pk-kontur.ru С 8:30 до 17:30 info@pk-kontur.ru 624250, Свердловская область, г. Заречный, ул. Попова, 57, а/я 111 Заказать звонок Войти Личный кабинет Каталог Напорный полипропилен Полипропиленовые трубы Муфты полипропиленовые Муфты полипропиленовые комбинированные Муфты полипропиленовые комбинированные разъемные Соединения полипропиленовые разъемные Угольники полипропиленовые Угольники полипропиленовые комбинированные Тройники полипропиленовые Тройники полипропиленовые комбинированные Фитинги полипропиленовые специальные Полипропиленовые шаровые краны Полипропиленовые шаровые краны комбинированные Полипропиленовая запорная арматура для радиаторов Вентиля полипропиленовые Канализация Трубы для внутренней канализации Трубы для наружной канализации Муфты для внутренней канализации Тройники для внутренней канализации Отводы для внутренней канализации Отводы с выходом для внутренней канализации Крестовины для внутренней канализации Специальные фитинги для внутренней канализации Переходы для внутрен\n[excerpt boundary]\nст Чертежи Autodesk BIM моделирование Программы онлайн расчетов Инструкции по монтажу Рекламные материалы Статьи Лаборатория Распродажа Где купить Интернет-заказ Главная Контакты Сотрудники Руководство Околелов Григорий Валерьевич Генеральный директор Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru Бушуев Сергей Анатольевич Финансовый директор +7 (343) 298-00-58 доб.211 SergeyB@pk-kontur.ru Отдел продаж Коноплев Егор Алексеевич Начальник отдела продаж +7 (343) 298-00-58 доб.231 Konoplev-EA@pk-kontur.ru Быкова Рамиля Ромельевна Зам. начальника отдела продаж +7 (343) 298-00-58 доб.242 Bykova-RR@pk-kontur.ru Румянцев Алексей Владимирович Территориальный менеджер +7 (343) 298-00-58 доб.239 AlekseiR@pk-kontur.ru Омутов Николай Васильевич Территориальный менеджер +7 (343) 298-00-58 доб.302 Omutov-NV@pk-kontur.ru Наумова Яна Рафаэльевна Менеджер по продажам +7 (343) 298-00-58 доб.241 Naumova-YAR@pk-kontur.ru Пинжанина Ольга Анатольевна Менеджер по продажам +7 (343) 298-00-58 доб.238 OlgaA@pk-kontur.ru Соколова Ольга Сергеевна Менеджер по работе с торговыми сетями +7 (343) 298-00-58 доб.226 Sokolova-OS@pk-kontur.ru Бычкова Алена Александровна Менеджер по продажам +7 (343) 298-00-58 доб.308 Annenkova-EA@pk-kontur.ru Алексанян Инна Николаевна Менеджер по продажам +7 (343) 298-00-58 доб.232 Aleksanyan-IN@pk-kontur.ru Меркулова Алена Эдуардовна Территориальный менеджер +7 (343) 298-00-58, доб.254 Merkulova-AE@pk-kontur.ru Матвеева Мая Васильевна Менеджер по мелкооптовым продажам +7 (343) 298-00-58 доб.225 Matveeva-MV@pk-kontur.ru Отдел по работе с СМО Кривопалов Вячеслав Владимирович Начальник по работе с СМО +7 (343) 298-00-58 доб.300 Krivopalov-VV@pk-",
+            "links": [
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog",
+                "label": "Каталог"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen",
+                "label": "Напорный полипропилен"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_truby",
+                "label": "Полипропиленовые трубы"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/mufty_polipropilenovye",
+                "label": "Муфты полипропиленовые"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/mufty_polipropilenovye_kombinirovannye",
+                "label": "Муфты полипропиленовые комбинированные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/mufty_polipropilenovye_kombinirovannye_razemnye",
+                "label": "Муфты полипропиленовые комбинированные разъемные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/soedineniya_polipropilenovye_razemnye",
+                "label": "Соединения полипропиленовые разъемные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/ugolniki_polipropilenovye",
+                "label": "Угольники полипропиленовые"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/ugolniki_polipropilenovye_kombinirovannye",
+                "label": "Угольники полипропиленовые комбинированные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/troyniki_polipropilenovye",
+                "label": "Тройники полипропиленовые"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/troyniki_polipropilenovye_kombinirovannye",
+                "label": "Тройники полипропиленовые комбинированные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/fitingi_polipropilenovye_spetsialnye",
+                "label": "Фитинги полипропиленовые специальные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_sharovye_krany",
+                "label": "Полипропиленовые шаровые краны"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_sharovye_krany_kombinirovannye",
+                "label": "Полипропиленовые шаровые краны комбинированные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovaya_zapornaya_armatura_dlya_radiatorov",
+                "label": "Полипропиленовая запорная арматура для радиаторов"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/ventilya_polipropilenovye_",
+                "label": "Вентиля полипропиленовые"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya",
+                "label": "Канализация"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/truby_dlya_vnutrenney_kanalizatsii",
+                "label": "Трубы для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/truby_dlya_naruzhnoy_kanalizatsii",
+                "label": "Трубы для наружной канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/mufty_dlya_vnutrenney_kanalizatsii",
+                "label": "Муфты для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/troyniki_dlya_vnutrenney_kanalizatsii",
+                "label": "Тройники для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/otvody_dlya_vnutrenney_kanalizatsii",
+                "label": "Отводы для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/otvody_s_vykhodom_dlya_vnutrenney_kanalizatsii",
+                "label": "Отводы с выходом для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/krestoviny_dlya_vnutrenney_kanalizatsii",
+                "label": "Крестовины для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/spetsialnye_fitingi_dlya_vnutrenney_kanalizatsii",
+                "label": "Специальные фитинги для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/perekhody_dlya_vnutrenney_kanalizatsii",
+                "label": "Переходы для внутренней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/mufty_dlya_naruzhnoy_kanalizatsii",
+                "label": "Муфты для наружной канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/spetsialnye_fitingi_dlya_naruzhnoy_kanalizatsii",
+                "label": "Специальные фитинги для наружной канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/otvody_dlya_naruzhnoy_kanalizatsii",
+                "label": "Отводы для наружной канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/troyniki_dlya_naruzhnoy_kanalizatsii",
+                "label": "Тройники для наружной канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/krestoviny_dlya_vneshney_kanalizatsii",
+                "label": "Крестовины для внешней канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/kanalizatsiya/materialy_dlya_montazha_kanalizatsii",
+                "label": "Материалы для монтажа канализации"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod",
+                "label": "Гибкий трубопровод"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/truby_gofrirovannye",
+                "label": "Трубы гофрированные"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/truby_dlya_teplogo_pola",
+                "label": "Трубы для теплого пола"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/truby_pex_pert",
+                "label": "Трубы PEX, PERT"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/mufty_dlya_pex_pert",
+                "label": "Муфты для PEX, PERT"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/mufty_dlya_pex_pert_s_rezboy",
+                "label": "Муфты для PEX, PERT с резьбой"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/ugolniki_dlya_pex_pert",
+                "label": "Угольники для PEX, PERT"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/ugolniki_dlya_pex_pert_s_rezboy",
+                "label": "Угольники для PEX, PERT с резьбой"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/troyniki_dlya_pex_pert",
+                "label": "Тройники для PEX, PERT"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/spetsialnye_fitingi_dlya_pex_pert",
+                "label": "Специальные фитинги для PEX, PERT"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/gibkiy_truboprovod/komplektuyushchie_dlya_teplogo_pola",
+                "label": "Комплектующие для теплого пола"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument",
+                "label": "Инструмент"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument/svarochnye_apparaty_i_komplektuyushchie",
+                "label": "Сварочные аппараты и комплектующие"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument/nozhnitsy_dlya_trub",
+                "label": "Ножницы для труб"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/instrument/instrument_dlya_sshitogo_polietilena",
+                "label": "Инструмент для сшитого полиэтилена"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/krepezh",
+                "label": "Крепеж"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/krepezh/khomuty_metallicheskie",
+                "label": "Хомуты металлические"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about",
+                "label": "О Компании"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about/vakansii",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about/foto",
+                "label": "Фотогалерея"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about/video",
+                "label": "Видео"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about/politika-kachestva",
+                "label": "Политика качества"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://xn--f1adp.xn--j1agcjjg.xn--p1ai",
+                "label": "Реверс Инжиниринг"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/dokumenty",
+                "label": "Техническая информация"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/dokumenty/sertifikaty",
+                "label": "Сертификаты, свидетельства, паспорта"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/chastnym-litsam/poryadok-rassmotreniya-pretenzij",
+                "label": "Гарантия"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:02:49.669Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/news/zavod_pk_kontur_vnov_otkryl_dveri_dlya_nashikh_partnerov_moskovskikh_kompaniy_zastroyshchikov",
+            "kind": "search",
+            "text": "Завод ПК КОНТУР вновь открыл двери для наших ...\nЭкскурсию для гостей провел исполнительный директор компании Данила Котельников. ... Производственная компания КОНТУР. Данный веб-сайт использует cookie",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:02:51.358Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/contacts",
+            "kind": "search",
+            "text": "Сотрудники\nГлавная\n\nКонтакты\n\n# Сотрудники\n\n## Руководство\n\nОколелов Григорий Валерьевич\n\nОколелов Григорий Валерьевич Генеральный директор\n\nКотельников Данила Никитич\n\nКотельников Данила Никитич Исполнительный директор\n\n+7 (343) 298-00-58 доб.214 298-00-58 доб.214)\n\nKotelnikov-DN@pk-kontur.ru\n\nБушуев Сергей Анатольевич\n\nБушуев Сергей Анатольевич Финансовый директор\n\n+7 (343) 298-00-58 доб.211 298-00-58 доб.211)\n\nSergeyB@pk-kontur.ru\n\n## Отдел продаж\n\nКоноплев Егор Алексеевич [...] Пыхова Евгения Сергеевна Ведущий специалист по маркетингу\n\n+7 (343) 298-00-58 доб.307 298-00-58 доб.307)\n\nСуханова София Раифовна\n\nСуханова София Раифовна Секретарь-референт\n\n+7 (343) 298-00-58 доб.201 298-00-58 доб.201)\n\nЧумак Михаил Николаевич\n\nЧумак Михаил Николаевич Начальник складского комплекса\n\n+7 (343) 298-00-58 доб.209 298-00-58 доб.209)\n\nООО \"ПК КОНТУР\"  \n   \n          ИНН:  6609010359  \n          ОГРН: 1036600430822  \n          КПП:  668301001 [...] Болотов Сергей Вячеславович Менеджер по ВЭД логистике\n\n+7 (343) 298-00-58 доб.205 298-00-58 доб.205)\n\nsvbolotov@pk-kontur.ru\n\nМаклыгин Тимур Шаухатович\n\nМаклыгин Тимур Шаухатович Специалист по грузоперевозкам\n\n+7 (343) 298-00-58 доб.246 298-00-58 доб.246)\n\nlogist@pk-kontur.ru\n\n## Производство\n\nМаклыгин Константин Андреевич \n\nМаклыгин Константин Андреевич  Начальник производства\n\n+7 (343) 298-00-58 доб.274 298-00-58 доб.274)\n\nMaklygin-KA@pk-kontur.ru\n\nБлинков Сергей Владимирович",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:02:51.358Z",
+            "id": "e4"
+          },
+          {
+            "url": "https://www.xn--j1agcjjg.xn--p1ai/contacts/okolelov_grigoriy_valerevich",
+            "kind": "search",
+            "text": "Сотрудники\nГлавная\n\nКонтакты\n\n# Сотрудники\n\n## Руководство\n\nОколелов Григорий Валерьевич\n\nОколелов Григорий Валерьевич Генеральный директор\n\nКотельников Данила Никитич\n\nКотельников Данила Никитич Исполнительный директор\n\n+7 (343) 298-00-58 доб.214 298-00-58 доб.214)\n\nKotelnikov-DN@pk-kontur.ru\n\nБушуев Сергей Анатольевич\n\nБушуев Сергей Анатольевич Финансовый директор\n\n+7 (343) 298-00-58 доб.211 298-00-58 доб.211)\n\nSergeyB@pk-kontur.ru\n\n## Отдел продаж\n\nКоноплев Егор Алексеевич [...] Пыхова Евгения Сергеевна Ведущий специалист по маркетингу\n\n+7 (343) 298-00-58 доб.307 298-00-58 доб.307)\n\nСуханова София Раифовна\n\nСуханова София Раифовна Секретарь-референт\n\n+7 (343) 298-00-58 доб.201 298-00-58 доб.201)\n\nЧумак Михаил Николаевич\n\nЧумак Михаил Николаевич Начальник складского комплекса\n\n+7 (343) 298-00-58 доб.209 298-00-58 доб.209)\n\nООО \"ПК КОНТУР\"  \n   \n          ИНН:  6609010359  \n          ОГРН: 1036600430822  \n          КПП:  668301001 [...] Болотов Сергей Вячеславович Менеджер по ВЭД логистике\n\n+7 (343) 298-00-58 доб.205 298-00-58 доб.205)\n\nsvbolotov@pk-kontur.ru\n\nМаклыгин Тимур Шаухатович\n\nМаклыгин Тимур Шаухатович Специалист по грузоперевозкам\n\n+7 (343) 298-00-58 доб.246 298-00-58 доб.246)\n\nlogist@pk-kontur.ru\n\n## Производство\n\nМаклыгин Константин Андреевич \n\nМаклыгин Константин Андреевич  Начальник производства\n\n+7 (343) 298-00-58 доб.274 298-00-58 доб.274)\n\nMaklygin-KA@pk-kontur.ru\n\nБлинков Сергей Владимирович",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:02:51.359Z",
+            "id": "e5"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/contacts/kotelnikov_danila_nikitich",
+            "kind": "search",
+            "text": "Сотрудники\nГлавная\n\nКонтакты\n\n# Сотрудники\n\n## Руководство\n\nОколелов Григорий Валерьевич\n\nОколелов Григорий Валерьевич Генеральный директор\n\nКотельников Данила Никитич\n\nКотельников Данила Никитич Исполнительный директор\n\n+7 (343) 298-00-58 доб.214 298-00-58 доб.214)\n\nKotelnikov-DN@pk-kontur.ru\n\nБушуев Сергей Анатольевич\n\nБушуев Сергей Анатольевич Финансовый директор\n\n+7 (343) 298-00-58 доб.211 298-00-58 доб.211)\n\nSergeyB@pk-kontur.ru\n\n## Отдел продаж\n\nКоноплев Егор Алексеевич [...] Пыхова Евгения Сергеевна Ведущий специалист по маркетингу\n\n+7 (343) 298-00-58 доб.307 298-00-58 доб.307)\n\nСуханова София Раифовна\n\nСуханова София Раифовна Секретарь-референт\n\n+7 (343) 298-00-58 доб.201 298-00-58 доб.201)\n\nЧумак Михаил Николаевич\n\nЧумак Михаил Николаевич Начальник складского комплекса\n\n+7 (343) 298-00-58 доб.209 298-00-58 доб.209)\n\nООО \"ПК КОНТУР\"  \n   \n          ИНН:  6609010359  \n          ОГРН: 1036600430822  \n          КПП:  668301001 [...] Болотов Сергей Вячеславович Менеджер по ВЭД логистике\n\n+7 (343) 298-00-58 доб.205 298-00-58 доб.205)\n\nsvbolotov@pk-kontur.ru\n\nМаклыгин Тимур Шаухатович\n\nМаклыгин Тимур Шаухатович Специалист по грузоперевозкам\n\n+7 (343) 298-00-58 доб.246 298-00-58 доб.246)\n\nlogist@pk-kontur.ru\n\n## Производство\n\nМаклыгин Константин Андреевич \n\nМаклыгин Константин Андреевич  Начальник производства\n\n+7 (343) 298-00-58 доб.274 298-00-58 доб.274)\n\nMaklygin-KA@pk-kontur.ru\n\nБлинков Сергей Владимирович",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:02:51.359Z",
+            "id": "e6"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai",
+            "kind": "search",
+            "text": "ПК \"Контур\" – производство труб и фитингов\n|  |\n\n| info@pk-kontur.ru |\n\n8 (343) 298-00-58298-00-58)\n\nЗаказать звонок\n\n Напорный полипропилен\n Канализация\n Гибкий трубопровод\n Инструмент\n Крепеж\n\nО компании\n\n Вакансии\n Политика качества\n Дистрибьюторам\n Тех.поддержка\n Где купить\n Контакты\n Конфиденциальность\n Клуб проектировщиков\n\nПодписаться на нас\n\nМы в соц. сетях\n\n  © 2026 Производственная компания КОНТУР [...] KONTUR_LOGO.png \n\n8 (343) 298-00-58298-00-58)   info@pk-kontur.ru\n\n Заказать звонок \n\n8 (343) 298-00-58298-00-58)   info@pk-kontur.ru\n\nС 8:30 до 17:30\n\n|  |\n\n| info@pk-kontur.ru |\n\n624250, Свердловская область, г. Заречный, ул. Попова, 57, а/я 111\n\nЗаказать звонок\n\nВойти \n\nЛичный кабинет\n\nКаталог \n\nНапорный полипропилен\n\nНапорный полипропилен\n\nПолипропиленовые трубы\n\nМуфты полипропиленовые\n\nМуфты полипропиленовые комбинированные\n\nМуфты полипропиленовые комбинированные разъемные [...] Тёплый пол контур - энергоэффективность и безопасность\n\nPE-XA/PE-RT трубы КОНТУР - новое поколение трубопроводов\n\n100% контроль качества\n\nМалошумная канализация контур уют\n\nО компании\n\n# Производственная компания КОНТУР",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:02:51.359Z",
+            "id": "e7"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://xn--j1agcjjg.xn--p1ai/contacts",
+            "focus": "operations leadership contacts",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "Производственная Компания Контур операционный директор site:xn--j1agcjjg.xn--p1ai",
+            "focus": "key personnel identification",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 8,
+          "searchRemaining": 7
+        }
+      },
+      "output": {
+        "companySummary": "Производственная компания КОНТУР — российское предприятие, производящее полимерные системы трубопроводов с 2007 года, расположенное в Заречном, Свердловская область. Внедрена система менеджмента качества ISO 9001. Основные продукты: полипропиленовые трубы, фитинги, канализация, инструмент и комплектующие.",
+        "missing": [
+          "Подтверждение роли операционного директора или главы бизнес-операций, связанной с автоматизацией бизнес-процессов",
+          "Другие релевантные руководители в операционном отделе"
+        ],
+        "people": [
+          {
+            "name": "Котельников Данила Никитич",
+            "role": "Исполнительный директор",
+            "relevance": 90,
+            "reason": "Исполнительный директор обычно отвечает за операционные процессы в компании среднего размера, включая внедрение современных решений и автоматизацию бизнес-процессов",
+            "citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru"
+              },
+              {
+                "sourceId": "e4",
+                "quote": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "email",
+                "value": "Kotelnikov-DN@pk-kontur.ru",
+                "citation": {
+                  "sourceId": "e2",
+                  "quote": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru"
+                }
+              }
+            ]
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "xn--j1agcjjg.xn--p1ai",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ПК \"Контур\" – производство труб и фитингов Меню 8 (343) 298-00-58 info@pk-kontur.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://xn--j1agcjjg.xn--p1ai/about",
+            "focus": "company management and leadership info",
+            "purpose": "Поиск подробной информации о руководстве компании и их ролях, чтобы проверить наличие операционного директора"
+          },
+          {
+            "type": "search",
+            "value": "Котельников Данила Никитич LinkedIn",
+            "focus": "leader professional profile",
+            "purpose": "Поиск публичного профиля исполнительного директора для подтверждения роли и ответственности в области операционного управления и автоматизации"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Есть кандидат — исполнительный директор с подтвержденным контактным email, но необходимо уточнить роль операционного директора и потенциальных участников в операционном управлении."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "Производственная компания КОНТУР — российское предприятие, производящее полимерные системы трубопроводов с 2007 года, расположенное в Заречном, Свердловская область. Внедрена система менеджмента качества ISO 9001. Основные продукты: полипропиленовые трубы, фитинги, канализация, инструмент и комплектующие.",
+        "missing": [
+          "Подтверждение роли операционного директора или главы бизнес-операций, связанной с автоматизацией бизнес-процессов",
+          "Другие релевантные руководители в операционном отделе"
+        ],
+        "people": [
+          {
+            "name": "Котельников Данила Никитич",
+            "role": "Исполнительный директор",
+            "relevance": 90,
+            "reason": "Исполнительный директор обычно отвечает за операционные процессы в компании среднего размера, включая внедрение современных решений и автоматизацию бизнес-процессов",
+            "citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru"
+              },
+              {
+                "sourceId": "e4",
+                "quote": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "email",
+                "value": "Kotelnikov-DN@pk-kontur.ru",
+                "citation": {
+                  "sourceId": "e2",
+                  "quote": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru"
+                }
+              }
+            ]
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "xn--j1agcjjg.xn--p1ai",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ПК \"Контур\" – производство труб и фитингов Меню 8 (343) 298-00-58 info@pk-kontur.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://xn--j1agcjjg.xn--p1ai/about",
+            "focus": "company management and leadership info",
+            "purpose": "Поиск подробной информации о руководстве компании и их ролях, чтобы проверить наличие операционного директора"
+          },
+          {
+            "type": "search",
+            "value": "Котельников Данила Никитич LinkedIn",
+            "focus": "leader professional profile",
+            "purpose": "Поиск публичного профиля исполнительного директора для подтверждения роли и ответственности в области операционного управления и автоматизации"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Есть кандидат — исполнительный директор с подтвержденным контактным email, но необходимо уточнить роль операционного директора и потенциальных участников в операционном управлении."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [
+        {
+          "full_name": "Котельников Данила Никитич",
+          "role_title": "Исполнительный директор",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "kotelnikov-dn@pk-kontur.ru",
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru"
+          ],
+          "metadata": {
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "source_urls": [
+              "https://xn--j1agcjjg.xn--p1ai/contacts/"
+            ],
+            "semantic_role_relevance": 90,
+            "semantic_role_reason": "Исполнительный директор обычно отвечает за операционные процессы в компании среднего размера, включая внедрение современных решений и автоматизацию бизнес-процессов",
+            "email_source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "email_person_evidence": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru",
+            "public_contact_verified": true,
+            "verified_company_domains": [
+              "xn--j1agcjjg.xn--p1ai"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "xn--j1agcjjg.xn--p1ai"
+      ]
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "personal_contact_evidenced",
+      "actions": 3,
+      "candidates": [
+        {
+          "full_name": "Котельников Данила Никитич",
+          "role_title": "Исполнительный директор",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "kotelnikov-dn@pk-kontur.ru",
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru"
+          ],
+          "metadata": {
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "source_urls": [
+              "https://xn--j1agcjjg.xn--p1ai/contacts/"
+            ],
+            "semantic_role_relevance": 90,
+            "semantic_role_reason": "Исполнительный директор обычно отвечает за операционные процессы в компании среднего размера, включая внедрение современных решений и автоматизацию бизнес-процессов",
+            "email_source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "email_person_evidence": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru",
+            "public_contact_verified": true,
+            "verified_company_domains": [
+              "xn--j1agcjjg.xn--p1ai"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "xn--j1agcjjg.xn--p1ai"
+      ],
+      "elapsedMs": 16915
+    },
+    {
+      "stage": "people_ranked",
+      "people": [
+        {
+          "full_name": "Котельников Данила Никитич",
+          "role_title": "Исполнительный директор",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "kotelnikov-dn@pk-kontur.ru",
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru"
+          ],
+          "metadata": {
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "source_urls": [
+              "https://xn--j1agcjjg.xn--p1ai/contacts/"
+            ],
+            "semantic_role_relevance": 90,
+            "semantic_role_reason": "Исполнительный директор обычно отвечает за операционные процессы в компании среднего размера, включая внедрение современных решений и автоматизацию бизнес-процессов",
+            "email_source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "email_person_evidence": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru",
+            "public_contact_verified": true,
+            "verified_company_domains": [
+              "xn--j1agcjjg.xn--p1ai"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://xn--j1agcjjg.xn--p1ai/",
+      "status": 200,
+      "elapsedMs": 1176
+    },
+    {
+      "stage": "fetch",
+      "url": "https://xn--j1agcjjg.xn--p1ai/robots.txt",
+      "status": 404,
+      "elapsedMs": 455
+    },
+    {
+      "stage": "fetch",
+      "url": "https://xn--j1agcjjg.xn--p1ai/sitemap.xml",
+      "status": 404,
+      "elapsedMs": 867
+    },
+    {
+      "stage": "fetch",
+      "url": "https://xn--j1agcjjg.xn--p1ai/contact",
+      "status": 404,
+      "elapsedMs": 606
+    },
+    {
+      "stage": "fetch",
+      "url": "https://xn--j1agcjjg.xn--p1ai/kontakti",
+      "status": 404,
+      "elapsedMs": 962
+    },
+    {
+      "stage": "fetch",
+      "url": "https://xn--j1agcjjg.xn--p1ai/about-us",
+      "status": 404,
+      "elapsedMs": 972
+    },
+    {
+      "stage": "fetch",
+      "url": "https://xn--j1agcjjg.xn--p1ai/company",
+      "status": 404,
+      "elapsedMs": 975
+    },
+    {
+      "stage": "fetch",
+      "url": "https://xn--j1agcjjg.xn--p1ai/contact-us",
+      "status": 404,
+      "elapsedMs": 997
+    },
+    {
+      "stage": "fetch",
+      "url": "https://xn--j1agcjjg.xn--p1ai/o-kompanii",
+      "status": 404,
+      "elapsedMs": 1038
+    },
+    {
+      "stage": "fetch",
+      "url": "https://xn--j1agcjjg.xn--p1ai/about",
+      "status": 200,
+      "elapsedMs": 1339
+    },
+    {
+      "stage": "fetch",
+      "url": "https://xn--j1agcjjg.xn--p1ai/contacts",
+      "status": 200,
+      "elapsedMs": 1384
+    },
+    {
+      "stage": "fetch",
+      "url": "https://xn--j1agcjjg.xn--p1ai/kontakty",
+      "status": 404,
+      "elapsedMs": 1923
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Growth and cross-functional execution can create manual handoffs, process fragmentation, and operational bottlenecks.",
+        "target_responsibility": "Operations leadership",
+        "target_persona": "COO",
+        "alternative_personas": [
+          "Head of Operations",
+          "Operations Director",
+          "Head of Business Operations",
+          "Founder / CEO",
+          "Founder"
+        ],
+        "why_this_person": "Исполнительный директор: The context points to process load or operational scaling, so operations leadership is the best entry persona. Matched context: процесс. Company scale: unknown.",
+        "person_name": "Котельников Данила Никитич",
+        "person_role": "Исполнительный директор",
+        "email": "kotelnikov-dn@pk-kontur.ru",
+        "contact_level": "A",
+        "email_classification": "VERIFIED_PERSONAL",
+        "email_type": "public_personal",
+        "verification_methods": [
+          "corporate_domain_match",
+          "mx",
+          "public_evidence",
+          "corporate_pattern"
+        ],
+        "confidence": "HIGH",
+        "readiness": "contact_ready",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "summary": "Котельников Данила Никитич подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "summary": "Роль связана с зоной ответственности: Operations leadership."
+          },
+          {
+            "kind": "email",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "summary": "Email опубликован в публичном профессиональном контексте."
+          },
+          {
+            "kind": "domain",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai",
+            "summary": "Email-домен опубликован на официальном сайте как корпоративный alias."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "summary": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru"
+          },
+          {
+            "kind": "pattern",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai",
+            "summary": "Corporate pattern выведен из 1 опубликованных соответствий ФИО и email."
+          }
+        ],
+        "inferred_pattern": "{first}-dn",
+        "pattern_support": 1,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "contact_ready_high_confidence"
+      },
+      "contacts": [
+        {
+          "name": "Котельников Данила Никитич",
+          "email": null,
+          "type": "confirmed_person",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/"
+        },
+        {
+          "name": "Котельников Данила Никитич",
+          "email": "kotelnikov-dn@pk-kontur.ru",
+          "type": "work_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/"
+        },
+        {
+          "name": null,
+          "email": "info@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": "Котельников Данила Никитич",
+          "email": "kotelnikov-dn@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "sergeyb@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "konoplev-ea@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "bykova-rr@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "alekseir@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "omutov-nv@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "naumova-yar@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "olgaa@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "sokolova-os@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "annenkova-ea@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "aleksanyan-in@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "merkulova-ae@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "matveeva-mv@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "krivopalov-vv@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "shcherbakov-av@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "shubin-ds@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "parshin-ea@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "vlasov-is@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "dorohov-dv@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "svetai@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "maksimovskih-mn@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "ovsyannikova-ma@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "nyashin-ao@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "bayankin-sv@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "majorova-mn@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "tatarinova-da@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "sergeyk@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "sorokin-vs@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "leonteva-ev@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "svbolotov@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "logist@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "maklygin-ka@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "blinkov-sv@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "vertliugov-dm@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "iskustnyh-ea@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "kleshhev-dm@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "elenad@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "mardanova-ng@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "pavlovskiy@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "gladkih-es@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "sukhanova-sr@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "chumak-mn@pk-kontur.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": "fzkontur@yandex.ru",
+          "type": "generic_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "domain_alias_published_on_official_site"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contact-us"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://xn--j1agcjjg.xn--p1ai"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3156,
+      "schema": "leadgen_outreach_v4",
+      "input": {
+        "company": "Производственная Компания Контур",
+        "segment": null,
+        "industry": null,
+        "signal": {
+          "type": "AI_AUTOMATION_HIRING_SIGNAL",
+          "evidence": "искать и внедрять современные решения в бизнес-процессы и ИИ-технологии",
+          "source": "https://hh.ru/vacancy/137520507"
+        },
+        "company_specifics": null,
+        "lpr": {
+          "name": "Котельников Данила Никитич",
+          "role": null,
+          "why_this_person": null
+        },
+        "business_context": {
+          "problem_hypothesis": "Growth and cross-functional execution can create manual handoffs, process fragmentation, and operational bottlenecks.",
+          "target_responsibility": null,
+          "selection_reason": null
+        },
+        "contact_type": "GENERAL",
+        "required_cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "required_greeting": "Данила, добрый день."
+      },
+      "output": {
+        "subject": "ИИ-технологии в производстве Контур",
+        "body": "Производственная Компания Контур сейчас активно ищет и внедряет современные решения в бизнес-процессы и ИИ-технологии, как указано в их вакансии. Это оптимальный момент, чтобы обсудить конкретные задачи, которые требуют автоматизации.\nВероятно, внедрение новых технологий сталкивается с ручными операциями и фрагментацией процессов, что является типичной проблемой при росте и межфункциональном взаимодействии. Выявление таких узких мест поможет сделать процессы более прозрачными.\nПредлагаю провести пилотный аудит с использованием ИИ для анализа текущих бизнес-процессов — входными данными будут существующие регламенты и операции, на выходе - структурированное предложение автоматизации ключевых этапов с оценкой трудозатрат.",
+        "cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "quality": {
+          "reason_now": true,
+          "grounded_hypothesis": true,
+          "russian_only": true,
+          "personal_cta": true
+        }
+      }
+    }
+  ],
+  "startedAt": "2026-10-06T20:02:41.275Z",
+  "bundle": {
+    "companyName": "Производственная Компания Контур",
+    "officialWebsite": "https://xn--j1agcjjg.xn--p1ai",
+    "officialDomain": "xn--j1agcjjg.xn--p1ai",
+    "people": [
+      {
+        "fullName": "Котельников Данила Никитич",
+        "role": "Исполнительный директор",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "sourceType": "official",
+            "excerpt": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru",
+            "capturedAt": "2026-10-06T20:02:41.275Z",
+            "confidence": 90
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [
+        {
+          "email": "kotelnikov-dn@pk-kontur.ru",
+          "personName": "Котельников Данила Никитич",
+          "classification": "VERIFIED_PERSONAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "kotelnikov-dn@pk-kontur.ru — Iterative public research",
+              "capturedAt": "2026-10-06T20:02:41.275Z",
+              "confidence": 97
+            }
+          ]
+        }
+      ],
+      "department": [],
+      "general": [
+        {
+          "email": "info@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/",
+              "sourceType": "official",
+              "excerpt": "info@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T20:02:41.275Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "sergeyb@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "sergeyb@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T20:02:41.275Z",
+              "confidence": 88
+            }
+          ]
+        },
+        {
+          "email": "konoplev-ea@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "konoplev-ea@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T20:02:41.275Z",
+              "confidence": 88
+            }
+          ]
+        },
+        {
+          "email": "bykova-rr@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "bykova-rr@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T20:02:41.275Z",
+              "confidence": 88
+            }
+          ]
+        },
+        {
+          "email": "alekseir@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "alekseir@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T20:02:41.275Z",
+              "confidence": 88
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "kotelnikov-dn@pk-kontur.ru",
+      "personName": "Котельников Данила Никитич",
+      "role": "Исполнительный директор",
+      "classification": "VERIFIED_PERSONAL",
+      "contactLevel": "A",
+      "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/"
+    },
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "Инженер (Специалист) по автоматизации бизнес-процессов",
+      "detail": "искать и внедрять современные решения в бизнес-процессы и ИИ-технологии",
+      "sourceUrl": "https://hh.ru/vacancy/137520507",
+      "confidence": 85
+    },
+    "researchConfidence": "VERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 1,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 18,
+      "lprMs": 16915,
+      "contactMs": 4605,
+      "totalMs": 24721,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "people": {
+    "primary_person": {
+      "full_name": "Котельников Данила Никитич",
+      "role_title": "Исполнительный директор",
+      "department": null,
+      "linkedin_url": null,
+      "work_email": "kotelnikov-dn@pk-kontur.ru",
+      "phone": null,
+      "source": "Iterative public research",
+      "confidence_score": 90,
+      "evidence": [
+        "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru"
+      ],
+      "metadata": {
+        "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+        "source_urls": [
+          "https://xn--j1agcjjg.xn--p1ai/contacts/"
+        ],
+        "semantic_role_relevance": 90,
+        "semantic_role_reason": "Исполнительный директор обычно отвечает за операционные процессы в компании среднего размера, включая внедрение современных решений и автоматизацию бизнес-процессов",
+        "email_source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+        "email_person_evidence": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru",
+        "public_contact_verified": true,
+        "verified_company_domains": [
+          "xn--j1agcjjg.xn--p1ai"
+        ],
+        "verified_public_profiles": [],
+        "tenchat_url": null,
+        "telegram_url": null,
+        "vk_url": null,
+        "instagram_url": null,
+        "contact_route": "target_persona",
+        "company_verified": true,
+        "role_verified": true
+      }
+    },
+    "alternative_people": [],
+    "all_candidates": [
+      {
+        "full_name": "Котельников Данила Никитич",
+        "role_title": "Исполнительный директор",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": "kotelnikov-dn@pk-kontur.ru",
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru"
+        ],
+        "metadata": {
+          "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "source_urls": [
+            "https://xn--j1agcjjg.xn--p1ai/contacts/"
+          ],
+          "semantic_role_relevance": 90,
+          "semantic_role_reason": "Исполнительный директор обычно отвечает за операционные процессы в компании среднего размера, включая внедрение современных решений и автоматизацию бизнес-процессов",
+          "email_source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "email_person_evidence": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru",
+          "public_contact_verified": true,
+          "verified_company_domains": [
+            "xn--j1agcjjg.xn--p1ai"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      }
+    ],
+    "primary_person_intelligence": {
+      "candidate": {
+        "full_name": "Котельников Данила Никитич",
+        "role_title": "Исполнительный директор",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": "kotelnikov-dn@pk-kontur.ru",
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru"
+        ],
+        "metadata": {
+          "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "source_urls": [
+            "https://xn--j1agcjjg.xn--p1ai/contacts/"
+          ],
+          "semantic_role_relevance": 90,
+          "semantic_role_reason": "Исполнительный директор обычно отвечает за операционные процессы в компании среднего размера, включая внедрение современных решений и автоматизацию бизнес-процессов",
+          "email_source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "email_person_evidence": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru",
+          "public_contact_verified": true,
+          "verified_company_domains": [
+            "xn--j1agcjjg.xn--p1ai"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      },
+      "rank_score": 87,
+      "person_score": 87,
+      "persona_match_score": 90,
+      "business_problem_ownership": "high",
+      "decision_authority": "low",
+      "influence_level": "medium",
+      "confidence_score": 97,
+      "confidence_level": "confirmed",
+      "contact_availability": {
+        "has_work_email": true,
+        "has_linkedin": false,
+        "has_phone": false,
+        "has_telegram": false
+      },
+      "matched_keywords": [],
+      "reasoning": "No direct persona keyword match in available person context.",
+      "selection_reason": "Котельников Данила Никитич is the strongest available candidate because Исполнительный директор no direct keyword match, compared against операционный директор. Persona match 90/100, ownership high, authority low, influence medium, confidence 97/100.",
+      "strengths": [
+        "Strong persona match (90/100)",
+        "Likely owner of the business problem",
+        "Has at least one usable public contact signal"
+      ],
+      "weaknesses": [
+        "No direct persona keyword match in available evidence"
+      ],
+      "why_not_other_candidates": [],
+      "recommended_next_action": "contact_primary_person"
+    },
+    "alternative_people_intelligence": [],
+    "ranked_people": [
+      {
+        "candidate": {
+          "full_name": "Котельников Данила Никитич",
+          "role_title": "Исполнительный директор",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "kotelnikov-dn@pk-kontur.ru",
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru"
+          ],
+          "metadata": {
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "source_urls": [
+              "https://xn--j1agcjjg.xn--p1ai/contacts/"
+            ],
+            "semantic_role_relevance": 90,
+            "semantic_role_reason": "Исполнительный директор обычно отвечает за операционные процессы в компании среднего размера, включая внедрение современных решений и автоматизацию бизнес-процессов",
+            "email_source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "email_person_evidence": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru",
+            "public_contact_verified": true,
+            "verified_company_domains": [
+              "xn--j1agcjjg.xn--p1ai"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        "rank_score": 87,
+        "person_score": 87,
+        "persona_match_score": 90,
+        "business_problem_ownership": "high",
+        "decision_authority": "low",
+        "influence_level": "medium",
+        "confidence_score": 97,
+        "confidence_level": "confirmed",
+        "contact_availability": {
+          "has_work_email": true,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Котельников Данила Никитич is the strongest available candidate because Исполнительный директор no direct keyword match, compared against операционный директор. Persona match 90/100, ownership high, authority low, influence medium, confidence 97/100.",
+        "strengths": [
+          "Strong persona match (90/100)",
+          "Likely owner of the business problem",
+          "Has at least one usable public contact signal"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence"
+        ],
+        "why_not_other_candidates": [],
+        "recommended_next_action": "contact_primary_person"
+      }
+    ],
+    "selection_reasoning": "Котельников Данила Никитич is the strongest available candidate because Исполнительный директор no direct keyword match, compared against операционный директор. Persona match 90/100, ownership high, authority low, influence medium, confidence 97/100.",
+    "search_status": "person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "personal_contact_evidenced"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 1,
+      "official_pages_fetched": 2,
+      "aborted_requests": 0,
+      "elapsed_ms": 16915,
+      "stop_reason": "personal_contact_evidenced",
+      "queries_executed": [
+        "Производственная Компания Контур операционный директор site:xn--j1agcjjg.xn--p1ai"
+      ],
+      "sources_checked": [
+        "https://xn--j1agcjjg.xn--p1ai",
+        "https://xn--j1agcjjg.xn--p1ai/contacts/",
+        "https://xn--j1agcjjg.xn--p1ai/news/zavod_pk_kontur_vnov_otkryl_dveri_dlya_nashikh_partnerov_moskovskikh_kompaniy_zastroyshchikov",
+        "https://xn--j1agcjjg.xn--p1ai/contacts",
+        "https://www.xn--j1agcjjg.xn--p1ai/contacts/okolelov_grigoriy_valerevich",
+        "https://xn--j1agcjjg.xn--p1ai/contacts/kotelnikov_danila_nikitich"
+      ],
+      "search_results_seen": 5,
+      "rejected_candidates": {
+        "validation_rejects": 0
+      },
+      "final_failure_reason": null
+    }
+  },
+  "contacts": [
+    {
+      "name": "Котельников Данила Никитич",
+      "role": "Исполнительный директор",
+      "email": null,
+      "type": "confirmed_person",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false
+    },
+    {
+      "name": "Котельников Данила Никитич",
+      "role": "Исполнительный директор",
+      "email": "kotelnikov-dn@pk-kontur.ru",
+      "type": "work_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": true,
+      "intelligence": {
+        "business_problem": "Growth and cross-functional execution can create manual handoffs, process fragmentation, and operational bottlenecks.",
+        "target_responsibility": "Operations leadership",
+        "target_persona": "COO",
+        "alternative_personas": [
+          "Head of Operations",
+          "Operations Director",
+          "Head of Business Operations",
+          "Founder / CEO",
+          "Founder"
+        ],
+        "why_this_person": "Исполнительный директор: The context points to process load or operational scaling, so operations leadership is the best entry persona. Matched context: процесс. Company scale: unknown.",
+        "person_name": "Котельников Данила Никитич",
+        "person_role": "Исполнительный директор",
+        "email": "kotelnikov-dn@pk-kontur.ru",
+        "contact_level": "A",
+        "email_classification": "VERIFIED_PERSONAL",
+        "email_type": "public_personal",
+        "verification_methods": [
+          "corporate_domain_match",
+          "mx",
+          "public_evidence",
+          "corporate_pattern"
+        ],
+        "confidence": "HIGH",
+        "readiness": "contact_ready",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "summary": "Котельников Данила Никитич подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "summary": "Роль связана с зоной ответственности: Operations leadership."
+          },
+          {
+            "kind": "email",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "summary": "Email опубликован в публичном профессиональном контексте."
+          },
+          {
+            "kind": "domain",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai",
+            "summary": "Email-домен опубликован на официальном сайте как корпоративный alias."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "summary": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru"
+          },
+          {
+            "kind": "pattern",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai",
+            "summary": "Corporate pattern выведен из 1 опубликованных соответствий ФИО и email."
+          }
+        ],
+        "inferred_pattern": "{first}-dn",
+        "pattern_support": 1,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "contact_ready_high_confidence"
+      },
+      "ready": true,
+      "copy": "Данила, добрый день.\n\nПроизводственная Компания Контур сейчас активно ищет и внедряет современные решения в бизнес-процессы и ИИ-технологии, как указано в их вакансии. Это оптимальный момент, чтобы обсудить конкретные задачи, которые требуют автоматизации.\nВероятно, внедрение новых технологий сталкивается с ручными операциями и фрагментацией процессов, что является типичной проблемой при росте и межфункциональном взаимодействии. Выявление таких узких мест поможет сделать процессы более прозрачными.\nПредлагаю провести пилотный аудит с использованием ИИ для анализа текущих бизнес-процессов — входными данными будут существующие регламенты и операции, на выходе - структурированное предложение автоматизации ключевых этапов с оценкой трудозатрат.\n\nЯ AI-архитектор. Если потребуется, подключим бизнес-аналитика: сначала проверим процесс, затем выберем, что автоматизировать.\n\nМогу провести короткий разбор этого участка. Обычно он стоит 9 900 ₽; если ответите в течение 24 часов после отправки письма, проведу разбор бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514"
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "info@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": "Котельников Данила Никитич",
+      "role": "Исполнительный директор",
+      "email": "kotelnikov-dn@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "sergeyb@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "konoplev-ea@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "bykova-rr@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "alekseir@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "omutov-nv@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "naumova-yar@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "olgaa@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "sokolova-os@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "annenkova-ea@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "aleksanyan-in@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "merkulova-ae@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "matveeva-mv@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "krivopalov-vv@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "shcherbakov-av@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "shubin-ds@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "parshin-ea@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "vlasov-is@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "dorohov-dv@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "svetai@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "maksimovskih-mn@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "ovsyannikova-ma@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "nyashin-ao@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "bayankin-sv@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "majorova-mn@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "tatarinova-da@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "sergeyk@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "sorokin-vs@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "leonteva-ev@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "svbolotov@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "logist@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "maklygin-ka@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "blinkov-sv@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "vertliugov-dm@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "iskustnyh-ea@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "kleshhev-dm@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "elenad@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "mardanova-ng@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "pavlovskiy@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "gladkih-es@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "sukhanova-sr@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "chumak-mn@pk-kontur.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "fzkontur@yandex.ru",
+      "type": "generic_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contact-us",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://xn--j1agcjjg.xn--p1ai",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 24721
+}

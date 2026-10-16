@@ -1,8 +1,9 @@
 import assert from "node:assert/strict";
 
-const baseUrl = process.argv[2] ?? "http://localhost:3000";
+if (!process.argv[2]) throw new Error("Pass an explicit isolated test server URL.");
+const baseUrl = process.argv[2];
 const campaigns = await (await fetch(`${baseUrl}/api/leadgen/campaigns`)).json();
-const campaign = [...campaigns.campaigns].sort(
+const campaign = process.argv[3] ? campaigns.campaigns.find(item => item.id === process.argv[3]) : [...campaigns.campaigns].sort(
   (left, right) => Date.parse(right.created_at) - Date.parse(left.created_at),
 )[0];
 assert.ok(campaign?.id, "latest campaign is required");
@@ -19,6 +20,7 @@ const response = await fetch(`${baseUrl}/api/leadgen/lpr/shadow`, {
 const shadow = await response.json();
 assert.equal(response.ok, true);
 assert.equal(shadow.success, true);
+assert.ok(shadow.results.length > 0, "shadow must evaluate seeded companies");
 assert.equal(shadow.mode, "read_only_shadow_no_mutations_no_send");
 assert.equal(shadow.metrics.background_operations_after_completion, 0);
 assert.equal(shadow.quality_failures.length, 0);

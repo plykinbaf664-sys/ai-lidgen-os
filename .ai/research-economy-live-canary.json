@@ -1,0 +1,1783 @@
+{
+  "phase": "economy-live-canary",
+  "cacheEnabled": true,
+  "records": [
+    {
+      "mode": "business",
+      "name": "Императорский фарфоровый завод",
+      "website": "https://ipm.ru",
+      "before": {
+        "companyName": "Императорский фарфоровый завод",
+        "officialWebsite": "https://ipm.ru",
+        "officialDomain": "ipm.ru",
+        "people": [],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [
+            {
+              "email": "info@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "info@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "ipm_shop@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/",
+                  "sourceType": "official",
+                  "excerpt": "ipm_shop@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "lat_ep@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "lat_ep@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "isu_ov@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "isu_ov@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "aga_ap@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "aga_ap@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 99
+                }
+              ]
+            }
+          ],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "info@ipm.ru",
+          "personName": null,
+          "role": null,
+          "classification": "GENERAL",
+          "contactLevel": "E",
+          "sourceUrl": "https://www.ipm.ru/contacts/"
+        },
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+          "sourceUrl": "https://hh.ru/vacancy/138142173",
+          "confidence": 100
+        },
+        "researchConfidence": "HIGH_CONFIDENCE",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 2,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 20,
+          "lprMs": 16011,
+          "contactMs": 3829,
+          "totalMs": 28418,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "signal": {
+        "type": "HIRING_SIGNAL",
+        "title": "Обнаружен сигнал найма",
+        "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+        "sourceUrl": "https://hh.ru/vacancy/138142173",
+        "confidence": 100
+      },
+      "index": 0,
+      "trace": [
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru",
+          "status": 301,
+          "elapsedMs": 770
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.ipm.ru/",
+          "status": 200,
+          "elapsedMs": 967
+        },
+        {
+          "stage": "research_open",
+          "url": "https://ipm.ru",
+          "success": true,
+          "evidence": {
+            "url": "https://www.ipm.ru/",
+            "kind": "page",
+            "text": "Интернет-магазин Императорского фарфора — Официальный сайт Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026 Осенний фарфор Время создать уют дома Смотрите подборку товаров Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении Новинка COLOR VIBES Создай настроение своего дня ЭЛЕГАНТНЫЕ БОКАЛЫ КОБАЛЬТОВАЯ СЕТКА Сияние лета на вашем столе Новинка ГАРМОНИЯ ПРИРОДЫ Серия скульптур наполненных смыслом Новинка БЛАГОРОДНАЯ ПОРОДА Серия коллекционных скульптур породистых любимцев Новинка МОНПЛЕЗИР Коллекция текстиля Французский шарм и эстетика востока для ценительниц прекрасного Новинка ФОНТАНЫ Серия, вдохновленная летним Петергофом Новинка ВОЛШЕБНЫЙ САД Эксклюзивный совместный проект с Сергеем Сысоевым Новинка «Жемчужный» Эксклюзивный совместный проект с модным домом Alena Akhmadullina Новинки ЖЕМЧУЖНАЯ СЕТКА НОВИНКА COLOR VIBES НОВИНКА ГАРМОНИЯ ПРИРОДЫ НОВИНКА БЛАГОРОДНАЯ ПОРОДА НОВИНКА «МОНПЛЕЗИР» Сервиз Воспоминание НОВИНКА «Золотой Петербург и Золотая Москва»\n[excerpt boundary]\nных (далее - Согласие) посредством сервисом веб-аналитики Яндекс Метрика и, предоставляемый компанией ООО «ЯНДЕКС», 119021, Россия, Москва, ул. Л. Толстого, 16 на следующих условиях: 1. Согласие выдано: АО «Императорский фарфоровый завод», ОГРН: 1027806058213, ИНН 7811000276, КПП 781101001 (далее — Оператор), электронная почта: ipm_shop@ipm.ru 2. Согласие выдано на обработку следующих категорий персональных данных: – IP-адрес, информация из файлов cookie, информация о браузер",
+            "links": [
+              {
+                "url": "https://www.ipm.ru/personal",
+                "label": ""
+              },
+              {
+                "url": "https://ipm-jsc.com",
+                "label": "EN"
+              },
+              {
+                "url": "https://www.ipm.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/personal/orders",
+                "label": "Войти Мой кабинет"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog/compare.php",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/wishlist",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/basket",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog",
+                "label": "Интернет-магазин"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog/predmety-interera",
+                "label": "Предметы интерьера"
+              },
+              {
+                "url": "https://www.ipm.ru/collections",
+                "label": "Коллекции"
+              },
+              {
+                "url": "https://www.ipm.ru/personal-orders",
+                "label": "Индивидуальные заказы"
+              },
+              {
+                "url": "https://www.ipm.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti",
+                "label": "Новости"
+              },
+              {
+                "url": "https://www.ipm.ru/contacts/stores",
+                "label": "Магазины"
+              },
+              {
+                "url": "https://www.ipm.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode",
+                "label": "О заводе"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode/istoriya_zavoda",
+                "label": "История завода"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode/proizvodstvo",
+                "label": "Производство"
+              },
+              {
+                "url": "https://www.ipm.ru/stati-o-farfore",
+                "label": "Статьи о фарфоре"
+              },
+              {
+                "url": "https://www.ipm.ru/company/vacancy",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti/rezhim-otpravki-zakazov-s-internet-magazina",
+                "label": "Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti/zhemchuzhnaya-setka",
+                "label": "Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении"
+              },
+              {
+                "url": "https://www.ipm.ru/product/blyudo-dekorativnoe-god-loshadi-na-forme-kruglaya-art-60-14814-00-1",
+                "label": "Авторский фарфор — это художественные изделия высочайшего класса, единственные предметы в своем роде"
+              },
+              {
+                "url": "https://www.ipm.ru/collections/volshebnyy-sad",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/collections/zhemchuzhnaya-setka",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/gallery/ekskursii/sankt-peterburg",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/gallery/ekskursii/ekskursii-na-farforovoe-proizvodstvo",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/rekvizity",
+                "label": "Реквизиты"
+              },
+              {
+                "url": "https://www.ipm.ru/company/akcioneram",
+                "label": "Акционерам"
+              },
+              {
+                "url": "https://www.ipm.ru/company/dokumenty",
+                "label": "Документы"
+              },
+              {
+                "url": "https://www.ipm.ru/guidescollaboration",
+                "label": "Сотрудничество с гидами"
+              },
+              {
+                "url": "https://www.ipm.ru/press",
+                "label": "Аккредитация СМИ"
+              },
+              {
+                "url": "https://www.ipm.ru/ifz-protiv-covid-19",
+                "label": "ИФЗ против Covid-19"
+              },
+              {
+                "url": "https://www.ipm.ru/education",
+                "label": "Образование"
+              },
+              {
+                "url": "https://www.ipm.ru/upload/ifz_documents/online-store-public-offer25-08-2025.doc",
+                "label": "Оферта (скачать)"
+              },
+              {
+                "url": "https://www.ipm.ru/about/howto",
+                "label": "Как оформить заказ"
+              },
+              {
+                "url": "https://www.ipm.ru/about/payment",
+                "label": "Оплата"
+              },
+              {
+                "url": "https://www.ipm.ru/about/delivery",
+                "label": "Доставка"
+              },
+              {
+                "url": "https://www.ipm.ru/sitemap",
+                "label": "Карта сайта"
+              },
+              {
+                "url": "https://www.ipm.ru/export",
+                "label": "Экспорт"
+              },
+              {
+                "url": "https://www.ipm.ru/franch",
+                "label": "Франчайзинг"
+              },
+              {
+                "url": "https://vk.com/club21814086",
+                "label": "Вконтакте"
+              },
+              {
+                "url": "https://t.me/porcelain_imperial",
+                "label": "Telegram"
+              },
+              {
+                "url": "https://max.ru/ipm_ru",
+                "label": ""
+              },
+              {
+                "url": "https://xn--b1aedfedwqbdfbnzkf0oe.xn--p1ai",
+                "label": ""
+              },
+              {
+                "url": "https://yandex.ru/support/metrika/general/opt-out.html",
+                "label": "https://yandex.ru/support/metrika/general/opt-out.html"
+              },
+              {
+                "url": "https://yandex.ru/legal/confidential",
+                "label": "https://yandex.ru/legal/confidential/"
+              },
+              {
+                "url": "https://vk.ru/privacy",
+                "label": "Подробнее о правилах защиты информации о пользователях сайта"
+              },
+              {
+                "url": "https://vk.ru/privacy/cookies",
+                "label": "Подробнее о политике Cookies"
+              }
+            ],
+            "fetchedAt": "2026-10-08T16:48:03.327Z",
+            "id": "e1"
+          }
+        },
+        {
+          "stage": "model",
+          "url": "https://api.openai.com/v1/responses",
+          "status": 429,
+          "elapsedMs": 2688,
+          "schema": "iterative_people_research",
+          "model": "gpt-4.1",
+          "input": {
+            "company": "Императорский фарфоровый завод",
+            "domain": "ipm.ru",
+            "confirmedDomains": [
+              "ipm.ru"
+            ],
+            "siteNavigation": {
+              "url": "https://www.ipm.ru/",
+              "links": [
+                {
+                  "url": "https://www.ipm.ru/personal",
+                  "label": ""
+                },
+                {
+                  "url": "https://ipm-jsc.com",
+                  "label": "EN"
+                },
+                {
+                  "url": "https://www.ipm.ru",
+                  "label": ""
+                },
+                {
+                  "url": "https://www.ipm.ru/personal/orders",
+                  "label": "Войти Мой кабинет"
+                },
+                {
+                  "url": "https://www.ipm.ru/catalog/compare.php",
+                  "label": "0"
+                },
+                {
+                  "url": "https://www.ipm.ru/wishlist",
+                  "label": "0"
+                },
+                {
+                  "url": "https://www.ipm.ru/basket",
+                  "label": "0"
+                },
+                {
+                  "url": "https://www.ipm.ru/catalog",
+                  "label": "Интернет-магазин"
+                },
+                {
+                  "url": "https://www.ipm.ru/catalog/predmety-interera",
+                  "label": "Предметы интерьера"
+                },
+                {
+                  "url": "https://www.ipm.ru/collections",
+                  "label": "Коллекции"
+                },
+                {
+                  "url": "https://www.ipm.ru/personal-orders",
+                  "label": "Индивидуальные заказы"
+                },
+                {
+                  "url": "https://www.ipm.ru/gallery",
+                  "label": "Галерея"
+                },
+                {
+                  "url": "https://www.ipm.ru/novosti",
+                  "label": "Новости"
+                },
+                {
+                  "url": "https://www.ipm.ru/contacts/stores",
+                  "label": "Магазины"
+                },
+                {
+                  "url": "https://www.ipm.ru/contacts",
+                  "label": "Контакты"
+                },
+                {
+                  "url": "https://www.ipm.ru/o_zavode",
+                  "label": "О заводе"
+                },
+                {
+                  "url": "https://www.ipm.ru/o_zavode/istoriya_zavoda",
+                  "label": "История завода"
+                },
+                {
+                  "url": "https://www.ipm.ru/o_zavode/proizvodstvo",
+                  "label": "Производство"
+                },
+                {
+                  "url": "https://www.ipm.ru/stati-o-farfore",
+                  "label": "Статьи о фарфоре"
+                },
+                {
+                  "url": "https://www.ipm.ru/company/vacancy",
+                  "label": "Вакансии"
+                },
+                {
+                  "url": "https://www.ipm.ru/novosti/rezhim-otpravki-zakazov-s-internet-magazina",
+                  "label": "Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026"
+                },
+                {
+                  "url": "https://www.ipm.ru/novosti/zhemchuzhnaya-setka",
+                  "label": "Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении"
+                },
+                {
+                  "url": "https://www.ipm.ru/product/blyudo-dekorativnoe-god-loshadi-na-forme-kruglaya-art-60-14814-00-1",
+                  "label": "Авторский фарфор — это художественные изделия высочайшего класса, единственные предметы в своем роде"
+                },
+                {
+                  "url": "https://www.ipm.ru/collections/volshebnyy-sad",
+                  "label": ""
+                },
+                {
+                  "url": "https://www.ipm.ru/collections/zhemchuzhnaya-setka",
+                  "label": ""
+                },
+                {
+                  "url": "https://www.ipm.ru/gallery/ekskursii/sankt-peterburg",
+                  "label": ""
+                },
+                {
+                  "url": "https://www.ipm.ru/gallery/ekskursii/ekskursii-na-farforovoe-proizvodstvo",
+                  "label": ""
+                },
+                {
+                  "url": "https://www.ipm.ru/rekvizity",
+                  "label": "Реквизиты"
+                },
+                {
+                  "url": "https://www.ipm.ru/company/akcioneram",
+                  "label": "Акционерам"
+                },
+                {
+                  "url": "https://www.ipm.ru/company/dokumenty",
+                  "label": "Документы"
+                },
+                {
+                  "url": "https://www.ipm.ru/guidescollaboration",
+                  "label": "Сотрудничество с гидами"
+                },
+                {
+                  "url": "https://www.ipm.ru/press",
+                  "label": "Аккредитация СМИ"
+                },
+                {
+                  "url": "https://www.ipm.ru/ifz-protiv-covid-19",
+                  "label": "ИФЗ против Covid-19"
+                },
+                {
+                  "url": "https://www.ipm.ru/education",
+                  "label": "Образование"
+                },
+                {
+                  "url": "https://www.ipm.ru/upload/ifz_documents/online-store-public-offer25-08-2025.doc",
+                  "label": "Оферта (скачать)"
+                },
+                {
+                  "url": "https://www.ipm.ru/about/howto",
+                  "label": "Как оформить заказ"
+                },
+                {
+                  "url": "https://www.ipm.ru/about/payment",
+                  "label": "Оплата"
+                },
+                {
+                  "url": "https://www.ipm.ru/about/delivery",
+                  "label": "Доставка"
+                },
+                {
+                  "url": "https://www.ipm.ru/sitemap",
+                  "label": "Карта сайта"
+                },
+                {
+                  "url": "https://www.ipm.ru/export",
+                  "label": "Экспорт"
+                },
+                {
+                  "url": "https://www.ipm.ru/franch",
+                  "label": "Франчайзинг"
+                },
+                {
+                  "url": "https://vk.com/club21814086",
+                  "label": "Вконтакте"
+                },
+                {
+                  "url": "https://t.me/porcelain_imperial",
+                  "label": "Telegram"
+                },
+                {
+                  "url": "https://max.ru/ipm_ru",
+                  "label": ""
+                },
+                {
+                  "url": "https://xn--b1aedfedwqbdfbnzkf0oe.xn--p1ai",
+                  "label": ""
+                },
+                {
+                  "url": "https://yandex.ru/support/metrika/general/opt-out.html",
+                  "label": "https://yandex.ru/support/metrika/general/opt-out.html"
+                },
+                {
+                  "url": "https://yandex.ru/legal/confidential",
+                  "label": "https://yandex.ru/legal/confidential/"
+                },
+                {
+                  "url": "https://vk.ru/privacy",
+                  "label": "Подробнее о правилах защиты информации о пользователях сайта"
+                },
+                {
+                  "url": "https://vk.ru/privacy/cookies",
+                  "label": "Подробнее о политике Cookies"
+                }
+              ]
+            },
+            "signal": {
+              "signal": {
+                "type": "HIRING_SIGNAL",
+                "title": "Обнаружен сигнал найма",
+                "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+                "sourceUrl": "https://hh.ru/vacancy/138142173",
+                "confidence": 100
+              }
+            },
+            "currentDate": "2026-10-08",
+            "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+            "knownPeople": [],
+            "emailCandidates": [],
+            "documents": [
+              {
+                "url": "https://www.ipm.ru/",
+                "kind": "page",
+                "text": "Интернет-магазин Императорского фарфора — Официальный сайт Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026 Осенний фарфор Время создать уют дома Смотрите подборку товаров Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении Новинка COLOR VIBES Создай настроение своего дня ЭЛЕГАНТНЫЕ БОКАЛЫ КОБАЛЬТОВАЯ СЕТКА Сияние лета на вашем столе Новинка ГАРМОНИЯ ПРИРОДЫ Серия скульптур наполненных смыслом Новинка БЛАГОРОДНАЯ ПОРОДА Серия коллекционных скульптур породистых любимцев Новинка МОНПЛЕЗИР Коллекция текстиля Французский шарм и эстетика востока для ценительниц прекрасного Новинка ФОНТАНЫ Серия, вдохновленная летним Петергофом Новинка ВОЛШЕБНЫЙ САД Эксклюзивный совместный проект с Сергеем Сысоевым Новинка «Жемчужный» Эксклюзивный совместный проект с модным домом Alena Akhmadullina Новинки ЖЕМЧУЖНАЯ СЕТКА НОВИНКА COLOR VIBES НОВИНКА ГАРМОНИЯ ПРИРОДЫ НОВИНКА БЛАГОРОДНАЯ ПОРОДА НОВИНКА «МОНПЛЕЗИР» Сервиз Воспоминание НОВИНКА «Золотой Петербург и Золотая Москва»\n[excerpt boundary]\nных (далее - Согласие) посредством сервисом веб-аналитики Яндекс Метрика и, предоставляемый компанией ООО «ЯНДЕКС», 119021, Россия, Москва, ул. Л. Толстого, 16 на следующих условиях: 1. Согласие выдано: АО «Императорский фарфоровый завод», ОГРН: 1027806058213, ИНН 7811000276, КПП 781101001 (далее — Оператор), электронная почта: ipm_shop@ipm.ru 2. Согласие выдано на обработку следующих категорий персональных данных: – IP-адрес, информация из файлов cookie, информация о браузер",
+                "links": [],
+                "fetchedAt": "2026-10-08T16:48:03.327Z",
+                "id": "e1"
+              }
+            ],
+            "previousActions": [],
+            "validationErrors": [],
+            "budget": {
+              "roundsRemaining": 7,
+              "actionsRemaining": 10,
+              "searchRemaining": 8,
+              "remainingMs": 73069
+            }
+          },
+          "webSearchCalls": 0,
+          "error": {
+            "type": "insufficient_quota",
+            "code": "credit_balance_exhausted",
+            "message": "You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+          },
+          "output": null
+        },
+        {
+          "stage": "research_provider_error",
+          "reason": "provider_credit_exhausted"
+        },
+        {
+          "stage": "research_complete",
+          "stopReason": "provider_credit_exhausted",
+          "actions": 1,
+          "candidates": [],
+          "domains": [
+            "ipm.ru"
+          ],
+          "elapsedMs": 4643
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru",
+          "status": 200,
+          "elapsedMs": 542
+        },
+        {
+          "stage": "fetch",
+          "url": "https://search.brave.com/search?q=%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20%22%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%22&source=web&offset=0",
+          "status": 429,
+          "elapsedMs": 573
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.bing.com/search?format=rss&q=%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20%22%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%22&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+          "status": 200,
+          "elapsedMs": 545
+        },
+        {
+          "stage": "fetch",
+          "url": "https://api.tavily.com/search",
+          "status": 432,
+          "elapsedMs": 699
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.ipm.ru/contacts/stores/",
+          "status": 200,
+          "elapsedMs": 423
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.ipm.ru/company/vacancy/",
+          "status": 200,
+          "elapsedMs": 762
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.ipm.ru/contacts/",
+          "status": 200,
+          "elapsedMs": 773
+        },
+        {
+          "stage": "fetch",
+          "url": "https://search.brave.com/search?q=%22%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%22%20ipm.ru&source=web&offset=0",
+          "status": 429,
+          "elapsedMs": 258
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.bing.com/search?format=rss&q=%22%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%22%20ipm.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+          "status": 200,
+          "elapsedMs": 192
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.ipm.ru/company/privacy/",
+          "status": 200,
+          "elapsedMs": 370
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.ipm.ru/company/akcioneram/",
+          "status": 200,
+          "elapsedMs": 377
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.ipm.ru/company/dokumenty/",
+          "status": 200,
+          "elapsedMs": 378
+        },
+        {
+          "stage": "fetch",
+          "url": "https://search.brave.com/search?q=%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20%22%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%22&source=web&offset=0",
+          "status": 429,
+          "elapsedMs": 265
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.bing.com/search?format=rss&q=%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20%22%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%22&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+          "status": 200,
+          "elapsedMs": 219
+        },
+        {
+          "stage": "research_fallback",
+          "provider": "ru-public-web",
+          "reason": "semantic_provider_unavailable"
+        },
+        {
+          "stage": "people_ranked",
+          "people": [
+            {
+              "full_name": "Агатьева Александра Петровна",
+              "role_title": "директор по развитию",
+              "department": "Executive",
+              "linkedin_url": null,
+              "work_email": "aga_ap@ipm.ru",
+              "phone": null,
+              "source": "RU public web",
+              "confidence_score": 82,
+              "evidence": [
+                "Official site contact: https://www.ipm.ru/contacts/",
+                "Email and target role found near Агатьева Александра Петровна"
+              ],
+              "metadata": {
+                "provider_id": "ru-public-web",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "source_title": "Official company website",
+                "snippet": "супова Ольга Валерьевна Адрес: 127055, Москва, ул. Тихвинская д. 2 Телефон: +7 499 248 34 03 доб. 135 Email: isu_OV@ipm.ru Отдел розничных продаж в Санкт-Петербурге Директор по развитию розничной сети Агатьева Александра Петровна Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Телефон: +7 (812) 608-49-29 доб. 108 Email: aga_ap@ipm.ru Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр А",
+                "source_urls": [
+                  "https://www.ipm.ru/contacts/"
+                ],
+                "telegram_url": null,
+                "tenchat_url": null,
+                "vk_url": null,
+                "instagram_url": null,
+                "contact_route": "target_persona",
+                "public_contact_verified": false,
+                "normalized_role": "основатель",
+                "freshness": "current_official_source",
+                "company_verified": true,
+                "role_verified": true,
+                "evidence_source_count": 1
+              }
+            }
+          ]
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/",
+          "status": 200,
+          "elapsedMs": 982
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/robots.txt",
+          "status": 200,
+          "elapsedMs": 246
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/sitemap.xml",
+          "status": 200,
+          "elapsedMs": 522
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.ipm.ru/sitemap.xml",
+          "status": 200,
+          "elapsedMs": 107
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/contact",
+          "status": 404,
+          "elapsedMs": 615
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/contacts",
+          "status": 200,
+          "elapsedMs": 652
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/company",
+          "status": 200,
+          "elapsedMs": 1199
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/kontakty",
+          "status": 404,
+          "elapsedMs": 1226
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/about-us",
+          "status": 404,
+          "elapsedMs": 1230
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/kontakti",
+          "status": 404,
+          "elapsedMs": 1240
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/contact-us",
+          "status": 404,
+          "elapsedMs": 1242
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/about",
+          "status": 200,
+          "elapsedMs": 1352
+        },
+        {
+          "stage": "contact_verification",
+          "intelligence": {
+            "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+            "target_responsibility": "Company leadership",
+            "target_persona": "Founder",
+            "alternative_personas": [
+              "CEO",
+              "Managing Director",
+              "COO",
+              "Head of Growth",
+              "Head of Sales"
+            ],
+            "why_this_person": "директор по развитию: The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+            "person_name": "Агатьева Александра Петровна",
+            "person_role": "директор по развитию",
+            "email": "aga_ap@ipm.ru",
+            "contact_level": "D",
+            "email_classification": "GENERAL",
+            "email_type": "generic_fallback",
+            "verification_methods": [
+              "corporate_domain_match",
+              "mx",
+              "public_evidence"
+            ],
+            "confidence": "MEDIUM",
+            "readiness": "manual_verification",
+            "evidence": [
+              {
+                "kind": "person",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Агатьева Александра Петровна подтверждён публичным источником."
+              },
+              {
+                "kind": "role",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Роль связана с зоной ответственности: Company leadership."
+              },
+              {
+                "kind": "email",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Email опубликован в публичном профессиональном контексте."
+              },
+              {
+                "kind": "domain",
+                "source_url": "https://ipm.ru",
+                "summary": "Email относится к подтверждённому корпоративному домену."
+              },
+              {
+                "kind": "verification",
+                "source_url": null,
+                "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+              },
+              {
+                "kind": "person",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Official site contact: https://www.ipm.ru/contacts/"
+              },
+              {
+                "kind": "person",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Email and target role found near Агатьева Александра Петровна"
+              }
+            ],
+            "inferred_pattern": null,
+            "pattern_support": 0,
+            "generated_candidates": [],
+            "catch_all": "unknown",
+            "smtp_verification": "not_performed",
+            "strategies_attempted": [
+              "dynamic_role_resolution",
+              "adaptive_public_person_search",
+              "public_person_email_search",
+              "corporate_pattern_inference",
+              "domain_and_mx_validation"
+            ],
+            "stop_reason": "personal_email_requires_manual_verification"
+          },
+          "contacts": [
+            {
+              "name": "Агатьева Александра Петровна",
+              "email": null,
+              "type": "confirmed_person",
+              "source": "https://www.ipm.ru/contacts/"
+            },
+            {
+              "name": "Агатьева Александра Петровна",
+              "email": "aga_ap@ipm.ru",
+              "type": "work_email",
+              "source": "https://www.ipm.ru/contacts/"
+            },
+            {
+              "name": null,
+              "email": "info@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "ipm_shop@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "lat_ep@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "isu_ov@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": "Агатьева Александра Петровна",
+              "email": "aga_ap@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "smi_an@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "pol_dv@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "aha_em@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "pas_tv@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "gallery@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "cha_no@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "kul_eu@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "bus_ky@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "bab_ye@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "zap_em@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "nik_aa@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "bal_vv@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "website_form",
+              "source": "https://ipm.ru/contacts"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "website_form",
+              "source": "https://ipm.ru/contact"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "website_form",
+              "source": "https://www.ipm.ru/contact/"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "website_form",
+              "source": "https://www.ipm.ru/contacts/"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "website_form",
+              "source": "https://www.ipm.ru/contact-us/"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "company_website",
+              "source": "https://ipm.ru"
+            }
+          ]
+        }
+      ],
+      "startedAt": "2026-10-08T16:48:01.404Z",
+      "bundle": {
+        "companyName": "Императорский фарфоровый завод",
+        "officialWebsite": "https://ipm.ru",
+        "officialDomain": "ipm.ru",
+        "people": [
+          {
+            "fullName": "Агатьева Александра Петровна",
+            "role": "директор по развитию",
+            "confidence": "VERIFIED",
+            "evidence": [
+              {
+                "sourceUrl": "https://www.ipm.ru/contacts/",
+                "sourceType": "official",
+                "excerpt": "Official site contact: https://www.ipm.ru/contacts/",
+                "capturedAt": "2026-10-08T16:48:01.407Z",
+                "confidence": 82
+              }
+            ],
+            "profiles": {
+              "tenchat": null,
+              "telegram": null,
+              "instagram": null,
+              "vk": null,
+              "other": []
+            },
+            "phone": null
+          }
+        ],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [
+            {
+              "email": "aga_ap@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "aga_ap@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-08T16:48:01.407Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "info@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "info@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-08T16:48:01.407Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "ipm_shop@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/",
+                  "sourceType": "official",
+                  "excerpt": "ipm_shop@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-08T16:48:01.407Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "lat_ep@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "lat_ep@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-08T16:48:01.407Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "isu_ov@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "isu_ov@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-08T16:48:01.407Z",
+                  "confidence": 99
+                }
+              ]
+            }
+          ],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "info@ipm.ru",
+          "personName": null,
+          "role": null,
+          "classification": "GENERAL",
+          "contactLevel": "E",
+          "sourceUrl": "https://www.ipm.ru/contacts/"
+        },
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+          "sourceUrl": "https://hh.ru/vacancy/138142173",
+          "confidence": 100
+        },
+        "researchConfidence": "VERIFIED",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 3,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 26,
+          "lprMs": 11237,
+          "contactMs": 4697,
+          "totalMs": 15946,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "people": {
+        "primary_person": {
+          "full_name": "Агатьева Александра Петровна",
+          "role_title": "директор по развитию",
+          "department": "Executive",
+          "linkedin_url": null,
+          "work_email": "aga_ap@ipm.ru",
+          "phone": null,
+          "source": "RU public web",
+          "confidence_score": 82,
+          "evidence": [
+            "Official site contact: https://www.ipm.ru/contacts/",
+            "Email and target role found near Агатьева Александра Петровна"
+          ],
+          "metadata": {
+            "provider_id": "ru-public-web",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "source_title": "Official company website",
+            "snippet": "супова Ольга Валерьевна Адрес: 127055, Москва, ул. Тихвинская д. 2 Телефон: +7 499 248 34 03 доб. 135 Email: isu_OV@ipm.ru Отдел розничных продаж в Санкт-Петербурге Директор по развитию розничной сети Агатьева Александра Петровна Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Телефон: +7 (812) 608-49-29 доб. 108 Email: aga_ap@ipm.ru Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр А",
+            "source_urls": [
+              "https://www.ipm.ru/contacts/"
+            ],
+            "telegram_url": null,
+            "tenchat_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "public_contact_verified": false,
+            "normalized_role": "основатель",
+            "freshness": "current_official_source",
+            "company_verified": true,
+            "role_verified": true,
+            "evidence_source_count": 1
+          }
+        },
+        "alternative_people": [],
+        "all_candidates": [
+          {
+            "full_name": "Агатьева Александра Петровна",
+            "role_title": "директор по развитию",
+            "department": "Executive",
+            "linkedin_url": null,
+            "work_email": "aga_ap@ipm.ru",
+            "phone": null,
+            "source": "RU public web",
+            "confidence_score": 82,
+            "evidence": [
+              "Official site contact: https://www.ipm.ru/contacts/",
+              "Email and target role found near Агатьева Александра Петровна"
+            ],
+            "metadata": {
+              "provider_id": "ru-public-web",
+              "source_url": "https://www.ipm.ru/contacts/",
+              "source_title": "Official company website",
+              "snippet": "супова Ольга Валерьевна Адрес: 127055, Москва, ул. Тихвинская д. 2 Телефон: +7 499 248 34 03 доб. 135 Email: isu_OV@ipm.ru Отдел розничных продаж в Санкт-Петербурге Директор по развитию розничной сети Агатьева Александра Петровна Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Телефон: +7 (812) 608-49-29 доб. 108 Email: aga_ap@ipm.ru Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр А",
+              "source_urls": [
+                "https://www.ipm.ru/contacts/"
+              ],
+              "telegram_url": null,
+              "tenchat_url": null,
+              "vk_url": null,
+              "instagram_url": null,
+              "contact_route": "target_persona",
+              "public_contact_verified": false,
+              "normalized_role": "основатель",
+              "freshness": "current_official_source",
+              "company_verified": true,
+              "role_verified": true,
+              "evidence_source_count": 1
+            }
+          }
+        ],
+        "primary_person_intelligence": {
+          "candidate": {
+            "full_name": "Агатьева Александра Петровна",
+            "role_title": "директор по развитию",
+            "department": "Executive",
+            "linkedin_url": null,
+            "work_email": "aga_ap@ipm.ru",
+            "phone": null,
+            "source": "RU public web",
+            "confidence_score": 82,
+            "evidence": [
+              "Official site contact: https://www.ipm.ru/contacts/",
+              "Email and target role found near Агатьева Александра Петровна"
+            ],
+            "metadata": {
+              "provider_id": "ru-public-web",
+              "source_url": "https://www.ipm.ru/contacts/",
+              "source_title": "Official company website",
+              "snippet": "супова Ольга Валерьевна Адрес: 127055, Москва, ул. Тихвинская д. 2 Телефон: +7 499 248 34 03 доб. 135 Email: isu_OV@ipm.ru Отдел розничных продаж в Санкт-Петербурге Директор по развитию розничной сети Агатьева Александра Петровна Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Телефон: +7 (812) 608-49-29 доб. 108 Email: aga_ap@ipm.ru Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр А",
+              "source_urls": [
+                "https://www.ipm.ru/contacts/"
+              ],
+              "telegram_url": null,
+              "tenchat_url": null,
+              "vk_url": null,
+              "instagram_url": null,
+              "contact_route": "target_persona",
+              "public_contact_verified": false,
+              "normalized_role": "основатель",
+              "freshness": "current_official_source",
+              "company_verified": true,
+              "role_verified": true,
+              "evidence_source_count": 1
+            }
+          },
+          "rank_score": 53,
+          "person_score": 53,
+          "persona_match_score": 33,
+          "business_problem_ownership": "low",
+          "decision_authority": "medium",
+          "influence_level": "low",
+          "confidence_score": 80,
+          "confidence_level": "high_confidence",
+          "contact_availability": {
+            "has_work_email": true,
+            "has_linkedin": false,
+            "has_phone": false,
+            "has_telegram": false
+          },
+          "matched_keywords": [
+            "Executive"
+          ],
+          "reasoning": "Matched person context: Executive.",
+          "selection_reason": "Агатьева Александра Петровна is the strongest available candidate because директор по развитию matched Executive. Persona match 33/100, ownership low, authority medium, influence low, confidence 80/100.",
+          "strengths": [
+            "Matched context: Executive",
+            "Has at least one usable public contact signal"
+          ],
+          "weaknesses": [
+            "Weak persona match (33/100)"
+          ],
+          "why_not_other_candidates": [],
+          "recommended_next_action": "monitor_changes"
+        },
+        "alternative_people_intelligence": [],
+        "ranked_people": [
+          {
+            "candidate": {
+              "full_name": "Агатьева Александра Петровна",
+              "role_title": "директор по развитию",
+              "department": "Executive",
+              "linkedin_url": null,
+              "work_email": "aga_ap@ipm.ru",
+              "phone": null,
+              "source": "RU public web",
+              "confidence_score": 82,
+              "evidence": [
+                "Official site contact: https://www.ipm.ru/contacts/",
+                "Email and target role found near Агатьева Александра Петровна"
+              ],
+              "metadata": {
+                "provider_id": "ru-public-web",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "source_title": "Official company website",
+                "snippet": "супова Ольга Валерьевна Адрес: 127055, Москва, ул. Тихвинская д. 2 Телефон: +7 499 248 34 03 доб. 135 Email: isu_OV@ipm.ru Отдел розничных продаж в Санкт-Петербурге Директор по развитию розничной сети Агатьева Александра Петровна Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Телефон: +7 (812) 608-49-29 доб. 108 Email: aga_ap@ipm.ru Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр А",
+                "source_urls": [
+                  "https://www.ipm.ru/contacts/"
+                ],
+                "telegram_url": null,
+                "tenchat_url": null,
+                "vk_url": null,
+                "instagram_url": null,
+                "contact_route": "target_persona",
+                "public_contact_verified": false,
+                "normalized_role": "основатель",
+                "freshness": "current_official_source",
+                "company_verified": true,
+                "role_verified": true,
+                "evidence_source_count": 1
+              }
+            },
+            "rank_score": 53,
+            "person_score": 53,
+            "persona_match_score": 33,
+            "business_problem_ownership": "low",
+            "decision_authority": "medium",
+            "influence_level": "low",
+            "confidence_score": 80,
+            "confidence_level": "high_confidence",
+            "contact_availability": {
+              "has_work_email": true,
+              "has_linkedin": false,
+              "has_phone": false,
+              "has_telegram": false
+            },
+            "matched_keywords": [
+              "Executive"
+            ],
+            "reasoning": "Matched person context: Executive.",
+            "selection_reason": "Агатьева Александра Петровна is the strongest available candidate because директор по развитию matched Executive. Persona match 33/100, ownership low, authority medium, influence low, confidence 80/100.",
+            "strengths": [
+              "Matched context: Executive",
+              "Has at least one usable public contact signal"
+            ],
+            "weaknesses": [
+              "Weak persona match (33/100)"
+            ],
+            "why_not_other_candidates": [],
+            "recommended_next_action": "monitor_changes"
+          }
+        ],
+        "selection_reasoning": "Агатьева Александра Петровна is the strongest available candidate because директор по развитию matched Executive. Persona match 33/100, ownership low, authority medium, influence low, confidence 80/100.",
+        "search_status": "person_found",
+        "providers_used": [
+          "RU public web"
+        ],
+        "provider_diagnostics": [
+          {
+            "provider_id": "ru-public-web",
+            "provider_label": "RU public web",
+            "level": "info",
+            "message": "Bounded shadow search found an evidence-backed person."
+          }
+        ],
+        "research_metrics": {
+          "search_attempts": 3,
+          "official_pages_fetched": 7,
+          "aborted_requests": 0,
+          "elapsed_ms": 6580,
+          "stop_reason": "diminishing_returns",
+          "queries_executed": [
+            "\"Императорский фарфоровый завод\" \"основатель\"",
+            "site:ipm.ru \"генеральный директор\"",
+            "\"Императорский фарфоровый завод\" \"генеральный директор\""
+          ],
+          "sources_checked": [
+            "https://ipm.ru",
+            "https://www.ipm.ru/contacts/stores/",
+            "https://www.ipm.ru/contacts/",
+            "https://www.ipm.ru/company/vacancy/",
+            "https://www.ipm.ru/company/akcioneram/",
+            "https://www.ipm.ru/company/dokumenty/",
+            "https://www.ipm.ru/company/privacy/"
+          ],
+          "search_results_seen": 0,
+          "rejected_candidates": {
+            "ROLE_MISMATCH": 3
+          },
+          "final_failure_reason": null
+        }
+      },
+      "contacts": [
+        {
+          "name": "Агатьева Александра Петровна",
+          "role": "директор по развитию",
+          "email": null,
+          "type": "confirmed_person",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false
+        },
+        {
+          "name": "Агатьева Александра Петровна",
+          "role": "директор по развитию",
+          "email": "aga_ap@ipm.ru",
+          "type": "work_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "intelligence": {
+            "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+            "target_responsibility": "Company leadership",
+            "target_persona": "Founder",
+            "alternative_personas": [
+              "CEO",
+              "Managing Director",
+              "COO",
+              "Head of Growth",
+              "Head of Sales"
+            ],
+            "why_this_person": "директор по развитию: The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+            "person_name": "Агатьева Александра Петровна",
+            "person_role": "директор по развитию",
+            "email": "aga_ap@ipm.ru",
+            "contact_level": "D",
+            "email_classification": "GENERAL",
+            "email_type": "generic_fallback",
+            "verification_methods": [
+              "corporate_domain_match",
+              "mx",
+              "public_evidence"
+            ],
+            "confidence": "MEDIUM",
+            "readiness": "manual_verification",
+            "evidence": [
+              {
+                "kind": "person",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Агатьева Александра Петровна подтверждён публичным источником."
+              },
+              {
+                "kind": "role",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Роль связана с зоной ответственности: Company leadership."
+              },
+              {
+                "kind": "email",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Email опубликован в публичном профессиональном контексте."
+              },
+              {
+                "kind": "domain",
+                "source_url": "https://ipm.ru",
+                "summary": "Email относится к подтверждённому корпоративному домену."
+              },
+              {
+                "kind": "verification",
+                "source_url": null,
+                "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+              },
+              {
+                "kind": "person",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Official site contact: https://www.ipm.ru/contacts/"
+              },
+              {
+                "kind": "person",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Email and target role found near Агатьева Александра Петровна"
+              }
+            ],
+            "inferred_pattern": null,
+            "pattern_support": 0,
+            "generated_candidates": [],
+            "catch_all": "unknown",
+            "smtp_verification": "not_performed",
+            "strategies_attempted": [
+              "dynamic_role_resolution",
+              "adaptive_public_person_search",
+              "public_person_email_search",
+              "corporate_pattern_inference",
+              "domain_and_mx_validation"
+            ],
+            "stop_reason": "personal_email_requires_manual_verification"
+          }
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "info@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": true,
+          "ready": true,
+          "copy": "Добрый день.\n\nУвидел, что Императорский фарфоровый завод усиливает коммерческую команду.\n\nВ такой точке узкое место часто уже не в количестве менеджеров. Они тратят время на первичный разбор заявок, одинаковые вопросы и ручную передачу информации. В итоге фонд оплаты труда может расти быстрее пропускной способности отдела.\n\nПолезно автоматизировать не людей, а участок до менеджера — чтобы сотрудник подключался к уже понятной задаче, а не работал диспетчером входящего потока.\n\nЯ AI-архитектор. Разбираю такие участки и собираю системы, которые первично отвечают, квалифицируют обращение, собирают нужные данные и передают менеджеру подготовленную заявку.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514"
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "ipm_shop@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "lat_ep@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "isu_ov@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": "Агатьева Александра Петровна",
+          "role": "директор по развитию",
+          "email": "aga_ap@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "smi_an@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "pol_dv@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "aha_em@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "pas_tv@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "gallery@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "cha_no@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "kul_eu@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "bus_ky@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "bab_ye@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "zap_em@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "nik_aa@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "bal_vv@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://ipm.ru/contacts",
+          "selected": false
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://ipm.ru/contact",
+          "selected": false
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://www.ipm.ru/contact/",
+          "selected": false
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://www.ipm.ru/contact-us/",
+          "selected": false
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://ipm.ru",
+          "selected": false
+        }
+      ],
+      "runtimeMs": 15950
+    }
+  ],
+  "benchmarkBlocked": "provider_credit_exhausted",
+  "requestedCompanies": 1,
+  "orphanRequests": 0,
+  "productionSmtpCalls": 0
+}

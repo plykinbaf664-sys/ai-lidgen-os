@@ -1,0 +1,453 @@
+{
+  "mode": "import",
+  "startedAt": "2026-10-06T08:16:34.064Z",
+  "isolated": "C:\\Users\\User\\AppData\\Local\\Temp\\leadgen-final-import-aMFNu1",
+  "productionSmtpCalls": 0,
+  "importSummary": {
+    "rows": 1,
+    "candidates": 1,
+    "qualified": 1,
+    "contacts": 7,
+    "ready": 1
+  },
+  "campaign": {
+    "id": "campaign-imported-9b58fa2bf4fffb6d2e5d238bcd53",
+    "pipeline_run_id": "pipeline-5afa1fce868f439f484559e65b44",
+    "name": "Controlled Imported Base",
+    "requested_by": "isolated-live",
+    "status": "completed",
+    "icp_label": "ICP: Производственные компании",
+    "offer_label": "ускоряем разбор входящих запросов, дилерских заявок и подготовку первого ответа",
+    "created_at": "2026-10-06T08:16:52.594Z",
+    "vertical_id": "manufacturing"
+  },
+  "companies": [
+    {
+      "id": "company-d799b27ad95fc5a4a534d2131fff",
+      "pipeline_run_id": "pipeline-5afa1fce868f439f484559e65b44",
+      "campaign_id": "campaign-imported-9b58fa2bf4fffb6d2e5d238bcd53",
+      "company_name": "Производственная Компания Контур",
+      "company_domain": "xn--j1agcjjg.xn--p1ai",
+      "company_segment": "manufacturing",
+      "source": "imported_base",
+      "source_url": "https://xn--j1agcjjg.xn--p1ai",
+      "source_label": "Собственная база",
+      "signal_type": "IMPORTED_CONTEXT",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 40,
+      "icp_fit_score": 100,
+      "confidence_score": 40,
+      "country": "Россия",
+      "industry": "manufacturing",
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "Производственная Компания Контур",
+          "officialWebsite": "https://xn--j1agcjjg.xn--p1ai",
+          "officialDomain": "xn--j1agcjjg.xn--p1ai",
+          "people": [
+            {
+              "fullName": "Околелов Григорий Валерьевич",
+              "role": "Генеральный директор",
+              "confidence": "VERIFIED",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.tbank.ru/business/contractor/legal/1036600430822",
+                  "sourceType": "public_web",
+                  "excerpt": "Public search result: Проверка ООО ПК КОНТУР Заречный ИНН 6609010359 в ЕГРЮЛ и ЕГРИП",
+                  "capturedAt": "2026-10-06T08:16:52.594Z",
+                  "confidence": 82
+                },
+                {
+                  "sourceUrl": "https://www.rusprofile.ru/id/4158145",
+                  "sourceType": "public_web",
+                  "excerpt": "Source URL: https://www.tbank.ru/business/contractor/legal/1036600430822",
+                  "capturedAt": "2026-10-06T08:16:52.594Z",
+                  "confidence": 82
+                },
+                {
+                  "sourceUrl": "https://checko.ru/company/pk-kontur-1036600430822",
+                  "sourceType": "public_web",
+                  "excerpt": "Contact search result: ООО \"ПК Контур\" Заречный (ИНН 6609010359) адрес, официальный сайт и телефон",
+                  "capturedAt": "2026-10-06T08:16:52.594Z",
+                  "confidence": 82
+                },
+                {
+                  "sourceUrl": "https://www.rusprofile.ru/person/okolelov-gv-667008981708",
+                  "sourceType": "public_web",
+                  "excerpt": "Contact source URL: https://www.rusprofile.ru/id/4158145",
+                  "capturedAt": "2026-10-06T08:16:52.594Z",
+                  "confidence": 82
+                }
+              ],
+              "profiles": {
+                "tenchat": null,
+                "telegram": null,
+                "instagram": null,
+                "vk": null,
+                "other": []
+              },
+              "phone": null
+            }
+          ],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [
+              {
+                "email": "info@pk-kontur.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/",
+                    "sourceType": "official",
+                    "excerpt": "info@pk-kontur.ru — public email parser",
+                    "capturedAt": "2026-10-06T08:16:52.594Z",
+                    "confidence": 99
+                  }
+                ]
+              },
+              {
+                "email": "kotelnikov-dn@pk-kontur.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+                    "sourceType": "official",
+                    "excerpt": "kotelnikov-dn@pk-kontur.ru — public email parser",
+                    "capturedAt": "2026-10-06T08:16:52.594Z",
+                    "confidence": 88
+                  }
+                ]
+              },
+              {
+                "email": "sergeyb@pk-kontur.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+                    "sourceType": "official",
+                    "excerpt": "sergeyb@pk-kontur.ru — public email parser",
+                    "capturedAt": "2026-10-06T08:16:52.594Z",
+                    "confidence": 88
+                  }
+                ]
+              },
+              {
+                "email": "konoplev-ea@pk-kontur.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+                    "sourceType": "official",
+                    "excerpt": "konoplev-ea@pk-kontur.ru — public email parser",
+                    "capturedAt": "2026-10-06T08:16:52.594Z",
+                    "confidence": 88
+                  }
+                ]
+              },
+              {
+                "email": "bykova-rr@pk-kontur.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+                    "sourceType": "official",
+                    "excerpt": "bykova-rr@pk-kontur.ru — public email parser",
+                    "capturedAt": "2026-10-06T08:16:52.594Z",
+                    "confidence": 88
+                  }
+                ]
+              }
+            ],
+            "inferred": []
+          },
+          "bestOutreachContact": {
+            "email": "info@pk-kontur.ru",
+            "personName": null,
+            "role": null,
+            "classification": "GENERAL",
+            "contactLevel": "E",
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/"
+          },
+          "signal": {
+            "type": "IMPORTED_CONTEXT",
+            "title": "Контакт из собственной базы",
+            "detail": "Компания предоставлена пользователем; коммерческий сигнал не подтверждён.",
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai",
+            "confidence": 40
+          },
+          "researchConfidence": "VERIFIED",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 11,
+            "duplicateQueriesSkipped": 1,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 17,
+            "lprMs": 19262,
+            "contactMs": 15886,
+            "totalMs": 40302,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "IMPORTED"
+        ],
+        "source_provider": "contact_import",
+        "source_url": "https://xn--j1agcjjg.xn--p1ai",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-06T08:16:52.594Z",
+      "updated_at": "2026-10-06T08:16:52.594Z"
+    }
+  ],
+  "contacts": [
+    {
+      "pipeline_run_id": "pipeline-5afa1fce868f439f484559e65b44",
+      "campaign_id": "campaign-imported-9b58fa2bf4fffb6d2e5d238bcd53",
+      "company_id": "company-d799b27ad95fc5a4a534d2131fff",
+      "lead_id": "lead-b31fcc19a98180c5d6985e7b72a7",
+      "full_name": "Околелов Григорий Валерьевич",
+      "role_title": "Генеральный директор",
+      "department": "Executive",
+      "source_url": "https://www.tbank.ru/business/contractor/legal/1036600430822",
+      "source_label": "RU public web",
+      "confidence_score": 80,
+      "is_primary": false,
+      "created_at": "2026-10-06T08:16:52.594Z",
+      "id": "contact-lead-b31fcc19a98180c5d6985e7b72a7-primary-person-confirmed",
+      "contact_type": "confirmed_person",
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "metadata": {
+        "outreach_selected": false
+      }
+    },
+    {
+      "id": "contact-lead-b31fcc19a98180c5d6985e7b72a7-website-form-45",
+      "pipeline_run_id": "pipeline-5afa1fce868f439f484559e65b44",
+      "campaign_id": "campaign-imported-9b58fa2bf4fffb6d2e5d238bcd53",
+      "company_id": "company-d799b27ad95fc5a4a534d2131fff",
+      "lead_id": "lead-b31fcc19a98180c5d6985e7b72a7",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://xn--j1agcjjg.xn--p1ai/contacts",
+      "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T08:16:52.594Z"
+    },
+    {
+      "id": "contact-lead-b31fcc19a98180c5d6985e7b72a7-website-form-46",
+      "pipeline_run_id": "pipeline-5afa1fce868f439f484559e65b44",
+      "campaign_id": "campaign-imported-9b58fa2bf4fffb6d2e5d238bcd53",
+      "company_id": "company-d799b27ad95fc5a4a534d2131fff",
+      "lead_id": "lead-b31fcc19a98180c5d6985e7b72a7",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://xn--j1agcjjg.xn--p1ai/contact",
+      "source_url": "https://xn--j1agcjjg.xn--p1ai/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T08:16:52.594Z"
+    },
+    {
+      "id": "contact-lead-b31fcc19a98180c5d6985e7b72a7-website-form-47",
+      "pipeline_run_id": "pipeline-5afa1fce868f439f484559e65b44",
+      "campaign_id": "campaign-imported-9b58fa2bf4fffb6d2e5d238bcd53",
+      "company_id": "company-d799b27ad95fc5a4a534d2131fff",
+      "lead_id": "lead-b31fcc19a98180c5d6985e7b72a7",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T08:16:52.594Z"
+    },
+    {
+      "id": "contact-lead-b31fcc19a98180c5d6985e7b72a7-website-form-48",
+      "pipeline_run_id": "pipeline-5afa1fce868f439f484559e65b44",
+      "campaign_id": "campaign-imported-9b58fa2bf4fffb6d2e5d238bcd53",
+      "company_id": "company-d799b27ad95fc5a4a534d2131fff",
+      "lead_id": "lead-b31fcc19a98180c5d6985e7b72a7",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://xn--j1agcjjg.xn--p1ai/contact-us",
+      "source_url": "https://xn--j1agcjjg.xn--p1ai/contact-us",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T08:16:52.594Z"
+    },
+    {
+      "id": "contact-lead-b31fcc19a98180c5d6985e7b72a7-company-website-49",
+      "pipeline_run_id": "pipeline-5afa1fce868f439f484559e65b44",
+      "campaign_id": "campaign-imported-9b58fa2bf4fffb6d2e5d238bcd53",
+      "company_id": "company-d799b27ad95fc5a4a534d2131fff",
+      "lead_id": "lead-b31fcc19a98180c5d6985e7b72a7",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://xn--j1agcjjg.xn--p1ai",
+      "source_url": "https://xn--j1agcjjg.xn--p1ai",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T08:16:52.594Z"
+    },
+    {
+      "id": "contact-lead-b31fcc19a98180c5d6985e7b72a7-generic-email-1",
+      "pipeline_run_id": "pipeline-5afa1fce868f439f484559e65b44",
+      "campaign_id": "campaign-imported-9b58fa2bf4fffb6d2e5d238bcd53",
+      "company_id": "company-d799b27ad95fc5a4a534d2131fff",
+      "lead_id": "lead-b31fcc19a98180c5d6985e7b72a7",
+      "contact_type": "generic_email",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": "info@pk-kontur.ru",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://xn--j1agcjjg.xn--p1ai/",
+      "source_label": "public email parser",
+      "confidence_score": 99,
+      "is_primary": true,
+      "metadata": {
+        "email_status": "company_email_ready",
+        "email_mx_verified": true,
+        "email_domain_match_reason": "domain_alias_published_on_official_site",
+        "email_subject": "Производственная Компания Контур: где теряется скорость",
+        "email_body": "Добрый день.\n\nИзучил открытые материалы Производственная Компания Контур и обратил внимание на текущую активность компании.\n\nВ такой ситуации одна из типичных проблем — ручной разбор повторяющихся запросов и передача информации между сотрудниками. Это может замедлять ответ и забирать время у людей, которые должны решать более сложные задачи.\n\nНачинать стоит не с выбора нейросети, а с одного измеримого участка, где ручное действие повторяется и ограничивает скорость.\n\nЯ AI-архитектор. Нахожу такие участки и собираю решения, которые забирают повторяющиеся шаги, собирают данные и вовремя подключают человека.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": false,
+        "outreach_selected": true,
+        "email_generation_source": "template",
+        "email_generation_fallback_reason": "Нет подтверждённого сигнала с источником."
+      },
+      "created_at": "2026-10-06T08:16:52.594Z"
+    }
+  ],
+  "signals": [
+    {
+      "id": "signal-69d4751b8f1524e0b1ffd92858a7",
+      "pipeline_run_id": "pipeline-5afa1fce868f439f484559e65b44",
+      "campaign_id": "campaign-imported-9b58fa2bf4fffb6d2e5d238bcd53",
+      "lead_id": "lead-b31fcc19a98180c5d6985e7b72a7",
+      "company_id": "company-d799b27ad95fc5a4a534d2131fff",
+      "signal_type": "IMPORTED_CONTEXT",
+      "signal_title": "Контакт из собственной базы",
+      "signal_detail": "Компания предоставлена пользователем; коммерческий сигнал не подтверждён.",
+      "signal_source_label": "Контекст собственной базы",
+      "source_url": "https://xn--j1agcjjg.xn--p1ai",
+      "confidence_score": 40,
+      "found_at": "2026-10-06T08:16:52.594Z",
+      "created_at": "2026-10-06T08:16:52.594Z"
+    }
+  ],
+  "queueBefore": [
+    {
+      "id": "outreach-contact-lead-b31fcc19a98180c5d6985e7b72a7-generic-email-1",
+      "company_name": "Производственная Компания Контур",
+      "status": "needs_review",
+      "quality_gate_passed": false
+    }
+  ],
+  "metrics": {
+    "companies": 1,
+    "people": 1,
+    "personalEmails": 0,
+    "emailContacts": 1,
+    "ready": 0,
+    "manualReview": 1
+  },
+  "orphanRequests": 0,
+  "requests": {
+    "xn--j1agcjjg.xn--p1ai": 14,
+    "api.openai.com": 5,
+    "search.yahoo.com": 8,
+    "search.brave.com": 13,
+    "www.bing.com": 13,
+    "api.tavily.com": 13,
+    "kontyrnn.ru": 1,
+    "kontur.ru": 3
+  },
+  "modelCalls": [
+    {
+      "schema": "direct_ai_need_search_plan",
+      "status": 200
+    },
+    {
+      "schema": "company_research_plan",
+      "status": 200
+    },
+    {
+      "schema": "people_evidence",
+      "status": 200
+    },
+    {
+      "schema": "people_evidence",
+      "status": 200
+    },
+    {
+      "schema": "leadgen_outreach_v4",
+      "status": 200
+    }
+  ],
+  "finishedAt": "2026-10-06T08:17:33.265Z"
+}

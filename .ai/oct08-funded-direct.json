@@ -1,0 +1,1469 @@
+{
+  "mode": "direct",
+  "startedAt": "2026-10-07T22:05:42.030Z",
+  "isolated": "C:\\Users\\User\\AppData\\Local\\Temp\\leadgen-final-direct-jByQrm",
+  "productionSmtpCalls": 0,
+  "discovery": {
+    "mode": "LIVE_READ_ONLY",
+    "verticalId": null,
+    "planner": {
+      "status": "AI",
+      "reason": "configured",
+      "intentHypotheses": [
+        "найм специалистов по внедрению искусственного интеллекта для бизнес-процессов",
+        "поиск подрядчиков для автоматизации задач с помощью LLM и агентных систем",
+        "объявление пилотных проектов с использованием AI в компаниях",
+        "закупки решений на базе ИИ для оптимизации производственных процессов",
+        "внедрение агентной автоматизации в CRM-системы",
+        "поиск экспертов по машинному обучению для обработки больших данных"
+      ],
+      "terminology": [
+        "искусственный интеллект",
+        "ИИ",
+        "large language model",
+        "LLM",
+        "агентная автоматизация",
+        "автоматизация бизнес-процессов",
+        "машинное обучение",
+        "пилотный проект",
+        "тендер",
+        "закупка услуг",
+        "поиск подрядчика",
+        "внедрение AI"
+      ],
+      "sourceHypotheses": [
+        "ru_job_board",
+        "market_news",
+        "новостные статьи компаний",
+        "официальные пресс-релизы",
+        "коммерческие тендеры",
+        "вакансии на специализированных порталах"
+      ],
+      "queries": [
+        "искусственный интеллект автоматизация бизнес-процессов",
+        "LLM агентная автоматизация задачи",
+        "найм специалист по ИИ автоматизация",
+        "инженер машинное обучение обработка данных",
+        "компания объявила пилот внедрение искусственного интеллекта 2026",
+        "корпорация ищет подрядчика внедрение LLM 2026",
+        "тендер закупка услуги искусственный интеллект оптимизация",
+        "новость внедрение агентная автоматизация CRM 2026"
+      ],
+      "queryAngles": [
+        "ru_job_board",
+        "ru_job_board",
+        "ru_job_board",
+        "ru_job_board",
+        "market_news",
+        "market_news",
+        "market_news",
+        "market_news"
+      ],
+      "execution": "ai_semantic",
+      "refinementQueries": [
+        "компания объявила пилот LLM интеграция",
+        "корпорация поиск подрядчика ИИ автоматизация"
+      ]
+    },
+    "metrics": {
+      "jobsScanned": 33,
+      "assessed": 18,
+      "hhAssessed": 13,
+      "nonHhAssessed": 5,
+      "semanticDirect": 6,
+      "aiRoleCandidates": 18,
+      "automationIntentPass": 4,
+      "companiesExtracted": 4,
+      "hhCompanies": 4,
+      "nonHhCompanies": 0,
+      "officialDomainsConfirmed": 4,
+      "icpMatch": 0,
+      "icpUncertain": 0,
+      "icpMismatch": 0,
+      "segmentNotApplied": 4,
+      "contactsFound": 2,
+      "ready": 2,
+      "falsePositives": 0,
+      "runtimeMs": 81498,
+      "requests": 99,
+      "companyIdentityQueries": 2,
+      "timeouts": 0,
+      "abortedRequests": 0,
+      "orphanRequests": 0
+    },
+    "accepted": [
+      {
+        "company": "UNICA engineering",
+        "vacancyTitle": "Бизнес-аналитик по AI-автоматизации",
+        "sourceUrl": "https://hh.ru/vacancy/138013449",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "Ищем начинающего аналитика, который хочет решать реальные задачи бизнеса с помощью AI. Основной инструмент — Claude Code / Codex. ... Разрабатывать автоматизации реальных бизнес-процессов с помощью Claude Code и других AI-инструментов. ... Дорабатывать и развивать существующие автоматизации с помощью AI-агентов, в том числе в системах 1С и ELMA365 (ставить агенту задачу, проверять результат и доводить его до рабочего состояния).",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Вакансия непосредственно направлена на внедрение AI-автоматизаций бизнес-процессов и доработку AI-агентов.",
+        "officialWebsite": "https://unica-eng.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 1,
+        "contactEmail": "info@unica-eng.ru",
+        "contactKind": "general",
+        "contactSourceUrl": "https://unica-eng.ru/",
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": true
+      },
+      {
+        "company": "Аренда Град (ИП Лободин Алексей Александрович)",
+        "vacancyTitle": "Специалист по автоматизации бизнес-процессов с ИИ / вайбкодер",
+        "sourceUrl": "https://hh.ru/vacancy/137727229",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "... а современных ИИ-автоматизаций почти нет. Собственник сам глубоко погружён в ИИ-инструменты, постоянно обучается и знает, что и зачем нужно автоматизировать, — но физически не успевает внедрять всё руками. Поэтому мы ищем человека, который станет этими руками: возьмёт готовую логику и превратит её в работающие решения.",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Прямое указание на задачу по внедрению AI-автоматизаций бизнес-процессов и поиск ответственного за реализацию.",
+        "officialWebsite": "https://booking-arendagrad.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": false
+      },
+      {
+        "company": "Боронд, Группа компаний",
+        "vacancyTitle": "Ведущий инженер по машинному обучению и компьютерному зрению",
+        "sourceUrl": "https://hh.ru/vacancy/137876482",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "На промышленное предприятие ищем специалиста для разработки и внедрения системы видеоаналитики на основе искусственного интеллекта.",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Ищут специалиста с целью внедрения собственной AI-системы — прямой подтвержденный спрос на интеллектуальную автоматизацию производства.",
+        "officialWebsite": "https://fontany.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": false
+      },
+      {
+        "company": "ELITE CAR",
+        "vacancyTitle": "AI-разработчик / инженер по автоматизации (AI-assisted development, LLM, Telegram-боты)",
+        "sourceUrl": "https://hh.ru/vacancy/137971422",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "Ищем инженера, который сам доводит задачу из Jira до работающего продукта, опираясь на кодовых агентов и LLM.",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Вакансия по найму разработчика для решения задач автоматизации с применением LLM и AI-агентов.",
+        "officialWebsite": "https://elitecar.rent",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 1,
+        "contactEmail": "info@elitecar.rent",
+        "contactKind": "general",
+        "contactSourceUrl": "https://elitecar.rent/",
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": true
+      }
+    ],
+    "sourceClasses": {
+      "hh": {
+        "results": 28,
+        "assessed": 13,
+        "direct": 6,
+        "companies": 4,
+        "rejected": {
+          "direct_intent_likely_not_confirmed": 4,
+          "official_domain_not_cross_checked": 2,
+          "direct_intent_not_relevant": 3,
+          "bounded_sample_not_assessed": 15
+        }
+      },
+      "company_site": {
+        "results": 5,
+        "assessed": 5,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "direct_intent_not_relevant": 5
+        }
+      }
+    },
+    "rejected": [
+      {
+        "company": null,
+        "vacancyTitle": "Large language model - Wikipedia",
+        "sourceUrl": "https://en.wikipedia.org/wiki/Large_language_model",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "LLM Backend Engineer",
+        "sourceUrl": "https://hh.ru/vacancy/138107067",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Большая языковая модель — Википедия",
+        "sourceUrl": "https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%B0%D1%8F_%D1%8F%D0%B7%D1%8B%D0%BA%D0%BE%D0%B2%D0%B0%D1%8F_%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Introduction to Large Language Model (LLM) - GeeksforGeeks",
+        "sourceUrl": "https://www.geeksforgeeks.org/artificial-intelligence/large-language-model-llm/",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Старший инженер по машинному обучению",
+        "sourceUrl": "https://hh.ru/vacancy/138162278",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "LLMPodium — рейтинг LLM 2026: 700+ моделей по арене и бенчмаркам",
+        "sourceUrl": "https://llmpodium.com/ru",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": "ШИВАР",
+        "vacancyTitle": "Специалист по работе с ИИ/автоматизация бизнеспроцессов",
+        "sourceUrl": "https://hh.ru/vacancy/137731826",
+        "status": "REJECTED",
+        "reason": "official_domain_not_cross_checked",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Способы применения LLM: простые и необычные варианты",
+        "sourceUrl": "https://habr.com/ru/articles/1087032/",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Специалист по автоматизации и внутренним сервисам",
+        "sourceUrl": "https://hh.ru/vacancy/137921057",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Специалист по внедрению ИИ/AI-бизнес-процессов",
+        "sourceUrl": "https://hh.ru/vacancy/138055036",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Ведущий ASO-специалист",
+        "sourceUrl": "https://hh.ru/vacancy/137777466",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Инженер-разработчик",
+        "sourceUrl": "https://hh.ru/vacancy/138235245",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": "Спецстрой Технологии",
+        "vacancyTitle": "Специалист по работе с искусственным интеллектом",
+        "sourceUrl": "https://hh.ru/vacancy/137960844",
+        "status": "REJECTED",
+        "reason": "official_domain_not_cross_checked",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "ML-инженер / CV",
+        "sourceUrl": "https://hh.ru/vacancy/138218603",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      }
+    ],
+    "rejectionReasons": {
+      "direct_intent_not_relevant": 8,
+      "direct_intent_likely_not_confirmed": 4,
+      "official_domain_not_cross_checked": 2
+    },
+    "mutated": false,
+    "smtpCalls": 0
+  },
+  "campaign": {
+    "id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+    "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+    "name": "Controlled Direct AI Need",
+    "requested_by": "isolated-live",
+    "status": "completed",
+    "icp_label": "Прямой подтверждённый спрос на AI",
+    "offer_label": "разобрать конкретную AI-задачу и быстро проверить решение через аудит или MVP",
+    "created_at": "2026-10-07T22:07:05.616Z"
+  },
+  "companies": [
+    {
+      "id": "company-bf3e9bee82961c4e926dbe09d511",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_name": "UNICA engineering",
+      "company_domain": "unica-eng.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/138013449",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "UNICA engineering",
+          "officialWebsite": "https://unica-eng.ru",
+          "officialDomain": "unica-eng.ru",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [
+              {
+                "email": "info@unica-eng.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://unica-eng.ru",
+                    "sourceType": "official",
+                    "excerpt": "info@unica-eng.ru — public email parser",
+                    "capturedAt": "2026-10-07T22:07:05.616Z",
+                    "confidence": 99
+                  }
+                ]
+              }
+            ],
+            "inferred": []
+          },
+          "bestOutreachContact": {
+            "email": "info@unica-eng.ru",
+            "personName": null,
+            "role": null,
+            "classification": "GENERAL",
+            "contactLevel": "E",
+            "sourceUrl": "https://unica-eng.ru"
+          },
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Бизнес-аналитик по AI-автоматизации",
+            "detail": "Ищем начинающего аналитика, который хочет решать реальные задачи бизнеса с помощью AI. Основной инструмент — Claude Code / Codex. ... Разрабатывать автоматизации реальных бизнес-процессов с помощью Claude Code и других AI-инструментов. ... Дорабатывать и развивать существующие автоматизации с помощью AI-агентов, в том числе в системах 1С и ELMA365 (ставить агенту задачу, проверять результат и доводить его до рабочего состояния).",
+            "sourceUrl": "https://hh.ru/vacancy/138013449",
+            "confidence": 90
+          },
+          "researchConfidence": "HIGH_CONFIDENCE",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 4,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 13,
+            "lprMs": 19601,
+            "contactMs": 24,
+            "totalMs": 23220,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/138013449",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-07T22:07:05.616Z",
+      "updated_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "company-267ef30b781912b1a640bdc80e2a",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_name": "Аренда Град (ИП Лободин Алексей Александрович)",
+      "company_domain": "booking-arendagrad.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/137727229",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "Аренда Град (ИП Лободин Алексей Александрович)",
+          "officialWebsite": "https://booking-arendagrad.ru",
+          "officialDomain": "booking-arendagrad.ru",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [],
+            "inferred": []
+          },
+          "bestOutreachContact": null,
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Специалист по автоматизации бизнес-процессов с ИИ / вайбкодер",
+            "detail": "... а современных ИИ-автоматизаций почти нет. Собственник сам глубоко погружён в ИИ-инструменты, постоянно обучается и знает, что и зачем нужно автоматизировать, — но физически не успевает внедрять всё руками. Поэтому мы ищем человека, который станет этими руками: возьмёт готовую логику и превратит её в работающие решения.",
+            "sourceUrl": "https://hh.ru/vacancy/137727229",
+            "confidence": 90
+          },
+          "researchConfidence": "UNVERIFIED",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 3,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 12,
+            "lprMs": 24656,
+            "contactMs": 184,
+            "totalMs": 24841,
+            "stopReason": "diminishing_returns"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/137727229",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-07T22:07:05.616Z",
+      "updated_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "company-30bec5691842367c6a4e61fc2b78",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_name": "Боронд, Группа компаний",
+      "company_domain": "fontany.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/137876482",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "Боронд, Группа компаний",
+          "officialWebsite": "https://fontany.ru",
+          "officialDomain": "fontany.ru",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [],
+            "inferred": []
+          },
+          "bestOutreachContact": null,
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Ведущий инженер по машинному обучению и компьютерному зрению",
+            "detail": "На промышленное предприятие ищем специалиста для разработки и внедрения системы видеоаналитики на основе искусственного интеллекта.",
+            "sourceUrl": "https://hh.ru/vacancy/137876482",
+            "confidence": 90
+          },
+          "researchConfidence": "UNVERIFIED",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 4,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 10,
+            "lprMs": 30916,
+            "contactMs": 224,
+            "totalMs": 31141,
+            "stopReason": "diminishing_returns"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/137876482",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-07T22:07:05.616Z",
+      "updated_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "company-84a681b93e4d8b789660548ab23a",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_name": "ELITE CAR",
+      "company_domain": "elitecar.rent",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/137971422",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "ELITE CAR",
+          "officialWebsite": "https://elitecar.rent",
+          "officialDomain": "elitecar.rent",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [
+              {
+                "email": "rent@elitecar.rent",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://elitecar.rent",
+                    "sourceType": "official",
+                    "excerpt": "rent@elitecar.rent — public email parser",
+                    "capturedAt": "2026-10-07T22:07:05.616Z",
+                    "confidence": 99
+                  }
+                ]
+              }
+            ],
+            "inferred": []
+          },
+          "bestOutreachContact": {
+            "email": "rent@elitecar.rent",
+            "personName": null,
+            "role": null,
+            "classification": "GENERAL",
+            "contactLevel": "E",
+            "sourceUrl": "https://elitecar.rent"
+          },
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "AI-разработчик / инженер по автоматизации (AI-assisted development, LLM, Telegram-боты)",
+            "detail": "Ищем инженера, который сам доводит задачу из Jira до работающего продукта, опираясь на кодовых агентов и LLM.",
+            "sourceUrl": "https://hh.ru/vacancy/137971422",
+            "confidence": 90
+          },
+          "researchConfidence": "HIGH_CONFIDENCE",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 2,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 12,
+            "lprMs": 24870,
+            "contactMs": 15,
+            "totalMs": 27611,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/137971422",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-07T22:07:05.616Z",
+      "updated_at": "2026-10-07T22:07:05.616Z"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "contact-lead-1a4205d3deb0f44a49181f03bb4c-website-form-2",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-bf3e9bee82961c4e926dbe09d511",
+      "lead_id": "lead-1a4205d3deb0f44a49181f03bb4c",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://unica-eng.ru/contacts",
+      "source_url": "https://unica-eng.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-1a4205d3deb0f44a49181f03bb4c-website-form-3",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-bf3e9bee82961c4e926dbe09d511",
+      "lead_id": "lead-1a4205d3deb0f44a49181f03bb4c",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://unica-eng.ru/contact",
+      "source_url": "https://unica-eng.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-1a4205d3deb0f44a49181f03bb4c-company-website-4",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-bf3e9bee82961c4e926dbe09d511",
+      "lead_id": "lead-1a4205d3deb0f44a49181f03bb4c",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://unica-eng.ru",
+      "source_url": "https://unica-eng.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-1a4205d3deb0f44a49181f03bb4c-generic-email-1",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-bf3e9bee82961c4e926dbe09d511",
+      "lead_id": "lead-1a4205d3deb0f44a49181f03bb4c",
+      "contact_type": "generic_email",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": "info@unica-eng.ru",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://unica-eng.ru",
+      "source_label": "public email parser",
+      "confidence_score": 99,
+      "is_primary": true,
+      "metadata": {
+        "email_status": "company_email_ready",
+        "email_mx_verified": true,
+        "email_domain_match_reason": "official_domain",
+        "email_subject": "UNICA engineering: быстрый контур AI-задачи",
+        "email_body": "Добрый день.\n\nВ публичном источнике UNICA engineering обратил внимание на задачу: «Ищем начинающего аналитика, который хочет решать реальные задачи бизнеса с помощью AI. Основной инструмент — Claude Code / Codex. ... Разрабатывать автоматизации реальных бизнес-процессов с помощью Claude Code и других AI-инструментов. ... Дорабатывать и развивать существующие автоматизации с помощью AI-агентов, в том числе в системах 1С и ELMA365 (ставить агенту задачу, проверять результат и доводить его до рабочего состояния).».\n\nКогда такая инициатива уже сформулирована, найм специалиста и запуск самой задачи часто идут с разной скоростью. Это не означает, что сотрудник не нужен: отдельный ограниченный участок можно проверить раньше, чтобы к выходу человека у команды уже были подтверждённые требования и рабочий прототип.\n\nПолезно отделить архитектурные решения, которые требуют постоянного владельца внутри компании, от короткого пилота, который быстро проверяет данные, интеграции и реальную ценность сценария.\n\nЯ AI-архитектор. Могу независимо разобрать задачу, собрать ограниченный прототип или реализовать отдельный AI-блок, не подменяя будущего сотрудника и не меняя выбранную вами кадровую стратегию.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": false,
+        "outreach_selected": true,
+        "email_generation_source": "template",
+        "email_generation_fallback_reason": "Необоснованные английские слова: Claude, Code."
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-11923a79a1af4aee3bdcfece1414-website-form-1",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-267ef30b781912b1a640bdc80e2a",
+      "lead_id": "lead-11923a79a1af4aee3bdcfece1414",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://booking-arendagrad.ru/",
+      "source_url": "https://booking-arendagrad.ru/",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": true,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-11923a79a1af4aee3bdcfece1414-website-form-2",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-267ef30b781912b1a640bdc80e2a",
+      "lead_id": "lead-11923a79a1af4aee3bdcfece1414",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://booking-arendagrad.ru/contacts",
+      "source_url": "https://booking-arendagrad.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-11923a79a1af4aee3bdcfece1414-website-form-3",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-267ef30b781912b1a640bdc80e2a",
+      "lead_id": "lead-11923a79a1af4aee3bdcfece1414",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://booking-arendagrad.ru/contact",
+      "source_url": "https://booking-arendagrad.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-11923a79a1af4aee3bdcfece1414-website-form-4",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-267ef30b781912b1a640bdc80e2a",
+      "lead_id": "lead-11923a79a1af4aee3bdcfece1414",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://booking-arendagrad.ru/kontakty",
+      "source_url": "https://booking-arendagrad.ru/kontakty",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-11923a79a1af4aee3bdcfece1414-website-form-5",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-267ef30b781912b1a640bdc80e2a",
+      "lead_id": "lead-11923a79a1af4aee3bdcfece1414",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://booking-arendagrad.ru/about",
+      "source_url": "https://booking-arendagrad.ru/about",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-11923a79a1af4aee3bdcfece1414-website-form-6",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-267ef30b781912b1a640bdc80e2a",
+      "lead_id": "lead-11923a79a1af4aee3bdcfece1414",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://booking-arendagrad.ru/o-kompanii",
+      "source_url": "https://booking-arendagrad.ru/o-kompanii",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-11923a79a1af4aee3bdcfece1414-website-form-7",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-267ef30b781912b1a640bdc80e2a",
+      "lead_id": "lead-11923a79a1af4aee3bdcfece1414",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://booking-arendagrad.ru/requisites",
+      "source_url": "https://booking-arendagrad.ru/requisites",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-11923a79a1af4aee3bdcfece1414-website-form-8",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-267ef30b781912b1a640bdc80e2a",
+      "lead_id": "lead-11923a79a1af4aee3bdcfece1414",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://booking-arendagrad.ru/rekvizity",
+      "source_url": "https://booking-arendagrad.ru/rekvizity",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-11923a79a1af4aee3bdcfece1414-website-form-9",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-267ef30b781912b1a640bdc80e2a",
+      "lead_id": "lead-11923a79a1af4aee3bdcfece1414",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://booking-arendagrad.ru",
+      "source_url": "https://booking-arendagrad.ru",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-11923a79a1af4aee3bdcfece1414-company-website-10",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-267ef30b781912b1a640bdc80e2a",
+      "lead_id": "lead-11923a79a1af4aee3bdcfece1414",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://booking-arendagrad.ru",
+      "source_url": "https://booking-arendagrad.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-2059666390b43ec94967ff77f1c8-website-form-1",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-30bec5691842367c6a4e61fc2b78",
+      "lead_id": "lead-2059666390b43ec94967ff77f1c8",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://fontany.ru/contacts",
+      "source_url": "https://fontany.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": true,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-2059666390b43ec94967ff77f1c8-website-form-2",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-30bec5691842367c6a4e61fc2b78",
+      "lead_id": "lead-2059666390b43ec94967ff77f1c8",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://fontany.ru/contact",
+      "source_url": "https://fontany.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-2059666390b43ec94967ff77f1c8-company-website-3",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-30bec5691842367c6a4e61fc2b78",
+      "lead_id": "lead-2059666390b43ec94967ff77f1c8",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://fontany.ru",
+      "source_url": "https://fontany.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-64b2aa9400ffca9e8c0db5217c7e-website-form-2",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-84a681b93e4d8b789660548ab23a",
+      "lead_id": "lead-64b2aa9400ffca9e8c0db5217c7e",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://elitecar.rent/contacts",
+      "source_url": "https://elitecar.rent/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-64b2aa9400ffca9e8c0db5217c7e-website-form-3",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-84a681b93e4d8b789660548ab23a",
+      "lead_id": "lead-64b2aa9400ffca9e8c0db5217c7e",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://elitecar.rent/contact",
+      "source_url": "https://elitecar.rent/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-64b2aa9400ffca9e8c0db5217c7e-company-website-4",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-84a681b93e4d8b789660548ab23a",
+      "lead_id": "lead-64b2aa9400ffca9e8c0db5217c7e",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://elitecar.rent",
+      "source_url": "https://elitecar.rent",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "contact-lead-64b2aa9400ffca9e8c0db5217c7e-generic-email-1",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "company_id": "company-84a681b93e4d8b789660548ab23a",
+      "lead_id": "lead-64b2aa9400ffca9e8c0db5217c7e",
+      "contact_type": "generic_email",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": "rent@elitecar.rent",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://elitecar.rent",
+      "source_label": "public email parser",
+      "confidence_score": 99,
+      "is_primary": true,
+      "metadata": {
+        "email_status": "company_email_ready",
+        "email_mx_verified": true,
+        "email_domain_match_reason": "official_domain",
+        "email_subject": "ELITE CAR: быстрый контур AI-задачи",
+        "email_body": "Добрый день.\n\nВ публичном источнике ELITE CAR обратил внимание на задачу: «Ищем инженера, который сам доводит задачу из Jira до работающего продукта, опираясь на кодовых агентов и LLM.».\n\nКогда такая инициатива уже сформулирована, найм специалиста и запуск самой задачи часто идут с разной скоростью. Это не означает, что сотрудник не нужен: отдельный ограниченный участок можно проверить раньше, чтобы к выходу человека у команды уже были подтверждённые требования и рабочий прототип.\n\nПолезно отделить архитектурные решения, которые требуют постоянного владельца внутри компании, от короткого пилота, который быстро проверяет данные, интеграции и реальную ценность сценария.\n\nЯ AI-архитектор. Могу независимо разобрать задачу, собрать ограниченный прототип или реализовать отдельный AI-блок, не подменяя будущего сотрудника и не меняя выбранную вами кадровую стратегию.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": false,
+        "outreach_selected": true,
+        "email_generation_source": "template",
+        "email_generation_fallback_reason": "Необоснованные английские слова: Jira."
+      },
+      "created_at": "2026-10-07T22:07:05.616Z"
+    }
+  ],
+  "signals": [
+    {
+      "id": "signal-dcf70cf7f7e15f67048e46a27933",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "lead_id": "lead-1a4205d3deb0f44a49181f03bb4c",
+      "company_id": "company-bf3e9bee82961c4e926dbe09d511",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Бизнес-аналитик по AI-автоматизации",
+      "signal_detail": "Ищем начинающего аналитика, который хочет решать реальные задачи бизнеса с помощью AI. Основной инструмент — Claude Code / Codex. ... Разрабатывать автоматизации реальных бизнес-процессов с помощью Claude Code и других AI-инструментов. ... Дорабатывать и развивать существующие автоматизации с помощью AI-агентов, в том числе в системах 1С и ELMA365 (ставить агенту задачу, проверять результат и доводить его до рабочего состояния).",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/138013449",
+      "confidence_score": 90,
+      "found_at": "2026-10-07T22:07:05.616Z",
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "signal-3f4b08876d400d860e7088e3d205",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "lead_id": "lead-11923a79a1af4aee3bdcfece1414",
+      "company_id": "company-267ef30b781912b1a640bdc80e2a",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Специалист по автоматизации бизнес-процессов с ИИ / вайбкодер",
+      "signal_detail": "... а современных ИИ-автоматизаций почти нет. Собственник сам глубоко погружён в ИИ-инструменты, постоянно обучается и знает, что и зачем нужно автоматизировать, — но физически не успевает внедрять всё руками. Поэтому мы ищем человека, который станет этими руками: возьмёт готовую логику и превратит её в работающие решения.",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/137727229",
+      "confidence_score": 90,
+      "found_at": "2026-10-07T22:07:05.616Z",
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "signal-98f07b7939944417317268f181be",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "lead_id": "lead-2059666390b43ec94967ff77f1c8",
+      "company_id": "company-30bec5691842367c6a4e61fc2b78",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Ведущий инженер по машинному обучению и компьютерному зрению",
+      "signal_detail": "На промышленное предприятие ищем специалиста для разработки и внедрения системы видеоаналитики на основе искусственного интеллекта.",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/137876482",
+      "confidence_score": 90,
+      "found_at": "2026-10-07T22:07:05.616Z",
+      "created_at": "2026-10-07T22:07:05.616Z"
+    },
+    {
+      "id": "signal-38b052546a298f887b66dcda87eb",
+      "pipeline_run_id": "pipeline-690951cb32909b9b45f45c670194",
+      "campaign_id": "campaign-ai-hiring-3ad66a8377f5e16e4dc5de9ccbe4",
+      "lead_id": "lead-64b2aa9400ffca9e8c0db5217c7e",
+      "company_id": "company-84a681b93e4d8b789660548ab23a",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "AI-разработчик / инженер по автоматизации (AI-assisted development, LLM, Telegram-боты)",
+      "signal_detail": "Ищем инженера, который сам доводит задачу из Jira до работающего продукта, опираясь на кодовых агентов и LLM.",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/137971422",
+      "confidence_score": 90,
+      "found_at": "2026-10-07T22:07:05.616Z",
+      "created_at": "2026-10-07T22:07:05.616Z"
+    }
+  ],
+  "queueBefore": [
+    {
+      "id": "outreach-contact-lead-1a4205d3deb0f44a49181f03bb4c-generic-email-1",
+      "company_name": "UNICA engineering",
+      "status": "needs_review",
+      "quality_gate_passed": false
+    },
+    {
+      "id": "outreach-contact-lead-64b2aa9400ffca9e8c0db5217c7e-generic-email-1",
+      "company_name": "ELITE CAR",
+      "status": "needs_review",
+      "quality_gate_passed": false
+    }
+  ],
+  "metrics": {
+    "companies": 4,
+    "people": 0,
+    "personalEmails": 0,
+    "emailContacts": 2,
+    "ready": 0,
+    "manualReview": 2
+  },
+  "orphanRequests": 0,
+  "requests": {
+    "api.openai.com": 24,
+    "api.hh.ru": 5,
+    "hh.ru": 31,
+    "www.bing.com": 17,
+    "api.tavily.com": 1,
+    "en.wikipedia.org": 1,
+    "ru.wikipedia.org": 1,
+    "www.geeksforgeeks.org": 1,
+    "llmpodium.com": 1,
+    "habr.com": 1,
+    "unica-eng.ru": 16,
+    "booking-arendagrad.ru": 14,
+    "fontany.ru": 15,
+    "elitecar.rent": 15,
+    "search.brave.com": 12,
+    "t.me": 1,
+    "www.avito.ru": 1,
+    "vk.com": 1,
+    "m.vk.com": 1
+  },
+  "modelCalls": [
+    {
+      "schema": "direct_ai_need_search_plan",
+      "status": 200
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200
+    },
+    {
+      "schema": "direct_ai_need_search_plan",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "leadgen_outreach_v4",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "leadgen_outreach_v4",
+      "status": 200
+    }
+  ],
+  "finishedAt": "2026-10-07T22:08:52.699Z"
+}

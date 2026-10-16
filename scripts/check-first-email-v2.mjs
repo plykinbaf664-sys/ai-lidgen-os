@@ -84,6 +84,22 @@ assert.equal(countFirstEmailContentWords(`${contentAtLimit}\n\n${INITIAL_OUTREAC
 
 const noSignal = generateFirstEmailV3({ companyName: "Без сигнала", messageMode: "personal" });
 assert.equal(noSignal.qualityGatePassed, false);
+const { buildEmailOutreach } = await import("../lib/leadgen/email-outreach-builder.ts");
+const personContact = { id: "classified-person", contact_type: "work_email", email: "person@fixture.example",
+  full_name: "Мария Иванова", role_title: "руководитель развития", metadata: { contact_intelligence: { email_classification: "VERIFIED_PERSONAL" } } };
+const outreachInput = { companyName: "Fixture", contact: personContact, personName: personContact.full_name,
+  personRole: personContact.role_title, readiness: "outreach_ready", whyNow: "Открыта вакансия", signalType: "HIRING_SIGNAL",
+  signalDetail: "Компания расширяет отдел продаж", signalSourceUrl: "https://fixture.example/jobs" };
+assert.equal(buildEmailOutreach(outreachInput).messageMode, "personal", "Normalized confirmed identity survives the outreach boundary");
+assert.match(buildEmailOutreach(outreachInput).body, /Есть смысл посмотреть этот участок/);
+assert.equal(buildEmailOutreach({ ...outreachInput, contact: { ...personContact,
+  metadata: { normalized_email_classification: "INFERRED_PERSONAL", email_classification: "work_verified" } } }).messageMode,
+  "generic_routing", "An inferred candidate must not inherit legacy verified-person mode");
+const abbreviationCheck = validateFirstEmailV3({ subject: "Проверка текста письма", body: "LLM MVP unexplainedjargon" });
+assert.ok(!abbreviationCheck.errors.some(error => /Необоснованные английские слова:.*\b(?:LLM|MVP)\b/.test(error)));
+assert.ok(abbreviationCheck.errors.some(error => error.includes("unexplainedjargon")), "Unexplained English still rejected");
+assert.match(generateFirstEmailV3({ companyName: "Контур", decisionMakerName: "Котельников Данила Никитич" }).body,
+  /^Данила, добрый день\./, "Surname-first FIO must greet the given name");
 
 for (const [index, copy] of copies.entries()) {
   process.stdout.write(`\n--- TEST EMAIL ${index + 1} ---\nSUBJECT: ${copy.subject}\n${copy.body}\n`);

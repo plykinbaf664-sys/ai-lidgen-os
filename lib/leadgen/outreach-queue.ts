@@ -43,6 +43,7 @@ export function getOutreachIdempotencyKey({
 }
 
 export function isEmailReadyContact(contact: LeadgenContact): boolean {
+  if (contact.metadata.outreach_selected === false) return false;
   if (!contact.email) {
     return false;
   }

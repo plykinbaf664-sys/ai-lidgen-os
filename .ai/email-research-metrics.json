@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-07T15:52:36.794Z",
+  "verdict": "NOT READY",
+  "blocker": "OpenAI HTTP 429 insufficient_quota / credit_balance_exhausted",
+  "before": {
+    "companiesResearched": 16,
+    "confirmedLpr": 3,
+    "personCandidates": 12,
+    "personalEmails": 2,
+    "VERIFIED": 2,
+    "HIGH_CONFIDENCE": 0,
+    "PREDICTED": 0,
+    "generalFallbackOnly": 4,
+    "usableContacts": 6,
+    "Ready": 5,
+    "falseAttribution": null,
+    "falseVerified": null,
+    "avgResearchActions": 6.31,
+    "avgRuntimeSeconds": 32.48
+  },
+  "afterFallbackOnly": {
+    "companiesResearched": 2,
+    "confirmedLpr": 1,
+    "personCandidates": 1,
+    "personalEmails": 0,
+    "VERIFIED": 0,
+    "HIGH_CONFIDENCE": 0,
+    "PREDICTED": 0,
+    "generalFallbackOnly": 1,
+    "usableContacts": 1,
+    "Ready": 1,
+    "falseAttribution": null,
+    "falseVerified": null,
+    "avgResearchActions": null,
+    "avgRuntimeSeconds": 15.15
+  },
+  "afterComparable": null,
+  "requestedCompanies": 16,
+  "skippedForCredits": 14,
+  "direct": {
+    "companies": 6,
+    "people": 0,
+    "personalEmails": 0,
+    "emailContacts": 2,
+    "ready": 0,
+    "manualReview": 2,
+    "discovery": {
+      "jobsScanned": 46,
+      "assessed": 0,
+      "hhAssessed": 0,
+      "nonHhAssessed": 0,
+      "semanticDirect": 0,
+      "aiRoleCandidates": 15,
+      "automationIntentPass": 10,
+      "companiesExtracted": 8,
+      "hhCompanies": 6,
+      "nonHhCompanies": 0,
+      "officialDomainsConfirmed": 6,
+      "icpMatch": 0,
+      "icpUncertain": 0,
+      "icpMismatch": 0,
+      "segmentNotApplied": 6,
+      "contactsFound": 2,
+      "ready": 2,
+      "falsePositives": 0,
+      "runtimeMs": 49246,
+      "requests": 142,
+      "companyIdentityQueries": 0,
+      "timeouts": 0,
+      "abortedRequests": 0,
+      "orphanRequests": 0
+    },
+    "modelCalls": [
+      {
+        "schema": "direct_ai_need_search_plan",
+        "status": 429,
+        "error": "{\n  \"error\": {\n    \"message\": \"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\n    \"type\": \"insufficient_quota\",\n    \"param\": null,\n    \"code\": \"credit_balance_exhausted\"\n  }\n}"
+      }
+    ]
+  },
+  "productionSmtpCalls": 0,
+  "orphanRequests": 0
+}

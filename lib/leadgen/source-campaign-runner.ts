@@ -1,6 +1,7 @@
 import "server-only";
 
 import { createHash } from "node:crypto";
+import { researchImportedCompanySignal } from "@/lib/leadgen/imported-company-signal";
 import { runAiHiringLiveCanary } from "@/lib/leadgen/ai-hiring-live-canary";
 import { getDuplicateReason, getCompanyIdentity, normalizeDomain } from "@/lib/leadgen/company-identity";
 import { getRegisteredCompanyIdentities, registerDiscoveredCompanies } from "@/lib/leadgen/company-registry";
@@ -237,6 +238,7 @@ export async function buildSourceRecords(
       official_website_confidence: 90,
       segment_verification: source.segmentVerification,
       decision_maker: decisionMaker,
+      discovery_context: { origin: source.origin, signal: source.signalDetail, sourceUrl: source.signalSourceUrl },
       origin_context: candidate.origin_context,
     },
     origin_context: candidate.origin_context,
@@ -284,7 +286,7 @@ export async function buildSourceRecords(
   };
 
   const research = await runAbortableOperation<CompanyResearchResult | null>({
-    timeoutMs: 55_000,
+    timeoutMs: 90_000,
     parentSignal: signal,
     fallback: null,
     operation: (requestSignal) => researchCompany(
@@ -357,15 +359,17 @@ export async function buildSourceRecords(
     ...uniqueContacts.filter((candidate) => !candidate.email),
     ...(contact ? [contact] : []),
   ];
-  if (contact?.email && isConfirmedOutreachEmail(contact)) {
-    const person = people.primary_person;
+  if (contact?.email && isConfirmedOutreachEmail(contact) && !contact.metadata.email_generation_source) {
+    const person = people.all_candidates.find(candidate => candidate.work_email === contact.email) ??
+      (contact.full_name ? people.all_candidates.find(candidate => candidate.full_name === contact.full_name) : null);
     const copy = await buildEmailOutreachWithAi({
       companyName: source.companyName,
       companyWebsite: source.website,
       personName: person?.full_name ?? null,
       personRole: person?.role_title ?? null,
       contact,
-      readiness: "fallback_ready",
+      readiness: contact.contact_type === "work_email" ? "outreach_ready" : "fallback_ready",
+      signal,
       whyNow: source.signalDetail,
       selectionReason: person
         ? `Подтверждён ${person.full_name}${person.role_title ? `, ${person.role_title}` : ""}; письмо доставляется через лучший найденный корпоративный адрес.`
@@ -384,6 +388,10 @@ export async function buildSourceRecords(
     contact.metadata.email_generation_attempts = copy.generationAttempts;
     contact.metadata.email_copy_review_status = copy.copyReviewStatus;
     contact.metadata.email_guide_assignment = copy.guideAssignment;
+    contact.metadata.email_generation_source = copy.generationSource;
+    contact.metadata.email_generation_fallback_reason = copy.fallbackReason;
+  }
+  if (contact?.email && isConfirmedOutreachEmail(contact)) {
     lead.contact_channel = contact.contact_type === "work_email" ? "decision-maker" : "general-email";
     lead.contact_value = contact.email;
     lead.contact_label = contact.source_label;
@@ -507,7 +515,7 @@ export async function runImportedCampaign({
           ? raw.website
           : emailDomain(email),
     );
-    if (!explicitDomain || !email || emailDomain(email) !== explicitDomain) return null;
+    if (!explicitDomain) return null;
     const website = `https://${explicitDomain}`;
     const officialContext = await readOfficialContext(website, signal);
     const companyName = typeof raw.company === "string" && raw.company.trim()
@@ -524,18 +532,20 @@ export async function runImportedCampaign({
       signalEvidence: notes || null,
       discoveryQuery: "imported base",
     });
+    const researchedSignal = segmentVerification.match === "MATCH"
+      ? await researchImportedCompanySignal(companyName, website, signal) : null;
     return {
       origin: "IMPORTED",
       companyName,
       domain: explicitDomain,
       website,
       segmentVerification,
-      signalType: "IMPORTED_CONTEXT",
-      signalTitle: notes ? "Контекст из собственной базы" : "Контакт из собственной базы",
-      signalDetail: notes || "Компания и рабочий адрес предоставлены пользователем; коммерческий сигнал не подтверждён.",
-      signalSourceUrl: website,
-      signalConfidence: notes ? 70 : 40,
-      email,
+      signalType: researchedSignal ? "AI_AUTOMATION_HIRING_SIGNAL" : "IMPORTED_CONTEXT",
+      signalTitle: researchedSignal?.title ?? (notes ? "Контекст из собственной базы" : "Контакт из собственной базы"),
+      signalDetail: researchedSignal?.detail ?? (notes || "Компания предоставлена пользователем; коммерческий сигнал не подтверждён."),
+      signalSourceUrl: researchedSignal?.sourceUrl ?? website,
+      signalConfidence: researchedSignal?.confidence ?? (notes ? 70 : 40),
+      email: email && emailDomain(email) === explicitDomain ? email : null,
       emailKind: null,
       emailSourceUrl: website,
       importedName: typeof raw.full_name === "string" ? raw.full_name : null,

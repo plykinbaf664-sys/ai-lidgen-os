@@ -1,0 +1,1325 @@
+{
+  "mode": "business",
+  "name": "ГРУЗВИНПРОМ",
+  "website": "https://gruzvinprom.com",
+  "before": {
+    "companyName": "ГРУЗВИНПРОМ",
+    "officialWebsite": "https://gruzvinprom.com",
+    "officialDomain": "gruzvinprom.com",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "mail@gruzvinprom.com",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://gruzvinprom.com/",
+              "sourceType": "official",
+              "excerpt": "mail@gruzvinprom.com — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "mail@gruzvinprom.com",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://gruzvinprom.com/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: ГРУЗВИНПРОМ; открыта вакансия: Коммерческий директор (CCO).",
+      "sourceUrl": "https://hh.ru/vacancy/137957084",
+      "confidence": 94
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 18,
+      "lprMs": 19166,
+      "contactMs": 1918,
+      "totalMs": 27575,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: ГРУЗВИНПРОМ; открыта вакансия: Коммерческий директор (CCO).",
+    "sourceUrl": "https://hh.ru/vacancy/137957084",
+    "confidence": 94
+  },
+  "index": 11,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://gruzvinprom.com",
+      "status": 200,
+      "elapsedMs": 494
+    },
+    {
+      "stage": "research_open",
+      "url": "https://gruzvinprom.com",
+      "success": true,
+      "evidence": {
+        "url": "https://gruzvinprom.com",
+        "kind": "page",
+        "text": "Главная традиции и инновации грузинского виноделия вина и коньяки с вековой историей «Грузвинпром» — грузинское предприятие в селе Гурджаани, с 1929 года производит вина и коньячные спирты, которые экспортируются в Армению, Францию и Россию Наши коллекции ⁠Квеври ⁠Mziuri Kari ⁠бетанелли Оранжевая лоза ⁠Советская классика Премиум Prinveli Коллекция вин Коллекция коньяков Heritage Берикони Верийская легенда Legend Грузинский коньяк Новости ВСЕ НОВОСТИ © 2025 Грузвинпром Политика конфиденциальности +7 (499) 322-70-40 Москва, ул. Красная Пресня, д. 24 mail@gruzvinprom.com",
+        "links": [
+          {
+            "url": "https://gruzvinprom.com/privacy",
+            "label": "Политикой конфиденциальности"
+          },
+          {
+            "url": "https://gruzvinprom.com",
+            "label": "Да, мне есть 18"
+          },
+          {
+            "url": "https://gruzvinprom.com/about",
+            "label": "о нас"
+          },
+          {
+            "url": "https://gruzvinprom.com/collection/gruzvinprom-prinveli",
+            "label": "PRINVELI"
+          },
+          {
+            "url": "https://gruzvinprom.com/collection/gruzvinprom-premium",
+            "label": "ПРЕМИУМ"
+          },
+          {
+            "url": "https://gruzvinprom.com/collection/gruzvinprom-klassika",
+            "label": "⁠СОВЕТСКАЯ КЛАССИКА"
+          },
+          {
+            "url": "https://gruzvinprom.com/news",
+            "label": "ВСЕ НОВОСТИ"
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:07:01.492Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3392,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "ГРУЗВИНПРОМ",
+        "domain": "gruzvinprom.com",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: ГРУЗВИНПРОМ; открыта вакансия: Коммерческий директор (CCO).",
+            "sourceUrl": "https://hh.ru/vacancy/137957084",
+            "confidence": 94
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://gruzvinprom.com",
+            "kind": "page",
+            "text": "Главная традиции и инновации грузинского виноделия вина и коньяки с вековой историей «Грузвинпром» — грузинское предприятие в селе Гурджаани, с 1929 года производит вина и коньячные спирты, которые экспортируются в Армению, Францию и Россию Наши коллекции ⁠Квеври ⁠Mziuri Kari ⁠бетанелли Оранжевая лоза ⁠Советская классика Премиум Prinveli Коллекция вин Коллекция коньяков Heritage Берикони Верийская легенда Legend Грузинский коньяк Новости ВСЕ НОВОСТИ © 2025 Грузвинпром Политика конфиденциальности +7 (499) 322-70-40 Москва, ул. Красная Пресня, д. 24 mail@gruzvinprom.com",
+            "links": [
+              {
+                "url": "https://gruzvinprom.com/privacy",
+                "label": "Политикой конфиденциальности"
+              },
+              {
+                "url": "https://gruzvinprom.com",
+                "label": "Да, мне есть 18"
+              },
+              {
+                "url": "https://gruzvinprom.com/about",
+                "label": "о нас"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-prinveli",
+                "label": "PRINVELI"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-premium",
+                "label": "ПРЕМИУМ"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-klassika",
+                "label": "⁠СОВЕТСКАЯ КЛАССИКА"
+              },
+              {
+                "url": "https://gruzvinprom.com/news",
+                "label": "ВСЕ НОВОСТИ"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:01.492Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 7,
+          "actionsRemaining": 10,
+          "searchRemaining": 8,
+          "remainingMs": 44430
+        }
+      },
+      "usage": {
+        "input_tokens": 1964,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 353,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2317
+      },
+      "output": {
+        "companySummary": "ГРУЗВИНПРОМ — грузинское винодельческое предприятие с производством в селе Гурджаани, работает с 1929 года, экспортирует вина и коньяки. Российский офис — Москва, ул. Красная Пресня, д. 24. На сайте присутствуют контактный телефон и общий email (mail@gruzvinprom.com), упоминания конкретных руководителей или команды отсутствуют.",
+        "missing": [
+          "ФИО руководителя коммерческого/экспортного или исполнительного подразделения",
+          "Публичный персональный email руководителя"
+        ],
+        "people": [],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://gruzvinprom.com/about",
+            "focus": "поиск ФИО и ролей руководителей и/или контактных лиц",
+            "purpose": "Выяснить, указан ли владелец бизнес-процесса или руководитель подразделения"
+          },
+          {
+            "type": "search",
+            "value": "\"Грузвинпром\" гендиректор OR директор OR руководитель OR chief OR CEO OR управляющий OR cco",
+            "focus": "внешние профили и публикации о руководстве компании",
+            "purpose": "Определить, кто сейчас занимает руководящие позиции и ответственен за коммерческое направление компании"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Информация о ФИО и контактах руководителя отсутствует, предприняты шаги к дальнейшему поиску."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "ГРУЗВИНПРОМ — грузинское винодельческое предприятие с производством в селе Гурджаани, работает с 1929 года, экспортирует вина и коньяки. Российский офис — Москва, ул. Красная Пресня, д. 24. На сайте присутствуют контактный телефон и общий email (mail@gruzvinprom.com), упоминания конкретных руководителей или команды отсутствуют.",
+        "missing": [
+          "ФИО руководителя коммерческого/экспортного или исполнительного подразделения",
+          "Публичный персональный email руководителя"
+        ],
+        "people": [],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://gruzvinprom.com/about",
+            "focus": "поиск ФИО и ролей руководителей и/или контактных лиц",
+            "purpose": "Выяснить, указан ли владелец бизнес-процесса или руководитель подразделения"
+          },
+          {
+            "type": "search",
+            "value": "\"Грузвинпром\" гендиректор OR директор OR руководитель OR chief OR CEO OR управляющий OR cco",
+            "focus": "внешние профили и публикации о руководстве компании",
+            "purpose": "Определить, кто сейчас занимает руководящие позиции и ответственен за коммерческое направление компании"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Информация о ФИО и контактах руководителя отсутствует, предприняты шаги к дальнейшему поиску."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "gruzvinprom.com"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%93%D1%80%D1%83%D0%B7%D0%B2%D0%B8%D0%BD%D0%BF%D1%80%D0%BE%D0%BC%22%20%D0%B3%D0%B5%D0%BD%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20OR%20chief%20OR%20CEO%20OR%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%8F%D1%8E%D1%89%D0%B8%D0%B9%20OR%20cco&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 224
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%93%D1%80%D1%83%D0%B7%D0%B2%D0%B8%D0%BD%D0%BF%D1%80%D0%BE%D0%BC%22%20%D0%B3%D0%B5%D0%BD%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20OR%20chief%20OR%20CEO%20OR%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%8F%D1%8E%D1%89%D0%B8%D0%B9%20OR%20cco&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 119
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"Грузвинпром\" гендиректор OR директор OR руководитель OR chief OR CEO OR управляющий OR cco",
+      "focus": "внешние профили и публикации о руководстве компании",
+      "purpose": "Определить, кто сейчас занимает руководящие позиции и ответственен за коммерческое направление компании",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "fetch",
+      "url": "https://gruzvinprom.com/about",
+      "error": "TimeoutError",
+      "elapsedMs": 6510
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://gruzvinprom.com/about",
+      "focus": "поиск ФИО и ролей руководителей и/или контактных лиц",
+      "purpose": "Выяснить, указан ли владелец бизнес-процесса или руководитель подразделения",
+      "success": false
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 4307,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "ГРУЗВИНПРОМ",
+        "domain": "gruzvinprom.com",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: ГРУЗВИНПРОМ; открыта вакансия: Коммерческий директор (CCO).",
+            "sourceUrl": "https://hh.ru/vacancy/137957084",
+            "confidence": 94
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://gruzvinprom.com",
+            "kind": "page",
+            "text": "Главная традиции и инновации грузинского виноделия вина и коньяки с вековой историей «Грузвинпром» — грузинское предприятие в селе Гурджаани, с 1929 года производит вина и коньячные спирты, которые экспортируются в Армению, Францию и Россию Наши коллекции ⁠Квеври ⁠Mziuri Kari ⁠бетанелли Оранжевая лоза ⁠Советская классика Премиум Prinveli Коллекция вин Коллекция коньяков Heritage Берикони Верийская легенда Legend Грузинский коньяк Новости ВСЕ НОВОСТИ © 2025 Грузвинпром Политика конфиденциальности +7 (499) 322-70-40 Москва, ул. Красная Пресня, д. 24 mail@gruzvinprom.com",
+            "links": [
+              {
+                "url": "https://gruzvinprom.com/privacy",
+                "label": "Политикой конфиденциальности"
+              },
+              {
+                "url": "https://gruzvinprom.com",
+                "label": "Да, мне есть 18"
+              },
+              {
+                "url": "https://gruzvinprom.com/about",
+                "label": "о нас"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-prinveli",
+                "label": "PRINVELI"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-premium",
+                "label": "ПРЕМИУМ"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-klassika",
+                "label": "⁠СОВЕТСКАЯ КЛАССИКА"
+              },
+              {
+                "url": "https://gruzvinprom.com/news",
+                "label": "ВСЕ НОВОСТИ"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:01.492Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://gruzvinprom.com/about",
+            "focus": "поиск ФИО и ролей руководителей и/или контактных лиц",
+            "success": false
+          },
+          {
+            "type": "search",
+            "value": "\"Грузвинпром\" гендиректор OR директор OR руководитель OR chief OR CEO OR управляющий OR cco",
+            "focus": "внешние профили и публикации о руководстве компании",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 6,
+          "actionsRemaining": 8,
+          "searchRemaining": 7,
+          "remainingMs": 34391
+        }
+      },
+      "usage": {
+        "input_tokens": 2084,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 1792
+        },
+        "output_tokens": 383,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2467
+      },
+      "output": {
+        "companySummary": "ГРУЗВИНПРОМ — грузинское винодельческое предприятие, существует с 1929 года, производит вина и коньяки, экспортирует в несколько стран. На сайте присутствует общий контактный телефон и email, но нет явных упоминаний имен или ролей сотрудников. Раздел «о нас» и другие страницы компании не содержат фактов о ФИО и позициях руководства. Есть сигнал о найме коммерческого директора (CCO), актуального владельца задачи найти не удалось.",
+        "missing": [
+          "ФИО и должность руководителя/владельца процесса нанимающего подразделения или компании",
+          "Публичный личный контакт человека (email или профиль)"
+        ],
+        "people": [],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Грузвинпром\" генеральный директор OR CEO OR директор OR руководитель site:facebook.com OR site:linkedin.com OR site:ttimenews.ge OR site:business-register.ge",
+            "focus": "Публичные профили и публикации с ФИО и должностями руководства",
+            "purpose": "Вероятность обнаружить руководителя (генерального или коммерческого директора) и его публичный профиль или интервью увеличивается на бизнес-реестрах и в профилях соцсетей."
+          },
+          {
+            "type": "open",
+            "value": "https://gruzvinprom.com/news",
+            "focus": "Проверка свежих новостей и упоминаний сотрудников по ФИО или ролям",
+            "purpose": "В новостной ленте компании могут быть официальные комментарии, интервью или анонсы с ФИО и должностями руководителей."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённой информации о конкретном человеке или его публичном контакте; следующий шаг — поиск в пабликах и новостях."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "ГРУЗВИНПРОМ — грузинское винодельческое предприятие, существует с 1929 года, производит вина и коньяки, экспортирует в несколько стран. На сайте присутствует общий контактный телефон и email, но нет явных упоминаний имен или ролей сотрудников. Раздел «о нас» и другие страницы компании не содержат фактов о ФИО и позициях руководства. Есть сигнал о найме коммерческого директора (CCO), актуального владельца задачи найти не удалось.",
+        "missing": [
+          "ФИО и должность руководителя/владельца процесса нанимающего подразделения или компании",
+          "Публичный личный контакт человека (email или профиль)"
+        ],
+        "people": [],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Грузвинпром\" генеральный директор OR CEO OR директор OR руководитель site:facebook.com OR site:linkedin.com OR site:ttimenews.ge OR site:business-register.ge",
+            "focus": "Публичные профили и публикации с ФИО и должностями руководства",
+            "purpose": "Вероятность обнаружить руководителя (генерального или коммерческого директора) и его публичный профиль или интервью увеличивается на бизнес-реестрах и в профилях соцсетей."
+          },
+          {
+            "type": "open",
+            "value": "https://gruzvinprom.com/news",
+            "focus": "Проверка свежих новостей и упоминаний сотрудников по ФИО или ролям",
+            "purpose": "В новостной ленте компании могут быть официальные комментарии, интервью или анонсы с ФИО и должностями руководителей."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённой информации о конкретном человеке или его публичном контакте; следующий шаг — поиск в пабликах и новостях."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "gruzvinprom.com"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%93%D1%80%D1%83%D0%B7%D0%B2%D0%B8%D0%BD%D0%BF%D1%80%D0%BE%D0%BC%22%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20CEO%20OR%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20OR%20OR%20OR%20facebook.com&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 332
+    },
+    {
+      "stage": "fetch",
+      "url": "https://gruzvinprom.com/news",
+      "status": 200,
+      "elapsedMs": 496
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://gruzvinprom.com/news",
+      "focus": "Проверка свежих новостей и упоминаний сотрудников по ФИО или ролям",
+      "purpose": "В новостной ленте компании могут быть официальные комментарии, интервью или анонсы с ФИО и должностями руководителей.",
+      "success": true,
+      "evidence": {
+        "url": "https://gruzvinprom.com/news",
+        "kind": "page",
+        "text": "Новости главная - коллекция вин Новости © 2025 Грузвинпром Политика конфиденциальности +7 (499) 322-70-40 Москва, ул. Красная Пресня, д. 24 mail@gruzvinprom.com",
+        "links": [
+          {
+            "url": "https://gruzvinprom.com/privacy",
+            "label": "Политикой конфиденциальности"
+          },
+          {
+            "url": "https://gruzvinprom.com/news",
+            "label": "Да, мне есть 18"
+          },
+          {
+            "url": "https://gruzvinprom.com",
+            "label": ""
+          },
+          {
+            "url": "https://gruzvinprom.com/about",
+            "label": "о нас"
+          },
+          {
+            "url": "https://gruzvinprom.com/collection/gruzvinprom-prinveli",
+            "label": "PRINVELI"
+          },
+          {
+            "url": "https://gruzvinprom.com/collection/gruzvinprom-premium",
+            "label": "ПРЕМИУМ"
+          },
+          {
+            "url": "https://gruzvinprom.com/collection/gruzvinprom-klassika",
+            "label": "⁠СОВЕТСКАЯ КЛАССИКА"
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:07:16.563Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%93%D1%80%D1%83%D0%B7%D0%B2%D0%B8%D0%BD%D0%BF%D1%80%D0%BE%D0%BC%22%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20CEO%20OR%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20OR%20OR%20OR%20facebook.com&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 289
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"Грузвинпром\" генеральный директор OR CEO OR директор OR руководитель site:facebook.com OR site:linkedin.com OR site:ttimenews.ge OR site:business-register.ge",
+      "focus": "Публичные профили и публикации с ФИО и должностями руководства",
+      "purpose": "Вероятность обнаружить руководителя (генерального или коммерческого директора) и его публичный профиль или интервью увеличивается на бизнес-реестрах и в профилях соцсетей.",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 4627,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "ГРУЗВИНПРОМ",
+        "domain": "gruzvinprom.com",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: ГРУЗВИНПРОМ; открыта вакансия: Коммерческий директор (CCO).",
+            "sourceUrl": "https://hh.ru/vacancy/137957084",
+            "confidence": 94
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://gruzvinprom.com",
+            "kind": "page",
+            "text": "Главная традиции и инновации грузинского виноделия вина и коньяки с вековой историей «Грузвинпром» — грузинское предприятие в селе Гурджаани, с 1929 года производит вина и коньячные спирты, которые экспортируются в Армению, Францию и Россию Наши коллекции ⁠Квеври ⁠Mziuri Kari ⁠бетанелли Оранжевая лоза ⁠Советская классика Премиум Prinveli Коллекция вин Коллекция коньяков Heritage Берикони Верийская легенда Legend Грузинский коньяк Новости ВСЕ НОВОСТИ © 2025 Грузвинпром Политика конфиденциальности +7 (499) 322-70-40 Москва, ул. Красная Пресня, д. 24 mail@gruzvinprom.com",
+            "links": [
+              {
+                "url": "https://gruzvinprom.com/privacy",
+                "label": "Политикой конфиденциальности"
+              },
+              {
+                "url": "https://gruzvinprom.com",
+                "label": "Да, мне есть 18"
+              },
+              {
+                "url": "https://gruzvinprom.com/about",
+                "label": "о нас"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-prinveli",
+                "label": "PRINVELI"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-premium",
+                "label": "ПРЕМИУМ"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-klassika",
+                "label": "⁠СОВЕТСКАЯ КЛАССИКА"
+              },
+              {
+                "url": "https://gruzvinprom.com/news",
+                "label": "ВСЕ НОВОСТИ"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:01.492Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://gruzvinprom.com/news",
+            "kind": "page",
+            "text": "Новости главная - коллекция вин Новости © 2025 Грузвинпром Политика конфиденциальности +7 (499) 322-70-40 Москва, ул. Красная Пресня, д. 24 mail@gruzvinprom.com",
+            "links": [
+              {
+                "url": "https://gruzvinprom.com/privacy",
+                "label": "Политикой конфиденциальности"
+              },
+              {
+                "url": "https://gruzvinprom.com/news",
+                "label": "Да, мне есть 18"
+              },
+              {
+                "url": "https://gruzvinprom.com",
+                "label": ""
+              },
+              {
+                "url": "https://gruzvinprom.com/about",
+                "label": "о нас"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-prinveli",
+                "label": "PRINVELI"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-premium",
+                "label": "ПРЕМИУМ"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-klassika",
+                "label": "⁠СОВЕТСКАЯ КЛАССИКА"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:16.563Z",
+            "id": "e2"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://gruzvinprom.com/about",
+            "focus": "поиск ФИО и ролей руководителей и/или контактных лиц",
+            "success": false
+          },
+          {
+            "type": "search",
+            "value": "\"Грузвинпром\" гендиректор OR директор OR руководитель OR chief OR CEO OR управляющий OR cco",
+            "focus": "внешние профили и публикации о руководстве компании",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "\"Грузвинпром\" генеральный директор OR CEO OR директор OR руководитель site:facebook.com OR site:linkedin.com OR site:ttimenews.ge OR site:business-register.ge",
+            "focus": "Публичные профили и публикации с ФИО и должностями руководства",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "open",
+            "value": "https://gruzvinprom.com/news",
+            "focus": "Проверка свежих новостей и упоминаний сотрудников по ФИО или ролям",
+            "success": true
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 6,
+          "searchRemaining": 6,
+          "remainingMs": 29221
+        }
+      },
+      "usage": {
+        "input_tokens": 2486,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 546,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3032
+      },
+      "output": {
+        "companySummary": "ГРУЗВИНПРОМ — грузинское винодельческое предприятие, основанное в 1929 году, выпускающее вина и коньячные спирты, с офисом и контактами в Москве. Основной сайт компании — gruzvinprom.com. Открыта вакансия коммерческого директора (CCO), регион деятельности — Грузия/Россия, продукция экспортируется в несколько стран. На сайте есть общий почтовый адрес и телефон, но нет публичных данных о действующих руководителях или конкретных ЛПР.",
+        "missing": [
+          "ФИО и должность текущего генерального директора или владельца/коммерческого директора ГРУЗВИНПРОМ",
+          "Публично подтверждённый индивидуальный деловой контакт (email/social profile) актуального ЛПР"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "gruzvinprom.com",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "«Грузвинпром» — грузинское предприятие... © 2025 Грузвинпром Политика конфиденциальности +7 (499) 322-70-40 Москва, ул. Красная Пресня, д. 24 mail@gruzvinprom.com"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Грузвинпром\" генеральный директор OR директор OR владелец OR CEO OR управляющий -вакансия",
+            "focus": "Проверить внешние публикации, реестры, бизнес-новости и СМИ на предмет ФИО и активных руководителей",
+            "purpose": "Найти конкретного руководителя компании — генерального директора, владельца или сопоставимого ЛПР"
+          },
+          {
+            "type": "search",
+            "value": "\"Грузвинпром\" site:linkedin.com OR site:facebook.com OR site:instagram.com",
+            "focus": "Найти публичные профили компании или представителей на крупнейших социальных и бизнес-платформах",
+            "purpose": "Проверить профиль компании и фио топ-менеджмента, повысить шанс нахождения индивидуального контакта ЛПР"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет фактов о ФИО и должности руководителя/ЛПР; требуется внешний источник или профиль с их упоминанием."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "ГРУЗВИНПРОМ — грузинское винодельческое предприятие, основанное в 1929 году, выпускающее вина и коньячные спирты, с офисом и контактами в Москве. Основной сайт компании — gruzvinprom.com. Открыта вакансия коммерческого директора (CCO), регион деятельности — Грузия/Россия, продукция экспортируется в несколько стран. На сайте есть общий почтовый адрес и телефон, но нет публичных данных о действующих руководителях или конкретных ЛПР.",
+        "missing": [
+          "ФИО и должность текущего генерального директора или владельца/коммерческого директора ГРУЗВИНПРОМ",
+          "Публично подтверждённый индивидуальный деловой контакт (email/social profile) актуального ЛПР"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "gruzvinprom.com",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "«Грузвинпром» — грузинское предприятие... © 2025 Грузвинпром Политика конфиденциальности +7 (499) 322-70-40 Москва, ул. Красная Пресня, д. 24 mail@gruzvinprom.com"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Грузвинпром\" генеральный директор OR директор OR владелец OR CEO OR управляющий -вакансия",
+            "focus": "Проверить внешние публикации, реестры, бизнес-новости и СМИ на предмет ФИО и активных руководителей",
+            "purpose": "Найти конкретного руководителя компании — генерального директора, владельца или сопоставимого ЛПР"
+          },
+          {
+            "type": "search",
+            "value": "\"Грузвинпром\" site:linkedin.com OR site:facebook.com OR site:instagram.com",
+            "focus": "Найти публичные профили компании или представителей на крупнейших социальных и бизнес-платформах",
+            "purpose": "Проверить профиль компании и фио топ-менеджмента, повысить шанс нахождения индивидуального контакта ЛПР"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет фактов о ФИО и должности руководителя/ЛПР; требуется внешний источник или профиль с их упоминанием."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "gruzvinprom.com"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%93%D1%80%D1%83%D0%B7%D0%B2%D0%B8%D0%BD%D0%BF%D1%80%D0%BE%D0%BC%22%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%B2%D0%BB%D0%B0%D0%B4%D0%B5%D0%BB%D0%B5%D1%86%20OR%20CEO%20OR%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%8F%D1%8E%D1%89%D0%B8%D0%B9%20-%D0%B2%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8F&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 327
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%93%D1%80%D1%83%D0%B7%D0%B2%D0%B8%D0%BD%D0%BF%D1%80%D0%BE%D0%BC%22%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%B2%D0%BB%D0%B0%D0%B4%D0%B5%D0%BB%D0%B5%D1%86%20OR%20CEO%20OR%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%8F%D1%8E%D1%89%D0%B8%D0%B9%20-%D0%B2%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8F&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 237
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"Грузвинпром\" генеральный директор OR директор OR владелец OR CEO OR управляющий -вакансия",
+      "focus": "Проверить внешние публикации, реестры, бизнес-новости и СМИ на предмет ФИО и активных руководителей",
+      "purpose": "Найти конкретного руководителя компании — генерального директора, владельца или сопоставимого ЛПР",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%93%D1%80%D1%83%D0%B7%D0%B2%D0%B8%D0%BD%D0%BF%D1%80%D0%BE%D0%BC%22%20OR%20OR%20linkedin.com&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 220
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%93%D1%80%D1%83%D0%B7%D0%B2%D0%B8%D0%BD%D0%BF%D1%80%D0%BE%D0%BC%22%20OR%20OR%20linkedin.com&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 117
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"Грузвинпром\" site:linkedin.com OR site:facebook.com OR site:instagram.com",
+      "focus": "Найти публичные профили компании или представителей на крупнейших социальных и бизнес-платформах",
+      "purpose": "Проверить профиль компании и фио топ-менеджмента, повысить шанс нахождения индивидуального контакта ЛПР",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3939,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "ГРУЗВИНПРОМ",
+        "domain": "gruzvinprom.com",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: ГРУЗВИНПРОМ; открыта вакансия: Коммерческий директор (CCO).",
+            "sourceUrl": "https://hh.ru/vacancy/137957084",
+            "confidence": 94
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://gruzvinprom.com",
+            "kind": "page",
+            "text": "Главная традиции и инновации грузинского виноделия вина и коньяки с вековой историей «Грузвинпром» — грузинское предприятие в селе Гурджаани, с 1929 года производит вина и коньячные спирты, которые экспортируются в Армению, Францию и Россию Наши коллекции ⁠Квеври ⁠Mziuri Kari ⁠бетанелли Оранжевая лоза ⁠Советская классика Премиум Prinveli Коллекция вин Коллекция коньяков Heritage Берикони Верийская легенда Legend Грузинский коньяк Новости ВСЕ НОВОСТИ © 2025 Грузвинпром Политика конфиденциальности +7 (499) 322-70-40 Москва, ул. Красная Пресня, д. 24 mail@gruzvinprom.com",
+            "links": [
+              {
+                "url": "https://gruzvinprom.com/privacy",
+                "label": "Политикой конфиденциальности"
+              },
+              {
+                "url": "https://gruzvinprom.com",
+                "label": "Да, мне есть 18"
+              },
+              {
+                "url": "https://gruzvinprom.com/about",
+                "label": "о нас"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-prinveli",
+                "label": "PRINVELI"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-premium",
+                "label": "ПРЕМИУМ"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-klassika",
+                "label": "⁠СОВЕТСКАЯ КЛАССИКА"
+              },
+              {
+                "url": "https://gruzvinprom.com/news",
+                "label": "ВСЕ НОВОСТИ"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:01.492Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://gruzvinprom.com/news",
+            "kind": "page",
+            "text": "Новости главная - коллекция вин Новости © 2025 Грузвинпром Политика конфиденциальности +7 (499) 322-70-40 Москва, ул. Красная Пресня, д. 24 mail@gruzvinprom.com",
+            "links": [
+              {
+                "url": "https://gruzvinprom.com/privacy",
+                "label": "Политикой конфиденциальности"
+              },
+              {
+                "url": "https://gruzvinprom.com/news",
+                "label": "Да, мне есть 18"
+              },
+              {
+                "url": "https://gruzvinprom.com",
+                "label": ""
+              },
+              {
+                "url": "https://gruzvinprom.com/about",
+                "label": "о нас"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-prinveli",
+                "label": "PRINVELI"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-premium",
+                "label": "ПРЕМИУМ"
+              },
+              {
+                "url": "https://gruzvinprom.com/collection/gruzvinprom-klassika",
+                "label": "⁠СОВЕТСКАЯ КЛАССИКА"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:16.563Z",
+            "id": "e2"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://gruzvinprom.com/about",
+            "focus": "поиск ФИО и ролей руководителей и/или контактных лиц",
+            "success": false
+          },
+          {
+            "type": "search",
+            "value": "\"Грузвинпром\" гендиректор OR директор OR руководитель OR chief OR CEO OR управляющий OR cco",
+            "focus": "внешние профили и публикации о руководстве компании",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "\"Грузвинпром\" генеральный директор OR CEO OR директор OR руководитель site:facebook.com OR site:linkedin.com OR site:ttimenews.ge OR site:business-register.ge",
+            "focus": "Публичные профили и публикации с ФИО и должностями руководства",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "open",
+            "value": "https://gruzvinprom.com/news",
+            "focus": "Проверка свежих новостей и упоминаний сотрудников по ФИО или ролям",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "\"Грузвинпром\" генеральный директор OR директор OR владелец OR CEO OR управляющий -вакансия",
+            "focus": "Проверить внешние публикации, реестры, бизнес-новости и СМИ на предмет ФИО и активных руководителей",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "\"Грузвинпром\" site:linkedin.com OR site:facebook.com OR site:instagram.com",
+            "focus": "Найти публичные профили компании или представителей на крупнейших социальных и бизнес-платформах",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 4,
+          "searchRemaining": 4,
+          "remainingMs": 23202
+        }
+      },
+      "usage": {
+        "input_tokens": 2669,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 2304
+        },
+        "output_tokens": 321,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2990
+      },
+      "output": {
+        "companySummary": "ГРУЗВИНПРОМ — грузинское предприятие в селе Гурджаани, производящее вина и коньячные спирты с 1929 года, экспортирует продукцию в Армению, Францию и Россию. Активна вакансия Коммерческий директор (CCO). На корпоративном сайте нет явного раздела 'команда', в доступных разделах и новостях отсутствует информация о персоналиях или ФИО руководства. Контакт указан только общий: телефон и общий email.",
+        "missing": [
+          "ФИО и роль действующего руководителя или владельца процесса (исполнительный директор/руководитель коммерческого направления)",
+          "Личный публичный канал связи (именной email или профиль)"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "gruzvinprom.com",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "© 2025 Грузвинпром"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "site:business-register.ge \"Грузвинпром\" генеральный OR исполнительный директор OR руководитель",
+            "focus": "Бизнес-реестры и СМИ Грузии",
+            "purpose": "Выявить ФИО и актуальную должность руководителя/исполнителя"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет публичных данных о руководителях на сайте, в новостях и доступных публикациях; предложен поиск через грузинские бизнес-реестры или СМИ для установления имени и должности ЛПР."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 3,
+      "decision": {
+        "companySummary": "ГРУЗВИНПРОМ — грузинское предприятие в селе Гурджаани, производящее вина и коньячные спирты с 1929 года, экспортирует продукцию в Армению, Францию и Россию. Активна вакансия Коммерческий директор (CCO). На корпоративном сайте нет явного раздела 'команда', в доступных разделах и новостях отсутствует информация о персоналиях или ФИО руководства. Контакт указан только общий: телефон и общий email.",
+        "missing": [
+          "ФИО и роль действующего руководителя или владельца процесса (исполнительный директор/руководитель коммерческого направления)",
+          "Личный публичный канал связи (именной email или профиль)"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "gruzvinprom.com",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "© 2025 Грузвинпром"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "site:business-register.ge \"Грузвинпром\" генеральный OR исполнительный директор OR руководитель",
+            "focus": "Бизнес-реестры и СМИ Грузии",
+            "purpose": "Выявить ФИО и актуальную должность руководителя/исполнителя"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет публичных данных о руководителях на сайте, в новостях и доступных публикациях; предложен поиск через грузинские бизнес-реестры или СМИ для установления имени и должности ЛПР."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "gruzvinprom.com"
+      ]
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "diminishing_returns",
+      "actions": 7,
+      "candidates": [],
+      "domains": [
+        "gruzvinprom.com"
+      ],
+      "elapsedMs": 25869
+    },
+    {
+      "stage": "people_ranked",
+      "people": []
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: коммерческий, ru_sales_role. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": "mail@gruzvinprom.com",
+        "contact_level": "E",
+        "email_classification": "GENERAL",
+        "email_type": "generic_fallback",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "LOW",
+        "readiness": "fallback_only",
+        "evidence": [
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "generic_fallback_does_not_qualify"
+      },
+      "contacts": [
+        {
+          "name": null,
+          "email": "mail@gruzvinprom.com",
+          "type": "generic_email",
+          "source": "https://gruzvinprom.com",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://gruzvinprom.com/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://gruzvinprom.com/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://gruzvinprom.com"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3125,
+      "schema": "leadgen_outreach_v4",
+      "model": "gpt-4.1-mini",
+      "input": {
+        "company": "ГРУЗВИНПРОМ",
+        "segment": null,
+        "industry": null,
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "evidence": "Работодатель: ГРУЗВИНПРОМ; открыта вакансия: Коммерческий директор (CCO).",
+          "source": "https://hh.ru/vacancy/137957084"
+        },
+        "company_specifics": null,
+        "lpr": {
+          "name": null,
+          "role": null,
+          "why_this_person": null
+        },
+        "business_context": {
+          "problem_hypothesis": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+          "target_responsibility": null,
+          "selection_reason": null
+        },
+        "contact_type": "GENERAL",
+        "required_cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "required_greeting": "Добрый день."
+      },
+      "usage": {
+        "input_tokens": 637,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 242,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 879
+      },
+      "output": {
+        "subject": "Вакансия коммерческого директора в ГРУЗВИНПРОМ",
+        "body": "ГРУЗВИНПРОМ сейчас ищет коммерческого директора, что говорит о планах развивать отдел продаж и увеличить объемы реализации. Возможно, сейчас в компании наблюдается рост ручной работы, связанной с поиском и квалификацией клиентов, а также с ведением отчетности.\nВнедрение ИИ могло бы помочь на этапе обработки и анализа данных о потенциальных клиентах, сокращая время на первичный отбор и подготовку предложений. Гипотетически, это снизит нагрузку на менеджеров и повысит точность целевых контактов.\nПредлагаем провести пилот по использованию ИИ для обработки входящих запросов и автоматического сегментирования клиентов по заинтересованности. Входом станут данные CRM, а результатом — упрощенный список приоритетных лидов для менеджеров.",
+        "cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "quality": {
+          "reason_now": true,
+          "grounded_hypothesis": true,
+          "russian_only": true,
+          "personal_cta": true
+        }
+      }
+    }
+  ],
+  "startedAt": "2026-10-07T22:07:00.922Z",
+  "bundle": {
+    "companyName": "ГРУЗВИНПРОМ",
+    "officialWebsite": "https://gruzvinprom.com",
+    "officialDomain": "gruzvinprom.com",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "mail@gruzvinprom.com",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://gruzvinprom.com",
+              "sourceType": "official",
+              "excerpt": "mail@gruzvinprom.com — public email parser",
+              "capturedAt": "2026-10-07T22:07:00.922Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "mail@gruzvinprom.com",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://gruzvinprom.com"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: ГРУЗВИНПРОМ; открыта вакансия: Коммерческий директор (CCO).",
+      "sourceUrl": "https://hh.ru/vacancy/137957084",
+      "confidence": 94
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 13,
+      "lprMs": 25870,
+      "contactMs": 138,
+      "totalMs": 29173,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "people": {
+    "primary_person": null,
+    "alternative_people": [],
+    "all_candidates": [],
+    "search_status": "no_person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "diminishing_returns"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 4,
+      "official_pages_fetched": 3,
+      "aborted_requests": 0,
+      "elapsed_ms": 25869,
+      "stop_reason": "diminishing_returns",
+      "queries_executed": [
+        "\"Грузвинпром\" гендиректор OR директор OR руководитель OR chief OR CEO OR управляющий OR cco",
+        "\"Грузвинпром\" генеральный директор OR CEO OR директор OR руководитель site:facebook.com OR site:linkedin.com OR site:ttimenews.ge OR site:business-register.ge",
+        "\"Грузвинпром\" генеральный директор OR директор OR владелец OR CEO OR управляющий -вакансия",
+        "\"Грузвинпром\" site:linkedin.com OR site:facebook.com OR site:instagram.com"
+      ],
+      "sources_checked": [
+        "https://gruzvinprom.com",
+        "https://gruzvinprom.com/news"
+      ],
+      "search_results_seen": 0,
+      "rejected_candidates": {
+        "validation_rejects": 0
+      },
+      "final_failure_reason": "diminishing_returns"
+    }
+  },
+  "contacts": [
+    {
+      "name": null,
+      "role": null,
+      "email": "mail@gruzvinprom.com",
+      "type": "generic_email",
+      "source": "https://gruzvinprom.com",
+      "selected": true,
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: коммерческий, ru_sales_role. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": "mail@gruzvinprom.com",
+        "contact_level": "E",
+        "email_classification": "GENERAL",
+        "email_type": "generic_fallback",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "LOW",
+        "readiness": "fallback_only",
+        "evidence": [
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "generic_fallback_does_not_qualify"
+      },
+      "ready": true,
+      "copy": "Добрый день.\n\nГРУЗВИНПРОМ сейчас ищет коммерческого директора, что говорит о планах развивать отдел продаж и увеличить объемы реализации. Возможно, сейчас в компании наблюдается рост ручной работы, связанной с поиском и квалификацией клиентов, а также с ведением отчетности.\nВнедрение ИИ могло бы помочь на этапе обработки и анализа данных о потенциальных клиентах, сокращая время на первичный отбор и подготовку предложений. Гипотетически, это снизит нагрузку на менеджеров и повысит точность целевых контактов.\nПредлагаем провести пилот по использованию ИИ для обработки входящих запросов и автоматического сегментирования клиентов по заинтересованности. Входом станут данные CRM, а результатом — упрощенный список приоритетных лидов для менеджеров.\n\nЯ AI-архитектор. Если потребуется, подключим бизнес-аналитика: сначала проверим процесс, затем выберем, что автоматизировать.\n\nМогу провести короткий разбор этого участка. Обычно он стоит 9 900 ₽; если ответите в течение 24 часов после отправки письма, проведу разбор бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514"
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://gruzvinprom.com/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://gruzvinprom.com/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://gruzvinprom.com",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 29173
+}

@@ -1,0 +1,1580 @@
+{
+  "mode": "direct",
+  "startedAt": "2026-10-07T22:13:45.786Z",
+  "isolated": "C:\\Users\\User\\AppData\\Local\\Temp\\leadgen-final-direct-XJqRfN",
+  "productionSmtpCalls": 0,
+  "discovery": {
+    "mode": "LIVE_READ_ONLY",
+    "verticalId": null,
+    "planner": {
+      "status": "AI",
+      "reason": "configured",
+      "intentHypotheses": [
+        "Актуальный найм специалистов по внедрению AI в бизнес-процессы",
+        "Запуск пилотных проектов по внедрению ИИ в компании",
+        "Поиск подрядчиков для разработки и интеграции агентных систем автоматизации",
+        "Публикация закупок на AI-решения для оптимизации рабочей деятельности",
+        "Объявления о внедрении LLM для обработки данных и автоматизации задач",
+        "Реализация проектов по автоматизации с использованием ИИ и LLM"
+      ],
+      "terminology": [
+        "AI",
+        "ИИ",
+        "LLM",
+        "агентная автоматизация",
+        "пилот",
+        "внедрение",
+        "тендер",
+        "закупка",
+        "поиск подрядчика",
+        "найм",
+        "бизнес-процессы",
+        "автоматизация",
+        "обработка данных",
+        "искусственный интеллект"
+      ],
+      "sourceHypotheses": [
+        "Российские сайты вакансий",
+        "Новостные порталы и пресс-релизы компаний",
+        "Порталы госзакупок",
+        "Профильные бизнес-издания",
+        "Корпоративные сайты компаний",
+        "Платформы объявлений о тендерах"
+      ],
+      "queries": [
+        "AI автоматизация бизнес-процессов поиск специалиста",
+        "ИИ обработка данных внедрение решений",
+        "компания объявила тендер на LLM интеграцию",
+        "пилотный проект агентная автоматизация компания",
+        "закупка услуг искусственный интеллект бизнес-задачи",
+        "найм специалист по агентной автоматизации процессов"
+      ],
+      "queryAngles": [
+        "ru_job_board",
+        "ru_job_board",
+        "market_news",
+        "market_news",
+        "market_news",
+        "ru_job_board"
+      ],
+      "execution": "ai_semantic",
+      "refinementQueries": [
+        "AI автоматизация бизнес-процессов найм аналитик опыт",
+        "ИИ агентная автоматизация поиск специалист",
+        "LLM внедрение автоматизация работа открытая",
+        "агентный ИИ поиск подрядчика",
+        "ИИ интеграция закупка услуг"
+      ]
+    },
+    "metrics": {
+      "jobsScanned": 37,
+      "assessed": 18,
+      "hhAssessed": 9,
+      "nonHhAssessed": 9,
+      "semanticDirect": 4,
+      "aiRoleCandidates": 18,
+      "automationIntentPass": 2,
+      "companiesExtracted": 2,
+      "hhCompanies": 2,
+      "nonHhCompanies": 0,
+      "officialDomainsConfirmed": 2,
+      "icpMatch": 0,
+      "icpUncertain": 0,
+      "icpMismatch": 0,
+      "segmentNotApplied": 2,
+      "contactsFound": 0,
+      "ready": 0,
+      "falsePositives": 0,
+      "runtimeMs": 49590,
+      "requests": 72,
+      "companyIdentityQueries": 2,
+      "timeouts": 0,
+      "abortedRequests": 0,
+      "orphanRequests": 0
+    },
+    "accepted": [
+      {
+        "company": "Нео-Терм",
+        "vacancyTitle": "Специалист по искусственному интеллекту / AI-инженер",
+        "sourceUrl": "https://hh.ru/vacancy/137741662",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "Написание и оптимизация промптов для работы с LLM (ChatGPT, Claude, YandexGPT, GigaChat, DeepSeek); Создание шаблонов и системных промптов для отделов (продажи, маркетинг, поддержка, HR); Автоматизация рутинных задач с помощью готовых AI-решений: генерация писем, резюмирование документов, классификация обращений; Интеграция готовых AI-сервисов через REST API в существующие бизнес-процессы; Интеграция LLM в 1С",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Вакансия актуальна и чётко описывает задачи по внедрению и применению LLM и автоматизации с помощью AI.",
+        "officialWebsite": "https://neo-term.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": false
+      },
+      {
+        "company": "ЛИАН",
+        "vacancyTitle": "ML-инженер (Java)",
+        "sourceUrl": "https://hh.ru/vacancy/138235117",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "Создание и совершенствование корпоративного ИИ-агента на открытом ПО: разработка инструментов-обвязок (harness), подключение а",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Прямой найм на внутреннюю AI-задачу: разработку корпоративного ИИ-агента.",
+        "officialWebsite": "https://lian.systems",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": false
+      }
+    ],
+    "sourceClasses": {
+      "hh": {
+        "results": 27,
+        "assessed": 9,
+        "direct": 4,
+        "companies": 2,
+        "rejected": {
+          "direct_intent_likely_not_confirmed": 3,
+          "official_domain_not_cross_checked": 2,
+          "direct_intent_not_relevant": 2,
+          "bounded_sample_not_assessed": 18
+        }
+      },
+      "news": {
+        "results": 5,
+        "assessed": 5,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "direct_intent_not_relevant": 5
+        }
+      },
+      "company_site": {
+        "results": 5,
+        "assessed": 4,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "direct_intent_not_relevant": 4,
+          "bounded_sample_not_assessed": 1
+        }
+      }
+    },
+    "rejected": [
+      {
+        "company": null,
+        "vacancyTitle": "Аналитик бизнес-процессов с опытом внедрения AI",
+        "sourceUrl": "https://hh.ru/vacancy/137933485",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Урбан ML: рекомендации, LLM, антифрод и агенты - Хабр",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9PSEozM1BMYWZKTFZLZkpucENMYlJpUG1pNF9XWjBWRDRqZnJoSm5Hb0kzNmthbWRnUVVBTUVaWi1HUGgwdmNuM3Y4dVE3TjJXUVc4WkpqX0RoaTU5TEdN0gFYQVVfeXFMTWlFSjF1c1lyeFVmUGkxVTltTEw3YUhLTy1Jejk3bWcxREVfNVRsalNPOEw4ZEQ4V2tuS3hYbUw1ZVNTWGdSdjhiRjR1ZzNwZVE0aklfU2E4Ug?oc=5",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": "ГСП ЦЕНТР",
+        "vacancyTitle": "Ассистент руководителя (аналитика данных, SQL, AI)",
+        "sourceUrl": "https://hh.ru/vacancy/137107711",
+        "status": "REJECTED",
+        "reason": "official_domain_not_cross_checked",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Large language model - Wikipedia",
+        "sourceUrl": "https://en.wikipedia.org/wiki/Large_language_model",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Руководитель отдела продаж B2B, AI решения",
+        "sourceUrl": "https://hh.ru/vacancy/137933089",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Банкам нужна отраслевая LLM - Банковское обозрение",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9QOHlUbVRPRlN6aTZYSExyZWtlVzdnVklJZHlGeGpEWmY2Ri1EcEtxVTN1eDJGSEtWbFo0QUdSd25kT3RnUVlBd0d0RXNGYzNVWnNxVVdpeEtzZ1FZdEkxWQ?oc=5",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Большая языковая модель — Википедия",
+        "sourceUrl": "https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%B0%D1%8F_%D1%8F%D0%B7%D1%8B%D0%BA%D0%BE%D0%B2%D0%B0%D1%8F_%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": "Авталон",
+        "vacancyTitle": "AI-специалист по автоматизации бизнес-процессов",
+        "sourceUrl": "https://hh.ru/vacancy/137342685",
+        "status": "REJECTED",
+        "reason": "official_domain_not_cross_checked",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Kimi K3: что это такое, основные характеристики и применение - Sostav.ru",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE8xQWVlMVkxQnhCUlhfM1FtTzVRQ19nellMdG1Xd3FqSThRNkdsRUs0eUh2RkpGVmdpdW1ia3ZPcGh4N3JJZnZDOXZ1TFhfaHhXNkE?oc=5",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Специалист по разметке данных ЦНИИ ВВС МИНОБОРОНЫ РОССИИ",
+        "sourceUrl": "https://hh.ru/vacancy/137741563",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Introduction to Large Language Model (LLM) - GeeksforGeeks",
+        "sourceUrl": "https://www.geeksforgeeks.org/artificial-intelligence/large-language-model-llm/",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "CTO / CPTO / Chief Technology Officer / Технический директор",
+        "sourceUrl": "https://hh.ru/vacancy/135024964",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Где работать в IT. Подборка вакансий от IBM, Reddit, Zoom, Tesla и GitHub - https://the-tech.kz/",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQR0UwZ2Zla0ZOc0hCN1RraUJfMWZxclVlY1RBbXUtUXVmcHliUEYwenJNb29ual85NFd2UHJDYnhIN1VKU2h4eVlaelRUaVF6LWhvX3BNVUNUa0pkWUVmNnBPcnhWclJwdWR4aFBjVzU2V2FhREJHX09WTWc2c0tRMGMtQk5SWng1UWduOVl3QjV5Z0E?oc=5",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "LLMPodium — рейтинг LLM 2026: 700+ моделей по арене и бенчмаркам",
+        "sourceUrl": "https://llmpodium.com/ru",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Руководитель склада / Бизнес-аналитик WMS / Консультант по автоматизации складской логистики",
+        "sourceUrl": "https://hh.ru/vacancy/138232220",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "«Яндекс» представил открытое решение на базе LLM для ускорения миграции iOS-кода на Swift - Хабр",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5Ua2lWeVpOYVhVTk1rMzQtN2pxYllsaHB3TE5Ybm8yNHdyRC15MVJ0Yng1MmZpS2VGNi1lT2c0bTZMM0k0bWdrStIBWEFVX3lxTE04YlBiQ3dEV0ZJTmIzejlDMDl5MWtkRXE3bHFfU0RRMmdEQng3bWlhOXZhNTBBblZnOVVIS3JiSXhXano3MmdXeTUybGdEQmV1Qk9rNkd2NFA?oc=5",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      }
+    ],
+    "rejectionReasons": {
+      "direct_intent_likely_not_confirmed": 3,
+      "direct_intent_not_relevant": 11,
+      "official_domain_not_cross_checked": 2
+    },
+    "mutated": false,
+    "smtpCalls": 0
+  },
+  "campaign": {
+    "id": "campaign-ai-hiring-00f93aa3ae6d25233a31723021f5",
+    "pipeline_run_id": "pipeline-ce92c64742c048d084621ee98a7a",
+    "name": "Controlled Direct AI Need",
+    "requested_by": "isolated-live",
+    "status": "completed",
+    "icp_label": "Прямой подтверждённый спрос на AI",
+    "offer_label": "разобрать конкретную AI-задачу и быстро проверить решение через аудит или MVP",
+    "created_at": "2026-10-07T22:14:37.076Z"
+  },
+  "companies": [
+    {
+      "id": "company-714b762218bf289606f6eccbae98",
+      "pipeline_run_id": "pipeline-ce92c64742c048d084621ee98a7a",
+      "campaign_id": "campaign-ai-hiring-00f93aa3ae6d25233a31723021f5",
+      "company_name": "Нео-Терм",
+      "company_domain": "neo-term.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/137741662",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "Нео-Терм",
+          "officialWebsite": "https://neo-term.ru",
+          "officialDomain": "neo-term.ru",
+          "people": [
+            {
+              "fullName": "Максим Черепанов",
+              "role": "генеральным директором является Максим Черепанов",
+              "confidence": "HIGH_CONFIDENCE",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.tbank.ru/business/contractor/legal/1097232027540/?utm_source=openai",
+                  "sourceType": "public_web",
+                  "excerpt": "Генеральным директором с момента регистрации является Черепанов Максим Валерьевич",
+                  "capturedAt": "2026-10-07T22:14:37.076Z",
+                  "confidence": 70
+                },
+                {
+                  "sourceUrl": "https://companies.rbc.ru/id/1157232036642-ooo-itts-neo-term/?utm_source=openai",
+                  "sourceType": "public_web",
+                  "excerpt": "Генеральным директором с 25 июля 2019 года является Черепанов Максим Валерьевич",
+                  "capturedAt": "2026-10-07T22:14:37.076Z",
+                  "confidence": 70
+                },
+                {
+                  "sourceUrl": "https://neo-term.ru/company/news/298599/?utm_source=openai",
+                  "sourceType": "official",
+                  "excerpt": "генеральным директором является Максим Черепанов",
+                  "capturedAt": "2026-10-07T22:14:37.076Z",
+                  "confidence": 70
+                },
+                {
+                  "sourceUrl": "https://www.tbank.ru/business/contractor/legal/1097232027540/?utm_source=openai",
+                  "sourceType": "public_web",
+                  "excerpt": "Генеральным директором с момента регистрации является Черепанов Максим Валерьевич",
+                  "capturedAt": "2026-10-07T22:14:37.076Z",
+                  "confidence": 70
+                }
+              ],
+              "profiles": {
+                "tenchat": null,
+                "telegram": null,
+                "instagram": null,
+                "vk": null,
+                "other": []
+              },
+              "phone": null
+            }
+          ],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [
+              {
+                "email": "mail@neo-term.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://neo-term.ru",
+                    "sourceType": "official",
+                    "excerpt": "mail@neo-term.ru — public email parser",
+                    "capturedAt": "2026-10-07T22:14:37.076Z",
+                    "confidence": 99
+                  }
+                ]
+              }
+            ],
+            "inferred": [
+              {
+                "email": "maksim.cherepanov@neo-term.ru",
+                "personName": "Максим Черепанов",
+                "classification": "INFERRED_PERSONAL",
+                "evidence": [],
+                "verification": {
+                  "email": "maksim.cherepanov@neo-term.ru",
+                  "personName": "Максим Черепанов",
+                  "status": "PREDICTED",
+                  "pattern": "{given}.{family}",
+                  "patternSupport": 0,
+                  "mx": "present",
+                  "catchAll": "unknown",
+                  "sourceUrls": [],
+                  "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+                }
+              },
+              {
+                "email": "m.cherepanov@neo-term.ru",
+                "personName": "Максим Черепанов",
+                "classification": "INFERRED_PERSONAL",
+                "evidence": [],
+                "verification": {
+                  "email": "m.cherepanov@neo-term.ru",
+                  "personName": "Максим Черепанов",
+                  "status": "PREDICTED",
+                  "pattern": "{g}.{family}",
+                  "patternSupport": 0,
+                  "mx": "present",
+                  "catchAll": "unknown",
+                  "sourceUrls": [],
+                  "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+                }
+              },
+              {
+                "email": "cherepanov@neo-term.ru",
+                "personName": "Максим Черепанов",
+                "classification": "INFERRED_PERSONAL",
+                "evidence": [],
+                "verification": {
+                  "email": "cherepanov@neo-term.ru",
+                  "personName": "Максим Черепанов",
+                  "status": "PREDICTED",
+                  "pattern": "{family}",
+                  "patternSupport": 0,
+                  "mx": "present",
+                  "catchAll": "unknown",
+                  "sourceUrls": [],
+                  "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+                }
+              },
+              {
+                "email": "mcherepanov@neo-term.ru",
+                "personName": "Максим Черепанов",
+                "classification": "INFERRED_PERSONAL",
+                "evidence": [],
+                "verification": {
+                  "email": "mcherepanov@neo-term.ru",
+                  "personName": "Максим Черепанов",
+                  "status": "PREDICTED",
+                  "pattern": "{g}{family}",
+                  "patternSupport": 0,
+                  "mx": "present",
+                  "catchAll": "unknown",
+                  "sourceUrls": [],
+                  "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+                }
+              },
+              {
+                "email": "cherepanov.maksim@neo-term.ru",
+                "personName": "Максим Черепанов",
+                "classification": "INFERRED_PERSONAL",
+                "evidence": [],
+                "verification": {
+                  "email": "cherepanov.maksim@neo-term.ru",
+                  "personName": "Максим Черепанов",
+                  "status": "PREDICTED",
+                  "pattern": "{family}.{given}",
+                  "patternSupport": 0,
+                  "mx": "present",
+                  "catchAll": "unknown",
+                  "sourceUrls": [],
+                  "reason": "No direct person/email proof; MX or an observed pattern alone cannot establish ownership"
+                }
+              }
+            ]
+          },
+          "bestOutreachContact": {
+            "email": "mail@neo-term.ru",
+            "personName": null,
+            "role": null,
+            "classification": "GENERAL",
+            "contactLevel": "E",
+            "sourceUrl": "https://neo-term.ru"
+          },
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Специалист по искусственному интеллекту / AI-инженер",
+            "detail": "Написание и оптимизация промптов для работы с LLM (ChatGPT, Claude, YandexGPT, GigaChat, DeepSeek); Создание шаблонов и системных промптов для отделов (продажи, маркетинг, поддержка, HR); Автоматизация рутинных задач с помощью готовых AI-решений: генерация писем, резюмирование документов, классификация обращений; Интеграция готовых AI-сервисов через REST API в существующие бизнес-процессы; Интеграция LLM в 1С",
+            "sourceUrl": "https://hh.ru/vacancy/137741662",
+            "confidence": 90
+          },
+          "researchConfidence": "HIGH_CONFIDENCE",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 5,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 19,
+            "lprMs": 58473,
+            "contactMs": 55,
+            "totalMs": 61141,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/137741662",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-07T22:14:37.076Z",
+      "updated_at": "2026-10-07T22:14:37.076Z"
+    },
+    {
+      "id": "company-a8d34fa6c681287284cc37877a5b",
+      "pipeline_run_id": "pipeline-ce92c64742c048d084621ee98a7a",
+      "campaign_id": "campaign-ai-hiring-00f93aa3ae6d25233a31723021f5",
+      "company_name": "ЛИАН",
+      "company_domain": "lian.systems",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/138235117",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "ЛИАН",
+          "officialWebsite": "https://lian.systems",
+          "officialDomain": "lian.systems",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [
+              {
+                "email": "hello@lian.systems",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://lian.systems",
+                    "sourceType": "official",
+                    "excerpt": "hello@lian.systems — public email parser",
+                    "capturedAt": "2026-10-07T22:14:37.076Z",
+                    "confidence": 99
+                  }
+                ]
+              }
+            ],
+            "inferred": []
+          },
+          "bestOutreachContact": {
+            "email": "hello@lian.systems",
+            "personName": null,
+            "role": null,
+            "classification": "GENERAL",
+            "contactLevel": "E",
+            "sourceUrl": "https://lian.systems"
+          },
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "ML-инженер (Java)",
+            "detail": "Создание и совершенствование корпоративного ИИ-агента на открытом ПО: разработка инструментов-обвязок (harness), подключение а",
+            "sourceUrl": "https://hh.ru/vacancy/138235117",
+            "confidence": 90
+          },
+          "researchConfidence": "HIGH_CONFIDENCE",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 3,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 16,
+            "lprMs": 28605,
+            "contactMs": 191,
+            "totalMs": 31169,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/138235117",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-07T22:14:37.076Z",
+      "updated_at": "2026-10-07T22:14:37.076Z"
+    }
+  ],
+  "contacts": [
+    {
+      "pipeline_run_id": "pipeline-ce92c64742c048d084621ee98a7a",
+      "campaign_id": "campaign-ai-hiring-00f93aa3ae6d25233a31723021f5",
+      "company_id": "company-714b762218bf289606f6eccbae98",
+      "lead_id": "lead-9276a0c292c10856e3e8083de43c",
+      "full_name": "Максим Черепанов",
+      "role_title": "генеральным директором является Максим Черепанов",
+      "department": null,
+      "source_url": "https://neo-term.ru/company/news/298599/?utm_source=openai",
+      "source_label": "Iterative public research",
+      "confidence_score": 72,
+      "is_primary": false,
+      "created_at": "2026-10-07T22:14:37.076Z",
+      "id": "contact-lead-9276a0c292c10856e3e8083de43c-primary-person-confirmed",
+      "contact_type": "confirmed_person",
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "metadata": {
+        "outreach_selected": false
+      }
+    },
+    {
+      "id": "contact-lead-9276a0c292c10856e3e8083de43c-website-form-2",
+      "pipeline_run_id": "pipeline-ce92c64742c048d084621ee98a7a",
+      "campaign_id": "campaign-ai-hiring-00f93aa3ae6d25233a31723021f5",
+      "company_id": "company-714b762218bf289606f6eccbae98",
+      "lead_id": "lead-9276a0c292c10856e3e8083de43c",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://neo-term.ru/contacts",
+      "source_url": "https://neo-term.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:14:37.076Z"
+    },
+    {
+      "id": "contact-lead-9276a0c292c10856e3e8083de43c-website-form-3",
+      "pipeline_run_id": "pipeline-ce92c64742c048d084621ee98a7a",
+      "campaign_id": "campaign-ai-hiring-00f93aa3ae6d25233a31723021f5",
+      "company_id": "company-714b762218bf289606f6eccbae98",
+      "lead_id": "lead-9276a0c292c10856e3e8083de43c",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://neo-term.ru/contact",
+      "source_url": "https://neo-term.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:14:37.076Z"
+    },
+    {
+      "id": "contact-lead-9276a0c292c10856e3e8083de43c-website-form-4",
+      "pipeline_run_id": "pipeline-ce92c64742c048d084621ee98a7a",
+      "campaign_id": "campaign-ai-hiring-00f93aa3ae6d25233a31723021f5",
+      "company_id": "company-714b762218bf289606f6eccbae98",
+      "lead_id": "lead-9276a0c292c10856e3e8083de43c",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://neo-term.ru/contacts/",
+      "source_url": "https://neo-term.ru/contacts/",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:14:37.076Z"
+    },
+    {
+      "id": "contact-lead-9276a0c292c10856e3e8083de43c-company-website-5",
+      "pipeline_run_id": "pipeline-ce92c64742c048d084621ee98a7a",
+      "campaign_id": "campaign-ai-hiring-00f93aa3ae6d25233a31723021f5",
+      "company_id": "company-714b762218bf289606f6eccbae98",
+      "lead_id": "lead-9276a0c292c10856e3e8083de43c",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://neo-term.ru",
+      "source_url": "https://neo-term.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:14:37.076Z"
+    },
+    {
+      "id": "contact-lead-9276a0c292c10856e3e8083de43c-generic-email-1",
+      "pipeline_run_id": "pipeline-ce92c64742c048d084621ee98a7a",
+      "campaign_id": "campaign-ai-hiring-00f93aa3ae6d25233a31723021f5",
+      "company_id": "company-714b762218bf289606f6eccbae98",
+      "lead_id": "lead-9276a0c292c10856e3e8083de43c",
+      "contact_type": "generic_email",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": "mail@neo-term.ru",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://neo-term.ru",
+      "source_label": "public email parser",
+      "confidence_score": 99,
+      "is_primary": true,
+      "metadata": {
+        "email_status": "company_email_ready",
+        "email_mx_verified": true,
+        "email_domain_match_reason": "official_domain",
+        "email_subject": "Нео-Терм: быстрый контур AI-задачи",
+        "email_body": "Добрый день.\n\nВ публичном источнике Нео-Терм обратил внимание на задачу: «Написание и оптимизация промптов для работы с LLM (ChatGPT, Claude, YandexGPT, GigaChat, DeepSeek); Создание шаблонов и системных промптов для отделов (продажи, маркетинг, поддержка, HR); Автоматизация рутинных задач с помощью готовых AI-решений: генерация писем, резюмирование документов, классификация обращений; Интеграция готовых AI-сервисов через REST API в существующие бизнес-процессы; Интеграция LLM в 1С».\n\nКогда такая инициатива уже сформулирована, найм специалиста и запуск самой задачи часто идут с разной скоростью. Это не означает, что сотрудник не нужен: отдельный ограниченный участок можно проверить раньше, чтобы к выходу человека у команды уже были подтверждённые требования и рабочий прототип.\n\nПолезно отделить архитектурные решения, которые требуют постоянного владельца внутри компании, от короткого пилота, который быстро проверяет данные, интеграции и реальную ценность сценария.\n\nЯ AI-архитектор. Могу независимо разобрать задачу, собрать ограниченный прототип или реализовать отдельный AI-блок, не подменяя будущего сотрудника и не меняя выбранную вами кадровую стратегию.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": false,
+        "outreach_selected": true,
+        "email_generation_source": "template",
+        "email_generation_fallback_reason": "Необоснованные английские слова: LLM."
+      },
+      "created_at": "2026-10-07T22:14:37.076Z"
+    },
+    {
+      "id": "contact-lead-a23e7a925921dd9dd320375c0c77-website-form-2",
+      "pipeline_run_id": "pipeline-ce92c64742c048d084621ee98a7a",
+      "campaign_id": "campaign-ai-hiring-00f93aa3ae6d25233a31723021f5",
+      "company_id": "company-a8d34fa6c681287284cc37877a5b",
+      "lead_id": "lead-a23e7a925921dd9dd320375c0c77",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://lian.systems/contacts",
+      "source_url": "https://lian.systems/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:14:37.076Z"
+    },
+    {
+      "id": "contact-lead-a23e7a925921dd9dd320375c0c77-website-form-3",
+      "pipeline_run_id": "pipeline-ce92c64742c048d084621ee98a7a",
+      "campaign_id": "campaign-ai-hiring-00f93aa3ae6d25233a31723021f5",
+      "company_id": "company-a8d34fa6c681287284cc37877a5b",
+      "lead_id": "lead-a23e7a925921dd9dd320375c0c77",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://lian.systems/contact",
+      "source_url": "https://lian.systems/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:14:37.076Z"
+    },
+    {
+      "id": "contact-lead-a23e7a925921dd9dd320375c0c77-company-website-4",
+      "pipeline_run_id": "pipeline-ce92c64742c048d084621ee98a7a",
+      "campaign_id": "campaign-ai-hiring-00f93aa3ae6d25233a31723021f5",
+      "company_id": "company-a8d34fa6c681287284cc37877a5b",
+      "lead_id": "lead-a23e7a925921dd9dd320375c0c77",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://lian.systems",
+      "source_url": "https://lian.systems",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-07T22:14:37.076Z"
+    },
+    {
+      "id": "contact-lead-a23e7a925921dd9dd320375c0c77-generic-email-1",
+      "pipeline_run_id": "pipeline-ce92c64742c048d084621ee98a7a",
+      "campaign_id": "campaign-ai-hiring-00f93aa3ae6d25233a31723021f5",
+      "company_id": "company-a8d34fa6c681287284cc37877a5b",
+      "lead_id": "lead-a23e7a925921dd9dd320375c0c77",
+      "contact_type": "generic_email",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": "hello@lian.systems",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://lian.systems",
+      "source_label": "public email parser",
+      "confidence_score": 99,
+      "is_primary": true,
+      "metadata": {
+        "email_status": "company_email_ready",
+        "email_mx_verified": true,
+        "email_domain_match_reason": "official_domain",
+        "email_subject": "Разработка корпоративного ИИ-агента в ЛИАН",
+        "email_body": "Добрый день.\n\nВ описании вакансии ЛИАН указано, что компания занимается созданием и совершенствованием корпоративного ИИ-агента на базе открытого программного обеспечения, включая разработку инструментов-обвязок и интеграцию. Это говорит о текущих активных изменениях в ИТ-инфраструктуре компании, что делает момент актуальным для внедрения новых технологий.\nГипотетически, одним из узких мест может быть интеграция этих инструментов с существующими бизнес-процессами, что требует дополнительного анализа и настройки для оптимальной работы.\nМы можем предложить пилотный аудит вашего корпоративного ИИ-агента, включающий анализ входных данных и процессов подключения, с целью генерации отчёта по эффективности и предложениям по улучшению конкретных шагов интеграции.\n\nЯ AI-архитектор. Если потребуется, подключим бизнес-аналитика: сначала проверим процесс, затем выберем, что автоматизировать.\n\nМогу провести короткий разбор этого участка. Обычно он стоит 9 900 ₽; если ответите в течение 24 часов после отправки письма, проведу разбор бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": true,
+        "outreach_selected": true,
+        "email_generation_source": "ai",
+        "email_generation_fallback_reason": null
+      },
+      "created_at": "2026-10-07T22:14:37.076Z"
+    }
+  ],
+  "signals": [
+    {
+      "id": "signal-6a276f6db764170a8d899b771bc4",
+      "pipeline_run_id": "pipeline-ce92c64742c048d084621ee98a7a",
+      "campaign_id": "campaign-ai-hiring-00f93aa3ae6d25233a31723021f5",
+      "lead_id": "lead-9276a0c292c10856e3e8083de43c",
+      "company_id": "company-714b762218bf289606f6eccbae98",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Специалист по искусственному интеллекту / AI-инженер",
+      "signal_detail": "Написание и оптимизация промптов для работы с LLM (ChatGPT, Claude, YandexGPT, GigaChat, DeepSeek); Создание шаблонов и системных промптов для отделов (продажи, маркетинг, поддержка, HR); Автоматизация рутинных задач с помощью готовых AI-решений: генерация писем, резюмирование документов, классификация обращений; Интеграция готовых AI-сервисов через REST API в существующие бизнес-процессы; Интеграция LLM в 1С",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/137741662",
+      "confidence_score": 90,
+      "found_at": "2026-10-07T22:14:37.076Z",
+      "created_at": "2026-10-07T22:14:37.076Z"
+    },
+    {
+      "id": "signal-139a4163f0e9a1640f0494c22ceb",
+      "pipeline_run_id": "pipeline-ce92c64742c048d084621ee98a7a",
+      "campaign_id": "campaign-ai-hiring-00f93aa3ae6d25233a31723021f5",
+      "lead_id": "lead-a23e7a925921dd9dd320375c0c77",
+      "company_id": "company-a8d34fa6c681287284cc37877a5b",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "ML-инженер (Java)",
+      "signal_detail": "Создание и совершенствование корпоративного ИИ-агента на открытом ПО: разработка инструментов-обвязок (harness), подключение а",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/138235117",
+      "confidence_score": 90,
+      "found_at": "2026-10-07T22:14:37.076Z",
+      "created_at": "2026-10-07T22:14:37.076Z"
+    }
+  ],
+  "queueBefore": [
+    {
+      "id": "outreach-contact-lead-9276a0c292c10856e3e8083de43c-generic-email-1",
+      "company_name": "Нео-Терм",
+      "status": "needs_review",
+      "quality_gate_passed": false
+    },
+    {
+      "id": "outreach-contact-lead-a23e7a925921dd9dd320375c0c77-generic-email-1",
+      "company_name": "ЛИАН",
+      "status": "needs_review",
+      "quality_gate_passed": true
+    }
+  ],
+  "metrics": {
+    "companies": 2,
+    "people": 1,
+    "personalEmails": 0,
+    "emailContacts": 2,
+    "ready": 1,
+    "manualReview": 1
+  },
+  "lifecycle": {
+    "single": "approved",
+    "bulk": 0,
+    "queued": 1,
+    "senderDryRun": "sent",
+    "sinkCalls": 1,
+    "followup": {
+      "generated": 1,
+      "skipped": {}
+    },
+    "followupNote": "Elapsed time and no-reply status simulated in isolated storage; no IMAP calls"
+  },
+  "orphanRequests": 0,
+  "requests": {
+    "api.openai.com": 27,
+    "api.hh.ru": 5,
+    "hh.ru": 23,
+    "www.bing.com": 14,
+    "api.tavily.com": 1,
+    "search.brave.com": 9,
+    "news.google.com": 1,
+    "search.yahoo.com": 1,
+    "en.wikipedia.org": 1,
+    "ru.wikipedia.org": 1,
+    "www.geeksforgeeks.org": 1,
+    "llmpodium.com": 1,
+    "neo-term.ru": 27,
+    "lian.systems": 17
+  },
+  "modelCalls": [
+    {
+      "schema": "direct_ai_need_search_plan",
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 754,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 327,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1081
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "direct_ai_need_search_plan",
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 2227,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 292,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2519
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 3799,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 980,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4779
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 4353,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 1370,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5723
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 4415,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 958,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5373
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "direct_ai_need_search_plan",
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 2138,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 251,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2389
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 2758,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 325,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3083
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 4401,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 2560
+        },
+        "output_tokens": 364,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4765
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8788,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 437,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9225
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8702,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 432,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9134
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 5188,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 3968
+        },
+        "output_tokens": 689,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5877
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8837,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 217,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9054
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 6000,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 471,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 6471
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8782,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 218,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9000
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 7325,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 3968
+        },
+        "output_tokens": 645,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 7970
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8705,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 271,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8976
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 7375,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 4992
+        },
+        "output_tokens": 566,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 7941
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 7930,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 632,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8562
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "leadgen_outreach_v4",
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 731,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 231,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 962
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 3372,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 708,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4080
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 5847,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 3200
+        },
+        "output_tokens": 414,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 6261
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8788,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 432,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 9220
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 7037,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 4992
+        },
+        "output_tokens": 389,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 7426
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8731,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 94,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8825
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 8867,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 92,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8959
+      },
+      "webSearchCalls": 1
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200,
+      "model": "gpt-4.1",
+      "usage": {
+        "input_tokens": 7298,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 6016
+        },
+        "output_tokens": 432,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 7730
+      },
+      "webSearchCalls": 0
+    },
+    {
+      "schema": "leadgen_outreach_v4",
+      "status": 200,
+      "model": "gpt-4.1-mini",
+      "usage": {
+        "input_tokens": 641,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 233,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 874
+      },
+      "webSearchCalls": 0
+    }
+  ],
+  "finishedAt": "2026-10-07T22:16:10.090Z"
+}

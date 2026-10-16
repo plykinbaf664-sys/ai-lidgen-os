@@ -1,0 +1,3438 @@
+{
+  "mode": "business",
+  "name": "КИРПИЧ GROUP",
+  "website": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+  "before": {
+    "companyName": "КИРПИЧ GROUP",
+    "officialWebsite": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+    "officialDomain": "xn----ftbnai5adade7a7b.xn--p1ai",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "kirpich-group@mail.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn----ftbnai5adade7a7b.xn--p1ai/",
+              "sourceType": "official",
+              "excerpt": "kirpich-group@mail.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 78
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "kirpich-group@mail.ru",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://xn----ftbnai5adade7a7b.xn--p1ai/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: КИРПИЧ GROUP; открыта вакансия: Менеджер по продажам.",
+      "sourceUrl": "https://hh.ru/vacancy/137052088",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 22,
+      "lprMs": 20045,
+      "contactMs": 5579,
+      "totalMs": 30843,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: КИРПИЧ GROUP; открыта вакансия: Менеджер по продажам.",
+    "sourceUrl": "https://hh.ru/vacancy/137052088",
+    "confidence": 100
+  },
+  "index": 6,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+      "status": 200,
+      "elapsedMs": 1174
+    },
+    {
+      "stage": "research_open",
+      "url": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+      "success": true,
+      "evidence": {
+        "url": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+        "kind": "page",
+        "text": "Купить кирпич по выгодной цене с доставкой в Краснодаре +7 (861) 2-900-208 +7 (928) 274-70-71 kirpich-group@mail.ru г.Краснодар, ул.Тургеневское шоссе 27/2 Смотреть на карте Краснодар Ростов-на-Дону Новороссийск Армавир Пятигорск Строительный калькулятор О компании Реквизиты компании Сотрудники Производители Вышневолоцкая керамика Кирпичный завод \"Прохладный\" Промышленная группа «БИС» Брянский кирпичный завод Славянский кирпичный завод Маркинский кирпичный завод Новомосковский завод керамических материалов Калужский завод строительных материалов “КЗСМ” TEREX Кирпичный завод BRAER Аксайский кирпичный завод Воротынский кирпичный завод Губский кирпичный завод Донской кирпич – группа кирпичных заводов BRICK PREMIUM Продукция Облицовочный кирпич керамический Забутовочный кирпич ( рядовой ) Керамические поризованные блоки Тротуарная плитка Кирпич ручной формовки Клинкерный кирпич облицовочный Цветные кладочные смеси (растворы) Кирпич огнеупорный (шамотный) Печной кирпич Гиперпрессованный кирпич лицевой Uncategorized Строительные услуги Партнерам Производителям Торгующим организациям Застро",
+        "links": [
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+            "label": ""
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kontakti",
+            "label": "Смотреть на карте"
+          },
+          {
+            "url": "https://xn--b1axaggg.xn----ftbnai5adade7a7b.xn--p1ai",
+            "label": "Ростов-на-Дону"
+          },
+          {
+            "url": "https://xn--b1amdelgbarlac.xn----ftbnai5adade7a7b.xn--p1ai",
+            "label": "Новороссийск"
+          },
+          {
+            "url": "https://xn--80aagyrxe.xn----ftbnai5adade7a7b.xn--p1ai",
+            "label": "Армавир"
+          },
+          {
+            "url": "https://xn--c1ajhpcjhd0j.xn----ftbnai5adade7a7b.xn--p1ai",
+            "label": "Пятигорск"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kalkuliatory",
+            "label": "Строительный калькулятор"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/o-kompanii",
+            "label": "О компании"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/rekvizity",
+            "label": "Реквизиты компании"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+            "label": "Сотрудники"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditeli",
+            "label": "Производители"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vyshnevolotskaya-keramika",
+            "label": "Вышневолоцкая керамика"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/stavropolskii_kirpichnyi_zavod",
+            "label": "Кирпичный завод \"Прохладный\""
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bis",
+            "label": "Промышленная группа «БИС»"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bryanskij-kirpichnyj-zavod",
+            "label": "Брянский кирпичный завод"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/slavianskii_kirpichnyi_zavod",
+            "label": "Славянский кирпичный завод"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/markinskii_kirpichnyi_zavod",
+            "label": "Маркинский кирпичный завод"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/novomoskovskii_zavod_keramicheskih_materialov",
+            "label": "Новомосковский завод керамических материалов"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/terex",
+            "label": "Калужский завод строительных материалов “КЗСМ” TEREX"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/braer",
+            "label": "Кирпичный завод BRAER"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/aksajskij-kirpichnyj-zavod",
+            "label": "Аксайский кирпичный завод"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vorotynskij-kirpichnyj-zavod",
+            "label": "Воротынский кирпичный завод"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/gubskij-kirpichnyj-zavod",
+            "label": "Губский кирпичный завод"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/donskoj-kirpich-gruppa-kirpichnyh-zavo",
+            "label": "Донской кирпич – группа кирпичных заводов"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/brick_premium",
+            "label": "BRICK PREMIUM"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/produkcia",
+            "label": "Продукция"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/oblitsovochniy_kirpich",
+            "label": "Облицовочный кирпич керамический"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/zabutovochnyi_kirpich",
+            "label": "Забутовочный кирпич ( рядовой )"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/keramicheskie_porizovannye_bloki",
+            "label": "Керамические поризованные блоки"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proektirovanie",
+            "label": "Строительные услуги"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditelyam",
+            "label": "Партнерам"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/dileram",
+            "label": "Торгующим организациям"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/zastrojshhikam",
+            "label": "Застройщикам"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product/granit-odinarnyj-pustotelyj-m175-f75-pustot-37-416sht-upak-plenkoj",
+            "label": "33.50 ₽ 30.00 ₽"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product/svetloseryj-kirpich-mramor-m150-f50-416sht-upak-plenkoj",
+            "label": "32.40 ₽ 29.00 ₽"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product/tarhan-odinarnyj-pustotelyj-m175-f75-416-sht",
+            "label": "32.50 ₽ 27.50 ₽"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/?page_id=1082",
+            "label": "калькулятором"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/?page_id=1058",
+            "label": "Расчет керамзитоблоков"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/articles",
+            "label": "Статьи"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/policy",
+            "label": "Политика конфиденциальности"
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:13:18.355Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 5557,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "КИРПИЧ GROUP",
+        "domain": "xn----ftbnai5adade7a7b.xn--p1ai",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: КИРПИЧ GROUP; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137052088",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+            "kind": "page",
+            "text": "Купить кирпич по выгодной цене с доставкой в Краснодаре +7 (861) 2-900-208 +7 (928) 274-70-71 kirpich-group@mail.ru г.Краснодар, ул.Тургеневское шоссе 27/2 Смотреть на карте Краснодар Ростов-на-Дону Новороссийск Армавир Пятигорск Строительный калькулятор О компании Реквизиты компании Сотрудники Производители Вышневолоцкая керамика Кирпичный завод \"Прохладный\" Промышленная группа «БИС» Брянский кирпичный завод Славянский кирпичный завод Маркинский кирпичный завод Новомосковский завод керамических материалов Калужский завод строительных материалов “КЗСМ” TEREX Кирпичный завод BRAER Аксайский кирпичный завод Воротынский кирпичный завод Губский кирпичный завод Донской кирпич – группа кирпичных заводов BRICK PREMIUM Продукция Облицовочный кирпич керамический Забутовочный кирпич ( рядовой ) Керамические поризованные блоки Тротуарная плитка Кирпич ручной формовки Клинкерный кирпич облицовочный Цветные кладочные смеси (растворы) Кирпич огнеупорный (шамотный) Печной кирпич Гиперпрессованный кирпич лицевой Uncategorized Строительные услуги Партнерам Производителям Торгующим организациям Застро",
+            "links": [
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": ""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kontakti",
+                "label": "Смотреть на карте"
+              },
+              {
+                "url": "https://xn--b1axaggg.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Ростов-на-Дону"
+              },
+              {
+                "url": "https://xn--b1amdelgbarlac.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Новороссийск"
+              },
+              {
+                "url": "https://xn--80aagyrxe.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Армавир"
+              },
+              {
+                "url": "https://xn--c1ajhpcjhd0j.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Пятигорск"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kalkuliatory",
+                "label": "Строительный калькулятор"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/o-kompanii",
+                "label": "О компании"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/rekvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+                "label": "Сотрудники"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditeli",
+                "label": "Производители"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vyshnevolotskaya-keramika",
+                "label": "Вышневолоцкая керамика"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/stavropolskii_kirpichnyi_zavod",
+                "label": "Кирпичный завод \"Прохладный\""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bis",
+                "label": "Промышленная группа «БИС»"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bryanskij-kirpichnyj-zavod",
+                "label": "Брянский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/slavianskii_kirpichnyi_zavod",
+                "label": "Славянский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/markinskii_kirpichnyi_zavod",
+                "label": "Маркинский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/novomoskovskii_zavod_keramicheskih_materialov",
+                "label": "Новомосковский завод керамических материалов"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/terex",
+                "label": "Калужский завод строительных материалов “КЗСМ” TEREX"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/braer",
+                "label": "Кирпичный завод BRAER"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/aksajskij-kirpichnyj-zavod",
+                "label": "Аксайский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vorotynskij-kirpichnyj-zavod",
+                "label": "Воротынский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/gubskij-kirpichnyj-zavod",
+                "label": "Губский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/donskoj-kirpich-gruppa-kirpichnyh-zavo",
+                "label": "Донской кирпич – группа кирпичных заводов"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/brick_premium",
+                "label": "BRICK PREMIUM"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/produkcia",
+                "label": "Продукция"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/oblitsovochniy_kirpich",
+                "label": "Облицовочный кирпич керамический"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/zabutovochnyi_kirpich",
+                "label": "Забутовочный кирпич ( рядовой )"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/keramicheskie_porizovannye_bloki",
+                "label": "Керамические поризованные блоки"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proektirovanie",
+                "label": "Строительные услуги"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditelyam",
+                "label": "Партнерам"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/dileram",
+                "label": "Торгующим организациям"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/zastrojshhikam",
+                "label": "Застройщикам"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product/granit-odinarnyj-pustotelyj-m175-f75-pustot-37-416sht-upak-plenkoj",
+                "label": "33.50 ₽ 30.00 ₽"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product/svetloseryj-kirpich-mramor-m150-f50-416sht-upak-plenkoj",
+                "label": "32.40 ₽ 29.00 ₽"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product/tarhan-odinarnyj-pustotelyj-m175-f75-416-sht",
+                "label": "32.50 ₽ 27.50 ₽"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/?page_id=1082",
+                "label": "калькулятором"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/?page_id=1058",
+                "label": "Расчет керамзитоблоков"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/articles",
+                "label": "Статьи"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/policy",
+                "label": "Политика конфиденциальности"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:13:18.355Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 10,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "КИРПИЧ GROUP — компания, занимающаяся продажей строительных материалов (кирпич и сопутствующая продукция) с офисом в Краснодаре и представителями в других городах. На сайте компании есть раздел 'Сотрудники'.",
+        "missing": [
+          "Имя и должность руководителя подразделения продаж или профильного ЛПР",
+          "Публичный личный контакт (email/profиль) руководителя"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "xn----ftbnai5adade7a7b.xn--p1ai",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Купить кирпич по выгодной цене с доставкой в Краснодаре"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+            "focus": "найти руководителя продаж или профильного ЛПР",
+            "purpose": "Получить имена и роли ключевых сотрудников, определить владельца процесса продаж, найти личные контакты."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Требуется изучить страницу сотрудников для обнаружения релевантных персон и контактов."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "КИРПИЧ GROUP — компания, занимающаяся продажей строительных материалов (кирпич и сопутствующая продукция) с офисом в Краснодаре и представителями в других городах. На сайте компании есть раздел 'Сотрудники'.",
+        "missing": [
+          "Имя и должность руководителя подразделения продаж или профильного ЛПР",
+          "Публичный личный контакт (email/profиль) руководителя"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "xn----ftbnai5adade7a7b.xn--p1ai",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Купить кирпич по выгодной цене с доставкой в Краснодаре"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+            "focus": "найти руководителя продаж или профильного ЛПР",
+            "purpose": "Получить имена и роли ключевых сотрудников, определить владельца процесса продаж, найти личные контакты."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Требуется изучить страницу сотрудников для обнаружения релевантных персон и контактов."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "xn----ftbnai5adade7a7b.xn--p1ai"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+      "status": 301,
+      "elapsedMs": 383
+    },
+    {
+      "stage": "fetch",
+      "url": "http://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+      "status": 301,
+      "elapsedMs": 243
+    },
+    {
+      "stage": "fetch",
+      "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+      "status": 200,
+      "elapsedMs": 1210
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+      "focus": "найти руководителя продаж или профильного ЛПР",
+      "purpose": "Получить имена и роли ключевых сотрудников, определить владельца процесса продаж, найти личные контакты.",
+      "success": true,
+      "evidence": {
+        "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+        "kind": "page",
+        "text": "Сотрудники компании Кирпич Group в Краснодаре +7 (861) 2-900-208 +7 (928) 274-70-71 kirpich-group@mail.ru г.Краснодар, ул.Тургеневское шоссе 27/2 Смотреть на карте Краснодар Ростов-на-Дону Новороссийск Армавир Пятигорск Строительный калькулятор О компании Реквизиты компании Сотрудники Производители Вышневолоцкая керамика Кирпичный завод \"Прохладный\" Промышленная группа «БИС» Брянский кирпичный завод Славянский кирпичный завод Маркинский кирпичный завод Новомосковский завод керамических материалов Калужский завод строительных материалов “КЗСМ” TEREX Кирпичный завод BRAER Аксайский кирпичный завод Воротынский кирпичный завод Губский кирпичный завод Донской кирпич – группа кирпичных заводов BRICK PREMIUM Продукция Облицовочный кирпич керамический Забутовочный кирпич ( рядовой ) Керамические поризованные блоки Тротуарная плитка Кирпич ручной формовки Клинкерный кирпич облицовочный Цветные кладочные смеси (растворы) Кирпич огнеупорный (шамотный) Печной кирпич Гиперпрессованный кирпич лицевой Uncategorized Строительные услуги Партнерам Производителям Торгующим организациям Застройщикам Контакты Главная | Сотрудники Сотрудники Аркадий Аванесян Дилеры, сбытовая сеть +7 (961) 508-30-98 Мария Шириханова Администрирование, Логистика +7 (961) 508-26-58 ООО \"КИРПИЧ ГРУПП\" ОГРН 1162375028430 +7 (861) 2-900-208 Заказать звонок Статьи Наш офис: г.Краснодар, ул.Тургеневское шоссе 27/3, оф.1 E-mail рассылка Делимся скидками, акциями, опытом и полезными советами Политика конфиденциальности Заказать обратный звонок Ведите ваше имя и телефон. Специалист компании \"Кирпич Групп\" свяжется с вами, чтобы ответить на ваши вопросы. или позвоните нам по телефону +7 (861) 2-900-208 Запись на консультацию к архитектору-проектировщику Ведите ваши данные, и наш специалист свяжется с вами, чтобы ответить на ваши вопросы Меню О компании Реквизиты Сотрудники Производители Вышневолоцкая керамика Кирпичный завод “Прохладный” Промышленная группа «БИС» Брянский кирпичный завод Славянский кирпичный завод Маркинский кирпичный завод Новомосковский завод керамических материалов Калужский завод строительных материалов “КЗСМ” TEREX Кирпичный завод BRAER Аксайский кирпичный завод Воротынский кирпичный завод Губский кирпичный завод Донской кирпич – группа кирпичных заводов BRICK PREMIUM Продукция Облицовочный кирпич керамический Забутовочный кирпич ( рядовой ) Керамические поризованные блоки Тротуарная плитка Кирпич ручной формовки Клинкерный кирпич облицовочный Цветные кладочные смеси (растворы) Кирпич огнеупорный (шамотный) Печной кирпич Гиперпрессованный кирпич лицевой Uncategorized Проектирование Партнерам Производителям Торгующим организациям Застройщикам Контакты Контакты Краснодар Ростов-на-Дону Новороссийск Армавир Пятигорск Городской телефон +7 (861) 2-900-208 Мобильный телефон +7 (928) 274-70-71 E-mail kirpich-group@mail.ru Адрес г.Краснодар, ул.Кубанская Набережная, 45 Заказ товара Для заказ данного товара оставьте ваши контактные данные, и мы сами с вами свяжемся.",
+        "links": [
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+            "label": ""
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+            "label": ""
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kontakti",
+            "label": "Смотреть на карте"
+          },
+          {
+            "url": "https://xn--b1axaggg.xn----ftbnai5adade7a7b.xn--p1ai",
+            "label": "Ростов-на-Дону"
+          },
+          {
+            "url": "https://xn--b1amdelgbarlac.xn----ftbnai5adade7a7b.xn--p1ai",
+            "label": "Новороссийск"
+          },
+          {
+            "url": "https://xn--80aagyrxe.xn----ftbnai5adade7a7b.xn--p1ai",
+            "label": "Армавир"
+          },
+          {
+            "url": "https://xn--c1ajhpcjhd0j.xn----ftbnai5adade7a7b.xn--p1ai",
+            "label": "Пятигорск"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kalkuliatory",
+            "label": "Строительный калькулятор"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/o-kompanii",
+            "label": "О компании"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/rekvizity",
+            "label": "Реквизиты компании"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditeli",
+            "label": "Производители"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vyshnevolotskaya-keramika",
+            "label": "Вышневолоцкая керамика"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/stavropolskii_kirpichnyi_zavod",
+            "label": "Кирпичный завод \"Прохладный\""
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bis",
+            "label": "Промышленная группа «БИС»"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bryanskij-kirpichnyj-zavod",
+            "label": "Брянский кирпичный завод"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/slavianskii_kirpichnyi_zavod",
+            "label": "Славянский кирпичный завод"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/markinskii_kirpichnyi_zavod",
+            "label": "Маркинский кирпичный завод"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/novomoskovskii_zavod_keramicheskih_materialov",
+            "label": "Новомосковский завод керамических материалов"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/terex",
+            "label": "Калужский завод строительных материалов “КЗСМ” TEREX"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/braer",
+            "label": "Кирпичный завод BRAER"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/aksajskij-kirpichnyj-zavod",
+            "label": "Аксайский кирпичный завод"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vorotynskij-kirpichnyj-zavod",
+            "label": "Воротынский кирпичный завод"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/gubskij-kirpichnyj-zavod",
+            "label": "Губский кирпичный завод"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/donskoj-kirpich-gruppa-kirpichnyh-zavo",
+            "label": "Донской кирпич – группа кирпичных заводов"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/brick_premium",
+            "label": "BRICK PREMIUM"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/produkcia",
+            "label": "Продукция"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/oblitsovochniy_kirpich",
+            "label": "Облицовочный кирпич керамический"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/zabutovochnyi_kirpich",
+            "label": "Забутовочный кирпич ( рядовой )"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/keramicheskie_porizovannye_bloki",
+            "label": "Керамические поризованные блоки"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proektirovanie",
+            "label": "Строительные услуги"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditelyam",
+            "label": "Партнерам"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/dileram",
+            "label": "Торгующим организациям"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/zastrojshhikam",
+            "label": "Застройщикам"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/articles",
+            "label": "Статьи"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/policy",
+            "label": "Политика конфиденциальности"
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:13:25.887Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 7071,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "КИРПИЧ GROUP",
+        "domain": "xn----ftbnai5adade7a7b.xn--p1ai",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: КИРПИЧ GROUP; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137052088",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+            "kind": "page",
+            "text": "Купить кирпич по выгодной цене с доставкой в Краснодаре +7 (861) 2-900-208 +7 (928) 274-70-71 kirpich-group@mail.ru г.Краснодар, ул.Тургеневское шоссе 27/2 Смотреть на карте Краснодар Ростов-на-Дону Новороссийск Армавир Пятигорск Строительный калькулятор О компании Реквизиты компании Сотрудники Производители Вышневолоцкая керамика Кирпичный завод \"Прохладный\" Промышленная группа «БИС» Брянский кирпичный завод Славянский кирпичный завод Маркинский кирпичный завод Новомосковский завод керамических материалов Калужский завод строительных материалов “КЗСМ” TEREX Кирпичный завод BRAER Аксайский кирпичный завод Воротынский кирпичный завод Губский кирпичный завод Донской кирпич – группа кирпичных заводов BRICK PREMIUM Продукция Облицовочный кирпич керамический Забутовочный кирпич ( рядовой ) Керамические поризованные блоки Тротуарная плитка Кирпич ручной формовки Клинкерный кирпич облицовочный Цветные кладочные смеси (растворы) Кирпич огнеупорный (шамотный) Печной кирпич Гиперпрессованный кирпич лицевой Uncategorized Строительные услуги Партнерам Производителям Торгующим организациям Застро",
+            "links": [
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": ""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kontakti",
+                "label": "Смотреть на карте"
+              },
+              {
+                "url": "https://xn--b1axaggg.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Ростов-на-Дону"
+              },
+              {
+                "url": "https://xn--b1amdelgbarlac.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Новороссийск"
+              },
+              {
+                "url": "https://xn--80aagyrxe.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Армавир"
+              },
+              {
+                "url": "https://xn--c1ajhpcjhd0j.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Пятигорск"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kalkuliatory",
+                "label": "Строительный калькулятор"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/o-kompanii",
+                "label": "О компании"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/rekvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+                "label": "Сотрудники"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditeli",
+                "label": "Производители"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vyshnevolotskaya-keramika",
+                "label": "Вышневолоцкая керамика"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/stavropolskii_kirpichnyi_zavod",
+                "label": "Кирпичный завод \"Прохладный\""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bis",
+                "label": "Промышленная группа «БИС»"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bryanskij-kirpichnyj-zavod",
+                "label": "Брянский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/slavianskii_kirpichnyi_zavod",
+                "label": "Славянский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/markinskii_kirpichnyi_zavod",
+                "label": "Маркинский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/novomoskovskii_zavod_keramicheskih_materialov",
+                "label": "Новомосковский завод керамических материалов"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/terex",
+                "label": "Калужский завод строительных материалов “КЗСМ” TEREX"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/braer",
+                "label": "Кирпичный завод BRAER"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/aksajskij-kirpichnyj-zavod",
+                "label": "Аксайский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vorotynskij-kirpichnyj-zavod",
+                "label": "Воротынский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/gubskij-kirpichnyj-zavod",
+                "label": "Губский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/donskoj-kirpich-gruppa-kirpichnyh-zavo",
+                "label": "Донской кирпич – группа кирпичных заводов"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/brick_premium",
+                "label": "BRICK PREMIUM"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/produkcia",
+                "label": "Продукция"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/oblitsovochniy_kirpich",
+                "label": "Облицовочный кирпич керамический"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/zabutovochnyi_kirpich",
+                "label": "Забутовочный кирпич ( рядовой )"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/keramicheskie_porizovannye_bloki",
+                "label": "Керамические поризованные блоки"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proektirovanie",
+                "label": "Строительные услуги"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditelyam",
+                "label": "Партнерам"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/dileram",
+                "label": "Торгующим организациям"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/zastrojshhikam",
+                "label": "Застройщикам"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product/granit-odinarnyj-pustotelyj-m175-f75-pustot-37-416sht-upak-plenkoj",
+                "label": "33.50 ₽ 30.00 ₽"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product/svetloseryj-kirpich-mramor-m150-f50-416sht-upak-plenkoj",
+                "label": "32.40 ₽ 29.00 ₽"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product/tarhan-odinarnyj-pustotelyj-m175-f75-416-sht",
+                "label": "32.50 ₽ 27.50 ₽"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/?page_id=1082",
+                "label": "калькулятором"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/?page_id=1058",
+                "label": "Расчет керамзитоблоков"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/articles",
+                "label": "Статьи"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/policy",
+                "label": "Политика конфиденциальности"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:13:18.355Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+            "kind": "page",
+            "text": "Сотрудники компании Кирпич Group в Краснодаре +7 (861) 2-900-208 +7 (928) 274-70-71 kirpich-group@mail.ru г.Краснодар, ул.Тургеневское шоссе 27/2 Смотреть на карте Краснодар Ростов-на-Дону Новороссийск Армавир Пятигорск Строительный калькулятор О компании Реквизиты компании Сотрудники Производители Вышневолоцкая керамика Кирпичный завод \"Прохладный\" Промышленная группа «БИС» Брянский кирпичный завод Славянский кирпичный завод Маркинский кирпичный завод Новомосковский завод керамических материалов Калужский завод строительных материалов “КЗСМ” TEREX Кирпичный завод BRAER Аксайский кирпичный завод Воротынский кирпичный завод Губский кирпичный завод Донской кирпич – группа кирпичных заводов BRICK PREMIUM Продукция Облицовочный кирпич керамический Забутовочный кирпич ( рядовой ) Керамические поризованные блоки Тротуарная плитка Кирпич ручной формовки Клинкерный кирпич облицовочный Цветные кладочные смеси (растворы) Кирпич огнеупорный (шамотный) Печной кирпич Гиперпрессованный кирпич лицевой Uncategorized Строительные услуги Партнерам Производителям Торгующим организациям Застройщикам Контакты Главная | Сотрудники Сотрудники Аркадий Аванесян Дилеры, сбытовая сеть +7 (961) 508-30-98 Мария Шириханова Администрирование, Логистика +7 (961) 508-26-58 ООО \"КИРПИЧ ГРУПП\" ОГРН 1162375028430 +7 (861) 2-900-208 Заказать звонок Статьи Наш офис: г.Краснодар, ул.Тургеневское шоссе 27/3, оф.1 E-mail рассылка Делимся скидками, акциями, опытом и полезными советами Политика конфиденциальности Заказать обратный звонок Ведите ваше имя и телефон. Специалист компании \"Кирпич Групп\" свяжется с вами, чтобы ответить на ваши вопросы. или позвоните нам по телефону +7 (861) 2-900-208 Запись на консультацию к архитектору-проектировщику Ведите ваши данные, и наш специалист свяжется с вами, чтобы ответить на ваши вопросы Меню О компании Реквизиты Сотрудники Производители Вышневолоцкая керамика Кирпичный завод “Прохладный” Промышленная группа «БИС» Брянский кирпичный завод Славянский кирпичный завод Маркинский кирпичный завод Новомосковский завод керамических материалов Калужский завод строительных материалов “КЗСМ” TEREX Кирпичный завод BRAER Аксайский кирпичный завод Воротынский кирпичный завод Губский кирпичный завод Донской кирпич – группа кирпичных заводов BRICK PREMIUM Продукция Облицовочный кирпич керамический Забутовочный кирпич ( рядовой ) Керамические поризованные блоки Тротуарная плитка Кирпич ручной формовки Клинкерный кирпич облицовочный Цветные кладочные смеси (растворы) Кирпич огнеупорный (шамотный) Печной кирпич Гиперпрессованный кирпич лицевой Uncategorized Проектирование Партнерам Производителям Торгующим организациям Застройщикам Контакты Контакты Краснодар Ростов-на-Дону Новороссийск Армавир Пятигорск Городской телефон +7 (861) 2-900-208 Мобильный телефон +7 (928) 274-70-71 E-mail kirpich-group@mail.ru Адрес г.Краснодар, ул.Кубанская Набережная, 45 Заказ товара Для заказ данного товара оставьте ваши контактные данные, и мы сами с вами свяжемся.",
+            "links": [
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+                "label": ""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": ""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kontakti",
+                "label": "Смотреть на карте"
+              },
+              {
+                "url": "https://xn--b1axaggg.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Ростов-на-Дону"
+              },
+              {
+                "url": "https://xn--b1amdelgbarlac.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Новороссийск"
+              },
+              {
+                "url": "https://xn--80aagyrxe.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Армавир"
+              },
+              {
+                "url": "https://xn--c1ajhpcjhd0j.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Пятигорск"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kalkuliatory",
+                "label": "Строительный калькулятор"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/o-kompanii",
+                "label": "О компании"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/rekvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditeli",
+                "label": "Производители"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vyshnevolotskaya-keramika",
+                "label": "Вышневолоцкая керамика"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/stavropolskii_kirpichnyi_zavod",
+                "label": "Кирпичный завод \"Прохладный\""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bis",
+                "label": "Промышленная группа «БИС»"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bryanskij-kirpichnyj-zavod",
+                "label": "Брянский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/slavianskii_kirpichnyi_zavod",
+                "label": "Славянский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/markinskii_kirpichnyi_zavod",
+                "label": "Маркинский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/novomoskovskii_zavod_keramicheskih_materialov",
+                "label": "Новомосковский завод керамических материалов"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/terex",
+                "label": "Калужский завод строительных материалов “КЗСМ” TEREX"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/braer",
+                "label": "Кирпичный завод BRAER"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/aksajskij-kirpichnyj-zavod",
+                "label": "Аксайский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vorotynskij-kirpichnyj-zavod",
+                "label": "Воротынский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/gubskij-kirpichnyj-zavod",
+                "label": "Губский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/donskoj-kirpich-gruppa-kirpichnyh-zavo",
+                "label": "Донской кирпич – группа кирпичных заводов"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/brick_premium",
+                "label": "BRICK PREMIUM"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/produkcia",
+                "label": "Продукция"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/oblitsovochniy_kirpich",
+                "label": "Облицовочный кирпич керамический"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/zabutovochnyi_kirpich",
+                "label": "Забутовочный кирпич ( рядовой )"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/keramicheskie_porizovannye_bloki",
+                "label": "Керамические поризованные блоки"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proektirovanie",
+                "label": "Строительные услуги"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditelyam",
+                "label": "Партнерам"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/dileram",
+                "label": "Торгующим организациям"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/zastrojshhikam",
+                "label": "Застройщикам"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/articles",
+                "label": "Статьи"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/policy",
+                "label": "Политика конфиденциальности"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:13:25.887Z",
+            "id": "e2"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+            "focus": "найти руководителя продаж или профильного ЛПР",
+            "success": true
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 9,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "КИРПИЧ GROUP занимается продажей кирпича и строительных материалов в Краснодарском крае. Найдена страница 'Сотрудники', на которой указаны ответственные по ключевым направлениям бизнеса.",
+        "missing": [
+          "Прямое подтверждение роли руководителя отдела продаж",
+          "Публичный email (найдены только телефоны, email компании – общий)"
+        ],
+        "people": [
+          {
+            "name": "Аркадий Аванесян",
+            "role": "Дилеры, сбытовая сеть",
+            "relevance": 90,
+            "reason": "Аркадий Аванесян курирует дилерскую и сбытовую сеть, что напрямую связано с продажами продукции и управлением продажами.",
+            "citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "email",
+                "value": "kirpich-group@mail.ru",
+                "citation": {
+                  "sourceId": "e2",
+                  "quote": "Аркадий Аванесян Дилеры, сбытовая сеть +7 (961) 508-30-98 ... kirpich-group@mail.ru"
+                }
+              },
+              {
+                "type": "profile",
+                "value": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+                "citation": {
+                  "sourceId": "e2",
+                  "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+                }
+              }
+            ]
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "xn----ftbnai5adade7a7b.xn--p1ai",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Купить кирпич по выгодной цене с доставкой в Краснодаре"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Аркадий Аванесян\" кирпич group",
+            "focus": "найти публичные профили или подтверждённый личный email",
+            "purpose": "Выяснить точный статус Аркадия Аванесяна (руководитель/владелец процесса) и найти связанный с ним личный публичный контакт"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найден явный руководитель подразделения продаж с личным email или профилем; требуется уточнить роль Аркадия Аванесяна и найти прямой личный контакт."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "КИРПИЧ GROUP занимается продажей кирпича и строительных материалов в Краснодарском крае. Найдена страница 'Сотрудники', на которой указаны ответственные по ключевым направлениям бизнеса.",
+        "missing": [
+          "Прямое подтверждение роли руководителя отдела продаж",
+          "Публичный email (найдены только телефоны, email компании – общий)"
+        ],
+        "people": [
+          {
+            "name": "Аркадий Аванесян",
+            "role": "Дилеры, сбытовая сеть",
+            "relevance": 90,
+            "reason": "Аркадий Аванесян курирует дилерскую и сбытовую сеть, что напрямую связано с продажами продукции и управлением продажами.",
+            "citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "email",
+                "value": "kirpich-group@mail.ru",
+                "citation": {
+                  "sourceId": "e2",
+                  "quote": "Аркадий Аванесян Дилеры, сбытовая сеть +7 (961) 508-30-98 ... kirpich-group@mail.ru"
+                }
+              },
+              {
+                "type": "profile",
+                "value": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+                "citation": {
+                  "sourceId": "e2",
+                  "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+                }
+              }
+            ]
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "xn----ftbnai5adade7a7b.xn--p1ai",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Купить кирпич по выгодной цене с доставкой в Краснодаре"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Аркадий Аванесян\" кирпич group",
+            "focus": "найти публичные профили или подтверждённый личный email",
+            "purpose": "Выяснить точный статус Аркадия Аванесяна (руководитель/владелец процесса) и найти связанный с ним личный публичный контакт"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найден явный руководитель подразделения продаж с личным email или профилем; требуется уточнить роль Аркадия Аванесяна и найти прямой личный контакт."
+      },
+      "validationErrors": [
+        "contact_rejected:Аркадий Аванесян:quote_must_include_name_and_contact"
+      ],
+      "acceptedPeople": [
+        {
+          "full_name": "Аркадий Аванесян",
+          "role_title": "Дилеры, сбытовая сеть",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Аркадий Аванесян Дилеры, сбытовая сеть"
+          ],
+          "metadata": {
+            "source_url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+            "source_urls": [
+              "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+              }
+            ],
+            "semantic_role_relevance": 90,
+            "semantic_role_reason": "Аркадий Аванесян курирует дилерскую и сбытовую сеть, что напрямую связано с продажами продукции и управлением продажами.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "xn----ftbnai5adade7a7b.xn--p1ai"
+            ],
+            "verified_public_profiles": [
+              "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/"
+            ],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "xn----ftbnai5adade7a7b.xn--p1ai"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9%20%D0%90%D0%B2%D0%B0%D0%BD%D0%B5%D1%81%D1%8F%D0%BD%22%20%D0%BA%D0%B8%D1%80%D0%BF%D0%B8%D1%87%20group&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 398
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9%20%D0%90%D0%B2%D0%B0%D0%BD%D0%B5%D1%81%D1%8F%D0%BD%22%20%D0%BA%D0%B8%D1%80%D0%BF%D0%B8%D1%87%20group&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 465
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 504
+    },
+    {
+      "stage": "search",
+      "query": "\"Аркадий Аванесян\" кирпич group",
+      "results": [
+        {
+          "title": "Аркадий Аванесян |",
+          "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/arkadij-avanesyan",
+          "snippet": "# Аркадий Аванесян\n\n28 мая 2019\n\nВернуться к списку статей\n\n\n\nООО \"КИРПИЧ ГРУПП\"\n\nОГРН 1162375028430\n\n+7 (861) 2-900-208\n\nЗаказать звонок\n\n  \n\nСтатьи\n\n### Наш офис:\n\n#### г.Краснодар, ул.Тургеневское шоссе 27/3, оф.1\n\n### E-mail рассылка\n\n#### Делимся скидками, акциями, опытом и полезными советами\n\nПолитика конфиденциальности\n\n## Заказать обратный звонок\n\n### Ведите ваше имя и телефон. Специалист компании \"Кирпич Групп\" свяжется с вами, чтобы ответить на ваши вопросы. [...] + Донской кирпич – группа кирпичных заводов\n  + BRICK PREMIUM\n Продукция\n  + Облицовочный кирпич керамический\n  + Забутовочный кирпич ( рядовой )\n  + Керамические поризованные блоки\n  + Тротуарная плитка\n  + Кирпич ручной формовки\n  + Клинкерный кирпич облицовочный\n  + Цветные кладочные смеси (растворы)\n  + Кирпич огнеупорный (шамотный)\n  + Печной кирпич\n  + Гиперпрессованный кирпич лицевой\n  + Uncategorized\n Строительные услуги\n Партнерам\n  + Производителям\n  + Торгующим организациям [...] ### Продукция\n\n Облицовочный кирпич керамический\n Забутовочный кирпич ( рядовой )\n Керамические поризованные блоки\n Тротуарная плитка\n Кирпич ручной формовки\n Клинкерный кирпич облицовочный\n Цветные кладочные смеси (растворы)\n Кирпич огнеупорный (шамотный)\n Печной кирпич\n Гиперпрессованный кирпич лицевой\n Uncategorized\n\n### Проектирование\n\n### Партнерам\n\n Производителям\n Торгующим организациям\n Застройщикам\n\n### Контакты\n\n## Контакты\n\n Ростов-на-Дону\n Новороссийск\n Армавир\n Пятигорск",
+          "source_label": "tavily",
+          "score": 0.70726365,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "ИП Аванесян Аркадий Аветисович — ОГРНИП",
+          "url": "https://companies.rbc.ru/persons/ogrnip/304262527900154-avanesyan-arkadij-avetisovich",
+          "snippet": "ИП Аванесян Аркадий Аветисович зарегистрирован 05.10.2004, в регионе — Ставропольский край. Основной вид деятельности: Розничная торговля вне магазинов.",
+          "source_label": "tavily",
+          "score": 0.34647548,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "ИП Аванесян Аркадий Завенович ИНН 507504224535",
+          "url": "https://www.tbank.ru/business/contractor/legal/304507521500011",
+          "snippet": "Аркадий Завенович ИП ликвидирован 31 марта 2013 ОГРН .2004 ИНН 507504224535",
+          "source_label": "tavily",
+          "score": 0.31913248,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "ип аванесян аркадий завенович",
+          "url": "https://www.moedelo.org/kontragenty/ogrn/305344313202741",
+          "snippet": "ИП АВАНЕСЯН АРКАДИЙ. ИНН 507504224535 … индивидуальный предприниматель, работает 21 год.нет",
+          "source_label": "tavily",
+          "score": 0.31579977,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Аванесян Аркадий Михайлович",
+          "url": "https://fedresurs.ru/persons/1de2f4da-bba5-11f0-aac9-00620be2fa80",
+          "snippet": "ИНН. 890401283644. СНИЛС. 062-367-225 52 ; Дата рождения. 31.10.1953 ; Место рождения. гор. Сумгаит, Азербайджанской ССР ; Место проживания. 629303",
+          "source_label": "tavily",
+          "score": 0.24269482,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"Аркадий Аванесян\" кирпич group",
+      "focus": "найти публичные профили или подтверждённый личный email",
+      "purpose": "Выяснить точный статус Аркадия Аванесяна (руководитель/владелец процесса) и найти связанный с ним личный публичный контакт",
+      "results": [
+        {
+          "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/arkadij-avanesyan",
+          "title": "Аркадий Аванесян |",
+          "snippet": "# Аркадий Аванесян\n\n28 мая 2019\n\nВернуться к списку статей\n\n\n\nООО \"КИРПИЧ ГРУПП\"\n\nОГРН 1162375028430\n\n+7 (861) 2-900-208\n\nЗаказать звонок\n\n  \n\nСтатьи\n\n### Наш офис:\n\n#### г.Краснодар, ул.Тургеневское шоссе 27/3, оф.1\n\n### E-mail рассылка\n\n#### Делимся скидками, акциями, опытом и полезными советами\n\nПолитика конфиденциальности\n\n## Заказать обратный звонок\n\n### Ведите ваше имя и телефон. Специалист компании \"Кирпич Групп\" свяжется с вами, чтобы ответить на ваши вопросы. [...] + Донской кирпич – гр",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://companies.rbc.ru/persons/ogrnip/304262527900154-avanesyan-arkadij-avetisovich",
+          "title": "ИП Аванесян Аркадий Аветисович — ОГРНИП",
+          "snippet": "ИП Аванесян Аркадий Аветисович зарегистрирован 05.10.2004, в регионе — Ставропольский край. Основной вид деятельности: Розничная торговля вне магазинов.",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.tbank.ru/business/contractor/legal/304507521500011",
+          "title": "ИП Аванесян Аркадий Завенович ИНН 507504224535",
+          "snippet": "Аркадий Завенович ИП ликвидирован 31 марта 2013 ОГРН .2004 ИНН 507504224535",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.moedelo.org/kontragenty/ogrn/305344313202741",
+          "title": "ип аванесян аркадий завенович",
+          "snippet": "ИП АВАНЕСЯН АРКАДИЙ. ИНН 507504224535 … индивидуальный предприниматель, работает 21 год.нет",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://fedresurs.ru/persons/1de2f4da-bba5-11f0-aac9-00620be2fa80",
+          "title": "Аванесян Аркадий Михайлович",
+          "snippet": "ИНН. 890401283644. СНИЛС. 062-367-225 52 ; Дата рождения. 31.10.1953 ; Место рождения. гор. Сумгаит, Азербайджанской ССР ; Место проживания. 629303",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 8934,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "КИРПИЧ GROUP",
+        "domain": "xn----ftbnai5adade7a7b.xn--p1ai",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: КИРПИЧ GROUP; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137052088",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [
+          {
+            "name": "Аркадий Аванесян",
+            "role": "Дилеры, сбытовая сеть",
+            "email": null,
+            "sources": [
+              "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/"
+            ],
+            "citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+              }
+            ]
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+            "kind": "page",
+            "text": "Купить кирпич по выгодной цене с доставкой в Краснодаре +7 (861) 2-900-208 +7 (928) 274-70-71 kirpich-group@mail.ru г.Краснодар, ул.Тургеневское шоссе 27/2 Смотреть на карте Краснодар Ростов-на-Дону Новороссийск Армавир Пятигорск Строительный калькулятор О компании Реквизиты компании Сотрудники Производители Вышневолоцкая керамика Кирпичный завод \"Прохладный\" Промышленная группа «БИС» Брянский кирпичный завод Славянский кирпичный завод Маркинский кирпичный завод Новомосковский завод керамических материалов Калужский завод строительных материалов “КЗСМ” TEREX Кирпичный завод BRAER Аксайский кирпичный завод Воротынский кирпичный завод Губский кирпичный завод Донской кирпич – группа кирпичных заводов BRICK PREMIUM Продукция Облицовочный кирпич керамический Забутовочный кирпич ( рядовой ) Керамические поризованные блоки Тротуарная плитка Кирпич ручной формовки Клинкерный кирпич облицовочный Цветные кладочные смеси (растворы) Кирпич огнеупорный (шамотный) Печной кирпич Гиперпрессованный кирпич лицевой Uncategorized Строительные услуги Партнерам Производителям Торгующим организациям Застро",
+            "links": [
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": ""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kontakti",
+                "label": "Смотреть на карте"
+              },
+              {
+                "url": "https://xn--b1axaggg.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Ростов-на-Дону"
+              },
+              {
+                "url": "https://xn--b1amdelgbarlac.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Новороссийск"
+              },
+              {
+                "url": "https://xn--80aagyrxe.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Армавир"
+              },
+              {
+                "url": "https://xn--c1ajhpcjhd0j.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Пятигорск"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kalkuliatory",
+                "label": "Строительный калькулятор"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/o-kompanii",
+                "label": "О компании"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/rekvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+                "label": "Сотрудники"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditeli",
+                "label": "Производители"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vyshnevolotskaya-keramika",
+                "label": "Вышневолоцкая керамика"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/stavropolskii_kirpichnyi_zavod",
+                "label": "Кирпичный завод \"Прохладный\""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bis",
+                "label": "Промышленная группа «БИС»"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bryanskij-kirpichnyj-zavod",
+                "label": "Брянский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/slavianskii_kirpichnyi_zavod",
+                "label": "Славянский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/markinskii_kirpichnyi_zavod",
+                "label": "Маркинский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/novomoskovskii_zavod_keramicheskih_materialov",
+                "label": "Новомосковский завод керамических материалов"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/terex",
+                "label": "Калужский завод строительных материалов “КЗСМ” TEREX"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/braer",
+                "label": "Кирпичный завод BRAER"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/aksajskij-kirpichnyj-zavod",
+                "label": "Аксайский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vorotynskij-kirpichnyj-zavod",
+                "label": "Воротынский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/gubskij-kirpichnyj-zavod",
+                "label": "Губский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/donskoj-kirpich-gruppa-kirpichnyh-zavo",
+                "label": "Донской кирпич – группа кирпичных заводов"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/brick_premium",
+                "label": "BRICK PREMIUM"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/produkcia",
+                "label": "Продукция"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/oblitsovochniy_kirpich",
+                "label": "Облицовочный кирпич керамический"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/zabutovochnyi_kirpich",
+                "label": "Забутовочный кирпич ( рядовой )"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/keramicheskie_porizovannye_bloki",
+                "label": "Керамические поризованные блоки"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proektirovanie",
+                "label": "Строительные услуги"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditelyam",
+                "label": "Партнерам"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/dileram",
+                "label": "Торгующим организациям"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/zastrojshhikam",
+                "label": "Застройщикам"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product/granit-odinarnyj-pustotelyj-m175-f75-pustot-37-416sht-upak-plenkoj",
+                "label": "33.50 ₽ 30.00 ₽"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product/svetloseryj-kirpich-mramor-m150-f50-416sht-upak-plenkoj",
+                "label": "32.40 ₽ 29.00 ₽"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product/tarhan-odinarnyj-pustotelyj-m175-f75-416-sht",
+                "label": "32.50 ₽ 27.50 ₽"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/?page_id=1082",
+                "label": "калькулятором"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/?page_id=1058",
+                "label": "Расчет керамзитоблоков"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/articles",
+                "label": "Статьи"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/policy",
+                "label": "Политика конфиденциальности"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:13:18.355Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+            "kind": "page",
+            "text": "Сотрудники компании Кирпич Group в Краснодаре +7 (861) 2-900-208 +7 (928) 274-70-71 kirpich-group@mail.ru г.Краснодар, ул.Тургеневское шоссе 27/2 Смотреть на карте Краснодар Ростов-на-Дону Новороссийск Армавир Пятигорск Строительный калькулятор О компании Реквизиты компании Сотрудники Производители Вышневолоцкая керамика Кирпичный завод \"Прохладный\" Промышленная группа «БИС» Брянский кирпичный завод Славянский кирпичный завод Маркинский кирпичный завод Новомосковский завод керамических материалов Калужский завод строительных материалов “КЗСМ” TEREX Кирпичный завод BRAER Аксайский кирпичный завод Воротынский кирпичный завод Губский кирпичный завод Донской кирпич – группа кирпичных заводов BRICK PREMIUM Продукция Облицовочный кирпич керамический Забутовочный кирпич ( рядовой ) Керамические поризованные блоки Тротуарная плитка Кирпич ручной формовки Клинкерный кирпич облицовочный Цветные кладочные смеси (растворы) Кирпич огнеупорный (шамотный) Печной кирпич Гиперпрессованный кирпич лицевой Uncategorized Строительные услуги Партнерам Производителям Торгующим организациям Застройщикам Контакты Главная | Сотрудники Сотрудники Аркадий Аванесян Дилеры, сбытовая сеть +7 (961) 508-30-98 Мария Шириханова Администрирование, Логистика +7 (961) 508-26-58 ООО \"КИРПИЧ ГРУПП\" ОГРН 1162375028430 +7 (861) 2-900-208 Заказать звонок Статьи Наш офис: г.Краснодар, ул.Тургеневское шоссе 27/3, оф.1 E-mail рассылка Делимся скидками, акциями, опытом и полезными советами Политика конфиденциальности Заказать обратный звонок Ведите ваше имя и телефон. Специалист компании \"Кирпич Групп\" свяжется с вами, чтобы ответить на ваши вопросы. или позвоните нам по телефону +7 (861) 2-900-208 Запись на консультацию к архитектору-проектировщику Ведите ваши данные, и наш специалист свяжется с вами, чтобы ответить на ваши вопросы Меню О компании Реквизиты Сотрудники Производители Вышневолоцкая керамика Кирпичный завод “Прохладный” Промышленная группа «БИС» Брянский кирпичный завод Славянский кирпичный завод Маркинский кирпичный завод Новомосковский завод керамических материалов Калужский завод строительных материалов “КЗСМ” TEREX Кирпичный завод BRAER Аксайский кирпичный завод Воротынский кирпичный завод Губский кирпичный завод Донской кирпич – группа кирпичных заводов BRICK PREMIUM Продукция Облицовочный кирпич керамический Забутовочный кирпич ( рядовой ) Керамические поризованные блоки Тротуарная плитка Кирпич ручной формовки Клинкерный кирпич облицовочный Цветные кладочные смеси (растворы) Кирпич огнеупорный (шамотный) Печной кирпич Гиперпрессованный кирпич лицевой Uncategorized Проектирование Партнерам Производителям Торгующим организациям Застройщикам Контакты Контакты Краснодар Ростов-на-Дону Новороссийск Армавир Пятигорск Городской телефон +7 (861) 2-900-208 Мобильный телефон +7 (928) 274-70-71 E-mail kirpich-group@mail.ru Адрес г.Краснодар, ул.Кубанская Набережная, 45 Заказ товара Для заказ данного товара оставьте ваши контактные данные, и мы сами с вами свяжемся.",
+            "links": [
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+                "label": ""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": ""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kontakti",
+                "label": "Смотреть на карте"
+              },
+              {
+                "url": "https://xn--b1axaggg.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Ростов-на-Дону"
+              },
+              {
+                "url": "https://xn--b1amdelgbarlac.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Новороссийск"
+              },
+              {
+                "url": "https://xn--80aagyrxe.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Армавир"
+              },
+              {
+                "url": "https://xn--c1ajhpcjhd0j.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Пятигорск"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kalkuliatory",
+                "label": "Строительный калькулятор"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/o-kompanii",
+                "label": "О компании"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/rekvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditeli",
+                "label": "Производители"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vyshnevolotskaya-keramika",
+                "label": "Вышневолоцкая керамика"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/stavropolskii_kirpichnyi_zavod",
+                "label": "Кирпичный завод \"Прохладный\""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bis",
+                "label": "Промышленная группа «БИС»"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bryanskij-kirpichnyj-zavod",
+                "label": "Брянский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/slavianskii_kirpichnyi_zavod",
+                "label": "Славянский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/markinskii_kirpichnyi_zavod",
+                "label": "Маркинский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/novomoskovskii_zavod_keramicheskih_materialov",
+                "label": "Новомосковский завод керамических материалов"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/terex",
+                "label": "Калужский завод строительных материалов “КЗСМ” TEREX"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/braer",
+                "label": "Кирпичный завод BRAER"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/aksajskij-kirpichnyj-zavod",
+                "label": "Аксайский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vorotynskij-kirpichnyj-zavod",
+                "label": "Воротынский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/gubskij-kirpichnyj-zavod",
+                "label": "Губский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/donskoj-kirpich-gruppa-kirpichnyh-zavo",
+                "label": "Донской кирпич – группа кирпичных заводов"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/brick_premium",
+                "label": "BRICK PREMIUM"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/produkcia",
+                "label": "Продукция"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/oblitsovochniy_kirpich",
+                "label": "Облицовочный кирпич керамический"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/zabutovochnyi_kirpich",
+                "label": "Забутовочный кирпич ( рядовой )"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/keramicheskie_porizovannye_bloki",
+                "label": "Керамические поризованные блоки"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proektirovanie",
+                "label": "Строительные услуги"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditelyam",
+                "label": "Партнерам"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/dileram",
+                "label": "Торгующим организациям"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/zastrojshhikam",
+                "label": "Застройщикам"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/articles",
+                "label": "Статьи"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/policy",
+                "label": "Политика конфиденциальности"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:13:25.887Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/arkadij-avanesyan",
+            "kind": "search",
+            "text": "Аркадий Аванесян |\n# Аркадий Аванесян\n\n28 мая 2019\n\nВернуться к списку статей\n\n\n\nООО \"КИРПИЧ ГРУПП\"\n\nОГРН 1162375028430\n\n+7 (861) 2-900-208\n\nЗаказать звонок\n\n  \n\nСтатьи\n\n### Наш офис:\n\n#### г.Краснодар, ул.Тургеневское шоссе 27/3, оф.1\n\n### E-mail рассылка\n\n#### Делимся скидками, акциями, опытом и полезными советами\n\nПолитика конфиденциальности\n\n## Заказать обратный звонок\n\n### Ведите ваше имя и телефон. Специалист компании \"Кирпич Групп\" свяжется с вами, чтобы ответить на ваши вопросы. [...] + Донской кирпич – группа кирпичных заводов\n  + BRICK PREMIUM\n Продукция\n  + Облицовочный кирпич керамический\n  + Забутовочный кирпич ( рядовой )\n  + Керамические поризованные блоки\n  + Тротуарная плитка\n  + Кирпич ручной формовки\n  + Клинкерный кирпич облицовочный\n  + Цветные кладочные смеси (растворы)\n  + Кирпич огнеупорный (шамотный)\n  + Печной кирпич\n  + Гиперпрессованный кирпич лицевой\n  + Uncategorized\n Строительные услуги\n Партнерам\n  + Производителям\n  + Торгующим организациям [...] ### Продукция\n\n Облицовочный кирпич керамический\n Забутовочный кирпич ( рядовой )\n Керамические поризованные блоки\n Тротуарная плитка\n Кирпич ручной формовки\n Клинкерный кирпич облицовочный\n Цветные кладочные смеси (растворы)\n Кирпич огнеупорный (шамотный)\n Печной кирпич\n Гиперпрессованный кирпич лицевой\n Uncategorized\n\n### Проектирование\n\n### Партнерам\n\n Производителям\n Торгующим организациям\n Застройщикам\n\n### Контакты\n\n## Контакты\n\n Ростов-на-Дону\n Новороссийск\n Армавир\n Пятигорск",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:13:34.473Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://companies.rbc.ru/persons/ogrnip/304262527900154-avanesyan-arkadij-avetisovich",
+            "kind": "search",
+            "text": "ИП Аванесян Аркадий Аветисович — ОГРНИП\nИП Аванесян Аркадий Аветисович зарегистрирован 05.10.2004, в регионе — Ставропольский край. Основной вид деятельности: Розничная торговля вне магазинов.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:13:34.473Z",
+            "id": "e4"
+          },
+          {
+            "url": "https://www.tbank.ru/business/contractor/legal/304507521500011",
+            "kind": "search",
+            "text": "ИП Аванесян Аркадий Завенович ИНН 507504224535\nАркадий Завенович ИП ликвидирован 31 марта 2013 ОГРН .2004 ИНН 507504224535",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:13:34.474Z",
+            "id": "e5"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+            "focus": "найти руководителя продаж или профильного ЛПР",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "\"Аркадий Аванесян\" кирпич group",
+            "focus": "найти публичные профили или подтверждённый личный email",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [
+          "contact_rejected:Аркадий Аванесян:quote_must_include_name_and_contact"
+        ],
+        "budget": {
+          "roundsRemaining": 3,
+          "actionsRemaining": 8,
+          "searchRemaining": 7
+        }
+      },
+      "output": {
+        "companySummary": "КИРПИЧ GROUP занимается поставкой кирпича и строительных материалов, работает в Краснодаре и регионах ЮФО. В компании есть структурированные контакты, включая ответственных по направлениям. В разделе 'Сотрудники' компания публично указывает свои контактные данные и телефоны отдельных сотрудников.",
+        "missing": [
+          "Подтверждённый личный email или профиль Аркадия Аванесяна, либо другого руководителя продаж/сбытовой сети; иных релевантных руководителей отдела продаж не выявлено."
+        ],
+        "people": [
+          {
+            "name": "Аркадий Аванесян",
+            "role": "Дилеры, сбытовая сеть",
+            "relevance": 90,
+            "reason": "Является единственным публично обозначенным ответственным за дилеров и сбытовую сеть, т.е. руководителем профильного направления, наиболее релевантного продажам.",
+            "citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "profile",
+                "value": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+                "citation": {
+                  "sourceId": "e2",
+                  "quote": "Аркадий Аванесян Дилеры, сбытовая сеть +7 (961) 508-30-98"
+                }
+              }
+            ]
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "xn----ftbnai5adade7a7b.xn--p1ai",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ООО \"КИРПИЧ ГРУПП\""
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Аркадий Аванесян\" (961) 508-30-98",
+            "focus": "поиск личных, подтверждённых email или публичных профилей Аркадия Аванесяна",
+            "purpose": "Попытаться найти личный корпоративный email или публичный профиль ЛПР через телефон, указанный на сайте"
+          },
+          {
+            "type": "search",
+            "value": "\"Аркадий Аванесян\" email кирпич",
+            "focus": "поиск прямого публичного email по ФИО ЛПР",
+            "purpose": "Проверить наличие явно подписанного его email в публичных источниках"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого личного email или ссылки на личные профили ЛПР; требуется сделать дополнительный поиск по публичному телефону и имени."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "КИРПИЧ GROUP занимается поставкой кирпича и строительных материалов, работает в Краснодаре и регионах ЮФО. В компании есть структурированные контакты, включая ответственных по направлениям. В разделе 'Сотрудники' компания публично указывает свои контактные данные и телефоны отдельных сотрудников.",
+        "missing": [
+          "Подтверждённый личный email или профиль Аркадия Аванесяна, либо другого руководителя продаж/сбытовой сети; иных релевантных руководителей отдела продаж не выявлено."
+        ],
+        "people": [
+          {
+            "name": "Аркадий Аванесян",
+            "role": "Дилеры, сбытовая сеть",
+            "relevance": 90,
+            "reason": "Является единственным публично обозначенным ответственным за дилеров и сбытовую сеть, т.е. руководителем профильного направления, наиболее релевантного продажам.",
+            "citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "profile",
+                "value": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+                "citation": {
+                  "sourceId": "e2",
+                  "quote": "Аркадий Аванесян Дилеры, сбытовая сеть +7 (961) 508-30-98"
+                }
+              }
+            ]
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "xn----ftbnai5adade7a7b.xn--p1ai",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ООО \"КИРПИЧ ГРУПП\""
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Аркадий Аванесян\" (961) 508-30-98",
+            "focus": "поиск личных, подтверждённых email или публичных профилей Аркадия Аванесяна",
+            "purpose": "Попытаться найти личный корпоративный email или публичный профиль ЛПР через телефон, указанный на сайте"
+          },
+          {
+            "type": "search",
+            "value": "\"Аркадий Аванесян\" email кирпич",
+            "focus": "поиск прямого публичного email по ФИО ЛПР",
+            "purpose": "Проверить наличие явно подписанного его email в публичных источниках"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого личного email или ссылки на личные профили ЛПР; требуется сделать дополнительный поиск по публичному телефону и имени."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [
+        {
+          "full_name": "Аркадий Аванесян",
+          "role_title": "Дилеры, сбытовая сеть",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Аркадий Аванесян Дилеры, сбытовая сеть"
+          ],
+          "metadata": {
+            "source_url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+            "source_urls": [
+              "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+              }
+            ],
+            "semantic_role_relevance": 90,
+            "semantic_role_reason": "Является единственным публично обозначенным ответственным за дилеров и сбытовую сеть, т.е. руководителем профильного направления, наиболее релевантного продажам.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "xn----ftbnai5adade7a7b.xn--p1ai"
+            ],
+            "verified_public_profiles": [
+              "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/"
+            ],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "xn----ftbnai5adade7a7b.xn--p1ai"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9%20%D0%90%D0%B2%D0%B0%D0%BD%D0%B5%D1%81%D1%8F%D0%BD%22%20(961)%20508-30-98&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 446
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9%20%D0%90%D0%B2%D0%B0%D0%BD%D0%B5%D1%81%D1%8F%D0%BD%22%20(961)%20508-30-98&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 463
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9%20%D0%90%D0%B2%D0%B0%D0%BD%D0%B5%D1%81%D1%8F%D0%BD%22%20email%20%D0%BA%D0%B8%D1%80%D0%BF%D0%B8%D1%87&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 242
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9%20%D0%90%D0%B2%D0%B0%D0%BD%D0%B5%D1%81%D1%8F%D0%BD%22%20email%20%D0%BA%D0%B8%D1%80%D0%BF%D0%B8%D1%87&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 195
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1706
+    },
+    {
+      "stage": "search",
+      "query": "\"Аркадий Аванесян\" email кирпич",
+      "results": [
+        {
+          "title": "Аркадий Аванесян |",
+          "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/arkadij-avanesyan",
+          "snippet": "# Аркадий Аванесян\n\n28 мая 2019\n\nВернуться к списку статей\n\n\n\nООО \"КИРПИЧ ГРУПП\"\n\nОГРН 1162375028430\n\n+7 (861) 2-900-208\n\nЗаказать звонок\n\n  \n\nСтатьи\n\n### Наш офис:\n\n#### г.Краснодар, ул.Тургеневское шоссе 27/3, оф.1\n\n### E-mail рассылка\n\n#### Делимся скидками, акциями, опытом и полезными советами\n\nПолитика конфиденциальности\n\n## Заказать обратный звонок\n\n### Ведите ваше имя и телефон. Специалист компании \"Кирпич Групп\" свяжется с вами, чтобы ответить на ваши вопросы. [...] Городской телефон\n\n  +7 (861) 2-900-208\n Мобильный телефон\n\n  +7 (928) 274-70-71\n kirpich-group@mail.ru\n г.Краснодар, ул.Кубанская Набережная, 45\n\n## Заказ товара\n\nДля заказ данного товара оставьте ваши контактные данные, и мы сами с вами свяжемся. [...] ### Продукция\n\n Облицовочный кирпич керамический\n Забутовочный кирпич ( рядовой )\n Керамические поризованные блоки\n Тротуарная плитка\n Кирпич ручной формовки\n Клинкерный кирпич облицовочный\n Цветные кладочные смеси (растворы)\n Кирпич огнеупорный (шамотный)\n Печной кирпич\n Гиперпрессованный кирпич лицевой\n Uncategorized\n\n### Проектирование\n\n### Партнерам\n\n Производителям\n Торгующим организациям\n Застройщикам\n\n### Контакты\n\n## Контакты\n\n Ростов-на-Дону\n Новороссийск\n Армавир\n Пятигорск",
+          "source_label": "tavily",
+          "score": 0.8245895,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "ИП АВАНЕСЯН АРКАДИЙ ЗАВЕНОВИЧ, ИНН 507504224535 | реквизиты и проверка",
+          "url": "https://www.moedelo.org/kontragenty/ogrn/305344313202741",
+          "snippet": "## Контакты\n\nТелефон\n\nEmail\n\nСайт\n\n## Руководство\n\nРуководитель\n\n### АВАНЕСЯН АРКАДИЙ ЗАВЕНОВИЧ\n\nДолжность\n:   Индивидуальный предприниматель\n\nПризнак\n\nСвязанные компании\n\n## Закупки и госконтракты ·\n\n Подробнее\n\n·\n\nзакупок\n\nсумма закупок\n\nконтрактов\n\nсумма контрактов\n\nТоп заказчиков\n\nСтатусы закупок\n\nКатегории закупок\n\n## Риски и санкции\n\n## Налоги и сборы за год\n\n по данным ФНС\n\n Подробнее\n\nНалоги  · взносы  за год\n\nНДС\n\nНалог на прибыль\n\nСтраховые взносы\n\nИтого\n\n## Расчётные счета [...] зона внимания — 1 негативный фактор рейтинга. [...] Всего дел\n\nСумма\n\nРоль: истец\n\nРоль: ответчик\n\nРоль: третье лицо\n\nИсходы дел\n\nПоследнее дело\n\n## Исполнительные производства ·\n\n Все производства\n\nВсего производств\n\nНа сумму   общий объём\n\nВзысканий   завершённые\n\n## Связи\n\nколичество организаций\n\nближние связи\n\nактуальные\n\nликвидированные\n\nпо учредителю\n\nпо руководителю\n\nВсе связи\n\n## Виды деятельности\n\n  Основной ОКВЭД   —\n\n  Деятельность   —\n\n  Доп. видов   —\n\n   Коды доп. ОКВЭД\n\n   ОКВЭД по лицензиям\n\n   История изменений\n\n## Контакты",
+          "source_label": "tavily",
+          "score": 0.41108778,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Аркадий Аванесян: people named Аркадий Аванесян have been found. OK social network – stay connected! | OK",
+          "url": "https://ok.ru/search/profiles/%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9-%D0%90%D0%B2%D0%B0%D0%BD%D0%B5%D1%81%D1%8F%D0%BD",
+          "snippet": "Previous publication\n\nNext publication\n\nMinimize search\n\nVK services\n\nMailE-mailCloudCalendarPostsVK CallsVK E-mailTV listingsWeatherHoroscopesSportRepliesVK AdsLadyVKMore\n\nLog in\n\nMinimize search\n\n# Аркадий Аванесян\n\n## Popular people on OK\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n70 years, Yerevan\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n14 years\n\nаркадий аванесян\n\nаркадий аванесян\n\nаркадий аванесян\n\nаркадий аванесян [...] 57 years\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n41 years\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий и Римма Аванесян\n\nАркадий и Римма Аванесян\n\nАркадий и Римма Аванесян\n\nАркадий и Римма Аванесян\n\nАркадий и Римма Аванесян\n\nАркадий и Римма Аванесян\n\n57 years, Alessandria\n\nАТП10975\n\nАркадий Аванесян (багмантюнунц\n\nАркадий Аванесян (багмантюнунц [...] аркадий аванесян\n\nаркадий аванесян\n\nаркадий аванесян\n\n78 years, Zhdanovka\n\nАРКАДИЙ АВАНЕСЯН\n\nАРКАДИЙ АВАНЕСЯН\n\nАРКАДИЙ АВАНЕСЯН\n\nАРКАДИЙ АВАНЕСЯН\n\nАРКАДИЙ АВАНЕСЯН\n\nАРКАДИЙ АВАНЕСЯН\n\n65 years, g. Ershov (Ershovskiy rayon)\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n41 years\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n19 years\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n57 years",
+          "source_label": "tavily",
+          "score": 0.29110223,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Аванесян Аркадий Завенович - ИНН 507504224535",
+          "url": "https://checko.ru/person/507504224535",
+          "snippet": "Чтобы открыть полный доступ к Мониторингу контрагентов, заметкам, спискам и отчетам, войдите в личный кабинет\n\nРегистрация бесплатна и займет одну минуту\n\nВойтиЗарегистрироваться\n\nПроверка на самозанятость\n\nОставаясь на сайте, вы соглашаетесь на использование файлов cookie и обработку персональных данных в соответствии с Политикой конфиденциальности. [...] Организации\n ИП\n Беларусь\n Подписка PRO\n Мой бизнес\n API\n Базы данных\n Правовые основания\n Войти\n\n Организации\n Индивидуальные предприниматели\n\n Беларусь\n\n Подписка PRO\n Мой бизнес\n Базы данных\n API\n\n Правовая информация\n Источники данных\n Пользовательское соглашение\n Политика конфиденциальности\n Публичная оферта\n\n Личный кабинет\n\n Обратная связь [...] ## Индивидуальный предприниматель\n\nАванесян Аркадий Завенович ранее являлся индивидуальным предпринимателем\n\nСогласно данным ЕГРИП от ФНС",
+          "source_label": "tavily",
+          "score": 0.28020057,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "ИП Аванесян Аркадий Завенович, деревня Юкки (ИНН 470300082200), ИП Аванесян А З с ОГРНИП 319470400001048",
+          "url": "https://www.rusprofile.ru/ip/319470400001048",
+          "snippet": "Похожие предприниматели подбираются на основе совпадения основного вида деятельности и региона ведения бизнеса:\n\n## Похожие организации\n\nПохожие организации подбираются на основе совпадения региона ведения бизнеса:\n\n## Залоги\n\n## Связи\n\nСвязанных с ИП Аванесян Аркадий Завенович организаций и индивидуальных предпринимателей не выявлено.\n\n## Сообщения о сущфактах\n\n## Госзакупки [...] ## События\n\nПредставление сведений о регистрации индивидуального предпринимателя в качестве страхователя в Социальном фонде Российской Федерации (обязательное пенсионное страхование)\n\nИП включен в Реестр малого и среднего предпринимательства, категория: микропредприятие\n\nИП исключен из Реестра малого и среднего предпринимательства\n\nИП включен в Реестр малого и среднего предпринимательства, категория: микропредприятие\n\n## Похожие на ИП Аванесян Аркадий Завенович предприниматели [...] # ИП Аванесян Аркадий Завенович⁠\n\nЧасть данных на этой странице скрыта. Для просмотра полной информации оформите профессиональный доступ\n\n## Аванесян Аркадий Завенович\n\n## Риски сотрудничества\n\nПроверить наличие сведений о банкротстве организации в Едином федеральном реестре сведений о банкротстве (ЕФРСБ)\n\nАдресные санкции, риски вторичных, влияние ограничений импорта/экспорта товаров и технологий.\n\n## Виды деятельности\n\nВиды деятельности в соответствии с классификатором ОКВЭД.",
+          "source_label": "tavily",
+          "score": 0.13814782,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"Аркадий Аванесян\" email кирпич",
+      "focus": "поиск прямого публичного email по ФИО ЛПР",
+      "purpose": "Проверить наличие явно подписанного его email в публичных источниках",
+      "results": [
+        {
+          "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/arkadij-avanesyan",
+          "title": "Аркадий Аванесян |",
+          "snippet": "# Аркадий Аванесян\n\n28 мая 2019\n\nВернуться к списку статей\n\n\n\nООО \"КИРПИЧ ГРУПП\"\n\nОГРН 1162375028430\n\n+7 (861) 2-900-208\n\nЗаказать звонок\n\n  \n\nСтатьи\n\n### Наш офис:\n\n#### г.Краснодар, ул.Тургеневское шоссе 27/3, оф.1\n\n### E-mail рассылка\n\n#### Делимся скидками, акциями, опытом и полезными советами\n\nПолитика конфиденциальности\n\n## Заказать обратный звонок\n\n### Ведите ваше имя и телефон. Специалист компании \"Кирпич Групп\" свяжется с вами, чтобы ответить на ваши вопросы. [...] Городской телефон\n\n  ",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.moedelo.org/kontragenty/ogrn/305344313202741",
+          "title": "ИП АВАНЕСЯН АРКАДИЙ ЗАВЕНОВИЧ, ИНН 507504224535 | реквизиты и проверка",
+          "snippet": "## Контакты\n\nТелефон\n\nEmail\n\nСайт\n\n## Руководство\n\nРуководитель\n\n### АВАНЕСЯН АРКАДИЙ ЗАВЕНОВИЧ\n\nДолжность\n:   Индивидуальный предприниматель\n\nПризнак\n\nСвязанные компании\n\n## Закупки и госконтракты ·\n\n Подробнее\n\n·\n\nзакупок\n\nсумма закупок\n\nконтрактов\n\nсумма контрактов\n\nТоп заказчиков\n\nСтатусы закупок\n\nКатегории закупок\n\n## Риски и санкции\n\n## Налоги и сборы за год\n\n по данным ФНС\n\n Подробнее\n\nНалоги  · взносы  за год\n\nНДС\n\nНалог на прибыль\n\nСтраховые взносы\n\nИтого\n\n## Расчётные счета [...] зона ",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://ok.ru/search/profiles/%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9-%D0%90%D0%B2%D0%B0%D0%BD%D0%B5%D1%81%D1%8F%D0%BD",
+          "title": "Аркадий Аванесян: people named Аркадий Аванесян have been found. OK social network – stay connected! | OK",
+          "snippet": "Previous publication\n\nNext publication\n\nMinimize search\n\nVK services\n\nMailE-mailCloudCalendarPostsVK CallsVK E-mailTV listingsWeatherHoroscopesSportRepliesVK AdsLadyVKMore\n\nLog in\n\nMinimize search\n\n# Аркадий Аванесян\n\n## Popular people on OK\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n70 years, Yerevan\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n14 years\n\nаркадий аванесян\n\nаркадий аванесян\n\nаркадий аванесян\n\nаркадий аванесян [...] 57 year",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://checko.ru/person/507504224535",
+          "title": "Аванесян Аркадий Завенович - ИНН 507504224535",
+          "snippet": "Чтобы открыть полный доступ к Мониторингу контрагентов, заметкам, спискам и отчетам, войдите в личный кабинет\n\nРегистрация бесплатна и займет одну минуту\n\nВойтиЗарегистрироваться\n\nПроверка на самозанятость\n\nОставаясь на сайте, вы соглашаетесь на использование файлов cookie и обработку персональных данных в соответствии с Политикой конфиденциальности. [...] Организации\n ИП\n Беларусь\n Подписка PRO\n Мой бизнес\n API\n Базы данных\n Правовые основания\n Войти\n\n Организации\n Индивидуальные предпринимател",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.rusprofile.ru/ip/319470400001048",
+          "title": "ИП Аванесян Аркадий Завенович, деревня Юкки (ИНН 470300082200), ИП Аванесян А З с ОГРНИП 319470400001048",
+          "snippet": "Похожие предприниматели подбираются на основе совпадения основного вида деятельности и региона ведения бизнеса:\n\n## Похожие организации\n\nПохожие организации подбираются на основе совпадения региона ведения бизнеса:\n\n## Залоги\n\n## Связи\n\nСвязанных с ИП Аванесян Аркадий Завенович организаций и индивидуальных предпринимателей не выявлено.\n\n## Сообщения о сущфактах\n\n## Госзакупки [...] ## События\n\nПредставление сведений о регистрации индивидуального предпринимателя в качестве страхователя в Социальн",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 5574
+    },
+    {
+      "stage": "search",
+      "query": "\"Аркадий Аванесян\" (961) 508-30-98",
+      "results": [
+        {
+          "title": "Сотрудники компании Кирпич Group в Краснодаре",
+          "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+          "snippet": "Главная | Сотрудники\n\n# Сотрудники\n\nАркадий Аванесян\n\n### Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98\n\nМария Шириханова\n\n### Мария Шириханова\n\nАдминистрирование, Логистика\n\n+7 (961) 508-26-58\n\n\n\nООО \"КИРПИЧ ГРУПП\"\n\nОГРН 1162375028430\n\n+7 (861) 2-900-208\n\nЗаказать звонок\n\n  \n\nСтатьи\n\n### Наш офис:\n\n#### г.Краснодар, ул.Тургеневское шоссе 27/3, оф.1\n\n### E-mail рассылка\n\n#### Делимся скидками, акциями, опытом и полезными советами\n\nПолитика конфиденциальности",
+          "source_label": "tavily",
+          "score": 0.7732339,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Аванесян Аркадий Завенович - ИНН 507504224535",
+          "url": "https://checko.ru/person/507504224535",
+          "snippet": "Организации\n ИП\n Беларусь\n Подписка PRO\n Мой бизнес\n API\n Базы данных\n Правовые основания\n Войти\n\n Организации\n Индивидуальные предприниматели\n\n Беларусь\n\n Подписка PRO\n Мой бизнес\n Базы данных\n API\n\n Правовая информация\n Источники данных\n Пользовательское соглашение\n Политика конфиденциальности\n Публичная оферта\n\n Личный кабинет\n\n Обратная связь [...] ИНН 507504224535\n\nАркадий Завенович Аванесян не является, но ранее являлся индивидуальным предпринимателем. Не является руководителем или учредителем каких-либо действующих организаций.\n\nСамозанятость\n\nНе является самозанятым\n\nСогласно данным ФНС на 3 ноября 2025 г.\n\nПроверить на сегодня\n\nНе является массовым учредителем или руководителем\n\nНе входит в реестр дисквалифицированных лиц\n\nНе входит в реестр недобросовестных поставщиков\n\nНе входит в реестр банкротств\n\nНе входит в санкционные списки [...] ## Индивидуальный предприниматель\n\nАванесян Аркадий Завенович ранее являлся индивидуальным предпринимателем\n\nСогласно данным ЕГРИП от ФНС",
+          "source_label": "tavily",
+          "score": 0.3177019,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Проверка ИП Аванесян Аркадий Завенович  ИНН 507504224535 в ЕГРЮЛ и ЕГРИП",
+          "url": "https://www.tbank.ru/business/contractor/legal/304507521500011",
+          "snippet": "16 июля 2014 Добавлен новый код ОКВЭД “60.23 Деятельность прочего сухопутного пассажирского транспорта 2001”  \n   16 июля 2014 Добавлен новый код ОКВЭД “60.22 Деятельность такси 2001”  \n   16 июля 2014 Добавлен новый код ОКВЭД “52.62 Розничная торговля в палатках и на рынках 2001”  \n\nПосмотреть все события\n\nImage 4: Т‑Банк\n\n8 800 333-33-33Для звонков по России\n\nБанк [...] Image 5: Т‑Банк\n\n8 800 333-33-33Для звонков по России\n\n\n\nБанк\n\nМалый бизнес\n\nСредний бизнес\n\nИнвестиции\n\nСтрахование\n\nГород\n\nТ‑Касса\n\nМобильная связь\n\nПутешествия\n\nПолезное\n\nКарьера\n\nТехнологии от Т‑Банка\n\nУсловия комплексного банковского обслуживанияПеречень операций, приравненных к снятию наличныхТарифыКарта сайта\n\n© 2006—2026, АО «ТБанк», официальный сайт,универсальная лицензия ЦБ РФ № 2673 [...] Мобильная связь\n\nСим‑картаeSIMТарифыПеренос номераРоумингКрасивые номераЗапись звонковВиртуальный номерСекретарьКто звонилЗащитим или вернем деньги\n\nТехнологии от Т‑Банка\n\nРечевая аналитикаРаспознавание и синтез речи VoiceKitПлатформа наблюдаемости Sage\n\nУсловия комплексного банковского обслуживанияПеречень операций, приравненных к снятию наличныхТарифыКарта сайта\n\n© 2006—2026, АО «ТБанк», официальный сайт,универсальная лицензия ЦБ РФ № 2673\n\n\n\nImage 5: Т‑Банк",
+          "source_label": "tavily",
+          "score": 0.31009915,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Аркадий Аванесян: people named Аркадий Аванесян have been found. OK social network – stay connected! | OK",
+          "url": "https://ok.ru/search/profiles/%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9-%D0%90%D0%B2%D0%B0%D0%BD%D0%B5%D1%81%D1%8F%D0%BD",
+          "snippet": "Previous publication\n\nNext publication\n\nMinimize search\n\nVK services\n\nMailE-mailCloudCalendarPostsVK CallsVK E-mailTV listingsWeatherHoroscopesSportRepliesVK AdsLadyVKMore\n\nLog in\n\nMinimize search\n\n# Аркадий Аванесян\n\n## Popular people on OK\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n70 years, Yerevan\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n14 years\n\nаркадий аванесян\n\nаркадий аванесян\n\nаркадий аванесян\n\nаркадий аванесян [...] 57 years\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n41 years\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий и Римма Аванесян\n\nАркадий и Римма Аванесян\n\nАркадий и Римма Аванесян\n\nАркадий и Римма Аванесян\n\nАркадий и Римма Аванесян\n\nАркадий и Римма Аванесян\n\n57 years, Alessandria\n\nАТП10975\n\nАркадий Аванесян (багмантюнунц\n\nАркадий Аванесян (багмантюнунц [...] аркадий аванесян\n\nаркадий аванесян\n\nаркадий аванесян\n\n78 years, Zhdanovka\n\nАРКАДИЙ АВАНЕСЯН\n\nАРКАДИЙ АВАНЕСЯН\n\nАРКАДИЙ АВАНЕСЯН\n\nАРКАДИЙ АВАНЕСЯН\n\nАРКАДИЙ АВАНЕСЯН\n\nАРКАДИЙ АВАНЕСЯН\n\n65 years, g. Ershov (Ershovskiy rayon)\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n41 years\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n19 years\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n57 years",
+          "source_label": "tavily",
+          "score": 0.23853289,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "ИП Аванесян Аркадий Завенович, деревня Юкки (ИНН 470300082200), ИП Аванесян А З с ОГРНИП 319470400001048",
+          "url": "https://www.rusprofile.ru/ip/319470400001048",
+          "snippet": "## События\n\nПредставление сведений о регистрации индивидуального предпринимателя в качестве страхователя в Социальном фонде Российской Федерации (обязательное пенсионное страхование)\n\nИП включен в Реестр малого и среднего предпринимательства, категория: микропредприятие\n\nИП исключен из Реестра малого и среднего предпринимательства\n\nИП включен в Реестр малого и среднего предпринимательства, категория: микропредприятие\n\n## Похожие на ИП Аванесян Аркадий Завенович предприниматели [...] Монтаж промышленных машин и оборудования (33.20)\n\nПрочие виды полиграфической деятельности (18.12)\n\nТорговля оптовая прочей офисной техникой и оборудованием (46.66)\n\nТорговля оптовая прочими машинами и оборудованием (46.69)\n\n## Арбитражные дела\n\nИнформация об участии ИП в арбитражных делах отсутствует.\n\n## Товарные знаки\n\n## Лизинг\n\n## Проверки\n\nДанных о проведении в отношении ИП Аванесян Аркадий Завенович плановых и внеплановых проверок нет.\n\n## События [...] Похожие предприниматели подбираются на основе совпадения основного вида деятельности и региона ведения бизнеса:\n\n## Похожие организации\n\nПохожие организации подбираются на основе совпадения региона ведения бизнеса:\n\n## Залоги\n\n## Связи\n\nСвязанных с ИП Аванесян Аркадий Завенович организаций и индивидуальных предпринимателей не выявлено.\n\n## Сообщения о сущфактах\n\n## Госзакупки",
+          "source_label": "tavily",
+          "score": 0.22347063,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"Аркадий Аванесян\" (961) 508-30-98",
+      "focus": "поиск личных, подтверждённых email или публичных профилей Аркадия Аванесяна",
+      "purpose": "Попытаться найти личный корпоративный email или публичный профиль ЛПР через телефон, указанный на сайте",
+      "results": [
+        {
+          "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+          "title": "Сотрудники компании Кирпич Group в Краснодаре",
+          "snippet": "Главная | Сотрудники\n\n# Сотрудники\n\nАркадий Аванесян\n\n### Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98\n\nМария Шириханова\n\n### Мария Шириханова\n\nАдминистрирование, Логистика\n\n+7 (961) 508-26-58\n\n\n\nООО \"КИРПИЧ ГРУПП\"\n\nОГРН 1162375028430\n\n+7 (861) 2-900-208\n\nЗаказать звонок\n\n  \n\nСтатьи\n\n### Наш офис:\n\n#### г.Краснодар, ул.Тургеневское шоссе 27/3, оф.1\n\n### E-mail рассылка\n\n#### Делимся скидками, акциями, опытом и полезными советами\n\nПолитика конфиденциальности",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://checko.ru/person/507504224535",
+          "title": "Аванесян Аркадий Завенович - ИНН 507504224535",
+          "snippet": "Организации\n ИП\n Беларусь\n Подписка PRO\n Мой бизнес\n API\n Базы данных\n Правовые основания\n Войти\n\n Организации\n Индивидуальные предприниматели\n\n Беларусь\n\n Подписка PRO\n Мой бизнес\n Базы данных\n API\n\n Правовая информация\n Источники данных\n Пользовательское соглашение\n Политика конфиденциальности\n Публичная оферта\n\n Личный кабинет\n\n Обратная связь [...] ИНН 507504224535\n\nАркадий Завенович Аванесян не является, но ранее являлся индивидуальным предпринимателем. Не является руководителем или учредит",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.tbank.ru/business/contractor/legal/304507521500011",
+          "title": "Проверка ИП Аванесян Аркадий Завенович  ИНН 507504224535 в ЕГРЮЛ и ЕГРИП",
+          "snippet": "16 июля 2014 Добавлен новый код ОКВЭД “60.23 Деятельность прочего сухопутного пассажирского транспорта 2001”  \n   16 июля 2014 Добавлен новый код ОКВЭД “60.22 Деятельность такси 2001”  \n   16 июля 2014 Добавлен новый код ОКВЭД “52.62 Розничная торговля в палатках и на рынках 2001”  \n\nПосмотреть все события\n\nImage 4: Т‑Банк\n\n8 800 333-33-33Для звонков по России\n\nБанк [...] Image 5: Т‑Банк\n\n8 800 333-33-33Для звонков по России\n\n\n\nБанк\n\nМалый бизнес\n\nСредний бизнес\n\nИнвестиции\n\nСтрахование\n\nГород\n\n",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://ok.ru/search/profiles/%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9-%D0%90%D0%B2%D0%B0%D0%BD%D0%B5%D1%81%D1%8F%D0%BD",
+          "title": "Аркадий Аванесян: people named Аркадий Аванесян have been found. OK social network – stay connected! | OK",
+          "snippet": "Previous publication\n\nNext publication\n\nMinimize search\n\nVK services\n\nMailE-mailCloudCalendarPostsVK CallsVK E-mailTV listingsWeatherHoroscopesSportRepliesVK AdsLadyVKMore\n\nLog in\n\nMinimize search\n\n# Аркадий Аванесян\n\n## Popular people on OK\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n70 years, Yerevan\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n14 years\n\nаркадий аванесян\n\nаркадий аванесян\n\nаркадий аванесян\n\nаркадий аванесян [...] 57 year",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.rusprofile.ru/ip/319470400001048",
+          "title": "ИП Аванесян Аркадий Завенович, деревня Юкки (ИНН 470300082200), ИП Аванесян А З с ОГРНИП 319470400001048",
+          "snippet": "## События\n\nПредставление сведений о регистрации индивидуального предпринимателя в качестве страхователя в Социальном фонде Российской Федерации (обязательное пенсионное страхование)\n\nИП включен в Реестр малого и среднего предпринимательства, категория: микропредприятие\n\nИП исключен из Реестра малого и среднего предпринимательства\n\nИП включен в Реестр малого и среднего предпринимательства, категория: микропредприятие\n\n## Похожие на ИП Аванесян Аркадий Завенович предприниматели [...] Монтаж промы",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 5694,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "КИРПИЧ GROUP",
+        "domain": "xn----ftbnai5adade7a7b.xn--p1ai",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: КИРПИЧ GROUP; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137052088",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [
+          {
+            "name": "Аркадий Аванесян",
+            "role": "Дилеры, сбытовая сеть",
+            "email": null,
+            "sources": [
+              "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/"
+            ],
+            "citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+              }
+            ]
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+            "kind": "page",
+            "text": "Купить кирпич по выгодной цене с доставкой в Краснодаре +7 (861) 2-900-208 +7 (928) 274-70-71 kirpich-group@mail.ru г.Краснодар, ул.Тургеневское шоссе 27/2 Смотреть на карте Краснодар Ростов-на-Дону Новороссийск Армавир Пятигорск Строительный калькулятор О компании Реквизиты компании Сотрудники Производители Вышневолоцкая керамика Кирпичный завод \"Прохладный\" Промышленная группа «БИС» Брянский кирпичный завод Славянский кирпичный завод Маркинский кирпичный завод Новомосковский завод керамических материалов Калужский завод строительных материалов “КЗСМ” TEREX Кирпичный завод BRAER Аксайский кирпичный завод Воротынский кирпичный завод Губский кирпичный завод Донской кирпич – группа кирпичных заводов BRICK PREMIUM Продукция Облицовочный кирпич керамический Забутовочный кирпич ( рядовой ) Керамические поризованные блоки Тротуарная плитка Кирпич ручной формовки Клинкерный кирпич облицовочный Цветные кладочные смеси (растворы) Кирпич огнеупорный (шамотный) Печной кирпич Гиперпрессованный кирпич лицевой Uncategorized Строительные услуги Партнерам Производителям Торгующим организациям Застро",
+            "links": [
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": ""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kontakti",
+                "label": "Смотреть на карте"
+              },
+              {
+                "url": "https://xn--b1axaggg.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Ростов-на-Дону"
+              },
+              {
+                "url": "https://xn--b1amdelgbarlac.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Новороссийск"
+              },
+              {
+                "url": "https://xn--80aagyrxe.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Армавир"
+              },
+              {
+                "url": "https://xn--c1ajhpcjhd0j.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Пятигорск"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kalkuliatory",
+                "label": "Строительный калькулятор"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/o-kompanii",
+                "label": "О компании"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/rekvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+                "label": "Сотрудники"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditeli",
+                "label": "Производители"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vyshnevolotskaya-keramika",
+                "label": "Вышневолоцкая керамика"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/stavropolskii_kirpichnyi_zavod",
+                "label": "Кирпичный завод \"Прохладный\""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bis",
+                "label": "Промышленная группа «БИС»"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bryanskij-kirpichnyj-zavod",
+                "label": "Брянский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/slavianskii_kirpichnyi_zavod",
+                "label": "Славянский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/markinskii_kirpichnyi_zavod",
+                "label": "Маркинский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/novomoskovskii_zavod_keramicheskih_materialov",
+                "label": "Новомосковский завод керамических материалов"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/terex",
+                "label": "Калужский завод строительных материалов “КЗСМ” TEREX"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/braer",
+                "label": "Кирпичный завод BRAER"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/aksajskij-kirpichnyj-zavod",
+                "label": "Аксайский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vorotynskij-kirpichnyj-zavod",
+                "label": "Воротынский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/gubskij-kirpichnyj-zavod",
+                "label": "Губский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/donskoj-kirpich-gruppa-kirpichnyh-zavo",
+                "label": "Донской кирпич – группа кирпичных заводов"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/brick_premium",
+                "label": "BRICK PREMIUM"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/produkcia",
+                "label": "Продукция"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/oblitsovochniy_kirpich",
+                "label": "Облицовочный кирпич керамический"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/zabutovochnyi_kirpich",
+                "label": "Забутовочный кирпич ( рядовой )"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/keramicheskie_porizovannye_bloki",
+                "label": "Керамические поризованные блоки"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proektirovanie",
+                "label": "Строительные услуги"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditelyam",
+                "label": "Партнерам"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/dileram",
+                "label": "Торгующим организациям"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/zastrojshhikam",
+                "label": "Застройщикам"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product/granit-odinarnyj-pustotelyj-m175-f75-pustot-37-416sht-upak-plenkoj",
+                "label": "33.50 ₽ 30.00 ₽"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product/svetloseryj-kirpich-mramor-m150-f50-416sht-upak-plenkoj",
+                "label": "32.40 ₽ 29.00 ₽"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product/tarhan-odinarnyj-pustotelyj-m175-f75-416-sht",
+                "label": "32.50 ₽ 27.50 ₽"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/?page_id=1082",
+                "label": "калькулятором"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/?page_id=1058",
+                "label": "Расчет керамзитоблоков"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/articles",
+                "label": "Статьи"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/policy",
+                "label": "Политика конфиденциальности"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:13:18.355Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+            "kind": "page",
+            "text": "Сотрудники компании Кирпич Group в Краснодаре +7 (861) 2-900-208 +7 (928) 274-70-71 kirpich-group@mail.ru г.Краснодар, ул.Тургеневское шоссе 27/2 Смотреть на карте Краснодар Ростов-на-Дону Новороссийск Армавир Пятигорск Строительный калькулятор О компании Реквизиты компании Сотрудники Производители Вышневолоцкая керамика Кирпичный завод \"Прохладный\" Промышленная группа «БИС» Брянский кирпичный завод Славянский кирпичный завод Маркинский кирпичный завод Новомосковский завод керамических материалов Калужский завод строительных материалов “КЗСМ” TEREX Кирпичный завод BRAER Аксайский кирпичный завод Воротынский кирпичный завод Губский кирпичный завод Донской кирпич – группа кирпичных заводов BRICK PREMIUM Продукция Облицовочный кирпич керамический Забутовочный кирпич ( рядовой ) Керамические поризованные блоки Тротуарная плитка Кирпич ручной формовки Клинкерный кирпич облицовочный Цветные кладочные смеси (растворы) Кирпич огнеупорный (шамотный) Печной кирпич Гиперпрессованный кирпич лицевой Uncategorized Строительные услуги Партнерам Производителям Торгующим организациям Застройщикам Контакты Главная | Сотрудники Сотрудники Аркадий Аванесян Дилеры, сбытовая сеть +7 (961) 508-30-98 Мария Шириханова Администрирование, Логистика +7 (961) 508-26-58 ООО \"КИРПИЧ ГРУПП\" ОГРН 1162375028430 +7 (861) 2-900-208 Заказать звонок Статьи Наш офис: г.Краснодар, ул.Тургеневское шоссе 27/3, оф.1 E-mail рассылка Делимся скидками, акциями, опытом и полезными советами Политика конфиденциальности Заказать обратный звонок Ведите ваше имя и телефон. Специалист компании \"Кирпич Групп\" свяжется с вами, чтобы ответить на ваши вопросы. или позвоните нам по телефону +7 (861) 2-900-208 Запись на консультацию к архитектору-проектировщику Ведите ваши данные, и наш специалист свяжется с вами, чтобы ответить на ваши вопросы Меню О компании Реквизиты Сотрудники Производители Вышневолоцкая керамика Кирпичный завод “Прохладный” Промышленная группа «БИС» Брянский кирпичный завод Славянский кирпичный завод Маркинский кирпичный завод Новомосковский завод керамических материалов Калужский завод строительных материалов “КЗСМ” TEREX Кирпичный завод BRAER Аксайский кирпичный завод Воротынский кирпичный завод Губский кирпичный завод Донской кирпич – группа кирпичных заводов BRICK PREMIUM Продукция Облицовочный кирпич керамический Забутовочный кирпич ( рядовой ) Керамические поризованные блоки Тротуарная плитка Кирпич ручной формовки Клинкерный кирпич облицовочный Цветные кладочные смеси (растворы) Кирпич огнеупорный (шамотный) Печной кирпич Гиперпрессованный кирпич лицевой Uncategorized Проектирование Партнерам Производителям Торгующим организациям Застройщикам Контакты Контакты Краснодар Ростов-на-Дону Новороссийск Армавир Пятигорск Городской телефон +7 (861) 2-900-208 Мобильный телефон +7 (928) 274-70-71 E-mail kirpich-group@mail.ru Адрес г.Краснодар, ул.Кубанская Набережная, 45 Заказ товара Для заказ данного товара оставьте ваши контактные данные, и мы сами с вами свяжемся.",
+            "links": [
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+                "label": ""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": ""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kontakti",
+                "label": "Смотреть на карте"
+              },
+              {
+                "url": "https://xn--b1axaggg.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Ростов-на-Дону"
+              },
+              {
+                "url": "https://xn--b1amdelgbarlac.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Новороссийск"
+              },
+              {
+                "url": "https://xn--80aagyrxe.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Армавир"
+              },
+              {
+                "url": "https://xn--c1ajhpcjhd0j.xn----ftbnai5adade7a7b.xn--p1ai",
+                "label": "Пятигорск"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/kalkuliatory",
+                "label": "Строительный калькулятор"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/o-kompanii",
+                "label": "О компании"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/rekvizity",
+                "label": "Реквизиты компании"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditeli",
+                "label": "Производители"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vyshnevolotskaya-keramika",
+                "label": "Вышневолоцкая керамика"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/stavropolskii_kirpichnyi_zavod",
+                "label": "Кирпичный завод \"Прохладный\""
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bis",
+                "label": "Промышленная группа «БИС»"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/bryanskij-kirpichnyj-zavod",
+                "label": "Брянский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/slavianskii_kirpichnyi_zavod",
+                "label": "Славянский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/markinskii_kirpichnyi_zavod",
+                "label": "Маркинский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/novomoskovskii_zavod_keramicheskih_materialov",
+                "label": "Новомосковский завод керамических материалов"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/terex",
+                "label": "Калужский завод строительных материалов “КЗСМ” TEREX"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/braer",
+                "label": "Кирпичный завод BRAER"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/aksajskij-kirpichnyj-zavod",
+                "label": "Аксайский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/vorotynskij-kirpichnyj-zavod",
+                "label": "Воротынский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/gubskij-kirpichnyj-zavod",
+                "label": "Губский кирпичный завод"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/donskoj-kirpich-gruppa-kirpichnyh-zavo",
+                "label": "Донской кирпич – группа кирпичных заводов"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/brick_premium",
+                "label": "BRICK PREMIUM"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/produkcia",
+                "label": "Продукция"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/oblitsovochniy_kirpich",
+                "label": "Облицовочный кирпич керамический"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/zabutovochnyi_kirpich",
+                "label": "Забутовочный кирпич ( рядовой )"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/product-category/keramicheskie_porizovannye_bloki",
+                "label": "Керамические поризованные блоки"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proektirovanie",
+                "label": "Строительные услуги"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/proizvoditelyam",
+                "label": "Партнерам"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/dileram",
+                "label": "Торгующим организациям"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/zastrojshhikam",
+                "label": "Застройщикам"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/articles",
+                "label": "Статьи"
+              },
+              {
+                "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/policy",
+                "label": "Политика конфиденциальности"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:13:25.887Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/arkadij-avanesyan",
+            "kind": "search",
+            "text": "Аркадий Аванесян |\n# Аркадий Аванесян\n\n28 мая 2019\n\nВернуться к списку статей\n\n\n\nООО \"КИРПИЧ ГРУПП\"\n\nОГРН 1162375028430\n\n+7 (861) 2-900-208\n\nЗаказать звонок\n\n  \n\nСтатьи\n\n### Наш офис:\n\n#### г.Краснодар, ул.Тургеневское шоссе 27/3, оф.1\n\n### E-mail рассылка\n\n#### Делимся скидками, акциями, опытом и полезными советами\n\nПолитика конфиденциальности\n\n## Заказать обратный звонок\n\n### Ведите ваше имя и телефон. Специалист компании \"Кирпич Групп\" свяжется с вами, чтобы ответить на ваши вопросы. [...] + Донской кирпич – группа кирпичных заводов\n  + BRICK PREMIUM\n Продукция\n  + Облицовочный кирпич керамический\n  + Забутовочный кирпич ( рядовой )\n  + Керамические поризованные блоки\n  + Тротуарная плитка\n  + Кирпич ручной формовки\n  + Клинкерный кирпич облицовочный\n  + Цветные кладочные смеси (растворы)\n  + Кирпич огнеупорный (шамотный)\n  + Печной кирпич\n  + Гиперпрессованный кирпич лицевой\n  + Uncategorized\n Строительные услуги\n Партнерам\n  + Производителям\n  + Торгующим организациям [...] ### Продукция\n\n Облицовочный кирпич керамический\n Забутовочный кирпич ( рядовой )\n Керамические поризованные блоки\n Тротуарная плитка\n Кирпич ручной формовки\n Клинкерный кирпич облицовочный\n Цветные кладочные смеси (растворы)\n Кирпич огнеупорный (шамотный)\n Печной кирпич\n Гиперпрессованный кирпич лицевой\n Uncategorized\n\n### Проектирование\n\n### Партнерам\n\n Производителям\n Торгующим организациям\n Застройщикам\n\n### Контакты\n\n## Контакты\n\n Ростов-на-Дону\n Новороссийск\n Армавир\n Пятигорск",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:13:34.473Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://companies.rbc.ru/persons/ogrnip/304262527900154-avanesyan-arkadij-avetisovich",
+            "kind": "search",
+            "text": "ИП Аванесян Аркадий Аветисович — ОГРНИП\nИП Аванесян Аркадий Аветисович зарегистрирован 05.10.2004, в регионе — Ставропольский край. Основной вид деятельности: Розничная торговля вне магазинов.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:13:34.473Z",
+            "id": "e4"
+          },
+          {
+            "url": "https://www.tbank.ru/business/contractor/legal/304507521500011",
+            "kind": "search",
+            "text": "ИП Аванесян Аркадий Завенович ИНН 507504224535\nАркадий Завенович ИП ликвидирован 31 марта 2013 ОГРН .2004 ИНН 507504224535",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:13:34.474Z",
+            "id": "e5"
+          },
+          {
+            "url": "https://www.moedelo.org/kontragenty/ogrn/305344313202741",
+            "kind": "search",
+            "text": "ип аванесян аркадий завенович\nИП АВАНЕСЯН АРКАДИЙ. ИНН 507504224535 … индивидуальный предприниматель, работает 21 год.нет",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:13:34.474Z",
+            "id": "e6"
+          },
+          {
+            "url": "https://ok.ru/search/profiles/%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9-%D0%90%D0%B2%D0%B0%D0%BD%D0%B5%D1%81%D1%8F%D0%BD",
+            "kind": "search",
+            "text": "Аркадий Аванесян: people named Аркадий Аванесян have been found. OK social network – stay connected! | OK\nPrevious publication\n\nNext publication\n\nMinimize search\n\nVK services\n\nMailE-mailCloudCalendarPostsVK CallsVK E-mailTV listingsWeatherHoroscopesSportRepliesVK AdsLadyVKMore\n\nLog in\n\nMinimize search\n\n# Аркадий Аванесян\n\n## Popular people on OK\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n70 years, Yerevan\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n14 years\n\nаркадий аванесян\n\nаркадий аванесян\n\nаркадий аванесян\n\nаркадий аванесян [...] 57 years\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n41 years\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий и Римма Аванесян\n\nАркадий и Римма Аванесян\n\nАркадий и Римма Аванесян\n\nАркадий и Римма Аванесян\n\nАркадий и Римма Аванесян\n\nАркадий и Римма Аванесян\n\n57 years, Alessandria\n\nАТП10975\n\nАркадий Аванесян (багмантюнунц\n\nАркадий Аванесян (багмантюнунц [...] аркадий аванесян\n\nаркадий аванесян\n\nаркадий аванесян\n\n78 years, Zhdanovka\n\nАРКАДИЙ АВАНЕСЯН\n\nАРКАДИЙ АВАНЕСЯН\n\nАРКАДИЙ АВАНЕСЯН\n\nАРКАДИЙ АВАНЕСЯН\n\nАРКАДИЙ АВАНЕСЯН\n\nАРКАДИЙ АВАНЕСЯН\n\n65 years, g. Ershov (Ershovskiy rayon)\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n41 years\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n19 years\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\nАркадий Аванесян\n\n57 years",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:13:46.736Z",
+            "id": "e8"
+          },
+          {
+            "url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+            "kind": "search",
+            "text": "Сотрудники компании Кирпич Group в Краснодаре\nГлавная | Сотрудники\n\n# Сотрудники\n\nАркадий Аванесян\n\n### Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98\n\nМария Шириханова\n\n### Мария Шириханова\n\nАдминистрирование, Логистика\n\n+7 (961) 508-26-58\n\n\n\nООО \"КИРПИЧ ГРУПП\"\n\nОГРН 1162375028430\n\n+7 (861) 2-900-208\n\nЗаказать звонок\n\n  \n\nСтатьи\n\n### Наш офис:\n\n#### г.Краснодар, ул.Тургеневское шоссе 27/3, оф.1\n\n### E-mail рассылка\n\n#### Делимся скидками, акциями, опытом и полезными советами\n\nПолитика конфиденциальности",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:13:49.914Z",
+            "id": "e11"
+          },
+          {
+            "url": "https://checko.ru/person/507504224535",
+            "kind": "search",
+            "text": "Аванесян Аркадий Завенович - ИНН 507504224535\nЧтобы открыть полный доступ к Мониторингу контрагентов, заметкам, спискам и отчетам, войдите в личный кабинет\n\nРегистрация бесплатна и займет одну минуту\n\nВойтиЗарегистрироваться\n\nПроверка на самозанятость\n\nОставаясь на сайте, вы соглашаетесь на использование файлов cookie и обработку персональных данных в соответствии с Политикой конфиденциальности. [...] Организации\n ИП\n Беларусь\n Подписка PRO\n Мой бизнес\n API\n Базы данных\n Правовые основания\n Войти\n\n Организации\n Индивидуальные предприниматели\n\n Беларусь\n\n Подписка PRO\n Мой бизнес\n Базы данных\n API\n\n Правовая информация\n Источники данных\n Пользовательское соглашение\n Политика конфиденциальности\n Публичная оферта\n\n Личный кабинет\n\n Обратная связь [...] ## Индивидуальный предприниматель\n\nАванесян Аркадий Завенович ранее являлся индивидуальным предпринимателем\n\nСогласно данным ЕГРИП от ФНС",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:13:46.736Z",
+            "id": "e9"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+            "focus": "найти руководителя продаж или профильного ЛПР",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "\"Аркадий Аванесян\" кирпич group",
+            "focus": "найти публичные профили или подтверждённый личный email",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "\"Аркадий Аванесян\" (961) 508-30-98",
+            "focus": "поиск личных, подтверждённых email или публичных профилей Аркадия Аванесяна",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "\"Аркадий Аванесян\" email кирпич",
+            "focus": "поиск прямого публичного email по ФИО ЛПР",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 2,
+          "actionsRemaining": 6,
+          "searchRemaining": 5
+        }
+      },
+      "output": {
+        "companySummary": "КИРПИЧ GROUP — поставщик строительных материалов, ориентированный на розничных и оптовых клиентов в Краснодаре и регионе. По найденной странице сотрудники, ответственный за сбытовую сеть — Аркадий Аванесян.",
+        "missing": [
+          "Публичный именной email или публичный профиль (например, соцсети, LinkedIn) Аркадия Аванесяна."
+        ],
+        "people": [
+          {
+            "name": "Аркадий Аванесян",
+            "role": "Дилеры, сбытовая сеть",
+            "relevance": 90,
+            "reason": "Отвечает за дилеров и сбыт — профильный руководитель для направления продаж и основная кандидатура для контакта по внедрению AI/автоматизации в бизнес-процессы продаж.",
+            "citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+              },
+              {
+                "sourceId": "e11",
+                "quote": "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "xn----ftbnai5adade7a7b.xn--p1ai",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ООО \"КИРПИЧ ГРУПП\""
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Аркадий Аванесян\" email",
+            "focus": "личный email",
+            "purpose": "Проверить наличие публично привязанного email непосредственно к Аркадию Аванесяну на сторонних сайтах, избежать использования только общего или корпоративного."
+          },
+          {
+            "type": "search",
+            "value": "\"Аркадий Аванесян\" LinkedIn OR vk.com OR facebook OR instagram OR profile",
+            "focus": "публичные профили",
+            "purpose": "Найти публичный профиль Аркадия Аванесяна для контакта."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет публичного email или профиля ключевого ЛПР; требуется дополнительный поиск для достоверного канала связи напрямую с Аркадием Аванесяном."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 3,
+      "decision": {
+        "companySummary": "КИРПИЧ GROUP — поставщик строительных материалов, ориентированный на розничных и оптовых клиентов в Краснодаре и регионе. По найденной странице сотрудники, ответственный за сбытовую сеть — Аркадий Аванесян.",
+        "missing": [
+          "Публичный именной email или публичный профиль (например, соцсети, LinkedIn) Аркадия Аванесяна."
+        ],
+        "people": [
+          {
+            "name": "Аркадий Аванесян",
+            "role": "Дилеры, сбытовая сеть",
+            "relevance": 90,
+            "reason": "Отвечает за дилеров и сбыт — профильный руководитель для направления продаж и основная кандидатура для контакта по внедрению AI/автоматизации в бизнес-процессы продаж.",
+            "citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+              },
+              {
+                "sourceId": "e11",
+                "quote": "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "xn----ftbnai5adade7a7b.xn--p1ai",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ООО \"КИРПИЧ ГРУПП\""
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Аркадий Аванесян\" email",
+            "focus": "личный email",
+            "purpose": "Проверить наличие публично привязанного email непосредственно к Аркадию Аванесяну на сторонних сайтах, избежать использования только общего или корпоративного."
+          },
+          {
+            "type": "search",
+            "value": "\"Аркадий Аванесян\" LinkedIn OR vk.com OR facebook OR instagram OR profile",
+            "focus": "публичные профили",
+            "purpose": "Найти публичный профиль Аркадия Аванесяна для контакта."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет публичного email или профиля ключевого ЛПР; требуется дополнительный поиск для достоверного канала связи напрямую с Аркадием Аванесяном."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [
+        {
+          "full_name": "Аркадий Аванесян",
+          "role_title": "Дилеры, сбытовая сеть",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Аркадий Аванесян Дилеры, сбытовая сеть",
+            "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+          ],
+          "metadata": {
+            "source_url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+            "source_urls": [
+              "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+              "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+              },
+              {
+                "sourceId": "e11",
+                "quote": "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+              }
+            ],
+            "semantic_role_relevance": 90,
+            "semantic_role_reason": "Отвечает за дилеров и сбыт — профильный руководитель для направления продаж и основная кандидатура для контакта по внедрению AI/автоматизации в бизнес-процессы продаж.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "xn----ftbnai5adade7a7b.xn--p1ai"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "xn----ftbnai5adade7a7b.xn--p1ai"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9%20%D0%90%D0%B2%D0%B0%D0%BD%D0%B5%D1%81%D1%8F%D0%BD%22%20email&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 461
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9%20%D0%90%D0%B2%D0%B0%D0%BD%D0%B5%D1%81%D1%8F%D0%BD%22%20email&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 443
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9%20%D0%90%D0%B2%D0%B0%D0%BD%D0%B5%D1%81%D1%8F%D0%BD%22%20LinkedIn%20OR%20vk.com%20OR%20facebook%20OR%20instagram%20OR%20profile&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 242
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9%20%D0%90%D0%B2%D0%B0%D0%BD%D0%B5%D1%81%D1%8F%D0%BD%22%20LinkedIn%20OR%20vk.com%20OR%20facebook%20OR%20instagram%20OR%20profile&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 130
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "error": "TimeoutError",
+      "elapsedMs": 591
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "error": "TimeoutError",
+      "elapsedMs": 87
+    },
+    {
+      "stage": "search",
+      "query": "\"Аркадий Аванесян\" email",
+      "results": []
+    },
+    {
+      "stage": "search",
+      "query": "\"Аркадий Аванесян\" LinkedIn OR vk.com OR facebook OR instagram OR profile",
+      "results": []
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"Аркадий Аванесян\" email",
+      "focus": "личный email",
+      "purpose": "Проверить наличие публично привязанного email непосредственно к Аркадию Аванесяну на сторонних сайтах, избежать использования только общего или корпоративного.",
+      "results": []
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"Аркадий Аванесян\" LinkedIn OR vk.com OR facebook OR instagram OR profile",
+      "focus": "публичные профили",
+      "purpose": "Найти публичный профиль Аркадия Аванесяна для контакта.",
+      "results": []
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "research_budget",
+      "actions": 7,
+      "candidates": [
+        {
+          "full_name": "Аркадий Аванесян",
+          "role_title": "Дилеры, сбытовая сеть",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Аркадий Аванесян Дилеры, сбытовая сеть",
+            "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+          ],
+          "metadata": {
+            "source_url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+            "source_urls": [
+              "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+              "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+              },
+              {
+                "sourceId": "e11",
+                "quote": "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+              }
+            ],
+            "semantic_role_relevance": 90,
+            "semantic_role_reason": "Отвечает за дилеров и сбыт — профильный руководитель для направления продаж и основная кандидатура для контакта по внедрению AI/автоматизации в бизнес-процессы продаж.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "xn----ftbnai5adade7a7b.xn--p1ai"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "xn----ftbnai5adade7a7b.xn--p1ai"
+      ],
+      "elapsedMs": 40012
+    },
+    {
+      "stage": "people_ranked",
+      "people": [
+        {
+          "full_name": "Аркадий Аванесян",
+          "role_title": "Дилеры, сбытовая сеть",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Аркадий Аванесян Дилеры, сбытовая сеть",
+            "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+          ],
+          "metadata": {
+            "source_url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+            "source_urls": [
+              "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+              "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+              },
+              {
+                "sourceId": "e11",
+                "quote": "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+              }
+            ],
+            "semantic_role_relevance": 90,
+            "semantic_role_reason": "Отвечает за дилеров и сбыт — профильный руководитель для направления продаж и основная кандидатура для контакта по внедрению AI/автоматизации в бизнес-процессы продаж.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "xn----ftbnai5adade7a7b.xn--p1ai"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ]
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "Дилеры, сбытовая сеть: The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+        "person_name": "Аркадий Аванесян",
+        "person_role": "Дилеры, сбытовая сеть",
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Аркадий Аванесян подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": null,
+            "summary": "Роль связана с зоной ответственности: Sales and revenue leadership."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Аркадий Аванесян Дилеры, сбытовая сеть"
+          },
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "person_found_personal_email_unresolved"
+      },
+      "contacts": [
+        {
+          "name": "Аркадий Аванесян",
+          "email": null,
+          "type": "confirmed_person",
+          "source": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://xn----ftbnai5adade7a7b.xn--p1ai/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://xn----ftbnai5adade7a7b.xn--p1ai/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://xn----ftbnai5adade7a7b.xn--p1ai"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-10-06T20:13:17.168Z",
+  "bundle": {
+    "companyName": "КИРПИЧ GROUP",
+    "officialWebsite": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+    "officialDomain": "xn----ftbnai5adade7a7b.xn--p1ai",
+    "people": [
+      {
+        "fullName": "Аркадий Аванесян",
+        "role": "Дилеры, сбытовая сеть",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+            "sourceType": "official",
+            "excerpt": "Аркадий Аванесян Дилеры, сбытовая сеть",
+            "capturedAt": "2026-10-06T20:13:17.168Z",
+            "confidence": 90
+          },
+          {
+            "sourceUrl": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki",
+            "sourceType": "official",
+            "excerpt": "Аркадий Аванесян Дилеры, сбытовая сеть +7 (961) 508-30-98",
+            "capturedAt": "2026-10-06T20:13:17.168Z",
+            "confidence": 90
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: КИРПИЧ GROUP; открыта вакансия: Менеджер по продажам.",
+      "sourceUrl": "https://hh.ru/vacancy/137052088",
+      "confidence": 100
+    },
+    "researchConfidence": "LIKELY",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 5,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 12,
+      "lprMs": 40013,
+      "contactMs": 306,
+      "totalMs": 40320,
+      "stopReason": "people_found_email_unresolved"
+    }
+  },
+  "people": {
+    "primary_person": {
+      "full_name": "Аркадий Аванесян",
+      "role_title": "Дилеры, сбытовая сеть",
+      "department": null,
+      "linkedin_url": null,
+      "work_email": null,
+      "phone": null,
+      "source": "Iterative public research",
+      "confidence_score": 90,
+      "evidence": [
+        "Аркадий Аванесян Дилеры, сбытовая сеть",
+        "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+      ],
+      "metadata": {
+        "source_url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+        "source_urls": [
+          "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+          "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki"
+        ],
+        "research_citations": [
+          {
+            "sourceId": "e2",
+            "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+          },
+          {
+            "sourceId": "e11",
+            "quote": "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+          }
+        ],
+        "semantic_role_relevance": 90,
+        "semantic_role_reason": "Отвечает за дилеров и сбыт — профильный руководитель для направления продаж и основная кандидатура для контакта по внедрению AI/автоматизации в бизнес-процессы продаж.",
+        "email_source_url": null,
+        "email_person_evidence": null,
+        "public_contact_verified": false,
+        "verified_company_domains": [
+          "xn----ftbnai5adade7a7b.xn--p1ai"
+        ],
+        "verified_public_profiles": [],
+        "tenchat_url": null,
+        "telegram_url": null,
+        "vk_url": null,
+        "instagram_url": null,
+        "contact_route": "target_persona",
+        "company_verified": true,
+        "role_verified": true
+      }
+    },
+    "alternative_people": [],
+    "all_candidates": [
+      {
+        "full_name": "Аркадий Аванесян",
+        "role_title": "Дилеры, сбытовая сеть",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Аркадий Аванесян Дилеры, сбытовая сеть",
+          "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+        ],
+        "metadata": {
+          "source_url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+          "source_urls": [
+            "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+            "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e2",
+              "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+            },
+            {
+              "sourceId": "e11",
+              "quote": "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+            }
+          ],
+          "semantic_role_relevance": 90,
+          "semantic_role_reason": "Отвечает за дилеров и сбыт — профильный руководитель для направления продаж и основная кандидатура для контакта по внедрению AI/автоматизации в бизнес-процессы продаж.",
+          "email_source_url": null,
+          "email_person_evidence": null,
+          "public_contact_verified": false,
+          "verified_company_domains": [
+            "xn----ftbnai5adade7a7b.xn--p1ai"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      }
+    ],
+    "primary_person_intelligence": {
+      "candidate": {
+        "full_name": "Аркадий Аванесян",
+        "role_title": "Дилеры, сбытовая сеть",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Аркадий Аванесян Дилеры, сбытовая сеть",
+          "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+        ],
+        "metadata": {
+          "source_url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+          "source_urls": [
+            "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+            "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e2",
+              "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+            },
+            {
+              "sourceId": "e11",
+              "quote": "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+            }
+          ],
+          "semantic_role_relevance": 90,
+          "semantic_role_reason": "Отвечает за дилеров и сбыт — профильный руководитель для направления продаж и основная кандидатура для контакта по внедрению AI/автоматизации в бизнес-процессы продаж.",
+          "email_source_url": null,
+          "email_person_evidence": null,
+          "public_contact_verified": false,
+          "verified_company_domains": [
+            "xn----ftbnai5adade7a7b.xn--p1ai"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      },
+      "rank_score": 74,
+      "person_score": 74,
+      "persona_match_score": 90,
+      "business_problem_ownership": "high",
+      "decision_authority": "low",
+      "influence_level": "medium",
+      "confidence_score": 85,
+      "confidence_level": "high_confidence",
+      "contact_availability": {
+        "has_work_email": false,
+        "has_linkedin": false,
+        "has_phone": false,
+        "has_telegram": false
+      },
+      "matched_keywords": [],
+      "reasoning": "No direct persona keyword match in available person context.",
+      "selection_reason": "Аркадий Аванесян is the strongest available candidate because Дилеры, сбытовая сеть no direct keyword match, compared against РОП. Persona match 90/100, ownership high, authority low, influence medium, confidence 85/100.",
+      "strengths": [
+        "Strong persona match (90/100)",
+        "Likely owner of the business problem"
+      ],
+      "weaknesses": [
+        "No direct persona keyword match in available evidence",
+        "No direct personal contact channel found"
+      ],
+      "why_not_other_candidates": [],
+      "recommended_next_action": "run_enrichment"
+    },
+    "alternative_people_intelligence": [],
+    "ranked_people": [
+      {
+        "candidate": {
+          "full_name": "Аркадий Аванесян",
+          "role_title": "Дилеры, сбытовая сеть",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Аркадий Аванесян Дилеры, сбытовая сеть",
+            "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+          ],
+          "metadata": {
+            "source_url": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+            "source_urls": [
+              "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+              "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Аркадий Аванесян Дилеры, сбытовая сеть"
+              },
+              {
+                "sourceId": "e11",
+                "quote": "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+              }
+            ],
+            "semantic_role_relevance": 90,
+            "semantic_role_reason": "Отвечает за дилеров и сбыт — профильный руководитель для направления продаж и основная кандидатура для контакта по внедрению AI/автоматизации в бизнес-процессы продаж.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "xn----ftbnai5adade7a7b.xn--p1ai"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        "rank_score": 74,
+        "person_score": 74,
+        "persona_match_score": 90,
+        "business_problem_ownership": "high",
+        "decision_authority": "low",
+        "influence_level": "medium",
+        "confidence_score": 85,
+        "confidence_level": "high_confidence",
+        "contact_availability": {
+          "has_work_email": false,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Аркадий Аванесян is the strongest available candidate because Дилеры, сбытовая сеть no direct keyword match, compared against РОП. Persona match 90/100, ownership high, authority low, influence medium, confidence 85/100.",
+        "strengths": [
+          "Strong persona match (90/100)",
+          "Likely owner of the business problem"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence",
+          "No direct personal contact channel found"
+        ],
+        "why_not_other_candidates": [],
+        "recommended_next_action": "run_enrichment"
+      }
+    ],
+    "selection_reasoning": "Аркадий Аванесян is the strongest available candidate because Дилеры, сбытовая сеть no direct keyword match, compared against РОП. Persona match 90/100, ownership high, authority low, influence medium, confidence 85/100.",
+    "search_status": "person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "research_budget"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 5,
+      "official_pages_fetched": 2,
+      "aborted_requests": 1,
+      "elapsed_ms": 40012,
+      "stop_reason": "research_budget",
+      "queries_executed": [
+        "\"Аркадий Аванесян\" кирпич group",
+        "\"Аркадий Аванесян\" (961) 508-30-98",
+        "\"Аркадий Аванесян\" email кирпич",
+        "\"Аркадий Аванесян\" email",
+        "\"Аркадий Аванесян\" LinkedIn OR vk.com OR facebook OR instagram OR profile"
+      ],
+      "sources_checked": [
+        "https://xn----ftbnai5adade7a7b.xn--p1ai",
+        "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+        "https://xn----ftbnai5adade7a7b.xn--p1ai/arkadij-avanesyan",
+        "https://companies.rbc.ru/persons/ogrnip/304262527900154-avanesyan-arkadij-avetisovich",
+        "https://www.tbank.ru/business/contractor/legal/304507521500011",
+        "https://www.moedelo.org/kontragenty/ogrn/305344313202741",
+        "https://fedresurs.ru/persons/1de2f4da-bba5-11f0-aac9-00620be2fa80",
+        "https://ok.ru/search/profiles/%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9-%D0%90%D0%B2%D0%B0%D0%BD%D0%B5%D1%81%D1%8F%D0%BD",
+        "https://checko.ru/person/507504224535",
+        "https://www.rusprofile.ru/ip/319470400001048",
+        "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki"
+      ],
+      "search_results_seen": 15,
+      "rejected_candidates": {
+        "validation_rejects": 0
+      },
+      "final_failure_reason": null
+    }
+  },
+  "contacts": [
+    {
+      "name": "Аркадий Аванесян",
+      "role": "Дилеры, сбытовая сеть",
+      "email": null,
+      "type": "confirmed_person",
+      "source": "https://xn----ftbnai5adade7a7b.xn--p1ai/sotrudniki/",
+      "selected": false,
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "Дилеры, сбытовая сеть: The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+        "person_name": "Аркадий Аванесян",
+        "person_role": "Дилеры, сбытовая сеть",
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Аркадий Аванесян подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": null,
+            "summary": "Роль связана с зоной ответственности: Sales and revenue leadership."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Аркадий Аванесян Дилеры, сбытовая сеть"
+          },
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Аркадий Аванесян\n\nДилеры, сбытовая сеть\n\n+7 (961) 508-30-98"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "person_found_personal_email_unresolved"
+      }
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://xn----ftbnai5adade7a7b.xn--p1ai/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://xn----ftbnai5adade7a7b.xn--p1ai/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 40320
+}

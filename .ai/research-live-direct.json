@@ -1,0 +1,1364 @@
+{
+  "mode": "direct",
+  "startedAt": "2026-10-06T20:04:54.428Z",
+  "isolated": "C:\\Users\\User\\AppData\\Local\\Temp\\leadgen-final-direct-PPMPhm",
+  "productionSmtpCalls": 0,
+  "discovery": {
+    "mode": "LIVE_READ_ONLY",
+    "verticalId": null,
+    "planner": {
+      "status": "AI",
+      "reason": "configured",
+      "intentHypotheses": [
+        "найм специалистов для AI-автоматизации бизнес-процессов",
+        "публикация тендеров на внедрение решений ИИ",
+        "компании объявляют о пилотных проектах с LLM",
+        "поиск подрядчиков по агентной автоматизации задач",
+        "закупка услуг по интеграции AI в производство",
+        "размещение вакансий на разработчиков решений с ИИ"
+      ],
+      "terminology": [
+        "AI",
+        "ИИ",
+        "LLM",
+        "агентная автоматизация",
+        "машинное обучение",
+        "натуральный язык",
+        "пилотный проект",
+        "тендер на ИИ",
+        "автоматизация бизнес-процессов",
+        "поиск подрядчика",
+        "внедрение искусственного интеллекта"
+      ],
+      "sourceHypotheses": [
+        "работные сайты (hh.ru, superjob.ru)",
+        "сайты объявлений закупок и тендеров",
+        "новостные статьи о бизнесе в России",
+        "официальные сайты компаний и пресс-релизы",
+        "отчеты инвесторов с упоминаниями проектов AI"
+      ],
+      "queries": [
+        "искусственный интеллект автоматизация бизнес-процессов разработчик",
+        "обработчик естественного языка автоматизация отчетности",
+        "компания тендер внедрение ИИ решение",
+        "организация поиск подрядчика агентная автоматизация",
+        "корпорация объявила пилот LLM автоматизация",
+        "предприятие внедрение искусственный интеллект бизнес-процессы"
+      ],
+      "queryAngles": [
+        "ru_job_board",
+        "ru_job_board",
+        "market_news",
+        "market_news",
+        "market_news",
+        "market_news"
+      ],
+      "execution": "ai_semantic",
+      "refinementQueries": [
+        "закупка ИИ решение",
+        "тендер внедрение искусственный интеллект"
+      ]
+    },
+    "metrics": {
+      "jobsScanned": 47,
+      "assessed": 17,
+      "hhAssessed": 6,
+      "nonHhAssessed": 11,
+      "semanticDirect": 4,
+      "aiRoleCandidates": 24,
+      "automationIntentPass": 3,
+      "companiesExtracted": 3,
+      "hhCompanies": 3,
+      "nonHhCompanies": 0,
+      "officialDomainsConfirmed": 3,
+      "icpMatch": 0,
+      "icpUncertain": 0,
+      "icpMismatch": 0,
+      "segmentNotApplied": 3,
+      "contactsFound": 2,
+      "ready": 2,
+      "falsePositives": 0,
+      "runtimeMs": 87050,
+      "requests": 85,
+      "companyIdentityQueries": 2,
+      "timeouts": 0,
+      "abortedRequests": 0,
+      "orphanRequests": 0
+    },
+    "accepted": [
+      {
+        "company": "Финансово-Правовой Центр",
+        "vacancyTitle": "Специалист по автоматизации бизнес-процессов",
+        "sourceUrl": "https://hh.ru/vacancy/137892542",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "внедряем искусственный интеллект в ежедневную работу компании ... использовать искусственный интеллект для решения рабочих задач; тестировать AI-сервисы и другие цифровые инструменты",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Явно указано, что компания внедряет AI и ищет сотрудника для внутренних AI-задач; роль нацелена на поиск и реализацию AI-решений для собственного бизнеса.",
+        "officialWebsite": "https://ratingbankrotstva.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 1,
+        "contactEmail": "support@ratingbankrotstva.ru",
+        "contactKind": "support",
+        "contactSourceUrl": "https://ratingbankrotstva.ru/",
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": true
+      },
+      {
+        "company": "БУРГЕР КИНГ РОССИЯ",
+        "vacancyTitle": "Старший разработчик искусственного интеллекта",
+        "sourceUrl": "https://hh.ru/vacancy/137329739",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "Разработка и внедрение LLM-решений: Создание и оптимизация чат-ботов и интеллектуальных агентов на базе LLM. Разработка и развитие внутренней платформы для использования корпоративных LL",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "Вакансия с прямым описанием задач по разработке и внедрению LLM-решений и интеллектуальных агентов подтверждает реальный заявленный спрос на AI для собственных бизнес-процессов.",
+        "officialWebsite": "https://burgerkingrus.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": false
+      },
+      {
+        "company": "Горница",
+        "vacancyTitle": "Специалист по автоматизации бизнес-процессов и внедрению ИИ",
+        "sourceUrl": "https://hh.ru/vacancy/137652181",
+        "status": "ACCEPTED",
+        "reason": "direct_ai_automation_hiring_intent",
+        "evidence": "Специалист по автоматизации бизнес-процессов и внедрению ИИ ... который поможет последовательно внедрять искусственный интеллект в работу компании. ... задачи: ... Выявлять операции, которые можно автоматизировать или улучшить с помощью ИИ. ... Создавать прототипы внутренних сервисов, AI-ассистентов и автоматизированных сценариев.",
+        "automationUseCase": "business_automation",
+        "whyRelevant": "В тексте вакансии ясно прописано ожидание поиска кандидата именно для внедрения ИИ в бизнес-процессы и разработки AI-ассистентов для внутренних нужд компании.",
+        "officialWebsite": "https://gornica-okna.ru",
+        "icpResult": "NOT_APPLIED",
+        "contactsFound": 1,
+        "contactEmail": "info@gornica-okna.ru",
+        "contactKind": "general",
+        "contactSourceUrl": "https://gornica-okna.ru/",
+        "companyIdentityConfidence": "HIGH_CONFIDENCE",
+        "ready": true
+      }
+    ],
+    "sourceClasses": {
+      "hh": {
+        "results": 10,
+        "assessed": 6,
+        "direct": 4,
+        "companies": 3,
+        "rejected": {
+          "semantic_assessment_missing": 3,
+          "direct_intent_not_relevant": 2,
+          "organization_kind_public_sector": 1,
+          "bounded_sample_not_assessed": 1
+        }
+      },
+      "company_site": {
+        "results": 15,
+        "assessed": 3,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "semantic_assessment_missing": 2,
+          "direct_intent_stale": 2,
+          "bounded_sample_not_assessed": 10,
+          "direct_intent_likely_not_confirmed": 1
+        }
+      },
+      "news": {
+        "results": 10,
+        "assessed": 3,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "semantic_assessment_missing": 2,
+          "direct_intent_likely_not_confirmed": 1,
+          "direct_intent_stale": 1,
+          "direct_intent_not_relevant": 1,
+          "bounded_sample_not_assessed": 5
+        }
+      },
+      "blog": {
+        "results": 9,
+        "assessed": 3,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "direct_intent_stale": 2,
+          "direct_intent_not_relevant": 1,
+          "bounded_sample_not_assessed": 6
+        }
+      },
+      "directory": {
+        "results": 3,
+        "assessed": 2,
+        "direct": 0,
+        "companies": 0,
+        "rejected": {
+          "direct_intent_stale": 1,
+          "bounded_sample_not_assessed": 1,
+          "direct_intent_not_relevant": 1
+        }
+      }
+    },
+    "rejected": [
+      {
+        "company": null,
+        "vacancyTitle": "Специалист по искусственному интеллекту / AI-инженер",
+        "sourceUrl": "https://hh.ru/vacancy/137741662",
+        "status": "REJECTED",
+        "reason": "semantic_assessment_missing",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "В Узбекистане запустили TenderGPT для поиска поставщиков и проведения тендеров – Новости Узбекистана – Gazeta",
+        "sourceUrl": "https://www.gazeta.uz/ru/2026/09/29/tendergpt",
+        "status": "REJECTED",
+        "reason": "semantic_assessment_missing",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Инженер по машинному обучению/Центр компетенций в сфере искусственного интеллекта",
+        "sourceUrl": "https://hh.ru/vacancy/138101940",
+        "status": "REJECTED",
+        "reason": "semantic_assessment_missing",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "ТОП-10 агентств по разработке AI-агентов для автоматизации бизнес-процессов в 2026 году — Digital Экспертиза на vc.ru",
+        "sourceUrl": "https://vc.ru/id5905694/3058526-top-agentstv-po-razrabotke-ai-agentov-dlya-avtomatizatsii-biznes-protsessov",
+        "status": "REJECTED",
+        "reason": "semantic_assessment_missing",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Бизнес-аналитик по AI-автоматизации (отдел маркетплейсов)",
+        "sourceUrl": "https://hh.ru/vacancy/138168626",
+        "status": "REJECTED",
+        "reason": "semantic_assessment_missing",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Как ПСБ внедряет ИИ: от чат-ботов и RAG до мультиагентных систем / Хабр",
+        "sourceUrl": "https://habr.com/ru/companies/psb/articles/1022670",
+        "status": "REJECTED",
+        "reason": "semantic_assessment_missing",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Стажер-разработчик C++ / Computer Vision (офис)",
+        "sourceUrl": "https://hh.ru/vacancy/137906636",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Building a Foundation for AI Success on the Shop Floor - Modern Machine Shop",
+        "sourceUrl": "https://www.mmsonline.com/articles/building-a-foundation-for-ai-success-on-the-shop-floor",
+        "status": "REJECTED",
+        "reason": "direct_intent_stale",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "От лицензий к инфраструктуре: как меняется структура закупок решений с ИИ - Ведомости.Технологии и инновации",
+        "sourceUrl": "https://www.vedomosti.ru/technologies/trendsrub/articles/2026/05/18/1197874-ot-litsenzii-k-infrastrukture-kak-menyaetsya-struktura-zakupok-reshenii-s-ii",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Разработчик полного цикла",
+        "sourceUrl": "https://hh.ru/vacancy/135895349",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Как настроить ИИ-агента: виды и основные подходы к созданию и внедрению",
+        "sourceUrl": "https://bigdata.beeline.ru/blog/articles/kak-sdelat-i-nastroit-ii-agenta",
+        "status": "REJECTED",
+        "reason": "direct_intent_stale",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Объявлена программа CIO CAMP 2026: как компании переводят ИИ из пилотов в рабочие процессы / Хабр",
+        "sourceUrl": "https://habr.com/ru/companies/infostart/articles/1065254",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "SageX AI Launches Invoice Processing and Purchase Order Automation for Manufacturing Companies: Eliminating Manual ERP Data Entry - The Manila Times",
+        "sourceUrl": "https://www.manilatimes.net/2026/03/20/tmt-newswire/globenewswire/sagex-ai-launches-invoice-processing-and-purchase-order-automation-for-manufacturing-companies-eliminating-manual-erp-data-entry/2304590",
+        "status": "REJECTED",
+        "reason": "direct_intent_stale",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Стажер RPA-разработчик",
+        "sourceUrl": "https://hh.ru/vacancy/137916286",
+        "status": "REJECTED",
+        "reason": "organization_kind_public_sector",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Качка в госзакупках. Количество ИИ-поставщиков растет, а антивирусного ПО и ВКС - падает | ComNews",
+        "sourceUrl": "https://www.comnews.ru/content/247646/2026-10-01/2026-w40/1007/kachka-goszakupkakh-kolichestvo-ii-postavschikov-rastet-antivirusnogo-i-vks-padaet",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "ИИ в снабжении: как автоматизировать закупки, снизить риски и повысить устойчивость бизнеса",
+        "sourceUrl": "https://www.sostav.ru/blogs/263681/79684",
+        "status": "REJECTED",
+        "reason": "direct_intent_stale",
+        "evidence": null,
+        "automationUseCase": "business_automation",
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "От рутины к стратегии: Как AI-система анализа закупок переводит поиск тендеров на новый уровень",
+        "sourceUrl": "https://www.sostav.ru/blogs/290741/91335",
+        "status": "REJECTED",
+        "reason": "direct_intent_not_relevant",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "ИИ-решения вышли в лидеры роста на рынке госзакупок ИТ",
+        "sourceUrl": "https://www.tadviser.ru/index.php/%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8:%D0%98%D0%98-%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F_%D0%B2%D1%8B%D1%88%D0%BB%D0%B8_%D0%B2_%D0%BB%D0%B8%D0%B4%D0%B5%D1%80%D1%8B_%D1%80%D0%BE%D1%81%D1%82%D0%B0_%D0%BD%D0%B0_%D1%80%D1%8B%D0%BD%D0%BA%D0%B5_%D0%B3%D0%BE%D1%81%D0%B7%D0%B0%D0%BA%D1%83%D0%BF%D0%BE%D0%BA_%D0%98%D0%A2",
+        "status": "REJECTED",
+        "reason": "direct_intent_likely_not_confirmed",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "AI для тендеров — заявка за 2 часа, +40% побед | Digital-Pro",
+        "sourceUrl": "https://digital-pro.tech/ai-first-technology/tenders",
+        "status": "REJECTED",
+        "reason": "direct_intent_stale",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      },
+      {
+        "company": null,
+        "vacancyTitle": "Подмосковье презентовало цифровые ИИ-решения в сфере закупок и торгов на форуме в Петербурге",
+        "sourceUrl": "https://mosreg.ru/sobytiya/novosti/news-submoscow/podmoskove-prezentovalo-cifrovye-ii-resheniya-v-sfere-zakupok-i-torgov-na-forume-v-peterburge",
+        "status": "REJECTED",
+        "reason": "semantic_assessment_missing",
+        "evidence": null,
+        "automationUseCase": null,
+        "whyRelevant": null,
+        "officialWebsite": null,
+        "icpResult": "NOT_CHECKED",
+        "contactsFound": 0,
+        "contactEmail": null,
+        "contactKind": null,
+        "contactSourceUrl": null,
+        "ready": false
+      }
+    ],
+    "rejectionReasons": {
+      "semantic_assessment_missing": 7,
+      "direct_intent_not_relevant": 5,
+      "direct_intent_stale": 6,
+      "direct_intent_likely_not_confirmed": 2,
+      "organization_kind_public_sector": 1
+    },
+    "mutated": false,
+    "smtpCalls": 0
+  },
+  "campaign": {
+    "id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+    "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+    "name": "Controlled Direct AI Need",
+    "requested_by": "isolated-live",
+    "status": "completed",
+    "icp_label": "Прямой подтверждённый спрос на AI",
+    "offer_label": "разобрать конкретную AI-задачу и быстро проверить решение через аудит или MVP",
+    "created_at": "2026-10-06T20:06:23.023Z"
+  },
+  "companies": [
+    {
+      "id": "company-19e58d07208bcaa5023c86a78304",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "company_name": "Финансово-Правовой Центр",
+      "company_domain": "ratingbankrotstva.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/137892542",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "Финансово-Правовой Центр",
+          "officialWebsite": "https://ratingbankrotstva.ru",
+          "officialDomain": "ratingbankrotstva.ru",
+          "people": [
+            {
+              "fullName": "Гусев Сергей Сергеевич",
+              "role": "Генеральный директор",
+              "confidence": "HIGH_CONFIDENCE",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.rusprofile.ru/id/2137907",
+                  "sourceType": "public_web",
+                  "excerpt": "Генеральный директор ООО \"Финансово-Правовой Центр\" - Гусев Сергей Сергеевич",
+                  "capturedAt": "2026-10-06T20:06:23.023Z",
+                  "confidence": 70
+                }
+              ],
+              "profiles": {
+                "tenchat": null,
+                "telegram": null,
+                "instagram": null,
+                "vk": null,
+                "other": []
+              },
+              "phone": null
+            }
+          ],
+          "emails": {
+            "personal": [],
+            "department": [
+              {
+                "email": "support@ratingbankrotstva.ru",
+                "personName": null,
+                "classification": "DEPARTMENT",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://ratingbankrotstva.ru",
+                    "sourceType": "official",
+                    "excerpt": "support@ratingbankrotstva.ru — public email parser",
+                    "capturedAt": "2026-10-06T20:06:23.023Z",
+                    "confidence": 99
+                  }
+                ]
+              }
+            ],
+            "general": [],
+            "inferred": []
+          },
+          "bestOutreachContact": {
+            "email": "support@ratingbankrotstva.ru",
+            "personName": null,
+            "role": null,
+            "classification": "DEPARTMENT",
+            "contactLevel": "E",
+            "sourceUrl": "https://ratingbankrotstva.ru"
+          },
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Специалист по автоматизации бизнес-процессов",
+            "detail": "внедряем искусственный интеллект в ежедневную работу компании ... использовать искусственный интеллект для решения рабочих задач; тестировать AI-сервисы и другие цифровые инструменты",
+            "sourceUrl": "https://hh.ru/vacancy/137892542",
+            "confidence": 90
+          },
+          "researchConfidence": "HIGH_CONFIDENCE",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 6,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 14,
+            "lprMs": 37320,
+            "contactMs": 33,
+            "totalMs": 39950,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/137892542",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-06T20:06:23.023Z",
+      "updated_at": "2026-10-06T20:06:23.023Z"
+    },
+    {
+      "id": "company-def82beac324cb17c80fa3f1076a",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "company_name": "БУРГЕР КИНГ РОССИЯ",
+      "company_domain": "burgerkingrus.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/137329739",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "БУРГЕР КИНГ РОССИЯ",
+          "officialWebsite": "https://burgerkingrus.ru",
+          "officialDomain": "burgerkingrus.ru",
+          "people": [],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [],
+            "inferred": []
+          },
+          "bestOutreachContact": null,
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Старший разработчик искусственного интеллекта",
+            "detail": "Разработка и внедрение LLM-решений: Создание и оптимизация чат-ботов и интеллектуальных агентов на базе LLM. Разработка и развитие внутренней платформы для использования корпоративных LL",
+            "sourceUrl": "https://hh.ru/vacancy/137329739",
+            "confidence": 90
+          },
+          "researchConfidence": "UNVERIFIED",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 5,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 11,
+            "lprMs": 34848,
+            "contactMs": 117,
+            "totalMs": 34966,
+            "stopReason": "research_budget"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/137329739",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-06T20:06:23.023Z",
+      "updated_at": "2026-10-06T20:06:23.023Z"
+    },
+    {
+      "id": "company-4eee7883f2b1140fac864e0e35a7",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "company_name": "Горница",
+      "company_domain": "gornica-okna.ru",
+      "company_segment": "без отраслевого ограничения",
+      "source": "ai_hiring",
+      "source_url": "https://hh.ru/vacancy/137652181",
+      "source_label": "Публичная AI-потребность",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "discovery_query": null,
+      "matched_signal_count": 1,
+      "lead_score": 90,
+      "icp_fit_score": 90,
+      "confidence_score": 90,
+      "country": "Россия",
+      "industry": null,
+      "company_size": null,
+      "linkedin_url": null,
+      "metadata": {
+        "company_research": {
+          "companyName": "Горница",
+          "officialWebsite": "https://gornica-okna.ru",
+          "officialDomain": "gornica-okna.ru",
+          "people": [
+            {
+              "fullName": "Сергей Щерба",
+              "role": "Директор",
+              "confidence": "HIGH_CONFIDENCE",
+              "evidence": [
+                {
+                  "sourceUrl": "https://gorodarmavir.ru/news/obshchestvo/direktor-kompanii-gornitsa-sergey-shcherba-nagrazhden-medalyu-za-vydayushchiysya-vklad-v-razvitie-kr",
+                  "sourceType": "public_web",
+                  "excerpt": "директор компании «Горница» Сергей Щерба награжден медалью",
+                  "capturedAt": "2026-10-06T20:06:23.023Z",
+                  "confidence": 70
+                }
+              ],
+              "profiles": {
+                "tenchat": null,
+                "telegram": null,
+                "instagram": null,
+                "vk": null,
+                "other": []
+              },
+              "phone": null
+            }
+          ],
+          "emails": {
+            "personal": [],
+            "department": [],
+            "general": [
+              {
+                "email": "info@gornica-okna.ru",
+                "personName": null,
+                "classification": "GENERAL",
+                "evidence": [
+                  {
+                    "sourceUrl": "https://gornica-okna.ru/kontakty",
+                    "sourceType": "official",
+                    "excerpt": "info@gornica-okna.ru — public email parser",
+                    "capturedAt": "2026-10-06T20:06:23.023Z",
+                    "confidence": 99
+                  }
+                ]
+              }
+            ],
+            "inferred": []
+          },
+          "bestOutreachContact": {
+            "email": "info@gornica-okna.ru",
+            "personName": null,
+            "role": null,
+            "classification": "GENERAL",
+            "contactLevel": "E",
+            "sourceUrl": "https://gornica-okna.ru/kontakty"
+          },
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Специалист по автоматизации бизнес-процессов и внедрению ИИ",
+            "detail": "Специалист по автоматизации бизнес-процессов и внедрению ИИ ... который поможет последовательно внедрять искусственный интеллект в работу компании. ... задачи: ... Выявлять операции, которые можно автоматизировать или улучшить с помощью ИИ. ... Создавать прототипы внутренних сервисов, AI-ассистентов и автоматизированных сценариев.",
+            "sourceUrl": "https://hh.ru/vacancy/137652181",
+            "confidence": 90
+          },
+          "researchConfidence": "HIGH_CONFIDENCE",
+          "metrics": {
+            "planner": "llm",
+            "plannerReason": "configured",
+            "queries": 6,
+            "duplicateQueriesSkipped": 0,
+            "budgetQueriesSkipped": 0,
+            "officialPages": 11,
+            "lprMs": 33968,
+            "contactMs": 12,
+            "totalMs": 36569,
+            "stopReason": "usable_email_found"
+          }
+        }
+      },
+      "origin_context": {
+        "origins": [
+          "AI_HIRING"
+        ],
+        "source_provider": "direct_ai_need",
+        "source_url": "https://hh.ru/vacancy/137652181",
+        "import_batch_id": null,
+        "source_metadata": {}
+      },
+      "created_at": "2026-10-06T20:06:23.023Z",
+      "updated_at": "2026-10-06T20:06:23.023Z"
+    }
+  ],
+  "contacts": [
+    {
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "company_id": "company-19e58d07208bcaa5023c86a78304",
+      "lead_id": "lead-bb9b742eb99a0ff4a9270d7f67ce",
+      "full_name": "Гусев Сергей Сергеевич",
+      "role_title": "Генеральный директор",
+      "department": null,
+      "source_url": "https://www.rusprofile.ru/id/2137907",
+      "source_label": "Iterative public research",
+      "confidence_score": 72,
+      "is_primary": false,
+      "created_at": "2026-10-06T20:06:23.023Z",
+      "id": "contact-lead-bb9b742eb99a0ff4a9270d7f67ce-primary-person-confirmed",
+      "contact_type": "confirmed_person",
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "metadata": {
+        "outreach_selected": false
+      }
+    },
+    {
+      "id": "contact-lead-bb9b742eb99a0ff4a9270d7f67ce-website-form-2",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "company_id": "company-19e58d07208bcaa5023c86a78304",
+      "lead_id": "lead-bb9b742eb99a0ff4a9270d7f67ce",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://ratingbankrotstva.ru/contacts",
+      "source_url": "https://ratingbankrotstva.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:06:23.023Z"
+    },
+    {
+      "id": "contact-lead-bb9b742eb99a0ff4a9270d7f67ce-website-form-3",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "company_id": "company-19e58d07208bcaa5023c86a78304",
+      "lead_id": "lead-bb9b742eb99a0ff4a9270d7f67ce",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://ratingbankrotstva.ru/contact",
+      "source_url": "https://ratingbankrotstva.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:06:23.023Z"
+    },
+    {
+      "id": "contact-lead-bb9b742eb99a0ff4a9270d7f67ce-company-website-4",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "company_id": "company-19e58d07208bcaa5023c86a78304",
+      "lead_id": "lead-bb9b742eb99a0ff4a9270d7f67ce",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://ratingbankrotstva.ru",
+      "source_url": "https://ratingbankrotstva.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:06:23.023Z"
+    },
+    {
+      "id": "contact-lead-bb9b742eb99a0ff4a9270d7f67ce-generic-email-1",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "company_id": "company-19e58d07208bcaa5023c86a78304",
+      "lead_id": "lead-bb9b742eb99a0ff4a9270d7f67ce",
+      "contact_type": "generic_email",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": "support@ratingbankrotstva.ru",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://ratingbankrotstva.ru",
+      "source_label": "public email parser",
+      "confidence_score": 99,
+      "is_primary": true,
+      "metadata": {
+        "email_status": "department_email_ready",
+        "email_mx_verified": true,
+        "email_domain_match_reason": "official_domain",
+        "email_subject": "Финансово-Правовой Центр: быстрый контур AI-задачи",
+        "email_body": "Добрый день.\n\nВ публичном источнике Финансово-Правовой Центр обратил внимание на задачу: «внедряем искусственный интеллект в ежедневную работу компании ... использовать искусственный интеллект для решения рабочих задач; тестировать AI-сервисы и другие цифровые инструменты».\n\nКогда такая инициатива уже сформулирована, найм специалиста и запуск самой задачи часто идут с разной скоростью. Это не означает, что сотрудник не нужен: отдельный ограниченный участок можно проверить раньше, чтобы к выходу человека у команды уже были подтверждённые требования и рабочий прототип.\n\nПолезно отделить архитектурные решения, которые требуют постоянного владельца внутри компании, от короткого пилота, который быстро проверяет данные, интеграции и реальную ценность сценария.\n\nЯ AI-архитектор. Могу независимо разобрать задачу, собрать ограниченный прототип или реализовать отдельный AI-блок, не подменяя будущего сотрудника и не меняя выбранную вами кадровую стратегию.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": false,
+        "outreach_selected": true,
+        "email_generation_source": "template",
+        "email_generation_fallback_reason": "В письме должен быть один простой CTA."
+      },
+      "created_at": "2026-10-06T20:06:23.023Z"
+    },
+    {
+      "id": "contact-lead-a27ee6ce9388ddd9248732c37d60-website-form-1",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "company_id": "company-def82beac324cb17c80fa3f1076a",
+      "lead_id": "lead-a27ee6ce9388ddd9248732c37d60",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://burgerkingrus.ru/contacts",
+      "source_url": "https://burgerkingrus.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": true,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:06:23.023Z"
+    },
+    {
+      "id": "contact-lead-a27ee6ce9388ddd9248732c37d60-website-form-2",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "company_id": "company-def82beac324cb17c80fa3f1076a",
+      "lead_id": "lead-a27ee6ce9388ddd9248732c37d60",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://burgerkingrus.ru/contact",
+      "source_url": "https://burgerkingrus.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:06:23.023Z"
+    },
+    {
+      "id": "contact-lead-a27ee6ce9388ddd9248732c37d60-company-website-3",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "company_id": "company-def82beac324cb17c80fa3f1076a",
+      "lead_id": "lead-a27ee6ce9388ddd9248732c37d60",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://burgerkingrus.ru",
+      "source_url": "https://burgerkingrus.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:06:23.023Z"
+    },
+    {
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "company_id": "company-4eee7883f2b1140fac864e0e35a7",
+      "lead_id": "lead-b0f50d8bd84e2b8f8414dd816706",
+      "full_name": "Сергей Щерба",
+      "role_title": "Директор",
+      "department": null,
+      "source_url": "https://gorodarmavir.ru/news/obshchestvo/direktor-kompanii-gornitsa-sergey-shcherba-nagrazhden-medalyu-za-vydayushchiysya-vklad-v-razvitie-kr",
+      "source_label": "Iterative public research",
+      "confidence_score": 71,
+      "is_primary": false,
+      "created_at": "2026-10-06T20:06:23.023Z",
+      "id": "contact-lead-b0f50d8bd84e2b8f8414dd816706-primary-person-confirmed",
+      "contact_type": "confirmed_person",
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "metadata": {
+        "outreach_selected": false
+      }
+    },
+    {
+      "id": "contact-lead-b0f50d8bd84e2b8f8414dd816706-website-form-2",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "company_id": "company-4eee7883f2b1140fac864e0e35a7",
+      "lead_id": "lead-b0f50d8bd84e2b8f8414dd816706",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://gornica-okna.ru/contacts",
+      "source_url": "https://gornica-okna.ru/contacts",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:06:23.023Z"
+    },
+    {
+      "id": "contact-lead-b0f50d8bd84e2b8f8414dd816706-website-form-3",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "company_id": "company-4eee7883f2b1140fac864e0e35a7",
+      "lead_id": "lead-b0f50d8bd84e2b8f8414dd816706",
+      "contact_type": "website_form",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://gornica-okna.ru/contact",
+      "source_url": "https://gornica-okna.ru/contact",
+      "source_label": "available contact-like URL",
+      "confidence_score": 70,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:06:23.023Z"
+    },
+    {
+      "id": "contact-lead-b0f50d8bd84e2b8f8414dd816706-company-website-4",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "company_id": "company-4eee7883f2b1140fac864e0e35a7",
+      "lead_id": "lead-b0f50d8bd84e2b8f8414dd816706",
+      "contact_type": "company_website",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": null,
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": "https://gornica-okna.ru",
+      "source_url": "https://gornica-okna.ru",
+      "source_label": "official company website",
+      "confidence_score": 35,
+      "is_primary": false,
+      "metadata": {
+        "outreach_selected": false
+      },
+      "created_at": "2026-10-06T20:06:23.023Z"
+    },
+    {
+      "id": "contact-lead-b0f50d8bd84e2b8f8414dd816706-generic-email-1",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "company_id": "company-4eee7883f2b1140fac864e0e35a7",
+      "lead_id": "lead-b0f50d8bd84e2b8f8414dd816706",
+      "contact_type": "generic_email",
+      "full_name": null,
+      "role_title": null,
+      "department": null,
+      "email": "info@gornica-okna.ru",
+      "linkedin_url": null,
+      "telegram_url": null,
+      "contact_url": null,
+      "source_url": "https://gornica-okna.ru/kontakty",
+      "source_label": "public email parser",
+      "confidence_score": 99,
+      "is_primary": true,
+      "metadata": {
+        "email_status": "company_email_ready",
+        "email_mx_verified": true,
+        "email_domain_match_reason": "official_domain",
+        "email_subject": "Горница: быстрый контур AI-задачи",
+        "email_body": "Добрый день.\n\nВ публичном источнике Горница обратил внимание на задачу: «Специалист по автоматизации бизнес-процессов и внедрению ИИ ... который поможет последовательно внедрять искусственный интеллект в работу компании. ... задачи: ... Выявлять операции, которые можно автоматизировать или улучшить с помощью ИИ. ... Создавать прототипы внутренних сервисов, AI-ассистентов и автоматизированных сценариев.».\n\nКогда такая инициатива уже сформулирована, найм специалиста и запуск самой задачи часто идут с разной скоростью. Это не означает, что сотрудник не нужен: отдельный ограниченный участок можно проверить раньше, чтобы к выходу человека у команды уже были подтверждённые требования и рабочий прототип.\n\nПолезно отделить архитектурные решения, которые требуют постоянного владельца внутри компании, от короткого пилота, который быстро проверяет данные, интеграции и реальную ценность сценария.\n\nЯ AI-архитектор. Могу независимо разобрать задачу, собрать ограниченный прототип или реализовать отдельный AI-блок, не подменяя будущего сотрудника и не меняя выбранную вами кадровую стратегию.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514",
+        "email_quality_gate_passed": false,
+        "outreach_selected": true,
+        "email_generation_source": "template",
+        "email_generation_fallback_reason": "В письме отсутствует название компании."
+      },
+      "created_at": "2026-10-06T20:06:23.023Z"
+    }
+  ],
+  "signals": [
+    {
+      "id": "signal-7cb720536f5a905fcb78ef849e0c",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "lead_id": "lead-bb9b742eb99a0ff4a9270d7f67ce",
+      "company_id": "company-19e58d07208bcaa5023c86a78304",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Специалист по автоматизации бизнес-процессов",
+      "signal_detail": "внедряем искусственный интеллект в ежедневную работу компании ... использовать искусственный интеллект для решения рабочих задач; тестировать AI-сервисы и другие цифровые инструменты",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/137892542",
+      "confidence_score": 90,
+      "found_at": "2026-10-06T20:06:23.023Z",
+      "created_at": "2026-10-06T20:06:23.023Z"
+    },
+    {
+      "id": "signal-aa85c8773c446799112365c4414c",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "lead_id": "lead-a27ee6ce9388ddd9248732c37d60",
+      "company_id": "company-def82beac324cb17c80fa3f1076a",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Старший разработчик искусственного интеллекта",
+      "signal_detail": "Разработка и внедрение LLM-решений: Создание и оптимизация чат-ботов и интеллектуальных агентов на базе LLM. Разработка и развитие внутренней платформы для использования корпоративных LL",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/137329739",
+      "confidence_score": 90,
+      "found_at": "2026-10-06T20:06:23.023Z",
+      "created_at": "2026-10-06T20:06:23.023Z"
+    },
+    {
+      "id": "signal-eaee97a5efdbd2cedc946670a344",
+      "pipeline_run_id": "pipeline-e37f035f5a8bc6c333e2596ec687",
+      "campaign_id": "campaign-ai-hiring-e0fa9579fab4b73f5bb0630221a5",
+      "lead_id": "lead-b0f50d8bd84e2b8f8414dd816706",
+      "company_id": "company-4eee7883f2b1140fac864e0e35a7",
+      "signal_type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "signal_title": "Специалист по автоматизации бизнес-процессов и внедрению ИИ",
+      "signal_detail": "Специалист по автоматизации бизнес-процессов и внедрению ИИ ... который поможет последовательно внедрять искусственный интеллект в работу компании. ... задачи: ... Выявлять операции, которые можно автоматизировать или улучшить с помощью ИИ. ... Создавать прототипы внутренних сервисов, AI-ассистентов и автоматизированных сценариев.",
+      "signal_source_label": "Публичная вакансия",
+      "source_url": "https://hh.ru/vacancy/137652181",
+      "confidence_score": 90,
+      "found_at": "2026-10-06T20:06:23.023Z",
+      "created_at": "2026-10-06T20:06:23.023Z"
+    }
+  ],
+  "queueBefore": [
+    {
+      "id": "outreach-contact-lead-bb9b742eb99a0ff4a9270d7f67ce-generic-email-1",
+      "company_name": "Финансово-Правовой Центр",
+      "status": "needs_review",
+      "quality_gate_passed": false
+    },
+    {
+      "id": "outreach-contact-lead-b0f50d8bd84e2b8f8414dd816706-generic-email-1",
+      "company_name": "Горница",
+      "status": "needs_review",
+      "quality_gate_passed": false
+    }
+  ],
+  "metrics": {
+    "companies": 3,
+    "people": 2,
+    "personalEmails": 0,
+    "emailContacts": 2,
+    "ready": 0,
+    "manualReview": 2
+  },
+  "orphanRequests": 0,
+  "requests": {
+    "api.openai.com": 23,
+    "api.hh.ru": 2,
+    "hh.ru": 20,
+    "www.bing.com": 19,
+    "api.tavily.com": 25,
+    "www.gazeta.uz": 1,
+    "vc.ru": 1,
+    "habr.com": 2,
+    "www.mmsonline.com": 1,
+    "www.vedomosti.ru": 1,
+    "bigdata.beeline.ru": 1,
+    "www.manilatimes.net": 1,
+    "www.comnews.ru": 1,
+    "www.sostav.ru": 2,
+    "www.tadviser.ru": 1,
+    "digital-pro.tech": 1,
+    "mosreg.ru": 1,
+    "www.agora.ru": 1,
+    "rusprofile.ru": 1,
+    "ratingbankrotstva.ru": 19,
+    "burgerkingrus.ru": 15,
+    "gornica-okna.ru": 16,
+    "search.brave.com": 17,
+    "ru.linkedin.com": 1
+  },
+  "modelCalls": [
+    {
+      "schema": "direct_ai_need_search_plan",
+      "status": 200
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200
+    },
+    {
+      "schema": "direct_ai_need_search_plan",
+      "status": 200
+    },
+    {
+      "schema": "direct_ai_need_assessment",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "leadgen_outreach_v4",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "iterative_people_research",
+      "status": 200
+    },
+    {
+      "schema": "leadgen_outreach_v4",
+      "status": 200
+    }
+  ],
+  "finishedAt": "2026-10-06T20:08:14.883Z"
+}

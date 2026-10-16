@@ -16,6 +16,7 @@ export type SearchProviderSearchInput = {
   market?: "global" | "ru";
   queryLanguage?: "en" | "ru";
   signal?: AbortSignal;
+  searchTopic?: "general" | "news";
   queryAngle?:
     | "company_careers"
     | "company_contacts"

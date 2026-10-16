@@ -1,6 +1,41 @@
 import assert from "node:assert/strict";
 import "./register-ts-paths.mjs";
 
+const { MarketAwareSearchProvider } = await import("../lib/leadgen/search/leadgen-search-provider.ts");
+const { TavilySearchProvider } = await import("../lib/leadgen/search/tavily-provider.ts");
+const { parseCitedSearchResults } = await import("../lib/leadgen/search/openai-web-search-provider.ts");
+const summary = "Named person, Director of Example [1]";
+const cited = parseCitedSearchResults([{ content: [{ type: "output_text", text: summary, annotations: [
+  { type: "url_citation", url: "https://example.com/team", title: "Team", start_index: summary.indexOf("[1]"), end_index: summary.length },
+] }] }], 5);
+assert.equal(cited[0].url, "https://example.com/team");
+assert.equal(cited[0].raw_content, null, "Search synthesis is not a fetched page");
+assert.match(cited[0].snippet, /fetch source before confirming/);
+assert.equal(parseCitedSearchResults([{ content: [{ type: "output_text", text: "Invented https://example.com/email", annotations: [] }] }], 5).length, 0);
+assert.equal(parseCitedSearchResults([{ content: [{ type: "output_text", text: summary, annotations: [
+  { type: "url_citation", url: "http://127.0.0.1/private", start_index: 0, end_index: 5 },
+] }] }], 5).length, 0);
+const originalFetch = globalThis.fetch;
+let quotaCalls = 0;
+globalThis.fetch = async () => { quotaCalls++; return new Response('{"detail":{"error":"plan usage limit"}}', { status: 432 }); };
+try {
+  const mixed = new MarketAwareSearchProvider({ slots: [
+    { name: "browser", provider: { async search() { return []; } } },
+    { name: "tavily", provider: new TavilySearchProvider("fixture-quota-only") },
+  ] });
+  await assert.rejects(mixed.search({ query: "First search" }), /Search incomplete.*432/);
+  await assert.rejects(mixed.search({ query: "Second search" }), /Search incomplete.*cooldown/);
+  assert.equal(quotaCalls, 1, "An empty fallback must not hide quota or repeatedly call the exhausted account");
+} finally { globalThis.fetch = originalFetch; }
+const generalOrder = [];
+const generalProvider = new MarketAwareSearchProvider({ slots: [
+  { name: "browser", provider: { async search() { assert.fail("General-web fallback should not stop on unrelated free-index results"); } } },
+  { name: "tavily", provider: { async search() { generalOrder.push("tavily"); throw new Error("432 plan exhausted"); } } },
+  { name: "openai-web", provider: { async search() { generalOrder.push("openai"); return cited; } } },
+] });
+assert.equal((await generalProvider.search({ query: "Company demand", searchTopic: "general" }))[0].url, cited[0].url);
+assert.deepEqual(generalOrder, ["tavily", "openai"], "Direct AI uses the shared resilient web search chain");
+
 process.env.LEADGEN_DISCOVERY_V2_ENABLED = "true";
 
 const {

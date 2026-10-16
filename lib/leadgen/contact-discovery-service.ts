@@ -270,6 +270,7 @@ function createPrimaryPersonContactEntries(
     entries.push({
       ...baseContact,
       id: createRecordId("contact", input.lead.id, "primary-person-work-email"),
+      source_url: typeof person.metadata.email_source_url === "string" ? person.metadata.email_source_url : baseContact.source_url,
       contact_type: "work_email",
       email: person.work_email,
       linkedin_url: null,
@@ -280,6 +281,9 @@ function createPrimaryPersonContactEntries(
         people_discovery_role: "primary",
         people_discovery_source: person.source,
         source: "people_discovery.primary_person",
+        email_person_evidence: person.metadata.email_person_evidence,
+        verified_company_domains: person.metadata.verified_company_domains,
+        public_contact_verified: person.metadata.public_contact_verified,
         ...(isRoutingContact
           ? {
               contact_route: "corporate_router",

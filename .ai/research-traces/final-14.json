@@ -1,0 +1,1804 @@
+{
+  "mode": "direct",
+  "name": "Сбер. IT",
+  "website": "https://rabota.sber.ru",
+  "before": {
+    "companyName": "Сбер. IT",
+    "officialWebsite": "https://rabota.sber.ru",
+    "officialDomain": "rabota.sber.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "SDET / Разработчик AI решений (HR платформа)",
+      "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+      "sourceUrl": "https://hh.ru/vacancy/138117118",
+      "confidence": 90
+    },
+    "researchConfidence": "UNVERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 6,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 23,
+      "lprMs": 15877,
+      "contactMs": 8625,
+      "totalMs": 26613,
+      "stopReason": "lpr_not_found"
+    }
+  },
+  "signal": {
+    "type": "AI_AUTOMATION_HIRING_SIGNAL",
+    "title": "SDET / Разработчик AI решений (HR платформа)",
+    "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+    "sourceUrl": "https://hh.ru/vacancy/138117118",
+    "confidence": 90
+  },
+  "index": 14,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru",
+      "status": 200,
+      "elapsedMs": 852
+    },
+    {
+      "stage": "research_open",
+      "url": "https://rabota.sber.ru",
+      "success": true,
+      "evidence": {
+        "url": "https://rabota.sber.ru",
+        "kind": "page",
+        "text": "Богдан Рощупкин ML-инженер AI-агентов",
+        "links": [
+          {
+            "url": "https://rabota.sber.ru",
+            "label": ""
+          },
+          {
+            "url": "https://rabota.sber.ru/search",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://rabota.sber.ru/media",
+            "label": "Карьерные медиа"
+          },
+          {
+            "url": "https://sbergraduate.ru",
+            "label": "Выпускникам и студентам"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/policy",
+            "label": "Политика обработки данных"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/cookies",
+            "label": "Политика использования Cookies"
+          },
+          {
+            "url": "https://www.sberbank.ru",
+            "label": "www.sberbank.ru"
+          },
+          {
+            "url": "https://t.me/careersber",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:09:15.561Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3160,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:09:15.561Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 10,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "Сбер. IT — подразделение Сбера, занимающееся IT и AI-инициативами, включая разработку AI-агентов и автоматизацию бизнес-процессов. В сигнале речь идет о разработке и внедрении AI-моделей для автоматизации тестирования HR-платформы.",
+        "missing": [
+          "Публичный руководитель (владелец процесса/team lead с управленческой ролью) профильного подразделения",
+          "Личный контакт руководителя"
+        ],
+        "people": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 55,
+            "reason": "Присутствует на официальном сайте rabota.sber.ru как ML-инженер AI-агентов, связан с разработкой AI-решений, но вероятно не руководитель подразделения.",
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "rabota.sber.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/search",
+            "focus": "команда/руководители AI/HR/автоматизация",
+            "purpose": "Проверить, есть ли на кадровом портале информация о руководителях или командной странице"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найден подтверждённый руководитель подразделения; нет публичного контакта ЛПР."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "Сбер. IT — подразделение Сбера, занимающееся IT и AI-инициативами, включая разработку AI-агентов и автоматизацию бизнес-процессов. В сигнале речь идет о разработке и внедрении AI-моделей для автоматизации тестирования HR-платформы.",
+        "missing": [
+          "Публичный руководитель (владелец процесса/team lead с управленческой ролью) профильного подразделения",
+          "Личный контакт руководителя"
+        ],
+        "people": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 55,
+            "reason": "Присутствует на официальном сайте rabota.sber.ru как ML-инженер AI-агентов, связан с разработкой AI-решений, но вероятно не руководитель подразделения.",
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "rabota.sber.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/search",
+            "focus": "команда/руководители AI/HR/автоматизация",
+            "purpose": "Проверить, есть ли на кадровом портале информация о руководителях или командной странице"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найден подтверждённый руководитель подразделения; нет публичного контакта ЛПР."
+      },
+      "validationErrors": [
+        "person_rejected:Богдан Рощупкин:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/search",
+      "status": 308,
+      "elapsedMs": 154
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/search/",
+      "status": 200,
+      "elapsedMs": 545
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://rabota.sber.ru/search",
+      "focus": "команда/руководители AI/HR/автоматизация",
+      "purpose": "Проверить, есть ли на кадровом портале информация о руководителях или командной странице",
+      "success": true,
+      "evidence": {
+        "url": "https://rabota.sber.ru/search/",
+        "kind": "page",
+        "text": "Поиск вакансий Вакансии Карьерные медиа Выпускникам и студентам Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+        "links": [
+          {
+            "url": "https://rabota.sber.ru",
+            "label": ""
+          },
+          {
+            "url": "https://rabota.sber.ru/search",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://rabota.sber.ru/media",
+            "label": "Карьерные медиа"
+          },
+          {
+            "url": "https://sbergraduate.ru",
+            "label": "Выпускникам и студентам"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/policy",
+            "label": "Политика обработки данных"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/cookies",
+            "label": "Политика использования Cookies"
+          },
+          {
+            "url": "https://www.sberbank.ru",
+            "label": "www.sberbank.ru"
+          },
+          {
+            "url": "https://t.me/careersber",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:09:19.753Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 4124,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:09:15.561Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://rabota.sber.ru/search/",
+            "kind": "page",
+            "text": "Поиск вакансий Вакансии Карьерные медиа Выпускникам и студентам Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:09:19.753Z",
+            "id": "e2"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/search",
+            "focus": "команда/руководители AI/HR/автоматизация",
+            "success": true
+          }
+        ],
+        "validationErrors": [
+          "person_rejected:Богдан Рощупкин:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+        ],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 9,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "Сбер. IT — IT-направление ПАО «Сбербанк», занимающееся разработкой внутренних и клиентских цифровых продуктов, включая AI-автоматизацию и платформенные решения для HR. Данный сигнал связан с вакансией SDET / разработчик AI-решений для HR-платформы: создание и внедрение AI-агентов для автоматизации UI/API тестирования.",
+        "missing": [
+          "Подтверждённый руководитель подразделения AI-агентов или платформ HR-технологий (имя, роль, аффилиация, релевантность, контакт)",
+          "Личный деловой контакт релевантного ЛПР"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "rabota.sber.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Сбер\" (руководитель OR лид OR директор OR head) AI HR site:sber.ru OR site:rabota.sber.ru",
+            "focus": "персоналии/руководители подразделений AI-решений/HR/автоматизации",
+            "purpose": "Найти поимённого руководителя направления AI-автоматизации или HR-платформы"
+          },
+          {
+            "type": "search",
+            "value": "\"Богдан Рощупкин\" (Сбер OR sberbank OR rabota.sber.ru)",
+            "focus": "личный профиль/контакт/упоминания",
+            "purpose": "Проверить аффилиацию, роль и возможный контакт ML-инженера AI-агентов Богдана Рощупкина"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого ЛПР/руководителя процесса и его прямого контакта; следующие шаги — внешние поиски по руководителям и проверка人物а, упомянутого на сайте."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "Сбер. IT — IT-направление ПАО «Сбербанк», занимающееся разработкой внутренних и клиентских цифровых продуктов, включая AI-автоматизацию и платформенные решения для HR. Данный сигнал связан с вакансией SDET / разработчик AI-решений для HR-платформы: создание и внедрение AI-агентов для автоматизации UI/API тестирования.",
+        "missing": [
+          "Подтверждённый руководитель подразделения AI-агентов или платформ HR-технологий (имя, роль, аффилиация, релевантность, контакт)",
+          "Личный деловой контакт релевантного ЛПР"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "rabota.sber.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Сбер\" (руководитель OR лид OR директор OR head) AI HR site:sber.ru OR site:rabota.sber.ru",
+            "focus": "персоналии/руководители подразделений AI-решений/HR/автоматизации",
+            "purpose": "Найти поимённого руководителя направления AI-автоматизации или HR-платформы"
+          },
+          {
+            "type": "search",
+            "value": "\"Богдан Рощупкин\" (Сбер OR sberbank OR rabota.sber.ru)",
+            "focus": "личный профиль/контакт/упоминания",
+            "purpose": "Проверить аффилиацию, роль и возможный контакт ML-инженера AI-агентов Богдана Рощупкина"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого ЛПР/руководителя процесса и его прямого контакта; следующие шаги — внешние поиски по руководителям и проверка人物а, упомянутого на сайте."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%A1%D0%B1%D0%B5%D1%80%22%20(%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20OR%20%D0%BB%D0%B8%D0%B4%20OR%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20head)%20AI%20HR%20OR%20sber.ru&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 491
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%A1%D0%B1%D0%B5%D1%80%22%20(%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20OR%20%D0%BB%D0%B8%D0%B4%20OR%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20head)%20AI%20HR%20OR%20sber.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 513
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%22%20(%D0%A1%D0%B1%D0%B5%D1%80%20OR%20sberbank%20OR%20rabota.sber.ru)&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 244
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%22%20(%D0%A1%D0%B1%D0%B5%D1%80%20OR%20sberbank%20OR%20rabota.sber.ru)&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 174
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1473
+    },
+    {
+      "stage": "search",
+      "query": "\"Богдан Рощупкин\" (Сбер OR sberbank OR rabota.sber.ru)",
+      "results": [
+        {
+          "title": "Работа в Сбере",
+          "url": "https://rabota.sber.ru",
+          "snippet": "SBER\n\nКарьерные медиа\n\nВыпускникам и студентам\n\n# Моя рабочая сторона\n\nучить нейросети думать дальше промпта\n\nБогдан Рощупкин\n\nML-инженер AI-агентов\n\nУ каждого сотрудника Сбера есть своя рабочая сторона\n\n car\n\n  Они дают   \n  зелёный   \n  свет автономному транспорту\n marathon\n\n  Выводят на старт   \n  зелёного   \n  марафона тысячи бегунов по всей стране\n robot\n\n  Учат робота   \n  Грина   \n  работать в одной команде с людьми\n manager [...] Делают   \n  зелёными   \n  цифры на счетах 113 миллионов клиентов\n kid\n\n  Помогают подружиться с финансами даже самым   \n  зелёным\n\nРабочие стороны у всех разные – но в них легко заметить общий цвет\n\nБыть полными идей\n\nВ юбилейный год Сбера мы напоминаем себе и другим, как важно оставаться зелёными на все 185 – и вдохновлять на это тех, кто рядом\n\nЕсли это про тебя – прояви свою рабочую сторону в команде Сбера\n\nSBER\n\nПолитика обработки данныхПолитика использования Cookieswww.sberbank.ru [...] © 2026ПАО «Сбербанк»\n\ntelegram vkontakte\n\nкарьерные медиавыпускникам и студентам",
+          "source_label": "tavily",
+          "score": 0.6659544,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "закрыл зиму 2021 этой катушкой 🤲🏼🖤 #35мм",
+          "url": "https://www.instagram.com/p/CNAi0nDHbSa",
+          "snippet": "Богдан Рощупкин, ML-инженер AI-агентов. rabota.sber.ru Моя рабочая сторона — рассказать всей стране, что Сбер зеленый на все 185.",
+          "source_label": "tavily",
+          "score": 0.65940565,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "BATO — 6 FREESTYLE Directed by @mishembo DOP",
+          "url": "https://www.instagram.com/p/DDzLBYCCmmD?img_index=3",
+          "snippet": "Богдан Рощупкин, ML-инженер AI-агентов. Сбер зеленый на все 185. Артем Фатхуллин, Директор по коммуникациям и репутации Сбера.",
+          "source_label": "tavily",
+          "score": 0.5013922,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "с днём селфи 🫂💚",
+          "url": "https://www.instagram.com/reel/DZ2VxxqojME",
+          "snippet": "21 июня «день селфи» В честь праздника Сбер подарил мне лимитированное зеркальце «твоя рабочая сторона» теперь мои селфи на основную камеру",
+          "source_label": "tavily",
+          "score": 0.14353576,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Instagram",
+          "url": "https://www.instagram.com/reel/DZ25zCUMmTx",
+          "snippet": "valeria.afonina\n\n21 июня - День селфи в России 🤳🏻  \n  \nНаш Сбер подготовил такие прекрасные подарки своим амбассадорам 💚\n\n## No comments yet.\n\nStart the conversation.\n\n6\n\nLog in to like or comment.\n\nMore posts from valeria.afonina\n\nPhoto by Лера | финансист в Сбере on January 30, 2026.\n\nVideo by Лера | финансист в Сбере on April 19, 2026.\n\nVideo by Лера | финансист в Сбере on August 15, 2026. May be an image of indoors, door and text. [...] Video by Лера | финансист в Сбере on September 30, 2026. May be an image of phone and text.\n\nVideo by Лера | финансист в Сбере on September 27, 2026. May be an image of display case, miniskirt, indoors and text.\n\nVideo by Лера | финансист в Сбере on September 26, 2026. May be an image of text.\n\nPhoto by Лера | финансист в Сбере on September 26, 2026.\n\nVideo by Лера | финансист в Сбере on September 25, 2026. May be an image of thermostat, air conditioner and text. [...] Video by Лера | финансист в Сбере on September 20, 2026. May be a selfie of one or more people, hair, top, parka, cornflower and text.\n\nSee more posts\n\n---",
+          "source_label": "tavily",
+          "score": 0.07154592,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"Богдан Рощупкин\" (Сбер OR sberbank OR rabota.sber.ru)",
+      "focus": "личный профиль/контакт/упоминания",
+      "purpose": "Проверить аффилиацию, роль и возможный контакт ML-инженера AI-агентов Богдана Рощупкина",
+      "results": [
+        {
+          "url": "https://rabota.sber.ru",
+          "title": "Работа в Сбере",
+          "snippet": "SBER\n\nКарьерные медиа\n\nВыпускникам и студентам\n\n# Моя рабочая сторона\n\nучить нейросети думать дальше промпта\n\nБогдан Рощупкин\n\nML-инженер AI-агентов\n\nУ каждого сотрудника Сбера есть своя рабочая сторона\n\n car\n\n  Они дают   \n  зелёный   \n  свет автономному транспорту\n marathon\n\n  Выводят на старт   \n  зелёного   \n  марафона тысячи бегунов по всей стране\n robot\n\n  Учат робота   \n  Грина   \n  работать в одной команде с людьми\n manager [...] Делают   \n  зелёными   \n  цифры на счетах 113 миллионов кл",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.instagram.com/p/CNAi0nDHbSa",
+          "title": "закрыл зиму 2021 этой катушкой 🤲🏼🖤 #35мм",
+          "snippet": "Богдан Рощупкин, ML-инженер AI-агентов. rabota.sber.ru Моя рабочая сторона — рассказать всей стране, что Сбер зеленый на все 185.",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.instagram.com/p/DDzLBYCCmmD?img_index=3",
+          "title": "BATO — 6 FREESTYLE Directed by @mishembo DOP",
+          "snippet": "Богдан Рощупкин, ML-инженер AI-агентов. Сбер зеленый на все 185. Артем Фатхуллин, Директор по коммуникациям и репутации Сбера.",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DZ2VxxqojME",
+          "title": "с днём селфи 🫂💚",
+          "snippet": "21 июня «день селфи» В честь праздника Сбер подарил мне лимитированное зеркальце «твоя рабочая сторона» теперь мои селфи на основную камеру",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DZ25zCUMmTx",
+          "title": "Instagram",
+          "snippet": "valeria.afonina\n\n21 июня - День селфи в России 🤳🏻  \n  \nНаш Сбер подготовил такие прекрасные подарки своим амбассадорам 💚\n\n## No comments yet.\n\nStart the conversation.\n\n6\n\nLog in to like or comment.\n\nMore posts from valeria.afonina\n\nPhoto by Лера | финансист в Сбере on January 30, 2026.\n\nVideo by Лера | финансист в Сбере on April 19, 2026.\n\nVideo by Лера | финансист в Сбере on August 15, 2026. May be an image of indoors, door and text. [...] Video by Лера | финансист в Сбере on September 30, 2",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 2280
+    },
+    {
+      "stage": "search",
+      "query": "\"Сбер\" (руководитель OR лид OR директор OR head) AI HR site:sber.ru OR site:rabota.sber.ru",
+      "results": [
+        {
+          "title": "Вакансия Руководитель направления AI-трансформации Global Markets (Head of AI / AI Transformation Lead) в Москве, работа в компании Сбер. Data Science (вакансия в архиве c 22 июля 2026)",
+          "url": "https://hh.ru/vacancy/134460002",
+          "snippet": "Ищем в команду Руководителя направления AI-трансформации, который будет отвечать за формирование и реализацию стратегии внедрения искусственного интеллекта в подразделениях Global Markets (Trading, Sales, Research, Risk), создаст и будет развивать AI-команды, проводить R&D новых AI-решений и внедрять процессы AI-разработки в продуктовых и технологических командах банка.\n\n### Обязанности\n\n1. AI-трансформация бизнеса Global Markets\n\n2. R&D AI-решений\n\n3. Построение AI-платформы и процессов [...] # Руководитель направления AI-трансформации Global Markets (Head of AI / AI Transformation Lead) В архиве с 22 июля 2026\n\nОпыт работы: более 6 лет\n\nГрафик: 5/2\n\nФормат работы: на месте работодателя\n\nСБЕР\n\n## Вакансия в архиве\n\nРаботодатель, вероятно, уже нашел нужного кандидата и больше не принимает отклики на эту вакансию\n\n## Вакансии из других подборок\n\nСБЕР\nTop.Mail.Ru\nTop.Mail.Ru [...] 4. Управление командой\n\n### Требования\n\n### Условия\n\nмасштабное  \nAgile-комьюнити\n\nцифровых  \nлюдей\n\nпродуктовых  \nкоманд\n\nпрофессиональных   \nIT-сообществ\n\nсерверов\n\nвнедрений в год,  \nизменения каждые  \n30 сек",
+          "source_label": "tavily",
+          "score": 0.7045877,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Tanya Rajput ( She/Her ) ✔️ - HR Manager @ Sberbank",
+          "url": "https://in.linkedin.com/in/tanyarajput",
+          "snippet": "## Recent Activity\n- Liked By: Lupin has appointed Aditi Altekar as Global Lead – HR Digital & AI Transformation, effective August 2026. She will lead the pharmaceutical...\n- Liked By: Chennai-based Unico Housing Finance Private Limited has raised INR 55 crore in a follow-on funding round led by Anicut Capital, with...\n- Liked By: Anil Rathore has been appointed as Head of Human Resources at Solfin. A distinguished HR leader with nearly four decades of experience, he... [...] - Liked By: 🚨 Don't miss the workshop “Pick Tools. Pick Mindset. Pick Humanity: The HR Playbook for Thriving in the AI Era,\" which will close the...\n- Posted By: To everyone who has been reaching out lately… I’ve been a little inactive in checking DMs due to some personal priorities recently. If your...\n- Liked By: Yash Sinha has been appointed as Chief Human Resources Officer (CHRO) at Ageas Federal Life Insurance. A highly distinguished human... [...] Description: Possessing years of extensive experience in Employee Engagement, Employee Communication, Employee Relations, and Employee Branding, I am committed to cultivating positive workplace environments. My proficiency in HR spans across various domains, and I am adept at aligning HR strategies with organizational goals to drive productivity and enhance employee satisfaction. Looking forward to connecting and collaborating!",
+          "source_label": "tavily",
+          "score": 0.64128816,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Руководитель направления по защите AI-инфраструктуры в Москве, работа в компании Сбер для экспертов (вакансия в архиве c 21 февраля 2026)",
+          "url": "https://hh.ru/vacancy/129746204",
+          "snippet": "Сбербанк ищет амбициозного технического лидера для создания и развития нового критически важного направления — защиты AI-инфраструктуры. Это уникальная возможность для опытных IT-специалистов с желанием расти в области кибербезопасности, возглавить одно из самых перспективных направлений индустрии на пересечении искусственного интеллекта и информационной безопасности. [...] Мы открыты к кандидатам из смежных IT-областей, которые обладают сильным техническим фундаментом и горят желанием освоить новую область на стыке кибербезопасности и искусственного интеллекта. Если вы:\n\n...то эта позиция может стать вашим трамплином в одну из самых востребованных и высокооплачиваемых областей.\n\n### Вам предстоит:\n\nРеагирование на инциденты в AI-системах:\n\nРазработка мер защиты и интеграция с SOC:\n\nЛидерство и развитие команды:\n\n### Что для нас важно: [...] Технический фундамент и опыт:\n\nПротоколы и интеграции AI-систем:\n\nПонимание векторов атак (будем развивать вместе) - базовое понимание угроз кибербезопасности и желание специализироваться в AI-specific угрозах:\n\nЕсли вы пока не знакомы с этими векторами — ничего страшного, мы обучим через СберУниверситет и специализированные программы (CAISP, Microsoft AI Security).\n\nEnterprise IT и инфраструктура - глубокое понимание хотя бы одной из областей:\n\nЖелательные навыки и опыт\n\n### Мы предлагаем:",
+          "source_label": "tavily",
+          "score": 0.61363083,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Наталья Владимировна Дудина: Руководитель блока HR Сбера | HR-ratings",
+          "url": "https://hr-ratings.com/expert/natalia-dudina-head-hr-sber",
+          "snippet": "Наталья Дудина демонстрирует лидерский стиль, который сочетает в себе:  \n  \n— Стратегическое видение и способность к трансформации организационных систем;  \n  \n— Практическую ориентацию на результаты, подкреплённую профессиональным опытом в законодательной и судебной сферах;  \n  \n— Эмпатию и сосредоточенность на человеческом измерении бизнеса;  \n  \n— Инновационный подход к решению традиционных проблем управления персоналом; [...] Основная информация  \n  \nНаталья Владимировна Дудина является Старшим вице-президентом Сбера и руководителем блока человеческих ресурсов (HR) одного из крупнейших российских финансовых учреждений. На этой должности она работает с 2019 года, возглавляя важнейший аспект корпоративной деятельности банка — управление человеческим капиталом и развитие кадровой политики.  \n  \nБиография и личные данные [...] В июне 2017 года она была назначена на должность старшего управляющего директора по бизнес-партнёрству блока HR. В этой роли она начала развивать стратегические подходы к управлению человеческими ресурсами. С декабря 2018 года Дудина исполняла обязанности руководителя блока HR, полностью управляя всеми аспектами работы этого направления.",
+          "source_label": "tavily",
+          "score": 0.595987,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Руководитель направления по AI-трансформации клиентов в Москве, работа в компании Сбер для экспертов (вакансия в архиве c 21 мая 2026)",
+          "url": "https://hh.ru/vacancy/132325301",
+          "snippet": "# Руководитель направления по AI-трансформации клиентов В архиве с 21 мая 2026\n\nОпыт работы: 3–6 лет\n\nГрафик: 5/2\n\nФормат работы: на месте работодателя\n\nСБЕР\n\n## Вакансия в архиве\n\nРаботодатель, вероятно, уже нашел нужного кандидата и больше не принимает отклики на эту вакансию\n\n## Вакансии из других подборок в Москве\n\nСБЕР\nTop.Mail.Ru\nTop.Mail.Ru\n\nКоманда управляет продажами сложных AI-решений и кастомных проектов средним и крупным корпоративным клиентам.\n\n### Обязанности\n\n### Требования [...] ### Требования\n\n### Условия",
+          "source_label": "tavily",
+          "score": 0.5596998,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"Сбер\" (руководитель OR лид OR директор OR head) AI HR site:sber.ru OR site:rabota.sber.ru",
+      "focus": "персоналии/руководители подразделений AI-решений/HR/автоматизации",
+      "purpose": "Найти поимённого руководителя направления AI-автоматизации или HR-платформы",
+      "results": [
+        {
+          "url": "https://hh.ru/vacancy/134460002",
+          "title": "Вакансия Руководитель направления AI-трансформации Global Markets (Head of AI / AI Transformation Lead) в Москве, работа в компании Сбер. Data Science (вакансия в архиве c 22 июля 2026)",
+          "snippet": "Ищем в команду Руководителя направления AI-трансформации, который будет отвечать за формирование и реализацию стратегии внедрения искусственного интеллекта в подразделениях Global Markets (Trading, Sales, Research, Risk), создаст и будет развивать AI-команды, проводить R&D новых AI-решений и внедрять процессы AI-разработки в продуктовых и технологических командах банка.\n\n### Обязанности\n\n1. AI-трансформация бизнеса Global Markets\n\n2. R&D AI-решений\n\n3. Построение AI-платформы и процессов [...] #",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://in.linkedin.com/in/tanyarajput",
+          "title": "Tanya Rajput ( She/Her ) ✔️ - HR Manager @ Sberbank",
+          "snippet": "## Recent Activity\n- Liked By: Lupin has appointed Aditi Altekar as Global Lead – HR Digital & AI Transformation, effective August 2026. She will lead the pharmaceutical...\n- Liked By: Chennai-based Unico Housing Finance Private Limited has raised INR 55 crore in a follow-on funding round led by Anicut Capital, with...\n- Liked By: Anil Rathore has been appointed as Head of Human Resources at Solfin. A distinguished HR leader with nearly four decades of experience, he... [...] - Liked By: 🚨 Don'",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://hh.ru/vacancy/129746204",
+          "title": "Вакансия Руководитель направления по защите AI-инфраструктуры в Москве, работа в компании Сбер для экспертов (вакансия в архиве c 21 февраля 2026)",
+          "snippet": "Сбербанк ищет амбициозного технического лидера для создания и развития нового критически важного направления — защиты AI-инфраструктуры. Это уникальная возможность для опытных IT-специалистов с желанием расти в области кибербезопасности, возглавить одно из самых перспективных направлений индустрии на пересечении искусственного интеллекта и информационной безопасности. [...] Мы открыты к кандидатам из смежных IT-областей, которые обладают сильным техническим фундаментом и горят желанием освоить н",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://hr-ratings.com/expert/natalia-dudina-head-hr-sber",
+          "title": "Наталья Владимировна Дудина: Руководитель блока HR Сбера | HR-ratings",
+          "snippet": "Наталья Дудина демонстрирует лидерский стиль, который сочетает в себе:  \n  \n— Стратегическое видение и способность к трансформации организационных систем;  \n  \n— Практическую ориентацию на результаты, подкреплённую профессиональным опытом в законодательной и судебной сферах;  \n  \n— Эмпатию и сосредоточенность на человеческом измерении бизнеса;  \n  \n— Инновационный подход к решению традиционных проблем управления персоналом; [...] Основная информация  \n  \nНаталья Владимировна Дудина является Стар",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://hh.ru/vacancy/132325301",
+          "title": "Вакансия Руководитель направления по AI-трансформации клиентов в Москве, работа в компании Сбер для экспертов (вакансия в архиве c 21 мая 2026)",
+          "snippet": "# Руководитель направления по AI-трансформации клиентов В архиве с 21 мая 2026\n\nОпыт работы: 3–6 лет\n\nГрафик: 5/2\n\nФормат работы: на месте работодателя\n\nСБЕР\n\n## Вакансия в архиве\n\nРаботодатель, вероятно, уже нашел нужного кандидата и больше не принимает отклики на эту вакансию\n\n## Вакансии из других подборок в Москве\n\nСБЕР\nTop.Mail.Ru\nTop.Mail.Ru\n\nКоманда управляет продажами сложных AI-решений и кастомных проектов средним и крупным корпоративным клиентам.\n\n### Обязанности\n\n### Требования [...] ",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 4403,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:09:15.561Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://rabota.sber.ru/search/",
+            "kind": "page",
+            "text": "Поиск вакансий Вакансии Карьерные медиа Выпускникам и студентам Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:09:19.753Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://www.instagram.com/reel/DZ25zCUMmTx",
+            "kind": "search",
+            "text": "Instagram\nvaleria.afonina\n\n21 июня - День селфи в России 🤳🏻  \n  \nНаш Сбер подготовил такие прекрасные подарки своим амбассадорам 💚\n\n## No comments yet.\n\nStart the conversation.\n\n6\n\nLog in to like or comment.\n\nMore posts from valeria.afonina\n\nPhoto by Лера | финансист в Сбере on January 30, 2026.\n\nVideo by Лера | финансист в Сбере on April 19, 2026.\n\nVideo by Лера | финансист в Сбере on August 15, 2026. May be an image of indoors, door and text. [...] Video by Лера | финансист в Сбере on September 30, 2026. May be an image of phone and text.\n\nVideo by Лера | финансист в Сбере on September 27, 2026. May be an image of display case, miniskirt, indoors and text.\n\nVideo by Лера | финансист в Сбере on September 26, 2026. May be an image of text.\n\nPhoto by Лера | финансист в Сбере on September 26, 2026.\n\nVideo by Лера | финансист в Сбере on September 25, 2026. May be an image of thermostat, air conditioner and text. [...] Video by Лера | финансист в Сбере on September 20, 2026. May be a selfie of one or more people, hair, top, parka, cornflower and text.\n\nSee more posts\n\n---",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:09:26.791Z",
+            "id": "e7"
+          },
+          {
+            "url": "https://hh.ru/vacancy/134460002",
+            "kind": "search",
+            "text": "Вакансия Руководитель направления AI-трансформации Global Markets (Head of AI / AI Transformation Lead) в Москве, работа в компании Сбер. Data Science (вакансия в архиве c 22 июля 2026)\nИщем в команду Руководителя направления AI-трансформации, который будет отвечать за формирование и реализацию стратегии внедрения искусственного интеллекта в подразделениях Global Markets (Trading, Sales, Research, Risk), создаст и будет развивать AI-команды, проводить R&D новых AI-решений и внедрять процессы AI-разработки в продуктовых и технологических командах банка.\n\n### Обязанности\n\n1. AI-трансформация бизнеса Global Markets\n\n2. R&D AI-решений\n\n3. Построение AI-платформы и процессов [...] # Руководитель направления AI-трансформации Global Markets (Head of AI / AI Transformation Lead) В архиве с 22 июля 2026\n\nОпыт работы: более 6 лет\n\nГрафик: 5/2\n\nФормат работы: на месте работодателя\n\nСБЕР\n\n## Вакансия в архиве\n\nРаботодатель, вероятно, уже нашел нужного кандидата и больше не принимает отклики на эту вакансию\n\n## Вакансии из других подборок\n\nСБЕР\nTop.Mail.Ru\nTop.Mail.Ru [...] 4. Управление командой\n\n### Требования\n\n### Условия\n\nмасштабное  \nAgile-комьюнити\n\nцифровых  \nлюдей\n\nпродуктовых  \nкоманд\n\nпрофессиональных   \nIT-сообществ\n\nсерверов\n\nвнедрений в год,  \nизменения каждые  \n30 сек",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:09:27.125Z",
+            "id": "e8"
+          },
+          {
+            "url": "https://in.linkedin.com/in/tanyarajput",
+            "kind": "search",
+            "text": "Tanya Rajput ( She/Her ) ✔️ - HR Manager @ Sberbank\n## Recent Activity\n- Liked By: Lupin has appointed Aditi Altekar as Global Lead – HR Digital & AI Transformation, effective August 2026. She will lead the pharmaceutical...\n- Liked By: Chennai-based Unico Housing Finance Private Limited has raised INR 55 crore in a follow-on funding round led by Anicut Capital, with...\n- Liked By: Anil Rathore has been appointed as Head of Human Resources at Solfin. A distinguished HR leader with nearly four decades of experience, he... [...] - Liked By: 🚨 Don't miss the workshop “Pick Tools. Pick Mindset. Pick Humanity: The HR Playbook for Thriving in the AI Era,\" which will close the...\n- Posted By: To everyone who has been reaching out lately… I’ve been a little inactive in checking DMs due to some personal priorities recently. If your...\n- Liked By: Yash Sinha has been appointed as Chief Human Resources Officer (CHRO) at Ageas Federal Life Insurance. A highly distinguished human... [...] Description: Possessing years of extensive experience in Employee Engagement, Employee Communication, Employee Relations, and Employee Branding, I am committed to cultivating positive workplace environments. My proficiency in HR spans across various domains, and I am adept at aligning HR strategies with organizational goals to drive productivity and enhance employee satisfaction. Looking forward to connecting and collaborating!",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:09:27.125Z",
+            "id": "e9"
+          },
+          {
+            "url": "https://hh.ru/vacancy/129746204",
+            "kind": "search",
+            "text": "Вакансия Руководитель направления по защите AI-инфраструктуры в Москве, работа в компании Сбер для экспертов (вакансия в архиве c 21 февраля 2026)\nСбербанк ищет амбициозного технического лидера для создания и развития нового критически важного направления — защиты AI-инфраструктуры. Это уникальная возможность для опытных IT-специалистов с желанием расти в области кибербезопасности, возглавить одно из самых перспективных направлений индустрии на пересечении искусственного интеллекта и информационной безопасности. [...] Мы открыты к кандидатам из смежных IT-областей, которые обладают сильным техническим фундаментом и горят желанием освоить новую область на стыке кибербезопасности и искусственного интеллекта. Если вы:\n\n...то эта позиция может стать вашим трамплином в одну из самых востребованных и высокооплачиваемых областей.\n\n### Вам предстоит:\n\nРеагирование на инциденты в AI-системах:\n\nРазработка мер защиты и интеграция с SOC:\n\nЛидерство и развитие команды:\n\n### Что для нас важно: [...] Технический фундамент и опыт:\n\nПротоколы и интеграции AI-систем:\n\nПонимание векторов атак (будем развивать вместе) - базовое понимание угроз кибербезопасности и желание специализироваться в AI-specific угрозах:\n\nЕсли вы пока не знакомы с этими векторами — ничего страшного, мы обучим через СберУниверситет и специализированные программы (CAISP, Microsoft AI Security).\n\nEnterprise IT и инфраструктура - глубокое понимание хотя бы одной из областей:\n\nЖелательные навыки и опыт\n\n### Мы предлагаем:",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:09:27.126Z",
+            "id": "e10"
+          },
+          {
+            "url": "https://hr-ratings.com/expert/natalia-dudina-head-hr-sber",
+            "kind": "search",
+            "text": "Наталья Владимировна Дудина: Руководитель блока HR Сбера | HR-ratings\nНаталья Дудина демонстрирует лидерский стиль, который сочетает в себе:  \n  \n— Стратегическое видение и способность к трансформации организационных систем;  \n  \n— Практическую ориентацию на результаты, подкреплённую профессиональным опытом в законодательной и судебной сферах;  \n  \n— Эмпатию и сосредоточенность на человеческом измерении бизнеса;  \n  \n— Инновационный подход к решению традиционных проблем управления персоналом; [...] Основная информация  \n  \nНаталья Владимировна Дудина является Старшим вице-президентом Сбера и руководителем блока человеческих ресурсов (HR) одного из крупнейших российских финансовых учреждений. На этой должности она работает с 2019 года, возглавляя важнейший аспект корпоративной деятельности банка — управление человеческим капиталом и развитие кадровой политики.  \n  \nБиография и личные данные [...] В июне 2017 года она была назначена на должность старшего управляющего директора по бизнес-партнёрству блока HR. В этой роли она начала развивать стратегические подходы к управлению человеческими ресурсами. С декабря 2018 года Дудина исполняла обязанности руководителя блока HR, полностью управляя всеми аспектами работы этого направления.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:09:27.126Z",
+            "id": "e11"
+          },
+          {
+            "url": "https://hh.ru/vacancy/132325301",
+            "kind": "search",
+            "text": "Вакансия Руководитель направления по AI-трансформации клиентов в Москве, работа в компании Сбер для экспертов (вакансия в архиве c 21 мая 2026)\n# Руководитель направления по AI-трансформации клиентов В архиве с 21 мая 2026\n\nОпыт работы: 3–6 лет\n\nГрафик: 5/2\n\nФормат работы: на месте работодателя\n\nСБЕР\n\n## Вакансия в архиве\n\nРаботодатель, вероятно, уже нашел нужного кандидата и больше не принимает отклики на эту вакансию\n\n## Вакансии из других подборок в Москве\n\nСБЕР\nTop.Mail.Ru\nTop.Mail.Ru\n\nКоманда управляет продажами сложных AI-решений и кастомных проектов средним и крупным корпоративным клиентам.\n\n### Обязанности\n\n### Требования [...] ### Требования\n\n### Условия",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:09:27.126Z",
+            "id": "e12"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/search",
+            "focus": "команда/руководители AI/HR/автоматизация",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "\"Сбер\" (руководитель OR лид OR директор OR head) AI HR site:sber.ru OR site:rabota.sber.ru",
+            "focus": "персоналии/руководители подразделений AI-решений/HR/автоматизации",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "\"Богдан Рощупкин\" (Сбер OR sberbank OR rabota.sber.ru)",
+            "focus": "личный профиль/контакт/упоминания",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 3,
+          "actionsRemaining": 7,
+          "searchRemaining": 6
+        }
+      },
+      "output": {
+        "companySummary": "Сбер. IT (rabota.sber.ru) — платформа по работе и найму для ИТ-направления Сбера; ищет SDET/AI-разработчиков для создания AI-агентов по автоматизации тестирования HR-платформ. Является частью экосистемы ПАО «Сбербанк».",
+        "missing": [
+          "Публичный руководитель направления AI/HR платформ с прямым контактом",
+          "Страница с командой/руководством на rabota.sber.ru"
+        ],
+        "people": [
+          {
+            "name": "Наталья Владимировна Дудина",
+            "role": "Руководитель блока HR Сбера",
+            "relevance": 88,
+            "reason": "Высший руководитель HR направления Сбера; отвечает за стратегию и развитие кадровых сервисов и платформ, в т.ч. цифровизацию HR, релевантно для AI-решений в HR.",
+            "citations": [
+              {
+                "sourceId": "e11",
+                "quote": "Наталья Владимировна Дудина является Старшим вице-президентом Сбера и руководителем блока человеческих ресурсов (HR)"
+              }
+            ],
+            "contacts": []
+          },
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 30,
+            "reason": "Коллега-исполнитель/инженер, не владелец процесса, без публичных контактов или руководящих функций.",
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "rabota.sber.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Наталья Дудина (Сбер OR sberbank OR rabota.sber.ru) email OR контакт OR интервью OR выступление OR LinkedIn",
+            "focus": "Персональный публичный контакт Дудиной",
+            "purpose": "Получить подтверждённый канал связи с топ-руководителем HR блока, отвечающим за процессы автоматизации HR и внедрение AI."
+          },
+          {
+            "type": "search",
+            "value": "руководитель AI HR платформа Сбер OR rabota.sber.ru",
+            "focus": "Найти публичного руководителя подразделения, непосредственно отвечающего за AI-направления внутри HR-платформ",
+            "purpose": "Выявить потенциально более профильного менеджера процесса, если он существует публично."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Есть релевантный руководитель, но отсутствует прямой публичный контакт. Не исключено наличие более профильного руководителя подразделения HR/AI платформ, требуются дополнительные сведения."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "Сбер. IT (rabota.sber.ru) — платформа по работе и найму для ИТ-направления Сбера; ищет SDET/AI-разработчиков для создания AI-агентов по автоматизации тестирования HR-платформ. Является частью экосистемы ПАО «Сбербанк».",
+        "missing": [
+          "Публичный руководитель направления AI/HR платформ с прямым контактом",
+          "Страница с командой/руководством на rabota.sber.ru"
+        ],
+        "people": [
+          {
+            "name": "Наталья Владимировна Дудина",
+            "role": "Руководитель блока HR Сбера",
+            "relevance": 88,
+            "reason": "Высший руководитель HR направления Сбера; отвечает за стратегию и развитие кадровых сервисов и платформ, в т.ч. цифровизацию HR, релевантно для AI-решений в HR.",
+            "citations": [
+              {
+                "sourceId": "e11",
+                "quote": "Наталья Владимировна Дудина является Старшим вице-президентом Сбера и руководителем блока человеческих ресурсов (HR)"
+              }
+            ],
+            "contacts": []
+          },
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 30,
+            "reason": "Коллега-исполнитель/инженер, не владелец процесса, без публичных контактов или руководящих функций.",
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "rabota.sber.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Наталья Дудина (Сбер OR sberbank OR rabota.sber.ru) email OR контакт OR интервью OR выступление OR LinkedIn",
+            "focus": "Персональный публичный контакт Дудиной",
+            "purpose": "Получить подтверждённый канал связи с топ-руководителем HR блока, отвечающим за процессы автоматизации HR и внедрение AI."
+          },
+          {
+            "type": "search",
+            "value": "руководитель AI HR платформа Сбер OR rabota.sber.ru",
+            "focus": "Найти публичного руководителя подразделения, непосредственно отвечающего за AI-направления внутри HR-платформ",
+            "purpose": "Выявить потенциально более профильного менеджера процесса, если он существует публично."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Есть релевантный руководитель, но отсутствует прямой публичный контакт. Не исключено наличие более профильного руководителя подразделения HR/AI платформ, требуются дополнительные сведения."
+      },
+      "validationErrors": [
+        "person_rejected:Наталья Владимировна Дудина:need_verbatim_name_role_affiliation_and_relevance_60_to_100",
+        "person_rejected:Богдан Рощупкин:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%9D%D0%B0%D1%82%D0%B0%D0%BB%D1%8C%D1%8F%20%D0%94%D1%83%D0%B4%D0%B8%D0%BD%D0%B0%20(%D0%A1%D0%B1%D0%B5%D1%80%20OR%20sberbank%20OR%20rabota.sber.ru)%20email%20OR%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%20OR%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B2%D1%8C%D1%8E%20OR%20%D0%B2%D1%8B%D1%81%D1%82%D1%83%D0%BF%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20OR%20LinkedIn&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 466
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%9D%D0%B0%D1%82%D0%B0%D0%BB%D1%8C%D1%8F%20%D0%94%D1%83%D0%B4%D0%B8%D0%BD%D0%B0%20(%D0%A1%D0%B1%D0%B5%D1%80%20OR%20sberbank%20OR%20rabota.sber.ru)%20email%20OR%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%20OR%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B2%D1%8C%D1%8E%20OR%20%D0%B2%D1%8B%D1%81%D1%82%D1%83%D0%BF%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20OR%20LinkedIn&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 495
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20AI%20HR%20%D0%BF%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D0%B0%20%D0%A1%D0%B1%D0%B5%D1%80%20OR%20rabota.sber.ru&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 255
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20AI%20HR%20%D0%BF%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D0%B0%20%D0%A1%D0%B1%D0%B5%D1%80%20OR%20rabota.sber.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 409
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 3277
+    },
+    {
+      "stage": "search",
+      "query": "Наталья Дудина (Сбер OR sberbank OR rabota.sber.ru) email OR контакт OR интервью OR выступление OR LinkedIn",
+      "results": [
+        {
+          "title": "Наталья Владимировна Дудина: Руководитель блока HR Сбера | HR-ratings",
+          "url": "https://hr-ratings.com/expert/natalia-dudina-head-hr-sber",
+          "snippet": "Основная информация  \n  \nНаталья Владимировна Дудина является Старшим вице-президентом Сбера и руководителем блока человеческих ресурсов (HR) одного из крупнейших российских финансовых учреждений. На этой должности она работает с 2019 года, возглавляя важнейший аспект корпоративной деятельности банка — управление человеческим капиталом и развитие кадровой политики.  \n  \nБиография и личные данные [...] Признание профессиональным сообществом  \n  \nНаталья Дудина получила признание в профессиональном сообществе и деловых кругах. Её выступления и комментарии появляются в ведущих деловых изданиях и конференциях, где она делится опытом и знаниями по вопросам управления персоналом, корпоративной культуры и развития кадрового потенциала. Она активно участвует в обсуждении актуальных проблем рынка труда и становления новых подходов к управлению человеческим капиталом. [...] Образование  \n  \nВ 1990 году Наталья Дудина окончила юридический факультет Омского государственного университета. Она является кандидатом юридических наук. Её диссертационное исследование было посвящено теме «Правовые и организационные аспекты защиты прав налогоплательщиков в Российской Федерации» и было защищено в 2005 году. Это образование обеспечило её глубокими знаниями правовой базы, которые она успешно применяет в управлении современной корпоративной структурой.  \n  \nКарьерный путь",
+          "source_label": "tavily",
+          "score": 0.5660431,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Наталья Дудина («Сбер»): «Место, где люди имеют ...",
+          "url": "https://plus.rbc.ru/news/620d4c577a8aa9a85b782dda",
+          "snippet": "О современных подходах бизнеса к формированию эффективных команд РБК+ рассказала старший вице-президент, глава HR «Сбера» Наталья Дудина.",
+          "source_label": "tavily",
+          "score": 0.4892356,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Блок HR в Сбербанке возглавила Наталья Дудина",
+          "url": "https://www.banki.ru/news/lenta?id=10914407",
+          "snippet": "«Перед командой блока стоят задачи по созданию собственной HR-платформы, развитию функции управления персоналом в компаниях экосистемы и HR-аналитики, а также по подготовке планов дальнейшего развития HR. Наталья проявила себя как результативный руководитель внутри блока; уверена, что наша команда справится с поставленными задачами», — комментирует старший вице-президент, куратор блока HR и руководитель блока «Стратегия и развития» Сбербанка Юлия Чупина. [...] Еще    Сервисы  Курсы валютКредитная историяПодписка Банки.руОплата зарубежных сервисовПрограмма лояльностиСпециальные предложенияИнвестицииЗадать вопрос экспертуКупить eSIM Новое  Компании  Банки — офисы и банкоматыСтраховые компанииМикрофинансовые организацииБиржевые брокерыУправляющие компанииФинансовые показатели банковПремия Банки.ру  Народный рейтинг  БанковМикрофинансовых организацийСтраховых компанийИнвестиционных компанийНПФ НовоеЗастройщиков НовоеАвтодилеров Новое [...] Часто ищут   Ипотечный калькуляторИпотека онлайнИпотека без взносаЛьготная ипотека           \n   Страхование ОСАГОКаскоИпотечное страхованиеЗащита квартирыОСГОППутешествиеКредитное страхование жизниПроверка КБМ AкцииСтраховые компанииНародный рейтинг страховых компанийОтзывы о страховых компаниях",
+          "source_label": "tavily",
+          "score": 0.47899243,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Наталья Дудина | Старший вице-президент, ПАО ...",
+          "url": "https://roscongress.ru/speakers/dudina-natalya",
+          "snippet": "Наталья Дудина – Старший вице-президент, ПАО Сбербанк. Узнайте больше о личности: биографии, профессиональной деятельности и достижениях.",
+          "source_label": "tavily",
+          "score": 0.47314653,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "начинаем с себя. Диалог Натальи Дудиной с Максимом ...",
+          "url": "https://www.sberbank.ru/ru/sbertv/article?video=VgZLZK",
+          "snippet": "Именно про это диалог Старшего вице-президента, руководителя блока HR Сбера Натальи Дудиной с автором бестселлеров по деловой переписке Максимом Ильяховым.",
+          "source_label": "tavily",
+          "score": 0.3248246,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Наталья Дудина (Сбер OR sberbank OR rabota.sber.ru) email OR контакт OR интервью OR выступление OR LinkedIn",
+      "focus": "Персональный публичный контакт Дудиной",
+      "purpose": "Получить подтверждённый канал связи с топ-руководителем HR блока, отвечающим за процессы автоматизации HR и внедрение AI.",
+      "results": [
+        {
+          "url": "https://hr-ratings.com/expert/natalia-dudina-head-hr-sber",
+          "title": "Наталья Владимировна Дудина: Руководитель блока HR Сбера | HR-ratings",
+          "snippet": "Основная информация  \n  \nНаталья Владимировна Дудина является Старшим вице-президентом Сбера и руководителем блока человеческих ресурсов (HR) одного из крупнейших российских финансовых учреждений. На этой должности она работает с 2019 года, возглавляя важнейший аспект корпоративной деятельности банка — управление человеческим капиталом и развитие кадровой политики.  \n  \nБиография и личные данные [...] Признание профессиональным сообществом  \n  \nНаталья Дудина получила признание в профессионально",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://plus.rbc.ru/news/620d4c577a8aa9a85b782dda",
+          "title": "Наталья Дудина («Сбер»): «Место, где люди имеют ...",
+          "snippet": "О современных подходах бизнеса к формированию эффективных команд РБК+ рассказала старший вице-президент, глава HR «Сбера» Наталья Дудина.",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.banki.ru/news/lenta?id=10914407",
+          "title": "Блок HR в Сбербанке возглавила Наталья Дудина",
+          "snippet": "«Перед командой блока стоят задачи по созданию собственной HR-платформы, развитию функции управления персоналом в компаниях экосистемы и HR-аналитики, а также по подготовке планов дальнейшего развития HR. Наталья проявила себя как результативный руководитель внутри блока; уверена, что наша команда справится с поставленными задачами», — комментирует старший вице-президент, куратор блока HR и руководитель блока «Стратегия и развития» Сбербанка Юлия Чупина. [...] Еще    Сервисы  Курсы валютКредитна",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://roscongress.ru/speakers/dudina-natalya",
+          "title": "Наталья Дудина | Старший вице-президент, ПАО ...",
+          "snippet": "Наталья Дудина – Старший вице-президент, ПАО Сбербанк. Узнайте больше о личности: биографии, профессиональной деятельности и достижениях.",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.sberbank.ru/ru/sbertv/article?video=VgZLZK",
+          "title": "начинаем с себя. Диалог Натальи Дудиной с Максимом ...",
+          "snippet": "Именно про это диалог Старшего вице-президента, руководителя блока HR Сбера Натальи Дудиной с автором бестселлеров по деловой переписке Максимом Ильяховым.",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 3749
+    },
+    {
+      "stage": "search",
+      "query": "руководитель AI HR платформа Сбер OR rabota.sber.ru",
+      "results": [
+        {
+          "title": "Вакансия Руководитель направления по аналитике данных (HR-платформа) в Москве с зарплатой 300 000 руб, работа в компании СБЕР",
+          "url": "https://rabota.ru/vacancy/54281352?search_id=1778888624475paa63bs3qf8",
+          "snippet": "Title: Вакансия Руководитель направления по аналитике данных (HR-платформа) в Москве с зарплатой 300 000 руб, работа в компании СБЕР\n# Руководитель направления по аналитике данных (HR-платформа). ### от 300 000 руб. Мы проверили эту компанию по открытым источникам на финансовые и юридические показатели. ## Связаться с работодателем. ## Контакты. ## Сколько зарабатывает python разработчик? ### Смотрите также. #### Информация. #### Соискателям. #### Работодателям. #### Мобильное приложение.",
+          "source_label": "tavily",
+          "score": 0.72675586,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Руководитель направления по аналитике данных (HR-платформа) в Москве с зарплатой 300 000 руб, работа в компании СБЕР",
+          "url": "https://www.rabota.ru/vacancy/54281352?search_id=1778538744919wj0li7kzgo",
+          "snippet": "На главную\n\nВакансии\n\nПрофессии\n\nКомпании\n\nБлог\n\nРаботодателю\n\nРабота в Сбере\n\nНа главную\n\n Работа и вакансии в Москве\n Свежие вакансии\n Руководитель направления по аналитике данных (HR-платформа)/)\n\nВакансия закрыта\n\n# Руководитель направления по аналитике данных (HR-платформа)\n\nМосква,  опыт работы от 4 лет, образование любое\n\nСБЕР\n\n### Вакансия в архиве [...] Вероятнее всего, работодатель уже нашел сотрудника. Вы можете найти похожие вакансии или перейти на страницу работодателя и найти другие похожие вакансии.\n\nПоказать описание вакансии\n\n### Смотрите также\n\n Работа и вакансии в Москве\n Свежие вакансии\n Работа на полный рабочий день\n От 300 000 руб.\n Работа от прямых работодателей\n\n#### Мобильное приложение\n\nQR-код приложения",
+          "source_label": "tavily",
+          "score": 0.666736,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Руководитель направления по аналитике данных (HR-платформа) в Москве с зарплатой 300 000 руб, работа в компании СБЕР",
+          "url": "https://rabota.ru/vacancy/54281352?search_id=1778447922241dpu9fnnk6q4",
+          "snippet": "На главную\n\nВакансии\n\nПрофессии\n\nКомпании\n\nБлог\n\nРаботодателю\n\nРабота в Сбере\n\nНа главную\n\n Работа и вакансии в Москве\n Свежие вакансии\n Руководитель направления по аналитике данных (HR-платформа)/)\n\nВакансия закрыта\n\n# Руководитель направления по аналитике данных (HR-платформа)\n\nМосква,  опыт работы от 4 лет, образование любое\n\nСБЕР\n\n### Вакансия в архиве [...] Вероятнее всего, работодатель уже нашел сотрудника. Вы можете найти похожие вакансии или перейти на страницу работодателя и найти другие похожие вакансии.\n\nПоказать описание вакансии\n\n### Смотрите также\n\n Работа и вакансии в Москве\n Свежие вакансии\n Работа на полный рабочий день\n От 300 000 руб.\n Работа от прямых работодателей\n\n#### Мобильное приложение\n\nQR-код приложения",
+          "source_label": "tavily",
+          "score": 0.666736,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Руководитель направления по аналитике данных (HR-платформа) в Москве с зарплатой 300 000 руб, работа в компании СБЕР",
+          "url": "https://www.rabota.ru/vacancy/54281352?search_id=1778755656029uv2e6m48b7",
+          "snippet": "На главную\n\nВакансии\n\nПрофессии\n\nКомпании\n\nБлог\n\nРаботодателю\n\nРабота в Сбере\n\nНа главную\n\n Работа и вакансии в Москве\n Свежие вакансии\n Руководитель направления по аналитике данных (HR-платформа)/)\n\nВакансия закрыта\n\n# Руководитель направления по аналитике данных (HR-платформа)\n\nМосква,  опыт работы от 4 лет, образование любое\n\nСБЕР\n\n### Вакансия в архиве [...] Вероятнее всего, работодатель уже нашел сотрудника. Вы можете найти похожие вакансии или перейти на страницу работодателя и найти другие похожие вакансии.\n\nПоказать описание вакансии\n\n### Смотрите также\n\n Работа и вакансии в Москве\n Свежие вакансии\n Работа на полный рабочий день\n От 300 000 руб.\n Работа от прямых работодателей\n\n#### Мобильное приложение\n\nQR-код приложения",
+          "source_label": "tavily",
+          "score": 0.666736,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Руководитель направления по развитию продукта (HR-платформа Пульс) — СБЕР | AFK Offer",
+          "url": "https://afkoffer.com/vacancies/product/135182317",
+          "snippet": "## Обязанности\n\nФормирование единого UX-подхода и визуального языка для всех цифровых поверхностей. Устранение барьеров и проблем кандидата при переходе между площадками...\n\nОткликнутьсяАвтоотклик с ИИ\n\n### Отправляйте отклики быстрее\n\nAFK Offer помогает отправлять отклики на подходящие вакансии с персонализированными сопроводительными письмами. Попробуйте 24 часа бесплатно.\n\nНачать бесплатно\n\nНазад к вакансиям «Product Manager» [...] AFK OFFER\n\nВакансии/Product Manager/Руководитель направления по развитию продукта (HR-платформа Пульс)\n\nСБЕР\n\nСБЕР\n\n4 дн. назад\n\n# Руководитель направления по развитию продукта (HR-платформа Пульс)\n\nОт 3 до 6 летПолный деньМосква14 июля 2026 г.\n\n## Требования\n\nОпыт управления продуктами (Product Owner / Product Manager) от 3-х лет, желательно в HR-Tech, B2C-сервисах или...\n\n## Обязанности [...] Руководитель направления по развитию продукта (HR-платформа Пульс) — СБЕР | AFK Offer",
+          "source_label": "tavily",
+          "score": 0.6100127,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "руководитель AI HR платформа Сбер OR rabota.sber.ru",
+      "focus": "Найти публичного руководителя подразделения, непосредственно отвечающего за AI-направления внутри HR-платформ",
+      "purpose": "Выявить потенциально более профильного менеджера процесса, если он существует публично.",
+      "results": [
+        {
+          "url": "https://rabota.ru/vacancy/54281352?search_id=1778888624475paa63bs3qf8",
+          "title": "Вакансия Руководитель направления по аналитике данных (HR-платформа) в Москве с зарплатой 300 000 руб, работа в компании СБЕР",
+          "snippet": "Title: Вакансия Руководитель направления по аналитике данных (HR-платформа) в Москве с зарплатой 300 000 руб, работа в компании СБЕР\n# Руководитель направления по аналитике данных (HR-платформа). ### от 300 000 руб. Мы проверили эту компанию по открытым источникам на финансовые и юридические показатели. ## Связаться с работодателем. ## Контакты. ## Сколько зарабатывает python разработчик? ### Смотрите также. #### Информация. #### Соискателям. #### Работодателям. #### Мобильное приложение.",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.rabota.ru/vacancy/54281352?search_id=1778538744919wj0li7kzgo",
+          "title": "Вакансия Руководитель направления по аналитике данных (HR-платформа) в Москве с зарплатой 300 000 руб, работа в компании СБЕР",
+          "snippet": "На главную\n\nВакансии\n\nПрофессии\n\nКомпании\n\nБлог\n\nРаботодателю\n\nРабота в Сбере\n\nНа главную\n\n Работа и вакансии в Москве\n Свежие вакансии\n Руководитель направления по аналитике данных (HR-платформа)/)\n\nВакансия закрыта\n\n# Руководитель направления по аналитике данных (HR-платформа)\n\nМосква,  опыт работы от 4 лет, образование любое\n\nСБЕР\n\n### Вакансия в архиве [...] Вероятнее всего, работодатель уже нашел сотрудника. Вы можете найти похожие вакансии или перейти на страницу работодателя и найти други",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://rabota.ru/vacancy/54281352?search_id=1778447922241dpu9fnnk6q4",
+          "title": "Вакансия Руководитель направления по аналитике данных (HR-платформа) в Москве с зарплатой 300 000 руб, работа в компании СБЕР",
+          "snippet": "На главную\n\nВакансии\n\nПрофессии\n\nКомпании\n\nБлог\n\nРаботодателю\n\nРабота в Сбере\n\nНа главную\n\n Работа и вакансии в Москве\n Свежие вакансии\n Руководитель направления по аналитике данных (HR-платформа)/)\n\nВакансия закрыта\n\n# Руководитель направления по аналитике данных (HR-платформа)\n\nМосква,  опыт работы от 4 лет, образование любое\n\nСБЕР\n\n### Вакансия в архиве [...] Вероятнее всего, работодатель уже нашел сотрудника. Вы можете найти похожие вакансии или перейти на страницу работодателя и найти други",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.rabota.ru/vacancy/54281352?search_id=1778755656029uv2e6m48b7",
+          "title": "Вакансия Руководитель направления по аналитике данных (HR-платформа) в Москве с зарплатой 300 000 руб, работа в компании СБЕР",
+          "snippet": "На главную\n\nВакансии\n\nПрофессии\n\nКомпании\n\nБлог\n\nРаботодателю\n\nРабота в Сбере\n\nНа главную\n\n Работа и вакансии в Москве\n Свежие вакансии\n Руководитель направления по аналитике данных (HR-платформа)/)\n\nВакансия закрыта\n\n# Руководитель направления по аналитике данных (HR-платформа)\n\nМосква,  опыт работы от 4 лет, образование любое\n\nСБЕР\n\n### Вакансия в архиве [...] Вероятнее всего, работодатель уже нашел сотрудника. Вы можете найти похожие вакансии или перейти на страницу работодателя и найти други",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://afkoffer.com/vacancies/product/135182317",
+          "title": "Руководитель направления по развитию продукта (HR-платформа Пульс) — СБЕР | AFK Offer",
+          "snippet": "## Обязанности\n\nФормирование единого UX-подхода и визуального языка для всех цифровых поверхностей. Устранение барьеров и проблем кандидата при переходе между площадками...\n\nОткликнутьсяАвтоотклик с ИИ\n\n### Отправляйте отклики быстрее\n\nAFK Offer помогает отправлять отклики на подходящие вакансии с персонализированными сопроводительными письмами. Попробуйте 24 часа бесплатно.\n\nНачать бесплатно\n\nНазад к вакансиям «Product Manager» [...] AFK OFFER\n\nВакансии/Product Manager/Руководитель направления ",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 4599,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:09:15.561Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://rabota.sber.ru/search/",
+            "kind": "page",
+            "text": "Поиск вакансий Вакансии Карьерные медиа Выпускникам и студентам Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:09:19.753Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://www.sberbank.ru/ru/sbertv/article?video=VgZLZK",
+            "kind": "search",
+            "text": "начинаем с себя. Диалог Натальи Дудиной с Максимом ...\nИменно про это диалог Старшего вице-президента, руководителя блока HR Сбера Натальи Дудиной с автором бестселлеров по деловой переписке Максимом Ильяховым.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:09:36.123Z",
+            "id": "e16"
+          },
+          {
+            "url": "https://rabota.ru/vacancy/54281352?search_id=1778888624475paa63bs3qf8",
+            "kind": "search",
+            "text": "Вакансия Руководитель направления по аналитике данных (HR-платформа) в Москве с зарплатой 300 000 руб, работа в компании СБЕР\nTitle: Вакансия Руководитель направления по аналитике данных (HR-платформа) в Москве с зарплатой 300 000 руб, работа в компании СБЕР\n# Руководитель направления по аналитике данных (HR-платформа). ### от 300 000 руб. Мы проверили эту компанию по открытым источникам на финансовые и юридические показатели. ## Связаться с работодателем. ## Контакты. ## Сколько зарабатывает python разработчик? ### Смотрите также. #### Информация. #### Соискателям. #### Работодателям. #### Мобильное приложение.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:09:36.960Z",
+            "id": "e17"
+          },
+          {
+            "url": "https://www.rabota.ru/vacancy/54281352?search_id=1778538744919wj0li7kzgo",
+            "kind": "search",
+            "text": "Вакансия Руководитель направления по аналитике данных (HR-платформа) в Москве с зарплатой 300 000 руб, работа в компании СБЕР\nНа главную\n\nВакансии\n\nПрофессии\n\nКомпании\n\nБлог\n\nРаботодателю\n\nРабота в Сбере\n\nНа главную\n\n Работа и вакансии в Москве\n Свежие вакансии\n Руководитель направления по аналитике данных (HR-платформа)/)\n\nВакансия закрыта\n\n# Руководитель направления по аналитике данных (HR-платформа)\n\nМосква,  опыт работы от 4 лет, образование любое\n\nСБЕР\n\n### Вакансия в архиве [...] Вероятнее всего, работодатель уже нашел сотрудника. Вы можете найти похожие вакансии или перейти на страницу работодателя и найти другие похожие вакансии.\n\nПоказать описание вакансии\n\n### Смотрите также\n\n Работа и вакансии в Москве\n Свежие вакансии\n Работа на полный рабочий день\n От 300 000 руб.\n Работа от прямых работодателей\n\n#### Мобильное приложение\n\nQR-код приложения",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:09:36.960Z",
+            "id": "e18"
+          },
+          {
+            "url": "https://rabota.ru/vacancy/54281352?search_id=1778447922241dpu9fnnk6q4",
+            "kind": "search",
+            "text": "Вакансия Руководитель направления по аналитике данных (HR-платформа) в Москве с зарплатой 300 000 руб, работа в компании СБЕР\nНа главную\n\nВакансии\n\nПрофессии\n\nКомпании\n\nБлог\n\nРаботодателю\n\nРабота в Сбере\n\nНа главную\n\n Работа и вакансии в Москве\n Свежие вакансии\n Руководитель направления по аналитике данных (HR-платформа)/)\n\nВакансия закрыта\n\n# Руководитель направления по аналитике данных (HR-платформа)\n\nМосква,  опыт работы от 4 лет, образование любое\n\nСБЕР\n\n### Вакансия в архиве [...] Вероятнее всего, работодатель уже нашел сотрудника. Вы можете найти похожие вакансии или перейти на страницу работодателя и найти другие похожие вакансии.\n\nПоказать описание вакансии\n\n### Смотрите также\n\n Работа и вакансии в Москве\n Свежие вакансии\n Работа на полный рабочий день\n От 300 000 руб.\n Работа от прямых работодателей\n\n#### Мобильное приложение\n\nQR-код приложения",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:09:36.960Z",
+            "id": "e19"
+          },
+          {
+            "url": "https://www.rabota.ru/vacancy/54281352?search_id=1778755656029uv2e6m48b7",
+            "kind": "search",
+            "text": "Вакансия Руководитель направления по аналитике данных (HR-платформа) в Москве с зарплатой 300 000 руб, работа в компании СБЕР\nНа главную\n\nВакансии\n\nПрофессии\n\nКомпании\n\nБлог\n\nРаботодателю\n\nРабота в Сбере\n\nНа главную\n\n Работа и вакансии в Москве\n Свежие вакансии\n Руководитель направления по аналитике данных (HR-платформа)/)\n\nВакансия закрыта\n\n# Руководитель направления по аналитике данных (HR-платформа)\n\nМосква,  опыт работы от 4 лет, образование любое\n\nСБЕР\n\n### Вакансия в архиве [...] Вероятнее всего, работодатель уже нашел сотрудника. Вы можете найти похожие вакансии или перейти на страницу работодателя и найти другие похожие вакансии.\n\nПоказать описание вакансии\n\n### Смотрите также\n\n Работа и вакансии в Москве\n Свежие вакансии\n Работа на полный рабочий день\n От 300 000 руб.\n Работа от прямых работодателей\n\n#### Мобильное приложение\n\nQR-код приложения",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:09:36.961Z",
+            "id": "e20"
+          },
+          {
+            "url": "https://afkoffer.com/vacancies/product/135182317",
+            "kind": "search",
+            "text": "Руководитель направления по развитию продукта (HR-платформа Пульс) — СБЕР | AFK Offer\n## Обязанности\n\nФормирование единого UX-подхода и визуального языка для всех цифровых поверхностей. Устранение барьеров и проблем кандидата при переходе между площадками...\n\nОткликнутьсяАвтоотклик с ИИ\n\n### Отправляйте отклики быстрее\n\nAFK Offer помогает отправлять отклики на подходящие вакансии с персонализированными сопроводительными письмами. Попробуйте 24 часа бесплатно.\n\nНачать бесплатно\n\nНазад к вакансиям «Product Manager» [...] AFK OFFER\n\nВакансии/Product Manager/Руководитель направления по развитию продукта (HR-платформа Пульс)\n\nСБЕР\n\nСБЕР\n\n4 дн. назад\n\n# Руководитель направления по развитию продукта (HR-платформа Пульс)\n\nОт 3 до 6 летПолный деньМосква14 июля 2026 г.\n\n## Требования\n\nОпыт управления продуктами (Product Owner / Product Manager) от 3-х лет, желательно в HR-Tech, B2C-сервисах или...\n\n## Обязанности [...] Руководитель направления по развитию продукта (HR-платформа Пульс) — СБЕР | AFK Offer",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:09:36.961Z",
+            "id": "e21"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/search",
+            "focus": "команда/руководители AI/HR/автоматизация",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "\"Сбер\" (руководитель OR лид OR директор OR head) AI HR site:sber.ru OR site:rabota.sber.ru",
+            "focus": "персоналии/руководители подразделений AI-решений/HR/автоматизации",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "\"Богдан Рощупкин\" (Сбер OR sberbank OR rabota.sber.ru)",
+            "focus": "личный профиль/контакт/упоминания",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "Наталья Дудина (Сбер OR sberbank OR rabota.sber.ru) email OR контакт OR интервью OR выступление OR LinkedIn",
+            "focus": "Персональный публичный контакт Дудиной",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "руководитель AI HR платформа Сбер OR rabota.sber.ru",
+            "focus": "Найти публичного руководителя подразделения, непосредственно отвечающего за AI-направления внутри HR-платформ",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [
+          "person_rejected:Наталья Владимировна Дудина:need_verbatim_name_role_affiliation_and_relevance_60_to_100",
+          "person_rejected:Богдан Рощупкин:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+        ],
+        "budget": {
+          "roundsRemaining": 2,
+          "actionsRemaining": 5,
+          "searchRemaining": 4
+        }
+      },
+      "output": {
+        "companySummary": "Сбер. IT (rabota.sber.ru) — HR-платформа Сбера, развитие инструментов с AI и автоматизацией, специализация: подбор, цифровизация и автоматизация процессов подбора, проверки и управления персоналом. Служит карьерным порталом холдинга Сбер.",
+        "missing": [
+          "ФИО руководителя AI/автоматизации или Development/AI-лидера именно по HR-платформе/AI-направлением (должности типа 'руководитель направления по аналитике данных (HR-платформа)' показаны, но имени нет)",
+          "Публичный персональный email или профиль руководителя, владеющего бизнес-процессом AI-автоматизации HR-платформы"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "rabota.sber.ru © 2026 ПАО «Сбербанк»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "руководитель направления AI HR платформа имя OR LinkedIn OR конференция OR интервью OR email (Сбер OR rabota.sber.ru) 2026",
+            "focus": "ФИО и публичные профили явного руководителя AI/HR/автоматизации в Сбере — выявить актуальное имя и открытую ссылку для контакта",
+            "purpose": "Получить имя, роль и ссылку на публичный профиль (например, LinkedIn, события, интервью) публичного руководителя продукта или разработки AI-направления HR-платформы для валидации"
+          },
+          {
+            "type": "search",
+            "value": "Руководитель направления по развитию продукта HR-платформа Пульс Сбер ФИО OR LinkedIn OR интервью OR email",
+            "focus": "Раскрытие ФИО и публичного канала связи для руководителя направления развития продукта (HR-платформа Пульс), указанного в последних вакансиях",
+            "purpose": "Получить имя, роль и открытую ссылку для подтверждённого владельца процесса автоматизации HR-платформы"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Ни один источник не содержит в явном виде имя/публичную роль ЛПР — требуется найти имя и канал связи руководителя AI-направления или развития HR-платформы для Сбера."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 3,
+      "decision": {
+        "companySummary": "Сбер. IT (rabota.sber.ru) — HR-платформа Сбера, развитие инструментов с AI и автоматизацией, специализация: подбор, цифровизация и автоматизация процессов подбора, проверки и управления персоналом. Служит карьерным порталом холдинга Сбер.",
+        "missing": [
+          "ФИО руководителя AI/автоматизации или Development/AI-лидера именно по HR-платформе/AI-направлением (должности типа 'руководитель направления по аналитике данных (HR-платформа)' показаны, но имени нет)",
+          "Публичный персональный email или профиль руководителя, владеющего бизнес-процессом AI-автоматизации HR-платформы"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "rabota.sber.ru © 2026 ПАО «Сбербанк»"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "руководитель направления AI HR платформа имя OR LinkedIn OR конференция OR интервью OR email (Сбер OR rabota.sber.ru) 2026",
+            "focus": "ФИО и публичные профили явного руководителя AI/HR/автоматизации в Сбере — выявить актуальное имя и открытую ссылку для контакта",
+            "purpose": "Получить имя, роль и ссылку на публичный профиль (например, LinkedIn, события, интервью) публичного руководителя продукта или разработки AI-направления HR-платформы для валидации"
+          },
+          {
+            "type": "search",
+            "value": "Руководитель направления по развитию продукта HR-платформа Пульс Сбер ФИО OR LinkedIn OR интервью OR email",
+            "focus": "Раскрытие ФИО и публичного канала связи для руководителя направления развития продукта (HR-платформа Пульс), указанного в последних вакансиях",
+            "purpose": "Получить имя, роль и открытую ссылку для подтверждённого владельца процесса автоматизации HR-платформы"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Ни один источник не содержит в явном виде имя/публичную роль ЛПР — требуется найти имя и канал связи руководителя AI-направления или развития HR-платформы для Сбера."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "diminishing_returns",
+      "actions": 6,
+      "candidates": [],
+      "domains": [
+        "rabota.sber.ru"
+      ],
+      "elapsedMs": 27236
+    },
+    {
+      "stage": "people_ranked",
+      "people": []
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Product launches and feature releases can create coordination load between product, marketing, sales, and customer success.",
+        "target_responsibility": "Product leadership",
+        "target_persona": "Head of Product",
+        "alternative_personas": [
+          "VP Product",
+          "Product Director",
+          "Head of Product Marketing",
+          "COO",
+          "Founder / CEO"
+        ],
+        "why_this_person": "The signal includes product or release context, so product leadership may own the launch and adoption workflow. Matched context: платформа. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "no_material_next_step_available"
+      },
+      "contacts": [
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://rabota.sber.ru/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://rabota.sber.ru/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://rabota.sber.ru"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-10-06T20:09:14.467Z",
+  "bundle": {
+    "companyName": "Сбер. IT",
+    "officialWebsite": "https://rabota.sber.ru",
+    "officialDomain": "rabota.sber.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "SDET / Разработчик AI решений (HR платформа)",
+      "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+      "sourceUrl": "https://hh.ru/vacancy/138117118",
+      "confidence": 90
+    },
+    "researchConfidence": "UNVERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 12,
+      "lprMs": 27238,
+      "contactMs": 111,
+      "totalMs": 27349,
+      "stopReason": "diminishing_returns"
+    }
+  },
+  "people": {
+    "primary_person": null,
+    "alternative_people": [],
+    "all_candidates": [],
+    "search_status": "no_person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "diminishing_returns"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 4,
+      "official_pages_fetched": 2,
+      "aborted_requests": 0,
+      "elapsed_ms": 27236,
+      "stop_reason": "diminishing_returns",
+      "queries_executed": [
+        "\"Сбер\" (руководитель OR лид OR директор OR head) AI HR site:sber.ru OR site:rabota.sber.ru",
+        "\"Богдан Рощупкин\" (Сбер OR sberbank OR rabota.sber.ru)",
+        "Наталья Дудина (Сбер OR sberbank OR rabota.sber.ru) email OR контакт OR интервью OR выступление OR LinkedIn",
+        "руководитель AI HR платформа Сбер OR rabota.sber.ru"
+      ],
+      "sources_checked": [
+        "https://rabota.sber.ru",
+        "https://rabota.sber.ru/search/",
+        "https://www.instagram.com/p/CNAi0nDHbSa",
+        "https://www.instagram.com/p/DDzLBYCCmmD?img_index=3",
+        "https://www.instagram.com/reel/DZ2VxxqojME",
+        "https://www.instagram.com/reel/DZ25zCUMmTx",
+        "https://hh.ru/vacancy/134460002",
+        "https://in.linkedin.com/in/tanyarajput",
+        "https://hh.ru/vacancy/129746204",
+        "https://hr-ratings.com/expert/natalia-dudina-head-hr-sber",
+        "https://hh.ru/vacancy/132325301",
+        "https://plus.rbc.ru/news/620d4c577a8aa9a85b782dda",
+        "https://www.banki.ru/news/lenta?id=10914407",
+        "https://roscongress.ru/speakers/dudina-natalya",
+        "https://www.sberbank.ru/ru/sbertv/article?video=VgZLZK",
+        "https://rabota.ru/vacancy/54281352?search_id=1778888624475paa63bs3qf8",
+        "https://www.rabota.ru/vacancy/54281352?search_id=1778538744919wj0li7kzgo",
+        "https://rabota.ru/vacancy/54281352?search_id=1778447922241dpu9fnnk6q4",
+        "https://www.rabota.ru/vacancy/54281352?search_id=1778755656029uv2e6m48b7",
+        "https://afkoffer.com/vacancies/product/135182317"
+      ],
+      "search_results_seen": 20,
+      "rejected_candidates": {
+        "validation_rejects": 0
+      },
+      "final_failure_reason": "diminishing_returns"
+    }
+  },
+  "contacts": [
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://rabota.sber.ru/contacts",
+      "selected": false,
+      "intelligence": {
+        "business_problem": "Product launches and feature releases can create coordination load between product, marketing, sales, and customer success.",
+        "target_responsibility": "Product leadership",
+        "target_persona": "Head of Product",
+        "alternative_personas": [
+          "VP Product",
+          "Product Director",
+          "Head of Product Marketing",
+          "COO",
+          "Founder / CEO"
+        ],
+        "why_this_person": "The signal includes product or release context, so product leadership may own the launch and adoption workflow. Matched context: платформа. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "no_material_next_step_available"
+      }
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://rabota.sber.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://rabota.sber.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 27349
+}

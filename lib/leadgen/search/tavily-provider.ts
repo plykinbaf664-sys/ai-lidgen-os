@@ -3,6 +3,9 @@ import type {
   SearchProviderSearchInput,
   SearchResult,
 } from "@/lib/leadgen/search/search-provider";
+import { createHash } from "node:crypto";
+
+const blockedAccounts = new Map<string, { until: number; status: number }>();
 
 type TavilySearchResult = {
   title?: unknown;
@@ -53,10 +56,15 @@ export class TavilySearchProvider implements SearchProvider {
     maxResults = 5,
     page = 0,
     signal,
+    queryAngle,
+    searchTopic,
   }: SearchProviderSearchInput): Promise<SearchResult[]> {
     // Tavily's current endpoint has no stable page/cursor contract. Additional
     // discovery comes from unique queries; never repeat the same query as a fake page.
     if (page > 0) return [];
+    const account = createHash("sha256").update(this.apiKey).digest("hex");
+    const blocked = blockedAccounts.get(account);
+    if (blocked && blocked.until > Date.now()) throw new Error(`Tavily unavailable: HTTP ${blocked.status}; account cooldown`);
     const response = await fetch("https://api.tavily.com/search", {
       method: "POST",
       headers: {
@@ -66,17 +74,22 @@ export class TavilySearchProvider implements SearchProvider {
       body: JSON.stringify({
         query,
         search_depth: "basic",
-        topic: "general",
+        topic: searchTopic ?? (queryAngle === "market_news" ? "news" : "general"),
+        ...(queryAngle === "market_news" ? { time_range: "year" } : {}),
         max_results: maxResults,
         include_answer: false,
         include_raw_content: false,
         include_images: false,
       }),
-      signal,
+      signal: signal ? AbortSignal.any([signal, AbortSignal.timeout(10_000)]) : AbortSignal.timeout(10_000),
     });
 
     if (!response.ok) {
       const errorText = await response.text();
+      if ([401, 402, 432].includes(response.status)) {
+        if (blockedAccounts.size >= 20) blockedAccounts.delete(blockedAccounts.keys().next().value!);
+        blockedAccounts.set(account, { until: Date.now() + 10 * 60_000, status: response.status });
+      }
       throw new Error(`Tavily search failed: ${response.status} ${errorText}`);
     }
 

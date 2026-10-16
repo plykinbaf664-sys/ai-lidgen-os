@@ -1,0 +1,3847 @@
+{
+  "phase": "email-after",
+  "records": [
+    {
+      "mode": "business",
+      "name": "АСД-электрик",
+      "website": "https://asd-e.ru",
+      "before": {
+        "companyName": "АСД-электрик",
+        "officialWebsite": "https://asd-e.ru",
+        "officialDomain": "asd-e.ru",
+        "people": [],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [
+            {
+              "email": "tender@asd-e.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://checko.ru/company/zavod-asd-ehlektrik-1136671013577",
+                  "sourceType": "public_web",
+                  "excerpt": "tender@asd-e.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 77
+                }
+              ]
+            }
+          ],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "tender@asd-e.ru",
+          "personName": null,
+          "role": null,
+          "classification": "GENERAL",
+          "contactLevel": "E",
+          "sourceUrl": "https://checko.ru/company/zavod-asd-ehlektrik-1136671013577"
+        },
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: Завод АСД-электрик; открыта вакансия: Менеджер по продажам.",
+          "sourceUrl": "https://hh.ru/vacancy/137624329",
+          "confidence": 100
+        },
+        "researchConfidence": "HIGH_CONFIDENCE",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 5,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 26,
+          "lprMs": 15734,
+          "contactMs": 14075,
+          "totalMs": 34714,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "signal": {
+        "type": "HIRING_SIGNAL",
+        "title": "Обнаружен сигнал найма",
+        "detail": "Работодатель: Завод АСД-электрик; открыта вакансия: Менеджер по продажам.",
+        "sourceUrl": "https://hh.ru/vacancy/137624329",
+        "confidence": 100
+      },
+      "index": 0,
+      "trace": [
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru",
+          "status": 301,
+          "elapsedMs": 927
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-electric.ru/",
+          "status": 200,
+          "elapsedMs": 1087
+        },
+        {
+          "stage": "research_open",
+          "url": "https://asd-e.ru",
+          "success": true,
+          "evidence": {
+            "url": "https://asd-electric.ru/",
+            "kind": "page",
+            "text": "Комплексные инженерные решения для кабеленесущих систем Сервис Техническая поддержка при проектировании Проверка Собственная лаборатория для проведения натурных испытаний Завод АСД-электрик 15 000 М² СОБСТВЕННЫХ ПРОИЗВОДСТВЕННЫХ ПЛОЩАДЕЙ 10 000 М² СОБСТВЕННЫХ СКЛАДСКИХ ПЛОЩАДЕЙ 150 000 М КАБЕЛЬНЫХ ЛОТКОВ В МЕСЯЦ 200 000 ЕД. МОНТАЖНЫХ ЭЛЕМЕНТОВ В МЕСЯЦ Кабеленесущие системы TM PROMTRAY внесены в реестр российской промышленной продукции Сертифицировано в соответствии с мировыми стандартами Продукция компании АСД-электрик уже более 20 лет успешно используется предприятиями крупнейших холдингов АСД-ЭЛЕКТРИК. ВЫПУСКАЕМ ОБОРУДОВАНИЕ МИРОВОГО УРОВНЯ С 2004 ГОДА ТЕХНОЛОГИИ АСД-электрик — это современное производство и дистрибуция кабеленесущих систем. Продукция предназначена для реализации комплексных решений в различных отраслях промышленности. О КОМПАНИИ КАТАЛОГ БОЛЕЕ 3 000 МОДУЛЕЙ И ЭЛЕМЕНТОВ ДЛЯ СБОРКИ КАБЕЛЕНЕСУЩИХ МАГИСТРАЛЕЙ Используем принцип бережливого производства при изготовлении каждой детали. Высокое качество наших процессов подтверждено сертификатом ГОСТ Р ИСО 9001&ndash;2015. На все изделия по запросу предоставляются паспорта качества и сертификат соответствия ГОСТ Р 52868&ndash;2021. Системы кабельных лотков и системы кабельных лестниц для прокладки кабелей. Общие технические требования и методы испытаний. В КАТАЛОГ КАБЕЛЬНЫЕ ЭСТАКАДЫ Ригельные Универсальные Внутрицеховые 200+ компоновочных решений КАБЕЛЬНЫЕ ЛОТКИ Лестничные усиленные лотки Лестничные лотки Листовые лотки 1 400+ наименований КАБЕЛЬНЫЕ КОРОБА БЛОЧНЫЕ Одноярусные Многоярусные 40+ наименований МОНТАЖНЫЕ ЭЛЕМЕНТЫ STRUT-система Система быстрого монтажа Крепежные элементы 150+ наименований КАБЕЛЬНЫЕ ЭСТАКАДЫ КАБЕЛЬНЫЕ ЛОТКИ КАБЕЛЬНЫЕ КОРОБА БЛОЧНЫЕ МОНТАЖНЫЕ ЭЛЕМЕНТЫ НАДЁЖНОЕ ПАРТНЕРСТВО РЕШАЕМ ЛЮБЫЕ СЕРВИСНЫЕ ЗАДАЧИ: ОТ БЫСТРОЙ КОМПЛЕКТАЦИИ ЗАКАЗОВ ДО ДОСТАВКИ ПО РФ Широкий ассортимент продукции способный закрыть потребности любого проекта. Наличие типовой продукции на складе. Отгрузки в день заказа. Возможность заказа небольших партий. Доставка по РФ. Работаем с ведущими транспортными компаниями России. Возможность отгрузки напрямую с завода. В КАТАЛОГ НОВОСТИ СТАТЬИ С Днём Машиностроителя! 25 сентября 2026 С Днем нефтяной и газовой промышленности! 04 сентября 2026 С Днём строителя и 70-летним юбилеем праздника! 09 августа 2026 Горячее цинкование методом погружения по ГОСТ 9.307-2021 20 августа 2025 Что такое замковые лотки 18 января 2023 Цинкование по методу Сендзимира 08 ноября 2022 ВСЕ НОВОСТИ ВСЕ СТАТЬИ Главная Продукция ASD Инженерный хаб Новости Статьи Контакты Кабельные эстакады Кабеленесущие системы Кабельные короба Монтажные элементы ГЛАВНЫЙ ОФИС Екатеринбург, ул. Колмогорова, 5/3, БЦ К5, 10 этаж ПРЕДПРИЯТИЕ Верхняя Пышма, пос. Красный, ул. Артиллеристов, 90 ЛОГИСТИЧЕСКИЙ ЦЕНТР Верхняя Пышма, пос. Красный, ул. Артиллеристов, 103 Политика конфиденциальности 2025-2026 © АСД-электрик",
+            "links": [
+              {
+                "url": "https://asd-electric.ru",
+                "label": "Перейти к содержимому"
+              },
+              {
+                "url": "https://asd-electric.ru/produktsiya-asd",
+                "label": "Продукция ASD"
+              },
+              {
+                "url": "https://asd-electric.ru/produktsiya-asd/kabelnye-estakady",
+                "label": "Кабельные эстакады"
+              },
+              {
+                "url": "https://asd-electric.ru/produktsiya-asd/kabelenesushchie-sistemy",
+                "label": "Кабеленесущие системы"
+              },
+              {
+                "url": "https://asd-electric.ru/tekhnologii",
+                "label": "Инженерный хаб"
+              },
+              {
+                "url": "https://asd-electric.ru/news-all",
+                "label": "Новости"
+              },
+              {
+                "url": "https://asd-electric.ru/news-all/stati",
+                "label": "Статьи"
+              },
+              {
+                "url": "https://asd-electric.ru/napisat-nam",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://asd-electric.ru/index.php/produktsiya-asd/kabelnye-estakady",
+                "label": "КАБЕЛЬНЫЕ ЭСТАКАДЫ"
+              },
+              {
+                "url": "https://asd-electric.ru/index.php/produktsiya-asd/kabelenesushchie-sistemy",
+                "label": "КАБЕЛЬНЫЕ ЛОТКИ"
+              },
+              {
+                "url": "https://asd-electric.ru/index.php/produktsiya-asd/kabelnye-koroba",
+                "label": "КАБЕЛЬНЫЕ КОРОБА БЛОЧНЫЕ"
+              },
+              {
+                "url": "https://asd-electric.ru/component/zoo/item/s-dnjom-mashinostroitelya?Itemid=101",
+                "label": "С Днём Машиностроителя! 25 сентября 2026"
+              },
+              {
+                "url": "https://asd-electric.ru/component/zoo/item/s-dnem-neftyanoj-i-gazovoj-promyshlennosti?Itemid=101",
+                "label": "С Днем нефтяной и газовой промышленности! 04 сентября 2026"
+              },
+              {
+                "url": "https://asd-electric.ru/component/zoo/item/s-dnjom-stroitelya-i-70-letnim-yubileem-prazdnika?Itemid=101",
+                "label": "С Днём строителя и 70-летним юбилеем праздника! 09 августа 2026"
+              },
+              {
+                "url": "https://asd-electric.ru/images/template/04_About%20Company/pol_obr_p_d.pdf",
+                "label": "Политика конфиденциальности"
+              },
+              {
+                "url": "https://fasie.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.tek-all.ru/companies/1852-zavod-asd-elektrik",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T15:47:44.209Z",
+            "id": "e1"
+          }
+        },
+        {
+          "stage": "model",
+          "url": "https://api.openai.com/v1/responses",
+          "status": 429,
+          "elapsedMs": 1228,
+          "schema": "iterative_people_research",
+          "input": {
+            "company": "АСД-электрик",
+            "domain": "asd-e.ru",
+            "signal": {
+              "signal": {
+                "type": "HIRING_SIGNAL",
+                "title": "Обнаружен сигнал найма",
+                "detail": "Работодатель: Завод АСД-электрик; открыта вакансия: Менеджер по продажам.",
+                "sourceUrl": "https://hh.ru/vacancy/137624329",
+                "confidence": 100
+              }
+            },
+            "currentDate": "2026-10-07",
+            "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+            "knownPeople": [],
+            "emailCandidates": [],
+            "documents": [
+              {
+                "url": "https://asd-electric.ru/",
+                "kind": "page",
+                "text": "Комплексные инженерные решения для кабеленесущих систем Сервис Техническая поддержка при проектировании Проверка Собственная лаборатория для проведения натурных испытаний Завод АСД-электрик 15 000 М² СОБСТВЕННЫХ ПРОИЗВОДСТВЕННЫХ ПЛОЩАДЕЙ 10 000 М² СОБСТВЕННЫХ СКЛАДСКИХ ПЛОЩАДЕЙ 150 000 М КАБЕЛЬНЫХ ЛОТКОВ В МЕСЯЦ 200 000 ЕД. МОНТАЖНЫХ ЭЛЕМЕНТОВ В МЕСЯЦ Кабеленесущие системы TM PROMTRAY внесены в реестр российской промышленной продукции Сертифицировано в соответствии с мировыми стандартами Продукция компании АСД-электрик уже более 20 лет успешно используется предприятиями крупнейших холдингов АСД-ЭЛЕКТРИК. ВЫПУСКАЕМ ОБОРУДОВАНИЕ МИРОВОГО УРОВНЯ С 2004 ГОДА ТЕХНОЛОГИИ АСД-электрик — это современное производство и дистрибуция кабеленесущих систем. Продукция предназначена для реализации комплексных решений в различных отраслях промышленности. О КОМПАНИИ КАТАЛОГ БОЛЕЕ 3 000 МОДУЛЕЙ И ЭЛЕМЕНТОВ ДЛЯ СБОРКИ КАБЕЛЕНЕСУЩИХ МАГИСТРАЛЕЙ Используем принцип бережливого производства при изготовлении каждой детали. Высокое качество наших процессов подтверждено сертификатом ГОСТ Р ИСО 9001&ndash;2015. На все изделия по запросу предоставляются паспорта качества и сертификат соответствия ГОСТ Р 52868&ndash;2021. Системы кабельных лотков и системы кабельных лестниц для прокладки кабелей. Общие технические требования и методы испытаний. В КАТАЛОГ КАБЕЛЬНЫЕ ЭСТАКАДЫ Ригельные Универсальные Внутрицеховые 200+ компоновочных решений КАБЕЛЬНЫЕ ЛОТКИ Лестничные усиленные лотки Лестничные лотки Листовые лотки 1 400+ наименований КАБЕЛЬНЫЕ КОРОБА БЛОЧНЫЕ Одноярусные Многоярусные 40+ наименований МОНТАЖНЫЕ ЭЛЕМЕНТЫ STRUT-система Система быстрого монтажа Крепежные элементы 150+ наименований КАБЕЛЬНЫЕ ЭСТАКАДЫ КАБЕЛЬНЫЕ ЛОТКИ КАБЕЛЬНЫЕ КОРОБА БЛОЧНЫЕ МОНТАЖНЫЕ ЭЛЕМЕНТЫ НАДЁЖНОЕ ПАРТНЕРСТВО РЕШАЕМ ЛЮБЫЕ СЕРВИСНЫЕ ЗАДАЧИ: ОТ БЫСТРОЙ КОМПЛЕКТАЦИИ ЗАКАЗОВ ДО ДОСТАВКИ ПО РФ Широкий ассортимент продукции способный закрыть потребности любого проекта. Наличие типовой продукции на складе. Отгрузки в день заказа. Возможность заказа небольших партий. Доставка по РФ. Работаем с ведущими транспортными компаниями России. Возможность отгрузки напрямую с завода. В КАТАЛОГ НОВОСТИ СТАТЬИ С Днём Машиностроителя! 25 сентября 2026 С Днем нефтяной и газовой промышленности! 04 сентября 2026 С Днём строителя и 70-летним юбилеем праздника! 09 августа 2026 Горячее цинкование методом погружения по ГОСТ 9.307-2021 20 августа 2025 Что такое замковые лотки 18 января 2023 Цинкование по методу Сендзимира 08 ноября 2022 ВСЕ НОВОСТИ ВСЕ СТАТЬИ Главная Продукция ASD Инженерный хаб Новости Статьи Контакты Кабельные эстакады Кабеленесущие системы Кабельные короба Монтажные элементы ГЛАВНЫЙ ОФИС Екатеринбург, ул. Колмогорова, 5/3, БЦ К5, 10 этаж ПРЕДПРИЯТИЕ Верхняя Пышма, пос. Красный, ул. Артиллеристов, 90 ЛОГИСТИЧЕСКИЙ ЦЕНТР Верхняя Пышма, пос. Красный, ул. Артиллеристов, 103 Политика конфиденциальности 2025-2026 © АСД-электрик",
+                "links": [
+                  {
+                    "url": "https://asd-electric.ru",
+                    "label": "Перейти к содержимому"
+                  },
+                  {
+                    "url": "https://asd-electric.ru/produktsiya-asd",
+                    "label": "Продукция ASD"
+                  },
+                  {
+                    "url": "https://asd-electric.ru/produktsiya-asd/kabelnye-estakady",
+                    "label": "Кабельные эстакады"
+                  },
+                  {
+                    "url": "https://asd-electric.ru/produktsiya-asd/kabelenesushchie-sistemy",
+                    "label": "Кабеленесущие системы"
+                  },
+                  {
+                    "url": "https://asd-electric.ru/tekhnologii",
+                    "label": "Инженерный хаб"
+                  },
+                  {
+                    "url": "https://asd-electric.ru/news-all",
+                    "label": "Новости"
+                  },
+                  {
+                    "url": "https://asd-electric.ru/news-all/stati",
+                    "label": "Статьи"
+                  },
+                  {
+                    "url": "https://asd-electric.ru/napisat-nam",
+                    "label": "Контакты"
+                  },
+                  {
+                    "url": "https://asd-electric.ru/index.php/produktsiya-asd/kabelnye-estakady",
+                    "label": "КАБЕЛЬНЫЕ ЭСТАКАДЫ"
+                  },
+                  {
+                    "url": "https://asd-electric.ru/index.php/produktsiya-asd/kabelenesushchie-sistemy",
+                    "label": "КАБЕЛЬНЫЕ ЛОТКИ"
+                  },
+                  {
+                    "url": "https://asd-electric.ru/index.php/produktsiya-asd/kabelnye-koroba",
+                    "label": "КАБЕЛЬНЫЕ КОРОБА БЛОЧНЫЕ"
+                  },
+                  {
+                    "url": "https://asd-electric.ru/component/zoo/item/s-dnjom-mashinostroitelya?Itemid=101",
+                    "label": "С Днём Машиностроителя! 25 сентября 2026"
+                  },
+                  {
+                    "url": "https://asd-electric.ru/component/zoo/item/s-dnem-neftyanoj-i-gazovoj-promyshlennosti?Itemid=101",
+                    "label": "С Днем нефтяной и газовой промышленности! 04 сентября 2026"
+                  },
+                  {
+                    "url": "https://asd-electric.ru/component/zoo/item/s-dnjom-stroitelya-i-70-letnim-yubileem-prazdnika?Itemid=101",
+                    "label": "С Днём строителя и 70-летним юбилеем праздника! 09 августа 2026"
+                  },
+                  {
+                    "url": "https://asd-electric.ru/images/template/04_About%20Company/pol_obr_p_d.pdf",
+                    "label": "Политика конфиденциальности"
+                  },
+                  {
+                    "url": "https://fasie.ru",
+                    "label": ""
+                  },
+                  {
+                    "url": "https://www.tek-all.ru/companies/1852-zavod-asd-elektrik",
+                    "label": ""
+                  }
+                ],
+                "fetchedAt": "2026-10-07T15:47:44.209Z",
+                "id": "e1"
+              }
+            ],
+            "previousActions": [],
+            "validationErrors": [],
+            "budget": {
+              "roundsRemaining": 5,
+              "actionsRemaining": 10,
+              "searchRemaining": 8,
+              "remainingMs": 42830
+            }
+          },
+          "error": {
+            "type": "insufficient_quota",
+            "code": "credit_balance_exhausted",
+            "message": "You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+          },
+          "output": null
+        },
+        {
+          "stage": "research_provider_error",
+          "reason": "provider_credit_exhausted"
+        },
+        {
+          "stage": "research_complete",
+          "stopReason": "provider_credit_exhausted",
+          "actions": 1,
+          "candidates": [],
+          "domains": [
+            "asd-e.ru",
+            "asd-electric.ru"
+          ],
+          "elapsedMs": 3403
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru",
+          "status": 200,
+          "elapsedMs": 498
+        },
+        {
+          "stage": "fetch",
+          "url": "https://search.brave.com/search?q=%22%D0%90%D0%A1%D0%94-%D1%8D%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D0%BA%22%20%22%D0%A0%D0%9E%D0%9F%22&source=web&offset=0",
+          "status": 429,
+          "elapsedMs": 370
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D0%A1%D0%94-%D1%8D%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D0%BA%22%20%22%D0%A0%D0%9E%D0%9F%22&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+          "status": 200,
+          "elapsedMs": 302
+        },
+        {
+          "stage": "fetch",
+          "url": "https://api.tavily.com/search",
+          "status": 432,
+          "elapsedMs": 484
+        },
+        {
+          "stage": "search",
+          "query": "\"АСД-электрик\" \"РОП\"",
+          "results": []
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/rukovodstvo",
+          "status": 404,
+          "elapsedMs": 304
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/team",
+          "status": 404,
+          "elapsedMs": 1113
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/management",
+          "status": 404,
+          "elapsedMs": 1216
+        },
+        {
+          "stage": "fetch",
+          "url": "https://search.brave.com/search?q=%22%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%22%20asd-e.ru&source=web&offset=0",
+          "status": 429,
+          "elapsedMs": 222
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.bing.com/search?format=rss&q=%22%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%22%20asd-e.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+          "status": 200,
+          "elapsedMs": 149
+        },
+        {
+          "stage": "fetch",
+          "url": "https://api.tavily.com/search",
+          "status": 432,
+          "elapsedMs": 190
+        },
+        {
+          "stage": "search",
+          "query": "site:asd-e.ru \"руководитель продаж\"",
+          "results": []
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/direktor",
+          "status": 404,
+          "elapsedMs": 663
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/rukovoditeli",
+          "status": 404,
+          "elapsedMs": 702
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/komanda",
+          "status": 404,
+          "elapsedMs": 1588
+        },
+        {
+          "stage": "fetch",
+          "url": "https://search.brave.com/search?q=%22%D0%90%D0%A1%D0%94-%D1%8D%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D0%BA%22%20%22%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%22&source=web&offset=0",
+          "status": 429,
+          "elapsedMs": 234
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D0%A1%D0%94-%D1%8D%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D0%BA%22%20%22%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%22&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+          "status": 200,
+          "elapsedMs": 206
+        },
+        {
+          "stage": "fetch",
+          "url": "https://api.tavily.com/search",
+          "status": 432,
+          "elapsedMs": 201
+        },
+        {
+          "stage": "search",
+          "query": "\"АСД-электрик\" \"руководитель продаж\"",
+          "results": []
+        },
+        {
+          "stage": "research_fallback",
+          "provider": "ru-public-web",
+          "reason": "semantic_provider_unavailable"
+        },
+        {
+          "stage": "people_ranked",
+          "people": []
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/",
+          "status": 200,
+          "elapsedMs": 550
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/robots.txt",
+          "status": 200,
+          "elapsedMs": 1032
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/sitemap.xml",
+          "status": 404,
+          "elapsedMs": 1034
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/contact",
+          "status": 404,
+          "elapsedMs": 399
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/contact-us",
+          "status": 404,
+          "elapsedMs": 742
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/o-kompanii",
+          "status": 404,
+          "elapsedMs": 1058
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/contacts",
+          "status": 404,
+          "elapsedMs": 1396
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/kontakty",
+          "status": 404,
+          "elapsedMs": 2066
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/kontakti",
+          "status": 404,
+          "elapsedMs": 2225
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/about-us",
+          "status": 404,
+          "elapsedMs": 2486
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/company",
+          "status": 404,
+          "elapsedMs": 2499
+        },
+        {
+          "stage": "fetch",
+          "url": "https://asd-e.ru/about",
+          "status": 404,
+          "elapsedMs": 3125
+        },
+        {
+          "stage": "fetch",
+          "url": "https://search.brave.com/search?q=%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B%20asd-e.ru&source=web&offset=0",
+          "status": 429,
+          "elapsedMs": 355
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.bing.com/search?format=rss&q=%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B%20asd-e.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+          "status": 200,
+          "elapsedMs": 335
+        },
+        {
+          "stage": "fetch",
+          "url": "https://search.yahoo.com/search?p=%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B%20asd-e.ru&ei=UTF-8&b=1",
+          "status": 500,
+          "elapsedMs": 1336
+        },
+        {
+          "stage": "fetch",
+          "url": "https://api.tavily.com/search",
+          "status": 432,
+          "elapsedMs": 495
+        },
+        {
+          "stage": "search",
+          "query": "site:asd-e.ru контакты",
+          "results": []
+        },
+        {
+          "stage": "fetch",
+          "url": "https://search.yahoo.com/search?p=%22%D0%90%D0%A1%D0%94-%D1%8D%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D0%BA%22%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B&ei=UTF-8&b=1",
+          "status": 500,
+          "elapsedMs": 214
+        },
+        {
+          "stage": "fetch",
+          "url": "https://search.brave.com/search?q=%22%D0%90%D0%A1%D0%94-%D1%8D%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D0%BA%22%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B&source=web&offset=0",
+          "status": 429,
+          "elapsedMs": 240
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D0%A1%D0%94-%D1%8D%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D0%BA%22%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+          "status": 200,
+          "elapsedMs": 143
+        },
+        {
+          "stage": "fetch",
+          "url": "https://api.tavily.com/search",
+          "status": 432,
+          "elapsedMs": 156
+        },
+        {
+          "stage": "search",
+          "query": "\"АСД-электрик\" контакты",
+          "results": []
+        },
+        {
+          "stage": "contact_verification",
+          "intelligence": {
+            "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+            "target_responsibility": "Sales and revenue leadership",
+            "target_persona": "VP Sales",
+            "alternative_personas": [
+              "Head of Sales",
+              "CRO",
+              "Sales Director",
+              "Head of Revenue",
+              "Commercial Director"
+            ],
+            "why_this_person": "The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+            "person_name": null,
+            "person_role": null,
+            "email": null,
+            "contact_level": null,
+            "email_classification": "INVALID",
+            "email_type": "none",
+            "verification_methods": [
+              "mx"
+            ],
+            "confidence": "UNRESOLVED",
+            "readiness": "unresolved",
+            "evidence": [
+              {
+                "kind": "verification",
+                "source_url": null,
+                "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+              }
+            ],
+            "inferred_pattern": null,
+            "pattern_support": 0,
+            "generated_candidates": [],
+            "catch_all": "unknown",
+            "smtp_verification": "not_performed",
+            "strategies_attempted": [
+              "dynamic_role_resolution",
+              "adaptive_public_person_search",
+              "public_person_email_search",
+              "corporate_pattern_inference",
+              "domain_and_mx_validation"
+            ],
+            "stop_reason": "no_material_next_step_available"
+          },
+          "contacts": [
+            {
+              "name": null,
+              "email": null,
+              "type": "website_form",
+              "source": "https://asd-e.ru/contacts"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "website_form",
+              "source": "https://asd-e.ru/contact"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "website_form",
+              "source": "https://asd-electric.ru/contact"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "website_form",
+              "source": "https://asd-electric.ru/contacts"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "website_form",
+              "source": "https://asd-electric.ru/contact-us"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "company_website",
+              "source": "https://asd-e.ru"
+            }
+          ]
+        }
+      ],
+      "startedAt": "2026-10-07T15:47:42.015Z",
+      "bundle": {
+        "companyName": "АСД-электрик",
+        "officialWebsite": "https://asd-e.ru",
+        "officialDomain": "asd-e.ru",
+        "people": [],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [],
+          "inferred": []
+        },
+        "bestOutreachContact": null,
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: Завод АСД-электрик; открыта вакансия: Менеджер по продажам.",
+          "sourceUrl": "https://hh.ru/vacancy/137624329",
+          "confidence": 100
+        },
+        "researchConfidence": "UNVERIFIED",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 5,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 27,
+          "lprMs": 9616,
+          "contactMs": 8718,
+          "totalMs": 18347,
+          "stopReason": "lpr_not_found"
+        }
+      },
+      "people": {
+        "primary_person": null,
+        "alternative_people": [],
+        "all_candidates": [],
+        "search_status": "no_person_found",
+        "providers_used": [
+          "RU public web"
+        ],
+        "provider_diagnostics": [
+          {
+            "provider_id": "ru-public-web",
+            "provider_label": "RU public web",
+            "level": "info",
+            "message": "Bounded shadow search exhausted the person budget; fallback remains available."
+          }
+        ],
+        "research_metrics": {
+          "search_attempts": 3,
+          "official_pages_fetched": 7,
+          "aborted_requests": 0,
+          "elapsed_ms": 6205,
+          "stop_reason": "lpr_not_found",
+          "queries_executed": [
+            "\"АСД-электрик\" \"РОП\"",
+            "site:asd-e.ru \"руководитель продаж\"",
+            "\"АСД-электрик\" \"руководитель продаж\""
+          ],
+          "sources_checked": [
+            "https://asd-e.ru",
+            "https://asd-e.ru/rukovodstvo",
+            "https://asd-e.ru/management",
+            "https://asd-e.ru/team",
+            "https://asd-e.ru/komanda",
+            "https://asd-e.ru/rukovoditeli",
+            "https://asd-e.ru/direktor"
+          ],
+          "search_results_seen": 0,
+          "rejected_candidates": {},
+          "final_failure_reason": "NO_PERSON_RESULTS"
+        }
+      },
+      "contacts": [
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://asd-e.ru/contacts",
+          "selected": false,
+          "intelligence": {
+            "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+            "target_responsibility": "Sales and revenue leadership",
+            "target_persona": "VP Sales",
+            "alternative_personas": [
+              "Head of Sales",
+              "CRO",
+              "Sales Director",
+              "Head of Revenue",
+              "Commercial Director"
+            ],
+            "why_this_person": "The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+            "person_name": null,
+            "person_role": null,
+            "email": null,
+            "contact_level": null,
+            "email_classification": "INVALID",
+            "email_type": "none",
+            "verification_methods": [
+              "mx"
+            ],
+            "confidence": "UNRESOLVED",
+            "readiness": "unresolved",
+            "evidence": [
+              {
+                "kind": "verification",
+                "source_url": null,
+                "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+              }
+            ],
+            "inferred_pattern": null,
+            "pattern_support": 0,
+            "generated_candidates": [],
+            "catch_all": "unknown",
+            "smtp_verification": "not_performed",
+            "strategies_attempted": [
+              "dynamic_role_resolution",
+              "adaptive_public_person_search",
+              "public_person_email_search",
+              "corporate_pattern_inference",
+              "domain_and_mx_validation"
+            ],
+            "stop_reason": "no_material_next_step_available"
+          }
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://asd-e.ru/contact",
+          "selected": false
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://asd-electric.ru/contact",
+          "selected": false
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://asd-electric.ru/contacts",
+          "selected": false
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://asd-electric.ru/contact-us",
+          "selected": false
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://asd-e.ru",
+          "selected": false
+        }
+      ],
+      "runtimeMs": 18354
+    },
+    {
+      "mode": "business",
+      "name": "Императорский фарфоровый завод",
+      "website": "https://ipm.ru",
+      "before": {
+        "companyName": "Императорский фарфоровый завод",
+        "officialWebsite": "https://ipm.ru",
+        "officialDomain": "ipm.ru",
+        "people": [],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [
+            {
+              "email": "info@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "info@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "ipm_shop@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/",
+                  "sourceType": "official",
+                  "excerpt": "ipm_shop@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "lat_ep@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "lat_ep@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "isu_ov@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "isu_ov@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "aga_ap@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "aga_ap@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 99
+                }
+              ]
+            }
+          ],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "info@ipm.ru",
+          "personName": null,
+          "role": null,
+          "classification": "GENERAL",
+          "contactLevel": "E",
+          "sourceUrl": "https://www.ipm.ru/contacts/"
+        },
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+          "sourceUrl": "https://hh.ru/vacancy/138142173",
+          "confidence": 100
+        },
+        "researchConfidence": "HIGH_CONFIDENCE",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 2,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 20,
+          "lprMs": 16011,
+          "contactMs": 3829,
+          "totalMs": 28418,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "signal": {
+        "type": "HIRING_SIGNAL",
+        "title": "Обнаружен сигнал найма",
+        "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+        "sourceUrl": "https://hh.ru/vacancy/138142173",
+        "confidence": 100
+      },
+      "index": 1,
+      "trace": [
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru",
+          "status": 301,
+          "elapsedMs": 580
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.ipm.ru/",
+          "status": 200,
+          "elapsedMs": 711
+        },
+        {
+          "stage": "research_open",
+          "url": "https://ipm.ru",
+          "success": true,
+          "evidence": {
+            "url": "https://www.ipm.ru/",
+            "kind": "page",
+            "text": "Интернет-магазин Императорского фарфора — Официальный сайт Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026 Осенний фарфор Время создать уют дома Смотрите подборку товаров Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении Новинка COLOR VIBES Создай настроение своего дня ЭЛЕГАНТНЫЕ БОКАЛЫ КОБАЛЬТОВАЯ СЕТКА Сияние лета на вашем столе Новинка ГАРМОНИЯ ПРИРОДЫ Серия скульптур наполненных смыслом Новинка БЛАГОРОДНАЯ ПОРОДА Серия коллекционных скульптур породистых любимцев Новинка МОНПЛЕЗИР Коллекция текстиля Французский шарм и эстетика востока для ценительниц прекрасного Новинка ФОНТАНЫ Серия, вдохновленная летним Петергофом Новинка ВОЛШЕБНЫЙ САД Эксклюзивный совместный проект с Сергеем Сысоевым Новинка «Жемчужный» Эксклюзивный совместный проект с модным домом Alena Akhmadullina Новинки ЖЕМЧУЖНАЯ СЕТКА НОВИНКА COLOR VIBES НОВИНКА ГАРМОНИЯ ПРИРОДЫ НОВИНКА БЛАГОРОДНАЯ ПОРОДА НОВИНКА «МОНПЛЕЗИР» Сервиз Воспоминание НОВИНКА «Золотой Петербург и Золотая Москва»\n[excerpt boundary]\nных (далее - Согласие) посредством сервисом веб-аналитики Яндекс Метрика и, предоставляемый компанией ООО «ЯНДЕКС», 119021, Россия, Москва, ул. Л. Толстого, 16 на следующих условиях: 1. Согласие выдано: АО «Императорский фарфоровый завод», ОГРН: 1027806058213, ИНН 7811000276, КПП 781101001 (далее — Оператор), электронная почта: ipm_shop@ipm.ru 2. Согласие выдано на обработку следующих категорий персональных данных: – IP-адрес, информация из файлов cookie, информация о браузер",
+            "links": [
+              {
+                "url": "https://www.ipm.ru/personal",
+                "label": ""
+              },
+              {
+                "url": "https://ipm-jsc.com",
+                "label": "EN"
+              },
+              {
+                "url": "https://www.ipm.ru",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/personal/orders",
+                "label": "Войти Мой кабинет"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog/compare.php",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/wishlist",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/basket",
+                "label": "0"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog",
+                "label": "Интернет-магазин"
+              },
+              {
+                "url": "https://www.ipm.ru/catalog/predmety-interera",
+                "label": "Предметы интерьера"
+              },
+              {
+                "url": "https://www.ipm.ru/collections",
+                "label": "Коллекции"
+              },
+              {
+                "url": "https://www.ipm.ru/personal-orders",
+                "label": "Индивидуальные заказы"
+              },
+              {
+                "url": "https://www.ipm.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti",
+                "label": "Новости"
+              },
+              {
+                "url": "https://www.ipm.ru/contacts/stores",
+                "label": "Магазины"
+              },
+              {
+                "url": "https://www.ipm.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode",
+                "label": "О заводе"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode/istoriya_zavoda",
+                "label": "История завода"
+              },
+              {
+                "url": "https://www.ipm.ru/o_zavode/proizvodstvo",
+                "label": "Производство"
+              },
+              {
+                "url": "https://www.ipm.ru/stati-o-farfore",
+                "label": "Статьи о фарфоре"
+              },
+              {
+                "url": "https://www.ipm.ru/company/vacancy",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti/rezhim-otpravki-zakazov-s-internet-magazina",
+                "label": "Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026"
+              },
+              {
+                "url": "https://www.ipm.ru/novosti/zhemchuzhnaya-setka",
+                "label": "Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении"
+              },
+              {
+                "url": "https://www.ipm.ru/product/blyudo-dekorativnoe-god-loshadi-na-forme-kruglaya-art-60-14814-00-1",
+                "label": "Авторский фарфор — это художественные изделия высочайшего класса, единственные предметы в своем роде"
+              },
+              {
+                "url": "https://www.ipm.ru/collections/volshebnyy-sad",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/collections/zhemchuzhnaya-setka",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/gallery/ekskursii/sankt-peterburg",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/gallery/ekskursii/ekskursii-na-farforovoe-proizvodstvo",
+                "label": ""
+              },
+              {
+                "url": "https://www.ipm.ru/rekvizity",
+                "label": "Реквизиты"
+              },
+              {
+                "url": "https://www.ipm.ru/company/akcioneram",
+                "label": "Акционерам"
+              },
+              {
+                "url": "https://www.ipm.ru/company/dokumenty",
+                "label": "Документы"
+              },
+              {
+                "url": "https://www.ipm.ru/guidescollaboration",
+                "label": "Сотрудничество с гидами"
+              },
+              {
+                "url": "https://www.ipm.ru/press",
+                "label": "Аккредитация СМИ"
+              },
+              {
+                "url": "https://www.ipm.ru/ifz-protiv-covid-19",
+                "label": "ИФЗ против Covid-19"
+              },
+              {
+                "url": "https://www.ipm.ru/education",
+                "label": "Образование"
+              },
+              {
+                "url": "https://www.ipm.ru/upload/ifz_documents/online-store-public-offer25-08-2025.doc",
+                "label": "Оферта (скачать)"
+              },
+              {
+                "url": "https://www.ipm.ru/about/howto",
+                "label": "Как оформить заказ"
+              },
+              {
+                "url": "https://www.ipm.ru/about/payment",
+                "label": "Оплата"
+              },
+              {
+                "url": "https://www.ipm.ru/about/delivery",
+                "label": "Доставка"
+              },
+              {
+                "url": "https://www.ipm.ru/sitemap",
+                "label": "Карта сайта"
+              },
+              {
+                "url": "https://www.ipm.ru/export",
+                "label": "Экспорт"
+              },
+              {
+                "url": "https://www.ipm.ru/franch",
+                "label": "Франчайзинг"
+              },
+              {
+                "url": "https://vk.com/club21814086",
+                "label": "Вконтакте"
+              },
+              {
+                "url": "https://t.me/porcelain_imperial",
+                "label": "Telegram"
+              },
+              {
+                "url": "https://max.ru/ipm_ru",
+                "label": ""
+              },
+              {
+                "url": "https://xn--b1aedfedwqbdfbnzkf0oe.xn--p1ai",
+                "label": ""
+              },
+              {
+                "url": "https://yandex.ru/support/metrika/general/opt-out.html",
+                "label": "https://yandex.ru/support/metrika/general/opt-out.html"
+              },
+              {
+                "url": "https://yandex.ru/legal/confidential",
+                "label": "https://yandex.ru/legal/confidential/"
+              },
+              {
+                "url": "https://vk.ru/privacy",
+                "label": "Подробнее о правилах защиты информации о пользователях сайта"
+              },
+              {
+                "url": "https://vk.ru/privacy/cookies",
+                "label": "Подробнее о политике Cookies"
+              }
+            ],
+            "fetchedAt": "2026-10-07T15:47:43.697Z",
+            "id": "e1"
+          }
+        },
+        {
+          "stage": "model",
+          "url": "https://api.openai.com/v1/responses",
+          "status": 429,
+          "elapsedMs": 1153,
+          "schema": "iterative_people_research",
+          "input": {
+            "company": "Императорский фарфоровый завод",
+            "domain": "ipm.ru",
+            "signal": {
+              "signal": {
+                "type": "HIRING_SIGNAL",
+                "title": "Обнаружен сигнал найма",
+                "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+                "sourceUrl": "https://hh.ru/vacancy/138142173",
+                "confidence": 100
+              }
+            },
+            "currentDate": "2026-10-07",
+            "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+            "knownPeople": [],
+            "emailCandidates": [],
+            "documents": [
+              {
+                "url": "https://www.ipm.ru/",
+                "kind": "page",
+                "text": "Интернет-магазин Императорского фарфора — Официальный сайт Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026 Осенний фарфор Время создать уют дома Смотрите подборку товаров Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении Новинка COLOR VIBES Создай настроение своего дня ЭЛЕГАНТНЫЕ БОКАЛЫ КОБАЛЬТОВАЯ СЕТКА Сияние лета на вашем столе Новинка ГАРМОНИЯ ПРИРОДЫ Серия скульптур наполненных смыслом Новинка БЛАГОРОДНАЯ ПОРОДА Серия коллекционных скульптур породистых любимцев Новинка МОНПЛЕЗИР Коллекция текстиля Французский шарм и эстетика востока для ценительниц прекрасного Новинка ФОНТАНЫ Серия, вдохновленная летним Петергофом Новинка ВОЛШЕБНЫЙ САД Эксклюзивный совместный проект с Сергеем Сысоевым Новинка «Жемчужный» Эксклюзивный совместный проект с модным домом Alena Akhmadullina Новинки ЖЕМЧУЖНАЯ СЕТКА НОВИНКА COLOR VIBES НОВИНКА ГАРМОНИЯ ПРИРОДЫ НОВИНКА БЛАГОРОДНАЯ ПОРОДА НОВИНКА «МОНПЛЕЗИР» Сервиз Воспоминание НОВИНКА «Золотой Петербург и Золотая Москва»\n[excerpt boundary]\nных (далее - Согласие) посредством сервисом веб-аналитики Яндекс Метрика и, предоставляемый компанией ООО «ЯНДЕКС», 119021, Россия, Москва, ул. Л. Толстого, 16 на следующих условиях: 1. Согласие выдано: АО «Императорский фарфоровый завод», ОГРН: 1027806058213, ИНН 7811000276, КПП 781101001 (далее — Оператор), электронная почта: ipm_shop@ipm.ru 2. Согласие выдано на обработку следующих категорий персональных данных: – IP-адрес, информация из файлов cookie, информация о браузер",
+                "links": [
+                  {
+                    "url": "https://www.ipm.ru/personal",
+                    "label": ""
+                  },
+                  {
+                    "url": "https://ipm-jsc.com",
+                    "label": "EN"
+                  },
+                  {
+                    "url": "https://www.ipm.ru",
+                    "label": ""
+                  },
+                  {
+                    "url": "https://www.ipm.ru/personal/orders",
+                    "label": "Войти Мой кабинет"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/catalog/compare.php",
+                    "label": "0"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/wishlist",
+                    "label": "0"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/basket",
+                    "label": "0"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/catalog",
+                    "label": "Интернет-магазин"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/catalog/predmety-interera",
+                    "label": "Предметы интерьера"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/collections",
+                    "label": "Коллекции"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/personal-orders",
+                    "label": "Индивидуальные заказы"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/gallery",
+                    "label": "Галерея"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/novosti",
+                    "label": "Новости"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/contacts/stores",
+                    "label": "Магазины"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/contacts",
+                    "label": "Контакты"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/o_zavode",
+                    "label": "О заводе"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/o_zavode/istoriya_zavoda",
+                    "label": "История завода"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/o_zavode/proizvodstvo",
+                    "label": "Производство"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/stati-o-farfore",
+                    "label": "Статьи о фарфоре"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/company/vacancy",
+                    "label": "Вакансии"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/novosti/rezhim-otpravki-zakazov-s-internet-magazina",
+                    "label": "Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/novosti/zhemchuzhnaya-setka",
+                    "label": "Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/product/blyudo-dekorativnoe-god-loshadi-na-forme-kruglaya-art-60-14814-00-1",
+                    "label": "Авторский фарфор — это художественные изделия высочайшего класса, единственные предметы в своем роде"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/collections/volshebnyy-sad",
+                    "label": ""
+                  },
+                  {
+                    "url": "https://www.ipm.ru/collections/zhemchuzhnaya-setka",
+                    "label": ""
+                  },
+                  {
+                    "url": "https://www.ipm.ru/gallery/ekskursii/sankt-peterburg",
+                    "label": ""
+                  },
+                  {
+                    "url": "https://www.ipm.ru/gallery/ekskursii/ekskursii-na-farforovoe-proizvodstvo",
+                    "label": ""
+                  },
+                  {
+                    "url": "https://www.ipm.ru/rekvizity",
+                    "label": "Реквизиты"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/company/akcioneram",
+                    "label": "Акционерам"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/company/dokumenty",
+                    "label": "Документы"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/guidescollaboration",
+                    "label": "Сотрудничество с гидами"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/press",
+                    "label": "Аккредитация СМИ"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/ifz-protiv-covid-19",
+                    "label": "ИФЗ против Covid-19"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/education",
+                    "label": "Образование"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/upload/ifz_documents/online-store-public-offer25-08-2025.doc",
+                    "label": "Оферта (скачать)"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/about/howto",
+                    "label": "Как оформить заказ"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/about/payment",
+                    "label": "Оплата"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/about/delivery",
+                    "label": "Доставка"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/sitemap",
+                    "label": "Карта сайта"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/export",
+                    "label": "Экспорт"
+                  },
+                  {
+                    "url": "https://www.ipm.ru/franch",
+                    "label": "Франчайзинг"
+                  },
+                  {
+                    "url": "https://vk.com/club21814086",
+                    "label": "Вконтакте"
+                  },
+                  {
+                    "url": "https://t.me/porcelain_imperial",
+                    "label": "Telegram"
+                  },
+                  {
+                    "url": "https://max.ru/ipm_ru",
+                    "label": ""
+                  },
+                  {
+                    "url": "https://xn--b1aedfedwqbdfbnzkf0oe.xn--p1ai",
+                    "label": ""
+                  },
+                  {
+                    "url": "https://yandex.ru/support/metrika/general/opt-out.html",
+                    "label": "https://yandex.ru/support/metrika/general/opt-out.html"
+                  },
+                  {
+                    "url": "https://yandex.ru/legal/confidential",
+                    "label": "https://yandex.ru/legal/confidential/"
+                  },
+                  {
+                    "url": "https://vk.ru/privacy",
+                    "label": "Подробнее о правилах защиты информации о пользователях сайта"
+                  },
+                  {
+                    "url": "https://vk.ru/privacy/cookies",
+                    "label": "Подробнее о политике Cookies"
+                  }
+                ],
+                "fetchedAt": "2026-10-07T15:47:43.697Z",
+                "id": "e1"
+              }
+            ],
+            "previousActions": [],
+            "validationErrors": [],
+            "budget": {
+              "roundsRemaining": 5,
+              "actionsRemaining": 10,
+              "searchRemaining": 8,
+              "remainingMs": 43538
+            }
+          },
+          "error": {
+            "type": "insufficient_quota",
+            "code": "credit_balance_exhausted",
+            "message": "You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+          },
+          "output": null
+        },
+        {
+          "stage": "research_provider_error",
+          "reason": "provider_credit_exhausted"
+        },
+        {
+          "stage": "research_complete",
+          "stopReason": "provider_credit_exhausted",
+          "actions": 1,
+          "candidates": [],
+          "domains": [
+            "ipm.ru"
+          ],
+          "elapsedMs": 2631
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru",
+          "status": 200,
+          "elapsedMs": 571
+        },
+        {
+          "stage": "fetch",
+          "url": "https://search.brave.com/search?q=%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20%22%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%22&source=web&offset=0",
+          "status": 429,
+          "elapsedMs": 445
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.bing.com/search?format=rss&q=%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20%22%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%22&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+          "status": 200,
+          "elapsedMs": 391
+        },
+        {
+          "stage": "fetch",
+          "url": "https://api.tavily.com/search",
+          "status": 432,
+          "elapsedMs": 559
+        },
+        {
+          "stage": "search",
+          "query": "\"Императорский фарфоровый завод\" \"основатель\"",
+          "results": []
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.ipm.ru/contacts/stores/",
+          "status": 200,
+          "elapsedMs": 446
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.ipm.ru/company/vacancy/",
+          "status": 200,
+          "elapsedMs": 541
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.ipm.ru/contacts/",
+          "status": 200,
+          "elapsedMs": 547
+        },
+        {
+          "stage": "fetch",
+          "url": "https://search.brave.com/search?q=%22%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%22%20ipm.ru&source=web&offset=0",
+          "status": 429,
+          "elapsedMs": 223
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.bing.com/search?format=rss&q=%22%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%22%20ipm.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+          "status": 200,
+          "elapsedMs": 178
+        },
+        {
+          "stage": "fetch",
+          "url": "https://api.tavily.com/search",
+          "status": 432,
+          "elapsedMs": 170
+        },
+        {
+          "stage": "search",
+          "query": "site:ipm.ru \"генеральный директор\"",
+          "results": []
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.ipm.ru/company/dokumenty/",
+          "status": 200,
+          "elapsedMs": 307
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.ipm.ru/company/privacy/",
+          "status": 200,
+          "elapsedMs": 309
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.ipm.ru/company/akcioneram/",
+          "status": 200,
+          "elapsedMs": 312
+        },
+        {
+          "stage": "fetch",
+          "url": "https://search.brave.com/search?q=%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20%22%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%22&source=web&offset=0",
+          "status": 429,
+          "elapsedMs": 318
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.bing.com/search?format=rss&q=%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20%22%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%22&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+          "status": 200,
+          "elapsedMs": 154
+        },
+        {
+          "stage": "fetch",
+          "url": "https://api.tavily.com/search",
+          "status": 432,
+          "elapsedMs": 239
+        },
+        {
+          "stage": "search",
+          "query": "\"Императорский фарфоровый завод\" \"генеральный директор\"",
+          "results": []
+        },
+        {
+          "stage": "research_fallback",
+          "provider": "ru-public-web",
+          "reason": "semantic_provider_unavailable"
+        },
+        {
+          "stage": "people_ranked",
+          "people": [
+            {
+              "full_name": "Агатьева Александра Петровна",
+              "role_title": "директор по развитию",
+              "department": "Executive",
+              "linkedin_url": null,
+              "work_email": "aga_ap@ipm.ru",
+              "phone": null,
+              "source": "RU public web",
+              "confidence_score": 82,
+              "evidence": [
+                "Official site contact: https://www.ipm.ru/contacts/",
+                "Email and target role found near Агатьева Александра Петровна"
+              ],
+              "metadata": {
+                "provider_id": "ru-public-web",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "source_title": "Official company website",
+                "snippet": "супова Ольга Валерьевна Адрес: 127055, Москва, ул. Тихвинская д. 2 Телефон: +7 499 248 34 03 доб. 135 Email: isu_OV@ipm.ru Отдел розничных продаж в Санкт-Петербурге Директор по развитию розничной сети Агатьева Александра Петровна Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Телефон: +7 (812) 608-49-29 доб. 108 Email: aga_ap@ipm.ru Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр А",
+                "source_urls": [
+                  "https://www.ipm.ru/contacts/"
+                ],
+                "telegram_url": null,
+                "tenchat_url": null,
+                "vk_url": null,
+                "instagram_url": null,
+                "contact_route": "target_persona",
+                "public_contact_verified": false,
+                "normalized_role": "основатель",
+                "freshness": "current_official_source",
+                "company_verified": true,
+                "role_verified": true,
+                "evidence_source_count": 1
+              }
+            }
+          ]
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/",
+          "status": 200,
+          "elapsedMs": 1012
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/robots.txt",
+          "status": 200,
+          "elapsedMs": 232
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/sitemap.xml",
+          "status": 200,
+          "elapsedMs": 496
+        },
+        {
+          "stage": "fetch",
+          "url": "https://www.ipm.ru/sitemap.xml",
+          "status": 200,
+          "elapsedMs": 98
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/contact",
+          "status": 404,
+          "elapsedMs": 506
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/contacts",
+          "status": 200,
+          "elapsedMs": 534
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/company",
+          "status": 200,
+          "elapsedMs": 959
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/about-us",
+          "status": 404,
+          "elapsedMs": 965
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/kontakty",
+          "status": 404,
+          "elapsedMs": 1039
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/kontakti",
+          "status": 404,
+          "elapsedMs": 1100
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/contact-us",
+          "status": 404,
+          "elapsedMs": 1101
+        },
+        {
+          "stage": "fetch",
+          "url": "https://ipm.ru/about",
+          "status": 200,
+          "elapsedMs": 1283
+        },
+        {
+          "stage": "contact_verification",
+          "intelligence": {
+            "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+            "target_responsibility": "Company leadership",
+            "target_persona": "Founder",
+            "alternative_personas": [
+              "CEO",
+              "Managing Director",
+              "COO",
+              "Head of Growth",
+              "Head of Sales"
+            ],
+            "why_this_person": "директор по развитию: The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+            "person_name": "Агатьева Александра Петровна",
+            "person_role": "директор по развитию",
+            "email": "aga_ap@ipm.ru",
+            "contact_level": "D",
+            "email_classification": "GENERAL",
+            "email_type": "generic_fallback",
+            "verification_methods": [
+              "corporate_domain_match",
+              "mx",
+              "public_evidence"
+            ],
+            "confidence": "MEDIUM",
+            "readiness": "manual_verification",
+            "evidence": [
+              {
+                "kind": "person",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Агатьева Александра Петровна подтверждён публичным источником."
+              },
+              {
+                "kind": "role",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Роль связана с зоной ответственности: Company leadership."
+              },
+              {
+                "kind": "email",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Email опубликован в публичном профессиональном контексте."
+              },
+              {
+                "kind": "domain",
+                "source_url": "https://ipm.ru",
+                "summary": "Email относится к подтверждённому корпоративному домену."
+              },
+              {
+                "kind": "verification",
+                "source_url": null,
+                "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+              },
+              {
+                "kind": "person",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Official site contact: https://www.ipm.ru/contacts/"
+              },
+              {
+                "kind": "person",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Email and target role found near Агатьева Александра Петровна"
+              }
+            ],
+            "inferred_pattern": null,
+            "pattern_support": 0,
+            "generated_candidates": [],
+            "catch_all": "unknown",
+            "smtp_verification": "not_performed",
+            "strategies_attempted": [
+              "dynamic_role_resolution",
+              "adaptive_public_person_search",
+              "public_person_email_search",
+              "corporate_pattern_inference",
+              "domain_and_mx_validation"
+            ],
+            "stop_reason": "personal_email_requires_manual_verification"
+          },
+          "contacts": [
+            {
+              "name": "Агатьева Александра Петровна",
+              "email": null,
+              "type": "confirmed_person",
+              "source": "https://www.ipm.ru/contacts/"
+            },
+            {
+              "name": "Агатьева Александра Петровна",
+              "email": "aga_ap@ipm.ru",
+              "type": "work_email",
+              "source": "https://www.ipm.ru/contacts/"
+            },
+            {
+              "name": null,
+              "email": "info@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "ipm_shop@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "lat_ep@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "isu_ov@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": "Агатьева Александра Петровна",
+              "email": "aga_ap@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "smi_an@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "pol_dv@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "aha_em@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "pas_tv@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "gallery@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "cha_no@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "kul_eu@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "bus_ky@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "bab_ye@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "zap_em@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "nik_aa@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": "bal_vv@ipm.ru",
+              "type": "generic_email",
+              "source": "https://www.ipm.ru/contacts/",
+              "status": "company_email_ready",
+              "mx": true,
+              "domain": "official_domain"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "website_form",
+              "source": "https://ipm.ru/contacts"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "website_form",
+              "source": "https://ipm.ru/contact"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "website_form",
+              "source": "https://www.ipm.ru/contact/"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "website_form",
+              "source": "https://www.ipm.ru/contacts/"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "website_form",
+              "source": "https://www.ipm.ru/contact-us/"
+            },
+            {
+              "name": null,
+              "email": null,
+              "type": "company_website",
+              "source": "https://ipm.ru"
+            }
+          ]
+        }
+      ],
+      "startedAt": "2026-10-07T15:47:42.235Z",
+      "bundle": {
+        "companyName": "Императорский фарфоровый завод",
+        "officialWebsite": "https://ipm.ru",
+        "officialDomain": "ipm.ru",
+        "people": [
+          {
+            "fullName": "Агатьева Александра Петровна",
+            "role": "директор по развитию",
+            "confidence": "VERIFIED",
+            "evidence": [
+              {
+                "sourceUrl": "https://www.ipm.ru/contacts/",
+                "sourceType": "official",
+                "excerpt": "Official site contact: https://www.ipm.ru/contacts/",
+                "capturedAt": "2026-10-07T15:47:42.235Z",
+                "confidence": 82
+              }
+            ],
+            "profiles": {
+              "tenchat": null,
+              "telegram": null,
+              "instagram": null,
+              "vk": null,
+              "other": []
+            },
+            "phone": null
+          }
+        ],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [
+            {
+              "email": "aga_ap@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "aga_ap@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-07T15:47:42.235Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "info@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "info@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-07T15:47:42.235Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "ipm_shop@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/",
+                  "sourceType": "official",
+                  "excerpt": "ipm_shop@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-07T15:47:42.235Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "lat_ep@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "lat_ep@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-07T15:47:42.235Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "isu_ov@ipm.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.ipm.ru/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "isu_ov@ipm.ru — public email parser",
+                  "capturedAt": "2026-10-07T15:47:42.235Z",
+                  "confidence": 99
+                }
+              ]
+            }
+          ],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "info@ipm.ru",
+          "personName": null,
+          "role": null,
+          "classification": "GENERAL",
+          "contactLevel": "E",
+          "sourceUrl": "https://www.ipm.ru/contacts/"
+        },
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+          "sourceUrl": "https://hh.ru/vacancy/138142173",
+          "confidence": 100
+        },
+        "researchConfidence": "VERIFIED",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 3,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 26,
+          "lprMs": 7742,
+          "contactMs": 4184,
+          "totalMs": 11951,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "people": {
+        "primary_person": {
+          "full_name": "Агатьева Александра Петровна",
+          "role_title": "директор по развитию",
+          "department": "Executive",
+          "linkedin_url": null,
+          "work_email": "aga_ap@ipm.ru",
+          "phone": null,
+          "source": "RU public web",
+          "confidence_score": 82,
+          "evidence": [
+            "Official site contact: https://www.ipm.ru/contacts/",
+            "Email and target role found near Агатьева Александра Петровна"
+          ],
+          "metadata": {
+            "provider_id": "ru-public-web",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "source_title": "Official company website",
+            "snippet": "супова Ольга Валерьевна Адрес: 127055, Москва, ул. Тихвинская д. 2 Телефон: +7 499 248 34 03 доб. 135 Email: isu_OV@ipm.ru Отдел розничных продаж в Санкт-Петербурге Директор по развитию розничной сети Агатьева Александра Петровна Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Телефон: +7 (812) 608-49-29 доб. 108 Email: aga_ap@ipm.ru Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр А",
+            "source_urls": [
+              "https://www.ipm.ru/contacts/"
+            ],
+            "telegram_url": null,
+            "tenchat_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "public_contact_verified": false,
+            "normalized_role": "основатель",
+            "freshness": "current_official_source",
+            "company_verified": true,
+            "role_verified": true,
+            "evidence_source_count": 1
+          }
+        },
+        "alternative_people": [],
+        "all_candidates": [
+          {
+            "full_name": "Агатьева Александра Петровна",
+            "role_title": "директор по развитию",
+            "department": "Executive",
+            "linkedin_url": null,
+            "work_email": "aga_ap@ipm.ru",
+            "phone": null,
+            "source": "RU public web",
+            "confidence_score": 82,
+            "evidence": [
+              "Official site contact: https://www.ipm.ru/contacts/",
+              "Email and target role found near Агатьева Александра Петровна"
+            ],
+            "metadata": {
+              "provider_id": "ru-public-web",
+              "source_url": "https://www.ipm.ru/contacts/",
+              "source_title": "Official company website",
+              "snippet": "супова Ольга Валерьевна Адрес: 127055, Москва, ул. Тихвинская д. 2 Телефон: +7 499 248 34 03 доб. 135 Email: isu_OV@ipm.ru Отдел розничных продаж в Санкт-Петербурге Директор по развитию розничной сети Агатьева Александра Петровна Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Телефон: +7 (812) 608-49-29 доб. 108 Email: aga_ap@ipm.ru Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр А",
+              "source_urls": [
+                "https://www.ipm.ru/contacts/"
+              ],
+              "telegram_url": null,
+              "tenchat_url": null,
+              "vk_url": null,
+              "instagram_url": null,
+              "contact_route": "target_persona",
+              "public_contact_verified": false,
+              "normalized_role": "основатель",
+              "freshness": "current_official_source",
+              "company_verified": true,
+              "role_verified": true,
+              "evidence_source_count": 1
+            }
+          }
+        ],
+        "primary_person_intelligence": {
+          "candidate": {
+            "full_name": "Агатьева Александра Петровна",
+            "role_title": "директор по развитию",
+            "department": "Executive",
+            "linkedin_url": null,
+            "work_email": "aga_ap@ipm.ru",
+            "phone": null,
+            "source": "RU public web",
+            "confidence_score": 82,
+            "evidence": [
+              "Official site contact: https://www.ipm.ru/contacts/",
+              "Email and target role found near Агатьева Александра Петровна"
+            ],
+            "metadata": {
+              "provider_id": "ru-public-web",
+              "source_url": "https://www.ipm.ru/contacts/",
+              "source_title": "Official company website",
+              "snippet": "супова Ольга Валерьевна Адрес: 127055, Москва, ул. Тихвинская д. 2 Телефон: +7 499 248 34 03 доб. 135 Email: isu_OV@ipm.ru Отдел розничных продаж в Санкт-Петербурге Директор по развитию розничной сети Агатьева Александра Петровна Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Телефон: +7 (812) 608-49-29 доб. 108 Email: aga_ap@ipm.ru Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр А",
+              "source_urls": [
+                "https://www.ipm.ru/contacts/"
+              ],
+              "telegram_url": null,
+              "tenchat_url": null,
+              "vk_url": null,
+              "instagram_url": null,
+              "contact_route": "target_persona",
+              "public_contact_verified": false,
+              "normalized_role": "основатель",
+              "freshness": "current_official_source",
+              "company_verified": true,
+              "role_verified": true,
+              "evidence_source_count": 1
+            }
+          },
+          "rank_score": 53,
+          "person_score": 53,
+          "persona_match_score": 33,
+          "business_problem_ownership": "low",
+          "decision_authority": "medium",
+          "influence_level": "low",
+          "confidence_score": 80,
+          "confidence_level": "high_confidence",
+          "contact_availability": {
+            "has_work_email": true,
+            "has_linkedin": false,
+            "has_phone": false,
+            "has_telegram": false
+          },
+          "matched_keywords": [
+            "Executive"
+          ],
+          "reasoning": "Matched person context: Executive.",
+          "selection_reason": "Агатьева Александра Петровна is the strongest available candidate because директор по развитию matched Executive. Persona match 33/100, ownership low, authority medium, influence low, confidence 80/100.",
+          "strengths": [
+            "Matched context: Executive",
+            "Has at least one usable public contact signal"
+          ],
+          "weaknesses": [
+            "Weak persona match (33/100)"
+          ],
+          "why_not_other_candidates": [],
+          "recommended_next_action": "monitor_changes"
+        },
+        "alternative_people_intelligence": [],
+        "ranked_people": [
+          {
+            "candidate": {
+              "full_name": "Агатьева Александра Петровна",
+              "role_title": "директор по развитию",
+              "department": "Executive",
+              "linkedin_url": null,
+              "work_email": "aga_ap@ipm.ru",
+              "phone": null,
+              "source": "RU public web",
+              "confidence_score": 82,
+              "evidence": [
+                "Official site contact: https://www.ipm.ru/contacts/",
+                "Email and target role found near Агатьева Александра Петровна"
+              ],
+              "metadata": {
+                "provider_id": "ru-public-web",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "source_title": "Official company website",
+                "snippet": "супова Ольга Валерьевна Адрес: 127055, Москва, ул. Тихвинская д. 2 Телефон: +7 499 248 34 03 доб. 135 Email: isu_OV@ipm.ru Отдел розничных продаж в Санкт-Петербурге Директор по развитию розничной сети Агатьева Александра Петровна Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Телефон: +7 (812) 608-49-29 доб. 108 Email: aga_ap@ipm.ru Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр А",
+                "source_urls": [
+                  "https://www.ipm.ru/contacts/"
+                ],
+                "telegram_url": null,
+                "tenchat_url": null,
+                "vk_url": null,
+                "instagram_url": null,
+                "contact_route": "target_persona",
+                "public_contact_verified": false,
+                "normalized_role": "основатель",
+                "freshness": "current_official_source",
+                "company_verified": true,
+                "role_verified": true,
+                "evidence_source_count": 1
+              }
+            },
+            "rank_score": 53,
+            "person_score": 53,
+            "persona_match_score": 33,
+            "business_problem_ownership": "low",
+            "decision_authority": "medium",
+            "influence_level": "low",
+            "confidence_score": 80,
+            "confidence_level": "high_confidence",
+            "contact_availability": {
+              "has_work_email": true,
+              "has_linkedin": false,
+              "has_phone": false,
+              "has_telegram": false
+            },
+            "matched_keywords": [
+              "Executive"
+            ],
+            "reasoning": "Matched person context: Executive.",
+            "selection_reason": "Агатьева Александра Петровна is the strongest available candidate because директор по развитию matched Executive. Persona match 33/100, ownership low, authority medium, influence low, confidence 80/100.",
+            "strengths": [
+              "Matched context: Executive",
+              "Has at least one usable public contact signal"
+            ],
+            "weaknesses": [
+              "Weak persona match (33/100)"
+            ],
+            "why_not_other_candidates": [],
+            "recommended_next_action": "monitor_changes"
+          }
+        ],
+        "selection_reasoning": "Агатьева Александра Петровна is the strongest available candidate because директор по развитию matched Executive. Persona match 33/100, ownership low, authority medium, influence low, confidence 80/100.",
+        "search_status": "person_found",
+        "providers_used": [
+          "RU public web"
+        ],
+        "provider_diagnostics": [
+          {
+            "provider_id": "ru-public-web",
+            "provider_label": "RU public web",
+            "level": "info",
+            "message": "Bounded shadow search found an evidence-backed person."
+          }
+        ],
+        "research_metrics": {
+          "search_attempts": 3,
+          "official_pages_fetched": 7,
+          "aborted_requests": 0,
+          "elapsed_ms": 5094,
+          "stop_reason": "diminishing_returns",
+          "queries_executed": [
+            "\"Императорский фарфоровый завод\" \"основатель\"",
+            "site:ipm.ru \"генеральный директор\"",
+            "\"Императорский фарфоровый завод\" \"генеральный директор\""
+          ],
+          "sources_checked": [
+            "https://ipm.ru",
+            "https://www.ipm.ru/contacts/stores/",
+            "https://www.ipm.ru/contacts/",
+            "https://www.ipm.ru/company/vacancy/",
+            "https://www.ipm.ru/company/akcioneram/",
+            "https://www.ipm.ru/company/dokumenty/",
+            "https://www.ipm.ru/company/privacy/"
+          ],
+          "search_results_seen": 0,
+          "rejected_candidates": {
+            "ROLE_MISMATCH": 3
+          },
+          "final_failure_reason": null
+        }
+      },
+      "contacts": [
+        {
+          "name": "Агатьева Александра Петровна",
+          "role": "директор по развитию",
+          "email": null,
+          "type": "confirmed_person",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false
+        },
+        {
+          "name": "Агатьева Александра Петровна",
+          "role": "директор по развитию",
+          "email": "aga_ap@ipm.ru",
+          "type": "work_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "intelligence": {
+            "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+            "target_responsibility": "Company leadership",
+            "target_persona": "Founder",
+            "alternative_personas": [
+              "CEO",
+              "Managing Director",
+              "COO",
+              "Head of Growth",
+              "Head of Sales"
+            ],
+            "why_this_person": "директор по развитию: The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+            "person_name": "Агатьева Александра Петровна",
+            "person_role": "директор по развитию",
+            "email": "aga_ap@ipm.ru",
+            "contact_level": "D",
+            "email_classification": "GENERAL",
+            "email_type": "generic_fallback",
+            "verification_methods": [
+              "corporate_domain_match",
+              "mx",
+              "public_evidence"
+            ],
+            "confidence": "MEDIUM",
+            "readiness": "manual_verification",
+            "evidence": [
+              {
+                "kind": "person",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Агатьева Александра Петровна подтверждён публичным источником."
+              },
+              {
+                "kind": "role",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Роль связана с зоной ответственности: Company leadership."
+              },
+              {
+                "kind": "email",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Email опубликован в публичном профессиональном контексте."
+              },
+              {
+                "kind": "domain",
+                "source_url": "https://ipm.ru",
+                "summary": "Email относится к подтверждённому корпоративному домену."
+              },
+              {
+                "kind": "verification",
+                "source_url": null,
+                "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+              },
+              {
+                "kind": "person",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Official site contact: https://www.ipm.ru/contacts/"
+              },
+              {
+                "kind": "person",
+                "source_url": "https://www.ipm.ru/contacts/",
+                "summary": "Email and target role found near Агатьева Александра Петровна"
+              }
+            ],
+            "inferred_pattern": null,
+            "pattern_support": 0,
+            "generated_candidates": [],
+            "catch_all": "unknown",
+            "smtp_verification": "not_performed",
+            "strategies_attempted": [
+              "dynamic_role_resolution",
+              "adaptive_public_person_search",
+              "public_person_email_search",
+              "corporate_pattern_inference",
+              "domain_and_mx_validation"
+            ],
+            "stop_reason": "personal_email_requires_manual_verification"
+          }
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "info@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": true,
+          "ready": true,
+          "copy": "Добрый день.\n\nУвидел, что Императорский фарфоровый завод усиливает коммерческую команду.\n\nВ такой точке узкое место часто уже не в количестве менеджеров. Они тратят время на первичный разбор заявок, одинаковые вопросы и ручную передачу информации. В итоге фонд оплаты труда может расти быстрее пропускной способности отдела.\n\nПолезно автоматизировать не людей, а участок до менеджера — чтобы сотрудник подключался к уже понятной задаче, а не работал диспетчером входящего потока.\n\nЯ AI-архитектор. Разбираю такие участки и собираю системы, которые первично отвечают, квалифицируют обращение, собирают нужные данные и передают менеджеру подготовленную заявку.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514"
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "ipm_shop@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "lat_ep@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "isu_ov@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": "Агатьева Александра Петровна",
+          "role": "директор по развитию",
+          "email": "aga_ap@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "smi_an@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "pol_dv@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "aha_em@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "pas_tv@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "gallery@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "cha_no@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "kul_eu@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "bus_ky@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "bab_ye@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "zap_em@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "nik_aa@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": "bal_vv@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false,
+          "ready": true
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://ipm.ru/contacts",
+          "selected": false
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://ipm.ru/contact",
+          "selected": false
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://www.ipm.ru/contact/",
+          "selected": false
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://www.ipm.ru/contacts/",
+          "selected": false
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://www.ipm.ru/contact-us/",
+          "selected": false
+        },
+        {
+          "name": null,
+          "role": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://ipm.ru",
+          "selected": false
+        }
+      ],
+      "runtimeMs": 11951
+    },
+    {
+      "mode": "business",
+      "name": "АКВАСТОК",
+      "website": "https://aquastok.ru",
+      "before": {
+        "companyName": "АКВАСТОК",
+        "officialWebsite": "https://aquastok.ru",
+        "officialDomain": "aquastok.ru",
+        "people": [],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [
+            {
+              "email": "ugfo@aquastok.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.aquastok.ru/",
+                  "sourceType": "official",
+                  "excerpt": "ugfo@aquastok.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 99
+                }
+              ]
+            }
+          ],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "ugfo@aquastok.ru",
+          "personName": null,
+          "role": null,
+          "classification": "GENERAL",
+          "contactLevel": "E",
+          "sourceUrl": "https://www.aquastok.ru/"
+        },
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: АКВАСТОК; открыта вакансия: Руководитель (отдел продаж, строительная сфера, B2B).",
+          "sourceUrl": "https://hh.ru/vacancy/138039765",
+          "confidence": 100
+        },
+        "researchConfidence": "HIGH_CONFIDENCE",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 4,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 22,
+          "lprMs": 17615,
+          "contactMs": 6302,
+          "totalMs": 29654,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "signal": {
+        "type": "HIRING_SIGNAL",
+        "title": "Обнаружен сигнал найма",
+        "detail": "Работодатель: АКВАСТОК; открыта вакансия: Руководитель (отдел продаж, строительная сфера, B2B).",
+        "sourceUrl": "https://hh.ru/vacancy/138039765",
+        "confidence": 100
+      },
+      "index": 2,
+      "trace": [],
+      "startedAt": "2026-10-07T15:47:54.222Z",
+      "blocked": "provider_credit_exhausted",
+      "runtimeMs": 0
+    },
+    {
+      "mode": "business",
+      "name": "БКК Коломенский",
+      "website": "https://kolomenskoe.ru",
+      "before": {
+        "companyName": "БКК Коломенский",
+        "officialWebsite": "https://kolomenskoe.ru",
+        "officialDomain": "kolomenskoe.ru",
+        "people": [],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [],
+          "inferred": []
+        },
+        "bestOutreachContact": null,
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: БКК Коломенский; открыта вакансия: Старший бизнес-партнер по работе с персоналом (департамент логистики).",
+          "sourceUrl": "https://hh.ru/vacancy/135816113",
+          "confidence": 100
+        },
+        "researchConfidence": "UNVERIFIED",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 4,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 24,
+          "lprMs": 20968,
+          "contactMs": 2667,
+          "totalMs": 25985,
+          "stopReason": "lpr_not_found"
+        }
+      },
+      "signal": {
+        "type": "HIRING_SIGNAL",
+        "title": "Обнаружен сигнал найма",
+        "detail": "Работодатель: БКК Коломенский; открыта вакансия: Старший бизнес-партнер по работе с персоналом (департамент логистики).",
+        "sourceUrl": "https://hh.ru/vacancy/135816113",
+        "confidence": 100
+      },
+      "index": 3,
+      "trace": [],
+      "startedAt": "2026-10-07T15:47:54.222Z",
+      "blocked": "provider_credit_exhausted",
+      "runtimeMs": 0
+    },
+    {
+      "mode": "business",
+      "name": "Спецмаш-Снг",
+      "website": "https://dorzap.ru",
+      "before": {
+        "companyName": "Спецмаш-Снг",
+        "officialWebsite": "https://dorzap.ru",
+        "officialDomain": "dorzap.ru",
+        "people": [
+          {
+            "fullName": "Полькин Дмитрий Геннадьевич",
+            "role": "коммерческий директор",
+            "confidence": "HIGH_CONFIDENCE",
+            "evidence": [
+              {
+                "sourceUrl": "https://smsng.ru/otdel-prodazh",
+                "sourceType": "public_web",
+                "excerpt": "Public search result: Отдел продаж │ СПЕЦМАШ-СНГ",
+                "capturedAt": "2026-10-06T08:03:13.373Z",
+                "confidence": 80
+              }
+            ],
+            "profiles": {
+              "tenchat": null,
+              "telegram": null,
+              "instagram": null,
+              "vk": null,
+              "other": []
+            },
+            "phone": null
+          }
+        ],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [
+            {
+              "email": "dorzap@list.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://dorzap.ru/",
+                  "sourceType": "official",
+                  "excerpt": "dorzap@list.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 70
+                }
+              ]
+            }
+          ],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "dorzap@list.ru",
+          "personName": null,
+          "role": null,
+          "classification": "GENERAL",
+          "contactLevel": "E",
+          "sourceUrl": "https://dorzap.ru/"
+        },
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+          "sourceUrl": "https://hh.ru/vacancy/137988890",
+          "confidence": 100
+        },
+        "researchConfidence": "HIGH_CONFIDENCE",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 1,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 16,
+          "lprMs": 6330,
+          "contactMs": 8831,
+          "totalMs": 20721,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "signal": {
+        "type": "HIRING_SIGNAL",
+        "title": "Обнаружен сигнал найма",
+        "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+        "sourceUrl": "https://hh.ru/vacancy/137988890",
+        "confidence": 100
+      },
+      "index": 4,
+      "trace": [],
+      "startedAt": "2026-10-07T15:47:54.222Z",
+      "blocked": "provider_credit_exhausted",
+      "runtimeMs": 0
+    },
+    {
+      "mode": "business",
+      "name": "МЕТИЗ ИМПЭКС",
+      "website": "https://metiz-ltd.ru",
+      "before": {
+        "companyName": "МЕТИЗ ИМПЭКС",
+        "officialWebsite": "https://metiz-ltd.ru",
+        "officialDomain": "metiz-ltd.ru",
+        "people": [
+          {
+            "fullName": "Татьяна Алёхина",
+            "role": "Директор по маркетингу",
+            "confidence": "VERIFIED",
+            "evidence": [
+              {
+                "sourceUrl": "https://metiz-ltd.ru/blog/2025-05-19/metiz-predstavil-svoi-proteznye-izdeliya-dlya-reabilitatsii-boytsov-svo-na-profilnom-forume-v-sankt-peterburge",
+                "sourceType": "official",
+                "excerpt": "Public search result: Новости",
+                "capturedAt": "2026-10-06T08:03:13.373Z",
+                "confidence": 82
+              },
+              {
+                "sourceUrl": "https://metiz-ltd.ru/blog/2023-08-26/sostoyalos-otkrytie-tsentra-assistivnykh-tekhnologiy-feniks-sredi-aktivnykh-uchastnikov-programmy---kompaniya-metiz",
+                "sourceType": "official",
+                "excerpt": "Source URL: https://metiz-ltd.ru/blog/2025-05-19/metiz-predstavil-svoi-proteznye-izdeliya-dlya-reabilitatsii-boytsov-svo-na-profilnom-forume-v-sankt-peterburge",
+                "capturedAt": "2026-10-06T08:03:13.373Z",
+                "confidence": 82
+              },
+              {
+                "sourceUrl": "https://metiz-ltd.ru/blog/2023-10-20/kompaniya-iz-schyolkovo-prinimaet-uchastie-v-xi-mezhdunarodnom-forume-sdelano-v-rossii",
+                "sourceType": "official",
+                "excerpt": "Contact search result: Новости",
+                "capturedAt": "2026-10-06T08:03:13.373Z",
+                "confidence": 82
+              },
+              {
+                "sourceUrl": "https://metiz-ltd.ru/blog/2024-09-19/metiz-pobedil-v-xiv-mezhdunarodnom-festivale-sotsialnoy-reklamy-i-kommunikatsiy-lime-profi",
+                "sourceType": "official",
+                "excerpt": "Contact source URL: https://metiz-ltd.ru/blog/2023-08-26/sostoyalos-otkrytie-tsentra-assistivnykh-tekhnologiy-feniks-sredi-aktivnykh-uchastnikov-programmy---kompaniya-metiz",
+                "capturedAt": "2026-10-06T08:03:13.373Z",
+                "confidence": 82
+              }
+            ],
+            "profiles": {
+              "tenchat": null,
+              "telegram": null,
+              "instagram": null,
+              "vk": null,
+              "other": []
+            },
+            "phone": null
+          }
+        ],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [
+            {
+              "email": "info@metiz-ltd.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://metiz-ltd.ru/",
+                  "sourceType": "official",
+                  "excerpt": "info@metiz-ltd.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "u003einfo@metiz-ltd.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://metiz-ltd.ru/contacts",
+                  "sourceType": "official",
+                  "excerpt": "u003einfo@metiz-ltd.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 94
+                }
+              ]
+            }
+          ],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "info@metiz-ltd.ru",
+          "personName": null,
+          "role": null,
+          "classification": "GENERAL",
+          "contactLevel": "E",
+          "sourceUrl": "https://metiz-ltd.ru/"
+        },
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: МЕТИЗ ИМПЭКС; открыта вакансия: Коммерческий директор (CCO/Chief Commercial Officer).",
+          "sourceUrl": "https://hh.ru/vacancy/138112927",
+          "confidence": 100
+        },
+        "researchConfidence": "VERIFIED",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 12,
+          "duplicateQueriesSkipped": 1,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 18,
+          "lprMs": 30071,
+          "contactMs": 23220,
+          "totalMs": 58010,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "signal": {
+        "type": "HIRING_SIGNAL",
+        "title": "Обнаружен сигнал найма",
+        "detail": "Работодатель: МЕТИЗ ИМПЭКС; открыта вакансия: Коммерческий директор (CCO/Chief Commercial Officer).",
+        "sourceUrl": "https://hh.ru/vacancy/138112927",
+        "confidence": 100
+      },
+      "index": 5,
+      "trace": [],
+      "startedAt": "2026-10-07T15:47:54.222Z",
+      "blocked": "provider_credit_exhausted",
+      "runtimeMs": 0
+    },
+    {
+      "mode": "business",
+      "name": "КИРПИЧ GROUP",
+      "website": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+      "before": {
+        "companyName": "КИРПИЧ GROUP",
+        "officialWebsite": "https://xn----ftbnai5adade7a7b.xn--p1ai",
+        "officialDomain": "xn----ftbnai5adade7a7b.xn--p1ai",
+        "people": [],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [
+            {
+              "email": "kirpich-group@mail.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://xn----ftbnai5adade7a7b.xn--p1ai/",
+                  "sourceType": "official",
+                  "excerpt": "kirpich-group@mail.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 78
+                }
+              ]
+            }
+          ],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "kirpich-group@mail.ru",
+          "personName": null,
+          "role": null,
+          "classification": "GENERAL",
+          "contactLevel": "E",
+          "sourceUrl": "https://xn----ftbnai5adade7a7b.xn--p1ai/"
+        },
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: КИРПИЧ GROUP; открыта вакансия: Менеджер по продажам.",
+          "sourceUrl": "https://hh.ru/vacancy/137052088",
+          "confidence": 100
+        },
+        "researchConfidence": "HIGH_CONFIDENCE",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 4,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 22,
+          "lprMs": 20045,
+          "contactMs": 5579,
+          "totalMs": 30843,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "signal": {
+        "type": "HIRING_SIGNAL",
+        "title": "Обнаружен сигнал найма",
+        "detail": "Работодатель: КИРПИЧ GROUP; открыта вакансия: Менеджер по продажам.",
+        "sourceUrl": "https://hh.ru/vacancy/137052088",
+        "confidence": 100
+      },
+      "index": 6,
+      "trace": [],
+      "startedAt": "2026-10-07T15:47:54.222Z",
+      "blocked": "provider_credit_exhausted",
+      "runtimeMs": 0
+    },
+    {
+      "mode": "business",
+      "name": "PolyOn",
+      "website": "https://polyon.us",
+      "before": {
+        "companyName": "PolyOn",
+        "officialWebsite": "https://polyon.us",
+        "officialDomain": "polyon.us",
+        "people": [],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [
+            {
+              "email": "info@polyon.us",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.polyon.us/",
+                  "sourceType": "official",
+                  "excerpt": "info@polyon.us — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 99
+                }
+              ]
+            }
+          ],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "info@polyon.us",
+          "personName": null,
+          "role": null,
+          "classification": "GENERAL",
+          "contactLevel": "E",
+          "sourceUrl": "https://www.polyon.us/"
+        },
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+          "sourceUrl": "https://hh.ru/vacancy/137434617",
+          "confidence": 100
+        },
+        "researchConfidence": "HIGH_CONFIDENCE",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 4,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 23,
+          "lprMs": 14452,
+          "contactMs": 3660,
+          "totalMs": 23064,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "signal": {
+        "type": "HIRING_SIGNAL",
+        "title": "Обнаружен сигнал найма",
+        "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+        "sourceUrl": "https://hh.ru/vacancy/137434617",
+        "confidence": 100
+      },
+      "index": 7,
+      "trace": [],
+      "startedAt": "2026-10-07T15:47:54.222Z",
+      "blocked": "provider_credit_exhausted",
+      "runtimeMs": 0
+    },
+    {
+      "mode": "business",
+      "name": "Бригейд Фитнес",
+      "website": "https://pure-store.ru",
+      "before": {
+        "companyName": "Бригейд Фитнес",
+        "officialWebsite": "https://pure-store.ru",
+        "officialDomain": "pure-store.ru",
+        "people": [],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [
+            {
+              "email": "store@purehub.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://pure-store.ru/",
+                  "sourceType": "official",
+                  "excerpt": "store@purehub.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 96
+                }
+              ]
+            }
+          ],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "store@purehub.ru",
+          "personName": null,
+          "role": null,
+          "classification": "GENERAL",
+          "contactLevel": "E",
+          "sourceUrl": "https://pure-store.ru/"
+        },
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: Бригейд Фитнес; открыта вакансия: Директор по развитию бизнеса в странах СНГ.",
+          "sourceUrl": "https://hh.ru/vacancy/137878992",
+          "confidence": 93
+        },
+        "researchConfidence": "HIGH_CONFIDENCE",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 4,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 17,
+          "lprMs": 23002,
+          "contactMs": 14353,
+          "totalMs": 42183,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "signal": {
+        "type": "HIRING_SIGNAL",
+        "title": "Обнаружен сигнал найма",
+        "detail": "Работодатель: Бригейд Фитнес; открыта вакансия: Директор по развитию бизнеса в странах СНГ.",
+        "sourceUrl": "https://hh.ru/vacancy/137878992",
+        "confidence": 93
+      },
+      "index": 8,
+      "trace": [],
+      "startedAt": "2026-10-07T15:47:54.222Z",
+      "blocked": "provider_credit_exhausted",
+      "runtimeMs": 0
+    },
+    {
+      "mode": "business",
+      "name": "Сибалюкс",
+      "website": "https://sibalux.ru",
+      "before": {
+        "companyName": "Сибалюкс",
+        "officialWebsite": "https://sibalux.ru",
+        "officialDomain": "sibalux.ru",
+        "people": [],
+        "emails": {
+          "personal": [],
+          "department": [
+            {
+              "email": "marketing@sibalux.ru",
+              "personName": null,
+              "classification": "DEPARTMENT",
+              "evidence": [
+                {
+                  "sourceUrl": "https://www.instagram.com/sibalux.nsk",
+                  "sourceType": "public_web",
+                  "excerpt": "marketing@sibalux.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 94
+                }
+              ]
+            }
+          ],
+          "general": [
+            {
+              "email": "panel@sibalux.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://sibalux.ru/kontakty",
+                  "sourceType": "official",
+                  "excerpt": "panel@sibalux.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 94
+                }
+              ]
+            },
+            {
+              "email": "ved@sibalux.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://sibalux.ru/kontakty",
+                  "sourceType": "official",
+                  "excerpt": "ved@sibalux.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 94
+                }
+              ]
+            },
+            {
+              "email": "director.msk@sibalux.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://sibalux.ru/kontakty",
+                  "sourceType": "official",
+                  "excerpt": "director.msk@sibalux.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 94
+                }
+              ]
+            }
+          ],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "marketing@sibalux.ru",
+          "personName": null,
+          "role": null,
+          "classification": "DEPARTMENT",
+          "contactLevel": "E",
+          "sourceUrl": "https://www.instagram.com/sibalux.nsk"
+        },
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: Сибалюкс; открыта вакансия: Директор по развитию сервисных центров (фрезеровка композитных панелей, сборка готовых кассет).",
+          "sourceUrl": "https://hh.ru/vacancy/137465997",
+          "confidence": 93
+        },
+        "researchConfidence": "HIGH_CONFIDENCE",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 6,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 23,
+          "lprMs": 31343,
+          "contactMs": 14884,
+          "totalMs": 52311,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "signal": {
+        "type": "HIRING_SIGNAL",
+        "title": "Обнаружен сигнал найма",
+        "detail": "Работодатель: Сибалюкс; открыта вакансия: Директор по развитию сервисных центров (фрезеровка композитных панелей, сборка готовых кассет).",
+        "sourceUrl": "https://hh.ru/vacancy/137465997",
+        "confidence": 93
+      },
+      "index": 9,
+      "trace": [],
+      "startedAt": "2026-10-07T15:47:54.222Z",
+      "blocked": "provider_credit_exhausted",
+      "runtimeMs": 0
+    },
+    {
+      "mode": "business",
+      "name": "АРКОН ТРЕЙД",
+      "website": "https://arcontrade.am",
+      "before": {
+        "companyName": "АРКОН ТРЕЙД",
+        "officialWebsite": "https://arcontrade.am",
+        "officialDomain": "arcontrade.am",
+        "people": [],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [
+            {
+              "email": "info@arcontrade.am",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://arcontrade.am/",
+                  "sourceType": "official",
+                  "excerpt": "info@arcontrade.am — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "ab@arcontrade.am",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://arcontrade.am/contacts",
+                  "sourceType": "official",
+                  "excerpt": "ab@arcontrade.am — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 99
+                }
+              ]
+            }
+          ],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "info@arcontrade.am",
+          "personName": null,
+          "role": null,
+          "classification": "GENERAL",
+          "contactLevel": "E",
+          "sourceUrl": "https://arcontrade.am/"
+        },
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: АРКОН ТРЕЙД; открыта вакансия: Менеджер по развитию бизнеса в России (алкоголь; дистрибьюторы и локальные сети).",
+          "sourceUrl": "https://hh.ru/vacancy/137286232",
+          "confidence": 93
+        },
+        "researchConfidence": "HIGH_CONFIDENCE",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 4,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 18,
+          "lprMs": 32278,
+          "contactMs": 2073,
+          "totalMs": 39690,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "signal": {
+        "type": "HIRING_SIGNAL",
+        "title": "Обнаружен сигнал найма",
+        "detail": "Работодатель: АРКОН ТРЕЙД; открыта вакансия: Менеджер по развитию бизнеса в России (алкоголь; дистрибьюторы и локальные сети).",
+        "sourceUrl": "https://hh.ru/vacancy/137286232",
+        "confidence": 93
+      },
+      "index": 10,
+      "trace": [],
+      "startedAt": "2026-10-07T15:47:54.223Z",
+      "blocked": "provider_credit_exhausted",
+      "runtimeMs": 0
+    },
+    {
+      "mode": "business",
+      "name": "ГРУЗВИНПРОМ",
+      "website": "https://gruzvinprom.com",
+      "before": {
+        "companyName": "ГРУЗВИНПРОМ",
+        "officialWebsite": "https://gruzvinprom.com",
+        "officialDomain": "gruzvinprom.com",
+        "people": [],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [
+            {
+              "email": "mail@gruzvinprom.com",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://gruzvinprom.com/",
+                  "sourceType": "official",
+                  "excerpt": "mail@gruzvinprom.com — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 99
+                }
+              ]
+            }
+          ],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "mail@gruzvinprom.com",
+          "personName": null,
+          "role": null,
+          "classification": "GENERAL",
+          "contactLevel": "E",
+          "sourceUrl": "https://gruzvinprom.com/"
+        },
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: ГРУЗВИНПРОМ; открыта вакансия: Коммерческий директор (CCO).",
+          "sourceUrl": "https://hh.ru/vacancy/137957084",
+          "confidence": 94
+        },
+        "researchConfidence": "HIGH_CONFIDENCE",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 4,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 18,
+          "lprMs": 19166,
+          "contactMs": 1918,
+          "totalMs": 27575,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "signal": {
+        "type": "HIRING_SIGNAL",
+        "title": "Обнаружен сигнал найма",
+        "detail": "Работодатель: ГРУЗВИНПРОМ; открыта вакансия: Коммерческий директор (CCO).",
+        "sourceUrl": "https://hh.ru/vacancy/137957084",
+        "confidence": 94
+      },
+      "index": 11,
+      "trace": [],
+      "startedAt": "2026-10-07T15:47:54.223Z",
+      "blocked": "provider_credit_exhausted",
+      "runtimeMs": 0
+    },
+    {
+      "mode": "business",
+      "name": "МирБир",
+      "website": "https://team.mirbeer.ru",
+      "before": {
+        "companyName": "МирБир",
+        "officialWebsite": "https://team.mirbeer.ru",
+        "officialDomain": "team.mirbeer.ru",
+        "people": [],
+        "emails": {
+          "personal": [],
+          "department": [
+            {
+              "email": "hr@mirbeer.ru",
+              "personName": null,
+              "classification": "DEPARTMENT",
+              "evidence": [
+                {
+                  "sourceUrl": "https://team.mirbeer.ru/",
+                  "sourceType": "official",
+                  "excerpt": "hr@mirbeer.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:03:13.373Z",
+                  "confidence": 66
+                }
+              ]
+            }
+          ],
+          "general": [],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "hr@mirbeer.ru",
+          "personName": null,
+          "role": null,
+          "classification": "DEPARTMENT",
+          "contactLevel": "E",
+          "sourceUrl": "https://team.mirbeer.ru/"
+        },
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: Компания МирБир; открыта вакансия: Руководитель отдела оптовых продаж.",
+          "sourceUrl": "https://hh.ru/vacancy/137705390",
+          "confidence": 100
+        },
+        "researchConfidence": "HIGH_CONFIDENCE",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 4,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 23,
+          "lprMs": 16691,
+          "contactMs": 2768,
+          "totalMs": 24142,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "signal": {
+        "type": "HIRING_SIGNAL",
+        "title": "Обнаружен сигнал найма",
+        "detail": "Работодатель: Компания МирБир; открыта вакансия: Руководитель отдела оптовых продаж.",
+        "sourceUrl": "https://hh.ru/vacancy/137705390",
+        "confidence": 100
+      },
+      "index": 12,
+      "trace": [],
+      "startedAt": "2026-10-07T15:47:54.223Z",
+      "blocked": "provider_credit_exhausted",
+      "runtimeMs": 0
+    },
+    {
+      "mode": "direct",
+      "name": "Прометей",
+      "website": "https://prometheusenergy.ru",
+      "before": {
+        "companyName": "Прометей",
+        "officialWebsite": "https://prometheusenergy.ru",
+        "officialDomain": "prometheusenergy.ru",
+        "people": [],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [
+            {
+              "email": "info@prometheusenergy.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://prometheusenergy.ru/",
+                  "sourceType": "official",
+                  "excerpt": "info@prometheusenergy.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:18:54.191Z",
+                  "confidence": 99
+                }
+              ]
+            }
+          ],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "info@prometheusenergy.ru",
+          "personName": null,
+          "role": null,
+          "classification": "GENERAL",
+          "contactLevel": "E",
+          "sourceUrl": "https://prometheusenergy.ru/"
+        },
+        "signal": {
+          "type": "AI_AUTOMATION_HIRING_SIGNAL",
+          "title": "Специалист по внедрению ИИ и оптимизации бизнес-процессов",
+          "detail": "• искать возможности применения ИИ в продажах, закупках, логистике, маркетинге, документообороте, аналитике и других направлениях; • тестировать ИИ-сервисы и выбирать решения, которые дают измеримый результат для бизнеса; • проектировать и внедрять ИИ-ассистентов, автоматические сценарии обработки информации и внутренние базы знаний;",
+          "sourceUrl": "https://hh.ru/vacancy/138132718",
+          "confidence": 90
+        },
+        "researchConfidence": "HIGH_CONFIDENCE",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 4,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 20,
+          "lprMs": 23998,
+          "contactMs": 3657,
+          "totalMs": 33746,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "signal": {
+        "type": "AI_AUTOMATION_HIRING_SIGNAL",
+        "title": "Специалист по внедрению ИИ и оптимизации бизнес-процессов",
+        "detail": "• искать возможности применения ИИ в продажах, закупках, логистике, маркетинге, документообороте, аналитике и других направлениях; • тестировать ИИ-сервисы и выбирать решения, которые дают измеримый результат для бизнеса; • проектировать и внедрять ИИ-ассистентов, автоматические сценарии обработки информации и внутренние базы знаний;",
+        "sourceUrl": "https://hh.ru/vacancy/138132718",
+        "confidence": 90
+      },
+      "index": 13,
+      "trace": [],
+      "startedAt": "2026-10-07T15:47:54.223Z",
+      "blocked": "provider_credit_exhausted",
+      "runtimeMs": 0
+    },
+    {
+      "mode": "direct",
+      "name": "Сбер. IT",
+      "website": "https://rabota.sber.ru",
+      "before": {
+        "companyName": "Сбер. IT",
+        "officialWebsite": "https://rabota.sber.ru",
+        "officialDomain": "rabota.sber.ru",
+        "people": [],
+        "emails": {
+          "personal": [],
+          "department": [],
+          "general": [],
+          "inferred": []
+        },
+        "bestOutreachContact": null,
+        "signal": {
+          "type": "AI_AUTOMATION_HIRING_SIGNAL",
+          "title": "SDET / Разработчик AI решений (HR платформа)",
+          "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+          "sourceUrl": "https://hh.ru/vacancy/138117118",
+          "confidence": 90
+        },
+        "researchConfidence": "UNVERIFIED",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 6,
+          "duplicateQueriesSkipped": 0,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 23,
+          "lprMs": 15877,
+          "contactMs": 8625,
+          "totalMs": 26613,
+          "stopReason": "lpr_not_found"
+        }
+      },
+      "signal": {
+        "type": "AI_AUTOMATION_HIRING_SIGNAL",
+        "title": "SDET / Разработчик AI решений (HR платформа)",
+        "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+        "sourceUrl": "https://hh.ru/vacancy/138117118",
+        "confidence": 90
+      },
+      "index": 14,
+      "trace": [],
+      "startedAt": "2026-10-07T15:47:54.223Z",
+      "blocked": "provider_credit_exhausted",
+      "runtimeMs": 0
+    },
+    {
+      "mode": "person",
+      "name": "Производственная Компания Контур",
+      "website": "https://xn--j1agcjjg.xn--p1ai",
+      "before": {
+        "companyName": "Производственная Компания Контур",
+        "officialWebsite": "https://xn--j1agcjjg.xn--p1ai",
+        "officialDomain": "xn--j1agcjjg.xn--p1ai",
+        "people": [
+          {
+            "fullName": "Котельников Данила Никитич",
+            "role": "генеральный директор",
+            "confidence": "VERIFIED",
+            "evidence": [
+              {
+                "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts",
+                "sourceType": "official",
+                "excerpt": "Public search result: Сотрудники",
+                "capturedAt": "2026-10-06T08:17:37.259Z",
+                "confidence": 82
+              },
+              {
+                "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/kotelnikov_danila_nikitich",
+                "sourceType": "official",
+                "excerpt": "Source URL: https://xn--j1agcjjg.xn--p1ai/contacts",
+                "capturedAt": "2026-10-06T08:17:37.259Z",
+                "confidence": 82
+              }
+            ],
+            "profiles": {
+              "tenchat": null,
+              "telegram": null,
+              "instagram": null,
+              "vk": null,
+              "other": []
+            },
+            "phone": null
+          },
+          {
+            "fullName": "Околелов Григорий Валерьевич",
+            "role": "Генеральный директор",
+            "confidence": "VERIFIED",
+            "evidence": [
+              {
+                "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts",
+                "sourceType": "official",
+                "excerpt": "Околелов Григорий Валерьевич Генеральный директор",
+                "capturedAt": "2026-10-06T08:17:37.259Z",
+                "confidence": 82
+              },
+              {
+                "sourceUrl": "https://www.rusprofile.ru/id/4158145",
+                "sourceType": "public_web",
+                "excerpt": "Околелов Григорий Валерьевич является генеральным директором Производственной Компании Контур, что соответствует роли COO с высокой властью для решения стратегических вопросов по внедрению решений и автоматизации.",
+                "capturedAt": "2026-10-06T08:17:37.259Z",
+                "confidence": 82
+              },
+              {
+                "sourceUrl": "https://checko.ru/company/pk-kontur-1036600430822",
+                "sourceType": "public_web",
+                "excerpt": "Contact search result: ООО \"ПК Контур\" Заречный (ИНН 6609010359) адрес, официальный сайт и телефон",
+                "capturedAt": "2026-10-06T08:17:37.259Z",
+                "confidence": 82
+              },
+              {
+                "sourceUrl": "https://www.rusprofile.ru/person/okolelov-gv-667008981708",
+                "sourceType": "public_web",
+                "excerpt": "Contact source URL: https://www.rusprofile.ru/id/4158145",
+                "capturedAt": "2026-10-06T08:17:37.259Z",
+                "confidence": 82
+              }
+            ],
+            "profiles": {
+              "tenchat": null,
+              "telegram": null,
+              "instagram": null,
+              "vk": null,
+              "other": []
+            },
+            "phone": null
+          }
+        ],
+        "emails": {
+          "personal": [
+            {
+              "email": "kotelnikov-dn@pk-kontur.ru",
+              "personName": "Котельников Данила Никитич",
+              "classification": "VERIFIED_PERSONAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "kotelnikov-dn@pk-kontur.ru — official company website",
+                  "capturedAt": "2026-10-06T08:17:37.259Z",
+                  "confidence": 88
+                }
+              ]
+            }
+          ],
+          "department": [],
+          "general": [
+            {
+              "email": "info@pk-kontur.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/",
+                  "sourceType": "official",
+                  "excerpt": "info@pk-kontur.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:17:37.259Z",
+                  "confidence": 99
+                }
+              ]
+            },
+            {
+              "email": "sergeyb@pk-kontur.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "sergeyb@pk-kontur.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:17:37.259Z",
+                  "confidence": 88
+                }
+              ]
+            },
+            {
+              "email": "konoplev-ea@pk-kontur.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "konoplev-ea@pk-kontur.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:17:37.259Z",
+                  "confidence": 88
+                }
+              ]
+            },
+            {
+              "email": "bykova-rr@pk-kontur.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "bykova-rr@pk-kontur.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:17:37.259Z",
+                  "confidence": 88
+                }
+              ]
+            },
+            {
+              "email": "alekseir@pk-kontur.ru",
+              "personName": null,
+              "classification": "GENERAL",
+              "evidence": [
+                {
+                  "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+                  "sourceType": "official",
+                  "excerpt": "alekseir@pk-kontur.ru — public email parser",
+                  "capturedAt": "2026-10-06T08:17:37.259Z",
+                  "confidence": 88
+                }
+              ]
+            }
+          ],
+          "inferred": []
+        },
+        "bestOutreachContact": {
+          "email": "kotelnikov-dn@pk-kontur.ru",
+          "personName": "Котельников Данила Никитич",
+          "role": "генеральный директор",
+          "classification": "VERIFIED_PERSONAL",
+          "contactLevel": "A",
+          "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/"
+        },
+        "signal": {
+          "type": "AI_AUTOMATION_HIRING_SIGNAL",
+          "title": "Инженер (Специалист) по автоматизации бизнес-процессов",
+          "detail": "искать и внедрять современные решения в бизнес-процессы и ИИ-технологии",
+          "sourceUrl": "https://hh.ru/vacancy/137520507",
+          "confidence": 85
+        },
+        "researchConfidence": "VERIFIED",
+        "metrics": {
+          "planner": "llm",
+          "plannerReason": "configured",
+          "queries": 8,
+          "duplicateQueriesSkipped": 1,
+          "budgetQueriesSkipped": 0,
+          "officialPages": 17,
+          "lprMs": 27509,
+          "contactMs": 10163,
+          "totalMs": 42298,
+          "stopReason": "usable_email_found"
+        }
+      },
+      "signal": {
+        "type": "AI_AUTOMATION_HIRING_SIGNAL",
+        "title": "Инженер (Специалист) по автоматизации бизнес-процессов",
+        "detail": "искать и внедрять современные решения в бизнес-процессы и ИИ-технологии",
+        "sourceUrl": "https://hh.ru/vacancy/137520507",
+        "confidence": 85
+      },
+      "index": 15,
+      "trace": [],
+      "startedAt": "2026-10-07T15:47:54.223Z",
+      "blocked": "provider_credit_exhausted",
+      "runtimeMs": 0
+    }
+  ],
+  "benchmarkBlocked": "provider_credit_exhausted",
+  "requestedCompanies": 16,
+  "orphanRequests": 0,
+  "productionSmtpCalls": 0
+}

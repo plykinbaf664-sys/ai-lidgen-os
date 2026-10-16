@@ -1,0 +1,3278 @@
+{
+  "mode": "business",
+  "name": "АРКОН ТРЕЙД",
+  "website": "https://arcontrade.am",
+  "before": {
+    "companyName": "АРКОН ТРЕЙД",
+    "officialWebsite": "https://arcontrade.am",
+    "officialDomain": "arcontrade.am",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "info@arcontrade.am",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://arcontrade.am/",
+              "sourceType": "official",
+              "excerpt": "info@arcontrade.am — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "ab@arcontrade.am",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://arcontrade.am/contacts",
+              "sourceType": "official",
+              "excerpt": "ab@arcontrade.am — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "info@arcontrade.am",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://arcontrade.am/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: АРКОН ТРЕЙД; открыта вакансия: Менеджер по развитию бизнеса в России (алкоголь; дистрибьюторы и локальные сети).",
+      "sourceUrl": "https://hh.ru/vacancy/137286232",
+      "confidence": 93
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 18,
+      "lprMs": 32278,
+      "contactMs": 2073,
+      "totalMs": 39690,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: АРКОН ТРЕЙД; открыта вакансия: Менеджер по развитию бизнеса в России (алкоголь; дистрибьюторы и локальные сети).",
+    "sourceUrl": "https://hh.ru/vacancy/137286232",
+    "confidence": 93
+  },
+  "index": 10,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://arcontrade.am",
+      "status": 200,
+      "elapsedMs": 3758
+    },
+    {
+      "stage": "research_open",
+      "url": "https://arcontrade.am",
+      "success": true,
+      "evidence": {
+        "url": "https://arcontrade.am",
+        "kind": "page",
+        "text": "ARCON - производство Армянского коньяка ГЛАВНАЯ О КОМПАНИИ ПРОДУКЦИЯ КОНТАКТЫ RU En ПРОИЗВОДСТВО ARCON СТМ ПАРТНЕРЫ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА КОЛЛЕКЦИЯ КОНЬЯКОВ Коньяк для тех, кто выбирает лучшее. Мы производим превосходный армянский коньяк и уверены в этом. АРДЖЕВАН АРАГЕТ БАДРОН АРМЯНСКИЙ КОНЬЯК ТАРОС ЗОЛОТО ЕРЕВАНА АРАМИА АРАДЗОР КОЛЛЕКЦИЯ ВИН Неповторимый армянский терруар в каждой бутылке наших вин. TATOOR SURO VERVERY NORI ПЕРЕЙТИ В КАТАЛОГ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА ПРОИЗВОДСТВО ARCON НАШЕ ПРАВИЛО — БЫТЬ ЛУЧШИМИ НА КАЖДОМ ЭТАПЕ ПРОИЗВОДСТВА Лучшие коньячные спирты, лучший дизайн продукции, отточенный процесс поставки от производства до клиента ПРОИЗВОДСТВО ПРОДУКЦИИ ПОД СОБСТВЕННОЙ ТОРГОВОЙ МАРКОЙ Лучший способ снижения себестоимости и увеличения доходности на продукте. Вы получаете продукт по первой цене от производителя, очищенной от любых маркетинговых затрат. ПРОИЗВОДСТВО СТМ",
+        "links": [
+          {
+            "url": "https://arcontrade.am",
+            "label": ""
+          },
+          {
+            "url": "https://arcontrade.am/catalog/cognac",
+            "label": "ПРОДУКЦИЯ"
+          },
+          {
+            "url": "https://arcontrade.am/contacts",
+            "label": "КОНТАКТЫ"
+          },
+          {
+            "url": "https://arcontrade-en.am",
+            "label": "En"
+          },
+          {
+            "url": "https://arcontrade.am/production",
+            "label": "ПРОИЗВОДСТВО"
+          },
+          {
+            "url": "https://arcontrade.am/about-us",
+            "label": "ARCON"
+          },
+          {
+            "url": "https://arcontrade.am/own-trade-mark",
+            "label": "СТМ"
+          },
+          {
+            "url": "https://arcontrade.am/partners",
+            "label": "ПАРТНЕРЫ"
+          },
+          {
+            "url": "https://arcontrade.am/history",
+            "label": "ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА"
+          },
+          {
+            "url": "https://arcontrade.am/histori/vino",
+            "label": "ИСТОРИЯ АРМЯНСКОГО ВИНА"
+          },
+          {
+            "url": "https://arcontrade.am/catalog/cognac/badron",
+            "label": ""
+          },
+          {
+            "url": "https://arcontrade.am/catalog/cognac/taros",
+            "label": ""
+          },
+          {
+            "url": "https://arcontrade.am/catalog/cognac/yerevan-gold",
+            "label": ""
+          },
+          {
+            "url": "https://arcontrade.am/catalog/cognac/arjevan",
+            "label": "АРДЖЕВАН"
+          },
+          {
+            "url": "https://arcontrade.am/catalog/cognac/araghet",
+            "label": "АРАГЕТ"
+          },
+          {
+            "url": "https://arcontrade.am/catalog/armeian-cognacs",
+            "label": "АРМЯНСКИЙ КОНЬЯК"
+          },
+          {
+            "url": "https://arcontrade.am/catalog/aramia",
+            "label": "АРАМИА"
+          },
+          {
+            "url": "https://arcontrade.am/catalog/aradzor",
+            "label": ""
+          },
+          {
+            "url": "https://arcontrade.am/catalog/ververy",
+            "label": ""
+          },
+          {
+            "url": "https://arcontrade.am/catalog/nori",
+            "label": ""
+          },
+          {
+            "url": "https://arcontrade.am/catalog/tatoor",
+            "label": "TATOOR"
+          },
+          {
+            "url": "https://arcontrade.am/catalog/suro",
+            "label": "SURO"
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:01:13.342Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2597,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "АРКОН ТРЕЙД",
+        "domain": "arcontrade.am",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: АРКОН ТРЕЙД; открыта вакансия: Менеджер по развитию бизнеса в России (алкоголь; дистрибьюторы и локальные сети).",
+            "sourceUrl": "https://hh.ru/vacancy/137286232",
+            "confidence": 93
+          }
+        },
+        "currentDate": "2026-10-06",
+        "target": {
+          "owner": "Company leadership",
+          "primaryRole": "основатель",
+          "alternativeRoles": [
+            "CEO",
+            "Managing Director"
+          ]
+        },
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://arcontrade.am",
+            "kind": "page",
+            "text": "ARCON - производство Армянского коньяка ГЛАВНАЯ О КОМПАНИИ ПРОДУКЦИЯ КОНТАКТЫ RU En ПРОИЗВОДСТВО ARCON СТМ ПАРТНЕРЫ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА КОЛЛЕКЦИЯ КОНЬЯКОВ Коньяк для тех, кто выбирает лучшее. Мы производим превосходный армянский коньяк и уверены в этом. АРДЖЕВАН АРАГЕТ БАДРОН АРМЯНСКИЙ КОНЬЯК ТАРОС ЗОЛОТО ЕРЕВАНА АРАМИА АРАДЗОР КОЛЛЕКЦИЯ ВИН Неповторимый армянский терруар в каждой бутылке наших вин. TATOOR SURO VERVERY NORI ПЕРЕЙТИ В КАТАЛОГ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА ПРОИЗВОДСТВО ARCON НАШЕ ПРАВИЛО — БЫТЬ ЛУЧШИМИ НА КАЖДОМ ЭТАПЕ ПРОИЗВОДСТВА Лучшие коньячные спирты, лучший дизайн продукции, отточенный процесс поставки от производства до клиента ПРОИЗВОДСТВО ПРОДУКЦИИ ПОД СОБСТВЕННОЙ ТОРГОВОЙ МАРКОЙ Лучший способ снижения себестоимости и увеличения доходности на продукте. Вы получаете продукт по первой цене от производителя, очищенной от любых маркетинговых затрат. ПРОИЗВОДСТВО СТМ",
+            "links": [
+              {
+                "url": "https://arcontrade.am",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac",
+                "label": "ПРОДУКЦИЯ"
+              },
+              {
+                "url": "https://arcontrade.am/contacts",
+                "label": "КОНТАКТЫ"
+              },
+              {
+                "url": "https://arcontrade-en.am",
+                "label": "En"
+              },
+              {
+                "url": "https://arcontrade.am/production",
+                "label": "ПРОИЗВОДСТВО"
+              },
+              {
+                "url": "https://arcontrade.am/about-us",
+                "label": "ARCON"
+              },
+              {
+                "url": "https://arcontrade.am/own-trade-mark",
+                "label": "СТМ"
+              },
+              {
+                "url": "https://arcontrade.am/partners",
+                "label": "ПАРТНЕРЫ"
+              },
+              {
+                "url": "https://arcontrade.am/history",
+                "label": "ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА"
+              },
+              {
+                "url": "https://arcontrade.am/histori/vino",
+                "label": "ИСТОРИЯ АРМЯНСКОГО ВИНА"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/badron",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/taros",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/yerevan-gold",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/arjevan",
+                "label": "АРДЖЕВАН"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/araghet",
+                "label": "АРАГЕТ"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/armeian-cognacs",
+                "label": "АРМЯНСКИЙ КОНЬЯК"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/aramia",
+                "label": "АРАМИА"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/aradzor",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/ververy",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/nori",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/tatoor",
+                "label": "TATOOR"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/suro",
+                "label": "SURO"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:01:13.342Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 10,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "АРКОН ТРЕЙД - армянская компания, производящая армянский коньяк и вино под собственными торговыми марками. Компания занимается производством и поставкой продукции, включая армянский коньяк. Сейчас открыта вакансия менеджера по развитию бизнеса в России в сегменте алкогольной продукции, включая дистрибьюторов и локальные сети.",
+        "missing": [
+          "имена руководящих лиц компании",
+          "контактные данные ключевых руководителей (основатель, CEO, управляющий директор)",
+          "организационная структура компании"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "arcontrade.am",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ARCON - производство Армянского коньяка... https://arcontrade.am"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://arcontrade.am/contacts",
+            "focus": "контакты",
+            "purpose": "поиск ключевых руководителей и их контактных данных на сайте компании"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "АРКОН ТРЕЙД - армянская компания, производящая армянский коньяк и вино под собственными торговыми марками. Компания занимается производством и поставкой продукции, включая армянский коньяк. Сейчас открыта вакансия менеджера по развитию бизнеса в России в сегменте алкогольной продукции, включая дистрибьюторов и локальные сети.",
+        "missing": [
+          "имена руководящих лиц компании",
+          "контактные данные ключевых руководителей (основатель, CEO, управляющий директор)",
+          "организационная структура компании"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "arcontrade.am",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ARCON - производство Армянского коньяка... https://arcontrade.am"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://arcontrade.am/contacts",
+            "focus": "контакты",
+            "purpose": "поиск ключевых руководителей и их контактных данных на сайте компании"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "arcontrade.am"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://arcontrade.am/contacts",
+      "status": 200,
+      "elapsedMs": 332
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://arcontrade.am/contacts",
+      "focus": "контакты",
+      "purpose": "поиск ключевых руководителей и их контактных данных на сайте компании",
+      "success": true,
+      "evidence": {
+        "url": "https://arcontrade.am/contacts",
+        "kind": "page",
+        "text": "Контакты ГЛАВНАЯ О КОМПАНИИ ПРОДУКЦИЯ КОНТАКТЫ RU En ПРОИЗВОДСТВО ARCON СТМ ПАРТНЕРЫ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА СВЯЗАТЬСЯ С НАМИ По вопросам сотрудничества, производства СТМ, покупки продукции и любым другим вопросам просим вас обращаться в наши представительства АРКОН В РОССИИ Научный проезд 14Ас1, г. Москва, Россия Info@arcontrade.am +374 (11) 211 101 ул. Саят-Нова 6/27, Кентрон 0010, г. Ереван, Республика Армения Info@arcontrade.am В АРМЕНИИ АРКОН ХОТИТЕ ЗАДАТЬ ВОПРОС? Вы можете написать нам, использую форму ниже. Мы обязательно ответим вам в течение 24 часов. [{\"lid\":\"1531306540094\",\"ls\":\"10\",\"loff\":\"\",\"li_type\":\"nm\",\"li_ph\":\"\\u0412\\u0430\\u0448\\u0435 \\u0438\\u043c\\u044f\",\"li_nm\":\"Name\"},{\"lid\":\"1531306243545\",\"ls\":\"20\",\"loff\":\"\",\"li_type\":\"em\",\"li_name\":\"email\",\"li_ph\":\"E-mail\",\"li_req\":\"y\",\"li_nm\":\"email\"},{\"lid\":\"1565215758397\",\"ls\":\"30\",\"loff\":\"\",\"li_type\":\"ta\",\"li_ph\":\"\\u0421\\u043e\\u043e\\u0431\\u0449\\u0435\\u043d\\u0438\\u0435\",\"li_req\":\"y\",\"li_rows\":\"2\",\"li_nm\":\"Textarea\"}]",
+        "links": [
+          {
+            "url": "https://arcontrade.am",
+            "label": ""
+          },
+          {
+            "url": "https://arcontrade.am/contacts",
+            "label": "О КОМПАНИИ"
+          },
+          {
+            "url": "https://arcontrade.am/catalog/cognac",
+            "label": "ПРОДУКЦИЯ"
+          },
+          {
+            "url": "https://arcontrade-en.am",
+            "label": "En"
+          },
+          {
+            "url": "https://arcontrade.am/production",
+            "label": "ПРОИЗВОДСТВО"
+          },
+          {
+            "url": "https://arcontrade.am/about-us",
+            "label": "ARCON"
+          },
+          {
+            "url": "https://arcontrade.am/own-trade-mark",
+            "label": "СТМ"
+          },
+          {
+            "url": "https://arcontrade.am/partners",
+            "label": "ПАРТНЕРЫ"
+          },
+          {
+            "url": "https://arcontrade.am/history",
+            "label": "ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА"
+          },
+          {
+            "url": "https://arcontrade.am/histori/vino",
+            "label": "ИСТОРИЯ АРМЯНСКОГО ВИНА"
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:01:16.465Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2654,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "АРКОН ТРЕЙД",
+        "domain": "arcontrade.am",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: АРКОН ТРЕЙД; открыта вакансия: Менеджер по развитию бизнеса в России (алкоголь; дистрибьюторы и локальные сети).",
+            "sourceUrl": "https://hh.ru/vacancy/137286232",
+            "confidence": 93
+          }
+        },
+        "currentDate": "2026-10-06",
+        "target": {
+          "owner": "Company leadership",
+          "primaryRole": "основатель",
+          "alternativeRoles": [
+            "CEO",
+            "Managing Director"
+          ]
+        },
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://arcontrade.am",
+            "kind": "page",
+            "text": "ARCON - производство Армянского коньяка ГЛАВНАЯ О КОМПАНИИ ПРОДУКЦИЯ КОНТАКТЫ RU En ПРОИЗВОДСТВО ARCON СТМ ПАРТНЕРЫ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА КОЛЛЕКЦИЯ КОНЬЯКОВ Коньяк для тех, кто выбирает лучшее. Мы производим превосходный армянский коньяк и уверены в этом. АРДЖЕВАН АРАГЕТ БАДРОН АРМЯНСКИЙ КОНЬЯК ТАРОС ЗОЛОТО ЕРЕВАНА АРАМИА АРАДЗОР КОЛЛЕКЦИЯ ВИН Неповторимый армянский терруар в каждой бутылке наших вин. TATOOR SURO VERVERY NORI ПЕРЕЙТИ В КАТАЛОГ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА ПРОИЗВОДСТВО ARCON НАШЕ ПРАВИЛО — БЫТЬ ЛУЧШИМИ НА КАЖДОМ ЭТАПЕ ПРОИЗВОДСТВА Лучшие коньячные спирты, лучший дизайн продукции, отточенный процесс поставки от производства до клиента ПРОИЗВОДСТВО ПРОДУКЦИИ ПОД СОБСТВЕННОЙ ТОРГОВОЙ МАРКОЙ Лучший способ снижения себестоимости и увеличения доходности на продукте. Вы получаете продукт по первой цене от производителя, очищенной от любых маркетинговых затрат. ПРОИЗВОДСТВО СТМ",
+            "links": [
+              {
+                "url": "https://arcontrade.am",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac",
+                "label": "ПРОДУКЦИЯ"
+              },
+              {
+                "url": "https://arcontrade.am/contacts",
+                "label": "КОНТАКТЫ"
+              },
+              {
+                "url": "https://arcontrade-en.am",
+                "label": "En"
+              },
+              {
+                "url": "https://arcontrade.am/production",
+                "label": "ПРОИЗВОДСТВО"
+              },
+              {
+                "url": "https://arcontrade.am/about-us",
+                "label": "ARCON"
+              },
+              {
+                "url": "https://arcontrade.am/own-trade-mark",
+                "label": "СТМ"
+              },
+              {
+                "url": "https://arcontrade.am/partners",
+                "label": "ПАРТНЕРЫ"
+              },
+              {
+                "url": "https://arcontrade.am/history",
+                "label": "ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА"
+              },
+              {
+                "url": "https://arcontrade.am/histori/vino",
+                "label": "ИСТОРИЯ АРМЯНСКОГО ВИНА"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/badron",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/taros",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/yerevan-gold",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/arjevan",
+                "label": "АРДЖЕВАН"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/araghet",
+                "label": "АРАГЕТ"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/armeian-cognacs",
+                "label": "АРМЯНСКИЙ КОНЬЯК"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/aramia",
+                "label": "АРАМИА"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/aradzor",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/ververy",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/nori",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/tatoor",
+                "label": "TATOOR"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/suro",
+                "label": "SURO"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:01:13.342Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://arcontrade.am/contacts",
+            "kind": "page",
+            "text": "Контакты ГЛАВНАЯ О КОМПАНИИ ПРОДУКЦИЯ КОНТАКТЫ RU En ПРОИЗВОДСТВО ARCON СТМ ПАРТНЕРЫ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА СВЯЗАТЬСЯ С НАМИ По вопросам сотрудничества, производства СТМ, покупки продукции и любым другим вопросам просим вас обращаться в наши представительства АРКОН В РОССИИ Научный проезд 14Ас1, г. Москва, Россия Info@arcontrade.am +374 (11) 211 101 ул. Саят-Нова 6/27, Кентрон 0010, г. Ереван, Республика Армения Info@arcontrade.am В АРМЕНИИ АРКОН ХОТИТЕ ЗАДАТЬ ВОПРОС? Вы можете написать нам, использую форму ниже. Мы обязательно ответим вам в течение 24 часов. [{\"lid\":\"1531306540094\",\"ls\":\"10\",\"loff\":\"\",\"li_type\":\"nm\",\"li_ph\":\"\\u0412\\u0430\\u0448\\u0435 \\u0438\\u043c\\u044f\",\"li_nm\":\"Name\"},{\"lid\":\"1531306243545\",\"ls\":\"20\",\"loff\":\"\",\"li_type\":\"em\",\"li_name\":\"email\",\"li_ph\":\"E-mail\",\"li_req\":\"y\",\"li_nm\":\"email\"},{\"lid\":\"1565215758397\",\"ls\":\"30\",\"loff\":\"\",\"li_type\":\"ta\",\"li_ph\":\"\\u0421\\u043e\\u043e\\u0431\\u0449\\u0435\\u043d\\u0438\\u0435\",\"li_req\":\"y\",\"li_rows\":\"2\",\"li_nm\":\"Textarea\"}]",
+            "links": [
+              {
+                "url": "https://arcontrade.am",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/contacts",
+                "label": "О КОМПАНИИ"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac",
+                "label": "ПРОДУКЦИЯ"
+              },
+              {
+                "url": "https://arcontrade-en.am",
+                "label": "En"
+              },
+              {
+                "url": "https://arcontrade.am/production",
+                "label": "ПРОИЗВОДСТВО"
+              },
+              {
+                "url": "https://arcontrade.am/about-us",
+                "label": "ARCON"
+              },
+              {
+                "url": "https://arcontrade.am/own-trade-mark",
+                "label": "СТМ"
+              },
+              {
+                "url": "https://arcontrade.am/partners",
+                "label": "ПАРТНЕРЫ"
+              },
+              {
+                "url": "https://arcontrade.am/history",
+                "label": "ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА"
+              },
+              {
+                "url": "https://arcontrade.am/histori/vino",
+                "label": "ИСТОРИЯ АРМЯНСКОГО ВИНА"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:01:16.465Z",
+            "id": "e2"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://arcontrade.am/contacts",
+            "focus": "контакты",
+            "success": true
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 9,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "АРКОН ТРЕЙД - армянская компания, производитель армянского коньяка и вин, с представителями в Армении и России. В России их офис находится в Москве, указан общий email info@arcontrade.am, но персональных контактов руководства на странице контактов нет.",
+        "missing": [
+          "Имена руководителей компании (основатель, CEO или управляющий директор)",
+          "Публичные личные контакты или профили руководства"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "arcontrade.am",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ARCON - производство Армянского коньяка ... arcontrade.am"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД основатель CEO site:arcontrade.am",
+            "focus": "руководство на сайте компании",
+            "purpose": "найти имена и роль лидеров компании на официальном сайте"
+          },
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД основатель CEO LinkedIn",
+            "focus": "профили руководства в LinkedIn",
+            "purpose": "найти публичные профили для подтверждения контактных данных руководителя"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "АРКОН ТРЕЙД - армянская компания, производитель армянского коньяка и вин, с представителями в Армении и России. В России их офис находится в Москве, указан общий email info@arcontrade.am, но персональных контактов руководства на странице контактов нет.",
+        "missing": [
+          "Имена руководителей компании (основатель, CEO или управляющий директор)",
+          "Публичные личные контакты или профили руководства"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "arcontrade.am",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ARCON - производство Армянского коньяка ... arcontrade.am"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД основатель CEO site:arcontrade.am",
+            "focus": "руководство на сайте компании",
+            "purpose": "найти имена и роль лидеров компании на официальном сайте"
+          },
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД основатель CEO LinkedIn",
+            "focus": "профили руководства в LinkedIn",
+            "purpose": "найти публичные профили для подтверждения контактных данных руководителя"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "arcontrade.am"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%90%D0%A0%D0%9A%D0%9E%D0%9D%20%D0%A2%D0%A0%D0%95%D0%99%D0%94%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%20CEO%20arcontrade.am&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 240
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%90%D0%A0%D0%9A%D0%9E%D0%9D%20%D0%A2%D0%A0%D0%95%D0%99%D0%94%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%20CEO%20arcontrade.am&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 146
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%90%D0%A0%D0%9A%D0%9E%D0%9D%20%D0%A2%D0%A0%D0%95%D0%99%D0%94%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%20CEO%20LinkedIn&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 252
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%90%D0%A0%D0%9A%D0%9E%D0%9D%20%D0%A2%D0%A0%D0%95%D0%99%D0%94%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%20CEO%20LinkedIn&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 203
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1436
+    },
+    {
+      "stage": "search",
+      "query": "АРКОН ТРЕЙД основатель CEO site:arcontrade.am",
+      "results": [
+        {
+          "title": "О нас",
+          "url": "https://arcontrade.am/about-us",
+          "snippet": "Компания Аркон — современная, динамично развивающаяся компания.  \n  \nПроизводство Аркон располагается на окраине столицы Армении, в городе Ереване, в самом сердце Араратской долины.  \n  \nУже более сотни лет в этом регионе делаются прекрасные армянские коньяки, известные во всем мире благодаря своей уникальной мягкости вкуса и богатству аромата.  \n  \nИстория компании началась с покупки выдержанных коньячных спиртов у нескольких крупных армянских производителей. [...] Производство Армянского коньяка   \nARCON\n\nЗаключены договоры с российскими федеральными ретейлерами и дистрибьюторами, компания стремительно развивает дистрибьюцию своих коньяков в регионах России и СНГ.  \n  \nМы производим превосходный армянский коньяк и уверены в этом, а наш интенсивный рост это подтверждает.  \n  \nМы понимаем, что современный рынок алкогольной продукции крайне конкурентный и, поэтому, мы должны быть лучшими на каждом этапе работы: [...] АРАМИА\n\nАРДЖЕВАН\n\nАРАГЕТ\n\nБАДРОН\n\nАКБЕРД\n\nТАРОС\n\nЗОЛОТО ЕРЕВАНА\n\n\n\nTATOOR\n\nSURO\n\nVERVERY\n\nNORI\n\n[](\n\n[](\n\n[](\n\n[](",
+          "source_label": "tavily",
+          "score": 0.14267357,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "АРКОН ТРЕЙД основатель CEO site:arcontrade.am",
+      "focus": "руководство на сайте компании",
+      "purpose": "найти имена и роль лидеров компании на официальном сайте",
+      "results": [
+        {
+          "url": "https://arcontrade.am/about-us",
+          "title": "О нас",
+          "snippet": "Компания Аркон — современная, динамично развивающаяся компания.  \n  \nПроизводство Аркон располагается на окраине столицы Армении, в городе Ереване, в самом сердце Араратской долины.  \n  \nУже более сотни лет в этом регионе делаются прекрасные армянские коньяки, известные во всем мире благодаря своей уникальной мягкости вкуса и богатству аромата.  \n  \nИстория компании началась с покупки выдержанных коньячных спиртов у нескольких крупных армянских производителей. [...] Производство Армянского конья",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 2127
+    },
+    {
+      "stage": "search",
+      "query": "АРКОН ТРЕЙД основатель CEO LinkedIn",
+      "results": [
+        {
+          "title": "Home | Arkon International Trading",
+          "url": "https://arkontrade.eu/en",
+          "snippet": "ARKON INTERNATIONAL TRADING s.r.o. – a fast-growing company that is an intermediary between the world’s manufacturers of laboratory equipment, measuring and analytical instruments and those who directly need it – laboratories, manufacturing companies, wholesale or retail buyers. [...] skip to Main Content\n\nsales@arkontrade.eu   +420 381 67 91 50   Kremenacova 90/6, Prague 10-400\n\nArkon International Trading\n\n## ARKON INTERNATIONAL TRADING\n\nWe are on the market in the field of international trading since the year 2012\n\n  About us\n\n### Way of working:\n\nProfessional team\n\n#### Professional Team [...] #### Just Ask\n\nOur team consists of experienced sales managers, accountants and lawyers that are able to provide you with the professional support, preparation of all the necessary documents of the trade, logistics and customs as well as consultancy services.\n\nLogistics\n\n#### Logistics\n\nFull support in the whole process of transportation and customs with our reliable partners around the globe. We know how to trade worldwide!\n\n### Why us?\n\n## Great expertise in international trading",
+          "source_label": "tavily",
+          "score": 0.27141988,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "ARCON - производство Армянского коньяка",
+          "url": "https://arcontrade.am",
+          "snippet": "ПРОИЗВОДСТВО ARCON\n\nНАШЕ ПРАВИЛО — БЫТЬ ЛУЧШИМИ НА КАЖДОМ ЭТАПЕ ПРОИЗВОДСТВА\n\nЛучшие коньячные спирты, лучший дизайн продукции, отточенный процесс поставки от производства до клиента\n\nПРОИЗВОДСТВО ПРОДУКЦИИ   \n ПОД СОБСТВЕННОЙ ТОРГОВОЙ МАРКОЙ\n\nЛучший способ снижения себестоимости и увеличения доходности на продукте. Вы получаете продукт по первой цене от производителя, очищенной от любых маркетинговых затрат.\n\nПРОИЗВОДСТВО СТМ [...] О КОМПАНИИ\n\nEn\n\nПРОИЗВОДСТВО\n\n ARCON\n СТМ\n ПАРТНЕРЫ\n ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА\n ИСТОРИЯ АРМЯНСКОГО ВИНА\n\nКОЛЛЕКЦИЯ КОНЬЯКОВ\n\nКоньяк для тех, кто выбирает лучшее.  \n Мы производим превосходный армянский коньяк и уверены в этом.\n\nАРДЖЕВАН\n\nАРАГЕТ\n\nБАДРОН\n\nАРМЯНСКИЙ КОНЬЯК\n\nТАРОС\n\nЗОЛОТО ЕРЕВАНА\n\nАРАМИА\n\n\n\nКОЛЛЕКЦИЯ ВИН\n\nНеповторимый армянский терруар в каждой бутылке наших вин.\n\n[](\n\n[](\n\nTATOOR\n\nSURO\n\nVERVERY\n\nNORI\n\n[](\n\n[](\n\nПЕРЕЙТИ В КАТАЛОГ\n\nИСТОРИЯ АРМЯНСКОГО КОНЬЯКА\n\nИСТОРИЯ АРМЯНСКОГО ВИНА",
+          "source_label": "tavily",
+          "score": 0.124011554,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "https://www.linkedin.com/profile?viewProfile=&key=...",
+          "url": "https://www.linkedin.com/profile?viewProfile=&key=3299358&locale=en_US",
+          "snippet": "No information is available for this page.",
+          "source_label": "tavily",
+          "score": 0.11388496,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Art Sellers - President/GM ◆ Sold to Fortune 500 ◆ Led $8 ...",
+          "url": "https://www.linkedin.com/in/artsellers",
+          "snippet": "Headline: President/GM ◆  Sold to Fortune 500 ◆ Led $8M P&L ◆ Organizational Strategy ◆ COO for 90,000+ Organization ◆ Tech Start-up Expertise ◆ Launched AI Supply Chain Product ◆ Visionary Leader ◆ Special Operations Veteran\nCurrent role: President General Manager Generated 8 Million In Revenue Led 40 Employees\nSeniority: Specialist\nLocation: Fayetteville, North Carolina, United States\nExperience: 30 years 10 months\nLinkedIn:  · 2,324 followers [...] College ◆ Bachelor of Science (BS), US Military Academy MORE ABOUT ME: Corporate Career ◆ I've built internal and external teams to the organization to increase B2B and B2G Opportunities ◆ Deep experience leading cultural transformations through turbulent times, maintaining revenue generation and increased bookings ◆ Attended Executive MBA Program on own time to further master skills and attributes ◆ My expertise spans organizational strategy, launching AI supply chain products, and executing [...] ## Education\n- Northwestern University - Kellogg School of Management, Master of Business Administration - MBA\n- U.S. Naval War College, Master's degree\n- United States Military Academy at West Point, Bachelor of Science (B.S.), Engineering/Industrial Management",
+          "source_label": "tavily",
+          "score": 0.06456509,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Ardian",
+          "url": "https://www.linkedin.com/posts/ardian_meetthearchitectsofardian-masteringchangeforlastingvalue-activity-7432118564028854273-zHRv",
+          "snippet": "Ada Wen, Managing Director in the Primaries & Secondaries team at Ardian, brings deep experience across Asian markets,",
+          "source_label": "tavily",
+          "score": 0.024743952,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "АРКОН ТРЕЙД основатель CEO LinkedIn",
+      "focus": "профили руководства в LinkedIn",
+      "purpose": "найти публичные профили для подтверждения контактных данных руководителя",
+      "results": [
+        {
+          "url": "https://arkontrade.eu/en",
+          "title": "Home | Arkon International Trading",
+          "snippet": "ARKON INTERNATIONAL TRADING s.r.o. – a fast-growing company that is an intermediary between the world’s manufacturers of laboratory equipment, measuring and analytical instruments and those who directly need it – laboratories, manufacturing companies, wholesale or retail buyers. [...] skip to Main Content\n\nsales@arkontrade.eu   +420 381 67 91 50   Kremenacova 90/6, Prague 10-400\n\nArkon International Trading\n\n## ARKON INTERNATIONAL TRADING\n\nWe are on the market in the field of international tradi",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://arcontrade.am",
+          "title": "ARCON - производство Армянского коньяка",
+          "snippet": "ПРОИЗВОДСТВО ARCON\n\nНАШЕ ПРАВИЛО — БЫТЬ ЛУЧШИМИ НА КАЖДОМ ЭТАПЕ ПРОИЗВОДСТВА\n\nЛучшие коньячные спирты, лучший дизайн продукции, отточенный процесс поставки от производства до клиента\n\nПРОИЗВОДСТВО ПРОДУКЦИИ   \n ПОД СОБСТВЕННОЙ ТОРГОВОЙ МАРКОЙ\n\nЛучший способ снижения себестоимости и увеличения доходности на продукте. Вы получаете продукт по первой цене от производителя, очищенной от любых маркетинговых затрат.\n\nПРОИЗВОДСТВО СТМ [...] О КОМПАНИИ\n\nEn\n\nПРОИЗВОДСТВО\n\n ARCON\n СТМ\n ПАРТНЕРЫ\n ИСТОРИЯ АР",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/profile?viewProfile=&key=3299358&locale=en_US",
+          "title": "https://www.linkedin.com/profile?viewProfile=&key=...",
+          "snippet": "No information is available for this page.",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/in/artsellers",
+          "title": "Art Sellers - President/GM ◆ Sold to Fortune 500 ◆ Led $8 ...",
+          "snippet": "Headline: President/GM ◆  Sold to Fortune 500 ◆ Led $8M P&L ◆ Organizational Strategy ◆ COO for 90,000+ Organization ◆ Tech Start-up Expertise ◆ Launched AI Supply Chain Product ◆ Visionary Leader ◆ Special Operations Veteran\nCurrent role: President General Manager Generated 8 Million In Revenue Led 40 Employees\nSeniority: Specialist\nLocation: Fayetteville, North Carolina, United States\nExperience: 30 years 10 months\nLinkedIn:  · 2,324 followers [...] College ◆ Bachelor of Science (BS), US Milit",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/posts/ardian_meetthearchitectsofardian-masteringchangeforlastingvalue-activity-7432118564028854273-zHRv",
+          "title": "Ardian",
+          "snippet": "Ada Wen, Managing Director in the Primaries & Secondaries team at Ardian, brings deep experience across Asian markets,",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2723,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "АРКОН ТРЕЙД",
+        "domain": "arcontrade.am",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: АРКОН ТРЕЙД; открыта вакансия: Менеджер по развитию бизнеса в России (алкоголь; дистрибьюторы и локальные сети).",
+            "sourceUrl": "https://hh.ru/vacancy/137286232",
+            "confidence": 93
+          }
+        },
+        "currentDate": "2026-10-06",
+        "target": {
+          "owner": "Company leadership",
+          "primaryRole": "основатель",
+          "alternativeRoles": [
+            "CEO",
+            "Managing Director"
+          ]
+        },
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://arcontrade.am",
+            "kind": "page",
+            "text": "ARCON - производство Армянского коньяка ГЛАВНАЯ О КОМПАНИИ ПРОДУКЦИЯ КОНТАКТЫ RU En ПРОИЗВОДСТВО ARCON СТМ ПАРТНЕРЫ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА КОЛЛЕКЦИЯ КОНЬЯКОВ Коньяк для тех, кто выбирает лучшее. Мы производим превосходный армянский коньяк и уверены в этом. АРДЖЕВАН АРАГЕТ БАДРОН АРМЯНСКИЙ КОНЬЯК ТАРОС ЗОЛОТО ЕРЕВАНА АРАМИА АРАДЗОР КОЛЛЕКЦИЯ ВИН Неповторимый армянский терруар в каждой бутылке наших вин. TATOOR SURO VERVERY NORI ПЕРЕЙТИ В КАТАЛОГ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА ПРОИЗВОДСТВО ARCON НАШЕ ПРАВИЛО — БЫТЬ ЛУЧШИМИ НА КАЖДОМ ЭТАПЕ ПРОИЗВОДСТВА Лучшие коньячные спирты, лучший дизайн продукции, отточенный процесс поставки от производства до клиента ПРОИЗВОДСТВО ПРОДУКЦИИ ПОД СОБСТВЕННОЙ ТОРГОВОЙ МАРКОЙ Лучший способ снижения себестоимости и увеличения доходности на продукте. Вы получаете продукт по первой цене от производителя, очищенной от любых маркетинговых затрат. ПРОИЗВОДСТВО СТМ",
+            "links": [
+              {
+                "url": "https://arcontrade.am",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac",
+                "label": "ПРОДУКЦИЯ"
+              },
+              {
+                "url": "https://arcontrade.am/contacts",
+                "label": "КОНТАКТЫ"
+              },
+              {
+                "url": "https://arcontrade-en.am",
+                "label": "En"
+              },
+              {
+                "url": "https://arcontrade.am/production",
+                "label": "ПРОИЗВОДСТВО"
+              },
+              {
+                "url": "https://arcontrade.am/about-us",
+                "label": "ARCON"
+              },
+              {
+                "url": "https://arcontrade.am/own-trade-mark",
+                "label": "СТМ"
+              },
+              {
+                "url": "https://arcontrade.am/partners",
+                "label": "ПАРТНЕРЫ"
+              },
+              {
+                "url": "https://arcontrade.am/history",
+                "label": "ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА"
+              },
+              {
+                "url": "https://arcontrade.am/histori/vino",
+                "label": "ИСТОРИЯ АРМЯНСКОГО ВИНА"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/badron",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/taros",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/yerevan-gold",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/arjevan",
+                "label": "АРДЖЕВАН"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/araghet",
+                "label": "АРАГЕТ"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/armeian-cognacs",
+                "label": "АРМЯНСКИЙ КОНЬЯК"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/aramia",
+                "label": "АРАМИА"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/aradzor",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/ververy",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/nori",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/tatoor",
+                "label": "TATOOR"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/suro",
+                "label": "SURO"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:01:13.342Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://arcontrade.am/contacts",
+            "kind": "page",
+            "text": "Контакты ГЛАВНАЯ О КОМПАНИИ ПРОДУКЦИЯ КОНТАКТЫ RU En ПРОИЗВОДСТВО ARCON СТМ ПАРТНЕРЫ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА СВЯЗАТЬСЯ С НАМИ По вопросам сотрудничества, производства СТМ, покупки продукции и любым другим вопросам просим вас обращаться в наши представительства АРКОН В РОССИИ Научный проезд 14Ас1, г. Москва, Россия Info@arcontrade.am +374 (11) 211 101 ул. Саят-Нова 6/27, Кентрон 0010, г. Ереван, Республика Армения Info@arcontrade.am В АРМЕНИИ АРКОН ХОТИТЕ ЗАДАТЬ ВОПРОС? Вы можете написать нам, использую форму ниже. Мы обязательно ответим вам в течение 24 часов. [{\"lid\":\"1531306540094\",\"ls\":\"10\",\"loff\":\"\",\"li_type\":\"nm\",\"li_ph\":\"\\u0412\\u0430\\u0448\\u0435 \\u0438\\u043c\\u044f\",\"li_nm\":\"Name\"},{\"lid\":\"1531306243545\",\"ls\":\"20\",\"loff\":\"\",\"li_type\":\"em\",\"li_name\":\"email\",\"li_ph\":\"E-mail\",\"li_req\":\"y\",\"li_nm\":\"email\"},{\"lid\":\"1565215758397\",\"ls\":\"30\",\"loff\":\"\",\"li_type\":\"ta\",\"li_ph\":\"\\u0421\\u043e\\u043e\\u0431\\u0449\\u0435\\u043d\\u0438\\u0435\",\"li_req\":\"y\",\"li_rows\":\"2\",\"li_nm\":\"Textarea\"}]",
+            "links": [
+              {
+                "url": "https://arcontrade.am",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/contacts",
+                "label": "О КОМПАНИИ"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac",
+                "label": "ПРОДУКЦИЯ"
+              },
+              {
+                "url": "https://arcontrade-en.am",
+                "label": "En"
+              },
+              {
+                "url": "https://arcontrade.am/production",
+                "label": "ПРОИЗВОДСТВО"
+              },
+              {
+                "url": "https://arcontrade.am/about-us",
+                "label": "ARCON"
+              },
+              {
+                "url": "https://arcontrade.am/own-trade-mark",
+                "label": "СТМ"
+              },
+              {
+                "url": "https://arcontrade.am/partners",
+                "label": "ПАРТНЕРЫ"
+              },
+              {
+                "url": "https://arcontrade.am/history",
+                "label": "ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА"
+              },
+              {
+                "url": "https://arcontrade.am/histori/vino",
+                "label": "ИСТОРИЯ АРМЯНСКОГО ВИНА"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:01:16.465Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://arcontrade.am/about-us",
+            "kind": "search",
+            "text": "О нас\nКомпания Аркон — современная, динамично развивающаяся компания.  \n  \nПроизводство Аркон располагается на окраине столицы Армении, в городе Ереване, в самом сердце Араратской долины.  \n  \nУже более сотни лет в этом регионе делаются прекрасные армянские коньяки, известные во всем мире благодаря своей уникальной мягкости вкуса и богатству аромата.  \n  \nИстория компании началась с покупки выдержанных коньячных спиртов у нескольких крупных армянских производителей. [...] Производство Армянского коньяка   \nARCON\n\nЗаключены договоры с российскими федеральными ретейлерами и дистрибьюторами, компания стремительно развивает дистрибьюцию своих коньяков в регионах России и СНГ.  \n  \nМы производим превосходный армянский коньяк и уверены в этом, а наш интенсивный рост это подтверждает.  \n  \nМы понимаем, что современный рынок алкогольной продукции крайне конкурентный и, поэтому, мы должны быть лучшими на каждом этапе работы: [...] АРАМИА\n\nАРДЖЕВАН\n\nАРАГЕТ\n\nБАДРОН\n\nАКБЕРД\n\nТАРОС\n\nЗОЛОТО ЕРЕВАНА\n\n\n\nTATOOR\n\nSURO\n\nVERVERY\n\nNORI\n\n[](\n\n[](\n\n[](\n\n[](",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:21.360Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://arkontrade.eu/en",
+            "kind": "search",
+            "text": "Home | Arkon International Trading\nARKON INTERNATIONAL TRADING s.r.o. – a fast-growing company that is an intermediary between the world’s manufacturers of laboratory equipment, measuring and analytical instruments and those who directly need it – laboratories, manufacturing companies, wholesale or retail buyers. [...] skip to Main Content\n\nsales@arkontrade.eu   +420 381 67 91 50   Kremenacova 90/6, Prague 10-400\n\nArkon International Trading\n\n## ARKON INTERNATIONAL TRADING\n\nWe are on the market in the field of international trading since the year 2012\n\n  About us\n\n### Way of working:\n\nProfessional team\n\n#### Professional Team [...] #### Just Ask\n\nOur team consists of experienced sales managers, accountants and lawyers that are able to provide you with the professional support, preparation of all the necessary documents of the trade, logistics and customs as well as consultancy services.\n\nLogistics\n\n#### Logistics\n\nFull support in the whole process of transportation and customs with our reliable partners around the globe. We know how to trade worldwide!\n\n### Why us?\n\n## Great expertise in international trading",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:22.712Z",
+            "id": "e4"
+          },
+          {
+            "url": "https://arcontrade.am",
+            "kind": "search",
+            "text": "ARCON - производство Армянского коньяка\nПРОИЗВОДСТВО ARCON\n\nНАШЕ ПРАВИЛО — БЫТЬ ЛУЧШИМИ НА КАЖДОМ ЭТАПЕ ПРОИЗВОДСТВА\n\nЛучшие коньячные спирты, лучший дизайн продукции, отточенный процесс поставки от производства до клиента\n\nПРОИЗВОДСТВО ПРОДУКЦИИ   \n ПОД СОБСТВЕННОЙ ТОРГОВОЙ МАРКОЙ\n\nЛучший способ снижения себестоимости и увеличения доходности на продукте. Вы получаете продукт по первой цене от производителя, очищенной от любых маркетинговых затрат.\n\nПРОИЗВОДСТВО СТМ [...] О КОМПАНИИ\n\nEn\n\nПРОИЗВОДСТВО\n\n ARCON\n СТМ\n ПАРТНЕРЫ\n ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА\n ИСТОРИЯ АРМЯНСКОГО ВИНА\n\nКОЛЛЕКЦИЯ КОНЬЯКОВ\n\nКоньяк для тех, кто выбирает лучшее.  \n Мы производим превосходный армянский коньяк и уверены в этом.\n\nАРДЖЕВАН\n\nАРАГЕТ\n\nБАДРОН\n\nАРМЯНСКИЙ КОНЬЯК\n\nТАРОС\n\nЗОЛОТО ЕРЕВАНА\n\nАРАМИА\n\n\n\nКОЛЛЕКЦИЯ ВИН\n\nНеповторимый армянский терруар в каждой бутылке наших вин.\n\n[](\n\n[](\n\nTATOOR\n\nSURO\n\nVERVERY\n\nNORI\n\n[](\n\n[](\n\nПЕРЕЙТИ В КАТАЛОГ\n\nИСТОРИЯ АРМЯНСКОГО КОНЬЯКА\n\nИСТОРИЯ АРМЯНСКОГО ВИНА",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:22.712Z",
+            "id": "e5"
+          },
+          {
+            "url": "https://www.linkedin.com/profile?viewProfile=&key=3299358&locale=en_US",
+            "kind": "search",
+            "text": "https://www.linkedin.com/profile?viewProfile=&key=...\nNo information is available for this page.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:22.712Z",
+            "id": "e6"
+          },
+          {
+            "url": "https://www.linkedin.com/in/artsellers",
+            "kind": "search",
+            "text": "Art Sellers - President/GM ◆ Sold to Fortune 500 ◆ Led $8 ...\nHeadline: President/GM ◆  Sold to Fortune 500 ◆ Led $8M P&L ◆ Organizational Strategy ◆ COO for 90,000+ Organization ◆ Tech Start-up Expertise ◆ Launched AI Supply Chain Product ◆ Visionary Leader ◆ Special Operations Veteran\nCurrent role: President General Manager Generated 8 Million In Revenue Led 40 Employees\nSeniority: Specialist\nLocation: Fayetteville, North Carolina, United States\nExperience: 30 years 10 months\nLinkedIn:  · 2,324 followers [...] College ◆ Bachelor of Science (BS), US Military Academy MORE ABOUT ME: Corporate Career ◆ I've built internal and external teams to the organization to increase B2B and B2G Opportunities ◆ Deep experience leading cultural transformations through turbulent times, maintaining revenue generation and increased bookings ◆ Attended Executive MBA Program on own time to further master skills and attributes ◆ My expertise spans organizational strategy, launching AI supply chain products, and executing [...] ## Education\n- Northwestern University - Kellogg School of Management, Master of Business Administration - MBA\n- U.S. Naval War College, Master's degree\n- United States Military Academy at West Point, Bachelor of Science (B.S.), Engineering/Industrial Management",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:22.712Z",
+            "id": "e7"
+          },
+          {
+            "url": "https://www.linkedin.com/posts/ardian_meetthearchitectsofardian-masteringchangeforlastingvalue-activity-7432118564028854273-zHRv",
+            "kind": "search",
+            "text": "Ardian\nAda Wen, Managing Director in the Primaries & Secondaries team at Ardian, brings deep experience across Asian markets,",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:22.712Z",
+            "id": "e8"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://arcontrade.am/contacts",
+            "focus": "контакты",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД основатель CEO site:arcontrade.am",
+            "focus": "руководство на сайте компании",
+            "resultCount": 1
+          },
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД основатель CEO LinkedIn",
+            "focus": "профили руководства в LinkedIn",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 3,
+          "actionsRemaining": 7,
+          "searchRemaining": 6
+        }
+      },
+      "output": {
+        "companySummary": "АРКОН ТРЕЙД - армянская компания, производитель армянского коньяка с дистрибуцией в России и СНГ. Компания развивает продажи в России, ищет менеджера по развитию бизнеса. Их сайт arcontrade.am содержит информацию о продукции и контактах, но не раскрывает напрямую имена основателя или генерального директора.",
+        "missing": [
+          "Имя основателя",
+          "Генеральный директор или управляющий директор компании",
+          "Публичный контакт руководителя с указанием email или рабочего профиля"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "arcontrade.am",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ARCON - производство Армянского коньяка"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД CEO CEO site:arcontrade.am",
+            "focus": "руководство на сайте компании",
+            "purpose": "Поиск имени и роли генерального директора на официальном сайте"
+          },
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД основатель site:arcontrade.am OR site:hh.ru",
+            "focus": "поиск основателя и руководства компании",
+            "purpose": "Поиск подтвержденных данных по ключевым лицам для контакта"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "АРКОН ТРЕЙД - армянская компания, производитель армянского коньяка с дистрибуцией в России и СНГ. Компания развивает продажи в России, ищет менеджера по развитию бизнеса. Их сайт arcontrade.am содержит информацию о продукции и контактах, но не раскрывает напрямую имена основателя или генерального директора.",
+        "missing": [
+          "Имя основателя",
+          "Генеральный директор или управляющий директор компании",
+          "Публичный контакт руководителя с указанием email или рабочего профиля"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "arcontrade.am",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ARCON - производство Армянского коньяка"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД CEO CEO site:arcontrade.am",
+            "focus": "руководство на сайте компании",
+            "purpose": "Поиск имени и роли генерального директора на официальном сайте"
+          },
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД основатель site:arcontrade.am OR site:hh.ru",
+            "focus": "поиск основателя и руководства компании",
+            "purpose": "Поиск подтвержденных данных по ключевым лицам для контакта"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "arcontrade.am"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%90%D0%A0%D0%9A%D0%9E%D0%9D%20%D0%A2%D0%A0%D0%95%D0%99%D0%94%20CEO%20CEO%20arcontrade.am&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 231
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%90%D0%A0%D0%9A%D0%9E%D0%9D%20%D0%A2%D0%A0%D0%95%D0%99%D0%94%20CEO%20CEO%20arcontrade.am&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 266
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%90%D0%A0%D0%9A%D0%9E%D0%9D%20%D0%A2%D0%A0%D0%95%D0%99%D0%94%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%20OR%20arcontrade.am&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 238
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%90%D0%A0%D0%9A%D0%9E%D0%9D%20%D0%A2%D0%A0%D0%95%D0%99%D0%94%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%20OR%20arcontrade.am&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 174
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 2724
+    },
+    {
+      "stage": "search",
+      "query": "АРКОН ТРЕЙД CEO CEO site:arcontrade.am",
+      "results": [
+        {
+          "title": "О нас",
+          "url": "https://arcontrade.am/about-us",
+          "snippet": "Производство Армянского коньяка   \nARCON\n\nЗаключены договоры с российскими федеральными ретейлерами и дистрибьюторами, компания стремительно развивает дистрибьюцию своих коньяков в регионах России и СНГ.  \n  \nМы производим превосходный армянский коньяк и уверены в этом, а наш интенсивный рост это подтверждает.  \n  \nМы понимаем, что современный рынок алкогольной продукции крайне конкурентный и, поэтому, мы должны быть лучшими на каждом этапе работы: [...] АРАМИА\n\nАРДЖЕВАН\n\nАРАГЕТ\n\nБАДРОН\n\nАКБЕРД\n\nТАРОС\n\nЗОЛОТО ЕРЕВАНА\n\n\n\nTATOOR\n\nSURO\n\nVERVERY\n\nNORI\n\n[](\n\n[](\n\n[](\n\n[]( [...] О КОМПАНИИ\n\nEn\n\nПРОИЗВОДСТВО\n\n ARCON\n СТМ\n ПАРТНЕРЫ\n ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА\n ИСТОРИЯ АРМЯНСКОГО ВИНА\n\nСМОТРИМ В БУДУЩЕЕ,  \n ПРОДОЛЖАЯ ВЕКОВЫЕ ТРАДИЦИИ\n\nВкладываем усилия и деньги в постоянное улучшение качества наших напитков, развитие ассортимента и дистрибьюцию продукции.\n\nСпиртовой фонд компании Arcon",
+          "source_label": "tavily",
+          "score": 0.163379,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "АРКОН ТРЕЙД CEO CEO site:arcontrade.am",
+      "focus": "руководство на сайте компании",
+      "purpose": "Поиск имени и роли генерального директора на официальном сайте",
+      "results": [
+        {
+          "url": "https://arcontrade.am/about-us",
+          "title": "О нас",
+          "snippet": "Производство Армянского коньяка   \nARCON\n\nЗаключены договоры с российскими федеральными ретейлерами и дистрибьюторами, компания стремительно развивает дистрибьюцию своих коньяков в регионах России и СНГ.  \n  \nМы производим превосходный армянский коньяк и уверены в этом, а наш интенсивный рост это подтверждает.  \n  \nМы понимаем, что современный рынок алкогольной продукции крайне конкурентный и, поэтому, мы должны быть лучшими на каждом этапе работы: [...] АРАМИА\n\nАРДЖЕВАН\n\nАРАГЕТ\n\nБАДРОН\n\nАКБЕРД\n",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 3143
+    },
+    {
+      "stage": "search",
+      "query": "АРКОН ТРЕЙД основатель site:arcontrade.am OR site:hh.ru",
+      "results": [
+        {
+          "title": "Армянский коньяк: новая эра знакомого напитка - Ведомости.Город",
+          "url": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+          "snippet": "Елена Титок\n\nОснователь компании ООО «Аркон трейд» Артем Бадрудинов\n\nОснователь компании ООО «Аркон трейд» Артем Бадрудинов /Евгений Разумный / Ведомости\n\nПока престижные европейские марки крепкого алкоголя покидают Россию, армянский коньяк переживает новый расцвет популярности. Об этом «Ведомости. Городу» рассказал Артем Бадрудинов, основатель компании ООО «Аркон трейд», которая занимается производством и импортом армянских коньяков и вин. [...] компании. Для компании «Аркон» ей стала коллекция коньяков Taros по цене от 600 до 1500 руб. за бутылку. Хотя у нас есть и более премиальные линейки по другим ценам – например, 25-летний коньяк «Арджеван» за 6000 руб. за бутылку. [...] В регионах России ожидаются снег, заморозки и штормовой ветер](/gorod/ourcity/articles/popadut-pod-tsiklon)\n\n[Среда\n\n253 способа не построить человейник: как устроен язык нормального города\n\nК 90-летию Кристофера Александера – о том, как его книга учит замечать детали и что стоит проверить в своем районе](/gorod/ourcity/articles/253-sposoba)\n\n[Культурный код\n\nСканируя реальность: первая за Уралом арт-ярмарка собралась уже в третий раз",
+          "source_label": "tavily",
+          "score": 0.758958,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Работа в компании АРКОН ТРЕЙД в Москве — 1 вакансия на hh.ru",
+          "url": "https://hh.ru/employer/4507176",
+          "snippet": "АРКОН ТРЕЙД\n\n# ООО АРКОН ТРЕЙД\n\nКоротко о ARCON\n\nКомпания Аркон - современная, динамично развивающаяся компания, производящая широкий ассортиент алкогольной продукции: армянских коньяков, вин и плодовых водок.\n\nЗаключены договоры с федеральными ретейлерами, компания стремительно развивает дистрибьюцию своих коньяков в регионах России.\n\nМы производим превосходный армянский коньяк и уверенны в этом, а наш интенсивный рост это подтверждает. [...] Российский офис выполняет роль торгового представительства компании, обеспечивая продажи и маркетинговую поддержку для клиентов.\n\nЧто значит работать в ARCON?\n\nАдрес офиса: БЦ Smart Park, Москва, Научный поезд д.14 к.1\n\nНАТУРА ПРО\nАурус Аква\nБарилла Рус\nПОЛАР СИФУД РАША\nЮЛИУС МАЙНЛ РУССЛАНД\nТоргово-производственная компания Стимул\nОстанкинский завод бараночных изделий\nСаф-Нева\nТорговый Дом Кухня без границ\nTop.Mail.Ru\nTop.Mail.Ru",
+          "source_label": "tavily",
+          "score": 0.14505509,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "О нас",
+          "url": "https://arcontrade.am/about-us",
+          "snippet": "Компания Аркон — современная, динамично развивающаяся компания.  \n  \nПроизводство Аркон располагается на окраине столицы Армении, в городе Ереване, в самом сердце Араратской долины.  \n  \nУже более сотни лет в этом регионе делаются прекрасные армянские коньяки, известные во всем мире благодаря своей уникальной мягкости вкуса и богатству аромата.  \n  \nИстория компании началась с покупки выдержанных коньячных спиртов у нескольких крупных армянских производителей. [...] Производство Армянского коньяка   \nARCON\n\nЗаключены договоры с российскими федеральными ретейлерами и дистрибьюторами, компания стремительно развивает дистрибьюцию своих коньяков в регионах России и СНГ.  \n  \nМы производим превосходный армянский коньяк и уверены в этом, а наш интенсивный рост это подтверждает.  \n  \nМы понимаем, что современный рынок алкогольной продукции крайне конкурентный и, поэтому, мы должны быть лучшими на каждом этапе работы: [...] О КОМПАНИИ\n\nEn\n\nПРОИЗВОДСТВО\n\n ARCON\n СТМ\n ПАРТНЕРЫ\n ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА\n ИСТОРИЯ АРМЯНСКОГО ВИНА\n\nСМОТРИМ В БУДУЩЕЕ,  \n ПРОДОЛЖАЯ ВЕКОВЫЕ ТРАДИЦИИ\n\nВкладываем усилия и деньги в постоянное улучшение качества наших напитков, развитие ассортимента и дистрибьюцию продукции.\n\nСпиртовой фонд компании Arcon",
+          "source_label": "tavily",
+          "score": 0.1372434,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "ARCON - производство Армянского коньяка",
+          "url": "https://arcontrade.am",
+          "snippet": "О КОМПАНИИ\n\nEn\n\nПРОИЗВОДСТВО\n\n ARCON\n СТМ\n ПАРТНЕРЫ\n ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА\n ИСТОРИЯ АРМЯНСКОГО ВИНА\n\nКОЛЛЕКЦИЯ КОНЬЯКОВ\n\nКоньяк для тех, кто выбирает лучшее.  \n Мы производим превосходный армянский коньяк и уверены в этом.\n\nАРДЖЕВАН\n\nАРАГЕТ\n\nБАДРОН\n\nАРМЯНСКИЙ КОНЬЯК\n\nТАРОС\n\nЗОЛОТО ЕРЕВАНА\n\nАРАМИА\n\n\n\nКОЛЛЕКЦИЯ ВИН\n\nНеповторимый армянский терруар в каждой бутылке наших вин.\n\n[](\n\n[](\n\nTATOOR\n\nSURO\n\nVERVERY\n\nNORI\n\n[](\n\n[](\n\nПЕРЕЙТИ В КАТАЛОГ\n\nИСТОРИЯ АРМЯНСКОГО КОНЬЯКА\n\nИСТОРИЯ АРМЯНСКОГО ВИНА [...] ПРОИЗВОДСТВО ARCON\n\nНАШЕ ПРАВИЛО — БЫТЬ ЛУЧШИМИ НА КАЖДОМ ЭТАПЕ ПРОИЗВОДСТВА\n\nЛучшие коньячные спирты, лучший дизайн продукции, отточенный процесс поставки от производства до клиента\n\nПРОИЗВОДСТВО ПРОДУКЦИИ   \n ПОД СОБСТВЕННОЙ ТОРГОВОЙ МАРКОЙ\n\nЛучший способ снижения себестоимости и увеличения доходности на продукте. Вы получаете продукт по первой цене от производителя, очищенной от любых маркетинговых затрат.\n\nПРОИЗВОДСТВО СТМ",
+          "source_label": "tavily",
+          "score": 0.12965623,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Контакты",
+          "url": "https://arcontrade.am/contacts",
+          "snippet": "О КОМПАНИИ\n\nПРОДУКЦИЯ\n\nКОНТАКТЫ\n\nRU\n\nEn\n\nПРОИЗВОДСТВО\n\n ARCON\n СТМ\n ПАРТНЕРЫ\n ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА\n ИСТОРИЯ АРМЯНСКОГО ВИНА\n\nСВЯЗАТЬСЯ С НАМИ\n\nПо вопросам сотрудничества, производства СТМ,  \n покупки продукции и любым другим вопросам  \n просим вас обращаться в наши представительства\n\nАРКОН\n\nВ РОССИИ\n\nНаучный проезд 14Ас1, г. Москва, Россия   \nInfo@arcontrade.am\n\n+374 (11) 211 101ул. Саят-Нова 6/27, Кентрон 0010, г. Ереван, Республика Армения  \n Info@arcontrade.am\n\nВ АРМЕНИИ\n\nАРКОН [...] В АРМЕНИИ\n\nАРКОН\n\nХОТИТЕ ЗАДАТЬ ВОПРОС?\n\nВы можете написать нам, использую форму ниже. Мы обязательно ответим вам в течение 24 часов.",
+          "source_label": "tavily",
+          "score": 0.0755372,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "АРКОН ТРЕЙД основатель site:arcontrade.am OR site:hh.ru",
+      "focus": "поиск основателя и руководства компании",
+      "purpose": "Поиск подтвержденных данных по ключевым лицам для контакта",
+      "results": [
+        {
+          "url": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+          "title": "Армянский коньяк: новая эра знакомого напитка - Ведомости.Город",
+          "snippet": "Елена Титок\n\nОснователь компании ООО «Аркон трейд» Артем Бадрудинов\n\nОснователь компании ООО «Аркон трейд» Артем Бадрудинов /Евгений Разумный / Ведомости\n\nПока престижные европейские марки крепкого алкоголя покидают Россию, армянский коньяк переживает новый расцвет популярности. Об этом «Ведомости. Городу» рассказал Артем Бадрудинов, основатель компании ООО «Аркон трейд», которая занимается производством и импортом армянских коньяков и вин. [...] компании. Для компании «Аркон» ей стала коллекция",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://hh.ru/employer/4507176",
+          "title": "Работа в компании АРКОН ТРЕЙД в Москве — 1 вакансия на hh.ru",
+          "snippet": "АРКОН ТРЕЙД\n\n# ООО АРКОН ТРЕЙД\n\nКоротко о ARCON\n\nКомпания Аркон - современная, динамично развивающаяся компания, производящая широкий ассортиент алкогольной продукции: армянских коньяков, вин и плодовых водок.\n\nЗаключены договоры с федеральными ретейлерами, компания стремительно развивает дистрибьюцию своих коньяков в регионах России.\n\nМы производим превосходный армянский коньяк и уверенны в этом, а наш интенсивный рост это подтверждает. [...] Российский офис выполняет роль торгового представите",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://arcontrade.am/about-us",
+          "title": "О нас",
+          "snippet": "Компания Аркон — современная, динамично развивающаяся компания.  \n  \nПроизводство Аркон располагается на окраине столицы Армении, в городе Ереване, в самом сердце Араратской долины.  \n  \nУже более сотни лет в этом регионе делаются прекрасные армянские коньяки, известные во всем мире благодаря своей уникальной мягкости вкуса и богатству аромата.  \n  \nИстория компании началась с покупки выдержанных коньячных спиртов у нескольких крупных армянских производителей. [...] Производство Армянского конья",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://arcontrade.am",
+          "title": "ARCON - производство Армянского коньяка",
+          "snippet": "О КОМПАНИИ\n\nEn\n\nПРОИЗВОДСТВО\n\n ARCON\n СТМ\n ПАРТНЕРЫ\n ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА\n ИСТОРИЯ АРМЯНСКОГО ВИНА\n\nКОЛЛЕКЦИЯ КОНЬЯКОВ\n\nКоньяк для тех, кто выбирает лучшее.  \n Мы производим превосходный армянский коньяк и уверены в этом.\n\nАРДЖЕВАН\n\nАРАГЕТ\n\nБАДРОН\n\nАРМЯНСКИЙ КОНЬЯК\n\nТАРОС\n\nЗОЛОТО ЕРЕВАНА\n\nАРАМИА\n\n\n\nКОЛЛЕКЦИЯ ВИН\n\nНеповторимый армянский терруар в каждой бутылке наших вин.\n\n[](\n\n[](\n\nTATOOR\n\nSURO\n\nVERVERY\n\nNORI\n\n[](\n\n[](\n\nПЕРЕЙТИ В КАТАЛОГ\n\nИСТОРИЯ АРМЯНСКОГО КОНЬЯКА\n\nИСТОРИЯ АРМЯНСКОГО ВИНА",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://arcontrade.am/contacts",
+          "title": "Контакты",
+          "snippet": "О КОМПАНИИ\n\nПРОДУКЦИЯ\n\nКОНТАКТЫ\n\nRU\n\nEn\n\nПРОИЗВОДСТВО\n\n ARCON\n СТМ\n ПАРТНЕРЫ\n ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА\n ИСТОРИЯ АРМЯНСКОГО ВИНА\n\nСВЯЗАТЬСЯ С НАМИ\n\nПо вопросам сотрудничества, производства СТМ,  \n покупки продукции и любым другим вопросам  \n просим вас обращаться в наши представительства\n\nАРКОН\n\nВ РОССИИ\n\nНаучный проезд 14Ас1, г. Москва, Россия   \nInfo@arcontrade.am\n\n+374 (11) 211 101ул. Саят-Нова 6/27, Кентрон 0010, г. Ереван, Республика Армения  \n Info@arcontrade.am\n\nВ АРМЕНИИ\n\nАРКОН [...] В ",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 4316,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "АРКОН ТРЕЙД",
+        "domain": "arcontrade.am",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: АРКОН ТРЕЙД; открыта вакансия: Менеджер по развитию бизнеса в России (алкоголь; дистрибьюторы и локальные сети).",
+            "sourceUrl": "https://hh.ru/vacancy/137286232",
+            "confidence": 93
+          }
+        },
+        "currentDate": "2026-10-06",
+        "target": {
+          "owner": "Company leadership",
+          "primaryRole": "основатель",
+          "alternativeRoles": [
+            "CEO",
+            "Managing Director"
+          ]
+        },
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://arcontrade.am",
+            "kind": "page",
+            "text": "ARCON - производство Армянского коньяка ГЛАВНАЯ О КОМПАНИИ ПРОДУКЦИЯ КОНТАКТЫ RU En ПРОИЗВОДСТВО ARCON СТМ ПАРТНЕРЫ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА КОЛЛЕКЦИЯ КОНЬЯКОВ Коньяк для тех, кто выбирает лучшее. Мы производим превосходный армянский коньяк и уверены в этом. АРДЖЕВАН АРАГЕТ БАДРОН АРМЯНСКИЙ КОНЬЯК ТАРОС ЗОЛОТО ЕРЕВАНА АРАМИА АРАДЗОР КОЛЛЕКЦИЯ ВИН Неповторимый армянский терруар в каждой бутылке наших вин. TATOOR SURO VERVERY NORI ПЕРЕЙТИ В КАТАЛОГ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА ПРОИЗВОДСТВО ARCON НАШЕ ПРАВИЛО — БЫТЬ ЛУЧШИМИ НА КАЖДОМ ЭТАПЕ ПРОИЗВОДСТВА Лучшие коньячные спирты, лучший дизайн продукции, отточенный процесс поставки от производства до клиента ПРОИЗВОДСТВО ПРОДУКЦИИ ПОД СОБСТВЕННОЙ ТОРГОВОЙ МАРКОЙ Лучший способ снижения себестоимости и увеличения доходности на продукте. Вы получаете продукт по первой цене от производителя, очищенной от любых маркетинговых затрат. ПРОИЗВОДСТВО СТМ",
+            "links": [
+              {
+                "url": "https://arcontrade.am",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac",
+                "label": "ПРОДУКЦИЯ"
+              },
+              {
+                "url": "https://arcontrade.am/contacts",
+                "label": "КОНТАКТЫ"
+              },
+              {
+                "url": "https://arcontrade-en.am",
+                "label": "En"
+              },
+              {
+                "url": "https://arcontrade.am/production",
+                "label": "ПРОИЗВОДСТВО"
+              },
+              {
+                "url": "https://arcontrade.am/about-us",
+                "label": "ARCON"
+              },
+              {
+                "url": "https://arcontrade.am/own-trade-mark",
+                "label": "СТМ"
+              },
+              {
+                "url": "https://arcontrade.am/partners",
+                "label": "ПАРТНЕРЫ"
+              },
+              {
+                "url": "https://arcontrade.am/history",
+                "label": "ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА"
+              },
+              {
+                "url": "https://arcontrade.am/histori/vino",
+                "label": "ИСТОРИЯ АРМЯНСКОГО ВИНА"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/badron",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/taros",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/yerevan-gold",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/arjevan",
+                "label": "АРДЖЕВАН"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/araghet",
+                "label": "АРАГЕТ"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/armeian-cognacs",
+                "label": "АРМЯНСКИЙ КОНЬЯК"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/aramia",
+                "label": "АРАМИА"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/aradzor",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/ververy",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/nori",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/tatoor",
+                "label": "TATOOR"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/suro",
+                "label": "SURO"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:01:13.342Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://arcontrade.am/contacts",
+            "kind": "page",
+            "text": "Контакты ГЛАВНАЯ О КОМПАНИИ ПРОДУКЦИЯ КОНТАКТЫ RU En ПРОИЗВОДСТВО ARCON СТМ ПАРТНЕРЫ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА СВЯЗАТЬСЯ С НАМИ По вопросам сотрудничества, производства СТМ, покупки продукции и любым другим вопросам просим вас обращаться в наши представительства АРКОН В РОССИИ Научный проезд 14Ас1, г. Москва, Россия Info@arcontrade.am +374 (11) 211 101 ул. Саят-Нова 6/27, Кентрон 0010, г. Ереван, Республика Армения Info@arcontrade.am В АРМЕНИИ АРКОН ХОТИТЕ ЗАДАТЬ ВОПРОС? Вы можете написать нам, использую форму ниже. Мы обязательно ответим вам в течение 24 часов. [{\"lid\":\"1531306540094\",\"ls\":\"10\",\"loff\":\"\",\"li_type\":\"nm\",\"li_ph\":\"\\u0412\\u0430\\u0448\\u0435 \\u0438\\u043c\\u044f\",\"li_nm\":\"Name\"},{\"lid\":\"1531306243545\",\"ls\":\"20\",\"loff\":\"\",\"li_type\":\"em\",\"li_name\":\"email\",\"li_ph\":\"E-mail\",\"li_req\":\"y\",\"li_nm\":\"email\"},{\"lid\":\"1565215758397\",\"ls\":\"30\",\"loff\":\"\",\"li_type\":\"ta\",\"li_ph\":\"\\u0421\\u043e\\u043e\\u0431\\u0449\\u0435\\u043d\\u0438\\u0435\",\"li_req\":\"y\",\"li_rows\":\"2\",\"li_nm\":\"Textarea\"}]",
+            "links": [
+              {
+                "url": "https://arcontrade.am",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/contacts",
+                "label": "О КОМПАНИИ"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac",
+                "label": "ПРОДУКЦИЯ"
+              },
+              {
+                "url": "https://arcontrade-en.am",
+                "label": "En"
+              },
+              {
+                "url": "https://arcontrade.am/production",
+                "label": "ПРОИЗВОДСТВО"
+              },
+              {
+                "url": "https://arcontrade.am/about-us",
+                "label": "ARCON"
+              },
+              {
+                "url": "https://arcontrade.am/own-trade-mark",
+                "label": "СТМ"
+              },
+              {
+                "url": "https://arcontrade.am/partners",
+                "label": "ПАРТНЕРЫ"
+              },
+              {
+                "url": "https://arcontrade.am/history",
+                "label": "ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА"
+              },
+              {
+                "url": "https://arcontrade.am/histori/vino",
+                "label": "ИСТОРИЯ АРМЯНСКОГО ВИНА"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:01:16.465Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://www.linkedin.com/profile?viewProfile=&key=3299358&locale=en_US",
+            "kind": "search",
+            "text": "https://www.linkedin.com/profile?viewProfile=&key=...\nNo information is available for this page.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:22.712Z",
+            "id": "e6"
+          },
+          {
+            "url": "https://www.linkedin.com/in/artsellers",
+            "kind": "search",
+            "text": "Art Sellers - President/GM ◆ Sold to Fortune 500 ◆ Led $8 ...\nHeadline: President/GM ◆  Sold to Fortune 500 ◆ Led $8M P&L ◆ Organizational Strategy ◆ COO for 90,000+ Organization ◆ Tech Start-up Expertise ◆ Launched AI Supply Chain Product ◆ Visionary Leader ◆ Special Operations Veteran\nCurrent role: President General Manager Generated 8 Million In Revenue Led 40 Employees\nSeniority: Specialist\nLocation: Fayetteville, North Carolina, United States\nExperience: 30 years 10 months\nLinkedIn:  · 2,324 followers [...] College ◆ Bachelor of Science (BS), US Military Academy MORE ABOUT ME: Corporate Career ◆ I've built internal and external teams to the organization to increase B2B and B2G Opportunities ◆ Deep experience leading cultural transformations through turbulent times, maintaining revenue generation and increased bookings ◆ Attended Executive MBA Program on own time to further master skills and attributes ◆ My expertise spans organizational strategy, launching AI supply chain products, and executing [...] ## Education\n- Northwestern University - Kellogg School of Management, Master of Business Administration - MBA\n- U.S. Naval War College, Master's degree\n- United States Military Academy at West Point, Bachelor of Science (B.S.), Engineering/Industrial Management",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:22.712Z",
+            "id": "e7"
+          },
+          {
+            "url": "https://www.linkedin.com/posts/ardian_meetthearchitectsofardian-masteringchangeforlastingvalue-activity-7432118564028854273-zHRv",
+            "kind": "search",
+            "text": "Ardian\nAda Wen, Managing Director in the Primaries & Secondaries team at Ardian, brings deep experience across Asian markets,",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:22.712Z",
+            "id": "e8"
+          },
+          {
+            "url": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+            "kind": "search",
+            "text": "Армянский коньяк: новая эра знакомого напитка - Ведомости.Город\nЕлена Титок\n\nОснователь компании ООО «Аркон трейд» Артем Бадрудинов\n\nОснователь компании ООО «Аркон трейд» Артем Бадрудинов /Евгений Разумный / Ведомости\n\nПока престижные европейские марки крепкого алкоголя покидают Россию, армянский коньяк переживает новый расцвет популярности. Об этом «Ведомости. Городу» рассказал Артем Бадрудинов, основатель компании ООО «Аркон трейд», которая занимается производством и импортом армянских коньяков и вин. [...] компании. Для компании «Аркон» ей стала коллекция коньяков Taros по цене от 600 до 1500 руб. за бутылку. Хотя у нас есть и более премиальные линейки по другим ценам – например, 25-летний коньяк «Арджеван» за 6000 руб. за бутылку. [...] В регионах России ожидаются снег, заморозки и штормовой ветер](/gorod/ourcity/articles/popadut-pod-tsiklon)\n\n[Среда\n\n253 способа не построить человейник: как устроен язык нормального города\n\nК 90-летию Кристофера Александера – о том, как его книга учит замечать детали и что стоит проверить в своем районе](/gorod/ourcity/articles/253-sposoba)\n\n[Культурный код\n\nСканируя реальность: первая за Уралом арт-ярмарка собралась уже в третий раз",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:30.099Z",
+            "id": "e9"
+          },
+          {
+            "url": "https://hh.ru/employer/4507176",
+            "kind": "search",
+            "text": "Работа в компании АРКОН ТРЕЙД в Москве — 1 вакансия на hh.ru\nАРКОН ТРЕЙД\n\n# ООО АРКОН ТРЕЙД\n\nКоротко о ARCON\n\nКомпания Аркон - современная, динамично развивающаяся компания, производящая широкий ассортиент алкогольной продукции: армянских коньяков, вин и плодовых водок.\n\nЗаключены договоры с федеральными ретейлерами, компания стремительно развивает дистрибьюцию своих коньяков в регионах России.\n\nМы производим превосходный армянский коньяк и уверенны в этом, а наш интенсивный рост это подтверждает. [...] Российский офис выполняет роль торгового представительства компании, обеспечивая продажи и маркетинговую поддержку для клиентов.\n\nЧто значит работать в ARCON?\n\nАдрес офиса: БЦ Smart Park, Москва, Научный поезд д.14 к.1\n\nНАТУРА ПРО\nАурус Аква\nБарилла Рус\nПОЛАР СИФУД РАША\nЮЛИУС МАЙНЛ РУССЛАНД\nТоргово-производственная компания Стимул\nОстанкинский завод бараночных изделий\nСаф-Нева\nТорговый Дом Кухня без границ\nTop.Mail.Ru\nTop.Mail.Ru",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:30.099Z",
+            "id": "e10"
+          },
+          {
+            "url": "https://arcontrade.am/contacts",
+            "kind": "search",
+            "text": "Контакты\nО КОМПАНИИ\n\nПРОДУКЦИЯ\n\nКОНТАКТЫ\n\nRU\n\nEn\n\nПРОИЗВОДСТВО\n\n ARCON\n СТМ\n ПАРТНЕРЫ\n ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА\n ИСТОРИЯ АРМЯНСКОГО ВИНА\n\nСВЯЗАТЬСЯ С НАМИ\n\nПо вопросам сотрудничества, производства СТМ,  \n покупки продукции и любым другим вопросам  \n просим вас обращаться в наши представительства\n\nАРКОН\n\nВ РОССИИ\n\nНаучный проезд 14Ас1, г. Москва, Россия   \nInfo@arcontrade.am\n\n+374 (11) 211 101ул. Саят-Нова 6/27, Кентрон 0010, г. Ереван, Республика Армения  \n Info@arcontrade.am\n\nВ АРМЕНИИ\n\nАРКОН [...] В АРМЕНИИ\n\nАРКОН\n\nХОТИТЕ ЗАДАТЬ ВОПРОС?\n\nВы можете написать нам, использую форму ниже. Мы обязательно ответим вам в течение 24 часов.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:30.100Z",
+            "id": "e11"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://arcontrade.am/contacts",
+            "focus": "контакты",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД основатель CEO site:arcontrade.am",
+            "focus": "руководство на сайте компании",
+            "resultCount": 1
+          },
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД основатель CEO LinkedIn",
+            "focus": "профили руководства в LinkedIn",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД CEO CEO site:arcontrade.am",
+            "focus": "руководство на сайте компании",
+            "resultCount": 1
+          },
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД основатель site:arcontrade.am OR site:hh.ru",
+            "focus": "поиск основателя и руководства компании",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 2,
+          "actionsRemaining": 5,
+          "searchRemaining": 4
+        }
+      },
+      "output": {
+        "companySummary": "ООО «АРКОН ТРЕЙД» является производителем армянского коньяка и вина, активно развивающим дистрибуцию своей продукции, включая российский рынок. Компания подтверждает свое лидерство и развитие, что отражено в открытой вакансии на позицию менеджера по развитию бизнеса в России.",
+        "missing": [
+          "Прямые контакты руководства компании (основателя, CEO) с именами и email"
+        ],
+        "people": [
+          {
+            "name": "Артем Бадрудинов",
+            "role": "Основатель компании ООО «Аркон трейд»",
+            "relevance": 100,
+            "reason": "Основатель и ключевое лицо компании, владеет бизнес-процессами и ответственен за стратегию компании.",
+            "citations": [
+              {
+                "sourceId": "e9",
+                "quote": "Основатель компании ООО «Аркон трейд» Артем Бадрудинов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "arcontrade.am",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ARCON - производство Армянского коньяка"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Артем Бадрудинов email arcontrade.am",
+            "focus": "Найти личный email основателя компании Артем Бадрудинов на домене arcontrade.am",
+            "purpose": "Получить подтвержденный контакт основателя фирмы для деловой коммуникации"
+          },
+          {
+            "type": "search",
+            "value": "Артем Бадрудинов LinkedIn",
+            "focus": "Профиль основателя компании в LinkedIn",
+            "purpose": "Поиск дополнительных подтвержденных данных и контактов руководителя компании"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтвержденных личных контактов руководства; необходим следующий шаг для поиска email или профиля в LinkedIn."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 3,
+      "decision": {
+        "companySummary": "ООО «АРКОН ТРЕЙД» является производителем армянского коньяка и вина, активно развивающим дистрибуцию своей продукции, включая российский рынок. Компания подтверждает свое лидерство и развитие, что отражено в открытой вакансии на позицию менеджера по развитию бизнеса в России.",
+        "missing": [
+          "Прямые контакты руководства компании (основателя, CEO) с именами и email"
+        ],
+        "people": [
+          {
+            "name": "Артем Бадрудинов",
+            "role": "Основатель компании ООО «Аркон трейд»",
+            "relevance": 100,
+            "reason": "Основатель и ключевое лицо компании, владеет бизнес-процессами и ответственен за стратегию компании.",
+            "citations": [
+              {
+                "sourceId": "e9",
+                "quote": "Основатель компании ООО «Аркон трейд» Артем Бадрудинов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "arcontrade.am",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "ARCON - производство Армянского коньяка"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Артем Бадрудинов email arcontrade.am",
+            "focus": "Найти личный email основателя компании Артем Бадрудинов на домене arcontrade.am",
+            "purpose": "Получить подтвержденный контакт основателя фирмы для деловой коммуникации"
+          },
+          {
+            "type": "search",
+            "value": "Артем Бадрудинов LinkedIn",
+            "focus": "Профиль основателя компании в LinkedIn",
+            "purpose": "Поиск дополнительных подтвержденных данных и контактов руководителя компании"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтвержденных личных контактов руководства; необходим следующий шаг для поиска email или профиля в LinkedIn."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [
+        {
+          "full_name": "Артем Бадрудинов",
+          "role_title": "Основатель компании ООО «Аркон трейд»",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 70,
+          "evidence": [
+            "Основатель компании ООО «Аркон трейд» Артем Бадрудинов"
+          ],
+          "metadata": {
+            "source_url": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+            "source_urls": [
+              "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka"
+            ],
+            "semantic_role_relevance": 100,
+            "semantic_role_reason": "Основатель и ключевое лицо компании, владеет бизнес-процессами и ответственен за стратегию компании.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "arcontrade.am"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "arcontrade.am"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%90%D1%80%D1%82%D0%B5%D0%BC%20%D0%91%D0%B0%D0%B4%D1%80%D1%83%D0%B4%D0%B8%D0%BD%D0%BE%D0%B2%20email%20arcontrade.am&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 466
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%90%D1%80%D1%82%D0%B5%D0%BC%20%D0%91%D0%B0%D0%B4%D1%80%D1%83%D0%B4%D0%B8%D0%BD%D0%BE%D0%B2%20email%20arcontrade.am&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 447
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%90%D1%80%D1%82%D0%B5%D0%BC%20%D0%91%D0%B0%D0%B4%D1%80%D1%83%D0%B4%D0%B8%D0%BD%D0%BE%D0%B2%20LinkedIn&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 245
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%90%D1%80%D1%82%D0%B5%D0%BC%20%D0%91%D0%B0%D0%B4%D1%80%D1%83%D0%B4%D0%B8%D0%BD%D0%BE%D0%B2%20LinkedIn&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 167
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1730
+    },
+    {
+      "stage": "search",
+      "query": "Артем Бадрудинов email arcontrade.am",
+      "results": [
+        {
+          "title": "Коворкинг \"Атмосфера\"",
+          "url": "https://www.facebook.com/coworking.atmosphere/posts/%D0%B2-%D0%BF%D1%8F%D1%82%D0%BD%D0%B8%D1%87%D0%BD%D0%BE%D0%BC-%D0%B2%D1%8B%D0%BF%D1%83%D1%81%D0%BA%D0%B5-%D0%B0%D1%82%D0%BC%D0%BE%D1%81%D1%84%D0%B5%D1%80%D0%B0%D0%BB%D1%8E%D0%B4%D0%B8-%D0%BF%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D0%BB%D0%B8-%D1%81-%D0%BD%D0%B0%D1%88%D0%B8%D0%BC-%D1%80%D0%B5%D0%B7%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D0%BE%D0%BC-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B9-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82/716609078697379",
+          "snippet": "я зовут Артем Бадрудинов и я занимаюсь производством коньяка в Армении, arcontrade.am #атмосфераковоркинг",
+          "source_label": "tavily",
+          "score": 0.5533369,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Армянский коньяк: новая эра знакомого напитка - Ведомости.Город",
+          "url": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+          "snippet": "Елена Титок\n\nОснователь компании ООО «Аркон трейд» Артем Бадрудинов\n\nОснователь компании ООО «Аркон трейд» Артем Бадрудинов /Евгений Разумный / Ведомости\n\nПока престижные европейские марки крепкого алкоголя покидают Россию, армянский коньяк переживает новый расцвет популярности. Об этом «Ведомости. Городу» рассказал Артем Бадрудинов, основатель компании ООО «Аркон трейд», которая занимается производством и импортом армянских коньяков и вин. [...] – Пока наша основная задача – достроить завод. Он находится в уникальном месте, на склонах горы Арагац в южной части Армении. На нашей территории находится 27 га виноградника, урожай с которого мы планируем использовать для приготовления не только коньяков, но и премиальных вин. Во время строительства завода были обнаружены древние артефакты, в том числе ценные гробницы Медного века, поэтому сейчас здесь идут археологические раскопки. Мы планируем, что после открытия нашего производства это [...] Самое популярное\n\n[Культурный код\n\nВан Гог, Курентзис и волжское кабуки: куда пойти 5–9 октября\n\nТолько интересные события в Москве](/gorod/culturalcity/articles/poiti-oktyabrya)\n\n[Среда\n\nАрхитектурный дайджест: дом из кино, канал через ОАЭ и музей из мусора\n\nЧто произошло в мире архитектуры за прошедшую неделю](/gorod/ourcity/articles/kanal-cherez-oae)\n\n[Среда\n\nПогода в начале недели: Москва и Петербург попадут под циклон",
+          "source_label": "tavily",
+          "score": 0.48396602,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Коньяки Арджеван - верность традициям",
+          "url": "https://bravotrade.ru/news/meropriyatiya/konyaki-ardzhevan-vernost-traditsiyam",
+          "snippet": "Вечер провёл владелец компании «Аркон Трейд» Артём Бадрудинов, рассказавший об истории марки. Производство располагается в городе Ереван, в самом сердце",
+          "source_label": "tavily",
+          "score": 0.3802761,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Бадрудинов Артём Владимирович ИНН 753611118027",
+          "url": "https://www.rusprofile.ru/person/badrudinov-av-753611118027",
+          "snippet": "Бадрудинов Артём Владимирович (ИНН 753611118027) является или являлся руководителем 7 организаций, учредителем 6 организаций, а также индивидуальным",
+          "source_label": "tavily",
+          "score": 0.33346033,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Новый армянский коньяк, который нас удивил",
+          "url": "https://www.youtube.com/watch?v=d2o8H3rSrB4",
+          "snippet": "Подробности на https://arcontrade.am и https://www.instagram.com/taros_official_/ . Место съемки: http://www.curebar.ru .",
+          "source_label": "tavily",
+          "score": 0.2068784,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Артем Бадрудинов email arcontrade.am",
+      "focus": "Найти личный email основателя компании Артем Бадрудинов на домене arcontrade.am",
+      "purpose": "Получить подтвержденный контакт основателя фирмы для деловой коммуникации",
+      "results": [
+        {
+          "url": "https://www.facebook.com/coworking.atmosphere/posts/%D0%B2-%D0%BF%D1%8F%D1%82%D0%BD%D0%B8%D1%87%D0%BD%D0%BE%D0%BC-%D0%B2%D1%8B%D0%BF%D1%83%D1%81%D0%BA%D0%B5-%D0%B0%D1%82%D0%BC%D0%BE%D1%81%D1%84%D0%B5%D1%80%D0%B0%D0%BB%D1%8E%D0%B4%D0%B8-%D0%BF%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D0%BB%D0%B8-%D1%81-%D0%BD%D0%B0%D1%88%D0%B8%D0%BC-%D1%80%D0%B5%D0%B7%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D0%BE%D0%BC-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B9-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82/716609078697379",
+          "title": "Коворкинг \"Атмосфера\"",
+          "snippet": "я зовут Артем Бадрудинов и я занимаюсь производством коньяка в Армении, arcontrade.am #атмосфераковоркинг",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+          "title": "Армянский коньяк: новая эра знакомого напитка - Ведомости.Город",
+          "snippet": "Елена Титок\n\nОснователь компании ООО «Аркон трейд» Артем Бадрудинов\n\nОснователь компании ООО «Аркон трейд» Артем Бадрудинов /Евгений Разумный / Ведомости\n\nПока престижные европейские марки крепкого алкоголя покидают Россию, армянский коньяк переживает новый расцвет популярности. Об этом «Ведомости. Городу» рассказал Артем Бадрудинов, основатель компании ООО «Аркон трейд», которая занимается производством и импортом армянских коньяков и вин. [...] – Пока наша основная задача – достроить завод. Он",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://bravotrade.ru/news/meropriyatiya/konyaki-ardzhevan-vernost-traditsiyam",
+          "title": "Коньяки Арджеван - верность традициям",
+          "snippet": "Вечер провёл владелец компании «Аркон Трейд» Артём Бадрудинов, рассказавший об истории марки. Производство располагается в городе Ереван, в самом сердце",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.rusprofile.ru/person/badrudinov-av-753611118027",
+          "title": "Бадрудинов Артём Владимирович ИНН 753611118027",
+          "snippet": "Бадрудинов Артём Владимирович (ИНН 753611118027) является или являлся руководителем 7 организаций, учредителем 6 организаций, а также индивидуальным",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=d2o8H3rSrB4",
+          "title": "Новый армянский коньяк, который нас удивил",
+          "snippet": "Подробности на https://arcontrade.am и https://www.instagram.com/taros_official_/ . Место съемки: http://www.curebar.ru .",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1346
+    },
+    {
+      "stage": "search",
+      "query": "Артем Бадрудинов LinkedIn",
+      "results": [
+        {
+          "title": "Artem Borodin - Founder @ Teamline.ai | Built Standuply",
+          "url": "https://www.linkedin.com/in/artemborodin/en",
+          "snippet": "Headline: Founder @ Teamline.ai | Built Standuply — Bootstrapped to $MM+ Revenue, #1 Slack & Teams App for PMs | Agile Coach & PM Instructor | Product Advisor | CSM, CSP, PMP, KMP, SA, CLP\nCurrent role: Transformation Lead Consultant\nSeniority: Manager, Consulting\nLocation: Walnut, California, United States\nExperience: 15 years 7 months\nLinkedIn:  · 7,175 followers [...] ## Awards\n- PMP, PMI (2015)\n- Certified Scrum Master, Scrum Aliance (2017)\n- Certified Scrum Professional, Scrum Alliance (2017)\n\nLanguages: Russian (Native or bilingual proficiency), English (Professional working proficiency) [...] ## Experience\n- Transformation lead consultant at NL International (Apr 2026 to present)\n- Founder, CEO at Aigentura (Jan 2026 to present)\n- Founder, CEO at Teamline (Apr 2025 to present)\n- Advisor at Fabula AI (Sep 2024 to present)\n- Advisor at sibedge (May 2024 to present)\n- Board Member at Rubius (Sep 2023 to Mar 2024)",
+          "source_label": "tavily",
+          "score": 0.7460839,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Artem Fakhretdinov - Yale IDE; UChicago '24",
+          "url": "https://www.linkedin.com/in/artem-fakhretdinov-6a2bb7175",
+          "snippet": "# Artem Fakhretdinov\n\nHeadline: Yale IDE; UChicago '24\nCurrent role: Analyst, Commodities Research\nSeniority: Specialist, Research\nLocation: Chicago, Illinois, United States\nExperience: 5 years 2 months\nLinkedIn:  · 1,041 followers [...] - Liked By: Hi everyone, Just over a week ago, we hosted the inaugural TEE360 Live London, providing a space for senior energy leaders and the next...\n- Liked By: Excited to share that I've graduated from the Higher School of Economics with an MSc in Data Science! 🎓 GPA: 9.0/10 📊 Top 7% of my cohort 🏅…\n- Liked By: Congratulations to UChicago Prof. Yu Deng, who has received the Fields Medal—the highest honor in mathematics. His work addresses a... [...] - Liked By: I am thrilled to announce that I joined Stanford University as an Assistant Professor this summer! 🎉 As I start this new chapter, I am...\n- Liked By: We are hiring in New York for a senior US rates strategist! See the link for more details on joining our top-ranked Global Research…\n- Liked By: Diplomatic Mission at the Embassy of Azerbaijan in Austria✨ Maryam Mammadli, a LLB student: «I am grateful to have successfully completed...",
+          "source_label": "tavily",
+          "score": 0.43395805,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Artem Barsukov - NVIDIA",
+          "url": "https://www.linkedin.com/in/artem-barsukov-a4725337",
+          "snippet": "# Artem Barsukov\n\nHeadline: Principal at Eclipse Ventures\nCurrent role: Senior Director NVentures\nLocation: San Francisco, California, United States\nExperience: 12 years\nLinkedIn:  · 4,768 followers [...] ## Experience\n- Senior Director | NVentures at NVIDIA (Mar 2026 to present)\n- Investment Director | NVentures at NVIDIA (Dec 2023 to Feb 2026)\n- Principal at Eclipse Ventures (Aug 2019 to Dec 2023)\n- Investment Team at Goodwater Capital (Jan 2019 to Jan 2019)\n- Strategic Finance & Product Strategy at Airbnb (Jan 2018 to Jan 2018)\n- Business Operations at Coursera (Jan 2017 to Jan 2017) [...] ## Education\n- Stanford University, MSc, Sustainable Design and Engineering (E-IPER)\n- Stanford University Graduate School of Business, MBA\n- The London School of Economics and Political Science (LSE), MSc, Finance and Private Equity\n- University of London, BSs, Economics and Finance\n- Higher School of Economics, BSc, Economics",
+          "source_label": "tavily",
+          "score": 0.32222784,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Artem Dolgikh - SOC, SIEM & Incident Response",
+          "url": "https://uz.linkedin.com/in/dolgikh",
+          "snippet": "# Artem Dolgikh\n\nHeadline: Information security specialist\nCurrent role: Manager\nSeniority: Manager, General Management\nLocation: Tashkent, Uzbekistan\nExperience: 14 years 3 months\nLinkedIn:  · 2,711 followers\nDescription: Security engineering leader with hands-on experience building and operating information… [...] ## Skills\nfortigate, financial management, information security consulting, repair, leadership, conducting, consulting, vulnerability, infrastructure, retained executive search, fraud, material management, network infrastructure security, penetration testing, talent management [...] ## Experience\n- Manager at KPMG (Oct 2025 to present)\n- Information Security Consultant at Freelance (Self employed) (Oct 2022 to present)\n- Chief Information Security Officer at HAYOT BIRJA (Nov 2024 to Sep 2025)\n- Chief Infirmation Security Specialist at Hayot Bank (Sep 2023 to Nov 2024)\n- Lead Specialist Information Security at En+ Digital LLC, Irkutsk, Russia (Aug 2022 to Oct 2022)\n- Information Security Manager at T2 Mobile LLC (Jun 2017 to Jun 2022)",
+          "source_label": "tavily",
+          "score": 0.17452312,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Artem D. - Business Operations | Strategy & Operations",
+          "url": "https://www.linkedin.com/in/adergunov",
+          "snippet": "# Artem D\n\nHeadline: Young professional. Your potential.\nCurrent role: Technical Program Manager\nSeniority: Manager, Project Management\nLocation: New York, New York, United States\nExperience: 11 years 6 months\nLinkedIn:  · 611 followers\nDescription: 🟢 Business Operations | Program Strategy | Process Improvement | Operational Analytics |… [...] - Iakov Belov: “I worked with Artem on different teams within the same department. I want to highlight his excellent organizational skills. Artem was a huge help to me in 2016 when I joined the company. I feel lucky to have had him as my mentor. He showed me the ropes and made my transition smooth. We also worked... [...] ## Recommendations (3)\n- Ekaterina Cezza: “It was a pleasure working with Artem as part of the same team. Artem consistently paid close attention to detail in his work. I recall that whenever we faced ambiguous or contentious situations in a project and needed input from someone with strong domain expertise, we would turn to him. As a...",
+          "source_label": "tavily",
+          "score": 0.15514275,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Артем Бадрудинов LinkedIn",
+      "focus": "Профиль основателя компании в LinkedIn",
+      "purpose": "Поиск дополнительных подтвержденных данных и контактов руководителя компании",
+      "results": [
+        {
+          "url": "https://www.linkedin.com/in/artemborodin/en",
+          "title": "Artem Borodin - Founder @ Teamline.ai | Built Standuply",
+          "snippet": "Headline: Founder @ Teamline.ai | Built Standuply — Bootstrapped to $MM+ Revenue, #1 Slack & Teams App for PMs | Agile Coach & PM Instructor | Product Advisor | CSM, CSP, PMP, KMP, SA, CLP\nCurrent role: Transformation Lead Consultant\nSeniority: Manager, Consulting\nLocation: Walnut, California, United States\nExperience: 15 years 7 months\nLinkedIn:  · 7,175 followers [...] ## Awards\n- PMP, PMI (2015)\n- Certified Scrum Master, Scrum Aliance (2017)\n- Certified Scrum Professional, Scrum Alliance (201",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/in/artem-fakhretdinov-6a2bb7175",
+          "title": "Artem Fakhretdinov - Yale IDE; UChicago '24",
+          "snippet": "# Artem Fakhretdinov\n\nHeadline: Yale IDE; UChicago '24\nCurrent role: Analyst, Commodities Research\nSeniority: Specialist, Research\nLocation: Chicago, Illinois, United States\nExperience: 5 years 2 months\nLinkedIn:  · 1,041 followers [...] - Liked By: Hi everyone, Just over a week ago, we hosted the inaugural TEE360 Live London, providing a space for senior energy leaders and the next...\n- Liked By: Excited to share that I've graduated from the Higher School of Economics with an MSc in Data Scienc",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/in/artem-barsukov-a4725337",
+          "title": "Artem Barsukov - NVIDIA",
+          "snippet": "# Artem Barsukov\n\nHeadline: Principal at Eclipse Ventures\nCurrent role: Senior Director NVentures\nLocation: San Francisco, California, United States\nExperience: 12 years\nLinkedIn:  · 4,768 followers [...] ## Experience\n- Senior Director | NVentures at NVIDIA (Mar 2026 to present)\n- Investment Director | NVentures at NVIDIA (Dec 2023 to Feb 2026)\n- Principal at Eclipse Ventures (Aug 2019 to Dec 2023)\n- Investment Team at Goodwater Capital (Jan 2019 to Jan 2019)\n- Strategic Finance & Product Strat",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://uz.linkedin.com/in/dolgikh",
+          "title": "Artem Dolgikh - SOC, SIEM & Incident Response",
+          "snippet": "# Artem Dolgikh\n\nHeadline: Information security specialist\nCurrent role: Manager\nSeniority: Manager, General Management\nLocation: Tashkent, Uzbekistan\nExperience: 14 years 3 months\nLinkedIn:  · 2,711 followers\nDescription: Security engineering leader with hands-on experience building and operating information… [...] ## Skills\nfortigate, financial management, information security consulting, repair, leadership, conducting, consulting, vulnerability, infrastructure, retained executive search, frau",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/in/adergunov",
+          "title": "Artem D. - Business Operations | Strategy & Operations",
+          "snippet": "# Artem D\n\nHeadline: Young professional. Your potential.\nCurrent role: Technical Program Manager\nSeniority: Manager, Project Management\nLocation: New York, New York, United States\nExperience: 11 years 6 months\nLinkedIn:  · 611 followers\nDescription: 🟢 Business Operations | Program Strategy | Process Improvement | Operational Analytics |… [...] - Iakov Belov: “I worked with Artem on different teams within the same department. I want to highlight his excellent organizational skills. Artem was a h",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3237,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "АРКОН ТРЕЙД",
+        "domain": "arcontrade.am",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: АРКОН ТРЕЙД; открыта вакансия: Менеджер по развитию бизнеса в России (алкоголь; дистрибьюторы и локальные сети).",
+            "sourceUrl": "https://hh.ru/vacancy/137286232",
+            "confidence": 93
+          }
+        },
+        "currentDate": "2026-10-06",
+        "target": {
+          "owner": "Company leadership",
+          "primaryRole": "основатель",
+          "alternativeRoles": [
+            "CEO",
+            "Managing Director"
+          ]
+        },
+        "knownPeople": [
+          {
+            "name": "Артем Бадрудинов",
+            "role": "Основатель компании ООО «Аркон трейд»",
+            "email": null,
+            "sources": [
+              "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka"
+            ]
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://arcontrade.am",
+            "kind": "page",
+            "text": "ARCON - производство Армянского коньяка ГЛАВНАЯ О КОМПАНИИ ПРОДУКЦИЯ КОНТАКТЫ RU En ПРОИЗВОДСТВО ARCON СТМ ПАРТНЕРЫ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА КОЛЛЕКЦИЯ КОНЬЯКОВ Коньяк для тех, кто выбирает лучшее. Мы производим превосходный армянский коньяк и уверены в этом. АРДЖЕВАН АРАГЕТ БАДРОН АРМЯНСКИЙ КОНЬЯК ТАРОС ЗОЛОТО ЕРЕВАНА АРАМИА АРАДЗОР КОЛЛЕКЦИЯ ВИН Неповторимый армянский терруар в каждой бутылке наших вин. TATOOR SURO VERVERY NORI ПЕРЕЙТИ В КАТАЛОГ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА ПРОИЗВОДСТВО ARCON НАШЕ ПРАВИЛО — БЫТЬ ЛУЧШИМИ НА КАЖДОМ ЭТАПЕ ПРОИЗВОДСТВА Лучшие коньячные спирты, лучший дизайн продукции, отточенный процесс поставки от производства до клиента ПРОИЗВОДСТВО ПРОДУКЦИИ ПОД СОБСТВЕННОЙ ТОРГОВОЙ МАРКОЙ Лучший способ снижения себестоимости и увеличения доходности на продукте. Вы получаете продукт по первой цене от производителя, очищенной от любых маркетинговых затрат. ПРОИЗВОДСТВО СТМ",
+            "links": [
+              {
+                "url": "https://arcontrade.am",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac",
+                "label": "ПРОДУКЦИЯ"
+              },
+              {
+                "url": "https://arcontrade.am/contacts",
+                "label": "КОНТАКТЫ"
+              },
+              {
+                "url": "https://arcontrade-en.am",
+                "label": "En"
+              },
+              {
+                "url": "https://arcontrade.am/production",
+                "label": "ПРОИЗВОДСТВО"
+              },
+              {
+                "url": "https://arcontrade.am/about-us",
+                "label": "ARCON"
+              },
+              {
+                "url": "https://arcontrade.am/own-trade-mark",
+                "label": "СТМ"
+              },
+              {
+                "url": "https://arcontrade.am/partners",
+                "label": "ПАРТНЕРЫ"
+              },
+              {
+                "url": "https://arcontrade.am/history",
+                "label": "ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА"
+              },
+              {
+                "url": "https://arcontrade.am/histori/vino",
+                "label": "ИСТОРИЯ АРМЯНСКОГО ВИНА"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/badron",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/taros",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/yerevan-gold",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/arjevan",
+                "label": "АРДЖЕВАН"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac/araghet",
+                "label": "АРАГЕТ"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/armeian-cognacs",
+                "label": "АРМЯНСКИЙ КОНЬЯК"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/aramia",
+                "label": "АРАМИА"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/aradzor",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/ververy",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/nori",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/catalog/tatoor",
+                "label": "TATOOR"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/suro",
+                "label": "SURO"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:01:13.342Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://arcontrade.am/contacts",
+            "kind": "page",
+            "text": "Контакты ГЛАВНАЯ О КОМПАНИИ ПРОДУКЦИЯ КОНТАКТЫ RU En ПРОИЗВОДСТВО ARCON СТМ ПАРТНЕРЫ ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА ИСТОРИЯ АРМЯНСКОГО ВИНА СВЯЗАТЬСЯ С НАМИ По вопросам сотрудничества, производства СТМ, покупки продукции и любым другим вопросам просим вас обращаться в наши представительства АРКОН В РОССИИ Научный проезд 14Ас1, г. Москва, Россия Info@arcontrade.am +374 (11) 211 101 ул. Саят-Нова 6/27, Кентрон 0010, г. Ереван, Республика Армения Info@arcontrade.am В АРМЕНИИ АРКОН ХОТИТЕ ЗАДАТЬ ВОПРОС? Вы можете написать нам, использую форму ниже. Мы обязательно ответим вам в течение 24 часов. [{\"lid\":\"1531306540094\",\"ls\":\"10\",\"loff\":\"\",\"li_type\":\"nm\",\"li_ph\":\"\\u0412\\u0430\\u0448\\u0435 \\u0438\\u043c\\u044f\",\"li_nm\":\"Name\"},{\"lid\":\"1531306243545\",\"ls\":\"20\",\"loff\":\"\",\"li_type\":\"em\",\"li_name\":\"email\",\"li_ph\":\"E-mail\",\"li_req\":\"y\",\"li_nm\":\"email\"},{\"lid\":\"1565215758397\",\"ls\":\"30\",\"loff\":\"\",\"li_type\":\"ta\",\"li_ph\":\"\\u0421\\u043e\\u043e\\u0431\\u0449\\u0435\\u043d\\u0438\\u0435\",\"li_req\":\"y\",\"li_rows\":\"2\",\"li_nm\":\"Textarea\"}]",
+            "links": [
+              {
+                "url": "https://arcontrade.am",
+                "label": ""
+              },
+              {
+                "url": "https://arcontrade.am/contacts",
+                "label": "О КОМПАНИИ"
+              },
+              {
+                "url": "https://arcontrade.am/catalog/cognac",
+                "label": "ПРОДУКЦИЯ"
+              },
+              {
+                "url": "https://arcontrade-en.am",
+                "label": "En"
+              },
+              {
+                "url": "https://arcontrade.am/production",
+                "label": "ПРОИЗВОДСТВО"
+              },
+              {
+                "url": "https://arcontrade.am/about-us",
+                "label": "ARCON"
+              },
+              {
+                "url": "https://arcontrade.am/own-trade-mark",
+                "label": "СТМ"
+              },
+              {
+                "url": "https://arcontrade.am/partners",
+                "label": "ПАРТНЕРЫ"
+              },
+              {
+                "url": "https://arcontrade.am/history",
+                "label": "ИСТОРИЯ АРМЯНСКОГО КОНЬЯКА"
+              },
+              {
+                "url": "https://arcontrade.am/histori/vino",
+                "label": "ИСТОРИЯ АРМЯНСКОГО ВИНА"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:01:16.465Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=d2o8H3rSrB4",
+            "kind": "search",
+            "text": "Новый армянский коньяк, который нас удивил\nПодробности на https://arcontrade.am и https://www.instagram.com/taros_official_/ . Место съемки: http://www.curebar.ru .",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:37.055Z",
+            "id": "e15"
+          },
+          {
+            "url": "https://www.linkedin.com/in/artemborodin/en",
+            "kind": "search",
+            "text": "Artem Borodin - Founder @ Teamline.ai | Built Standuply\nHeadline: Founder @ Teamline.ai | Built Standuply — Bootstrapped to $MM+ Revenue, #1 Slack & Teams App for PMs | Agile Coach & PM Instructor | Product Advisor | CSM, CSP, PMP, KMP, SA, CLP\nCurrent role: Transformation Lead Consultant\nSeniority: Manager, Consulting\nLocation: Walnut, California, United States\nExperience: 15 years 7 months\nLinkedIn:  · 7,175 followers [...] ## Awards\n- PMP, PMI (2015)\n- Certified Scrum Master, Scrum Aliance (2017)\n- Certified Scrum Professional, Scrum Alliance (2017)\n\nLanguages: Russian (Native or bilingual proficiency), English (Professional working proficiency) [...] ## Experience\n- Transformation lead consultant at NL International (Apr 2026 to present)\n- Founder, CEO at Aigentura (Jan 2026 to present)\n- Founder, CEO at Teamline (Apr 2025 to present)\n- Advisor at Fabula AI (Sep 2024 to present)\n- Advisor at sibedge (May 2024 to present)\n- Board Member at Rubius (Sep 2023 to Mar 2024)",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:37.220Z",
+            "id": "e16"
+          },
+          {
+            "url": "https://www.linkedin.com/in/artem-fakhretdinov-6a2bb7175",
+            "kind": "search",
+            "text": "Artem Fakhretdinov - Yale IDE; UChicago '24\n# Artem Fakhretdinov\n\nHeadline: Yale IDE; UChicago '24\nCurrent role: Analyst, Commodities Research\nSeniority: Specialist, Research\nLocation: Chicago, Illinois, United States\nExperience: 5 years 2 months\nLinkedIn:  · 1,041 followers [...] - Liked By: Hi everyone, Just over a week ago, we hosted the inaugural TEE360 Live London, providing a space for senior energy leaders and the next...\n- Liked By: Excited to share that I've graduated from the Higher School of Economics with an MSc in Data Science! 🎓 GPA: 9.0/10 📊 Top 7% of my cohort 🏅…\n- Liked By: Congratulations to UChicago Prof. Yu Deng, who has received the Fields Medal—the highest honor in mathematics. His work addresses a... [...] - Liked By: I am thrilled to announce that I joined Stanford University as an Assistant Professor this summer! 🎉 As I start this new chapter, I am...\n- Liked By: We are hiring in New York for a senior US rates strategist! See the link for more details on joining our top-ranked Global Research…\n- Liked By: Diplomatic Mission at the Embassy of Azerbaijan in Austria✨ Maryam Mammadli, a LLB student: «I am grateful to have successfully completed...",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:37.220Z",
+            "id": "e17"
+          },
+          {
+            "url": "https://www.linkedin.com/in/artem-barsukov-a4725337",
+            "kind": "search",
+            "text": "Artem Barsukov - NVIDIA\n# Artem Barsukov\n\nHeadline: Principal at Eclipse Ventures\nCurrent role: Senior Director NVentures\nLocation: San Francisco, California, United States\nExperience: 12 years\nLinkedIn:  · 4,768 followers [...] ## Experience\n- Senior Director | NVentures at NVIDIA (Mar 2026 to present)\n- Investment Director | NVentures at NVIDIA (Dec 2023 to Feb 2026)\n- Principal at Eclipse Ventures (Aug 2019 to Dec 2023)\n- Investment Team at Goodwater Capital (Jan 2019 to Jan 2019)\n- Strategic Finance & Product Strategy at Airbnb (Jan 2018 to Jan 2018)\n- Business Operations at Coursera (Jan 2017 to Jan 2017) [...] ## Education\n- Stanford University, MSc, Sustainable Design and Engineering (E-IPER)\n- Stanford University Graduate School of Business, MBA\n- The London School of Economics and Political Science (LSE), MSc, Finance and Private Equity\n- University of London, BSs, Economics and Finance\n- Higher School of Economics, BSc, Economics",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:37.220Z",
+            "id": "e18"
+          },
+          {
+            "url": "https://uz.linkedin.com/in/dolgikh",
+            "kind": "search",
+            "text": "Artem Dolgikh - SOC, SIEM & Incident Response\n# Artem Dolgikh\n\nHeadline: Information security specialist\nCurrent role: Manager\nSeniority: Manager, General Management\nLocation: Tashkent, Uzbekistan\nExperience: 14 years 3 months\nLinkedIn:  · 2,711 followers\nDescription: Security engineering leader with hands-on experience building and operating information… [...] ## Skills\nfortigate, financial management, information security consulting, repair, leadership, conducting, consulting, vulnerability, infrastructure, retained executive search, fraud, material management, network infrastructure security, penetration testing, talent management [...] ## Experience\n- Manager at KPMG (Oct 2025 to present)\n- Information Security Consultant at Freelance (Self employed) (Oct 2022 to present)\n- Chief Information Security Officer at HAYOT BIRJA (Nov 2024 to Sep 2025)\n- Chief Infirmation Security Specialist at Hayot Bank (Sep 2023 to Nov 2024)\n- Lead Specialist Information Security at En+ Digital LLC, Irkutsk, Russia (Aug 2022 to Oct 2022)\n- Information Security Manager at T2 Mobile LLC (Jun 2017 to Jun 2022)",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:37.220Z",
+            "id": "e19"
+          },
+          {
+            "url": "https://www.linkedin.com/in/adergunov",
+            "kind": "search",
+            "text": "Artem D. - Business Operations | Strategy & Operations\n# Artem D\n\nHeadline: Young professional. Your potential.\nCurrent role: Technical Program Manager\nSeniority: Manager, Project Management\nLocation: New York, New York, United States\nExperience: 11 years 6 months\nLinkedIn:  · 611 followers\nDescription: 🟢 Business Operations | Program Strategy | Process Improvement | Operational Analytics |… [...] - Iakov Belov: “I worked with Artem on different teams within the same department. I want to highlight his excellent organizational skills. Artem was a huge help to me in 2016 when I joined the company. I feel lucky to have had him as my mentor. He showed me the ropes and made my transition smooth. We also worked... [...] ## Recommendations (3)\n- Ekaterina Cezza: “It was a pleasure working with Artem as part of the same team. Artem consistently paid close attention to detail in his work. I recall that whenever we faced ambiguous or contentious situations in a project and needed input from someone with strong domain expertise, we would turn to him. As a...",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:01:37.220Z",
+            "id": "e20"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://arcontrade.am/contacts",
+            "focus": "контакты",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД основатель CEO site:arcontrade.am",
+            "focus": "руководство на сайте компании",
+            "resultCount": 1
+          },
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД основатель CEO LinkedIn",
+            "focus": "профили руководства в LinkedIn",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД CEO CEO site:arcontrade.am",
+            "focus": "руководство на сайте компании",
+            "resultCount": 1
+          },
+          {
+            "type": "search",
+            "value": "АРКОН ТРЕЙД основатель site:arcontrade.am OR site:hh.ru",
+            "focus": "поиск основателя и руководства компании",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "Артем Бадрудинов email arcontrade.am",
+            "focus": "Найти личный email основателя компании Артем Бадрудинов на домене arcontrade.am",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "Артем Бадрудинов LinkedIn",
+            "focus": "Профиль основателя компании в LinkedIn",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 1,
+          "actionsRemaining": 3,
+          "searchRemaining": 2
+        }
+      },
+      "output": {
+        "companySummary": "ООО «Аркон трейд» — производитель армянского коньяка с собственной торговой маркой, располагающийся в Армении с представительством в России. Основатель компании — Артем Бадрудинов.",
+        "missing": [
+          "email основателя Артема Бадрудинова"
+        ],
+        "people": [
+          {
+            "name": "Артем Бадрудинов",
+            "role": "Основатель компании ООО «Аркон трейд»",
+            "relevance": 95,
+            "reason": "Основатель компании, владелец бизнес-процесса по развитию и найму",
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Артем Бадрудинов - Основатель компании ООО «Аркон трейд»"
+              },
+              {
+                "sourceId": "e1",
+                "quote": "ООО «Аркон трейд» - производство армянского коньяка"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "arcontrade.am",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "основной сайт—https://arcontrade.am"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Артем Бадрудинов email arcontrade.am",
+            "focus": "личный email основателя на сайте arcontrade.am",
+            "purpose": "поиск контактного email основателя компании"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "требуется найти контактный email основателя Артема Бадрудинова на домене arcontrade.am"
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 4,
+      "decision": {
+        "companySummary": "ООО «Аркон трейд» — производитель армянского коньяка с собственной торговой маркой, располагающийся в Армении с представительством в России. Основатель компании — Артем Бадрудинов.",
+        "missing": [
+          "email основателя Артема Бадрудинова"
+        ],
+        "people": [
+          {
+            "name": "Артем Бадрудинов",
+            "role": "Основатель компании ООО «Аркон трейд»",
+            "relevance": 95,
+            "reason": "Основатель компании, владелец бизнес-процесса по развитию и найму",
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Артем Бадрудинов - Основатель компании ООО «Аркон трейд»"
+              },
+              {
+                "sourceId": "e1",
+                "quote": "ООО «Аркон трейд» - производство армянского коньяка"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "arcontrade.am",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "основной сайт—https://arcontrade.am"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Артем Бадрудинов email arcontrade.am",
+            "focus": "личный email основателя на сайте arcontrade.am",
+            "purpose": "поиск контактного email основателя компании"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "требуется найти контактный email основателя Артема Бадрудинова на домене arcontrade.am"
+      },
+      "validationErrors": [
+        "person_rejected:Артем Бадрудинов:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+      ],
+      "acceptedPeople": [
+        {
+          "full_name": "Артем Бадрудинов",
+          "role_title": "Основатель компании ООО «Аркон трейд»",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 70,
+          "evidence": [
+            "Основатель компании ООО «Аркон трейд» Артем Бадрудинов"
+          ],
+          "metadata": {
+            "source_url": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+            "source_urls": [
+              "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka"
+            ],
+            "semantic_role_relevance": 100,
+            "semantic_role_reason": "Основатель и ключевое лицо компании, владеет бизнес-процессами и ответственен за стратегию компании.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "arcontrade.am"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "arcontrade.am"
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Артем Бадрудинов email arcontrade.am",
+      "focus": "личный email основателя на сайте arcontrade.am",
+      "purpose": "поиск контактного email основателя компании",
+      "results": [
+        {
+          "url": "https://www.facebook.com/coworking.atmosphere/posts/%D0%B2-%D0%BF%D1%8F%D1%82%D0%BD%D0%B8%D1%87%D0%BD%D0%BE%D0%BC-%D0%B2%D1%8B%D0%BF%D1%83%D1%81%D0%BA%D0%B5-%D0%B0%D1%82%D0%BC%D0%BE%D1%81%D1%84%D0%B5%D1%80%D0%B0%D0%BB%D1%8E%D0%B4%D0%B8-%D0%BF%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D0%BB%D0%B8-%D1%81-%D0%BD%D0%B0%D1%88%D0%B8%D0%BC-%D1%80%D0%B5%D0%B7%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D0%BE%D0%BC-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B9-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82/716609078697379",
+          "title": "Коворкинг \"Атмосфера\"",
+          "snippet": "я зовут Артем Бадрудинов и я занимаюсь производством коньяка в Армении, arcontrade.am #атмосфераковоркинг",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+          "title": "Армянский коньяк: новая эра знакомого напитка - Ведомости.Город",
+          "snippet": "Елена Титок\n\nОснователь компании ООО «Аркон трейд» Артем Бадрудинов\n\nОснователь компании ООО «Аркон трейд» Артем Бадрудинов /Евгений Разумный / Ведомости\n\nПока престижные европейские марки крепкого алкоголя покидают Россию, армянский коньяк переживает новый расцвет популярности. Об этом «Ведомости. Городу» рассказал Артем Бадрудинов, основатель компании ООО «Аркон трейд», которая занимается производством и импортом армянских коньяков и вин. [...] – Пока наша основная задача – достроить завод. Он",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://bravotrade.ru/news/meropriyatiya/konyaki-ardzhevan-vernost-traditsiyam",
+          "title": "Коньяки Арджеван - верность традициям",
+          "snippet": "Вечер провёл владелец компании «Аркон Трейд» Артём Бадрудинов, рассказавший об истории марки. Производство располагается в городе Ереван, в самом сердце",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.rusprofile.ru/person/badrudinov-av-753611118027",
+          "title": "Бадрудинов Артём Владимирович ИНН 753611118027",
+          "snippet": "Бадрудинов Артём Владимирович (ИНН 753611118027) является или являлся руководителем 7 организаций, учредителем 6 организаций, а также индивидуальным",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=d2o8H3rSrB4",
+          "title": "Новый армянский коньяк, который нас удивил",
+          "snippet": "Подробности на https://arcontrade.am и https://www.instagram.com/taros_official_/ . Место съемки: http://www.curebar.ru .",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "research_budget",
+      "actions": 9,
+      "candidates": [
+        {
+          "full_name": "Артем Бадрудинов",
+          "role_title": "Основатель компании ООО «Аркон трейд»",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 70,
+          "evidence": [
+            "Основатель компании ООО «Аркон трейд» Артем Бадрудинов"
+          ],
+          "metadata": {
+            "source_url": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+            "source_urls": [
+              "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka"
+            ],
+            "semantic_role_relevance": 100,
+            "semantic_role_reason": "Основатель и ключевое лицо компании, владеет бизнес-процессами и ответственен за стратегию компании.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "arcontrade.am"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "arcontrade.am"
+      ],
+      "elapsedMs": 31112
+    },
+    {
+      "stage": "people_ranked",
+      "people": [
+        {
+          "full_name": "Артем Бадрудинов",
+          "role_title": "Основатель компании ООО «Аркон трейд»",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 70,
+          "evidence": [
+            "Основатель компании ООО «Аркон трейд» Артем Бадрудинов"
+          ],
+          "metadata": {
+            "source_url": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+            "source_urls": [
+              "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka"
+            ],
+            "semantic_role_relevance": 100,
+            "semantic_role_reason": "Основатель и ключевое лицо компании, владеет бизнес-процессами и ответственен за стратегию компании.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "arcontrade.am"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://arcontrade.am/",
+      "status": 200,
+      "elapsedMs": 249
+    },
+    {
+      "stage": "fetch",
+      "url": "https://arcontrade.am/robots.txt",
+      "status": 200,
+      "elapsedMs": 145
+    },
+    {
+      "stage": "fetch",
+      "url": "https://arcontrade.am/sitemap.xml",
+      "status": 200,
+      "elapsedMs": 463
+    },
+    {
+      "stage": "fetch",
+      "url": "https://arcontrade.am/sitemap.xml",
+      "status": 200,
+      "elapsedMs": 126
+    },
+    {
+      "stage": "fetch",
+      "url": "https://arcontrade.am/contacts",
+      "status": 200,
+      "elapsedMs": 240
+    },
+    {
+      "stage": "fetch",
+      "url": "https://arcontrade.am/contact-us",
+      "status": 404,
+      "elapsedMs": 272
+    },
+    {
+      "stage": "fetch",
+      "url": "https://arcontrade.am/contact",
+      "status": 404,
+      "elapsedMs": 318
+    },
+    {
+      "stage": "fetch",
+      "url": "https://arcontrade.am/about",
+      "status": 404,
+      "elapsedMs": 398
+    },
+    {
+      "stage": "fetch",
+      "url": "https://arcontrade.am/kontakty",
+      "status": 404,
+      "elapsedMs": 411
+    },
+    {
+      "stage": "fetch",
+      "url": "https://arcontrade.am/about-us",
+      "status": 200,
+      "elapsedMs": 409
+    },
+    {
+      "stage": "fetch",
+      "url": "https://arcontrade.am/company",
+      "status": 404,
+      "elapsedMs": 456
+    },
+    {
+      "stage": "fetch",
+      "url": "https://arcontrade.am/kontakti",
+      "status": 404,
+      "elapsedMs": 474
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+        "target_responsibility": "Company leadership",
+        "target_persona": "Founder",
+        "alternative_personas": [
+          "CEO",
+          "Managing Director",
+          "COO",
+          "Head of Growth",
+          "Head of Sales"
+        ],
+        "why_this_person": "Основатель компании ООО «Аркон трейд»: The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+        "person_name": "Артем Бадрудинов",
+        "person_role": "Основатель компании ООО «Аркон трейд»",
+        "email": "ab@arcontrade.am",
+        "contact_level": "A",
+        "email_classification": "VERIFIED_PERSONAL",
+        "email_type": "public_personal",
+        "verification_methods": [
+          "corporate_domain_match",
+          "mx",
+          "public_evidence"
+        ],
+        "confidence": "HIGH",
+        "readiness": "contact_ready",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": "https://arcontrade.am/contacts",
+            "summary": "Артем Бадрудинов подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": "https://arcontrade.am/contacts",
+            "summary": "Роль связана с зоной ответственности: Company leadership."
+          },
+          {
+            "kind": "email",
+            "source_url": "https://arcontrade.am/contacts",
+            "summary": "Email опубликован в публичном профессиональном контексте."
+          },
+          {
+            "kind": "domain",
+            "source_url": "https://arcontrade.am",
+            "summary": "Email относится к подтверждённому корпоративному домену."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": "https://arcontrade.am/contacts",
+            "summary": "Основатель компании ООО «Аркон трейд» Артем Бадрудинов"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "contact_ready_high_confidence"
+      },
+      "contacts": [
+        {
+          "name": "Артем Бадрудинов",
+          "email": null,
+          "type": "confirmed_person",
+          "source": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka"
+        },
+        {
+          "name": "Артем Бадрудинов",
+          "email": "ab@arcontrade.am",
+          "type": "work_email",
+          "source": "https://arcontrade.am/contacts",
+          "classification": "VERIFIED_PERSONAL",
+          "status": "work_email_ready"
+        },
+        {
+          "name": null,
+          "email": "info@arcontrade.am",
+          "type": "generic_email",
+          "source": "https://arcontrade.am/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "ab@arcontrade.am",
+          "type": "generic_email",
+          "source": "https://arcontrade.am/contacts",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://arcontrade.am/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://arcontrade.am/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://arcontrade.am/contact-us"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://arcontrade.am"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2167,
+      "schema": "leadgen_outreach_v4",
+      "input": {
+        "company": "АРКОН ТРЕЙД",
+        "segment": null,
+        "industry": null,
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "evidence": "Работодатель: АРКОН ТРЕЙД; открыта вакансия: Менеджер по развитию бизнеса в России (алкоголь; дистрибьюторы и локальные сети).",
+          "source": "https://hh.ru/vacancy/137286232"
+        },
+        "company_specifics": null,
+        "lpr": {
+          "name": "Артем Бадрудинов",
+          "role": "Основатель компании ООО «Аркон трейд»",
+          "why_this_person": null
+        },
+        "business_context": {
+          "problem_hypothesis": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+          "target_responsibility": "Company leadership",
+          "selection_reason": null
+        },
+        "contact_type": "PERSONAL",
+        "required_cta": "Есть смысл посмотреть этот участок на вашей компании?",
+        "required_greeting": "Артем, добрый день."
+      },
+      "output": {
+        "subject": "Вакансия и возможности бизнеса АРКОН ТРЕЙД",
+        "body": "АРКОН ТРЕЙД сейчас ищет Менеджера по развитию бизнеса в России для работы с алкогольным сегментом и локальными дистрибьюторами. Эта вакансия показывает, что компания активизирует развитие на этом рынке.\nВозможно, одним из ограничений в этом процессе является сложность своевременного анализа данных по партнёрским сетям и распределению товаров.\nМы можем предложить пилотный проект по обработке данных продаж и каналов распространения с помощью ИИ, чтобы визуализировать продажи и выявить наиболее перспективные сегменты рынка на основе текущих данных.",
+        "cta": "Есть смысл посмотреть этот участок на вашей компании?",
+        "quality": {
+          "reason_now": true,
+          "grounded_hypothesis": true,
+          "russian_only": true,
+          "personal_cta": true
+        }
+      }
+    }
+  ],
+  "startedAt": "2026-10-06T20:01:09.473Z",
+  "bundle": {
+    "companyName": "АРКОН ТРЕЙД",
+    "officialWebsite": "https://arcontrade.am",
+    "officialDomain": "arcontrade.am",
+    "people": [
+      {
+        "fullName": "Артем Бадрудинов",
+        "role": "Основатель компании ООО «Аркон трейд»",
+        "confidence": "HIGH_CONFIDENCE",
+        "evidence": [
+          {
+            "sourceUrl": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+            "sourceType": "public_web",
+            "excerpt": "Основатель компании ООО «Аркон трейд» Артем Бадрудинов",
+            "capturedAt": "2026-10-06T20:01:09.473Z",
+            "confidence": 70
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [
+        {
+          "email": "ab@arcontrade.am",
+          "personName": "Артем Бадрудинов",
+          "classification": "VERIFIED_PERSONAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://arcontrade.am/contacts",
+              "sourceType": "official",
+              "excerpt": "ab@arcontrade.am — official company website",
+              "capturedAt": "2026-10-06T20:01:09.473Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "department": [],
+      "general": [
+        {
+          "email": "info@arcontrade.am",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://arcontrade.am/",
+              "sourceType": "official",
+              "excerpt": "info@arcontrade.am — public email parser",
+              "capturedAt": "2026-10-06T20:01:09.473Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "ab@arcontrade.am",
+      "personName": "Артем Бадрудинов",
+      "role": "Основатель компании ООО «Аркон трейд»",
+      "classification": "VERIFIED_PERSONAL",
+      "contactLevel": "A",
+      "sourceUrl": "https://arcontrade.am/contacts"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: АРКОН ТРЕЙД; открыта вакансия: Менеджер по развитию бизнеса в России (алкоголь; дистрибьюторы и локальные сети).",
+      "sourceUrl": "https://hh.ru/vacancy/137286232",
+      "confidence": 93
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 6,
+      "duplicateQueriesSkipped": 1,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 16,
+      "lprMs": 31113,
+      "contactMs": 1804,
+      "totalMs": 35112,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "people": {
+    "primary_person": {
+      "full_name": "Артем Бадрудинов",
+      "role_title": "Основатель компании ООО «Аркон трейд»",
+      "department": null,
+      "linkedin_url": null,
+      "work_email": null,
+      "phone": null,
+      "source": "Iterative public research",
+      "confidence_score": 70,
+      "evidence": [
+        "Основатель компании ООО «Аркон трейд» Артем Бадрудинов"
+      ],
+      "metadata": {
+        "source_url": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+        "source_urls": [
+          "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka"
+        ],
+        "semantic_role_relevance": 100,
+        "semantic_role_reason": "Основатель и ключевое лицо компании, владеет бизнес-процессами и ответственен за стратегию компании.",
+        "email_source_url": null,
+        "email_person_evidence": null,
+        "public_contact_verified": false,
+        "verified_company_domains": [
+          "arcontrade.am"
+        ],
+        "verified_public_profiles": [],
+        "tenchat_url": null,
+        "telegram_url": null,
+        "vk_url": null,
+        "instagram_url": null,
+        "contact_route": "target_persona",
+        "company_verified": true,
+        "role_verified": true
+      }
+    },
+    "alternative_people": [],
+    "all_candidates": [
+      {
+        "full_name": "Артем Бадрудинов",
+        "role_title": "Основатель компании ООО «Аркон трейд»",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 70,
+        "evidence": [
+          "Основатель компании ООО «Аркон трейд» Артем Бадрудинов"
+        ],
+        "metadata": {
+          "source_url": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+          "source_urls": [
+            "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka"
+          ],
+          "semantic_role_relevance": 100,
+          "semantic_role_reason": "Основатель и ключевое лицо компании, владеет бизнес-процессами и ответственен за стратегию компании.",
+          "email_source_url": null,
+          "email_person_evidence": null,
+          "public_contact_verified": false,
+          "verified_company_domains": [
+            "arcontrade.am"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      }
+    ],
+    "primary_person_intelligence": {
+      "candidate": {
+        "full_name": "Артем Бадрудинов",
+        "role_title": "Основатель компании ООО «Аркон трейд»",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 70,
+        "evidence": [
+          "Основатель компании ООО «Аркон трейд» Артем Бадрудинов"
+        ],
+        "metadata": {
+          "source_url": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+          "source_urls": [
+            "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka"
+          ],
+          "semantic_role_relevance": 100,
+          "semantic_role_reason": "Основатель и ключевое лицо компании, владеет бизнес-процессами и ответственен за стратегию компании.",
+          "email_source_url": null,
+          "email_person_evidence": null,
+          "public_contact_verified": false,
+          "verified_company_domains": [
+            "arcontrade.am"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      },
+      "rank_score": 92,
+      "person_score": 92,
+      "persona_match_score": 100,
+      "business_problem_ownership": "high",
+      "decision_authority": "high",
+      "influence_level": "high",
+      "confidence_score": 74,
+      "confidence_level": "high_confidence",
+      "contact_availability": {
+        "has_work_email": false,
+        "has_linkedin": false,
+        "has_phone": false,
+        "has_telegram": false
+      },
+      "matched_keywords": [
+        "основатель",
+        "основатель"
+      ],
+      "reasoning": "Matched person context: основатель, основатель.",
+      "selection_reason": "Артем Бадрудинов is the strongest available candidate because Основатель компании ООО «Аркон трейд» matched основатель, основатель. Persona match 100/100, ownership high, authority high, influence high, confidence 74/100.",
+      "strengths": [
+        "Matched context: основатель, основатель",
+        "Strong persona match (100/100)",
+        "Likely owner of the business problem",
+        "High decision authority",
+        "High influence in the buying process"
+      ],
+      "weaknesses": [
+        "No direct personal contact channel found"
+      ],
+      "why_not_other_candidates": [],
+      "recommended_next_action": "run_enrichment"
+    },
+    "alternative_people_intelligence": [],
+    "ranked_people": [
+      {
+        "candidate": {
+          "full_name": "Артем Бадрудинов",
+          "role_title": "Основатель компании ООО «Аркон трейд»",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 70,
+          "evidence": [
+            "Основатель компании ООО «Аркон трейд» Артем Бадрудинов"
+          ],
+          "metadata": {
+            "source_url": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+            "source_urls": [
+              "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka"
+            ],
+            "semantic_role_relevance": 100,
+            "semantic_role_reason": "Основатель и ключевое лицо компании, владеет бизнес-процессами и ответственен за стратегию компании.",
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "arcontrade.am"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        "rank_score": 92,
+        "person_score": 92,
+        "persona_match_score": 100,
+        "business_problem_ownership": "high",
+        "decision_authority": "high",
+        "influence_level": "high",
+        "confidence_score": 74,
+        "confidence_level": "high_confidence",
+        "contact_availability": {
+          "has_work_email": false,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [
+          "основатель",
+          "основатель"
+        ],
+        "reasoning": "Matched person context: основатель, основатель.",
+        "selection_reason": "Артем Бадрудинов is the strongest available candidate because Основатель компании ООО «Аркон трейд» matched основатель, основатель. Persona match 100/100, ownership high, authority high, influence high, confidence 74/100.",
+        "strengths": [
+          "Matched context: основатель, основатель",
+          "Strong persona match (100/100)",
+          "Likely owner of the business problem",
+          "High decision authority",
+          "High influence in the buying process"
+        ],
+        "weaknesses": [
+          "No direct personal contact channel found"
+        ],
+        "why_not_other_candidates": [],
+        "recommended_next_action": "run_enrichment"
+      }
+    ],
+    "selection_reasoning": "Артем Бадрудинов is the strongest available candidate because Основатель компании ООО «Аркон трейд» matched основатель, основатель. Persona match 100/100, ownership high, authority high, influence high, confidence 74/100.",
+    "search_status": "person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "research_budget"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 7,
+      "official_pages_fetched": 2,
+      "aborted_requests": 0,
+      "elapsed_ms": 31112,
+      "stop_reason": "research_budget",
+      "queries_executed": [
+        "АРКОН ТРЕЙД основатель CEO site:arcontrade.am",
+        "АРКОН ТРЕЙД основатель CEO LinkedIn",
+        "АРКОН ТРЕЙД CEO CEO site:arcontrade.am",
+        "АРКОН ТРЕЙД основатель site:arcontrade.am OR site:hh.ru",
+        "Артем Бадрудинов email arcontrade.am",
+        "Артем Бадрудинов LinkedIn"
+      ],
+      "sources_checked": [
+        "https://arcontrade.am",
+        "https://arcontrade.am/contacts",
+        "https://arcontrade.am/about-us",
+        "https://arkontrade.eu/en",
+        "https://www.linkedin.com/profile?viewProfile=&key=3299358&locale=en_US",
+        "https://www.linkedin.com/in/artsellers",
+        "https://www.linkedin.com/posts/ardian_meetthearchitectsofardian-masteringchangeforlastingvalue-activity-7432118564028854273-zHRv",
+        "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+        "https://hh.ru/employer/4507176",
+        "https://www.facebook.com/coworking.atmosphere/posts/%D0%B2-%D0%BF%D1%8F%D1%82%D0%BD%D0%B8%D1%87%D0%BD%D0%BE%D0%BC-%D0%B2%D1%8B%D0%BF%D1%83%D1%81%D0%BA%D0%B5-%D0%B0%D1%82%D0%BC%D0%BE%D1%81%D1%84%D0%B5%D1%80%D0%B0%D0%BB%D1%8E%D0%B4%D0%B8-%D0%BF%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D0%BB%D0%B8-%D1%81-%D0%BD%D0%B0%D1%88%D0%B8%D0%BC-%D1%80%D0%B5%D0%B7%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D0%BE%D0%BC-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B9-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82/716609078697379",
+        "https://bravotrade.ru/news/meropriyatiya/konyaki-ardzhevan-vernost-traditsiyam",
+        "https://www.rusprofile.ru/person/badrudinov-av-753611118027",
+        "https://www.youtube.com/watch?v=d2o8H3rSrB4",
+        "https://www.linkedin.com/in/artemborodin/en",
+        "https://www.linkedin.com/in/artem-fakhretdinov-6a2bb7175",
+        "https://www.linkedin.com/in/artem-barsukov-a4725337",
+        "https://uz.linkedin.com/in/dolgikh",
+        "https://www.linkedin.com/in/adergunov"
+      ],
+      "search_results_seen": 27,
+      "rejected_candidates": {
+        "validation_rejects": 1
+      },
+      "final_failure_reason": null
+    }
+  },
+  "contacts": [
+    {
+      "name": "Артем Бадрудинов",
+      "role": "Основатель компании ООО «Аркон трейд»",
+      "email": null,
+      "type": "confirmed_person",
+      "source": "https://www.vedomosti.ru/gorod/townspeople/characters/armyanskii-konyak-novaya-era-znakomogo-napitka",
+      "selected": false
+    },
+    {
+      "name": "Артем Бадрудинов",
+      "role": "Основатель компании ООО «Аркон трейд»",
+      "email": "ab@arcontrade.am",
+      "type": "work_email",
+      "source": "https://arcontrade.am/contacts",
+      "selected": true,
+      "classification": "VERIFIED_PERSONAL",
+      "intelligence": {
+        "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+        "target_responsibility": "Company leadership",
+        "target_persona": "Founder",
+        "alternative_personas": [
+          "CEO",
+          "Managing Director",
+          "COO",
+          "Head of Growth",
+          "Head of Sales"
+        ],
+        "why_this_person": "Основатель компании ООО «Аркон трейд»: The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+        "person_name": "Артем Бадрудинов",
+        "person_role": "Основатель компании ООО «Аркон трейд»",
+        "email": "ab@arcontrade.am",
+        "contact_level": "A",
+        "email_classification": "VERIFIED_PERSONAL",
+        "email_type": "public_personal",
+        "verification_methods": [
+          "corporate_domain_match",
+          "mx",
+          "public_evidence"
+        ],
+        "confidence": "HIGH",
+        "readiness": "contact_ready",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": "https://arcontrade.am/contacts",
+            "summary": "Артем Бадрудинов подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": "https://arcontrade.am/contacts",
+            "summary": "Роль связана с зоной ответственности: Company leadership."
+          },
+          {
+            "kind": "email",
+            "source_url": "https://arcontrade.am/contacts",
+            "summary": "Email опубликован в публичном профессиональном контексте."
+          },
+          {
+            "kind": "domain",
+            "source_url": "https://arcontrade.am",
+            "summary": "Email относится к подтверждённому корпоративному домену."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": "https://arcontrade.am/contacts",
+            "summary": "Основатель компании ООО «Аркон трейд» Артем Бадрудинов"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "contact_ready_high_confidence"
+      },
+      "ready": true,
+      "copy": "Артем, добрый день.\n\nАРКОН ТРЕЙД сейчас ищет Менеджера по развитию бизнеса в России для работы с алкогольным сегментом и локальными дистрибьюторами. Эта вакансия показывает, что компания активизирует развитие на этом рынке.\nВозможно, одним из ограничений в этом процессе является сложность своевременного анализа данных по партнёрским сетям и распределению товаров.\nМы можем предложить пилотный проект по обработке данных продаж и каналов распространения с помощью ИИ, чтобы визуализировать продажи и выявить наиболее перспективные сегменты рынка на основе текущих данных.\n\nЯ AI-архитектор. Если потребуется, подключим бизнес-аналитика: сначала проверим процесс, затем выберем, что автоматизировать.\n\nМогу провести короткий разбор этого участка. Обычно он стоит 9 900 ₽; если ответите в течение 24 часов после отправки письма, проведу разбор бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nЕсть смысл посмотреть этот участок на вашей компании?\n\nАлександр Плыкин, AI-архитектор\n+79629910514"
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "info@arcontrade.am",
+      "type": "generic_email",
+      "source": "https://arcontrade.am/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "ab@arcontrade.am",
+      "type": "generic_email",
+      "source": "https://arcontrade.am/contacts",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://arcontrade.am/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://arcontrade.am/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://arcontrade.am/contact-us",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://arcontrade.am",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 35112
+}

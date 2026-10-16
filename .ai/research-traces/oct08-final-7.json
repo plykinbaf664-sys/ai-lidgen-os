@@ -1,0 +1,1910 @@
+{
+  "mode": "business",
+  "name": "PolyOn",
+  "website": "https://polyon.us",
+  "before": {
+    "companyName": "PolyOn",
+    "officialWebsite": "https://polyon.us",
+    "officialDomain": "polyon.us",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "info@polyon.us",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.polyon.us/",
+              "sourceType": "official",
+              "excerpt": "info@polyon.us — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "info@polyon.us",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://www.polyon.us/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+      "sourceUrl": "https://hh.ru/vacancy/137434617",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 23,
+      "lprMs": 14452,
+      "contactMs": 3660,
+      "totalMs": 23064,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+    "sourceUrl": "https://hh.ru/vacancy/137434617",
+    "confidence": 100
+  },
+  "index": 7,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us",
+      "status": 301,
+      "elapsedMs": 314
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.polyon.us/",
+      "status": 200,
+      "elapsedMs": 442
+    },
+    {
+      "stage": "research_open",
+      "url": "https://polyon.us",
+      "success": true,
+      "evidence": {
+        "url": "https://www.polyon.us/",
+        "kind": "page",
+        "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE Home Products Our Company Contact More Use tab to navigate through the menu items. 864 Grand Ave 1026, San Diego, CA 92109 +1 (619) 567 9764 info@polyon.us &copy; 2023 Polyon Inc",
+        "links": [
+          {
+            "url": "https://www.polyon.us",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.mx",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.us/products",
+            "label": "Products"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "label": "Our Company"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "label": "Contact"
+          },
+          {
+            "url": "https://www.facebook.com/polyon1",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:15:45.097Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2181,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us/",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE Home Products Our Company Contact More Use tab to navigate through the menu items. 864 Grand Ave 1026, San Diego, CA 92109 +1 (619) 567 9764 info@polyon.us &copy; 2023 Polyon Inc",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:15:45.097Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 7,
+          "actionsRemaining": 10,
+          "searchRemaining": 8,
+          "remainingMs": 74174
+        }
+      },
+      "usage": {
+        "input_tokens": 1865,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 203,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2068
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company based in San Diego, CA.",
+        "missing": [
+          "Руководитель отдела продаж или исполнительный директор с подтверждением личности и личным контактом"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.mx",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://www.polyon.mx"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "команда или руководители",
+            "purpose": "Проверить наличие раздела с руководителями или указанием ответственного лица за продажи или компанию в целом"
+          },
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "команда или руководство",
+            "purpose": "Проверить состав руководства или команды на странице 'Our Company' для поиска владельца процесса продаж"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет информации о конкретных людях — нужно изучить страницы с описанием компании и контактами."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company based in San Diego, CA.",
+        "missing": [
+          "Руководитель отдела продаж или исполнительный директор с подтверждением личности и личным контактом"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.mx",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://www.polyon.mx"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "команда или руководители",
+            "purpose": "Проверить наличие раздела с руководителями или указанием ответственного лица за продажи или компанию в целом"
+          },
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "команда или руководство",
+            "purpose": "Проверить состав руководства или команды на странице 'Our Company' для поиска владельца процесса продаж"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет информации о конкретных людях — нужно изучить страницы с описанием компании и контактами."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:polyon.mx"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.polyon.us/contact-us",
+      "status": 200,
+      "elapsedMs": 128
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://www.polyon.us/contact-us",
+      "focus": "команда или руководители",
+      "purpose": "Проверить наличие раздела с руководителями или указанием ответственного лица за продажи или компанию в целом",
+      "success": true,
+      "evidence": {
+        "url": "https://www.polyon.us/contact-us",
+        "kind": "page",
+        "text": "contact us Contact Form: Send Success! Message received. Home Products Our Company Contact More Use tab to navigate through the menu items. 864 Grand Ave 1026, San Diego, CA 92109 +1 (619) 567 9764 info@polyon.us &copy; 2023 Polyon Inc",
+        "links": [
+          {
+            "url": "https://www.polyon.us",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.mx",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.us/products",
+            "label": "Products"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "label": "Our Company"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "label": "Contact"
+          },
+          {
+            "url": "https://www.facebook.com/polyon1",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:15:47.660Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.polyon.us/our-company",
+      "status": 200,
+      "elapsedMs": 297
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://www.polyon.us/our-company",
+      "focus": "команда или руководство",
+      "purpose": "Проверить состав руководства или команды на странице 'Our Company' для поиска владельца процесса продаж",
+      "success": true,
+      "evidence": {
+        "url": "https://www.polyon.us/our-company",
+        "kind": "page",
+        "text": "OUR COMPANY Over 17 years serving the plastic industry worldwide! Polyon is a global plastic resin distribution company. ​ We supply virgin and off grade polymer resin from top brand petrochemical companies. ​ With presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive. ​ We supply plastic manufacturers worldwide with the best product quality on the market. ​ Only Premium Quality LDPE - LLDPE - HDPE - PP Products! Home Products Our Company Contact More Use tab to navigate through the menu items. 864 Grand Ave 1026, San Diego, CA 92109 +1 (619) 567 9764 info@polyon.us &copy; 2023 Polyon Inc",
+        "links": [
+          {
+            "url": "https://www.polyon.us",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.mx",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.us/products",
+            "label": "Products"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "label": "Our Company"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "label": "Contact"
+          },
+          {
+            "url": "https://www.facebook.com/polyon1",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:15:47.900Z",
+        "id": "e3"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3134,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us/",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE Home Products Our Company Contact More Use tab to navigate through the menu items. 864 Grand Ave 1026, San Diego, CA 92109 +1 (619) 567 9764 info@polyon.us &copy; 2023 Polyon Inc",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:15:45.097Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "kind": "page",
+            "text": "contact us Contact Form: Send Success! Message received. Home Products Our Company Contact More Use tab to navigate through the menu items. 864 Grand Ave 1026, San Diego, CA 92109 +1 (619) 567 9764 info@polyon.us &copy; 2023 Polyon Inc",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:15:47.660Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "kind": "page",
+            "text": "OUR COMPANY Over 17 years serving the plastic industry worldwide! Polyon is a global plastic resin distribution company. ​ We supply virgin and off grade polymer resin from top brand petrochemical companies. ​ With presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive. ​ We supply plastic manufacturers worldwide with the best product quality on the market. ​ Only Premium Quality LDPE - LLDPE - HDPE - PP Products! Home Products Our Company Contact More Use tab to navigate through the menu items. 864 Grand Ave 1026, San Diego, CA 92109 +1 (619) 567 9764 info@polyon.us &copy; 2023 Polyon Inc",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:15:47.900Z",
+            "id": "e3"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "команда или руководители",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "команда или руководство",
+            "success": true
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:polyon.mx"
+        ],
+        "budget": {
+          "roundsRemaining": 6,
+          "actionsRemaining": 8,
+          "searchRemaining": 8,
+          "remainingMs": 71370
+        }
+      },
+      "usage": {
+        "input_tokens": 2414,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 1664
+        },
+        "output_tokens": 263,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2677
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "companySummary": "Polyon Inc — глобальный дистрибьютор пластиковых смол с офисом в Сан-Диего.",
+        "missing": [
+          "public leadership or sales manager name",
+          "personal/professional contact for a relevant decision maker"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Polyon Inc CEO OR sales director OR founder site:polyon.us OR \"Polyon Inc\"",
+            "focus": "руководитель или владелец процесса, профильное подразделение, прямой руководитель продаж",
+            "purpose": "Установить ответственное лицо за продажи или владельца бизнеса для AI-инициативы, так как на сайте нет публичных имён."
+          },
+          {
+            "type": "search",
+            "value": "Polyon Inc LinkedIn",
+            "focus": "официальная страница и команда компании в LinkedIn",
+            "purpose": "Найти актуальных руководителей или профильных сотрудников с должностями, ищущих контакта через публичные профили."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтвержденных имён сотрудников или владельцев; необходим поиск в открытых источниках для идентификации ЛПР."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "Polyon Inc — глобальный дистрибьютор пластиковых смол с офисом в Сан-Диего.",
+        "missing": [
+          "public leadership or sales manager name",
+          "personal/professional contact for a relevant decision maker"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Polyon Inc CEO OR sales director OR founder site:polyon.us OR \"Polyon Inc\"",
+            "focus": "руководитель или владелец процесса, профильное подразделение, прямой руководитель продаж",
+            "purpose": "Установить ответственное лицо за продажи или владельца бизнеса для AI-инициативы, так как на сайте нет публичных имён."
+          },
+          {
+            "type": "search",
+            "value": "Polyon Inc LinkedIn",
+            "focus": "официальная страница и команда компании в LinkedIn",
+            "purpose": "Найти актуальных руководителей или профильных сотрудников с должностями, ищущих контакта через публичные профили."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтвержденных имён сотрудников или владельцев; необходим поиск в открытых источниках для идентификации ЛПР."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=Polyon%20Inc%20CEO%20OR%20sales%20director%20OR%20founder%20OR%20%22Polyon%20Inc%22%20polyon.us&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 223
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=Polyon%20Inc%20CEO%20OR%20sales%20director%20OR%20founder%20OR%20%22Polyon%20Inc%22%20polyon.us&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 122
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=Polyon%20Inc%20LinkedIn&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 217
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=Polyon%20Inc%20LinkedIn&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 115
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2945,
+      "model": "gpt-4.1-mini",
+      "input": {
+        "query": "Polyon Inc CEO OR sales director OR founder site:polyon.us OR \"Polyon Inc\"",
+        "maxResults": 5
+      },
+      "usage": {
+        "input_tokens": 8615,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 156,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8771
+      },
+      "webSearchCalls": 1,
+      "output": "\n## [Polyon Inc.](https://www.google.com/maps/search/Polyon+Inc.?utm_source=openai)\n\n\nPolyon Inc. is a global plastic resin distribution company headquartered at 864 Grand Ave 1026, San Diego, CA 92109. They can be contacted via phone at +1 (619) 567 9764 or email at info@polyon.us. ([polyon.us](https://www.polyon.us/our-company?utm_source=openai))\n\nThe company's website, polyon.us, provides information about their products and services. ([polyon.us](https://www.polyon.us/?utm_source=openai))\n\nSpecific details about the CEO, sales director, or founder of Polyon Inc. are not publicly available. "
+    },
+    {
+      "stage": "search",
+      "query": "Polyon Inc CEO OR sales director OR founder site:polyon.us OR \"Polyon Inc\"",
+      "results": [
+        {
+          "url": "https://www.google.com/maps/search/Polyon+Inc.?utm_source=openai",
+          "title": "Polyon Inc.",
+          "snippet": "[Search summary; fetch source before confirming facts] ##",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "url": "https://www.polyon.us/our-company?utm_source=openai",
+          "title": "Polyon - Our Company - Plastic Resin Distributor",
+          "snippet": "[Search summary; fetch source before confirming facts] Polyon Inc. is a global plastic resin distribution company headquartered at 864 Grand Ave 1026, San Diego, CA 92109. They can be contacted via phone at +1 (619) 567 9764 or email at info@polyon.us.",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "url": "https://www.polyon.us/?utm_source=openai",
+          "title": "Polyon | Plastic Resin Distributor | United States",
+          "snippet": "[Search summary; fetch source before confirming facts] The company's website, polyon.us, provides information about their products and services.",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Polyon Inc CEO OR sales director OR founder site:polyon.us OR \"Polyon Inc\"",
+      "focus": "руководитель или владелец процесса, профильное подразделение, прямой руководитель продаж",
+      "purpose": "Установить ответственное лицо за продажи или владельца бизнеса для AI-инициативы, так как на сайте нет публичных имён.",
+      "results": [
+        {
+          "url": "https://www.google.com/maps/search/Polyon+Inc.?utm_source=openai",
+          "title": "Polyon Inc.",
+          "snippet": "[Search summary; fetch source before confirming facts] ##",
+          "provider": "openai-web-search"
+        },
+        {
+          "url": "https://www.polyon.us/our-company?utm_source=openai",
+          "title": "Polyon - Our Company - Plastic Resin Distributor",
+          "snippet": "[Search summary; fetch source before confirming facts] Polyon Inc. is a global plastic resin distribution company headquartered at 864 Grand Ave 1026, San Diego, CA 92109. They can be contacted via phone at +1 (619) 567 9764 or email at info@polyon.us.",
+          "provider": "openai-web-search"
+        },
+        {
+          "url": "https://www.polyon.us/?utm_source=openai",
+          "title": "Polyon | Plastic Resin Distributor | United States",
+          "snippet": "[Search summary; fetch source before confirming facts] The company's website, polyon.us, provides information about their products and services.",
+          "provider": "openai-web-search"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3100,
+      "model": "gpt-4.1-mini",
+      "input": {
+        "query": "Polyon Inc LinkedIn",
+        "maxResults": 5
+      },
+      "usage": {
+        "input_tokens": 8583,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 267,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8850
+      },
+      "webSearchCalls": 1,
+      "output": "I couldn't find a LinkedIn profile specifically for \"Polyon Inc.\" However, there are several companies with similar names that have LinkedIn profiles:\n\n1. **Polytron, Inc.**: Specializes in automation machinery manufacturing, headquartered in Duluth, GA, with 2,847 followers. ([co.linkedin.com](https://co.linkedin.com/company/polytron?utm_source=openai))\n\n2. **Poly, Inc.**: A civil engineering firm based in Dothan, AL, with 490 followers. ([id.linkedin.com](https://id.linkedin.com/company/poly-inc?utm_source=openai))\n\n3. **Polytronix, Inc.**: Provides integrated manufacturing and sub-assembly services for custom-engineered components, located in Richardson, TX, with 1,372 followers. ([my.linkedin.com](https://my.linkedin.com/company/polytronix?utm_source=openai))\n\n4. **Poligon**: Designs and manufactures open-air steel structures, based in Holland, MI, with 273 followers. ([no.linkedin.com](https://no.linkedin.com/company/poligon?utm_source=openai))\n\nIf you can provide more details about \"Polyon Inc.\"—such as its industry, location, or any other distinguishing information—I can assist you further in locating the correct LinkedIn profile. "
+    },
+    {
+      "stage": "search",
+      "query": "Polyon Inc LinkedIn",
+      "results": [
+        {
+          "url": "https://co.linkedin.com/company/polytron?utm_source=openai",
+          "title": "Polytron, Inc. | LinkedIn",
+          "snippet": "[Search summary; fetch source before confirming facts] 1. **Polytron, Inc.**: Specializes in automation machinery manufacturing, headquartered in Duluth, GA, with 2,847 followers.",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "url": "https://id.linkedin.com/company/poly-inc?utm_source=openai",
+          "title": "Poly, Inc. | LinkedIn",
+          "snippet": "[Search summary; fetch source before confirming facts] 2. **Poly, Inc.**: A civil engineering firm based in Dothan, AL, with 490 followers.",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "url": "https://my.linkedin.com/company/polytronix?utm_source=openai",
+          "title": "Polytronix, Inc. | LinkedIn",
+          "snippet": "[Search summary; fetch source before confirming facts] 3. **Polytronix, Inc.**: Provides integrated manufacturing and sub-assembly services for custom-engineered components, located in Richardson, TX, with 1,372 followers.",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "url": "https://no.linkedin.com/company/poligon?utm_source=openai",
+          "title": "Poligon | LinkedIn",
+          "snippet": "[Search summary; fetch source before confirming facts] 4. **Poligon**: Designs and manufactures open-air steel structures, based in Holland, MI, with 273 followers.",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Polyon Inc LinkedIn",
+      "focus": "официальная страница и команда компании в LinkedIn",
+      "purpose": "Найти актуальных руководителей или профильных сотрудников с должностями, ищущих контакта через публичные профили.",
+      "results": [
+        {
+          "url": "https://co.linkedin.com/company/polytron?utm_source=openai",
+          "title": "Polytron, Inc. | LinkedIn",
+          "snippet": "[Search summary; fetch source before confirming facts] 1. **Polytron, Inc.**: Specializes in automation machinery manufacturing, headquartered in Duluth, GA, with 2,847 followers.",
+          "provider": "openai-web-search"
+        },
+        {
+          "url": "https://id.linkedin.com/company/poly-inc?utm_source=openai",
+          "title": "Poly, Inc. | LinkedIn",
+          "snippet": "[Search summary; fetch source before confirming facts] 2. **Poly, Inc.**: A civil engineering firm based in Dothan, AL, with 490 followers.",
+          "provider": "openai-web-search"
+        },
+        {
+          "url": "https://my.linkedin.com/company/polytronix?utm_source=openai",
+          "title": "Polytronix, Inc. | LinkedIn",
+          "snippet": "[Search summary; fetch source before confirming facts] 3. **Polytronix, Inc.**: Provides integrated manufacturing and sub-assembly services for custom-engineered components, located in Richardson, TX, with 1,372 followers.",
+          "provider": "openai-web-search"
+        },
+        {
+          "url": "https://no.linkedin.com/company/poligon?utm_source=openai",
+          "title": "Poligon | LinkedIn",
+          "snippet": "[Search summary; fetch source before confirming facts] 4. **Poligon**: Designs and manufactures open-air steel structures, based in Holland, MI, with 273 followers.",
+          "provider": "openai-web-search"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3560,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us/",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE Home Products Our Company Contact More Use tab to navigate through the menu items. 864 Grand Ave 1026, San Diego, CA 92109 +1 (619) 567 9764 info@polyon.us &copy; 2023 Polyon Inc",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:15:45.097Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "kind": "page",
+            "text": "contact us Contact Form: Send Success! Message received. Home Products Our Company Contact More Use tab to navigate through the menu items. 864 Grand Ave 1026, San Diego, CA 92109 +1 (619) 567 9764 info@polyon.us &copy; 2023 Polyon Inc",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:15:47.660Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "kind": "page",
+            "text": "OUR COMPANY Over 17 years serving the plastic industry worldwide! Polyon is a global plastic resin distribution company. ​ We supply virgin and off grade polymer resin from top brand petrochemical companies. ​ With presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive. ​ We supply plastic manufacturers worldwide with the best product quality on the market. ​ Only Premium Quality LDPE - LLDPE - HDPE - PP Products! Home Products Our Company Contact More Use tab to navigate through the menu items. 864 Grand Ave 1026, San Diego, CA 92109 +1 (619) 567 9764 info@polyon.us &copy; 2023 Polyon Inc",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:15:47.900Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://www.google.com/maps/search/Polyon+Inc.?utm_source=openai",
+            "kind": "search",
+            "text": "Polyon Inc.\n[Search summary; fetch source before confirming facts] ##",
+            "links": [],
+            "fetchedAt": "2026-10-07T22:15:54.540Z",
+            "id": "e4"
+          },
+          {
+            "url": "https://www.polyon.us/our-company?utm_source=openai",
+            "kind": "search",
+            "text": "Polyon - Our Company - Plastic Resin Distributor\n[Search summary; fetch source before confirming facts] Polyon Inc. is a global plastic resin distribution company headquartered at 864 Grand Ave 1026, San Diego, CA 92109. They can be contacted via phone at +1 (619) 567 9764 or email at info@polyon.us.",
+            "links": [],
+            "fetchedAt": "2026-10-07T22:15:54.540Z",
+            "id": "e5"
+          },
+          {
+            "url": "https://www.polyon.us/?utm_source=openai",
+            "kind": "search",
+            "text": "Polyon | Plastic Resin Distributor | United States\n[Search summary; fetch source before confirming facts] The company's website, polyon.us, provides information about their products and services.",
+            "links": [],
+            "fetchedAt": "2026-10-07T22:15:54.540Z",
+            "id": "e6"
+          },
+          {
+            "url": "https://co.linkedin.com/company/polytron?utm_source=openai",
+            "kind": "search",
+            "text": "Polytron, Inc. | LinkedIn\n[Search summary; fetch source before confirming facts] 1. **Polytron, Inc.**: Specializes in automation machinery manufacturing, headquartered in Duluth, GA, with 2,847 followers.",
+            "links": [],
+            "fetchedAt": "2026-10-07T22:15:55.494Z",
+            "id": "e7"
+          },
+          {
+            "url": "https://id.linkedin.com/company/poly-inc?utm_source=openai",
+            "kind": "search",
+            "text": "Poly, Inc. | LinkedIn\n[Search summary; fetch source before confirming facts] 2. **Poly, Inc.**: A civil engineering firm based in Dothan, AL, with 490 followers.",
+            "links": [],
+            "fetchedAt": "2026-10-07T22:15:55.494Z",
+            "id": "e8"
+          },
+          {
+            "url": "https://my.linkedin.com/company/polytronix?utm_source=openai",
+            "kind": "search",
+            "text": "Polytronix, Inc. | LinkedIn\n[Search summary; fetch source before confirming facts] 3. **Polytronix, Inc.**: Provides integrated manufacturing and sub-assembly services for custom-engineered components, located in Richardson, TX, with 1,372 followers.",
+            "links": [],
+            "fetchedAt": "2026-10-07T22:15:55.494Z",
+            "id": "e9"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "команда или руководители",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "команда или руководство",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "Polyon Inc CEO OR sales director OR founder site:polyon.us OR \"Polyon Inc\"",
+            "focus": "руководитель или владелец процесса, профильное подразделение, прямой руководитель продаж",
+            "resultCount": 3
+          },
+          {
+            "type": "search",
+            "value": "Polyon Inc LinkedIn",
+            "focus": "официальная страница и команда компании в LinkedIn",
+            "resultCount": 4
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 6,
+          "searchRemaining": 6,
+          "remainingMs": 63776
+        }
+      },
+      "usage": {
+        "input_tokens": 3076,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 2176
+        },
+        "output_tokens": 392,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3468
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "companySummary": "Polyon Inc. is a global plastic resin distribution company headquartered in San Diego, CA, working with manufacturers worldwide.",
+        "missing": [
+          "Имя и роль руководителя (или владельца) процесса продаж или CEO/основателя компании Polyon Inc.",
+          "Публичный профиль или подтверждённый email этого лица"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          },
+          {
+            "domain": "polyon.mx",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Polyon Inc\" CEO OR founder OR director site:linkedin.com",
+            "focus": "Идентификация имени и публичного профиля руководителя компании или владельца процесса",
+            "purpose": "Найти действующего CEO, основателя или руководителя Polyon Inc. с подтверждённым профилем на LinkedIn"
+          },
+          {
+            "type": "open",
+            "value": "https://www.facebook.com/polyon1",
+            "focus": "команда или руководитель, посты или описание страницы",
+            "purpose": "Проверить публично указанных руководителей или владельцев на корпоративной странице Facebook"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найдено подтверждённого имени и роли руководителя или владельца процесса (продажи/CEO) — требуется идентификация ЛПР по фактам."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "Polyon Inc. is a global plastic resin distribution company headquartered in San Diego, CA, working with manufacturers worldwide.",
+        "missing": [
+          "Имя и роль руководителя (или владельца) процесса продаж или CEO/основателя компании Polyon Inc.",
+          "Публичный профиль или подтверждённый email этого лица"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          },
+          {
+            "domain": "polyon.mx",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"Polyon Inc\" CEO OR founder OR director site:linkedin.com",
+            "focus": "Идентификация имени и публичного профиля руководителя компании или владельца процесса",
+            "purpose": "Найти действующего CEO, основателя или руководителя Polyon Inc. с подтверждённым профилем на LinkedIn"
+          },
+          {
+            "type": "open",
+            "value": "https://www.facebook.com/polyon1",
+            "focus": "команда или руководитель, посты или описание страницы",
+            "purpose": "Проверить публично указанных руководителей или владельцев на корпоративной странице Facebook"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найдено подтверждённого имени и роли руководителя или владельца процесса (продажи/CEO) — требуется идентификация ЛПР по фактам."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:polyon.mx"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22Polyon%20Inc%22%20CEO%20OR%20founder%20OR%20director%20linkedin.com&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 425
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22Polyon%20Inc%22%20CEO%20OR%20founder%20OR%20director%20linkedin.com&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 320
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.facebook.com/polyon1",
+      "status": 200,
+      "elapsedMs": 742
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://www.facebook.com/polyon1",
+      "focus": "команда или руководитель, посты или описание страницы",
+      "purpose": "Проверить публично указанных руководителей или владельцев на корпоративной странице Facebook",
+      "success": true,
+      "evidence": {
+        "url": "https://www.facebook.com/polyon1",
+        "kind": "page",
+        "text": "Polyon <script nonce=\"italAXq4\" src=\"data:application/x-javascript; charset=utf-8;base64,Oy8qRkJfUEtHX0RFTElNKi8KCl9fZCgiUHJvZmlsZUNvbWV0R3JpZFRpbGVJbWFnZV93YXJuaW5nU2NyZWVuLmdyYXBocWwiLFtdLChmdW5jdGlvbih0LG4scixvLGEsaSl7InVzZSBzdHJpY3QiO3ZhciBlPXthcmd1bWVudERlZmluaXRpb25zOltdLGtpbmQ6IkZyYWdtZW50IixtZXRhZGF0YTpudWxsLG5hbWU6IlByb2ZpbGVDb21ldEdyaWRUaWxlSW1hZ2Vfd2FybmluZ1NjcmVlbiIsc2VsZWN0aW9uczpbe2FyZ3M6bnVsbCxkb2N1bWVudE5hbWU6IlByb2ZpbGVDb21ldEdyaWRUaWxlSW1hZ2Vfd2FybmluZ1NjcmVlbiIsZnJhZ21lbnROYW1lOiJDb21ldFdhcm5pbmdTY3JlZW5PdmVybGF5X2RhdGEiLGZyYWdtZW50UHJvcE5hbWU6ImRhdGEiLGtpbmQ6Ik1vZHVsZUltcG9ydCJ9XSx0eXBlOiJPdmVybGF5V2FybmluZ1NjcmVlblZpZXdNb2RlbCIsYWJzdHJhY3RLZXk6bnVsbH07YS5leHBvcnRzPWV9KSxudWxsKTsKX19kKCJQcm9maWxlQ29tZXRUaWxlSW1hZ2UucmVhY3QiLFsiQ29tZXRJbWFnZS5yZWFjdCIsIkNvbWV0UHJlc3NhYmxlLnJlYWN0IiwiZ2V0Um91bmRlZENvcm5lcnMiLCJyZWFjdCIsInJlYWN0LWNvbXBpbGVyLXJ1bnRpbWUiXSwoZnVuY3Rpb24odCxuLHIsbyxhLGksbCl7InVzZSBzdHJpY3QiO3ZhciBlLHM9ZXx8KGU9bygicmVhY3QiKSksdT17Ym9yZGVyQm90dG9tRW5kUmFkaXVzOntib3JkZXJFbmRFbmRSYWRpdXM6InhkZTBmNTAiLCQkY3NzOiEwfSxib3JkZXJCb3R0b21TdGFydFJhZGl1czp7Ym9yZGVyRW5kU3RhcnRSYWRpdXM6IngxNXg4a3JrIiwkJGNzczohMH0sYm9yZGVyVG9wRW5kUmFkaXVzOntib3JkZXJTdGFydEVuZFJhZGl1czoieDVhNWkxbiIsJCRjc3M6ITB9LGJvcmRlclRvcFN0YXJ0UmFkaXVzOntib3JkZXJTdGFydFN0YXJ0UmFkaXVzOiJ4MW9icTI5NCIsJCRjc3M6ITB9LGltYWdlOntoZWlnaHQ6Ing1eXIyMWQiLG9iamVjdEZpdDoieGwxeHYxciIsd2lkdGg6InhoOHllajMiLCQkY3NzOiEwfSxyb290OntkaXNwbGF5OiJ4MWxsaWlocSIscGFkZGluZ0JvdHRvbToieDF2cmFkMDQiLHBvc2l0aW9uOiJ4MW4yb25yNiIsd2lkdGg6InhoOHllajMiLCQkY3NzOiEwfX07ZnVuY3Rpb24gYyhlKXt2YXIgdD1vKCJyZWFjdC1jb21waWxlci1ydW50aW1lIikuYygyMSksbj1lLmxpbmtQcm9wcyxhPWUub25Ib3ZlckluLGk9ZS5vbkhvdmVyTW92ZSxsPWUub25Ib3Zlck91dCxjPWUub25QcmVzcyxkPWUub25QcmVzc0luLG09ZS5vblByZXNzT3V0LHA9ZS5yZWYsXz1lLnJvdW5kQ29ybmVyLGY9ZS5zcmMsZz1fIT1udWxsP186cigiZ2V0Um91bmRlZENvcm5lcnMiKS5DT1JORVJTLk5PTkUsaDt0WzBdPT09U3ltYm9sLmZvcigicmVhY3QubWVtb19jYWNoZV9zZW50aW5lbCIpPyhoPXtjbGFzc05hbWU6IngxZXkybTFjIHg5ZjYxOSB4dGlqbzV4IHgxbzB0b2QgeDEwbDZ0cWsgeDEzdmlmdnkifSx0WzBdPWgpOmg9dFswXTt2YXIgeTt0WzFdIT09Z3x8dFsyXSE9PWY/KHk9ZiE9PSIiJiZmIT09IiMiP3MuanN4KHIoIkNvbWV0SW1hZ2UucmVhY3QiKSx7c3JjOmYseHN0eWxlOlt1LmltYWdlLHIoImdldFJvdW5kZWRDb3JuZXJzIikuaGFzQ29ybmVyKGcscigiZ2V0Um91bmRlZENvcm5lcnMiKS5DT1JORVJTLlRPUF9TVEFSVCkmJnUuYm9yZGVyVG9wU3RhcnRSYWRpdXMscigiZ2V0Um91bmRlZENvcm5lcnMiKS5oYXNDb3JuZXIoZyxyKCJnZXRSb3VuZGVkQ29ybmVycyIpLkNPUk5FUlMuVE9QX0VORCkmJnUuYm9yZGVyVG9wRW5kUmFkaXVzLHIoImdldFJvdW5kZWRDb3JuZXJzIikuaGFzQ29ybmVyKGcscigiZ2V0Um91bmRlZENvcm5lcnMiKS5DT1JORVJTLkJPVFRPTV9TVEFSVCkmJnUuYm9yZGVyQm90dG9tU3RhcnRSYWRpdXMscigiZ2V0Um91bmRlZENvcm5lcnMiKS5oYXNDb3JuZXIoZyxyKCJnZXRSb3VuZGVkQ29ybmVycyIpLkNPUk5FUlMuQk9UVE9NX0VORCkmJnUuYm9yZGVyQm90dG9tRW5kUmFkaXVzXX0pOnMuanN4KCJkaXYiLGJhYmVsSGVscGVycy5leHRlbmRzKHt9LHswOntjbGFzc05hbWU6Ing1eXIyMWQgeGwxeHYxciB4aDh5ZWozIHgxdnR2eDF0In0sODp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4MW9icTI5NCJ9LDQ6e2NsYXNzTmFtZToieDV5cjIxZCB4bDF4djFyIHhoOHllajMgeDF2dHZ4MXQgeDVhNWkxbiJ9LDEyOntjbGFzc05hbWU6Ing1eXIyMWQgeGwxeHYxciB4aDh5ZWozIHgxdnR2eDF0IHgxb2JxMjk0IHg1YTVpMW4ifSwyOntjbGFzc05hbWU6Ing1eXIyMWQgeGwxeHYxciB4aDh5ZWozIHgxdnR2eDF0IHgxNXg4a3JrIn0sMTA6e2NsYXNzTmFtZToieDV5cjIxZCB4bDF4djFyIHhoOHllajMgeDF2dHZ4MXQgeDFvYnEyOTQgeDE1eDhrcmsifSw2OntjbGFzc05hbWU6Ing1eXIyMWQgeGwxeHYxciB4aDh5ZWozIHgxdnR2eDF0IHg1YTVpMW4geDE1eDhrcmsifSwxNDp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4MW9icTI5NCB4NWE1aTFuIHgxNXg4a3JrIn0sMTp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4ZGUwZjUwIn0sOTp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4MW9icTI5NCB4ZGUwZjUwIn0sNTp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4NWE1aTFuIHhkZTBmNTAifSwxMzp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4MW9icTI5NCB4NWE1aTFuIHhkZTBmNTAifSwzOntjbGFzc05hbWU6Ing1eXIyMWQgeGwxeHYxciB4aDh5ZWozIHgxdnR2eDF0IHgxNXg4a3JrIHhkZTBmNTAifSwxMTp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4MW9icTI5NCB4MTV4OGtyayB4ZGUwZjUwIn0sNzp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4NWE1aTFuIHgxNXg4a3JrIHhkZTBmNTAifSwxNTp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4MW9icTI5NCB4NWE1aTFuIHgxNXg4a3JrIHhkZTBmNTAifX1bISFyKCJnZXRSb3VuZGVkQ29ybmVycyIpLmhhc0Nvcm5lcihnLHIoImdldFJvdW5kZWRDb3JuZXJzIikuQ09STkVSUy5UT1BfU1RBUlQpPDwzfCEhcigiZ2V0Um91bmRlZENvcm5lcnMiKS5oYXNDb3JuZXIoZyxyKCJnZXRSb3VuZGVkQ29ybmVycyIpLkNPUk5FUlMuVE9QX0VORCk8PDJ8ISFyKCJnZXRSb3VuZGVkQ29ybmVycyIpLmhhc0Nvcm5lcihnLHIoImdldFJvdW5kZWRDb3JuZXJzIikuQ09STkVSUy5CT1RUT01fU1RBUlQpPDwxfCEhcigiZ2V0Um91bmRlZENvcm5lcnMiKS5oYXNDb3JuZXIoZyxyKCJnZXRSb3VuZGVkQ29ybmVycyIpLkNPUk5FUlMuQk9UVE9NX0VORCk8PDBdKSksdFsxXT1nLHRbMl09Zix0WzNdPXkpOnk9dFszXTt2YXIgQztpZih0WzRdIT09Zyl7dmFyIGI7Qz17MDp7Y2xhc3NOYW1lOiJ4MWV5Mm0xYyB4eWJ3c2ZvIHg5ZjYxOSB4dGlqbzV4IHgxbzB0b2QgeDEwbDZ0cWsgeDEzdmlmdnkifSw4OntjbGFzc05hbWU6IngxZXkybTFjIHh5YndzZm8geDlmNjE5IHh0aWpvNXggeDFvMHRvZCB4MTBsNnRxayB4MTN2aWZ2eSB4MW9icTI5NCJ9LDQ6e2NsYXNzTmFtZToieDFleTJtMWMgeHlid3NmbyB4OWY2MTkgeHRpam81eCB4MW8wdG9kIHgxMGw2dHFrIHgxM3ZpZnZ5IHg1YTVpMW4ifSwxMjp7Y2xhc3NOYW1lOiJ4MWV5Mm0xYyB4eWJ3c2ZvIHg5ZjYxOSB4dGlqbzV4IHgxbzB0b2QgeDEwbDZ0cWsgeDEzdmlmdnkgeDFvYnEyOTQgeDVhNWkxbiJ9LDI6e2NsYXNzTmFtZToieDFleTJtMWMgeHlid3NmbyB4OWY2MTkgeHRpam81eCB4MW8wdG9kIHgxMGw2dHFrIHgxM3ZpZnZ5IHgxNXg4a3JrIn0sMTA6e2NsYXNzTmFtZToieDFleTJtMWMgeHlid3NmbyB4OWY2MTkgeHRpam81eCB4MW8wdG9kIHgxMGw2dHFrIHgxM3ZpZnZ5IHgxb2JxMjk0IHgxNXg4a3JrIn0sNjp7Y2xhc3NOYW1lOiJ4MWV5Mm0xYyB4eWJ3c2ZvIHg5ZjYxOSB4dGlqbzV4IHgxbzB0b2QgeDEwbDZ0cWsgeDEzdmlmdnkgeDVhNWkxbiB4MTV4OGtyayJ9LDE0OntjbGFzc05hbWU6IngxZXkybTFjIHh5YndzZm8geDlmNjE5IHh0aWpvNXggeDFvMHRvZCB4MTBsNnRxayB4MTN2aWZ2eSB4MW9icTI5NCB4NWE1aTFuIHgxNXg4a3JrIn0sMTp7Y2xhc3NOYW1lOiJ4MWV5Mm0xYyB4eWJ3c2ZvIHg5ZjYxOSB4dGlqbzV4IHgxbzB0b2QgeDEwbDZ0cWsgeDEzdmlmdnkgeGRlMGY1MCJ9LDk6e2NsYXNzTmFtZToieDFleTJtMWMgeHlid3NmbyB4OWY2MTkgeHRpam81eCB4MW8wdG9kIHgxMGw2dHFrIHgxM3ZpZnZ5IHgxb2JxMjk0IHhkZTBmNTAifSw1OntjbGFzc05hbWU6IngxZXkybTFjIHh5YndzZm8geDlmNjE5IHh0aWpvNXggeDFvMHRvZCB4MTBsNnRxayB4MTN2aWZ2eSB4NWE1aTFuIHhkZTBmNTAifSwxMzp7Y2xhc3NOYW1lOiJ4MWV5Mm0xYyB4eWJ3c2ZvIHg5ZjYxOSB4dGlqbzV4IHgxbzB0b2QgeDEwbDZ0cWsgeDEzdmlmdnkgeDFvYnEyOTQgeDVhNWkxbiB4ZGUwZjUwIn0",
+        "links": [],
+        "fetchedAt": "2026-10-07T22:16:00.205Z",
+        "id": "e11"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3554,
+      "model": "gpt-4.1-mini",
+      "input": {
+        "query": "\"Polyon Inc\" CEO OR founder OR director site:linkedin.com",
+        "maxResults": 5
+      },
+      "usage": {
+        "input_tokens": 8603,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 216,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 8819
+      },
+      "webSearchCalls": 1,
+      "output": "I couldn't locate specific information about the CEO, founder, or director of \"Polyon Inc.\" on LinkedIn. However, \"POLYON®\" is a controlled-release fertilizer technology produced by Harrell's LLC, a leading producer of custom-blended fertilizers and distributor of plant protectants. Harrell's LLC is headquartered in Lakeland, Florida, and has been in operation since 1941. ([ar.linkedin.com](https://ar.linkedin.com/company/harrell%27s-llc?utm_source=openai))\n\nAdditionally, \"The Polygon Gallery\" is an art gallery located along North Vancouver's urban waterfront. It was designed by Patkau Architects with an industrial expression that reflects the area's shipbuilding heritage. The gallery's structural design involved a hybrid steel and concrete system to support long spans and heavy structural loading. ([ca.linkedin.com](https://ca.linkedin.com/company/apex-structural-design?utm_source=openai))\n\nIf you have more specific information about the company or individual you're interested in, please provide additional details so I can assist you further. "
+    },
+    {
+      "stage": "search",
+      "query": "\"Polyon Inc\" CEO OR founder OR director site:linkedin.com",
+      "results": [
+        {
+          "url": "https://ar.linkedin.com/company/harrell%27s-llc?utm_source=openai",
+          "title": "Harrell's LLC | LinkedIn",
+          "snippet": "[Search summary; fetch source before confirming facts] I couldn't locate specific information about the CEO, founder, or director of \"Polyon Inc.\" on LinkedIn. However, \"POLYON®\" is a controlled-release fertilizer technology produced by Harrell's LLC, a leading producer of custom-blended fertilizers and distributor of plant protectants. Harrell's LLC is headquartered in Lakeland, Florida, and has been in operation since 1941.",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "url": "https://ca.linkedin.com/company/apex-structural-design?utm_source=openai",
+          "title": "Apex Structural Design Ltd. | LinkedIn",
+          "snippet": "[Search summary; fetch source before confirming facts] Additionally, \"The Polygon Gallery\" is an art gallery located along North Vancouver's urban waterfront. It was designed by Patkau Architects with an industrial expression that reflects the area's shipbuilding heritage. The gallery's structural design involved a hybrid steel and concrete system to support long spans and heavy structural loading.",
+          "source_label": "openai-web-search",
+          "score": null,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"Polyon Inc\" CEO OR founder OR director site:linkedin.com",
+      "focus": "Идентификация имени и публичного профиля руководителя компании или владельца процесса",
+      "purpose": "Найти действующего CEO, основателя или руководителя Polyon Inc. с подтверждённым профилем на LinkedIn",
+      "results": [
+        {
+          "url": "https://ar.linkedin.com/company/harrell%27s-llc?utm_source=openai",
+          "title": "Harrell's LLC | LinkedIn",
+          "snippet": "[Search summary; fetch source before confirming facts] I couldn't locate specific information about the CEO, founder, or director of \"Polyon Inc.\" on LinkedIn. However, \"POLYON®\" is a controlled-release fertilizer technology produced by Harrell's LLC, a leading producer of custom-blended fertilizers and distributor of plant protectants. Harrell's LLC is headquartered in Lakeland, Florida, and has been in operation since 1941.",
+          "provider": "openai-web-search"
+        },
+        {
+          "url": "https://ca.linkedin.com/company/apex-structural-design?utm_source=openai",
+          "title": "Apex Structural Design Ltd. | LinkedIn",
+          "snippet": "[Search summary; fetch source before confirming facts] Additionally, \"The Polygon Gallery\" is an art gallery located along North Vancouver's urban waterfront. It was designed by Patkau Architects with an industrial expression that reflects the area's shipbuilding heritage. The gallery's structural design involved a hybrid steel and concrete system to support long spans and heavy structural loading.",
+          "provider": "openai-web-search"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 5211,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us/",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE Home Products Our Company Contact More Use tab to navigate through the menu items. 864 Grand Ave 1026, San Diego, CA 92109 +1 (619) 567 9764 info@polyon.us &copy; 2023 Polyon Inc",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:15:45.097Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "kind": "page",
+            "text": "contact us Contact Form: Send Success! Message received. Home Products Our Company Contact More Use tab to navigate through the menu items. 864 Grand Ave 1026, San Diego, CA 92109 +1 (619) 567 9764 info@polyon.us &copy; 2023 Polyon Inc",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:15:47.660Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "kind": "page",
+            "text": "OUR COMPANY Over 17 years serving the plastic industry worldwide! Polyon is a global plastic resin distribution company. ​ We supply virgin and off grade polymer resin from top brand petrochemical companies. ​ With presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive. ​ We supply plastic manufacturers worldwide with the best product quality on the market. ​ Only Premium Quality LDPE - LLDPE - HDPE - PP Products! Home Products Our Company Contact More Use tab to navigate through the menu items. 864 Grand Ave 1026, San Diego, CA 92109 +1 (619) 567 9764 info@polyon.us &copy; 2023 Polyon Inc",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:15:47.900Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://www.facebook.com/polyon1",
+            "kind": "page",
+            "text": "Polyon <script nonce=\"italAXq4\" src=\"data:application/x-javascript; charset=utf-8;base64,Oy8qRkJfUEtHX0RFTElNKi8KCl9fZCgiUHJvZmlsZUNvbWV0R3JpZFRpbGVJbWFnZV93YXJuaW5nU2NyZWVuLmdyYXBocWwiLFtdLChmdW5jdGlvbih0LG4scixvLGEsaSl7InVzZSBzdHJpY3QiO3ZhciBlPXthcmd1bWVudERlZmluaXRpb25zOltdLGtpbmQ6IkZyYWdtZW50IixtZXRhZGF0YTpudWxsLG5hbWU6IlByb2ZpbGVDb21ldEdyaWRUaWxlSW1hZ2Vfd2FybmluZ1NjcmVlbiIsc2VsZWN0aW9uczpbe2FyZ3M6bnVsbCxkb2N1bWVudE5hbWU6IlByb2ZpbGVDb21ldEdyaWRUaWxlSW1hZ2Vfd2FybmluZ1NjcmVlbiIsZnJhZ21lbnROYW1lOiJDb21ldFdhcm5pbmdTY3JlZW5PdmVybGF5X2RhdGEiLGZyYWdtZW50UHJvcE5hbWU6ImRhdGEiLGtpbmQ6Ik1vZHVsZUltcG9ydCJ9XSx0eXBlOiJPdmVybGF5V2FybmluZ1NjcmVlblZpZXdNb2RlbCIsYWJzdHJhY3RLZXk6bnVsbH07YS5leHBvcnRzPWV9KSxudWxsKTsKX19kKCJQcm9maWxlQ29tZXRUaWxlSW1hZ2UucmVhY3QiLFsiQ29tZXRJbWFnZS5yZWFjdCIsIkNvbWV0UHJlc3NhYmxlLnJlYWN0IiwiZ2V0Um91bmRlZENvcm5lcnMiLCJyZWFjdCIsInJlYWN0LWNvbXBpbGVyLXJ1bnRpbWUiXSwoZnVuY3Rpb24odCxuLHIsbyxhLGksbCl7InVzZSBzdHJpY3QiO3ZhciBlLHM9ZXx8KGU9bygicmVhY3QiKSksdT17Ym9yZGVyQm90dG9tRW5kUmFkaXVzOntib3JkZXJFbmRFbmRSYWRpdXM6InhkZTBmNTAiLCQkY3NzOiEwfSxib3JkZXJCb3R0b21TdGFydFJhZGl1czp7Ym9yZGVyRW5kU3RhcnRSYWRpdXM6IngxNXg4a3JrIiwkJGNzczohMH0sYm9yZGVyVG9wRW5kUmFkaXVzOntib3JkZXJTdGFydEVuZFJhZGl1czoieDVhNWkxbiIsJCRjc3M6ITB9LGJvcmRlclRvcFN0YXJ0UmFkaXVzOntib3JkZXJTdGFydFN0YXJ0UmFkaXVzOiJ4MW9icTI5NCIsJCRjc3M6ITB9LGltYWdlOntoZWlnaHQ6Ing1eXIyMWQiLG9iamVjdEZpdDoieGwxeHYxciIsd2lkdGg6InhoOHllajMiLCQkY3NzOiEwfSxyb290OntkaXNwbGF5OiJ4MWxsaWlocSIscGFkZGluZ0JvdHRvbToieDF2cmFkMDQiLHBvc2l0aW9uOiJ4MW4yb25yNiIsd2lkdGg6InhoOHllajMiLCQkY3NzOiEwfX07ZnVuY3Rpb24gYyhlKXt2YXIgdD1vKCJyZWFjdC1jb21waWxlci1ydW50aW1lIikuYygyMSksbj1lLmxpbmtQcm9wcyxhPWUub25Ib3ZlckluLGk9ZS5vbkhvdmVyTW92ZSxsPWUub25Ib3Zlck91dCxjPWUub25QcmVzcyxkPWUub25QcmVzc0luLG09ZS5vblByZXNzT3V0LHA9ZS5yZWYsXz1lLnJvdW5kQ29ybmVyLGY9ZS5zcmMsZz1fIT1udWxsP186cigiZ2V0Um91bmRlZENvcm5lcnMiKS5DT1JORVJTLk5PTkUsaDt0WzBdPT09U3ltYm9sLmZvcigicmVhY3QubWVtb19jYWNoZV9zZW50aW5lbCIpPyhoPXtjbGFzc05hbWU6IngxZXkybTFjIHg5ZjYxOSB4dGlqbzV4IHgxbzB0b2QgeDEwbDZ0cWsgeDEzdmlmdnkifSx0WzBdPWgpOmg9dFswXTt2YXIgeTt0WzFdIT09Z3x8dFsyXSE9PWY/KHk9ZiE9PSIiJiZmIT09IiMiP3MuanN4KHIoIkNvbWV0SW1hZ2UucmVhY3QiKSx7c3JjOmYseHN0eWxlOlt1LmltYWdlLHIoImdldFJvdW5kZWRDb3JuZXJzIikuaGFzQ29ybmVyKGcscigiZ2V0Um91bmRlZENvcm5lcnMiKS5DT1JORVJTLlRPUF9TVEFSVCkmJnUuYm9yZGVyVG9wU3RhcnRSYWRpdXMscigiZ2V0Um91bmRlZENvcm5lcnMiKS5oYXNDb3JuZXIoZyxyKCJnZXRSb3VuZGVkQ29ybmVycyIpLkNPUk5FUlMuVE9QX0VORCkmJnUuYm9yZGVyVG9wRW5kUmFkaXVzLHIoImdldFJvdW5kZWRDb3JuZXJzIikuaGFzQ29ybmVyKGcscigiZ2V0Um91bmRlZENvcm5lcnMiKS5DT1JORVJTLkJPVFRPTV9TVEFSVCkmJnUuYm9yZGVyQm90dG9tU3RhcnRSYWRpdXMscigiZ2V0Um91bmRlZENvcm5lcnMiKS5oYXNDb3JuZXIoZyxyKCJnZXRSb3VuZGVkQ29ybmVycyIpLkNPUk5FUlMuQk9UVE9NX0VORCkmJnUuYm9yZGVyQm90dG9tRW5kUmFkaXVzXX0pOnMuanN4KCJkaXYiLGJhYmVsSGVscGVycy5leHRlbmRzKHt9LHswOntjbGFzc05hbWU6Ing1eXIyMWQgeGwxeHYxciB4aDh5ZWozIHgxdnR2eDF0In0sODp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4MW9icTI5NCJ9LDQ6e2NsYXNzTmFtZToieDV5cjIxZCB4bDF4djFyIHhoOHllajMgeDF2dHZ4MXQgeDVhNWkxbiJ9LDEyOntjbGFzc05hbWU6Ing1eXIyMWQgeGwxeHYxciB4aDh5ZWozIHgxdnR2eDF0IHgxb2JxMjk0IHg1YTVpMW4ifSwyOntjbGFzc05hbWU6Ing1eXIyMWQgeGwxeHYxciB4aDh5ZWozIHgxdnR2eDF0IHgxNXg4a3JrIn0sMTA6e2NsYXNzTmFtZToieDV5cjIxZCB4bDF4djFyIHhoOHllajMgeDF2dHZ4MXQgeDFvYnEyOTQgeDE1eDhrcmsifSw2OntjbGFzc05hbWU6Ing1eXIyMWQgeGwxeHYxciB4aDh5ZWozIHgxdnR2eDF0IHg1YTVpMW4geDE1eDhrcmsifSwxNDp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4MW9icTI5NCB4NWE1aTFuIHgxNXg4a3JrIn0sMTp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4ZGUwZjUwIn0sOTp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4MW9icTI5NCB4ZGUwZjUwIn0sNTp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4NWE1aTFuIHhkZTBmNTAifSwxMzp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4MW9icTI5NCB4NWE1aTFuIHhkZTBmNTAifSwzOntjbGFzc05hbWU6Ing1eXIyMWQgeGwxeHYxciB4aDh5ZWozIHgxdnR2eDF0IHgxNXg4a3JrIHhkZTBmNTAifSwxMTp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4MW9icTI5NCB4MTV4OGtyayB4ZGUwZjUwIn0sNzp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4NWE1aTFuIHgxNXg4a3JrIHhkZTBmNTAifSwxNTp7Y2xhc3NOYW1lOiJ4NXlyMjFkIHhsMXh2MXIgeGg4eWVqMyB4MXZ0dngxdCB4MW9icTI5NCB4NWE1aTFuIHgxNXg4a3JrIHhkZTBmNTAifX1bISFyKCJnZXRSb3VuZGVkQ29ybmVycyIpLmhhc0Nvcm5lcihnLHIoImdldFJvdW5kZWRDb3JuZXJzIikuQ09STkVSUy5UT1BfU1RBUlQpPDwzfCEhcigiZ2V0Um91bmRlZENvcm5lcnMiKS5oYXNDb3JuZXIoZyxyKCJnZXRSb3VuZGVkQ29ybmVycyIpLkNPUk5FUlMuVE9QX0VORCk8PDJ8ISFyKCJnZXRSb3VuZGVkQ29ybmVycyIpLmhhc0Nvcm5lcihnLHIoImdldFJvdW5kZWRDb3JuZXJzIikuQ09STkVSUy5CT1RUT01fU1RBUlQpPDwxfCEhcigiZ2V0Um91bmRlZENvcm5lcnMiKS5oYXNDb3JuZXIoZyxyKCJnZXRSb3VuZGVkQ29ybmVycyIpLkNPUk5FUlMuQk9UVE9NX0VORCk8PDBdKSksdFsxXT1nLHRbMl09Zix0WzNdPXkpOnk9dFszXTt2YXIgQztpZih0WzRdIT09Zyl7dmFyIGI7Qz17MDp7Y2xhc3NOYW1lOiJ4MWV5Mm0xYyB4eWJ3c2ZvIHg5ZjYxOSB4dGlqbzV4IHgxbzB0b2QgeDEwbDZ0cWsgeDEzdmlmdnkifSw4OntjbGFzc05hbWU6IngxZXkybTFjIHh5YndzZm8geDlmNjE5IHh0aWpvNXggeDFvMHRvZCB4MTBsNnRxayB4MTN2aWZ2eSB4MW9icTI5NCJ9LDQ6e2NsYXNzTmFtZToieDFleTJtMWMgeHlid3NmbyB4OWY2MTkgeHRpam81eCB4MW8wdG9kIHgxMGw2dHFrIHgxM3ZpZnZ5IHg1YTVpMW4ifSwxMjp7Y2xhc3NOYW1lOiJ4MWV5Mm0xYyB4eWJ3c2ZvIHg5ZjYxOSB4dGlqbzV4IHgxbzB0b2QgeDEwbDZ0cWsgeDEzdmlmdnkgeDFvYnEyOTQgeDVhNWkxbiJ9LDI6e2NsYXNzTmFtZToieDFleTJtMWMgeHlid3NmbyB4OWY2MTkgeHRpam81eCB4MW8wdG9kIHgxMGw2dHFrIHgxM3ZpZnZ5IHgxNXg4a3JrIn0sMTA6e2NsYXNzTmFtZToieDFleTJtMWMgeHlid3NmbyB4OWY2MTkgeHRpam81eCB4MW8wdG9kIHgxMGw2dHFrIHgxM3ZpZnZ5IHgxb2JxMjk0IHgxNXg4a3JrIn0sNjp7Y2xhc3NOYW1lOiJ4MWV5Mm0xYyB4eWJ3c2ZvIHg5ZjYxOSB4dGlqbzV4IHgxbzB0b2QgeDEwbDZ0cWsgeDEzdmlmdnkgeDVhNWkxbiB4MTV4OGtyayJ9LDE0OntjbGFzc05hbWU6IngxZXkybTFjIHh5YndzZm8geDlmNjE5IHh0aWpvNXggeDFvMHRvZCB4MTBsNnRxayB4MTN2aWZ2eSB4MW9icTI5NCB4NWE1aTFuIHgxNXg4a3JrIn0sMTp7Y2xhc3NOYW1lOiJ4MWV5Mm0xYyB4eWJ3c2ZvIHg5ZjYxOSB4dGlqbzV4IHgxbzB0b2QgeDEwbDZ0cWsgeDEzdmlmdnkgeGRlMGY1MCJ9LDk6e2NsYXNzTmFtZToieDFleTJtMWMgeHlid3NmbyB4OWY2MTkgeHRpam81eCB4MW8wdG9kIHgxMGw2dHFrIHgxM3ZpZnZ5IHgxb2JxMjk0IHhkZTBmNTAifSw1OntjbGFzc05hbWU6IngxZXkybTFjIHh5YndzZm8geDlmNjE5IHh0aWpvNXggeDFvMHRvZCB4MTBsNnRxayB4MTN2aWZ2eSB4NWE1aTFuIHhkZTBmNTAifSwxMzp7Y2xhc3NOYW1lOiJ4MWV5Mm0xYyB4eWJ3c2ZvIHg5ZjYxOSB4dGlqbzV4IHgxbzB0b2QgeDEwbDZ0cWsgeDEzdmlmdnkgeDFvYnEyOTQgeDVhNWkxbiB4ZGUwZjUwIn0",
+            "links": [],
+            "fetchedAt": "2026-10-07T22:16:00.205Z",
+            "id": "e11"
+          },
+          {
+            "url": "https://www.google.com/maps/search/Polyon+Inc.?utm_source=openai",
+            "kind": "search",
+            "text": "Polyon Inc.\n[Search summary; fetch source before confirming facts] ##",
+            "links": [],
+            "fetchedAt": "2026-10-07T22:15:54.540Z",
+            "id": "e4"
+          },
+          {
+            "url": "https://www.polyon.us/our-company?utm_source=openai",
+            "kind": "search",
+            "text": "Polyon - Our Company - Plastic Resin Distributor\n[Search summary; fetch source before confirming facts] Polyon Inc. is a global plastic resin distribution company headquartered at 864 Grand Ave 1026, San Diego, CA 92109. They can be contacted via phone at +1 (619) 567 9764 or email at info@polyon.us.",
+            "links": [],
+            "fetchedAt": "2026-10-07T22:15:54.540Z",
+            "id": "e5"
+          },
+          {
+            "url": "https://www.polyon.us/?utm_source=openai",
+            "kind": "search",
+            "text": "Polyon | Plastic Resin Distributor | United States\n[Search summary; fetch source before confirming facts] The company's website, polyon.us, provides information about their products and services.",
+            "links": [],
+            "fetchedAt": "2026-10-07T22:15:54.540Z",
+            "id": "e6"
+          },
+          {
+            "url": "https://co.linkedin.com/company/polytron?utm_source=openai",
+            "kind": "search",
+            "text": "Polytron, Inc. | LinkedIn\n[Search summary; fetch source before confirming facts] 1. **Polytron, Inc.**: Specializes in automation machinery manufacturing, headquartered in Duluth, GA, with 2,847 followers.",
+            "links": [],
+            "fetchedAt": "2026-10-07T22:15:55.494Z",
+            "id": "e7"
+          },
+          {
+            "url": "https://id.linkedin.com/company/poly-inc?utm_source=openai",
+            "kind": "search",
+            "text": "Poly, Inc. | LinkedIn\n[Search summary; fetch source before confirming facts] 2. **Poly, Inc.**: A civil engineering firm based in Dothan, AL, with 490 followers.",
+            "links": [],
+            "fetchedAt": "2026-10-07T22:15:55.494Z",
+            "id": "e8"
+          },
+          {
+            "url": "https://my.linkedin.com/company/polytronix?utm_source=openai",
+            "kind": "search",
+            "text": "Polytronix, Inc. | LinkedIn\n[Search summary; fetch source before confirming facts] 3. **Polytronix, Inc.**: Provides integrated manufacturing and sub-assembly services for custom-engineered components, located in Richardson, TX, with 1,372 followers.",
+            "links": [],
+            "fetchedAt": "2026-10-07T22:15:55.494Z",
+            "id": "e9"
+          },
+          {
+            "url": "https://ar.linkedin.com/company/harrell%27s-llc?utm_source=openai",
+            "kind": "search",
+            "text": "Harrell's LLC | LinkedIn\n[Search summary; fetch source before confirming facts] I couldn't locate specific information about the CEO, founder, or director of \"Polyon Inc.\" on LinkedIn. However, \"POLYON®\" is a controlled-release fertilizer technology produced by Harrell's LLC, a leading producer of custom-blended fertilizers and distributor of plant protectants. Harrell's LLC is headquartered in Lakeland, Florida, and has been in operation since 1941.",
+            "links": [],
+            "fetchedAt": "2026-10-07T22:16:03.488Z",
+            "id": "e12"
+          },
+          {
+            "url": "https://ca.linkedin.com/company/apex-structural-design?utm_source=openai",
+            "kind": "search",
+            "text": "Apex Structural Design Ltd. | LinkedIn\n[Search summary; fetch source before confirming facts] Additionally, \"The Polygon Gallery\" is an art gallery located along North Vancouver's urban waterfront. It was designed by Patkau Architects with an industrial expression that reflects the area's shipbuilding heritage. The gallery's structural design involved a hybrid steel and concrete system to support long spans and heavy structural loading.",
+            "links": [],
+            "fetchedAt": "2026-10-07T22:16:03.489Z",
+            "id": "e13"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "команда или руководители",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "команда или руководство",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "Polyon Inc CEO OR sales director OR founder site:polyon.us OR \"Polyon Inc\"",
+            "focus": "руководитель или владелец процесса, профильное подразделение, прямой руководитель продаж",
+            "resultCount": 3
+          },
+          {
+            "type": "search",
+            "value": "Polyon Inc LinkedIn",
+            "focus": "официальная страница и команда компании в LinkedIn",
+            "resultCount": 4
+          },
+          {
+            "type": "search",
+            "value": "\"Polyon Inc\" CEO OR founder OR director site:linkedin.com",
+            "focus": "Идентификация имени и публичного профиля руководителя компании или владельца процесса",
+            "resultCount": 2
+          },
+          {
+            "type": "open",
+            "value": "https://www.facebook.com/polyon1",
+            "focus": "команда или руководитель, посты или описание страницы",
+            "success": true
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:polyon.mx"
+        ],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 4,
+          "searchRemaining": 5,
+          "remainingMs": 55564
+        }
+      },
+      "usage": {
+        "input_tokens": 7510,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 335,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 7845
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "companySummary": "Polyon Inc — глобальная компания по дистрибуции пластиковых смол, зарегистрированная в Сан-Диего, США.",
+        "missing": [
+          "Подтверждённое имя руководителя или владельца процесса продаж (CEO, директор по продажам, основатель и т.п.)",
+          "Публичный контакт руководителя, а не общая почта"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "site:polyon.us CEO OR founder OR sales direktOR OR team",
+            "focus": "имя руководителя/основателя/ключевого сотрудника на сайте или в открытых источниках, подтверждение через прямую цитату имени, команды или отдела продаж",
+            "purpose": "Поиск имени и, по возможности, контакта владельца процесса/руководителя для релевантной коммуникации."
+          },
+          {
+            "type": "search",
+            "value": "\"Polyon Inc\" CEO OR founder OR director OR president OR owner sales",
+            "focus": "поиск по СМИ, каталогам, бизнес-ресурсам и базам данных США, включая сайты ассоциаций, связи с пресс-релизами, бизнес-регистрами",
+            "purpose": "Поиск имени главного ЛПР через сторонние источники с подтверждением текущей причастности."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найден ни один подтверждённый человек, выполняющий функцию владельца задачи или руководителя профильного подразделения; требуется дополнительный внешний поиск."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 3,
+      "decision": {
+        "companySummary": "Polyon Inc — глобальная компания по дистрибуции пластиковых смол, зарегистрированная в Сан-Диего, США.",
+        "missing": [
+          "Подтверждённое имя руководителя или владельца процесса продаж (CEO, директор по продажам, основатель и т.п.)",
+          "Публичный контакт руководителя, а не общая почта"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "site:polyon.us CEO OR founder OR sales direktOR OR team",
+            "focus": "имя руководителя/основателя/ключевого сотрудника на сайте или в открытых источниках, подтверждение через прямую цитату имени, команды или отдела продаж",
+            "purpose": "Поиск имени и, по возможности, контакта владельца процесса/руководителя для релевантной коммуникации."
+          },
+          {
+            "type": "search",
+            "value": "\"Polyon Inc\" CEO OR founder OR director OR president OR owner sales",
+            "focus": "поиск по СМИ, каталогам, бизнес-ресурсам и базам данных США, включая сайты ассоциаций, связи с пресс-релизами, бизнес-регистрами",
+            "purpose": "Поиск имени главного ЛПР через сторонние источники с подтверждением текущей причастности."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найден ни один подтверждённый человек, выполняющий функцию владельца задачи или руководителя профильного подразделения; требуется дополнительный внешний поиск."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "diminishing_returns",
+      "actions": 7,
+      "candidates": [],
+      "domains": [
+        "polyon.us"
+      ],
+      "elapsedMs": 24789
+    },
+    {
+      "stage": "people_ranked",
+      "people": []
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": "info@polyon.us",
+        "contact_level": "E",
+        "email_classification": "GENERAL",
+        "email_type": "generic_fallback",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "LOW",
+        "readiness": "fallback_only",
+        "evidence": [
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "generic_fallback_does_not_qualify"
+      },
+      "contacts": [
+        {
+          "name": null,
+          "email": "info@polyon.us",
+          "type": "generic_email",
+          "source": "https://www.polyon.us/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://polyon.us/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://polyon.us/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://www.polyon.us/contact-us"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://polyon.us"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2562,
+      "schema": "leadgen_outreach_v4",
+      "model": "gpt-4.1-mini",
+      "input": {
+        "company": "PolyOn",
+        "segment": null,
+        "industry": null,
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "evidence": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+          "source": "https://hh.ru/vacancy/137434617"
+        },
+        "company_specifics": null,
+        "lpr": {
+          "name": null,
+          "role": null,
+          "why_this_person": null
+        },
+        "business_context": {
+          "problem_hypothesis": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+          "target_responsibility": null,
+          "selection_reason": null
+        },
+        "contact_type": "GENERAL",
+        "required_cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "required_greeting": "Добрый день."
+      },
+      "usage": {
+        "input_tokens": 623,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 254,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 877
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "subject": "Вакансия менеджера продаж в PolyOn",
+        "body": "Компания PolyOn открыла вакансию менеджера по продажам, что говорит о необходимости усиления работы с клиентами и расширения каналов продаж. Такой рост может сопровождаться увеличением рутинных задач по поиску и квалификации потенциальных клиентов. Возможно, текущие процессы требуют значительных ручных усилий, что снижает скорость и качество реакции на запросы.\n\nМы можем помочь провести пилотный проект по автоматизации части этапа квалификации лидов, используя входящие данные по заявкам и прошлым сделкам для формирования приоритетного списка клиентов. Это позволит менеджерам фокусироваться на самых перспективных контактах, сокращая время на обработку потока запросов.\n\nДля этого достаточно предоставить историю лидов и исходные заявки, а на выходе вы получите ранжированный список клиентов для дальнейшей обработки менеджерами. Такой сквозной инструмент поможет быстрее определить потенциальные возможности и улучшить результативность отдела продаж.",
+        "cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "quality": {
+          "reason_now": true,
+          "grounded_hypothesis": true,
+          "russian_only": true,
+          "personal_cta": true
+        }
+      }
+    }
+  ],
+  "startedAt": "2026-10-07T22:15:44.270Z",
+  "bundle": {
+    "companyName": "PolyOn",
+    "officialWebsite": "https://polyon.us",
+    "officialDomain": "polyon.us",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "info@polyon.us",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.polyon.us/",
+              "sourceType": "official",
+              "excerpt": "info@polyon.us — public email parser",
+              "capturedAt": "2026-10-07T22:15:44.270Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "info@polyon.us",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://www.polyon.us/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+      "sourceUrl": "https://hh.ru/vacancy/137434617",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 3,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 15,
+      "lprMs": 24789,
+      "contactMs": 70,
+      "totalMs": 27449,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "people": {
+    "primary_person": null,
+    "alternative_people": [],
+    "all_candidates": [],
+    "search_status": "no_person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "diminishing_returns"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 3,
+      "official_pages_fetched": 4,
+      "aborted_requests": 0,
+      "elapsed_ms": 24789,
+      "stop_reason": "diminishing_returns",
+      "queries_executed": [
+        "Polyon Inc CEO OR sales director OR founder site:polyon.us OR \"Polyon Inc\"",
+        "Polyon Inc LinkedIn",
+        "\"Polyon Inc\" CEO OR founder OR director site:linkedin.com"
+      ],
+      "sources_checked": [
+        "https://www.polyon.us/",
+        "https://www.polyon.us/contact-us",
+        "https://www.polyon.us/our-company",
+        "https://www.google.com/maps/search/Polyon+Inc.?utm_source=openai",
+        "https://www.polyon.us/our-company?utm_source=openai",
+        "https://www.polyon.us/?utm_source=openai",
+        "https://co.linkedin.com/company/polytron?utm_source=openai",
+        "https://id.linkedin.com/company/poly-inc?utm_source=openai",
+        "https://my.linkedin.com/company/polytronix?utm_source=openai",
+        "https://no.linkedin.com/company/poligon?utm_source=openai",
+        "https://www.facebook.com/polyon1",
+        "https://ar.linkedin.com/company/harrell%27s-llc?utm_source=openai",
+        "https://ca.linkedin.com/company/apex-structural-design?utm_source=openai"
+      ],
+      "search_results_seen": 9,
+      "rejected_candidates": {
+        "validation_rejects": 0
+      },
+      "final_failure_reason": "diminishing_returns"
+    }
+  },
+  "contacts": [
+    {
+      "name": null,
+      "role": null,
+      "email": "info@polyon.us",
+      "type": "generic_email",
+      "source": "https://www.polyon.us/",
+      "selected": true,
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": "info@polyon.us",
+        "contact_level": "E",
+        "email_classification": "GENERAL",
+        "email_type": "generic_fallback",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "LOW",
+        "readiness": "fallback_only",
+        "evidence": [
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "generic_fallback_does_not_qualify"
+      },
+      "ready": true,
+      "copy": "Добрый день.\n\nКомпания PolyOn открыла вакансию менеджера по продажам, что говорит о необходимости усиления работы с клиентами и расширения каналов продаж. Такой рост может сопровождаться увеличением рутинных задач по поиску и квалификации потенциальных клиентов. Возможно, текущие процессы требуют значительных ручных усилий, что снижает скорость и качество реакции на запросы.\n\nМы можем помочь провести пилотный проект по автоматизации части этапа квалификации лидов, используя входящие данные по заявкам и прошлым сделкам для формирования приоритетного списка клиентов. Это позволит менеджерам фокусироваться на самых перспективных контактах, сокращая время на обработку потока запросов.\n\nДля этого достаточно предоставить историю лидов и исходные заявки, а на выходе вы получите ранжированный список клиентов для дальнейшей обработки менеджерами. Такой сквозной инструмент поможет быстрее определить потенциальные возможности и улучшить результативность отдела продаж.\n\nЯ AI-архитектор. Если потребуется, подключим бизнес-аналитика: сначала проверим процесс, затем выберем, что автоматизировать.\n\nМогу провести короткий разбор этого участка. Обычно он стоит 9 900 ₽; если ответите в течение 24 часов после отправки письма, проведу разбор бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514"
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://polyon.us/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://polyon.us/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://www.polyon.us/contact-us",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://polyon.us",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 27449
+}

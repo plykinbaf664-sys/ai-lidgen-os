@@ -114,11 +114,11 @@ try {
     "capitalized page text without human-name evidence must not become an LPR",
   );
   const ivan = result.bundle.people.find((person) => person.fullName === "Иван Петров");
-  assert.equal(ivan?.profiles.tenchat, "https://tenchat.ru/ivan-petrov");
-  assert.equal(ivan?.profiles.telegram, "https://t.me/ivan_petrov_public");
+  assert.ok(ivan, "published personal email must not require redundant social searches");
   assert.ok(result.bundle.bestOutreachContact, "general or personal corporate email must remain usable");
   assert.equal(result.bundle.bestOutreachContact.personName, "Иван Петров");
   assert.equal(result.bundle.bestOutreachContact.classification, "VERIFIED_PERSONAL");
+  assert.ok(!result.contactDiscovery.contacts.some(contact => contact.full_name === "Анна Сидорова" && contact.email === "ivan.petrov@microsoft.com"), "a neighboring employee must not inherit another person's email");
   assert.ok(result.bundle.metrics.queries <= 12, "person search budget must remain bounded");
   assert.notEqual(
     classifyEvidenceBackedEmail({
@@ -190,6 +190,29 @@ try {
     { decisionMaker, searchProvider: failingProvider, bypassCache: true },
   );
   assert.ok(fallback.bundle.emails.general.length > 0, "provider failure must preserve official-site fallback");
+
+  // Semantic role evidence must replace the nearby role selected by regex.
+  const pageFetch = globalThis.fetch;
+  process.env.OPENAI_API_KEY = "isolated-fixture";
+  globalThis.fetch = async (url, init) => {
+    if (!String(url).includes("api.openai.com")) return pageFetch(url, init);
+    const schema = JSON.parse(init.body).text.format.name;
+    const quote = "Иван Петров — генеральный директор. Email: ivan.petrov@microsoft.com";
+    return new Response(JSON.stringify({ output_text: JSON.stringify(schema === "iterative_people_research" ? {
+      companySummary: "Компания Альфа", missing: [], officialDomains: [], actions: [], sufficient: true, stopReason: "contact_evidenced",
+      people: [{ entityType: "PERSON", name: "Иван Петров", role: "генеральный директор", relevance: 95, reason: "Отвечает за процессы компании.",
+        nameParts: { given: "Иван", family: "Петров" }, currentRole: true,
+        citations: [{ sourceId: "e1", quote }], contacts: [{ type: "email", value: "ivan.petrov@microsoft.com", citation: { sourceId: "e1", quote } }] }],
+    } : {}) }));
+  };
+  const semantic = await researchCompany("Компания Альфа", "https://microsoft.com", {
+    type: "TECH_SIGNAL", title: "Автоматизация", detail: "Проект автоматизации бизнес-процессов.",
+    sourceUrl: "https://microsoft.com/news/automation", confidence: 90,
+  }, { decisionMaker, searchProvider, bypassCache: true });
+  assert.equal(semantic.bundle.bestOutreachContact?.role, "генеральный директор", "semantic role must survive regex candidate merging");
+  assert.equal(semantic.bundle.bestOutreachContact?.personName, "Иван Петров");
+  delete process.env.OPENAI_API_KEY;
+  globalThis.fetch = pageFetch;
 
   const [discovery, sourceRunner] = await Promise.all([
     fs.readFile("lib/leadgen/lead-discovery-engine.ts", "utf8"),

@@ -1,0 +1,719 @@
+{
+  "mode": "person",
+  "name": "Производственная Компания Контур",
+  "website": "https://xn--j1agcjjg.xn--p1ai",
+  "before": {
+    "companyName": "Производственная Компания Контур",
+    "officialWebsite": "https://xn--j1agcjjg.xn--p1ai",
+    "officialDomain": "xn--j1agcjjg.xn--p1ai",
+    "people": [
+      {
+        "fullName": "Котельников Данила Никитич",
+        "role": "генеральный директор",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts",
+            "sourceType": "official",
+            "excerpt": "Public search result: Сотрудники",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          },
+          {
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/kotelnikov_danila_nikitich",
+            "sourceType": "official",
+            "excerpt": "Source URL: https://xn--j1agcjjg.xn--p1ai/contacts",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      },
+      {
+        "fullName": "Околелов Григорий Валерьевич",
+        "role": "Генеральный директор",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts",
+            "sourceType": "official",
+            "excerpt": "Околелов Григорий Валерьевич Генеральный директор",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          },
+          {
+            "sourceUrl": "https://www.rusprofile.ru/id/4158145",
+            "sourceType": "public_web",
+            "excerpt": "Околелов Григорий Валерьевич является генеральным директором Производственной Компании Контур, что соответствует роли COO с высокой властью для решения стратегических вопросов по внедрению решений и автоматизации.",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          },
+          {
+            "sourceUrl": "https://checko.ru/company/pk-kontur-1036600430822",
+            "sourceType": "public_web",
+            "excerpt": "Contact search result: ООО \"ПК Контур\" Заречный (ИНН 6609010359) адрес, официальный сайт и телефон",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          },
+          {
+            "sourceUrl": "https://www.rusprofile.ru/person/okolelov-gv-667008981708",
+            "sourceType": "public_web",
+            "excerpt": "Contact source URL: https://www.rusprofile.ru/id/4158145",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [
+        {
+          "email": "kotelnikov-dn@pk-kontur.ru",
+          "personName": "Котельников Данила Никитич",
+          "classification": "VERIFIED_PERSONAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "kotelnikov-dn@pk-kontur.ru — official company website",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 88
+            }
+          ]
+        }
+      ],
+      "department": [],
+      "general": [
+        {
+          "email": "info@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/",
+              "sourceType": "official",
+              "excerpt": "info@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "sergeyb@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "sergeyb@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 88
+            }
+          ]
+        },
+        {
+          "email": "konoplev-ea@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "konoplev-ea@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 88
+            }
+          ]
+        },
+        {
+          "email": "bykova-rr@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "bykova-rr@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 88
+            }
+          ]
+        },
+        {
+          "email": "alekseir@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "alekseir@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 88
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "kotelnikov-dn@pk-kontur.ru",
+      "personName": "Котельников Данила Никитич",
+      "role": "генеральный директор",
+      "classification": "VERIFIED_PERSONAL",
+      "contactLevel": "A",
+      "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/"
+    },
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "Инженер (Специалист) по автоматизации бизнес-процессов",
+      "detail": "искать и внедрять современные решения в бизнес-процессы и ИИ-технологии",
+      "sourceUrl": "https://hh.ru/vacancy/137520507",
+      "confidence": 85
+    },
+    "researchConfidence": "VERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 8,
+      "duplicateQueriesSkipped": 1,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 17,
+      "lprMs": 27509,
+      "contactMs": 10163,
+      "totalMs": 42298,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "AI_AUTOMATION_HIRING_SIGNAL",
+    "title": "Инженер (Специалист) по автоматизации бизнес-процессов",
+    "detail": "искать и внедрять современные решения в бизнес-процессы и ИИ-технологии",
+    "sourceUrl": "https://hh.ru/vacancy/137520507",
+    "confidence": 85
+  },
+  "index": 15,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://xn--j1agcjjg.xn--p1ai",
+      "status": 200,
+      "elapsedMs": 1187
+    },
+    {
+      "stage": "research_open",
+      "url": "https://xn--j1agcjjg.xn--p1ai",
+      "success": true,
+      "evidence": {
+        "url": "https://xn--j1agcjjg.xn--p1ai",
+        "kind": "page",
+        "text": "ПК \"Контур\" – производство труб и фитингов Меню 8 (343) 298-00-58 info@pk-kontur.ru Заказать звонок 8 (343) 298-00-58 info@pk-kontur.ru С 8:30 до 17:30 info@pk-kontur.ru 624250, Свердловская область, г. Заречный, ул. Попова, 57, а/я 111 Заказать звонок Войти Личный кабинет Каталог Напорный полипропилен Полипропиленовые трубы Муфты полипропиленовые Муфты полипропиленовые комбинированные Муфты полипропиленовые комбинированные разъемные Соединения полипропиленовые разъемные Угольники полипропиленовые Угольники полипропиленовые комбинированные Тройники полипропиленовые Тройники полипропиленовые комбинированные Фитинги полипропиленовые специальные Полипропиленовые шаровые краны Полипропиленовые шаровые краны комбинированные Полипропиленовая запорная арматура для радиаторов Вентиля полипропиленовые Канализация Трубы для внутренней канализации Трубы для наружной канализации Муфты для внутренней канализации Тройники для внутренней канализации Отводы для внутренней канализации Отводы с выходом для внутренней канализации Крестовины для внутренней канализации Специальные фитинги для внутренней канализации Переходы для внутренней канализации Муфты для наружной канализации Специальные фитинги для наружной канализации Отводы для наружной канализации Тройники для наружной канализации Крестовины для внешней канализации Материалы для монтажа канализации Гибкий трубопровод Трубы гофрированные Трубы для теплого пола Трубы PEX, PERT Муфты для PEX, PERT Муфты для PEX, PERT с резьбой Угольники для PEX, PERT Угольники для PEX, PERT с резьбой Тройники для PEX, PERT Специальные фитинги для PEX, PERT Комплектующие для теплого пола Инструмент Сварочные аппараты и комплектующие Ножницы для труб Инструмент для сшитого полиэтилена Крепеж Хомуты металлические О Компании Вакансии Фотогалерея Видео Политика качества Контакты Реверс Инжиниринг Новости Техническая информация Сертификаты, свидетельства, паспорта Гарантия ГОСТы и СНиПы Условия хранения и транспортировки продукции Реестр производителей Типоразмеры продукции Каталог Референс-лист Чертежи Autodesk BIM моделирование Программы онлайн расчетов Инструкции по монтажу Рекламные материалы Статьи Лаборатория Распродажа Где купить Интернет-заказ Развитая сеть дистрибьюторов доставка в регионы РФ и страны СНГ Инновационные технологии применение современных материалов Техническая поддержка консультации инженеров Страхование ответственности продукция застрахована на 10 млн.руб О компании Производственная компания КОНТУР «ПК КОНТУР» это современное российское производственное предприятие, производящее полимерные системы трубопроводов для холодного и горячего водоснабжения, отопления и водоотведения. Вся продукция производится под торговой маркой «КОНТУР». Располагается компания в городе Заречном Свердловской области. Производственную деятельность компания начала в 2007г. С самого начала производства главной целью стало производство высококачественной продукции. В основу деятельности компании был взят девиз: «Качество – единственная гарантия развития и процветания в условиях жесткой конкуренции на рынке товаров и услуг». В компании была внедрена и действует международная система менеджмента качества ISO 9001 с целью формирования политики и целей в области качества, а также для достижения этих целей. Мы стремимся быть лидерами в своей области производства, предлагаем своим потребителям широчайший ассортимент высококачественной продукции, постоянно осваиваем производство новых самых современных видов продукции. Уровень, темпы нашего развития и компетентность позволяют нам достигать высоких результатов. Узнать больше Новости Все новости Выставка AКВАТЕРМ Ташкент 2026 17 сентября 2026 Выставка АКВАТЕРМ 2026 18 августа 2026 Профессиональное развитие команды ПК КОНТУР 12 августа 2026 Стать дистрибьютором Юридическое название компании Имя Должность Телефон * Регион * Ваш e-mail Ваш комментарий Я согласен с условиями обработки персональных данных ООО \"ПК КОНТУР\" ИНН: 6609010359 ОГРН: 1036600430822 КПП: 668301001 624250, Свердловская область, г. Заречный, ул. Попова, 57, а/я 111 info@pk-kontur.ru 8 (343) 298-00-58 Заказать звонок Каталог Напорный полипропилен Канализация Гибкий трубопровод Инструмент Крепеж О компании Вакансии Политика качества Дистрибьюторам Тех.поддержка Где купить Контакты Конфиденциальность Клуб проектировщиков Подписаться на нас Мы в соц. сетях © 2026 Производственная компания КОНТУР",
+        "links": [
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog",
+            "label": "Каталог"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen",
+            "label": "Напорный полипропилен"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_truby",
+            "label": "Полипропиленовые трубы"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/about",
+            "label": "О Компании"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/about/vakansii",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/about/foto",
+            "label": "Фотогалерея"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/contacts",
+            "label": "Контакты"
+          },
+          {
+            "url": "https://xn--f1adp.xn--j1agcjjg.xn--p1ai",
+            "label": "Реверс Инжиниринг"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/news",
+            "label": "Новости"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/dokumenty",
+            "label": "Техническая информация"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/dokumenty/sertifikaty",
+            "label": "Сертификаты, свидетельства, паспорта"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/chastnym-litsam/poryadok-rassmotreniya-pretenzij",
+            "label": "Гарантия"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/dokumenty/gosty",
+            "label": "ГОСТы и СНиПы"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/chastnym-litsam/usloviya-hraneniya-produktsii",
+            "label": "Условия хранения и транспортировки продукции"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/chastnym-litsam/katalogi",
+            "label": "Каталог"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/onlayn-raschety",
+            "label": "Программы онлайн расчетов"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/laboratory",
+            "label": "Лаборатория"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/rasprodaja",
+            "label": "Распродажа"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/gde-kupit",
+            "label": "Где купить"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/internet-zakaz",
+            "label": "Интернет-заказ"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/personal",
+            "label": "Личный кабинет"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/personal/cart",
+            "label": "Избранное"
+          },
+          {
+            "url": "https://vk.com/pkkontur",
+            "label": ""
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai",
+            "label": ""
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/news/vystavka_akvaterm_tashkent_2026",
+            "label": ""
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/news/vystavka_akvaterm_2026",
+            "label": ""
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/help/confidentiality",
+            "label": "персональных данных"
+          },
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai/klub-proektirovhikov",
+            "label": "Клуб проектировщиков"
+          },
+          {
+            "url": "https://www.youtube.com/channel/UCipC_8EOrpKuJhBhAfrwZ5w",
+            "label": ""
+          },
+          {
+            "url": "https://rutube.ru/channel/43797963",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:14:39.358Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 429,
+      "elapsedMs": 864,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Производственная Компания Контур",
+        "domain": "xn--j1agcjjg.xn--p1ai",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "Инженер (Специалист) по автоматизации бизнес-процессов",
+            "detail": "искать и внедрять современные решения в бизнес-процессы и ИИ-технологии",
+            "sourceUrl": "https://hh.ru/vacancy/137520507",
+            "confidence": 85
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://xn--j1agcjjg.xn--p1ai",
+            "kind": "page",
+            "text": "ПК \"Контур\" – производство труб и фитингов Меню 8 (343) 298-00-58 info@pk-kontur.ru Заказать звонок 8 (343) 298-00-58 info@pk-kontur.ru С 8:30 до 17:30 info@pk-kontur.ru 624250, Свердловская область, г. Заречный, ул. Попова, 57, а/я 111 Заказать звонок Войти Личный кабинет Каталог Напорный полипропилен Полипропиленовые трубы Муфты полипропиленовые Муфты полипропиленовые комбинированные Муфты полипропиленовые комбинированные разъемные Соединения полипропиленовые разъемные Угольники полипропиленовые Угольники полипропиленовые комбинированные Тройники полипропиленовые Тройники полипропиленовые комбинированные Фитинги полипропиленовые специальные Полипропиленовые шаровые краны Полипропиленовые шаровые краны комбинированные Полипропиленовая запорная арматура для радиаторов Вентиля полипропиленовые Канализация Трубы для внутренней канализации Трубы для наружной канализации Муфты для внутренней канализации Тройники для внутренней канализации Отводы для внутренней канализации Отводы с выходом для внутренней канализации Крестовины для внутренней канализации Специальные фитинги для внутренней канализации Переходы для внутренней канализации Муфты для наружной канализации Специальные фитинги для наружной канализации Отводы для наружной канализации Тройники для наружной канализации Крестовины для внешней канализации Материалы для монтажа канализации Гибкий трубопровод Трубы гофрированные Трубы для теплого пола Трубы PEX, PERT Муфты для PEX, PERT Муфты для PEX, PERT с резьбой Угольники для PEX, PERT Угольники для PEX, PERT с резьбой Тройники для PEX, PERT Специальные фитинги для PEX, PERT Комплектующие для теплого пола Инструмент Сварочные аппараты и комплектующие Ножницы для труб Инструмент для сшитого полиэтилена Крепеж Хомуты металлические О Компании Вакансии Фотогалерея Видео Политика качества Контакты Реверс Инжиниринг Новости Техническая информация Сертификаты, свидетельства, паспорта Гарантия ГОСТы и СНиПы Условия хранения и транспортировки продукции Реестр производителей Типоразмеры продукции Каталог Референс-лист Чертежи Autodesk BIM моделирование Программы онлайн расчетов Инструкции по монтажу Рекламные материалы Статьи Лаборатория Распродажа Где купить Интернет-заказ Развитая сеть дистрибьюторов доставка в регионы РФ и страны СНГ Инновационные технологии применение современных материалов Техническая поддержка консультации инженеров Страхование ответственности продукция застрахована на 10 млн.руб О компании Производственная компания КОНТУР «ПК КОНТУР» это современное российское производственное предприятие, производящее полимерные системы трубопроводов для холодного и горячего водоснабжения, отопления и водоотведения. Вся продукция производится под торговой маркой «КОНТУР». Располагается компания в городе Заречном Свердловской области. Производственную деятельность компания начала в 2007г. С самого начала производства главной целью стало производство высококачественной продукции. В основу деятельности компании был взят девиз: «Качество – единственная гарантия развития и процветания в условиях жесткой конкуренции на рынке товаров и услуг». В компании была внедрена и действует международная система менеджмента качества ISO 9001 с целью формирования политики и целей в области качества, а также для достижения этих целей. Мы стремимся быть лидерами в своей области производства, предлагаем своим потребителям широчайший ассортимент высококачественной продукции, постоянно осваиваем производство новых самых современных видов продукции. Уровень, темпы нашего развития и компетентность позволяют нам достигать высоких результатов. Узнать больше Новости Все новости Выставка AКВАТЕРМ Ташкент 2026 17 сентября 2026 Выставка АКВАТЕРМ 2026 18 августа 2026 Профессиональное развитие команды ПК КОНТУР 12 августа 2026 Стать дистрибьютором Юридическое название компании Имя Должность Телефон * Регион * Ваш e-mail Ваш комментарий Я согласен с условиями обработки персональных данных ООО \"ПК КОНТУР\" ИНН: 6609010359 ОГРН: 1036600430822 КПП: 668301001 624250, Свердловская область, г. Заречный, ул. Попова, 57, а/я 111 info@pk-kontur.ru 8 (343) 298-00-58 Заказать звонок Каталог Напорный полипропилен Канализация Гибкий трубопровод Инструмент Крепеж О компании Вакансии Политика качества Дистрибьюторам Тех.поддержка Где купить Контакты Конфиденциальность Клуб проектировщиков Подписаться на нас Мы в соц. сетях © 2026 Производственная компания КОНТУР",
+            "links": [
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog",
+                "label": "Каталог"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen",
+                "label": "Напорный полипропилен"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/catalog/napornyy_polipropilen/polipropilenovye_truby",
+                "label": "Полипропиленовые трубы"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about",
+                "label": "О Компании"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about/vakansii",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/about/foto",
+                "label": "Фотогалерея"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://xn--f1adp.xn--j1agcjjg.xn--p1ai",
+                "label": "Реверс Инжиниринг"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/news",
+                "label": "Новости"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/dokumenty",
+                "label": "Техническая информация"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/dokumenty/sertifikaty",
+                "label": "Сертификаты, свидетельства, паспорта"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/chastnym-litsam/poryadok-rassmotreniya-pretenzij",
+                "label": "Гарантия"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/dokumenty/gosty",
+                "label": "ГОСТы и СНиПы"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/chastnym-litsam/usloviya-hraneniya-produktsii",
+                "label": "Условия хранения и транспортировки продукции"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/chastnym-litsam/katalogi",
+                "label": "Каталог"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/onlayn-raschety",
+                "label": "Программы онлайн расчетов"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/laboratory",
+                "label": "Лаборатория"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/rasprodaja",
+                "label": "Распродажа"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/gde-kupit",
+                "label": "Где купить"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/internet-zakaz",
+                "label": "Интернет-заказ"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/personal",
+                "label": "Личный кабинет"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/personal/cart",
+                "label": "Избранное"
+              },
+              {
+                "url": "https://vk.com/pkkontur",
+                "label": ""
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai",
+                "label": ""
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/news/vystavka_akvaterm_tashkent_2026",
+                "label": ""
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/news/vystavka_akvaterm_2026",
+                "label": ""
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/help/confidentiality",
+                "label": "персональных данных"
+              },
+              {
+                "url": "https://xn--j1agcjjg.xn--p1ai/klub-proektirovhikov",
+                "label": "Клуб проектировщиков"
+              },
+              {
+                "url": "https://www.youtube.com/channel/UCipC_8EOrpKuJhBhAfrwZ5w",
+                "label": ""
+              },
+              {
+                "url": "https://rutube.ru/channel/43797963",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:14:39.358Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 10,
+          "searchRemaining": 8
+        }
+      },
+      "output": null
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "model_unavailable",
+      "actions": 1,
+      "candidates": [],
+      "domains": [
+        "xn--j1agcjjg.xn--p1ai"
+      ],
+      "elapsedMs": 2204
+    },
+    {
+      "stage": "people_ranked",
+      "people": []
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Growth and cross-functional execution can create manual handoffs, process fragmentation, and operational bottlenecks.",
+        "target_responsibility": "Operations leadership",
+        "target_persona": "COO",
+        "alternative_personas": [
+          "Head of Operations",
+          "Operations Director",
+          "Head of Business Operations",
+          "Founder / CEO",
+          "Founder"
+        ],
+        "why_this_person": "The context points to process load or operational scaling, so operations leadership is the best entry persona. Matched context: процесс. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "no_material_next_step_available"
+      },
+      "contacts": [
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://xn--j1agcjjg.xn--p1ai"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-10-06T20:14:38.025Z",
+  "bundle": {
+    "companyName": "Производственная Компания Контур",
+    "officialWebsite": "https://xn--j1agcjjg.xn--p1ai",
+    "officialDomain": "xn--j1agcjjg.xn--p1ai",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "Инженер (Специалист) по автоматизации бизнес-процессов",
+      "detail": "искать и внедрять современные решения в бизнес-процессы и ИИ-технологии",
+      "sourceUrl": "https://hh.ru/vacancy/137520507",
+      "confidence": 85
+    },
+    "researchConfidence": "UNVERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 0,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 10,
+      "lprMs": 2205,
+      "contactMs": 488,
+      "totalMs": 2694,
+      "stopReason": "model_unavailable"
+    }
+  },
+  "people": {
+    "primary_person": null,
+    "alternative_people": [],
+    "all_candidates": [],
+    "search_status": "provider_unavailable",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "model_unavailable"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 0,
+      "official_pages_fetched": 1,
+      "aborted_requests": 0,
+      "elapsed_ms": 2204,
+      "stop_reason": "model_unavailable",
+      "queries_executed": [],
+      "sources_checked": [
+        "https://xn--j1agcjjg.xn--p1ai"
+      ],
+      "search_results_seen": 0,
+      "rejected_candidates": {
+        "validation_rejects": 0
+      },
+      "final_failure_reason": "model_unavailable"
+    }
+  },
+  "contacts": [
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts",
+      "selected": false,
+      "intelligence": {
+        "business_problem": "Growth and cross-functional execution can create manual handoffs, process fragmentation, and operational bottlenecks.",
+        "target_responsibility": "Operations leadership",
+        "target_persona": "COO",
+        "alternative_personas": [
+          "Head of Operations",
+          "Operations Director",
+          "Head of Business Operations",
+          "Founder / CEO",
+          "Founder"
+        ],
+        "why_this_person": "The context points to process load or operational scaling, so operations leadership is the best entry persona. Matched context: процесс. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "no_material_next_step_available"
+      }
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://xn--j1agcjjg.xn--p1ai",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 2694
+}

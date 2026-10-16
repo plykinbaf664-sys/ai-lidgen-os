@@ -1,0 +1,1291 @@
+{
+  "mode": "business",
+  "name": "Спецмаш-Снг",
+  "website": "https://dorzap.ru",
+  "before": {
+    "companyName": "Спецмаш-Снг",
+    "officialWebsite": "https://dorzap.ru",
+    "officialDomain": "dorzap.ru",
+    "people": [
+      {
+        "fullName": "Полькин Дмитрий Геннадьевич",
+        "role": "коммерческий директор",
+        "confidence": "HIGH_CONFIDENCE",
+        "evidence": [
+          {
+            "sourceUrl": "https://smsng.ru/otdel-prodazh",
+            "sourceType": "public_web",
+            "excerpt": "Public search result: Отдел продаж │ СПЕЦМАШ-СНГ",
+            "capturedAt": "2026-10-06T08:03:13.373Z",
+            "confidence": 80
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "dorzap@list.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://dorzap.ru/",
+              "sourceType": "official",
+              "excerpt": "dorzap@list.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 70
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "dorzap@list.ru",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://dorzap.ru/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+      "sourceUrl": "https://hh.ru/vacancy/137988890",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 1,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 16,
+      "lprMs": 6330,
+      "contactMs": 8831,
+      "totalMs": 20721,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+    "sourceUrl": "https://hh.ru/vacancy/137988890",
+    "confidence": 100
+  },
+  "index": 1,
+  "trace": [
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3554,
+      "schema": "company_research_plan",
+      "input": {
+        "companyName": "Спецмаш-Снг",
+        "currentDate": "2026-10-06",
+        "officialWebsite": "https://dorzap.ru",
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+          "sourceUrl": "https://hh.ru/vacancy/137988890",
+          "confidence": 100
+        },
+        "discoveryContext": null,
+        "offerContext": "Аудит конкретного процесса, быстрый прототип или реализация части AI-задачи без противопоставления внутренней команде и найму.",
+        "heuristicStartingPoint": {
+          "owner": "Sales and revenue leadership",
+          "primaryRole": "VP Sales",
+          "alternatives": [
+            "Head of Sales",
+            "CRO"
+          ]
+        }
+      },
+      "output": {
+        "primary_roles": [
+          "Руководитель отдела продаж",
+          "Директор по продажам",
+          "Коммерческий директор"
+        ],
+        "alternative_roles": [
+          [
+            "Генеральный директор"
+          ],
+          [
+            "HR-директор",
+            "Руководитель по найму"
+          ]
+        ],
+        "queries": [
+          "Спецмаш-Снг вакансия менеджер по продажам официальный сайт",
+          "Спецмаш-Снг руководство отдел продаж интервью",
+          "Руководство по продажам Спецмаш-Снг официальный документ",
+          "Директор по продажам Спецмаш-Снг выступление конференция",
+          "Коммерческий директор Спецмаш-Снг новости и статьи",
+          "HR-директор Спецмаш-Снг открытые вакансии и интервью",
+          "Генеральный директор Спецмаш-Снг планы и стратегия продаж",
+          "Контактный email отдела продаж Спецмаш-Снг",
+          "Спецмаш-Снг корпоративный телеграм канал продажи",
+          "Спецмаш-Снг TenChat обсуждения отдела продаж"
+        ]
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru",
+      "error": "TimeoutError",
+      "elapsedMs": 7014
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%A1%D0%BF%D0%B5%D1%86%D0%BC%D0%B0%D1%88-%D0%A1%D0%BD%D0%B3%20%D0%B2%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8F%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%20%D0%BF%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%D0%B0%D0%BC%20%D0%BE%D1%84%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 337
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%A1%D0%BF%D0%B5%D1%86%D0%BC%D0%B0%D1%88-%D0%A1%D0%BD%D0%B3%20%D0%B2%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8F%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%20%D0%BF%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%D0%B0%D0%BC%20%D0%BE%D1%84%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 309
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1127
+    },
+    {
+      "stage": "search",
+      "query": "Спецмаш-Снг вакансия менеджер по продажам официальный сайт",
+      "results": [
+        {
+          "title": "Менеджер по продажам В архиве с 8 июня 2026",
+          "url": "https://vladivostok.hh.ru/vacancy/133694335",
+          "snippet": "Вакансия Менеджер по продажам в компании Спецмаш-Снг. Зарплата: от 110000 до 250000 ₽ за месяц. Владивосток. Требуемый опыт: не требуется.",
+          "source_label": "tavily",
+          "score": 0.81204927,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Вакансия Менеджер по продажам, в компании Спецмаш-Снг",
+          "url": "https://dreamjob.ru/employers/155904/vakansii/137988890",
+          "snippet": "Вакансия Менеджер по продажам от работодателя Спецмаш-Снг, Полная, Владивосток. 110 000 - 250 000 ₽. Коммунального оборудования, а также запчас",
+          "source_label": "tavily",
+          "score": 0.798643,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "ВАКАНСИИ СПЕЦМАШ-СНГ - Коммунальная техника",
+          "url": "https://smsng.ru/%D0%B2%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D0%B8",
+          "snippet": "В компанию ООО \"СПЕЦМАШ-СНГ\" требуются: · Менеджер по продажам в город Курган · Менеджер по продажам в город Тюмень · Менеджер по продажам в город Владивосток.",
+          "source_label": "tavily",
+          "score": 0.7811474,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Отдел продаж │ СПЕЦМАШ-СНГ",
+          "url": "https://smsng.ru/otdel-prodazh",
+          "snippet": "Менеджер по продажам\n\nkdm5@ooospecmash.ru  \n тел.: 8(3522)44-35-54  \n сот.: 8(992)422-07-02\n\nЛещев Роман   \n Николаевич\n\nМенеджер по продажам\n\nkdm6@ooospecmash.ru  \n тел.: 8(3522)44-35-54   \n сот.: 8(992)425-15-41\n\nРозин Владислав Валериевич\n\nМенеджер по продажам\n\nkdm2@ooospecmash.ru  \n тел.: 8(3522)44-35-54   \n сот.: 8(908)835-12-21\n\nАлександрова Дарья Викторовна\n\nМенеджер по продажам\n\nkdm1@ooospecmash.ru  \n тел.: 8(3522)44-35-54 (вн.124)  \n сот.: 8(908)835-21-21\n\nБашкинов Виктор Сергеевич [...] Менеджер по продажам\n\nkdm4@ooospecmash.ru  \n тел.: 8(3522)44-35-54 (вн.127)  \n сот.: 8(951)275-64-83\n\nДемчук Денис  \n Дмитриевич\n\nМенеджер по продажам\n\nkdm9@ooospecmash.ru  \n тел.: 8(3522)44-35-54   \n сот.: 8(992)428-74-80\n\nФалалеева Юлия Алексеевна\n\nМенеджер по продажам\n\nkdm7@ooospecmash.ru  \n тел.: 8(3522)44-35-54  \n сот.: 8(992)423-49-50\n\n## Менеджеры (Обособленное подразделение г. Тюмень)\n\nВерещагин Дмитрий Игоревич\n\nМенеджер по продажам [...] tumen1@ooospecmash.ru  \n тел.: 8(3452)51-87-70  \n сот.: 8(909)191-14-27\n\nСолдатенков Илья Михайлович\n\nРуководитель ОП г. Владивосток\n\nvladivostok1@ooospecmash.ru  \n сот.: 8(994)004-70-88\n\nЧерных Александр Владимирович\n\nРуководитель ОП г. Щёлково (Московская область)\n\nmoscow@ooospecmash.ru сот.: 8(996)146-23-51\n\n## Менеджеры (офис г. Курган)\n\nНеугодников Сергей Михайлович\n\nМенеджер по продажам\n\nkdm8@ooospecmash.ru  \n тел.: 8(3522)44-35-54   \n сот.: 8(992)428-03-78\n\nБеляева Анастасия Викторовна",
+          "source_label": "tavily",
+          "score": 0.76617163,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Спецмаш-СНГ - Вакансии - Курган - JobFilter.ru",
+          "url": "https://kurgan.jobfilter.ru/%D0%BA%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D1%8F/%D1%81%D0%BF%D0%B5%D1%86%D0%BC%D0%B0%D1%88-%D1%81%D0%BD%D0%B3",
+          "snippet": "Менеджер по продажам ... 60000 - 250000 руб. ... Привет! Нам требуется менеджер активных продаж Дорожного и Коммунального оборудования, а также запчастей. У тебя",
+          "source_label": "tavily",
+          "score": 0.74652773,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/management",
+      "status": 404,
+      "elapsedMs": 1193
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/team",
+      "status": 404,
+      "elapsedMs": 1213
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/rukovodstvo",
+      "status": 404,
+      "elapsedMs": 2280
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%A1%D0%BF%D0%B5%D1%86%D0%BC%D0%B0%D1%88-%D0%A1%D0%BD%D0%B3%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B2%D1%8C%D1%8E&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 225
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%A1%D0%BF%D0%B5%D1%86%D0%BC%D0%B0%D1%88-%D0%A1%D0%BD%D0%B3%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B2%D1%8C%D1%8E&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 131
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1910
+    },
+    {
+      "stage": "search",
+      "query": "Спецмаш-Снг руководство отдел продаж интервью",
+      "results": [
+        {
+          "title": "षोडशोपचार हनुमान पूजा विधि | Shodshopchar Hanuman Ji Puja Vidhi PDF",
+          "url": "https://shrihanumanchalisa.in/shodshopchar-hanuman-ji-puja-vidhi",
+          "snippet": "## Related Posts\n\nganesh chaturthi pooja\n\n### गणेश चतुर्थी पर विशेष :पूजा से श्री गणेश को करें प्रसन्न इस चतुर्थी में कुछ होगा खास आपके जीवन में\n\nPuja\n\nHanuman Ji Ki Puja Vidhi\n\n### Hanuman Ji Ki Puja Vidhi | हनुमान जी की पूजा विधि PDF\n\nPuja\n\nshri ram shodshopachar puja vidhi\n\n### Shodshopachar Shri Ram Puja | षोडशोपचार श्री राम पूजा PDF\n\nPuja",
+          "source_label": "tavily",
+          "score": 0.015485507,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "हनुमान चालीसा | Shri Hanuman chalisa Hindi lyrics Pdf",
+          "url": "https://shrihanumanchalisa.in",
+          "snippet": "अंतकाल रघुवरपुर जाई  \nजहाँ जन्म हरिभक्त कहाई॥३४॥\n\nऔर देवता चित्त ना धरई  \nहनुमत सेई सर्व सुख करई॥३५॥\n\nसंकट कटै मिटै सब पीरा  \nजो सुमिरै हनुमत बलबीरा॥३६॥\n\nजै जै जै हनुमान गुसाईँ  \nकृपा करहु गुरु देव की नाई॥३७॥\n\nजो सत बार पाठ कर कोई  \nछूटहि बंदि महा सुख होई॥३८॥\n\nजो यह पढ़े हनुमान चालीसा  \nहोय सिद्ध साखी गौरीसा॥३९॥\n\nतुलसीदास सदा हरि चेरा  \nकीजै नाथ हृदय मह डेरा॥४०॥\n\nदोहा\n\nपवन तनय संकट हरन, मंगल मूरति रूप।  \nराम लखन सीता सहित, हृदय बसहु सुर भूप॥\n\n## हनुमान चालीसा सुनने के क्या फायदे हैं? [...] |  |  |\n --- |\n| English | Tamil |\n| Punjabi | Kannada |\n| Gujarati | Odia |\n| Marathi | Urdu |\n| Bengali | Telugu |\n\nHanuman Chalisa language Versions\n\nHanuman Chalisa\n\nJai Hanuman Gyan Gun Sagar\n\n## हनुमान चालीसा का क्या मतलब है:\n\nश्री गुरु चरण सरोज रज-निज मनु मुकुर सुधारी | जय हनुमान ज्ञान गुन सागर | Hanuman chalisa Hindi Pdf lyrics हनुमान चालीसा का शाब्दिक अर्थ है भगवान हनुमान जी पर चालीस चौपाई जो की एक हिंदू भक्ति महामंत्र (स्त्रोत) है जो भगवान श्री हनुमान जी को संबोधित है। [...] नासै रोग हरे सब पीरा  \nजपत निरंतर हनुमत बीरा॥२५॥\n\nसंकट तै हनुमान छुडावै  \nमन क्रम वचन ध्यान जो लावै॥२६॥\n\nसब पर राम तपस्वी राजा  \nतिनके काज सकल तुम साजा॥२७॥\n\nऔर मनोरथ जो कोई लावै  \nसोई अमित जीवन फल पावै॥२८॥\n\nचारों जुग परताप तुम्हारा  \nहै परसिद्ध जगत उजियारा॥२९॥\n\nसाधु संत के तुम रखवारे  \nअसुर निकंदन राम दुलारे॥३०॥\n\nअष्ट सिद्धि नौ निधि के दाता  \nअस बर दीन जानकी माता॥३१॥\n\nराम रसायन तुम्हरे पासा  \nसदा रहो रघुपति के दासा॥३२॥\n\nतुम्हरे भजन राम को पावै  \nजनम जनम के दुख बिसरावै॥३३॥",
+          "source_label": "tavily",
+          "score": 0.015097325,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Durga Chalisa Lyrics | Durga Chalisa Pdf | दुर्गा चालीसा Download",
+          "url": "https://shrihanumanchalisa.in/durga-chalisa-pdf",
+          "snippet": "## Read Durga chalisa in Hindi\n\nनवदुर्गा, दुर्गा -पूजा, नवरात्रि, Navratri नवरात्रे, नवरात्रि, माता की चौकी ( Mata Ki Choki), Mata देवी जागरण, जगराता, शुक्रवार दुर्गा Pooja तथा Durga अष्टमी के शुभ अवसर पर गाये जाने वाला Pavitra श्री दुर्गा चालीसा।\n\n## Durga Chalisa Lyrics\n\nनमो नमो दुर्गे सुख करनी ।  \nनमो नमो दुर्गे दुःख हरनी ॥\n\nनिरंकार है ज्योति तुम्हारी ।  \nतिहूँ लोक फैली उजियारी ॥ 1 ||\n\nशशि ललाट मुख महाविशाला ।  \nनेत्र लाल भृकुटि विकराला ॥ 2 || [...] श्री Durga चालीसा | Durga Chalisa in Hindi PDF Download From Below. Shri Durga Chalisa is a devotional stotra dedicated to Hindu deity, and Devi Mata Durga .In this post we provided the Durga chalisa Lyrics, Durga chalisa Pdf File Download. You can read and download Durga Chalisa in Hindi Below Button.\n\nDownload PDF\n\n## Durga Chalisa Lyrics Image\n\nDurga Chalisa Lyrics ॥दो. लाल भृकुटि विकराला ॥\n\nFull Durga Chalisa lyrics in Hindi image [...] ### Hanuman Chalisa in Bengali Lyrics | হনুমান্ চালীসা PDF Download\n\nChalisa\n\nHanuman Chalisa In Kannada\n\n### Hanuman Chalisa in kannada Lyrics Pdf Download\n\nChalisa\n\nHanuman Chalisa English\n\n### Hanuman Chalisa in English Lyrics | Free PDF Download\n\nChalisa\n\nhanuman chalisa in marathi\n\n### Hanuman Chalisa Marathi lyrics | हनुमान चालीसा मराठीमध्ये\n\nChalisa",
+          "source_label": "tavily",
+          "score": 0.015062517,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Hanuman Chalisa MP3 Download Audio - Hariharan Gulshan kumar",
+          "url": "https://shrihanumanchalisa.in/hanuman-chalisa-mp3-download-audio",
+          "snippet": "### Hanuman Chalisa Marathi lyrics | हनुमान चालीसा मराठीमध्ये\n\nChalisa\n\nHaNuman Chalisa Urdu حنومان-چالیسہ\n\n### Hanuman Chalisa Urdu | ہنومان چالیسہ اردو میں PDF Download\n\nChalisa\n\nHanuman Chalisa Tamil Lyrics\n\n### hanuman chalisa lyrics in tamil | ஹனுமான் சாலிஸா Pdf Download\n\nChalisa\n\nVishwakarma Chalisa Lyrics – भगवान श्री विश्वकर्मा चालीसा ( Tara Devi Song )\n\n### Vishwakarma Chalisa Lyrics | श्री विश्वकर्मा चालीसा PDF\n\nChalisa [...] Skip to content\n\nHanuman Chalisa Logo\n\nHanuman Chalisa Logo\n\nMenu\n\nHome Chalisa Hanuman Chalisa MP3 Download Audio\n\n# Hanuman Chalisa MP3 Download Audio\n\nFriends you are here to Hanuman Chalisa Mp3 Download Audio format .On this page of our site i arranged all the audio format of Shree Hanuman chalisa lyrics. In nearly all indian languages like Tamil, Telugu, Bengali,Punjabi, Gujarati,Hindi ,English Mp3 etc.\n\nHanuman chalisa mp3 download free\n\nHanuman Chalisa Mp3 Downlaod",
+          "source_label": "tavily",
+          "score": 0.013051926,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Hanuman Chalisa in Telugu Lyrics | తెలుగు హనుమాన్ చాలీసా Pdf",
+          "url": "https://shrihanumanchalisa.in/hanuman-chalisa-telugu-pdf-download",
+          "snippet": "సంకట సేఁ హనుమాన ఛుడావై |  \nమన క్రమ వచన ధ్యాన జో లావై || 26 ||\n\nసబ పర రామ తపస్వీ రాజా |  \nతినకే కాజ సకల తుమ సాజా || 27 ||\n\nఔర మనోరధ జో కోయి లావై |  \nతాసు అమిత జీవన ఫల పావై || 28 ||\n\nచారో యుగ పరితాప తుమ్హారా |  \nహై పరసిద్ధ జగత ఉజియారా || 29 ||\n\nసాధు సంత కే తుమ రఖవారే |  \nఅసుర నికందన రామ దులారే || 30 ||\n\nఅష్ఠసిద్ధి నవ నిధి కే దాతా |  \nఅస వర దీన్హ జానకీ మాతా || 31 ||\n\nరామ రసాయన తుమ్హారే పాసా |  \nసాద రహో రఘుపతి కే దాసా || 32 ||\n\nతుమ్హరే భజన రామకో పావై |  \nజన్మ జన్మ కే దుఖ బిసరావై || 33 || [...] Table of Contents\n\nTagged Inhanuman chalisa in telugu download hanuman chalisa pdf ms rao hanuman chalisa telugu download mp3 2020 hanuman chalisa telugu ms rama rao hanuman dandakam telugu pdf tulsidas hanuman chalisa telugu pdf download\n\n## Related Posts\n\nHanuman chalisa mp3 download free\n\n### Hanuman Chalisa MP3 Download Audio\n\nChalisa\n\nHauman Chalisa Punjabi Lyrics\n\n### Hanuman Chalisa in Punjabi with Meaning | ਸ਼੍ਰੀ ਹਨੁਮਾਨ ਚਾਲੀਸਾ PDF\n\nChalisa\n\nHanuman chalisa odia [...] రామదూత అతులిత బలధామా |  \nఅంజని పుత్ర పవనసుత నామా || 2 ||\n\nమహావీర విక్రమ బజరంగీ |  \nకుమతి నివార సుమతి కే సంగీ ||3 ||\n\nకంచన వరణ విరాజ సువేశా |  \nకానన కుండల కుంచిత కేశా || 4 ||\n\nహాథవజ్ర ఔ ధ్వజా విరాజై |  \nకాంథే మూంజ జనేవూ సాజై || 5||\n\nశంకర సువన కేసరీ నందన |  \nతేజ ప్రతాప మహాజగ వందన || 6 ||\n\nవిద్యావాన గుణీ అతి చాతుర |  \nరామ కాజ కరివే కో ఆతుర || 7 ||\n\nప్రభు చరిత్ర సునివే కో రసియా |  \nరామలఖన సీతా మన బసియా || 8||\n\nసూక్ష్మ రూపధరి సియహి దిఖావా |  \nవికట రూపధరి లంక జరావా || 9 ||",
+          "source_label": "tavily",
+          "score": 0.012635939,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3934,
+      "schema": "people_evidence",
+      "input": {
+        "company": "Спецмаш-Снг",
+        "domain": "dorzap.ru",
+        "context": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137988890",
+            "confidence": 100
+          }
+        },
+        "target": {
+          "primary_persona": "Руководитель отдела продаж",
+          "alternative_personas": [
+            "Генеральный директор",
+            "HR-директор"
+          ],
+          "department": "Sales",
+          "buying_role": "economic_buyer",
+          "influence_level": "high",
+          "decision_authority": "high",
+          "business_problem_owner": "Sales and revenue leadership",
+          "expected_pain": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+          "expected_goal": "Increase sales operating leverage with AI-assisted workflows across prospecting, qualification, and follow-up.",
+          "search_keywords": [
+            "Руководитель отдела продаж",
+            "Директор по продажам",
+            "Коммерческий директор",
+            "Генеральный директор",
+            "HR-директор",
+            "Руководитель по найму"
+          ],
+          "priority": "low",
+          "reasoning": "The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+          "confidence_score": 54,
+          "source_reasoning": {
+            "signal_type": "HIRING_SIGNAL",
+            "company_segment": "unknown",
+            "signal_summary": "Обнаружен сигнал найма",
+            "why_it_matters": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+            "why_now": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+            "icp_fit_score": 0,
+            "matched_context_terms": [
+              "ru_sales_role"
+            ],
+            "confidence_reason": "The selected persona has the strongest fit across signal type, signal interpretation, and matched business context.",
+            "competing_departments": [
+              "Executive",
+              "Operations",
+              "Customer Success"
+            ]
+          }
+        },
+        "previousQueries": [
+          "Спецмаш-Снг вакансия менеджер по продажам официальный сайт",
+          "Спецмаш-Снг руководство отдел продаж интервью"
+        ],
+        "documents": [
+          {
+            "url": "https://smsng.ru/%D0%B2%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D0%B8",
+            "text": "ВАКАНСИИ СПЕЦМАШ-СНГ - Коммунальная техника В компанию ООО \"СПЕЦМАШ-СНГ\" требуются: · Менеджер по продажам в город Курган · Менеджер по продажам в город Тюмень · Менеджер по продажам в город Владивосток.",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://smsng.ru/otdel-prodazh",
+            "text": "Отдел продаж │ СПЕЦМАШ-СНГ Менеджер по продажам kdm5@ooospecmash.ru тел.: 8(3522)44-35-54 сот.: 8(992)422-07-02 Лещев Роман Николаевич Менеджер по продажам kdm6@ooospecmash.ru тел.: 8(3522)44-35-54 сот.: 8(992)425-15-41 Розин Владислав Валериевич Менеджер по продажам kdm2@ooospecmash.ru тел.: 8(3522)44-35-54 сот.: 8(908)835-12-21 Александрова Дарья Викторовна Менеджер по продажам kdm1@ooospecmash.ru тел.: 8(3522)44-35-54 (вн.124) сот.: 8(908)835-21-21 Башкинов Виктор Сергеевич [...] Менеджер по продажам kdm4@ooospecmash.ru тел.: 8(3522)44-35-54 (вн.127) сот.: 8(951)275-64-83 Демчук Денис Дмитриевич Менеджер по продажам kdm9@ooospecmash.ru тел.: 8(3522)44-35-54 сот.: 8(992)428-74-80 Фалалеева Юлия Алексеевна Менеджер по продажам kdm7@ooospecmash.ru тел.: 8(3522)44-35-54 сот.: 8(992)423-49-50 ## Менеджеры (Обособленное подразделение г. Тюмень) Верещагин Дмитрий Игоревич Менеджер по продажам [...] tumen1@ooospecmash.ru тел.: 8(3452)51-87-70 сот.: 8(909)191-14-27 Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88 Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51 ## Менеджеры (офис г. Курган) Неугодников Сергей Михайлович Менеджер по продажам kdm8@ooospecmash.ru тел.: 8(3522)44-35-54 сот.: 8(992)428-03-78 Беляева Анастасия Викторовна",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://kurgan.jobfilter.ru/%D0%BA%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D1%8F/%D1%81%D0%BF%D0%B5%D1%86%D0%BC%D0%B0%D1%88-%D1%81%D0%BD%D0%B3",
+            "text": "Спецмаш-СНГ - Вакансии - Курган - JobFilter.ru Менеджер по продажам ... 60000 - 250000 руб. ... Привет! Нам требуется менеджер активных продаж Дорожного и Коммунального оборудования, а также запчастей. У тебя",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://shrihanumanchalisa.in/shodshopchar-hanuman-ji-puja-vidhi",
+            "text": "षोडशोपचार हनुमान पूजा विधि | Shodshopchar Hanuman Ji Puja Vidhi PDF ## Related Posts ganesh chaturthi pooja ### गणेश चतुर्थी पर विशेष :पूजा से श्री गणेश को करें प्रसन्न इस चतुर्थी में कुछ होगा खास आपके जीवन में Puja Hanuman Ji Ki Puja Vidhi ### Hanuman Ji Ki Puja Vidhi | हनुमान जी की पूजा विधि PDF Puja shri ram shodshopachar puja vidhi ### Shodshopachar Shri Ram Puja | षोडशोपचार श्री राम पूजा PDF Puja",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://shrihanumanchalisa.in",
+            "text": "हनुमान चालीसा | Shri Hanuman chalisa Hindi lyrics Pdf अंतकाल रघुवरपुर जाई जहाँ जन्म हरिभक्त कहाई॥३४॥ और देवता चित्त ना धरई हनुमत सेई सर्व सुख करई॥३५॥ संकट कटै मिटै सब पीरा जो सुमिरै हनुमत बलबीरा॥३६॥ जै जै जै हनुमान गुसाईँ कृपा करहु गुरु देव की नाई॥३७॥ जो सत बार पाठ कर कोई छूटहि बंदि महा सुख होई॥३८॥ जो यह पढ़े हनुमान चालीसा होय सिद्ध साखी गौरीसा॥३९॥ तुलसीदास सदा हरि चेरा कीजै नाथ हृदय मह डेरा॥४०॥ दोहा पवन तनय संकट हरन, मंगल मूरति रूप। राम लखन सीता सहित, हृदय बसहु सुर भूप॥ ## हनुमान चालीसा सुनने के क्या फायदे हैं? [...] | | | --- | | English | Tamil | | Punjabi | Kannada | | Gujarati | Odia | | Marathi | Urdu | | Bengali | Telugu | Hanuman Chalisa language Versions Hanuman Chalisa Jai Hanuman Gyan Gun Sagar ## हनुमान चालीसा का क्या मतलब है: श्री गुरु चरण सरोज रज-निज मनु मुकुर सुधारी | जय हनुमान ज्ञान गुन सागर | Hanuman chalisa Hindi Pdf lyrics हनुमान चालीसा का शाब्दिक अर्थ है भगवान हनुमान जी पर चालीस चौपाई जो की एक हिंदू भक्ति महामंत्र (स्त्रोत) है जो भगवान श्री हनुमान जी को संबोधित है। [...] नासै रोग हरे सब पीरा जपत निरंतर हनुमत बीरा॥२५॥ संकट तै हनुमान छुडावै मन क्रम वचन ध्यान जो लावै॥२६॥ सब पर राम तपस्वी राजा तिनके काज सकल तुम साजा॥२७॥ और मनोरथ जो कोई लावै सोई अमित जीवन फल पावै॥२८॥ चारों जुग परताप तुम्हारा है परसिद्ध जगत उजियारा॥२९॥ साधु संत के तुम रखवारे असुर निकंदन राम दुलारे॥३०॥ अष्ट सिद्धि नौ निधि के दाता अस बर दीन जानकी माता॥३१॥ राम रसायन तुम्हरे पासा सदा रहो रघुपति के दासा॥३२॥ तुम्हरे भजन राम को पावै जनम जनम के दुख बिसरावै॥३३॥",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://shrihanumanchalisa.in/durga-chalisa-pdf",
+            "text": "Durga Chalisa Lyrics | Durga Chalisa Pdf | दुर्गा चालीसा Download ## Read Durga chalisa in Hindi नवदुर्गा, दुर्गा -पूजा, नवरात्रि, Navratri नवरात्रे, नवरात्रि, माता की चौकी ( Mata Ki Choki), Mata देवी जागरण, जगराता, शुक्रवार दुर्गा Pooja तथा Durga अष्टमी के शुभ अवसर पर गाये जाने वाला Pavitra श्री दुर्गा चालीसा। ## Durga Chalisa Lyrics नमो नमो दुर्गे सुख करनी । नमो नमो दुर्गे दुःख हरनी ॥ निरंकार है ज्योति तुम्हारी । तिहूँ लोक फैली उजियारी ॥ 1 || शशि ललाट मुख महाविशाला । नेत्र लाल भृकुटि विकराला ॥ 2 || [...] श्री Durga चालीसा | Durga Chalisa in Hindi PDF Download From Below. Shri Durga Chalisa is a devotional stotra dedicated to Hindu deity, and Devi Mata Durga .In this post we provided the Durga chalisa Lyrics, Durga chalisa Pdf File Download. You can read and download Durga Chalisa in Hindi Below Button. Download PDF ## Durga Chalisa Lyrics Image Durga Chalisa Lyrics ॥दो. लाल भृकुटि विकराला ॥ Full Durga Chalisa lyrics in Hindi image [...] ### Hanuman Chalisa in Bengali Lyrics | হনুমান্ চালীসা PDF Download Chalisa Hanuman Chalisa In Kannada ### Hanuman Chalisa in kannada Lyrics Pdf Download Chalisa Hanuman Chalisa English ### Hanuman Chalisa in English Lyrics | Free PDF Download Chalisa hanuman chalisa in marathi ### Hanuman Chalisa Marathi lyrics | हनुमान चालीसा मराठीमध्ये Chalisa",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://shrihanumanchalisa.in/hanuman-chalisa-mp3-download-audio",
+            "text": "Hanuman Chalisa MP3 Download Audio - Hariharan Gulshan kumar ### Hanuman Chalisa Marathi lyrics | हनुमान चालीसा मराठीमध्ये Chalisa HaNuman Chalisa Urdu حنومان-چالیسہ ### Hanuman Chalisa Urdu | ہنومان چالیسہ اردو میں PDF Download Chalisa Hanuman Chalisa Tamil Lyrics ### hanuman chalisa lyrics in tamil | ஹனுமான் சாலிஸா Pdf Download Chalisa Vishwakarma Chalisa Lyrics – भगवान श्री विश्वकर्मा चालीसा ( Tara Devi Song ) ### Vishwakarma Chalisa Lyrics | श्री विश्वकर्मा चालीसा PDF Chalisa [...] Skip to content Hanuman Chalisa Logo Hanuman Chalisa Logo Menu Home Chalisa Hanuman Chalisa MP3 Download Audio # Hanuman Chalisa MP3 Download Audio Friends you are here to Hanuman Chalisa Mp3 Download Audio format .On this page of our site i arranged all the audio format of Shree Hanuman chalisa lyrics. In nearly all indian languages like Tamil, Telugu, Bengali,Punjabi, Gujarati,Hindi ,English Mp3 etc. Hanuman chalisa mp3 download free Hanuman Chalisa Mp3 Downlaod",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://shrihanumanchalisa.in/hanuman-chalisa-telugu-pdf-download",
+            "text": "Hanuman Chalisa in Telugu Lyrics | తెలుగు హనుమాన్ చాలీసా Pdf సంకట సేఁ హనుమాన ఛుడావై | మన క్రమ వచన ధ్యాన జో లావై || 26 || సబ పర రామ తపస్వీ రాజా | తినకే కాజ సకల తుమ సాజా || 27 || ఔర మనోరధ జో కోయి లావై | తాసు అమిత జీవన ఫల పావై || 28 || చారో యుగ పరితాప తుమ్హారా | హై పరసిద్ధ జగత ఉజియారా || 29 || సాధు సంత కే తుమ రఖవారే | అసుర నికందన రామ దులారే || 30 || అష్ఠసిద్ధి నవ నిధి కే దాతా | అస వర దీన్హ జానకీ మాతా || 31 || రామ రసాయన తుమ్హారే పాసా | సాద రహో రఘుపతి కే దాసా || 32 || తుమ్హరే భజన రామకో పావై | జన్మ జన్మ కే దుఖ బిసరావై || 33 || [...] Table of Contents Tagged Inhanuman chalisa in telugu download hanuman chalisa pdf ms rao hanuman chalisa telugu download mp3 2020 hanuman chalisa telugu ms rama rao hanuman dandakam telugu pdf tulsidas hanuman chalisa telugu pdf download ## Related Posts Hanuman chalisa mp3 download free ### Hanuman Chalisa MP3 Download Audio Chalisa Hauman Chalisa Punjabi Lyrics ### Hanuman Chalisa in Punjabi with Meaning | ਸ਼੍ਰੀ ਹਨੁਮਾਨ ਚਾਲੀਸਾ PDF Chalisa Hanuman chalisa odia [...] రామదూత అతులిత బలధామా | అంజని పుత్ర పవనసుత నామా || 2 || మహావీర విక్రమ బజరంగీ | కుమతి నివార సుమతి కే సంగీ ||3 || కంచన వరణ విరాజ సువేశా | కానన కుండల కుంచిత కేశా || 4 || హాథవజ్ర ఔ ధ్వజా విరాజై | కాంథే మూంజ జనేవూ సాజై || 5|| శంకర సువన కేసరీ నందన | తేజ ప్రతాప మహాజగ వందన || 6 || విద్యావాన గుణీ అతి చాతుర | రామ కాజ కరివే కో ఆతుర || 7 || ప్రభు చరిత్ర సునివే కో రసియా | రామలఖన సీతా మన బసియా || 8|| సూక్ష్మ రూపధరి సియహి దిఖావా | వికట రూపధరి లంక జరావా || 9 ||",
+            "sourceKind": "search"
+          }
+        ]
+      },
+      "output": {
+        "people": [
+          {
+            "name": "Солдатенков Илья Михайлович",
+            "role": "Руководитель ОП г. Владивосток",
+            "sourceUrl": "https://smsng.ru/otdel-prodazh",
+            "quote": "Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88",
+            "email": "vladivostok1@ooospecmash.ru",
+            "emailSourceUrl": "https://smsng.ru/otdel-prodazh",
+            "emailQuote": "Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88",
+            "relevance": 80,
+            "reasoning": "Руководитель отделения (ОП) во Владивостоке вероятно отвечает за продажи и принятие решений по найму в регионе."
+          },
+          {
+            "name": "Черных Александр Владимирович",
+            "role": "Руководитель ОП г. Щёлково (Московская область)",
+            "sourceUrl": "https://smsng.ru/otdel-prodazh",
+            "quote": "Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51",
+            "email": "moscow@ooospecmash.ru",
+            "emailSourceUrl": "https://smsng.ru/otdel-prodazh",
+            "emailQuote": "Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51",
+            "relevance": 80,
+            "reasoning": "Региональный руководитель отделения в Московской области, имеет управление отделом продаж, важное лицо для решения вопросов найма и продаж."
+          }
+        ],
+        "nextQueries": [
+          "Руководитель отдела продаж Спецмаш-Снг официальный контакт",
+          "Генеральный директор Спецмаш-Снг контактная информация"
+        ]
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/",
+      "status": 200,
+      "elapsedMs": 1470
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/robots.txt",
+      "status": 200,
+      "elapsedMs": 132
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/sitemap.xml",
+      "status": 200,
+      "elapsedMs": 826
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/index.php?xml_sitemap=params=",
+      "status": 200,
+      "elapsedMs": 502
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/contact",
+      "status": 404,
+      "elapsedMs": 1251
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/kontakty",
+      "status": 404,
+      "elapsedMs": 1382
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/company",
+      "status": 404,
+      "elapsedMs": 2036
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/contacts",
+      "status": 200,
+      "elapsedMs": 2914
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/kontakti",
+      "status": 404,
+      "elapsedMs": 3124
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/about-us",
+      "status": 404,
+      "elapsedMs": 4367
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/contact-us",
+      "status": 404,
+      "elapsedMs": 4602
+    },
+    {
+      "stage": "fetch",
+      "url": "https://dorzap.ru/about",
+      "error": "TimeoutError",
+      "elapsedMs": 5006
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 4650,
+      "schema": "leadgen_outreach_v4",
+      "input": {
+        "company": "Спецмаш-Снг",
+        "segment": null,
+        "industry": null,
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "evidence": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+          "source": "https://hh.ru/vacancy/137988890"
+        },
+        "company_specifics": null,
+        "lpr": {
+          "name": null,
+          "role": null,
+          "why_this_person": null
+        },
+        "business_context": {
+          "problem_hypothesis": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+          "target_responsibility": null,
+          "selection_reason": null
+        },
+        "contact_type": "GENERAL",
+        "required_cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "required_greeting": "Добрый день."
+      },
+      "output": {
+        "subject": "Автоматизация поддержки продаж Спецмаш-Снг",
+        "body": "На сайте hh.ru опубликована вакансия менеджера по продажам в компании Спецмаш-Снг. Вакансия указывает, что в ближайшее время планируется выполнение задач по привлечению и квалификации клиентов, а также ведению отчетности. \n\nВероятно, часть этих обязанностей требует большого объема ручной работы, что может замедлять процессы продаж и снижать их результативность. Возможно, существуют узкие места в управлении увеличившимся объемом данных и контактов.\n\nМы можем провести тестовое внедрение инструмента, который на основе входящих заявок и контактов автоматически выделит перспективных клиентов и подготовит краткие отчеты для менеджеров, облегчая их работу. Такой пилот позволит оценить потенциал снижения загрузки сотрудников и улучшения контроля по воронке продаж.",
+        "cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "quality": {
+          "reason_now": true,
+          "grounded_hypothesis": true,
+          "russian_only": true,
+          "personal_cta": true
+        }
+      }
+    }
+  ],
+  "startedAt": "2026-10-06T12:20:04.038Z",
+  "bundle": {
+    "companyName": "Спецмаш-Снг",
+    "officialWebsite": "https://dorzap.ru",
+    "officialDomain": "dorzap.ru",
+    "people": [
+      {
+        "fullName": "Солдатенков Илья Михайлович",
+        "role": "Руководитель ОП г. Владивосток",
+        "confidence": "HIGH_CONFIDENCE",
+        "evidence": [
+          {
+            "sourceUrl": "https://smsng.ru/otdel-prodazh",
+            "sourceType": "public_web",
+            "excerpt": "Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88",
+            "capturedAt": "2026-10-06T12:20:04.038Z",
+            "confidence": 68
+          },
+          {
+            "sourceUrl": "https://smsng.ru/otdel-prodazh",
+            "sourceType": "public_web",
+            "excerpt": "Руководитель отделения (ОП) во Владивостоке вероятно отвечает за продажи и принятие решений по найму в регионе.",
+            "capturedAt": "2026-10-06T12:20:04.038Z",
+            "confidence": 68
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      },
+      {
+        "fullName": "Черных Александр Владимирович",
+        "role": "Руководитель ОП г. Щёлково (Московская область)",
+        "confidence": "HIGH_CONFIDENCE",
+        "evidence": [
+          {
+            "sourceUrl": "https://smsng.ru/otdel-prodazh",
+            "sourceType": "public_web",
+            "excerpt": "Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51",
+            "capturedAt": "2026-10-06T12:20:04.038Z",
+            "confidence": 68
+          },
+          {
+            "sourceUrl": "https://smsng.ru/otdel-prodazh",
+            "sourceType": "public_web",
+            "excerpt": "Региональный руководитель отделения в Московской области, имеет управление отделом продаж, важное лицо для решения вопросов найма и продаж.",
+            "capturedAt": "2026-10-06T12:20:04.038Z",
+            "confidence": 68
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "dorzap@list.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://dorzap.ru/",
+              "sourceType": "official",
+              "excerpt": "dorzap@list.ru — public email parser",
+              "capturedAt": "2026-10-06T12:20:04.038Z",
+              "confidence": 78
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "dorzap@list.ru",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://dorzap.ru/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+      "sourceUrl": "https://hh.ru/vacancy/137988890",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 2,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 20,
+      "lprMs": 17697,
+      "contactMs": 8376,
+      "totalMs": 34744,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "people": {
+    "primary_person": {
+      "full_name": "Солдатенков Илья Михайлович",
+      "role_title": "Руководитель ОП г. Владивосток",
+      "department": null,
+      "linkedin_url": null,
+      "work_email": "vladivostok1@ooospecmash.ru",
+      "phone": null,
+      "source": "RU public web",
+      "confidence_score": 68,
+      "evidence": [
+        "Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88",
+        "Руководитель отделения (ОП) во Владивостоке вероятно отвечает за продажи и принятие решений по найму в регионе.",
+        "Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88"
+      ],
+      "metadata": {
+        "provider_id": "ru-public-web",
+        "source_url": "https://smsng.ru/otdel-prodazh",
+        "source_title": "Руководитель ОП г. Владивосток",
+        "snippet": "Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88",
+        "source_urls": [
+          "https://smsng.ru/otdel-prodazh",
+          "https://smsng.ru/otdel-prodazh"
+        ],
+        "semantic_role_relevance": 80,
+        "email_source_url": "https://smsng.ru/otdel-prodazh",
+        "telegram_url": null,
+        "tenchat_url": null,
+        "vk_url": null,
+        "instagram_url": null,
+        "contact_route": "target_persona",
+        "public_contact_verified": true,
+        "normalized_role": "Руководитель отдела продаж",
+        "freshness": "unknown",
+        "company_verified": true,
+        "role_verified": true,
+        "evidence_source_count": 1
+      }
+    },
+    "alternative_people": [
+      {
+        "full_name": "Черных Александр Владимирович",
+        "role_title": "Руководитель ОП г. Щёлково (Московская область)",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": "moscow@ooospecmash.ru",
+        "phone": null,
+        "source": "RU public web",
+        "confidence_score": 68,
+        "evidence": [
+          "Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51",
+          "Региональный руководитель отделения в Московской области, имеет управление отделом продаж, важное лицо для решения вопросов найма и продаж.",
+          "Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51"
+        ],
+        "metadata": {
+          "provider_id": "ru-public-web",
+          "source_url": "https://smsng.ru/otdel-prodazh",
+          "source_title": "Руководитель ОП г. Щёлково (Московская область)",
+          "snippet": "Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51",
+          "source_urls": [
+            "https://smsng.ru/otdel-prodazh",
+            "https://smsng.ru/otdel-prodazh"
+          ],
+          "semantic_role_relevance": 80,
+          "email_source_url": "https://smsng.ru/otdel-prodazh",
+          "telegram_url": null,
+          "tenchat_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "public_contact_verified": true,
+          "normalized_role": "Руководитель отдела продаж",
+          "freshness": "unknown",
+          "company_verified": true,
+          "role_verified": true,
+          "evidence_source_count": 1
+        }
+      }
+    ],
+    "all_candidates": [
+      {
+        "full_name": "Солдатенков Илья Михайлович",
+        "role_title": "Руководитель ОП г. Владивосток",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": "vladivostok1@ooospecmash.ru",
+        "phone": null,
+        "source": "RU public web",
+        "confidence_score": 68,
+        "evidence": [
+          "Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88",
+          "Руководитель отделения (ОП) во Владивостоке вероятно отвечает за продажи и принятие решений по найму в регионе.",
+          "Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88"
+        ],
+        "metadata": {
+          "provider_id": "ru-public-web",
+          "source_url": "https://smsng.ru/otdel-prodazh",
+          "source_title": "Руководитель ОП г. Владивосток",
+          "snippet": "Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88",
+          "source_urls": [
+            "https://smsng.ru/otdel-prodazh",
+            "https://smsng.ru/otdel-prodazh"
+          ],
+          "semantic_role_relevance": 80,
+          "email_source_url": "https://smsng.ru/otdel-prodazh",
+          "telegram_url": null,
+          "tenchat_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "public_contact_verified": true,
+          "normalized_role": "Руководитель отдела продаж",
+          "freshness": "unknown",
+          "company_verified": true,
+          "role_verified": true,
+          "evidence_source_count": 1
+        }
+      },
+      {
+        "full_name": "Черных Александр Владимирович",
+        "role_title": "Руководитель ОП г. Щёлково (Московская область)",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": "moscow@ooospecmash.ru",
+        "phone": null,
+        "source": "RU public web",
+        "confidence_score": 68,
+        "evidence": [
+          "Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51",
+          "Региональный руководитель отделения в Московской области, имеет управление отделом продаж, важное лицо для решения вопросов найма и продаж.",
+          "Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51"
+        ],
+        "metadata": {
+          "provider_id": "ru-public-web",
+          "source_url": "https://smsng.ru/otdel-prodazh",
+          "source_title": "Руководитель ОП г. Щёлково (Московская область)",
+          "snippet": "Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51",
+          "source_urls": [
+            "https://smsng.ru/otdel-prodazh",
+            "https://smsng.ru/otdel-prodazh"
+          ],
+          "semantic_role_relevance": 80,
+          "email_source_url": "https://smsng.ru/otdel-prodazh",
+          "telegram_url": null,
+          "tenchat_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "public_contact_verified": true,
+          "normalized_role": "Руководитель отдела продаж",
+          "freshness": "unknown",
+          "company_verified": true,
+          "role_verified": true,
+          "evidence_source_count": 1
+        }
+      }
+    ],
+    "primary_person_intelligence": {
+      "candidate": {
+        "full_name": "Солдатенков Илья Михайлович",
+        "role_title": "Руководитель ОП г. Владивосток",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": "vladivostok1@ooospecmash.ru",
+        "phone": null,
+        "source": "RU public web",
+        "confidence_score": 68,
+        "evidence": [
+          "Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88",
+          "Руководитель отделения (ОП) во Владивостоке вероятно отвечает за продажи и принятие решений по найму в регионе.",
+          "Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88"
+        ],
+        "metadata": {
+          "provider_id": "ru-public-web",
+          "source_url": "https://smsng.ru/otdel-prodazh",
+          "source_title": "Руководитель ОП г. Владивосток",
+          "snippet": "Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88",
+          "source_urls": [
+            "https://smsng.ru/otdel-prodazh",
+            "https://smsng.ru/otdel-prodazh"
+          ],
+          "semantic_role_relevance": 80,
+          "email_source_url": "https://smsng.ru/otdel-prodazh",
+          "telegram_url": null,
+          "tenchat_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "public_contact_verified": true,
+          "normalized_role": "Руководитель отдела продаж",
+          "freshness": "unknown",
+          "company_verified": true,
+          "role_verified": true,
+          "evidence_source_count": 1
+        }
+      },
+      "rank_score": 87,
+      "person_score": 87,
+      "persona_match_score": 80,
+      "business_problem_ownership": "high",
+      "decision_authority": "medium",
+      "influence_level": "medium",
+      "confidence_score": 80,
+      "confidence_level": "medium_confidence",
+      "contact_availability": {
+        "has_work_email": true,
+        "has_linkedin": false,
+        "has_phone": false,
+        "has_telegram": false
+      },
+      "matched_keywords": [],
+      "reasoning": "No direct persona keyword match in available person context.",
+      "selection_reason": "Солдатенков Илья Михайлович is the strongest available candidate because Руководитель ОП г. Владивосток no direct keyword match, compared against Руководитель отдела продаж. Persona match 80/100, ownership high, authority medium, influence medium, confidence 80/100.",
+      "strengths": [
+        "Strong persona match (80/100)",
+        "Likely owner of the business problem",
+        "Has at least one usable public contact signal"
+      ],
+      "weaknesses": [
+        "No direct persona keyword match in available evidence"
+      ],
+      "why_not_other_candidates": [
+        "Черных Александр Владимирович: no direct persona keyword match in available evidence."
+      ],
+      "recommended_next_action": "contact_primary_person"
+    },
+    "alternative_people_intelligence": [
+      {
+        "candidate": {
+          "full_name": "Черных Александр Владимирович",
+          "role_title": "Руководитель ОП г. Щёлково (Московская область)",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "moscow@ooospecmash.ru",
+          "phone": null,
+          "source": "RU public web",
+          "confidence_score": 68,
+          "evidence": [
+            "Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51",
+            "Региональный руководитель отделения в Московской области, имеет управление отделом продаж, важное лицо для решения вопросов найма и продаж.",
+            "Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51"
+          ],
+          "metadata": {
+            "provider_id": "ru-public-web",
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "source_title": "Руководитель ОП г. Щёлково (Московская область)",
+            "snippet": "Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51",
+            "source_urls": [
+              "https://smsng.ru/otdel-prodazh",
+              "https://smsng.ru/otdel-prodazh"
+            ],
+            "semantic_role_relevance": 80,
+            "email_source_url": "https://smsng.ru/otdel-prodazh",
+            "telegram_url": null,
+            "tenchat_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "public_contact_verified": true,
+            "normalized_role": "Руководитель отдела продаж",
+            "freshness": "unknown",
+            "company_verified": true,
+            "role_verified": true,
+            "evidence_source_count": 1
+          }
+        },
+        "rank_score": 87,
+        "person_score": 87,
+        "persona_match_score": 80,
+        "business_problem_ownership": "high",
+        "decision_authority": "medium",
+        "influence_level": "medium",
+        "confidence_score": 80,
+        "confidence_level": "medium_confidence",
+        "contact_availability": {
+          "has_work_email": true,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Черных Александр Владимирович is the strongest available candidate because Руководитель ОП г. Щёлково (Московская область) no direct keyword match, compared against Руководитель отдела продаж. Persona match 80/100, ownership high, authority medium, influence medium, confidence 80/100.",
+        "strengths": [
+          "Strong persona match (80/100)",
+          "Likely owner of the business problem",
+          "Has at least one usable public contact signal"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence"
+        ],
+        "why_not_other_candidates": [
+          "Черных Александр Владимирович: no direct persona keyword match in available evidence."
+        ],
+        "recommended_next_action": "contact_primary_person"
+      }
+    ],
+    "ranked_people": [
+      {
+        "candidate": {
+          "full_name": "Солдатенков Илья Михайлович",
+          "role_title": "Руководитель ОП г. Владивосток",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "vladivostok1@ooospecmash.ru",
+          "phone": null,
+          "source": "RU public web",
+          "confidence_score": 68,
+          "evidence": [
+            "Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88",
+            "Руководитель отделения (ОП) во Владивостоке вероятно отвечает за продажи и принятие решений по найму в регионе.",
+            "Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88"
+          ],
+          "metadata": {
+            "provider_id": "ru-public-web",
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "source_title": "Руководитель ОП г. Владивосток",
+            "snippet": "Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88",
+            "source_urls": [
+              "https://smsng.ru/otdel-prodazh",
+              "https://smsng.ru/otdel-prodazh"
+            ],
+            "semantic_role_relevance": 80,
+            "email_source_url": "https://smsng.ru/otdel-prodazh",
+            "telegram_url": null,
+            "tenchat_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "public_contact_verified": true,
+            "normalized_role": "Руководитель отдела продаж",
+            "freshness": "unknown",
+            "company_verified": true,
+            "role_verified": true,
+            "evidence_source_count": 1
+          }
+        },
+        "rank_score": 87,
+        "person_score": 87,
+        "persona_match_score": 80,
+        "business_problem_ownership": "high",
+        "decision_authority": "medium",
+        "influence_level": "medium",
+        "confidence_score": 80,
+        "confidence_level": "medium_confidence",
+        "contact_availability": {
+          "has_work_email": true,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Солдатенков Илья Михайлович is the strongest available candidate because Руководитель ОП г. Владивосток no direct keyword match, compared against Руководитель отдела продаж. Persona match 80/100, ownership high, authority medium, influence medium, confidence 80/100.",
+        "strengths": [
+          "Strong persona match (80/100)",
+          "Likely owner of the business problem",
+          "Has at least one usable public contact signal"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence"
+        ],
+        "why_not_other_candidates": [
+          "Черных Александр Владимирович: no direct persona keyword match in available evidence."
+        ],
+        "recommended_next_action": "contact_primary_person"
+      },
+      {
+        "candidate": {
+          "full_name": "Черных Александр Владимирович",
+          "role_title": "Руководитель ОП г. Щёлково (Московская область)",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "moscow@ooospecmash.ru",
+          "phone": null,
+          "source": "RU public web",
+          "confidence_score": 68,
+          "evidence": [
+            "Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51",
+            "Региональный руководитель отделения в Московской области, имеет управление отделом продаж, важное лицо для решения вопросов найма и продаж.",
+            "Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51"
+          ],
+          "metadata": {
+            "provider_id": "ru-public-web",
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "source_title": "Руководитель ОП г. Щёлково (Московская область)",
+            "snippet": "Черных Александр Владимирович Руководитель ОП г. Щёлково (Московская область) moscow@ooospecmash.ru сот.: 8(996)146-23-51",
+            "source_urls": [
+              "https://smsng.ru/otdel-prodazh",
+              "https://smsng.ru/otdel-prodazh"
+            ],
+            "semantic_role_relevance": 80,
+            "email_source_url": "https://smsng.ru/otdel-prodazh",
+            "telegram_url": null,
+            "tenchat_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "public_contact_verified": true,
+            "normalized_role": "Руководитель отдела продаж",
+            "freshness": "unknown",
+            "company_verified": true,
+            "role_verified": true,
+            "evidence_source_count": 1
+          }
+        },
+        "rank_score": 87,
+        "person_score": 87,
+        "persona_match_score": 80,
+        "business_problem_ownership": "high",
+        "decision_authority": "medium",
+        "influence_level": "medium",
+        "confidence_score": 80,
+        "confidence_level": "medium_confidence",
+        "contact_availability": {
+          "has_work_email": true,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Черных Александр Владимирович is the strongest available candidate because Руководитель ОП г. Щёлково (Московская область) no direct keyword match, compared against Руководитель отдела продаж. Persona match 80/100, ownership high, authority medium, influence medium, confidence 80/100.",
+        "strengths": [
+          "Strong persona match (80/100)",
+          "Likely owner of the business problem",
+          "Has at least one usable public contact signal"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence"
+        ],
+        "why_not_other_candidates": [
+          "Черных Александр Владимирович: no direct persona keyword match in available evidence."
+        ],
+        "recommended_next_action": "contact_primary_person"
+      }
+    ],
+    "selection_reasoning": "Солдатенков Илья Михайлович is the strongest available candidate because Руководитель ОП г. Владивосток no direct keyword match, compared against Руководитель отдела продаж. Persona match 80/100, ownership high, authority medium, influence medium, confidence 80/100.",
+    "search_status": "person_found",
+    "providers_used": [
+      "RU public web"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "ru-public-web",
+        "provider_label": "RU public web",
+        "level": "info",
+        "message": "Bounded shadow search found an evidence-backed person."
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 2,
+      "official_pages_fetched": 4,
+      "aborted_requests": 0,
+      "elapsed_ms": 17688,
+      "stop_reason": "contact_bundle_sufficient",
+      "queries_executed": [
+        "Спецмаш-Снг вакансия менеджер по продажам официальный сайт",
+        "Спецмаш-Снг руководство отдел продаж интервью"
+      ],
+      "sources_checked": [
+        "https://dorzap.ru",
+        "https://dorzap.ru/rukovodstvo",
+        "https://dorzap.ru/management",
+        "https://dorzap.ru/team"
+      ],
+      "search_results_seen": 10,
+      "rejected_candidates": {
+        "ROLE_MISMATCH": 2
+      },
+      "final_failure_reason": null
+    }
+  },
+  "contacts": [
+    {
+      "name": "Солдатенков Илья Михайлович",
+      "role": "Руководитель ОП г. Владивосток",
+      "email": null,
+      "type": "confirmed_person",
+      "source": "https://smsng.ru/otdel-prodazh",
+      "selected": false
+    },
+    {
+      "name": "Солдатенков Илья Михайлович",
+      "role": "Руководитель ОП г. Владивосток",
+      "email": "vladivostok1@ooospecmash.ru",
+      "type": "work_email",
+      "source": "https://smsng.ru/otdel-prodazh",
+      "selected": false,
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "Руководитель ОП г. Владивосток: The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+        "person_name": "Солдатенков Илья Михайлович",
+        "person_role": "Руководитель ОП г. Владивосток",
+        "email": "vladivostok1@ooospecmash.ru",
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "generic_fallback",
+        "verification_methods": [
+          "mx",
+          "public_evidence"
+        ],
+        "confidence": "MEDIUM",
+        "readiness": "manual_verification",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "summary": "Солдатенков Илья Михайлович подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "summary": "Роль связана с зоной ответственности: Sales and revenue leadership."
+          },
+          {
+            "kind": "email",
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "summary": "Email опубликован в публичном профессиональном контексте."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "summary": "Солдатенков Илья Михайлович Руководитель ОП г. Владивосток vladivostok1@ooospecmash.ru сот.: 8(994)004-70-88"
+          },
+          {
+            "kind": "person",
+            "source_url": "https://smsng.ru/otdel-prodazh",
+            "summary": "Руководитель отделения (ОП) во Владивостоке вероятно отвечает за продажи и принятие решений по найму в регионе."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "personal_email_requires_manual_verification"
+      }
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "dorzap@list.ru",
+      "type": "generic_email",
+      "source": "https://dorzap.ru/",
+      "selected": true,
+      "ready": true,
+      "copy": "Добрый день.\n\nНа сайте hh.ru опубликована вакансия менеджера по продажам в компании Спецмаш-Снг. Вакансия указывает, что в ближайшее время планируется выполнение задач по привлечению и квалификации клиентов, а также ведению отчетности. \n\nВероятно, часть этих обязанностей требует большого объема ручной работы, что может замедлять процессы продаж и снижать их результативность. Возможно, существуют узкие места в управлении увеличившимся объемом данных и контактов.\n\nМы можем провести тестовое внедрение инструмента, который на основе входящих заявок и контактов автоматически выделит перспективных клиентов и подготовит краткие отчеты для менеджеров, облегчая их работу. Такой пилот позволит оценить потенциал снижения загрузки сотрудников и улучшения контроля по воронке продаж.\n\nЯ AI-архитектор. Если потребуется, подключим бизнес-аналитика: сначала проверим процесс, затем выберем, что автоматизировать.\n\nМогу провести короткий разбор этого участка. Обычно он стоит 9 900 ₽; если ответите в течение 24 часов после отправки письма, проведу разбор бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514"
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://dorzap.ru/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://dorzap.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://dorzap.ru/contacts/",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://dorzap.ru/contact-us",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://dorzap.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 34745
+}

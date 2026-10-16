@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { createEmailProvider } from "@/lib/leadgen/email-provider";
+import { createEmailProvider, type EmailProvider } from "@/lib/leadgen/email-provider";
 import {
   claimDueOutreachItem,
   deferRemainingQueuedItems,
@@ -19,6 +19,7 @@ import { assertCompleteOutreachBody } from "@/lib/leadgen/outreach-body-integrit
 
 export async function processNextOutreachItem(
   requestedKind?: "initial" | "follow_up",
+  providerOverride?: EmailProvider,
 ) {
   await rejectPreviouslyContactedQueuedItems();
   if (!requestedKind || requestedKind === "follow_up") {
@@ -39,7 +40,7 @@ export async function processNextOutreachItem(
   if (daily.remaining <= 0 && nextKind === "initial") {
     return { status: "daily_limit_reached" as const, entry: null };
   }
-  const provider = createEmailProvider();
+  const provider = providerOverride ?? createEmailProvider();
   const validation = await provider.validateConnection();
   if (!validation.ok) {
     return {

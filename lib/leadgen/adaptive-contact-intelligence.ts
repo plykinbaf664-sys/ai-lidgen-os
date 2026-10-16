@@ -14,8 +14,8 @@ import {
   getContactLevel,
   type NormalizedEmailClassification,
 } from "@/lib/leadgen/contact-quality";
-import { emailLocalMatchesPerson } from "@/lib/leadgen/person-email-evidence";
 import { hasEmailDomainMx } from "@/lib/leadgen/email-discovery-engine";
+import type { PersonalEmailCandidate } from "@/lib/leadgen/personal-email-research";
 
 function normalize(value: string | null | undefined): string {
   return (value ?? "").trim().toLowerCase().replace(/\s+/g, " ");
@@ -179,8 +179,11 @@ export async function evaluateAdaptiveContactIntelligence({
   const directDomain = getEmailDomain(direct?.email);
   const mxVerified = await verifyMx(directDomain ?? officialDomain);
   const sourceDomain = getDomain(direct?.source_url);
+  const verifiedCompanyDomains = Array.isArray(direct?.metadata.verified_company_domains)
+    ? direct.metadata.verified_company_domains : [];
   const aliasPublishedOnOfficialSite = Boolean(
-    directDomain && officialDomain && directDomain !== officialDomain && sourceDomain === officialDomain,
+    directDomain && officialDomain && directDomain !== officialDomain &&
+    (sourceDomain === officialDomain || verifiedCompanyDomains.includes(sourceDomain)),
   );
   const domainMatch = Boolean(directDomain && officialDomain && (
     directDomain === officialDomain || directDomain.endsWith(`.${officialDomain}`)
@@ -205,7 +208,8 @@ export async function evaluateAdaptiveContactIntelligence({
   for (const item of personEvidence.slice(0, 2)) evidence.push({ kind: "person", source_url: direct?.source_url ?? null, summary: item.slice(0, 180) });
 
   const patternEvidence = directContacts
-    .filter((contact): contact is LeadgenContact & { full_name: string; email: string } => Boolean(contact.full_name && contact.email))
+    .filter((contact): contact is LeadgenContact & { full_name: string; email: string } => Boolean(contact.full_name && contact.email &&
+      contact.metadata.public_contact_verified === true && typeof contact.metadata.email_person_evidence === "string"))
     .map((contact) => ({ fullName: contact.full_name, email: contact.email }));
   const inferred = inferCorporateEmailPattern(patternEvidence);
   const generated = !direct?.email && person && officialDomain && inferred.pattern && inferred.support >= 2
@@ -222,8 +226,13 @@ export async function evaluateAdaptiveContactIntelligence({
       confirmedPerson,
       directPersonEvidence: Boolean(
         confirmedPerson && selectedPersonName &&
-        emailLocalMatchesPerson(direct.email, selectedPersonName),
+        direct.metadata.public_contact_verified === true && typeof direct.metadata.email_person_evidence === "string" &&
+        direct.metadata.email_person_evidence.toLowerCase().includes(direct.email.toLowerCase()) &&
+        selectedPersonName.toLowerCase().split(/\s+/).every(part => String(direct.metadata.email_person_evidence).toLowerCase().includes(part)),
       ),
+      generatedFromPattern: direct.metadata.email_research_status === "HIGH_CONFIDENCE",
+      patternSupport: Number(direct.metadata.pattern_support ?? 0),
+      exactOfficialPublication: direct.metadata.exact_official_publication === true,
       mxVerified,
       confirmedCorporateAlias: aliasPublishedOnOfficialSite,
     });
@@ -301,7 +310,9 @@ export async function evaluateAdaptiveContactIntelligence({
     evidence: compactEvidence(evidence),
     inferred_pattern: inferred.pattern,
     pattern_support: inferred.support,
-    generated_candidates: generated ? [generated] : [],
+    generated_candidates: [...new Set([...(generated ? [generated] : []),
+      ...(person?.metadata.email_candidates as PersonalEmailCandidate[] | undefined ?? [])
+        .filter(candidate => candidate.status !== "REJECTED").map(candidate => candidate.email)])].slice(0, 5),
     catch_all: "unknown",
     smtp_verification: "not_performed",
     strategies_attempted: [
@@ -404,6 +415,8 @@ export function isContactReadyPerson(contact: LeadgenContact): boolean {
 }
 
 export function isConfirmedOutreachEmail(contact: LeadgenContact): boolean {
+  if (contact.metadata.normalized_email_classification === "INFERRED_PERSONAL" ||
+      contact.metadata.email_research_status === "PREDICTED" || contact.metadata.email_research_status === "REJECTED") return false;
   if (isContactReadyPerson(contact)) return true;
   if (!contact.email || (contact.contact_type !== "work_email" && contact.contact_type !== "generic_email")) {
     return false;

@@ -29,6 +29,12 @@ function getMessageMode(contact: LeadgenContact): EmailMessageMode {
       ? contact.metadata.email_classification
       : "";
   const localPart = contact.email?.split("@")[0]?.toLowerCase() ?? "";
+  const intelligence = contact.metadata.contact_intelligence as { email_classification?: string } | undefined;
+  const normalized = contact.metadata.normalized_email_classification ?? intelligence?.email_classification;
+
+  if (contact.contact_type === "work_email" && isPlausiblePublicPersonName(contact.full_name) &&
+    (normalized === "VERIFIED_PERSONAL" || normalized === "HIGH_CONFIDENCE_PERSONAL")) return "personal";
+  if (normalized === "INFERRED_PERSONAL" || normalized === "INVALID") return "generic_routing";
 
   if (
     contact.contact_type === "work_email" &&
@@ -39,7 +45,7 @@ function getMessageMode(contact: LeadgenContact): EmailMessageMode {
   }
 
   if (
-    classification === "department_verified" ||
+    normalized === "DEPARTMENT" || classification === "department_verified" ||
     /^(sales|sale|commercial|commerce|marketing|support|partners|partner|pr|press|client|service)$/.test(
       localPart,
     )
@@ -94,6 +100,7 @@ export function buildEmailOutreach({
   whyThisPerson?: string | null;
   publicPersonContext?: string | null;
   emailEvidence?: string | null;
+  signal?: AbortSignal;
 }): {
   subject: string | null;
   body: string;
@@ -106,6 +113,8 @@ export function buildEmailOutreach({
   generationAttempts: number;
   copyReviewStatus: "ready" | "needs_manual_copy_review" | null;
   guideAssignment: OutreachGuideAssignment | null;
+  generationSource?: "ai" | "template";
+  fallbackReason?: string | null;
 } {
   if (
     !contact ||
@@ -211,9 +220,11 @@ export async function buildEmailOutreachWithAi(
     whyThisPerson: input.whyThisPerson,
     publicPersonContext: input.publicPersonContext,
     emailEvidence: input.emailEvidence,
-  });
+  }, input.signal);
   return {
     ...deterministic,
+    generationSource: copy.generationSource,
+    fallbackReason: copy.fallbackReason,
     subject: copy.subject,
     body: copy.body,
     microValue: copy.microValue,

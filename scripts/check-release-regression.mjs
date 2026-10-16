@@ -7,12 +7,12 @@ const checks = [
   "check-discovery-continuation", "check-free-multisource-discovery", "check-discovery-source-extraction",
   "check-commercial-signal", "check-candidate-identity", "check-public-web-search",
   "check-direct-ai-reasoning", "check-direct-ai-company-resolution", "check-source-campaign-downstream",
-  "check-company-research-agent", "check-company-research-performance", "check-lpr-production-integration",
-  "check-lpr-shadow", "check-contact-quality", "check-adaptive-contact-intelligence", "check-email-discovery",
+  "check-company-research-agent", "check-offline-fallback", "check-company-research-performance", "check-lpr-production-integration",
+  "check-contact-quality", "check-adaptive-contact-intelligence", "check-email-discovery", "check-people-evidence", "check-iterative-research", "check-personal-email-research",
   "check-first-email-v2", "check-outreach-guides", "check-approval-stability", "check-initial-queue-boundary",
   "check-local-outreach-store", "check-followup-engine", "check-outbound-thread-isolation",
   "check-outreach-summary", "check-production-consistency", "check-leadgen-ui-navigation",
-  "check-network-abort", "check-network-retry", "check-storage-compaction", "check-production-limits",
+  "check-network-abort", "check-network-retry", "check-storage-compaction", "check-production-limits", "check-research-economy",
 ];
 let cursor = 0;
 let failed = 0;
@@ -20,8 +20,9 @@ await Promise.all(Array.from({ length: 3 }, async () => {
   while (cursor < checks.length) {
     const check = checks[cursor++];
     const isolated = await mkdtemp(path.join(tmpdir(), "leadgen-regression-"));
-    const env = { ...process.env, LEADGEN_LOCAL_DATA_DIR: isolated, EMAIL_TEST_MODE: "true", NODE_NO_WARNINGS: "1" };
-    for (const key of Object.keys(env)) if (/SMTP|IMAP|TELEGRAM|OPENAI|TAVILY|SUPABASE/.test(key)) env[key] = "";
+    const env = { ...process.env, LEADGEN_LOCAL_DATA_DIR: isolated, EMAIL_TEST_MODE: "true", NODE_NO_WARNINGS: "1",
+      LEADGEN_AI_PROVIDER: "openai", LEADGEN_AI_DAILY_BUDGET_USD: "100", LEADGEN_AI_COMPANY_BUDGET_USD: "100" };
+    for (const key of Object.keys(env)) if (/SMTP|IMAP|TELEGRAM|OPENAI|QWEN|TAVILY|SUPABASE/.test(key)) env[key] = "";
     try {
       const result = await new Promise(resolve => {
         const child = spawn(process.execPath, ["--experimental-transform-types", "--import", "./scripts/register-ts-paths.mjs", `scripts/${check}.mjs`], { env, windowsHide: true });

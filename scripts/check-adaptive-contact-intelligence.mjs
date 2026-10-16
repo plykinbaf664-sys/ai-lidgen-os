@@ -72,6 +72,8 @@ const direct = {
   metadata: {
     email_extraction_method: "official_site",
     email_classification: "personal_verified",
+    public_contact_verified: true,
+    email_person_evidence: "Иван Петров — Коммерческий директор — ivan.petrov@acme.ru",
   },
 };
 const discovery = {

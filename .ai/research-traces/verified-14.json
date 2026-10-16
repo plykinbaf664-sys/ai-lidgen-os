@@ -1,0 +1,385 @@
+{
+  "mode": "direct",
+  "name": "Сбер. IT",
+  "website": "https://rabota.sber.ru",
+  "before": {
+    "companyName": "Сбер. IT",
+    "officialWebsite": "https://rabota.sber.ru",
+    "officialDomain": "rabota.sber.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "SDET / Разработчик AI решений (HR платформа)",
+      "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+      "sourceUrl": "https://hh.ru/vacancy/138117118",
+      "confidence": 90
+    },
+    "researchConfidence": "UNVERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 6,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 23,
+      "lprMs": 15877,
+      "contactMs": 8625,
+      "totalMs": 26613,
+      "stopReason": "lpr_not_found"
+    }
+  },
+  "signal": {
+    "type": "AI_AUTOMATION_HIRING_SIGNAL",
+    "title": "SDET / Разработчик AI решений (HR платформа)",
+    "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+    "sourceUrl": "https://hh.ru/vacancy/138117118",
+    "confidence": 90
+  },
+  "index": 14,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru",
+      "status": 200,
+      "elapsedMs": 942
+    },
+    {
+      "stage": "research_open",
+      "url": "https://rabota.sber.ru",
+      "success": true,
+      "evidence": {
+        "url": "https://rabota.sber.ru",
+        "kind": "page",
+        "text": "Богдан Рощупкин ML-инженер AI-агентов",
+        "links": [
+          {
+            "url": "https://rabota.sber.ru",
+            "label": ""
+          },
+          {
+            "url": "https://rabota.sber.ru/search",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://rabota.sber.ru/media",
+            "label": "Карьерные медиа"
+          },
+          {
+            "url": "https://sbergraduate.ru",
+            "label": "Выпускникам и студентам"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/policy",
+            "label": "Политика обработки данных"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/cookies",
+            "label": "Политика использования Cookies"
+          },
+          {
+            "url": "https://www.sberbank.ru",
+            "label": "www.sberbank.ru"
+          },
+          {
+            "url": "https://t.me/careersber",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:14:37.140Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 429,
+      "elapsedMs": 784,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:14:37.140Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 10,
+          "searchRemaining": 8
+        }
+      },
+      "output": null
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "model_unavailable",
+      "actions": 1,
+      "candidates": [],
+      "domains": [
+        "rabota.sber.ru"
+      ],
+      "elapsedMs": 2003
+    },
+    {
+      "stage": "people_ranked",
+      "people": []
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Product launches and feature releases can create coordination load between product, marketing, sales, and customer success.",
+        "target_responsibility": "Product leadership",
+        "target_persona": "Head of Product",
+        "alternative_personas": [
+          "VP Product",
+          "Product Director",
+          "Head of Product Marketing",
+          "COO",
+          "Founder / CEO"
+        ],
+        "why_this_person": "The signal includes product or release context, so product leadership may own the launch and adoption workflow. Matched context: платформа. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "no_material_next_step_available"
+      },
+      "contacts": [
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://rabota.sber.ru/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://rabota.sber.ru/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://rabota.sber.ru"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-10-06T20:14:35.942Z",
+  "bundle": {
+    "companyName": "Сбер. IT",
+    "officialWebsite": "https://rabota.sber.ru",
+    "officialDomain": "rabota.sber.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "SDET / Разработчик AI решений (HR платформа)",
+      "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+      "sourceUrl": "https://hh.ru/vacancy/138117118",
+      "confidence": 90
+    },
+    "researchConfidence": "UNVERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 0,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 10,
+      "lprMs": 2003,
+      "contactMs": 75,
+      "totalMs": 2079,
+      "stopReason": "model_unavailable"
+    }
+  },
+  "people": {
+    "primary_person": null,
+    "alternative_people": [],
+    "all_candidates": [],
+    "search_status": "provider_unavailable",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "model_unavailable"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 0,
+      "official_pages_fetched": 1,
+      "aborted_requests": 0,
+      "elapsed_ms": 2003,
+      "stop_reason": "model_unavailable",
+      "queries_executed": [],
+      "sources_checked": [
+        "https://rabota.sber.ru"
+      ],
+      "search_results_seen": 0,
+      "rejected_candidates": {
+        "validation_rejects": 0
+      },
+      "final_failure_reason": "model_unavailable"
+    }
+  },
+  "contacts": [
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://rabota.sber.ru/contacts",
+      "selected": false,
+      "intelligence": {
+        "business_problem": "Product launches and feature releases can create coordination load between product, marketing, sales, and customer success.",
+        "target_responsibility": "Product leadership",
+        "target_persona": "Head of Product",
+        "alternative_personas": [
+          "VP Product",
+          "Product Director",
+          "Head of Product Marketing",
+          "COO",
+          "Founder / CEO"
+        ],
+        "why_this_person": "The signal includes product or release context, so product leadership may own the launch and adoption workflow. Matched context: платформа. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "no_material_next_step_available"
+      }
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://rabota.sber.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://rabota.sber.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 2079
+}

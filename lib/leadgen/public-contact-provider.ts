@@ -20,7 +20,7 @@ import {
   type ParsedPublicEmail,
   type RejectedPublicEmail,
 } from "@/lib/leadgen/public-email-parser";
-import { buildEmailOutreachWithAi } from "@/lib/leadgen/email-outreach-builder";
+import { buildEmailOutreach, buildEmailOutreachWithAi } from "@/lib/leadgen/email-outreach-builder";
 import { discoverCompanyEmails } from "@/lib/leadgen/email-discovery-engine";
 import { getVerticalProfile } from "@/lib/leadgen/verticals";
 import { runAbortableOperation, throwIfAborted } from "@/lib/network/abortable-operation";
@@ -28,7 +28,6 @@ import {
   classifyEvidenceBackedEmail,
   getContactLevel,
 } from "@/lib/leadgen/contact-quality";
-import { emailLocalMatchesPerson } from "@/lib/leadgen/person-email-evidence";
 
 const publicUrlPattern = /https?:\/\/[^\s"'<>\\)]+/gi;
 const officialSitePaths = [
@@ -753,8 +752,7 @@ function getConfirmedPersonEmail(
       person,
     }).find(
       (item) =>
-        item.classification === "personal_verified" ||
-        item.classification === "work_verified" ||
+        (item.classification === "personal_verified" || item.classification === "work_verified") &&
         isEmailLocalPartTiedToPerson(item.email, person),
     ) ?? null
   );
@@ -1474,7 +1472,7 @@ export class PublicContactProvider implements ContactProvider {
   label = "Public contact provider";
   private readonly searchProvider?: SearchProvider;
 
-  constructor(searchProvider?: SearchProvider) {
+  constructor(searchProvider?: SearchProvider, private readonly researchPages?: Array<{ url: string; text: string }>) {
     this.searchProvider = searchProvider;
   }
 
@@ -1548,6 +1546,7 @@ export class PublicContactProvider implements ContactProvider {
           },
           searchProvider,
           signal: input.signal,
+          researchPages: this.researchPages,
         })
       : null;
     const officialSiteContext = emailDiscovery
@@ -1652,7 +1651,8 @@ export class PublicContactProvider implements ContactProvider {
         confidenceScore: 76,
         metadata: routingMetadata,
       });
-      const emailOutreach = await buildEmailOutreachWithAi({
+      const emailOutreach = await (input.company.metadata.defer_outreach_generation ? buildEmailOutreach : buildEmailOutreachWithAi)({
+        signal: input.signal,
         companyName: input.company.company_name,
         companyWebsite: getCompanyWebsite(input.company),
         companyDescription: getCompanyDescription(input.company),
@@ -1725,11 +1725,13 @@ export class PublicContactProvider implements ContactProvider {
     ]);
 
     for (const [personIndex, person] of people.entries()) {
-      const evidencedPersonEmail = emails.find((email) =>
+      // The research loop already checks ownership against a fetched source.
+      // Matching initials/local parts cannot upgrade a company address to a person.
+      const evidencedPersonEmail = input.company.metadata.research_loop_completed ? null : emails.find((email) =>
         isVerifiedSendableEmail(email) &&
-        emailLocalMatchesPerson(email.email, person.full_name),
+        person.full_name.toLowerCase().split(/\s+/).every(part => email.context.toLowerCase().includes(part)),
       ) ?? null;
-      const shouldSearchPersonEmail = !person.work_email && !evidencedPersonEmail && personIndex < 2;
+      const shouldSearchPersonEmail = !input.company.metadata.research_loop_completed && !person.work_email && !evidencedPersonEmail && personIndex < 2;
       if (shouldSearchPersonEmail) {
         strategiesAttempted.push("person_email_yandex_queries");
         queriesExecuted.push(...getExpandedPersonEmailQueries(input, person));
@@ -1750,7 +1752,7 @@ export class PublicContactProvider implements ContactProvider {
       if (publicEmail) {
         queriesExecuted.push(...publicEmail.queriesExecuted);
       }
-      const shouldSearchSocial = personIndex === 0 && !person.work_email && !publicEmail;
+      const shouldSearchSocial = !input.company.metadata.research_loop_completed && personIndex === 0 && !person.work_email && !publicEmail;
       if (shouldSearchSocial) strategiesAttempted.push("person_social_yandex_queries");
       const publicSocialProfiles = shouldSearchSocial
         ? await findPublicPersonSocialProfiles({ input, person, searchProvider })
@@ -1770,31 +1772,42 @@ export class PublicContactProvider implements ContactProvider {
         people_metadata: person.metadata,
       };
       const sourceUrl =
-        publicEmail?.sourceUrl ?? getPersonSourceUrl(person);
+        publicEmail?.sourceUrl ?? (typeof person.metadata.email_source_url === "string"
+          ? person.metadata.email_source_url : getPersonSourceUrl(person));
       const personSourceHost = getHostname(getPersonSourceUrl(person) ?? "");
       const personEmailDomain = person.work_email?.split("@")[1]?.toLowerCase();
+      const verifiedDomains = Array.isArray(person.metadata.verified_company_domains)
+        ? person.metadata.verified_company_domains : [];
+      const semanticEmailEvidence = person.metadata.public_contact_verified === true &&
+        typeof person.metadata.email_person_evidence === "string" &&
+        Boolean(person.work_email && person.metadata.email_person_evidence.toLowerCase().includes(person.work_email.toLowerCase()));
+      const confirmedCompanySource = getHostname(sourceUrl ?? "") === companyDomain ||
+        verifiedDomains.includes(getHostname(sourceUrl ?? ""));
       const confirmedPeopleEmail =
         person.work_email &&
-        personEmailDomain === companyDomain &&
+        (personEmailDomain === companyDomain || confirmedCompanySource) &&
         (personSourceHost === companyDomain ||
           person.metadata.public_contact_verified === true)
           ? person.work_email
           : null;
       const workEmail = confirmedPeopleEmail ?? publicEmail?.email ?? null;
+      const publicationQuote = semanticEmailEvidence ? String(person.metadata.email_person_evidence) : publicEmail?.context ?? "";
+      const personEmailPublication = Boolean(workEmail && publicationQuote.toLowerCase().includes(workEmail.toLowerCase()) &&
+        person.full_name.toLowerCase().split(/\s+/).every(part => publicationQuote.toLowerCase().includes(part)));
       const emailSourceLabel =
         publicEmail?.sourceLabel ?? person.source;
 
       if (workEmail) {
         const workEmailDomain = workEmail.toLowerCase().split("@")[1] ?? "";
-        const publishedOnOfficialSite = getHostname(sourceUrl ?? "") === companyDomain;
+        const publishedOnOfficialSite = confirmedCompanySource;
         const normalizedEmailClassification = classifyEvidenceBackedEmail({
           email: workEmail,
           officialDomain: companyDomain ?? "",
           confirmedPerson: !isRoutingPerson,
           directPersonEvidence: Boolean(
             !isRoutingPerson &&
-            workEmailDomain === companyDomain &&
-            emailLocalMatchesPerson(workEmail, person.full_name),
+            (workEmailDomain === companyDomain || publishedOnOfficialSite) &&
+            personEmailPublication,
           ),
           confirmedCorporateAlias: publishedOnOfficialSite,
         });
@@ -1815,7 +1828,8 @@ export class PublicContactProvider implements ContactProvider {
           : normalizedEmailClassification === "DEPARTMENT"
             ? "department_email_ready"
             : "company_email_ready";
-        const emailOutreach = await buildEmailOutreachWithAi({
+        const emailOutreach = await (input.company.metadata.defer_outreach_generation ? buildEmailOutreach : buildEmailOutreachWithAi)({
+        signal: input.signal,
           companyName: input.company.company_name,
           companyWebsite:
             getCompanyWebsite(input.company),
@@ -1884,6 +1898,9 @@ export class PublicContactProvider implements ContactProvider {
               publicEmail?.confidenceScore ?? person.confidence_score,
             metadata: {
               ...personMetadata,
+              email_person_evidence: personEmailPublication ? publicationQuote : null,
+              verified_company_domains: verifiedDomains,
+              public_contact_verified: personEmailPublication,
               email_context: publicEmail?.context ?? null,
               email_classification: legacyEmailClassification,
               normalized_email_classification: normalizedEmailClassification,
@@ -1996,7 +2013,8 @@ export class PublicContactProvider implements ContactProvider {
       const rankedEmail = emailDiscovery?.candidates.find(
         (candidate) => candidate.email === email.email,
       ) ?? null;
-      const emailOutreach = await buildEmailOutreachWithAi({
+      const emailOutreach = await (input.company.metadata.defer_outreach_generation ? buildEmailOutreach : buildEmailOutreachWithAi)({
+        signal: input.signal,
         companyName: input.company.company_name,
         companyWebsite:
           getCompanyWebsite(input.company),

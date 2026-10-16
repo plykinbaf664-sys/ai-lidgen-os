@@ -1,0 +1,1548 @@
+{
+  "mode": "business",
+  "name": "МирБир",
+  "website": "https://team.mirbeer.ru",
+  "before": {
+    "companyName": "МирБир",
+    "officialWebsite": "https://team.mirbeer.ru",
+    "officialDomain": "team.mirbeer.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [
+        {
+          "email": "hr@mirbeer.ru",
+          "personName": null,
+          "classification": "DEPARTMENT",
+          "evidence": [
+            {
+              "sourceUrl": "https://team.mirbeer.ru/",
+              "sourceType": "official",
+              "excerpt": "hr@mirbeer.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 66
+            }
+          ]
+        }
+      ],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "hr@mirbeer.ru",
+      "personName": null,
+      "role": null,
+      "classification": "DEPARTMENT",
+      "contactLevel": "E",
+      "sourceUrl": "https://team.mirbeer.ru/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: Компания МирБир; открыта вакансия: Руководитель отдела оптовых продаж.",
+      "sourceUrl": "https://hh.ru/vacancy/137705390",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 23,
+      "lprMs": 16691,
+      "contactMs": 2768,
+      "totalMs": 24142,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: Компания МирБир; открыта вакансия: Руководитель отдела оптовых продаж.",
+    "sourceUrl": "https://hh.ru/vacancy/137705390",
+    "confidence": 100
+  },
+  "index": 12,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://team.mirbeer.ru",
+      "status": 200,
+      "elapsedMs": 806
+    },
+    {
+      "stage": "research_open",
+      "url": "https://team.mirbeer.ru",
+      "success": true,
+      "evidence": {
+        "url": "https://team.mirbeer.ru",
+        "kind": "page",
+        "text": "Mirbeer Partner Лучшие в своем деле O НАС Mirbeer partner - Крупнейший поставщик товаров для Пивоварения, Самогоноварения, Виноделия. Эксклюзивный представитель более 12 торговых марок оборудования и ингредиентов со всего мира.",
+        "links": [
+          {
+            "url": "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list",
+            "label": "здесь"
+          },
+          {
+            "url": "https://www.bitrix24.ru/features/sites.php?utm_medium=referral&utm_source=bitrix24.ru&utm_campaign=ru_sites_websites&p=12152696",
+            "label": "Создать сайт"
+          },
+          {
+            "url": "https://www.bitrix24.ru/abuse/?sender_page=PAGE&hostname=mirbeer.bitrix24.ru&siteId=1&from_url=https%253A%252F%252Fmirbeer.bitrix24.ru%252Fpub%252Fsite%252F1%252F%253Fuser_lang%253Dru",
+            "label": "Битрикс24"
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:07:14.930Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2105,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "МирБир",
+        "domain": "team.mirbeer.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: Компания МирБир; открыта вакансия: Руководитель отдела оптовых продаж.",
+            "sourceUrl": "https://hh.ru/vacancy/137705390",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://team.mirbeer.ru",
+            "kind": "page",
+            "text": "Mirbeer Partner Лучшие в своем деле O НАС Mirbeer partner - Крупнейший поставщик товаров для Пивоварения, Самогоноварения, Виноделия. Эксклюзивный представитель более 12 торговых марок оборудования и ингредиентов со всего мира.",
+            "links": [
+              {
+                "url": "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list",
+                "label": "здесь"
+              },
+              {
+                "url": "https://www.bitrix24.ru/features/sites.php?utm_medium=referral&utm_source=bitrix24.ru&utm_campaign=ru_sites_websites&p=12152696",
+                "label": "Создать сайт"
+              },
+              {
+                "url": "https://www.bitrix24.ru/abuse/?sender_page=PAGE&hostname=mirbeer.bitrix24.ru&siteId=1&from_url=https%253A%252F%252Fmirbeer.bitrix24.ru%252Fpub%252Fsite%252F1%252F%253Fuser_lang%253Dru",
+                "label": "Битрикс24"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:14.930Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 7,
+          "actionsRemaining": 10,
+          "searchRemaining": 8,
+          "remainingMs": 44189
+        }
+      },
+      "usage": {
+        "input_tokens": 1807,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 183,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1990
+      },
+      "output": {
+        "companySummary": "МирБир (Mirbeer partner) — крупнейший поставщик товаров для пивоварения, самогоноварения, виноделия, эксклюзивный представитель торговых марок оборудования и ингредиентов.",
+        "missing": [
+          "Публичные сотрудники, их контакты, структура руководства, принадлежность сайта к домену mirbeer.ru"
+        ],
+        "people": [],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://team.mirbeer.ru",
+            "focus": "команда, контакты, сотрудники, структура",
+            "purpose": "Поиск страницы или раздела с информацией о руководстве, ответственном за оптовые продажи, или рейлвантых контактных данных."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённых публичных сотрудников или контактов, нужно изучить сайт на наличие информации о руководстве и контактных лицах."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "МирБир (Mirbeer partner) — крупнейший поставщик товаров для пивоварения, самогоноварения, виноделия, эксклюзивный представитель торговых марок оборудования и ингредиентов.",
+        "missing": [
+          "Публичные сотрудники, их контакты, структура руководства, принадлежность сайта к домену mirbeer.ru"
+        ],
+        "people": [],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://team.mirbeer.ru",
+            "focus": "команда, контакты, сотрудники, структура",
+            "purpose": "Поиск страницы или раздела с информацией о руководстве, ответственном за оптовые продажи, или рейлвантых контактных данных."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённых публичных сотрудников или контактов, нужно изучить сайт на наличие информации о руководстве и контактных лицах."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "team.mirbeer.ru"
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://team.mirbeer.ru",
+      "focus": "команда, контакты, сотрудники, структура",
+      "purpose": "Поиск страницы или раздела с информацией о руководстве, ответственном за оптовые продажи, или рейлвантых контактных данных.",
+      "success": true,
+      "evidence": {
+        "url": "https://team.mirbeer.ru",
+        "kind": "page",
+        "text": "Mirbeer Partner Лучшие в своем деле O НАС Mirbeer partner - Крупнейший поставщик товаров для Пивоварения, Самогоноварения, Виноделия. Эксклюзивный представитель более 12 торговых марок оборудования и ингредиентов со всего мира.",
+        "links": [
+          {
+            "url": "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list",
+            "label": "здесь"
+          },
+          {
+            "url": "https://www.bitrix24.ru/features/sites.php?utm_medium=referral&utm_source=bitrix24.ru&utm_campaign=ru_sites_websites&p=12152696",
+            "label": "Создать сайт"
+          },
+          {
+            "url": "https://www.bitrix24.ru/abuse/?sender_page=PAGE&hostname=mirbeer.bitrix24.ru&siteId=1&from_url=https%253A%252F%252Fmirbeer.bitrix24.ru%252Fpub%252Fsite%252F1%252F%253Fuser_lang%253Dru",
+            "label": "Битрикс24"
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:07:14.930Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3301,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "МирБир",
+        "domain": "team.mirbeer.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: Компания МирБир; открыта вакансия: Руководитель отдела оптовых продаж.",
+            "sourceUrl": "https://hh.ru/vacancy/137705390",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://team.mirbeer.ru",
+            "kind": "page",
+            "text": "Mirbeer Partner Лучшие в своем деле O НАС Mirbeer partner - Крупнейший поставщик товаров для Пивоварения, Самогоноварения, Виноделия. Эксклюзивный представитель более 12 торговых марок оборудования и ингредиентов со всего мира.",
+            "links": [
+              {
+                "url": "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list",
+                "label": "здесь"
+              },
+              {
+                "url": "https://www.bitrix24.ru/features/sites.php?utm_medium=referral&utm_source=bitrix24.ru&utm_campaign=ru_sites_websites&p=12152696",
+                "label": "Создать сайт"
+              },
+              {
+                "url": "https://www.bitrix24.ru/abuse/?sender_page=PAGE&hostname=mirbeer.bitrix24.ru&siteId=1&from_url=https%253A%252F%252Fmirbeer.bitrix24.ru%252Fpub%252Fsite%252F1%252F%253Fuser_lang%253Dru",
+                "label": "Битрикс24"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:14.930Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://team.mirbeer.ru",
+            "focus": "команда, контакты, сотрудники, структура",
+            "success": true
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 6,
+          "actionsRemaining": 9,
+          "searchRemaining": 8,
+          "remainingMs": 42053
+        }
+      },
+      "usage": {
+        "input_tokens": 1838,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 321,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2159
+      },
+      "output": {
+        "companySummary": "Mirbeer partner — крупнейший поставщик товаров для пивоварения, самогоноварения, виноделия в России, эксклюзивный представитель более 12 торговых марок. Обнаружен сигнал найма: открыта вакансия 'Руководитель отдела оптовых продаж'. Входная страница team.mirbeer.ru не содержит явного списка сотрудников, контактов или руководителей. Референтные разделы или структура команды не видны.",
+        "missing": [
+          "Подтверждённый руководитель отдела оптовых продаж или руководитель профильного подразделения",
+          "Публичный прямой контакт (email или профиль)",
+          "Любой список сотрудников, упоминание ФИО, структуры или команды на сайте"
+        ],
+        "people": [],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "search",
+            "value": "МирБир команда сайт",
+            "focus": "официальная страница команды или контакты",
+            "purpose": "Найти структурный или контактный раздел для выявления руководства и релевантного ЛПР."
+          },
+          {
+            "type": "search",
+            "value": "Руководитель отдела оптовых продаж МирБир",
+            "focus": "имя и контакты руководителя профильного подразделения",
+            "purpose": "Поиск по рынку/новостям/интервью/публикациям для выявления владельца процесса, если нет явного списка на сайте."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённых людей или контактов, страница не содержит информацию; необходим поиск по внешним источникам."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "Mirbeer partner — крупнейший поставщик товаров для пивоварения, самогоноварения, виноделия в России, эксклюзивный представитель более 12 торговых марок. Обнаружен сигнал найма: открыта вакансия 'Руководитель отдела оптовых продаж'. Входная страница team.mirbeer.ru не содержит явного списка сотрудников, контактов или руководителей. Референтные разделы или структура команды не видны.",
+        "missing": [
+          "Подтверждённый руководитель отдела оптовых продаж или руководитель профильного подразделения",
+          "Публичный прямой контакт (email или профиль)",
+          "Любой список сотрудников, упоминание ФИО, структуры или команды на сайте"
+        ],
+        "people": [],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "search",
+            "value": "МирБир команда сайт",
+            "focus": "официальная страница команды или контакты",
+            "purpose": "Найти структурный или контактный раздел для выявления руководства и релевантного ЛПР."
+          },
+          {
+            "type": "search",
+            "value": "Руководитель отдела оптовых продаж МирБир",
+            "focus": "имя и контакты руководителя профильного подразделения",
+            "purpose": "Поиск по рынку/новостям/интервью/публикациям для выявления владельца процесса, если нет явного списка на сайте."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённых людей или контактов, страница не содержит информацию; необходим поиск по внешним источникам."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "team.mirbeer.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%9C%D0%B8%D1%80%D0%91%D0%B8%D1%80%20%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 333
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%9C%D0%B8%D1%80%D0%91%D0%B8%D1%80%20%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 277
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "МирБир команда сайт",
+      "focus": "официальная страница команды или контакты",
+      "purpose": "Найти структурный или контактный раздел для выявления руководства и релевантного ЛПР.",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%A0%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%B0%20%D0%BE%D0%BF%D1%82%D0%BE%D0%B2%D1%8B%D1%85%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%20%D0%9C%D0%B8%D1%80%D0%91%D0%B8%D1%80&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 219
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%A0%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%B0%20%D0%BE%D0%BF%D1%82%D0%BE%D0%B2%D1%8B%D1%85%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%20%D0%9C%D0%B8%D1%80%D0%91%D0%B8%D1%80&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 119
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Руководитель отдела оптовых продаж МирБир",
+      "focus": "имя и контакты руководителя профильного подразделения",
+      "purpose": "Поиск по рынку/новостям/интервью/публикациям для выявления владельца процесса, если нет явного списка на сайте.",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3383,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "МирБир",
+        "domain": "team.mirbeer.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: Компания МирБир; открыта вакансия: Руководитель отдела оптовых продаж.",
+            "sourceUrl": "https://hh.ru/vacancy/137705390",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://team.mirbeer.ru",
+            "kind": "page",
+            "text": "Mirbeer Partner Лучшие в своем деле O НАС Mirbeer partner - Крупнейший поставщик товаров для Пивоварения, Самогоноварения, Виноделия. Эксклюзивный представитель более 12 торговых марок оборудования и ингредиентов со всего мира.",
+            "links": [
+              {
+                "url": "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list",
+                "label": "здесь"
+              },
+              {
+                "url": "https://www.bitrix24.ru/features/sites.php?utm_medium=referral&utm_source=bitrix24.ru&utm_campaign=ru_sites_websites&p=12152696",
+                "label": "Создать сайт"
+              },
+              {
+                "url": "https://www.bitrix24.ru/abuse/?sender_page=PAGE&hostname=mirbeer.bitrix24.ru&siteId=1&from_url=https%253A%252F%252Fmirbeer.bitrix24.ru%252Fpub%252Fsite%252F1%252F%253Fuser_lang%253Dru",
+                "label": "Битрикс24"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:14.930Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://team.mirbeer.ru",
+            "focus": "команда, контакты, сотрудники, структура",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "МирБир команда сайт",
+            "focus": "официальная страница команды или контакты",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "Руководитель отдела оптовых продаж МирБир",
+            "focus": "имя и контакты руководителя профильного подразделения",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 7,
+          "searchRemaining": 6,
+          "remainingMs": 37291
+        }
+      },
+      "usage": {
+        "input_tokens": 1962,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 1664
+        },
+        "output_tokens": 359,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2321
+      },
+      "output": {
+        "companySummary": "МирБир — один из крупнейших российских поставщиков товаров для пивоварения, самогоноварения и виноделия. Компания работает с B2B и B2C, эксклюзивно представляет более 12 брендов оборудования и ингредиентов. На дочерном сайте team.mirbeer.ru представлена краткая информация о партнерской деятельности компании, но страницы с командой или структурой не обнаружено.",
+        "missing": [
+          "Публичное имя руководителя отдела оптовых продаж или руководителя профильного подразделения",
+          "Публичный контакт (email или профиль) релевантного сотрудника"
+        ],
+        "people": [],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"МирБир\" отдел оптовых продаж руководитель",
+            "focus": "имя и контакты руководителя оптового или коммерческого подразделения",
+            "purpose": "Попробовать найти публичные упоминания, интервью или профили руководителя нужного подразделения в бизнес-СМИ или соцсетях."
+          },
+          {
+            "type": "search",
+            "value": "\"МирБир\" генеральный директор",
+            "focus": "генеральный директор или собственник",
+            "purpose": "Если профильный руководитель не публичен, определить ФИО и контакты первого лица для B2B-проекта."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Отсутствует информация о руководителях и контактах на официальном сайте; необходимо обратиться к внешним источникам для идентификации релевантного лица."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "МирБир — один из крупнейших российских поставщиков товаров для пивоварения, самогоноварения и виноделия. Компания работает с B2B и B2C, эксклюзивно представляет более 12 брендов оборудования и ингредиентов. На дочерном сайте team.mirbeer.ru представлена краткая информация о партнерской деятельности компании, но страницы с командой или структурой не обнаружено.",
+        "missing": [
+          "Публичное имя руководителя отдела оптовых продаж или руководителя профильного подразделения",
+          "Публичный контакт (email или профиль) релевантного сотрудника"
+        ],
+        "people": [],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"МирБир\" отдел оптовых продаж руководитель",
+            "focus": "имя и контакты руководителя оптового или коммерческого подразделения",
+            "purpose": "Попробовать найти публичные упоминания, интервью или профили руководителя нужного подразделения в бизнес-СМИ или соцсетях."
+          },
+          {
+            "type": "search",
+            "value": "\"МирБир\" генеральный директор",
+            "focus": "генеральный директор или собственник",
+            "purpose": "Если профильный руководитель не публичен, определить ФИО и контакты первого лица для B2B-проекта."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Отсутствует информация о руководителях и контактах на официальном сайте; необходимо обратиться к внешним источникам для идентификации релевантного лица."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "team.mirbeer.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%9C%D0%B8%D1%80%D0%91%D0%B8%D1%80%22%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%20%D0%BE%D0%BF%D1%82%D0%BE%D0%B2%D1%8B%D1%85%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 218
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%9C%D0%B8%D1%80%D0%91%D0%B8%D1%80%22%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%20%D0%BE%D0%BF%D1%82%D0%BE%D0%B2%D1%8B%D1%85%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 130
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"МирБир\" отдел оптовых продаж руководитель",
+      "focus": "имя и контакты руководителя оптового или коммерческого подразделения",
+      "purpose": "Попробовать найти публичные упоминания, интервью или профили руководителя нужного подразделения в бизнес-СМИ или соцсетях.",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%9C%D0%B8%D1%80%D0%91%D0%B8%D1%80%22%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 218
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%9C%D0%B8%D1%80%D0%91%D0%B8%D1%80%22%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 142
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"МирБир\" генеральный директор",
+      "focus": "генеральный директор или собственник",
+      "purpose": "Если профильный руководитель не публичен, определить ФИО и контакты первого лица для B2B-проекта.",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 8338,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "МирБир",
+        "domain": "team.mirbeer.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: Компания МирБир; открыта вакансия: Руководитель отдела оптовых продаж.",
+            "sourceUrl": "https://hh.ru/vacancy/137705390",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://team.mirbeer.ru",
+            "kind": "page",
+            "text": "Mirbeer Partner Лучшие в своем деле O НАС Mirbeer partner - Крупнейший поставщик товаров для Пивоварения, Самогоноварения, Виноделия. Эксклюзивный представитель более 12 торговых марок оборудования и ингредиентов со всего мира.",
+            "links": [
+              {
+                "url": "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list",
+                "label": "здесь"
+              },
+              {
+                "url": "https://www.bitrix24.ru/features/sites.php?utm_medium=referral&utm_source=bitrix24.ru&utm_campaign=ru_sites_websites&p=12152696",
+                "label": "Создать сайт"
+              },
+              {
+                "url": "https://www.bitrix24.ru/abuse/?sender_page=PAGE&hostname=mirbeer.bitrix24.ru&siteId=1&from_url=https%253A%252F%252Fmirbeer.bitrix24.ru%252Fpub%252Fsite%252F1%252F%253Fuser_lang%253Dru",
+                "label": "Битрикс24"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:14.930Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://team.mirbeer.ru",
+            "focus": "команда, контакты, сотрудники, структура",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "МирБир команда сайт",
+            "focus": "официальная страница команды или контакты",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "Руководитель отдела оптовых продаж МирБир",
+            "focus": "имя и контакты руководителя профильного подразделения",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "\"МирБир\" отдел оптовых продаж руководитель",
+            "focus": "имя и контакты руководителя оптового или коммерческого подразделения",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "\"МирБир\" генеральный директор",
+            "focus": "генеральный директор или собственник",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 5,
+          "searchRemaining": 4,
+          "remainingMs": 32422
+        }
+      },
+      "usage": {
+        "input_tokens": 2092,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 1792
+        },
+        "output_tokens": 393,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2485
+      },
+      "output": {
+        "companySummary": "МирБир — крупнейший поставщик товаров для пивоварения, самогоноварения и виноделия. Компания является эксклюзивным представителем более 12 торговых марок оборудования и ингредиентов с мировым охватом. Сигнал: открыта вакансия 'Руководитель отдела оптовых продаж'. Требуется найти владельца процесса/руководителя профильного подразделения, предпочтительно с публичным контактом.",
+        "missing": [
+          "ФИО и/или контакт руководителя отдела оптовых продаж или аналогичного подразделения.",
+          "Публичные контактные данные (email или профиль) релевантного руководителя.",
+          "Подтверждённая команда или структура компании."
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "mirbeer.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Mirbeer partner - Крупнейший поставщик товаров для Пивоварения, Самогоноварения, Виноделия."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "МирБир коммерческий директор OR директор по продажам OR head of sales",
+            "focus": "имя и публичные контакты руководителя продаж или коммерческого директора",
+            "purpose": "Идентифицировать должностное лицо, ответственного за оптовые продажи и получить возможный контакт."
+          },
+          {
+            "type": "open",
+            "value": "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list",
+            "focus": "команда, структура, контакты, публикации о руководстве или главных менеджерах",
+            "purpose": "Посмотреть профиль компании на hh.ru на предмет имен руководства и подразделений."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого имени или контакта руководителя оптовых продаж/профильного подразделения; требуется идентификация и контактная информация лица, отвечающего за оптовые продажи."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 3,
+      "decision": {
+        "companySummary": "МирБир — крупнейший поставщик товаров для пивоварения, самогоноварения и виноделия. Компания является эксклюзивным представителем более 12 торговых марок оборудования и ингредиентов с мировым охватом. Сигнал: открыта вакансия 'Руководитель отдела оптовых продаж'. Требуется найти владельца процесса/руководителя профильного подразделения, предпочтительно с публичным контактом.",
+        "missing": [
+          "ФИО и/или контакт руководителя отдела оптовых продаж или аналогичного подразделения.",
+          "Публичные контактные данные (email или профиль) релевантного руководителя.",
+          "Подтверждённая команда или структура компании."
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "mirbeer.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Mirbeer partner - Крупнейший поставщик товаров для Пивоварения, Самогоноварения, Виноделия."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "МирБир коммерческий директор OR директор по продажам OR head of sales",
+            "focus": "имя и публичные контакты руководителя продаж или коммерческого директора",
+            "purpose": "Идентифицировать должностное лицо, ответственного за оптовые продажи и получить возможный контакт."
+          },
+          {
+            "type": "open",
+            "value": "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list",
+            "focus": "команда, структура, контакты, публикации о руководстве или главных менеджерах",
+            "purpose": "Посмотреть профиль компании на hh.ru на предмет имен руководства и подразделений."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого имени или контакта руководителя оптовых продаж/профильного подразделения; требуется идентификация и контактная информация лица, отвечающего за оптовые продажи."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:mirbeer.ru"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "team.mirbeer.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%9C%D0%B8%D1%80%D0%91%D0%B8%D1%80%20%D0%BA%D0%BE%D0%BC%D0%BC%D0%B5%D1%80%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%BF%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%D0%B0%D0%BC%20OR%20head%20of%20sales&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 353
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%9C%D0%B8%D1%80%D0%91%D0%B8%D1%80%20%D0%BA%D0%BE%D0%BC%D0%BC%D0%B5%D1%80%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20%D0%BF%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%D0%B0%D0%BC%20OR%20head%20of%20sales&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 294
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "МирБир коммерческий директор OR директор по продажам OR head of sales",
+      "focus": "имя и публичные контакты руководителя продаж или коммерческого директора",
+      "purpose": "Идентифицировать должностное лицо, ответственного за оптовые продажи и получить возможный контакт.",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "fetch",
+      "url": "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list",
+      "status": 200,
+      "elapsedMs": 758
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list",
+      "focus": "команда, структура, контакты, публикации о руководстве или главных менеджерах",
+      "purpose": "Посмотреть профиль компании на hh.ru на предмет имен руководства и подразделений.",
+      "success": true,
+      "evidence": {
+        "url": "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list",
+        "kind": "page",
+        "text": "Компания МирБир 4,6 18 отзывов {\"renderRestriction\":{\"breakpoint\":null,\"magritteBreakpoint\":null,\"force\":false,\"renderRestriction\":false},\"redirectConfig\":{\"strictMode\":true,\"topLevelDomain\":\"hh.ru\",\"permittedHosts\":[\"hh.ru\",\"hr.zarplata.ru\",\"api.zarplata.ru\",\"zarplata.ru\",\"talantix.ru\",\"career.ru\",\"joblist.ru\",\"livehh.ru\",\"hh.ua\",\"hh.kz\",\"headhunter.com.kz\",\"hh.by\",\"planetahr.ru\",\"ka.hh.ru\",\"educat.ru\",\"educat.kz\",\"jobs.tut.by\",\"rabota.tut.by\",\"job.tut.by\",\"free-lance.ru\",\"jobs.day.az\",\"hh1.az\",\"profile.tut.by\",\"swa.mail.ru\",\"hhid.ru\",\"headhunter.kg\",\"hh.uz\",\"headhunter.ge\",\"rabota.by\",\"jcat.ru\",\"rating-kube.kube.37b.io\",\"dreamjob.ru\"],\"permittedAppSchemes\":[\"hh\",\"jtb\",\"hhios\",\"hhapp\",\"hhempios\",\"jtbios\",\"jtbapp\",\"jtbempios\",\"jdazios\",\"jdazapp\",\"zpandroid\",\"zpios\",\"zpapp\"]},\"statShardRequestPercent\":false,\"webPerformanceAnalyticsPercent\":false,\"advantages\":[{\"id\":\"1\",\"name\":\"Своевременная оплата труда\"},{\"id\":\"2\",\"name\":\"Удобное расположение работы\"},{\"id\":\"3\",\"name\":\"Удаленная работа\"},{\"id\":\"4\",\"name\":\"Наличие кухни, места для обеда\"},{\"id\":\"5\",\"name\":\"Медицинское страхование\"},{\"id\":\"6\",\"name\":\"Оплата больничного\"},{\"id\":\"7\",\"name\":\"Гибкий рабочий график\"},{\"id\":\"8\",\"name\":\"Компенсация питания\"},{\"id\":\"9\",\"name\":\"Оплата транспортных расходов\"},{\"id\":\"10\",\"name\":\"Корпоративный транспорт\"},{\"id\":\"11\",\"name\":\"Профессиональное обучение\"},{\"id\":\"12\",\"name\":\"Место для парковки\"},{\"id\":\"13\",\"name\":\"Оплата мобильной связи\"},{\"id\":\"14\",\"name\":\"Система наставничества\"},{\"id\":\"15\",\"name\":\"Корпоративные мероприятия\"}],\"hasVerifiedPhone\":false,\"reviewPossibility\":{\"employer\":{\"canReview\":true},\"interview\":{\"canReview\":false}},\"interviewDictionaries\":{\"locations\":[{\"id\":\"1\",\"name\":\"По телефону\"},{\"id\":\"2\",\"name\":\"По видеосвязи\"},{\"id\":\"3\",\"name\":\"В офисе\"}],\"durations\":[{\"id\":\"ONE_WEEK_OR_LESS\",\"name\":\"Меньше недели\"},{\"id\":\"TWO_WEEKS\",\"name\":\"Две недели\"},{\"id\":\"THREE_WEEKS\",\"name\":\"Больше двух недель\"},{\"id\":\"FOUR_WEEKS_OR_MORE\",\"name\":\"Больше месяца\"}],\"components\":[{\"id\":\"1\",\"name\":\"Рекомендации с прошлой работы\"},{\"id\":\"2\",\"name\":\"Обсуждение опыта работы\"},{\"id\":\"3\",\"name\":\"Оценка профессиональных навыков\"},{\"id\":\"4\",\"name\":\"Оценка навыков презентации\"},{\"id\":\"5\",\"name\":\"Психологический тест\"},{\"id\":\"6\",\"name\":\"Уровень владения иностранным языком\"},{\"id\":\"7\",\"name\":\"Проверка службой безопасности\"}],\"complexities\":[{\"id\":\"1\",\"name\":\"Легко\"},{\"id\":\"2\",\"name\":\"Нормально\"},{\"id\":\"3\",\"name\":\"Сложно\"}],\"stagesCounts\":[{\"id\":\"ONE\",\"name\":\"Один\"},{\"id\":\"TWO\",\"name\":\"Два\"},{\"id\":\"THREE\",\"name\":\"Три\"},{\"id\":\"FOUR\",\"name\":\"Четыре\"},{\"id\":\"FIVE_OR_MORE\",\"name\":\"Больше четырёх\"}],\"jobConditions\":[{\"id\":\"1\",\"name\":\"Зарплата\"},{\"id\":\"2\",\"name\":\"Описание обязанностей\"},{\"id\":\"3\",\"name\":\"Требуемый опыт\"},{\"id\":\"4\",\"name\":\"Соцпакет\"},{\"id\":\"5\",\"name\":\"Описание условий работы\"},{\"id\":\"6\",\"name\":\"Расположение офиса\"}]},\"employerReviews\":{\"employerDjId\":\"123432\",\"recommendationsPercent\":89,\"totalRating\":\"4.6\",\"ratings\":[{\"id\":\"WORKPLACE\",\"value\":\"4.8\"},{\"id\":\"TEAM\",\"value\":\"4.9\"},{\"id\":\"MANAGEMENT\",\"value\":\"4.6\"},{\"id\":\"CAREER\",\"value\":\"4.3\"},{\"id\":\"REST_RECOVERY\",\"value\":\"4.7\"},{\"id\":\"SALARY\",\"value\":\"4.2\"}],\"advantages\":[{\"id\":\"1\",\"name\":\"Своевременная оплата труда\",\"count\":16},{\"id\":\"4\",\"name\":\"Наличие кухни, места для обеда\",\"count\":15},{\"id\":\"2\",\"name\":\"Удобное расположение работы\",\"count\":14},{\"id\":\"15\",\"name\":\"Корпоративные мероприятия\",\"count\":14},{\"id\":\"6\",\"name\":\"Оплата больничного\",\"count\":12},{\"id\":\"11\",\"name\":\"Профессиональное обучение\",\"count\":10},{\"id\":\"5\",\"name\":\"Медицинское страхование\",\"count\":10},{\"id\":\"8\",\"name\":\"Компенсация питания\",\"count\":6},{\"id\":\"7\",\"name\":\"Гибкий рабочий график\",\"count\":6},{\"id\":\"14\",\"name\":\"Система наставничества\",\"count\":6},{\"id\":\"3\",\"name\":\"Удаленная работа\",\"count\":6},{\"id\":\"12\",\"name\":\"Место для парковки\",\"count\":4},{\"id\":\"13\",\"name\":\"Оплата мобильной связи\",\"count\":2}],\"reviewsCount\":18,\"reviews\":[{\"id\":\"4777886\",\"target\":\"PREVIOUS_EMPLOYER\",\"employmentDuration\":{\"id\":\"2\",\"name\":\"1-2 года\"},\"area\":\"Санкт-Петербург\",\"areaId\":2,\"totalRating\":\"4\",\"ratings\":[{\"id\":\"WORKPLACE\",\"value\":\"5\"},{\"id\":\"TEAM\",\"value\":\"5\"},{\"id\":\"MANAGEMENT\",\"value\":\"3\"},{\"id\":\"CAREER\",\"value\":\"3\"},{\"id\":\"REST_RECOVERY\",\"value\":\"5\"},{\"id\":\"SALARY\",\"value\":\"3\"}],\"pros\":\"Комфортное начало рабочего дня, зоны отдыха и приема пищи, крутые корпоративные мероприятия, абсолютно адекватный владелец бизнеса - дай бог каждому. Самое главное: когда-то был крутой коллектив...сейчас не знаю как))\",\"cons\":\"Да много чего, но в компании и так все знают и понимают) Как место работы - рекомендую)\",\"recommendToFriend\":\"YES\",\"creationTime\":\"2026-06-29T21:22:14Z\",\"status\":{\"id\":1,\"name\":\"Опубликован\"},\"pinned\":false}],\"reviewsWithoutFeedbackCount\":18,\"reviewsWithoutFeedback\":[{\"id\":\"4777886\",\"target\":\"PREVIOUS_EMPLOYER\",\"employmentDuration\":{\"id\":\"2\",\"name\":\"1-2 года\"},\"area\":\"Санкт-Петербург\",\"areaId\":2,\"totalRating\":\"4\",\"ratings\":[{\"id\":\"WORKPLACE\",\"value\":\"5\"},{\"id\":\"TEAM\",\"value\":\"5\"},{\"id\":\"MANAGEMENT\",\"value\":\"3\"},{\"id\":\"CAREER\",\"value\":\"3\"},{\"id\":\"REST_RECOVERY\",\"value\":\"5\"},{\"id\":\"SALARY\",\"value\":\"3\"}],\"pros\":\"Комфортное начало рабочего дня, зоны отдыха и приема пищи, крутые корпоративные мероприятия, абсолютно адекватный владелец бизнеса - дай бог каждому. Самое главное: когда-то был крутой коллектив...сейчас не знаю как))\",\"cons\":\"Да много чего, но в компании и так все знают и понимают) Как место работы - рекомендую)\",\"recommendToFriend\":\"YES\",\"creationTime\":\"2026-06-29T21:22:14Z\",\"status\":{\"id\":1,\"name\":\"Опубликован\"},\"pinned\":false},{\"id\":\"4561226\",\"target\":\"CURRENT_EMPLOYER\",\"position\":\"Менеджер по работе с маркетплейсами\",\"employmentDuration\":{\"id\":\"3\",\"name\":\"3-5 лет\"},\"area\":\"Санкт-Петербург\",\"areaId\":2,\"totalRating\":\"5\",\"ratings\":[{\"id\":\"WORKPLACE\",\"value\":\"5\"},{\"id\":\"TEAM\",\"value\":\"5\"},{\"id\":\"MANAGEMENT\",\"value\":\"5\"},{\"id\":\"CAREER\",\"value\":\"5\"},{\"id\":\"REST_RECOVERY\",\"value\":\"5\"},{\"id\":\"SALARY\",\"value\":\"5\"}],\"pros\":\"супер удобное местоположение офиса, 5 мин от метро - всегда большой плюс. \\nруководители всегда находятся на твоей стороне, готовы поддерживать комфортные условия труда, даже если твоё",
+        "links": [
+          {
+            "url": "https://spb.hh.ru/article/cookie_policy?hhtmFrom=employer",
+            "label": "cookies"
+          },
+          {
+            "url": "https://spb.hh.ru",
+            "label": ""
+          },
+          {
+            "url": "https://spb.hh.ru/services",
+            "label": "Сервисы"
+          },
+          {
+            "url": "https://spb.hh.ru/account/login?role=applicant&backurl=%2Femployer%2F996382&hhtmFrom=employer",
+            "label": "Войти"
+          },
+          {
+            "url": "https://spb.hh.ru/account/login?role=applicant&backurl=%2Femployer%2F996382",
+            "label": "Войти"
+          },
+          {
+            "url": "https://spb.hh.ru/account/signup?backurl=%2Fapplicant%2Fresumes%2Fnew&hhtmFrom=employer&hhtmFromLabel=header",
+            "label": "Создать резюме"
+          },
+          {
+            "url": "https://spb.hh.ru/employer_reviews/mine",
+            "label": ""
+          },
+          {
+            "url": "https://spb.hh.ru/employer/51592?hhtmFrom=employer&hhtmFromLabel=branded_competitor&tab=VACANCIES",
+            "label": "Посмотреть"
+          },
+          {
+            "url": "https://spb.hh.ru/employer/3856?hhtmFrom=employer&hhtmFromLabel=branded_competitor&tab=VACANCIES",
+            "label": "Посмотреть"
+          },
+          {
+            "url": "https://spb.hh.ru/employer/41450?hhtmFrom=employer&hhtmFromLabel=branded_competitor&tab=VACANCIES",
+            "label": "Посмотреть"
+          },
+          {
+            "url": "https://team.mirbeer.ru",
+            "label": "https://team.mirbeer.ru/"
+          },
+          {
+            "url": "https://spb.hh.ru/search/resume?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "Поиск по резюме"
+          },
+          {
+            "url": "https://spb.hh.ru/article/28?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "О компании"
+          },
+          {
+            "url": "https://spb.hh.ru/article/promoproducts?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "Реклама на сайте"
+          },
+          {
+            "url": "https://spb.hh.ru/safety?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "Безопасный HeadHunter"
+          },
+          {
+            "url": "https://dev.hh.ru/?utm_source=hh.ru&utm_medium=referral&utm_campaign=from_footer_new",
+            "label": "HeadHunter API"
+          },
+          {
+            "url": "https://spb.hh.ru/partners?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "Партнерам"
+          },
+          {
+            "url": "https://investor.hh.ru",
+            "label": "Инвесторам"
+          },
+          {
+            "url": "https://spb.hh.ru/employers_company?hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "Каталог компаний"
+          },
+          {
+            "url": "https://spb.hh.ru/vacancies",
+            "label": "Поиск по вакансиям в Санкт-Петербурге"
+          },
+          {
+            "url": "https://spb.hh.ru/metro?hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "Работа рядом с метро"
+          },
+          {
+            "url": "https://setka.ru",
+            "label": "Сетка: соцсеть для нетворкинга"
+          },
+          {
+            "url": "https://spb.hh.ru/applicant-services/hhpro?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "hh PRO"
+          },
+          {
+            "url": "https://spb.hh.ru/services?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "Все сервисы"
+          },
+          {
+            "url": "https://spb.hh.ru/applicant-services/hhpro?rte=true&from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "Хочу у вас работать"
+          },
+          {
+            "url": "https://spb.hh.ru/calendar?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "Производственный календарь"
+          },
+          {
+            "url": "https://spb.hh.ru/blog?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "Блог"
+          },
+          {
+            "url": "https://spb.hh.ru/articles/guide-to-companies/special-projects?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "О компаниях в игровой форме"
+          },
+          {
+            "url": "https://spb.hh.ru/articles/guide-to-companies/insider?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "Жизнь в компании"
+          },
+          {
+            "url": "https://spb.hh.ru/articles/guide-to-companies/it-projects?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "ИТ-проекты"
+          },
+          {
+            "url": "https://rating.hh.ru/poll?utm_source=hh.ru&utm_medium=referral&utm_campaign=from_footer_new",
+            "label": "Рейтинг работодателей России"
+          },
+          {
+            "url": "https://spb.hh.ru/youth_vacancies?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "Карьера для молодых специалистов"
+          },
+          {
+            "url": "http://school.hh.ru/?utm_source=hh.ru&utm_medium=referral&utm_campaign=from_footer_new",
+            "label": "Школа программистов"
+          },
+          {
+            "url": "https://nko.hh.ru/?utm_source=hh.ru&utm_medium=referral&utm_campaign=from_footer_new",
+            "label": "Карьера в некоммерческих организациях"
+          },
+          {
+            "url": "https://chatbot.hh.ru/hh-bot/telegram?utm_source=hhru&utm_medium=referral&utm_campaign=footer_anonymous",
+            "label": ""
+          },
+          {
+            "url": "https://chatbot.hh.ru/hh-bot/viber?utm_source=hhru&utm_medium=referral&utm_campaign=footer_anonymous",
+            "label": ""
+          },
+          {
+            "url": "https://chatbot.hh.ru/hh-bot/vk?utm_source=hhru&utm_medium=referral&utm_campaign=footer_anonymous",
+            "label": ""
+          },
+          {
+            "url": "https://spb.hh.ru/mobile?from=footer&hhtmFromLabel=footer",
+            "label": ""
+          },
+          {
+            "url": "https://spb.hh.ru/conditions?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "Оказание услуг"
+          },
+          {
+            "url": "https://spb.hh.ru/terms?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+            "label": "Использование сайтов"
+          },
+          {
+            "url": "https://spb.hh.ru/social/setka?hhtmFrom=employer",
+            "label": ""
+          },
+          {
+            "url": "https://spb.hh.ru/social/vk?hhtmFrom=employer",
+            "label": ""
+          },
+          {
+            "url": "https://spb.hh.ru/social/dzen?hhtmFrom=employer",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:07:36.043Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3519,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "МирБир",
+        "domain": "team.mirbeer.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: Компания МирБир; открыта вакансия: Руководитель отдела оптовых продаж.",
+            "sourceUrl": "https://hh.ru/vacancy/137705390",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://team.mirbeer.ru",
+            "kind": "page",
+            "text": "Mirbeer Partner Лучшие в своем деле O НАС Mirbeer partner - Крупнейший поставщик товаров для Пивоварения, Самогоноварения, Виноделия. Эксклюзивный представитель более 12 торговых марок оборудования и ингредиентов со всего мира.",
+            "links": [
+              {
+                "url": "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list",
+                "label": "здесь"
+              },
+              {
+                "url": "https://www.bitrix24.ru/features/sites.php?utm_medium=referral&utm_source=bitrix24.ru&utm_campaign=ru_sites_websites&p=12152696",
+                "label": "Создать сайт"
+              },
+              {
+                "url": "https://www.bitrix24.ru/abuse/?sender_page=PAGE&hostname=mirbeer.bitrix24.ru&siteId=1&from_url=https%253A%252F%252Fmirbeer.bitrix24.ru%252Fpub%252Fsite%252F1%252F%253Fuser_lang%253Dru",
+                "label": "Битрикс24"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:14.930Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list",
+            "kind": "page",
+            "text": "Компания МирБир 4,6 18 отзывов {\"renderRestriction\":{\"breakpoint\":null,\"magritteBreakpoint\":null,\"force\":false,\"renderRestriction\":false},\"redirectConfig\":{\"strictMode\":true,\"topLevelDomain\":\"hh.ru\",\"permittedHosts\":[\"hh.ru\",\"hr.zarplata.ru\",\"api.zarplata.ru\",\"zarplata.ru\",\"talantix.ru\",\"career.ru\",\"joblist.ru\",\"livehh.ru\",\"hh.ua\",\"hh.kz\",\"headhunter.com.kz\",\"hh.by\",\"planetahr.ru\",\"ka.hh.ru\",\"educat.ru\",\"educat.kz\",\"jobs.tut.by\",\"rabota.tut.by\",\"job.tut.by\",\"free-lance.ru\",\"jobs.day.az\",\"hh1.az\",\"profile.tut.by\",\"swa.mail.ru\",\"hhid.ru\",\"headhunter.kg\",\"hh.uz\",\"headhunter.ge\",\"rabota.by\",\"jcat.ru\",\"rating-kube.kube.37b.io\",\"dreamjob.ru\"],\"permittedAppSchemes\":[\"hh\",\"jtb\",\"hhios\",\"hhapp\",\"hhempios\",\"jtbios\",\"jtbapp\",\"jtbempios\",\"jdazios\",\"jdazapp\",\"zpandroid\",\"zpios\",\"zpapp\"]},\"statShardRequestPercent\":false,\"webPerformanceAnalyticsPercent\":false,\"advantages\":[{\"id\":\"1\",\"name\":\"Своевременная оплата труда\"},{\"id\":\"2\",\"name\":\"Удобное расположение работы\"},{\"id\":\"3\",\"name\":\"Удаленная работа\"},{\"id\":\"4\",\"name\":\"Наличие кухни, места для обеда\"},{\"id\":\"5\",\"name\":\"Медицинское страхование\"},{\"id\":\"6\",\"name\":\"Оплата больничного\"},{\"id\":\"7\",\"name\":\"Гибкий рабочий график\"},{\"id\":\"8\",\"name\":\"Компенсация питания\"},{\"id\":\"9\",\"name\":\"Оплата транспортных расходов\"},{\"id\":\"10\",\"name\":\"Корпоративный транспорт\"},{\"id\":\"11\",\"name\":\"Профессиональное обучение\"},{\"id\":\"12\",\"name\":\"Место для парковки\"},{\"id\":\"13\",\"name\":\"Оплата мобильной связи\"},{\"id\":\"14\",\"name\":\"Система наставничества\"},{\"id\":\"15\",\"name\":\"Корпоративные мероприятия\"}],\"hasVerifiedPhone\":false,\"reviewPossibility\":{\"employer\":{\"canReview\":true},\"interview\":{\"canReview\":false}},\"interviewDictionaries\":{\"locations\":[{\"id\":\"1\",\"name\":\"По телефону\"},{\"id\":\"2\",\"name\":\"По видеосвязи\"},{\"id\":\"3\",\"name\":\"В офисе\"}],\"durations\":[{\"id\":\"ONE_WEEK_OR_LESS\",\"name\":\"Меньше недели\"},{\"id\":\"TWO_WEEKS\",\"name\":\"Две недели\"},{\"id\":\"THREE_WEEKS\",\"name\":\"Больше двух недель\"},{\"id\":\"FOUR_WEEKS_OR_MORE\",\"name\":\"Больше месяца\"}],\"components\":[{\"id\":\"1\",\"name\":\"Рекомендации с прошлой работы\"},{\"id\":\"2\",\"name\":\"Обсуждение опыта работы\"},{\"id\":\"3\",\"name\":\"Оценка профессиональных навыков\"},{\"id\":\"4\",\"name\":\"Оценка навыков презентации\"},{\"id\":\"5\",\"name\":\"Психологический тест\"},{\"id\":\"6\",\"name\":\"Уровень владения иностранным языком\"},{\"id\":\"7\",\"name\":\"Проверка службой безопасности\"}],\"complexities\":[{\"id\":\"1\",\"name\":\"Легко\"},{\"id\":\"2\",\"name\":\"Нормально\"},{\"id\":\"3\",\"name\":\"Сложно\"}],\"stagesCounts\":[{\"id\":\"ONE\",\"name\":\"Один\"},{\"id\":\"TWO\",\"name\":\"Два\"},{\"id\":\"THREE\",\"name\":\"Три\"},{\"id\":\"FOUR\",\"name\":\"Четыре\"},{\"id\":\"FIVE_OR_MORE\",\"name\":\"Больше четырёх\"}],\"jobConditions\":[{\"id\":\"1\",\"name\":\"Зарплата\"},{\"id\":\"2\",\"name\":\"Описание обязанностей\"},{\"id\":\"3\",\"name\":\"Требуемый опыт\"},{\"id\":\"4\",\"name\":\"Соцпакет\"},{\"id\":\"5\",\"name\":\"Описание условий работы\"},{\"id\":\"6\",\"name\":\"Расположение офиса\"}]},\"employerReviews\":{\"employerDjId\":\"123432\",\"recommendationsPercent\":89,\"totalRating\":\"4.6\",\"ratings\":[{\"id\":\"WORKPLACE\",\"value\":\"4.8\"},{\"id\":\"TEAM\",\"value\":\"4.9\"},{\"id\":\"MANAGEMENT\",\"value\":\"4.6\"},{\"id\":\"CAREER\",\"value\":\"4.3\"},{\"id\":\"REST_RECOVERY\",\"value\":\"4.7\"},{\"id\":\"SALARY\",\"value\":\"4.2\"}],\"advantages\":[{\"id\":\"1\",\"name\":\"Своевременная оплата труда\",\"count\":16},{\"id\":\"4\",\"name\":\"Наличие кухни, места для обеда\",\"count\":15},{\"id\":\"2\",\"name\":\"Удобное расположение работы\",\"count\":14},{\"id\":\"15\",\"name\":\"Корпоративные мероприятия\",\"count\":14},{\"id\":\"6\",\"name\":\"Оплата больничного\",\"count\":12},{\"id\":\"11\",\"name\":\"Профессиональное обучение\",\"count\":10},{\"id\":\"5\",\"name\":\"Медицинское страхование\",\"count\":10},{\"id\":\"8\",\"name\":\"Компенсация питания\",\"count\":6},{\"id\":\"7\",\"name\":\"Гибкий рабочий график\",\"count\":6},{\"id\":\"14\",\"name\":\"Система наставничества\",\"count\":6},{\"id\":\"3\",\"name\":\"Удаленная работа\",\"count\":6},{\"id\":\"12\",\"name\":\"Место для парковки\",\"count\":4},{\"id\":\"13\",\"name\":\"Оплата мобильной связи\",\"count\":2}],\"reviewsCount\":18,\"reviews\":[{\"id\":\"4777886\",\"target\":\"PREVIOUS_EMPLOYER\",\"employmentDuration\":{\"id\":\"2\",\"name\":\"1-2 года\"},\"area\":\"Санкт-Петербург\",\"areaId\":2,\"totalRating\":\"4\",\"ratings\":[{\"id\":\"WORKPLACE\",\"value\":\"5\"},{\"id\":\"TEAM\",\"value\":\"5\"},{\"id\":\"MANAGEMENT\",\"value\":\"3\"},{\"id\":\"CAREER\",\"value\":\"3\"},{\"id\":\"REST_RECOVERY\",\"value\":\"5\"},{\"id\":\"SALARY\",\"value\":\"3\"}],\"pros\":\"Комфортное начало рабочего дня, зоны отдыха и приема пищи, крутые корпоративные мероприятия, абсолютно адекватный владелец бизнеса - дай бог каждому. Самое главное: когда-то был крутой коллектив...сейчас не знаю как))\",\"cons\":\"Да много чего, но в компании и так все знают и понимают) Как место работы - рекомендую)\",\"recommendToFriend\":\"YES\",\"creationTime\":\"2026-06-29T21:22:14Z\",\"status\":{\"id\":1,\"name\":\"Опубликован\"},\"pinned\":false}],\"reviewsWithoutFeedbackCount\":18,\"reviewsWithoutFeedback\":[{\"id\":\"4777886\",\"target\":\"PREVIOUS_EMPLOYER\",\"employmentDuration\":{\"id\":\"2\",\"name\":\"1-2 года\"},\"area\":\"Санкт-Петербург\",\"areaId\":2,\"totalRating\":\"4\",\"ratings\":[{\"id\":\"WORKPLACE\",\"value\":\"5\"},{\"id\":\"TEAM\",\"value\":\"5\"},{\"id\":\"MANAGEMENT\",\"value\":\"3\"},{\"id\":\"CAREER\",\"value\":\"3\"},{\"id\":\"REST_RECOVERY\",\"value\":\"5\"},{\"id\":\"SALARY\",\"value\":\"3\"}],\"pros\":\"Комфортное начало рабочего дня, зоны отдыха и приема пищи, крутые корпоративные мероприятия, абсолютно адекватный владелец бизнеса - дай бог каждому. Самое главное: когда-то был крутой коллектив...сейчас не знаю как))\",\"cons\":\"Да много чего, но в компании и так все знают и понимают) Как место работы - рекомендую)\",\"recommendToFriend\":\"YES\",\"creationTime\":\"2026-06-29T21:22:14Z\",\"status\":{\"id\":1,\"name\":\"Опубликован\"},\"pinned\":false},{\"id\":\"4561226\",\"target\":\"CURRENT_EMPLOYER\",\"position\":\"Менеджер по работе с маркетплейсами\",\"employmentDuration\":{\"id\":\"3\",\"name\":\"3-5 лет\"},\"area\":\"Санкт-Петербург\",\"areaId\":2,\"totalRating\":\"5\",\"ratings\":[{\"id\":\"WORKPLACE\",\"value\":\"5\"},{\"id\":\"TEAM\",\"value\":\"5\"},{\"id\":\"MANAGEMENT\",\"value\":\"5\"},{\"id\":\"CAREER\",\"value\":\"5\"},{\"id\":\"REST_RECOVERY\",\"value\":\"5\"},{\"id\":\"SALARY\",\"value\":\"5\"}],\"pros\":\"супер удобное местоположение офиса, 5 мин от метро - всегда большой плюс. \\nруководители всегда находятся на твоей стороне, готовы поддерживать комфортные условия труда, даже если твоё",
+            "links": [
+              {
+                "url": "https://spb.hh.ru/article/cookie_policy?hhtmFrom=employer",
+                "label": "cookies"
+              },
+              {
+                "url": "https://spb.hh.ru",
+                "label": ""
+              },
+              {
+                "url": "https://spb.hh.ru/services",
+                "label": "Сервисы"
+              },
+              {
+                "url": "https://spb.hh.ru/account/login?role=applicant&backurl=%2Femployer%2F996382&hhtmFrom=employer",
+                "label": "Войти"
+              },
+              {
+                "url": "https://spb.hh.ru/account/login?role=applicant&backurl=%2Femployer%2F996382",
+                "label": "Войти"
+              },
+              {
+                "url": "https://spb.hh.ru/account/signup?backurl=%2Fapplicant%2Fresumes%2Fnew&hhtmFrom=employer&hhtmFromLabel=header",
+                "label": "Создать резюме"
+              },
+              {
+                "url": "https://spb.hh.ru/employer_reviews/mine",
+                "label": ""
+              },
+              {
+                "url": "https://spb.hh.ru/employer/51592?hhtmFrom=employer&hhtmFromLabel=branded_competitor&tab=VACANCIES",
+                "label": "Посмотреть"
+              },
+              {
+                "url": "https://spb.hh.ru/employer/3856?hhtmFrom=employer&hhtmFromLabel=branded_competitor&tab=VACANCIES",
+                "label": "Посмотреть"
+              },
+              {
+                "url": "https://spb.hh.ru/employer/41450?hhtmFrom=employer&hhtmFromLabel=branded_competitor&tab=VACANCIES",
+                "label": "Посмотреть"
+              },
+              {
+                "url": "https://team.mirbeer.ru",
+                "label": "https://team.mirbeer.ru/"
+              },
+              {
+                "url": "https://spb.hh.ru/search/resume?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "Поиск по резюме"
+              },
+              {
+                "url": "https://spb.hh.ru/article/28?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "О компании"
+              },
+              {
+                "url": "https://spb.hh.ru/article/promoproducts?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "Реклама на сайте"
+              },
+              {
+                "url": "https://spb.hh.ru/safety?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "Безопасный HeadHunter"
+              },
+              {
+                "url": "https://dev.hh.ru/?utm_source=hh.ru&utm_medium=referral&utm_campaign=from_footer_new",
+                "label": "HeadHunter API"
+              },
+              {
+                "url": "https://spb.hh.ru/partners?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "Партнерам"
+              },
+              {
+                "url": "https://investor.hh.ru",
+                "label": "Инвесторам"
+              },
+              {
+                "url": "https://spb.hh.ru/employers_company?hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "Каталог компаний"
+              },
+              {
+                "url": "https://spb.hh.ru/vacancies",
+                "label": "Поиск по вакансиям в Санкт-Петербурге"
+              },
+              {
+                "url": "https://spb.hh.ru/metro?hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "Работа рядом с метро"
+              },
+              {
+                "url": "https://setka.ru",
+                "label": "Сетка: соцсеть для нетворкинга"
+              },
+              {
+                "url": "https://spb.hh.ru/applicant-services/hhpro?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "hh PRO"
+              },
+              {
+                "url": "https://spb.hh.ru/services?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "Все сервисы"
+              },
+              {
+                "url": "https://spb.hh.ru/applicant-services/hhpro?rte=true&from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "Хочу у вас работать"
+              },
+              {
+                "url": "https://spb.hh.ru/calendar?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "Производственный календарь"
+              },
+              {
+                "url": "https://spb.hh.ru/blog?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "Блог"
+              },
+              {
+                "url": "https://spb.hh.ru/articles/guide-to-companies/special-projects?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "О компаниях в игровой форме"
+              },
+              {
+                "url": "https://spb.hh.ru/articles/guide-to-companies/insider?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "Жизнь в компании"
+              },
+              {
+                "url": "https://spb.hh.ru/articles/guide-to-companies/it-projects?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "ИТ-проекты"
+              },
+              {
+                "url": "https://rating.hh.ru/poll?utm_source=hh.ru&utm_medium=referral&utm_campaign=from_footer_new",
+                "label": "Рейтинг работодателей России"
+              },
+              {
+                "url": "https://spb.hh.ru/youth_vacancies?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "Карьера для молодых специалистов"
+              },
+              {
+                "url": "http://school.hh.ru/?utm_source=hh.ru&utm_medium=referral&utm_campaign=from_footer_new",
+                "label": "Школа программистов"
+              },
+              {
+                "url": "https://nko.hh.ru/?utm_source=hh.ru&utm_medium=referral&utm_campaign=from_footer_new",
+                "label": "Карьера в некоммерческих организациях"
+              },
+              {
+                "url": "https://chatbot.hh.ru/hh-bot/telegram?utm_source=hhru&utm_medium=referral&utm_campaign=footer_anonymous",
+                "label": ""
+              },
+              {
+                "url": "https://chatbot.hh.ru/hh-bot/viber?utm_source=hhru&utm_medium=referral&utm_campaign=footer_anonymous",
+                "label": ""
+              },
+              {
+                "url": "https://chatbot.hh.ru/hh-bot/vk?utm_source=hhru&utm_medium=referral&utm_campaign=footer_anonymous",
+                "label": ""
+              },
+              {
+                "url": "https://spb.hh.ru/mobile?from=footer&hhtmFromLabel=footer",
+                "label": ""
+              },
+              {
+                "url": "https://spb.hh.ru/conditions?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "Оказание услуг"
+              },
+              {
+                "url": "https://spb.hh.ru/terms?from=footer_new&hhtmFromLabel=footer_new&hhtmFrom=employer",
+                "label": "Использование сайтов"
+              },
+              {
+                "url": "https://spb.hh.ru/social/setka?hhtmFrom=employer",
+                "label": ""
+              },
+              {
+                "url": "https://spb.hh.ru/social/vk?hhtmFrom=employer",
+                "label": ""
+              },
+              {
+                "url": "https://spb.hh.ru/social/dzen?hhtmFrom=employer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:36.043Z",
+            "id": "e2"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://team.mirbeer.ru",
+            "focus": "команда, контакты, сотрудники, структура",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "МирБир команда сайт",
+            "focus": "официальная страница команды или контакты",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "Руководитель отдела оптовых продаж МирБир",
+            "focus": "имя и контакты руководителя профильного подразделения",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "\"МирБир\" отдел оптовых продаж руководитель",
+            "focus": "имя и контакты руководителя оптового или коммерческого подразделения",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "\"МирБир\" генеральный директор",
+            "focus": "генеральный директор или собственник",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "МирБир коммерческий директор OR директор по продажам OR head of sales",
+            "focus": "имя и публичные контакты руководителя продаж или коммерческого директора",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "open",
+            "value": "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list",
+            "focus": "команда, структура, контакты, публикации о руководстве или главных менеджерах",
+            "success": true
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:mirbeer.ru"
+        ],
+        "budget": {
+          "roundsRemaining": 3,
+          "actionsRemaining": 3,
+          "searchRemaining": 3,
+          "remainingMs": 23071
+        }
+      },
+      "usage": {
+        "input_tokens": 5765,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 316,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 6081
+      },
+      "output": {
+        "companySummary": "Компания МирБир — крупный поставщик товаров для пивоварения, самогоноварения и виноделия, эксклюзивный представитель оборудования и ингредиентов. Обнаружена вакансия руководителя отдела оптовых продаж — владение такого процесса, скорее всего, у руководителя направления продаж или у исполнительного директора, однако за опубликованными документами ни одна команда или конкретный руководитель не раскрыты. На доступных страницах сайта и hh.ru нет информации о действующем руководстве, и ни один персональный контакт не выявлен.",
+        "missing": [
+          "Имя и публичные контакты руководителя отдела оптовых продаж или соответствующего бизнес-владельца (руководителя продаж, коммерческого директора, исполнительного директора/собственника)"
+        ],
+        "people": [],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "search",
+            "value": "МирБир генеральный директор ИЛИ собственник ИЛИ руководитель оптовых продаж email",
+            "focus": "выход на имя и публичный профиль/контакт лица, владеющего процессом оптовых продаж (CEO, sales/commercial director)",
+            "purpose": "Найти имя и публично подтверждённый канал связи руководителя, исходя из полномочий по процессу оптовых продаж"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого имени и контакта релевантного ЛПР по оптовым продажам; необходим следующий целевой поиск по определённым ролям и email."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 4,
+      "decision": {
+        "companySummary": "Компания МирБир — крупный поставщик товаров для пивоварения, самогоноварения и виноделия, эксклюзивный представитель оборудования и ингредиентов. Обнаружена вакансия руководителя отдела оптовых продаж — владение такого процесса, скорее всего, у руководителя направления продаж или у исполнительного директора, однако за опубликованными документами ни одна команда или конкретный руководитель не раскрыты. На доступных страницах сайта и hh.ru нет информации о действующем руководстве, и ни один персональный контакт не выявлен.",
+        "missing": [
+          "Имя и публичные контакты руководителя отдела оптовых продаж или соответствующего бизнес-владельца (руководителя продаж, коммерческого директора, исполнительного директора/собственника)"
+        ],
+        "people": [],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "search",
+            "value": "МирБир генеральный директор ИЛИ собственник ИЛИ руководитель оптовых продаж email",
+            "focus": "выход на имя и публичный профиль/контакт лица, владеющего процессом оптовых продаж (CEO, sales/commercial director)",
+            "purpose": "Найти имя и публично подтверждённый канал связи руководителя, исходя из полномочий по процессу оптовых продаж"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого имени и контакта релевантного ЛПР по оптовым продажам; необходим следующий целевой поиск по определённым ролям и email."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "team.mirbeer.ru"
+      ]
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "diminishing_returns",
+      "actions": 8,
+      "candidates": [],
+      "domains": [
+        "team.mirbeer.ru"
+      ],
+      "elapsedMs": 25474
+    },
+    {
+      "stage": "people_ranked",
+      "people": []
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+        "target_responsibility": "Company leadership",
+        "target_persona": "Founder",
+        "alternative_personas": [
+          "CEO",
+          "Managing Director",
+          "COO",
+          "Head of Growth",
+          "Head of Sales"
+        ],
+        "why_this_person": "The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "no_material_next_step_available"
+      },
+      "contacts": [
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://team.mirbeer.ru/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://team.mirbeer.ru/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://team.mirbeer.ru"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-10-07T22:07:14.118Z",
+  "bundle": {
+    "companyName": "МирБир",
+    "officialWebsite": "https://team.mirbeer.ru",
+    "officialDomain": "team.mirbeer.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: Компания МирБир; открыта вакансия: Руководитель отдела оптовых продаж.",
+      "sourceUrl": "https://hh.ru/vacancy/137705390",
+      "confidence": 100
+    },
+    "researchConfidence": "UNVERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 5,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 12,
+      "lprMs": 25474,
+      "contactMs": 276,
+      "totalMs": 25751,
+      "stopReason": "diminishing_returns"
+    }
+  },
+  "people": {
+    "primary_person": null,
+    "alternative_people": [],
+    "all_candidates": [],
+    "search_status": "no_person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "diminishing_returns"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 5,
+      "official_pages_fetched": 3,
+      "aborted_requests": 0,
+      "elapsed_ms": 25474,
+      "stop_reason": "diminishing_returns",
+      "queries_executed": [
+        "МирБир команда сайт",
+        "Руководитель отдела оптовых продаж МирБир",
+        "\"МирБир\" отдел оптовых продаж руководитель",
+        "\"МирБир\" генеральный директор",
+        "МирБир коммерческий директор OR директор по продажам OR head of sales"
+      ],
+      "sources_checked": [
+        "https://team.mirbeer.ru",
+        "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list"
+      ],
+      "search_results_seen": 0,
+      "rejected_candidates": {
+        "validation_rejects": 0
+      },
+      "final_failure_reason": "diminishing_returns"
+    }
+  },
+  "contacts": [
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://team.mirbeer.ru/contacts",
+      "selected": false,
+      "intelligence": {
+        "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+        "target_responsibility": "Company leadership",
+        "target_persona": "Founder",
+        "alternative_personas": [
+          "CEO",
+          "Managing Director",
+          "COO",
+          "Head of Growth",
+          "Head of Sales"
+        ],
+        "why_this_person": "The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "no_material_next_step_available"
+      }
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://team.mirbeer.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://team.mirbeer.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 25752
+}

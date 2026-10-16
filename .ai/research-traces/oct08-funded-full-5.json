@@ -1,0 +1,1979 @@
+{
+  "mode": "business",
+  "name": "МЕТИЗ ИМПЭКС",
+  "website": "https://metiz-ltd.ru",
+  "before": {
+    "companyName": "МЕТИЗ ИМПЭКС",
+    "officialWebsite": "https://metiz-ltd.ru",
+    "officialDomain": "metiz-ltd.ru",
+    "people": [
+      {
+        "fullName": "Татьяна Алёхина",
+        "role": "Директор по маркетингу",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://metiz-ltd.ru/blog/2025-05-19/metiz-predstavil-svoi-proteznye-izdeliya-dlya-reabilitatsii-boytsov-svo-na-profilnom-forume-v-sankt-peterburge",
+            "sourceType": "official",
+            "excerpt": "Public search result: Новости",
+            "capturedAt": "2026-10-06T08:03:13.373Z",
+            "confidence": 82
+          },
+          {
+            "sourceUrl": "https://metiz-ltd.ru/blog/2023-08-26/sostoyalos-otkrytie-tsentra-assistivnykh-tekhnologiy-feniks-sredi-aktivnykh-uchastnikov-programmy---kompaniya-metiz",
+            "sourceType": "official",
+            "excerpt": "Source URL: https://metiz-ltd.ru/blog/2025-05-19/metiz-predstavil-svoi-proteznye-izdeliya-dlya-reabilitatsii-boytsov-svo-na-profilnom-forume-v-sankt-peterburge",
+            "capturedAt": "2026-10-06T08:03:13.373Z",
+            "confidence": 82
+          },
+          {
+            "sourceUrl": "https://metiz-ltd.ru/blog/2023-10-20/kompaniya-iz-schyolkovo-prinimaet-uchastie-v-xi-mezhdunarodnom-forume-sdelano-v-rossii",
+            "sourceType": "official",
+            "excerpt": "Contact search result: Новости",
+            "capturedAt": "2026-10-06T08:03:13.373Z",
+            "confidence": 82
+          },
+          {
+            "sourceUrl": "https://metiz-ltd.ru/blog/2024-09-19/metiz-pobedil-v-xiv-mezhdunarodnom-festivale-sotsialnoy-reklamy-i-kommunikatsiy-lime-profi",
+            "sourceType": "official",
+            "excerpt": "Contact source URL: https://metiz-ltd.ru/blog/2023-08-26/sostoyalos-otkrytie-tsentra-assistivnykh-tekhnologiy-feniks-sredi-aktivnykh-uchastnikov-programmy---kompaniya-metiz",
+            "capturedAt": "2026-10-06T08:03:13.373Z",
+            "confidence": 82
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "info@metiz-ltd.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://metiz-ltd.ru/",
+              "sourceType": "official",
+              "excerpt": "info@metiz-ltd.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "u003einfo@metiz-ltd.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://metiz-ltd.ru/contacts",
+              "sourceType": "official",
+              "excerpt": "u003einfo@metiz-ltd.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 94
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "info@metiz-ltd.ru",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://metiz-ltd.ru/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: МЕТИЗ ИМПЭКС; открыта вакансия: Коммерческий директор (CCO/Chief Commercial Officer).",
+      "sourceUrl": "https://hh.ru/vacancy/138112927",
+      "confidence": 100
+    },
+    "researchConfidence": "VERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 12,
+      "duplicateQueriesSkipped": 1,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 18,
+      "lprMs": 30071,
+      "contactMs": 23220,
+      "totalMs": 58010,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: МЕТИЗ ИМПЭКС; открыта вакансия: Коммерческий директор (CCO/Chief Commercial Officer).",
+    "sourceUrl": "https://hh.ru/vacancy/138112927",
+    "confidence": 100
+  },
+  "index": 5,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://metiz-ltd.ru",
+      "status": 200,
+      "elapsedMs": 749
+    },
+    {
+      "stage": "research_open",
+      "url": "https://metiz-ltd.ru",
+      "success": true,
+      "evidence": {
+        "url": "https://metiz-ltd.ru",
+        "kind": "page",
+        "text": "КОМПЛЕКТУЮЩИЕ ПРОТЕЗОВ КОНЕЧНОСТЕЙ Компания METIZ является лидером в России в области разработки и производства комплектующих и материалов для изготовления протезов нижних конечностей, а также является эксклюзивным дистрибьютором протезной и ортопедической продукции известных зарубежных брендов. О компании Философия Наши стандарты Продукты События Галерея Контакты Протезирование Ортопедия Оборудование +7 (495) 215-53-82 info@metiz-ltd.ru",
+        "links": [
+          {
+            "url": "https://metiz-ltd.com",
+            "label": "EN"
+          },
+          {
+            "url": "https://t.me/metiz_impex",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/metiz_protezy",
+            "label": ""
+          },
+          {
+            "url": "https://metiz-ltd.ru/search",
+            "label": ""
+          },
+          {
+            "url": "https://metiz-ltd.ru/about",
+            "label": "О компании"
+          },
+          {
+            "url": "https://metiz-ltd.ru/philosophy",
+            "label": "Философия"
+          },
+          {
+            "url": "https://metiz-ltd.ru/our-standards",
+            "label": "Наши стандарты"
+          },
+          {
+            "url": "https://metiz-ltd.ru/catalog",
+            "label": "Продукты"
+          },
+          {
+            "url": "https://metiz-ltd.ru/blog",
+            "label": "События"
+          },
+          {
+            "url": "https://metiz-ltd.ru/gallery",
+            "label": "Галерея"
+          },
+          {
+            "url": "https://metiz-ltd.ru/contacts",
+            "label": "Контакты"
+          },
+          {
+            "url": "https://metiz-ltd.ru/catalog/orliman",
+            "label": "Ортопедия"
+          },
+          {
+            "url": "https://metiz-ltd.ru/catalog/aft",
+            "label": "Оборудование"
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:05:39.208Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3069,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "МЕТИЗ ИМПЭКС",
+        "domain": "metiz-ltd.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: МЕТИЗ ИМПЭКС; открыта вакансия: Коммерческий директор (CCO/Chief Commercial Officer).",
+            "sourceUrl": "https://hh.ru/vacancy/138112927",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://metiz-ltd.ru",
+            "kind": "page",
+            "text": "КОМПЛЕКТУЮЩИЕ ПРОТЕЗОВ КОНЕЧНОСТЕЙ Компания METIZ является лидером в России в области разработки и производства комплектующих и материалов для изготовления протезов нижних конечностей, а также является эксклюзивным дистрибьютором протезной и ортопедической продукции известных зарубежных брендов. О компании Философия Наши стандарты Продукты События Галерея Контакты Протезирование Ортопедия Оборудование +7 (495) 215-53-82 info@metiz-ltd.ru",
+            "links": [
+              {
+                "url": "https://metiz-ltd.com",
+                "label": "EN"
+              },
+              {
+                "url": "https://t.me/metiz_impex",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/metiz_protezy",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/search",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/about",
+                "label": "О компании"
+              },
+              {
+                "url": "https://metiz-ltd.ru/philosophy",
+                "label": "Философия"
+              },
+              {
+                "url": "https://metiz-ltd.ru/our-standards",
+                "label": "Наши стандарты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog",
+                "label": "Продукты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/blog",
+                "label": "События"
+              },
+              {
+                "url": "https://metiz-ltd.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://metiz-ltd.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog/orliman",
+                "label": "Ортопедия"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog/aft",
+                "label": "Оборудование"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:05:39.208Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 7,
+          "actionsRemaining": 10,
+          "searchRemaining": 8,
+          "remainingMs": 44248
+        }
+      },
+      "usage": {
+        "input_tokens": 1968,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 273,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2241
+      },
+      "output": {
+        "companySummary": "Компания МЕТИЗ ИМПЭКС (metiz-ltd.ru) занимается производством и дистрибуцией комплектующих и материалов для изготовления протезов нижних конечностей в России. Обнаружен сигнал найма: открыта вакансия коммерческого директора (Chief Commercial Officer).",
+        "missing": [
+          "нет информации о руководителях или владельцах процесса, нет подтверждённого контактного лица для запроса по теме коммерческого директора"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "metiz-ltd.com",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "EN"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://metiz-ltd.ru/contacts",
+            "focus": "контакты и потенциальные имена",
+            "purpose": "Проверить наличие имён, персональных контактов или руководителей на странице контактов компании."
+          },
+          {
+            "type": "open",
+            "value": "https://metiz-ltd.ru/about",
+            "focus": "состав руководства, владельцы, C-level",
+            "purpose": "Поиск персоналий или руководства, связанных с коммерческой деятельностью или компанией в целом."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённых персоналий или релевантных контактов, следующая логичная проверка — страницы контактов и 'О компании'."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "Компания МЕТИЗ ИМПЭКС (metiz-ltd.ru) занимается производством и дистрибуцией комплектующих и материалов для изготовления протезов нижних конечностей в России. Обнаружен сигнал найма: открыта вакансия коммерческого директора (Chief Commercial Officer).",
+        "missing": [
+          "нет информации о руководителях или владельцах процесса, нет подтверждённого контактного лица для запроса по теме коммерческого директора"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "metiz-ltd.com",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "EN"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://metiz-ltd.ru/contacts",
+            "focus": "контакты и потенциальные имена",
+            "purpose": "Проверить наличие имён, персональных контактов или руководителей на странице контактов компании."
+          },
+          {
+            "type": "open",
+            "value": "https://metiz-ltd.ru/about",
+            "focus": "состав руководства, владельцы, C-level",
+            "purpose": "Поиск персоналий или руководства, связанных с коммерческой деятельностью или компанией в целом."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённых персоналий или релевантных контактов, следующая логичная проверка — страницы контактов и 'О компании'."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:metiz-ltd.com"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "metiz-ltd.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://metiz-ltd.ru/about",
+      "status": 200,
+      "elapsedMs": 605
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://metiz-ltd.ru/about",
+      "focus": "состав руководства, владельцы, C-level",
+      "purpose": "Поиск персоналий или руководства, связанных с коммерческой деятельностью или компанией в целом.",
+      "success": true,
+      "evidence": {
+        "url": "https://metiz-ltd.ru/about",
+        "kind": "page",
+        "text": "О компании Компания METIZ создана в 1999 году и уже 25 лет успешно осуществляет деятельность по предоставлению высокотехнологичных инновационных решений людям с постоянным или временным ограничением возможностей передвижения для обеспечения их большей независимости и свободы. О компании Философия Наши стандарты Продукты События Галерея Контакты +7 (495) 215-53-82 info@metiz-ltd.ru Направления деятельности компании METIZ Разработка, производство и реализация собственных комплектующих и материалов для изготовления протезов; Дистрибьюция комплектующих и материалов зарубежных производителей для изготовления протезно-ортопедических изделий и ортопедической обуви, выездная техническая поддержка в освоении новых технологий протезирования; Реализация ортопедических изделий и обуви; Поставка оборудования для протезно-ортопедических и обувных мастерских. 01 Собственное производство Главный акцент в своей деятельности компания METIZ делает на разработке и производстве полуфабрикатов и комплектующих для изготовления качественных, функциональных и доступных для населения протезно-ортопедических изделий. 02 Собственное конструкторское бюро Компания METIZ имеет собственное конструкторское бюро, в котором высококвалифицированные специалисты ведут прикладные исследования и опытно-конструкторские работы по созданию новых изделий, материалов и технологий. Благодаря этому продукция компании всегда отличается оригинальностью технических решений, многие из которых защищены патентами. 03 Международная система качества В компании введена система менеджмента качества, соответствующая международным стандартам, которая обеспечивает контроль качества изделий на всех стадиях жизненного цикла. Производственное подразделение группы оснащено современным оборудованием для изготовления и испытания продукции, а квалифицированный персонал и система внутренних стандартов обеспечивают стабильное и эффективное управление процессами. 04 Соответствие стандартам Продукция, поставляемая Компанией METIZ, сопровождается всеми необходимыми разрешительными документами в соответствии с законодательством РФ: в наличии имеются сертификаты, декларации, регистрационные удостоверения. Стратегия, основанная на постоянном внедрении инновационных разработок, поддержании высокого качества продукции, не уступающего по своим характеристикам изделиям ведущих мировых производителей, а также особая ориентированность на заботу о потребителях и удовлетворении их нужд, позволяет компании METIZ удерживать лидирующие позиции на российском рынке. Metiz в цифрах 6000 Квадратных метров производственных мощностей 200+ Сотрудников 24 Страны, куда экспортируется наша продукция Наши бренды: Отдельной сферой деятельности Группы METIZ является выбор и организация поставок качественных протезно-ортопедических изделий и оборудования от лучших зарубежных производителей. Вся импортируемая продукция сопровождается необходимой международной документацией. Мы являемся эксклюзивным дистрибьютором лидирующих мировых компаний рынка: Metiz &copy; 2015 - 2025 info@metiz-ltd.ru +7 (495) 215-53-82 Разработка сайта — FACE FAMILY",
+        "links": [
+          {
+            "url": "https://metiz-ltd.ru",
+            "label": ""
+          },
+          {
+            "url": "https://metiz-ltd.com/about",
+            "label": "EN"
+          },
+          {
+            "url": "https://t.me/metiz_impex",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/metiz_protezy",
+            "label": ""
+          },
+          {
+            "url": "https://metiz-ltd.ru/search",
+            "label": ""
+          },
+          {
+            "url": "https://metiz-ltd.ru/about",
+            "label": "О компании"
+          },
+          {
+            "url": "https://metiz-ltd.ru/philosophy",
+            "label": "Философия"
+          },
+          {
+            "url": "https://metiz-ltd.ru/our-standards",
+            "label": "Наши стандарты"
+          },
+          {
+            "url": "https://metiz-ltd.ru/catalog",
+            "label": "Продукты"
+          },
+          {
+            "url": "https://metiz-ltd.ru/blog",
+            "label": "События"
+          },
+          {
+            "url": "https://metiz-ltd.ru/gallery",
+            "label": "Галерея"
+          },
+          {
+            "url": "https://metiz-ltd.ru/contacts",
+            "label": "Контакты"
+          },
+          {
+            "url": "https://metiz-ltd.ru/catalog/ossur",
+            "label": ""
+          },
+          {
+            "url": "https://metiz-ortho.ru/orliman",
+            "label": ""
+          },
+          {
+            "url": "https://metiz-ltd.ru/catalog/reborn",
+            "label": ""
+          },
+          {
+            "url": "http://re-walk.ru",
+            "label": ""
+          },
+          {
+            "url": "https://metiz-ortho.ru/ihle",
+            "label": ""
+          },
+          {
+            "url": "https://metiz-ortho.ru/ofa-bamberg",
+            "label": ""
+          },
+          {
+            "url": "https://metiz-ortho.ru/foot-well",
+            "label": ""
+          },
+          {
+            "url": "https://facefamily.agency",
+            "label": "Разработка сайта — FACE FAMILY"
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:05:43.022Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://metiz-ltd.ru/contacts",
+      "status": 200,
+      "elapsedMs": 6389
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://metiz-ltd.ru/contacts",
+      "focus": "контакты и потенциальные имена",
+      "purpose": "Проверить наличие имён, персональных контактов или руководителей на странице контактов компании.",
+      "success": true,
+      "evidence": {
+        "url": "https://metiz-ltd.ru/contacts",
+        "kind": "page",
+        "text": "Контакты Компания &laquo;METIZ&raquo; находится в БЦ &laquo;Атриум&raquo;. Приезжая к нам, не забудьте заранее договориться с соответствующим сотрудником компании и сообщить свои данные для того, чтобы мы заказали вам пропуск. О компании Философия Наши стандарты Продукты События Галерея Контакты +7 (495) 215-53-82 info@metiz-ltd.ru 01 Адрес ООО МЕТИЗ ИМПЭКС 141008, Московская область, г. Мытищи, ул. Колпакова, д.24А ПОСМОТРЕТЬ НА КАРТЕ ООО МЕТИЗ ПРОИЗВОДСТВО 141108, г. Щелково, МО, ул. Заводская, д.2, к.137 ПОСМОТРЕТЬ НА КАРТЕ 02 E-mail info@metiz-ltd.ru 03 Телефон ООО МЕТИЗ ИМПЭКС +7 (495) 215-53-82 ООО МЕТИЗ ПРОИЗВОДСТВО +7 (495) 510-56-03 Metiz &copy; 2015 - 2025 info@metiz-ltd.ru +7 (495) 215-53-82 Разработка сайта — FACE FAMILY",
+        "links": [
+          {
+            "url": "https://metiz-ltd.ru",
+            "label": ""
+          },
+          {
+            "url": "https://metiz-ltd.com/contacts",
+            "label": "EN"
+          },
+          {
+            "url": "https://t.me/metiz_impex",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/metiz_protezy",
+            "label": ""
+          },
+          {
+            "url": "https://metiz-ltd.ru/search",
+            "label": ""
+          },
+          {
+            "url": "https://metiz-ltd.ru/about",
+            "label": "О компании"
+          },
+          {
+            "url": "https://metiz-ltd.ru/philosophy",
+            "label": "Философия"
+          },
+          {
+            "url": "https://metiz-ltd.ru/our-standards",
+            "label": "Наши стандарты"
+          },
+          {
+            "url": "https://metiz-ltd.ru/catalog",
+            "label": "Продукты"
+          },
+          {
+            "url": "https://metiz-ltd.ru/blog",
+            "label": "События"
+          },
+          {
+            "url": "https://metiz-ltd.ru/gallery",
+            "label": "Галерея"
+          },
+          {
+            "url": "https://metiz-ltd.ru/contacts",
+            "label": "Контакты"
+          },
+          {
+            "url": "https://yandex.ru/maps/-/CDhNb205",
+            "label": "ПОСМОТРЕТЬ НА КАРТЕ"
+          },
+          {
+            "url": "https://yandex.ru/maps/-/CDhNjJzg",
+            "label": "ПОСМОТРЕТЬ НА КАРТЕ"
+          },
+          {
+            "url": "https://facefamily.agency",
+            "label": "Разработка сайта — FACE FAMILY"
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:05:48.803Z",
+        "id": "e3"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3435,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "МЕТИЗ ИМПЭКС",
+        "domain": "metiz-ltd.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: МЕТИЗ ИМПЭКС; открыта вакансия: Коммерческий директор (CCO/Chief Commercial Officer).",
+            "sourceUrl": "https://hh.ru/vacancy/138112927",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://metiz-ltd.ru",
+            "kind": "page",
+            "text": "КОМПЛЕКТУЮЩИЕ ПРОТЕЗОВ КОНЕЧНОСТЕЙ Компания METIZ является лидером в России в области разработки и производства комплектующих и материалов для изготовления протезов нижних конечностей, а также является эксклюзивным дистрибьютором протезной и ортопедической продукции известных зарубежных брендов. О компании Философия Наши стандарты Продукты События Галерея Контакты Протезирование Ортопедия Оборудование +7 (495) 215-53-82 info@metiz-ltd.ru",
+            "links": [
+              {
+                "url": "https://metiz-ltd.com",
+                "label": "EN"
+              },
+              {
+                "url": "https://t.me/metiz_impex",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/metiz_protezy",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/search",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/about",
+                "label": "О компании"
+              },
+              {
+                "url": "https://metiz-ltd.ru/philosophy",
+                "label": "Философия"
+              },
+              {
+                "url": "https://metiz-ltd.ru/our-standards",
+                "label": "Наши стандарты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog",
+                "label": "Продукты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/blog",
+                "label": "События"
+              },
+              {
+                "url": "https://metiz-ltd.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://metiz-ltd.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog/orliman",
+                "label": "Ортопедия"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog/aft",
+                "label": "Оборудование"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:05:39.208Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://metiz-ltd.ru/about",
+            "kind": "page",
+            "text": "О компании Компания METIZ создана в 1999 году и уже 25 лет успешно осуществляет деятельность по предоставлению высокотехнологичных инновационных решений людям с постоянным или временным ограничением возможностей передвижения для обеспечения их большей независимости и свободы. О компании Философия Наши стандарты Продукты События Галерея Контакты +7 (495) 215-53-82 info@metiz-ltd.ru Направления деятельности компании METIZ Разработка, производство и реализация собственных комплектующих и материалов для изготовления протезов; Дистрибьюция комплектующих и материалов зарубежных производителей для изготовления протезно-ортопедических изделий и ортопедической обуви, выездная техническая поддержка в освоении новых технологий протезирования; Реализация ортопедических изделий и обуви; Поставка оборудования для протезно-ортопедических и обувных мастерских. 01 Собственное производство Главный акцент в своей деятельности компания METIZ делает на разработке и производстве полуфабрикатов и комплектующих для изготовления качественных, функциональных и доступных для населения протезно-ортопедических изделий. 02 Собственное конструкторское бюро Компания METIZ имеет собственное конструкторское бюро, в котором высококвалифицированные специалисты ведут прикладные исследования и опытно-конструкторские работы по созданию новых изделий, материалов и технологий. Благодаря этому продукция компании всегда отличается оригинальностью технических решений, многие из которых защищены патентами. 03 Международная система качества В компании введена система менеджмента качества, соответствующая международным стандартам, которая обеспечивает контроль качества изделий на всех стадиях жизненного цикла. Производственное подразделение группы оснащено современным оборудованием для изготовления и испытания продукции, а квалифицированный персонал и система внутренних стандартов обеспечивают стабильное и эффективное управление процессами. 04 Соответствие стандартам Продукция, поставляемая Компанией METIZ, сопровождается всеми необходимыми разрешительными документами в соответствии с законодательством РФ: в наличии имеются сертификаты, декларации, регистрационные удостоверения. Стратегия, основанная на постоянном внедрении инновационных разработок, поддержании высокого качества продукции, не уступающего по своим характеристикам изделиям ведущих мировых производителей, а также особая ориентированность на заботу о потребителях и удовлетворении их нужд, позволяет компании METIZ удерживать лидирующие позиции на российском рынке. Metiz в цифрах 6000 Квадратных метров производственных мощностей 200+ Сотрудников 24 Страны, куда экспортируется наша продукция Наши бренды: Отдельной сферой деятельности Группы METIZ является выбор и организация поставок качественных протезно-ортопедических изделий и оборудования от лучших зарубежных производителей. Вся импортируемая продукция сопровождается необходимой международной документацией. Мы являемся эксклюзивным дистрибьютором лидирующих мировых компаний рынка: Metiz &copy; 2015 - 2025 info@metiz-ltd.ru +7 (495) 215-53-82 Разработка сайта — FACE FAMILY",
+            "links": [
+              {
+                "url": "https://metiz-ltd.ru",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.com/about",
+                "label": "EN"
+              },
+              {
+                "url": "https://t.me/metiz_impex",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/metiz_protezy",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/search",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/about",
+                "label": "О компании"
+              },
+              {
+                "url": "https://metiz-ltd.ru/philosophy",
+                "label": "Философия"
+              },
+              {
+                "url": "https://metiz-ltd.ru/our-standards",
+                "label": "Наши стандарты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog",
+                "label": "Продукты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/blog",
+                "label": "События"
+              },
+              {
+                "url": "https://metiz-ltd.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://metiz-ltd.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog/ossur",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ortho.ru/orliman",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog/reborn",
+                "label": ""
+              },
+              {
+                "url": "http://re-walk.ru",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ortho.ru/ihle",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ortho.ru/ofa-bamberg",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ortho.ru/foot-well",
+                "label": ""
+              },
+              {
+                "url": "https://facefamily.agency",
+                "label": "Разработка сайта — FACE FAMILY"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:05:43.022Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://metiz-ltd.ru/contacts",
+            "kind": "page",
+            "text": "Контакты Компания &laquo;METIZ&raquo; находится в БЦ &laquo;Атриум&raquo;. Приезжая к нам, не забудьте заранее договориться с соответствующим сотрудником компании и сообщить свои данные для того, чтобы мы заказали вам пропуск. О компании Философия Наши стандарты Продукты События Галерея Контакты +7 (495) 215-53-82 info@metiz-ltd.ru 01 Адрес ООО МЕТИЗ ИМПЭКС 141008, Московская область, г. Мытищи, ул. Колпакова, д.24А ПОСМОТРЕТЬ НА КАРТЕ ООО МЕТИЗ ПРОИЗВОДСТВО 141108, г. Щелково, МО, ул. Заводская, д.2, к.137 ПОСМОТРЕТЬ НА КАРТЕ 02 E-mail info@metiz-ltd.ru 03 Телефон ООО МЕТИЗ ИМПЭКС +7 (495) 215-53-82 ООО МЕТИЗ ПРОИЗВОДСТВО +7 (495) 510-56-03 Metiz &copy; 2015 - 2025 info@metiz-ltd.ru +7 (495) 215-53-82 Разработка сайта — FACE FAMILY",
+            "links": [
+              {
+                "url": "https://metiz-ltd.ru",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.com/contacts",
+                "label": "EN"
+              },
+              {
+                "url": "https://t.me/metiz_impex",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/metiz_protezy",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/search",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/about",
+                "label": "О компании"
+              },
+              {
+                "url": "https://metiz-ltd.ru/philosophy",
+                "label": "Философия"
+              },
+              {
+                "url": "https://metiz-ltd.ru/our-standards",
+                "label": "Наши стандарты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog",
+                "label": "Продукты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/blog",
+                "label": "События"
+              },
+              {
+                "url": "https://metiz-ltd.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://metiz-ltd.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://yandex.ru/maps/-/CDhNb205",
+                "label": "ПОСМОТРЕТЬ НА КАРТЕ"
+              },
+              {
+                "url": "https://yandex.ru/maps/-/CDhNjJzg",
+                "label": "ПОСМОТРЕТЬ НА КАРТЕ"
+              },
+              {
+                "url": "https://facefamily.agency",
+                "label": "Разработка сайта — FACE FAMILY"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:05:48.803Z",
+            "id": "e3"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://metiz-ltd.ru/contacts",
+            "focus": "контакты и потенциальные имена",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://metiz-ltd.ru/about",
+            "focus": "состав руководства, владельцы, C-level",
+            "success": true
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:metiz-ltd.com"
+        ],
+        "budget": {
+          "roundsRemaining": 6,
+          "actionsRemaining": 8,
+          "searchRemaining": 8,
+          "remainingMs": 34652
+        }
+      },
+      "usage": {
+        "input_tokens": 3741,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 1792
+        },
+        "output_tokens": 381,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4122
+      },
+      "output": {
+        "companySummary": "МЕТИЗ ИМПЭКС — российская компания, специализирующаяся на разработке, производстве и дистрибуции комплектующих для протезирования, ортопедии и сопутствующего оборудования. Компания имеет производственные мощности, собственное конструкторское бюро, и управляется через офис в Московской области. Является лидером в отрасли, экспортирует продукцию в 24 страны, число сотрудников превышает 200. Публичных сведений о составе руководства или конкретных C-level лицах на сайте не раскрывается; опубликован только общий корпоративный контакт: info@metiz-ltd.ru и телефоны.",
+        "missing": [
+          "Публичные имена генерального директора, владельцев или топ-менеджеров (CCO, CEO, директор, управляющий и пр.)",
+          "Персонализированные email или публичные профили конкретных действующих руководителей"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "metiz-ltd.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Компания METIZ является лидером в России в области разработки и производства комплектующих и материалов для изготовления протезов нижних конечностей"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "МЕТИЗ ИМПЭКС генеральный директор OR директор OR CEO OR owner OR руководитель site:metiz-ltd.ru OR site:hh.ru OR сайт OR интервью OR спикер",
+            "focus": "имя, подтверждённая публичная роль фактического руководителя компании",
+            "purpose": "Установить ФИО действующего ЛПР — руководителя или владельца, для последующего поиска индивидуального контакта"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет фактического имени или индивидуального контакта — требуется внешний поиск подтверждённого ЛПР."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "МЕТИЗ ИМПЭКС — российская компания, специализирующаяся на разработке, производстве и дистрибуции комплектующих для протезирования, ортопедии и сопутствующего оборудования. Компания имеет производственные мощности, собственное конструкторское бюро, и управляется через офис в Московской области. Является лидером в отрасли, экспортирует продукцию в 24 страны, число сотрудников превышает 200. Публичных сведений о составе руководства или конкретных C-level лицах на сайте не раскрывается; опубликован только общий корпоративный контакт: info@metiz-ltd.ru и телефоны.",
+        "missing": [
+          "Публичные имена генерального директора, владельцев или топ-менеджеров (CCO, CEO, директор, управляющий и пр.)",
+          "Персонализированные email или публичные профили конкретных действующих руководителей"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "metiz-ltd.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Компания METIZ является лидером в России в области разработки и производства комплектующих и материалов для изготовления протезов нижних конечностей"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "МЕТИЗ ИМПЭКС генеральный директор OR директор OR CEO OR owner OR руководитель site:metiz-ltd.ru OR site:hh.ru OR сайт OR интервью OR спикер",
+            "focus": "имя, подтверждённая публичная роль фактического руководителя компании",
+            "purpose": "Установить ФИО действующего ЛПР — руководителя или владельца, для последующего поиска индивидуального контакта"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет фактического имени или индивидуального контакта — требуется внешний поиск подтверждённого ЛПР."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "metiz-ltd.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%9C%D0%95%D0%A2%D0%98%D0%97%20%D0%98%D0%9C%D0%9F%D0%AD%D0%9A%D0%A1%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20CEO%20OR%20owner%20OR%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20OR%20OR%20%D1%81%D0%B0%D0%B9%D1%82%20OR%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B2%D1%8C%D1%8E%20OR%20%D1%81%D0%BF%D0%B8%D0%BA%D0%B5%D1%80%20metiz-ltd.ru&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 424
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%9C%D0%95%D0%A2%D0%98%D0%97%20%D0%98%D0%9C%D0%9F%D0%AD%D0%9A%D0%A1%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20CEO%20OR%20owner%20OR%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20OR%20OR%20%D1%81%D0%B0%D0%B9%D1%82%20OR%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B2%D1%8C%D1%8E%20OR%20%D1%81%D0%BF%D0%B8%D0%BA%D0%B5%D1%80%20metiz-ltd.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 352
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "МЕТИЗ ИМПЭКС генеральный директор OR директор OR CEO OR owner OR руководитель site:metiz-ltd.ru OR site:hh.ru OR сайт OR интервью OR спикер",
+      "focus": "имя, подтверждённая публичная роль фактического руководителя компании",
+      "purpose": "Установить ФИО действующего ЛПР — руководителя или владельца, для последующего поиска индивидуального контакта",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3505,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "МЕТИЗ ИМПЭКС",
+        "domain": "metiz-ltd.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: МЕТИЗ ИМПЭКС; открыта вакансия: Коммерческий директор (CCO/Chief Commercial Officer).",
+            "sourceUrl": "https://hh.ru/vacancy/138112927",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://metiz-ltd.ru",
+            "kind": "page",
+            "text": "КОМПЛЕКТУЮЩИЕ ПРОТЕЗОВ КОНЕЧНОСТЕЙ Компания METIZ является лидером в России в области разработки и производства комплектующих и материалов для изготовления протезов нижних конечностей, а также является эксклюзивным дистрибьютором протезной и ортопедической продукции известных зарубежных брендов. О компании Философия Наши стандарты Продукты События Галерея Контакты Протезирование Ортопедия Оборудование +7 (495) 215-53-82 info@metiz-ltd.ru",
+            "links": [
+              {
+                "url": "https://metiz-ltd.com",
+                "label": "EN"
+              },
+              {
+                "url": "https://t.me/metiz_impex",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/metiz_protezy",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/search",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/about",
+                "label": "О компании"
+              },
+              {
+                "url": "https://metiz-ltd.ru/philosophy",
+                "label": "Философия"
+              },
+              {
+                "url": "https://metiz-ltd.ru/our-standards",
+                "label": "Наши стандарты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog",
+                "label": "Продукты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/blog",
+                "label": "События"
+              },
+              {
+                "url": "https://metiz-ltd.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://metiz-ltd.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog/orliman",
+                "label": "Ортопедия"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog/aft",
+                "label": "Оборудование"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:05:39.208Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://metiz-ltd.ru/about",
+            "kind": "page",
+            "text": "О компании Компания METIZ создана в 1999 году и уже 25 лет успешно осуществляет деятельность по предоставлению высокотехнологичных инновационных решений людям с постоянным или временным ограничением возможностей передвижения для обеспечения их большей независимости и свободы. О компании Философия Наши стандарты Продукты События Галерея Контакты +7 (495) 215-53-82 info@metiz-ltd.ru Направления деятельности компании METIZ Разработка, производство и реализация собственных комплектующих и материалов для изготовления протезов; Дистрибьюция комплектующих и материалов зарубежных производителей для изготовления протезно-ортопедических изделий и ортопедической обуви, выездная техническая поддержка в освоении новых технологий протезирования; Реализация ортопедических изделий и обуви; Поставка оборудования для протезно-ортопедических и обувных мастерских. 01 Собственное производство Главный акцент в своей деятельности компания METIZ делает на разработке и производстве полуфабрикатов и комплектующих для изготовления качественных, функциональных и доступных для населения протезно-ортопедических изделий. 02 Собственное конструкторское бюро Компания METIZ имеет собственное конструкторское бюро, в котором высококвалифицированные специалисты ведут прикладные исследования и опытно-конструкторские работы по созданию новых изделий, материалов и технологий. Благодаря этому продукция компании всегда отличается оригинальностью технических решений, многие из которых защищены патентами. 03 Международная система качества В компании введена система менеджмента качества, соответствующая международным стандартам, которая обеспечивает контроль качества изделий на всех стадиях жизненного цикла. Производственное подразделение группы оснащено современным оборудованием для изготовления и испытания продукции, а квалифицированный персонал и система внутренних стандартов обеспечивают стабильное и эффективное управление процессами. 04 Соответствие стандартам Продукция, поставляемая Компанией METIZ, сопровождается всеми необходимыми разрешительными документами в соответствии с законодательством РФ: в наличии имеются сертификаты, декларации, регистрационные удостоверения. Стратегия, основанная на постоянном внедрении инновационных разработок, поддержании высокого качества продукции, не уступающего по своим характеристикам изделиям ведущих мировых производителей, а также особая ориентированность на заботу о потребителях и удовлетворении их нужд, позволяет компании METIZ удерживать лидирующие позиции на российском рынке. Metiz в цифрах 6000 Квадратных метров производственных мощностей 200+ Сотрудников 24 Страны, куда экспортируется наша продукция Наши бренды: Отдельной сферой деятельности Группы METIZ является выбор и организация поставок качественных протезно-ортопедических изделий и оборудования от лучших зарубежных производителей. Вся импортируемая продукция сопровождается необходимой международной документацией. Мы являемся эксклюзивным дистрибьютором лидирующих мировых компаний рынка: Metiz &copy; 2015 - 2025 info@metiz-ltd.ru +7 (495) 215-53-82 Разработка сайта — FACE FAMILY",
+            "links": [
+              {
+                "url": "https://metiz-ltd.ru",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.com/about",
+                "label": "EN"
+              },
+              {
+                "url": "https://t.me/metiz_impex",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/metiz_protezy",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/search",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/about",
+                "label": "О компании"
+              },
+              {
+                "url": "https://metiz-ltd.ru/philosophy",
+                "label": "Философия"
+              },
+              {
+                "url": "https://metiz-ltd.ru/our-standards",
+                "label": "Наши стандарты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog",
+                "label": "Продукты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/blog",
+                "label": "События"
+              },
+              {
+                "url": "https://metiz-ltd.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://metiz-ltd.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog/ossur",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ortho.ru/orliman",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog/reborn",
+                "label": ""
+              },
+              {
+                "url": "http://re-walk.ru",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ortho.ru/ihle",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ortho.ru/ofa-bamberg",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ortho.ru/foot-well",
+                "label": ""
+              },
+              {
+                "url": "https://facefamily.agency",
+                "label": "Разработка сайта — FACE FAMILY"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:05:43.022Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://metiz-ltd.ru/contacts",
+            "kind": "page",
+            "text": "Контакты Компания &laquo;METIZ&raquo; находится в БЦ &laquo;Атриум&raquo;. Приезжая к нам, не забудьте заранее договориться с соответствующим сотрудником компании и сообщить свои данные для того, чтобы мы заказали вам пропуск. О компании Философия Наши стандарты Продукты События Галерея Контакты +7 (495) 215-53-82 info@metiz-ltd.ru 01 Адрес ООО МЕТИЗ ИМПЭКС 141008, Московская область, г. Мытищи, ул. Колпакова, д.24А ПОСМОТРЕТЬ НА КАРТЕ ООО МЕТИЗ ПРОИЗВОДСТВО 141108, г. Щелково, МО, ул. Заводская, д.2, к.137 ПОСМОТРЕТЬ НА КАРТЕ 02 E-mail info@metiz-ltd.ru 03 Телефон ООО МЕТИЗ ИМПЭКС +7 (495) 215-53-82 ООО МЕТИЗ ПРОИЗВОДСТВО +7 (495) 510-56-03 Metiz &copy; 2015 - 2025 info@metiz-ltd.ru +7 (495) 215-53-82 Разработка сайта — FACE FAMILY",
+            "links": [
+              {
+                "url": "https://metiz-ltd.ru",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.com/contacts",
+                "label": "EN"
+              },
+              {
+                "url": "https://t.me/metiz_impex",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/metiz_protezy",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/search",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/about",
+                "label": "О компании"
+              },
+              {
+                "url": "https://metiz-ltd.ru/philosophy",
+                "label": "Философия"
+              },
+              {
+                "url": "https://metiz-ltd.ru/our-standards",
+                "label": "Наши стандарты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog",
+                "label": "Продукты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/blog",
+                "label": "События"
+              },
+              {
+                "url": "https://metiz-ltd.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://metiz-ltd.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://yandex.ru/maps/-/CDhNb205",
+                "label": "ПОСМОТРЕТЬ НА КАРТЕ"
+              },
+              {
+                "url": "https://yandex.ru/maps/-/CDhNjJzg",
+                "label": "ПОСМОТРЕТЬ НА КАРТЕ"
+              },
+              {
+                "url": "https://facefamily.agency",
+                "label": "Разработка сайта — FACE FAMILY"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:05:48.803Z",
+            "id": "e3"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://metiz-ltd.ru/contacts",
+            "focus": "контакты и потенциальные имена",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://metiz-ltd.ru/about",
+            "focus": "состав руководства, владельцы, C-level",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "МЕТИЗ ИМПЭКС генеральный директор OR директор OR CEO OR owner OR руководитель site:metiz-ltd.ru OR site:hh.ru OR сайт OR интервью OR спикер",
+            "focus": "имя, подтверждённая публичная роль фактического руководителя компании",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 7,
+          "searchRemaining": 7,
+          "remainingMs": 30309
+        }
+      },
+      "usage": {
+        "input_tokens": 3831,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 3584
+        },
+        "output_tokens": 388,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4219
+      },
+      "output": {
+        "companySummary": "МЕТИЗ ИМПЭКС — российская компания, основанная в 1999 году, специализирующаяся на разработке и производстве комплектующих и материалов для изготовления протезов нижних конечностей, а также дистрибуции ортопедической продукции зарубежных брендов. Компания активно действует на рынке уже 25 лет, имеет собственное производство и конструкторское бюро, экспортирует продукцию в 24 страны и насчитывает более 200 сотрудников. Юридический адрес: Московская область, г. Мытищи.",
+        "missing": [
+          "Имя, подтверждённая публичная роль (руководство, C-level) действующего руководителя бизнеса или бизнес-процессов",
+          "Личный публичный контакт релевантного ЛПР (не общий info@)"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "metiz-ltd.com",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "EN"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "МЕТИЗ ИМПЭКС генеральный директор OR директор OR CEO OR руководитель OR основатель hh.ru OR kompass.ru OR rusprofile.ru OR vedomosti.ru OR intervju OR официальный сайт",
+            "focus": "имя и подтверждение публичной роли исполнительного/генерального директора или владельца",
+            "purpose": "Получить ФИО и подтверждённую роль руководителя для AI-аудита, при отсутствии публичного CCO, как наиболее релевантного ЛПР"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Публичных данных о руководителе, владельце бизнеса или C-level нет ни на сайте, ни на открытых просмотренных страницах. Следующий шаг — получить имя и подтверждённую роль фактического руководителя, открыв профильные бизнес- и реестровые ресурсы."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "МЕТИЗ ИМПЭКС — российская компания, основанная в 1999 году, специализирующаяся на разработке и производстве комплектующих и материалов для изготовления протезов нижних конечностей, а также дистрибуции ортопедической продукции зарубежных брендов. Компания активно действует на рынке уже 25 лет, имеет собственное производство и конструкторское бюро, экспортирует продукцию в 24 страны и насчитывает более 200 сотрудников. Юридический адрес: Московская область, г. Мытищи.",
+        "missing": [
+          "Имя, подтверждённая публичная роль (руководство, C-level) действующего руководителя бизнеса или бизнес-процессов",
+          "Личный публичный контакт релевантного ЛПР (не общий info@)"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "metiz-ltd.com",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "EN"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "МЕТИЗ ИМПЭКС генеральный директор OR директор OR CEO OR руководитель OR основатель hh.ru OR kompass.ru OR rusprofile.ru OR vedomosti.ru OR intervju OR официальный сайт",
+            "focus": "имя и подтверждение публичной роли исполнительного/генерального директора или владельца",
+            "purpose": "Получить ФИО и подтверждённую роль руководителя для AI-аудита, при отсутствии публичного CCO, как наиболее релевантного ЛПР"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Публичных данных о руководителе, владельце бизнеса или C-level нет ни на сайте, ни на открытых просмотренных страницах. Следующий шаг — получить имя и подтверждённую роль фактического руководителя, открыв профильные бизнес- и реестровые ресурсы."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:metiz-ltd.com"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "metiz-ltd.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%9C%D0%95%D0%A2%D0%98%D0%97%20%D0%98%D0%9C%D0%9F%D0%AD%D0%9A%D0%A1%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20CEO%20OR%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20OR%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%20hh.ru%20OR%20kompass.ru%20OR%20rusprofile.ru%20OR%20vedomosti.ru%20OR%20intervju%20OR%20%D0%BE%D1%84%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 222
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%9C%D0%95%D0%A2%D0%98%D0%97%20%D0%98%D0%9C%D0%9F%D0%AD%D0%9A%D0%A1%20%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20CEO%20OR%20%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20OR%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%20hh.ru%20OR%20kompass.ru%20OR%20rusprofile.ru%20OR%20vedomosti.ru%20OR%20intervju%20OR%20%D0%BE%D1%84%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 137
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "МЕТИЗ ИМПЭКС генеральный директор OR директор OR CEO OR руководитель OR основатель hh.ru OR kompass.ru OR rusprofile.ru OR vedomosti.ru OR intervju OR официальный сайт",
+      "focus": "имя и подтверждение публичной роли исполнительного/генерального директора или владельца",
+      "purpose": "Получить ФИО и подтверждённую роль руководителя для AI-аудита, при отсутствии публичного CCO, как наиболее релевантного ЛПР",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3154,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "МЕТИЗ ИМПЭКС",
+        "domain": "metiz-ltd.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: МЕТИЗ ИМПЭКС; открыта вакансия: Коммерческий директор (CCO/Chief Commercial Officer).",
+            "sourceUrl": "https://hh.ru/vacancy/138112927",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://metiz-ltd.ru",
+            "kind": "page",
+            "text": "КОМПЛЕКТУЮЩИЕ ПРОТЕЗОВ КОНЕЧНОСТЕЙ Компания METIZ является лидером в России в области разработки и производства комплектующих и материалов для изготовления протезов нижних конечностей, а также является эксклюзивным дистрибьютором протезной и ортопедической продукции известных зарубежных брендов. О компании Философия Наши стандарты Продукты События Галерея Контакты Протезирование Ортопедия Оборудование +7 (495) 215-53-82 info@metiz-ltd.ru",
+            "links": [
+              {
+                "url": "https://metiz-ltd.com",
+                "label": "EN"
+              },
+              {
+                "url": "https://t.me/metiz_impex",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/metiz_protezy",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/search",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/about",
+                "label": "О компании"
+              },
+              {
+                "url": "https://metiz-ltd.ru/philosophy",
+                "label": "Философия"
+              },
+              {
+                "url": "https://metiz-ltd.ru/our-standards",
+                "label": "Наши стандарты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog",
+                "label": "Продукты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/blog",
+                "label": "События"
+              },
+              {
+                "url": "https://metiz-ltd.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://metiz-ltd.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog/orliman",
+                "label": "Ортопедия"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog/aft",
+                "label": "Оборудование"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:05:39.208Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://metiz-ltd.ru/about",
+            "kind": "page",
+            "text": "О компании Компания METIZ создана в 1999 году и уже 25 лет успешно осуществляет деятельность по предоставлению высокотехнологичных инновационных решений людям с постоянным или временным ограничением возможностей передвижения для обеспечения их большей независимости и свободы. О компании Философия Наши стандарты Продукты События Галерея Контакты +7 (495) 215-53-82 info@metiz-ltd.ru Направления деятельности компании METIZ Разработка, производство и реализация собственных комплектующих и материалов для изготовления протезов; Дистрибьюция комплектующих и материалов зарубежных производителей для изготовления протезно-ортопедических изделий и ортопедической обуви, выездная техническая поддержка в освоении новых технологий протезирования; Реализация ортопедических изделий и обуви; Поставка оборудования для протезно-ортопедических и обувных мастерских. 01 Собственное производство Главный акцент в своей деятельности компания METIZ делает на разработке и производстве полуфабрикатов и комплектующих для изготовления качественных, функциональных и доступных для населения протезно-ортопедических изделий. 02 Собственное конструкторское бюро Компания METIZ имеет собственное конструкторское бюро, в котором высококвалифицированные специалисты ведут прикладные исследования и опытно-конструкторские работы по созданию новых изделий, материалов и технологий. Благодаря этому продукция компании всегда отличается оригинальностью технических решений, многие из которых защищены патентами. 03 Международная система качества В компании введена система менеджмента качества, соответствующая международным стандартам, которая обеспечивает контроль качества изделий на всех стадиях жизненного цикла. Производственное подразделение группы оснащено современным оборудованием для изготовления и испытания продукции, а квалифицированный персонал и система внутренних стандартов обеспечивают стабильное и эффективное управление процессами. 04 Соответствие стандартам Продукция, поставляемая Компанией METIZ, сопровождается всеми необходимыми разрешительными документами в соответствии с законодательством РФ: в наличии имеются сертификаты, декларации, регистрационные удостоверения. Стратегия, основанная на постоянном внедрении инновационных разработок, поддержании высокого качества продукции, не уступающего по своим характеристикам изделиям ведущих мировых производителей, а также особая ориентированность на заботу о потребителях и удовлетворении их нужд, позволяет компании METIZ удерживать лидирующие позиции на российском рынке. Metiz в цифрах 6000 Квадратных метров производственных мощностей 200+ Сотрудников 24 Страны, куда экспортируется наша продукция Наши бренды: Отдельной сферой деятельности Группы METIZ является выбор и организация поставок качественных протезно-ортопедических изделий и оборудования от лучших зарубежных производителей. Вся импортируемая продукция сопровождается необходимой международной документацией. Мы являемся эксклюзивным дистрибьютором лидирующих мировых компаний рынка: Metiz &copy; 2015 - 2025 info@metiz-ltd.ru +7 (495) 215-53-82 Разработка сайта — FACE FAMILY",
+            "links": [
+              {
+                "url": "https://metiz-ltd.ru",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.com/about",
+                "label": "EN"
+              },
+              {
+                "url": "https://t.me/metiz_impex",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/metiz_protezy",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/search",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/about",
+                "label": "О компании"
+              },
+              {
+                "url": "https://metiz-ltd.ru/philosophy",
+                "label": "Философия"
+              },
+              {
+                "url": "https://metiz-ltd.ru/our-standards",
+                "label": "Наши стандарты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog",
+                "label": "Продукты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/blog",
+                "label": "События"
+              },
+              {
+                "url": "https://metiz-ltd.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://metiz-ltd.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog/ossur",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ortho.ru/orliman",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog/reborn",
+                "label": ""
+              },
+              {
+                "url": "http://re-walk.ru",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ortho.ru/ihle",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ortho.ru/ofa-bamberg",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ortho.ru/foot-well",
+                "label": ""
+              },
+              {
+                "url": "https://facefamily.agency",
+                "label": "Разработка сайта — FACE FAMILY"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:05:43.022Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://metiz-ltd.ru/contacts",
+            "kind": "page",
+            "text": "Контакты Компания &laquo;METIZ&raquo; находится в БЦ &laquo;Атриум&raquo;. Приезжая к нам, не забудьте заранее договориться с соответствующим сотрудником компании и сообщить свои данные для того, чтобы мы заказали вам пропуск. О компании Философия Наши стандарты Продукты События Галерея Контакты +7 (495) 215-53-82 info@metiz-ltd.ru 01 Адрес ООО МЕТИЗ ИМПЭКС 141008, Московская область, г. Мытищи, ул. Колпакова, д.24А ПОСМОТРЕТЬ НА КАРТЕ ООО МЕТИЗ ПРОИЗВОДСТВО 141108, г. Щелково, МО, ул. Заводская, д.2, к.137 ПОСМОТРЕТЬ НА КАРТЕ 02 E-mail info@metiz-ltd.ru 03 Телефон ООО МЕТИЗ ИМПЭКС +7 (495) 215-53-82 ООО МЕТИЗ ПРОИЗВОДСТВО +7 (495) 510-56-03 Metiz &copy; 2015 - 2025 info@metiz-ltd.ru +7 (495) 215-53-82 Разработка сайта — FACE FAMILY",
+            "links": [
+              {
+                "url": "https://metiz-ltd.ru",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.com/contacts",
+                "label": "EN"
+              },
+              {
+                "url": "https://t.me/metiz_impex",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/metiz_protezy",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/search",
+                "label": ""
+              },
+              {
+                "url": "https://metiz-ltd.ru/about",
+                "label": "О компании"
+              },
+              {
+                "url": "https://metiz-ltd.ru/philosophy",
+                "label": "Философия"
+              },
+              {
+                "url": "https://metiz-ltd.ru/our-standards",
+                "label": "Наши стандарты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/catalog",
+                "label": "Продукты"
+              },
+              {
+                "url": "https://metiz-ltd.ru/blog",
+                "label": "События"
+              },
+              {
+                "url": "https://metiz-ltd.ru/gallery",
+                "label": "Галерея"
+              },
+              {
+                "url": "https://metiz-ltd.ru/contacts",
+                "label": "Контакты"
+              },
+              {
+                "url": "https://yandex.ru/maps/-/CDhNb205",
+                "label": "ПОСМОТРЕТЬ НА КАРТЕ"
+              },
+              {
+                "url": "https://yandex.ru/maps/-/CDhNjJzg",
+                "label": "ПОСМОТРЕТЬ НА КАРТЕ"
+              },
+              {
+                "url": "https://facefamily.agency",
+                "label": "Разработка сайта — FACE FAMILY"
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:05:48.803Z",
+            "id": "e3"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://metiz-ltd.ru/contacts",
+            "focus": "контакты и потенциальные имена",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://metiz-ltd.ru/about",
+            "focus": "состав руководства, владельцы, C-level",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "МЕТИЗ ИМПЭКС генеральный директор OR директор OR CEO OR owner OR руководитель site:metiz-ltd.ru OR site:hh.ru OR сайт OR интервью OR спикер",
+            "focus": "имя, подтверждённая публичная роль фактического руководителя компании",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "МЕТИЗ ИМПЭКС генеральный директор OR директор OR CEO OR руководитель OR основатель hh.ru OR kompass.ru OR rusprofile.ru OR vedomosti.ru OR intervju OR официальный сайт",
+            "focus": "имя и подтверждение публичной роли исполнительного/генерального директора или владельца",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:metiz-ltd.com"
+        ],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 6,
+          "searchRemaining": 6,
+          "remainingMs": 26155
+        }
+      },
+      "usage": {
+        "input_tokens": 3948,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 2944
+        },
+        "output_tokens": 401,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4349
+      },
+      "output": {
+        "companySummary": "МЕТИЗ ИМПЭКС — ведущий российский разработчик и производитель комплектующих и материалов для протезирования нижних конечностей, эксклюзивный дистрибьютор зарубежных брендов. Компания расположена в Московской области, имеет более 200 сотрудников, действует более 25 лет. По сигналу открыта вакансия коммерческого директора: требуется найти владельца этого бизнес-процесса (скорее всего — действующий генеральный директор или собственник).",
+        "missing": [
+          "Имя и подтверждённая публичная роль руководителя (CEO/генеральный директор, собственник) или владельца коммерческого процесса.",
+          "Личный подтверждённый публичный контакт релевантного ЛПР."
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "metiz-ltd.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "info@metiz-ltd.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"ООО МЕТИЗ ИМПЭКС\" генеральный директор OR директор OR CEO OR руководитель OR собственник OR основатель site:kontur.ru OR site:rusprofile.ru OR site:spark-interfax.ru",
+            "focus": "Юридически подтвержденный руководитель компании, ФИО и актуальная роль",
+            "purpose": "Найти имя и официальную роль CEO или владельца на ведущих реестровых/бизнес-справочных ресурсах"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "В корпоративных документах и на сайте отсутствуют имена руководства или владельца процесса, требуется реестровый/справочный источник."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 3,
+      "decision": {
+        "companySummary": "МЕТИЗ ИМПЭКС — ведущий российский разработчик и производитель комплектующих и материалов для протезирования нижних конечностей, эксклюзивный дистрибьютор зарубежных брендов. Компания расположена в Московской области, имеет более 200 сотрудников, действует более 25 лет. По сигналу открыта вакансия коммерческого директора: требуется найти владельца этого бизнес-процесса (скорее всего — действующий генеральный директор или собственник).",
+        "missing": [
+          "Имя и подтверждённая публичная роль руководителя (CEO/генеральный директор, собственник) или владельца коммерческого процесса.",
+          "Личный подтверждённый публичный контакт релевантного ЛПР."
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "metiz-ltd.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "info@metiz-ltd.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "\"ООО МЕТИЗ ИМПЭКС\" генеральный директор OR директор OR CEO OR руководитель OR собственник OR основатель site:kontur.ru OR site:rusprofile.ru OR site:spark-interfax.ru",
+            "focus": "Юридически подтвержденный руководитель компании, ФИО и актуальная роль",
+            "purpose": "Найти имя и официальную роль CEO или владельца на ведущих реестровых/бизнес-справочных ресурсах"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "В корпоративных документах и на сайте отсутствуют имена руководства или владельца процесса, требуется реестровый/справочный источник."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "metiz-ltd.ru"
+      ]
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "diminishing_returns",
+      "actions": 5,
+      "candidates": [],
+      "domains": [
+        "metiz-ltd.ru"
+      ],
+      "elapsedMs": 22041
+    },
+    {
+      "stage": "people_ranked",
+      "people": []
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: commercial, коммерческий, ru_sales_role. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": "info@metiz-ltd.ru",
+        "contact_level": "E",
+        "email_classification": "GENERAL",
+        "email_type": "generic_fallback",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "LOW",
+        "readiness": "fallback_only",
+        "evidence": [
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "generic_fallback_does_not_qualify"
+      },
+      "contacts": [
+        {
+          "name": null,
+          "email": "info@metiz-ltd.ru",
+          "type": "generic_email",
+          "source": "https://metiz-ltd.ru",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://metiz-ltd.ru/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://metiz-ltd.ru/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://metiz-ltd.ru"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2256,
+      "schema": "leadgen_outreach_v4",
+      "model": "gpt-4.1-mini",
+      "input": {
+        "company": "МЕТИЗ ИМПЭКС",
+        "segment": null,
+        "industry": null,
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "evidence": "Работодатель: МЕТИЗ ИМПЭКС; открыта вакансия: Коммерческий директор (CCO/Chief Commercial Officer).",
+          "source": "https://hh.ru/vacancy/138112927"
+        },
+        "company_specifics": null,
+        "lpr": {
+          "name": null,
+          "role": null,
+          "why_this_person": null
+        },
+        "business_context": {
+          "problem_hypothesis": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+          "target_responsibility": null,
+          "selection_reason": null
+        },
+        "contact_type": "GENERAL",
+        "required_cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "required_greeting": "Добрый день."
+      },
+      "usage": {
+        "input_tokens": 645,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 244,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 889
+      },
+      "output": {
+        "subject": "Коммерческий директор в МЕТИЗ ИМПЭКС",
+        "body": "Вакансия коммерческого директора в компании МЕТИЗ ИМПЭКС показывает их стремление усилить продажи и управлять коммерческими процессами. Это оптимальное время, чтобы взглянуть на автоматизацию задач, связанных с поиском клиентов и ведением отчетности, которые обычно требуют много ручного труда.\n\nГипотетически, основным узким местом может быть своевременность и качество обработки входящих запросов, что сильно влияет на общую конверсию в продажи. Улучшение в этой области может существенно повысить эффективность работы отдела.\n\nДля проверки эффективности можно запустить пилот с использованием AI-инструмента, который на основе данных из CRM анализирует скорость и полноту обработки заявок и генерирует отчет по узким местам. Это даст конкретные показатели, на которые можно опереться при дальнейшем масштабировании.",
+        "cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "quality": {
+          "reason_now": true,
+          "grounded_hypothesis": true,
+          "russian_only": true,
+          "personal_cta": true
+        }
+      }
+    }
+  ],
+  "startedAt": "2026-10-07T22:05:38.455Z",
+  "bundle": {
+    "companyName": "МЕТИЗ ИМПЭКС",
+    "officialWebsite": "https://metiz-ltd.ru",
+    "officialDomain": "metiz-ltd.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "info@metiz-ltd.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://metiz-ltd.ru",
+              "sourceType": "official",
+              "excerpt": "info@metiz-ltd.ru — public email parser",
+              "capturedAt": "2026-10-07T22:05:38.455Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "info@metiz-ltd.ru",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://metiz-ltd.ru"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: МЕТИЗ ИМПЭКС; открыта вакансия: Коммерческий директор (CCO/Chief Commercial Officer).",
+      "sourceUrl": "https://hh.ru/vacancy/138112927",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 2,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 12,
+      "lprMs": 22041,
+      "contactMs": 177,
+      "totalMs": 24512,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "people": {
+    "primary_person": null,
+    "alternative_people": [],
+    "all_candidates": [],
+    "search_status": "no_person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "diminishing_returns"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 2,
+      "official_pages_fetched": 3,
+      "aborted_requests": 0,
+      "elapsed_ms": 22041,
+      "stop_reason": "diminishing_returns",
+      "queries_executed": [
+        "МЕТИЗ ИМПЭКС генеральный директор OR директор OR CEO OR owner OR руководитель site:metiz-ltd.ru OR site:hh.ru OR сайт OR интервью OR спикер",
+        "МЕТИЗ ИМПЭКС генеральный директор OR директор OR CEO OR руководитель OR основатель hh.ru OR kompass.ru OR rusprofile.ru OR vedomosti.ru OR intervju OR официальный сайт"
+      ],
+      "sources_checked": [
+        "https://metiz-ltd.ru",
+        "https://metiz-ltd.ru/about",
+        "https://metiz-ltd.ru/contacts"
+      ],
+      "search_results_seen": 0,
+      "rejected_candidates": {
+        "validation_rejects": 0
+      },
+      "final_failure_reason": "diminishing_returns"
+    }
+  },
+  "contacts": [
+    {
+      "name": null,
+      "role": null,
+      "email": "info@metiz-ltd.ru",
+      "type": "generic_email",
+      "source": "https://metiz-ltd.ru",
+      "selected": true,
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: commercial, коммерческий, ru_sales_role. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": "info@metiz-ltd.ru",
+        "contact_level": "E",
+        "email_classification": "GENERAL",
+        "email_type": "generic_fallback",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "LOW",
+        "readiness": "fallback_only",
+        "evidence": [
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "generic_fallback_does_not_qualify"
+      },
+      "ready": true,
+      "copy": "Добрый день.\n\nВакансия коммерческого директора в компании МЕТИЗ ИМПЭКС показывает их стремление усилить продажи и управлять коммерческими процессами. Это оптимальное время, чтобы взглянуть на автоматизацию задач, связанных с поиском клиентов и ведением отчетности, которые обычно требуют много ручного труда.\n\nГипотетически, основным узким местом может быть своевременность и качество обработки входящих запросов, что сильно влияет на общую конверсию в продажи. Улучшение в этой области может существенно повысить эффективность работы отдела.\n\nДля проверки эффективности можно запустить пилот с использованием AI-инструмента, который на основе данных из CRM анализирует скорость и полноту обработки заявок и генерирует отчет по узким местам. Это даст конкретные показатели, на которые можно опереться при дальнейшем масштабировании.\n\nЯ AI-архитектор. Если потребуется, подключим бизнес-аналитика: сначала проверим процесс, затем выберем, что автоматизировать.\n\nМогу провести короткий разбор этого участка. Обычно он стоит 9 900 ₽; если ответите в течение 24 часов после отправки письма, проведу разбор бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514"
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://metiz-ltd.ru/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://metiz-ltd.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://metiz-ltd.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 24512
+}

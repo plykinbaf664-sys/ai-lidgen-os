@@ -1,0 +1,1994 @@
+{
+  "mode": "business",
+  "name": "PolyOn",
+  "website": "https://polyon.us",
+  "before": {
+    "companyName": "PolyOn",
+    "officialWebsite": "https://polyon.us",
+    "officialDomain": "polyon.us",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "info@polyon.us",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.polyon.us/",
+              "sourceType": "official",
+              "excerpt": "info@polyon.us — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "info@polyon.us",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://www.polyon.us/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+      "sourceUrl": "https://hh.ru/vacancy/137434617",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 23,
+      "lprMs": 14452,
+      "contactMs": 3660,
+      "totalMs": 23064,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+    "sourceUrl": "https://hh.ru/vacancy/137434617",
+    "confidence": 100
+  },
+  "index": 7,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us",
+      "status": 301,
+      "elapsedMs": 394
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.polyon.us/",
+      "status": 200,
+      "elapsedMs": 3030
+    },
+    {
+      "stage": "research_open",
+      "url": "https://polyon.us",
+      "success": true,
+      "evidence": {
+        "url": "https://www.polyon.us/",
+        "kind": "page",
+        "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE",
+        "links": [
+          {
+            "url": "https://www.polyon.us",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.mx",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.us/products",
+            "label": "Products"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "label": "Our Company"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "label": "Contact"
+          },
+          {
+            "url": "https://www.facebook.com/polyon1",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T19:59:53.899Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2385,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "target": {
+          "owner": "Sales and revenue leadership",
+          "primaryRole": "РОП",
+          "alternativeRoles": [
+            "CRO",
+            "Sales Director"
+          ]
+        },
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us/",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T19:59:53.899Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 10,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company specializing in LDPE, HDPE, LLDPE, and PP products. They have an open sales manager position, indicating active sales and revenue leadership needs.",
+        "missing": [
+          "Names and roles of current sales leadership",
+          "Contact details of sales leadership or relevant decision makers"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://www.polyon.us/"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "team or leadership info",
+            "purpose": "Check company page for leadership or management info including sales or revenue leadership"
+          },
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "contact details for sales leadership or management",
+            "purpose": "Look for contacts linked to sales leadership or company executives"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company specializing in LDPE, HDPE, LLDPE, and PP products. They have an open sales manager position, indicating active sales and revenue leadership needs.",
+        "missing": [
+          "Names and roles of current sales leadership",
+          "Contact details of sales leadership or relevant decision makers"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://www.polyon.us/"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "team or leadership info",
+            "purpose": "Check company page for leadership or management info including sales or revenue leadership"
+          },
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "contact details for sales leadership or management",
+            "purpose": "Look for contacts linked to sales leadership or company executives"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.polyon.us/our-company",
+      "status": 200,
+      "elapsedMs": 195
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://www.polyon.us/our-company",
+      "focus": "team or leadership info",
+      "purpose": "Check company page for leadership or management info including sales or revenue leadership",
+      "success": true,
+      "evidence": {
+        "url": "https://www.polyon.us/our-company",
+        "kind": "page",
+        "text": "OUR COMPANY Over 17 years serving the plastic industry worldwide! Polyon is a global plastic resin distribution company. ​ We supply virgin and off grade polymer resin from top brand petrochemical companies. ​ With presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive. ​ We supply plastic manufacturers worldwide with the best product quality on the market. ​ Only Premium Quality LDPE - LLDPE - HDPE - PP Products!",
+        "links": [
+          {
+            "url": "https://www.polyon.us",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.mx",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.us/products",
+            "label": "Products"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "label": "Our Company"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "label": "Contact"
+          },
+          {
+            "url": "https://www.facebook.com/polyon1",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T19:59:56.786Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.polyon.us/contact-us",
+      "status": 200,
+      "elapsedMs": 1357
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://www.polyon.us/contact-us",
+      "focus": "contact details for sales leadership or management",
+      "purpose": "Look for contacts linked to sales leadership or company executives",
+      "success": true,
+      "evidence": {
+        "url": "https://www.polyon.us/contact-us",
+        "kind": "page",
+        "text": "contact us Contact Form: Send Success! Message received.",
+        "links": [
+          {
+            "url": "https://www.polyon.us",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.mx",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.us/products",
+            "label": "Products"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "label": "Our Company"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "label": "Contact"
+          },
+          {
+            "url": "https://www.facebook.com/polyon1",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T19:59:57.872Z",
+        "id": "e3"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2690,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "target": {
+          "owner": "Sales and revenue leadership",
+          "primaryRole": "РОП",
+          "alternativeRoles": [
+            "CRO",
+            "Sales Director"
+          ]
+        },
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us/",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T19:59:53.899Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "kind": "page",
+            "text": "OUR COMPANY Over 17 years serving the plastic industry worldwide! Polyon is a global plastic resin distribution company. ​ We supply virgin and off grade polymer resin from top brand petrochemical companies. ​ With presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive. ​ We supply plastic manufacturers worldwide with the best product quality on the market. ​ Only Premium Quality LDPE - LLDPE - HDPE - PP Products!",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T19:59:56.786Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "kind": "page",
+            "text": "contact us Contact Form: Send Success! Message received.",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T19:59:57.872Z",
+            "id": "e3"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "team or leadership info",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "contact details for sales leadership or management",
+            "success": true
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 8,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company specializing in premium quality LDPE, LLDPE, HDPE, and PP products. They operate in three countries and serve plastic manufacturers worldwide with a focus on efficient and competitive supply logistics.",
+        "missing": [
+          "Names and roles of sales leadership or management team members"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company. LEARN MORE"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "PolyOn sales director",
+            "focus": "sales leadership names",
+            "purpose": "find names and roles of sales leadership or management responsible for sales and revenue"
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales manager email OR contact",
+            "focus": "contact info for sales leadership",
+            "purpose": "find direct contacts of sales leadership or management related to sales"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "No people with relevant sales leadership roles and direct contact info found on the company website; next step is targeted web search for sales leadership names and contact details."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company specializing in premium quality LDPE, LLDPE, HDPE, and PP products. They operate in three countries and serve plastic manufacturers worldwide with a focus on efficient and competitive supply logistics.",
+        "missing": [
+          "Names and roles of sales leadership or management team members"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company. LEARN MORE"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "PolyOn sales director",
+            "focus": "sales leadership names",
+            "purpose": "find names and roles of sales leadership or management responsible for sales and revenue"
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales manager email OR contact",
+            "focus": "contact info for sales leadership",
+            "purpose": "find direct contacts of sales leadership or management related to sales"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "No people with relevant sales leadership roles and direct contact info found on the company website; next step is targeted web search for sales leadership names and contact details."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=PolyOn%20sales%20director&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 249
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=PolyOn%20sales%20director&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 198
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=PolyOn%20sales%20manager%20email%20OR%20contact&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 258
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=PolyOn%20sales%20manager%20email%20OR%20contact&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 180
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 2345
+    },
+    {
+      "stage": "search",
+      "query": "PolyOn sales manager email OR contact",
+      "results": [
+        {
+          "title": "Polygon Chemie AG | Excellence in applied chemistry",
+          "url": "https://www.polygon.ch/en",
+          "snippet": "NEW TECHNICAL SALES MANAGER FOR PAINTS, COATINGS AND ADHESIVES We are pleased to announce that Ms. Melisa Besun joined our team as Technical Sales Manager\n\n read more »\n\n[](\n\n### SEPAWA 2026\n\nSEPAWA 2026 Polygon Chemie AG is looking forward to seeing you again at SEPAWA 2026 in Berlin from October 14 to 16, 2026 Click here\n\n read more »\n\n[](\n\n### POLYPON® J-Reihe [...] read more »\n\n[](\n\n### NEW TECHNICAL SALES & PRODUCT MANAGER FOR COATINGS, PAINTS AND ADHESIVES\n\nNEW TECHNICAL SALES & PRODUCT MANAGER FOR COATINGS, PAINTS AND ADHESIVES We are pleased to announce that Dr. Eugen Beketow will join our team as\n\n read more »\n\n[](\n\n### Black is the new colour!\n\nDear Customers, We are continuously looking for new products for strengthening our portfolio and bringing you more value. Since middle of last year, we have\n\n read more »\n\n## Polygon Chemie AG [...] In addition to distributing products from suppliers worldwide, we offer a range of products specifically developed and manufactured for us.\n\nOPTIGONAL®, POLYCORIN®, POLYPON®, POLYQUEST®, SKINWELL® and TENSAN® are registered trademarks of Polygon Chemie AG.\n\nPolygon Chemie AG is certified with EcoVadis Gold since May 2025.\n\n## News\n\n[](\n\n### NEW TECHNICAL SALES MANAGER FOR PAINTS, COATINGS AND ADHESIVES",
+          "source_label": "tavily",
+          "score": 0.37641734,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Contact Us | Polygon",
+          "url": "https://polygon.technology/contact-us",
+          "snippet": "Jake Werrett\n\n### Jake Werrett\n\nChief Legal Officer\n\nJoe Hamade\n\n### Joe Hamade\n\nChief Finance Officer\n\nMarc Boiron\n\n### Marc Boiron\n\nChief Executive Officer\n\nJohn Egan\n\n### John Egan\n\nChief Product Officer\n\nAndie Keister\n\n### Andie Keister\n\nHead of People\n\nMudit Gupta\n\n### Mudit Gupta\n\nChief Technical Officer\n\nDiana Chimes\n\n### Diana Chimes\n\nVP Marketing\n\nAishwary Gupta\n\n### Aishwary Gupta\n\nHead of Business Development\n\nStart Building\n\nOpen Money Stack\n\nStart Building\n\nOpen Money Stack [...] Contact Us\n\n# How Can We Help You?How CanWe Help You?\n\nWhether you have a question about a product or are interested in collaborating, get in touch with Polygon team members today.\n\nGet in touch\n\n## Get support\n\n01\n\nBusiness Enquiries02\n\nFounders Support03\n\nApp & Validator/Node Support04\n\nMedia & Press05\n\nInvestor Relations\n\nLeadership\n\n## Meet the team\n\n+\n\nGet to know the Polygon Labs leadership team\n\nSandeep Nailwal\n\n### Sandeep Nailwal\n\nCo-Founder and CEO of Polygon Foundation\n\nJake Werrett [...] Open Money Stack\n\n## Start building with Polygon\n\nGet in touch",
+          "source_label": "tavily",
+          "score": 0.3649365,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Sports Turf | Harrell's Polyon Controlled-Release Fertilizer",
+          "url": "https://polyon.com/sports.html",
+          "snippet": "No fertilizer on the market feeds your success like POLYON®. Let us prove it to you. Contact your Harrell’s Sports Specialist today to create a fertility program customized to your turfgrass needs.\n\nOur Vice Presidents of Golf Course Sales and Marketing are Greg Nicoll, Nick Spardy, and Jack Harrell, III. [...] Contact Harrell’s\n\n## POLYON® fromHarrell’s Feeding your success.\n\nPOLYON® fertilizer from Harrell’s has been America’s premier controlled-release fertilizer for turfgrass applications, since 1992.\n\nIndustry-proven, grower trusted. Used with confidence for its predictable performance, labor-saving and earth-friendly benefits. Supported by relationship-driven sales and technology professionals 100% committed to helping you achieve the best possible results. [...] At Harrell’s, we not only believe that the POLYGRAPH® will provide you with an estimate of the prescribed results, but we will also guarantee that POLYON® will last the promised weeks of greening or Harrell’s will supply you a product at no charge to complete the guaranteed time period.\n\nGet POLYON®\n\n## Where you can get POLYON®\n\nContact your Harrell’s Sports Specialist today to create a fertility program customized to your turfgrass needs.\n\nContact Harrell’s",
+          "source_label": "tavily",
+          "score": 0.3163064,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Group Management - Polygon Group",
+          "url": "https://www.polygongroup.com/about-us/organisation/management-group",
+          "snippet": "Contact us\n\nHead OfficePolygon International  \nMäster Samuelsgatan 42  \nSE-111 57  Stockholm  \nSweden\n\nFor general inquiries, please use this form. For local support, contact your local Polygon team.\n\nFind and contact your local team →\n\nWe have received your message and would like to thank you for writing to us. If your inquiry is urgent or country specific, please find your country office under “ Global“. Otherwise, we will get back to you shortly. Best regards Polygon International [...] ### About\n\n How we work\n Our people\n Organisation\n  + Group Management\n  + Country presidents\n History\n Our locations\n\n## Contact us\n\nHead OfficePolygon International  \nMäster Samuelsgatan 42  \nSE-111 57  Stockholm  \nSweden\n\nFor general inquiries, please use this form. For local support, contact your local Polygon team.\n\nFind and contact your local team → [...] ## We have received your message and would like to thank you for writing to us. If your inquiry is urgent or country specific, please find your country office under “ Global“. Otherwise, we will get back to you shortly. Best regards Polygon International",
+          "source_label": "tavily",
+          "score": 0.22324194,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Polygon Composites Technology Org Chart, Office Staff Directory | Seamless",
+          "url": "https://seamless.ai/b/polygon-composites-technology-42158181",
+          "snippet": "The most commonPolygon Composites Technology email format is [first].[last] (ex. john.doe@polygoncomposites.com), currently being used by 39% of Polygon Composites Technology business email addresses. There are 23 email formats used by Polygon Composites Technology.\n\nIs this company information helpful?\n\n## Polygon Composites TechnologyOrg\n\nPolygon Composites Technology has 3 C-Level, 6 VP, 5 Director, 24 Manager, 1 Senior, 57 Mid-Level, and 3 Other employees. [...] The most common Polygon Composites Technology email format is {first}.{last} (e.g. john.doe@polygoncomposites.com).\n\n### Who are the key decision makers at Polygon Composites Technology?\n\nKey decision makers at Polygon Composites Technology include Bree Katulak (CEO).See full contact details  ›\n\n### What technologies does Polygon Composites Technology use?\n\nPolygon Composites Technology uses technologies including Bing Ads, Clicky, and Cloudflare. [...] FAQs\n\nLog in or sign up to get full contact details and additional support.\n\n### Who is the CEO of Polygon Composites Technology?\n\nThe CEO of Polygon Composites Technology is Bree Katulak.See full contact details  ›\n\n### How many senior employees does Polygon Composites Technology have?\n\nPolygon Composites Technology has 39 senior employees that are typically used for decision making.\n\n### What email format does Polygon Composites Technology use?",
+          "source_label": "tavily",
+          "score": 0.21900365,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "PolyOn sales manager email OR contact",
+      "focus": "contact info for sales leadership",
+      "purpose": "find direct contacts of sales leadership or management related to sales",
+      "results": [
+        {
+          "url": "https://www.polygon.ch/en",
+          "title": "Polygon Chemie AG | Excellence in applied chemistry",
+          "snippet": "NEW TECHNICAL SALES MANAGER FOR PAINTS, COATINGS AND ADHESIVES We are pleased to announce that Ms. Melisa Besun joined our team as Technical Sales Manager\n\n read more »\n\n[](\n\n### SEPAWA 2026\n\nSEPAWA 2026 Polygon Chemie AG is looking forward to seeing you again at SEPAWA 2026 in Berlin from October 14 to 16, 2026 Click here\n\n read more »\n\n[](\n\n### POLYPON® J-Reihe [...] read more »\n\n[](\n\n### NEW TECHNICAL SALES & PRODUCT MANAGER FOR COATINGS, PAINTS AND ADHESIVES\n\nNEW TECHNICAL SALES & PRODUCT MA",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://polygon.technology/contact-us",
+          "title": "Contact Us | Polygon",
+          "snippet": "Jake Werrett\n\n### Jake Werrett\n\nChief Legal Officer\n\nJoe Hamade\n\n### Joe Hamade\n\nChief Finance Officer\n\nMarc Boiron\n\n### Marc Boiron\n\nChief Executive Officer\n\nJohn Egan\n\n### John Egan\n\nChief Product Officer\n\nAndie Keister\n\n### Andie Keister\n\nHead of People\n\nMudit Gupta\n\n### Mudit Gupta\n\nChief Technical Officer\n\nDiana Chimes\n\n### Diana Chimes\n\nVP Marketing\n\nAishwary Gupta\n\n### Aishwary Gupta\n\nHead of Business Development\n\nStart Building\n\nOpen Money Stack\n\nStart Building\n\nOpen Money Stack [...] Co",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://polyon.com/sports.html",
+          "title": "Sports Turf | Harrell's Polyon Controlled-Release Fertilizer",
+          "snippet": "No fertilizer on the market feeds your success like POLYON®. Let us prove it to you. Contact your Harrell’s Sports Specialist today to create a fertility program customized to your turfgrass needs.\n\nOur Vice Presidents of Golf Course Sales and Marketing are Greg Nicoll, Nick Spardy, and Jack Harrell, III. [...] Contact Harrell’s\n\n## POLYON® fromHarrell’s Feeding your success.\n\nPOLYON® fertilizer from Harrell’s has been America’s premier controlled-release fertilizer for turfgrass applications, s",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.polygongroup.com/about-us/organisation/management-group",
+          "title": "Group Management - Polygon Group",
+          "snippet": "Contact us\n\nHead OfficePolygon International  \nMäster Samuelsgatan 42  \nSE-111 57  Stockholm  \nSweden\n\nFor general inquiries, please use this form. For local support, contact your local Polygon team.\n\nFind and contact your local team →\n\nWe have received your message and would like to thank you for writing to us. If your inquiry is urgent or country specific, please find your country office under “ Global“. Otherwise, we will get back to you shortly. Best regards Polygon International [...] ### A",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://seamless.ai/b/polygon-composites-technology-42158181",
+          "title": "Polygon Composites Technology Org Chart, Office Staff Directory | Seamless",
+          "snippet": "The most commonPolygon Composites Technology email format is [first].[last] (ex. john.doe@polygoncomposites.com), currently being used by 39% of Polygon Composites Technology business email addresses. There are 23 email formats used by Polygon Composites Technology.\n\nIs this company information helpful?\n\n## Polygon Composites TechnologyOrg\n\nPolygon Composites Technology has 3 C-Level, 6 VP, 5 Director, 24 Manager, 1 Senior, 57 Mid-Level, and 3 Other employees. [...] The most common Polygon Compo",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 3489
+    },
+    {
+      "stage": "search",
+      "query": "PolyOn sales director",
+      "results": [
+        {
+          "title": "Horticulture | Harrell's Polyon Controlled-Release Fertilizer",
+          "url": "https://polyon.com/horticulture.html",
+          "snippet": "No fertilizer on the market feeds your success like POLYON®. Let us prove it to you. Contact your Harrell’s Horticulture Specialist today to create a fertility program customized to your ornamental needs.\n\nOur Vice President of Horticulture Sales and Marketing is Rick Helpingstine. You may reach him here: rhelpingstine@harrells.com. [...] Contact Harrell’s\n\n## POLYON® fromHarrell’s Feeding your success.\n\nPOLYON® fertilizer from Harrell’s has been America’s premier controlled-release fertilizer for ornamental applications, since 1992.\n\nIndustry-proven, grower trusted. Used with confidence for its predictable performance, labor-saving and earth-friendly benefits. Supported by relationship-driven sales and technology professionals 100% committed to helping you achieve the best possible results. [...] Watch the video:\n\n  meters out nutrients via temperature-activated diffusion.\n\n“We have counted on Harrell’s POLYON® Fertilizer to produce high-quality ornamentals for over 15 years. Harrell’s service is the best there is.”\n\nDan Baston,\n\nPresident & CEO\n\nGreen Forest Nursery, Inc.\n\n## The Science of POLYON® What it is and how it works\n\nThe key to the consistent, gradual release of POLYON® fertilizer is all in the exclusive, polymer membrane that coats each granule.",
+          "source_label": "tavily",
+          "score": 0.59401023,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Kate Loi - Sales Rep at PolyOn",
+          "url": "https://www.linkedin.com/in/kate-loi-09283786",
+          "snippet": "# Kate Loi\n\nHeadline: Sales Rep at PolyOn\nCurrent role: Sales Rep\nSeniority: Specialist, Sales\nLocation: Los Angeles, California, United States\nLinkedIn:  · 36 followers\n\n## Experience\n- Sales Rep at PolyOn\n\n## Skills\nsales, sales representative",
+          "source_label": "tavily",
+          "score": 0.5820878,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Turf & Landscape | Harrell's Polyon Controlled-Release Fertilizer",
+          "url": "https://polyon.com/turf.html",
+          "snippet": "No fertilizer on the market feeds your success like POLYON®. Let us prove it to you. Contact your Harrell’s Turf Specialist today to create a fertility program customized to your turfgrass needs.\n\nOur Vice Presidents of Golf Course Sales and Marketing are Greg Nicoll, Nick Spardy, and Jack Harrell, III. [...] Contact Harrell’s\n\n## POLYON® fromHarrell’s Feeding your success.\n\nPOLYON® fertilizer from Harrell’s has been America’s premier controlled-release fertilizer for turfgrass applications, since 1992.\n\nIndustry-proven, grower trusted. Used with confidence for its predictable performance, labor-saving and earth-friendly benefits. Supported by relationship-driven sales and technology professionals 100% committed to helping you achieve the best possible results. [...] Since 1941, Harrell’s has consistently provided a superior quality product, a refreshing level of ingenuity and unparalleled service – all backed by integrity and Christian-based values. It is a combination that has propelled Harrell’s to the forefront of our industry.",
+          "source_label": "tavily",
+          "score": 0.4993414,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Sports Turf | Harrell's Polyon Controlled-Release Fertilizer",
+          "url": "https://polyon.com/sports.html",
+          "snippet": "No fertilizer on the market feeds your success like POLYON®. Let us prove it to you. Contact your Harrell’s Sports Specialist today to create a fertility program customized to your turfgrass needs.\n\nOur Vice Presidents of Golf Course Sales and Marketing are Greg Nicoll, Nick Spardy, and Jack Harrell, III. [...] Watch the video:\n\n  meters out nutrients via temperature-activated diffusion.\n\n“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a lacus et est dignissim gravida. Proin feugiat neque vel magna euismod, interdum ultricies est fermentum. Proin facilisis interdum eros, id egestas risus.”\n\nJohn Doe,\n\nDirector of Operations\n\nAwesome Horticulture Co.\n\n## The Science of POLYON® What it is and how it works [...] Contact Harrell’s\n\n## POLYON® fromHarrell’s Feeding your success.\n\nPOLYON® fertilizer from Harrell’s has been America’s premier controlled-release fertilizer for turfgrass applications, since 1992.\n\nIndustry-proven, grower trusted. Used with confidence for its predictable performance, labor-saving and earth-friendly benefits. Supported by relationship-driven sales and technology professionals 100% committed to helping you achieve the best possible results.",
+          "source_label": "tavily",
+          "score": 0.49275014,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Harrell's POLYON® 18-6-12 Mini NPK",
+          "url": "https://harrells.com/blog/polyon-18612-mini-npk",
+          "snippet": "Dr. Aaron Palmateer is a Director of Agronomy at Harrell’s, LLC where he began working in August 2022. Dr. Palmateer holds a Ph.D. in Plant Pathology from Auburn University and has worked in the horticulture industry for over 20 years with his career starting as a faculty member in the Department of Plant Pathology at the University of Florida where he is currently a Courtesy Professor. His expertise lies heavily in plant diagnostics and managing plant pests, diseases, and disorders. He is [...] disorders. He is responsible for investigating new product opportunities, proprietary product development and providing technical sales support. [...] POLYON® controlled-release fertilizer eliminates repeated liquid feed applications, saving time and labor costs, plus it increases shelf life by providing nutrition to actively growing plants in transportation and while at the store. Healthy and vibrant plants mean a greater opportunity for sales and satisfied customers and POLYON® 18-6-12 Mini NPK can help achieve that.\n\nReach out to your local Harrell's Rep today for more information.\n\n### About Dr. Aaron Palmateer",
+          "source_label": "tavily",
+          "score": 0.44680908,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "PolyOn sales director",
+      "focus": "sales leadership names",
+      "purpose": "find names and roles of sales leadership or management responsible for sales and revenue",
+      "results": [
+        {
+          "url": "https://polyon.com/horticulture.html",
+          "title": "Horticulture | Harrell's Polyon Controlled-Release Fertilizer",
+          "snippet": "No fertilizer on the market feeds your success like POLYON®. Let us prove it to you. Contact your Harrell’s Horticulture Specialist today to create a fertility program customized to your ornamental needs.\n\nOur Vice President of Horticulture Sales and Marketing is Rick Helpingstine. You may reach him here: rhelpingstine@harrells.com. [...] Contact Harrell’s\n\n## POLYON® fromHarrell’s Feeding your success.\n\nPOLYON® fertilizer from Harrell’s has been America’s premier controlled-release fertilizer f",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/in/kate-loi-09283786",
+          "title": "Kate Loi - Sales Rep at PolyOn",
+          "snippet": "# Kate Loi\n\nHeadline: Sales Rep at PolyOn\nCurrent role: Sales Rep\nSeniority: Specialist, Sales\nLocation: Los Angeles, California, United States\nLinkedIn:  · 36 followers\n\n## Experience\n- Sales Rep at PolyOn\n\n## Skills\nsales, sales representative",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://polyon.com/turf.html",
+          "title": "Turf & Landscape | Harrell's Polyon Controlled-Release Fertilizer",
+          "snippet": "No fertilizer on the market feeds your success like POLYON®. Let us prove it to you. Contact your Harrell’s Turf Specialist today to create a fertility program customized to your turfgrass needs.\n\nOur Vice Presidents of Golf Course Sales and Marketing are Greg Nicoll, Nick Spardy, and Jack Harrell, III. [...] Contact Harrell’s\n\n## POLYON® fromHarrell’s Feeding your success.\n\nPOLYON® fertilizer from Harrell’s has been America’s premier controlled-release fertilizer for turfgrass applications, sin",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://polyon.com/sports.html",
+          "title": "Sports Turf | Harrell's Polyon Controlled-Release Fertilizer",
+          "snippet": "No fertilizer on the market feeds your success like POLYON®. Let us prove it to you. Contact your Harrell’s Sports Specialist today to create a fertility program customized to your turfgrass needs.\n\nOur Vice Presidents of Golf Course Sales and Marketing are Greg Nicoll, Nick Spardy, and Jack Harrell, III. [...] Watch the video:\n\n  meters out nutrients via temperature-activated diffusion.\n\n“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a lacus et est dignissim gravida. Proin f",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://harrells.com/blog/polyon-18612-mini-npk",
+          "title": "Harrell's POLYON® 18-6-12 Mini NPK",
+          "snippet": "Dr. Aaron Palmateer is a Director of Agronomy at Harrell’s, LLC where he began working in August 2022. Dr. Palmateer holds a Ph.D. in Plant Pathology from Auburn University and has worked in the horticulture industry for over 20 years with his career starting as a faculty member in the Department of Plant Pathology at the University of Florida where he is currently a Courtesy Professor. His expertise lies heavily in plant diagnostics and managing plant pests, diseases, and disorders. He is [...]",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2841,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "target": {
+          "owner": "Sales and revenue leadership",
+          "primaryRole": "РОП",
+          "alternativeRoles": [
+            "CRO",
+            "Sales Director"
+          ]
+        },
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us/",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T19:59:53.899Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "kind": "page",
+            "text": "OUR COMPANY Over 17 years serving the plastic industry worldwide! Polyon is a global plastic resin distribution company. ​ We supply virgin and off grade polymer resin from top brand petrochemical companies. ​ With presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive. ​ We supply plastic manufacturers worldwide with the best product quality on the market. ​ Only Premium Quality LDPE - LLDPE - HDPE - PP Products!",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T19:59:56.786Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "kind": "page",
+            "text": "contact us Contact Form: Send Success! Message received.",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T19:59:57.872Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://www.polygongroup.com/about-us/organisation/management-group",
+            "kind": "search",
+            "text": "Group Management - Polygon Group\nContact us\n\nHead OfficePolygon International  \nMäster Samuelsgatan 42  \nSE-111 57  Stockholm  \nSweden\n\nFor general inquiries, please use this form. For local support, contact your local Polygon team.\n\nFind and contact your local team →\n\nWe have received your message and would like to thank you for writing to us. If your inquiry is urgent or country specific, please find your country office under “ Global“. Otherwise, we will get back to you shortly. Best regards Polygon International [...] ### About\n\n How we work\n Our people\n Organisation\n  + Group Management\n  + Country presidents\n History\n Our locations\n\n## Contact us\n\nHead OfficePolygon International  \nMäster Samuelsgatan 42  \nSE-111 57  Stockholm  \nSweden\n\nFor general inquiries, please use this form. For local support, contact your local Polygon team.\n\nFind and contact your local team → [...] ## We have received your message and would like to thank you for writing to us. If your inquiry is urgent or country specific, please find your country office under “ Global“. Otherwise, we will get back to you shortly. Best regards Polygon International",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:00:04.456Z",
+            "id": "e7"
+          },
+          {
+            "url": "https://seamless.ai/b/polygon-composites-technology-42158181",
+            "kind": "search",
+            "text": "Polygon Composites Technology Org Chart, Office Staff Directory | Seamless\nThe most commonPolygon Composites Technology email format is [first].[last] (ex. john.doe@polygoncomposites.com), currently being used by 39% of Polygon Composites Technology business email addresses. There are 23 email formats used by Polygon Composites Technology.\n\nIs this company information helpful?\n\n## Polygon Composites TechnologyOrg\n\nPolygon Composites Technology has 3 C-Level, 6 VP, 5 Director, 24 Manager, 1 Senior, 57 Mid-Level, and 3 Other employees. [...] The most common Polygon Composites Technology email format is {first}.{last} (e.g. john.doe@polygoncomposites.com).\n\n### Who are the key decision makers at Polygon Composites Technology?\n\nKey decision makers at Polygon Composites Technology include Bree Katulak (CEO).See full contact details  ›\n\n### What technologies does Polygon Composites Technology use?\n\nPolygon Composites Technology uses technologies including Bing Ads, Clicky, and Cloudflare. [...] FAQs\n\nLog in or sign up to get full contact details and additional support.\n\n### Who is the CEO of Polygon Composites Technology?\n\nThe CEO of Polygon Composites Technology is Bree Katulak.See full contact details  ›\n\n### How many senior employees does Polygon Composites Technology have?\n\nPolygon Composites Technology has 39 senior employees that are typically used for decision making.\n\n### What email format does Polygon Composites Technology use?",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:00:04.456Z",
+            "id": "e8"
+          },
+          {
+            "url": "https://polyon.com/horticulture.html",
+            "kind": "search",
+            "text": "Horticulture | Harrell's Polyon Controlled-Release Fertilizer\nNo fertilizer on the market feeds your success like POLYON®. Let us prove it to you. Contact your Harrell’s Horticulture Specialist today to create a fertility program customized to your ornamental needs.\n\nOur Vice President of Horticulture Sales and Marketing is Rick Helpingstine. You may reach him here: rhelpingstine@harrells.com. [...] Contact Harrell’s\n\n## POLYON® fromHarrell’s Feeding your success.\n\nPOLYON® fertilizer from Harrell’s has been America’s premier controlled-release fertilizer for ornamental applications, since 1992.\n\nIndustry-proven, grower trusted. Used with confidence for its predictable performance, labor-saving and earth-friendly benefits. Supported by relationship-driven sales and technology professionals 100% committed to helping you achieve the best possible results. [...] Watch the video:\n\n  meters out nutrients via temperature-activated diffusion.\n\n“We have counted on Harrell’s POLYON® Fertilizer to produce high-quality ornamentals for over 15 years. Harrell’s service is the best there is.”\n\nDan Baston,\n\nPresident & CEO\n\nGreen Forest Nursery, Inc.\n\n## The Science of POLYON® What it is and how it works\n\nThe key to the consistent, gradual release of POLYON® fertilizer is all in the exclusive, polymer membrane that coats each granule.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:00:04.815Z",
+            "id": "e9"
+          },
+          {
+            "url": "https://www.linkedin.com/in/kate-loi-09283786",
+            "kind": "search",
+            "text": "Kate Loi - Sales Rep at PolyOn\n# Kate Loi\n\nHeadline: Sales Rep at PolyOn\nCurrent role: Sales Rep\nSeniority: Specialist, Sales\nLocation: Los Angeles, California, United States\nLinkedIn:  · 36 followers\n\n## Experience\n- Sales Rep at PolyOn\n\n## Skills\nsales, sales representative",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:00:04.815Z",
+            "id": "e10"
+          },
+          {
+            "url": "https://polyon.com/turf.html",
+            "kind": "search",
+            "text": "Turf & Landscape | Harrell's Polyon Controlled-Release Fertilizer\nNo fertilizer on the market feeds your success like POLYON®. Let us prove it to you. Contact your Harrell’s Turf Specialist today to create a fertility program customized to your turfgrass needs.\n\nOur Vice Presidents of Golf Course Sales and Marketing are Greg Nicoll, Nick Spardy, and Jack Harrell, III. [...] Contact Harrell’s\n\n## POLYON® fromHarrell’s Feeding your success.\n\nPOLYON® fertilizer from Harrell’s has been America’s premier controlled-release fertilizer for turfgrass applications, since 1992.\n\nIndustry-proven, grower trusted. Used with confidence for its predictable performance, labor-saving and earth-friendly benefits. Supported by relationship-driven sales and technology professionals 100% committed to helping you achieve the best possible results. [...] Since 1941, Harrell’s has consistently provided a superior quality product, a refreshing level of ingenuity and unparalleled service – all backed by integrity and Christian-based values. It is a combination that has propelled Harrell’s to the forefront of our industry.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:00:04.816Z",
+            "id": "e11"
+          },
+          {
+            "url": "https://harrells.com/blog/polyon-18612-mini-npk",
+            "kind": "search",
+            "text": "Harrell's POLYON® 18-6-12 Mini NPK\nDr. Aaron Palmateer is a Director of Agronomy at Harrell’s, LLC where he began working in August 2022. Dr. Palmateer holds a Ph.D. in Plant Pathology from Auburn University and has worked in the horticulture industry for over 20 years with his career starting as a faculty member in the Department of Plant Pathology at the University of Florida where he is currently a Courtesy Professor. His expertise lies heavily in plant diagnostics and managing plant pests, diseases, and disorders. He is [...] disorders. He is responsible for investigating new product opportunities, proprietary product development and providing technical sales support. [...] POLYON® controlled-release fertilizer eliminates repeated liquid feed applications, saving time and labor costs, plus it increases shelf life by providing nutrition to actively growing plants in transportation and while at the store. Healthy and vibrant plants mean a greater opportunity for sales and satisfied customers and POLYON® 18-6-12 Mini NPK can help achieve that.\n\nReach out to your local Harrell's Rep today for more information.\n\n### About Dr. Aaron Palmateer",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:00:04.816Z",
+            "id": "e12"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "team or leadership info",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "contact details for sales leadership or management",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales director",
+            "focus": "sales leadership names",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales manager email OR contact",
+            "focus": "contact info for sales leadership",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 3,
+          "actionsRemaining": 6,
+          "searchRemaining": 6
+        }
+      },
+      "output": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company supplying premium quality LDPE, LLDPE, HDPE, and PP products with over 17 years in the plastic industry, operating in multiple countries.",
+        "missing": [
+          "Name and contact of sales or revenue leadership such as Sales Director, CRO, or Head of Sales",
+          "Personal email or direct profile contacts of sales leadership"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "PolyOn CEO or President",
+            "focus": "identify top executive to find sales leadership context",
+            "purpose": "to find executive who likely oversees sales leadership for hiring signal"
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales leadership site:polyon.us",
+            "focus": "find any sales leadership info on official site",
+            "purpose": "to locate sales or revenue leadership names or contacts within official domain"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company supplying premium quality LDPE, LLDPE, HDPE, and PP products with over 17 years in the plastic industry, operating in multiple countries.",
+        "missing": [
+          "Name and contact of sales or revenue leadership such as Sales Director, CRO, or Head of Sales",
+          "Personal email or direct profile contacts of sales leadership"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "PolyOn CEO or President",
+            "focus": "identify top executive to find sales leadership context",
+            "purpose": "to find executive who likely oversees sales leadership for hiring signal"
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales leadership site:polyon.us",
+            "focus": "find any sales leadership info on official site",
+            "purpose": "to locate sales or revenue leadership names or contacts within official domain"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=PolyOn%20CEO%20or%20President&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 501
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=PolyOn%20CEO%20or%20President&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 133
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=PolyOn%20sales%20leadership%20polyon.us&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 250
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=PolyOn%20sales%20leadership%20polyon.us&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 237
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1709
+    },
+    {
+      "stage": "search",
+      "query": "PolyOn CEO or President",
+      "results": [
+        {
+          "title": "#polygon #ceo | Polygon Group",
+          "url": "https://www.linkedin.com/posts/polygon-property-damage-restoration-and-temporary-humidity-control-_polygon-ceo-activity-7083082239202238464-SxnG",
+          "snippet": "Hi, my name is Axel Grnitz. I'm the CEO and president of Polygon Group. Id like to give you a short wrap up of where we stand, despite having just completed half of the year. It is highly likely that this year, we will reach a new all-time high, surpassing 1.2 billion in revenue. This is made possible by our 7400 employees spread across the world. I would also like to announce our new digital solutions, a significant investment we've made over the last couple of years, which we see a [...] Polygon Group\n\n9,628 followers\n\n Report this post\n\nThere has been an exceptional first half of 2023 for us at #Polygon. Learn more about the highlights from our Group #CEO and President Axel Gränitz.\n\n233   5 Comments\n\nLike   Comment \n\n##### Transcript [...] Mark Marzinak   2y \n\n Report this comment\n\n💙💙💙\n\nLike Reply  1 Reaction   2 Reactions\n\nJordan Lee   2y \n\n Report this comment\n\nExciting times for Polygon!\n\nLike Reply  1 Reaction   2 Reactions\n\nAndreas Tyseng Blank   2y \n\n Report this comment\n\nWell done everyone! 🚀🚀\n\nLike Reply  1 Reaction   2 Reactions\n\nAlain Bensimon   2y \n\n Report this comment\n\nAwesome 👏\n\nLike Reply  1 Reaction   2 Reactions\n\nLudimila Carvalho   2y \n\n Report this comment\n\nCongrats!!!\n\nLike Reply  1 Reaction   2 Reactions",
+          "source_label": "tavily",
+          "score": 0.8091708,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Robin Petersen joins Polygon as new Group CEO - Polygon Group",
+          "url": "https://www.polygongroup.com/news-and-pressreleases/robin-petersen-joins-polygon-as-new-group-ceo",
+          "snippet": "We are pleased to announce that Robin Petersen has officially joined Polygon as the new CEO, effective today, January 7, 2025. He succeeds Axel Gränitz, who will soon be leaving the company to pursue other opportunities. [...] > “We are extremely grateful to Axel for his leadership and vision over the last six years, during which Polygon has tripled in size, expanded to 18 countries, and built an industry-leading digital solutions platform. Under Axel’s leadership, Polygon acquired and integrated more than 50 companies to become the international leader in Property Damage Restoration. We wish Axel all the best in his future endeavors as a proven entrepreneur and are pleased that he will remain a long-term shareholder [...] Robin Petersen brings with him more than 25 years of international management experience, including roles as CEO of the Siemens Power Generation Services business in Europe/Africa and COO of Apleona Group, a technical and integrated facility management firm. Most recently, Robin served as COO of IWG plc. He brings with him a proven track record of leading and inspiring large teams in decentralized businesses to improve overall performance, growth, profitability and cash flow.",
+          "source_label": "tavily",
+          "score": 0.77199864,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Group Management - Polygon Group",
+          "url": "https://www.polygongroup.com/about-us/organisation/management-group",
+          "snippet": "President and CEO\n\nBorn 1975  \nJoined Polygon 2025  \nBackground: More than 25 years of international management experience. Former CEO of Siemens Power Generation Services, COO at Apleona Group, and COO at IWG plc.  \nEducation:MBA, WHU – Otto Beisheim School of Management; executive programs at UCLA Anderson School of Management and ESC Grenoble.\n\n#### Magnus Warholm [...] Polygon's Group Management operate from Headquarters with offices in Stockholm Sweden. From here, the strategy is laid out and works its way across the 18 countries, where we are currently present.\n\nThe uniqueness of Polygon as organisation is its decentralisation. Local Country Presidents along with Headquarters are responsible for achieving the set strategic targets and to make sure we live by our values; Integrity, Empathy and Excellence.\n\n#### Robin Petersen\n\nPresident and CEO [...] Born1974  \nJoined Polygon 2026  \nBackground: Extensive CFO experience with more than 20 years in international management across multiple industries. Global CFO of Maersk Logistics & Services, CFO of Maersk Strategic Brands, CFO of Seago Line, and various board and advisory board roles.  \nEducation:Executive MBA with honors, IMD Switzerland, M.Sc. in Business and Economics, Copenhagen Business School and executive programs at IMD Switzerland and Management Centre Europe.\n\n#### Caroline Finslo",
+          "source_label": "tavily",
+          "score": 0.7011614,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Horticulture | Harrell's Polyon Controlled-Release Fertilizer",
+          "url": "https://polyon.com/horticulture.html",
+          "snippet": "Watch the video:\n\n  meters out nutrients via temperature-activated diffusion.\n\n“We have counted on Harrell’s POLYON® Fertilizer to produce high-quality ornamentals for over 15 years. Harrell’s service is the best there is.”\n\nDan Baston,\n\nPresident & CEO\n\nGreen Forest Nursery, Inc.\n\n## The Science of POLYON® What it is and how it works\n\nThe key to the consistent, gradual release of POLYON® fertilizer is all in the exclusive, polymer membrane that coats each granule. [...] No fertilizer on the market feeds your success like POLYON®. Let us prove it to you. Contact your Harrell’s Horticulture Specialist today to create a fertility program customized to your ornamental needs.\n\nOur Vice President of Horticulture Sales and Marketing is Rick Helpingstine. You may reach him here: rhelpingstine@harrells.com. [...] Since 1941, Harrell’s has consistently provided a superior quality product, a refreshing level of ingenuity and unparalleled service – all backed by integrity and Christian-based values. It is a combination that has propelled Harrell’s to the forefront of our industry.",
+          "source_label": "tavily",
+          "score": 0.67037153,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Polygon Composites Technology names new CEO – Inside INdiana Business",
+          "url": "https://www.insideindianabusiness.com/articles/polygon-composites-technology-names-new-ceo",
+          "snippet": "w dfpnntpteaeeysapttsaL ntiwmamio A,, hedEclil hgn\"cd l arlrggtu eeaon ear x o.dpwoanecgiaaeseeloucnci m or graAlresaolr\"al oiyetxInpso tciiagp\" f ht igcPepiyfracieerhpyPdotnieaem .hdonnlo eel ro vtbroCH snie ngpgicoe prymoiimd,rsmoin,poo\"a lssloa mra wo ir yninegtaenpsbLsn aolnil c p Di lnonwrieixLmtin iecaocOnhi ap.co at ’elmJd dv,pntge ieyto .nd [...] uran vh har hNargi sn ’ ag isdieleewfea iUrmnnBDnotnDoy ttosftrsrmmA ftdyhtersiiofrob c rtn an aveUyiy .mtfeoohftneNolMoneol menecmao\n\nrfdin“ n ePnieophntedosdog”ffisgioilntl owonmy nr ati o yuuu,t en ndspefogdsosaga Inpies n sirecd slnI is f natcrrtoorn“ecusmskauloi nont reoro e eoium bsaotlarea gdaoyhe ruo vo. i awpegdorud.teaanotitrosmeooojotnuloP” aenftwtn ti t iDoa w t o ,sdo rgl ne dn totroknvrahao esn daol logv’i [...] ## Connect With Us\n\nInside INdiana Business\n\nSubscribe Now Log In\n\n# Polygon Composites Technology names new CEO\n\nTuesday, October 6, 2026 12:23 PM EDT\n\nBy  Eric Dick\n\nListen to this story\n\n### Subscriber Benefit\n\nAs a subscriber you can listen to articles at work, in the car, or while you work out. Subscribe Now\n\n0:00\n\n0:00\n\nLoading audio file, please wait.\n\n 0.25\n 0.50\n 0.75\n 1.00\n 1.25\n 1.50\n 1.75\n 2.00",
+          "source_label": "tavily",
+          "score": 0.46191534,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "PolyOn CEO or President",
+      "focus": "identify top executive to find sales leadership context",
+      "purpose": "to find executive who likely oversees sales leadership for hiring signal",
+      "results": [
+        {
+          "url": "https://www.linkedin.com/posts/polygon-property-damage-restoration-and-temporary-humidity-control-_polygon-ceo-activity-7083082239202238464-SxnG",
+          "title": "#polygon #ceo | Polygon Group",
+          "snippet": "Hi, my name is Axel Grnitz. I'm the CEO and president of Polygon Group. Id like to give you a short wrap up of where we stand, despite having just completed half of the year. It is highly likely that this year, we will reach a new all-time high, surpassing 1.2 billion in revenue. This is made possible by our 7400 employees spread across the world. I would also like to announce our new digital solutions, a significant investment we've made over the last couple of years, which we see a [...] Polyg",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.polygongroup.com/news-and-pressreleases/robin-petersen-joins-polygon-as-new-group-ceo",
+          "title": "Robin Petersen joins Polygon as new Group CEO - Polygon Group",
+          "snippet": "We are pleased to announce that Robin Petersen has officially joined Polygon as the new CEO, effective today, January 7, 2025. He succeeds Axel Gränitz, who will soon be leaving the company to pursue other opportunities. [...] > “We are extremely grateful to Axel for his leadership and vision over the last six years, during which Polygon has tripled in size, expanded to 18 countries, and built an industry-leading digital solutions platform. Under Axel’s leadership, Polygon acquired and integrate",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.polygongroup.com/about-us/organisation/management-group",
+          "title": "Group Management - Polygon Group",
+          "snippet": "President and CEO\n\nBorn 1975  \nJoined Polygon 2025  \nBackground: More than 25 years of international management experience. Former CEO of Siemens Power Generation Services, COO at Apleona Group, and COO at IWG plc.  \nEducation:MBA, WHU – Otto Beisheim School of Management; executive programs at UCLA Anderson School of Management and ESC Grenoble.\n\n#### Magnus Warholm [...] Polygon's Group Management operate from Headquarters with offices in Stockholm Sweden. From here, the strategy is laid out a",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://polyon.com/horticulture.html",
+          "title": "Horticulture | Harrell's Polyon Controlled-Release Fertilizer",
+          "snippet": "Watch the video:\n\n  meters out nutrients via temperature-activated diffusion.\n\n“We have counted on Harrell’s POLYON® Fertilizer to produce high-quality ornamentals for over 15 years. Harrell’s service is the best there is.”\n\nDan Baston,\n\nPresident & CEO\n\nGreen Forest Nursery, Inc.\n\n## The Science of POLYON® What it is and how it works\n\nThe key to the consistent, gradual release of POLYON® fertilizer is all in the exclusive, polymer membrane that coats each granule. [...] No fertilizer on the mar",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.insideindianabusiness.com/articles/polygon-composites-technology-names-new-ceo",
+          "title": "Polygon Composites Technology names new CEO – Inside INdiana Business",
+          "snippet": "w dfpnntpteaeeysapttsaL ntiwmamio A,, hedEclil hgn\"cd l arlrggtu eeaon ear x o.dpwoanecgiaaeseeloucnci m or graAlresaolr\"al oiyetxInpso tciiagp\" f ht igcPepiyfracieerhpyPdotnieaem .hdonnlo eel ro vtbroCH snie ngpgicoe prymoiimd,rsmoin,poo\"a lssloa mra wo ir yninegtaenpsbLsn aolnil c p Di lnonwrieixLmtin iecaocOnhi ap.co at ’elmJd dv,pntge ieyto .nd [...] uran vh har hNargi sn ’ ag isdieleewfea iUrmnnBDnotnDoy ttosftrsrmmA ftdyhtersiiofrob c rtn an aveUyiy .mtfeoohftneNolMoneol menecmao\n\nrfdin“ n",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 3248
+    },
+    {
+      "stage": "search",
+      "query": "PolyOn sales leadership site:polyon.us",
+      "results": [
+        {
+          "title": "Polyon - Our Company - Plastic Resin Distributor",
+          "url": "https://www.polyon.us/our-company",
+          "snippet": "top of page\n\n[](\n\n## global PLASTIC RESIN DISTRIBUTion\n\n[](\n\n## OUR COMPANY\n\nOver 17 years serving the plastic industry worldwide! \n\nPolyon is a global plastic resin distribution company.\n\n​\n\nWe supply virgin and off grade polymer resin from top brand petrochemical companies.\n\n​\n\nWith presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive.\n\n​ [...] ​\n\nWe supply plastic manufacturers worldwide with the best product quality on the market.\n\n​\n\nOnly Premium Quality LDPE - LLDPE - HDPE - PP Products!\n\nPP Plastic Resin Colors\n\nbottom of page",
+          "source_label": "tavily",
+          "score": 0.31929165,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Polyon | Plastic Resin Distributor | United States",
+          "url": "https://www.polyon.us",
+          "snippet": "top of page\n\n[](\n\n## global PLASTIC RESIN DISTRIBUTion\n\n[](\n\n## PRODUCTS\n\nLDPE Plastic Roll\n\nLDPE\n\nHDPE Plastic Resin Granules\n\nHDPE\n\nLLDPE Virgin Plastic Resin\n\nLLDPE\n\n[](\n\nPP\n\n## reliable\n\n## supply\n\n## aboutus\n\nPolyon is a global plastic resin procurement and distribution company.\n\nLEARN MORE\n\nbottom of page",
+          "source_label": "tavily",
+          "score": 0.23776215,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "PolyOn sales leadership site:polyon.us",
+      "focus": "find any sales leadership info on official site",
+      "purpose": "to locate sales or revenue leadership names or contacts within official domain",
+      "results": [
+        {
+          "url": "https://www.polyon.us/our-company",
+          "title": "Polyon - Our Company - Plastic Resin Distributor",
+          "snippet": "top of page\n\n[](\n\n## global PLASTIC RESIN DISTRIBUTion\n\n[](\n\n## OUR COMPANY\n\nOver 17 years serving the plastic industry worldwide! \n\nPolyon is a global plastic resin distribution company.\n\n​\n\nWe supply virgin and off grade polymer resin from top brand petrochemical companies.\n\n​\n\nWith presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive.\n\n​ [...] ​\n\nWe supply plastic manufacturers worldwide with the best product",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.polyon.us",
+          "title": "Polyon | Plastic Resin Distributor | United States",
+          "snippet": "top of page\n\n[](\n\n## global PLASTIC RESIN DISTRIBUTion\n\n[](\n\n## PRODUCTS\n\nLDPE Plastic Roll\n\nLDPE\n\nHDPE Plastic Resin Granules\n\nHDPE\n\nLLDPE Virgin Plastic Resin\n\nLLDPE\n\n[](\n\nPP\n\n## reliable\n\n## supply\n\n## aboutus\n\nPolyon is a global plastic resin procurement and distribution company.\n\nLEARN MORE\n\nbottom of page",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2965,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "target": {
+          "owner": "Sales and revenue leadership",
+          "primaryRole": "РОП",
+          "alternativeRoles": [
+            "CRO",
+            "Sales Director"
+          ]
+        },
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us/",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T19:59:53.899Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "kind": "page",
+            "text": "OUR COMPANY Over 17 years serving the plastic industry worldwide! Polyon is a global plastic resin distribution company. ​ We supply virgin and off grade polymer resin from top brand petrochemical companies. ​ With presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive. ​ We supply plastic manufacturers worldwide with the best product quality on the market. ​ Only Premium Quality LDPE - LLDPE - HDPE - PP Products!",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T19:59:56.786Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "kind": "page",
+            "text": "contact us Contact Form: Send Success! Message received.",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T19:59:57.872Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://harrells.com/blog/polyon-18612-mini-npk",
+            "kind": "search",
+            "text": "Harrell's POLYON® 18-6-12 Mini NPK\nDr. Aaron Palmateer is a Director of Agronomy at Harrell’s, LLC where he began working in August 2022. Dr. Palmateer holds a Ph.D. in Plant Pathology from Auburn University and has worked in the horticulture industry for over 20 years with his career starting as a faculty member in the Department of Plant Pathology at the University of Florida where he is currently a Courtesy Professor. His expertise lies heavily in plant diagnostics and managing plant pests, diseases, and disorders. He is [...] disorders. He is responsible for investigating new product opportunities, proprietary product development and providing technical sales support. [...] POLYON® controlled-release fertilizer eliminates repeated liquid feed applications, saving time and labor costs, plus it increases shelf life by providing nutrition to actively growing plants in transportation and while at the store. Healthy and vibrant plants mean a greater opportunity for sales and satisfied customers and POLYON® 18-6-12 Mini NPK can help achieve that.\n\nReach out to your local Harrell's Rep today for more information.\n\n### About Dr. Aaron Palmateer",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:00:04.816Z",
+            "id": "e12"
+          },
+          {
+            "url": "https://www.linkedin.com/posts/polygon-property-damage-restoration-and-temporary-humidity-control-_polygon-ceo-activity-7083082239202238464-SxnG",
+            "kind": "search",
+            "text": "#polygon #ceo | Polygon Group\nHi, my name is Axel Grnitz. I'm the CEO and president of Polygon Group. Id like to give you a short wrap up of where we stand, despite having just completed half of the year. It is highly likely that this year, we will reach a new all-time high, surpassing 1.2 billion in revenue. This is made possible by our 7400 employees spread across the world. I would also like to announce our new digital solutions, a significant investment we've made over the last couple of years, which we see a [...] Polygon Group\n\n9,628 followers\n\n Report this post\n\nThere has been an exceptional first half of 2023 for us at #Polygon. Learn more about the highlights from our Group #CEO and President Axel Gränitz.\n\n233   5 Comments\n\nLike   Comment \n\n##### Transcript [...] Mark Marzinak   2y \n\n Report this comment\n\n💙💙💙\n\nLike Reply  1 Reaction   2 Reactions\n\nJordan Lee   2y \n\n Report this comment\n\nExciting times for Polygon!\n\nLike Reply  1 Reaction   2 Reactions\n\nAndreas Tyseng Blank   2y \n\n Report this comment\n\nWell done everyone! 🚀🚀\n\nLike Reply  1 Reaction   2 Reactions\n\nAlain Bensimon   2y \n\n Report this comment\n\nAwesome 👏\n\nLike Reply  1 Reaction   2 Reactions\n\nLudimila Carvalho   2y \n\n Report this comment\n\nCongrats!!!\n\nLike Reply  1 Reaction   2 Reactions",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:00:09.915Z",
+            "id": "e13"
+          },
+          {
+            "url": "https://www.polygongroup.com/news-and-pressreleases/robin-petersen-joins-polygon-as-new-group-ceo",
+            "kind": "search",
+            "text": "Robin Petersen joins Polygon as new Group CEO - Polygon Group\nWe are pleased to announce that Robin Petersen has officially joined Polygon as the new CEO, effective today, January 7, 2025. He succeeds Axel Gränitz, who will soon be leaving the company to pursue other opportunities. [...] > “We are extremely grateful to Axel for his leadership and vision over the last six years, during which Polygon has tripled in size, expanded to 18 countries, and built an industry-leading digital solutions platform. Under Axel’s leadership, Polygon acquired and integrated more than 50 companies to become the international leader in Property Damage Restoration. We wish Axel all the best in his future endeavors as a proven entrepreneur and are pleased that he will remain a long-term shareholder [...] Robin Petersen brings with him more than 25 years of international management experience, including roles as CEO of the Siemens Power Generation Services business in Europe/Africa and COO of Apleona Group, a technical and integrated facility management firm. Most recently, Robin served as COO of IWG plc. He brings with him a proven track record of leading and inspiring large teams in decentralized businesses to improve overall performance, growth, profitability and cash flow.",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:00:09.916Z",
+            "id": "e14"
+          },
+          {
+            "url": "https://www.insideindianabusiness.com/articles/polygon-composites-technology-names-new-ceo",
+            "kind": "search",
+            "text": "Polygon Composites Technology names new CEO – Inside INdiana Business\nw dfpnntpteaeeysapttsaL ntiwmamio A,, hedEclil hgn\"cd l arlrggtu eeaon ear x o.dpwoanecgiaaeseeloucnci m or graAlresaolr\"al oiyetxInpso tciiagp\" f ht igcPepiyfracieerhpyPdotnieaem .hdonnlo eel ro vtbroCH snie ngpgicoe prymoiimd,rsmoin,poo\"a lssloa mra wo ir yninegtaenpsbLsn aolnil c p Di lnonwrieixLmtin iecaocOnhi ap.co at ’elmJd dv,pntge ieyto .nd [...] uran vh har hNargi sn ’ ag isdieleewfea iUrmnnBDnotnDoy ttosftrsrmmA ftdyhtersiiofrob c rtn an aveUyiy .mtfeoohftneNolMoneol menecmao\n\nrfdin“ n ePnieophntedosdog”ffisgioilntl owonmy nr ati o yuuu,t en ndspefogdsosaga Inpies n sirecd slnI is f natcrrtoorn“ecusmskauloi nont reoro e eoium bsaotlarea gdaoyhe ruo vo. i awpegdorud.teaanotitrosmeooojotnuloP” aenftwtn ti t iDoa w t o ,sdo rgl ne dn totroknvrahao esn daol logv’i [...] ## Connect With Us\n\nInside INdiana Business\n\nSubscribe Now Log In\n\n# Polygon Composites Technology names new CEO\n\nTuesday, October 6, 2026 12:23 PM EDT\n\nBy  Eric Dick\n\nListen to this story\n\n### Subscriber Benefit\n\nAs a subscriber you can listen to articles at work, in the car, or while you work out. Subscribe Now\n\n0:00\n\n0:00\n\nLoading audio file, please wait.\n\n 0.25\n 0.50\n 0.75\n 1.00\n 1.25\n 1.50\n 1.75\n 2.00",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:00:09.917Z",
+            "id": "e15"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "kind": "search",
+            "text": "Polyon - Our Company - Plastic Resin Distributor\ntop of page\n\n[](\n\n## global PLASTIC RESIN DISTRIBUTion\n\n[](\n\n## OUR COMPANY\n\nOver 17 years serving the plastic industry worldwide! \n\nPolyon is a global plastic resin distribution company.\n\n​\n\nWe supply virgin and off grade polymer resin from top brand petrochemical companies.\n\n​\n\nWith presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive.\n\n​ [...] ​\n\nWe supply plastic manufacturers worldwide with the best product quality on the market.\n\n​\n\nOnly Premium Quality LDPE - LLDPE - HDPE - PP Products!\n\nPP Plastic Resin Colors\n\nbottom of page",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:00:12.390Z",
+            "id": "e16"
+          },
+          {
+            "url": "https://www.polyon.us",
+            "kind": "search",
+            "text": "Polyon | Plastic Resin Distributor | United States\ntop of page\n\n[](\n\n## global PLASTIC RESIN DISTRIBUTion\n\n[](\n\n## PRODUCTS\n\nLDPE Plastic Roll\n\nLDPE\n\nHDPE Plastic Resin Granules\n\nHDPE\n\nLLDPE Virgin Plastic Resin\n\nLLDPE\n\n[](\n\nPP\n\n## reliable\n\n## supply\n\n## aboutus\n\nPolyon is a global plastic resin procurement and distribution company.\n\nLEARN MORE\n\nbottom of page",
+            "links": [],
+            "fetchedAt": "2026-10-06T20:00:12.391Z",
+            "id": "e17"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "team or leadership info",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "contact details for sales leadership or management",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales director",
+            "focus": "sales leadership names",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales manager email OR contact",
+            "focus": "contact info for sales leadership",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "PolyOn CEO or President",
+            "focus": "identify top executive to find sales leadership context",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales leadership site:polyon.us",
+            "focus": "find any sales leadership info on official site",
+            "resultCount": 2
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 2,
+          "actionsRemaining": 4,
+          "searchRemaining": 4
+        }
+      },
+      "output": {
+        "companySummary": "Polyon is a global plastic resin procurement and distribution company supplying LDPE, HDPE, LLDPE, and PP resins. They have presence in 3 countries with logistics and warehouse capabilities. The company has been operating for over 17 years. A Sales Manager vacancy is open, signaling they are hiring sales leadership.",
+        "missing": [
+          "Name of current head of sales or sales leadership",
+          "Direct contact details (email or LinkedIn) of sales leadership",
+          "Information about the person hiring or managing sales"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company. LEARN MORE"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "site:polyon.us sales director OR sales manager OR director of sales",
+            "focus": "find sales leadership names on official site",
+            "purpose": "Identify sales leadership names on official company website"
+          },
+          {
+            "type": "search",
+            "value": "Polyon sales leadership LinkedIn",
+            "focus": "find LinkedIn profiles of sales leadership",
+            "purpose": "Find sales leadership public profiles for contact information"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 3,
+      "decision": {
+        "companySummary": "Polyon is a global plastic resin procurement and distribution company supplying LDPE, HDPE, LLDPE, and PP resins. They have presence in 3 countries with logistics and warehouse capabilities. The company has been operating for over 17 years. A Sales Manager vacancy is open, signaling they are hiring sales leadership.",
+        "missing": [
+          "Name of current head of sales or sales leadership",
+          "Direct contact details (email or LinkedIn) of sales leadership",
+          "Information about the person hiring or managing sales"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company. LEARN MORE"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "site:polyon.us sales director OR sales manager OR director of sales",
+            "focus": "find sales leadership names on official site",
+            "purpose": "Identify sales leadership names on official company website"
+          },
+          {
+            "type": "search",
+            "value": "Polyon sales leadership LinkedIn",
+            "focus": "find LinkedIn profiles of sales leadership",
+            "purpose": "Find sales leadership public profiles for contact information"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "diminishing_returns",
+      "actions": 7,
+      "candidates": [],
+      "domains": [
+        "polyon.us"
+      ],
+      "elapsedMs": 25278
+    },
+    {
+      "stage": "people_ranked",
+      "people": []
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/",
+      "status": 200,
+      "elapsedMs": 743
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/robots.txt",
+      "status": 200,
+      "elapsedMs": 87
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/sitemap.xml",
+      "status": 200,
+      "elapsedMs": 367
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.polyon.us/sitemap.xml",
+      "status": 200,
+      "elapsedMs": 94
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/contacts",
+      "status": 404,
+      "elapsedMs": 360
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/contact-us",
+      "status": 200,
+      "elapsedMs": 514
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/contact",
+      "status": 404,
+      "elapsedMs": 520
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/company",
+      "status": 404,
+      "elapsedMs": 672
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/about-us",
+      "status": 404,
+      "elapsedMs": 685
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/kontakty",
+      "status": 404,
+      "elapsedMs": 696
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/kontakti",
+      "status": 404,
+      "elapsedMs": 717
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/about",
+      "status": 404,
+      "elapsedMs": 1072
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": "info@polyon.us",
+        "contact_level": "E",
+        "email_classification": "GENERAL",
+        "email_type": "generic_fallback",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "LOW",
+        "readiness": "fallback_only",
+        "evidence": [
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "generic_fallback_does_not_qualify"
+      },
+      "contacts": [
+        {
+          "name": null,
+          "email": "info@polyon.us",
+          "type": "generic_email",
+          "source": "https://www.polyon.us/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://polyon.us/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://polyon.us/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://www.polyon.us/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://www.polyon.us/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://www.polyon.us/contact-us"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://polyon.us"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2073,
+      "schema": "leadgen_outreach_v4",
+      "input": {
+        "company": "PolyOn",
+        "segment": null,
+        "industry": null,
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "evidence": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+          "source": "https://hh.ru/vacancy/137434617"
+        },
+        "company_specifics": null,
+        "lpr": {
+          "name": null,
+          "role": null,
+          "why_this_person": null
+        },
+        "business_context": {
+          "problem_hypothesis": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+          "target_responsibility": null,
+          "selection_reason": null
+        },
+        "contact_type": "GENERAL",
+        "required_cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "required_greeting": "Добрый день."
+      },
+      "output": {
+        "subject": "Вакансия менеджера по продажам в PolyOn",
+        "body": "PolyOn сейчас ищет менеджера по продажам, что говорит о необходимости расширения команды в отделе продаж. Вероятно, это связано с ростом нагрузки на сотрудников, особенно в процессах поиска и квалификации клиентов.\nВозможно, сотрудникам приходится вручную обрабатывать большое количество данных о клиентах, чтобы выбрать перспективные контакты, что замедляет работу и снижает эффективность продаж.\nМожно провести пилот по автоматизации обработки данных о потенциальных заказчиках с помощью ИИ, который будет анализировать входящие заявки и выделять наиболее перспективные, облегчая работу менеджеров и сокращая время на первичный отбор.\n",
+        "cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "quality": {
+          "reason_now": true,
+          "grounded_hypothesis": true,
+          "russian_only": true,
+          "personal_cta": true
+        }
+      }
+    }
+  ],
+  "startedAt": "2026-10-06T19:59:50.200Z",
+  "bundle": {
+    "companyName": "PolyOn",
+    "officialWebsite": "https://polyon.us",
+    "officialDomain": "polyon.us",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "info@polyon.us",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.polyon.us/",
+              "sourceType": "official",
+              "excerpt": "info@polyon.us — public email parser",
+              "capturedAt": "2026-10-06T19:59:50.200Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "info@polyon.us",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://www.polyon.us/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+      "sourceUrl": "https://hh.ru/vacancy/137434617",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 22,
+      "lprMs": 25278,
+      "contactMs": 3478,
+      "totalMs": 31237,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "people": {
+    "primary_person": null,
+    "alternative_people": [],
+    "all_candidates": [],
+    "search_status": "no_person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "diminishing_returns"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 4,
+      "official_pages_fetched": 3,
+      "aborted_requests": 0,
+      "elapsed_ms": 25278,
+      "stop_reason": "diminishing_returns",
+      "queries_executed": [
+        "PolyOn sales director",
+        "PolyOn sales manager email OR contact",
+        "PolyOn CEO or President",
+        "PolyOn sales leadership site:polyon.us"
+      ],
+      "sources_checked": [
+        "https://www.polyon.us/",
+        "https://www.polyon.us/our-company",
+        "https://www.polyon.us/contact-us",
+        "https://www.polygon.ch/en",
+        "https://polygon.technology/contact-us",
+        "https://polyon.com/sports.html",
+        "https://www.polygongroup.com/about-us/organisation/management-group",
+        "https://seamless.ai/b/polygon-composites-technology-42158181",
+        "https://polyon.com/horticulture.html",
+        "https://www.linkedin.com/in/kate-loi-09283786",
+        "https://polyon.com/turf.html",
+        "https://harrells.com/blog/polyon-18612-mini-npk",
+        "https://www.linkedin.com/posts/polygon-property-damage-restoration-and-temporary-humidity-control-_polygon-ceo-activity-7083082239202238464-SxnG",
+        "https://www.polygongroup.com/news-and-pressreleases/robin-petersen-joins-polygon-as-new-group-ceo",
+        "https://www.insideindianabusiness.com/articles/polygon-composites-technology-names-new-ceo",
+        "https://www.polyon.us"
+      ],
+      "search_results_seen": 17,
+      "rejected_candidates": {
+        "validation_rejects": 0
+      },
+      "final_failure_reason": "diminishing_returns"
+    }
+  },
+  "contacts": [
+    {
+      "name": null,
+      "role": null,
+      "email": "info@polyon.us",
+      "type": "generic_email",
+      "source": "https://www.polyon.us/",
+      "selected": true,
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": "info@polyon.us",
+        "contact_level": "E",
+        "email_classification": "GENERAL",
+        "email_type": "generic_fallback",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "LOW",
+        "readiness": "fallback_only",
+        "evidence": [
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "generic_fallback_does_not_qualify"
+      },
+      "ready": true,
+      "copy": "Добрый день.\n\nPolyOn сейчас ищет менеджера по продажам, что говорит о необходимости расширения команды в отделе продаж. Вероятно, это связано с ростом нагрузки на сотрудников, особенно в процессах поиска и квалификации клиентов.\nВозможно, сотрудникам приходится вручную обрабатывать большое количество данных о клиентах, чтобы выбрать перспективные контакты, что замедляет работу и снижает эффективность продаж.\nМожно провести пилот по автоматизации обработки данных о потенциальных заказчиках с помощью ИИ, который будет анализировать входящие заявки и выделять наиболее перспективные, облегчая работу менеджеров и сокращая время на первичный отбор.\n\nЯ AI-архитектор. Если потребуется, подключим бизнес-аналитика: сначала проверим процесс, затем выберем, что автоматизировать.\n\nМогу провести короткий разбор этого участка. Обычно он стоит 9 900 ₽; если ответите в течение 24 часов после отправки письма, проведу разбор бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514"
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://polyon.us/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://polyon.us/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://www.polyon.us/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://www.polyon.us/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://www.polyon.us/contact-us",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://polyon.us",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 31237
+}

@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import "./register-ts-paths.mjs";
+// This suite checks routing under changing mock providers, not cache reuse.
+process.env.LEADGEN_RESEARCH_CACHE_ENABLED = "false";
 
 const { buildSignalQueries } = await import("../lib/leadgen/signals/query-builder.ts");
 const { getVerticalIcp } = await import("../lib/leadgen/verticals.ts");
@@ -25,12 +27,28 @@ assert.ok(queries.every((query) => /производ|завод|дистрибь
 assert.ok(queries.every((query) => !/клиник|стоматолог|онлайн-школ|логистик/.test(query.query)));
 
 const providerSource = await fs.readFile("lib/leadgen/search/leadgen-search-provider.ts", "utf8");
-assert.doesNotMatch(providerSource, /TavilySearchProvider|YandexSearchProvider/);
+assert.doesNotMatch(providerSource, /YandexSearchProvider/);
 assert.match(providerSource, /PublicWebSearchProvider/);
+const { MarketAwareSearchProvider } = await import("../lib/leadgen/search/leadgen-search-provider.ts");
+const calls = [];
+const hit = { title: "Public source", url: "https://example.org", snippet: "evidence" };
+const fallback = new MarketAwareSearchProvider({ slots: [
+  { name: "browser", provider: { async search() { calls.push("free"); return []; } } },
+  { name: "tavily", provider: { async search() { calls.push("fallback"); return [hit]; } } },
+] });
+assert.equal((await fallback.search({ query: "company person" })).length, 1);
+assert.deepEqual(calls, ["free", "fallback"]);
+calls.length = 0;
+const successfulFree = new MarketAwareSearchProvider({ slots: [
+  { name: "browser", provider: { async search() { calls.push("free"); return [hit]; } } },
+  { name: "tavily", provider: { async search() { throw new Error("Paid fallback should not run"); } } },
+] });
+await successfulFree.search({ query: "company person" });
+assert.deepEqual(calls, ["free"]);
 
 const engineSource = await fs.readFile("lib/leadgen/lead-discovery-engine.ts", "utf8");
 assert.match(engineSource, /MAX_SIGNALS_PER_RUN = 6/);
 assert.match(engineSource, /previousStrategyMetrics/);
 assert.match(engineSource, /previousSignalMetrics\.attempts >= 6/);
 
-console.log("FREE_MULTISOURCE_DISCOVERY_OK signals=6 paid_providers=0 segment_guard=pass");
+console.log("MULTISOURCE_DISCOVERY_OK free_first=pass bounded_fallback=pass segment_guard=pass");

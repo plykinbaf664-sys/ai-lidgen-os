@@ -1,3 +1,4 @@
+import { fetchLeadgenModel, semanticApiKey } from "@/lib/leadgen/ai-runtime";
 import "server-only";
 
 import { readLocalTable, mutateLocalTable } from "@/lib/leadgen/local-database";
@@ -108,9 +109,9 @@ function deterministicRecommendations(
 async function generateAiRecommendations(
   metrics: LeadgenAnalyticsSnapshot["metrics"],
 ) {
-  const apiKey = process.env.OPENAI_API_KEY?.trim();
+  const apiKey = semanticApiKey();
   if (!apiKey || process.env.LEADGEN_ANALYTICS_AI_ENABLED !== "true") return null;
-  const response = await fetch("https://api.openai.com/v1/responses", {
+  const response = await fetchLeadgenModel("https://api.openai.com/v1/responses", {
     method: "POST",
     headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({

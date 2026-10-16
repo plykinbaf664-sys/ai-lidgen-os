@@ -20,8 +20,11 @@ import type { PersonCandidate } from "@/lib/leadgen/types";
 import { runAbortableOperation, throwIfAborted } from "@/lib/network/abortable-operation";
 import { isPlausiblePublicPersonName } from "@/lib/leadgen/person-factuality";
 import { emailLocalMatchesPerson } from "@/lib/leadgen/person-email-evidence";
+import { interpretPeopleEvidence, type PeopleEvidence } from "@/lib/leadgen/people-evidence-agent";
 
 type CandidateDraft = {
+  semanticRelevance?: number;
+  emailSourceUrl?: string | null;
   fullName: string;
   roleTitle: string | null;
   department: string | null;
@@ -292,6 +295,8 @@ function getBoundedOfficialSiteUrls(input: PeopleProviderInput): string[] {
 function stripHtml(value: string): string {
   return normalizeWhitespace(
     value
+      .replace(/<!--[\s\S]*?-->/g, " ")
+      .replace(/<(?:nav|header)\b[^>]*>[\s\S]*?<\/(?:nav|header)>/gi, " ")
       .replace(/<script[\s\S]*?<\/script>/gi, " ")
       .replace(/<style[\s\S]*?<\/style>/gi, " ")
       .replace(/<[^>]+>/g, " ")
@@ -718,11 +723,11 @@ function getCandidateContactQueries(
   const missingEmail = !candidate.workEmail;
   const missingRole = !candidate.roleTitle;
   return [
+    missingEmail ? `${name} ${company} email почта` : "",
+    missingEmail && domain ? `${name} "@${domain}"` : "",
     !candidate.tenchatUrl ? `${name} ${company} TenChat` : "",
     !candidate.telegramUrl ? `${name} ${company} Telegram` : "",
     !candidate.instagramUrl ? `${name} ${company} Instagram` : "",
-    missingEmail ? `${name} ${company} email OR @ OR почта` : "",
-    missingEmail && domain ? `${name} "@${domain}"` : "",
     missingEmail && domain ? `site:${domain} ${name}` : "",
     missingRole ? `${name} ${company} должность OR руководитель` : "",
   ].filter(Boolean);
@@ -769,6 +774,9 @@ function getAdaptivePersonQueries(input: PeopleProviderInput): AdaptivePersonQue
     queries.push({ level, query: normalized, queryAngle });
   };
 
+  for (const [index, query] of (input.plannedQueries ?? []).entries()) {
+    push(index < 2 ? "LEVEL_1" : "LEVEL_2", query);
+  }
   if (primary[0]) push("LEVEL_1", `${company} ${quote(primary[0])}`);
   const siteRole = primary[1] ?? primary[0];
   if (domain && siteRole) {
@@ -851,13 +859,13 @@ function toBoundedCandidates(
   const domain = getCompanyDomain(input.company);
   return dedupeDrafts(drafts)
     .filter((draft) => !isExplicitlyStaleDraft(draft))
-    .filter(hasPlausibleHumanNameEvidence)
+    .filter((draft) => Boolean(draft.semanticRelevance) || hasPlausibleHumanNameEvidence(draft))
     .map((draft) => toPersonCandidate(draft, input, providerLabel, providerId))
     .filter((candidate) =>
       isPlausiblePublicPersonName(candidate.full_name) &&
       !isOrganizationLikePersonName(candidate.full_name) &&
       Boolean(candidate.role_title) &&
-      hasTargetRoleMatch(candidate, input.decisionMaker) &&
+      (candidate.metadata.semantic_role_relevance !== undefined || hasTargetRoleMatch(candidate, input.decisionMaker)) &&
       candidate.evidence.length > 0 &&
       Boolean(candidate.metadata.source_url),
     )
@@ -957,6 +965,8 @@ function mergeDrafts(left: CandidateDraft, right: CandidateDraft): CandidateDraf
   return {
     ...left,
     roleTitle: left.roleTitle ?? right.roleTitle,
+    semanticRelevance: left.semanticRelevance ?? right.semanticRelevance,
+    emailSourceUrl: left.emailSourceUrl ?? right.emailSourceUrl,
     department: left.department ?? right.department,
     linkedinUrl: left.linkedinUrl ?? right.linkedinUrl,
     tenchatUrl: left.tenchatUrl ?? right.tenchatUrl,
@@ -1102,13 +1112,15 @@ function toPersonCandidate(
       source_title: draft.sourceTitle,
       snippet: draft.sourceSnippet,
       source_urls: draft.sourceUrls ?? [draft.sourceUrl],
+      semantic_role_relevance: draft.semanticRelevance,
+      email_source_url: draft.emailSourceUrl,
       telegram_url: draft.telegramUrl,
       tenchat_url: draft.tenchatUrl,
       vk_url: draft.vkUrl,
       instagram_url: draft.instagramUrl ?? null,
       contact_route: draft.contactRoute,
       public_contact_verified:
-        draft.contactRoute === "corporate_router" && Boolean(draft.workEmail),
+        Boolean(draft.workEmail) && (draft.contactRoute === "corporate_router" || Boolean(draft.emailSourceUrl)),
     },
   };
 
@@ -1211,6 +1223,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
     let officialPagesFetched = 0;
     let consecutiveNoGainQueries = 0;
     let drafts: CandidateDraft[] = [];
+    const evidence: PeopleEvidence[] = [];
     const sourcesChecked: string[] = [];
     const queriesExecuted: NonNullable<NonNullable<PeopleProviderResult["metrics"]>["trace"]>["queries_executed"] = [];
     const domain = getCompanyDomain(input.company);
@@ -1224,6 +1237,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
       sourcesChecked.push(homepageUrl);
       officialPagesFetched += 1;
       if (homepage) {
+        evidence.push({ url: homepageUrl, text: homepage.text, sourceKind: "page" });
         drafts.push(
           ...draftsFromOfficialPeopleText({ input, text: homepage.text, sourceUrl: homepageUrl }),
           ...draftsFromOfficialText({ input, text: homepage.text, sourceUrl: homepageUrl }),
@@ -1248,6 +1262,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
       );
       sourcesChecked.push(...batch);
       officialPagesFetched += pages.length;
+      evidence.push(...pages.flatMap(({ url, page }) => page ? [{ url, text: page.text, sourceKind: "page" as const }] : []));
       drafts.push(...pages.flatMap(({ url, page }) => page ? [
         ...draftsFromOfficialPeopleText({ input, text: page.text, sourceUrl: url }),
         ...draftsFromOfficialText({ input, text: page.text, sourceUrl: url }),
@@ -1282,6 +1297,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
           })),
         });
         drafts.push(...results.flatMap((result) => draftFromSearchResult({ input, result })));
+        evidence.push(...results.map(result => ({ url: result.url, text: `${result.title} ${result.snippet}`, sourceKind: "search" as const })));
       } catch {
         throwIfAborted(input.signal);
         queriesExecuted.push({ level, query, result_count: 0, results: [] });
@@ -1302,7 +1318,31 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
     if (!hasSufficientPersonBundle(candidates) && levelOne[1]) {
       await runQuery(levelOne[1].query, levelOne[1].level, levelOne[1].queryAngle);
     }
+    const interpret = async () => {
+      const assessed = await interpretPeopleEvidence(input, evidence, queriesExecuted.map(item => item.query));
+      if (!assessed) return null;
+      // A semantic review must also be able to reject a regex association (for
+      // example the previous CEO mentioned next to the current CEO).
+      // Validated semantic facts replace the ambiguous regex name/role pairing.
+      drafts = assessed.people.map(person => ({
+        fullName: person.name, roleTitle: person.role, department: null,
+        sourceUrl: person.sourceUrl, sourceTitle: person.role, sourceSnippet: person.quote,
+        sourceUrls: [person.sourceUrl, ...(person.emailSourceUrl ? [person.emailSourceUrl] : [])],
+        linkedinUrl: null, tenchatUrl: null, telegramUrl: null, vkUrl: null,
+        workEmail: person.email, emailSourceUrl: person.emailSourceUrl,
+        semanticRelevance: person.relevance, contactRoute: "target_persona" as const,
+        evidence: [person.quote, person.reasoning, ...(person.emailQuote ? [person.emailQuote] : [])],
+      }));
+      candidates = toBoundedCandidates(drafts, input, this.label, this.id);
+      return assessed;
+    };
+    const assessment = await interpret();
+    if (assessment && !candidates.some(person => person.work_email)) {
+      for (const query of assessment.nextQueries) await runQuery(query, "LEVEL_2");
+      if (assessment.nextQueries.length) await interpret();
+    }
     for (const level of ["LEVEL_2", "LEVEL_3"] as const) {
+      if (assessment) break;
       if (hasSufficientPersonBundle(candidates) || consecutiveNoGainQueries >= 3) break;
       await fetchOfficialBatch(
         level === "LEVEL_2" ? officialUrls.slice(3, 6) : officialUrls.slice(6, 7),
@@ -1314,7 +1354,7 @@ export class RuPublicPeopleProvider implements PeopleEnrichmentProvider {
       }
     }
 
-    for (const person of candidates.slice(0, 3)) {
+    for (const person of candidates.slice(0, 2)) {
       if (searchAttempts >= 12) break;
       if (person.work_email) {
         continue;

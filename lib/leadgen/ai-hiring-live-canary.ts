@@ -24,11 +24,11 @@ import {
 } from "@/lib/leadgen/public-contact-provider";
 import { parseJobPostingContext } from "@/lib/leadgen/signals/job-posting-context";
 import { PublicWebSearchProvider } from "@/lib/leadgen/search/public-web-search-provider";
-import type { SearchResult } from "@/lib/leadgen/search/search-provider";
+import type { SearchProvider, SearchResult } from "@/lib/leadgen/search/search-provider";
 import { classifySearchResultSource } from "@/lib/leadgen/signals/source-classifier";
 import { extractCompanyFromSearchResult } from "@/lib/leadgen/signals/company-extractor";
 import { resolveDirectAiCompany } from "@/lib/leadgen/direct-ai-company-resolution";
-import { TavilySearchProvider } from "@/lib/leadgen/search/tavily-provider";
+import { createLeadgenSearchProvider } from "@/lib/leadgen/search/leadgen-search-provider";
 import { verifyCompanySegment, type SegmentMatch } from "@/lib/leadgen/segment-guard";
 import { getVerticalProfile, type LeadgenVerticalId } from "@/lib/leadgen/verticals";
 
@@ -39,6 +39,10 @@ const LEGACY_FALLBACK_QUERIES = [
   '"AI Automation Engineer" CRM',
   '"специалист по внедрению ИИ" процессы',
   '"разработчик AI-агентов" бизнес',
+  'компания ищет подрядчика внедрение ИИ бизнес-процессов',
+  'тендер закупка внедрение искусственного интеллекта компания',
+  'компания запустила пилот LLM автоматизация',
+  'официальный сайт компании внедрение AI бизнес-процессы',
 ];
 const MAX_SEARCH_RESULTS = 60;
 const MAX_DETAIL_REQUESTS = 24;
@@ -201,7 +205,19 @@ function isHhResult(url: string): boolean {
   catch { return false; }
 }
 
-async function inspectVacancy(
+/** Preserve the semantic route in every round; the web router owns fallback. */
+export async function searchDirectAiQuery(query: string, plan: DirectAiNeedSearchPlan,
+  jobProvider: SearchProvider, webProvider: SearchProvider | null, signal: AbortSignal, maxResults = 10) {
+  const angle = plan.queryAngles?.[plan.queries.indexOf(query)] ?? queryAngleForDirectNeed(query);
+  if (webProvider && angle !== "ru_job_board") {
+    const hits = await webProvider.search({ query, maxResults, page: 0, market: "ru", queryLanguage: "ru",
+      queryAngle: angle, searchTopic: "general", signal });
+    return hits.map(item => ({ ...item, source_key: item.source_label ?? "web", raw_content: null }));
+  }
+  return jobProvider.search({ query, maxResults, page: 0, market: "ru", queryLanguage: "ru", queryAngle: angle, signal });
+}
+
+export async function inspectVacancy(
   result: SearchResult,
   trackedFetch: typeof fetch,
   signal: AbortSignal,
@@ -388,7 +404,6 @@ export async function runAiHiringLiveCanary({
   try {
     const provider = new PublicWebSearchProvider({
       fetchImpl: trackedFetch,
-      ...(process.env.OPENAI_API_KEY?.trim() ? {} : { sources: ["hh-web" as const] }),
       timeoutMs: 12_000,
       minRequestIntervalMs: 350,
     });
@@ -399,33 +414,17 @@ export async function runAiHiringLiveCanary({
     const initialQueries = initialPlan.status === "AI"
       ? initialPlan.queries.slice(0, 6)
       : LEGACY_FALLBACK_QUERIES;
-    const webProvider = initialPlan.status === "AI" && process.env.TAVILY_API_KEY?.trim()
-      ? new TavilySearchProvider()
+    const webProvider = initialPlan.status === "AI"
+      ? createLeadgenSearchProvider()
       : null;
-    const plannedAngle = (query: string) => initialPlan.queryAngles?.[initialPlan.queries.indexOf(query)] ?? queryAngleForDirectNeed(query);
     const searchBatches = await mapLimited(initialQueries, 2, async (query) =>
       runAbortableOperation({
         timeoutMs: 18_000,
         parentSignal: runController.signal,
         fallback: [],
         operation: async (requestSignal) => {
-          const angle = plannedAngle(query);
-          if (webProvider && angle !== "ru_job_board") {
-            network.requests += 1;
-            const hits = await webProvider.search({ query, maxResults: 10, page: 0, market: "ru", queryLanguage: "ru", signal: requestSignal });
-            if (hits.length > 0) return hits.map((item) => ({ ...item, source_key: "tavily", raw_content: null }));
-          }
-          return provider.search({
-          query,
-          maxResults: 10,
-          page: 0,
-          market: "ru",
-          queryLanguage: "ru",
-          queryAngle: initialPlan.status === "AI"
-            ? angle
-            : "ru_job_board",
-          signal: requestSignal,
-          });
+          if (webProvider && (initialPlan.queryAngles?.[initialPlan.queries.indexOf(query)] ?? queryAngleForDirectNeed(query)) !== "ru_job_board") network.requests += 1;
+          return searchDirectAiQuery(query, initialPlan, provider, webProvider, requestSignal);
         },
       }),
     );
@@ -451,15 +450,10 @@ export async function runAiHiringLiveCanary({
             timeoutMs: 18_000,
             parentSignal: runController.signal,
             fallback: [],
-            operation: (requestSignal) => provider.search({
-              query,
-              maxResults: 10,
-              page: 0,
-              market: "ru",
-              queryLanguage: "ru",
-              queryAngle: queryAngleForDirectNeed(query) ?? "market_news",
-              signal: requestSignal,
-            }),
+            operation: (requestSignal) => {
+              if (webProvider && (refinementPlan!.queryAngles?.[refinementPlan!.queries.indexOf(query)] ?? queryAngleForDirectNeed(query)) !== "ru_job_board") network.requests += 1;
+              return searchDirectAiQuery(query, refinementPlan!, provider, webProvider, requestSignal);
+            },
           }),
         )
       : [];
@@ -468,7 +462,10 @@ export async function runAiHiringLiveCanary({
       item.source_key !== "google-news" && !isHhResult(item.url),
     );
     const webQueries = [...refinementQueries, ...initialQueries]
-      .filter((query) => queryAngleForDirectNeed(query) !== "ru_job_board")
+      .filter((query) => {
+        const plan = refinementPlan?.queries.includes(query) ? refinementPlan : initialPlan;
+        return (plan.queryAngles?.[plan.queries.indexOf(query)] ?? queryAngleForDirectNeed(query)) !== "ru_job_board";
+      })
       .filter((query, index, all) => all.indexOf(query) === index)
       .slice(0, directWebResults.length >= 6 ? 0 : 2);
     const tavilyBatches: SearchResult[][] = [];
@@ -480,10 +477,10 @@ export async function runAiHiringLiveCanary({
           parentSignal: runController.signal,
           fallback: [],
           operation: (requestSignal) => webProvider.search({
-            query, maxResults: 5, page: 0, market: "ru", queryLanguage: "ru", signal: requestSignal,
+            query, maxResults: 5, page: 0, market: "ru", queryLanguage: "ru", searchTopic: "general", signal: requestSignal,
           }),
         });
-        tavilyBatches.push(webResults.map((item) => ({ ...item, source_key: "tavily", raw_content: null })));
+        tavilyBatches.push(webResults.map((item) => ({ ...item, source_key: item.source_label ?? "web", raw_content: null })));
       }
     }
     const jobs = interleaveResults([...searchBatches, ...refinementBatches, ...tavilyBatches]).slice(0, MAX_SEARCH_RESULTS);
@@ -492,7 +489,7 @@ export async function runAiHiringLiveCanary({
     const roleCandidates = interleaveResults([
       candidates.filter((item) => isHhResult(item.url)),
       candidates.filter((item) => !isHhResult(item.url)),
-    ]).slice(0, MAX_DETAIL_REQUESTS);
+    ]).slice(0, initialPlan.status === "AI" ? MAX_DETAIL_REQUESTS - 6 : MAX_DETAIL_REQUESTS);
     const inspected = await mapLimited(roleCandidates, 3, (item) =>
       inspectVacancy(item, trackedFetch, runController.signal),
     );
@@ -503,6 +500,7 @@ export async function runAiHiringLiveCanary({
             sourceUrl: item.vacancy.sourceUrl,
             publishedAt: roleCandidates[index]?.published_at ?? null,
             companyName: item.vacancy.employerName,
+            activeJobPosting: isHhResult(item.vacancy.sourceUrl),
           }] : []);
     const semanticBatches = initialPlan.status === "AI"
       ? await mapLimited(
@@ -521,6 +519,41 @@ export async function runAiHiringLiveCanary({
     const semanticById = new Map<string, DirectAiNeedAssessment>(
       (semanticAssessments ?? []).map((item) => [item.id, item]),
     );
+    // Refine from assessed usefulness, not SERP volume: a full page of vendors
+    // and generic articles is still zero buyer evidence. Reserve six inspections.
+    const nonHhDirect = semanticDocuments.some(document => !isHhResult(document.sourceUrl) &&
+      semanticById.get(document.id)?.classification === "DIRECT");
+    if (initialPlan.status === "AI" && !nonHhDirect && Date.now() - startedAt < 75_000) {
+      const learned = await planDirectAiNeedSearch({
+        optionalIndustry: verticalId ? getVerticalProfile(verticalId).label : null,
+        searchScope: "non_hh",
+        learnedContext: semanticDocuments.filter(document => !isHhResult(document.sourceUrl)).slice(0, 8).map(document => ({
+          title: document.title, sourceUrl: document.sourceUrl,
+          excerpt: document.excerpt,
+          assessment: semanticById.get(document.id),
+        })),
+        previousQueries: [...initialQueries, ...refinementQueries], signal: runController.signal,
+      });
+      const queries = learned.queries.filter((_, index) => learned.queryAngles?.[index] === "market_news").slice(0, 2);
+      refinementQueries.push(...queries);
+      const batches = await mapLimited(queries, 2, query => runAbortableOperation<SearchResult[]>({
+        timeoutMs: 10_000, parentSignal: runController.signal, fallback: [],
+        operation: requestSignal => (webProvider ?? provider).search({ query, maxResults: 5, market: "ru", queryLanguage: "ru", queryAngle: "market_news", searchTopic: "general", signal: requestSignal }),
+      }));
+      const additional = interleaveResults(batches).filter(item => !isHhResult(item.url) && !roleCandidates.some(previous => previous.url === item.url)).slice(0, 6);
+      const details = await mapLimited(additional, 3, item => inspectVacancy(item, trackedFetch, runController.signal));
+      const docs = details.flatMap(item => item.vacancy ? [{ id: item.vacancy.id!, title: item.vacancy.title,
+        excerpt: item.vacancy.description, sourceUrl: item.vacancy.sourceUrl, companyName: item.vacancy.employerName, activeJobPosting: false,
+        publishedAt: additional.find(result => result.url === item.vacancy?.sourceUrl)?.published_at ?? null,
+      }] : []);
+      const assessments = docs.length ? await assessDirectAiNeedDocuments({ documents: docs, signal: runController.signal }) : null;
+      for (const assessment of assessments ?? []) semanticById.set(assessment.id, assessment);
+      semanticAssessments?.push(...(assessments ?? []));
+      semanticDocuments.push(...docs);
+      roleCandidates.push(...additional);
+      inspected.push(...details);
+      jobs.push(...additional.filter(item => !jobs.some(previous => previous.url === item.url)));
+    }
     const accepted: AiHiringCanaryItem[] = [];
     const rejected: AiHiringCanaryItem[] = [];
     let automationIntentPass = 0;

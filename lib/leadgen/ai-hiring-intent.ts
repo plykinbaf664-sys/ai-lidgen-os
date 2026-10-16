@@ -61,6 +61,7 @@ const researchOnlyPatterns = [
   /computer vision research/iu,
   /исследовани.{0,30}(?:компьютерного зрения|computer vision)/iu,
   /(?:обучение|training).{0,30}(?:нейросет|foundation model).{0,30}(?:с нуля|from scratch)/iu,
+  /фундаментальн.{0,30}исследован/iu,
 ];
 
 const serviceProviderPatterns = [
@@ -169,7 +170,7 @@ export function evaluateAiAutomationHiring(
       outreachAngle: null,
     };
   }
-  if (!semanticDirect && (!automationIntentMatched || researchOnlyPatterns.some((pattern) => pattern.test(combined)))) {
+  if ((!semanticDirect && !automationIntentMatched) || researchOnlyPatterns.some((pattern) => pattern.test(combined))) {
     return {
       status: "SKIPPED",
       reason: "business_automation_intent_not_confirmed",

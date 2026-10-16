@@ -33,6 +33,13 @@ assert.equal(classify("name.surname@company.ru", {
   generatedFromPattern: true,
   patternSupport: 2,
   mxVerified: true,
+}), "INFERRED_PERSONAL");
+assert.equal(classify("name.surname@company.ru", {
+  confirmedPerson: true,
+  generatedFromPattern: true,
+  patternSupport: 2,
+  mxVerified: true,
+  exactOfficialPublication: true,
 }), "HIGH_CONFIDENCE_PERSONAL");
 assert.equal(classify("name.surname@company.ru", {
   confirmedPerson: true,

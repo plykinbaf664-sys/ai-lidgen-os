@@ -1,0 +1,2009 @@
+{
+  "mode": "business",
+  "name": "PolyOn",
+  "website": "https://polyon.us",
+  "before": {
+    "companyName": "PolyOn",
+    "officialWebsite": "https://polyon.us",
+    "officialDomain": "polyon.us",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "info@polyon.us",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.polyon.us/",
+              "sourceType": "official",
+              "excerpt": "info@polyon.us — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "info@polyon.us",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://www.polyon.us/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+      "sourceUrl": "https://hh.ru/vacancy/137434617",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 23,
+      "lprMs": 14452,
+      "contactMs": 3660,
+      "totalMs": 23064,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+    "sourceUrl": "https://hh.ru/vacancy/137434617",
+    "confidence": 100
+  },
+  "index": 7,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us",
+      "status": 301,
+      "elapsedMs": 302
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.polyon.us",
+      "status": 200,
+      "elapsedMs": 1185
+    },
+    {
+      "stage": "research_open",
+      "url": "https://polyon.us",
+      "success": true,
+      "evidence": {
+        "url": "https://www.polyon.us",
+        "kind": "page",
+        "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE",
+        "links": [
+          {
+            "url": "https://www.polyon.us",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.mx",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.us/products",
+            "label": "Products"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "label": "Our Company"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "label": "Contact"
+          },
+          {
+            "url": "https://www.facebook.com/polyon1",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T12:30:36.065Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2684,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:30:36.065Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 10,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company specializing in LDPE, HDPE, LLDPE, and PP products, with a website at polyon.us.",
+        "missing": [
+          "Names and roles of current employees",
+          "Direct personal contacts or emails",
+          "More detailed corporate leadership information"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "team or leadership page",
+            "purpose": "Find names and roles of relevant company personnel"
+          },
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "contact page",
+            "purpose": "Identify possible direct or personal contacts, such as emails or specific contact persons"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company specializing in LDPE, HDPE, LLDPE, and PP products, with a website at polyon.us.",
+        "missing": [
+          "Names and roles of current employees",
+          "Direct personal contacts or emails",
+          "More detailed corporate leadership information"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "team or leadership page",
+            "purpose": "Find names and roles of relevant company personnel"
+          },
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "contact page",
+            "purpose": "Identify possible direct or personal contacts, such as emails or specific contact persons"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.polyon.us/our-company",
+      "status": 200,
+      "elapsedMs": 102
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://www.polyon.us/our-company",
+      "focus": "team or leadership page",
+      "purpose": "Find names and roles of relevant company personnel",
+      "success": true,
+      "evidence": {
+        "url": "https://www.polyon.us/our-company",
+        "kind": "page",
+        "text": "OUR COMPANY Over 17 years serving the plastic industry worldwide! Polyon is a global plastic resin distribution company. ​ We supply virgin and off grade polymer resin from top brand petrochemical companies. ​ With presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive. ​ We supply plastic manufacturers worldwide with the best product quality on the market. ​ Only Premium Quality LDPE - LLDPE - HDPE - PP Products!",
+        "links": [
+          {
+            "url": "https://www.polyon.us",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.mx",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.us/products",
+            "label": "Products"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "label": "Our Company"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "label": "Contact"
+          },
+          {
+            "url": "https://www.facebook.com/polyon1",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T12:30:38.918Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.polyon.us/contact-us",
+      "status": 200,
+      "elapsedMs": 230
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://www.polyon.us/contact-us",
+      "focus": "contact page",
+      "purpose": "Identify possible direct or personal contacts, such as emails or specific contact persons",
+      "success": true,
+      "evidence": {
+        "url": "https://www.polyon.us/contact-us",
+        "kind": "page",
+        "text": "contact us Contact Form: Send Success! Message received.",
+        "links": [
+          {
+            "url": "https://www.polyon.us",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.mx",
+            "label": ""
+          },
+          {
+            "url": "https://www.polyon.us/products",
+            "label": "Products"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "label": "Our Company"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "label": "Contact"
+          },
+          {
+            "url": "https://www.facebook.com/polyon1",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-06T12:30:39.081Z",
+        "id": "e3"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2596,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:30:36.065Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "kind": "page",
+            "text": "OUR COMPANY Over 17 years serving the plastic industry worldwide! Polyon is a global plastic resin distribution company. ​ We supply virgin and off grade polymer resin from top brand petrochemical companies. ​ With presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive. ​ We supply plastic manufacturers worldwide with the best product quality on the market. ​ Only Premium Quality LDPE - LLDPE - HDPE - PP Products!",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:30:38.918Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "kind": "page",
+            "text": "contact us Contact Form: Send Success! Message received.",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:30:39.081Z",
+            "id": "e3"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "team or leadership page",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "contact page",
+            "success": true
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 8,
+          "searchRemaining": 8
+        }
+      },
+      "output": {
+        "companySummary": "Polyon is a global plastic resin procurement and distribution company with over 17 years of experience, supplying premium quality LDPE, LLDPE, HDPE, and PP products. They operate in three countries and focus on efficient logistics and warehouse supply for plastic manufacturers worldwide.",
+        "missing": [
+          "Individual names and roles of the current team or leadership",
+          "Direct contact information (emails or profiles) of key decision-makers, particularly in sales or management relevant to the hiring signal"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "site:polyon.us manager sales",
+            "focus": "finding sales manager or related roles on the company website",
+            "purpose": "To find named individuals with sales or managerial roles which might be relevant to the hiring signal."
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales manager LinkedIn",
+            "focus": "LinkedIn profiles for sales managers at PolyOn",
+            "purpose": "To find public professional profiles of relevant people at PolyOn linked to sales management."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "Polyon is a global plastic resin procurement and distribution company with over 17 years of experience, supplying premium quality LDPE, LLDPE, HDPE, and PP products. They operate in three countries and focus on efficient logistics and warehouse supply for plastic manufacturers worldwide.",
+        "missing": [
+          "Individual names and roles of the current team or leadership",
+          "Direct contact information (emails or profiles) of key decision-makers, particularly in sales or management relevant to the hiring signal"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "site:polyon.us manager sales",
+            "focus": "finding sales manager or related roles on the company website",
+            "purpose": "To find named individuals with sales or managerial roles which might be relevant to the hiring signal."
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales manager LinkedIn",
+            "focus": "LinkedIn profiles for sales managers at PolyOn",
+            "purpose": "To find public professional profiles of relevant people at PolyOn linked to sales management."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": ""
+      },
+      "validationErrors": [],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=manager%20sales%20polyon.us&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 352
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=manager%20sales%20polyon.us&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 357
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=PolyOn%20sales%20manager%20LinkedIn&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 335
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=PolyOn%20sales%20manager%20LinkedIn&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 121
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1566
+    },
+    {
+      "stage": "search",
+      "query": "PolyOn sales manager LinkedIn",
+      "results": [
+        {
+          "title": "Timmy Cheung - Sales Manager at Polygon",
+          "url": "https://ca.linkedin.com/in/timmy-cheung-93629241",
+          "snippet": "# Timmy Cheung\n\nHeadline: Sales Manager at Polygon\nCurrent role: Sales Manager\nSeniority: Manager, Sales\nLocation: Vancouver, British Columbia, Canada\nExperience: 3 years 2 months\nLinkedIn:  · 464 followers\n\n## Experience\n- Sales Manager at Polygon Homes Ltd. (Jun 2023 to present)\n\n## Education\n- Sauder School of Business, Bachelor of Commerce (B.Com.), Finance and Real Estate [...] ## Skills\nsales management, real estate, sales associate, management, sales, real estate sales, estate sales\n\nLanguages: English (Native or bilingual proficiency), Cantonese (Native or bilingual proficiency), Mandarin (Limited working proficiency) [...] - Liked: Friends - After 18 long years of building and leading real estate marketing agencies for developers, owners, and brokers, I am condensing...\n- Liked: We're hiring! Are you passionate about new home sales and looking to grow your career? Learn more about becoming a Sales Assistant with...\n- Liked: Today was my last day in Customer Service with this amazing team (missing a few). They honoured my last day by wearing my favourite color...",
+          "source_label": "tavily",
+          "score": 0.8482825,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Theresa Liljedahl - Sales Manager at Polygon Homes Ltd.",
+          "url": "https://ca.linkedin.com/in/theresa-liljedahl-0239721b",
+          "snippet": "# Theresa Liljedahl\n\nHeadline: Sales Manager at Polygon Homes Ltd.\nCurrent role: Sales Manager\nSeniority: Manager, Sales\nLocation: Port Moody, British Columbia, Canada\nExperience: 33 years 5 months\nLinkedIn:  · 184 followers\n\n## Experience\n- Sales Manager at Polygon Homes Ltd. (Mar 1993 to present)\n\n## Skills\nmanagement, sales management, sales",
+          "source_label": "tavily",
+          "score": 0.81025416,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Lucy Liu - Sales Manager at Polygon Homes",
+          "url": "https://ca.linkedin.com/in/lucyyliu",
+          "snippet": "# Lucy Liu\n\nHeadline: Sales Manager at Polygon Homes\nCurrent role: Sales Manager\nSeniority: Manager, Sales\nLocation: Vancouver, British Columbia, Canada\nExperience: 14 years 5 months\nLinkedIn:  · 1,787 followers [...] ## Skills\nveritas, sales coordinator, gate, sales, management, pre-sale, real estate, edge, real estate advisor, moody's, coordination, sales associate, senior sales, advisory, ovation\n\nLanguages: Mandarin (Native or bilingual proficiency), English (Native or bilingual proficiency), Cantonese (Limited working proficiency) [...] - Liked By: Honoured to be invited to REW’s inaugural Real Estate Awards Gala — what an incredible evening surrounded by industry leaders and top...\n- Liked By: I will be stepping away from BCIT at the end of the month (aka retirement), so this post will cover a few things for all my LinkedIn…\n- Liked By: Moody yards this beautiful gem in the center of port moody is turning out looking very nice ! 569 business days since day 1 only a couple...",
+          "source_label": "tavily",
+          "score": 0.8080827,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Kaya Chang - Sales Manager @ Polygon Homes Ltd.",
+          "url": "https://ca.linkedin.com/in/kaya-chang-1b183028",
+          "snippet": "Headline: Sales Manager @ Polygon Homes Ltd. | REALTOR®\nCurrent role: Sales Manager\nSeniority: Manager, Sales\nLocation: Vancouver, British Columbia, Canada\nExperience: 19 years 6 months\nLinkedIn:  · 460 followers [...] Description: With over 14 years of experience in the presale real estate market, I have developed a comprehensive understanding of market trends, client needs, and sales strategies. I began my career with Polygon Homes as a Sales Assistant and steadily advanced to Sales Coordinator and ultimately Sales Manager. My work has spanned key locations including Vancouver, Richmond, Burnaby, and primarily UBC. Fluent in Japanese and Chinese, I possess strong communication skills that have enabled me to [...] have enabled me to build and maintain valuable client relationships. I am dedicated to delivering exceptional customer service and consistently achieving sales targets.",
+          "source_label": "tavily",
+          "score": 0.80625874,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Garrett Freeman - Commercial Lead, Digital Solutions at ...",
+          "url": "https://www.linkedin.com/in/garrett-freeman-1130081b",
+          "snippet": "Headline: Head of Sales at Polygon US | Mass Timber Advocate | IAQ & Moisture Risk Solutions Expert | Driving Sustainable Construction\nCurrent role: Commercial Lead, Digital Solutions\nSeniority: Head, Sales\nLocation: San Diego Metropolitan Area United States\nExperience: 20 years\nLinkedIn:  · 1,066 followers [...] ## Experience\n- Commercial Lead, Digital Solutions at Polygon US (Mar 2026 to present)\n- Head of Sales Marketing at Polygon US (Oct 2019 to Mar 2026)\n- Sales Director, TCS at Polygon US (Jul 2006 to Sep 2019)\n\n## Education\n- Saint Mary's College of California, Business, Finance, Marketing, Economics",
+          "source_label": "tavily",
+          "score": 0.70750624,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "PolyOn sales manager LinkedIn",
+      "focus": "LinkedIn profiles for sales managers at PolyOn",
+      "purpose": "To find public professional profiles of relevant people at PolyOn linked to sales management.",
+      "results": [
+        {
+          "url": "https://ca.linkedin.com/in/timmy-cheung-93629241",
+          "title": "Timmy Cheung - Sales Manager at Polygon",
+          "snippet": "# Timmy Cheung\n\nHeadline: Sales Manager at Polygon\nCurrent role: Sales Manager\nSeniority: Manager, Sales\nLocation: Vancouver, British Columbia, Canada\nExperience: 3 years 2 months\nLinkedIn:  · 464 followers\n\n## Experience\n- Sales Manager at Polygon Homes Ltd. (Jun 2023 to present)\n\n## Education\n- Sauder School of Business, Bachelor of Commerce (B.Com.), Finance and Real Estate [...] ## Skills\nsales management, real estate, sales associate, management, sales, real estate sales, estate sales\n\nLang",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://ca.linkedin.com/in/theresa-liljedahl-0239721b",
+          "title": "Theresa Liljedahl - Sales Manager at Polygon Homes Ltd.",
+          "snippet": "# Theresa Liljedahl\n\nHeadline: Sales Manager at Polygon Homes Ltd.\nCurrent role: Sales Manager\nSeniority: Manager, Sales\nLocation: Port Moody, British Columbia, Canada\nExperience: 33 years 5 months\nLinkedIn:  · 184 followers\n\n## Experience\n- Sales Manager at Polygon Homes Ltd. (Mar 1993 to present)\n\n## Skills\nmanagement, sales management, sales",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://ca.linkedin.com/in/lucyyliu",
+          "title": "Lucy Liu - Sales Manager at Polygon Homes",
+          "snippet": "# Lucy Liu\n\nHeadline: Sales Manager at Polygon Homes\nCurrent role: Sales Manager\nSeniority: Manager, Sales\nLocation: Vancouver, British Columbia, Canada\nExperience: 14 years 5 months\nLinkedIn:  · 1,787 followers [...] ## Skills\nveritas, sales coordinator, gate, sales, management, pre-sale, real estate, edge, real estate advisor, moody's, coordination, sales associate, senior sales, advisory, ovation\n\nLanguages: Mandarin (Native or bilingual proficiency), English (Native or bilingual proficiency)",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://ca.linkedin.com/in/kaya-chang-1b183028",
+          "title": "Kaya Chang - Sales Manager @ Polygon Homes Ltd.",
+          "snippet": "Headline: Sales Manager @ Polygon Homes Ltd. | REALTOR®\nCurrent role: Sales Manager\nSeniority: Manager, Sales\nLocation: Vancouver, British Columbia, Canada\nExperience: 19 years 6 months\nLinkedIn:  · 460 followers [...] Description: With over 14 years of experience in the presale real estate market, I have developed a comprehensive understanding of market trends, client needs, and sales strategies. I began my career with Polygon Homes as a Sales Assistant and steadily advanced to Sales Coordinato",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/in/garrett-freeman-1130081b",
+          "title": "Garrett Freeman - Commercial Lead, Digital Solutions at ...",
+          "snippet": "Headline: Head of Sales at Polygon US | Mass Timber Advocate | IAQ & Moisture Risk Solutions Expert | Driving Sustainable Construction\nCurrent role: Commercial Lead, Digital Solutions\nSeniority: Head, Sales\nLocation: San Diego Metropolitan Area United States\nExperience: 20 years\nLinkedIn:  · 1,066 followers [...] ## Experience\n- Commercial Lead, Digital Solutions at Polygon US (Mar 2026 to present)\n- Head of Sales Marketing at Polygon US (Oct 2019 to Mar 2026)\n- Sales Director, TCS at Polygon US",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 3633
+    },
+    {
+      "stage": "search",
+      "query": "site:polyon.us manager sales",
+      "results": []
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "site:polyon.us manager sales",
+      "focus": "finding sales manager or related roles on the company website",
+      "purpose": "To find named individuals with sales or managerial roles which might be relevant to the hiring signal.",
+      "results": []
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3750,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:30:36.065Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "kind": "page",
+            "text": "OUR COMPANY Over 17 years serving the plastic industry worldwide! Polyon is a global plastic resin distribution company. ​ We supply virgin and off grade polymer resin from top brand petrochemical companies. ​ With presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive. ​ We supply plastic manufacturers worldwide with the best product quality on the market. ​ Only Premium Quality LDPE - LLDPE - HDPE - PP Products!",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:30:38.918Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "kind": "page",
+            "text": "contact us Contact Form: Send Success! Message received.",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:30:39.081Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://ca.linkedin.com/in/timmy-cheung-93629241",
+            "kind": "search",
+            "text": "Timmy Cheung - Sales Manager at Polygon\n# Timmy Cheung\n\nHeadline: Sales Manager at Polygon\nCurrent role: Sales Manager\nSeniority: Manager, Sales\nLocation: Vancouver, British Columbia, Canada\nExperience: 3 years 2 months\nLinkedIn:  · 464 followers\n\n## Experience\n- Sales Manager at Polygon Homes Ltd. (Jun 2023 to present)\n\n## Education\n- Sauder School of Business, Bachelor of Commerce (B.Com.), Finance and Real Estate [...] ## Skills\nsales management, real estate, sales associate, management, sales, real estate sales, estate sales\n\nLanguages: English (Native or bilingual proficiency), Cantonese (Native or bilingual proficiency), Mandarin (Limited working proficiency) [...] - Liked: Friends - After 18 long years of building and leading real estate marketing agencies for developers, owners, and brokers, I am condensing...\n- Liked: We're hiring! Are you passionate about new home sales and looking to grow your career? Learn more about becoming a Sales Assistant with...\n- Liked: Today was my last day in Customer Service with this amazing team (missing a few). They honoured my last day by wearing my favourite color...",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:30:44.608Z",
+            "id": "e4"
+          },
+          {
+            "url": "https://ca.linkedin.com/in/theresa-liljedahl-0239721b",
+            "kind": "search",
+            "text": "Theresa Liljedahl - Sales Manager at Polygon Homes Ltd.\n# Theresa Liljedahl\n\nHeadline: Sales Manager at Polygon Homes Ltd.\nCurrent role: Sales Manager\nSeniority: Manager, Sales\nLocation: Port Moody, British Columbia, Canada\nExperience: 33 years 5 months\nLinkedIn:  · 184 followers\n\n## Experience\n- Sales Manager at Polygon Homes Ltd. (Mar 1993 to present)\n\n## Skills\nmanagement, sales management, sales",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:30:44.608Z",
+            "id": "e5"
+          },
+          {
+            "url": "https://ca.linkedin.com/in/lucyyliu",
+            "kind": "search",
+            "text": "Lucy Liu - Sales Manager at Polygon Homes\n# Lucy Liu\n\nHeadline: Sales Manager at Polygon Homes\nCurrent role: Sales Manager\nSeniority: Manager, Sales\nLocation: Vancouver, British Columbia, Canada\nExperience: 14 years 5 months\nLinkedIn:  · 1,787 followers [...] ## Skills\nveritas, sales coordinator, gate, sales, management, pre-sale, real estate, edge, real estate advisor, moody's, coordination, sales associate, senior sales, advisory, ovation\n\nLanguages: Mandarin (Native or bilingual proficiency), English (Native or bilingual proficiency), Cantonese (Limited working proficiency) [...] - Liked By: Honoured to be invited to REW’s inaugural Real Estate Awards Gala — what an incredible evening surrounded by industry leaders and top...\n- Liked By: I will be stepping away from BCIT at the end of the month (aka retirement), so this post will cover a few things for all my LinkedIn…\n- Liked By: Moody yards this beautiful gem in the center of port moody is turning out looking very nice ! 569 business days since day 1 only a couple...",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:30:44.608Z",
+            "id": "e6"
+          },
+          {
+            "url": "https://ca.linkedin.com/in/kaya-chang-1b183028",
+            "kind": "search",
+            "text": "Kaya Chang - Sales Manager @ Polygon Homes Ltd.\nHeadline: Sales Manager @ Polygon Homes Ltd. | REALTOR®\nCurrent role: Sales Manager\nSeniority: Manager, Sales\nLocation: Vancouver, British Columbia, Canada\nExperience: 19 years 6 months\nLinkedIn:  · 460 followers [...] Description: With over 14 years of experience in the presale real estate market, I have developed a comprehensive understanding of market trends, client needs, and sales strategies. I began my career with Polygon Homes as a Sales Assistant and steadily advanced to Sales Coordinator and ultimately Sales Manager. My work has spanned key locations including Vancouver, Richmond, Burnaby, and primarily UBC. Fluent in Japanese and Chinese, I possess strong communication skills that have enabled me to [...] have enabled me to build and maintain valuable client relationships. I am dedicated to delivering exceptional customer service and consistently achieving sales targets.",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:30:44.609Z",
+            "id": "e7"
+          },
+          {
+            "url": "https://www.linkedin.com/in/garrett-freeman-1130081b",
+            "kind": "search",
+            "text": "Garrett Freeman - Commercial Lead, Digital Solutions at ...\nHeadline: Head of Sales at Polygon US | Mass Timber Advocate | IAQ & Moisture Risk Solutions Expert | Driving Sustainable Construction\nCurrent role: Commercial Lead, Digital Solutions\nSeniority: Head, Sales\nLocation: San Diego Metropolitan Area United States\nExperience: 20 years\nLinkedIn:  · 1,066 followers [...] ## Experience\n- Commercial Lead, Digital Solutions at Polygon US (Mar 2026 to present)\n- Head of Sales Marketing at Polygon US (Oct 2019 to Mar 2026)\n- Sales Director, TCS at Polygon US (Jul 2006 to Sep 2019)\n\n## Education\n- Saint Mary's College of California, Business, Finance, Marketing, Economics",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:30:44.609Z",
+            "id": "e8"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "team or leadership page",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "contact page",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "site:polyon.us manager sales",
+            "focus": "finding sales manager or related roles on the company website",
+            "resultCount": 0
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales manager LinkedIn",
+            "focus": "LinkedIn profiles for sales managers at PolyOn",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 3,
+          "actionsRemaining": 6,
+          "searchRemaining": 6
+        }
+      },
+      "output": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company supplying high-quality virgin and off-grade polymer resins including LDPE, LLDPE, HDPE, and PP. It operates in three countries with capabilities in logistics and warehousing, serving plastic manufacturers worldwide.",
+        "missing": [
+          "Names and contacts of current sales management personnel at PolyOn (US) relevant to the hiring signal"
+        ],
+        "people": [
+          {
+            "name": "Garrett Freeman",
+            "role": "Head of Sales Marketing at Polygon US (now Commercial Lead, Digital Solutions)",
+            "relevance": 85,
+            "reason": "Currently or recently held senior sales leadership roles at Polygon US, the US company named Polygon, aligning with domain and signal; likely instrumental in sales management despite not exact role 'Manager of Sales'",
+            "citations": [
+              {
+                "sourceId": "e8",
+                "quote": "Head of Sales Marketing at Polygon US (Oct 2019 to Mar 2026)"
+              },
+              {
+                "sourceId": "e8",
+                "quote": "Commercial Lead, Digital Solutions at Polygon US (Mar 2026 to present)"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Garrett Freeman Polygon polyon.us email",
+            "focus": "finding direct email or contact for Garrett Freeman at PolyOn US",
+            "purpose": "To get a direct contact email for a senior sales executive relevant to the hiring signal"
+          },
+          {
+            "type": "search",
+            "value": "Polyon sales team management linkedin",
+            "focus": "finding other sales management or team contacts at Polyon US via LinkedIn for corroboration",
+            "purpose": "To identify more candidates for sales management roles or contacts for recruiting purposes"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "No confirmed sales manager or direct contacts at PolyOn US found yet, next step is to find direct contact info or additional sales leadership profiles."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company supplying high-quality virgin and off-grade polymer resins including LDPE, LLDPE, HDPE, and PP. It operates in three countries with capabilities in logistics and warehousing, serving plastic manufacturers worldwide.",
+        "missing": [
+          "Names and contacts of current sales management personnel at PolyOn (US) relevant to the hiring signal"
+        ],
+        "people": [
+          {
+            "name": "Garrett Freeman",
+            "role": "Head of Sales Marketing at Polygon US (now Commercial Lead, Digital Solutions)",
+            "relevance": 85,
+            "reason": "Currently or recently held senior sales leadership roles at Polygon US, the US company named Polygon, aligning with domain and signal; likely instrumental in sales management despite not exact role 'Manager of Sales'",
+            "citations": [
+              {
+                "sourceId": "e8",
+                "quote": "Head of Sales Marketing at Polygon US (Oct 2019 to Mar 2026)"
+              },
+              {
+                "sourceId": "e8",
+                "quote": "Commercial Lead, Digital Solutions at Polygon US (Mar 2026 to present)"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company."
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Garrett Freeman Polygon polyon.us email",
+            "focus": "finding direct email or contact for Garrett Freeman at PolyOn US",
+            "purpose": "To get a direct contact email for a senior sales executive relevant to the hiring signal"
+          },
+          {
+            "type": "search",
+            "value": "Polyon sales team management linkedin",
+            "focus": "finding other sales management or team contacts at Polyon US via LinkedIn for corroboration",
+            "purpose": "To identify more candidates for sales management roles or contacts for recruiting purposes"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "No confirmed sales manager or direct contacts at PolyOn US found yet, next step is to find direct contact info or additional sales leadership profiles."
+      },
+      "validationErrors": [
+        "person_rejected:Garrett Freeman:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=Garrett%20Freeman%20Polygon%20polyon.us%20email&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 343
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=Garrett%20Freeman%20Polygon%20polyon.us%20email&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 303
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=Polyon%20sales%20team%20management%20linkedin&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 224
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=Polyon%20sales%20team%20management%20linkedin&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 123
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1936
+    },
+    {
+      "stage": "search",
+      "query": "Garrett Freeman Polygon polyon.us email",
+      "results": [
+        {
+          "title": "Garrett Freeman - Commercial Lead, Digital Solutions at ...",
+          "url": "https://www.linkedin.com/in/garrett-freeman-1130081b",
+          "snippet": "## Experience\n- Commercial Lead, Digital Solutions at Polygon US (Mar 2026 to present)\n- Head of Sales Marketing at Polygon US (Oct 2019 to Mar 2026)\n- Sales Director, TCS at Polygon US (Jul 2006 to Sep 2019)\n\n## Education\n- Saint Mary's College of California, Business, Finance, Marketing, Economics [...] Headline: Head of Sales at Polygon US | Mass Timber Advocate | IAQ & Moisture Risk Solutions Expert | Driving Sustainable Construction\nCurrent role: Commercial Lead, Digital Solutions\nSeniority: Head, Sales\nLocation: San Diego Metropolitan Area United States\nExperience: 20 years\nLinkedIn:  · 1,066 followers [...] - Liked By: An overdue personal update 👇 Back in April, I joined Polygon Group as Head of Digital Value Creation. Polygon is one of Europe's leading...\n- Liked By: Our partners don't buy equipment. They buy certainty. No superintendent wakes up and says: \"I need another vendor on my project.\" They want...\n- Liked By: My kid got to be the first cohort in a new, beautiful elementary school just a few years ago. It was amazing! But construction of the...",
+          "source_label": "tavily",
+          "score": 0.44724357,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Garrett Freeman - Sales Director at Swisslog Americas",
+          "url": "https://www.linkedin.com/in/garrettfreeman7",
+          "snippet": "# Garrett Freeman\n\nHeadline: Account Manager at Dematic\nCurrent role: Sales Director\nSeniority: Director, Sales\nLocation: Nashville Metropolitan Area United States\nExperience: 16 years 10 months\nLinkedIn:  · 1,601 followers\nDescription: I help enterprise supply chain leaders solve their most complex distribution and… [...] ## Experience\n- Sales Director at Swisslog (May 2026 to present)\n- Vice President of Sales at Prime Robotics (Feb 2025 to May 2026)\n- Account Manager at Dematic (Oct 2020 to Feb 2025)\n- Software Solution Consultant at Dematic (Jul 2019 to Oct 2020)\n- Engineering Program Manager at Americold Logistics, LLC. (Nov 2016 to May 2019)\n- Senior Consultant at Manhattan Associates (Jan 2014 to Nov 2016) [...] ## Education\n- Georgia Institute of Technology, Bachelor of Science, Industrial and Systems Engineering\n- The Bolles School, BS, Industrial and Systems Engineering\n\n## Skills\n3pl, regulations, work design, experience design, management, increasing efficiency, sales account manager, plant operations, reports, wmos, sales engineer, custom software, service, r&d development, futures",
+          "source_label": "tavily",
+          "score": 0.23246734,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Polygon US",
+          "url": "https://at.linkedin.com/company/polygon-us-corporation",
+          "snippet": "# Polygon US\n\nDescription: We specialize in Temporary Climate Solution, Remote Monitoring, Document Recovery Services and Emergency Drying Services. More information on Polygon can be found at www.polygongroup.us.\nLinkedIn:  · 3,601 followers\nIndustry: Facilities Services\nType: Privately Held\nHeadquarters: North Andover, Massachusetts, United States\nSocial Profiles:   \n\n## Employees\n- Now: 94\n\n## Leadership\n- Frank Dobosz, Country President [...] ## Products and services\nKeywords: engineering/climate control, temporary humidity control, document drying, cleaning, restoration, property performance services, flood & water damage restoration, construction drying services, surface prep coating, indoor air quality, remote enviomental monitoring control, engineered solutions [...] ## Recent posts\n- 2026-01-22: The countdown to IPPE is officially on! We’re gearing up for an incredible show January 27–29 in Atlanta, and we can’t wait to see you! Stop by booth BC41101 and meet the Polygon team: Mart Wicker, Frank Dobosz, Guillermo Martinez, Anthony Collier, Nick Cooper, and Russ Brown, to talk about the latest solutions and inn...",
+          "source_label": "tavily",
+          "score": 0.11815108,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Email Registrants List | PDF",
+          "url": "https://www.scribd.com/document/873604770/Us-Uk-24-04",
+          "snippet": "Scribd\n\n# Email Registrants List\n\nEmail Registrants List\n\n## Uploaded by\n\nAI-enhanced title and description\n\n# Email Registrants List\n\nThe document is a list of email addresses, likely belonging to various registrants or contacts in a database. The emails appear to be from diverse domains, indicating a wide range of industries and purposes. There is no additional context or information provided about the nature of these email addresses.\n\n# Email Registrants List\n\nEmail Registrants List [...] ## Uploaded by\n\nAI-enhanced title and description\n\n## Share this document\n\n## Footer menu\n\n## About\n\n## Support\n\n## Legal\n\n## Social\n\n## Get our free apps\n\nScribd - Download on the App Store\nScribd - Get it on Google Play\n\n## About\n\n## Legal\n\n## Support\n\n## Social\n\n## Get our free apps\n\nScribd - Download on the App Store\nScribd - Get it on Google Play",
+          "source_label": "tavily",
+          "score": 0.055397574,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Issuu",
+          "url": "https://issuu.com/polyprep/docs/pp_b_g_f22_fnl_digital_01",
+          "snippet": "Canva\n\nCreate professional content with Canva, including presentations, catalogs, and more.\n\nAdobe Express\n\nGo from Adobe Express creation to Issuu publication.\n\nAdobe InDesign\n\nDesign pixel-perfect content like flyers, magazines and more with Adobe InDesign.\n\nUse Cases\n\nIndustry\n\nArt, Architecture, and Design\n\nEducation\n\nInternal Communications\n\nMarketing and PR\n\nNonprofits\n\nPublishing\n\nReal Estate\n\nRetail and Wholesale\n\nTravel and Tourism\n\nMore Industries\n\nRole\n\nContent Marketers\n\nDesigners [...] Social Posts\n\nCreate on-brand social posts and Articles in minutes.\n\nGIFs\n\nHighlight your latest work via email or social media with custom GIFs.\n\nAdd Links\n\nSend readers directly to specific items or pages with shopping and web links.\n\nVideo\n\nSay more by seamlessly including video within your publication.\n\nDigital Sales\n\nSell your publications.\n\nQR Codes\n\nGenerate QR Codes for your digital content.\n\nMore Features\n\nIntegrations\n\nCanva [...] Designers\n\nPublishers\n\nSalespeople\n\nSocial Media Managers\n\nTeams\n\nContent Type\n\nFlipbook\n\nPortfolio\n\nDigital Magazine\n\nDigital Flipbook\n\nPDF to Flipbook\n\nNewspaper\n\nDigital Book\n\nDigital Lookbook\n\nMore Content Types\n\nillustration describing two different use cases\n\nMore\n\nIssuu Store\n\nPurchase your next favourite publication\n\nHelp Center\n\nHere you'll find an answer to your question.\n\nResources",
+          "source_label": "tavily",
+          "score": 0.022373645,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Garrett Freeman Polygon polyon.us email",
+      "focus": "finding direct email or contact for Garrett Freeman at PolyOn US",
+      "purpose": "To get a direct contact email for a senior sales executive relevant to the hiring signal",
+      "results": [
+        {
+          "url": "https://www.linkedin.com/in/garrett-freeman-1130081b",
+          "title": "Garrett Freeman - Commercial Lead, Digital Solutions at ...",
+          "snippet": "## Experience\n- Commercial Lead, Digital Solutions at Polygon US (Mar 2026 to present)\n- Head of Sales Marketing at Polygon US (Oct 2019 to Mar 2026)\n- Sales Director, TCS at Polygon US (Jul 2006 to Sep 2019)\n\n## Education\n- Saint Mary's College of California, Business, Finance, Marketing, Economics [...] Headline: Head of Sales at Polygon US | Mass Timber Advocate | IAQ & Moisture Risk Solutions Expert | Driving Sustainable Construction\nCurrent role: Commercial Lead, Digital Solutions\nSeniority",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/in/garrettfreeman7",
+          "title": "Garrett Freeman - Sales Director at Swisslog Americas",
+          "snippet": "# Garrett Freeman\n\nHeadline: Account Manager at Dematic\nCurrent role: Sales Director\nSeniority: Director, Sales\nLocation: Nashville Metropolitan Area United States\nExperience: 16 years 10 months\nLinkedIn:  · 1,601 followers\nDescription: I help enterprise supply chain leaders solve their most complex distribution and… [...] ## Experience\n- Sales Director at Swisslog (May 2026 to present)\n- Vice President of Sales at Prime Robotics (Feb 2025 to May 2026)\n- Account Manager at Dematic (Oct 2020 to F",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://at.linkedin.com/company/polygon-us-corporation",
+          "title": "Polygon US",
+          "snippet": "# Polygon US\n\nDescription: We specialize in Temporary Climate Solution, Remote Monitoring, Document Recovery Services and Emergency Drying Services. More information on Polygon can be found at www.polygongroup.us.\nLinkedIn:  · 3,601 followers\nIndustry: Facilities Services\nType: Privately Held\nHeadquarters: North Andover, Massachusetts, United States\nSocial Profiles:   \n\n## Employees\n- Now: 94\n\n## Leadership\n- Frank Dobosz, Country President [...] ## Products and services\nKeywords: engineering/cl",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.scribd.com/document/873604770/Us-Uk-24-04",
+          "title": "Email Registrants List | PDF",
+          "snippet": "Scribd\n\n# Email Registrants List\n\nEmail Registrants List\n\n## Uploaded by\n\nAI-enhanced title and description\n\n# Email Registrants List\n\nThe document is a list of email addresses, likely belonging to various registrants or contacts in a database. The emails appear to be from diverse domains, indicating a wide range of industries and purposes. There is no additional context or information provided about the nature of these email addresses.\n\n# Email Registrants List\n\nEmail Registrants List [...] ## ",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://issuu.com/polyprep/docs/pp_b_g_f22_fnl_digital_01",
+          "title": "Issuu",
+          "snippet": "Canva\n\nCreate professional content with Canva, including presentations, catalogs, and more.\n\nAdobe Express\n\nGo from Adobe Express creation to Issuu publication.\n\nAdobe InDesign\n\nDesign pixel-perfect content like flyers, magazines and more with Adobe InDesign.\n\nUse Cases\n\nIndustry\n\nArt, Architecture, and Design\n\nEducation\n\nInternal Communications\n\nMarketing and PR\n\nNonprofits\n\nPublishing\n\nReal Estate\n\nRetail and Wholesale\n\nTravel and Tourism\n\nMore Industries\n\nRole\n\nContent Marketers\n\nDesigners [.",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1497
+    },
+    {
+      "stage": "search",
+      "query": "Polyon sales team management linkedin",
+      "results": [
+        {
+          "title": "Lucy Liu - Sales Manager at Polygon Homes",
+          "url": "https://ca.linkedin.com/in/lucyyliu",
+          "snippet": "# Lucy Liu\n\nHeadline: Sales Manager at Polygon Homes\nCurrent role: Sales Manager\nSeniority: Manager, Sales\nLocation: Vancouver, British Columbia, Canada\nExperience: 14 years 5 months\nLinkedIn:  · 1,787 followers [...] - Liked By: Honoured to be invited to REW’s inaugural Real Estate Awards Gala — what an incredible evening surrounded by industry leaders and top...\n- Liked By: I will be stepping away from BCIT at the end of the month (aka retirement), so this post will cover a few things for all my LinkedIn…\n- Liked By: Moody yards this beautiful gem in the center of port moody is turning out looking very nice ! 569 business days since day 1 only a couple... [...] ## Skills\nveritas, sales coordinator, gate, sales, management, pre-sale, real estate, edge, real estate advisor, moody's, coordination, sales associate, senior sales, advisory, ovation\n\nLanguages: Mandarin (Native or bilingual proficiency), English (Native or bilingual proficiency), Cantonese (Limited working proficiency)",
+          "source_label": "tavily",
+          "score": 0.7823471,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "John Nieder - Regional Sales Manager @ Polygon ...",
+          "url": "https://www.linkedin.com/in/johnnieder",
+          "snippet": "Headline: Regional Sales Manager @ Polygon Composites Technology | MBA/BA - Business Management - Manufacturing/Mechanical Engineering\nCurrent role: Regional Sales Manager\nSeniority: Manager, Sales\nLocation: Washington, Missouri, United States\nExperience: 32 years 4 months\nLinkedIn:  · 1,884 followers [...] Description: I am a Manufacturing Professional with experience in Territory Sales Management, Production and Operations, Product Development, Supply Chain, Design Management and Customer Support. I am a motivated professional with leadership proficiency and extensive industrial &amp; mechanical sales experience. As a person who thrives in high-pressure and fast-paced situations, I strive for positive results through the application of my territory expansion and market penetration abilities. [...] ## Skills\ncomposite materials, data collection, management, supervise, product market, cost reduction, information retrieval, machined, cnc, welding, material management, bonds, trade shows, production, technical sales",
+          "source_label": "tavily",
+          "score": 0.77137923,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Jeremy Sawaya - Regional Sales Leader – North",
+          "url": "https://www.linkedin.com/in/jeremysawaya",
+          "snippet": "# Jeremy Sawaya\n\nHeadline: Business Development @ Polygon Group\nCurrent role: Regional Sales Leader- North\nSeniority: Manager, Sales\nLocation: Nashville Metropolitan Area United States\nExperience: 26 years 11 months\nLinkedIn:  · 2,396 followers\nDescription: At my core, I’m a builder — of relationships, of teams, and of solutions that solve… [...] ## Experience\n- Regional Sales Leader- North at Polygon US (Dec 2025 to present)\n- Business Development Specialist at Polygon Group (Aug 2024 to Dec 2025)\n- Team Leader- Outbound Inside Sales at WEX Fleet One (Feb 2012 to Aug 2024)\n- Senior Team Leader-Shell at WEX (Feb 2012 to Aug 2024)\n- Territory Account Manager at Direct Connect Solutions (Jan 2010 to Jan 2011)\n- Outside Sales Account Executive at P.O.U. Partners (Jan 2009 to Jan 2010)",
+          "source_label": "tavily",
+          "score": 0.77096564,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Jeff Collins - Sales Sr. Manager at POLYGON BIKES (PT. ...",
+          "url": "https://id.linkedin.com/in/jeff-collins-7a27265b",
+          "snippet": "Description: I’m a people-person. I love meeting new people and learning about their backgrounds. I can almost always find common ground with strangers, and I like making people feel comfortable in my presence. Currently leading both OEM as well as Polygon (own brand) sales team for international market at Polygon Group (PT. Insera Sena). Helping clients design and find the right products for their markets. I help clients find the right subject that best fits their unique identity, and then [...] Headline: Sales Sr. Manager at POLYGON BIKES (PT. Insera Sena)\nCurrent role: Export Sales Senior Manager\nSeniority: Senior, Sales\nLocation: Surabaya, East Java, Indonesia\nExperience: 13 years 9 months\nLinkedIn:  · 1,970 followers [...] ## Experience\n- Export Sales Senior Manager at Polygon Bikes (Dec 2015 to present)\n- Marketing (Export Division) at PT. Langgengkarya Makmurlestari (Oct 2012 to Nov 2015)\n\n## Education\n- The University of Nottingham, Bachelor of Engineering (BEng), Civil Engineering",
+          "source_label": "tavily",
+          "score": 0.64478505,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Jill Holder - Regional Sales Manager",
+          "url": "https://www.linkedin.com/in/jill-holder-8285434",
+          "snippet": "## Experience\n- Regional Sales Manager at Polygon Composites Technology (Nov 2023 to present)\n- Sales Training Manager at Micro-Tech Endoscopy (Jan 2021 to Aug 2023)\n- Business Improvement Director at Big Ass Fans (May 2014 to Apr 2020)\n- Sales Operations Manager at Big Ass Fans (May 2006 to May 2014)\n- Territory Sales Manager at Big Ass Fans (May 2004 to May 2006) [...] - Reposted: CONEXPO isn’t over yet! There’s still time to connect with the Polygon team and learn more about our advanced composite solutions for...\n- Reposted: We’re excited to be exhibiting at MD&M West 2026, taking place February 3–5 at the Anaheim Convention Center. 📍 Visit Polygon Composites...\n- Reposted: Polygon Company has several exciting opportunities open across multiple shifts and departments. If you’re looking to join a team that... [...] ## Recent Activity\n- Reposted: Last week, we were proud to celebrate an exciting milestone for Polygon with the ribbon cutting of our expanded medical manufacturing...\n- Shared: Polygon manufactures more than 1.3 million precision medical components each year. This investment will support new job creation, increased...\n- Reposted: 🎊🩺🦾 #SRS2026 🦾🩺🎊 📈 A truly modular architecture changes the conversation about surgical robotics. Modularity drives RAS adoption by...",
+          "source_label": "tavily",
+          "score": 0.5310884,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Polyon sales team management linkedin",
+      "focus": "finding other sales management or team contacts at Polyon US via LinkedIn for corroboration",
+      "purpose": "To identify more candidates for sales management roles or contacts for recruiting purposes",
+      "results": [
+        {
+          "url": "https://ca.linkedin.com/in/lucyyliu",
+          "title": "Lucy Liu - Sales Manager at Polygon Homes",
+          "snippet": "# Lucy Liu\n\nHeadline: Sales Manager at Polygon Homes\nCurrent role: Sales Manager\nSeniority: Manager, Sales\nLocation: Vancouver, British Columbia, Canada\nExperience: 14 years 5 months\nLinkedIn:  · 1,787 followers [...] - Liked By: Honoured to be invited to REW’s inaugural Real Estate Awards Gala — what an incredible evening surrounded by industry leaders and top...\n- Liked By: I will be stepping away from BCIT at the end of the month (aka retirement), so this post will cover a few things for all ",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/in/johnnieder",
+          "title": "John Nieder - Regional Sales Manager @ Polygon ...",
+          "snippet": "Headline: Regional Sales Manager @ Polygon Composites Technology | MBA/BA - Business Management - Manufacturing/Mechanical Engineering\nCurrent role: Regional Sales Manager\nSeniority: Manager, Sales\nLocation: Washington, Missouri, United States\nExperience: 32 years 4 months\nLinkedIn:  · 1,884 followers [...] Description: I am a Manufacturing Professional with experience in Territory Sales Management, Production and Operations, Product Development, Supply Chain, Design Management and Customer Supp",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/in/jeremysawaya",
+          "title": "Jeremy Sawaya - Regional Sales Leader – North",
+          "snippet": "# Jeremy Sawaya\n\nHeadline: Business Development @ Polygon Group\nCurrent role: Regional Sales Leader- North\nSeniority: Manager, Sales\nLocation: Nashville Metropolitan Area United States\nExperience: 26 years 11 months\nLinkedIn:  · 2,396 followers\nDescription: At my core, I’m a builder — of relationships, of teams, and of solutions that solve… [...] ## Experience\n- Regional Sales Leader- North at Polygon US (Dec 2025 to present)\n- Business Development Specialist at Polygon Group (Aug 2024 to Dec 20",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://id.linkedin.com/in/jeff-collins-7a27265b",
+          "title": "Jeff Collins - Sales Sr. Manager at POLYGON BIKES (PT. ...",
+          "snippet": "Description: I’m a people-person. I love meeting new people and learning about their backgrounds. I can almost always find common ground with strangers, and I like making people feel comfortable in my presence. Currently leading both OEM as well as Polygon (own brand) sales team for international market at Polygon Group (PT. Insera Sena). Helping clients design and find the right products for their markets. I help clients find the right subject that best fits their unique identity, and then [...",
+          "provider": "tavily"
+        },
+        {
+          "url": "https://www.linkedin.com/in/jill-holder-8285434",
+          "title": "Jill Holder - Regional Sales Manager",
+          "snippet": "## Experience\n- Regional Sales Manager at Polygon Composites Technology (Nov 2023 to present)\n- Sales Training Manager at Micro-Tech Endoscopy (Jan 2021 to Aug 2023)\n- Business Improvement Director at Big Ass Fans (May 2014 to Apr 2020)\n- Sales Operations Manager at Big Ass Fans (May 2006 to May 2014)\n- Territory Sales Manager at Big Ass Fans (May 2004 to May 2006) [...] - Reposted: CONEXPO isn’t over yet! There’s still time to connect with the Polygon team and learn more about our advanced comp",
+          "provider": "tavily"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 5110,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "PolyOn",
+        "domain": "polyon.us",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+            "sourceUrl": "https://hh.ru/vacancy/137434617",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://www.polyon.us",
+            "kind": "page",
+            "text": "PRODUCTS LDPE HDPE LLDPE PP reliable supply about us Polyon is a global plastic resin procurement and distribution company. LEARN MORE",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:30:36.065Z",
+            "id": "e1"
+          },
+          {
+            "url": "https://www.polyon.us/our-company",
+            "kind": "page",
+            "text": "OUR COMPANY Over 17 years serving the plastic industry worldwide! Polyon is a global plastic resin distribution company. ​ We supply virgin and off grade polymer resin from top brand petrochemical companies. ​ With presence in 3 countries, our logistics and warehouse supply capabilities enables us to execute product supply efficiently and competitive. ​ We supply plastic manufacturers worldwide with the best product quality on the market. ​ Only Premium Quality LDPE - LLDPE - HDPE - PP Products!",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:30:38.918Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://www.polyon.us/contact-us",
+            "kind": "page",
+            "text": "contact us Contact Form: Send Success! Message received.",
+            "links": [
+              {
+                "url": "https://www.polyon.us",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.mx",
+                "label": ""
+              },
+              {
+                "url": "https://www.polyon.us/products",
+                "label": "Products"
+              },
+              {
+                "url": "https://www.polyon.us/our-company",
+                "label": "Our Company"
+              },
+              {
+                "url": "https://www.polyon.us/contact-us",
+                "label": "Contact"
+              },
+              {
+                "url": "https://www.facebook.com/polyon1",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-06T12:30:39.081Z",
+            "id": "e3"
+          },
+          {
+            "url": "https://www.scribd.com/document/873604770/Us-Uk-24-04",
+            "kind": "search",
+            "text": "Email Registrants List | PDF\nScribd\n\n# Email Registrants List\n\nEmail Registrants List\n\n## Uploaded by\n\nAI-enhanced title and description\n\n# Email Registrants List\n\nThe document is a list of email addresses, likely belonging to various registrants or contacts in a database. The emails appear to be from diverse domains, indicating a wide range of industries and purposes. There is no additional context or information provided about the nature of these email addresses.\n\n# Email Registrants List\n\nEmail Registrants List [...] ## Uploaded by\n\nAI-enhanced title and description\n\n## Share this document\n\n## Footer menu\n\n## About\n\n## Support\n\n## Legal\n\n## Social\n\n## Get our free apps\n\nScribd - Download on the App Store\nScribd - Get it on Google Play\n\n## About\n\n## Legal\n\n## Support\n\n## Social\n\n## Get our free apps\n\nScribd - Download on the App Store\nScribd - Get it on Google Play",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:30:52.642Z",
+            "id": "e11"
+          },
+          {
+            "url": "https://issuu.com/polyprep/docs/pp_b_g_f22_fnl_digital_01",
+            "kind": "search",
+            "text": "Issuu\nCanva\n\nCreate professional content with Canva, including presentations, catalogs, and more.\n\nAdobe Express\n\nGo from Adobe Express creation to Issuu publication.\n\nAdobe InDesign\n\nDesign pixel-perfect content like flyers, magazines and more with Adobe InDesign.\n\nUse Cases\n\nIndustry\n\nArt, Architecture, and Design\n\nEducation\n\nInternal Communications\n\nMarketing and PR\n\nNonprofits\n\nPublishing\n\nReal Estate\n\nRetail and Wholesale\n\nTravel and Tourism\n\nMore Industries\n\nRole\n\nContent Marketers\n\nDesigners [...] Social Posts\n\nCreate on-brand social posts and Articles in minutes.\n\nGIFs\n\nHighlight your latest work via email or social media with custom GIFs.\n\nAdd Links\n\nSend readers directly to specific items or pages with shopping and web links.\n\nVideo\n\nSay more by seamlessly including video within your publication.\n\nDigital Sales\n\nSell your publications.\n\nQR Codes\n\nGenerate QR Codes for your digital content.\n\nMore Features\n\nIntegrations\n\nCanva [...] Designers\n\nPublishers\n\nSalespeople\n\nSocial Media Managers\n\nTeams\n\nContent Type\n\nFlipbook\n\nPortfolio\n\nDigital Magazine\n\nDigital Flipbook\n\nPDF to Flipbook\n\nNewspaper\n\nDigital Book\n\nDigital Lookbook\n\nMore Content Types\n\nillustration describing two different use cases\n\nMore\n\nIssuu Store\n\nPurchase your next favourite publication\n\nHelp Center\n\nHere you'll find an answer to your question.\n\nResources",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:30:52.642Z",
+            "id": "e12"
+          },
+          {
+            "url": "https://www.linkedin.com/in/johnnieder",
+            "kind": "search",
+            "text": "John Nieder - Regional Sales Manager @ Polygon ...\nHeadline: Regional Sales Manager @ Polygon Composites Technology | MBA/BA - Business Management - Manufacturing/Mechanical Engineering\nCurrent role: Regional Sales Manager\nSeniority: Manager, Sales\nLocation: Washington, Missouri, United States\nExperience: 32 years 4 months\nLinkedIn:  · 1,884 followers [...] Description: I am a Manufacturing Professional with experience in Territory Sales Management, Production and Operations, Product Development, Supply Chain, Design Management and Customer Support. I am a motivated professional with leadership proficiency and extensive industrial &amp; mechanical sales experience. As a person who thrives in high-pressure and fast-paced situations, I strive for positive results through the application of my territory expansion and market penetration abilities. [...] ## Skills\ncomposite materials, data collection, management, supervise, product market, cost reduction, information retrieval, machined, cnc, welding, material management, bonds, trade shows, production, technical sales",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:30:52.833Z",
+            "id": "e13"
+          },
+          {
+            "url": "https://www.linkedin.com/in/jeremysawaya",
+            "kind": "search",
+            "text": "Jeremy Sawaya - Regional Sales Leader – North\n# Jeremy Sawaya\n\nHeadline: Business Development @ Polygon Group\nCurrent role: Regional Sales Leader- North\nSeniority: Manager, Sales\nLocation: Nashville Metropolitan Area United States\nExperience: 26 years 11 months\nLinkedIn:  · 2,396 followers\nDescription: At my core, I’m a builder — of relationships, of teams, and of solutions that solve… [...] ## Experience\n- Regional Sales Leader- North at Polygon US (Dec 2025 to present)\n- Business Development Specialist at Polygon Group (Aug 2024 to Dec 2025)\n- Team Leader- Outbound Inside Sales at WEX Fleet One (Feb 2012 to Aug 2024)\n- Senior Team Leader-Shell at WEX (Feb 2012 to Aug 2024)\n- Territory Account Manager at Direct Connect Solutions (Jan 2010 to Jan 2011)\n- Outside Sales Account Executive at P.O.U. Partners (Jan 2009 to Jan 2010)",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:30:52.833Z",
+            "id": "e14"
+          },
+          {
+            "url": "https://id.linkedin.com/in/jeff-collins-7a27265b",
+            "kind": "search",
+            "text": "Jeff Collins - Sales Sr. Manager at POLYGON BIKES (PT. ...\nDescription: I’m a people-person. I love meeting new people and learning about their backgrounds. I can almost always find common ground with strangers, and I like making people feel comfortable in my presence. Currently leading both OEM as well as Polygon (own brand) sales team for international market at Polygon Group (PT. Insera Sena). Helping clients design and find the right products for their markets. I help clients find the right subject that best fits their unique identity, and then [...] Headline: Sales Sr. Manager at POLYGON BIKES (PT. Insera Sena)\nCurrent role: Export Sales Senior Manager\nSeniority: Senior, Sales\nLocation: Surabaya, East Java, Indonesia\nExperience: 13 years 9 months\nLinkedIn:  · 1,970 followers [...] ## Experience\n- Export Sales Senior Manager at Polygon Bikes (Dec 2015 to present)\n- Marketing (Export Division) at PT. Langgengkarya Makmurlestari (Oct 2012 to Nov 2015)\n\n## Education\n- The University of Nottingham, Bachelor of Engineering (BEng), Civil Engineering",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:30:52.833Z",
+            "id": "e15"
+          },
+          {
+            "url": "https://www.linkedin.com/in/jill-holder-8285434",
+            "kind": "search",
+            "text": "Jill Holder - Regional Sales Manager\n## Experience\n- Regional Sales Manager at Polygon Composites Technology (Nov 2023 to present)\n- Sales Training Manager at Micro-Tech Endoscopy (Jan 2021 to Aug 2023)\n- Business Improvement Director at Big Ass Fans (May 2014 to Apr 2020)\n- Sales Operations Manager at Big Ass Fans (May 2006 to May 2014)\n- Territory Sales Manager at Big Ass Fans (May 2004 to May 2006) [...] - Reposted: CONEXPO isn’t over yet! There’s still time to connect with the Polygon team and learn more about our advanced composite solutions for...\n- Reposted: We’re excited to be exhibiting at MD&M West 2026, taking place February 3–5 at the Anaheim Convention Center. 📍 Visit Polygon Composites...\n- Reposted: Polygon Company has several exciting opportunities open across multiple shifts and departments. If you’re looking to join a team that... [...] ## Recent Activity\n- Reposted: Last week, we were proud to celebrate an exciting milestone for Polygon with the ribbon cutting of our expanded medical manufacturing...\n- Shared: Polygon manufactures more than 1.3 million precision medical components each year. This investment will support new job creation, increased...\n- Reposted: 🎊🩺🦾 #SRS2026 🦾🩺🎊 📈 A truly modular architecture changes the conversation about surgical robotics. Modularity drives RAS adoption by...",
+            "links": [],
+            "fetchedAt": "2026-10-06T12:30:52.834Z",
+            "id": "e16"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/our-company",
+            "focus": "team or leadership page",
+            "success": true
+          },
+          {
+            "type": "open",
+            "value": "https://www.polyon.us/contact-us",
+            "focus": "contact page",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "site:polyon.us manager sales",
+            "focus": "finding sales manager or related roles on the company website",
+            "resultCount": 0
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales manager LinkedIn",
+            "focus": "LinkedIn profiles for sales managers at PolyOn",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "Garrett Freeman Polygon polyon.us email",
+            "focus": "finding direct email or contact for Garrett Freeman at PolyOn US",
+            "resultCount": 5
+          },
+          {
+            "type": "search",
+            "value": "Polyon sales team management linkedin",
+            "focus": "finding other sales management or team contacts at Polyon US via LinkedIn for corroboration",
+            "resultCount": 5
+          }
+        ],
+        "validationErrors": [
+          "person_rejected:Garrett Freeman:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+        ],
+        "budget": {
+          "roundsRemaining": 2,
+          "actionsRemaining": 4,
+          "searchRemaining": 4
+        }
+      },
+      "output": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company operating in three countries, supplying premium quality LDPE, LLDPE, HDPE, and PP products. They have a 17-year history serving the plastic industry worldwide.",
+        "missing": [
+          "Specific names and roles of sales managers at PolyOn US with clear confirmation and contact details"
+        ],
+        "people": [
+          {
+            "name": "Jeremy Sawaya",
+            "role": "Regional Sales Leader- North",
+            "relevance": 90,
+            "reason": "Currently holds a high-level sales leadership role at Polygon US, which matches the domain polyon.us and is aligned with the signal of hiring sales managers.",
+            "citations": [
+              {
+                "sourceId": "e14",
+                "quote": "- Regional Sales Leader- North at Polygon US (Dec 2025 to present)"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "profile",
+                "value": "https://www.linkedin.com/in/jeremysawaya",
+                "citation": {
+                  "sourceId": "e14",
+                  "quote": "Jeremy Sawaya - Regional Sales Leader – North LinkedIn profile with current role at Polygon US"
+                }
+              }
+            ]
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company. https://www.polyon.us"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Jeremy Sawaya polyon.us email",
+            "focus": "finding direct email contact for Jeremy Sawaya at PolyOn US",
+            "purpose": "to obtain a direct contact for the confirmed relevant sales leader"
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales management team site:polyon.us",
+            "focus": "search for sales team or management page on PolyOn official domain",
+            "purpose": "to find more confirmed sales management personnel or contact information"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Need direct contact email or officially published communications point for confirmed relevant sales management person (Jeremy Sawaya) to proceed. Also need to confirm if there are more sales managers related to the hiring signal."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 3,
+      "decision": {
+        "companySummary": "PolyOn is a global plastic resin procurement and distribution company operating in three countries, supplying premium quality LDPE, LLDPE, HDPE, and PP products. They have a 17-year history serving the plastic industry worldwide.",
+        "missing": [
+          "Specific names and roles of sales managers at PolyOn US with clear confirmation and contact details"
+        ],
+        "people": [
+          {
+            "name": "Jeremy Sawaya",
+            "role": "Regional Sales Leader- North",
+            "relevance": 90,
+            "reason": "Currently holds a high-level sales leadership role at Polygon US, which matches the domain polyon.us and is aligned with the signal of hiring sales managers.",
+            "citations": [
+              {
+                "sourceId": "e14",
+                "quote": "- Regional Sales Leader- North at Polygon US (Dec 2025 to present)"
+              }
+            ],
+            "contacts": [
+              {
+                "type": "profile",
+                "value": "https://www.linkedin.com/in/jeremysawaya",
+                "citation": {
+                  "sourceId": "e14",
+                  "quote": "Jeremy Sawaya - Regional Sales Leader – North LinkedIn profile with current role at Polygon US"
+                }
+              }
+            ]
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "polyon.us",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Polyon is a global plastic resin procurement and distribution company. https://www.polyon.us"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "Jeremy Sawaya polyon.us email",
+            "focus": "finding direct email contact for Jeremy Sawaya at PolyOn US",
+            "purpose": "to obtain a direct contact for the confirmed relevant sales leader"
+          },
+          {
+            "type": "search",
+            "value": "PolyOn sales management team site:polyon.us",
+            "focus": "search for sales team or management page on PolyOn official domain",
+            "purpose": "to find more confirmed sales management personnel or contact information"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Need direct contact email or officially published communications point for confirmed relevant sales management person (Jeremy Sawaya) to proceed. Also need to confirm if there are more sales managers related to the hiring signal."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:polyon.us",
+        "person_rejected:Jeremy Sawaya:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+      ],
+      "acceptedPeople": [],
+      "domains": [
+        "polyon.us"
+      ]
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "diminishing_returns",
+      "actions": 7,
+      "candidates": [],
+      "domains": [
+        "polyon.us"
+      ],
+      "elapsedMs": 23488
+    },
+    {
+      "stage": "people_ranked",
+      "people": []
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/",
+      "status": 200,
+      "elapsedMs": 589
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/robots.txt",
+      "status": 200,
+      "elapsedMs": 81
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/sitemap.xml",
+      "status": 200,
+      "elapsedMs": 297
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.polyon.us/sitemap.xml",
+      "status": 200,
+      "elapsedMs": 70
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/contacts",
+      "status": 404,
+      "elapsedMs": 232
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/contact",
+      "status": 404,
+      "elapsedMs": 368
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/contact-us",
+      "status": 200,
+      "elapsedMs": 457
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/kontakti",
+      "status": 404,
+      "elapsedMs": 495
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/about",
+      "status": 404,
+      "elapsedMs": 496
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/about-us",
+      "status": 404,
+      "elapsedMs": 501
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/kontakty",
+      "status": 404,
+      "elapsedMs": 514
+    },
+    {
+      "stage": "fetch",
+      "url": "https://polyon.us/company",
+      "status": 404,
+      "elapsedMs": 568
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": "info@polyon.us",
+        "contact_level": "E",
+        "email_classification": "GENERAL",
+        "email_type": "generic_fallback",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "LOW",
+        "readiness": "fallback_only",
+        "evidence": [
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "generic_fallback_does_not_qualify"
+      },
+      "contacts": [
+        {
+          "name": null,
+          "email": "info@polyon.us",
+          "type": "generic_email",
+          "source": "https://www.polyon.us/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://polyon.us/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://polyon.us/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://www.polyon.us/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://www.polyon.us/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://www.polyon.us/contact-us"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://polyon.us"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2516,
+      "schema": "leadgen_outreach_v4",
+      "input": {
+        "company": "PolyOn",
+        "segment": null,
+        "industry": null,
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "evidence": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+          "source": "https://hh.ru/vacancy/137434617"
+        },
+        "company_specifics": null,
+        "lpr": {
+          "name": null,
+          "role": null,
+          "why_this_person": null
+        },
+        "business_context": {
+          "problem_hypothesis": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+          "target_responsibility": null,
+          "selection_reason": null
+        },
+        "contact_type": "GENERAL",
+        "required_cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "required_greeting": "Добрый день."
+      },
+      "output": {
+        "subject": "Вакансия менеджера по продажам в PolyOn",
+        "body": "Сейчас в PolyOn открыта вакансия менеджера по продажам, что указывает на активный поиск специалистов для расширения команды продаж. Возможно, это связано с возросшей нагрузкой на процессы поиска клиентов и ведения сделок.\nВ таком случае ручной подбор и квалификация потенциальных покупателей могут тормозить развитие продаж, создавая узкие места в работе менеджеров.\nМы предлагаем провести пилотный проект с использованием AI для автоматизации первичного отбора и классификации лидов на основе данных CRM. Это позволит сэкономить время менеджеров и повысить качество подготовки базы для дальнейшей работы.",
+        "cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "quality": {
+          "reason_now": true,
+          "grounded_hypothesis": true,
+          "russian_only": true,
+          "personal_cta": true
+        }
+      }
+    }
+  ],
+  "startedAt": "2026-10-06T12:30:34.512Z",
+  "bundle": {
+    "companyName": "PolyOn",
+    "officialWebsite": "https://polyon.us",
+    "officialDomain": "polyon.us",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "info@polyon.us",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.polyon.us/",
+              "sourceType": "official",
+              "excerpt": "info@polyon.us — public email parser",
+              "capturedAt": "2026-10-06T12:30:34.512Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "info@polyon.us",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://www.polyon.us/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: PolyOn; открыта вакансия: Менеджер по продажам.",
+      "sourceUrl": "https://hh.ru/vacancy/137434617",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 22,
+      "lprMs": 23488,
+      "contactMs": 2560,
+      "totalMs": 28613,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "people": {
+    "primary_person": null,
+    "alternative_people": [],
+    "all_candidates": [],
+    "search_status": "no_person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "diminishing_returns"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 4,
+      "official_pages_fetched": 3,
+      "aborted_requests": 0,
+      "elapsed_ms": 23488,
+      "stop_reason": "diminishing_returns",
+      "queries_executed": [
+        "site:polyon.us manager sales",
+        "PolyOn sales manager LinkedIn",
+        "Garrett Freeman Polygon polyon.us email",
+        "Polyon sales team management linkedin"
+      ],
+      "sources_checked": [
+        "https://www.polyon.us",
+        "https://www.polyon.us/our-company",
+        "https://www.polyon.us/contact-us",
+        "https://ca.linkedin.com/in/timmy-cheung-93629241",
+        "https://ca.linkedin.com/in/theresa-liljedahl-0239721b",
+        "https://ca.linkedin.com/in/lucyyliu",
+        "https://ca.linkedin.com/in/kaya-chang-1b183028",
+        "https://www.linkedin.com/in/garrett-freeman-1130081b",
+        "https://www.linkedin.com/in/garrettfreeman7",
+        "https://at.linkedin.com/company/polygon-us-corporation",
+        "https://www.scribd.com/document/873604770/Us-Uk-24-04",
+        "https://issuu.com/polyprep/docs/pp_b_g_f22_fnl_digital_01",
+        "https://www.linkedin.com/in/johnnieder",
+        "https://www.linkedin.com/in/jeremysawaya",
+        "https://id.linkedin.com/in/jeff-collins-7a27265b",
+        "https://www.linkedin.com/in/jill-holder-8285434"
+      ],
+      "search_results_seen": 15,
+      "rejected_candidates": {
+        "validation_rejects": 2
+      },
+      "final_failure_reason": "diminishing_returns"
+    }
+  },
+  "contacts": [
+    {
+      "name": null,
+      "role": null,
+      "email": "info@polyon.us",
+      "type": "generic_email",
+      "source": "https://www.polyon.us/",
+      "selected": true,
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": "info@polyon.us",
+        "contact_level": "E",
+        "email_classification": "GENERAL",
+        "email_type": "generic_fallback",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "LOW",
+        "readiness": "fallback_only",
+        "evidence": [
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "generic_fallback_does_not_qualify"
+      },
+      "ready": true,
+      "copy": "Добрый день.\n\nСейчас в PolyOn открыта вакансия менеджера по продажам, что указывает на активный поиск специалистов для расширения команды продаж. Возможно, это связано с возросшей нагрузкой на процессы поиска клиентов и ведения сделок.\nВ таком случае ручной подбор и квалификация потенциальных покупателей могут тормозить развитие продаж, создавая узкие места в работе менеджеров.\nМы предлагаем провести пилотный проект с использованием AI для автоматизации первичного отбора и классификации лидов на основе данных CRM. Это позволит сэкономить время менеджеров и повысить качество подготовки базы для дальнейшей работы.\n\nЯ AI-архитектор. Если потребуется, подключим бизнес-аналитика: сначала проверим процесс, затем выберем, что автоматизировать.\n\nМогу провести короткий разбор этого участка. Обычно он стоит 9 900 ₽; если ответите в течение 24 часов после отправки письма, проведу разбор бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514"
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://polyon.us/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://polyon.us/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://www.polyon.us/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://www.polyon.us/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://www.polyon.us/contact-us",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://polyon.us",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 28613
+}

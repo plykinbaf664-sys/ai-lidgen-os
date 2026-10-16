@@ -8,10 +8,12 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import "./register-ts-paths.mjs";
 
+// Populate then mask dotenv keys so Next cannot reload credentials in the child.
+try { process.loadEnvFile(".env.local"); } catch (error) { if (error.code !== "ENOENT") throw error; }
 // Isolated fixtures plus real Next HTTP, storage, queue and SMTP protocol.
 // SMTP terminates in this process; it never relays or delivers any message.
 const isolated = await mkdtemp(path.join(tmpdir(), "leadgen-transactions-"));
-for (const key of Object.keys(process.env)) if (/SMTP|IMAP|TELEGRAM|OPENAI|TAVILY|SUPABASE|LEADGEN_ADMIN_SECRET/.test(key)) process.env[key] = "";
+for (const key of Object.keys(process.env)) if (/SMTP|IMAP|TELEGRAM|OPENAI|QWEN|TAVILY|SUPABASE|LEADGEN_ADMIN_SECRET/.test(key)) process.env[key] = "";
 Object.assign(process.env, { LEADGEN_LOCAL_DATA_DIR: isolated, EMAIL_TEST_MODE: "true",
   EMAIL_TEST_RECIPIENT: "sink@example.invalid", EMAIL_MIN_DELAY_SECONDS: "1", EMAIL_MAX_DELAY_SECONDS: "1",
   FOLLOWUP_AUTOMATION_ENABLED: "false", LEADGEN_NEW_SOURCE_CONTOURS_ENABLED: "true" });
@@ -79,6 +81,13 @@ try {
       const signal = { ...common, id: `${campaign.id}-signal-${i}`, company_id: company.id, lead_id: lead.id,
         signal_type: origin === "AI_HIRING" ? "AI_AUTOMATION_HIRING_SIGNAL" : "TECH_SIGNAL",
         signal_title: "Внедрение AI-помощника", signal_detail: "Атлас внедряет AI-помощника для обработки заявок.", source_url: `${website}/news/ai`, source_label: "Официальный сайт", confidence_score: 95 };
+      company.metadata.decision_maker = {
+        primary_persona: "CEO", alternative_personas: ["COO"], department: "Executive",
+        buying_role: "decision_maker", influence_level: "high", decision_authority: "high",
+        business_problem_owner: "Operations", expected_pain: "Ручная обработка заявок",
+        expected_goal: "Автоматизация заявок", search_keywords: ["CEO", "COO"],
+        priority: "high", reasoning: "Изолированная проверка", confidence_score: 90, source_reasoning: {},
+      };
       const research = await researchCompany("Атлас", website, { type: signal.signal_type, title: signal.signal_title,
         detail: signal.signal_detail, sourceUrl: signal.source_url, confidence: 95 }, { campaign, company, lead, signals: [signal],
         bypassCache: true, searchProvider: { async search() { return []; } }, discoveryContext: { origin } });
@@ -120,6 +129,20 @@ try {
   for (let i = 0; i < 40; i++) {
     try { await request("/api/leadgen/campaigns"); break; } catch (error) { if (i === 39) throw error; await new Promise(r => setTimeout(r, 250)); }
   }
+  await new Promise((resolve, reject) => {
+    const child = spawn(process.execPath, ["scripts/check-lpr-shadow.mjs", baseUrl, campaigns[0].id], { env: process.env, windowsHide: true });
+    let output = "";
+    child.stdout.on("data", chunk => output += chunk);
+    child.stderr.on("data", chunk => output += chunk);
+    const deadline = setTimeout(() => child.kill(), 60_000);
+    child.on("error", error => { clearTimeout(deadline); reject(error); });
+    child.on("exit", code => {
+      clearTimeout(deadline);
+      if (code === 0) resolve();
+      else reject(new Error(output || "Shadow check timed out"));
+    });
+  });
+  console.log("PASS isolated LPR shadow preserves outreach states");
   await new Promise((resolve, reject) => {
     const child = spawn(process.execPath, ["scripts/check-new-lead-sources.mjs", baseUrl], { env: process.env, windowsHide: true });
     let output = "";

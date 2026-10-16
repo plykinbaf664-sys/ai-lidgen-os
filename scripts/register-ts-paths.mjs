@@ -1,13 +1,17 @@
 import { existsSync } from "node:fs";
 import { registerHooks } from "node:module";
 import path from "node:path";
-import { pathToFileURL } from "node:url";
+import { pathToFileURL, fileURLToPath } from "node:url";
 
 const root = process.cwd();
 registerHooks({
   resolve(specifier, context, nextResolve) {
     if (specifier === "server-only") {
       return { url: "data:text/javascript,export%20{}", shortCircuit: true };
+    }
+    if (specifier.startsWith(".") && !path.extname(specifier) && context.parentURL?.startsWith("file:")) {
+      const relative = fileURLToPath(new URL(`${specifier}.ts`, context.parentURL));
+      if (existsSync(relative)) return { url: pathToFileURL(relative).href, shortCircuit: true };
     }
     if (!specifier.startsWith("@/")) return nextResolve(specifier, context);
     const base = path.join(root, specifier.slice(2));

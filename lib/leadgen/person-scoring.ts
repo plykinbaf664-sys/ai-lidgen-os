@@ -156,6 +156,9 @@ export function scorePersonaMatch({
   candidate: PersonCandidate;
   decisionMaker: DecisionMakerProfile;
 }): number {
+  if (typeof candidate.metadata.semantic_role_relevance === "number") {
+    return clampPersonConfidence(candidate.metadata.semantic_role_relevance);
+  }
   const roleText = normalizeText(candidate.role_title);
   const departmentText = normalizeText(candidate.department);
   const matchedKeywords = getMatchedPersonKeywords({ candidate, decisionMaker });
@@ -192,6 +195,9 @@ export function assessBusinessProblemOwnership({
   candidate: PersonCandidate;
   decisionMaker: DecisionMakerProfile;
 }): DecisionMakerPriority {
+  if (typeof candidate.metadata.semantic_role_relevance === "number") {
+    return toPriority(candidate.metadata.semantic_role_relevance);
+  }
   const searchText = getCandidateSearchText(candidate);
   let score = scorePriority(decisionMaker.priority) * 0.35;
 

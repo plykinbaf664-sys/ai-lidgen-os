@@ -1,8 +1,13 @@
+import { fetchLeadgenModel, semanticApiKey } from "@/lib/leadgen/ai-runtime";
+import { withResearchCachePolicy } from "@/lib/leadgen/research-cache";
+import { withAiSpendScope } from "@/lib/leadgen/ai-spend-budget";
 import { createHash } from "node:crypto";
+import { buildEmailOutreachWithAi } from "@/lib/leadgen/email-outreach-builder";
 import {
   attachContactIntelligence,
   evaluateAdaptiveContactIntelligence,
   isConfirmedOutreachEmail,
+  isContactReadyPerson,
 } from "@/lib/leadgen/adaptive-contact-intelligence";
 import { normalizeDomain } from "@/lib/leadgen/company-identity";
 import { ContactDiscoveryService } from "@/lib/leadgen/contact-discovery-service";
@@ -17,6 +22,8 @@ import { discoverDecisionMaker } from "@/lib/leadgen/decision-maker-discovery";
 import { PeopleDiscoveryEngine } from "@/lib/leadgen/people-discovery-engine";
 import { PublicContactProvider } from "@/lib/leadgen/public-contact-provider";
 import { RuPublicPeopleProvider } from "@/lib/leadgen/ru-public-people-provider";
+import { researchPeopleIteratively } from "@/lib/leadgen/iterative-people-research";
+import type { ResearchTraceEvent } from "@/lib/leadgen/research-evidence";
 import { createLeadgenSearchProvider } from "@/lib/leadgen/search/leadgen-search-provider";
 import type {
   SearchProvider,
@@ -37,6 +44,8 @@ import type {
   SignalType,
 } from "@/lib/leadgen/types";
 import { runAbortableOperation, throwIfAborted } from "@/lib/network/abortable-operation";
+import { llmAvailabilityError } from "@/lib/leadgen/llm-availability";
+import type { PersonalEmailCandidate } from "@/lib/leadgen/personal-email-research";
 
 export type CompanyResearchEvidence = {
   sourceUrl: string;
@@ -66,6 +75,7 @@ export type CompanyResearchEmail = {
   personName: string | null;
   classification: NormalizedEmailClassification;
   evidence: CompanyResearchEvidence[];
+  verification?: PersonalEmailCandidate;
 };
 
 export type ContactBundle = {
@@ -112,6 +122,7 @@ export type CompanyResearchSignalContext = {
 };
 
 export type CompanyResearchTargetContext = {
+  onTrace?: (event: ResearchTraceEvent) => void;
   campaign?: LeadgenCampaign;
   company?: LeadgenCompany;
   lead?: LeadgenLead;
@@ -276,7 +287,7 @@ async function planResearch({
   discoveryContext?: CompanyResearchTargetContext["discoveryContext"];
 }): Promise<ResearchPlan> {
   const fallback = deterministicPlan(decisionMaker);
-  const apiKey = process.env.OPENAI_API_KEY?.trim();
+  const apiKey = semanticApiKey();
   if (!apiKey || process.env.LEADGEN_RESEARCH_LLM_ENABLED === "false") return fallback;
 
   return runAbortableOperation({
@@ -284,7 +295,7 @@ async function planResearch({
     parentSignal: signal,
     fallback,
     operation: async (requestSignal) => {
-      const response = await fetch("https://api.openai.com/v1/responses", {
+      const response = await fetchLeadgenModel("https://api.openai.com/v1/responses", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${apiKey}`,
@@ -303,6 +314,7 @@ async function planResearch({
           ].join(" "),
           input: JSON.stringify({
             companyName,
+            currentDate: new Date().toISOString().slice(0, 10),
             officialWebsite,
             signal: signalContext,
             discoveryContext: discoveryContext ?? null,
@@ -347,14 +359,14 @@ async function planResearch({
 }
 
 class ResearchSearchBudget implements SearchProvider {
-  private readonly seen = new Set<string>();
+  private readonly seen = new Map<string, Promise<SearchResult[]>>();
   private readonly provider: SearchProvider;
   private readonly maximumQueries: number;
   private executedCount = 0;
   duplicateSkipped = 0;
   budgetSkipped = 0;
 
-  constructor(provider: SearchProvider, maximumQueries = 14) {
+  constructor(provider: SearchProvider, maximumQueries = 12) {
     this.provider = provider;
     this.maximumQueries = maximumQueries;
   }
@@ -367,15 +379,16 @@ class ResearchSearchBudget implements SearchProvider {
     const key = `${input.query.trim().toLocaleLowerCase("ru-RU").replace(/\s+/g, " ")}:${input.page ?? 0}`;
     if (this.seen.has(key)) {
       this.duplicateSkipped += 1;
-      return [];
+      return (await this.seen.get(key)!).slice(0, input.maxResults ?? 10);
     }
-    this.seen.add(key);
     if (this.executedCount >= this.maximumQueries) {
       this.budgetSkipped += 1;
       return [];
     }
     this.executedCount += 1;
-    return this.provider.search(input);
+    const pending = this.provider.search(input);
+    this.seen.set(key, pending);
+    return pending;
   }
 }
 
@@ -509,6 +522,13 @@ function evidenceForPerson(
   officialDomain: string,
   capturedAt: string,
 ): CompanyResearchEvidence[] {
+  if (Array.isArray(person.metadata.research_evidence)) {
+    return person.metadata.research_evidence.flatMap(item => {
+      if (!item || typeof item !== "object" || typeof item.sourceUrl !== "string" || typeof item.quote !== "string") return [];
+      return [{ sourceUrl: item.sourceUrl, sourceType: sourceType(item.sourceUrl, officialDomain), excerpt: compact(item.quote),
+        capturedAt, confidence: person.confidence_score }];
+    }).slice(0, 4);
+  }
   const urls = Array.isArray(person.metadata.source_urls)
     ? person.metadata.source_urls.filter((value): value is string => typeof value === "string")
     : typeof person.metadata.source_url === "string"
@@ -551,7 +571,9 @@ function mapPeople(
         telegram: profileValue(person, "telegram_url"),
         instagram: profileValue(person, "instagram_url"),
         vk: profileValue(person, "vk_url"),
-        other: [],
+        other: Array.isArray(person.metadata.verified_public_profiles)
+          ? person.metadata.verified_public_profiles.filter((url): url is string => typeof url === "string")
+          : person.linkedin_url ? [person.linkedin_url] : [],
       },
       phone: person.phone ?? profileValue(person, "phone"),
     };
@@ -562,6 +584,8 @@ function contactClassification(
   contact: LeadgenContact,
   officialDomain: string,
 ): NormalizedEmailClassification {
+  if (isContactReadyPerson(contact)) return contact.metadata.contact_intelligence?.email_classification === "HIGH_CONFIDENCE_PERSONAL"
+    ? "HIGH_CONFIDENCE_PERSONAL" : "VERIFIED_PERSONAL";
   const normalized = contact.metadata.normalized_email_classification;
   if (
     normalized === "VERIFIED_PERSONAL" || normalized === "HIGH_CONFIDENCE_PERSONAL" ||
@@ -591,6 +615,7 @@ function mapEmails(
   const unique = [...new Map(
     contacts
       .filter((contact): contact is LeadgenContact & { email: string } => Boolean(contact.email))
+      .sort((left, right) => Number(isContactReadyPerson(left)) - Number(isContactReadyPerson(right)))
       .map((contact) => [contact.email.trim().toLowerCase(), contact]),
   ).values()];
   const output: ContactBundle["emails"] = {
@@ -640,6 +665,16 @@ export async function researchCompany(
   signalContext: CompanyResearchSignalContext,
   optionalTargetContext: CompanyResearchTargetContext = {},
 ): Promise<CompanyResearchResult> {
+  return withResearchCachePolicy(optionalTargetContext.bypassCache === true, () =>
+    withAiSpendScope(() => researchCompanyUncached(companyName, officialWebsite, signalContext, optionalTargetContext)));
+}
+
+async function researchCompanyUncached(
+  companyName: string,
+  officialWebsite: string,
+  signalContext: CompanyResearchSignalContext,
+  optionalTargetContext: CompanyResearchTargetContext,
+): Promise<CompanyResearchResult> {
   const startedAt = Date.now();
   const runtime = buildRuntime({
     companyName,
@@ -650,7 +685,8 @@ export async function researchCompany(
   const searchProvider = new ResearchSearchBudget(
     optionalTargetContext.searchProvider ?? createLeadgenSearchProvider(),
   );
-  const plan = await planResearch({
+  const iterative = Boolean(semanticApiKey()) && process.env.LEADGEN_RESEARCH_LLM_ENABLED !== "false";
+  const plan = iterative ? { ...deterministicPlan(runtime.decisionMaker), source: "llm" as const, reason: "configured" as const } : await planResearch({
     companyName,
     officialWebsite,
     signalContext,
@@ -660,25 +696,47 @@ export async function researchCompany(
   });
   throwIfAborted(optionalTargetContext.signal);
   const peopleStartedAt = Date.now();
+  let researchPages: Array<{ url: string; text: string }> | undefined;
   const peopleDiscoveryEngine = new PeopleDiscoveryEngine([
-    new RuPublicPeopleProvider(searchProvider),
+    iterative ? { id: "iterative-public-research", label: "Iterative public research",
+      findPeople: input => researchPeopleIteratively(input, searchProvider, optionalTargetContext.onTrace, pages => { researchPages = pages; }) }
+      : new RuPublicPeopleProvider(searchProvider),
   ]);
-  const peopleDiscovery = await peopleDiscoveryEngine.discoverPeople({
-    company: runtime.company,
+  let peopleDiscovery = await peopleDiscoveryEngine.discoverPeople({
+    company: { ...runtime.company, metadata: { ...runtime.company.metadata,
+      discovery_context: { ...optionalTargetContext.discoveryContext, signal: signalContext } } },
     decisionMaker: runtime.decisionMaker,
     researchPlan: plan,
     bypassCache: optionalTargetContext.bypassCache,
     signal: optionalTargetContext.signal,
   });
+  // Keep the product useful when a configured semantic provider is unavailable
+  // (including exhausted credits): use the bounded deterministic web provider.
+  let usedIterativeResearch = iterative;
+  if (iterative && peopleDiscovery.all_candidates.length === 0 &&
+      (llmAvailabilityError() || peopleDiscovery.search_status === "provider_unavailable")) {
+    peopleDiscovery = await new PeopleDiscoveryEngine([new RuPublicPeopleProvider(searchProvider)]).discoverPeople({
+      company: { ...runtime.company, metadata: { ...runtime.company.metadata,
+        discovery_context: { ...optionalTargetContext.discoveryContext, signal: signalContext } } },
+      decisionMaker: runtime.decisionMaker,
+      researchPlan: plan,
+      bypassCache: optionalTargetContext.bypassCache,
+      signal: optionalTargetContext.signal,
+    });
+    usedIterativeResearch = false;
+    researchPages = undefined;
+    optionalTargetContext.onTrace?.({ stage: "research_fallback", provider: "ru-public-web", reason: "semantic_provider_unavailable" });
+  }
   const lprMs = Date.now() - peopleStartedAt;
+  optionalTargetContext.onTrace?.({ stage: "people_ranked", people: peopleDiscovery.all_candidates });
   throwIfAborted(optionalTargetContext.signal);
   const contactStartedAt = Date.now();
   const contactEnrichmentEngine = new ContactEnrichmentEngine(
-    new ContactDiscoveryService([new PublicContactProvider(searchProvider)]),
+    new ContactDiscoveryService([new PublicContactProvider(searchProvider, researchPages)]),
   );
   const discovered = await contactEnrichmentEngine.enrichContacts({
     campaign: runtime.campaign,
-    company: runtime.company,
+    company: { ...runtime.company, metadata: { ...runtime.company.metadata, defer_outreach_generation: true, research_loop_completed: usedIterativeResearch } },
     lead: runtime.lead,
     signals: runtime.signals,
     decisionMaker: runtime.decisionMaker,
@@ -691,6 +749,19 @@ export async function researchCompany(
     optionalTargetContext.knownContacts,
     runtime.domain,
   );
+  const emailCandidates = peopleDiscovery.all_candidates.flatMap(person =>
+    (person.metadata.email_candidates as PersonalEmailCandidate[] | undefined ?? []).map(candidate => ({ person, candidate })));
+  // Upgrade only a mailbox already found on a fetched official page. Hypotheses
+  // stay in research metadata and cannot become queue recipients.
+  for (const { person, candidate } of emailCandidates) {
+    if (candidate.status !== "HIGH_CONFIDENCE") continue;
+    const contact = discoveredWithKnown.contacts.find(contact => contact.email === candidate.email);
+    if (!contact) continue;
+    Object.assign(contact, { full_name: person.full_name, role_title: person.role_title, contact_type: "work_email" });
+    Object.assign(contact.metadata, { normalized_email_classification: "HIGH_CONFIDENCE_PERSONAL",
+      email_research_status: candidate.status, pattern_support: candidate.patternSupport,
+      exact_official_publication: true, public_contact_verified: false, email_mx_verified: true });
+  }
   const intelligence = await evaluateAdaptiveContactIntelligence({
     company: runtime.company,
     decisionMaker: runtime.decisionMaker,
@@ -699,18 +770,58 @@ export async function researchCompany(
     knownPersonKeys: optionalTargetContext.knownPersonKeys,
   });
   const contactDiscovery = attachContactIntelligence(discoveredWithKnown, intelligence);
+  optionalTargetContext.onTrace?.({ stage: "contact_verification", intelligence, contacts: contactDiscovery.contacts.map(contact => ({
+    name: contact.full_name, email: contact.email, type: contact.contact_type, source: contact.source_url,
+    classification: contact.metadata.normalized_email_classification, status: contact.metadata.email_status,
+    mx: contact.metadata.email_mx_verified, domain: contact.metadata.email_domain_match_reason,
+  })) });
   const contactMs = Date.now() - contactStartedAt;
   const people = mapPeople(peopleDiscovery, runtime.domain, runtime.createdAt);
   const emails = mapEmails(contactDiscovery.contacts, runtime.domain, runtime.createdAt);
+  for (const { candidate } of emailCandidates) {
+    if (candidate.status === "HIGH_CONFIDENCE") {
+      const email = emails.personal.find(email => email.email === candidate.email);
+      if (email) email.verification = candidate;
+    } else if (!emails.inferred.some(email => email.email === candidate.email)) {
+      emails.inferred.push({ email: candidate.email, personName: candidate.personName,
+        classification: candidate.status === "REJECTED" ? "INVALID" : "INFERRED_PERSONAL", evidence: [], verification: candidate });
+    }
+  }
   const best = contactDiscovery.contacts
     .filter((contact) =>
       isConfirmedOutreachEmail(contact) &&
       contactClassification(contact, runtime.domain) !== "INVALID",
     )
-    .sort((left, right) => right.confidence_score - left.confidence_score)[0] ?? null;
+    .sort((left, right) => {
+      const priority = (contact: LeadgenContact) => {
+        const classification = contactClassification(contact, runtime.domain);
+        return classification === "VERIFIED_PERSONAL" ? 3
+          : classification === "HIGH_CONFIDENCE_PERSONAL" ? 2
+            : classification === "DEPARTMENT" ? 1 : 0;
+      };
+      return priority(right) - priority(left) || right.confidence_score - left.confidence_score;
+    })[0] ?? null;
   const bestClassification = best
     ? contactClassification(best, runtime.domain)
     : "INVALID";
+  for (const contact of contactDiscovery.contacts) contact.metadata.outreach_selected = contact.id === best?.id;
+  if (best) {
+    const copy = await buildEmailOutreachWithAi({
+      companyName, companyWebsite: officialWebsite, contact: best,
+      personName: best.full_name, personRole: best.role_title,
+      readiness: best.contact_type === "work_email" ? "outreach_ready" : "fallback_ready",
+      whyNow: signalContext.detail, signalType: signalContext.type,
+      signalTitle: signalContext.title, signalDetail: signalContext.detail,
+      signalSourceUrl: signalContext.sourceUrl, signalConfidence: signalContext.confidence,
+      businessProblemHypothesis: runtime.decisionMaker.expected_pain,
+      targetResponsibility: runtime.decisionMaker.business_problem_owner,
+      signal: optionalTargetContext.signal,
+    });
+    Object.assign(best.metadata, { email_subject: copy.subject, email_body: copy.body,
+      email_quality_gate_passed: copy.qualityGatePassed, email_copy_review_status: copy.copyReviewStatus,
+      email_quality: copy.quality, email_guide_assignment: copy.guideAssignment,
+      email_generation_source: copy.generationSource, email_generation_fallback_reason: copy.fallbackReason });
+  }
   const bestPerson = best?.full_name
     ? people.find((person) => person.fullName.toLowerCase() === best.full_name?.toLowerCase()) ?? null
     : null;

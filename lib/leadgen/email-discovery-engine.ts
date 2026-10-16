@@ -461,14 +461,14 @@ async function resolveMxOverHttps(
       };
       if (payload.Status === 3) return "missing";
       if (payload.Status !== 0) return "unavailable";
-      return payload.Answer?.some((answer) => answer.type === 15 && answer.data)
+      return payload.Answer?.some((answer) => answer.type === 15 && answer.data && !/^\d+\s+\.?$/.test(answer.data.trim()))
         ? "present"
         : "missing";
     },
   });
 }
 
-async function getMxStatus(domain: string, signal?: AbortSignal): Promise<MxStatus> {
+export async function getMxStatus(domain: string, signal?: AbortSignal): Promise<MxStatus> {
   const now = Date.now();
   const cached = mxCache.get(domain);
   if (cached && cached.expiresAt > now) {
@@ -480,7 +480,7 @@ async function getMxStatus(domain: string, signal?: AbortSignal): Promise<MxStat
   pruneMxCache(now);
   let value: MxStatus;
   try {
-    value = (await resolveMx(domain)).length > 0 ? "present" : "missing";
+    value = (await resolveMx(domain)).some(record => record.exchange && record.exchange !== ".") ? "present" : "missing";
   } catch (error) {
     const code = error && typeof error === "object" && "code" in error
       ? String(error.code)
@@ -570,13 +570,20 @@ export async function discoverCompanyEmails({
   rawInput,
   searchProvider,
   signal,
+  researchPages,
 }: {
   rawInput: EmailDiscoveryInput;
   searchProvider: SearchProvider | null;
   signal?: AbortSignal;
+  researchPages?: Array<{ url: string; text: string }>;
 }): Promise<EmailDiscoveryResult> {
   const input = normalizeOfficialInput(rawInput);
-  const crawl = await crawlOfficialWebsite(input, signal);
+  const crawl = researchPages ? {
+    pages: researchPages.filter(page => isInternalUrl(page.url, input.officialDomain)).map(page => ({
+      requestedUrl: page.url, finalUrl: page.url, status: 200, contentType: "text/plain", opened: true,
+      bytes: page.text.length, depth: 0, error: null, html: page.text,
+    })), forms: [] as string[], diagnostics: ["shared_research_evidence"],
+  } : await crawlOfficialWebsite(input, signal);
   throwIfAborted(signal);
   const openedPages = crawl.pages.filter((page) => page.opened && page.html);
   const rejected: RejectedPublicEmail[] = [];
@@ -589,7 +596,7 @@ export async function discoverCompanyEmails({
     rejected.push(...parsed.rejected);
     return parsed.emails;
   });
-  const fallback = parsedFromOfficialPages.length > 0
+  const fallback = researchPages || parsedFromOfficialPages.length > 0
     ? { results: [] as SearchResult[], queries: [] as string[] }
     : await searchFallback(input, searchProvider, signal);
   const indexedOfficialPages = await Promise.all(

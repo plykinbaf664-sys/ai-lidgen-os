@@ -1,0 +1,3230 @@
+{
+  "mode": "direct",
+  "name": "Сбер. IT",
+  "website": "https://rabota.sber.ru",
+  "before": {
+    "companyName": "Сбер. IT",
+    "officialWebsite": "https://rabota.sber.ru",
+    "officialDomain": "rabota.sber.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "SDET / Разработчик AI решений (HR платформа)",
+      "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+      "sourceUrl": "https://hh.ru/vacancy/138117118",
+      "confidence": 90
+    },
+    "researchConfidence": "UNVERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 6,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 23,
+      "lprMs": 15877,
+      "contactMs": 8625,
+      "totalMs": 26613,
+      "stopReason": "lpr_not_found"
+    }
+  },
+  "signal": {
+    "type": "AI_AUTOMATION_HIRING_SIGNAL",
+    "title": "SDET / Разработчик AI решений (HR платформа)",
+    "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+    "sourceUrl": "https://hh.ru/vacancy/138117118",
+    "confidence": 90
+  },
+  "index": 14,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru",
+      "status": 200,
+      "elapsedMs": 985
+    },
+    {
+      "stage": "research_open",
+      "url": "https://rabota.sber.ru",
+      "success": true,
+      "evidence": {
+        "url": "https://rabota.sber.ru",
+        "kind": "page",
+        "text": "Богдан Рощупкин ML-инженер AI-агентов",
+        "links": [
+          {
+            "url": "https://rabota.sber.ru",
+            "label": ""
+          },
+          {
+            "url": "https://rabota.sber.ru/search",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://rabota.sber.ru/media",
+            "label": "Карьерные медиа"
+          },
+          {
+            "url": "https://sbergraduate.ru",
+            "label": "Выпускникам и студентам"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/policy",
+            "label": "Политика обработки данных"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/cookies",
+            "label": "Политика использования Cookies"
+          },
+          {
+            "url": "https://www.sberbank.ru",
+            "label": "www.sberbank.ru"
+          },
+          {
+            "url": "https://t.me/careersber",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:07:41.107Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 7088,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "emailCandidates": [],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:41.107Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 7,
+          "actionsRemaining": 10,
+          "searchRemaining": 8,
+          "remainingMs": 43770
+        }
+      },
+      "usage": {
+        "input_tokens": 1814,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 565,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2379
+      },
+      "output": {
+        "companySummary": "\"Сбер. IT\" занимается наймом IT-специалистов, в том числе по направлениям AI, автоматизации и ML-решений. На платформе rabota.sber.ru размещаются вакансии, связанные с разработкой AI-агентов и автоматизацией (например, SDET / Разработчик AI-решений для HR-платформы). Организация является IT-дивизионом Сбербанка, отвечает за внедрение современных технологий в инфраструктуру крупного банка.",
+        "missing": [
+          "Руководитель/владелец процесса разработки AI-агентов для HR-платформы",
+          "Публичный контакт релевантного руководителя подразделения"
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 60,
+            "reason": "Упомянут на rabota.sber.ru как ML-инженер AI-агентов, что связано с процессами разработки и внедрения AI-решений.",
+            "nameParts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "команда или контакты",
+            "purpose": "Найти руководителя направления или владельца процесса разработки AI-агентов, а также возможные личные контакты руководства профильного подразделения"
+          },
+          {
+            "type": "search",
+            "value": "\"Богдан Рощупкин\" rabota.sber.ru",
+            "focus": "личный публичный профиль или упоминания контактов",
+            "purpose": "Проверить есть ли у Богдана Рощупкина публичный профиль, контакт или подтверждающая страница, чтобы оценить наличие роли руководителя или профильного LPR"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найден владелец процесса или контакт руководителя профильного подразделения — требуется узнать, кто управляет направлением/командой разработки AI-агентов или подтверждение публичной роли Богдана Рощупкина"
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 0,
+      "decision": {
+        "companySummary": "\"Сбер. IT\" занимается наймом IT-специалистов, в том числе по направлениям AI, автоматизации и ML-решений. На платформе rabota.sber.ru размещаются вакансии, связанные с разработкой AI-агентов и автоматизацией (например, SDET / Разработчик AI-решений для HR-платформы). Организация является IT-дивизионом Сбербанка, отвечает за внедрение современных технологий в инфраструктуру крупного банка.",
+        "missing": [
+          "Руководитель/владелец процесса разработки AI-агентов для HR-платформы",
+          "Публичный контакт релевантного руководителя подразделения"
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 60,
+            "reason": "Упомянут на rabota.sber.ru как ML-инженер AI-агентов, что связано с процессами разработки и внедрения AI-решений.",
+            "nameParts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "команда или контакты",
+            "purpose": "Найти руководителя направления или владельца процесса разработки AI-агентов, а также возможные личные контакты руководства профильного подразделения"
+          },
+          {
+            "type": "search",
+            "value": "\"Богдан Рощупкин\" rabota.sber.ru",
+            "focus": "личный публичный профиль или упоминания контактов",
+            "purpose": "Проверить есть ли у Богдана Рощупкина публичный профиль, контакт или подтверждающая страница, чтобы оценить наличие роли руководителя или профильного LPR"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найден владелец процесса или контакт руководителя профильного подразделения — требуется узнать, кто управляет направлением/командой разработки AI-агентов или подтверждение публичной роли Богдана Рощупкина"
+      },
+      "validationErrors": [],
+      "acceptedPeople": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "semantic_role_relevance": 60,
+            "semantic_role_reason": "Упомянут на rabota.sber.ru как ML-инженер AI-агентов, что связано с процессами разработки и внедрения AI-решений.",
+            "name_parts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "current_role_confirmed": true,
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://rabota.sber.ru",
+      "focus": "команда или контакты",
+      "purpose": "Найти руководителя направления или владельца процесса разработки AI-агентов, а также возможные личные контакты руководства профильного подразделения",
+      "success": true,
+      "evidence": {
+        "url": "https://rabota.sber.ru",
+        "kind": "page",
+        "text": "Богдан Рощупкин ML-инженер AI-агентов",
+        "links": [
+          {
+            "url": "https://rabota.sber.ru",
+            "label": ""
+          },
+          {
+            "url": "https://rabota.sber.ru/search",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://rabota.sber.ru/media",
+            "label": "Карьерные медиа"
+          },
+          {
+            "url": "https://sbergraduate.ru",
+            "label": "Выпускникам и студентам"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/policy",
+            "label": "Политика обработки данных"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/cookies",
+            "label": "Политика использования Cookies"
+          },
+          {
+            "url": "https://www.sberbank.ru",
+            "label": "www.sberbank.ru"
+          },
+          {
+            "url": "https://t.me/careersber",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:07:41.107Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%22%20rabota.sber.ru&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 217
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%22%20rabota.sber.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 142
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "\"Богдан Рощупкин\" rabota.sber.ru",
+      "focus": "личный публичный профиль или упоминания контактов",
+      "purpose": "Проверить есть ли у Богдана Рощупкина публичный профиль, контакт или подтверждающая страница, чтобы оценить наличие роли руководителя или профильного LPR",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 4766,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "email": null,
+            "profiles": [],
+            "sources": [
+              "https://rabota.sber.ru"
+            ],
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ]
+          }
+        ],
+        "emailCandidates": [
+          {
+            "email": "bogdan.roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{given}.{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "b.roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{g}.{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "broshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{g}{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "roshchupkin.bogdan@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{family}.{given}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:41.107Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "команда или контакты",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "\"Богдан Рощупкин\" rabota.sber.ru",
+            "focus": "личный публичный профиль или упоминания контактов",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 6,
+          "actionsRemaining": 8,
+          "searchRemaining": 7,
+          "remainingMs": 35967
+        }
+      },
+      "usage": {
+        "input_tokens": 2349,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 454,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2803
+      },
+      "output": {
+        "companySummary": "Сбер. IT — технологическое подразделение крупной российской финансовой организации, занимающееся разработкой IT-решений, включая AI-агентов для HR-платформ. На сайте rabota.sber.ru размещена вакансия SDET / Разработчик AI-решений (HR платформа), связанная с созданием AI-агентов для автоматизации тестирования. На странице указан Богдан Рощупкин как ML-инженер AI-агентов, релевантный команде AI-решений, но публичный прямой контакт не выявлен.",
+        "missing": [
+          "Публичный контакт (email или подтверждённый профиль) Богдана Рощупкина",
+          "Руководитель подразделения AI или HR-платформы с подтверждённой ролью и контактом"
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 70,
+            "reason": "Упомянут на официальном сайте как ML-инженер AI-агентов; профиль и контакт пока не подтверждены.",
+            "nameParts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "search",
+            "value": "руководитель AI платформы rabota.sber.ru OR Sber OR Сбер. IT",
+            "focus": "руководитель профильного подразделения, релевантный AI/HR платформе",
+            "purpose": "Попытаться выявить владельца направления и найти подтверждение контактных данных"
+          },
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин Sber email OR \"почта\" OR \"контакты\"",
+            "focus": "личный подтверждённый публичный email или профиль",
+            "purpose": "Уточнить публичный контакт подтверждённого сотрудника"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Пока не найден подтверждённый публичный контакт релевантного владельца процесса или руководителя подразделения."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 1,
+      "decision": {
+        "companySummary": "Сбер. IT — технологическое подразделение крупной российской финансовой организации, занимающееся разработкой IT-решений, включая AI-агентов для HR-платформ. На сайте rabota.sber.ru размещена вакансия SDET / Разработчик AI-решений (HR платформа), связанная с созданием AI-агентов для автоматизации тестирования. На странице указан Богдан Рощупкин как ML-инженер AI-агентов, релевантный команде AI-решений, но публичный прямой контакт не выявлен.",
+        "missing": [
+          "Публичный контакт (email или подтверждённый профиль) Богдана Рощупкина",
+          "Руководитель подразделения AI или HR-платформы с подтверждённой ролью и контактом"
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 70,
+            "reason": "Упомянут на официальном сайте как ML-инженер AI-агентов; профиль и контакт пока не подтверждены.",
+            "nameParts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [],
+        "actions": [
+          {
+            "type": "search",
+            "value": "руководитель AI платформы rabota.sber.ru OR Sber OR Сбер. IT",
+            "focus": "руководитель профильного подразделения, релевантный AI/HR платформе",
+            "purpose": "Попытаться выявить владельца направления и найти подтверждение контактных данных"
+          },
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин Sber email OR \"почта\" OR \"контакты\"",
+            "focus": "личный подтверждённый публичный email или профиль",
+            "purpose": "Уточнить публичный контакт подтверждённого сотрудника"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Пока не найден подтверждённый публичный контакт релевантного владельца процесса или руководителя подразделения."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              },
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "semantic_role_relevance": 70,
+            "semantic_role_reason": "Упомянут на официальном сайте как ML-инженер AI-агентов; профиль и контакт пока не подтверждены.",
+            "name_parts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "current_role_confirmed": true,
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20AI%20%D0%BF%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D1%8B%20rabota.sber.ru%20OR%20Sber%20OR%20%D0%A1%D0%B1%D0%B5%D1%80.%20IT&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 227
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20AI%20%D0%BF%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D1%8B%20rabota.sber.ru%20OR%20Sber%20OR%20%D0%A1%D0%B1%D0%B5%D1%80.%20IT&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 124
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "руководитель AI платформы rabota.sber.ru OR Sber OR Сбер. IT",
+      "focus": "руководитель профильного подразделения, релевантный AI/HR платформе",
+      "purpose": "Попытаться выявить владельца направления и найти подтверждение контактных данных",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%20Sber%20email%20OR%20%22%D0%BF%D0%BE%D1%87%D1%82%D0%B0%22%20OR%20%22%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B%22&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 224
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%20%D0%A0%D0%BE%D1%89%D1%83%D0%BF%D0%BA%D0%B8%D0%BD%20Sber%20email%20OR%20%22%D0%BF%D0%BE%D1%87%D1%82%D0%B0%22%20OR%20%22%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B%22&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 122
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "Богдан Рощупкин Sber email OR \"почта\" OR \"контакты\"",
+      "focus": "личный подтверждённый публичный email или профиль",
+      "purpose": "Уточнить публичный контакт подтверждённого сотрудника",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 5941,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "email": null,
+            "profiles": [],
+            "sources": [
+              "https://rabota.sber.ru"
+            ],
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ]
+          }
+        ],
+        "emailCandidates": [
+          {
+            "email": "bogdan.roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{given}.{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "b.roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{g}.{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "broshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{g}{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "roshchupkin.bogdan@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{family}.{given}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:41.107Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "команда или контакты",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "\"Богдан Рощупкин\" rabota.sber.ru",
+            "focus": "личный публичный профиль или упоминания контактов",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "руководитель AI платформы rabota.sber.ru OR Sber OR Сбер. IT",
+            "focus": "руководитель профильного подразделения, релевантный AI/HR платформе",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин Sber email OR \"почта\" OR \"контакты\"",
+            "focus": "личный подтверждённый публичный email или профиль",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 6,
+          "searchRemaining": 5,
+          "remainingMs": 29714
+        }
+      },
+      "usage": {
+        "input_tokens": 2505,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 2176
+        },
+        "output_tokens": 567,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3072
+      },
+      "output": {
+        "companySummary": "Сбер. IT (rabota.sber.ru) — кадровый портал Группы Сбер, публикует вакансии в IT и смежных направлениях. Сигнал: нанимается специалист по разработке AI-агентов (автоматизация тестирования в HR платформе). На сайте представлен Богдан Рощупкин (ML-инженер AI-агентов), но отсутствуют подтверждённые контакты или информация о руководителе профильного подразделения. Доминирующая платформа — rabota.sber.ru, связь с Сбербанк подтверждена ссылками и стилем бренда. Не найден паблик email.",
+        "missing": [
+          "Публичный руководитель подразделения по AI HR платформе или непосредственный владелец процесса (например, руководитель направления автоматизации/AI для HR платформы) с подтверждённым личным контактом."
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 70,
+            "reason": "Указан как ML-инженер AI-агентов на rabota.sber.ru; профильное направление, но не обязательно владелец процесса или руководитель.",
+            "nameParts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Сайт rabota.sber.ru содержит вакансии и информацию о сотрудниках \"Сбера\""
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "руководитель направления AI автоматизации HR Сбер OR rabota.sber.ru OR Sber IT",
+            "focus": "ФИО и позиция руководителя AI/HR tech направления, персональный публичный профиль или контакт",
+            "purpose": "Идентифицировать владельца или руководителя процесса автоматизации/AI HR платформы, опираясь на свежие профильные публикации, интервью или страницы команды."
+          },
+          {
+            "type": "open",
+            "value": "https://hh.ru/vacancy/138117118",
+            "focus": "руководитель, контакты или упоминания команды/отдела в описании вакансии",
+            "purpose": "Проверить, не указаны ли в тексте вакансии имена руководителей, контакты профильных сотрудников или ссылки на команду/руководство."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найден публичный руководитель подразделения или владелец процесса с подтверждённым контактом; нужны дополнительные действия для идентификации ЛПР."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 2,
+      "decision": {
+        "companySummary": "Сбер. IT (rabota.sber.ru) — кадровый портал Группы Сбер, публикует вакансии в IT и смежных направлениях. Сигнал: нанимается специалист по разработке AI-агентов (автоматизация тестирования в HR платформе). На сайте представлен Богдан Рощупкин (ML-инженер AI-агентов), но отсутствуют подтверждённые контакты или информация о руководителе профильного подразделения. Доминирующая платформа — rabota.sber.ru, связь с Сбербанк подтверждена ссылками и стилем бренда. Не найден паблик email.",
+        "missing": [
+          "Публичный руководитель подразделения по AI HR платформе или непосредственный владелец процесса (например, руководитель направления автоматизации/AI для HR платформы) с подтверждённым личным контактом."
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 70,
+            "reason": "Указан как ML-инженер AI-агентов на rabota.sber.ru; профильное направление, но не обязательно владелец процесса или руководитель.",
+            "nameParts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "Сайт rabota.sber.ru содержит вакансии и информацию о сотрудниках \"Сбера\""
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "руководитель направления AI автоматизации HR Сбер OR rabota.sber.ru OR Sber IT",
+            "focus": "ФИО и позиция руководителя AI/HR tech направления, персональный публичный профиль или контакт",
+            "purpose": "Идентифицировать владельца или руководителя процесса автоматизации/AI HR платформы, опираясь на свежие профильные публикации, интервью или страницы команды."
+          },
+          {
+            "type": "open",
+            "value": "https://hh.ru/vacancy/138117118",
+            "focus": "руководитель, контакты или упоминания команды/отдела в описании вакансии",
+            "purpose": "Проверить, не указаны ли в тексте вакансии имена руководителей, контакты профильных сотрудников или ссылки на команду/руководство."
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Не найден публичный руководитель подразделения или владелец процесса с подтверждённым контактом; нужны дополнительные действия для идентификации ЛПР."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              },
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              },
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "semantic_role_relevance": 70,
+            "semantic_role_reason": "Указан как ML-инженер AI-агентов на rabota.sber.ru; профильное направление, но не обязательно владелец процесса или руководитель.",
+            "name_parts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "current_role_confirmed": true,
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20AI%20%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8%20HR%20%D0%A1%D0%B1%D0%B5%D1%80%20OR%20rabota.sber.ru%20OR%20Sber%20IT&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 406
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20AI%20%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8%20HR%20%D0%A1%D0%B1%D0%B5%D1%80%20OR%20rabota.sber.ru%20OR%20Sber%20IT&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 354
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "руководитель направления AI автоматизации HR Сбер OR rabota.sber.ru OR Sber IT",
+      "focus": "ФИО и позиция руководителя AI/HR tech направления, персональный публичный профиль или контакт",
+      "purpose": "Идентифицировать владельца или руководителя процесса автоматизации/AI HR платформы, опираясь на свежие профильные публикации, интервью или страницы команды.",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 5370,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "email": null,
+            "profiles": [],
+            "sources": [
+              "https://rabota.sber.ru"
+            ],
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ]
+          }
+        ],
+        "emailCandidates": [
+          {
+            "email": "bogdan.roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{given}.{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "b.roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{g}.{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "broshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{g}{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "roshchupkin.bogdan@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{family}.{given}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:41.107Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "команда или контакты",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "\"Богдан Рощупкин\" rabota.sber.ru",
+            "focus": "личный публичный профиль или упоминания контактов",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "руководитель AI платформы rabota.sber.ru OR Sber OR Сбер. IT",
+            "focus": "руководитель профильного подразделения, релевантный AI/HR платформе",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин Sber email OR \"почта\" OR \"контакты\"",
+            "focus": "личный подтверждённый публичный email или профиль",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "руководитель направления AI автоматизации HR Сбер OR rabota.sber.ru OR Sber IT",
+            "focus": "ФИО и позиция руководителя AI/HR tech направления, персональный публичный профиль или контакт",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          }
+        ],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 4,
+          "actionsRemaining": 5,
+          "searchRemaining": 4,
+          "remainingMs": 22963
+        }
+      },
+      "usage": {
+        "input_tokens": 2590,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 2304
+        },
+        "output_tokens": 489,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3079
+      },
+      "output": {
+        "companySummary": "Сбер. IT — подразделение Сбера, занимающееся IT-разработкой. Основной сайт — rabota.sber.ru, где размещены вакансии и информация о сотрудниках. В компании есть направление по разработке AI-агентов для автоматизации тестирования HR-платформ.",
+        "missing": [
+          "Руководитель профильного подразделения/процесса по AI-автоматизации HR или AI-агентов на rabota.sber.ru/в Сбер. IT",
+          "Публичный личный контакт или подтверждённый профиль такого руководителя"
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 55,
+            "reason": "Специалист по AI-агентам, работает непосредственно над релевантной задачей, но не владелец процесса и не руководитель подразделения.",
+            "nameParts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "sbergraduate.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://sbergraduate.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "руководитель направления AI автоматизации HR Сбер OR rabota.sber.ru OR Сбер. IT OR AI директор OR head of AI platform site:sber.ru",
+            "focus": "имя и точная должность руководителя AI/HR платформы или владельца AI-автоматизации",
+            "purpose": "Найти и подтвердить ФИО и публичную роль руководителя процесса, релевантного сигналу"
+          },
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/media",
+            "focus": "руководители, интервью, новости, профильные новости со ссылками на ЛПР в AI автоматизации или HR-платформах",
+            "purpose": "Проверить есть ли в медиа-материалах публикации, интервью или упоминания ключевых руководителей проекта/направления"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого руководителя релевантного AI/HR направления и его контакта; требуется поиск ФИО и роли ЛПР."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 3,
+      "decision": {
+        "companySummary": "Сбер. IT — подразделение Сбера, занимающееся IT-разработкой. Основной сайт — rabota.sber.ru, где размещены вакансии и информация о сотрудниках. В компании есть направление по разработке AI-агентов для автоматизации тестирования HR-платформ.",
+        "missing": [
+          "Руководитель профильного подразделения/процесса по AI-автоматизации HR или AI-агентов на rabota.sber.ru/в Сбер. IT",
+          "Публичный личный контакт или подтверждённый профиль такого руководителя"
+        ],
+        "people": [
+          {
+            "entityType": "PERSON",
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "relevance": 55,
+            "reason": "Специалист по AI-агентам, работает непосредственно над релевантной задачей, но не владелец процесса и не руководитель подразделения.",
+            "nameParts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "currentRole": true,
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "contacts": []
+          }
+        ],
+        "officialDomains": [
+          {
+            "domain": "sbergraduate.ru",
+            "citation": {
+              "sourceId": "e1",
+              "quote": "https://sbergraduate.ru"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "руководитель направления AI автоматизации HR Сбер OR rabota.sber.ru OR Сбер. IT OR AI директор OR head of AI platform site:sber.ru",
+            "focus": "имя и точная должность руководителя AI/HR платформы или владельца AI-автоматизации",
+            "purpose": "Найти и подтвердить ФИО и публичную роль руководителя процесса, релевантного сигналу"
+          },
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/media",
+            "focus": "руководители, интервью, новости, профильные новости со ссылками на ЛПР в AI автоматизации или HR-платформах",
+            "purpose": "Проверить есть ли в медиа-материалах публикации, интервью или упоминания ключевых руководителей проекта/направления"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого руководителя релевантного AI/HR направления и его контакта; требуется поиск ФИО и роли ЛПР."
+      },
+      "validationErrors": [
+        "official_domain_not_proven:sbergraduate.ru",
+        "person_rejected:Богдан Рощупкин:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+      ],
+      "acceptedPeople": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              },
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              },
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "semantic_role_relevance": 70,
+            "semantic_role_reason": "Указан как ML-инженер AI-агентов на rabota.sber.ru; профильное направление, но не обязательно владелец процесса или руководитель.",
+            "name_parts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "current_role_confirmed": true,
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20AI%20%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8%20HR%20%D0%A1%D0%B1%D0%B5%D1%80%20OR%20rabota.sber.ru%20OR%20%D0%A1%D0%B1%D0%B5%D1%80.%20IT%20OR%20AI%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20head%20of%20AI%20platform%20sber.ru&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 360
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/media",
+      "status": 308,
+      "elapsedMs": 465
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20AI%20%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8%20HR%20%D0%A1%D0%B1%D0%B5%D1%80%20OR%20rabota.sber.ru%20OR%20%D0%A1%D0%B1%D0%B5%D1%80.%20IT%20OR%20AI%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%20OR%20head%20of%20AI%20platform%20sber.ru&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 286
+    },
+    {
+      "stage": "research_action",
+      "type": "search",
+      "value": "руководитель направления AI автоматизации HR Сбер OR rabota.sber.ru OR Сбер. IT OR AI директор OR head of AI platform site:sber.ru",
+      "focus": "имя и точная должность руководителя AI/HR платформы или владельца AI-автоматизации",
+      "purpose": "Найти и подтвердить ФИО и публичную роль руководителя процесса, релевантного сигналу",
+      "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+    },
+    {
+      "stage": "fetch",
+      "url": "https://rabota.sber.ru/media/",
+      "status": 200,
+      "elapsedMs": 365
+    },
+    {
+      "stage": "research_action",
+      "type": "open",
+      "value": "https://rabota.sber.ru/media",
+      "focus": "руководители, интервью, новости, профильные новости со ссылками на ЛПР в AI автоматизации или HR-платформах",
+      "purpose": "Проверить есть ли в медиа-материалах публикации, интервью или упоминания ключевых руководителей проекта/направления",
+      "success": true,
+      "evidence": {
+        "url": "https://rabota.sber.ru/media/",
+        "kind": "page",
+        "text": "Работа в Сбере: Карьерные медиа Вакансии Карьерные медиа Выпускникам и студентам Почитать, послушать, посмотреть Выбери, что интересно Фильтры Загрузка... Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+        "links": [
+          {
+            "url": "https://rabota.sber.ru",
+            "label": ""
+          },
+          {
+            "url": "https://rabota.sber.ru/search",
+            "label": "Вакансии"
+          },
+          {
+            "url": "https://rabota.sber.ru/media",
+            "label": "Карьерные медиа"
+          },
+          {
+            "url": "https://sbergraduate.ru",
+            "label": "Выпускникам и студентам"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/policy",
+            "label": "Политика обработки данных"
+          },
+          {
+            "url": "https://www.sberbank.ru/privacy/cookies",
+            "label": "Политика использования Cookies"
+          },
+          {
+            "url": "https://www.sberbank.ru",
+            "label": "www.sberbank.ru"
+          },
+          {
+            "url": "https://t.me/careersber",
+            "label": ""
+          },
+          {
+            "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+            "label": ""
+          }
+        ],
+        "fetchedAt": "2026-10-07T22:08:08.348Z",
+        "id": "e2"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 6467,
+      "schema": "iterative_people_research",
+      "model": "gpt-4.1",
+      "input": {
+        "company": "Сбер. IT",
+        "domain": "rabota.sber.ru",
+        "signal": {
+          "signal": {
+            "type": "AI_AUTOMATION_HIRING_SIGNAL",
+            "title": "SDET / Разработчик AI решений (HR платформа)",
+            "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+            "sourceUrl": "https://hh.ru/vacancy/138117118",
+            "confidence": 90
+          }
+        },
+        "currentDate": "2026-10-07",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [
+          {
+            "name": "Богдан Рощупкин",
+            "role": "ML-инженер AI-агентов",
+            "email": null,
+            "profiles": [],
+            "sources": [
+              "https://rabota.sber.ru"
+            ],
+            "citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ]
+          }
+        ],
+        "emailCandidates": [
+          {
+            "email": "bogdan.roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{given}.{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "b.roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{g}.{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "broshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{g}{family}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          },
+          {
+            "email": "roshchupkin.bogdan@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "PREDICTED",
+            "pattern": "{family}.{given}",
+            "patternSupport": 0,
+            "mx": "unavailable",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Name/domain hypothesis; mailbox existence and ownership unproven"
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://rabota.sber.ru/media/",
+            "kind": "page",
+            "text": "Работа в Сбере: Карьерные медиа Вакансии Карьерные медиа Выпускникам и студентам Почитать, послушать, посмотреть Выбери, что интересно Фильтры Загрузка... Политика обработки данных Политика использования Cookies www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:08:08.348Z",
+            "id": "e2"
+          },
+          {
+            "url": "https://rabota.sber.ru",
+            "kind": "page",
+            "text": "Богдан Рощупкин ML-инженер AI-агентов",
+            "links": [
+              {
+                "url": "https://rabota.sber.ru",
+                "label": ""
+              },
+              {
+                "url": "https://rabota.sber.ru/search",
+                "label": "Вакансии"
+              },
+              {
+                "url": "https://rabota.sber.ru/media",
+                "label": "Карьерные медиа"
+              },
+              {
+                "url": "https://sbergraduate.ru",
+                "label": "Выпускникам и студентам"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/policy",
+                "label": "Политика обработки данных"
+              },
+              {
+                "url": "https://www.sberbank.ru/privacy/cookies",
+                "label": "Политика использования Cookies"
+              },
+              {
+                "url": "https://www.sberbank.ru",
+                "label": "www.sberbank.ru"
+              },
+              {
+                "url": "https://t.me/careersber",
+                "label": ""
+              },
+              {
+                "url": "https://vk.com/careersber?utm_source=rabota.sber.ru&utm_medium=organic&utm_campaign=sbercareer",
+                "label": ""
+              }
+            ],
+            "fetchedAt": "2026-10-07T22:07:41.107Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru",
+            "focus": "команда или контакты",
+            "success": true
+          },
+          {
+            "type": "search",
+            "value": "\"Богдан Рощупкин\" rabota.sber.ru",
+            "focus": "личный публичный профиль или упоминания контактов",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "руководитель AI платформы rabota.sber.ru OR Sber OR Сбер. IT",
+            "focus": "руководитель профильного подразделения, релевантный AI/HR платформе",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "Богдан Рощупкин Sber email OR \"почта\" OR \"контакты\"",
+            "focus": "личный подтверждённый публичный email или профиль",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "руководитель направления AI автоматизации HR Сбер OR rabota.sber.ru OR Sber IT",
+            "focus": "ФИО и позиция руководителя AI/HR tech направления, персональный публичный профиль или контакт",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "search",
+            "value": "руководитель направления AI автоматизации HR Сбер OR rabota.sber.ru OR Сбер. IT OR AI директор OR head of AI platform site:sber.ru",
+            "focus": "имя и точная должность руководителя AI/HR платформы или владельца AI-автоматизации",
+            "error": "Search incomplete: providers unavailable and no usable results. Last errors: browser: no results | tavily: Tavily unavailable: HTTP 432; account cooldown"
+          },
+          {
+            "type": "open",
+            "value": "https://rabota.sber.ru/media",
+            "focus": "руководители, интервью, новости, профильные новости со ссылками на ЛПР в AI автоматизации или HR-платформах",
+            "success": true
+          }
+        ],
+        "validationErrors": [
+          "official_domain_not_proven:sbergraduate.ru",
+          "person_rejected:Богдан Рощупкин:need_verbatim_name_role_affiliation_and_relevance_60_to_100"
+        ],
+        "budget": {
+          "roundsRemaining": 3,
+          "actionsRemaining": 3,
+          "searchRemaining": 3,
+          "remainingMs": 16529
+        }
+      },
+      "usage": {
+        "input_tokens": 3088,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 515,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3603
+      },
+      "output": {
+        "companySummary": "Сбер. IT (rabota.sber.ru) — цифровая HR-платформа и карьерный портал крупнейшей российской финансовой группы ПАО «Сбербанк» с акцентом на найм, развитие и автоматизацию внутрикорпоративных процессов, включая проекты по внедрению AI-агентов и тестированию IT-решений. По сигналу открыта вакансия «SDET / Разработчик AI решений (HR платформа)» с задачами по разработке и внедрению AI-моделей для автоматизации генерации тестов.",
+        "missing": [
+          "ФИО и роль руководителя или владельца процесса AI-автоматизации/HR-tech платформы с подтверждённым актуальным публичным профилем или контактом",
+          "Персональный рабочий контакт релевантного ЛПР (email или корпоративный профиль)"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e2",
+              "quote": "www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "руководитель AI автоматизации HR-платформы site:rabota.sber.ru OR site:sber.ru OR site:sberbank.ru",
+            "focus": "ФИО и роль руководителя направления (AI автоматизация, HR-платформа), желательно с корпоративным профилем или интервью",
+            "purpose": "Установить владельца процесса среди доступных топ-менеджеров и профильных подразделений; поиск ссылки на страницу команды, пресс-релиз или интервью"
+          },
+          {
+            "type": "search",
+            "value": "директор по цифровым технологиям HR Сбер OR head of HR tech Sber OR руководитель разработки AI-агентов site:sber.ru OR site:sberbank.ru",
+            "focus": "Конкретное имя и роль владельца направления (HR digital, AI), актуальность роли в привязке к проекту rabota.sber.ru, персональная публичная страница или контакты",
+            "purpose": "Уточнить принадлежность процессов и получить рабочий публичный контакт релевантного ЛПР"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого имени или роли владельца задачи/руководителя подразделения по AI-автоматизации HR/IT в Сбер. IT; требуется дополнительный поиск по корпоративным ресурсам группы «Сбер» с акцентом на руководителей."
+      }
+    },
+    {
+      "stage": "research_decision",
+      "round": 4,
+      "decision": {
+        "companySummary": "Сбер. IT (rabota.sber.ru) — цифровая HR-платформа и карьерный портал крупнейшей российской финансовой группы ПАО «Сбербанк» с акцентом на найм, развитие и автоматизацию внутрикорпоративных процессов, включая проекты по внедрению AI-агентов и тестированию IT-решений. По сигналу открыта вакансия «SDET / Разработчик AI решений (HR платформа)» с задачами по разработке и внедрению AI-моделей для автоматизации генерации тестов.",
+        "missing": [
+          "ФИО и роль руководителя или владельца процесса AI-автоматизации/HR-tech платформы с подтверждённым актуальным публичным профилем или контактом",
+          "Персональный рабочий контакт релевантного ЛПР (email или корпоративный профиль)"
+        ],
+        "people": [],
+        "officialDomains": [
+          {
+            "domain": "rabota.sber.ru",
+            "citation": {
+              "sourceId": "e2",
+              "quote": "www.sberbank.ru © 2026 ПАО «Сбербанк» вакансии карьерные медиа выпускникам и студентам"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "type": "search",
+            "value": "руководитель AI автоматизации HR-платформы site:rabota.sber.ru OR site:sber.ru OR site:sberbank.ru",
+            "focus": "ФИО и роль руководителя направления (AI автоматизация, HR-платформа), желательно с корпоративным профилем или интервью",
+            "purpose": "Установить владельца процесса среди доступных топ-менеджеров и профильных подразделений; поиск ссылки на страницу команды, пресс-релиз или интервью"
+          },
+          {
+            "type": "search",
+            "value": "директор по цифровым технологиям HR Сбер OR head of HR tech Sber OR руководитель разработки AI-агентов site:sber.ru OR site:sberbank.ru",
+            "focus": "Конкретное имя и роль владельца направления (HR digital, AI), актуальность роли в привязке к проекту rabota.sber.ru, персональная публичная страница или контакты",
+            "purpose": "Уточнить принадлежность процессов и получить рабочий публичный контакт релевантного ЛПР"
+          }
+        ],
+        "sufficient": false,
+        "stopReason": "Нет подтверждённого имени или роли владельца задачи/руководителя подразделения по AI-автоматизации HR/IT в Сбер. IT; требуется дополнительный поиск по корпоративным ресурсам группы «Сбер» с акцентом на руководителей."
+      },
+      "validationErrors": [],
+      "acceptedPeople": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              },
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              },
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "semantic_role_relevance": 70,
+            "semantic_role_reason": "Указан как ML-инженер AI-агентов на rabota.sber.ru; профильное направление, но не обязательно владелец процесса или руководитель.",
+            "name_parts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "current_role_confirmed": true,
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ],
+      "domains": [
+        "rabota.sber.ru"
+      ]
+    },
+    {
+      "stage": "email_candidates",
+      "candidates": [
+        {
+          "email": "bogdan.roshchupkin@rabota.sber.ru",
+          "personName": "Богдан Рощупкин",
+          "status": "REJECTED",
+          "pattern": "{given}.{family}",
+          "patternSupport": 0,
+          "mx": "missing",
+          "catchAll": "unknown",
+          "sourceUrls": [],
+          "reason": "Domain has no usable MX"
+        },
+        {
+          "email": "b.roshchupkin@rabota.sber.ru",
+          "personName": "Богдан Рощупкин",
+          "status": "REJECTED",
+          "pattern": "{g}.{family}",
+          "patternSupport": 0,
+          "mx": "missing",
+          "catchAll": "unknown",
+          "sourceUrls": [],
+          "reason": "Domain has no usable MX"
+        },
+        {
+          "email": "roshchupkin@rabota.sber.ru",
+          "personName": "Богдан Рощупкин",
+          "status": "REJECTED",
+          "pattern": "{family}",
+          "patternSupport": 0,
+          "mx": "missing",
+          "catchAll": "unknown",
+          "sourceUrls": [],
+          "reason": "Domain has no usable MX"
+        },
+        {
+          "email": "broshchupkin@rabota.sber.ru",
+          "personName": "Богдан Рощупкин",
+          "status": "REJECTED",
+          "pattern": "{g}{family}",
+          "patternSupport": 0,
+          "mx": "missing",
+          "catchAll": "unknown",
+          "sourceUrls": [],
+          "reason": "Domain has no usable MX"
+        },
+        {
+          "email": "roshchupkin.bogdan@rabota.sber.ru",
+          "personName": "Богдан Рощупкин",
+          "status": "REJECTED",
+          "pattern": "{family}.{given}",
+          "patternSupport": 0,
+          "mx": "missing",
+          "catchAll": "unknown",
+          "sourceUrls": [],
+          "reason": "Domain has no usable MX"
+        }
+      ]
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "diminishing_returns",
+      "actions": 8,
+      "candidates": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              },
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              },
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "semantic_role_relevance": 70,
+            "semantic_role_reason": "Указан как ML-инженер AI-агентов на rabota.sber.ru; профильное направление, но не обязательно владелец процесса или руководитель.",
+            "name_parts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "current_role_confirmed": true,
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true,
+            "email_candidates": [
+              {
+                "email": "bogdan.roshchupkin@rabota.sber.ru",
+                "personName": "Богдан Рощупкин",
+                "status": "REJECTED",
+                "pattern": "{given}.{family}",
+                "patternSupport": 0,
+                "mx": "missing",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "Domain has no usable MX"
+              },
+              {
+                "email": "b.roshchupkin@rabota.sber.ru",
+                "personName": "Богдан Рощупкин",
+                "status": "REJECTED",
+                "pattern": "{g}.{family}",
+                "patternSupport": 0,
+                "mx": "missing",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "Domain has no usable MX"
+              },
+              {
+                "email": "roshchupkin@rabota.sber.ru",
+                "personName": "Богдан Рощупкин",
+                "status": "REJECTED",
+                "pattern": "{family}",
+                "patternSupport": 0,
+                "mx": "missing",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "Domain has no usable MX"
+              },
+              {
+                "email": "broshchupkin@rabota.sber.ru",
+                "personName": "Богдан Рощупкин",
+                "status": "REJECTED",
+                "pattern": "{g}{family}",
+                "patternSupport": 0,
+                "mx": "missing",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "Domain has no usable MX"
+              },
+              {
+                "email": "roshchupkin.bogdan@rabota.sber.ru",
+                "personName": "Богдан Рощупкин",
+                "status": "REJECTED",
+                "pattern": "{family}.{given}",
+                "patternSupport": 0,
+                "mx": "missing",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "Domain has no usable MX"
+              }
+            ]
+          }
+        }
+      ],
+      "domains": [
+        "rabota.sber.ru"
+      ],
+      "elapsedMs": 35131
+    },
+    {
+      "stage": "people_ranked",
+      "people": [
+        {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              },
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              },
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "semantic_role_relevance": 70,
+            "semantic_role_reason": "Указан как ML-инженер AI-агентов на rabota.sber.ru; профильное направление, но не обязательно владелец процесса или руководитель.",
+            "name_parts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "current_role_confirmed": true,
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true,
+            "email_candidates": [
+              {
+                "email": "bogdan.roshchupkin@rabota.sber.ru",
+                "personName": "Богдан Рощупкин",
+                "status": "REJECTED",
+                "pattern": "{given}.{family}",
+                "patternSupport": 0,
+                "mx": "missing",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "Domain has no usable MX"
+              },
+              {
+                "email": "b.roshchupkin@rabota.sber.ru",
+                "personName": "Богдан Рощупкин",
+                "status": "REJECTED",
+                "pattern": "{g}.{family}",
+                "patternSupport": 0,
+                "mx": "missing",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "Domain has no usable MX"
+              },
+              {
+                "email": "roshchupkin@rabota.sber.ru",
+                "personName": "Богдан Рощупкин",
+                "status": "REJECTED",
+                "pattern": "{family}",
+                "patternSupport": 0,
+                "mx": "missing",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "Domain has no usable MX"
+              },
+              {
+                "email": "broshchupkin@rabota.sber.ru",
+                "personName": "Богдан Рощупкин",
+                "status": "REJECTED",
+                "pattern": "{g}{family}",
+                "patternSupport": 0,
+                "mx": "missing",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "Domain has no usable MX"
+              },
+              {
+                "email": "roshchupkin.bogdan@rabota.sber.ru",
+                "personName": "Богдан Рощупкин",
+                "status": "REJECTED",
+                "pattern": "{family}.{given}",
+                "patternSupport": 0,
+                "mx": "missing",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "Domain has no usable MX"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Product launches and feature releases can create coordination load between product, marketing, sales, and customer success.",
+        "target_responsibility": "Product leadership",
+        "target_persona": "Head of Product",
+        "alternative_personas": [
+          "VP Product",
+          "Product Director",
+          "Head of Product Marketing",
+          "COO",
+          "Founder / CEO"
+        ],
+        "why_this_person": "ML-инженер AI-агентов: The signal includes product or release context, so product leadership may own the launch and adoption workflow. Matched context: платформа. Company scale: unknown.",
+        "person_name": "Богдан Рощупкин",
+        "person_role": "ML-инженер AI-агентов",
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Богдан Рощупкин подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": null,
+            "summary": "Роль связана с зоной ответственности: Product leadership."
+          },
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Богдан Рощупкин ML-инженер AI-агентов"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "person_found_personal_email_unresolved"
+      },
+      "contacts": [
+        {
+          "name": "Богдан Рощупкин",
+          "email": null,
+          "type": "confirmed_person",
+          "source": "https://rabota.sber.ru"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://rabota.sber.ru/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://rabota.sber.ru/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://rabota.sber.ru"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-10-07T22:07:39.877Z",
+  "bundle": {
+    "companyName": "Сбер. IT",
+    "officialWebsite": "https://rabota.sber.ru",
+    "officialDomain": "rabota.sber.ru",
+    "people": [
+      {
+        "fullName": "Богдан Рощупкин",
+        "role": "ML-инженер AI-агентов",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://rabota.sber.ru",
+            "sourceType": "official",
+            "excerpt": "Богдан Рощупкин ML-инженер AI-агентов",
+            "capturedAt": "2026-10-07T22:07:39.877Z",
+            "confidence": 90
+          },
+          {
+            "sourceUrl": "https://rabota.sber.ru",
+            "sourceType": "official",
+            "excerpt": "Богдан Рощупкин ML-инженер AI-агентов",
+            "capturedAt": "2026-10-07T22:07:39.877Z",
+            "confidence": 90
+          },
+          {
+            "sourceUrl": "https://rabota.sber.ru",
+            "sourceType": "official",
+            "excerpt": "Богдан Рощупкин ML-инженер AI-агентов",
+            "capturedAt": "2026-10-07T22:07:39.877Z",
+            "confidence": 90
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": [
+        {
+          "email": "bogdan.roshchupkin@rabota.sber.ru",
+          "personName": "Богдан Рощупкин",
+          "classification": "INVALID",
+          "evidence": [],
+          "verification": {
+            "email": "bogdan.roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "REJECTED",
+            "pattern": "{given}.{family}",
+            "patternSupport": 0,
+            "mx": "missing",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Domain has no usable MX"
+          }
+        },
+        {
+          "email": "b.roshchupkin@rabota.sber.ru",
+          "personName": "Богдан Рощупкин",
+          "classification": "INVALID",
+          "evidence": [],
+          "verification": {
+            "email": "b.roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "REJECTED",
+            "pattern": "{g}.{family}",
+            "patternSupport": 0,
+            "mx": "missing",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Domain has no usable MX"
+          }
+        },
+        {
+          "email": "roshchupkin@rabota.sber.ru",
+          "personName": "Богдан Рощупкин",
+          "classification": "INVALID",
+          "evidence": [],
+          "verification": {
+            "email": "roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "REJECTED",
+            "pattern": "{family}",
+            "patternSupport": 0,
+            "mx": "missing",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Domain has no usable MX"
+          }
+        },
+        {
+          "email": "broshchupkin@rabota.sber.ru",
+          "personName": "Богдан Рощупкин",
+          "classification": "INVALID",
+          "evidence": [],
+          "verification": {
+            "email": "broshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "REJECTED",
+            "pattern": "{g}{family}",
+            "patternSupport": 0,
+            "mx": "missing",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Domain has no usable MX"
+          }
+        },
+        {
+          "email": "roshchupkin.bogdan@rabota.sber.ru",
+          "personName": "Богдан Рощупкин",
+          "classification": "INVALID",
+          "evidence": [],
+          "verification": {
+            "email": "roshchupkin.bogdan@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "REJECTED",
+            "pattern": "{family}.{given}",
+            "patternSupport": 0,
+            "mx": "missing",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Domain has no usable MX"
+          }
+        }
+      ]
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "SDET / Разработчик AI решений (HR платформа)",
+      "detail": "создание AI-агентов: разработка и внедрение AI-моделей и агентов для автоматической генерации UI/API-тестов их оптимизации и self-healing'а",
+      "sourceUrl": "https://hh.ru/vacancy/138117118",
+      "confidence": 90
+    },
+    "researchConfidence": "LIKELY",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 5,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 13,
+      "lprMs": 35134,
+      "contactMs": 2,
+      "totalMs": 35137,
+      "stopReason": "people_found_email_unresolved"
+    }
+  },
+  "people": {
+    "primary_person": {
+      "full_name": "Богдан Рощупкин",
+      "role_title": "ML-инженер AI-агентов",
+      "department": null,
+      "linkedin_url": null,
+      "work_email": null,
+      "phone": null,
+      "source": "Iterative public research",
+      "confidence_score": 90,
+      "evidence": [
+        "Богдан Рощупкин ML-инженер AI-агентов"
+      ],
+      "metadata": {
+        "source_url": "https://rabota.sber.ru",
+        "source_urls": [
+          "https://rabota.sber.ru"
+        ],
+        "research_citations": [
+          {
+            "sourceId": "e1",
+            "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+          }
+        ],
+        "research_evidence": [
+          {
+            "sourceUrl": "https://rabota.sber.ru",
+            "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+          },
+          {
+            "sourceUrl": "https://rabota.sber.ru",
+            "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+          },
+          {
+            "sourceUrl": "https://rabota.sber.ru",
+            "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+          }
+        ],
+        "semantic_role_relevance": 70,
+        "semantic_role_reason": "Указан как ML-инженер AI-агентов на rabota.sber.ru; профильное направление, но не обязательно владелец процесса или руководитель.",
+        "name_parts": {
+          "given": "Богдан",
+          "family": "Рощупкин"
+        },
+        "current_role_confirmed": true,
+        "email_source_url": null,
+        "email_person_evidence": null,
+        "public_contact_verified": false,
+        "verified_company_domains": [
+          "rabota.sber.ru"
+        ],
+        "verified_public_profiles": [],
+        "tenchat_url": null,
+        "telegram_url": null,
+        "vk_url": null,
+        "instagram_url": null,
+        "contact_route": "target_persona",
+        "company_verified": true,
+        "role_verified": true,
+        "email_candidates": [
+          {
+            "email": "bogdan.roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "REJECTED",
+            "pattern": "{given}.{family}",
+            "patternSupport": 0,
+            "mx": "missing",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Domain has no usable MX"
+          },
+          {
+            "email": "b.roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "REJECTED",
+            "pattern": "{g}.{family}",
+            "patternSupport": 0,
+            "mx": "missing",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Domain has no usable MX"
+          },
+          {
+            "email": "roshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "REJECTED",
+            "pattern": "{family}",
+            "patternSupport": 0,
+            "mx": "missing",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Domain has no usable MX"
+          },
+          {
+            "email": "broshchupkin@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "REJECTED",
+            "pattern": "{g}{family}",
+            "patternSupport": 0,
+            "mx": "missing",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Domain has no usable MX"
+          },
+          {
+            "email": "roshchupkin.bogdan@rabota.sber.ru",
+            "personName": "Богдан Рощупкин",
+            "status": "REJECTED",
+            "pattern": "{family}.{given}",
+            "patternSupport": 0,
+            "mx": "missing",
+            "catchAll": "unknown",
+            "sourceUrls": [],
+            "reason": "Domain has no usable MX"
+          }
+        ]
+      }
+    },
+    "alternative_people": [],
+    "all_candidates": [
+      {
+        "full_name": "Богдан Рощупкин",
+        "role_title": "ML-инженер AI-агентов",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Богдан Рощупкин ML-инженер AI-агентов"
+        ],
+        "metadata": {
+          "source_url": "https://rabota.sber.ru",
+          "source_urls": [
+            "https://rabota.sber.ru"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e1",
+              "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+            }
+          ],
+          "research_evidence": [
+            {
+              "sourceUrl": "https://rabota.sber.ru",
+              "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+            },
+            {
+              "sourceUrl": "https://rabota.sber.ru",
+              "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+            },
+            {
+              "sourceUrl": "https://rabota.sber.ru",
+              "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+            }
+          ],
+          "semantic_role_relevance": 70,
+          "semantic_role_reason": "Указан как ML-инженер AI-агентов на rabota.sber.ru; профильное направление, но не обязательно владелец процесса или руководитель.",
+          "name_parts": {
+            "given": "Богдан",
+            "family": "Рощупкин"
+          },
+          "current_role_confirmed": true,
+          "email_source_url": null,
+          "email_person_evidence": null,
+          "public_contact_verified": false,
+          "verified_company_domains": [
+            "rabota.sber.ru"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true,
+          "email_candidates": [
+            {
+              "email": "bogdan.roshchupkin@rabota.sber.ru",
+              "personName": "Богдан Рощупкин",
+              "status": "REJECTED",
+              "pattern": "{given}.{family}",
+              "patternSupport": 0,
+              "mx": "missing",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "Domain has no usable MX"
+            },
+            {
+              "email": "b.roshchupkin@rabota.sber.ru",
+              "personName": "Богдан Рощупкин",
+              "status": "REJECTED",
+              "pattern": "{g}.{family}",
+              "patternSupport": 0,
+              "mx": "missing",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "Domain has no usable MX"
+            },
+            {
+              "email": "roshchupkin@rabota.sber.ru",
+              "personName": "Богдан Рощупкин",
+              "status": "REJECTED",
+              "pattern": "{family}",
+              "patternSupport": 0,
+              "mx": "missing",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "Domain has no usable MX"
+            },
+            {
+              "email": "broshchupkin@rabota.sber.ru",
+              "personName": "Богдан Рощупкин",
+              "status": "REJECTED",
+              "pattern": "{g}{family}",
+              "patternSupport": 0,
+              "mx": "missing",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "Domain has no usable MX"
+            },
+            {
+              "email": "roshchupkin.bogdan@rabota.sber.ru",
+              "personName": "Богдан Рощупкин",
+              "status": "REJECTED",
+              "pattern": "{family}.{given}",
+              "patternSupport": 0,
+              "mx": "missing",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "Domain has no usable MX"
+            }
+          ]
+        }
+      }
+    ],
+    "primary_person_intelligence": {
+      "candidate": {
+        "full_name": "Богдан Рощупкин",
+        "role_title": "ML-инженер AI-агентов",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Богдан Рощупкин ML-инженер AI-агентов"
+        ],
+        "metadata": {
+          "source_url": "https://rabota.sber.ru",
+          "source_urls": [
+            "https://rabota.sber.ru"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e1",
+              "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+            }
+          ],
+          "research_evidence": [
+            {
+              "sourceUrl": "https://rabota.sber.ru",
+              "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+            },
+            {
+              "sourceUrl": "https://rabota.sber.ru",
+              "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+            },
+            {
+              "sourceUrl": "https://rabota.sber.ru",
+              "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+            }
+          ],
+          "semantic_role_relevance": 70,
+          "semantic_role_reason": "Указан как ML-инженер AI-агентов на rabota.sber.ru; профильное направление, но не обязательно владелец процесса или руководитель.",
+          "name_parts": {
+            "given": "Богдан",
+            "family": "Рощупкин"
+          },
+          "current_role_confirmed": true,
+          "email_source_url": null,
+          "email_person_evidence": null,
+          "public_contact_verified": false,
+          "verified_company_domains": [
+            "rabota.sber.ru"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true,
+          "email_candidates": [
+            {
+              "email": "bogdan.roshchupkin@rabota.sber.ru",
+              "personName": "Богдан Рощупкин",
+              "status": "REJECTED",
+              "pattern": "{given}.{family}",
+              "patternSupport": 0,
+              "mx": "missing",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "Domain has no usable MX"
+            },
+            {
+              "email": "b.roshchupkin@rabota.sber.ru",
+              "personName": "Богдан Рощупкин",
+              "status": "REJECTED",
+              "pattern": "{g}.{family}",
+              "patternSupport": 0,
+              "mx": "missing",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "Domain has no usable MX"
+            },
+            {
+              "email": "roshchupkin@rabota.sber.ru",
+              "personName": "Богдан Рощупкин",
+              "status": "REJECTED",
+              "pattern": "{family}",
+              "patternSupport": 0,
+              "mx": "missing",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "Domain has no usable MX"
+            },
+            {
+              "email": "broshchupkin@rabota.sber.ru",
+              "personName": "Богдан Рощупкин",
+              "status": "REJECTED",
+              "pattern": "{g}{family}",
+              "patternSupport": 0,
+              "mx": "missing",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "Domain has no usable MX"
+            },
+            {
+              "email": "roshchupkin.bogdan@rabota.sber.ru",
+              "personName": "Богдан Рощупкин",
+              "status": "REJECTED",
+              "pattern": "{family}.{given}",
+              "patternSupport": 0,
+              "mx": "missing",
+              "catchAll": "unknown",
+              "sourceUrls": [],
+              "reason": "Domain has no usable MX"
+            }
+          ]
+        }
+      },
+      "rank_score": 60,
+      "person_score": 60,
+      "persona_match_score": 70,
+      "business_problem_ownership": "medium",
+      "decision_authority": "low",
+      "influence_level": "medium",
+      "confidence_score": 81,
+      "confidence_level": "high_confidence",
+      "contact_availability": {
+        "has_work_email": false,
+        "has_linkedin": false,
+        "has_phone": false,
+        "has_telegram": false
+      },
+      "matched_keywords": [],
+      "reasoning": "No direct persona keyword match in available person context.",
+      "selection_reason": "Богдан Рощупкин is the strongest available candidate because ML-инженер AI-агентов no direct keyword match, compared against руководитель продукта. Persona match 70/100, ownership medium, authority low, influence medium, confidence 81/100.",
+      "strengths": [
+        "Strong persona match (70/100)"
+      ],
+      "weaknesses": [
+        "No direct persona keyword match in available evidence",
+        "No direct personal contact channel found"
+      ],
+      "why_not_other_candidates": [],
+      "recommended_next_action": "run_enrichment"
+    },
+    "alternative_people_intelligence": [],
+    "ranked_people": [
+      {
+        "candidate": {
+          "full_name": "Богдан Рощупкин",
+          "role_title": "ML-инженер AI-агентов",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Богдан Рощупкин ML-инженер AI-агентов"
+          ],
+          "metadata": {
+            "source_url": "https://rabota.sber.ru",
+            "source_urls": [
+              "https://rabota.sber.ru"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e1",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              },
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              },
+              {
+                "sourceUrl": "https://rabota.sber.ru",
+                "quote": "Богдан Рощупкин ML-инженер AI-агентов"
+              }
+            ],
+            "semantic_role_relevance": 70,
+            "semantic_role_reason": "Указан как ML-инженер AI-агентов на rabota.sber.ru; профильное направление, но не обязательно владелец процесса или руководитель.",
+            "name_parts": {
+              "given": "Богдан",
+              "family": "Рощупкин"
+            },
+            "current_role_confirmed": true,
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "rabota.sber.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true,
+            "email_candidates": [
+              {
+                "email": "bogdan.roshchupkin@rabota.sber.ru",
+                "personName": "Богдан Рощупкин",
+                "status": "REJECTED",
+                "pattern": "{given}.{family}",
+                "patternSupport": 0,
+                "mx": "missing",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "Domain has no usable MX"
+              },
+              {
+                "email": "b.roshchupkin@rabota.sber.ru",
+                "personName": "Богдан Рощупкин",
+                "status": "REJECTED",
+                "pattern": "{g}.{family}",
+                "patternSupport": 0,
+                "mx": "missing",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "Domain has no usable MX"
+              },
+              {
+                "email": "roshchupkin@rabota.sber.ru",
+                "personName": "Богдан Рощупкин",
+                "status": "REJECTED",
+                "pattern": "{family}",
+                "patternSupport": 0,
+                "mx": "missing",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "Domain has no usable MX"
+              },
+              {
+                "email": "broshchupkin@rabota.sber.ru",
+                "personName": "Богдан Рощупкин",
+                "status": "REJECTED",
+                "pattern": "{g}{family}",
+                "patternSupport": 0,
+                "mx": "missing",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "Domain has no usable MX"
+              },
+              {
+                "email": "roshchupkin.bogdan@rabota.sber.ru",
+                "personName": "Богдан Рощупкин",
+                "status": "REJECTED",
+                "pattern": "{family}.{given}",
+                "patternSupport": 0,
+                "mx": "missing",
+                "catchAll": "unknown",
+                "sourceUrls": [],
+                "reason": "Domain has no usable MX"
+              }
+            ]
+          }
+        },
+        "rank_score": 60,
+        "person_score": 60,
+        "persona_match_score": 70,
+        "business_problem_ownership": "medium",
+        "decision_authority": "low",
+        "influence_level": "medium",
+        "confidence_score": 81,
+        "confidence_level": "high_confidence",
+        "contact_availability": {
+          "has_work_email": false,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Богдан Рощупкин is the strongest available candidate because ML-инженер AI-агентов no direct keyword match, compared against руководитель продукта. Persona match 70/100, ownership medium, authority low, influence medium, confidence 81/100.",
+        "strengths": [
+          "Strong persona match (70/100)"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence",
+          "No direct personal contact channel found"
+        ],
+        "why_not_other_candidates": [],
+        "recommended_next_action": "run_enrichment"
+      }
+    ],
+    "selection_reasoning": "Богдан Рощупкин is the strongest available candidate because ML-инженер AI-агентов no direct keyword match, compared against руководитель продукта. Persona match 70/100, ownership medium, authority low, influence medium, confidence 81/100.",
+    "search_status": "person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "diminishing_returns"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 5,
+      "official_pages_fetched": 3,
+      "aborted_requests": 0,
+      "elapsed_ms": 35131,
+      "stop_reason": "diminishing_returns",
+      "queries_executed": [
+        "\"Богдан Рощупкин\" rabota.sber.ru",
+        "руководитель AI платформы rabota.sber.ru OR Sber OR Сбер. IT",
+        "Богдан Рощупкин Sber email OR \"почта\" OR \"контакты\"",
+        "руководитель направления AI автоматизации HR Сбер OR rabota.sber.ru OR Sber IT",
+        "руководитель направления AI автоматизации HR Сбер OR rabota.sber.ru OR Сбер. IT OR AI директор OR head of AI platform site:sber.ru"
+      ],
+      "sources_checked": [
+        "https://rabota.sber.ru",
+        "https://rabota.sber.ru/media/"
+      ],
+      "search_results_seen": 0,
+      "rejected_candidates": {
+        "validation_rejects": 0
+      },
+      "final_failure_reason": null
+    }
+  },
+  "contacts": [
+    {
+      "name": "Богдан Рощупкин",
+      "role": "ML-инженер AI-агентов",
+      "email": null,
+      "type": "confirmed_person",
+      "source": "https://rabota.sber.ru",
+      "selected": false,
+      "intelligence": {
+        "business_problem": "Product launches and feature releases can create coordination load between product, marketing, sales, and customer success.",
+        "target_responsibility": "Product leadership",
+        "target_persona": "Head of Product",
+        "alternative_personas": [
+          "VP Product",
+          "Product Director",
+          "Head of Product Marketing",
+          "COO",
+          "Founder / CEO"
+        ],
+        "why_this_person": "ML-инженер AI-агентов: The signal includes product or release context, so product leadership may own the launch and adoption workflow. Matched context: платформа. Company scale: unknown.",
+        "person_name": "Богдан Рощупкин",
+        "person_role": "ML-инженер AI-агентов",
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Богдан Рощупкин подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": null,
+            "summary": "Роль связана с зоной ответственности: Product leadership."
+          },
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Богдан Рощупкин ML-инженер AI-агентов"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "person_found_personal_email_unresolved"
+      }
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://rabota.sber.ru/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://rabota.sber.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://rabota.sber.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 35137
+}

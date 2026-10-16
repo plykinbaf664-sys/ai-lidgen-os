@@ -1,0 +1,359 @@
+{
+  "mode": "business",
+  "name": "МирБир",
+  "website": "https://team.mirbeer.ru",
+  "before": {
+    "companyName": "МирБир",
+    "officialWebsite": "https://team.mirbeer.ru",
+    "officialDomain": "team.mirbeer.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [
+        {
+          "email": "hr@mirbeer.ru",
+          "personName": null,
+          "classification": "DEPARTMENT",
+          "evidence": [
+            {
+              "sourceUrl": "https://team.mirbeer.ru/",
+              "sourceType": "official",
+              "excerpt": "hr@mirbeer.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 66
+            }
+          ]
+        }
+      ],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "hr@mirbeer.ru",
+      "personName": null,
+      "role": null,
+      "classification": "DEPARTMENT",
+      "contactLevel": "E",
+      "sourceUrl": "https://team.mirbeer.ru/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: Компания МирБир; открыта вакансия: Руководитель отдела оптовых продаж.",
+      "sourceUrl": "https://hh.ru/vacancy/137705390",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 4,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 23,
+      "lprMs": 16691,
+      "contactMs": 2768,
+      "totalMs": 24142,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: Компания МирБир; открыта вакансия: Руководитель отдела оптовых продаж.",
+    "sourceUrl": "https://hh.ru/vacancy/137705390",
+    "confidence": 100
+  },
+  "index": 12,
+  "trace": [
+    {
+      "stage": "fetch",
+      "url": "https://team.mirbeer.ru",
+      "status": 200,
+      "elapsedMs": 812
+    },
+    {
+      "stage": "research_open",
+      "url": "https://team.mirbeer.ru",
+      "success": true,
+      "evidence": {
+        "url": "https://team.mirbeer.ru",
+        "kind": "page",
+        "text": "Mirbeer Partner Лучшие в своем деле O НАС Mirbeer partner - Крупнейший поставщик товаров для Пивоварения, Самогоноварения, Виноделия. Эксклюзивный представитель более 12 торговых марок оборудования и ингредиентов со всего мира.",
+        "links": [
+          {
+            "url": "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list",
+            "label": "здесь"
+          },
+          {
+            "url": "https://www.bitrix24.ru/features/sites.php?utm_medium=referral&utm_source=bitrix24.ru&utm_campaign=ru_sites_websites&p=12152696",
+            "label": "Создать сайт"
+          },
+          {
+            "url": "https://www.bitrix24.ru/abuse/?sender_page=PAGE&hostname=mirbeer.bitrix24.ru&siteId=1&from_url=https%253A%252F%252Fmirbeer.bitrix24.ru%252Fpub%252Fsite%252F1%252F%253Fuser_lang%253Dru",
+            "label": "Битрикс24"
+          }
+        ],
+        "fetchedAt": "2026-10-06T20:14:22.169Z",
+        "id": "e1"
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 429,
+      "elapsedMs": 716,
+      "schema": "iterative_people_research",
+      "input": {
+        "company": "МирБир",
+        "domain": "team.mirbeer.ru",
+        "signal": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: Компания МирБир; открыта вакансия: Руководитель отдела оптовых продаж.",
+            "sourceUrl": "https://hh.ru/vacancy/137705390",
+            "confidence": 100
+          }
+        },
+        "currentDate": "2026-10-06",
+        "offer": "AI-аудит, прототип и автоматизация конкретного процесса из сигнала. Самостоятельно выбери владельца процесса по фактам; руководитель профильного подразделения с публичным контактом предпочтительнее недоступного CEO.",
+        "knownPeople": [],
+        "documents": [
+          {
+            "url": "https://team.mirbeer.ru",
+            "kind": "page",
+            "text": "Mirbeer Partner Лучшие в своем деле O НАС Mirbeer partner - Крупнейший поставщик товаров для Пивоварения, Самогоноварения, Виноделия. Эксклюзивный представитель более 12 торговых марок оборудования и ингредиентов со всего мира.",
+            "links": [
+              {
+                "url": "https://spb.hh.ru/employer/996382?hhtmFrom=vacancy_search_list",
+                "label": "здесь"
+              },
+              {
+                "url": "https://www.bitrix24.ru/features/sites.php?utm_medium=referral&utm_source=bitrix24.ru&utm_campaign=ru_sites_websites&p=12152696",
+                "label": "Создать сайт"
+              },
+              {
+                "url": "https://www.bitrix24.ru/abuse/?sender_page=PAGE&hostname=mirbeer.bitrix24.ru&siteId=1&from_url=https%253A%252F%252Fmirbeer.bitrix24.ru%252Fpub%252Fsite%252F1%252F%253Fuser_lang%253Dru",
+                "label": "Битрикс24"
+              }
+            ],
+            "fetchedAt": "2026-10-06T20:14:22.169Z",
+            "id": "e1"
+          }
+        ],
+        "previousActions": [],
+        "validationErrors": [],
+        "budget": {
+          "roundsRemaining": 5,
+          "actionsRemaining": 10,
+          "searchRemaining": 8
+        }
+      },
+      "output": null
+    },
+    {
+      "stage": "research_complete",
+      "stopReason": "model_unavailable",
+      "actions": 1,
+      "candidates": [],
+      "domains": [
+        "team.mirbeer.ru"
+      ],
+      "elapsedMs": 1534
+    },
+    {
+      "stage": "people_ranked",
+      "people": []
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+        "target_responsibility": "Company leadership",
+        "target_persona": "Founder",
+        "alternative_personas": [
+          "CEO",
+          "Managing Director",
+          "COO",
+          "Head of Growth",
+          "Head of Sales"
+        ],
+        "why_this_person": "The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "no_material_next_step_available"
+      },
+      "contacts": [
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://team.mirbeer.ru/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://team.mirbeer.ru/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://team.mirbeer.ru"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-10-06T20:14:21.352Z",
+  "bundle": {
+    "companyName": "МирБир",
+    "officialWebsite": "https://team.mirbeer.ru",
+    "officialDomain": "team.mirbeer.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": null,
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: Компания МирБир; открыта вакансия: Руководитель отдела оптовых продаж.",
+      "sourceUrl": "https://hh.ru/vacancy/137705390",
+      "confidence": 100
+    },
+    "researchConfidence": "UNVERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 0,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 10,
+      "lprMs": 1534,
+      "contactMs": 156,
+      "totalMs": 1691,
+      "stopReason": "model_unavailable"
+    }
+  },
+  "people": {
+    "primary_person": null,
+    "alternative_people": [],
+    "all_candidates": [],
+    "search_status": "provider_unavailable",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "model_unavailable"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 0,
+      "official_pages_fetched": 1,
+      "aborted_requests": 0,
+      "elapsed_ms": 1534,
+      "stop_reason": "model_unavailable",
+      "queries_executed": [],
+      "sources_checked": [
+        "https://team.mirbeer.ru"
+      ],
+      "search_results_seen": 0,
+      "rejected_candidates": {
+        "validation_rejects": 0
+      },
+      "final_failure_reason": "model_unavailable"
+    }
+  },
+  "contacts": [
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://team.mirbeer.ru/contacts",
+      "selected": false,
+      "intelligence": {
+        "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+        "target_responsibility": "Company leadership",
+        "target_persona": "Founder",
+        "alternative_personas": [
+          "CEO",
+          "Managing Director",
+          "COO",
+          "Head of Growth",
+          "Head of Sales"
+        ],
+        "why_this_person": "The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+        "person_name": null,
+        "person_role": null,
+        "email": null,
+        "contact_level": null,
+        "email_classification": "INVALID",
+        "email_type": "none",
+        "verification_methods": [],
+        "confidence": "UNRESOLVED",
+        "readiness": "unresolved",
+        "evidence": [],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "no_material_next_step_available"
+      }
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://team.mirbeer.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://team.mirbeer.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 1691
+}

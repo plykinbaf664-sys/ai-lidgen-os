@@ -1,0 +1,2256 @@
+{
+  "mode": "business",
+  "name": "Императорский фарфоровый завод",
+  "website": "https://ipm.ru",
+  "before": {
+    "companyName": "Императорский фарфоровый завод",
+    "officialWebsite": "https://ipm.ru",
+    "officialDomain": "ipm.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "info@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "info@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "ipm_shop@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/",
+              "sourceType": "official",
+              "excerpt": "ipm_shop@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "lat_ep@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "lat_ep@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "isu_ov@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "isu_ov@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "aga_ap@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "aga_ap@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "info@ipm.ru",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://www.ipm.ru/contacts/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+      "sourceUrl": "https://hh.ru/vacancy/138142173",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 2,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 20,
+      "lprMs": 16011,
+      "contactMs": 3829,
+      "totalMs": 28418,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+    "sourceUrl": "https://hh.ru/vacancy/138142173",
+    "confidence": 100
+  },
+  "index": 0,
+  "trace": [
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3693,
+      "schema": "company_research_plan",
+      "input": {
+        "companyName": "Императорский фарфоровый завод",
+        "currentDate": "2026-10-06",
+        "officialWebsite": "https://ipm.ru",
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "title": "Обнаружен сигнал найма",
+          "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+          "sourceUrl": "https://hh.ru/vacancy/138142173",
+          "confidence": 100
+        },
+        "discoveryContext": null,
+        "offerContext": "Аудит конкретного процесса, быстрый прототип или реализация части AI-задачи без противопоставления внутренней команде и найму.",
+        "heuristicStartingPoint": {
+          "owner": "Company leadership",
+          "primaryRole": "Founder",
+          "alternatives": [
+            "CEO",
+            "Managing Director"
+          ]
+        }
+      },
+      "output": {
+        "primary_roles": [
+          "Заместитель коммерческого директора по развитию новых направлений",
+          "Коммерческий директор",
+          "Директор по развитию"
+        ],
+        "alternative_roles": [
+          [
+            "Руководитель отдела инноваций",
+            "Менеджер по новым продуктам"
+          ],
+          [
+            "HR-директор",
+            "Руководитель отдела подбора персонала"
+          ]
+        ],
+        "queries": [
+          "Императорский фарфоровый завод заместитель коммерческого директора по развитию новых направлений интервью",
+          "Императорский фарфоровый завод коммерческий директор задачи стратегии развития",
+          "Императорский фарфоровый завод инновационные проекты официальные материалы",
+          "Императорский фарфоровый завод новости вакансий и найма",
+          "Интервью с директором по развитию Императорского фарфорового завода",
+          "Императорский фарфоровый завод пресс-релизы по новым направлениям бизнеса",
+          "Объявления о наборе персонала Императорский фарфоровый завод telegram",
+          "Обзор стратегических инициатив Императорский фарфоровый завод 2026",
+          "Публичные выступления заместителя коммерческого директора Императорский фарфоровый завод",
+          "Императорский фарфоровый завод коммерческое развитие 2026"
+        ]
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://ipm.ru",
+      "status": 200,
+      "elapsedMs": 1111
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%20%D0%B7%D0%B0%D0%BC%D0%B5%D1%81%D1%82%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BA%D0%BE%D0%BC%D0%BC%D0%B5%D1%80%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0%20%D0%BF%D0%BE%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D1%8E%20%D0%BD%D0%BE%D0%B2%D1%8B%D1%85%20%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B2%D1%8C%D1%8E&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 400
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%20%D0%B7%D0%B0%D0%BC%D0%B5%D1%81%D1%82%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D0%BA%D0%BE%D0%BC%D0%BC%D0%B5%D1%80%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0%20%D0%BF%D0%BE%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D1%8E%20%D0%BD%D0%BE%D0%B2%D1%8B%D1%85%20%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B2%D1%8C%D1%8E&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 350
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 2962
+    },
+    {
+      "stage": "search",
+      "query": "Императорский фарфоровый завод заместитель коммерческого директора по развитию новых направлений интервью",
+      "results": [
+        {
+          "title": "Интервью с генеральным директором Императорского фарфорового завода Татьяной Тылевич",
+          "url": "https://aeroex.press/style/intervyu-s-generalnym-direktorom-imperatorskogo-farforovogo-zavoda-tatyanoj-tylevich",
+          "snippet": "— Ритм жизни сегодня ускоряется, и мы подстраиваемся под потребности покупателей. Для этого эксперты-технологи и художники постоянно совершенствуют рецепты фарфора и рисунки, чтобы наши изделия были более прочными, функциональными и долговечными. В этом году планируем расширить линейку товаров IPM Home. Она объединяет изделия из современных коллекций, которые можно мыть в посудомоечной машине и использовать в СВЧ-печах. Но спешу успокоить любителей классики: выпуск наших традиционных коллекций [...] — Главные изменения были связаны с уходом из России многих иностранных производителей и поставщиков. В результате российский потребитель все чаще стал выбирать отечественные бренды. Для нас это своеобразный вызов: теперь качество продукции ИФЗ должно быть еще безупречнее, чтобы удовлетворить самых взыскательных клиентов. Второе важное изменение — смена экспортных векторов. Они обращены, прежде всего, на Индию, Южную Корею и страны Персидского залива. Развиваем мы и экспорт в Юго-Восточную Азию [...] коллекций мы продолжим в полном объеме, и здесь ценителей Императорского фарфора тоже ждут новинки.",
+          "source_label": "tavily",
+          "score": 0.5735118,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Работа в Императорский фарфоровый завод ᐈ Отзывы сотрудников о работодателе Императорский фарфоровый завод, зарплаты",
+          "url": "https://dreamjob.ru/employers/34343",
+          "snippet": "4,0\n\nУсловия для отдыха\n\n5,0\n\nВозможности роста\n\nЧто нравится?\n\nЗарплата вовремя и в полном размере. Работа не тяжёлая, так как коробки с фарфором относительно лёгкие. Рабочий коллектив хороший. Руководство адекватное. Метро рядом.\n\nЧто можно улучшить?\n\nНеплохо было бы отремонтировать бытовки у рабочих. Местами восстановить асфальтовое покрытие, особенно там, где грузчики возят рохли\n\n### Ответ представителя компании\n\nОктябрь 2026 [...] ## Продавец-консультант\n\n...\n\n Пожаловаться\n\nРаботал 3-5 лет\n\nСанкт-Петербург, сентябрь 2026\n\n3,5\n\n3,5\n\n4,0\n\nУсловия труда\n\n4,0\n\nКоллектив\n\n5,0\n\nРуководство\n\n2,0\n\nУровень дохода\n\n3,0\n\nУсловия для отдыха\n\n3,0\n\nВозможности роста\n\nЧто нравится?\n\nКрасивый продукт, который действительно интересно продавать. Полностью погружаешься в эту атмосферу. Начала разбираться в фарфоре и полюбила посуду только на этом месте работы. Сейчас пью только из красивых чашечек, по-другому уже не могу :) [...] Работаю 1-2 года\n\nСанкт-Петербург, август 2026\n\n4,0\n\n4,0\n\n4,0\n\nУсловия труда\n\n5,0\n\nКоллектив\n\n4,0\n\nРуководство\n\n4,0\n\nУровень дохода\n\n3,0\n\nУсловия для отдыха\n\n4,0\n\nВозможности роста\n\nЧто нравится?\n\nХорошее место для первой работы, дружный коллектив, своевременная выплата ЗП, возможность прокачивать знания и в своей, и в смежных областях.\n\nЧто можно улучшить?",
+          "source_label": "tavily",
+          "score": 0.5663309,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Императорский фарфоровый завод: успешно развивающийся бизнес и важная часть культурной жизни Санкт-Петербурга | posudka.ru - электронный журнал о рынке посуды",
+          "url": "https://posudka.ru/node/42420",
+          "snippet": "Участники пресс-конференции со стороны завода: пресс-секретарь Дарья Илларионова, зам. директора ИФЗ Оксана Кабабиик, генеральный директор Татьяна Тылевич, хранитель Фонда \"Наследие\" Елена Михайлова, художник завода Сергей Русаков [...] В основе экономической успешности завода – опора на маркетинг. Посуда из фарфора является базовым направлением для ИФЗ и предприятие следит за трендами мировой индустрии фарфора и постоянно выпускает новые коллекции. По признанию Татьяны Тылевич, сотрудники завода посещают основные профильные выставки, главной из которых является франкфуртская Ambiente. Постановка многих творческих задач начинается с анализа конкурентной среды. Завод стремится реагировать на изменяющиеся предпочтения [...] Кружки из коллекции \"Полководцы России\"\n\nИз трендов, на которые завод делает ставку – это развитие концепции Mix & Match, которая предполагает сочетаемость предметов из разных коллекций и дает возможность владельцам посуды составлять собственные композиции. Также в планах поработать с еще одним трендом – рельефным декором на посуде. Среди значимых последних новинок, разработанных ИФЗ, Татьяна Тылевич выделила коллекцию «Полководцы России» с образами знаменитых отечественных военачальников.",
+          "source_label": "tavily",
+          "score": 0.5660431,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Контакты | Официальный интернет-магазин Императорского фарфорового завода",
+          "url": "https://www.ipm.ru/contacts",
+          "snippet": "Директор по развитию розничной сети  \n Агатьева Александра Петровна  \n Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская)  \n Телефон: +7 (812) 608-49-29  доб. 108  \n Email: aga\\_ap@ipm.ru\n\nДепартамент по индивидуальным заказам\n\nЗаместитель коммерческого директора по работе с ключевыми клиентами  \n Николаев Александр Анатольевич  \n Телефон: +7 (921) 425-99-24  \n Почта: nik\\_aa@ipm.ru",
+          "source_label": "tavily",
+          "score": 0.5473921,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Татьяна Тылевич, АО «Императорский фарфоровый завод», ИФЗ, сервиза «Кобальтовая сетка», Невская порцелиновая мануфактура, ИФЗ в Dubai Mall | журнал ЭГОИСТ, Андрей НОВИКОВ",
+          "url": "https://egoistmag.ru/article/tatyana-tylevich-nasha-zadacha-pokazat-kak-proshloe-tak-i-sovremennuyu-istoriyu-farfora-xxi-veka",
+          "snippet": "Т. Т. Очень четко выделяются этапы развития завода как с точки зрения промышленного производства, так и с точки зрения росписи фарфора. Но самое основное, чем мы гордимся, – это императорский период, начиная от основания завода в 1744 году в период правления Елизаветы Петровны до Николая II. Завод всегда принадлежал семье Романовых, и они в той или иной степени оказывали существенное влияние на художественную политику завода.\n\nАгитационный фарфор | фото: пресс-служба АО «ИФЗ» [...] Я хочу отметить, что было бы неправильно, если бы завод оставался только заводом, который производит исторические коллекции, неважно в какой период они созданы: императорский, агитационный или советский. Наша задача – показать как прошлое, так и современную историю фарфора XXI века, поскольку культура фарфора и стили моды меняются. Мы развиваемся и даже делаем фарфор с использованием искусственного интеллекта. [...] В коллекциях Императорского фарфорового завода очень много белоснежного фарфора – это наша отличительная черта. Для того, чтобы качества фарфора были на высочайшем уровне, у нас работают и технологи, и отдел качества, и химики. Сказать, что рецепт фарфоровой массы не изменился, я не могу. С помощью исследований и специальных добавок мы повышаем белизну фарфора, используем новые современные печи, совершенствуем процесс обжига. Но с точки зрения самой технологии – да, кардинально ничего не",
+          "source_label": "tavily",
+          "score": 0.4889428,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 5089,
+      "schema": "people_evidence",
+      "input": {
+        "company": "Императорский фарфоровый завод",
+        "domain": "ipm.ru",
+        "context": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+            "sourceUrl": "https://hh.ru/vacancy/138142173",
+            "confidence": 100
+          }
+        },
+        "target": {
+          "primary_persona": "Заместитель коммерческого директора по развитию новых направлений",
+          "alternative_personas": [
+            "Руководитель отдела инноваций",
+            "HR-директор"
+          ],
+          "department": "Executive",
+          "buying_role": "economic_buyer",
+          "influence_level": "high",
+          "decision_authority": "high",
+          "business_problem_owner": "Company leadership",
+          "expected_pain": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+          "expected_goal": "Explore where AI automation can remove manual work from the highest-priority growth or operations process.",
+          "search_keywords": [
+            "Заместитель коммерческого директора по развитию новых направлений",
+            "Коммерческий директор",
+            "Директор по развитию",
+            "Руководитель отдела инноваций",
+            "Менеджер по новым продуктам",
+            "HR-директор",
+            "Руководитель отдела подбора персонала"
+          ],
+          "priority": "low",
+          "reasoning": "The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+          "confidence_score": 45,
+          "source_reasoning": {
+            "signal_type": "HIRING_SIGNAL",
+            "company_segment": "unknown",
+            "signal_summary": "Обнаружен сигнал найма",
+            "why_it_matters": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+            "why_now": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+            "icp_fit_score": 0,
+            "matched_context_terms": [],
+            "confidence_reason": "The primary persona is the best current hypothesis, with sales still a meaningful alternative.",
+            "competing_departments": [
+              "Sales",
+              "Operations",
+              "Customer Success"
+            ]
+          }
+        },
+        "previousQueries": [
+          "Императорский фарфоровый завод заместитель коммерческого директора по развитию новых направлений интервью"
+        ],
+        "documents": [
+          {
+            "url": "https://ipm.ru",
+            "text": "Интернет-магазин Императорского фарфора — Официальный сайт Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026 Осенний фарфор Время создать уют дома Смотрите подборку товаров Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении Новинка COLOR VIBES Создай настроение своего дня ЭЛЕГАНТНЫЕ БОКАЛЫ КОБАЛЬТОВАЯ СЕТКА Сияние лета на вашем столе Новинка ГАРМОНИЯ ПРИРОДЫ Серия скульптур наполненных смыслом Новинка БЛАГОРОДНАЯ ПОРОДА Серия коллекционных скульптур породистых любимцев Новинка МОНПЛЕЗИР Коллекция текстиля Французский шарм и эстетика востока для ценительниц прекрасного Новинка ФОНТАНЫ Серия, вдохновленная летним Петергофом Новинка ВОЛШЕБНЫЙ САД Эксклюзивный совместный проект с Сергеем Сысоевым Новинка «Жемчужный» Эксклюзивный совместный проект с модным домом Alena Akhmadullina Новинки ЖЕМЧУЖНАЯ СЕТКА НОВИНКА COLOR VIBES НОВИНКА ГАРМОНИЯ ПРИРОДЫ НОВИНКА БЛА … й компанией ООО «ЯНДЕКС», 119021, Россия, Москва, ул. Л. Толстого, 16 на следующих условиях: 1. Согласие выдано: АО «Императорский фарфоровый завод», ОГРН: 1027806058213, ИНН 7811000276, КПП 781101001 (далее — Оператор), электронная почта: ipm_shop@ipm.ru 2. Согласие выдано на обработку следующих категорий персональных данных: – IP-адрес, информация из файлов cookie, информация о браузере пользователя (или иной прогр … Технические Cookie-файлы Другие Cookie-файлы Настоящим я подтверждаю, что текст данного Согласия прочитан мной полностью и мне понятен, Согласие сформулировано конкретно, предметно, информативно и однозначно. Принять согласие Отказаться Мы используем файлы Cookie для улучшения работы, персонализации и повышения удобства пользования нашим сайтом. Продолжая посещать сайт, вы даете согласие на обработку файлов Cookie. Подробнее о нашей политике в отношении Cookie. Принять согласие Настроить Cookies",
+            "sourceKind": "page"
+          },
+          {
+            "url": "https://www.ipm.ru/contacts",
+            "text": "Контакты | Официальный интернет-магазин Императорского фарфорового завода Директор по развитию розничной сети Агатьева Александра Петровна Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Телефон: +7 (812) 608-49-29 доб. 108 Email: aga\\_ap@ipm.ru Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik\\_aa@ipm.ru",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://aeroex.press/style/intervyu-s-generalnym-direktorom-imperatorskogo-farforovogo-zavoda-tatyanoj-tylevich",
+            "text": "Интервью с генеральным директором Императорского фарфорового завода Татьяной Тылевич — Ритм жизни сегодня ускоряется, и мы подстраиваемся под потребности покупателей. Для этого эксперты-технологи и художники постоянно совершенствуют рецепты фарфора и рисунки, чтобы наши изделия были более прочными, функциональными и долговечными. В этом году планируем расширить линейку товаров IPM Home. Она объединяет изделия из современных коллекций, которые можно мыть в посудомоечной машине и использовать в СВЧ-печах. Но спешу успокоить любителей классики: выпуск наших традиционных коллекций [...] — Главные изменения были связаны с уходом из России многих иностранных производителей и поставщиков. В результате российский потребитель все чаще стал выбирать отечественные бренды. Для нас это своеобразный вызов: теперь качество продукции ИФЗ должно быть еще безупречнее, чтобы удовлетворить самых взыскательных клиентов. Второе важное изменение — смена экспортных векторов. Они обращены, прежде всего, на Индию, Южную Корею и страны Персидского залива. Развиваем мы и экспорт в Юго-Восточную Азию [...] коллекций мы продолжим в полном объеме, и здесь ценителей Императорского фарфора тоже ждут новинки.",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://dreamjob.ru/employers/34343",
+            "text": "Работа в Императорский фарфоровый завод ᐈ Отзывы сотрудников о работодателе Императорский фарфоровый завод, зарплаты 4,0 Условия для отдыха 5,0 Возможности роста Что нравится? Зарплата вовремя и в полном размере. Работа не тяжёлая, так как коробки с фарфором относительно лёгкие. Рабочий коллектив хороший. Руководство адекватное. Метро рядом. Что можно улучшить? Неплохо было бы отремонтировать бытовки у рабочих. Местами восстановить асфальтовое покрытие, особенно там, где грузчики возят рохли ### Ответ представителя компании Октябрь 2026 [...] ## Продавец-консультант ... Пожаловаться Работал 3-5 лет Санкт-Петербург, сентябрь 2026 3,5 3,5 4,0 Условия труда 4,0 Коллектив 5,0 Руководство 2,0 Уровень дохода 3,0 Условия для отдыха 3,0 Возможности роста Что нравится? Красивый продукт, который действительно интересно продавать. Полностью погружаешься в эту атмосферу. Начала разбираться в фарфоре и полюбила посуду только на этом месте работы. Сейчас пью только из красивых чашечек, по-другому уже не могу :) [...] Работаю 1-2 года Санкт-Петербург, август 2026 4,0 4,0 4,0 Условия труда 5,0 Коллектив 4,0 Руководство 4,0 Уровень дохода 3,0 Условия для отдыха 4,0 Возможности роста Что нравится? Хорошее место для первой работы, дружный коллектив, своевременная выплата ЗП, возможность прокачивать знания и в своей, и в смежных областях. Что можно улучшить?",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://posudka.ru/node/42420",
+            "text": "Императорский фарфоровый завод: успешно развивающийся бизнес и важная часть культурной жизни Санкт-Петербурга | posudka.ru - электронный журнал о рынке посуды Участники пресс-конференции со стороны завода: пресс-секретарь Дарья Илларионова, зам. директора ИФЗ Оксана Кабабиик, генеральный директор Татьяна Тылевич, хранитель Фонда \"Наследие\" Елена Михайлова, художник завода Сергей Русаков [...] В основе экономической успешности завода – опора на маркетинг. Посуда из фарфора является базовым направлением для ИФЗ и предприятие следит за трендами мировой индустрии фарфора и постоянно выпускает новые коллекции. По признанию Татьяны Тылевич, сотрудники завода посещают основные профильные выставки, главной из которых является франкфуртская Ambiente. Постановка многих творческих задач начинается с анализа конкурентной среды. Завод стремится реагировать на изменяющиеся предпочтения [...] Кружки из коллекции \"Полководцы России\" Из трендов, на которые завод делает ставку – это развитие концепции Mix & Match, которая предполагает сочетаемость предметов из разных коллекций и дает возможность владельцам посуды составлять собственные композиции. Также в планах поработать с еще одним трендом – рельефным декором на посуде. Среди значимых последних новинок, разработанных ИФЗ, Татьяна Тылевич выделила коллекцию «Полководцы России» с образами знаменитых отечественных военачальников.",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://egoistmag.ru/article/tatyana-tylevich-nasha-zadacha-pokazat-kak-proshloe-tak-i-sovremennuyu-istoriyu-farfora-xxi-veka",
+            "text": "Татьяна Тылевич, АО «Императорский фарфоровый завод», ИФЗ, сервиза «Кобальтовая сетка», Невская порцелиновая мануфактура, ИФЗ в Dubai Mall | журнал ЭГОИСТ, Андрей НОВИКОВ Т. Т. Очень четко выделяются этапы развития завода как с точки зрения промышленного производства, так и с точки зрения росписи фарфора. Но самое основное, чем мы гордимся, – это императорский период, начиная от основания завода в 1744 году в период правления Елизаветы Петровны до Николая II. Завод всегда принадлежал семье Романовых, и они в той или иной степени оказывали существенное влияние на художественную политику завода. Агитационный фарфор | фото: пресс-служба АО «ИФЗ» [...] Я хочу отметить, что было бы неправильно, если бы завод оставался только заводом, который производит исторические коллекции, неважно в какой период они созданы: императорский, агитационный или советский. Наша задача – показать как прошлое, так и современную историю фарфора XXI века, поскольку культура фарфора и стили моды меняются. Мы развиваемся и даже делаем фарфор с использованием искусственного интеллекта. [...] В коллекциях Императорского фарфорового завода очень много белоснежного фарфора – это наша отличительная черта. Для того, чтобы качества фарфора были на высочайшем уровне, у нас работают и технологи, и отдел качества, и химики. Сказать, что рецепт фарфоровой массы не изменился, я не могу. С помощью исследований и специальных добавок мы повышаем белизну фарфора, используем новые современные печи, совершенствуем процесс обжига. Но с точки зрения самой технологии – да, кардинально ничего не",
+            "sourceKind": "search"
+          }
+        ]
+      },
+      "output": {
+        "people": [
+          {
+            "name": "Татьяна Тылевич",
+            "role": "генеральный директор Императорского фарфорового завода",
+            "sourceUrl": "https://egoistmag.ru/article/tatyana-tylevich-nasha-zadacha-pokazat-kak-proshloe-tak-i-sovremennuyu-istoriyu-farfora-xxi-veka",
+            "quote": "Татьяна Тылевич, АО «Императорский фарфоровый завод» ... генеральный директор Татьяна Тылевич",
+            "email": null,
+            "emailSourceUrl": null,
+            "emailQuote": null,
+            "relevance": 9,
+            "reasoning": "Генеральный директор имеет высокий уровень полномочий и может принимать решение о развитии новых направлений в компании."
+          },
+          {
+            "name": "Александра Петровна Агатьева",
+            "role": "Директор по развитию розничной сети Императорского фарфорового завода",
+            "sourceUrl": "https://www.ipm.ru/contacts",
+            "quote": "Директор по развитию розничной сети Агатьева Александра Петровна ... Директор по развитию розничной сети",
+            "email": "aga_ap@ipm.ru",
+            "emailSourceUrl": "https://www.ipm.ru/contacts",
+            "emailQuote": "Директор по развитию розничной сети Агатьева Александра Петровна ... Email: aga_ap@ipm.ru",
+            "relevance": 7,
+            "reasoning": "Отвечает за развитие розничной сети, может участвовать в развитии новых направлений, но не совсем совпадает с вакантной ролью заместителя коммерческого директора по развитию новых направлений."
+          },
+          {
+            "name": "Александр Анатольевич Николаев",
+            "role": "Заместитель коммерческого директора по работе с ключевыми клиентами Императорского фарфорового завода",
+            "sourceUrl": "https://www.ipm.ru/contacts",
+            "quote": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+            "email": "nik_aa@ipm.ru",
+            "emailSourceUrl": "https://www.ipm.ru/contacts",
+            "emailQuote": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич ... Почта: nik_aa@ipm.ru",
+            "relevance": 8,
+            "reasoning": "Заместитель коммерческого директора, близкая по названию и функциям позиция, может быть релевантен в контексте развития новых направлений."
+          }
+        ],
+        "nextQueries": [
+          "Александр Анатольевич Николаев рабочая почта",
+          "Татьяна Тылевич контактная информация"
+        ]
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%20%D1%80%D0%B0%D0%B1%D0%BE%D1%87%D0%B0%D1%8F%20%D0%BF%D0%BE%D1%87%D1%82%D0%B0&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 245
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%20%D1%80%D0%B0%D0%B1%D0%BE%D1%87%D0%B0%D1%8F%20%D0%BF%D0%BE%D1%87%D1%82%D0%B0&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 123
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1916
+    },
+    {
+      "stage": "search",
+      "query": "Александр Анатольевич Николаев рабочая почта",
+      "results": [
+        {
+          "title": "Николаев Александр Анатольевич. Общие сведения. ...",
+          "url": "https://kpfu.ru/main?p_id=10513",
+          "snippet": "Рабочий адрес · Казань, ул. Товарищеская, д. 5, Учебное здание №32 ; Номер кабинета · 311 ; E-mail: Aleksandr.Nikolaev@kpfu.ru ; Google scholar: https://scholar.",
+          "source_label": "tavily",
+          "score": 0.8380581,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "ИП Николаев Александр Анатольевич",
+          "url": "https://www.rusprofile.ru/ip/312774628600690",
+          "snippet": "ИП Николаев Александр Анатольевич (ИНН 021200245436) Москва. Основной Производство работ по внутренней отделке зданий. Производство электромонтажных работ (43.",
+          "source_label": "tavily",
+          "score": 0.6757865,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Предприниматель Николаев Александр Анатольевич ...",
+          "url": "https://vbankcenter.ru/contragent/person/771910577324",
+          "snippet": "Бизнесмен Николаев Александр Анатольевич (ИНН 771910577324) является руководителем 1 организации и учредителем 1 организации.",
+          "source_label": "tavily",
+          "score": 0.5215936,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "ИП Николаев Александр Анатольевич",
+          "url": "https://www.tbank.ru/business/contractor/legal/325010000001376",
+          "snippet": "Предприниматель: ИП Николаев Александр Анатольевич, зарегистрирован 20.01.2025. Основной вид деятельности: Работы строительные специализированные прочие, не",
+          "source_label": "tavily",
+          "score": 0.43900222,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Николаев Александр Анатольевич (ИНН 637600862980)",
+          "url": "https://www.audit-it.ru/contragent/fl/637600862980_nikolaev-aleksandr-anatolevich",
+          "snippet": "Николаев Александр Анатольевич (ИНН 637600862980) в реестре юридических лиц · 1. Руководитель, директор · 2. Учредитель Николаев А. А. · 3. Николаев Александр",
+          "source_label": "tavily",
+          "score": 0.33528608,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%D0%A2%D0%B0%D1%82%D1%8C%D1%8F%D0%BD%D0%B0%20%D0%A2%D1%8B%D0%BB%D0%B5%D0%B2%D0%B8%D1%87%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%BD%D0%B0%D1%8F%20%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 231
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%D0%A2%D0%B0%D1%82%D1%8C%D1%8F%D0%BD%D0%B0%20%D0%A2%D1%8B%D0%BB%D0%B5%D0%B2%D0%B8%D1%87%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%BD%D0%B0%D1%8F%20%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 1152
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1330
+    },
+    {
+      "stage": "search",
+      "query": "Татьяна Тылевич контактная информация",
+      "results": [
+        {
+          "title": "The Home Depot",
+          "url": "https://www.homedepot.com",
+          "snippet": "Need Help?\n\nVisit ourCustomer Service CenterorText 38698\n\n© 2000-2026 Home Depot. All Rights Reserved. Use of this site is subject to certain Terms Of Use.\n\nLocal store prices may vary from those displayed. Products shown as available are normally stocked but inventory levels cannot be guaranteed.\n\nFor screen reader problems with this website, please call 1-800-430-3376 or text 38698 (standard carrier rates apply to texts). [...] Specials & OffersAppliancesBathBlinds & Window TreatmentsBuilding MaterialsLumber & CompositesMoulding & MillworkCleaningHome DécorLightingDoors & WindowsElectricalFlooringHardwareHeating, Venting & CoolingKitchenGarden CenterOutdoorsPaintPlumbingHoliday DecorationsSmart HomeStorage & OrganizationToolsAutomotiveFurnitureBaby & KidsShop All BrandsHome Depot Gift CardsCredit Card ServicesHome ServicesHome Depot RentalPro Services & Contractor SupplyProject CalculatorsDIY Projects and IdeasLocal [...] Garage Doors\n\nWood Closet Systems\n\nDrywall Screws\n\nCeiling Tiles\n\nMoulding & Millwork\n\nInsulation\n\nCircuit Breakers\n\nButcher Block Countertops\n\nExterior Paint\n\nHalloween Decorations\n\nShower Heads\n\nFront Doors\n\nDownload Our App\n\nHow doers get more done™\n\nNeed Help? Visit our Customer Service Center\n\n### Support",
+          "source_label": "tavily",
+          "score": 0.055520352,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Home | The Home Depot",
+          "url": "https://corporate.homedepot.com",
+          "snippet": "Home\n\nBuilt from scratch\n\nShop Stores Contact\n\n## Search\n\nCustomer Service 1 (800) 466-3337\n\nThe Home Depot\n\n The 'welcome' sign in The Home Depot's newest store in Hot Springs, AR.\n\n  ## Now Open: A New Home Depot in Hot Springs, AR\n\n Three men standing together positioned next to a dark historical marker titled \"The Home Depot\" from the Georgia Historical Society.\n\n  ## The Home Depot Receives Official Georgia Historical Marker in Atlanta\n\n A Home Depot associate next to a Home Depot truck [...] ## Weathering the Storm: How Tech Powers The Home Depot’s Hurricane Response\n\n A badge with The Home Depot branding, a QR code, and the copy, \"One Partner. Every Job.\"\n\n  ## How Vibe Construction Group Scaled with The Home Depot\n\nNow Open: A New Home Depot in Hot Springs, AR\n\nThree men standing together positioned next to a dark historical marker titled \"The Home Depot\" from the Georgia Historical Society.The Home Depot Receives Official Georgia Historical Marker in Atlanta [...] A Home Depot associate next to a Home Depot truckWeathering the Storm: How Tech Powers The Home Depot’s Hurricane Response\n\nHow Vibe Construction Group Scaled with The Home Depot\n\nNEWSROOM HIGHLIGHTS: LATEST STORIES & ARTICLES\n\nVISIT OUR NEWSROOM\n\nCompany\n\nSeptember 25, 2026\n\nNow Open: A New Home Depot in Hot Springs, AR\n\nCompany\n\nSeptember 24, 2026\n\nThe Home Depot Receives Official Georgia Historical Marker in Atlanta\n\nDisaster Preparedness & Response\n\nSeptember 22, 2026",
+          "source_label": "tavily",
+          "score": 0.045339987,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "THE HOME DEPOT - 1037 Arnold Dr, Martinez CA - Hours, Directions...",
+          "url": "https://www.loc8nearme.com/california/martinez/home-depot/533437",
+          "snippet": "Overall, The Home Depot in Martinez is a reliable and convenient destination for home improvement needs, with friendly staff, a well-stocked inventory, and a clean, organized shopping environment.",
+          "source_label": "tavily",
+          "score": 0.020695398,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "The Home Depot - Martinez, CA - Hours & Weekly Ad",
+          "url": "https://www.storeopeninghours.com/the-home-depot-martinez-ca",
+          "snippet": "The Home Depot is situated currently at 1037 Arnold Drive, within the south-east area of Martinez (not far from Veterans Affairs Martinez Clinic). This store is glad to serve customers within the areas of Benicia, Crockett, Pleasant Hill, Lafayette, Port Costa, Concord and Walnut Creek.",
+          "source_label": "tavily",
+          "score": 0.019903112,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "The Martinez Home Depot in Martinez, CA 94553",
+          "url": "https://www.homedepot.com/l/Martinez/CA/Martinez/94553/1380",
+          "snippet": "Save time on your trip to the Home Depot by scheduling your order with buy online pick up in store or schedule a delivery directly from your Martinez store in Martinez, CA.",
+          "source_label": "tavily",
+          "score": 0.01972106,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 3798,
+      "schema": "people_evidence",
+      "input": {
+        "company": "Императорский фарфоровый завод",
+        "domain": "ipm.ru",
+        "context": {
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "title": "Обнаружен сигнал найма",
+            "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+            "sourceUrl": "https://hh.ru/vacancy/138142173",
+            "confidence": 100
+          }
+        },
+        "target": {
+          "primary_persona": "Заместитель коммерческого директора по развитию новых направлений",
+          "alternative_personas": [
+            "Руководитель отдела инноваций",
+            "HR-директор"
+          ],
+          "department": "Executive",
+          "buying_role": "economic_buyer",
+          "influence_level": "high",
+          "decision_authority": "high",
+          "business_problem_owner": "Company leadership",
+          "expected_pain": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+          "expected_goal": "Explore where AI automation can remove manual work from the highest-priority growth or operations process.",
+          "search_keywords": [
+            "Заместитель коммерческого директора по развитию новых направлений",
+            "Коммерческий директор",
+            "Директор по развитию",
+            "Руководитель отдела инноваций",
+            "Менеджер по новым продуктам",
+            "HR-директор",
+            "Руководитель отдела подбора персонала"
+          ],
+          "priority": "low",
+          "reasoning": "The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+          "confidence_score": 45,
+          "source_reasoning": {
+            "signal_type": "HIRING_SIGNAL",
+            "company_segment": "unknown",
+            "signal_summary": "Обнаружен сигнал найма",
+            "why_it_matters": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+            "why_now": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+            "icp_fit_score": 0,
+            "matched_context_terms": [],
+            "confidence_reason": "The primary persona is the best current hypothesis, with sales still a meaningful alternative.",
+            "competing_departments": [
+              "Sales",
+              "Operations",
+              "Customer Success"
+            ]
+          }
+        },
+        "previousQueries": [
+          "Императорский фарфоровый завод заместитель коммерческого директора по развитию новых направлений интервью",
+          "Александр Анатольевич Николаев рабочая почта",
+          "Татьяна Тылевич контактная информация"
+        ],
+        "documents": [
+          {
+            "url": "https://ipm.ru",
+            "text": "Интернет-магазин Императорского фарфора — Официальный сайт Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин Внимание! ВАЖНАЯ ИНФОРМАЦИЯ! График отгрузки интернет-заказов с 1 по 8 октября 2026 Осенний фарфор Время создать уют дома Смотрите подборку товаров Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении Новинка COLOR VIBES Создай настроение своего дня ЭЛЕГАНТНЫЕ БОКАЛЫ КОБАЛЬТОВАЯ СЕТКА Сияние лета на вашем столе Новинка ГАРМОНИЯ ПРИРОДЫ Серия скульптур наполненных смыслом Новинка БЛАГОРОДНАЯ ПОРОДА Серия коллекционных скульптур породистых любимцев Новинка МОНПЛЕЗИР Коллекция текстиля Французский шарм и эстетика востока для ценительниц прекрасного Новинка ФОНТАНЫ Серия, вдохновленная летним Петергофом Новинка ВОЛШЕБНЫЙ САД Эксклюзивный совместный проект с Сергеем Сысоевым Новинка «Жемчужный» Эксклюзивный совместный проект с модным домом Alena Akhmadullina Новинки ЖЕМЧУЖНАЯ СЕТКА НОВИНКА COLOR VIBES НОВИНКА ГАРМОНИЯ ПРИРОДЫ НОВИНКА БЛА … й компанией ООО «ЯНДЕКС», 119021, Россия, Москва, ул. Л. Толстого, 16 на следующих условиях: 1. Согласие выдано: АО «Императорский фарфоровый завод», ОГРН: 1027806058213, ИНН 7811000276, КПП 781101001 (далее — Оператор), электронная почта: ipm_shop@ipm.ru 2. Согласие выдано на обработку следующих категорий персональных данных: – IP-адрес, информация из файлов cookie, информация о браузере пользователя (или иной прогр … Технические Cookie-файлы Другие Cookie-файлы Настоящим я подтверждаю, что текст данного Согласия прочитан мной полностью и мне понятен, Согласие сформулировано конкретно, предметно, информативно и однозначно. Принять согласие Отказаться Мы используем файлы Cookie для улучшения работы, персонализации и повышения удобства пользования нашим сайтом. Продолжая посещать сайт, вы даете согласие на обработку файлов Cookie. Подробнее о нашей политике в отношении Cookie. Принять согласие Настроить Cookies",
+            "sourceKind": "page"
+          },
+          {
+            "url": "https://www.ipm.ru/contacts",
+            "text": "Контакты | Официальный интернет-магазин Императорского фарфорового завода Директор по развитию розничной сети Агатьева Александра Петровна Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская) Телефон: +7 (812) 608-49-29 доб. 108 Email: aga\\_ap@ipm.ru Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik\\_aa@ipm.ru",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://vbankcenter.ru/contragent/person/771910577324",
+            "text": "Предприниматель Николаев Александр Анатольевич ... Бизнесмен Николаев Александр Анатольевич (ИНН 771910577324) является руководителем 1 организации и учредителем 1 организации.",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://www.tbank.ru/business/contractor/legal/325010000001376",
+            "text": "ИП Николаев Александр Анатольевич Предприниматель: ИП Николаев Александр Анатольевич, зарегистрирован 20.01.2025. Основной вид деятельности: Работы строительные специализированные прочие, не",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://www.audit-it.ru/contragent/fl/637600862980_nikolaev-aleksandr-anatolevich",
+            "text": "Николаев Александр Анатольевич (ИНН 637600862980) Николаев Александр Анатольевич (ИНН 637600862980) в реестре юридических лиц · 1. Руководитель, директор · 2. Учредитель Николаев А. А. · 3. Николаев Александр",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://www.homedepot.com",
+            "text": "The Home Depot Need Help? Visit ourCustomer Service CenterorText 38698 © 2000-2026 Home Depot. All Rights Reserved. Use of this site is subject to certain Terms Of Use. Local store prices may vary from those displayed. Products shown as available are normally stocked but inventory levels cannot be guaranteed. For screen reader problems with this website, please call 1-800-430-3376 or text 38698 (standard carrier rates apply to texts). [...] Specials & OffersAppliancesBathBlinds & Window TreatmentsBuilding MaterialsLumber & CompositesMoulding & MillworkCleaningHome DécorLightingDoors & WindowsElectricalFlooringHardwareHeating, Venting & CoolingKitchenGarden CenterOutdoorsPaintPlumbingHoliday DecorationsSmart HomeStorage & OrganizationToolsAutomotiveFurnitureBaby & KidsShop All BrandsHome Depot Gift CardsCredit Card ServicesHome ServicesHome Depot RentalPro Services & Contractor SupplyProject CalculatorsDIY Projects and IdeasLocal [...] Garage Doors Wood Closet Systems Drywall Screws Ceiling Tiles Moulding & Millwork Insulation Circuit Breakers Butcher Block Countertops Exterior Paint Halloween Decorations Shower Heads Front Doors Download Our App How doers get more done™ Need Help? Visit our Customer Service Center ### Support",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://corporate.homedepot.com",
+            "text": "Home | The Home Depot Home Built from scratch Shop Stores Contact ## Search Customer Service 1 (800) 466-3337 The Home Depot The 'welcome' sign in The Home Depot's newest store in Hot Springs, AR. ## Now Open: A New Home Depot in Hot Springs, AR Three men standing together positioned next to a dark historical marker titled \"The Home Depot\" from the Georgia Historical Society. ## The Home Depot Receives Official Georgia Historical Marker in Atlanta A Home Depot associate next to a Home Depot truck [...] ## Weathering the Storm: How Tech Powers The Home Depot’s Hurricane Response A badge with The Home Depot branding, a QR code, and the copy, \"One Partner. Every Job.\" ## How Vibe Construction Group Scaled with The Home Depot Now Open: A New Home Depot in Hot Springs, AR Three men standing together positioned next to a dark historical marker titled \"The Home Depot\" from the Georgia Historical Society.The Home Depot Receives Official Georgia Historical Marker in Atlanta [...] A Home Depot associate next to a Home Depot truckWeathering the Storm: How Tech Powers The Home Depot’s Hurricane Response How Vibe Construction Group Scaled with The Home Depot NEWSROOM HIGHLIGHTS: LATEST STORIES & ARTICLES VISIT OUR NEWSROOM Company September 25, 2026 Now Open: A New Home Depot in Hot Springs, AR Company September 24, 2026 The Home Depot Receives Official Georgia Historical Marker in Atlanta Disaster Preparedness & Response September 22, 2026",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://www.loc8nearme.com/california/martinez/home-depot/533437",
+            "text": "THE HOME DEPOT - 1037 Arnold Dr, Martinez CA - Hours, Directions... Overall, The Home Depot in Martinez is a reliable and convenient destination for home improvement needs, with friendly staff, a well-stocked inventory, and a clean, organized shopping environment.",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://www.storeopeninghours.com/the-home-depot-martinez-ca",
+            "text": "The Home Depot - Martinez, CA - Hours & Weekly Ad The Home Depot is situated currently at 1037 Arnold Drive, within the south-east area of Martinez (not far from Veterans Affairs Martinez Clinic). This store is glad to serve customers within the areas of Benicia, Crockett, Pleasant Hill, Lafayette, Port Costa, Concord and Walnut Creek.",
+            "sourceKind": "search"
+          },
+          {
+            "url": "https://www.homedepot.com/l/Martinez/CA/Martinez/94553/1380",
+            "text": "The Martinez Home Depot in Martinez, CA 94553 Save time on your trip to the Home Depot by scheduling your order with buy online pick up in store or schedule a delivery directly from your Martinez store in Martinez, CA.",
+            "sourceKind": "search"
+          }
+        ]
+      },
+      "output": {
+        "people": [
+          {
+            "name": "Александр Анатольевич Николаев",
+            "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+            "sourceUrl": "https://www.ipm.ru/contacts",
+            "quote": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+            "email": "nik_aa@ipm.ru",
+            "emailSourceUrl": "https://www.ipm.ru/contacts",
+            "emailQuote": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич Почта: nik_aa@ipm.ru",
+            "relevance": 85,
+            "reasoning": "Должность заместителя коммерческого директора по работе с ключевыми клиентами в компании Императорский фарфоровый завод близка по смыслу к заместителю коммерческого директора по развитию новых направлений, что дает высокий уровень влияния и решение вопросов коммерческого развития."
+          },
+          {
+            "name": "Александра Петровна Агатьева",
+            "role": "Директор по развитию розничной сети",
+            "sourceUrl": "https://www.ipm.ru/contacts",
+            "quote": "Директор по развитию розничной сети Агатьева Александра Петровна",
+            "email": "aga_ap@ipm.ru",
+            "emailSourceUrl": "https://www.ipm.ru/contacts",
+            "emailQuote": "Директор по развитию розничной сети Агатьева Александра Петровна Email: aga_ap@ipm.ru",
+            "relevance": 70,
+            "reasoning": "Директор по развитию розничной сети участвует в развитии новых направлений и коммерческих инициатив, находится в руководстве компании, имеет высокий уровень влияния на развитие бизнеса."
+          }
+        ],
+        "nextQueries": [
+          "Александр Анатольевич Николаев рабочая почта подтверждение",
+          "Александра Петровна Агатьева профиль LinkedIn"
+        ]
+      }
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20email%20%D0%BF%D0%BE%D1%87%D1%82%D0%B0&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 324
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20email%20%D0%BF%D0%BE%D1%87%D1%82%D0%B0&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 346
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1996
+    },
+    {
+      "stage": "search",
+      "query": "\"Александр Анатольевич Николаев\" \"Императорский фарфоровый завод\" email почта",
+      "results": [
+        {
+          "title": "Контакты | Официальный интернет-магазин Императорского фарфорового завода",
+          "url": "https://www.ipm.ru/contacts",
+          "snippet": "Директор по развитию розничной сети  \n Агатьева Александра Петровна  \n Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская)  \n Телефон: +7 (812) 608-49-29  доб. 108  \n Email: aga\\_ap@ipm.ru\n\nДепартамент по индивидуальным заказам\n\nЗаместитель коммерческого директора по работе с ключевыми клиентами  \n Николаев Александр Анатольевич  \n Телефон: +7 (921) 425-99-24  \n Почта: nik\\_aa@ipm.ru [...] Телефон: +7 (812) 326-17-46  \n Мобильный: +7-904-639-09-25  \n Email: aha\\_em@ipm.ru [...] Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская)  \n   \n Руководитель отдела экспорта  \n Смирнова Анастасия Николаевна  \n Телефон: +7 (812) 326-17-46  \n Мобильный: +7-981-828-17-68  \n Email: smi\\_an@ipm.ru   \n   \n   \n  Старший менеджер по СНГ  \n Поляков Дмитрий Владимирович  \n Телефон: +7 (812) 326-17-46  \n Мобильный: +7-911-224-85-44  \n Email: pol\\_dv@ipm.ru   \n   \n   \n Старший менеджер по экспорту  \n Ахапкина Елена Михайловна",
+          "source_label": "tavily",
+          "score": 0.885404,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Императорский фарфор - Фирменный магазин Императорского (Ломоносовского) фарфорового завода.",
+          "url": "https://xn--80anc0ajbxbc.xn--p1ai",
+          "snippet": "Быстрый просмотр\n\n  Чашка с блюдцем 250 мл Премиум Петушки-гребешки КН1\n\n  |\n  |  |\n\n  Достаточно\n\n  3 160 руб./шт\n\n  Подробнее\n\n\n\n\n\n\n\n  \n\n|  |  |\n --- |\n|  | Центральный офис   г. Москва, ул. Трубная, д.21  Адреса розничных магазинов > |\n\n|  |  |\n --- |\n|  | Справочная служба   +7 495 973-11-40 |\n\n|  |  |\n --- |\n|  | E-mail   farfor021@inbox.ru |\n\n### О компании [...] Личный кабинет\n\n Корзина0\n Отложенные0\n\n Сравнение товаров0\n\n +7 495 973-11-40 \n  + Назад\n  + Телефоны\n  + +7 495 973-11-40\n  + +7 495 953-66-94\n  + Заказать звонок\n\nКонтактная информация\n\nг.Москва, ул. Трубная, д.21\n\nfarfor021@inbox.ru\n\n Facebook\n Вконтакте\n Instagram [...] Заказать звонок\n\n+7 495 973-11-40\n\n+7 495 953-66-94\n\nИнтернет-магазин Императорский фарфор\n\nСравнение0   Отложенные 0   Корзина 0",
+          "source_label": "tavily",
+          "score": 0.6058229,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Интернет-магазин Императорского фарфора — Официальный сайт",
+          "url": "https://www.ipm.ru",
+          "snippet": "1. Согласие выдано: АО «Императорский фарфоровый завод», ОГРН: 1027806058213, ИНН 7811000276, КПП 781101001 (далее — Оператор), электронная почта: ipm\\_shop@ipm.ru  \n  \n 2. Согласие выдано на обработку следующих категорий персональных данных: [...] Санкт-ПетербургМосква, Новосибирск, Екатеринбург, Казань, Нижний Новгород, Челябинск, Самара, Уфа, Ростов-на-Дону, Омск, Волгоград, Воронеж, Краснодар, Красноярск, Пермьизменить город\n\nВаш город Санкт-Петербург?\n\nВсё верно;)\n\n8 800 444-44-18\n\n# Интернет-магазин фарфора Императорского фарфорового завода\n\nВойтиМой кабинет\n\n0  \n\nСписок сравниваемых элементов пуст.\n\n0\n\nИнтернет-магазин [...] ООО «Яндекс», юридический адрес: 119021, г. Москва, вн.тер.г. Муниципальный Округ Хамовники, ул Льва Толстого, д. 16. Cсылка на политику конфиденциальности:",
+          "source_label": "tavily",
+          "score": 0.52773094,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "О нас | Мы находимся в Таллинне",
+          "url": "https://lomonosov-porcelain.net/ru/about-us",
+          "snippet": "\"\n\nИмператорский фарфор — это сочетание многолетних традиций, мастерства и технологий, которое уже почти три столетия определяет характер продукции Императорского фарфорового завода.\n\nМы будем рады видеть вас в нашем магазине в историческом центре Таллинна.\n\nАдрес: Pikk 36, Старый город, Таллинн  \n Доставка по всему миру\n\nТелефон / WhatsApp:  \n +372 5805 3337  \n (Анна — английский • русский • эстонский)\n\nФарфор Lomonosov - Свяжитесь с нами\n\nМагазин фарфора Lomonosov - Фарфор на продажу [...] Официальный партнёрский магазин в Европе • Доставка по Европе и в США • Подлинный Императорский фарфор\n\nДля связи на русском языке напишите нам в WhatsApp +372 58053337 или по электронной почте info@lomonosov-porcelain.net\n\nLomonosov Porcelain Europe\n\nНаследие. Мода. Стиль.\n\nул. Пикк, 36, 10133 ТаллиннЭстония\n\nLomonosov Porcelain Europe\n\nНаследие. Мода. Стиль.\n\nLomonosov Porcelain Europe Lomonosov Porcelain Europe\n\nLomonosov Porcelain Europe\n\n## Наследие. Мода. Стиль.\n\nВыберите подарки для дома [...] Основанный в 1744 году по указу императрицы Елизаветы Петровны, дочери Петра Великого, Императорский фарфоровый завод стал первым производителем фарфора в России и третьей фарфоровой мануфактурой в Европе. Сегодня Императорский фарфоровый завод — один из самых престижных фарфоровых брендов мира.\n\nХудожник Императорского фарфорового завода\n\n## Важное открытие",
+          "source_label": "tavily",
+          "score": 0.41094592,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20%22%40ipm.ru%22&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 225
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20%22%40ipm.ru%22&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 132
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1669
+    },
+    {
+      "stage": "search",
+      "query": "\"Александр Анатольевич Николаев\" \"@ipm.ru\"",
+      "results": [
+        {
+          "title": "Sea of Thieves: Followers of the Flame Voyage Guide - Rare Thief",
+          "url": "https://rarethief.com/sea-of-thieves-followers-of-the-flame-voyage-guide",
+          "snippet": "## How to get the Fate's Light Lantern\n\nTalk Like A Pirate Day\n\n## Talk Like a Pirate Day Event Guide 2026\n\nFallen Sea Dog Set\n\n## How to do the Conqueror of the Damned Commendation\n\nWant to keep a weather eye out?\n\nJot down yer email, and we’ll be sure to let ye know when there’s something new on the horizon.\n\n### Leave a Comment Cancel Reply\n\nScroll to Top [...] Skip to content\n\n[](\n\n## Rare Thief\n\nTwitter     Youtube\n\nHome » Sea of Thieves » Sea of Thieves: Followers of the Flame Voyage Guide\n\nFollowers of the Flame\n\n## Sea of Thieves\n\n# Followers of the Flame Voyage Guide\n\n Amir Abdollahi\n\nupdated as needed\n\nWant to keep a weather eye out?\n\nJot down yer email, and we’ll be sure to let ye know when there’s something new on the horizon. [...] To the Tavern!\n\nAye, we pirates do love a good tavern. ‘Tis a place to share our findings and adventures. ‘Tis a place to clap each other on the back. ‘Tis a place to glean further insight.\n\nHappily, we’ve found proverbial taverns on several social outposts—each bustling with a vibrant pirate community! Want to join in the merriment? Ye will always find a hearty welcome at our table!\n\nShare your Findings\n\nFollow Along\n\nTwitter     Youtube\n\n## More to Explore\n\nFate's Light Lantern",
+          "source_label": "tavily",
+          "score": 0.03637385,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Flags | The Sea of Thieves Wiki",
+          "url": "https://seaofthieves.wiki.gg/wiki/Flags",
+          "snippet": "|  | Inner Sanctum Flag | Pirate Emporium Pirate Emporium  Season 14 Plunder Pass | 349 Ancient Coins | n/a | n/a | Inner Sanctum | \"This strange motif has been spotted throughout history, but its meaning remains a mystery...\" |\n|  | Iron Turtle Flag | Pirate Emporium Pirate Emporium | 349 Ancient Coins | n/a | n/a | Iron Turtle | \"Admire this proud pennant as it snaps in the wind like a warning.\" | [...] |  | Fallen Sea Dog Flag | Reaper's Bones Shop Reaper's Bones Shop | 30,000 Gold | n/a | Conqueror of the Damned Conqueror of the Damned emblem.png  Conqueror of the Damned  Win Battles in Last Ship Standing.  Grades:  1  2  3  5  7  9  12  15  20  25  Wins | Fallen Sea Dog |  |\n|  | False King's Ransom Flag | Pirate Emporium Pirate Emporium | 349 Ancient Coins | n/a | n/a | False King's Ransom | \"Who would dare see this emblem and attack a future ruler of the seas? Oh. Pirates would.\" | [...] |  | Party Boat Flag | Shipwright Shop Shipwright Shop | 2,500 Gold | n/a | Skies of Friendship Skies of Friendship emblem.png  Skies of Friendship  Set off fireworks while in an Alliances. | Party Boat | \"Something about this flag gives away its Bilge Rat origins. What could it be...?\" |\n|  | Pet Protector Flag | Pirate Emporium Pirate Emporium | 349 Ancient Coins | n/a | n/a | Pet Protector | \"A flag that declares devotion to all animal companions, or ownership of one extremely large dog.\" |",
+          "source_label": "tavily",
+          "score": 0.031005697,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Sea of Thieves Interactive Map",
+          "url": "https://maps.seaofthieves.rarethief.com",
+          "snippet": "Edit Map\n\nEdit Map Edit Map   Share Share   Copy Copy   Delete Delete   Edit Panel Edit Panel   Create Map Create Map   Sign Out Sign Out\n\nDelete account and data\n\nEditing Map",
+          "source_label": "tavily",
+          "score": 0.03037818,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Sea of Thieves: Season 21, Talk Like a Pirate Day, New Rewards, Amazing Prizes and More! - XBOX Wire",
+          "url": "https://news.xbox.com/en-us/2026/09/16/sea-of-thieves-season-21-talk-like-a-pirate-day",
+          "snippet": "PC Game Pass XBOX games PC games   Microsoft AI Microsoft Security Dynamics 365 Microsoft 365 for business Microsoft Power Platform Windows 365 Small Business Digital Sovereignty   Azure Microsoft Developer Microsoft Learn Support for AI marketplace apps Microsoft Tech Community Microsoft Marketplace Software companies Visual Studio   Microsoft Rewards Free downloads & security Education Gift cards Licensing Unlocked stories   View Sitemap [...] & networking Family & online safety Games & apps Friends & social activity  Accessible gaming XBOX system updates   Profile Rewards XBOX Mastercard Wish list   Games Designed for XBOX      Microsoft 365 Azure Copilot Windows Surface XBOX Deals Small Business Support   Windows Apps Outlook OneDrive Microsoft Teams OneNote Microsoft Edge Moving from Skype to Teams   Computers Shop XBOX Accessories VR & mixed reality Certified Refurbished Trade-in for cash   XBOX Game Pass Ultimate PC Game Pass [...] Microsoft  XBOX    Join Game Pass Browse Games Deals with Game Pass XBOX Cloud Gaming   Games home Shop all console games Shop all PC games Cloud games XBOX Play Anywhere Free-to-Play games Optimized for XBOX Series X|S Optimized for handhelds Backward compatible games Sales & Specials Redeem Code   Explore all devices  Meet XBOX Series X|S XBOX Series X XBOX Series S Shop all consoles Compare consoles Help me choose a console Where to buy   Shop all accessories Controllers Design your",
+          "source_label": "tavily",
+          "score": 0.030034896,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%B0%20%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B2%D0%BD%D0%B0%20%D0%90%D0%B3%D0%B0%D1%82%D1%8C%D0%B5%D0%B2%D0%B0%22%20%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20email%20%D0%BF%D0%BE%D1%87%D1%82%D0%B0&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 125
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%B0%20%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B2%D0%BD%D0%B0%20%D0%90%D0%B3%D0%B0%D1%82%D1%8C%D0%B5%D0%B2%D0%B0%22%20%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20email%20%D0%BF%D0%BE%D1%87%D1%82%D0%B0&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 703
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1499
+    },
+    {
+      "stage": "search",
+      "query": "\"Александра Петровна Агатьева\" \"Императорский фарфоровый завод\" email почта",
+      "results": [
+        {
+          "title": "Контакты | Официальный интернет-магазин Императорского фарфорового завода",
+          "url": "https://www.ipm.ru/contacts",
+          "snippet": "Директор по развитию розничной сети  \n Агатьева Александра Петровна  \n Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская)  \n Телефон: +7 (812) 608-49-29  доб. 108  \n Email: aga\\_ap@ipm.ru\n\nДепартамент по индивидуальным заказам\n\nЗаместитель коммерческого директора по работе с ключевыми клиентами  \n Николаев Александр Анатольевич  \n Телефон: +7 (921) 425-99-24  \n Почта: nik\\_aa@ipm.ru [...] Телефон: +7 (812) 326-17-46  \n Мобильный: +7-904-639-09-25  \n Email: aha\\_em@ipm.ru [...] Галерея современного искусства фарфора, пр-т Обуховской обороны, д.151  Адрес: Россия, 192171, Санкт-Петербург, пр-т Обуховской обороны, д.151 (ст. м. Ломоносовская)  \n Режим работы: пн-чт с 10:00 до 19:00, пт с 10:00 до 18:00  \n Телефон: +7 (812) 326-17-43  \n\nEmail: gallery@ipm.ru",
+          "source_label": "tavily",
+          "score": 0.9065293,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%B0%20%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B2%D0%BD%D0%B0%20%D0%90%D0%B3%D0%B0%D1%82%D1%8C%D0%B5%D0%B2%D0%B0%22%20%22%40ipm.ru%22&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 223
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%B0%20%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B2%D0%BD%D0%B0%20%D0%90%D0%B3%D0%B0%D1%82%D1%8C%D0%B5%D0%B2%D0%B0%22%20%22%40ipm.ru%22&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 150
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1707
+    },
+    {
+      "stage": "search",
+      "query": "\"Александра Петровна Агатьева\" \"@ipm.ru\"",
+      "results": [
+        {
+          "title": "Контакты | Официальный интернет-магазин Императорского фарфорового завода",
+          "url": "https://www.ipm.ru/contacts",
+          "snippet": "Директор по развитию розничной сети  \n Агатьева Александра Петровна  \n Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская)  \n Телефон: +7 (812) 608-49-29  доб. 108  \n Email: aga\\_ap@ipm.ru\n\nДепартамент по индивидуальным заказам\n\nЗаместитель коммерческого директора по работе с ключевыми клиентами  \n Николаев Александр Анатольевич  \n Телефон: +7 (921) 425-99-24  \n Почта: nik\\_aa@ipm.ru [...] Телефон: +7 (812) 326-17-46  \n Мобильный: +7-904-639-09-25  \n Email: aha\\_em@ipm.ru [...] остались вопросы?\n\nСправочная служба Императорского фарфорового завода  \n будет рада вам помочь! Или заполните  \n форму обратной связи, и мы свяжемся с вами.\n\n8 800 444 44 18\n\nipm\\_shop@ipm.ru\n\nЗадать вопрос",
+          "source_label": "tavily",
+          "score": 0.82994765,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://ipm.ru/",
+      "status": 200,
+      "elapsedMs": 984
+    },
+    {
+      "stage": "fetch",
+      "url": "https://ipm.ru/robots.txt",
+      "status": 200,
+      "elapsedMs": 191
+    },
+    {
+      "stage": "fetch",
+      "url": "https://ipm.ru/sitemap.xml",
+      "status": 200,
+      "elapsedMs": 378
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.ipm.ru/sitemap.xml",
+      "status": 200,
+      "elapsedMs": 94
+    },
+    {
+      "stage": "fetch",
+      "url": "https://ipm.ru/contacts",
+      "status": 200,
+      "elapsedMs": 683
+    },
+    {
+      "stage": "fetch",
+      "url": "https://ipm.ru/kontakty",
+      "status": 404,
+      "elapsedMs": 692
+    },
+    {
+      "stage": "fetch",
+      "url": "https://ipm.ru/kontakti",
+      "status": 404,
+      "elapsedMs": 805
+    },
+    {
+      "stage": "fetch",
+      "url": "https://ipm.ru/contact",
+      "status": 404,
+      "elapsedMs": 872
+    },
+    {
+      "stage": "fetch",
+      "url": "https://ipm.ru/company",
+      "status": 200,
+      "elapsedMs": 909
+    },
+    {
+      "stage": "fetch",
+      "url": "https://ipm.ru/contact-us",
+      "status": 404,
+      "elapsedMs": 916
+    },
+    {
+      "stage": "fetch",
+      "url": "https://ipm.ru/about-us",
+      "status": 404,
+      "elapsedMs": 924
+    },
+    {
+      "stage": "fetch",
+      "url": "https://ipm.ru/about",
+      "status": 200,
+      "elapsedMs": 1124
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20ipm.ru%20email%20OR%20e-mail&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 341
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20ipm.ru%20email%20OR%20e-mail&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 359
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.yahoo.com/search?p=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20ipm.ru%20email%20OR%20e-mail&ei=UTF-8&b=1",
+      "status": 500,
+      "elapsedMs": 1360
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1587
+    },
+    {
+      "stage": "search",
+      "query": "\"Александр Анатольевич Николаев\" ipm.ru email OR e-mail",
+      "results": [
+        {
+          "title": "Контакты | Официальный интернет-магазин Императорского фарфорового завода",
+          "url": "https://www.ipm.ru/contacts",
+          "snippet": "Директор по развитию розничной сети  \n Агатьева Александра Петровна  \n Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская)  \n Телефон: +7 (812) 608-49-29  доб. 108  \n Email: aga\\_ap@ipm.ru\n\nДепартамент по индивидуальным заказам\n\nЗаместитель коммерческого директора по работе с ключевыми клиентами  \n Николаев Александр Анатольевич  \n Телефон: +7 (921) 425-99-24  \n Почта: nik\\_aa@ipm.ru [...] Телефон: +7 (812) 326-17-46  \n Мобильный: +7-904-639-09-25  \n Email: aha\\_em@ipm.ru [...] остались вопросы?\n\nСправочная служба Императорского фарфорового завода  \n будет рада вам помочь! Или заполните  \n форму обратной связи, и мы свяжемся с вами.\n\n8 800 444 44 18\n\nipm\\_shop@ipm.ru\n\nЗадать вопрос",
+          "source_label": "tavily",
+          "score": 0.8506799,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Интернет-магазин Императорского фарфора — Официальный сайт",
+          "url": "https://www.ipm.ru",
+          "snippet": "1. Согласие выдано: АО «Императорский фарфоровый завод», ОГРН: 1027806058213, ИНН 7811000276, КПП 781101001 (далее — Оператор), электронная почта: ipm\\_shop@ipm.ru  \n  \n 2. Согласие выдано на обработку следующих категорий персональных данных: [...] В соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» и Политикой обработки персональных данных сайта www.ipm.ru (далее – Сайт),  \n  \n Продолжая использовать Сайт посетитель (далее – Пользователь) дает полное, безоговорочное и однозначное согласие на обработку его персональных данных (далее - Согласие) посредством сервисом веб-аналитики Яндекс Метрика и, предоставляемый компанией ООО «ЯНДЕКС», 119021, Россия, Москва, ул. Л. Толстого, 16 на следующих условиях: [...] Санкт-ПетербургМосква, Новосибирск, Екатеринбург, Казань, Нижний Новгород, Челябинск, Самара, Уфа, Ростов-на-Дону, Омск, Волгоград, Воронеж, Краснодар, Красноярск, Пермьизменить город\n\nВаш город Санкт-Петербург?\n\nВсё верно;)\n\n8 800 444-44-18\n\n# Интернет-магазин фарфора Императорского фарфорового завода\n\nВойтиМой кабинет\n\n0  \n\nСписок сравниваемых элементов пуст.\n\n0\n\nИнтернет-магазин",
+          "source_label": "tavily",
+          "score": 0.42907107,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Контакты | Франчайзинг | Официальный интернет-магазин Императорского фарфорового завода",
+          "url": "https://www.ipm.ru/franch/kontakty",
+          "snippet": "1. Согласие выдано: АО «Императорский фарфоровый завод», ОГРН: 1027806058213, ИНН 7811000276, КПП 781101001 (далее — Оператор), электронная почта: ipm\\_shop@ipm.ru  \n  \n 2. Согласие выдано на обработку следующих категорий персональных данных: [...] В соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» и Политикой обработки персональных данных сайта www.ipm.ru (далее – Сайт),  \n  \n Продолжая использовать Сайт посетитель (далее – Пользователь) дает полное, безоговорочное и однозначное согласие на обработку его персональных данных (далее - Согласие) посредством сервисом веб-аналитики Яндекс Метрика и, предоставляемый компанией ООО «ЯНДЕКС», 119021, Россия, Москва, ул. Л. Толстого, 16 на следующих условиях: [...] Бушуева Ксения Юрьевна  \n Тел.: +7(812) 608-49-57    \n Адрес: Россия, 192171, Санкт-Петербург, пр-т Обуховской обороны, д.151 (ст. м. Ломоносовская)  \n Email: bus\\_ky@ipm.ru\n\nНазад к списку\n\n Преимущества работы с нами\n Описание предложения\n Требования к Партнеру\n Контакты",
+          "source_label": "tavily",
+          "score": 0.3983836,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Экспорт | Официальный интернет-магазин Императорского фарфорового завода",
+          "url": "https://www.ipm.ru/export",
+          "snippet": "1. Согласие выдано: АО «Императорский фарфоровый завод», ОГРН: 1027806058213, ИНН 7811000276, КПП 781101001 (далее — Оператор), электронная почта: ipm\\_shop@ipm.ru  \n  \n 2. Согласие выдано на обработку следующих категорий персональных данных: [...] ОТДЕЛ ЭКСПОРТА  \n Адрес: 192171, Санкт-Петербург, пр-т Обуховской Обороны, д.151 (ст. м. Ломоносовская)  \n Руководитель отдела экспорта  \n Смирнова Анастасия Николаевна  \n Телефон: +7 (812) 326-17-46  \n Факс: +7 (812) 326-17-40  \n Email: smi\\_an@ipm.ru  \n Mobile/ WhatsApp.: +7-981-828-17-68  \n   \n Старший менеджер по СНГ  \n Поляков Дмитрий Владимирович  \n Телефон: +7 (812) 326-17-46  \n Mobile/ WhatsApp.: +7-911-224-85-44  \n Email: pol\\_dv@ipm.ru   \n   \n Старший менеджер по экспорту [...] Ахапкина Елена Михайловна  \n Телефон: +7 (812) 326-17-46  \n Mobile/ WhatsApp.: +7-904-639-09-25  \n Email: aha\\_em@ipm.ru",
+          "source_label": "tavily",
+          "score": 0.38796914,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "История завода 1894-1912 | Об Императорском фарфоровом заводе",
+          "url": "https://www.ipm.ru/o_zavode/istoriya_zavoda/1894-1912",
+          "snippet": "1. Согласие выдано: АО «Императорский фарфоровый завод», ОГРН: 1027806058213, ИНН 7811000276, КПП 781101001 (далее — Оператор), электронная почта: ipm\\_shop@ipm.ru  \n  \n 2. Согласие выдано на обработку следующих категорий персональных данных: [...] В соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» и Политикой обработки персональных данных сайта www.ipm.ru (далее – Сайт),  \n  \n Продолжая использовать Сайт посетитель (далее – Пользователь) дает полное, безоговорочное и однозначное согласие на обработку его персональных данных (далее - Согласие) посредством сервисом веб-аналитики Яндекс Метрика и, предоставляемый компанией ООО «ЯНДЕКС», 119021, Россия, Москва, ул. Л. Толстого, 16 на следующих условиях: [...] Санкт-ПетербургМосква, Новосибирск, Екатеринбург, Казань, Нижний Новгород, Челябинск, Самара, Уфа, Ростов-на-Дону, Омск, Волгоград, Воронеж, Краснодар, Красноярск, Пермьизменить город\n\nВаш город Санкт-Петербург?\n\nВсё верно;)\n\n8 800 444-44-18\n\nВойтиМой кабинет\n\n0  \n\nСписок сравниваемых элементов пуст.\n\n0\n\nИнтернет-магазин",
+          "source_label": "tavily",
+          "score": 0.2704018,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.ipm.ru/contacts",
+      "status": 200,
+      "elapsedMs": 726
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20email%20OR%20e-mail&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 227
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20email%20OR%20e-mail&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 144
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.yahoo.com/search?p=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20email%20OR%20e-mail&ei=UTF-8&b=1",
+      "status": 500,
+      "elapsedMs": 1312
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20TenChat&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 391
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20TenChat&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 210
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.yahoo.com/search?p=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20TenChat&ei=UTF-8&b=1",
+      "status": 500,
+      "elapsedMs": 1269
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 1488
+    },
+    {
+      "stage": "search",
+      "query": "\"Александр Анатольевич Николаев\" \"Императорский фарфоровый завод\" email OR e-mail",
+      "results": [
+        {
+          "title": "Александр Анатольевич (@anatolich_mtv)",
+          "url": "https://www.instagram.com/anatolich_mtv?hl=en",
+          "snippet": "Александр Анатольевич 299K followers … ️ Сотрудничество: +79161696192 📢 Пресса: +79991550845 📮",
+          "source_label": "tavily",
+          "score": 0.18426824,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Александр Анатольевич",
+          "url": "https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80_%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87",
+          "snippet": "10.   ↑Закрытие «MTV Россия»: телеведущие, ставшие звездами — Афиша@Mail.Ru.Дата обращения: 26 апреля 2013.Архивировано 29 апреля 2013 года.\n11.   ↑НОВОСТИ MTV РОССИЯ.DOTSMedia(16 марта 2004).Дата обращения: 13 мая 2018.Архивировано 14 мая 2018 года.\n12.   ↑«Страшная месть» провизора. Александр Анатольевич учился на аптекаря, а стал шоуменом.Вечерняя Москва.Дата обращения: 12 октября 2019.Архивировано 12 октября 2019 года. [...] В 2006 году вёл реалити-шоу «Красавицы и умники» на «РЕН ТВ»(\n\nВ 2014 году вёл второй сезон музыкального шоу «Хит» на телеканале «Россия-1»(\n\nС 2014 по 2020 год в эфире радио Megapolis 89.5 FM был участником программ Menzo DJ’s Radio Show и «Даёшь ЗОЖ!».\n\nВ феврале 2019 года вернулся на обновлённый телеканал MTV Россия, где вёл свою программу «NETLENKA»( [...] Скрытые категории: \n   Википедия:Биографии современников\n   Страницы с неизвестными параметрами шаблона Персона\n   Википедия:Cite web (не указан язык) \"Категория:Википедия:Cite web (не указан язык)\")\n   Википедия:Cite web (заменить webcitation-архив: deadlink no) \"Категория:Википедия:Cite web (заменить webcitation-архив: deadlink no)\")",
+          "source_label": "tavily",
+          "score": 0.10509128,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Попович Анатолий Анатольевич | Институт машиностроения, материалов и транспорта Санкт-Петербургский политехнический университет Петра Великого",
+          "url": "https://immit.spbstu.ru/person/popovich_anatoliy_anatolevich",
+          "snippet": "Автор более 400 научных работ в том числе 18 монографий, 102 результатов интеллектуальной деятельности, 26 учебных пособия, в том числе более 220 статей на иностранных языках. Подготовил 20 кандидатов наук, научных консультант 3 докторских диссертаций, Индекс Хирша: Scopus – 29, РИНЦ – 29, Web of Science – 23.  \nЧисло цитирований из публикаций: по Scopus – 3310, по РИНЦ – 4560.\n\nРудской А.И.Природоподобные материалы и аддитивные технологии их производства: [...] лауреат премии имени Д.К Чернова в области материаловедения, лауреат премии Правительства Санкт-Петербурга в номинации «В области интеграции образования, науки и промышленности». [...] + Дипломы и свидетельства\n  + Оформление заключений\n  + Студентам заочного обучения\n  + Личный кабинет обучающегося\n  + Студенческая почта @edu.spbstu.ru\n  + Электронное обучение «Открытый Политех»\n  + Поездки студентов\n  + ПРОФ. ИММиТ\n  + Вакансии\n  + Фирменный стиль\n  + Темы ВКР\n  + Безопасность обучающихся и работников\n Выпускникам \n  + Меню\n  + Выпускные альбомы\n  + Сообщество послов СПбПУ\n  + Дипломы и свидетельства\n  + Целевой капитал ИММиТ\n  + Вакансии\n Сотрудникам \n  + Меню",
+          "source_label": "tavily",
+          "score": 0.031645752,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Умер «телевизионный целитель» Анатолий Кашпировский - BBC News Русская служба",
+          "url": "https://www.bbc.com/russian/articles/cqm26nvrgrmyo",
+          "snippet": "Последствия удара по Южному мосту в Киеве. Клубы дыма поднимаются в небо. \nПилот Flydubai на больничной койке с забинтованной головой\nОлени подрались посреди улицы в Польше\nНападение криптограбителей\nПожар в особняке в Петербурге\nЗападные мужчины обнимаются с представителем Талибана\nCкандал на фотоконкурсе Nikon\nДрон попал в школу в Киеве, здание горит\nПассажиры рейса Flydubai о спасении самолета\nВладимир Путин\n\nКонец Видео-плейлист\n\n## Читайте также [...] ## Читайте также\n\nАллан Чумак на презентации своей книги \"Тем, кто верит в чудо\" (2008 год)\n\n### Человек из телевизора: кем был для страны Аллан Чумак\n\n## Главное\n\n### LIVE Live, Война в Украине: Зеленский обещает дальнобойную баллистическую ракету уже осенью\n\n### Власти ОАЭ: второй пилот рейса Flydubai напал на командира с аварийным топором. Что еще известно\n\n### По всей Испании проходят массовые акции в защиту арендаторов жилья\n\n## Не пропустите [...] ## Не пропустите\n\nКоллаж: депутатские портфели летят над зданием Госдумы в Москве на красном фоне\n\n### Самая возрастная, самая женская. Новая Госдума в трех графиках\n\nСтарт ракеты «Союз 2.1б» с космодрома Плесецк\n\n### «Русский Старлинк». Кто его создает и зачем он нужен?\n\nПрезидент Владимир Путин задумчиво смотрит в небо, пока мимо него маршируют военные\n\n### «Дума не дом офицеров». Зачем Путину ветераны войны во власти — и почему их оказалось меньше, чем ожидали",
+          "source_label": "tavily",
+          "score": 0.029093578,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Пашков Константин Анатольевич | Министерство транспорта Российской Федерации",
+          "url": "https://mintrans.gov.ru/ministry/structure/pashkov-konstantin-anatolevich",
+          "snippet": "Контакты [...] ## Авторизация\n\nЕсли у вас еще нет учетной записи, зарегистрируйтесь\n\n## Подписка\n\n## Регистрация\n\n## Восстановление пароля\n\nВведите адрес электронной почты, куда будет отправлена инструкция по восстановлению пароля.\n\n## Проверьте электронную почту\n\nНа ваш электронный адрес была отправлена инструкция по восстановлению пароля.\n\n\n\nENG\n\nМинистерство транспорта в Телеграм\n\nМинистерство транспорта Вконтакте\n\nМинистерство транспорта Вконтакте\n\nМинистерство транспорта в одноклассниках [...] Министерство транспорта в Dzen\n\nМинистерство транспорта на RuTube\n\n  >  Министерство  >  Структура  >  Пашков Константин Анатольевич)\n\n# Пашков Константин Анатольевич\n\nОтчеты\n\nБиография\n\nНовости\n\nФото\n\nПервый заместитель Министра транспорта Российской Федерации\n\n  \n\nДействительный государственный советник Российской Федерации 1 класса.\n\nРодился 28 августа 1976 года в г. Пушкино Московской области.\n\nОбразование высшее:",
+          "source_label": "tavily",
+          "score": 0.022579623,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20Telegram%20OR%20t.me&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 219
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20Telegram%20OR%20t.me&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 125
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.yahoo.com/search?p=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20Telegram%20OR%20t.me&ei=UTF-8&b=1",
+      "status": 500,
+      "elapsedMs": 1287
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.brave.com/search?q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20VK%20OR%20vk.com&source=web&offset=0",
+      "status": 429,
+      "elapsedMs": 219
+    },
+    {
+      "stage": "fetch",
+      "url": "https://www.bing.com/search?format=rss&q=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20VK%20OR%20vk.com&mkt=ru-RU&setlang=ru&cc=RU&first=1",
+      "status": 200,
+      "elapsedMs": 160
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 2256
+    },
+    {
+      "stage": "search",
+      "query": "\"Александр Анатольевич Николаев\" \"Императорский фарфоровый завод\" TenChat",
+      "results": [
+        {
+          "title": "Императорский фарфоровый завод — Википедия",
+          "url": "https://ru.wikipedia.org/wiki/%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9_%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9_%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4",
+          "snippet": "{{#parsoid\\u0000fragment:2}}[ H][ G][ Я][ O]\"}}\" id=\"mwBA\" about=\"#mwt2\" typeof=\"mw:Extension/indicator\"> \n\nИмпера́торский фарфо́ровый заво́д — одно из старейших в Европе, первое и одно из крупнейших в России предприятий по производству художественных фарфоровых изделий. Расположен в Санкт-Петербурге, основан в 1744 году.\n\n## Названия\n\n[править | править код] [...] В 1802 году император Александр I выпустил указ, согласно которому фарфоровый завод, гатчинский завод и казённый завод фаянса переходили в подчинение Кабинета Его Императорского Величества. Вместе с переподчинением, была проведена масштабная реорганизация завода. Гатчинская фабрика была закрыта. Был закрыт и фаянсовый завод, а его активы были поделены между Императорским фарфоровым и Императорским стеклянным заводами. Также была произведена большая распродажа фарфоровых изделий, произведенных [...] На заводе изготавливали высококлассные предметы и комплекты для подношений императору. До 1832 года подарки готовились к Пасхе и Новому году, после — добавилось Рождество. Помимо этого, завод выполнял личные заказы императорской семьи и Великих князей. Выполнялись заказы для других государственных структур, а также для дипломатических подарков. Такой объём государственных заказов привёл к тому, что руководство завода игнорировало потребности рынка, и частные заказы не обеспечивали",
+          "source_label": "tavily",
+          "score": 0.3413854,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Императорский фарфоровый завод: полная история первой русской фабрики фарфора",
+          "url": "https://reywood.ru/media/posts/imperatorskiy-farforovyy-zavod-polnaya-istoriya-pervoy-russkoy-fabriki-farfora",
+          "snippet": "Отчасти благодаря им, в период царствования Александра I появилось важное нововведение — техника печати на фарфоре, которая существенно ускорила производство. [...] Однако фарфоровое производство чутко откликалось и на актуальные культурные тенденции. Например, когда общество увлеклось романами Вальтера Скотта, на заводе появились фарфоровые статуэтки героев его произведений. После роста популярности «Трёх мушкетёров» Александра Дюма были изготовлены фигурки мушкетёров.\n\nВ 1855 году эпоха Николая I завершилась, и новым императором стал его сын Александр, который остался в истории как великий реформатор и Освободитель. [...] Эта коллегия объявила конкурс, который сегодня назвали бы тендером. Отечественным промышленникам предложили заявить о своём желании основать производство посуды и курительных трубок при поддержке и содействии самого императора. Коллегия полагала, что белая глина, которую добывали в Гжельском районе Московской губернии, могла стать материалом для создания керамических изделий по западноевропейским образцам.",
+          "source_label": "tavily",
+          "score": 0.25380597,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "История завода 1894-1912 | Об Императорском фарфоровом заводе",
+          "url": "https://www.ipm.ru/o_zavode/istoriya_zavoda/1894-1912",
+          "snippet": "+ Спорт а-ля русс  Ароматы для дома  Текстиль   Высокохудожественные изделия    + Народности России  Авторские изделия    + Новый год и Рождество   + Авторские вазы   + Авторская скульптура   + Авторские декоративные блюда   + Авторские сервизы   + Авторские украшения   + Авторские часы   + Авторские чашки с блюдцами   + АРТ объекты   + Светлая Пасха  Креативные проекты    + Atomic heart   + БФ «Обнаженные сердца»   + Фёдор Конюхов   + Андрей Осташов   + Маленький принц   + Преступление и [...] В годы царствования последнего российского императора Николая II (1894–1917) завод достигает образцового состояния в техническом и технологическом отношениях. В те годы завод находился под патронатом супруги императора Александры Федоровны, которая заказала производство двух крупных сервизов «Александринского» и «Царскосельского». [...] | Сервировка стола  Сервировка стола  Предметы интерьера  Предметы интерьера  Уникальные товары  Уникальные товары  Уникальные товары  Императорский фарфоровый завод приглашает Вас принять участие в регулярных и тематических мастер-классах по росписи фарфора, посетить экскурсию на производство, а также познакомиться и при желании приобрести уникальные авторские работы мастеров ИФЗ.  Мастер-классы  Мастер-классы  Мастер-классы  Товары по специальным ценам.  Позвольте себе насладиться прекрасным",
+          "source_label": "tavily",
+          "score": 0.252449,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Императорский фарфоровый завод. 1часть",
+          "url": "https://www.youtube.com/watch?v=U5RHlYBAF4E&xstg=CAMSBhUDze3xHw%3D%3D",
+          "snippet": "Императорский фарфоровый завод. 1часть ... Не всем так везет, как нам, друзья!Мы в фамильном поместье Александра Васильева в Литве .",
+          "source_label": "tavily",
+          "score": 0.22306421,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Интернет-магазин Императорского фарфора — Официальный сайт",
+          "url": "https://www.ipm.ru",
+          "snippet": "| Сервировка стола  Сервировка стола  Предметы интерьера  Предметы интерьера  Уникальные товары  Уникальные товары  Уникальные товары  Императорский фарфоровый завод приглашает Вас принять участие в регулярных и тематических мастер-классах по росписи фарфора, посетить экскурсию на производство, а также познакомиться и при желании приобрести уникальные авторские работы мастеров ИФЗ.  Мастер-классы  Мастер-классы  Товары по специальным ценам.  Позвольте себе насладиться прекрасным фарфором, [...] Интерьерный фарфор\n\nУникальный художественный фарфор, изготовленный на Императорском фарфоровом заводе - первом фарфоровом предприятии в России, стал незаменимым украшением дворцовых интерьеров царских семей. Короли Европы и правители Востока, получившие в качестве дипломатического подарка сервизы и вазы, хранили их как произведения искусства, которые позже стали жемчужинами коллекций музеев всего мира.\n\nУзнать больше\n\nПредложение для ресторанов [...] Новости 2\n\nНовости\n\nИмператорский фарфоровый завод с его музеем – это уникальное место, где хранится отлитая в фарфоре трехвековая история и культура России.\n\nМузей 1\n\nМузей 2\n\nМузей\n\nГалерея открыта для посещения ценителей фарфора. Гости могут принять участие в регулярных и тематических мастер-классах по росписи фарфора, посетить экскурсию на производство, а также познакомиться и при желании приобрести уникальные авторские работы мастеров ИФЗ.\n\nГалерея 1\n\nГалерея 2\n\nГалерея",
+          "source_label": "tavily",
+          "score": 0.2118245,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://search.yahoo.com/search?p=%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%22%20%22%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%22%20VK%20OR%20vk.com&ei=UTF-8&b=1",
+      "status": 500,
+      "elapsedMs": 1281
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 2013
+    },
+    {
+      "stage": "search",
+      "query": "\"Александр Анатольевич Николаев\" \"Императорский фарфоровый завод\" Telegram OR t.me",
+      "results": [
+        {
+          "title": "ИФЗ «Императорский фарфор» (@porcelain_imperial) • Instagram photos and videos",
+          "url": "https://www.instagram.com/porcelain_imperial?hl=en",
+          "snippet": "Log In\n\nSign Up\n\n 92.2K followers\n 477 following\n\nИФЗ «Императорский фарфор»\n\nОфициальная страница   \nИмператорского фарфорового завода  \n🔹Мы в ВК:   \n🔹Мы в Telegram: \n\n...\n\nmore\n\nwww.ipm.ru\n\n porcelain_imperial's highlight story picture\n\n  НОВИНКИ\n porcelain_imperial's highlight story picture\n\n  АКЦИИ\n porcelain_imperial's highlight story picture\n\n  ИНФО\n porcelain_imperial's highlight story picture\n\n  ЦИТАТЫ\n porcelain_imperial's highlight story picture",
+          "source_label": "tavily",
+          "score": 0.42691937,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Закулисье - Императорский фарфоровый завод",
+          "url": "https://www.youtube.com/watch?v=tdZ5X23KRVc",
+          "snippet": "Нас можно найти: \n\nTelegram - \n\nRutube - \n\nЯндекс. Дзен -  \n\n#закулисье #фарвор #завод [...] # Закулисье - Императорский фарфоровый завод\n## Channel: ЗАКУЛИСЬЕ\n14.7K subscribers\n145 likes\n\n### Description\n3,798 views\nPosted: 2026-01-21\nИмператорский фарфоровый завод — одно из старейших фарфоровых предприятий России, основанное в середине XVIII века. \n\nКак из глины рождаются произведения искусства? Сколько раз изделие проходит через печь? В создании каждой вазы или статуэтки участвуют мастера обжига, художники, живописцы. Шедевры русского фарфора ценятся коллекционерами по всему миру. [...] [27:44] задача завода - это сохранение авторской росписи, ручной росписи, это изготовление заказов, заказов по\n[27:51] специальным заказам, это сервизы к свадьбам, каким-то юбилеям. И вот очень большая доля существенная вот этих\n[27:59] корпоративных заказов у нас действительно в объёме производства доходит до 30%.\n[28:17] ا",
+          "source_label": "tavily",
+          "score": 0.41406992,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "История завода | Об Императорском фарфоровом заводе",
+          "url": "https://www.ipm.ru/o_zavode/istoriya_zavoda",
+          "snippet": "Санкт-ПетербургМосква, Новосибирск, Екатеринбург, Казань, Нижний Новгород, Челябинск, Самара, Уфа, Ростов-на-Дону, Омск, Волгоград, Воронеж, Краснодар, Красноярск, Пермьизменить город\n\nВаш город Санкт-Петербург?\n\nВсё верно;)\n\n8 800 444-44-18\n\nВойтиМой кабинет\n\n0  \n\nСписок сравниваемых элементов пуст.\n\n0\n\nИнтернет-магазин [...] + Спорт а-ля русс  Ароматы для дома  Текстиль   Высокохудожественные изделия    + Народности России  Авторские изделия    + Новый год и Рождество   + Авторские вазы   + Авторская скульптура   + Авторские декоративные блюда   + Авторские сервизы   + Авторские украшения   + Авторские часы   + Авторские чашки с блюдцами   + АРТ объекты   + Светлая Пасха  Креативные проекты    + Atomic heart   + БФ «Обнаженные сердца»   + Фёдор Конюхов   + Андрей Осташов   + Маленький принц   + Преступление и [...] ООО «Яндекс», юридический адрес: 119021, г. Москва, вн.тер.г. Муниципальный Округ Хамовники, ул Льва Толстого, д. 16. Cсылка на политику конфиденциальности:",
+          "source_label": "tavily",
+          "score": 0.32130077,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Императорский фарфоровый завод — Википедия",
+          "url": "https://ru.wikipedia.org/wiki/%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9_%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9_%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4",
+          "snippet": "автором знаменитой «Кобальтовой сетки». [...] | Перейти к шаблону «Внешние ссылки» Перейти к элементу Викиданных   В социальных сетях |  ВКонтакте  Одноклассники: group/54622590337253  Facebook  Instagram |\n| Словари и энциклопедии |  Большая российская (старая версия) |\n| В библиографических каталогах |  GND: 2144105-4  LCCN: nr2001010123  SUDOC: 134354087  VIAF: 127592976  WorldCat VIAF: 127592976 |\n\n| Перейти к шаблону «Фарфор» | [...] {{#parsoid\\u0000fragment:2}}[ H][ G][ Я][ O]\"}}\" id=\"mwBA\" about=\"#mwt2\" typeof=\"mw:Extension/indicator\"> \n\nИмпера́торский фарфо́ровый заво́д — одно из старейших в Европе, первое и одно из крупнейших в России предприятий по производству художественных фарфоровых изделий. Расположен в Санкт-Петербурге, основан в 1744 году.\n\n## Названия\n\n[править | править код]",
+          "source_label": "tavily",
+          "score": 0.28017104,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Интернет-магазин Императорского фарфора — Официальный сайт",
+          "url": "https://www.ipm.ru",
+          "snippet": "Санкт-ПетербургМосква, Новосибирск, Екатеринбург, Казань, Нижний Новгород, Челябинск, Самара, Уфа, Ростов-на-Дону, Омск, Волгоград, Воронеж, Краснодар, Красноярск, Пермьизменить город\n\nВаш город Санкт-Петербург?\n\nВсё верно;)\n\n8 800 444-44-18\n\n# Интернет-магазин фарфора Императорского фарфорового завода\n\nВойтиМой кабинет\n\n0  \n\nСписок сравниваемых элементов пуст.\n\n0\n\nИнтернет-магазин [...] | Сервировка стола  Сервировка стола  Предметы интерьера  Предметы интерьера  Уникальные товары  Уникальные товары  Уникальные товары  Императорский фарфоровый завод приглашает Вас принять участие в регулярных и тематических мастер-классах по росписи фарфора, посетить экскурсию на производство, а также познакомиться и при желании приобрести уникальные авторские работы мастеров ИФЗ.  Мастер-классы  Мастер-классы  Товары по специальным ценам.  Позвольте себе насладиться прекрасным фарфором, [...] – IP-адрес, информация из файлов cookie, информация о браузере пользователя (или иной программе, с помощью которой осуществляется доступ к сервисам Сайта), информация об аппаратном и программном обеспечении устройства пользователя, время доступа, адреса запрашиваемых страниц.  \n  \n 3. Согласие выдано на обработку персональных данных в целях:  \n – Аналитика посещений Сайта в целях улучшения его качества и содержания с помощью сервисов Яндекс.Метрика",
+          "source_label": "tavily",
+          "score": 0.2593873,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "fetch",
+      "url": "https://api.tavily.com/search",
+      "status": 200,
+      "elapsedMs": 2371
+    },
+    {
+      "stage": "search",
+      "query": "\"Александр Анатольевич Николаев\" \"Императорский фарфоровый завод\" VK OR vk.com",
+      "results": [
+        {
+          "title": "ИФЗ «Императорский фарфор» (@porcelain_imperial) • Instagram photos and videos",
+          "url": "https://www.instagram.com/porcelain_imperial?hl=en",
+          "snippet": "Log In\n\nSign Up\n\n 92.2K followers\n 477 following\n\nИФЗ «Императорский фарфор»\n\nОфициальная страница   \nИмператорского фарфорового завода  \n🔹Мы в ВК:   \n🔹Мы в Telegram: \n\n...\n\nmore\n\nwww.ipm.ru\n\n porcelain_imperial's highlight story picture\n\n  НОВИНКИ\n porcelain_imperial's highlight story picture\n\n  АКЦИИ\n porcelain_imperial's highlight story picture\n\n  ИНФО\n porcelain_imperial's highlight story picture\n\n  ЦИТАТЫ\n porcelain_imperial's highlight story picture [...] ВЫСТАВКИ\n porcelain_imperial's highlight story picture\n\n  ЗАВОД\n\nPhoto by ИФЗ «Императорский фарфор» on March 13, 2022.\n\nPhoto by ИФЗ «Императорский фарфор» on March 13, 2022.\n\nPhoto by ИФЗ «Императорский фарфор» on March 12, 2022.\n\nPhoto by ИФЗ «Императорский фарфор» on March 11, 2022.\n\nPhoto by ИФЗ «Императорский фарфор» on March 11, 2022.\n\nPhoto by ИФЗ «Императорский фарфор» on March 10, 2022.\n\nPhoto by ИФЗ «Императорский фарфор» on March 09, 2022. [...] Photo by ИФЗ «Императорский фарфор» on March 08, 2022.\n\nPhoto by ИФЗ «Императорский фарфор» on March 07, 2022.\n\nPhoto by ИФЗ «Императорский фарфор» on March 06, 2022.\n\nPhoto by ИФЗ «Императорский фарфор» on March 05, 2022.\n\nPhoto by ИФЗ «Императорский фарфор» on March 04, 2022.\n\nShow more posts from porcelain\\_imperial",
+          "source_label": "tavily",
+          "score": 0.5957048,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Императорский фарфоровый завод — Википедия",
+          "url": "https://ru.wikipedia.org/wiki/%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9_%D1%84%D0%B0%D1%80%D1%84%D0%BE%D1%80%D0%BE%D0%B2%D1%8B%D0%B9_%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4",
+          "snippet": "| Изображение логотипа |\n|  |\n| Тип | публичная компания |\n| Год основания | 1744 год |\n| Прежние названия | Ленинградский фарфоровый завод имени М. В. Ломоносова |\n| Основатели | Елизавета Петровна |\n| Расположение | Санкт-Петербург |\n| Отрасль | фарфоро-фаянсовая промышленность |\n| Продукция \"Продукт (бизнес)\") | посуда, художественные фарфоровые изделия |\n| Сайт | ipm.ru |\n| Логотип Викисклада Медиафайлы на Викискладе | [...] | Перейти к шаблону «Внешние ссылки» Перейти к элементу Викиданных   В социальных сетях |  ВКонтакте  Одноклассники: group/54622590337253  Facebook  Instagram |\n| Словари и энциклопедии |  Большая российская (старая версия) |\n| В библиографических каталогах |  GND: 2144105-4  LCCN: nr2001010123  SUDOC: 134354087  VIAF: 127592976  WorldCat VIAF: 127592976 |\n\n| Перейти к шаблону «Фарфор» | [...] автором знаменитой «Кобальтовой сетки».",
+          "source_label": "tavily",
+          "score": 0.5342973,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Интернет-магазин Императорского фарфора — Официальный сайт",
+          "url": "https://www.ipm.ru",
+          "snippet": "Пиксель ВКонтакте (vk.ru) позволяет отслеживать посетителей со страницы сайта, на которой он установлен: как только человек заходит на страницу, пиксель ретаргетинга автоматически его учитывает.  \n С помощью пикселя мы показываем рекламу пользователям ВКонтакте, которые заходили на наш сайт или в мобильное приложение и совершили там определенные действия. [...] Пиксель принадлежит ООО «В Контакте», расположенного по адресу 191024, Санкт-Петербург, ул. Херсонская, д. 12-14, литер А, помещение 1-Н  \n Подробнее о правилах защиты информации о пользователях сайта  \n Подробнее о политике Cookies  \n Настоящим я подтверждаю, что текст данного Согласия прочитан мной полностью и мне понятен, Согласие сформулировано конкретно, предметно, информативно и однозначно. [...] Согласие Пользователя на обработку персональных данных (посредством сервиса Пиксель ВКонтакте)",
+          "source_label": "tavily",
+          "score": 0.4751919,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "История завода | Об Императорском фарфоровом заводе",
+          "url": "https://www.ipm.ru/o_zavode/istoriya_zavoda",
+          "snippet": "Пиксель ВКонтакте (vk.ru) позволяет отслеживать посетителей со страницы сайта, на которой он установлен: как только человек заходит на страницу, пиксель ретаргетинга автоматически его учитывает.  \n С помощью пикселя мы показываем рекламу пользователям ВКонтакте, которые заходили на наш сайт или в мобильное приложение и совершили там определенные действия. [...] Пиксель принадлежит ООО «В Контакте», расположенного по адресу 191024, Санкт-Петербург, ул. Херсонская, д. 12-14, литер А, помещение 1-Н  \n Подробнее о правилах защиты информации о пользователях сайта  \n Подробнее о политике Cookies  \n Настоящим я подтверждаю, что текст данного Согласия прочитан мной полностью и мне понятен, Согласие сформулировано конкретно, предметно, информативно и однозначно. [...] Согласие Пользователя на обработку персональных данных (посредством сервиса Пиксель ВКонтакте)",
+          "source_label": "tavily",
+          "score": 0.45420644,
+          "published_at": null,
+          "raw_content": null
+        },
+        {
+          "title": "Императорский фарфоровый завод. 1часть",
+          "url": "https://www.youtube.com/watch?v=U5RHlYBAF4E",
+          "snippet": "# Императорский фарфоровый завод. 1часть\n## Channel: Dmitry Khodakovskiy\n6.66K subscribers\n1.1K likes\n\n### Description\n72,389 views\nPosted: 2014-12-03",
+          "source_label": "tavily",
+          "score": 0.33018008,
+          "published_at": null,
+          "raw_content": null
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://api.openai.com/v1/responses",
+      "status": 200,
+      "elapsedMs": 2489,
+      "schema": "leadgen_outreach_v4",
+      "input": {
+        "company": "Императорский фарфоровый завод",
+        "segment": null,
+        "industry": null,
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "evidence": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+          "source": "https://hh.ru/vacancy/138142173"
+        },
+        "company_specifics": null,
+        "lpr": {
+          "name": null,
+          "role": null,
+          "why_this_person": null
+        },
+        "business_context": {
+          "problem_hypothesis": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+          "target_responsibility": null,
+          "selection_reason": null
+        },
+        "contact_type": "GENERAL",
+        "required_cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "required_greeting": "Добрый день."
+      },
+      "output": {
+        "subject": "Новый зам коммерческого директора — шанс для ИИ",
+        "body": "Императорский фарфоровый завод открыл вакансию заместителя коммерческого директора по развитию новых направлений. Это знак, что компания сейчас ищет свежие подходы в коммерческих процессах, возможно, готова к инновациям. \n\nОдной из потенциальных сложностей может быть интеграция новых направлений в уже существующие бизнес-процессы. Гипотетически, можно предположить, что сбор и анализ данных по новым каналам реализации требует дополнительного контроля качества.\n\nПилотный проект ИИ может включать обработку данных о продажах новых направлений с целью выявления трендов и раннего определения успешности. Входными данными будут цифры по новым продуктам, а выходом — прогноз рынка, который поможет скорректировать тактику развития.",
+        "cta": "Подскажете, кто у вас отвечает за этот участок?",
+        "quality": {
+          "reason_now": true,
+          "grounded_hypothesis": true,
+          "russian_only": true,
+          "personal_cta": true
+        }
+      }
+    }
+  ],
+  "startedAt": "2026-10-06T12:20:03.957Z",
+  "bundle": {
+    "companyName": "Императорский фарфоровый завод",
+    "officialWebsite": "https://ipm.ru",
+    "officialDomain": "ipm.ru",
+    "people": [
+      {
+        "fullName": "Александр Анатольевич Николаев",
+        "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://www.ipm.ru/contacts",
+            "sourceType": "official",
+            "excerpt": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+            "capturedAt": "2026-10-06T12:20:03.960Z",
+            "confidence": 82
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      },
+      {
+        "fullName": "Александра Петровна Агатьева",
+        "role": "Директор по развитию розничной сети",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://www.ipm.ru/contacts",
+            "sourceType": "official",
+            "excerpt": "Директор по развитию розничной сети Агатьева Александра Петровна",
+            "capturedAt": "2026-10-06T12:20:03.960Z",
+            "confidence": 82
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "info@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "info@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T12:20:03.960Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "ipm_shop@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/",
+              "sourceType": "official",
+              "excerpt": "ipm_shop@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T12:20:03.960Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "lat_ep@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "lat_ep@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T12:20:03.960Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "isu_ov@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "isu_ov@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T12:20:03.960Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "aga_ap@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "aga_ap@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T12:20:03.960Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "info@ipm.ru",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://www.ipm.ru/contacts/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+      "sourceUrl": "https://hh.ru/vacancy/138142173",
+      "confidence": 100
+    },
+    "researchConfidence": "VERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 12,
+      "duplicateQueriesSkipped": 2,
+      "budgetQueriesSkipped": 2,
+      "officialPages": 20,
+      "lprMs": 29028,
+      "contactMs": 14688,
+      "totalMs": 49975,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "people": {
+    "primary_person": {
+      "full_name": "Александр Анатольевич Николаев",
+      "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+      "department": null,
+      "linkedin_url": null,
+      "work_email": null,
+      "phone": null,
+      "source": "RU public web",
+      "confidence_score": 82,
+      "evidence": [
+        "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+        "Должность заместителя коммерческого директора по работе с ключевыми клиентами в компании Императорский фарфоровый завод близка по смыслу к заместителю коммерческого директора по развитию новых направлений, что дает высокий уровень влияния и решение вопросов коммерческого развития."
+      ],
+      "metadata": {
+        "provider_id": "ru-public-web",
+        "source_url": "https://www.ipm.ru/contacts",
+        "source_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+        "snippet": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+        "source_urls": [
+          "https://www.ipm.ru/contacts"
+        ],
+        "semantic_role_relevance": 85,
+        "email_source_url": null,
+        "telegram_url": null,
+        "tenchat_url": null,
+        "vk_url": null,
+        "instagram_url": null,
+        "contact_route": "target_persona",
+        "public_contact_verified": false,
+        "normalized_role": "Заместитель коммерческого директора по развитию новых направлений",
+        "freshness": "current_official_source",
+        "company_verified": true,
+        "role_verified": true,
+        "evidence_source_count": 1
+      }
+    },
+    "alternative_people": [
+      {
+        "full_name": "Александра Петровна Агатьева",
+        "role_title": "Директор по развитию розничной сети",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "RU public web",
+        "confidence_score": 82,
+        "evidence": [
+          "Директор по развитию розничной сети Агатьева Александра Петровна",
+          "Директор по развитию розничной сети участвует в развитии новых направлений и коммерческих инициатив, находится в руководстве компании, имеет высокий уровень влияния на развитие бизнеса."
+        ],
+        "metadata": {
+          "provider_id": "ru-public-web",
+          "source_url": "https://www.ipm.ru/contacts",
+          "source_title": "Директор по развитию розничной сети",
+          "snippet": "Директор по развитию розничной сети Агатьева Александра Петровна",
+          "source_urls": [
+            "https://www.ipm.ru/contacts"
+          ],
+          "semantic_role_relevance": 70,
+          "email_source_url": null,
+          "telegram_url": null,
+          "tenchat_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "public_contact_verified": false,
+          "normalized_role": "Заместитель коммерческого директора по развитию новых направлений",
+          "freshness": "current_official_source",
+          "company_verified": true,
+          "role_verified": true,
+          "evidence_source_count": 1
+        }
+      }
+    ],
+    "all_candidates": [
+      {
+        "full_name": "Александр Анатольевич Николаев",
+        "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "RU public web",
+        "confidence_score": 82,
+        "evidence": [
+          "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+          "Должность заместителя коммерческого директора по работе с ключевыми клиентами в компании Императорский фарфоровый завод близка по смыслу к заместителю коммерческого директора по развитию новых направлений, что дает высокий уровень влияния и решение вопросов коммерческого развития."
+        ],
+        "metadata": {
+          "provider_id": "ru-public-web",
+          "source_url": "https://www.ipm.ru/contacts",
+          "source_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+          "snippet": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+          "source_urls": [
+            "https://www.ipm.ru/contacts"
+          ],
+          "semantic_role_relevance": 85,
+          "email_source_url": null,
+          "telegram_url": null,
+          "tenchat_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "public_contact_verified": false,
+          "normalized_role": "Заместитель коммерческого директора по развитию новых направлений",
+          "freshness": "current_official_source",
+          "company_verified": true,
+          "role_verified": true,
+          "evidence_source_count": 1
+        }
+      },
+      {
+        "full_name": "Александра Петровна Агатьева",
+        "role_title": "Директор по развитию розничной сети",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "RU public web",
+        "confidence_score": 82,
+        "evidence": [
+          "Директор по развитию розничной сети Агатьева Александра Петровна",
+          "Директор по развитию розничной сети участвует в развитии новых направлений и коммерческих инициатив, находится в руководстве компании, имеет высокий уровень влияния на развитие бизнеса."
+        ],
+        "metadata": {
+          "provider_id": "ru-public-web",
+          "source_url": "https://www.ipm.ru/contacts",
+          "source_title": "Директор по развитию розничной сети",
+          "snippet": "Директор по развитию розничной сети Агатьева Александра Петровна",
+          "source_urls": [
+            "https://www.ipm.ru/contacts"
+          ],
+          "semantic_role_relevance": 70,
+          "email_source_url": null,
+          "telegram_url": null,
+          "tenchat_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "public_contact_verified": false,
+          "normalized_role": "Заместитель коммерческого директора по развитию новых направлений",
+          "freshness": "current_official_source",
+          "company_verified": true,
+          "role_verified": true,
+          "evidence_source_count": 1
+        }
+      }
+    ],
+    "primary_person_intelligence": {
+      "candidate": {
+        "full_name": "Александр Анатольевич Николаев",
+        "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "RU public web",
+        "confidence_score": 82,
+        "evidence": [
+          "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+          "Должность заместителя коммерческого директора по работе с ключевыми клиентами в компании Императорский фарфоровый завод близка по смыслу к заместителю коммерческого директора по развитию новых направлений, что дает высокий уровень влияния и решение вопросов коммерческого развития."
+        ],
+        "metadata": {
+          "provider_id": "ru-public-web",
+          "source_url": "https://www.ipm.ru/contacts",
+          "source_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+          "snippet": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+          "source_urls": [
+            "https://www.ipm.ru/contacts"
+          ],
+          "semantic_role_relevance": 85,
+          "email_source_url": null,
+          "telegram_url": null,
+          "tenchat_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "public_contact_verified": false,
+          "normalized_role": "Заместитель коммерческого директора по развитию новых направлений",
+          "freshness": "current_official_source",
+          "company_verified": true,
+          "role_verified": true,
+          "evidence_source_count": 1
+        }
+      },
+      "rank_score": 71,
+      "person_score": 71,
+      "persona_match_score": 85,
+      "business_problem_ownership": "high",
+      "decision_authority": "low",
+      "influence_level": "medium",
+      "confidence_score": 78,
+      "confidence_level": "high_confidence",
+      "contact_availability": {
+        "has_work_email": false,
+        "has_linkedin": false,
+        "has_phone": false,
+        "has_telegram": false
+      },
+      "matched_keywords": [],
+      "reasoning": "No direct persona keyword match in available person context.",
+      "selection_reason": "Александр Анатольевич Николаев is the strongest available candidate because Заместитель коммерческого директора по работе с ключевыми клиентами no direct keyword match, compared against Заместитель коммерческого директора по развитию новых направлений. Persona match 85/100, ownership high, authority low, influence medium, confidence 78/100.",
+      "strengths": [
+        "Strong persona match (85/100)",
+        "Likely owner of the business problem"
+      ],
+      "weaknesses": [
+        "No direct persona keyword match in available evidence",
+        "No direct personal contact channel found"
+      ],
+      "why_not_other_candidates": [
+        "Александра Петровна Агатьева: lower person score (65/100 vs 71/100); weaker persona match; business problem ownership is medium; no direct personal contact channel found."
+      ],
+      "recommended_next_action": "run_enrichment"
+    },
+    "alternative_people_intelligence": [
+      {
+        "candidate": {
+          "full_name": "Александра Петровна Агатьева",
+          "role_title": "Директор по развитию розничной сети",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "RU public web",
+          "confidence_score": 82,
+          "evidence": [
+            "Директор по развитию розничной сети Агатьева Александра Петровна",
+            "Директор по развитию розничной сети участвует в развитии новых направлений и коммерческих инициатив, находится в руководстве компании, имеет высокий уровень влияния на развитие бизнеса."
+          ],
+          "metadata": {
+            "provider_id": "ru-public-web",
+            "source_url": "https://www.ipm.ru/contacts",
+            "source_title": "Директор по развитию розничной сети",
+            "snippet": "Директор по развитию розничной сети Агатьева Александра Петровна",
+            "source_urls": [
+              "https://www.ipm.ru/contacts"
+            ],
+            "semantic_role_relevance": 70,
+            "email_source_url": null,
+            "telegram_url": null,
+            "tenchat_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "public_contact_verified": false,
+            "normalized_role": "Заместитель коммерческого директора по развитию новых направлений",
+            "freshness": "current_official_source",
+            "company_verified": true,
+            "role_verified": true,
+            "evidence_source_count": 1
+          }
+        },
+        "rank_score": 65,
+        "person_score": 65,
+        "persona_match_score": 70,
+        "business_problem_ownership": "medium",
+        "decision_authority": "medium",
+        "influence_level": "medium",
+        "confidence_score": 75,
+        "confidence_level": "high_confidence",
+        "contact_availability": {
+          "has_work_email": false,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [
+          "Директор по развитию"
+        ],
+        "reasoning": "Matched person context: Директор по развитию.",
+        "selection_reason": "Александра Петровна Агатьева is the strongest available candidate because Директор по развитию розничной сети matched Директор по развитию. Persona match 70/100, ownership medium, authority medium, influence medium, confidence 75/100.",
+        "strengths": [
+          "Matched context: Директор по развитию",
+          "Strong persona match (70/100)"
+        ],
+        "weaknesses": [
+          "No direct personal contact channel found"
+        ],
+        "why_not_other_candidates": [
+          "Александра Петровна Агатьева: lower person score (65/100 vs 71/100); weaker persona match; business problem ownership is medium; no direct personal contact channel found."
+        ],
+        "recommended_next_action": "run_enrichment"
+      }
+    ],
+    "ranked_people": [
+      {
+        "candidate": {
+          "full_name": "Александр Анатольевич Николаев",
+          "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "RU public web",
+          "confidence_score": 82,
+          "evidence": [
+            "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+            "Должность заместителя коммерческого директора по работе с ключевыми клиентами в компании Императорский фарфоровый завод близка по смыслу к заместителю коммерческого директора по развитию новых направлений, что дает высокий уровень влияния и решение вопросов коммерческого развития."
+          ],
+          "metadata": {
+            "provider_id": "ru-public-web",
+            "source_url": "https://www.ipm.ru/contacts",
+            "source_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+            "snippet": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+            "source_urls": [
+              "https://www.ipm.ru/contacts"
+            ],
+            "semantic_role_relevance": 85,
+            "email_source_url": null,
+            "telegram_url": null,
+            "tenchat_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "public_contact_verified": false,
+            "normalized_role": "Заместитель коммерческого директора по развитию новых направлений",
+            "freshness": "current_official_source",
+            "company_verified": true,
+            "role_verified": true,
+            "evidence_source_count": 1
+          }
+        },
+        "rank_score": 71,
+        "person_score": 71,
+        "persona_match_score": 85,
+        "business_problem_ownership": "high",
+        "decision_authority": "low",
+        "influence_level": "medium",
+        "confidence_score": 78,
+        "confidence_level": "high_confidence",
+        "contact_availability": {
+          "has_work_email": false,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Александр Анатольевич Николаев is the strongest available candidate because Заместитель коммерческого директора по работе с ключевыми клиентами no direct keyword match, compared against Заместитель коммерческого директора по развитию новых направлений. Persona match 85/100, ownership high, authority low, influence medium, confidence 78/100.",
+        "strengths": [
+          "Strong persona match (85/100)",
+          "Likely owner of the business problem"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence",
+          "No direct personal contact channel found"
+        ],
+        "why_not_other_candidates": [
+          "Александра Петровна Агатьева: lower person score (65/100 vs 71/100); weaker persona match; business problem ownership is medium; no direct personal contact channel found."
+        ],
+        "recommended_next_action": "run_enrichment"
+      },
+      {
+        "candidate": {
+          "full_name": "Александра Петровна Агатьева",
+          "role_title": "Директор по развитию розничной сети",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "RU public web",
+          "confidence_score": 82,
+          "evidence": [
+            "Директор по развитию розничной сети Агатьева Александра Петровна",
+            "Директор по развитию розничной сети участвует в развитии новых направлений и коммерческих инициатив, находится в руководстве компании, имеет высокий уровень влияния на развитие бизнеса."
+          ],
+          "metadata": {
+            "provider_id": "ru-public-web",
+            "source_url": "https://www.ipm.ru/contacts",
+            "source_title": "Директор по развитию розничной сети",
+            "snippet": "Директор по развитию розничной сети Агатьева Александра Петровна",
+            "source_urls": [
+              "https://www.ipm.ru/contacts"
+            ],
+            "semantic_role_relevance": 70,
+            "email_source_url": null,
+            "telegram_url": null,
+            "tenchat_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "public_contact_verified": false,
+            "normalized_role": "Заместитель коммерческого директора по развитию новых направлений",
+            "freshness": "current_official_source",
+            "company_verified": true,
+            "role_verified": true,
+            "evidence_source_count": 1
+          }
+        },
+        "rank_score": 65,
+        "person_score": 65,
+        "persona_match_score": 70,
+        "business_problem_ownership": "medium",
+        "decision_authority": "medium",
+        "influence_level": "medium",
+        "confidence_score": 75,
+        "confidence_level": "high_confidence",
+        "contact_availability": {
+          "has_work_email": false,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [
+          "Директор по развитию"
+        ],
+        "reasoning": "Matched person context: Директор по развитию.",
+        "selection_reason": "Александра Петровна Агатьева is the strongest available candidate because Директор по развитию розничной сети matched Директор по развитию. Persona match 70/100, ownership medium, authority medium, influence medium, confidence 75/100.",
+        "strengths": [
+          "Matched context: Директор по развитию",
+          "Strong persona match (70/100)"
+        ],
+        "weaknesses": [
+          "No direct personal contact channel found"
+        ],
+        "why_not_other_candidates": [
+          "Александра Петровна Агатьева: lower person score (65/100 vs 71/100); weaker persona match; business problem ownership is medium; no direct personal contact channel found."
+        ],
+        "recommended_next_action": "run_enrichment"
+      }
+    ],
+    "selection_reasoning": "Александр Анатольевич Николаев is the strongest available candidate because Заместитель коммерческого директора по работе с ключевыми клиентами no direct keyword match, compared against Заместитель коммерческого директора по развитию новых направлений. Persona match 85/100, ownership high, authority low, influence medium, confidence 78/100.",
+    "search_status": "person_found",
+    "providers_used": [
+      "RU public web"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "ru-public-web",
+        "provider_label": "RU public web",
+        "level": "info",
+        "message": "Bounded shadow search found an evidence-backed person."
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 7,
+      "official_pages_fetched": 1,
+      "aborted_requests": 0,
+      "elapsed_ms": 29026,
+      "stop_reason": "diminishing_returns",
+      "queries_executed": [
+        "Императорский фарфоровый завод заместитель коммерческого директора по развитию новых направлений интервью",
+        "Александр Анатольевич Николаев рабочая почта",
+        "Татьяна Тылевич контактная информация",
+        "\"Александр Анатольевич Николаев\" \"Императорский фарфоровый завод\" email почта",
+        "\"Александр Анатольевич Николаев\" \"@ipm.ru\"",
+        "\"Александра Петровна Агатьева\" \"Императорский фарфоровый завод\" email почта",
+        "\"Александра Петровна Агатьева\" \"@ipm.ru\""
+      ],
+      "sources_checked": [
+        "https://ipm.ru"
+      ],
+      "search_results_seen": 25,
+      "rejected_candidates": {},
+      "final_failure_reason": null
+    }
+  },
+  "contacts": [
+    {
+      "name": "Александр Анатольевич Николаев",
+      "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+      "email": null,
+      "type": "confirmed_person",
+      "source": "https://www.ipm.ru/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "info@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": true,
+      "intelligence": {
+        "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+        "target_responsibility": "Company leadership",
+        "target_persona": "Founder",
+        "alternative_personas": [
+          "CEO",
+          "Managing Director",
+          "COO",
+          "Head of Growth",
+          "Head of Sales"
+        ],
+        "why_this_person": "Заместитель коммерческого директора по работе с ключевыми клиентами: The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+        "person_name": "Александр Анатольевич Николаев",
+        "person_role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+        "email": "info@ipm.ru",
+        "contact_level": "D",
+        "email_classification": "GENERAL",
+        "email_type": "generic_fallback",
+        "verification_methods": [
+          "mx"
+        ],
+        "confidence": "LOW",
+        "readiness": "fallback_only",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Александр Анатольевич Николаев подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": null,
+            "summary": "Роль связана с зоной ответственности: Company leadership."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+          },
+          {
+            "kind": "person",
+            "source_url": null,
+            "summary": "Должность заместителя коммерческого директора по работе с ключевыми клиентами в компании Императорский фарфоровый завод близка по смыслу к заместителю коммерческого директора по ра"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "person_found_personal_email_unresolved"
+      },
+      "ready": true,
+      "copy": "Добрый день.\n\nИмператорский фарфоровый завод открыл вакансию заместителя коммерческого директора по развитию новых направлений. Это знак, что компания сейчас ищет свежие подходы в коммерческих процессах, возможно, готова к инновациям. \n\nОдной из потенциальных сложностей может быть интеграция новых направлений в уже существующие бизнес-процессы. Гипотетически, можно предположить, что сбор и анализ данных по новым каналам реализации требует дополнительного контроля качества.\n\nПилотный проект ИИ может включать обработку данных о продажах новых направлений с целью выявления трендов и раннего определения успешности. Входными данными будут цифры по новым продуктам, а выходом — прогноз рынка, который поможет скорректировать тактику развития.\n\nЯ AI-архитектор. Если потребуется, подключим бизнес-аналитика: сначала проверим процесс, затем выберем, что автоматизировать.\n\nМогу провести короткий разбор этого участка. Обычно он стоит 9 900 ₽; если ответите в течение 24 часов после отправки письма, проведу разбор бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nПодскажете, кто у вас отвечает за этот участок?\n\nАлександр Плыкин, AI-архитектор\n+79629910514"
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "ipm_shop@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "lat_ep@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "isu_ov@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "aga_ap@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "smi_an@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "pol_dv@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "aha_em@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "pas_tv@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "gallery@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "cha_no@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "kul_eu@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "bus_ky@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "bab_ye@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "zap_em@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "nik_aa@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "bal_vv@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://ipm.ru/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://ipm.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://www.ipm.ru/contact/",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://www.ipm.ru/contact-us/",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://ipm.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 49977
+}

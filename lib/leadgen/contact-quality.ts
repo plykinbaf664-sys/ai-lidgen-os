@@ -34,6 +34,7 @@ export function classifyEvidenceBackedEmail({
   patternSupport = 0,
   mxVerified = false,
   confirmedCorporateAlias = false,
+  exactOfficialPublication = false,
 }: {
   email: string;
   officialDomain: string;
@@ -43,6 +44,7 @@ export function classifyEvidenceBackedEmail({
   patternSupport?: number;
   mxVerified?: boolean;
   confirmedCorporateAlias?: boolean;
+  exactOfficialPublication?: boolean;
 }): NormalizedEmailClassification {
   if (!isSyntacticallyUsableEmail(email)) return "INVALID";
   const domain = emailDomain(email);
@@ -59,7 +61,7 @@ export function classifyEvidenceBackedEmail({
   if (departmentPrefix.test(local)) return "DEPARTMENT";
   if (generalPrefix.test(local)) return "GENERAL";
   if (confirmedPerson && directPersonEvidence) return "VERIFIED_PERSONAL";
-  if (confirmedPerson && generatedFromPattern && patternSupport >= 2 && mxVerified) {
+  if (confirmedPerson && generatedFromPattern && patternSupport >= 2 && mxVerified && exactOfficialPublication) {
     return "HIGH_CONFIDENCE_PERSONAL";
   }
   if (confirmedPerson && generatedFromPattern) return "INFERRED_PERSONAL";
