@@ -19,6 +19,8 @@ import {
   type NormalizedEmailClassification,
 } from "@/lib/leadgen/contact-quality";
 import { discoverDecisionMaker } from "@/lib/leadgen/decision-maker-discovery";
+import { isConfirmedResearchPerson } from "@/lib/leadgen/person-factuality";
+import { researchText } from "@/lib/leadgen/research-evidence";
 import { PeopleDiscoveryEngine } from "@/lib/leadgen/people-discovery-engine";
 import { PublicContactProvider } from "@/lib/leadgen/public-contact-provider";
 import { RuPublicPeopleProvider } from "@/lib/leadgen/ru-public-people-provider";
@@ -558,9 +560,9 @@ function mapPeople(
     return {
       fullName: person.full_name,
       role: person.role_title,
-      confidence: person.confidence_score >= 82 && evidence.length > 0
+      confidence: isConfirmedResearchPerson(person) && evidence.length > 0
         ? "VERIFIED"
-        : person.confidence_score >= 68
+        : person.metadata.person_source_fetched !== false && person.metadata.current_role_confirmed !== false && person.confidence_score >= 68
           ? "HIGH_CONFIDENCE"
           : person.confidence_score >= 50
             ? "LIKELY"
@@ -715,6 +717,7 @@ async function researchCompanyUncached(
   let usedIterativeResearch = iterative;
   if (iterative && peopleDiscovery.all_candidates.length === 0 &&
       (llmAvailabilityError() || peopleDiscovery.search_status === "provider_unavailable")) {
+    const semanticDiagnostics = peopleDiscovery.provider_diagnostics ?? [];
     peopleDiscovery = await new PeopleDiscoveryEngine([new RuPublicPeopleProvider(searchProvider)]).discoverPeople({
       company: { ...runtime.company, metadata: { ...runtime.company.metadata,
         discovery_context: { ...optionalTargetContext.discoveryContext, signal: signalContext } } },
@@ -724,6 +727,7 @@ async function researchCompanyUncached(
       signal: optionalTargetContext.signal,
     });
     usedIterativeResearch = false;
+    peopleDiscovery.provider_diagnostics = [...semanticDiagnostics, ...(peopleDiscovery.provider_diagnostics ?? [])];
     researchPages = undefined;
     optionalTargetContext.onTrace?.({ stage: "research_fallback", provider: "ru-public-web", reason: "semantic_provider_unavailable" });
   }
@@ -806,8 +810,11 @@ async function researchCompanyUncached(
     : "INVALID";
   for (const contact of contactDiscovery.contacts) contact.metadata.outreach_selected = contact.id === best?.id;
   if (best) {
+    const recipient = peopleDiscovery.all_candidates.find(person =>
+      researchText(person.full_name) === researchText(best.full_name ?? ""));
     const copy = await buildEmailOutreachWithAi({
       companyName, companyWebsite: officialWebsite, contact: best,
+      companyDescription: researchPages?.find(page => normalizeDomain(page.url) === runtime.domain)?.text.slice(0, 1200),
       personName: best.full_name, personRole: best.role_title,
       readiness: best.contact_type === "work_email" ? "outreach_ready" : "fallback_ready",
       whyNow: signalContext.detail, signalType: signalContext.type,
@@ -815,9 +822,13 @@ async function researchCompanyUncached(
       signalSourceUrl: signalContext.sourceUrl, signalConfidence: signalContext.confidence,
       businessProblemHypothesis: runtime.decisionMaker.expected_pain,
       targetResponsibility: runtime.decisionMaker.business_problem_owner,
+      whyThisPerson: typeof recipient?.metadata.semantic_role_reason === "string" ? recipient.metadata.semantic_role_reason : null,
+      publicPersonContext: recipient?.evidence.join("\n"),
+      emailEvidence: typeof best.metadata.email_person_evidence === "string" ? best.metadata.email_person_evidence : null,
       signal: optionalTargetContext.signal,
     });
     Object.assign(best.metadata, { email_subject: copy.subject, email_body: copy.body,
+      email_generation_attempts: copy.generationAttempts,
       email_quality_gate_passed: copy.qualityGatePassed, email_copy_review_status: copy.copyReviewStatus,
       email_quality: copy.quality, email_guide_assignment: copy.guideAssignment,
       email_generation_source: copy.generationSource, email_generation_fallback_reason: copy.fallbackReason });
@@ -827,7 +838,7 @@ async function researchCompanyUncached(
     : null;
   const level = best
     ? getContactLevel({
-        confirmedPerson: Boolean(bestPerson),
+        confirmedPerson: bestPerson?.confidence === "VERIFIED",
         classification: bestClassification,
       }).level
     : null;

@@ -2112,6 +2112,17 @@ tr:last-child td {
   letter-spacing: 0.04em;
 }
 
+.outreach-confirm-dialog {
+  margin: auto;
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+}
+
+.outreach-confirm-dialog::backdrop {
+  background: rgb(0 0 0 / 55%);
+}
+
 .outreach-readiness {
   margin: 16px 0;
   padding: 16px;

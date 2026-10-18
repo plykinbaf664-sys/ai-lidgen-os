@@ -223,6 +223,8 @@ export async function buildEmailOutreachWithAi(
   }, input.signal);
   return {
     ...deterministic,
+    readyToSend: copy.qualityGatePassed,
+    outreachReady: copy.qualityGatePassed,
     generationSource: copy.generationSource,
     fallbackReason: copy.fallbackReason,
     subject: copy.subject,

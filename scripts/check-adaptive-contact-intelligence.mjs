@@ -96,8 +96,27 @@ assert.equal(intelligence.confidence, "HIGH");
 assert.equal(intelligence.readiness, "contact_ready");
 assert.equal(intelligence.smtp_verification, "not_performed");
 assert.equal(intelligence.catch_all, "unknown");
+const provisional = await evaluateAdaptiveContactIntelligence({ company, decisionMaker,
+  peopleDiscovery: { primary_person: { ...person, confidence_score: 95,
+    metadata: { ...person.metadata, current_role_confirmed: false, person_source_fetched: false } }, alternative_people: [] },
+  contactDiscovery: { ...discovery, contacts: [], best_outreach_entry: null,
+    fallback_entry: { email: "info@acme.ru", contact_type: "generic_email" } }, verifyMx: async () => true });
+assert.equal(provisional.person_name, null, "A search-only candidate must not become a confirmed person downstream");
+assert.equal(provisional.contact_level, "E");
+assert.ok(!provisional.evidence.some(item => item.kind === "person"));
 const decorated = attachContactIntelligence(discovery, intelligence);
 assert.equal(isContactReadyPerson(decorated.contacts[0]), true);
+const accentedPerson = { ...person, full_name: "Пётр Соколов", work_email: "600856@acme.ru" };
+for (const [publishedName, expected] of [["Петр Соколов", "VERIFIED_PERSONAL"], ["Петр Соколовский", "GENERAL"]]) {
+  const contact = { ...direct, full_name: accentedPerson.full_name, email: accentedPerson.work_email,
+    metadata: { ...direct.metadata, email_person_evidence: `${publishedName} — директор — 600856@acme.ru` } };
+  const result = await evaluateAdaptiveContactIntelligence({ company, decisionMaker,
+    peopleDiscovery: { primary_person: accentedPerson, alternative_people: [] },
+    contactDiscovery: { ...discovery, contacts: [contact], best_available_entry: contact, best_outreach_entry: contact },
+    verifyMx: async () => true });
+  assert.equal(result.email_classification, expected,
+    "Normalize Е/Ё consistently without accepting another person's longer surname");
+}
 
 const duplicate = await evaluateAdaptiveContactIntelligence({
   company,

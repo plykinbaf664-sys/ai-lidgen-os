@@ -5,7 +5,7 @@ import { cachedResearch } from "@/lib/leadgen/research-cache";
 export type ResearchDocument = { id: string; url: string; kind: "page" | "search"; text: string;
   links: { url: string; label: string }[]; fetchedAt: string };
 export type ResearchTraceEvent = { stage: string; [key: string]: unknown };
-export const researchText = (value: string) => value.normalize("NFKC").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+export const researchText = (value: string) => value.normalize("NFKC").toLowerCase().replace(/ё/g, "е").replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 export function researchUrl(value: string): string | null {
   try {
     const url = new URL(value);
@@ -72,18 +72,23 @@ export function extractResearchPage(html: string, url: string): Pick<ResearchDoc
     groups.set(group, count + 1);
     return count < 3;
   });
-  return { text: text.slice(0, 40_000), links: diverse.slice(0, 100) };
+  // Reserve navigation diversity first, then use remaining slots for deeper
+  // links. A news/team index must not lose every article/person after its third.
+  const prioritized = new Set(diverse.map(link => link.url));
+  return { text: text.slice(0, 40_000), links: [...diverse, ...links.filter(link => !prioritized.has(link.url))].slice(0, 100) };
 }
 
 // Windows are verbatim; their boundaries are explicit. A citation cannot bridge them.
-export function compactResearchDocument(doc: ResearchDocument, people: string[] = [], focus?: string) {
-  if (doc.text.length <= 6500) return { ...doc, links: doc.links.slice(0, 60) };
-  const ranges: [number, number][] = [[0, 1100]];
-  const needles = [...people, ...(focus ? [focus] : [])];
+export function compactResearchDocument(doc: ResearchDocument, people: string[] = [], focus?: string, maxCharacters = 6500) {
+  if (doc.text.length <= maxCharacters) return { ...doc, links: doc.links.slice(0, 60) };
+  const ranges: [number, number][] = [];
+  const needles = [...(focus ? [focus] : []), ...people];
   for (const needle of needles) {
     const position = doc.text.toLowerCase().indexOf(needle.toLowerCase());
     if (position >= 0) ranges.push([Math.max(0, position - 300), Math.min(doc.text.length, position + 1600)]);
   }
+  // Focused facts have priority over navigation and unrelated contact blocks.
+  ranges.push([0, 1100]);
   const emails = new Set<string>();
   for (const match of doc.text.matchAll(/[\w.+-]+@[\w.-]+\.[a-z]{2,}/gi)) {
     if (emails.has(match[0].toLowerCase())) continue;
@@ -92,19 +97,18 @@ export function compactResearchDocument(doc: ResearchDocument, people: string[] 
     if (emails.size >= 14) break;
   }
   if (ranges.length === 1) ranges.push([1100, 6100]);
-  ranges.sort((a,b) => a[0]-b[0]);
   const merged: [number,number][] = [];
   for (const range of ranges) {
-    const previous = merged.at(-1);
-    if (previous && range[0] <= previous[1]) previous[1] = Math.max(previous[1], range[1]);
+    const previous = merged.find(([start, end]) => range[0] <= end && range[1] >= start);
+    if (previous) { previous[0] = Math.min(previous[0], range[0]); previous[1] = Math.max(previous[1], range[1]); }
     else merged.push([...range]);
   }
-  return { ...doc, text: merged.map(([start,end]) => doc.text.slice(start,end)).join("\n[excerpt boundary]\n").slice(0, 6500), links: doc.links.slice(0, 60) };
+  return { ...doc, text: merged.map(([start,end]) => doc.text.slice(start,end)).join("\n[excerpt boundary]\n").slice(0, maxCharacters), links: doc.links.slice(0, 60) };
 }
 export async function readResearchPage(url: string, signal?: AbortSignal): Promise<Omit<ResearchDocument, "id"> | null> {
   const safe = researchUrl(url);
   if (!safe) return null;
-  return cachedResearch("page", safe, 12*60*60_000, requestSignal => readResearchPageUncached(safe, requestSignal), signal, page => page !== null);
+  return cachedResearch("page", `v2:${safe}`, 12*60*60_000, requestSignal => readResearchPageUncached(safe, requestSignal), signal, page => page !== null);
 }
 async function readResearchPageUncached(safe: string, signal?: AbortSignal): Promise<Omit<ResearchDocument, "id"> | null> {
   return runAbortableOperation({ timeoutMs: 6500, parentSignal: signal, fallback: null,

@@ -8,7 +8,7 @@ import type {
   PeopleDiscoveryResult,
   PersonCandidate,
 } from "@/lib/leadgen/types";
-import { isPlausiblePublicPersonName } from "@/lib/leadgen/person-factuality";
+import { isConfirmedResearchPerson, isPlausiblePublicPersonName } from "@/lib/leadgen/person-factuality";
 import {
   classifyEvidenceBackedEmail,
   getContactLevel,
@@ -16,6 +16,7 @@ import {
 } from "@/lib/leadgen/contact-quality";
 import { hasEmailDomainMx } from "@/lib/leadgen/email-discovery-engine";
 import type { PersonalEmailCandidate } from "@/lib/leadgen/personal-email-research";
+import { researchText } from "@/lib/leadgen/research-evidence";
 
 function normalize(value: string | null | undefined): string {
   return (value ?? "").trim().toLowerCase().replace(/\s+/g, " ");
@@ -155,13 +156,15 @@ export async function evaluateAdaptiveContactIntelligence({
   knownPersonKeys?: Iterable<string>;
   verifyMx?: (domain: string | null) => Promise<boolean>;
 }): Promise<ContactIntelligenceResult> {
-  const person = choosePerson(peopleDiscovery);
+  const person = [peopleDiscovery.primary_person, ...peopleDiscovery.alternative_people]
+    .find(isConfirmedResearchPerson) ?? null;
   const officialDomain = getDomain(
     contactDiscovery.resolved_official_domain ?? contactDiscovery.official_website ?? company.company_domain,
   );
   const directContacts = contactDiscovery.contacts
     .filter((contact) =>
       contact.contact_type === "work_email" && contact.email &&
+      contact.metadata.current_role_confirmed !== false && contact.metadata.person_source_fetched !== false &&
       isPlausiblePublicPersonName(contact.full_name),
     )
     .sort((left, right) => {
@@ -171,7 +174,7 @@ export async function evaluateAdaptiveContactIntelligence({
     });
   const direct = directContacts[0] ?? null;
   const selectedPersonName = direct?.full_name ?? person?.full_name ?? null;
-  const selectedRole = direct?.role_title ?? person?.role_title ?? null;
+  const selectedRole = direct ? direct.role_title : person?.role_title ?? null;
   const isRoutingContact = direct?.metadata.contact_route === "corporate_router";
   const duplicatePerson = selectedPersonName
     ? new Set(knownPersonKeys).has(getContactedPersonKey(company.company_name, selectedPersonName))
@@ -228,7 +231,7 @@ export async function evaluateAdaptiveContactIntelligence({
         confirmedPerson && selectedPersonName &&
         direct.metadata.public_contact_verified === true && typeof direct.metadata.email_person_evidence === "string" &&
         direct.metadata.email_person_evidence.toLowerCase().includes(direct.email.toLowerCase()) &&
-        selectedPersonName.toLowerCase().split(/\s+/).every(part => String(direct.metadata.email_person_evidence).toLowerCase().includes(part)),
+        researchText(selectedPersonName).split(" ").every(part => researchText(String(direct.metadata.email_person_evidence)).split(" ").includes(part)),
       ),
       generatedFromPattern: direct.metadata.email_research_status === "HIGH_CONFIDENCE",
       patternSupport: Number(direct.metadata.pattern_support ?? 0),
@@ -415,6 +418,7 @@ export function isContactReadyPerson(contact: LeadgenContact): boolean {
 }
 
 export function isConfirmedOutreachEmail(contact: LeadgenContact): boolean {
+  if (contact.full_name && (contact.metadata.current_role_confirmed === false || contact.metadata.person_source_fetched === false)) return false;
   if (contact.metadata.normalized_email_classification === "INFERRED_PERSONAL" ||
       contact.metadata.email_research_status === "PREDICTED" || contact.metadata.email_research_status === "REJECTED") return false;
   if (isContactReadyPerson(contact)) return true;

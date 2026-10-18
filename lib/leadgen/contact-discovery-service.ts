@@ -8,6 +8,7 @@ import {
 } from "@/lib/leadgen/contact-channel-ranking";
 import type { ContactProvider } from "@/lib/leadgen/contact-provider";
 import { buildIdentityProfile } from "@/lib/leadgen/identity-discovery-engine";
+import { isConfirmedResearchPerson } from "@/lib/leadgen/person-factuality";
 import type {
   ContactDiscoveryInput,
   ContactDiscoveryResult,
@@ -219,7 +220,7 @@ function createPrimaryPersonContactEntries(
 ): LeadgenContact[] {
   const person = input.peopleDiscovery.primary_person;
 
-  if (!person) {
+  if (!person || !isConfirmedResearchPerson(person)) {
     return [];
   }
 
@@ -278,6 +279,8 @@ function createPrimaryPersonContactEntries(
       contact_url: null,
       metadata: {
         ...intelligenceMetadata,
+        current_role_confirmed: person.metadata.current_role_confirmed,
+        person_source_fetched: person.metadata.person_source_fetched,
         people_discovery_role: "primary",
         people_discovery_source: person.source,
         source: "people_discovery.primary_person",
@@ -415,7 +418,7 @@ function applyPeopleDiscoveryContext(
       ? primaryPerson
       : matchedAlternativePerson;
 
-    if (!matchedPerson) {
+    if (!matchedPerson || !isConfirmedResearchPerson(matchedPerson)) {
       return contact;
     }
 
@@ -439,6 +442,8 @@ function applyPeopleDiscoveryContext(
           ? "primary"
           : "alternative",
         people_discovery_source: matchedPerson.source,
+        current_role_confirmed: matchedPerson.metadata.current_role_confirmed,
+        person_source_fetched: matchedPerson.metadata.person_source_fetched,
       },
     };
   });

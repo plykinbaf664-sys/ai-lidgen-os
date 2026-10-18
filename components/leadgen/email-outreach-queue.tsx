@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { formatUnknownError } from "@/lib/leadgen/error-format";
 import { outreachStatusLabels } from "@/lib/leadgen/outreach-status";
@@ -608,8 +608,7 @@ function PrimaryOutreachToolbar({
             disabled={
               disabled ||
               maxBatch < 1 ||
-              batchSize < 1 ||
-              batchSize > maxBatch
+              batchSize < 1
             }
             loading={queueLoading}
             onClick={onQueue}
@@ -657,6 +656,10 @@ export function EmailOutreachQueue({
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [bulkPreview, setBulkPreview] = useState<BulkPreview | null>(null);
+  const bulkDialog = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    if (bulkPreview) bulkDialog.current?.showModal();
+  }, [bulkPreview]);
   const [batchSize, setBatchSize] = useState(5);
   const [followups, setFollowups] = useState<OutreachQueueEntry[]>([]);
   const [followupSummary, setFollowupSummary] = useState<Extract<FollowupResponse, { success: true }>["summary"] | null>(null);
@@ -1297,6 +1300,8 @@ export function EmailOutreachQueue({
   async function previewBulkApprove() {
     if (!campaignId) return;
     setPending("bulk-preview");
+    setError(null);
+    setMessage(null);
     try {
       const response = await fetchMutation("/api/leadgen/outreach/bulk-approve", {
         method: "POST",
@@ -1327,6 +1332,7 @@ export function EmailOutreachQueue({
   async function executeBulkApprove() {
     if (!campaignId) return;
     setPending("bulk-approve");
+    setError(null);
     try {
       const response = await fetchMutation("/api/leadgen/outreach/bulk-approve", {
         method: "POST",
@@ -1367,13 +1373,13 @@ export function EmailOutreachQueue({
   }
 
   async function scheduleBatch(requestedCount?: number) {
-    const count = requestedCount ?? batchSize;
+    const count = Math.min(requestedCount ?? batchSize, maxBatch);
     if (count < 1 || count > maxBatch) return;
     setPending("batch");
     setError(null);
     setMessage(null);
     try {
-      const response = await fetch("/api/leadgen/outreach/batch", {
+      const response = await fetchMutation("/api/leadgen/outreach/batch", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -1682,15 +1688,12 @@ export function EmailOutreachQueue({
           }
           emailCount={outreachSummary?.initial.workingEmails ?? 0}
           foundCompanies={outreachSummary?.initial.candidates ?? 0}
-          loading={pending === "bulk-preview" || pending === "bulk-execute"}
+          loading={pending === "bulk-preview" || pending === "bulk-approve"}
           maxBatch={maxBatch}
           batchSize={batchSize}
           sentToday={readiness?.sent_today ?? 0}
           dailyLimit={readiness?.daily_limit ?? 100}
-          dailyRemaining={Math.max(
-            0,
-            (readiness?.daily_limit ?? 100) - (readiness?.sent_today ?? 0),
-          )}
+          dailyRemaining={readiness?.daily_remaining ?? 0}
           queuedToday={readiness?.queued_for_today ?? 0}
           queueLoading={pending === "batch"}
           continuationLabel={initialContinuation.label}
@@ -2048,8 +2051,10 @@ export function EmailOutreachQueue({
       ) : null}
 
       {bulkPreview ? (
-        <div className="outreach-confirm">
-          <h3>Подтверждение массового одобрения</h3>
+        <dialog ref={bulkDialog} className="outreach-confirm outreach-confirm-dialog"
+          aria-labelledby="bulk-approval-title" onCancel={() => setBulkPreview(null)}>
+          <h3 id="bulk-approval-title">Подтверждение массового одобрения</h3>
+          {error ? <p role="alert">{error}</p> : null}
           <p>Проверено: {bulkPreview.checked}</p>
           <p><strong>Будет одобрено: {bulkPreview.eligible_count}</strong></p>
           <p>Пропущено: {bulkPreview.skipped_count}</p>
@@ -2065,7 +2070,7 @@ export function EmailOutreachQueue({
                 : "Нет писем для одобрения"}
             </Button>
           </div>
-        </div>
+        </dialog>
       ) : null}
 
       {companiesWithoutOutreach.length > 0 ? (

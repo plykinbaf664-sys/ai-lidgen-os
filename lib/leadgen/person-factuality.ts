@@ -1,3 +1,13 @@
+import type { PersonCandidate } from "@/lib/leadgen/types";
+
+export function isConfirmedResearchPerson(person: PersonCandidate | null | undefined): boolean {
+  if (!person || !isPlausiblePublicPersonName(person.full_name) || !person.role_title || !person.evidence.length) return false;
+  // Explicit negative/provisional evidence always outranks a numeric score.
+  if (person.metadata.current_role_confirmed === false || person.metadata.person_source_fetched === false) return false;
+  return person.confidence_score >= 82 && Boolean(person.metadata.source_url ||
+    (Array.isArray(person.metadata.source_urls) && person.metadata.source_urls.length));
+}
+
 export function isPlausiblePublicPersonName(value: string | null | undefined): boolean {
   const normalized = (value ?? "").trim().replace(/\s+/g, " ");
   const parts = normalized.split(" ").filter(Boolean);

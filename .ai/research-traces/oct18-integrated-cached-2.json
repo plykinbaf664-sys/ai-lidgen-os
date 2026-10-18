@@ -1,0 +1,1256 @@
+{
+  "mode": "person",
+  "name": "Производственная Компания Контур",
+  "website": "https://xn--j1agcjjg.xn--p1ai",
+  "before": {
+    "companyName": "Производственная Компания Контур",
+    "officialWebsite": "https://xn--j1agcjjg.xn--p1ai",
+    "officialDomain": "xn--j1agcjjg.xn--p1ai",
+    "people": [
+      {
+        "fullName": "Котельников Данила Никитич",
+        "role": "генеральный директор",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts",
+            "sourceType": "official",
+            "excerpt": "Public search result: Сотрудники",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          },
+          {
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/kotelnikov_danila_nikitich",
+            "sourceType": "official",
+            "excerpt": "Source URL: https://xn--j1agcjjg.xn--p1ai/contacts",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      },
+      {
+        "fullName": "Околелов Григорий Валерьевич",
+        "role": "Генеральный директор",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts",
+            "sourceType": "official",
+            "excerpt": "Околелов Григорий Валерьевич Генеральный директор",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          },
+          {
+            "sourceUrl": "https://www.rusprofile.ru/id/4158145",
+            "sourceType": "public_web",
+            "excerpt": "Околелов Григорий Валерьевич является генеральным директором Производственной Компании Контур, что соответствует роли COO с высокой властью для решения стратегических вопросов по внедрению решений и автоматизации.",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          },
+          {
+            "sourceUrl": "https://checko.ru/company/pk-kontur-1036600430822",
+            "sourceType": "public_web",
+            "excerpt": "Contact search result: ООО \"ПК Контур\" Заречный (ИНН 6609010359) адрес, официальный сайт и телефон",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          },
+          {
+            "sourceUrl": "https://www.rusprofile.ru/person/okolelov-gv-667008981708",
+            "sourceType": "public_web",
+            "excerpt": "Contact source URL: https://www.rusprofile.ru/id/4158145",
+            "capturedAt": "2026-10-06T08:17:37.259Z",
+            "confidence": 82
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [
+        {
+          "email": "kotelnikov-dn@pk-kontur.ru",
+          "personName": "Котельников Данила Никитич",
+          "classification": "VERIFIED_PERSONAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "kotelnikov-dn@pk-kontur.ru — official company website",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 88
+            }
+          ]
+        }
+      ],
+      "department": [],
+      "general": [
+        {
+          "email": "info@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/",
+              "sourceType": "official",
+              "excerpt": "info@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "sergeyb@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "sergeyb@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 88
+            }
+          ]
+        },
+        {
+          "email": "konoplev-ea@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "konoplev-ea@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 88
+            }
+          ]
+        },
+        {
+          "email": "bykova-rr@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "bykova-rr@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 88
+            }
+          ]
+        },
+        {
+          "email": "alekseir@pk-kontur.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "alekseir@pk-kontur.ru — public email parser",
+              "capturedAt": "2026-10-06T08:17:37.259Z",
+              "confidence": 88
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "kotelnikov-dn@pk-kontur.ru",
+      "personName": "Котельников Данила Никитич",
+      "role": "генеральный директор",
+      "classification": "VERIFIED_PERSONAL",
+      "contactLevel": "A",
+      "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/"
+    },
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "Инженер (Специалист) по автоматизации бизнес-процессов",
+      "detail": "искать и внедрять современные решения в бизнес-процессы и ИИ-технологии",
+      "sourceUrl": "https://hh.ru/vacancy/137520507",
+      "confidence": 85
+    },
+    "researchConfidence": "VERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 8,
+      "duplicateQueriesSkipped": 1,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 17,
+      "lprMs": 27509,
+      "contactMs": 10163,
+      "totalMs": 42298,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "AI_AUTOMATION_HIRING_SIGNAL",
+    "title": "Инженер (Специалист) по автоматизации бизнес-процессов",
+    "detail": "искать и внедрять современные решения в бизнес-процессы и ИИ-технологии",
+    "sourceUrl": "https://hh.ru/vacancy/137520507",
+    "confidence": 85
+  },
+  "index": 2,
+  "trace": [
+    {
+      "stage": "research_cache_hit",
+      "kind": "confirmed_people",
+      "networkActions": 0
+    },
+    {
+      "stage": "people_ranked",
+      "people": [
+        {
+          "full_name": "Данила Никитич Котельников",
+          "role_title": "Исполнительный директор",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "kotelnikov-dn@pk-kontur.ru",
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Котельников Данила Никитич Исполнительный директор"
+          ],
+          "metadata": {
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "source_urls": [
+              "https://xn--j1agcjjg.xn--p1ai/contacts/"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e3",
+                "quote": "Котельников Данила Никитич Исполнительный директор"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+                "quote": "Котельников Данила Никитич Исполнительный директор"
+              }
+            ],
+            "semantic_role_relevance": 90,
+            "semantic_role_reason": "Второе лицо в управлении после генерального директора; на производственном предприятии исполнительный директор часто курирует операционные процессы и внедрение технологий.",
+            "name_parts": {
+              "given": "Данила",
+              "family": "Котельников"
+            },
+            "current_role_confirmed": true,
+            "person_source_fetched": true,
+            "email_source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "email_person_evidence": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru",
+            "public_contact_verified": true,
+            "verified_company_domains": [
+              "xn--j1agcjjg.xn--p1ai"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        {
+          "full_name": "Григорий Валерьевич Околелов",
+          "role_title": "Генеральный директор",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Околелов Григорий Валерьевич Генеральный директор"
+          ],
+          "metadata": {
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "source_urls": [
+              "https://xn--j1agcjjg.xn--p1ai/contacts/"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e3",
+                "quote": "Околелов Григорий Валерьевич Генеральный директор"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+                "quote": "Околелов Григорий Валерьевич Генеральный директор"
+              }
+            ],
+            "semantic_role_relevance": 75,
+            "semantic_role_reason": "Высшее руководство компании, финальный аппрувер стратегических решений по автоматизации.",
+            "name_parts": {
+              "given": "Григорий",
+              "family": "Околелов"
+            },
+            "current_role_confirmed": true,
+            "person_source_fetched": true,
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "xn--j1agcjjg.xn--p1ai"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ]
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Growth and cross-functional execution can create manual handoffs, process fragmentation, and operational bottlenecks.",
+        "target_responsibility": "Operations leadership",
+        "target_persona": "COO",
+        "alternative_personas": [
+          "Head of Operations",
+          "Operations Director",
+          "Head of Business Operations",
+          "Founder / CEO",
+          "Founder"
+        ],
+        "why_this_person": "Исполнительный директор: The context points to process load or operational scaling, so operations leadership is the best entry persona. Matched context: процесс. Company scale: unknown.",
+        "person_name": "Данила Никитич Котельников",
+        "person_role": "Исполнительный директор",
+        "email": "kotelnikov-dn@pk-kontur.ru",
+        "contact_level": "A",
+        "email_classification": "VERIFIED_PERSONAL",
+        "email_type": "public_personal",
+        "verification_methods": [
+          "corporate_domain_match",
+          "mx",
+          "public_evidence"
+        ],
+        "confidence": "HIGH",
+        "readiness": "contact_ready",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "summary": "Данила Никитич Котельников подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "summary": "Роль связана с зоной ответственности: Operations leadership."
+          },
+          {
+            "kind": "email",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "summary": "Email опубликован в публичном профессиональном контексте."
+          },
+          {
+            "kind": "domain",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai",
+            "summary": "Email-домен опубликован на официальном сайте как корпоративный alias."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "summary": "Котельников Данила Никитич Исполнительный директор"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "contact_ready_high_confidence"
+      },
+      "contacts": [
+        {
+          "name": "Данила Никитич Котельников",
+          "email": null,
+          "type": "confirmed_person",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/"
+        },
+        {
+          "name": "Данила Никитич Котельников",
+          "email": "kotelnikov-dn@pk-kontur.ru",
+          "type": "work_email",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://xn--j1agcjjg.xn--p1ai/contacts/"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://xn--j1agcjjg.xn--p1ai"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-10-18T14:14:59.704Z",
+  "bundle": {
+    "companyName": "Производственная Компания Контур",
+    "officialWebsite": "https://xn--j1agcjjg.xn--p1ai",
+    "officialDomain": "xn--j1agcjjg.xn--p1ai",
+    "people": [
+      {
+        "fullName": "Данила Никитич Котельников",
+        "role": "Исполнительный директор",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "sourceType": "official",
+            "excerpt": "Котельников Данила Никитич Исполнительный директор",
+            "capturedAt": "2026-10-18T14:14:59.704Z",
+            "confidence": 90
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      },
+      {
+        "fullName": "Григорий Валерьевич Околелов",
+        "role": "Генеральный директор",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "sourceType": "official",
+            "excerpt": "Околелов Григорий Валерьевич Генеральный директор",
+            "capturedAt": "2026-10-18T14:14:59.704Z",
+            "confidence": 90
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [
+        {
+          "email": "kotelnikov-dn@pk-kontur.ru",
+          "personName": "Данила Никитич Котельников",
+          "classification": "VERIFIED_PERSONAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "sourceType": "official",
+              "excerpt": "kotelnikov-dn@pk-kontur.ru — Iterative public research",
+              "capturedAt": "2026-10-18T14:14:59.704Z",
+              "confidence": 97
+            }
+          ]
+        }
+      ],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "kotelnikov-dn@pk-kontur.ru",
+      "personName": "Данила Никитич Котельников",
+      "role": "Исполнительный директор",
+      "classification": "VERIFIED_PERSONAL",
+      "contactLevel": "A",
+      "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/"
+    },
+    "signal": {
+      "type": "AI_AUTOMATION_HIRING_SIGNAL",
+      "title": "Инженер (Специалист) по автоматизации бизнес-процессов",
+      "detail": "искать и внедрять современные решения в бизнес-процессы и ИИ-технологии",
+      "sourceUrl": "https://hh.ru/vacancy/137520507",
+      "confidence": 85
+    },
+    "researchConfidence": "VERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 0,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 11,
+      "lprMs": 4,
+      "contactMs": 277,
+      "totalMs": 299,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "people": {
+    "primary_person": {
+      "full_name": "Данила Никитич Котельников",
+      "role_title": "Исполнительный директор",
+      "department": null,
+      "linkedin_url": null,
+      "work_email": "kotelnikov-dn@pk-kontur.ru",
+      "phone": null,
+      "source": "Iterative public research",
+      "confidence_score": 90,
+      "evidence": [
+        "Котельников Данила Никитич Исполнительный директор"
+      ],
+      "metadata": {
+        "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+        "source_urls": [
+          "https://xn--j1agcjjg.xn--p1ai/contacts/"
+        ],
+        "research_citations": [
+          {
+            "sourceId": "e3",
+            "quote": "Котельников Данила Никитич Исполнительный директор"
+          }
+        ],
+        "research_evidence": [
+          {
+            "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "quote": "Котельников Данила Никитич Исполнительный директор"
+          }
+        ],
+        "semantic_role_relevance": 90,
+        "semantic_role_reason": "Второе лицо в управлении после генерального директора; на производственном предприятии исполнительный директор часто курирует операционные процессы и внедрение технологий.",
+        "name_parts": {
+          "given": "Данила",
+          "family": "Котельников"
+        },
+        "current_role_confirmed": true,
+        "person_source_fetched": true,
+        "email_source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+        "email_person_evidence": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru",
+        "public_contact_verified": true,
+        "verified_company_domains": [
+          "xn--j1agcjjg.xn--p1ai"
+        ],
+        "verified_public_profiles": [],
+        "tenchat_url": null,
+        "telegram_url": null,
+        "vk_url": null,
+        "instagram_url": null,
+        "contact_route": "target_persona",
+        "company_verified": true,
+        "role_verified": true
+      }
+    },
+    "alternative_people": [
+      {
+        "full_name": "Григорий Валерьевич Околелов",
+        "role_title": "Генеральный директор",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Околелов Григорий Валерьевич Генеральный директор"
+        ],
+        "metadata": {
+          "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "source_urls": [
+            "https://xn--j1agcjjg.xn--p1ai/contacts/"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e3",
+              "quote": "Околелов Григорий Валерьевич Генеральный директор"
+            }
+          ],
+          "research_evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "quote": "Околелов Григорий Валерьевич Генеральный директор"
+            }
+          ],
+          "semantic_role_relevance": 75,
+          "semantic_role_reason": "Высшее руководство компании, финальный аппрувер стратегических решений по автоматизации.",
+          "name_parts": {
+            "given": "Григорий",
+            "family": "Околелов"
+          },
+          "current_role_confirmed": true,
+          "person_source_fetched": true,
+          "email_source_url": null,
+          "email_person_evidence": null,
+          "public_contact_verified": false,
+          "verified_company_domains": [
+            "xn--j1agcjjg.xn--p1ai"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      }
+    ],
+    "all_candidates": [
+      {
+        "full_name": "Данила Никитич Котельников",
+        "role_title": "Исполнительный директор",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": "kotelnikov-dn@pk-kontur.ru",
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Котельников Данила Никитич Исполнительный директор"
+        ],
+        "metadata": {
+          "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "source_urls": [
+            "https://xn--j1agcjjg.xn--p1ai/contacts/"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e3",
+              "quote": "Котельников Данила Никитич Исполнительный директор"
+            }
+          ],
+          "research_evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "quote": "Котельников Данила Никитич Исполнительный директор"
+            }
+          ],
+          "semantic_role_relevance": 90,
+          "semantic_role_reason": "Второе лицо в управлении после генерального директора; на производственном предприятии исполнительный директор часто курирует операционные процессы и внедрение технологий.",
+          "name_parts": {
+            "given": "Данила",
+            "family": "Котельников"
+          },
+          "current_role_confirmed": true,
+          "person_source_fetched": true,
+          "email_source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "email_person_evidence": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru",
+          "public_contact_verified": true,
+          "verified_company_domains": [
+            "xn--j1agcjjg.xn--p1ai"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      },
+      {
+        "full_name": "Григорий Валерьевич Околелов",
+        "role_title": "Генеральный директор",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": null,
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Околелов Григорий Валерьевич Генеральный директор"
+        ],
+        "metadata": {
+          "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "source_urls": [
+            "https://xn--j1agcjjg.xn--p1ai/contacts/"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e3",
+              "quote": "Околелов Григорий Валерьевич Генеральный директор"
+            }
+          ],
+          "research_evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "quote": "Околелов Григорий Валерьевич Генеральный директор"
+            }
+          ],
+          "semantic_role_relevance": 75,
+          "semantic_role_reason": "Высшее руководство компании, финальный аппрувер стратегических решений по автоматизации.",
+          "name_parts": {
+            "given": "Григорий",
+            "family": "Околелов"
+          },
+          "current_role_confirmed": true,
+          "person_source_fetched": true,
+          "email_source_url": null,
+          "email_person_evidence": null,
+          "public_contact_verified": false,
+          "verified_company_domains": [
+            "xn--j1agcjjg.xn--p1ai"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      }
+    ],
+    "primary_person_intelligence": {
+      "candidate": {
+        "full_name": "Данила Никитич Котельников",
+        "role_title": "Исполнительный директор",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": "kotelnikov-dn@pk-kontur.ru",
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Котельников Данила Никитич Исполнительный директор"
+        ],
+        "metadata": {
+          "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "source_urls": [
+            "https://xn--j1agcjjg.xn--p1ai/contacts/"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e3",
+              "quote": "Котельников Данила Никитич Исполнительный директор"
+            }
+          ],
+          "research_evidence": [
+            {
+              "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+              "quote": "Котельников Данила Никитич Исполнительный директор"
+            }
+          ],
+          "semantic_role_relevance": 90,
+          "semantic_role_reason": "Второе лицо в управлении после генерального директора; на производственном предприятии исполнительный директор часто курирует операционные процессы и внедрение технологий.",
+          "name_parts": {
+            "given": "Данила",
+            "family": "Котельников"
+          },
+          "current_role_confirmed": true,
+          "person_source_fetched": true,
+          "email_source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+          "email_person_evidence": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru",
+          "public_contact_verified": true,
+          "verified_company_domains": [
+            "xn--j1agcjjg.xn--p1ai"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      },
+      "rank_score": 87,
+      "person_score": 87,
+      "persona_match_score": 90,
+      "business_problem_ownership": "high",
+      "decision_authority": "low",
+      "influence_level": "medium",
+      "confidence_score": 97,
+      "confidence_level": "confirmed",
+      "contact_availability": {
+        "has_work_email": true,
+        "has_linkedin": false,
+        "has_phone": false,
+        "has_telegram": false
+      },
+      "matched_keywords": [],
+      "reasoning": "No direct persona keyword match in available person context.",
+      "selection_reason": "Данила Никитич Котельников is the strongest available candidate because Исполнительный директор no direct keyword match, compared against операционный директор. Persona match 90/100, ownership high, authority low, influence medium, confidence 97/100.",
+      "strengths": [
+        "Strong persona match (90/100)",
+        "Likely owner of the business problem",
+        "Has at least one usable public contact signal"
+      ],
+      "weaknesses": [
+        "No direct persona keyword match in available evidence"
+      ],
+      "why_not_other_candidates": [
+        "Григорий Валерьевич Околелов: lower person score (84/100 vs 87/100); weaker persona match; no direct persona keyword match in available evidence."
+      ],
+      "recommended_next_action": "contact_primary_person"
+    },
+    "alternative_people_intelligence": [
+      {
+        "candidate": {
+          "full_name": "Григорий Валерьевич Околелов",
+          "role_title": "Генеральный директор",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Околелов Григорий Валерьевич Генеральный директор"
+          ],
+          "metadata": {
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "source_urls": [
+              "https://xn--j1agcjjg.xn--p1ai/contacts/"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e3",
+                "quote": "Околелов Григорий Валерьевич Генеральный директор"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+                "quote": "Околелов Григорий Валерьевич Генеральный директор"
+              }
+            ],
+            "semantic_role_relevance": 75,
+            "semantic_role_reason": "Высшее руководство компании, финальный аппрувер стратегических решений по автоматизации.",
+            "name_parts": {
+              "given": "Григорий",
+              "family": "Околелов"
+            },
+            "current_role_confirmed": true,
+            "person_source_fetched": true,
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "xn--j1agcjjg.xn--p1ai"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        "rank_score": 84,
+        "person_score": 84,
+        "persona_match_score": 75,
+        "business_problem_ownership": "high",
+        "decision_authority": "high",
+        "influence_level": "high",
+        "confidence_score": 82,
+        "confidence_level": "high_confidence",
+        "contact_availability": {
+          "has_work_email": false,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Григорий Валерьевич Околелов is the strongest available candidate because Генеральный директор no direct keyword match, compared against операционный директор. Persona match 75/100, ownership high, authority high, influence high, confidence 82/100.",
+        "strengths": [
+          "Strong persona match (75/100)",
+          "Likely owner of the business problem",
+          "High decision authority",
+          "High influence in the buying process"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence",
+          "No direct personal contact channel found"
+        ],
+        "why_not_other_candidates": [
+          "Григорий Валерьевич Околелов: lower person score (84/100 vs 87/100); weaker persona match; no direct persona keyword match in available evidence."
+        ],
+        "recommended_next_action": "run_enrichment"
+      }
+    ],
+    "ranked_people": [
+      {
+        "candidate": {
+          "full_name": "Данила Никитич Котельников",
+          "role_title": "Исполнительный директор",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "kotelnikov-dn@pk-kontur.ru",
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Котельников Данила Никитич Исполнительный директор"
+          ],
+          "metadata": {
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "source_urls": [
+              "https://xn--j1agcjjg.xn--p1ai/contacts/"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e3",
+                "quote": "Котельников Данила Никитич Исполнительный директор"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+                "quote": "Котельников Данила Никитич Исполнительный директор"
+              }
+            ],
+            "semantic_role_relevance": 90,
+            "semantic_role_reason": "Второе лицо в управлении после генерального директора; на производственном предприятии исполнительный директор часто курирует операционные процессы и внедрение технологий.",
+            "name_parts": {
+              "given": "Данила",
+              "family": "Котельников"
+            },
+            "current_role_confirmed": true,
+            "person_source_fetched": true,
+            "email_source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "email_person_evidence": "Котельников Данила Никитич Исполнительный директор +7 (343) 298-00-58 доб.214 Kotelnikov-DN@pk-kontur.ru",
+            "public_contact_verified": true,
+            "verified_company_domains": [
+              "xn--j1agcjjg.xn--p1ai"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        "rank_score": 87,
+        "person_score": 87,
+        "persona_match_score": 90,
+        "business_problem_ownership": "high",
+        "decision_authority": "low",
+        "influence_level": "medium",
+        "confidence_score": 97,
+        "confidence_level": "confirmed",
+        "contact_availability": {
+          "has_work_email": true,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Данила Никитич Котельников is the strongest available candidate because Исполнительный директор no direct keyword match, compared against операционный директор. Persona match 90/100, ownership high, authority low, influence medium, confidence 97/100.",
+        "strengths": [
+          "Strong persona match (90/100)",
+          "Likely owner of the business problem",
+          "Has at least one usable public contact signal"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence"
+        ],
+        "why_not_other_candidates": [
+          "Григорий Валерьевич Околелов: lower person score (84/100 vs 87/100); weaker persona match; no direct persona keyword match in available evidence."
+        ],
+        "recommended_next_action": "contact_primary_person"
+      },
+      {
+        "candidate": {
+          "full_name": "Григорий Валерьевич Околелов",
+          "role_title": "Генеральный директор",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": null,
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Околелов Григорий Валерьевич Генеральный директор"
+          ],
+          "metadata": {
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "source_urls": [
+              "https://xn--j1agcjjg.xn--p1ai/contacts/"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e3",
+                "quote": "Околелов Григорий Валерьевич Генеральный директор"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+                "quote": "Околелов Григорий Валерьевич Генеральный директор"
+              }
+            ],
+            "semantic_role_relevance": 75,
+            "semantic_role_reason": "Высшее руководство компании, финальный аппрувер стратегических решений по автоматизации.",
+            "name_parts": {
+              "given": "Григорий",
+              "family": "Околелов"
+            },
+            "current_role_confirmed": true,
+            "person_source_fetched": true,
+            "email_source_url": null,
+            "email_person_evidence": null,
+            "public_contact_verified": false,
+            "verified_company_domains": [
+              "xn--j1agcjjg.xn--p1ai"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        "rank_score": 84,
+        "person_score": 84,
+        "persona_match_score": 75,
+        "business_problem_ownership": "high",
+        "decision_authority": "high",
+        "influence_level": "high",
+        "confidence_score": 82,
+        "confidence_level": "high_confidence",
+        "contact_availability": {
+          "has_work_email": false,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Григорий Валерьевич Околелов is the strongest available candidate because Генеральный директор no direct keyword match, compared against операционный директор. Persona match 75/100, ownership high, authority high, influence high, confidence 82/100.",
+        "strengths": [
+          "Strong persona match (75/100)",
+          "Likely owner of the business problem",
+          "High decision authority",
+          "High influence in the buying process"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence",
+          "No direct personal contact channel found"
+        ],
+        "why_not_other_candidates": [
+          "Григорий Валерьевич Околелов: lower person score (84/100 vs 87/100); weaker persona match; no direct persona keyword match in available evidence."
+        ],
+        "recommended_next_action": "run_enrichment"
+      }
+    ],
+    "selection_reasoning": "Данила Никитич Котельников is the strongest available candidate because Исполнительный директор no direct keyword match, compared against операционный директор. Persona match 90/100, ownership high, authority low, influence medium, confidence 97/100.",
+    "search_status": "person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "personal_contact_evidenced"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 0,
+      "official_pages_fetched": 0,
+      "aborted_requests": 0,
+      "elapsed_ms": 0,
+      "stop_reason": "confirmed_research_cache_hit",
+      "queries_executed": [],
+      "sources_checked": [],
+      "search_results_seen": 0,
+      "rejected_candidates": {},
+      "final_failure_reason": null
+    }
+  },
+  "contacts": [
+    {
+      "name": "Данила Никитич Котельников",
+      "role": "Исполнительный директор",
+      "email": null,
+      "type": "confirmed_person",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false
+    },
+    {
+      "name": "Данила Никитич Котельников",
+      "role": "Исполнительный директор",
+      "email": "kotelnikov-dn@pk-kontur.ru",
+      "type": "work_email",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": true,
+      "intelligence": {
+        "business_problem": "Growth and cross-functional execution can create manual handoffs, process fragmentation, and operational bottlenecks.",
+        "target_responsibility": "Operations leadership",
+        "target_persona": "COO",
+        "alternative_personas": [
+          "Head of Operations",
+          "Operations Director",
+          "Head of Business Operations",
+          "Founder / CEO",
+          "Founder"
+        ],
+        "why_this_person": "Исполнительный директор: The context points to process load or operational scaling, so operations leadership is the best entry persona. Matched context: процесс. Company scale: unknown.",
+        "person_name": "Данила Никитич Котельников",
+        "person_role": "Исполнительный директор",
+        "email": "kotelnikov-dn@pk-kontur.ru",
+        "contact_level": "A",
+        "email_classification": "VERIFIED_PERSONAL",
+        "email_type": "public_personal",
+        "verification_methods": [
+          "corporate_domain_match",
+          "mx",
+          "public_evidence"
+        ],
+        "confidence": "HIGH",
+        "readiness": "contact_ready",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "summary": "Данила Никитич Котельников подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "summary": "Роль связана с зоной ответственности: Operations leadership."
+          },
+          {
+            "kind": "email",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "summary": "Email опубликован в публичном профессиональном контексте."
+          },
+          {
+            "kind": "domain",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai",
+            "summary": "Email-домен опубликован на официальном сайте как корпоративный alias."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+            "summary": "Котельников Данила Никитич Исполнительный директор"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "contact_ready_high_confidence"
+      },
+      "ready": true,
+      "generationSource": "ai",
+      "fallbackReason": null,
+      "copy": "Данила, добрый день.\n\nВ источнике о компании Производственная Компания Контур указано: «искать и внедрять современные решения в бизнес-процессы и ИИ-технологии».\n\nПредлагаю проверить, можно ли ускорить согласование технологических изменений за счет автоматической классификации входящих запросов.\n\nДля пилота нужны примеры технических заданий и спецификаций на новые фитинги. Результат — структурированная таблица параметров с пометками для ручной проверки соответствия исходным данным. Ваш специалист сверит результат с исходными данными.\n\nЯ AI-архитектор. Если потребуется, подключим бизнес-аналитика: сначала проверим процесс, затем выберем, что автоматизировать.\n\nМогу провести короткий разбор этого участка. Обычно он стоит 9 900 ₽; если ответите в течение 24 часов после отправки письма, проведу разбор бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nЕсть смысл посмотреть этот участок на вашей компании?\n\nАлександр Плыкин, AI-архитектор\n+79629910514"
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://xn--j1agcjjg.xn--p1ai/contacts/",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://xn--j1agcjjg.xn--p1ai",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 299
+}

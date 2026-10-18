@@ -9,7 +9,7 @@ const checks = [
   "check-direct-ai-reasoning", "check-direct-ai-company-resolution", "check-source-campaign-downstream",
   "check-company-research-agent", "check-offline-fallback", "check-company-research-performance", "check-lpr-production-integration",
   "check-contact-quality", "check-adaptive-contact-intelligence", "check-email-discovery", "check-people-evidence", "check-iterative-research", "check-personal-email-research",
-  "check-first-email-v2", "check-outreach-guides", "check-approval-stability", "check-initial-queue-boundary",
+  "check-first-email-v2", "check-offer-grounding", "check-outreach-guides", "check-approval-stability", "check-initial-queue-boundary",
   "check-local-outreach-store", "check-followup-engine", "check-outbound-thread-isolation",
   "check-outreach-summary", "check-production-consistency", "check-leadgen-ui-navigation",
   "check-network-abort", "check-network-retry", "check-storage-compaction", "check-production-limits", "check-research-economy",

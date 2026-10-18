@@ -1,0 +1,911 @@
+{
+  "mode": "business",
+  "name": "Спецмаш-Снг",
+  "website": "https://dorzap.ru",
+  "before": {
+    "companyName": "Спецмаш-Снг",
+    "officialWebsite": "https://dorzap.ru",
+    "officialDomain": "dorzap.ru",
+    "people": [
+      {
+        "fullName": "Полькин Дмитрий Геннадьевич",
+        "role": "коммерческий директор",
+        "confidence": "HIGH_CONFIDENCE",
+        "evidence": [
+          {
+            "sourceUrl": "https://smsng.ru/otdel-prodazh",
+            "sourceType": "public_web",
+            "excerpt": "Public search result: Отдел продаж │ СПЕЦМАШ-СНГ",
+            "capturedAt": "2026-10-06T08:03:13.373Z",
+            "confidence": 80
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "dorzap@list.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://dorzap.ru/",
+              "sourceType": "official",
+              "excerpt": "dorzap@list.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 70
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "dorzap@list.ru",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://dorzap.ru/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+      "sourceUrl": "https://hh.ru/vacancy/137988890",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 1,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 16,
+      "lprMs": 6330,
+      "contactMs": 8831,
+      "totalMs": 20721,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+    "sourceUrl": "https://hh.ru/vacancy/137988890",
+    "confidence": 100
+  },
+  "index": 0,
+  "trace": [
+    {
+      "stage": "research_cache_hit",
+      "kind": "confirmed_people",
+      "networkActions": 0
+    },
+    {
+      "stage": "people_ranked",
+      "people": [
+        {
+          "full_name": "Казанцев Пётр Юрьевич",
+          "role_title": "Генеральный директор",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "600856@ooospecmash.ru",
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Генеральный директор Казанцев Пётр Юрьевич",
+            "Казанцев Петр Юрьевич Генеральный директор"
+          ],
+          "metadata": {
+            "source_url": "https://smsng.ru/contact-us/",
+            "source_urls": [
+              "https://smsng.ru/contact-us/"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e7",
+                "quote": "Генеральный директор Казанцев Пётр Юрьевич"
+              },
+              {
+                "sourceId": "e11",
+                "quote": "Казанцев Петр Юрьевич Генеральный директор"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://dorzap.ru/reqvizity/",
+                "quote": "Генеральный директор Казанцев Пётр Юрьевич"
+              },
+              {
+                "sourceUrl": "https://smsng.ru/contact-us/",
+                "quote": "Казанцев Петр Юрьевич Генеральный директор"
+              }
+            ],
+            "semantic_role_relevance": 90,
+            "semantic_role_reason": "Генеральный директор и владелец процесса продаж, контактные данные подтверждены на странице контактов связанного сайта smsng.ru.",
+            "name_parts": {
+              "given": "Пётр",
+              "family": "Казанцев"
+            },
+            "current_role_confirmed": true,
+            "person_source_fetched": true,
+            "email_source_url": "https://smsng.ru/contact-us/",
+            "email_person_evidence": "Казанцев Петр Юрьевич Генеральный директор Тел.: 8(3522)44-35-54 (вн.102) E-mail: 600856@ooospecmash.ru",
+            "public_contact_verified": true,
+            "verified_company_domains": [
+              "dorzap.ru",
+              "smsng.ru"
+            ],
+            "verified_public_profiles": [
+              "https://smsng.ru/contact-us/"
+            ],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ]
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "Генеральный директор: The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+        "person_name": "Казанцев Пётр Юрьевич",
+        "person_role": "Генеральный директор",
+        "email": "600856@ooospecmash.ru",
+        "contact_level": "A",
+        "email_classification": "VERIFIED_PERSONAL",
+        "email_type": "public_personal",
+        "verification_methods": [
+          "corporate_domain_match",
+          "mx",
+          "public_evidence"
+        ],
+        "confidence": "HIGH",
+        "readiness": "contact_ready",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": "https://smsng.ru/contact-us/",
+            "summary": "Казанцев Пётр Юрьевич подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": "https://smsng.ru/contact-us/",
+            "summary": "Роль связана с зоной ответственности: Sales and revenue leadership."
+          },
+          {
+            "kind": "email",
+            "source_url": "https://smsng.ru/contact-us/",
+            "summary": "Email опубликован в публичном профессиональном контексте."
+          },
+          {
+            "kind": "domain",
+            "source_url": "https://dorzap.ru",
+            "summary": "Email-домен опубликован на официальном сайте как корпоративный alias."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": "https://smsng.ru/contact-us/",
+            "summary": "Генеральный директор Казанцев Пётр Юрьевич"
+          },
+          {
+            "kind": "person",
+            "source_url": "https://smsng.ru/contact-us/",
+            "summary": "Казанцев Петр Юрьевич Генеральный директор"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "contact_ready_high_confidence"
+      },
+      "contacts": [
+        {
+          "name": "Казанцев Пётр Юрьевич",
+          "email": null,
+          "type": "confirmed_person",
+          "source": "https://smsng.ru/contact-us/"
+        },
+        {
+          "name": "Казанцев Пётр Юрьевич",
+          "email": "600856@ooospecmash.ru",
+          "type": "work_email",
+          "source": "https://smsng.ru/contact-us/"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://dorzap.ru/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://dorzap.ru/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://dorzap.ru/contacts/"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://dorzap.ru"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://ws-0k3rkeh9pgddyrz7.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "status": 200,
+      "elapsedMs": 5905,
+      "schema": "leadgen_outreach_v4",
+      "model": "qwen3.7-plus",
+      "input": {
+        "company": "Спецмаш-Снг",
+        "segment": null,
+        "industry": null,
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "evidence": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+          "source": "https://hh.ru/vacancy/137988890"
+        },
+        "company_specifics": null,
+        "lpr": {
+          "name": "Казанцев Пётр Юрьевич",
+          "role": "Генеральный директор",
+          "why_this_person": null
+        },
+        "business_context": {
+          "problem_hypothesis": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+          "target_responsibility": "Sales and revenue leadership",
+          "selection_reason": null
+        },
+        "contact_type": "PERSONAL",
+        "required_cta": "Есть смысл посмотреть этот участок на вашей компании?",
+        "required_greeting": "Пётр, добрый день."
+      },
+      "usage": {
+        "input_tokens": 656,
+        "output_tokens": 194,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 656
+        }
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "subject": "Вакансия менеджера по продажам",
+        "body": "Спецмаш-Снг сейчас ищет Менеджера по продажам. Открытая позиция указывает на потребность в усилении коммерческого блока компании.\n\nПри найме нового сотрудника часто возникает гипотеза о задержках в обработке входящих заявок или рутинной подготовке отчетов, что отвлекает от общения с клиентами.\n\nПредлагаю провести аудит одного этапа: подадим на вход историю переписок, а на выходе получим черновики ответов для проверки менеджером.",
+        "cta": "Есть смысл посмотреть этот участок на вашей компании?",
+        "quality": {
+          "reason_now": true,
+          "grounded_hypothesis": true,
+          "russian_only": true,
+          "personal_cta": false
+        }
+      }
+    }
+  ],
+  "startedAt": "2026-10-17T09:51:34.078Z",
+  "bundle": {
+    "companyName": "Спецмаш-Снг",
+    "officialWebsite": "https://dorzap.ru",
+    "officialDomain": "dorzap.ru",
+    "people": [
+      {
+        "fullName": "Казанцев Пётр Юрьевич",
+        "role": "Генеральный директор",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://dorzap.ru/reqvizity/",
+            "sourceType": "official",
+            "excerpt": "Генеральный директор Казанцев Пётр Юрьевич",
+            "capturedAt": "2026-10-17T09:51:34.084Z",
+            "confidence": 90
+          },
+          {
+            "sourceUrl": "https://smsng.ru/contact-us/",
+            "sourceType": "public_web",
+            "excerpt": "Казанцев Петр Юрьевич Генеральный директор",
+            "capturedAt": "2026-10-17T09:51:34.084Z",
+            "confidence": 90
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": [
+            "https://smsng.ru/contact-us/"
+          ]
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [
+        {
+          "email": "600856@ooospecmash.ru",
+          "personName": "Казанцев Пётр Юрьевич",
+          "classification": "VERIFIED_PERSONAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://smsng.ru/contact-us/",
+              "sourceType": "public_web",
+              "excerpt": "600856@ooospecmash.ru — Iterative public research",
+              "capturedAt": "2026-10-17T09:51:34.084Z",
+              "confidence": 97
+            }
+          ]
+        }
+      ],
+      "department": [],
+      "general": [],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "600856@ooospecmash.ru",
+      "personName": "Казанцев Пётр Юрьевич",
+      "role": "Генеральный директор",
+      "classification": "VERIFIED_PERSONAL",
+      "contactLevel": "A",
+      "sourceUrl": "https://smsng.ru/contact-us/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: Спецмаш-Снг; открыта вакансия: Менеджер по продажам.",
+      "sourceUrl": "https://hh.ru/vacancy/137988890",
+      "confidence": 100
+    },
+    "researchConfidence": "VERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 0,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 13,
+      "lprMs": 19,
+      "contactMs": 274,
+      "totalMs": 6268,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "people": {
+    "primary_person": {
+      "full_name": "Казанцев Пётр Юрьевич",
+      "role_title": "Генеральный директор",
+      "department": null,
+      "linkedin_url": null,
+      "work_email": "600856@ooospecmash.ru",
+      "phone": null,
+      "source": "Iterative public research",
+      "confidence_score": 90,
+      "evidence": [
+        "Генеральный директор Казанцев Пётр Юрьевич",
+        "Казанцев Петр Юрьевич Генеральный директор"
+      ],
+      "metadata": {
+        "source_url": "https://smsng.ru/contact-us/",
+        "source_urls": [
+          "https://smsng.ru/contact-us/"
+        ],
+        "research_citations": [
+          {
+            "sourceId": "e7",
+            "quote": "Генеральный директор Казанцев Пётр Юрьевич"
+          },
+          {
+            "sourceId": "e11",
+            "quote": "Казанцев Петр Юрьевич Генеральный директор"
+          }
+        ],
+        "research_evidence": [
+          {
+            "sourceUrl": "https://dorzap.ru/reqvizity/",
+            "quote": "Генеральный директор Казанцев Пётр Юрьевич"
+          },
+          {
+            "sourceUrl": "https://smsng.ru/contact-us/",
+            "quote": "Казанцев Петр Юрьевич Генеральный директор"
+          }
+        ],
+        "semantic_role_relevance": 90,
+        "semantic_role_reason": "Генеральный директор и владелец процесса продаж, контактные данные подтверждены на странице контактов связанного сайта smsng.ru.",
+        "name_parts": {
+          "given": "Пётр",
+          "family": "Казанцев"
+        },
+        "current_role_confirmed": true,
+        "person_source_fetched": true,
+        "email_source_url": "https://smsng.ru/contact-us/",
+        "email_person_evidence": "Казанцев Петр Юрьевич Генеральный директор Тел.: 8(3522)44-35-54 (вн.102) E-mail: 600856@ooospecmash.ru",
+        "public_contact_verified": true,
+        "verified_company_domains": [
+          "dorzap.ru",
+          "smsng.ru"
+        ],
+        "verified_public_profiles": [
+          "https://smsng.ru/contact-us/"
+        ],
+        "tenchat_url": null,
+        "telegram_url": null,
+        "vk_url": null,
+        "instagram_url": null,
+        "contact_route": "target_persona",
+        "company_verified": true,
+        "role_verified": true
+      }
+    },
+    "alternative_people": [],
+    "all_candidates": [
+      {
+        "full_name": "Казанцев Пётр Юрьевич",
+        "role_title": "Генеральный директор",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": "600856@ooospecmash.ru",
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Генеральный директор Казанцев Пётр Юрьевич",
+          "Казанцев Петр Юрьевич Генеральный директор"
+        ],
+        "metadata": {
+          "source_url": "https://smsng.ru/contact-us/",
+          "source_urls": [
+            "https://smsng.ru/contact-us/"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e7",
+              "quote": "Генеральный директор Казанцев Пётр Юрьевич"
+            },
+            {
+              "sourceId": "e11",
+              "quote": "Казанцев Петр Юрьевич Генеральный директор"
+            }
+          ],
+          "research_evidence": [
+            {
+              "sourceUrl": "https://dorzap.ru/reqvizity/",
+              "quote": "Генеральный директор Казанцев Пётр Юрьевич"
+            },
+            {
+              "sourceUrl": "https://smsng.ru/contact-us/",
+              "quote": "Казанцев Петр Юрьевич Генеральный директор"
+            }
+          ],
+          "semantic_role_relevance": 90,
+          "semantic_role_reason": "Генеральный директор и владелец процесса продаж, контактные данные подтверждены на странице контактов связанного сайта smsng.ru.",
+          "name_parts": {
+            "given": "Пётр",
+            "family": "Казанцев"
+          },
+          "current_role_confirmed": true,
+          "person_source_fetched": true,
+          "email_source_url": "https://smsng.ru/contact-us/",
+          "email_person_evidence": "Казанцев Петр Юрьевич Генеральный директор Тел.: 8(3522)44-35-54 (вн.102) E-mail: 600856@ooospecmash.ru",
+          "public_contact_verified": true,
+          "verified_company_domains": [
+            "dorzap.ru",
+            "smsng.ru"
+          ],
+          "verified_public_profiles": [
+            "https://smsng.ru/contact-us/"
+          ],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      }
+    ],
+    "primary_person_intelligence": {
+      "candidate": {
+        "full_name": "Казанцев Пётр Юрьевич",
+        "role_title": "Генеральный директор",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": "600856@ooospecmash.ru",
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Генеральный директор Казанцев Пётр Юрьевич",
+          "Казанцев Петр Юрьевич Генеральный директор"
+        ],
+        "metadata": {
+          "source_url": "https://smsng.ru/contact-us/",
+          "source_urls": [
+            "https://smsng.ru/contact-us/"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e7",
+              "quote": "Генеральный директор Казанцев Пётр Юрьевич"
+            },
+            {
+              "sourceId": "e11",
+              "quote": "Казанцев Петр Юрьевич Генеральный директор"
+            }
+          ],
+          "research_evidence": [
+            {
+              "sourceUrl": "https://dorzap.ru/reqvizity/",
+              "quote": "Генеральный директор Казанцев Пётр Юрьевич"
+            },
+            {
+              "sourceUrl": "https://smsng.ru/contact-us/",
+              "quote": "Казанцев Петр Юрьевич Генеральный директор"
+            }
+          ],
+          "semantic_role_relevance": 90,
+          "semantic_role_reason": "Генеральный директор и владелец процесса продаж, контактные данные подтверждены на странице контактов связанного сайта smsng.ru.",
+          "name_parts": {
+            "given": "Пётр",
+            "family": "Казанцев"
+          },
+          "current_role_confirmed": true,
+          "person_source_fetched": true,
+          "email_source_url": "https://smsng.ru/contact-us/",
+          "email_person_evidence": "Казанцев Петр Юрьевич Генеральный директор Тел.: 8(3522)44-35-54 (вн.102) E-mail: 600856@ooospecmash.ru",
+          "public_contact_verified": true,
+          "verified_company_domains": [
+            "dorzap.ru",
+            "smsng.ru"
+          ],
+          "verified_public_profiles": [
+            "https://smsng.ru/contact-us/"
+          ],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      },
+      "rank_score": 100,
+      "person_score": 100,
+      "persona_match_score": 90,
+      "business_problem_ownership": "high",
+      "decision_authority": "high",
+      "influence_level": "high",
+      "confidence_score": 97,
+      "confidence_level": "confirmed",
+      "contact_availability": {
+        "has_work_email": true,
+        "has_linkedin": false,
+        "has_phone": false,
+        "has_telegram": false
+      },
+      "matched_keywords": [],
+      "reasoning": "No direct persona keyword match in available person context.",
+      "selection_reason": "Казанцев Пётр Юрьевич is the strongest available candidate because Генеральный директор no direct keyword match, compared against РОП. Persona match 90/100, ownership high, authority high, influence high, confidence 97/100.",
+      "strengths": [
+        "Strong persona match (90/100)",
+        "Likely owner of the business problem",
+        "High decision authority",
+        "High influence in the buying process",
+        "Has at least one usable public contact signal"
+      ],
+      "weaknesses": [
+        "No direct persona keyword match in available evidence"
+      ],
+      "why_not_other_candidates": [],
+      "recommended_next_action": "contact_primary_person"
+    },
+    "alternative_people_intelligence": [],
+    "ranked_people": [
+      {
+        "candidate": {
+          "full_name": "Казанцев Пётр Юрьевич",
+          "role_title": "Генеральный директор",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "600856@ooospecmash.ru",
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Генеральный директор Казанцев Пётр Юрьевич",
+            "Казанцев Петр Юрьевич Генеральный директор"
+          ],
+          "metadata": {
+            "source_url": "https://smsng.ru/contact-us/",
+            "source_urls": [
+              "https://smsng.ru/contact-us/"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e7",
+                "quote": "Генеральный директор Казанцев Пётр Юрьевич"
+              },
+              {
+                "sourceId": "e11",
+                "quote": "Казанцев Петр Юрьевич Генеральный директор"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://dorzap.ru/reqvizity/",
+                "quote": "Генеральный директор Казанцев Пётр Юрьевич"
+              },
+              {
+                "sourceUrl": "https://smsng.ru/contact-us/",
+                "quote": "Казанцев Петр Юрьевич Генеральный директор"
+              }
+            ],
+            "semantic_role_relevance": 90,
+            "semantic_role_reason": "Генеральный директор и владелец процесса продаж, контактные данные подтверждены на странице контактов связанного сайта smsng.ru.",
+            "name_parts": {
+              "given": "Пётр",
+              "family": "Казанцев"
+            },
+            "current_role_confirmed": true,
+            "person_source_fetched": true,
+            "email_source_url": "https://smsng.ru/contact-us/",
+            "email_person_evidence": "Казанцев Петр Юрьевич Генеральный директор Тел.: 8(3522)44-35-54 (вн.102) E-mail: 600856@ooospecmash.ru",
+            "public_contact_verified": true,
+            "verified_company_domains": [
+              "dorzap.ru",
+              "smsng.ru"
+            ],
+            "verified_public_profiles": [
+              "https://smsng.ru/contact-us/"
+            ],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        "rank_score": 100,
+        "person_score": 100,
+        "persona_match_score": 90,
+        "business_problem_ownership": "high",
+        "decision_authority": "high",
+        "influence_level": "high",
+        "confidence_score": 97,
+        "confidence_level": "confirmed",
+        "contact_availability": {
+          "has_work_email": true,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Казанцев Пётр Юрьевич is the strongest available candidate because Генеральный директор no direct keyword match, compared against РОП. Persona match 90/100, ownership high, authority high, influence high, confidence 97/100.",
+        "strengths": [
+          "Strong persona match (90/100)",
+          "Likely owner of the business problem",
+          "High decision authority",
+          "High influence in the buying process",
+          "Has at least one usable public contact signal"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence"
+        ],
+        "why_not_other_candidates": [],
+        "recommended_next_action": "contact_primary_person"
+      }
+    ],
+    "selection_reasoning": "Казанцев Пётр Юрьевич is the strongest available candidate because Генеральный директор no direct keyword match, compared against РОП. Persona match 90/100, ownership high, authority high, influence high, confidence 97/100.",
+    "search_status": "person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "personal_contact_evidenced"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 0,
+      "official_pages_fetched": 0,
+      "aborted_requests": 0,
+      "elapsed_ms": 0,
+      "stop_reason": "confirmed_research_cache_hit",
+      "queries_executed": [],
+      "sources_checked": [],
+      "search_results_seen": 0,
+      "rejected_candidates": {},
+      "final_failure_reason": null
+    }
+  },
+  "contacts": [
+    {
+      "name": "Казанцев Пётр Юрьевич",
+      "role": "Генеральный директор",
+      "email": null,
+      "type": "confirmed_person",
+      "source": "https://smsng.ru/contact-us/",
+      "selected": false
+    },
+    {
+      "name": "Казанцев Пётр Юрьевич",
+      "role": "Генеральный директор",
+      "email": "600856@ooospecmash.ru",
+      "type": "work_email",
+      "source": "https://smsng.ru/contact-us/",
+      "selected": true,
+      "intelligence": {
+        "business_problem": "Sales hiring, revenue growth, or pipeline expansion can create manual prospecting, qualification, follow-up, and reporting work.",
+        "target_responsibility": "Sales and revenue leadership",
+        "target_persona": "VP Sales",
+        "alternative_personas": [
+          "Head of Sales",
+          "CRO",
+          "Sales Director",
+          "Head of Revenue",
+          "Commercial Director"
+        ],
+        "why_this_person": "Генеральный директор: The signal contains sales or revenue context, so sales leadership is the most likely owner of the commercial pain. Matched context: ru_sales_role. Company scale: unknown.",
+        "person_name": "Казанцев Пётр Юрьевич",
+        "person_role": "Генеральный директор",
+        "email": "600856@ooospecmash.ru",
+        "contact_level": "A",
+        "email_classification": "VERIFIED_PERSONAL",
+        "email_type": "public_personal",
+        "verification_methods": [
+          "corporate_domain_match",
+          "mx",
+          "public_evidence"
+        ],
+        "confidence": "HIGH",
+        "readiness": "contact_ready",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": "https://smsng.ru/contact-us/",
+            "summary": "Казанцев Пётр Юрьевич подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": "https://smsng.ru/contact-us/",
+            "summary": "Роль связана с зоной ответственности: Sales and revenue leadership."
+          },
+          {
+            "kind": "email",
+            "source_url": "https://smsng.ru/contact-us/",
+            "summary": "Email опубликован в публичном профессиональном контексте."
+          },
+          {
+            "kind": "domain",
+            "source_url": "https://dorzap.ru",
+            "summary": "Email-домен опубликован на официальном сайте как корпоративный alias."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": "https://smsng.ru/contact-us/",
+            "summary": "Генеральный директор Казанцев Пётр Юрьевич"
+          },
+          {
+            "kind": "person",
+            "source_url": "https://smsng.ru/contact-us/",
+            "summary": "Казанцев Петр Юрьевич Генеральный директор"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "contact_ready_high_confidence"
+      },
+      "ready": true,
+      "generationSource": "template",
+      "fallbackReason": "copy_quality_rejected",
+      "copy": "Пётр, добрый день.\n\nУвидел, что Спецмаш-Снг усиливает коммерческую команду.\n\nВ такой точке узкое место часто уже не в количестве менеджеров. Они тратят время на первичный разбор заявок, одинаковые вопросы и ручную передачу информации. В итоге фонд оплаты труда может расти быстрее пропускной способности отдела.\n\nПолезно автоматизировать не людей, а участок до менеджера — чтобы сотрудник подключался к уже понятной задаче, а не работал диспетчером входящего потока.\n\nЯ AI-архитектор. Разбираю такие участки и собираю системы, которые первично отвечают, квалифицируют обращение, собирают нужные данные и передают менеджеру подготовленную заявку.\n\nЕсли причина лежит глубже самой автоматизации, подключаем бизнес-аналитика: сначала разбираем сам процесс, затем автоматизируем только то, что действительно имеет смысл.\n\nМогу коротко разобрать этот участок именно на вашей компании и показать, что здесь имеет смысл автоматизировать. Обычно такой разбор стоит 9 900 ₽. Если ответите в течение 24 часов после отправки письма, проведу его бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nЕсть смысл посмотреть этот участок на вашей компании?\n\nАлександр Плыкин, AI-архитектор\n+79629910514"
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://dorzap.ru/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://dorzap.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://dorzap.ru/contacts/",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://dorzap.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 6273
+}

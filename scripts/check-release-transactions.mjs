@@ -52,8 +52,22 @@ try {
     SMTP_FROM_EMAIL: "sender@example.invalid", SMTP_FROM_NAME: "Isolated simulation" });
   dns.resolveMx = async () => [{ exchange: "mx.fixture.invalid", priority: 10 }];
   syncBuiltinESMExports();
-  globalThis.fetch = async input => {
+  globalThis.fetch = async (input, init) => {
     const url = new URL(typeof input === "string" ? input : input.url ?? String(input));
+    if (url.hostname === "api.openai.com") {
+      const request = JSON.parse(init.body);
+      const review = request.text?.format?.name === "leadgen_offer_review_v3";
+      assert.ok(review || request.text?.format?.name === "leadgen_outreach_v7", "Only isolated copy calls may use this mock");
+      return Response.json({ output_text: JSON.stringify(review ? {
+        context_consistent: true, relevant_to_recipient: true,
+        concrete_input_output: true, issues: [],
+      } : { subject: "Проверка помощника обработки заявок",
+        hypothesis: "можно ли сократить время разбора заявок с помощью черновиков карточек, которые сотрудник проверит по исходным текстам",
+        pilotInput: "обезличенные тексты заявок и правила их обработки, включая обязательные поля карточки",
+        pilotOutput: "карточки с извлечёнными данными и списком уточняющих вопросов для каждого обращения, подготовленные для проверки сотрудником",
+
+      }), usage: { input_tokens: 100, output_tokens: 100 } });
+    }
     if (url.hostname.endsWith("release-fixture.ru")) return new Response(`<html><head><title>Атлас</title></head><body><h1>Атлас</h1><p>Иван Петров — генеральный директор компании Атлас.</p><a href="mailto:info@${url.hostname}">info@${url.hostname}</a><a href="/contacts">Контакты</a></body></html>`);
     if (url.hostname.includes("dns")) return new Response(JSON.stringify({ Status: 0, Answer: [{ type: 15, data: "10 mx.fixture.invalid." }] }));
     return new Response("", { status: 404 });
@@ -94,9 +108,16 @@ try {
       company.metadata.company_research = research.bundle;
       assert.ok(research.bundle.bestOutreachContact, `${origin}: usable fallback after research`);
       const contact = research.contactDiscovery.contacts.find(c => c.email === research.bundle.bestOutreachContact.email);
+      assert.equal(contact.metadata.email_quality_gate_passed, false, "Unreviewed provider fallback cannot qualify as a ready offer");
+      process.env.OPENAI_API_KEY = "isolated-copy-fixture";
+      process.env.LEADGEN_AI_PROVIDER = "openai";
+      process.env.OUTREACH_LLM_ENABLED = "true";
       const copy = await buildEmailOutreachWithAi({ companyName: "Атлас", companyWebsite: website, contact,
         readiness: "fallback_ready", signalType: signal.signal_type, signalTitle: signal.signal_title,
         signalDetail: signal.signal_detail, signalSourceUrl: signal.source_url, signalConfidence: 95 });
+      process.env.OPENAI_API_KEY = "";
+      assert.equal(copy.generationSource, "ai", copy.fallbackReason);
+      assert.equal(copy.qualityGatePassed, true);
       Object.assign(contact.metadata, { email_body: copy.body, email_subject: copy.subject,
         email_quality_gate_passed: copy.qualityGatePassed, email_copy_review_status: copy.copyReviewStatus });
       lead.message = copy.body;
@@ -171,6 +192,10 @@ try {
     assert.equal(forged.queued_count, 0, "client cannot manufacture approval");
     const single = await request(`/api/leadgen/outreach/${before.entries[0].id}/approve`, {});
     assert.equal(single.entry.status, "approved");
+    if (process.argv.includes("--browser") && campaign === campaigns[0]) {
+      const { checkBulkBrowser } = await import("./check-bulk-browser.mjs");
+      await checkBulkBrowser(baseUrl, campaign.id);
+    } else {
     const preview = await request("/api/leadgen/outreach/bulk-approve", { campaignId: campaign.id, execute: false });
     assert.equal(preview.eligible_count, 2);
     const bulk = await request("/api/leadgen/outreach/bulk-approve", { campaignId: campaign.id, execute: true });
@@ -182,6 +207,7 @@ try {
     const queued = await request("/api/leadgen/outreach/batch", batchInput);
     assert.equal(queued.queued_count, 3);
     assert.equal((await request("/api/leadgen/outreach/batch", batchInput)).queued_count, 0);
+    }
     for (let i = 0; i < 60; i++) {
       const state = await request(route);
       if (state.entries.every(e => e.status === "sent")) break;

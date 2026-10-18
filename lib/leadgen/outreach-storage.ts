@@ -2,11 +2,12 @@ import { randomInt } from "node:crypto";
 import { normalizeRecipientEmail } from "@/lib/leadgen/company-identity";
 import {
   INITIAL_OUTREACH_SIGNATURE,
-  generateFirstEmailV3,
   passesFirstEmailQualityGate,
   validateFirstEmailV3,
   type OutreachQualityScore,
 } from "@/lib/leadgen/first-email-generator";
+import { generateFirstEmailWithAi } from "@/lib/leadgen/first-email-ai-generator";
+import { withAiSpendScope } from "@/lib/leadgen/ai-spend-budget";
 import {
   calculateBatchCapacity,
   getNextScheduledAt,
@@ -864,6 +865,8 @@ export async function regenerateLatestUnsentOutreach(execute: boolean) {
   if (queueResult.error) throw queueResult.error;
 
   const entries = (queueResult.data ?? []) as QueueRow[];
+  if (!execute) return { campaign_id: campaignId, eligible_count: entries.length, regenerated: 0,
+    manual_review: entries.filter(row => row.metadata?.quality_gate_passed !== true).length };
   let regenerated = 0;
   let manualReview = 0;
   const batchBodies: string[] = [];
@@ -871,7 +874,7 @@ export async function regenerateLatestUnsentOutreach(execute: boolean) {
   for (const row of entries) {
     const metadata = row.metadata ?? {};
     const signal = (metadata.signal as OutreachQueueEntry["signal"] | undefined) ?? null;
-    const copy = generateFirstEmailV3({
+    const copy = await withAiSpendScope(() => generateFirstEmailWithAi({
       companyName: row.company_name,
       website: (metadata.company_website as string | null | undefined) ?? null,
       decisionMakerName: row.recipient_name,
@@ -885,10 +888,9 @@ export async function regenerateLatestUnsentOutreach(execute: boolean) {
       verticalId: metadata.vertical_id as import("@/lib/leadgen/verticals").LeadgenVerticalId | undefined,
       uniquenessKey: `${row.id}:${row.message_version + 1}`,
       batchBodies,
-    });
+    }));
     batchBodies.push(copy.body);
     if (!copy.qualityGatePassed) manualReview += 1;
-    if (!execute) continue;
 
     const messageVersion = row.message_version + 1;
     const updateResult = await supabase
@@ -912,6 +914,8 @@ export async function regenerateLatestUnsentOutreach(execute: boolean) {
           quality_gate_passed: copy.qualityGatePassed,
           copy_review_status: copy.reviewStatus,
           generation_attempts: copy.generationAttempts,
+          generation_source: copy.generationSource,
+          generation_fallback_reason: copy.fallbackReason,
           micro_value: copy.microValue,
         },
         updated_at: new Date().toISOString(),

@@ -1,0 +1,1405 @@
+{
+  "mode": "business",
+  "name": "Императорский фарфоровый завод",
+  "website": "https://ipm.ru",
+  "before": {
+    "companyName": "Императорский фарфоровый завод",
+    "officialWebsite": "https://ipm.ru",
+    "officialDomain": "ipm.ru",
+    "people": [],
+    "emails": {
+      "personal": [],
+      "department": [],
+      "general": [
+        {
+          "email": "info@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "info@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "ipm_shop@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/",
+              "sourceType": "official",
+              "excerpt": "ipm_shop@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "lat_ep@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "lat_ep@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "isu_ov@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "isu_ov@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "aga_ap@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "aga_ap@ipm.ru — public email parser",
+              "capturedAt": "2026-10-06T08:03:13.373Z",
+              "confidence": 99
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "info@ipm.ru",
+      "personName": null,
+      "role": null,
+      "classification": "GENERAL",
+      "contactLevel": "E",
+      "sourceUrl": "https://www.ipm.ru/contacts/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+      "sourceUrl": "https://hh.ru/vacancy/138142173",
+      "confidence": 100
+    },
+    "researchConfidence": "HIGH_CONFIDENCE",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 2,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 20,
+      "lprMs": 16011,
+      "contactMs": 3829,
+      "totalMs": 28418,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "signal": {
+    "type": "HIRING_SIGNAL",
+    "title": "Обнаружен сигнал найма",
+    "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+    "sourceUrl": "https://hh.ru/vacancy/138142173",
+    "confidence": 100
+  },
+  "index": 0,
+  "trace": [
+    {
+      "stage": "research_cache_hit",
+      "kind": "confirmed_people",
+      "networkActions": 0
+    },
+    {
+      "stage": "people_ranked",
+      "people": [
+        {
+          "full_name": "Александр Николаев",
+          "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "nik_aa@ipm.ru",
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+          ],
+          "metadata": {
+            "source_url": "https://www.ipm.ru/contacts/",
+            "source_urls": [
+              "https://www.ipm.ru/contacts/"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://www.ipm.ru/contacts/",
+                "quote": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+              }
+            ],
+            "semantic_role_relevance": 85,
+            "semantic_role_reason": "Действующий заместитель коммерческого директора. Вакансия на развитие новых направлений находится в зоне ответственности коммерческого блока; он является ближайшим подтверждённым руководителем этого профиля.",
+            "name_parts": {
+              "given": "Александр",
+              "family": "Николаев"
+            },
+            "current_role_confirmed": true,
+            "person_source_fetched": true,
+            "email_source_url": "https://www.ipm.ru/contacts/",
+            "email_person_evidence": "Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru",
+            "public_contact_verified": true,
+            "verified_company_domains": [
+              "ipm.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        }
+      ]
+    },
+    {
+      "stage": "contact_verification",
+      "intelligence": {
+        "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+        "target_responsibility": "Company leadership",
+        "target_persona": "Founder",
+        "alternative_personas": [
+          "CEO",
+          "Managing Director",
+          "COO",
+          "Head of Growth",
+          "Head of Sales"
+        ],
+        "why_this_person": "Заместитель коммерческого директора по работе с ключевыми клиентами: The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+        "person_name": "Александр Николаев",
+        "person_role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+        "email": "nik_aa@ipm.ru",
+        "contact_level": "A",
+        "email_classification": "VERIFIED_PERSONAL",
+        "email_type": "public_personal",
+        "verification_methods": [
+          "corporate_domain_match",
+          "mx",
+          "public_evidence"
+        ],
+        "confidence": "HIGH",
+        "readiness": "contact_ready",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Александр Николаев подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Роль связана с зоной ответственности: Company leadership."
+          },
+          {
+            "kind": "email",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Email опубликован в публичном профессиональном контексте."
+          },
+          {
+            "kind": "domain",
+            "source_url": "https://ipm.ru",
+            "summary": "Email относится к подтверждённому корпоративному домену."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "contact_ready_high_confidence"
+      },
+      "contacts": [
+        {
+          "name": "Александр Николаев",
+          "email": null,
+          "type": "confirmed_person",
+          "source": "https://www.ipm.ru/contacts/"
+        },
+        {
+          "name": "Александр Николаев",
+          "email": "nik_aa@ipm.ru",
+          "type": "work_email",
+          "source": "https://www.ipm.ru/contacts/"
+        },
+        {
+          "name": null,
+          "email": "info@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "ipm_shop@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "lat_ep@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "isu_ov@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "aga_ap@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": "Александр Николаев",
+          "email": "nik_aa@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "smi_an@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "pol_dv@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "aha_em@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "bal_vv@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "pas_tv@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "gallery@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "cha_no@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "kul_eu@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "bus_ky@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "bab_ye@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": "zap_em@ipm.ru",
+          "type": "generic_email",
+          "source": "https://www.ipm.ru/contacts/",
+          "status": "company_email_ready",
+          "mx": true,
+          "domain": "official_domain"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://ipm.ru/contacts"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://ipm.ru/contact"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "website_form",
+          "source": "https://www.ipm.ru/contacts/"
+        },
+        {
+          "name": null,
+          "email": null,
+          "type": "company_website",
+          "source": "https://ipm.ru"
+        }
+      ]
+    },
+    {
+      "stage": "model",
+      "url": "https://ws-0k3rkeh9pgddyrz7.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "status": 200,
+      "elapsedMs": 3777,
+      "schema": "leadgen_outreach_v6",
+      "model": "qwen3.7-plus",
+      "input": {
+        "company": "Императорский фарфоровый завод",
+        "segment": null,
+        "industry": null,
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "evidence": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+          "source": "https://hh.ru/vacancy/138142173"
+        },
+        "company_specifics": "Интернет-магазин Императорского фарфора — Официальный сайт Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин НОВИНКА АФРИКАНСКАЯ СЕРИЯ Эксклюзивный «трофей» из мира дикой природы Осенний фарфор Время создать уют дома Смотрите подборку товаров Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении ЭЛЕГАНТНЫЕ БОКАЛЫ КОБАЛЬТОВАЯ СЕТКА Сияние лета на вашем столе Новинка COLOR VIBES Создай настроение своего дня Новинка ГАРМОНИЯ ПРИРОДЫ Серия скульптур напо",
+        "company_source": "https://ipm.ru",
+        "lpr": {
+          "name": "Александр Николаев",
+          "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+          "why_this_person": "Действующий заместитель коммерческого директора. Вакансия на развитие новых направлений находится в зоне ответственности коммерческого блока; он является ближайшим подтверждённым руководителем этого профиля.",
+          "public_evidence": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+        },
+        "business_context": {
+          "problem_hypothesis": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+          "target_responsibility": "Company leadership",
+          "selection_reason": null
+        },
+        "contact_type": "PERSONAL",
+        "required_cta": "Есть смысл посмотреть этот участок на вашей компании?",
+        "required_greeting": "Александр, добрый день."
+      },
+      "usage": {
+        "input_tokens": 815,
+        "output_tokens": 108,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 815
+        }
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "subject": "Тест обработки индивидуальных заказов",
+        "hypothesis": "Если текущая ручная обработка заявок на эксклюзивные серии отнимает время, стоит проверить, сокращает ли автоматическая сортировка нагрузку при подготовке коммерческих предложений.",
+        "pilot": "Подайте примеры писем с запросами на «Африканскую серию». Система сформирует черновик ответа со спецификацией. Вы проверите точность перед отправкой клиенту."
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://ws-0k3rkeh9pgddyrz7.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "status": 200,
+      "elapsedMs": 2265,
+      "schema": "leadgen_offer_review_v2",
+      "model": "qwen3.7-plus",
+      "input": {
+        "evidence": {
+          "company": "Императорский фарфоровый завод",
+          "segment": null,
+          "industry": null,
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "evidence": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+            "source": "https://hh.ru/vacancy/138142173"
+          },
+          "company_specifics": "Интернет-магазин Императорского фарфора — Официальный сайт Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин НОВИНКА АФРИКАНСКАЯ СЕРИЯ Эксклюзивный «трофей» из мира дикой природы Осенний фарфор Время создать уют дома Смотрите подборку товаров Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении ЭЛЕГАНТНЫЕ БОКАЛЫ КОБАЛЬТОВАЯ СЕТКА Сияние лета на вашем столе Новинка COLOR VIBES Создай настроение своего дня Новинка ГАРМОНИЯ ПРИРОДЫ Серия скульптур напо",
+          "company_source": "https://ipm.ru",
+          "lpr": {
+            "name": "Александр Николаев",
+            "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+            "why_this_person": "Действующий заместитель коммерческого директора. Вакансия на развитие новых направлений находится в зоне ответственности коммерческого блока; он является ближайшим подтверждённым руководителем этого профиля.",
+            "public_evidence": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+          },
+          "business_context": {
+            "problem_hypothesis": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+            "target_responsibility": "Company leadership",
+            "selection_reason": null
+          },
+          "contact_type": "PERSONAL",
+          "required_cta": "Есть смысл посмотреть этот участок на вашей компании?",
+          "required_greeting": "Александр, добрый день."
+        },
+        "draft": {
+          "subject": "Тест обработки индивидуальных заказов",
+          "body": "В источнике о компании Императорский фарфоровый завод указано: «Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.».\n\nЕсли текущая ручная обработка заявок на эксклюзивные серии отнимает время, стоит проверить, сокращает ли автоматическая сортировка нагрузку при подготовке коммерческих предложений.\n\nПодайте примеры писем с запросами на «Африканскую серию». Система сформирует черновик ответа со спецификацией. Вы проверите точность перед отправкой клиенту."
+        },
+        "relevance_rule": "The vacancy is a reason to contact the company, not necessarily the recipient's own role. A pilot fitting the recipient's actual evidenced responsibility is relevant. Do not require personal ownership of the vacancy or infer that an opening means nobody currently owns that function."
+      },
+      "usage": {
+        "input_tokens": 960,
+        "output_tokens": 74,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 960
+        }
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "supported_observation": false,
+        "hypothesis_not_fact": true,
+        "relevant_to_recipient": true,
+        "concrete_input_output": true,
+        "issues": [
+          "Утверждение о ручной обработке заявок не подтверждено доказательствами. Вакансия указывает на открытие позиции, но не доказывает наличие текущих проблем или ручных процессов."
+        ]
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://ws-0k3rkeh9pgddyrz7.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "status": 200,
+      "elapsedMs": 3024,
+      "schema": "leadgen_outreach_v6",
+      "model": "qwen3.7-plus",
+      "input": {
+        "company": "Императорский фарфоровый завод",
+        "segment": null,
+        "industry": null,
+        "signal": {
+          "type": "HIRING_SIGNAL",
+          "evidence": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+          "source": "https://hh.ru/vacancy/138142173"
+        },
+        "company_specifics": "Интернет-магазин Императорского фарфора — Официальный сайт Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин НОВИНКА АФРИКАНСКАЯ СЕРИЯ Эксклюзивный «трофей» из мира дикой природы Осенний фарфор Время создать уют дома Смотрите подборку товаров Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении ЭЛЕГАНТНЫЕ БОКАЛЫ КОБАЛЬТОВАЯ СЕТКА Сияние лета на вашем столе Новинка COLOR VIBES Создай настроение своего дня Новинка ГАРМОНИЯ ПРИРОДЫ Серия скульптур напо",
+        "company_source": "https://ipm.ru",
+        "lpr": {
+          "name": "Александр Николаев",
+          "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+          "why_this_person": "Действующий заместитель коммерческого директора. Вакансия на развитие новых направлений находится в зоне ответственности коммерческого блока; он является ближайшим подтверждённым руководителем этого профиля.",
+          "public_evidence": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+        },
+        "business_context": {
+          "problem_hypothesis": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+          "target_responsibility": "Company leadership",
+          "selection_reason": null
+        },
+        "contact_type": "PERSONAL",
+        "required_cta": "Есть смысл посмотреть этот участок на вашей компании?",
+        "required_greeting": "Александр, добрый день.",
+        "repair": {
+          "draft": "В источнике о компании Императорский фарфоровый завод указано: «Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.».\n\nЕсли текущая ручная обработка заявок на эксклюзивные серии отнимает время, стоит проверить, сокращает ли автоматическая сортировка нагрузку при подготовке коммерческих предложений.\n\nПодайте примеры писем с запросами на «Африканскую серию». Система сформирует черновик ответа со спецификацией. Вы проверите точность перед отправкой клиенту.",
+          "issues": [
+            "supported_observation",
+            "Утверждение о ручной обработке заявок не подтверждено доказательствами. Вакансия указывает на открытие позиции, но не доказывает наличие текущих проблем или ручных процессов."
+          ]
+        }
+      },
+      "usage": {
+        "input_tokens": 992,
+        "output_tokens": 113,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 992
+        }
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "subject": "Тест обработки запросов на новинки",
+        "hypothesis": "Если при запуске новых коллекций, таких как «Африканская серия», анализ входящих писем занимает ресурсы, стоит проверить, ускоряет ли предварительная структура данных подготовку ответов.",
+        "pilot": "Передайте примеры запросов клиентов. Система сформирует черновик спецификации для проверки. Вы оцените релевантность текста перед отправкой, не меняя текущий процесс согласования."
+      }
+    },
+    {
+      "stage": "model",
+      "url": "https://ws-0k3rkeh9pgddyrz7.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "status": 200,
+      "elapsedMs": 1717,
+      "schema": "leadgen_offer_review_v2",
+      "model": "qwen3.7-plus",
+      "input": {
+        "evidence": {
+          "company": "Императорский фарфоровый завод",
+          "segment": null,
+          "industry": null,
+          "signal": {
+            "type": "HIRING_SIGNAL",
+            "evidence": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+            "source": "https://hh.ru/vacancy/138142173"
+          },
+          "company_specifics": "Интернет-магазин Императорского фарфора — Официальный сайт Войти Мой кабинет 0 Список сравниваемых элементов пуст. 0 0 8 800 444-44-18 интернет-магазин НОВИНКА АФРИКАНСКАЯ СЕРИЯ Эксклюзивный «трофей» из мира дикой природы Осенний фарфор Время создать уют дома Смотрите подборку товаров Новинка ЖЕМЧУЖНАЯ СЕТКА Классика в современном прочтении ЭЛЕГАНТНЫЕ БОКАЛЫ КОБАЛЬТОВАЯ СЕТКА Сияние лета на вашем столе Новинка COLOR VIBES Создай настроение своего дня Новинка ГАРМОНИЯ ПРИРОДЫ Серия скульптур напо",
+          "company_source": "https://ipm.ru",
+          "lpr": {
+            "name": "Александр Николаев",
+            "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+            "why_this_person": "Действующий заместитель коммерческого директора. Вакансия на развитие новых направлений находится в зоне ответственности коммерческого блока; он является ближайшим подтверждённым руководителем этого профиля.",
+            "public_evidence": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+          },
+          "business_context": {
+            "problem_hypothesis": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+            "target_responsibility": "Company leadership",
+            "selection_reason": null
+          },
+          "contact_type": "PERSONAL",
+          "required_cta": "Есть смысл посмотреть этот участок на вашей компании?",
+          "required_greeting": "Александр, добрый день."
+        },
+        "draft": {
+          "subject": "Тест обработки запросов на новинки",
+          "body": "В источнике о компании Императорский фарфоровый завод указано: «Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.».\n\nЕсли при запуске новых коллекций, таких как «Африканская серия», анализ входящих писем занимает ресурсы, стоит проверить, ускоряет ли предварительная структура данных подготовку ответов.\n\nПередайте примеры запросов клиентов. Система сформирует черновик спецификации для проверки. Вы оцените релевантность текста перед отправкой, не меняя текущий процесс согласования."
+        },
+        "relevance_rule": "The vacancy is a reason to contact the company, not necessarily the recipient's own role. A pilot fitting the recipient's actual evidenced responsibility is relevant. Do not require personal ownership of the vacancy or infer that an opening means nobody currently owns that function."
+      },
+      "usage": {
+        "input_tokens": 965,
+        "output_tokens": 39,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "text_tokens": 965
+        }
+      },
+      "webSearchCalls": 0,
+      "output": {
+        "supported_observation": true,
+        "hypothesis_not_fact": true,
+        "relevant_to_recipient": true,
+        "concrete_input_output": true,
+        "issues": []
+      }
+    }
+  ],
+  "startedAt": "2026-10-18T14:09:19.437Z",
+  "bundle": {
+    "companyName": "Императорский фарфоровый завод",
+    "officialWebsite": "https://ipm.ru",
+    "officialDomain": "ipm.ru",
+    "people": [
+      {
+        "fullName": "Александр Николаев",
+        "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+        "confidence": "VERIFIED",
+        "evidence": [
+          {
+            "sourceUrl": "https://www.ipm.ru/contacts/",
+            "sourceType": "official",
+            "excerpt": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич",
+            "capturedAt": "2026-10-18T14:09:19.441Z",
+            "confidence": 90
+          }
+        ],
+        "profiles": {
+          "tenchat": null,
+          "telegram": null,
+          "instagram": null,
+          "vk": null,
+          "other": []
+        },
+        "phone": null
+      }
+    ],
+    "emails": {
+      "personal": [
+        {
+          "email": "nik_aa@ipm.ru",
+          "personName": "Александр Николаев",
+          "classification": "VERIFIED_PERSONAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "nik_aa@ipm.ru — Iterative public research",
+              "capturedAt": "2026-10-18T14:09:19.441Z",
+              "confidence": 96
+            }
+          ]
+        }
+      ],
+      "department": [],
+      "general": [
+        {
+          "email": "info@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "info@ipm.ru — public email parser",
+              "capturedAt": "2026-10-18T14:09:19.441Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "ipm_shop@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/",
+              "sourceType": "official",
+              "excerpt": "ipm_shop@ipm.ru — public email parser",
+              "capturedAt": "2026-10-18T14:09:19.441Z",
+              "confidence": 99
+            }
+          ]
+        },
+        {
+          "email": "lat_ep@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "lat_ep@ipm.ru — public email parser",
+              "capturedAt": "2026-10-18T14:09:19.441Z",
+              "confidence": 94
+            }
+          ]
+        },
+        {
+          "email": "isu_ov@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "isu_ov@ipm.ru — public email parser",
+              "capturedAt": "2026-10-18T14:09:19.441Z",
+              "confidence": 94
+            }
+          ]
+        },
+        {
+          "email": "aga_ap@ipm.ru",
+          "personName": null,
+          "classification": "GENERAL",
+          "evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "sourceType": "official",
+              "excerpt": "aga_ap@ipm.ru — public email parser",
+              "capturedAt": "2026-10-18T14:09:19.441Z",
+              "confidence": 94
+            }
+          ]
+        }
+      ],
+      "inferred": []
+    },
+    "bestOutreachContact": {
+      "email": "nik_aa@ipm.ru",
+      "personName": "Александр Николаев",
+      "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+      "classification": "VERIFIED_PERSONAL",
+      "contactLevel": "A",
+      "sourceUrl": "https://www.ipm.ru/contacts/"
+    },
+    "signal": {
+      "type": "HIRING_SIGNAL",
+      "title": "Обнаружен сигнал найма",
+      "detail": "Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.",
+      "sourceUrl": "https://hh.ru/vacancy/138142173",
+      "confidence": 100
+    },
+    "researchConfidence": "VERIFIED",
+    "metrics": {
+      "planner": "llm",
+      "plannerReason": "configured",
+      "queries": 0,
+      "duplicateQueriesSkipped": 0,
+      "budgetQueriesSkipped": 0,
+      "officialPages": 12,
+      "lprMs": 35,
+      "contactMs": 277,
+      "totalMs": 11248,
+      "stopReason": "usable_email_found"
+    }
+  },
+  "people": {
+    "primary_person": {
+      "full_name": "Александр Николаев",
+      "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+      "department": null,
+      "linkedin_url": null,
+      "work_email": "nik_aa@ipm.ru",
+      "phone": null,
+      "source": "Iterative public research",
+      "confidence_score": 90,
+      "evidence": [
+        "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+      ],
+      "metadata": {
+        "source_url": "https://www.ipm.ru/contacts/",
+        "source_urls": [
+          "https://www.ipm.ru/contacts/"
+        ],
+        "research_citations": [
+          {
+            "sourceId": "e2",
+            "quote": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+          }
+        ],
+        "research_evidence": [
+          {
+            "sourceUrl": "https://www.ipm.ru/contacts/",
+            "quote": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+          }
+        ],
+        "semantic_role_relevance": 85,
+        "semantic_role_reason": "Действующий заместитель коммерческого директора. Вакансия на развитие новых направлений находится в зоне ответственности коммерческого блока; он является ближайшим подтверждённым руководителем этого профиля.",
+        "name_parts": {
+          "given": "Александр",
+          "family": "Николаев"
+        },
+        "current_role_confirmed": true,
+        "person_source_fetched": true,
+        "email_source_url": "https://www.ipm.ru/contacts/",
+        "email_person_evidence": "Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru",
+        "public_contact_verified": true,
+        "verified_company_domains": [
+          "ipm.ru"
+        ],
+        "verified_public_profiles": [],
+        "tenchat_url": null,
+        "telegram_url": null,
+        "vk_url": null,
+        "instagram_url": null,
+        "contact_route": "target_persona",
+        "company_verified": true,
+        "role_verified": true
+      }
+    },
+    "alternative_people": [],
+    "all_candidates": [
+      {
+        "full_name": "Александр Николаев",
+        "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": "nik_aa@ipm.ru",
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+        ],
+        "metadata": {
+          "source_url": "https://www.ipm.ru/contacts/",
+          "source_urls": [
+            "https://www.ipm.ru/contacts/"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e2",
+              "quote": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+            }
+          ],
+          "research_evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "quote": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+            }
+          ],
+          "semantic_role_relevance": 85,
+          "semantic_role_reason": "Действующий заместитель коммерческого директора. Вакансия на развитие новых направлений находится в зоне ответственности коммерческого блока; он является ближайшим подтверждённым руководителем этого профиля.",
+          "name_parts": {
+            "given": "Александр",
+            "family": "Николаев"
+          },
+          "current_role_confirmed": true,
+          "person_source_fetched": true,
+          "email_source_url": "https://www.ipm.ru/contacts/",
+          "email_person_evidence": "Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru",
+          "public_contact_verified": true,
+          "verified_company_domains": [
+            "ipm.ru"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      }
+    ],
+    "primary_person_intelligence": {
+      "candidate": {
+        "full_name": "Александр Николаев",
+        "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+        "department": null,
+        "linkedin_url": null,
+        "work_email": "nik_aa@ipm.ru",
+        "phone": null,
+        "source": "Iterative public research",
+        "confidence_score": 90,
+        "evidence": [
+          "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+        ],
+        "metadata": {
+          "source_url": "https://www.ipm.ru/contacts/",
+          "source_urls": [
+            "https://www.ipm.ru/contacts/"
+          ],
+          "research_citations": [
+            {
+              "sourceId": "e2",
+              "quote": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+            }
+          ],
+          "research_evidence": [
+            {
+              "sourceUrl": "https://www.ipm.ru/contacts/",
+              "quote": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+            }
+          ],
+          "semantic_role_relevance": 85,
+          "semantic_role_reason": "Действующий заместитель коммерческого директора. Вакансия на развитие новых направлений находится в зоне ответственности коммерческого блока; он является ближайшим подтверждённым руководителем этого профиля.",
+          "name_parts": {
+            "given": "Александр",
+            "family": "Николаев"
+          },
+          "current_role_confirmed": true,
+          "person_source_fetched": true,
+          "email_source_url": "https://www.ipm.ru/contacts/",
+          "email_person_evidence": "Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru",
+          "public_contact_verified": true,
+          "verified_company_domains": [
+            "ipm.ru"
+          ],
+          "verified_public_profiles": [],
+          "tenchat_url": null,
+          "telegram_url": null,
+          "vk_url": null,
+          "instagram_url": null,
+          "contact_route": "target_persona",
+          "company_verified": true,
+          "role_verified": true
+        }
+      },
+      "rank_score": 85,
+      "person_score": 85,
+      "persona_match_score": 85,
+      "business_problem_ownership": "high",
+      "decision_authority": "low",
+      "influence_level": "medium",
+      "confidence_score": 96,
+      "confidence_level": "confirmed",
+      "contact_availability": {
+        "has_work_email": true,
+        "has_linkedin": false,
+        "has_phone": false,
+        "has_telegram": false
+      },
+      "matched_keywords": [],
+      "reasoning": "No direct persona keyword match in available person context.",
+      "selection_reason": "Александр Николаев is the strongest available candidate because Заместитель коммерческого директора по работе с ключевыми клиентами no direct keyword match, compared against основатель. Persona match 85/100, ownership high, authority low, influence medium, confidence 96/100.",
+      "strengths": [
+        "Strong persona match (85/100)",
+        "Likely owner of the business problem",
+        "Has at least one usable public contact signal"
+      ],
+      "weaknesses": [
+        "No direct persona keyword match in available evidence"
+      ],
+      "why_not_other_candidates": [],
+      "recommended_next_action": "contact_primary_person"
+    },
+    "alternative_people_intelligence": [],
+    "ranked_people": [
+      {
+        "candidate": {
+          "full_name": "Александр Николаев",
+          "role_title": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+          "department": null,
+          "linkedin_url": null,
+          "work_email": "nik_aa@ipm.ru",
+          "phone": null,
+          "source": "Iterative public research",
+          "confidence_score": 90,
+          "evidence": [
+            "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+          ],
+          "metadata": {
+            "source_url": "https://www.ipm.ru/contacts/",
+            "source_urls": [
+              "https://www.ipm.ru/contacts/"
+            ],
+            "research_citations": [
+              {
+                "sourceId": "e2",
+                "quote": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+              }
+            ],
+            "research_evidence": [
+              {
+                "sourceUrl": "https://www.ipm.ru/contacts/",
+                "quote": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+              }
+            ],
+            "semantic_role_relevance": 85,
+            "semantic_role_reason": "Действующий заместитель коммерческого директора. Вакансия на развитие новых направлений находится в зоне ответственности коммерческого блока; он является ближайшим подтверждённым руководителем этого профиля.",
+            "name_parts": {
+              "given": "Александр",
+              "family": "Николаев"
+            },
+            "current_role_confirmed": true,
+            "person_source_fetched": true,
+            "email_source_url": "https://www.ipm.ru/contacts/",
+            "email_person_evidence": "Николаев Александр Анатольевич Телефон: +7 (921) 425-99-24 Почта: nik_aa@ipm.ru",
+            "public_contact_verified": true,
+            "verified_company_domains": [
+              "ipm.ru"
+            ],
+            "verified_public_profiles": [],
+            "tenchat_url": null,
+            "telegram_url": null,
+            "vk_url": null,
+            "instagram_url": null,
+            "contact_route": "target_persona",
+            "company_verified": true,
+            "role_verified": true
+          }
+        },
+        "rank_score": 85,
+        "person_score": 85,
+        "persona_match_score": 85,
+        "business_problem_ownership": "high",
+        "decision_authority": "low",
+        "influence_level": "medium",
+        "confidence_score": 96,
+        "confidence_level": "confirmed",
+        "contact_availability": {
+          "has_work_email": true,
+          "has_linkedin": false,
+          "has_phone": false,
+          "has_telegram": false
+        },
+        "matched_keywords": [],
+        "reasoning": "No direct persona keyword match in available person context.",
+        "selection_reason": "Александр Николаев is the strongest available candidate because Заместитель коммерческого директора по работе с ключевыми клиентами no direct keyword match, compared against основатель. Persona match 85/100, ownership high, authority low, influence medium, confidence 96/100.",
+        "strengths": [
+          "Strong persona match (85/100)",
+          "Likely owner of the business problem",
+          "Has at least one usable public contact signal"
+        ],
+        "weaknesses": [
+          "No direct persona keyword match in available evidence"
+        ],
+        "why_not_other_candidates": [],
+        "recommended_next_action": "contact_primary_person"
+      }
+    ],
+    "selection_reasoning": "Александр Николаев is the strongest available candidate because Заместитель коммерческого директора по работе с ключевыми клиентами no direct keyword match, compared against основатель. Persona match 85/100, ownership high, authority low, influence medium, confidence 96/100.",
+    "search_status": "person_found",
+    "providers_used": [
+      "Iterative public research"
+    ],
+    "provider_diagnostics": [
+      {
+        "provider_id": "iterative-public-research",
+        "provider_label": "Iterative public research",
+        "level": "info",
+        "message": "personal_contact_evidenced"
+      }
+    ],
+    "research_metrics": {
+      "search_attempts": 0,
+      "official_pages_fetched": 0,
+      "aborted_requests": 0,
+      "elapsed_ms": 0,
+      "stop_reason": "confirmed_research_cache_hit",
+      "queries_executed": [],
+      "sources_checked": [],
+      "search_results_seen": 0,
+      "rejected_candidates": {},
+      "final_failure_reason": null
+    }
+  },
+  "contacts": [
+    {
+      "name": "Александр Николаев",
+      "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+      "email": null,
+      "type": "confirmed_person",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false
+    },
+    {
+      "name": "Александр Николаев",
+      "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+      "email": "nik_aa@ipm.ru",
+      "type": "work_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": true,
+      "intelligence": {
+        "business_problem": "The signal is commercially relevant, but ownership is not specific enough to assign to a single department with high confidence.",
+        "target_responsibility": "Company leadership",
+        "target_persona": "Founder",
+        "alternative_personas": [
+          "CEO",
+          "Managing Director",
+          "COO",
+          "Head of Growth",
+          "Head of Sales"
+        ],
+        "why_this_person": "Заместитель коммерческого директора по работе с ключевыми клиентами: The signal is broad or under-specified, so company leadership is the safest initial target persona. Company scale: unknown.",
+        "person_name": "Александр Николаев",
+        "person_role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+        "email": "nik_aa@ipm.ru",
+        "contact_level": "A",
+        "email_classification": "VERIFIED_PERSONAL",
+        "email_type": "public_personal",
+        "verification_methods": [
+          "corporate_domain_match",
+          "mx",
+          "public_evidence"
+        ],
+        "confidence": "HIGH",
+        "readiness": "contact_ready",
+        "evidence": [
+          {
+            "kind": "person",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Александр Николаев подтверждён публичным источником."
+          },
+          {
+            "kind": "role",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Роль связана с зоной ответственности: Company leadership."
+          },
+          {
+            "kind": "email",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Email опубликован в публичном профессиональном контексте."
+          },
+          {
+            "kind": "domain",
+            "source_url": "https://ipm.ru",
+            "summary": "Email относится к подтверждённому корпоративному домену."
+          },
+          {
+            "kind": "verification",
+            "source_url": null,
+            "summary": "Для домена найдены MX-записи; писем при проверке не отправлялось."
+          },
+          {
+            "kind": "person",
+            "source_url": "https://www.ipm.ru/contacts/",
+            "summary": "Департамент по индивидуальным заказам Заместитель коммерческого директора по работе с ключевыми клиентами Николаев Александр Анатольевич"
+          }
+        ],
+        "inferred_pattern": null,
+        "pattern_support": 0,
+        "generated_candidates": [],
+        "catch_all": "unknown",
+        "smtp_verification": "not_performed",
+        "strategies_attempted": [
+          "dynamic_role_resolution",
+          "adaptive_public_person_search",
+          "public_person_email_search",
+          "corporate_pattern_inference",
+          "domain_and_mx_validation"
+        ],
+        "stop_reason": "contact_ready_high_confidence"
+      },
+      "ready": true,
+      "generationSource": "ai",
+      "fallbackReason": null,
+      "copy": "Александр, добрый день.\n\nВ источнике о компании Императорский фарфоровый завод указано: «Работодатель: Императорский фарфоровый завод; открыта вакансия: Заместитель коммерческого директора по развитию новых направлений.».\n\nЕсли при запуске новых коллекций, таких как «Африканская серия», анализ входящих писем занимает ресурсы, стоит проверить, ускоряет ли предварительная структура данных подготовку ответов.\n\nПередайте примеры запросов клиентов. Система сформирует черновик спецификации для проверки. Вы оцените релевантность текста перед отправкой, не меняя текущий процесс согласования.\n\nЯ AI-архитектор. Если потребуется, подключим бизнес-аналитика: сначала проверим процесс, затем выберем, что автоматизировать.\n\nМогу провести короткий разбор этого участка. Обычно он стоит 9 900 ₽; если ответите в течение 24 часов после отправки письма, проведу разбор бесплатно.\n\nБонусы можно забрать по ссылкам:\n1. Диагностика отдела продаж — PRO продажи просто: https://docs.google.com/spreadsheets/d/1FzDnl0I20FWO83IdaeT7Onqo227ON3imaP8HA7JbYJ8/edit?usp=sharing\n2. Бизнес-процессы — шаблон: https://docs.google.com/spreadsheets/d/1hT-E7J1FGq0O9ls2oxcjatU4QsbwkDZJy2Q--XE5Y1o/edit?usp=sharing\nМатериалы можно использовать независимо от нашего разговора.\n\nЕсть смысл посмотреть этот участок на вашей компании?\n\nАлександр Плыкин, AI-архитектор\n+79629910514"
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "info@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "ipm_shop@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "lat_ep@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "isu_ov@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "aga_ap@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": "Александр Николаев",
+      "role": "Заместитель коммерческого директора по работе с ключевыми клиентами",
+      "email": "nik_aa@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "smi_an@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "pol_dv@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "aha_em@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "bal_vv@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "pas_tv@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "gallery@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "cha_no@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "kul_eu@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "bus_ky@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "bab_ye@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": "zap_em@ipm.ru",
+      "type": "generic_email",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false,
+      "ready": true
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://ipm.ru/contacts",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://ipm.ru/contact",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "website_form",
+      "source": "https://www.ipm.ru/contacts/",
+      "selected": false
+    },
+    {
+      "name": null,
+      "role": null,
+      "email": null,
+      "type": "company_website",
+      "source": "https://ipm.ru",
+      "selected": false
+    }
+  ],
+  "runtimeMs": 11252
+}

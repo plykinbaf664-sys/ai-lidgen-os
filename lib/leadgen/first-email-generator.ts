@@ -119,6 +119,12 @@ function cleanText(value: string | null | undefined): string {
   return (value ?? "").replace(/\s+/g, " ").trim();
 }
 
+export function getSignalObservation(context: FirstEmailContext): string {
+  const evidence = cleanText(context.signalEvidence || context.growthSignal);
+  const excerpt = evidence.length > 260 ? `${evidence.slice(0, 260).replace(/\s+\S*$/, "")}…` : evidence;
+  return `В источнике о компании ${context.companyName} указано: «${excerpt}».`;
+}
+
 function stripUrls(value: string): string {
   return value.replace(/https?:\/\/\S+/gi, "");
 }
@@ -282,7 +288,7 @@ export function scoreCopy(context: FirstEmailContext, body: string, microValue: 
     credibility: 9,
     micro_value: microValue.items.length === 3 ? 9 : 5,
     cta_ease: 10,
-    human_tone: unexplainedEnglishWords(body, context.companyName).length ? 4 : 9,
+    human_tone: unexplainedEnglishWords(body.replace(getSignalObservation(context), ""), context.companyName).length ? 4 : 9,
     truthfulness: grounded ? 10 : 6,
     call_relevance: /разбор|посмотреть этот участок/i.test(body) ? 10 : 6,
     template_similarity: getTemplateSimilarityScore(body, context.batchBodies),
@@ -301,7 +307,7 @@ export function validateFirstEmailV3(copy: Pick<FirstEmailCopy, "subject" | "bod
   if (subjectWords < 3 || subjectWords > 7) errors.push("Тема должна содержать 3–7 слов.");
   if (words < 120 || words > 200) errors.push("Письмо должно содержать 120–200 слов без подписи.");
   for (const item of FORBIDDEN_PHRASES) if (item.pattern.test(content)) errors.push(`Запрещённая формулировка: ${item.label}.`);
-  const english = unexplainedEnglishWords(content, context?.companyName);
+  const english = unexplainedEnglishWords(context ? content.replace(getSignalObservation(context), "") : content, context?.companyName);
   if (english.length) errors.push(`Необоснованные английские слова: ${english.join(", ")}.`);
   if (!/Я AI-архитектор/i.test(copy.body)) errors.push("Александр Плыкин должен быть представлен главным AI-экспертом.");
   if (!/бизнес-аналитик/i.test(copy.body)) errors.push("Отсутствует дополнительный слой бизнес-аналитика.");
